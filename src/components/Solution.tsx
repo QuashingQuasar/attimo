@@ -1,106 +1,75 @@
-import { MapPin, FlaskConical, Award, Leaf } from "lucide-react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-
-const solutionFeatures = [
-  {
-    icon: MapPin,
-    title: "TRACEABLE ORIGIN",
-    description: "Every bottle tells you exactly which grove, which farmer, which harvest date. No mystery blends."
-  },
-  {
-    icon: Award,
-    title: "TASTE PROFILE",
-    description: "Detailed tasting notes so you know what to expect: intensity, bitterness, pepper, fruitiness."
-  },
-  {
-    icon: FlaskConical,
-    title: "LAB VERIFIED",
-    description: "Independent lab testing for acidity, polyphenol content, and purity. Numbers you can trust."
-  },
-  {
-    icon: Leaf,
-    title: "FRESH HARVEST",
-    description: "From tree to bottle in months, not years. Taste the difference that freshness makes."
-  }
-];
-
 export const Solution = () => {
   return (
-    <section className="py-20 bg-[hsl(var(--section-dark))] text-cream">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-cream mb-8 leading-tight">
-            Olive Oil You Can<br />
-            <span className="text-gold-light">Trust & Trace</span>
+    <section className="py-24 bg-[hsl(var(--section-dark))] text-cream">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-light text-cream mb-8 leading-tight tracking-tight">
+            Olive oil you can<br />
+            <span className="font-medium italic">trust & trace.</span>
           </h2>
-          <p className="text-xl text-cream/90 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/90 max-w-4xl mx-auto leading-relaxed font-light">
             Every bottle comes with complete transparency: origin story, taste profile, and lab verification.
             This is what authentic extra virgin should be.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-          {solutionFeatures.map((feature, index) => (
-            <Card key={index} className="bg-cream/95 border-cream/20 shadow-lg hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-olive-dark text-cream p-3 rounded-full flex-shrink-0">
-                    <feature.icon size={24} />
-                  </div>
+        {/* Product Showcase */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <div className="bg-cream/95 rounded-lg border border-cream/20 shadow-xl overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-0">
+              {/* Product Image */}
+              <div className="bg-gradient-to-br from-olive-light/10 to-olive-medium/10 p-12 flex items-center justify-center">
+                <div className="w-48 h-80 bg-olive-medium/20 rounded-lg flex items-center justify-center border-2 border-olive-light/30">
+                  <span className="text-olive-medium font-light text-sm">Product Image</span>
+                </div>
+              </div>
+              
+              {/* Product Details */}
+              <div className="p-12">
+                <div className="mb-8">
+                  <h3 className="text-2xl font-light text-olive-dark mb-2">Quinta da Serra</h3>
+                  <p className="text-olive-medium font-light">2024 Portuguese Harvest</p>
+                </div>
+                
+                <div className="space-y-6 text-sm">
                   <div>
-                    <h3 className="text-xl font-bold text-olive-dark mb-3 leading-tight">
-                      {feature.title}
-                    </h3>
-                    <p className="text-olive-dark/80 leading-relaxed">
-                      {feature.description}
+                    <h4 className="font-medium text-olive-dark mb-2">ORIGIN</h4>
+                    <p className="text-olive-medium leading-relaxed">
+                      Family grove since 1890<br />
+                      Trás-os-Montes, Portugal<br />
+                      Harvest: October 2024<br />
+                      Variety: Cobrançosa & Verdeal
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-olive-dark mb-2">TASTE PROFILE</h4>
+                    <p className="text-olive-medium leading-relaxed">
+                      Intensity: Medium<br />
+                      Bitter: ★★★☆☆ | Pepper: ★★★★☆<br />
+                      Notes: Green apple, fresh herbs
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-olive-dark mb-2">LAB VERIFIED</h4>
+                    <p className="text-olive-medium leading-relaxed">
+                      Acidity: 0.2% | Polyphenols: 486 mg/kg<br />
+                      Peroxide: 4.8 meq O₂/kg<br />
+                      Certified: November 2024
                     </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Sample Product Card */}
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-[hsl(var(--section-light))] border-2 border-olive-light shadow-xl">
-            <CardHeader className="bg-gradient-to-r from-olive-dark to-olive-medium text-cream">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-2">2024 PORTUGUESE HARVEST</h3>
-                <p className="text-cream/90">Quinta da Serra • Trás-os-Montes</p>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-3 gap-8">
-                <div>
-                  <h4 className="font-bold text-olive-dark mb-3">ORIGIN</h4>
-                  <p className="text-olive-medium text-sm leading-relaxed">
-                    Family grove since 1890<br />
-                    Harvest: October 2024<br />
-                    Variety: Cobrançosa & Verdeal
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-olive-dark mb-3">TASTE PROFILE</h4>
-                  <p className="text-olive-medium text-sm leading-relaxed">
-                    Intensity: Medium<br />
-                    Bitter: ★★★☆☆<br />
-                    Pepper: ★★★★☆<br />
-                    Fruitiness: Green apple, herb
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-olive-dark mb-3">LAB VALUES</h4>
-                  <p className="text-olive-medium text-sm leading-relaxed">
-                    Acidity: 0.2%<br />
-                    Polyphenols: 486 mg/kg<br />
-                    Peroxide: 4.8 meq O2/kg<br />
-                    Certified: Nov 2024
-                  </p>
+                
+                <div className="mt-8 pt-6 border-t border-olive-light/30">
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-light text-olive-dark">€28</span>
+                    <span className="text-olive-medium text-sm">500ml</span>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
     </section>
