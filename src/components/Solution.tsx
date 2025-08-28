@@ -41,7 +41,7 @@ export const Solution = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
           {solutionFeatures.map((feature, index) => (
-            <Card key={index} className="bg-olive-medium/10 border-cream/20 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Card key={index} className="bg-cream/95 border-cream/20 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
                   <div className="bg-olive-dark text-cream p-3 rounded-full flex-shrink-0">
@@ -51,7 +51,7 @@ export const Solution = () => {
                     <h3 className="text-xl font-bold text-olive-dark mb-3 leading-tight">
                       {feature.title}
                     </h3>
-                    <p className="text-olive-medium leading-relaxed">
+                    <p className="text-olive-dark/80 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>

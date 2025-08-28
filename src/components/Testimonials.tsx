@@ -43,19 +43,19 @@ export const Testimonials = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-olive-medium/10 border-cream/20 shadow-lg backdrop-blur-sm">
+            <Card key={index} className="bg-cream/95 border-cream/20 shadow-lg">
               <CardContent className="p-8">
-                <div className="flex items-center mb-4 text-gold-rich">
+                <div className="flex items-center mb-4 text-gold-accent">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold-rich text-gold-rich" />
+                    <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
                   ))}
                 </div>
-                <blockquote className="text-cream/90 text-lg leading-relaxed mb-6 italic">
+                <blockquote className="text-olive-dark text-lg leading-relaxed mb-6 italic">
                   "{testimonial.text}"
                 </blockquote>
-                <div className="border-t border-cream/20 pt-4">
-                  <p className="font-medium text-cream">{testimonial.name}</p>
-                  <p className="text-cream/80 text-sm">{testimonial.location}</p>
+                <div className="border-t border-olive-light/30 pt-4">
+                  <p className="font-medium text-olive-dark">{testimonial.name}</p>
+                  <p className="text-olive-medium text-sm">{testimonial.location}</p>
                 </div>
               </CardContent>
             </Card>
