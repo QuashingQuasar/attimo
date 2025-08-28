@@ -9,16 +9,6 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
     <section className="relative min-h-[90vh] flex items-center justify-center bg-[hsl(var(--section-light))]">
       <div className="container mx-auto px-6 py-32">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Brand Header */}
-          <div className="mb-8">
-            <p className="text-sm font-medium tracking-[0.2em] text-olive-medium mb-4 uppercase">
-              Premium Olive Oil
-            </p>
-            <p className="text-lg font-light tracking-[0.15em] text-olive-medium uppercase">
-              Direct from European Groves
-            </p>
-          </div>
-
           {/* Logo */}
           <div className="my-16 flex justify-center">
             <img 
@@ -30,7 +20,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           
           {/* Description */}
           <div className="mb-12">
-            <p className="text-xl md:text-2xl font-light text-olive-medium max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg font-light tracking-[0.15em] text-olive-medium uppercase leading-relaxed">
               Exceptional extra virgin olive oils from small family groves.
             </p>
           </div>
