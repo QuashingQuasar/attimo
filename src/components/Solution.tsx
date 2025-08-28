@@ -41,7 +41,7 @@ export const Solution = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
           {solutionFeatures.map((feature, index) => (
-            <Card key={index} className="bg-white border-olive-light/30 shadow-lg hover:shadow-xl transition-all duration-300">
+            <Card key={index} className="bg-olive-medium/10 border-cream/20 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-start space-x-4">
                   <div className="bg-olive-dark text-cream p-3 rounded-full flex-shrink-0">
@@ -63,7 +63,7 @@ export const Solution = () => {
 
         {/* Sample Product Card */}
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white border-2 border-olive-light shadow-xl">
+          <Card className="bg-[hsl(var(--section-light))] border-2 border-olive-light shadow-xl">
             <CardHeader className="bg-gradient-to-r from-olive-dark to-olive-medium text-cream">
               <div className="text-center">
                 <h3 className="text-2xl font-bold mb-2">2024 PORTUGUESE HARVEST</h3>
