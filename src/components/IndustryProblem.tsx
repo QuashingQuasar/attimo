@@ -13,8 +13,8 @@ export const IndustryProblem = () => {
               <span className="text-olive-medium">Problem</span>
             </h2>
             <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed">
-              Many olive oils that claim to be extra virgin are actually old, blended, rancid. 
-              Sneaky 👀! So, we decided to do it better.
+              What you find on supermarket shelves often bears little resemblance to authentic extra virgin olive oil. 
+              Here's what's really happening to your "premium" bottles.
             </p>
             <p className="text-sm text-olive-light mt-4 italic">
               *in studies on extra virgin olive oil
