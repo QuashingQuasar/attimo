@@ -25,7 +25,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           {/* Olive Tree Illustration */}
           <div className="my-16 flex justify-center">
             <img 
-              src="/lovable-uploads/e6b33638-55fd-43c5-a825-1bba7c866b2.png" 
+              src="/lovable-uploads/e6b33638-55fd-43c5-a825-1bba7c866fb2.png" 
               alt="Olive tree illustration" 
               className="w-64 h-64 md:w-80 md:h-80 object-contain opacity-90"
             />
