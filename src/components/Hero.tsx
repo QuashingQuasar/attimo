@@ -14,7 +14,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             <img 
               src="/lovable-uploads/7c80c965-598b-42eb-973d-4c79114eac25.png" 
               alt="KLEIA olive oil logo" 
-              className="w-64 h-64 md:w-80 md:h-80 object-contain"
+              className="w-96 h-96 md:w-[480px] md:h-[480px] object-contain"
             />
           </div>
           
