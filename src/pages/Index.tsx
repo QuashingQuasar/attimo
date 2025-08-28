@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Hero } from "@/components/Hero";
-import { Benefits } from "@/components/Benefits";
-import { Story } from "@/components/Story";
+import { KleiaWay } from "@/components/KleiaWay";
+import { IndustryProblem } from "@/components/IndustryProblem";
+import { QualityComparison } from "@/components/QualityComparison";
+import { LabValues } from "@/components/LabValues";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 const Index = () => {
@@ -10,8 +12,10 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
-      <Benefits />
-      <Story />
+      <KleiaWay />
+      <IndustryProblem />
+      <QualityComparison />
+      <LabValues />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
