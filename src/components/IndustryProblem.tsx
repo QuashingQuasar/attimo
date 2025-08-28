@@ -9,8 +9,8 @@ export const IndustryProblem = () => {
           {/* Main Heading */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold text-olive-dark mb-8 leading-tight">
-              Not All Olive Oils<br />
-              <span className="text-olive-medium">Are Equal...</span>
+              The Olive Oil<br />
+              <span className="text-olive-medium">Problem</span>
             </h2>
             <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed">
               Many olive oils that claim to be extra virgin are actually old, blended, rancid. 

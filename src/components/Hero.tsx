@@ -12,7 +12,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-cream">
             OLIVE OIL
             <br />
-            <span className="text-gold-rich">THE RIGHT WAY</span>
+            <span className="text-gold-rich">THE KLEIA WAY</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-12 text-cream/90 max-w-3xl mx-auto leading-relaxed">
