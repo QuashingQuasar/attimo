@@ -26,14 +26,14 @@ const solutionFeatures = [
 
 export const Solution = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-olive-light/10 to-white">
+    <section className="py-20 bg-[hsl(var(--section-dark))] text-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-olive-dark mb-8 leading-tight">
+          <h2 className="text-5xl md:text-6xl font-bold text-cream mb-8 leading-tight">
             Olive Oil You Can<br />
-            <span className="text-olive-medium">Trust & Trace</span>
+            <span className="text-gold-light">Trust & Trace</span>
           </h2>
-          <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/90 max-w-4xl mx-auto leading-relaxed">
             Every bottle comes with complete transparency: origin story, taste profile, and lab verification.
             This is what authentic extra virgin should be.
           </p>

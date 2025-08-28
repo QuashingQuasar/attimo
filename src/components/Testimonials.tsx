@@ -30,13 +30,13 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-olive-light/10">
+    <section className="py-20 bg-[hsl(var(--section-dark))] text-cream">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-olive-dark mb-6 tracking-tight">
+          <h2 className="text-5xl font-bold text-cream mb-6 tracking-tight">
             WHAT PEOPLE SAY
           </h2>
-          <p className="text-xl text-olive-medium max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-cream/90 max-w-3xl mx-auto leading-relaxed">
             From home cooks to professional chefs, here's what happens when people taste authentic olive oil.
           </p>
         </div>
