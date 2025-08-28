@@ -14,20 +14,17 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             <p className="text-sm font-medium tracking-[0.2em] text-olive-medium mb-4 uppercase">
               Premium Olive Oil
             </p>
-            <h1 className="text-6xl md:text-7xl font-light text-olive-dark mb-4 font-serif tracking-tight">
-              KLEIA
-            </h1>
             <p className="text-lg font-light tracking-[0.15em] text-olive-medium uppercase">
               Direct from European Groves
             </p>
           </div>
 
-          {/* Olive Tree Illustration */}
+          {/* Logo */}
           <div className="my-16 flex justify-center">
             <img 
-              src="/lovable-uploads/e6b33638-55fd-43c5-a825-1bba7c866fb2.png" 
-              alt="Olive tree illustration" 
-              className="w-64 h-64 md:w-80 md:h-80 object-contain opacity-90"
+              src="/lovable-uploads/7c80c965-598b-42eb-973d-4c79114eac25.png" 
+              alt="KLEIA olive oil logo" 
+              className="w-64 h-64 md:w-80 md:h-80 object-contain"
             />
           </div>
           
