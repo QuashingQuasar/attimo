@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { IndustryProblem } from "@/components/IndustryProblem";
+import { Solution } from "@/components/Solution";
 import { KleiaWay } from "@/components/KleiaWay";
-import { QualityComparison } from "@/components/QualityComparison";
-import { LabValues } from "@/components/LabValues";
+import { Testimonials } from "@/components/Testimonials";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 const Index = () => {
@@ -15,9 +15,9 @@ const Index = () => {
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
+      <Solution />
       <KleiaWay />
-      <QualityComparison />
-      <LabValues />
+      <Testimonials />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
