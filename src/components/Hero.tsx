@@ -12,12 +12,12 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-cream">
             OLIVE OIL
             <br />
-            <span className="text-gold-rich">THE KLEIA WAY</span>
+            <span className="text-gold-rich">THE RIGHT WAY</span>
           </h1>
           
           <p className="text-xl md:text-2xl mb-12 text-cream/90 max-w-3xl mx-auto leading-relaxed">
-            High quality EVOO that is fresh, single-grove and lab-tested on quality. 
-            Supporting small Portuguese farmers since day one.
+            Curating exceptional olive oils directly from small European groves. 
+            Fresh, traceable, and lab-tested. Starting with Portugal's 2024 harvest.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
@@ -26,13 +26,13 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
               onClick={onWaitlistClick}
               className="text-lg px-12 py-4 bg-gold-rich text-olive-dark hover:bg-gold-light transition-colors font-bold"
             >
-              Join the Launch Waitlist
+              Get Notified on 2025 Harvest Selection
             </Button>
           </div>
 
-          {/* Social Proof Placeholder */}
+          {/* Launch Info */}
           <div className="text-cream/80 text-sm">
-            <span>Launching 2024 • Early Access Available</span>
+            <span>Building towards full launch 2026 • Early access for supporters</span>
           </div>
         </div>
       </div>
