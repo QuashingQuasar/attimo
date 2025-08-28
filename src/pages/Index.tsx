@@ -15,6 +15,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      <QualityTicker />
       <IndustryProblem />
       <Solution />
       <KleiaWay />
