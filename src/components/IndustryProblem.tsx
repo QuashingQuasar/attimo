@@ -20,23 +20,19 @@ export const IndustryProblem = () => {
 
           {/* Statistics */}
           <div className="grid md:grid-cols-2 gap-12 mb-20">
-            <Card className="text-center border-2 border-orange-200 bg-orange-50/30 shadow-lg">
-              <CardContent className="p-12">
-                <div className="text-7xl font-bold text-olive-dark mb-4">~80%</div>
-                <p className="text-xl text-olive-medium font-medium leading-relaxed">
-                  olive oils sold as "extra virgin" don't meet those standards
-                </p>
-              </CardContent>
-            </Card>
+            <div className="text-center p-12 bg-cream/50 border border-olive-light/20 shadow-sm">
+              <div className="text-7xl font-light text-olive-dark mb-4 font-serif">~80%</div>
+              <p className="text-xl text-olive-medium font-light leading-relaxed">
+                olive oils sold as "extra virgin" don't meet those standards
+              </p>
+            </div>
 
-            <Card className="text-center border-2 border-orange-200 bg-orange-50/30 shadow-lg">
-              <CardContent className="p-12">
-                <div className="text-7xl font-bold text-olive-dark mb-4">~90%</div>
-                <p className="text-xl text-olive-medium font-medium leading-relaxed">
-                  "extra virgin" olive oils are low in health-boosting polyphenols
-                </p>
-              </CardContent>
-            </Card>
+            <div className="text-center p-12 bg-cream/50 border border-olive-light/20 shadow-sm">
+              <div className="text-7xl font-light text-olive-dark mb-4 font-serif">~90%</div>
+              <p className="text-xl text-olive-medium font-light leading-relaxed">
+                "extra virgin" olive oils are low in health-boosting polyphenols
+              </p>
+            </div>
           </div>
 
           {/* Problem Breakdown */}
