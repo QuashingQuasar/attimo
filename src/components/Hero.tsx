@@ -31,8 +31,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           {/* Description */}
           <div className="mb-12">
             <p className="text-xl md:text-2xl font-light text-olive-medium max-w-3xl mx-auto leading-relaxed">
-              Curating exceptional extra virgin olive oils from small family groves.<br />
-              <span className="italic">Fresh, traceable, and lab-tested for uncompromising quality.</span>
+              Exceptional extra virgin olive oils from small family groves.
             </p>
           </div>
 
