@@ -6,33 +6,38 @@ interface HeroProps {
 
 export const Hero = ({ onWaitlistClick }: HeroProps) => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-olive-dark to-olive-medium">
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight text-cream">
-            OLIVE OIL
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-[hsl(var(--section-light))]">
+      <div className="container mx-auto px-6 py-32">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-light mb-12 leading-[1.1] text-olive-dark tracking-tight">
+            Exceptional olive oils
             <br />
-            <span className="text-gold-rich">THE KLEIA WAY</span>
+            <span className="font-medium italic">to sip & savour.</span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-12 text-cream/90 max-w-3xl mx-auto leading-relaxed">
-            Curating exceptional olive oils directly from small European groves. 
-            Fresh, traceable, and lab-tested. Starting with Portugal's 2024 harvest.
+          <p className="text-xl md:text-2xl mb-16 text-olive-medium max-w-4xl mx-auto leading-relaxed font-light">
+            Curating the finest extra virgin olive oils directly from small European groves. 
+            Fresh, traceable, and lab-tested for exceptional quality.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
             <Button 
-              size="lg" 
               onClick={onWaitlistClick}
-              className="text-lg px-12 py-4 bg-gold-rich text-olive-dark hover:bg-gold-light transition-colors font-bold"
+              className="px-8 py-3 bg-olive-dark text-cream hover:bg-olive-medium transition-all duration-300 font-medium rounded-sm"
             >
-              Get Notified on 2025 Harvest Selection
+              Join the waitlist
+            </Button>
+            <Button 
+              variant="outline"
+              className="px-8 py-3 border-olive-dark text-olive-dark hover:bg-olive-dark hover:text-cream transition-all duration-300 font-medium rounded-sm"
+            >
+              Learn more
             </Button>
           </div>
 
           {/* Launch Info */}
-          <div className="text-cream/80 text-sm">
-            <span>Building towards full launch 2026 • Early access for supporters</span>
+          <div className="text-olive-light text-sm font-light tracking-wide">
+            Starting with Portugal's 2024 harvest • Full launch 2026
           </div>
         </div>
       </div>

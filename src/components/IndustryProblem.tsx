@@ -3,21 +3,18 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Main Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold text-olive-dark mb-8 leading-tight">
-              The Olive Oil<br />
-              <span className="text-olive-medium">Problem</span>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-light text-olive-dark mb-8 leading-tight tracking-tight">
+              The olive oil<br />
+              <span className="font-medium italic">problem.</span>
             </h2>
-            <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed font-light">
               What you find on supermarket shelves often bears little resemblance to authentic extra virgin olive oil. 
               Here's what's really happening to your "premium" bottles.
-            </p>
-            <p className="text-sm text-olive-light mt-4 italic">
-              *in studies on extra virgin olive oil
             </p>
           </div>
 

@@ -26,14 +26,16 @@ const ourApproachFeatures = [
 
 export const KleiaWay = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-gold-rich to-gold-light">
+    <section className="py-24 bg-[hsl(var(--section-light))]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-olive-dark mb-6 tracking-tight">
-            OUR APPROACH
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-light text-olive-dark mb-8 tracking-tight">
+            Our approach to
+            <br />
+            <span className="font-medium italic">exceptional oil.</span>
           </h2>
-          <p className="text-xl text-olive-medium max-w-3xl mx-auto leading-relaxed">
-            Why buy supermarket olive oil when you can get the real thing?
+          <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed font-light">
+            Direct relationships with artisan producers. Complete transparency. Uncompromising quality.
           </p>
         </div>
         
