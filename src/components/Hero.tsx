@@ -22,7 +22,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           <div className="mb-12">
             <p className="text-lg font-light tracking-[0.15em] text-olive-medium uppercase leading-relaxed">
               Exceptional extra virgin olive oils<br />
-              from small family groves.
+              from small family groves
             </p>
           </div>
 
