@@ -9,12 +9,12 @@ export const IndustryProblem = () => {
           {/* Main Heading */}
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-6xl font-light text-olive-dark mb-8 leading-tight tracking-tight">
-              The olive oil<br />
-              <span className="font-medium italic">problem.</span>
+              The "extra virgin"<br />
+              <span className="font-medium italic">lie.</span>
             </h2>
             <p className="text-xl text-olive-medium max-w-4xl mx-auto leading-relaxed font-light">
-              What you find on supermarket shelves often bears little resemblance to authentic extra virgin olive oil. 
-              Here's what's really happening to your "premium" bottles.
+              80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character. 
+              Industry focus on volume and cost creates a system that sells cheap blends under EVOO labels the product doesn't live up to.
             </p>
           </div>
 
@@ -37,17 +37,6 @@ export const IndustryProblem = () => {
 
           {/* Problem Breakdown */}
           <div className="max-w-4xl mx-auto space-y-16">
-            {/* The Extra Virgin Lie */}
-            <div>
-              <h3 className="text-3xl font-bold text-olive-dark mb-6 tracking-tight">
-                THE "EXTRA VIRGIN" LIE
-              </h3>
-              <p className="text-lg text-olive-medium leading-relaxed">
-                80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character. 
-                Industry focus on volume and cost creates a system that sells cheap blends under EVOO labels the product doesn't live up to.
-              </p>
-            </div>
-
             {/* Flavor and Health */}
             <div>
               <h3 className="text-3xl font-bold text-olive-dark mb-6 tracking-tight">
