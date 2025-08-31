@@ -68,16 +68,6 @@ export const IndustryProblem = () => {
               </p>
             </div>
           </div>
-
-          {/* Decorative Elements */}
-          <div className="flex justify-center items-center space-x-8 opacity-20">
-            <div className="w-8 h-8 bg-olive-medium rounded-full"></div>
-            <div className="w-6 h-12 bg-olive-light rounded-full"></div>
-            <div className="w-4 h-6 bg-olive-medium rounded-full"></div>
-            <div className="w-12 h-8 bg-olive-dark rounded-full"></div>
-            <div className="w-6 h-10 bg-olive-light rounded-full"></div>
-            <div className="w-8 h-6 bg-olive-medium rounded-full"></div>
-          </div>
         </div>
       </div>
     </section>
