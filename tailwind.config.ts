@@ -19,6 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
 				'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
 				'display': ['Playfair Display', 'serif'],
 				'body': ['Inter', 'sans-serif'],
