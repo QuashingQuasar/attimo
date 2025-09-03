@@ -22,11 +22,11 @@ export const IndustryProblem = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Main Heading */}
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-light text-white mb-8 leading-tight tracking-tight">
+          <div className="text-left mb-20 max-w-5xl">
+            <h2 className="text-5xl md:text-7xl font-light text-white mb-8 leading-tight tracking-tight">
               The <span className="font-medium italic">"extra virgin" lie.</span>
             </h2>
-            <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-2xl md:text-3xl text-white/90 max-w-4xl leading-relaxed font-light">
               80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
             </p>
           </div>
