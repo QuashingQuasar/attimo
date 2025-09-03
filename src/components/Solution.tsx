@@ -1,146 +1,63 @@
 export const Solution = () => {
+  const labTiles = [
+    {
+      key: "polyphenols",
+      label: "POLYPHENOLS",
+      value: "904 mg/kg",
+      avg: "avg. ~180mg/kg",
+      description: "antioxidants that give EVOO its special health benefits",
+    },
+    {
+      key: "oleic-acid",
+      label: "OLEIC ACID",
+      value: "74.9%",
+      avg: "avg. ~67%",
+      description: "healthy fats that protect the oil and your health, higher = better",
+    },
+    {
+      key: "peroxides",
+      label: "PEROXIDES",
+      value: "6.3 meq/kg",
+      avg: "avg. ~20meq/kg",
+      description: "lower = fresher oil, less oxidation and longer shelf life",
+    },
+    {
+      key: "acidity",
+      label: "ACIDITY",
+      value: "0.16%",
+      avg: "avg. ~0.8%",
+      description: "lower = fresher olives and higher quality",
+    },
+  ] as const;
+
   return (
-    <section className="py-24 bg-[hsl(var(--section-dark))] text-cream">
+    <section aria-labelledby="lab-values" className="py-24 bg-[hsl(var(--section-dark))]">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-light text-cream mb-8 leading-tight tracking-tight">
-            Olive oil you can<br />
-            <span className="font-medium italic">trust & trace.</span>
-          </h2>
-          <p className="text-xl text-cream/90 max-w-4xl mx-auto leading-relaxed font-light">
-            Every bottle comes with complete transparency: origin story, taste profile, and lab verification.
-            This is what authentic extra virgin should be.
+        <header className="max-w-4xl mx-auto text-center mb-10">
+          <p id="lab-values" className="text-sm uppercase tracking-wider text-cream/80">
+            Lab Verified
           </p>
+        </header>
+
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {labTiles.map((tile) => (
+            <article
+              key={tile.key}
+              className="rounded-2xl bg-cream p-8 shadow-xl border border-olive-light/30"
+            >
+              <div className="text-xs font-semibold text-olive-medium/80 uppercase tracking-wide mb-2">
+                {tile.label}
+              </div>
+              <div className="text-4xl md:text-5xl font-bold text-olive-dark leading-none">
+                {tile.value}
+              </div>
+              <div className="text-sm text-olive-medium/70 mt-1">{tile.avg}</div>
+              <p className="mt-4 text-sm leading-relaxed text-olive-dark/80">{tile.description}</p>
+            </article>
+          ))}
         </div>
 
-        {/* Product Showcase */}
-        <div className="max-w-5xl mx-auto mb-20">
-          <div className="bg-cream rounded-2xl shadow-2xl overflow-hidden border border-cream/30">
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Product Image */}
-              <div className="bg-gradient-to-br from-olive-light/5 to-olive-medium/10 p-16 flex items-center justify-center">
-                <div className="w-56 h-96 bg-olive-medium/15 rounded-2xl flex items-center justify-center border border-olive-light/20 shadow-lg">
-                  <span className="text-olive-medium/60 font-light">Product Image</span>
-                </div>
-              </div>
-              
-              {/* Product Details */}
-              <div className="p-12 bg-cream">
-                <div className="mb-10">
-                  <h3 className="text-3xl font-light text-olive-dark mb-3 tracking-tight">Quinta da Serra</h3>
-                  <p className="text-olive-medium/80 text-lg font-light tracking-wide">2024 Portuguese Harvest</p>
-                </div>
-                
-                <div className="space-y-8">
-                  {/* Origin Section */}
-                  <div className="bg-olive-light/5 rounded-xl p-6 border-l-4 border-olive-medium">
-                    <h4 className="font-semibold text-olive-dark mb-4 text-sm uppercase tracking-wider">Origin</h4>
-                    <div className="space-y-2 text-olive-dark/90">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Family grove since</span>
-                        <span className="font-semibold">1890</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Location</span>
-                        <span className="font-semibold">Trás-os-Montes, Portugal</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Harvest</span>
-                        <span className="font-semibold">October 2024</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">Variety</span>
-                        <span className="font-semibold">Cobrançosa & Verdeal</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Taste Profile Section */}
-                  <div className="bg-gold/5 rounded-xl p-6 border-l-4 border-gold">
-                    <h4 className="font-semibold text-olive-dark mb-4 text-sm uppercase tracking-wider">Taste Profile</h4>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-olive-dark/90">Intensity</span>
-                        <span className="font-semibold text-gold">Medium</span>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-olive-dark/90">Bitter</span>
-                          <div className="flex space-x-1">
-                            {[1,2,3,4,5].map(i => (
-                              <div key={i} className={`w-3 h-3 rounded-full ${i <= 3 ? 'bg-gold' : 'bg-olive-light/30'}`} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-olive-dark/90">Pepper</span>
-                          <div className="flex space-x-1">
-                            {[1,2,3,4,5].map(i => (
-                              <div key={i} className={`w-3 h-3 rounded-full ${i <= 4 ? 'bg-gold' : 'bg-olive-light/30'}`} />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="pt-2 border-t border-olive-light/20">
-                        <span className="text-sm font-medium text-olive-dark/90">Notes: </span>
-                        <span className="italic text-olive-medium">Green apple, fresh herbs</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Lab Verified Section */}
-                  <div className="bg-cream/50 rounded-xl p-6">
-                    <h4 className="font-semibold text-olive-dark mb-6 text-sm uppercase tracking-wider">Lab Verified</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-center p-4 bg-white rounded-lg">
-                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">POLYPHENOLS</div>
-                        <div className="text-2xl font-bold text-olive-dark mb-1">486 mg/kg</div>
-                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~180mg/kg</div>
-                        <div className="text-xs text-olive-dark/60">antioxidants for health benefits</div>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-white rounded-lg">
-                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">ACIDITY</div>
-                        <div className="text-2xl font-bold text-olive-dark mb-1">0.16%</div>
-                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~0.8%</div>
-                        <div className="text-xs text-olive-dark/60">lower = fresher olives</div>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-white rounded-lg">
-                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">PEROXIDES</div>
-                        <div className="text-2xl font-bold text-olive-dark mb-1">4.8 meq/kg</div>
-                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~20meq/kg</div>
-                        <div className="text-xs text-olive-dark/60">lower = fresher oil</div>
-                      </div>
-                      
-                      <div className="text-center p-4 bg-white rounded-lg">
-                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">OLEIC ACID</div>
-                        <div className="text-2xl font-bold text-olive-dark mb-1">74.9%</div>
-                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~67%</div>
-                        <div className="text-xs text-olive-dark/60">healthy fats that protect</div>
-                      </div>
-                    </div>
-                    <div className="mt-4 text-center">
-                      <div className="text-xs text-olive-medium/70">Certified: November 2024</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-10 pt-8 border-t border-olive-light/30">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-4xl font-light text-olive-dark">€28</span>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-olive-medium text-lg font-medium">500ml</div>
-                      <div className="text-olive-medium/60 text-sm">Premium bottle</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="mt-8 text-center text-cream/80 text-sm">Certified: November 2024</p>
       </div>
     </section>
   );
