@@ -1,4 +1,4 @@
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
@@ -34,35 +34,44 @@ export const IndustryProblem = () => {
           </div>
 
           {/* Problem Breakdown */}
-          <div className="max-w-4xl mx-auto space-y-16">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Flavor and Health */}
-            <div>
-              <h3 className="text-3xl font-bold text-olive-dark mb-6 tracking-tight">
-                FLAVOUR AND HEALTH GET BLENDED AWAY
+            <div className="space-y-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Blend className="w-8 h-8 text-olive-dark" />
+              </div>
+              <h3 className="text-xl font-bold text-olive-dark tracking-tight">
+                Flavour and health get blended away
               </h3>
-              <p className="text-lg text-olive-medium leading-relaxed">
+              <p className="text-olive-medium leading-relaxed">
                 To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
                 fresh flavour, distinct character, and polyphenols that make it healthy.
               </p>
             </div>
 
             {/* Real Thing */}
-            <div>
-              <h3 className="text-3xl font-bold text-olive-dark mb-6 tracking-tight">
-                YOU'VE NEVER TASTED THE REAL THING
+            <div className="space-y-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Eye className="w-8 h-8 text-olive-dark" />
+              </div>
+              <h3 className="text-xl font-bold text-olive-dark tracking-tight">
+                You've never tasted the real thing
               </h3>
-              <p className="text-lg text-olive-medium leading-relaxed">
+              <p className="text-olive-medium leading-relaxed">
                 True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                 These are also the healthiest oils, but most people never get to taste them.
               </p>
             </div>
 
             {/* Big Oil Impact */}
-            <div>
-              <h3 className="text-3xl font-bold text-olive-dark mb-6 tracking-tight">
-                BIG OIL KILLS FAMILY GROVES
+            <div className="space-y-6">
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Building2 className="w-8 h-8 text-olive-dark" />
+              </div>
+              <h3 className="text-xl font-bold text-olive-dark tracking-tight">
+                Big oil kills family groves
               </h3>
-              <p className="text-lg text-olive-medium leading-relaxed">
+              <p className="text-olive-medium leading-relaxed">
                 Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
                 sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
               </p>
