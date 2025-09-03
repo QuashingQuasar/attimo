@@ -3,7 +3,8 @@ export const Solution = () => {
     {
       key: "polyphenols",
       label: "POLYPHENOLS",
-      value: "904 mg/kg",
+      value: "904",
+      unit: "mg/kg",
       avg: "avg. ~180mg/kg",
       description: "antioxidants that give EVOO its special health benefits",
     },
@@ -11,13 +12,15 @@ export const Solution = () => {
       key: "oleic-acid",
       label: "OLEIC ACID",
       value: "74.9%",
+      unit: "",
       avg: "avg. ~67%",
       description: "healthy fats that protect the oil and your health, higher = better",
     },
     {
       key: "peroxides",
       label: "PEROXIDES",
-      value: "6.3 meq/kg",
+      value: "6.3",
+      unit: "meq/kg",
       avg: "avg. ~20meq/kg",
       description: "lower = fresher oil, less oxidation and longer shelf life",
     },
@@ -25,6 +28,7 @@ export const Solution = () => {
       key: "acidity",
       label: "ACIDITY",
       value: "0.16%",
+      unit: "",
       avg: "avg. ~0.8%",
       description: "lower = fresher olives and higher quality",
     },
@@ -50,6 +54,7 @@ export const Solution = () => {
               </div>
               <div className="text-4xl md:text-5xl font-bold text-olive-dark leading-none">
                 {tile.value}
+                {tile.unit && <span className="text-2xl md:text-3xl ml-1">{tile.unit}</span>}
               </div>
               <div className="text-sm text-olive-medium/70 mt-1">{tile.avg}</div>
               <p className="mt-4 text-sm leading-relaxed text-olive-dark/80">{tile.description}</p>
