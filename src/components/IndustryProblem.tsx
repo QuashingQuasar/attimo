@@ -55,10 +55,10 @@ export const IndustryProblem = () => {
               <div className="w-12 h-12 flex items-center justify-center">
                 <Blend className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Flavour and health get blended away
               </h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed">
                 To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
                 fresh flavour, distinct character, and polyphenols that make it healthy.
               </p>
@@ -69,10 +69,10 @@ export const IndustryProblem = () => {
               <div className="w-12 h-12 flex items-center justify-center">
                 <Eye className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 You've never tasted the real thing
               </h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed">
                 True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                 These are also the healthiest oils, but most people never get to taste them.
               </p>
@@ -83,10 +83,10 @@ export const IndustryProblem = () => {
               <div className="w-12 h-12 flex items-center justify-center">
                 <Building2 className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Big oil kills family groves
               </h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed">
                 Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
                 sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
               </p>
