@@ -70,18 +70,72 @@ export const HarvestStory = () => {
               our liquid gold.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8 mt-16 text-center">
-              <div className="space-y-2">
-                <div className="text-3xl font-light">500+</div>
-                <div className="text-sm uppercase tracking-widest text-white/70">Year Old Trees</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl font-light">24h</div>
-                <div className="text-sm uppercase tracking-widest text-white/70">Mill to Bottle</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl font-light">2024</div>
-                <div className="text-sm uppercase tracking-widest text-white/70">Portugal Harvest</div>
+            {/* Quality Comparison */}
+            <div className="max-w-3xl mx-auto mt-16">
+              <div className="backdrop-blur-sm bg-white/10 rounded-2xl border border-white/20 overflow-hidden">
+                <div className="grid grid-cols-3 gap-4 p-4 border-b border-white/20">
+                  <div></div>
+                  <div className="text-center font-semibold text-white">OLIOVERO</div>
+                  <div className="text-center font-semibold text-white/80">AVG. OIL</div>
+                </div>
+                
+                <div className="divide-y divide-white/10">
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    <div className="text-white font-medium">Fresh</div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-400 flex items-center justify-center mx-auto">
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                      </div>
+                    </div>
+                    <div className="text-center text-white/70 text-sm">no, mixed with old oils</div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    <div className="text-white font-medium">Single source</div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-400 flex items-center justify-center mx-auto">
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                      </div>
+                    </div>
+                    <div className="text-center text-white/70 text-sm">no, blended from +3 countries</div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    <div className="text-white font-medium">Traceable</div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-400 flex items-center justify-center mx-auto">
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-red-500/20 border-2 border-red-400 flex items-center justify-center mx-auto">
+                        <div className="w-4 h-0.5 bg-red-400 rotate-45"></div>
+                        <div className="w-4 h-0.5 bg-red-400 -rotate-45 absolute"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    <div className="text-white font-medium">Lab-tested</div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-400 flex items-center justify-center mx-auto">
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="w-8 h-8 rounded-full bg-red-500/20 border-2 border-red-400 flex items-center justify-center mx-auto">
+                        <div className="w-4 h-0.5 bg-red-400 rotate-45"></div>
+                        <div className="w-4 h-0.5 bg-red-400 -rotate-45 absolute"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-4 p-4">
+                    <div className="text-white font-medium">Polyphenols</div>
+                    <div className="text-center text-white font-semibold">~900mg/kg</div>
+                    <div className="text-center text-white/70">100-200mg/kg</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
