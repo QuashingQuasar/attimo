@@ -4,6 +4,17 @@ import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return (
     <section className="relative py-24 overflow-hidden">
+      {/* Brand Icon Pattern Background */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url('/lovable-uploads/e9586c63-eb11-40ee-93a0-3792c95e16c5.png')`,
+          backgroundSize: '400px 400px',
+          backgroundRepeat: 'repeat',
+          backgroundPosition: 'center'
+        }}
+      ></div>
+      
       {/* Video Background */}
       <video
         autoPlay

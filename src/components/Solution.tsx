@@ -35,8 +35,37 @@ export const Solution = () => {
   ] as const;
 
   return (
-    <section aria-labelledby="lab-values" className="py-24 bg-[hsl(var(--olive-dark)/0.07)]">
-      <div className="container mx-auto px-6">
+    <section aria-labelledby="lab-values" className="relative py-24 bg-[hsl(var(--olive-dark)/0.07)] overflow-hidden">
+      {/* Floating Brand Icon Accents */}
+      <div 
+        className="absolute top-20 right-10 w-20 h-20 opacity-8 animate-pulse"
+        style={{
+          backgroundImage: `url('/lovable-uploads/e9586c63-eb11-40ee-93a0-3792c95e16c5.png')`,
+          backgroundSize: '400px 400px',
+          backgroundPosition: '-160px -40px',
+          filter: 'hue-rotate(80deg)'
+        }}
+      />
+      <div 
+        className="absolute bottom-32 left-8 w-12 h-12 opacity-6"
+        style={{
+          backgroundImage: `url('/lovable-uploads/e9586c63-eb11-40ee-93a0-3792c95e16c5.png')`,
+          backgroundSize: '400px 400px',
+          backgroundPosition: '-40px -280px',
+          filter: 'hue-rotate(80deg)'
+        }}
+      />
+      <div 
+        className="absolute top-1/2 left-16 w-8 h-8 opacity-4"
+        style={{
+          backgroundImage: `url('/lovable-uploads/e9586c63-eb11-40ee-93a0-3792c95e16c5.png')`,
+          backgroundSize: '400px 400px',
+          backgroundPosition: '-280px -200px',
+          filter: 'hue-rotate(80deg)'
+        }}
+      />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <header className="max-w-4xl mx-auto text-center mb-10">
           <p id="lab-values" className="text-sm uppercase tracking-wider text-cream/80">
             Lab Verified
