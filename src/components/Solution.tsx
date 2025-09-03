@@ -49,15 +49,15 @@ export const Solution = () => {
               key={tile.key}
               className="rounded-2xl bg-cream p-8 shadow-sm border border-olive-light/15"
             >
-              <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">
+              <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-2">
                 {tile.label}
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-gray-800 leading-none">
+              <div className="text-4xl md:text-5xl font-bold text-olive-dark leading-none">
                 {tile.value}
-                {tile.unit && <span className="text-2xl md:text-3xl ml-1">{tile.unit}</span>}
+                {tile.unit && <span className="text-2xl md:text-3xl ml-1 text-olive-dark/90">{tile.unit}</span>}
               </div>
-              <div className="text-sm text-gray-500 mt-1">{tile.avg}</div>
-              <p className="mt-4 text-sm leading-relaxed text-gray-600">{tile.description}</p>
+              <div className="text-sm text-olive-light mt-1">{tile.avg}</div>
+              <p className="mt-4 text-sm leading-relaxed text-olive-medium/90">{tile.description}</p>
             </article>
           ))}
         </div>
