@@ -35,7 +35,7 @@ export const Solution = () => {
   ] as const;
 
   return (
-    <section aria-labelledby="lab-values" className="py-24 bg-[hsl(var(--section-dark))]">
+    <section aria-labelledby="lab-values" className="py-24 bg-[hsl(var(--olive-dark)/0.1)]">
       <div className="container mx-auto px-6">
         <header className="max-w-4xl mx-auto text-center mb-10">
           <p id="lab-values" className="text-sm uppercase tracking-wider text-cream/80">
