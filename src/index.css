@@ -42,9 +42,9 @@ All colors MUST be HSL.
     --ring: 85 35% 25%;
 
     /* KLEIA Brand Tokens - Sophisticated Olive Theme */
-    --olive-dark: 67 25% 20%; /* Refined deep olive */
-    --olive-medium: 67 20% 35%; /* Sophisticated medium olive */
-    --olive-light: 67 15% 55%; /* Elegant light olive */
+    --olive-dark: 67 15% 45%; /* Much lighter olive */
+    --olive-medium: 67 12% 55%; /* Soft medium olive */
+    --olive-light: 67 10% 65%; /* Very light olive */
     --gold-accent: 42 65% 50%; /* Subtle gold accent */
     --cream: 48 20% 96%; /* Clean cream */
     --warm-white: 45 15% 98%; /* Warm white */

@@ -47,7 +47,7 @@ export const Solution = () => {
           {labTiles.map((tile) => (
             <article
               key={tile.key}
-              className="rounded-2xl bg-olive-light/8 p-8 shadow-sm border border-olive-light/15"
+              className="rounded-2xl bg-cream p-8 shadow-sm border border-olive-light/15"
             >
               <div className="text-xs font-semibold text-olive-light uppercase tracking-wide mb-2">
                 {tile.label}
