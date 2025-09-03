@@ -39,7 +39,7 @@ export const Solution = () => {
           </p>
         </header>
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
           {labTiles.map((tile) => (
             <article
               key={tile.key}
