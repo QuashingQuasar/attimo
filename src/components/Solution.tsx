@@ -47,17 +47,17 @@ export const Solution = () => {
           {labTiles.map((tile) => (
             <article
               key={tile.key}
-              className="rounded-2xl bg-cream p-8 shadow-xl border border-olive-light/30"
+              className="rounded-2xl bg-olive-light/8 p-8 shadow-sm border border-olive-light/15"
             >
-              <div className="text-xs font-semibold text-olive-medium/80 uppercase tracking-wide mb-2">
+              <div className="text-xs font-semibold text-olive-light uppercase tracking-wide mb-2">
                 {tile.label}
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-olive-dark leading-none">
+              <div className="text-4xl md:text-5xl font-bold text-olive-medium leading-none">
                 {tile.value}
                 {tile.unit && <span className="text-2xl md:text-3xl ml-1">{tile.unit}</span>}
               </div>
-              <div className="text-sm text-olive-medium/70 mt-1">{tile.avg}</div>
-              <p className="mt-4 text-sm leading-relaxed text-olive-dark/80">{tile.description}</p>
+              <div className="text-sm text-olive-light mt-1">{tile.avg}</div>
+              <p className="mt-4 text-sm leading-relaxed text-olive-medium/80">{tile.description}</p>
             </article>
           ))}
         </div>
