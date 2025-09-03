@@ -34,7 +34,7 @@ export const IndustryProblem = () => {
           </div>
 
           {/* Problem Breakdown */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-16 max-w-6xl mx-auto">
             {/* Flavor and Health */}
             <div className="space-y-6">
               <div className="w-12 h-12 flex items-center justify-center">
