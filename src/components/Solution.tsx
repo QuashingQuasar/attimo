@@ -89,27 +89,39 @@ export const Solution = () => {
                   </div>
                   
                   {/* Lab Verified Section */}
-                  <div className="bg-green-50 rounded-xl p-6 border-l-4 border-green-500">
-                    <h4 className="font-semibold text-olive-dark mb-4 text-sm uppercase tracking-wider">Lab Verified</h4>
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <div className="text-center p-3 bg-white/60 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">0.2%</div>
-                        <div className="text-xs text-olive-dark/70 font-medium">Acidity</div>
+                  <div className="bg-cream/50 rounded-xl p-6">
+                    <h4 className="font-semibold text-olive-dark mb-6 text-sm uppercase tracking-wider">Lab Verified</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-4 bg-white rounded-lg">
+                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">POLYPHENOLS</div>
+                        <div className="text-2xl font-bold text-olive-dark mb-1">486 mg/kg</div>
+                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~180mg/kg</div>
+                        <div className="text-xs text-olive-dark/60">antioxidants for health benefits</div>
                       </div>
-                      <div className="text-center p-3 bg-white/60 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">486</div>
-                        <div className="text-xs text-olive-dark/70 font-medium">mg/kg Polyphenols</div>
+                      
+                      <div className="text-center p-4 bg-white rounded-lg">
+                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">ACIDITY</div>
+                        <div className="text-2xl font-bold text-olive-dark mb-1">0.16%</div>
+                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~0.8%</div>
+                        <div className="text-xs text-olive-dark/60">lower = fresher olives</div>
+                      </div>
+                      
+                      <div className="text-center p-4 bg-white rounded-lg">
+                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">PEROXIDES</div>
+                        <div className="text-2xl font-bold text-olive-dark mb-1">4.8 meq/kg</div>
+                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~20meq/kg</div>
+                        <div className="text-xs text-olive-dark/60">lower = fresher oil</div>
+                      </div>
+                      
+                      <div className="text-center p-4 bg-white rounded-lg">
+                        <div className="text-xs font-semibold text-olive-dark/70 uppercase tracking-wide mb-1">OLEIC ACID</div>
+                        <div className="text-2xl font-bold text-olive-dark mb-1">74.9%</div>
+                        <div className="text-xs text-olive-medium/70 mb-2">avg. ~67%</div>
+                        <div className="text-xs text-olive-dark/60">healthy fats that protect</div>
                       </div>
                     </div>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium text-olive-dark/90">Peroxide</span>
-                        <span className="font-semibold">4.8 meq O₂/kg</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium text-olive-dark/90">Certified</span>
-                        <span className="font-semibold">November 2024</span>
-                      </div>
+                    <div className="mt-4 text-center">
+                      <div className="text-xs text-olive-medium/70">Certified: November 2024</div>
                     </div>
                   </div>
                 </div>
