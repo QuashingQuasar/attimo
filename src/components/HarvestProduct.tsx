@@ -44,8 +44,8 @@ export const HarvestProduct = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
-          <div className="flex justify-center">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-olive-light/10 max-w-lg">
+          <div className="flex items-center justify-center h-full">
+            <div className="w-full max-w-2xl aspect-[3/4] rounded-2xl overflow-hidden bg-olive-light/10">
               <img 
                 src={oliveOilPlaceholder} 
                 alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" 
