@@ -41,13 +41,13 @@ export const PolyphenolComparison = () => {
                 {comparisonData.map((item, index) => (
                   <div key={index} className="relative">
                     <div 
-                      className={`h-16 rounded-lg ${item.color} flex items-center justify-between px-6 text-white font-medium transition-all duration-700 ease-out`}
-                      style={{ width: `${(item.value / maxValue) * 100}%`, minWidth: '200px' }}
+                      className={`h-16 rounded-lg ${item.color} flex items-center justify-between px-6 text-white font-medium transition-all duration-700 ease-out whitespace-nowrap`}
+                      style={{ width: `${(item.value / maxValue) * 100}%`, minWidth: '250px' }}
                     >
-                      <span className="text-lg font-medium">
+                      <span className="text-lg font-medium whitespace-nowrap">
                         {item.name}
                       </span>
-                      <span className="text-lg font-bold">
+                      <span className="text-lg font-bold whitespace-nowrap">
                         {item.value} mg/kg
                       </span>
                     </div>
