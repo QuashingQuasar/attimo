@@ -42,7 +42,7 @@ export const PolyphenolComparison = () => {
                   <div key={index} className="relative">
                     <div 
                       className={`h-16 rounded-lg ${item.color} flex items-center justify-between px-6 text-white font-medium transition-all duration-700 ease-out whitespace-nowrap`}
-                      style={{ width: `${(item.value / maxValue) * 100}%`, minWidth: '250px' }}
+                      style={{ width: `${(item.value / maxValue) * 100}%` }}
                     >
                       <span className="text-lg font-medium whitespace-nowrap">
                         {item.name}
