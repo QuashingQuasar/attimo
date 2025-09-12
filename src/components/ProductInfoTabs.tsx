@@ -12,10 +12,10 @@ export const ProductInfoTabs = () => {
             DETAILS
           </TabsTrigger>
           <TabsTrigger 
-            value="glass" 
+            value="flavor" 
             className="data-[state=active]:bg-olive-dark data-[state=active]:text-cream text-olive-dark font-semibold"
           >
-            GLASS
+            FLAVOR
           </TabsTrigger>
           <TabsTrigger 
             value="harvest" 
@@ -62,11 +62,35 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-        <TabsContent value="glass" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
-          <div className="text-olive-medium leading-relaxed">
-            <p>
-              Our bottles are designed to protect the oil from light and oxidation. The dark glass blocks harmful UV rays that can degrade the oil's quality and nutritional benefits. Each bottle is carefully sealed to maintain freshness from harvest to your table.
-            </p>
+        <TabsContent value="flavor" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
+          <div className="space-y-4">
+            {[
+              { label: "PEPPERY", rating: 4 },
+              { label: "FRUITY", rating: 5 },
+              { label: "BITTER", rating: 4 },
+              { label: "HERBAL", rating: 3 }
+            ].map((flavor) => (
+              <div key={flavor.label} className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide">
+                  {flavor.label}
+                </span>
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div
+                      key={i}
+                      className={`w-4 h-6 rounded-full ${
+                        i <= flavor.rating 
+                          ? 'bg-olive-dark' 
+                          : 'bg-olive-light/30'
+                      }`}
+                      style={{
+                        clipPath: 'ellipse(50% 70% at 50% 30%)'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </TabsContent>
         
