@@ -32,10 +32,10 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
-          {/* Fresh - Large tile */}
-          <div className="lg:col-span-2 lg:row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
-            <div className="relative z-10">
+        <div className="grid grid-cols-4 gap-4 max-w-7xl mx-auto h-[500px]">
+          {/* Column 1: Large vertical tile - Fresh */}
+          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
+            <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="w-16 h-16 mb-6 bg-white/20 rounded-full flex items-center justify-center">
                 <Droplets size={24} className="text-white" />
               </div>
@@ -46,7 +46,7 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Not Blended */}
+          {/* Column 2: Top tile - Not Blended */}
           <div className="bg-gradient-to-br from-olive-light/20 to-olive-light/10 rounded-2xl p-6 border border-olive-light/20">
             <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
               <MapPin size={20} className="text-cream" />
@@ -57,7 +57,7 @@ export const KleiaWay = () => {
             </p>
           </div>
 
-          {/* Lab Tested */}
+          {/* Column 3: Top tile - Lab Tested */}
           <div className="bg-gradient-to-br from-olive-medium/20 to-olive-medium/10 rounded-2xl p-6 border border-olive-medium/20">
             <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
               <FlaskConical size={20} className="text-cream" />
@@ -68,13 +68,28 @@ export const KleiaWay = () => {
             </p>
           </div>
 
-          {/* Placeholder tiles for future content */}
+          {/* Column 4: Top tile - Placeholder */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
               <span className="text-sm">Content coming soon</span>
             </div>
           </div>
 
+          {/* Column 2: Bottom tile - Placeholder */}
+          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
+            <div className="h-full flex items-center justify-center text-olive-medium/50">
+              <span className="text-sm">Content coming soon</span>
+            </div>
+          </div>
+
+          {/* Column 3: Bottom tile - Placeholder */}
+          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
+            <div className="h-full flex items-center justify-center text-olive-medium/50">
+              <span className="text-sm">Content coming soon</span>
+            </div>
+          </div>
+
+          {/* Column 4: Bottom tile - Placeholder */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
               <span className="text-sm">Content coming soon</span>
