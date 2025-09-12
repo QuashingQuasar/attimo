@@ -6,46 +6,68 @@ interface HeroProps {
 
 export const Hero = ({ onWaitlistClick }: HeroProps) => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-[hsl(var(--section-light))]">
-      <div className="container mx-auto px-6 py-32">
-        <div className="max-w-4xl mx-auto text-center">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/videos/new-brand-video.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Cinematic Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 py-32">
+        <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
-          <div className="my-16 flex justify-center">
+          <div className="mb-12 flex justify-center animate-fade-in">
             <img 
               src="/lovable-uploads/7c80c965-598b-42eb-973d-4c79114eac25.png" 
               alt="KLEIA olive oil logo" 
-              className="w-96 h-96 md:w-[480px] md:h-[480px] object-contain"
+              className="w-80 h-80 md:w-96 md:h-96 object-contain drop-shadow-2xl"
             />
           </div>
           
           {/* Description */}
-          <div className="mb-12">
-            <p className="text-lg font-light tracking-[0.15em] text-olive-medium uppercase leading-relaxed">
+          <div className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl md:text-2xl font-light tracking-[0.2em] text-white uppercase leading-relaxed drop-shadow-lg">
               Exceptional extra virgin olive oils<br />
               from small family groves
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button 
               onClick={onWaitlistClick}
-              className="px-8 py-3 bg-olive-dark text-cream hover:bg-olive-medium transition-all duration-300 font-medium rounded-sm"
+              className="px-10 py-4 bg-white/90 text-olive-dark hover:bg-white hover:scale-105 transition-all duration-300 font-semibold rounded-sm backdrop-blur-sm shadow-2xl text-lg"
             >
               Join the waitlist
             </Button>
             <Button 
               variant="outline"
-              className="px-8 py-3 border-olive-dark text-olive-dark hover:bg-olive-dark hover:text-cream transition-all duration-300 font-medium rounded-sm"
+              className="px-10 py-4 border-2 border-white/80 text-white hover:bg-white/20 hover:border-white hover:scale-105 transition-all duration-300 font-medium rounded-sm backdrop-blur-sm text-lg"
             >
-              Learn more
+              Watch our story
             </Button>
           </div>
 
           {/* Launch Info */}
-          <div className="text-olive-light text-sm font-light tracking-wide">
+          <div className="text-white/80 text-base font-light tracking-wide drop-shadow-lg animate-fade-in" style={{ animationDelay: '0.6s' }}>
             Starting with Portugal's 2024 harvest • Full launch 2026
           </div>
+        </div>
+      </div>
+      
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
