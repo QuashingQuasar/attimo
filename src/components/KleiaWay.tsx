@@ -33,16 +33,10 @@ export const KleiaWay = () => {
         </div>
         
         <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto h-[500px]">
-          {/* Large tile - Fresh (spans 2 rows like "iMo" in your sketch) */}
-          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
-            <div className="relative z-10 h-full flex flex-col justify-center">
-              <div className="w-16 h-16 mb-6 bg-white/20 rounded-full flex items-center justify-center">
-                <Droplets size={24} className="text-white" />
-              </div>
-              <h3 className="text-3xl font-bold mb-4">Fresh</h3>
-              <p className="text-lg opacity-90 leading-relaxed">
-                We give you oil from the latest harvest, because fresher = better.
-              </p>
+          {/* Large tile - Image placeholder (spans 2 rows like "iMo" in your sketch) */}
+          <div className="row-span-2 bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-8 border border-olive-light/10 relative overflow-hidden">
+            <div className="relative z-10 h-full flex flex-col items-center justify-center text-olive-medium/50">
+              <span className="text-lg">Photo coming soon</span>
             </div>
           </div>
 
