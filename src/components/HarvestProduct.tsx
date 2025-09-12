@@ -100,7 +100,7 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Lab Values Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {labTiles.map((tile) => (
                 <div key={tile.key} className="bg-white/60 p-4 rounded-xl border border-olive-light/10">
                   <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-2">
