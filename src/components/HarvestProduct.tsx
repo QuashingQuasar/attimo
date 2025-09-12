@@ -86,7 +86,7 @@ export const HarvestProduct = () => {
               <ul className="space-y-3 text-olive-medium">
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Contains 5x more antioxidant polyphenols than average (904 mg/kg)</span>
+                  <span>5x more antioxidant polyphenols than average EVOO</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
