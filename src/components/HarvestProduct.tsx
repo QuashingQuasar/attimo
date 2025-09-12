@@ -69,7 +69,7 @@ export const HarvestProduct = () => {
                   2024 HARVEST
                 </Badge>
                 <Badge variant="secondary" className="bg-gold/20 text-gold-dark">
-                  LIMITED EDITION
+                  LAST BOTTLES
                 </Badge>
               </div>
               
