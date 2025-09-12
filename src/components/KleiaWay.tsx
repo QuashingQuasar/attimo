@@ -43,7 +43,7 @@ export const KleiaWay = () => {
               muted
               playsInline
             >
-              <source src="/videos/kleia-way-video-2.mp4" type="video/mp4" />
+              <source src="/videos/third-column-upper-video.mp4" type="video/mp4" />
             </video>
           </div>
 
