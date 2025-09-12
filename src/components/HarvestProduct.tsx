@@ -149,7 +149,7 @@ export const HarvestProduct = () => {
                     <span className="text-lg font-bold">+</span>
                   </button>
                 </div>
-                <Button className="flex-1 bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold py-4 text-lg">
+                <Button className="flex-1 bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold h-[60px] text-lg">
                   Add to Cart • €{(23 * quantity).toFixed(0)}
                 </Button>
               </div>
