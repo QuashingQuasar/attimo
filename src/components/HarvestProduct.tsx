@@ -126,14 +126,12 @@ export const HarvestProduct = () => {
             {/* Pricing & Purchase */}
             <div className="space-y-6">
               <div className="flex items-baseline gap-4">
-                <span className="text-3xl font-bold text-olive-dark">€45</span>
-                <span className="text-lg text-olive-medium line-through">€55</span>
-                <Badge variant="secondary" className="bg-gold/20 text-gold-dark">18% OFF</Badge>
+                <span className="text-3xl font-bold text-olive-dark">€23</span>
               </div>
 
               <div className="space-y-4">
                 <Button className="w-full bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold py-4 text-lg">
-                  Add to Cart • €45
+                  Add to Cart • €23
                 </Button>
                 
                 <div className="flex items-center justify-center gap-6 text-sm text-olive-medium">
