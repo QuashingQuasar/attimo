@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { IndustryProblem } from "@/components/IndustryProblem";
-import { Solution } from "@/components/Solution";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { KleiaWay } from "@/components/KleiaWay";
 import { Testimonials } from "@/components/Testimonials";
@@ -16,7 +15,6 @@ const Index = () => {
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
-      <Solution />
       <HarvestProduct />
       <KleiaWay />
       <Testimonials />
