@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
+import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
 
 export const HarvestProduct = () => {
   const labTiles = [
@@ -42,30 +43,14 @@ export const HarvestProduct = () => {
     <section className="py-24 bg-cream">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Product Images */}
-          <div className="space-y-6">
-            <div className="aspect-square rounded-2xl overflow-hidden bg-olive-light/10">
+          {/* Product Image */}
+          <div className="flex justify-center">
+            <div className="aspect-square rounded-2xl overflow-hidden bg-olive-light/10 max-w-lg">
               <img 
-                src="/lovable-uploads/a89180d1-44f4-4357-b1da-0bda7fb6b9ca.png" 
+                src={oliveOilPlaceholder} 
                 alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" 
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square rounded-xl overflow-hidden bg-olive-light/10">
-                <img 
-                  src="/assets/hero-olive-oil.jpg" 
-                  alt="Olive oil pour" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="aspect-square rounded-xl overflow-hidden bg-olive-light/10">
-                <img 
-                  src="/lovable-uploads/e6b33638-55fd-43c5-a825-1bba7c866fb2.png" 
-                  alt="Olive grove" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </div>
           </div>
 
