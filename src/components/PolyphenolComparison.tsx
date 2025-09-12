@@ -3,26 +3,22 @@ export const PolyphenolComparison = () => {
     {
       name: "Average Olive Oil",
       value: 180,
-      color: "bg-gray-400",
-      textColor: "text-gray-700"
+      color: "bg-gray-400"
     },
     {
-      name: "EU Health Claim",
+      name: "EU Health Claim", 
       value: 250,
-      color: "bg-blue-300",
-      textColor: "text-blue-700"
+      color: "bg-slate-400"
     },
     {
-      name: "Premium Olive Oil",
+      name: "Blueprint Olive Oil",
       value: 400,
-      color: "bg-blue-500",
-      textColor: "text-blue-700"
+      color: "bg-blue-500"
     },
     {
       name: "Our Oil",
       value: 904,
-      color: "bg-olive-medium",
-      textColor: "text-olive-dark"
+      color: "bg-green-500"
     }
   ];
 
@@ -41,23 +37,19 @@ export const PolyphenolComparison = () => {
                 See the polyphenol difference—what's in ours, what's in others, and why it matters.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {comparisonData.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="w-32 flex-shrink-0">
-                      <div className={`px-4 py-3 rounded-lg text-white text-sm font-medium ${item.color}`}>
+                  <div key={index} className="relative">
+                    <div 
+                      className={`h-16 rounded-lg ${item.color} flex items-center justify-between px-6 text-white font-medium transition-all duration-700 ease-out`}
+                      style={{ width: `${(item.value / maxValue) * 100}%`, minWidth: '200px' }}
+                    >
+                      <span className="text-lg font-medium">
                         {item.name}
-                      </div>
-                    </div>
-                    <div className="flex-1 relative">
-                      <div 
-                        className={`h-12 rounded-lg ${item.color} flex items-center justify-end pr-4 transition-all duration-700 ease-out`}
-                        style={{ width: `${(item.value / maxValue) * 100}%`, minWidth: '120px' }}
-                      >
-                        <span className="text-white font-bold text-lg">
-                          {item.value} mg/kg
-                        </span>
-                      </div>
+                      </span>
+                      <span className="text-lg font-bold">
+                        {item.value} mg/kg
+                      </span>
                     </div>
                   </div>
                 ))}
