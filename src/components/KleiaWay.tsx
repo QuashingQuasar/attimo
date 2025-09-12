@@ -32,9 +32,9 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-5 grid-rows-2 gap-4 max-w-7xl mx-auto h-[500px]">
-          {/* Large tile - Fresh (spans 2 cols, 2 rows like woman in reference) */}
-          <div className="col-span-2 row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto h-[500px]">
+          {/* Large tile - Fresh (spans 2 rows like "iMo" in your sketch) */}
+          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
             <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="w-16 h-16 mb-6 bg-white/20 rounded-full flex items-center justify-center">
                 <Droplets size={24} className="text-white" />
@@ -46,7 +46,7 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Top row - Not Blended (like "Intense & Peppery") */}
+          {/* Top row, col 2 - Not Blended (like "text" in your sketch) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
               <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
@@ -59,15 +59,15 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Top row - Photo placeholder (like olive oil & lemon) */}
+          {/* Top row, col 3 - Photo placeholder (like "img" in your sketch) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
               <span className="text-sm">Photo coming soon</span>
             </div>
           </div>
 
-          {/* Right edge - Lab Tested (spans 2 rows like "Coratina Olives") */}
-          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+          {/* Top row, col 4 - Lab Tested (like "text" in your sketch) */}
+          <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
               <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
                 <FlaskConical size={20} className="text-white" />
@@ -79,14 +79,21 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Bottom row - Video placeholder (like cartoon) */}
+          {/* Bottom row, col 2 - Photo placeholder (like "img" in your sketch) */}
+          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
+            <div className="h-full flex items-center justify-center text-olive-medium/50">
+              <span className="text-sm">Photo coming soon</span>
+            </div>
+          </div>
+
+          {/* Bottom row, col 3 - Video placeholder (like "text" in your sketch) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
               <span className="text-sm">Video coming soon</span>
             </div>
           </div>
 
-          {/* Bottom row - Photo placeholder (like olives on branch) */}
+          {/* Bottom row, col 4 - Photo placeholder (like "img" in your sketch) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
               <span className="text-sm">Photo coming soon</span>
