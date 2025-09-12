@@ -65,16 +65,16 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       </div>
       
       {/* Quality Ticker - Positioned at bottom of viewport */}
-      <div className="absolute bottom-0 left-0 right-0 z-30 bg-olive-dark py-3 overflow-hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[hsl(67_15%_45%)] py-3 overflow-hidden">
         <div className="animate-marquee inline-block">
-          <span className="text-cream font-bold text-sm md:text-base tracking-widest whitespace-nowrap">
+          <span className="text-white font-bold text-sm md:text-base tracking-widest whitespace-nowrap">
             PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH •&nbsp;
           </span>
         </div>
       </div>
       
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll Indicator - moved above ticker */}
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
