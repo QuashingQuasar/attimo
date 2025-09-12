@@ -153,11 +153,6 @@ export const HarvestProduct = () => {
                   Add to Cart • €{(23 * quantity).toFixed(0)}
                 </Button>
               </div>
-                
-              <div className="flex items-center justify-center gap-6 text-sm text-olive-medium">
-                <span>✓ Free shipping over €75</span>
-                <span>✓ 30-day guarantee</span>
-              </div>
             </div>
 
             {/* Additional Info */}
