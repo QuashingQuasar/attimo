@@ -124,20 +124,25 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Pricing & Purchase */}
-            <div className="space-y-6">
-              <div className="flex items-baseline gap-4">
-                <span className="text-3xl font-bold text-olive-dark">€23</span>
-              </div>
-
-              <div className="space-y-4">
-                <Button className="w-full bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold py-4 text-lg">
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center border border-olive-light/20 rounded-lg bg-white/80">
+                  <button className="p-3 hover:bg-olive-light/10 rounded-l-lg text-olive-dark">
+                    <span className="text-lg font-bold">−</span>
+                  </button>
+                  <span className="px-4 py-3 min-w-[60px] text-center font-semibold text-olive-dark">1</span>
+                  <button className="p-3 hover:bg-olive-light/10 rounded-r-lg text-olive-dark">
+                    <span className="text-lg font-bold">+</span>
+                  </button>
+                </div>
+                <Button className="flex-1 bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold py-4 text-lg">
                   Add to Cart • €23
                 </Button>
+              </div>
                 
-                <div className="flex items-center justify-center gap-6 text-sm text-olive-medium">
-                  <span>✓ Free shipping over €75</span>
-                  <span>✓ 30-day guarantee</span>
-                </div>
+              <div className="flex items-center justify-center gap-6 text-sm text-olive-medium">
+                <span>✓ Free shipping over €75</span>
+                <span>✓ 30-day guarantee</span>
               </div>
             </div>
 
