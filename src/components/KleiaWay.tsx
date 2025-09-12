@@ -51,11 +51,17 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Bottom row, col 2 - Photo placeholder (img in sketch) */}
-          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
-            <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Photo coming soon</span>
-            </div>
+          {/* Bottom row, col 2 - Video */}
+          <div className="rounded-2xl relative overflow-hidden">
+            <video 
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
