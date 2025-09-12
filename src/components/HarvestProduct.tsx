@@ -79,15 +79,6 @@ export const HarvestProduct = () => {
               <p className="text-lg text-olive-medium mb-4">
                 High-Antioxidant Extra Virgin Olive Oil
               </p>
-              
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold text-gold" />
-                  ))}
-                </div>
-                <span className="text-olive-medium">4.9 • 127 reviews</span>
-              </div>
             </header>
 
             {/* Key Benefits */}
