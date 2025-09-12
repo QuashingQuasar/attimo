@@ -39,18 +39,18 @@ export const PolyphenolComparison = () => {
 
               <div className="space-y-4">
                 {comparisonData.map((item, index) => (
-                  <div key={index} className="relative">
+                  <div key={index} className="flex items-center gap-4">
                     <div 
-                      className={`h-16 rounded-lg ${item.color} flex items-center justify-between px-6 text-white font-medium transition-all duration-700 ease-out whitespace-nowrap`}
-                      style={{ width: `${(item.value / maxValue) * 100}%` }}
+                      className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-white font-medium transition-all duration-700 ease-out`}
+                      style={{ width: `${(item.value / maxValue) * 70}%` }}
                     >
                       <span className="text-lg font-medium whitespace-nowrap">
                         {item.name}
                       </span>
-                      <span className="text-lg font-bold whitespace-nowrap">
-                        {item.value} mg/kg
-                      </span>
                     </div>
+                    <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
+                      {item.value} mg/kg
+                    </span>
                   </div>
                 ))}
               </div>
