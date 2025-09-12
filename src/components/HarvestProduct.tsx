@@ -117,6 +117,39 @@ export const HarvestProduct = () => {
               ))}
             </div>
 
+            {/* Flavor Profile */}
+            <div className="bg-white/40 p-6 rounded-2xl border border-olive-light/10">
+              <div className="space-y-4">
+                {[
+                  { label: "PEPPERY", rating: 4 },
+                  { label: "FRUITY", rating: 5 },
+                  { label: "BITTER", rating: 4 },
+                  { label: "HERBAL", rating: 3 }
+                ].map((flavor) => (
+                  <div key={flavor.label} className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide">
+                      {flavor.label}
+                    </span>
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <div
+                          key={i}
+                          className={`w-4 h-6 rounded-full ${
+                            i <= flavor.rating 
+                              ? 'bg-olive-dark' 
+                              : 'bg-olive-light/30'
+                          }`}
+                          style={{
+                            clipPath: 'ellipse(50% 70% at 50% 30%)'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Product Information Tabs */}
             <ProductInfoTabs />
 
