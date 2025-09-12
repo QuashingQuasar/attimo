@@ -107,23 +107,24 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Lab Values Grid */}
-            <div className="bg-white/80 p-6 rounded-2xl border border-olive-light/20">
-              <h3 className="text-lg font-semibold text-olive-dark mb-4">Lab Verified Values</h3>
-              <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white/80 p-8 rounded-2xl border border-olive-light/20">
+              <h3 className="text-lg font-semibold text-olive-dark mb-6">Lab Verified Values</h3>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {labTiles.map((tile) => (
-                  <div key={tile.key} className="text-center">
-                    <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-1">
+                  <div key={tile.key} className="text-left">
+                    <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-2">
                       {tile.label}
                     </div>
-                    <div className="text-2xl font-bold text-olive-dark leading-none">
+                    <div className="text-3xl font-bold text-olive-dark leading-none mb-1">
                       {tile.value}
-                      {tile.unit && <span className="text-lg ml-1 text-olive-dark/90">{tile.unit}</span>}
+                      {tile.unit && <span className="text-xl ml-1 text-olive-dark/90">{tile.unit}</span>}
                     </div>
-                    <div className="text-xs text-olive-light mt-1">{tile.avg}</div>
+                    <div className="text-xs text-olive-light mb-3">{tile.avg}</div>
+                    <p className="text-sm text-olive-medium/80 leading-relaxed">{tile.description}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-xs text-center text-olive-medium/80">Certified: November 2024</p>
+              <p className="mt-6 text-xs text-center text-olive-medium/80">Certified: November 2024</p>
             </div>
 
             {/* Pricing & Purchase */}
