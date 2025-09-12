@@ -10,9 +10,10 @@ export const HarvestProduct = () => {
   
   const quantityOptions = [
     { quantity: 1, label: "1 Bottle", price: 23, savings: null },
-    { quantity: 2, label: "2 Bottles", subtitle: "Free Shipping", price: 46, savings: null },
+    { quantity: 2, label: "2 Bottles", price: 46, savings: null },
+    { quantity: 3, label: "3 Bottles", subtitle: "Save €3", price: 66, savings: 3 },
     { quantity: 4, label: "4 Bottles", subtitle: "Save €6 + Free Shipping", price: 86, savings: 6 },
-    { quantity: 6, label: "6 Bottles", subtitle: "Save €15 + Free Shipping", price: 123, savings: 15 }
+    { quantity: 8, label: "8 Bottles", subtitle: "Save €15 + Free Shipping", price: 169, savings: 15 }
   ];
 
   const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
@@ -108,7 +109,7 @@ export const HarvestProduct = () => {
             {/* Quantity Selection & Purchase */}
             <div className="space-y-4">
               {/* Quantity Options */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {quantityOptions.map((option) => (
                   <button
                     key={option.quantity}
