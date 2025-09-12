@@ -1,25 +1,3 @@
-import { Droplets, FlaskConical, MapPin } from "lucide-react";
-
-const approachSteps = [
-  {
-    icon: Droplets,
-    title: "Fresh",
-    subtitle: "We give you oil from the latest harvest,",
-    highlight: "because fresher = better."
-  },
-  {
-    icon: MapPin,
-    title: "Not blended", 
-    subtitle: "Every bottle comes from just one region - no",
-    highlight: "blends, no sneaky stuff."
-  },
-  {
-    icon: FlaskConical,
-    title: "Lab-tested",
-    subtitle: "We lab-test the olive oil to ensure you get the",
-    highlight: "real deal."
-  }
-];
 
 export const KleiaWay = () => {
   return (
@@ -49,11 +27,8 @@ export const KleiaWay = () => {
           {/* Top row, col 2 - Not Blended (text) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
-              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                <MapPin size={20} className="text-white" />
-              </div>
-              <h4 className="text-xl font-semibold mb-3">Not Blended</h4>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-white">Not Blended</h4>
+              <p className="text-white/90 text-base leading-relaxed">
                 Every bottle comes from just one region - no blends, no sneaky stuff.
               </p>
             </div>
@@ -69,11 +44,8 @@ export const KleiaWay = () => {
           {/* Top row, col 4 - Text content (as shown in sketch) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
-              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                <FlaskConical size={20} className="text-white" />
-              </div>
-              <h4 className="text-xl font-semibold mb-3">Premium Quality</h4>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-white">Premium Quality</h4>
+              <p className="text-white/90 text-base leading-relaxed">
                 Each bottle represents the finest olive oil craftsmanship.
               </p>
             </div>
@@ -89,11 +61,8 @@ export const KleiaWay = () => {
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
-              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                <FlaskConical size={20} className="text-white" />
-              </div>
-              <h4 className="text-xl font-semibold mb-3">Lab-Tested</h4>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-white">Lab-Tested</h4>
+              <p className="text-white/90 text-base leading-relaxed">
                 We lab-test the olive oil to ensure you get the real deal.
               </p>
             </div>
