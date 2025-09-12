@@ -27,7 +27,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           {/* Logo */}
           <div className="mb-12 flex justify-center animate-fade-in">
             <img 
-              src="/lovable-uploads/7c80c965-598b-42eb-973d-4c79114eac25.png" 
+              src="/lovable-uploads/a89180d1-44f4-4357-b1da-0bda7fb6b9ca.png" 
               alt="KLEIA olive oil logo" 
               className="w-80 h-80 md:w-96 md:h-96 object-contain drop-shadow-2xl"
             />
