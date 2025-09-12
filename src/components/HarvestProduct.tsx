@@ -99,23 +99,6 @@ export const HarvestProduct = () => {
               </ul>
             </div>
 
-            {/* Lab Values Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {labTiles.map((tile) => (
-                <div key={tile.key} className="bg-white/60 p-4 rounded-xl border border-olive-light/10">
-                  <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-2">
-                    {tile.label}
-                  </div>
-                  <div className="text-2xl font-bold text-olive-dark leading-none mb-1">
-                    {tile.value}
-                    {tile.unit && <span className="text-lg ml-1 text-olive-dark/90">{tile.unit}</span>}
-                  </div>
-                  <div className="text-xs text-olive-light mb-3">{tile.avg}</div>
-                  <p className="text-xs text-olive-medium/80 leading-relaxed">{tile.description}</p>
-                </div>
-              ))}
-            </div>
-
             {/* Pricing & Purchase */}
             <div className="space-y-4">
               <div className="flex items-center gap-4">
