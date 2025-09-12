@@ -66,9 +66,12 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       
       {/* Quality Ticker - Positioned at bottom of viewport */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[hsl(67_15%_45%)] py-3 overflow-hidden">
-        <div className="animate-marquee inline-block">
-          <span className="text-white font-bold text-sm md:text-base tracking-widest whitespace-nowrap">
-            PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH •&nbsp;
+        <div className="flex animate-marquee">
+          <span className="text-white font-bold text-sm md:text-base tracking-widest whitespace-nowrap pr-8">
+            PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH
+          </span>
+          <span className="text-white font-bold text-sm md:text-base tracking-widest whitespace-nowrap pr-8">
+            PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH
           </span>
         </div>
       </div>
