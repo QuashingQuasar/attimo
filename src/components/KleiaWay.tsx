@@ -32,26 +32,54 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-16 max-w-6xl mx-auto">
-          {approachSteps.map((step, index) => (
-            <div key={index} className="text-center">
-              {/* Icon */}
-              <div className="w-24 h-24 mx-auto mb-8 bg-olive-dark rounded-full flex items-center justify-center">
-                <step.icon size={32} className="text-cream" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+          {/* Fresh - Large tile */}
+          <div className="lg:col-span-2 lg:row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
+            <div className="relative z-10">
+              <div className="w-16 h-16 mb-6 bg-white/20 rounded-full flex items-center justify-center">
+                <Droplets size={24} className="text-white" />
               </div>
-              
-              {/* Title */}
-              <h3 className="text-2xl font-medium text-olive-dark mb-6">
-                {step.title}
-              </h3>
-              
-              {/* Description */}
-              <div className="text-lg text-olive-medium leading-relaxed font-light">
-                <p className="mb-2">{step.subtitle}</p>
-                <p className="font-medium text-olive-dark">{step.highlight}</p>
-              </div>
+              <h3 className="text-3xl font-bold mb-4">Fresh</h3>
+              <p className="text-lg opacity-90 leading-relaxed">
+                We give you oil from the latest harvest, because fresher = better.
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Not Blended */}
+          <div className="bg-gradient-to-br from-olive-light/20 to-olive-light/10 rounded-2xl p-6 border border-olive-light/20">
+            <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
+              <MapPin size={20} className="text-cream" />
+            </div>
+            <h4 className="text-xl font-semibold text-olive-dark mb-3">Not Blended</h4>
+            <p className="text-olive-medium text-sm leading-relaxed">
+              Every bottle comes from just one region - no blends, no sneaky stuff.
+            </p>
+          </div>
+
+          {/* Lab Tested */}
+          <div className="bg-gradient-to-br from-olive-medium/20 to-olive-medium/10 rounded-2xl p-6 border border-olive-medium/20">
+            <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
+              <FlaskConical size={20} className="text-cream" />
+            </div>
+            <h4 className="text-xl font-semibold text-olive-dark mb-3">Lab-Tested</h4>
+            <p className="text-olive-medium text-sm leading-relaxed">
+              We lab-test the olive oil to ensure you get the real deal.
+            </p>
+          </div>
+
+          {/* Placeholder tiles for future content */}
+          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
+            <div className="h-full flex items-center justify-center text-olive-medium/50">
+              <span className="text-sm">Content coming soon</span>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
+            <div className="h-full flex items-center justify-center text-olive-medium/50">
+              <span className="text-sm">Content coming soon</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
