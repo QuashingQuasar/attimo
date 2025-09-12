@@ -100,9 +100,6 @@ export const HarvestProduct = () => {
               </ul>
             </div>
 
-            {/* Product Information Tabs */}
-            <ProductInfoTabs />
-
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
@@ -119,6 +116,9 @@ export const HarvestProduct = () => {
                 </div>
               ))}
             </div>
+
+            {/* Product Information Tabs */}
+            <ProductInfoTabs />
 
             {/* Pricing & Purchase */}
             <div className="space-y-4">
