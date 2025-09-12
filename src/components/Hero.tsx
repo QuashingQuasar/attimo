@@ -15,7 +15,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/new-brand-video.mp4" type="video/mp4" />
+        <source src="/videos/hero-video-2.mp4" type="video/mp4" />
       </video>
       
       {/* Cinematic Overlay */}
