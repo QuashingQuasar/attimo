@@ -105,6 +105,38 @@ export const HarvestProduct = () => {
               </ul>
             </div>
 
+            {/* Quantity Selection & Purchase */}
+            <div className="space-y-4">
+              {/* Quantity Options */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                {quantityOptions.map((option) => (
+                  <button
+                    key={option.quantity}
+                    onClick={() => setSelectedQuantity(option.quantity)}
+                    className={`p-4 rounded-xl border-2 transition-all text-center ${
+                      selectedQuantity === option.quantity
+                        ? 'border-olive-dark bg-olive-dark text-cream'
+                        : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
+                    }`}
+                  >
+                    <div className="font-semibold text-sm mb-1">{option.label}</div>
+                    {option.subtitle && (
+                      <div className={`text-xs ${
+                        selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'
+                      }`}>
+                        {option.subtitle}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Add to Cart Button */}
+              <Button className="w-full bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold px-6 py-4 text-lg h-auto rounded-xl">
+                Add to cart - €{selectedOption?.price}
+              </Button>
+            </div>
+
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
@@ -157,38 +189,6 @@ export const HarvestProduct = () => {
 
             {/* Product Information Tabs */}
             <ProductInfoTabs />
-
-            {/* Quantity Selection & Purchase */}
-            <div className="space-y-4">
-              {/* Quantity Options */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                {quantityOptions.map((option) => (
-                  <button
-                    key={option.quantity}
-                    onClick={() => setSelectedQuantity(option.quantity)}
-                    className={`p-4 rounded-xl border-2 transition-all text-center ${
-                      selectedQuantity === option.quantity
-                        ? 'border-olive-dark bg-olive-dark text-cream'
-                        : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
-                    }`}
-                  >
-                    <div className="font-semibold text-sm mb-1">{option.label}</div>
-                    {option.subtitle && (
-                      <div className={`text-xs ${
-                        selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'
-                      }`}>
-                        {option.subtitle}
-                      </div>
-                    )}
-                  </button>
-                ))}
-              </div>
-              
-              {/* Add to Cart Button */}
-              <Button className="w-full bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold px-6 py-4 text-lg h-auto rounded-xl">
-                Add to cart - €{selectedOption?.price}
-              </Button>
-            </div>
 
           </div>
         </div>
