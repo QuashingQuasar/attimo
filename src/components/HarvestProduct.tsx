@@ -99,6 +99,79 @@ export const HarvestProduct = () => {
               </ul>
             </div>
 
+            {/* Flavor Profile */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold text-olive-dark">Flavor Profile</h3>
+              <div className="space-y-3">
+                {[
+                  { label: "PEPPERY", rating: 4 },
+                  { label: "FRUITY", rating: 5 },
+                  { label: "BITTER", rating: 4 },
+                  { label: "HERBAL", rating: 3 }
+                ].map((flavor) => (
+                  <div key={flavor.label} className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide">
+                      {flavor.label}
+                    </span>
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <div
+                          key={i}
+                          className={`w-4 h-6 rounded-full ${
+                            i <= flavor.rating 
+                              ? 'bg-olive-dark' 
+                              : 'bg-olive-light/30'
+                          }`}
+                          style={{
+                            clipPath: 'ellipse(50% 70% at 50% 30%)'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Product Information */}
+            <div className="space-y-4 border-t border-b border-olive-light/20 py-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1">
+                    FLAVOR
+                  </div>
+                  <div className="text-olive-medium">green & grassy</div>
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1">
+                    ORIGIN
+                  </div>
+                  <div className="text-olive-medium">Alentejo, Portugal</div>
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1">
+                    OLIVE
+                  </div>
+                  <div className="text-olive-medium">Galega</div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1">
+                    USE
+                  </div>
+                  <div className="text-olive-medium">drizzle over fresh food to bring out flavors</div>
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1">
+                    STORE
+                  </div>
+                  <div className="text-olive-medium">keep away from light and heat</div>
+                </div>
+              </div>
+            </div>
+
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
