@@ -6,11 +6,16 @@ import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 
 export const HarvestProduct = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(2);
   
-  const handleQuantityChange = (change: number) => {
-    setQuantity(prev => Math.max(1, prev + change));
-  };
+  const quantityOptions = [
+    { quantity: 1, label: "1 Bottle", price: 23, savings: null },
+    { quantity: 2, label: "2 Bottles", subtitle: "Free Shipping", price: 46, savings: null },
+    { quantity: 4, label: "4 Bottles", subtitle: "Save €6 + Free Shipping", price: 86, savings: 6 },
+    { quantity: 6, label: "6 Bottles", subtitle: "Save €15 + Free Shipping", price: 123, savings: 15 }
+  ];
+
+  const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
   const labTiles = [
     {
       key: "polyphenols",
@@ -153,30 +158,36 @@ export const HarvestProduct = () => {
             {/* Product Information Tabs */}
             <ProductInfoTabs />
 
-            {/* Pricing & Purchase */}
+            {/* Quantity Selection & Purchase */}
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="flex items-center border border-olive-light/20 rounded-lg bg-white/80">
-                  <button 
-                    onClick={() => handleQuantityChange(-1)}
-                    className="p-3 hover:bg-olive-light/10 rounded-l-lg text-olive-dark"
+              {/* Quantity Options */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                {quantityOptions.map((option) => (
+                  <button
+                    key={option.quantity}
+                    onClick={() => setSelectedQuantity(option.quantity)}
+                    className={`p-4 rounded-xl border-2 transition-all text-center ${
+                      selectedQuantity === option.quantity
+                        ? 'border-olive-dark bg-olive-dark text-cream'
+                        : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
+                    }`}
                   >
-                    <span className="text-lg font-bold">−</span>
+                    <div className="font-semibold text-sm mb-1">{option.label}</div>
+                    {option.subtitle && (
+                      <div className={`text-xs ${
+                        selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'
+                      }`}>
+                        {option.subtitle}
+                      </div>
+                    )}
                   </button>
-                  <span className="px-4 py-3 min-w-[60px] text-center font-semibold text-olive-dark">
-                    {quantity}
-                  </span>
-                  <button 
-                    onClick={() => handleQuantityChange(1)}
-                    className="p-3 hover:bg-olive-light/10 rounded-r-lg text-olive-dark"
-                  >
-                    <span className="text-lg font-bold">+</span>
-                  </button>
-                </div>
-                <Button className="flex-1 bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold px-6 py-3 text-lg h-auto">
-                  Add to Cart • €{(23 * quantity).toFixed(0)}
-                </Button>
+                ))}
               </div>
+              
+              {/* Add to Cart Button */}
+              <Button className="w-full bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold px-6 py-4 text-lg h-auto rounded-xl">
+                Add to cart - €{selectedOption?.price}
+              </Button>
             </div>
 
           </div>
