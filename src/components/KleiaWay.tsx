@@ -2,7 +2,7 @@
 export const KleiaWay = () => {
   return (
     <section className="py-24 bg-[hsl(var(--section-light))]">
-      <div className="container mx-auto px-6">
+      <div className="px-4">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-light text-olive-dark mb-8 tracking-tight">
             How We Make Sure<br />
@@ -10,7 +10,7 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-[95vw] mx-auto h-[600px]">
+        <div className="grid grid-cols-4 grid-rows-2 gap-6 w-full max-w-none mx-auto h-[600px]">
           {/* Large tile - Video (spans 2 rows) */}
           <div className="row-span-2 rounded-2xl relative overflow-hidden">
             <video 
