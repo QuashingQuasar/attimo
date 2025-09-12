@@ -51,7 +51,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             </Button>
             <Button 
               variant="outline"
-              className="px-10 py-4 border-2 border-white/80 text-white hover:bg-white/20 hover:border-white hover:scale-105 transition-all duration-300 font-medium rounded-sm backdrop-blur-sm text-lg"
+              className="px-10 py-4 border-2 border-white text-black bg-white/90 hover:bg-white hover:scale-105 transition-all duration-300 font-medium rounded-sm backdrop-blur-sm text-lg"
             >
               Watch our story
             </Button>
