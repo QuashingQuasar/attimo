@@ -66,10 +66,16 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Top row, col 4 - Photo placeholder (text according to sketch) */}
-          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
-            <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Content coming soon</span>
+          {/* Top row, col 4 - Text content (as shown in sketch) */}
+          <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+            <div className="h-full flex flex-col justify-center">
+              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                <FlaskConical size={20} className="text-white" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">Premium Quality</h4>
+              <p className="text-white/90 text-sm leading-relaxed">
+                Each bottle represents the finest olive oil craftsmanship.
+              </p>
             </div>
           </div>
 
