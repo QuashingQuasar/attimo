@@ -142,13 +142,6 @@ export const HarvestProduct = () => {
               </div>
             </div>
 
-            {/* Additional Info */}
-            <div className="pt-6 border-t border-olive-light/20 space-y-2 text-sm text-olive-medium">
-              <p><strong>Harvest:</strong> October 2024</p>
-              <p><strong>Origin:</strong> Kalamata, Greece</p>
-              <p><strong>Varietal:</strong> Koroneiki olives</p>
-              <p><strong>Processing:</strong> Cold-pressed within 4 hours</p>
-            </div>
           </div>
         </div>
       </div>
