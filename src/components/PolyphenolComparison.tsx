@@ -38,21 +38,28 @@ export const PolyphenolComparison = () => {
               </p>
 
               <div className="space-y-4">
-                {comparisonData.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
-                    <div 
-                      className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-white font-medium transition-all duration-700 ease-out`}
-                      style={{ width: `${Math.max((item.value / maxValue) * 70, 25)}%` }}
-                    >
-                      <span className="text-lg font-medium whitespace-nowrap">
-                        {item.name}
+                {comparisonData.map((item, index) => {
+                  // Calculate proportional width with minimum for text readability
+                  const baseWidth = 200; // minimum width for smallest bar to fit text
+                  const proportion = item.value / 180; // 180 is our baseline (smallest value)
+                  const width = baseWidth * proportion;
+                  
+                  return (
+                    <div key={index} className="flex items-center gap-4">
+                      <div 
+                        className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-white font-medium transition-all duration-700 ease-out`}
+                        style={{ width: `${width}px` }}
+                      >
+                        <span className="text-lg font-medium whitespace-nowrap">
+                          {item.name}
+                        </span>
+                      </div>
+                      <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
+                        {item.value} mg/kg
                       </span>
                     </div>
-                    <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
-                      {item.value} mg/kg
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Scale indicators */}
