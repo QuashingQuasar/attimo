@@ -89,7 +89,9 @@ export const KleiaWay = () => {
               muted
               playsInline
             >
+              <source src="/videos/kleia-way-video-2.mp4" type="video/mp4" />
               <source src="/videos/kleia-way-bottom-right.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
             </video>
           </div>
         </div>
