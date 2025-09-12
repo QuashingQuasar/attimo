@@ -32,9 +32,9 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-4 gap-4 max-w-7xl mx-auto h-[500px]">
-          {/* Column 1: Large vertical tile - Fresh */}
-          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
+        <div className="grid grid-cols-7 gap-4 max-w-7xl mx-auto h-[500px]">
+          {/* Large tile - Fresh (like the woman in reference) */}
+          <div className="col-span-2 row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-8 text-white relative overflow-hidden">
             <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="w-16 h-16 mb-6 bg-white/20 rounded-full flex items-center justify-center">
                 <Droplets size={24} className="text-white" />
@@ -46,53 +46,50 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Column 2: Top tile - Not Blended */}
-          <div className="bg-gradient-to-br from-olive-light/20 to-olive-light/10 rounded-2xl p-6 border border-olive-light/20">
-            <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
-              <MapPin size={20} className="text-cream" />
+          {/* Top left - Not Blended (like "Intense & Peppery") */}
+          <div className="col-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+            <div className="h-full flex flex-col justify-center">
+              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                <MapPin size={20} className="text-white" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">Not Blended</h4>
+              <p className="text-white/90 text-sm leading-relaxed">
+                Every bottle comes from just one region - no blends, no sneaky stuff.
+              </p>
             </div>
-            <h4 className="text-xl font-semibold text-olive-dark mb-3">Not Blended</h4>
-            <p className="text-olive-medium text-sm leading-relaxed">
-              Every bottle comes from just one region - no blends, no sneaky stuff.
-            </p>
           </div>
 
-          {/* Column 3: Top tile - Lab Tested */}
-          <div className="bg-gradient-to-br from-olive-medium/20 to-olive-medium/10 rounded-2xl p-6 border border-olive-medium/20">
-            <div className="w-12 h-12 mb-4 bg-olive-dark rounded-full flex items-center justify-center">
-              <FlaskConical size={20} className="text-cream" />
-            </div>
-            <h4 className="text-xl font-semibold text-olive-dark mb-3">Lab-Tested</h4>
-            <p className="text-olive-medium text-sm leading-relaxed">
-              We lab-test the olive oil to ensure you get the real deal.
-            </p>
-          </div>
-
-          {/* Column 4: Top tile - Placeholder */}
+          {/* Top right - Placeholder for photo (like olive oil & lemon) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Content coming soon</span>
+              <span className="text-sm">Photo coming soon</span>
             </div>
           </div>
 
-          {/* Column 2: Bottom tile - Placeholder */}
-          <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
-            <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Content coming soon</span>
+          {/* Top far right - Lab Tested (like "Coratina Olives") */}
+          <div className="row-span-2 bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+            <div className="h-full flex flex-col justify-center">
+              <div className="w-12 h-12 mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                <FlaskConical size={20} className="text-white" />
+              </div>
+              <h4 className="text-xl font-semibold mb-3">Lab-Tested</h4>
+              <p className="text-white/90 text-sm leading-relaxed">
+                We lab-test the olive oil to ensure you get the real deal.
+              </p>
             </div>
           </div>
 
-          {/* Column 3: Bottom tile - Placeholder */}
+          {/* Bottom left - Placeholder for illustration (like cartoon) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Content coming soon</span>
+              <span className="text-sm">Video coming soon</span>
             </div>
           </div>
 
-          {/* Column 4: Bottom tile - Placeholder */}
+          {/* Bottom right - Placeholder for photo (like olives on branch) */}
           <div className="bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-6 border border-olive-light/10">
             <div className="h-full flex items-center justify-center text-olive-medium/50">
-              <span className="text-sm">Content coming soon</span>
+              <span className="text-sm">Photo coming soon</span>
             </div>
           </div>
         </div>
