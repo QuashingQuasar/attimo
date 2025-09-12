@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
+import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
 
 export const HarvestProduct = () => {
+  const [quantity, setQuantity] = useState(1);
+  
+  const handleQuantityChange = (change: number) => {
+    setQuantity(prev => Math.max(1, prev + change));
+  };
   const labTiles = [
     {
       key: "polyphenols",
@@ -127,16 +133,24 @@ export const HarvestProduct = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="flex items-center border border-olive-light/20 rounded-lg bg-white/80">
-                  <button className="p-3 hover:bg-olive-light/10 rounded-l-lg text-olive-dark">
+                  <button 
+                    onClick={() => handleQuantityChange(-1)}
+                    className="p-3 hover:bg-olive-light/10 rounded-l-lg text-olive-dark"
+                  >
                     <span className="text-lg font-bold">−</span>
                   </button>
-                  <span className="px-4 py-3 min-w-[60px] text-center font-semibold text-olive-dark">1</span>
-                  <button className="p-3 hover:bg-olive-light/10 rounded-r-lg text-olive-dark">
+                  <span className="px-4 py-3 min-w-[60px] text-center font-semibold text-olive-dark">
+                    {quantity}
+                  </span>
+                  <button 
+                    onClick={() => handleQuantityChange(1)}
+                    className="p-3 hover:bg-olive-light/10 rounded-r-lg text-olive-dark"
+                  >
                     <span className="text-lg font-bold">+</span>
                   </button>
                 </div>
                 <Button className="flex-1 bg-olive-dark hover:bg-olive-dark/90 text-cream font-semibold py-4 text-lg">
-                  Add to Cart • €23
+                  Add to Cart • €{(23 * quantity).toFixed(0)}
                 </Button>
               </div>
                 
