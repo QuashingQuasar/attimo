@@ -10,7 +10,7 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto h-[500px]">
+        <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-[90vw] mx-auto h-[600px]">
           {/* Large tile - Video (spans 2 rows) */}
           <div className="row-span-2 rounded-2xl relative overflow-hidden">
             <video 
