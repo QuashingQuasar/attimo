@@ -67,11 +67,11 @@ export const HarvestProduct = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-olive-dark mb-4">
-                KLEIA Premium
+                Galega from Alentejo
               </h1>
               
               <p className="text-lg text-olive-medium mb-4">
-                Extra Virgin Olive Oil • 500 ML
+                High-Antioxidant Extra Virgin Olive Oil
               </p>
               
               <div className="flex items-center gap-2 mb-6">
