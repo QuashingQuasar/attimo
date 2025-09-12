@@ -41,25 +41,18 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          {/* CTA Button */}
+          <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button 
-              onClick={onWaitlistClick}
               className="px-10 py-4 bg-white/90 text-olive-dark hover:bg-white hover:scale-105 transition-all duration-300 font-semibold rounded-sm backdrop-blur-sm shadow-2xl text-lg"
             >
-              Join the waitlist
-            </Button>
-            <Button 
-              variant="outline"
-              className="px-10 py-4 border-2 border-white text-black bg-white/90 hover:bg-white hover:scale-105 transition-all duration-300 font-medium rounded-sm backdrop-blur-sm text-lg"
-            >
-              Watch our story
+              Shop 2024 harvest
             </Button>
           </div>
 
-          {/* Launch Info */}
-          <div className="text-white/80 text-base font-light tracking-wide drop-shadow-lg animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            Starting with Portugal's 2024 harvest • Full launch 2026
+          {/* Secondary CTA */}
+          <div className="text-white/80 text-base font-light tracking-wide drop-shadow-lg animate-fade-in cursor-pointer hover:text-white transition-colors" style={{ animationDelay: '0.6s' }} onClick={onWaitlistClick}>
+            Join harvest 2025 waitlist
           </div>
         </div>
       </div>
