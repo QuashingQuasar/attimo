@@ -33,11 +33,17 @@ export const KleiaWay = () => {
         </div>
         
         <div className="grid grid-cols-4 grid-rows-2 gap-4 max-w-7xl mx-auto h-[500px]">
-          {/* Large tile - Image placeholder (spans 2 rows like "iMo" in your sketch) */}
-          <div className="row-span-2 bg-gradient-to-br from-cream to-cream/80 rounded-2xl p-8 border border-olive-light/10 relative overflow-hidden">
-            <div className="relative z-10 h-full flex flex-col items-center justify-center text-olive-medium/50">
-              <span className="text-lg">Photo coming soon</span>
-            </div>
+          {/* Large tile - Video (spans 2 rows) */}
+          <div className="row-span-2 rounded-2xl relative overflow-hidden">
+            <video 
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
+            </video>
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
