@@ -175,13 +175,13 @@ export const PolyphenolComparison = () => {
                   </Button>
 
                    {/* Tweet Cards - Unified Tile */}
-                   <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
-                     <div className="grid grid-cols-3 h-full divide-x divide-olive-light/20">
+                   <div className="bg-accent rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
+                     <div className="grid grid-cols-3 h-full divide-x divide-olive-dark/10">
                        {visibleTweets.map((tweet, index) => {
                          const bgColors = [
-                           'bg-olive-dark/8',
-                           'bg-olive-medium/6', 
-                           'bg-accent/12'
+                           'bg-accent/90',
+                           'bg-accent/80', 
+                           'bg-accent/70'
                          ];
                          const textColors = [
                            'text-olive-dark',
@@ -196,12 +196,12 @@ export const PolyphenolComparison = () => {
                           >
                              {/* Profile Header */}
                              <div className="flex items-center mb-6">
-                               <div className={`w-12 h-12 bg-olive-light/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
+                               <div className={`w-12 h-12 bg-olive-dark/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
                                  {tweet.avatar}
                                </div>
                                <div>
                                  <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
-                                 <div className={`text-olive-medium text-sm`}>{tweet.handle}</div>
+                                 <div className={`text-olive-dark/70 text-sm`}>{tweet.handle}</div>
                                </div>
                              </div>
 
@@ -210,7 +210,7 @@ export const PolyphenolComparison = () => {
                                <p className={`${textColors[index]} leading-relaxed font-medium`}>
                                  {tweet.content}
                                </p>
-                               <p className={`text-olive-medium leading-relaxed`}>
+                               <p className={`text-olive-dark/80 leading-relaxed`}>
                                  {tweet.content2}
                                </p>
                              </div>
