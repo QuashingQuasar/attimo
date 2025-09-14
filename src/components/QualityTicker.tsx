@@ -12,9 +12,9 @@ export const QualityTicker = () => {
   ];
 
   return (
-    <div className="bg-olive-dark py-6 overflow-hidden whitespace-nowrap">
+    <div className="bg-accent py-6 overflow-hidden whitespace-nowrap">
       <div className="animate-marquee inline-block">
-        <span className="text-cream font-working-man-light font-bold text-2xl tracking-wider">
+        <span className="text-olive-dark font-working-man-light font-bold text-2xl tracking-wider">
           {Array(10).fill(null).map((_, i) => (
             <span key={i}>
               {qualities.map((quality, index) => (

@@ -25,10 +25,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
-          <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-white">FROM GROVE TO TABLE</h4>
-              <p className="text-white/90 text-base leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-olive-dark">FROM GROVE TO TABLE</h4>
+              <p className="text-olive-dark/90 text-base leading-relaxed">
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
@@ -48,10 +48,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-white">LAB-TESTED QUALITY</h4>
-              <p className="text-white/90 text-base leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-olive-dark">LAB-TESTED QUALITY</h4>
+              <p className="text-olive-dark/90 text-base leading-relaxed">
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
@@ -71,10 +71,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-white">FRESH AND SINGLE-GROVE</h4>
-              <p className="text-white/90 text-base leading-relaxed">
+              <h4 className="text-2xl font-bold mb-4 text-olive-dark">FRESH AND SINGLE-GROVE</h4>
+              <p className="text-olive-dark/90 text-base leading-relaxed">
                 Every bottle is from the latest harvest and is sourced from just one grove.
               </p>
             </div>
