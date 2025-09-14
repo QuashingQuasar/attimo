@@ -21,10 +21,10 @@ export const QualityTicker = () => {
                 <span key={index} className="inline-flex items-center">
                   {quality}
                   {index < qualities.length - 1 && (
-                    <OliveLeaf className="w-4 h-6 mx-4" fill="currentColor" />
+                    <OliveLeaf className="w-3 h-5 mx-4" fill="currentColor" />
                   )}
                   {index === qualities.length - 1 && (
-                    <OliveLeaf className="w-4 h-6 mx-4" fill="currentColor" />
+                    <OliveLeaf className="w-3 h-5 mx-4" fill="currentColor" />
                   )}
                 </span>
               ))}

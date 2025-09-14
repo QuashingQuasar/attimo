@@ -64,19 +64,19 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center whitespace-nowrap">
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">PREMIUM QUALITY</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">DIRECT FROM GROVES</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">LAB TESTED</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">FRESH HARVEST</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">TRACEABLE</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">ARTISANAL</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
               <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">SMALL BATCH</span>
-              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <OliveLeaf className="w-3 h-5 mx-6 text-white" fill="currentColor" />
             </div>
           ))}
         </div>
