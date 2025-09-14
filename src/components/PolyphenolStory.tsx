@@ -95,7 +95,7 @@ const FlipCard = ({ card, index }: { card: typeof storyCards[0], index: number }
         <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br ${card.back.bgColor} p-8 text-white shadow-lg`}>
           <div className="flex flex-col justify-center h-full">
             <h3 className="text-2xl font-bold mb-4 text-center">{card.back.title}</h3>
-            <p className="text-lg leading-relaxed text-white/95">{card.back.content}</p>
+            <p className="text-lg leading-relaxed text-white/95" style={{ fontFamily: 'Space Mono, monospace' }}>{card.back.content}</p>
             <div className="mt-6 text-center text-xs text-white/60">Click to flip back</div>
           </div>
         </div>
@@ -127,9 +127,9 @@ export const PolyphenolStory = () => {
           <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
             The Science Behind <span className="font-medium text-emerald-400">Polyphenols</span>
           </h2>
-          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
-            Flip each card to discover the fascinating world of polyphenols and why our oil delivers exceptional health benefits.
-          </p>
+           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
+             Flip each card to discover the fascinating world of polyphenols and why our oil delivers exceptional health benefits.
+           </p>
         </div>
 
         {/* Card Stack Container */}

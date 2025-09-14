@@ -95,7 +95,7 @@ export const ProductInfoTabs = () => {
         </TabsContent>
         
         <TabsContent value="harvest" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
-          <div className="text-olive-medium leading-relaxed">
+           <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
             <p>
               Hand-picked in October 2024 during the optimal harvest window. The olives were processed within 4 hours of harvest using traditional stone mills, preserving maximum antioxidants and flavor compounds. This early harvest ensures the highest polyphenol content.
             </p>
@@ -103,7 +103,7 @@ export const ProductInfoTabs = () => {
         </TabsContent>
         
         <TabsContent value="uses" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
-          <div className="text-olive-medium leading-relaxed">
+          <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
             <p>
               Like a sprinkle of flaky salt or the squeeze of a good condiment, Drizzle adds a big pop of flavor right before you dig in. (That's why it's called a finishing oil!) Drizzle's flavors are sensitive, though, so keep it off the heat.
             </p>

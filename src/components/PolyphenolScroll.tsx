@@ -94,9 +94,9 @@ export const PolyphenolScroll = () => {
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
             Scroll Through the <span className="font-medium text-emerald-600">Science</span>
           </h2>
-          <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Each section reveals as you scroll - discover the polyphenol story through immersive storytelling.
-          </p>
+           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
+             Each section reveals as you scroll - discover the polyphenol story through immersive storytelling.
+           </p>
         </div>
 
         <div className="relative flex">
@@ -156,9 +156,9 @@ export const PolyphenolScroll = () => {
                         <h4 className="text-xl md:text-2xl font-light mb-8 opacity-80">
                           {story.subtitle}
                         </h4>
-                        <p className="text-lg md:text-xl leading-relaxed opacity-90">
-                          {story.content}
-                        </p>
+                         <p className="text-lg md:text-xl leading-relaxed opacity-90" style={{ fontFamily: 'Space Mono, monospace' }}>
+                           {story.content}
+                         </p>
                       </div>
 
                       {/* Visual Side */}
