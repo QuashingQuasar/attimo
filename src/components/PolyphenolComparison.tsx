@@ -63,7 +63,7 @@ const tweets = [
 
 export const PolyphenolComparison = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const tweetsPerPage = 4;
+  const tweetsPerPage = 3;
   const maxIndex = Math.max(0, tweets.length - tweetsPerPage);
 
   const nextSlide = () => {
@@ -174,35 +174,50 @@ export const PolyphenolComparison = () => {
                     <ChevronRight className="h-5 w-5" />
                   </Button>
 
-                  {/* Tweet Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {visibleTweets.map((tweet) => (
-                      <div
-                        key={tweet.id}
-                        className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-96 flex flex-col"
-                      >
-                        {/* Profile Header */}
-                        <div className="flex items-center mb-6 flex-shrink-0">
-                          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl mr-3">
-                            {tweet.avatar}
-                          </div>
-                          <div>
-                            <div className="font-semibold text-lg">{tweet.name}</div>
-                            <div className="text-white/80 text-sm">{tweet.handle}</div>
-                          </div>
-                        </div>
+                  {/* Tweet Cards - Unified Tile */}
+                  <div className="bg-gradient-to-r from-emerald-400 via-green-400 to-yellow-400 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96">
+                    <div className="grid grid-cols-3 h-full">
+                      {visibleTweets.map((tweet, index) => {
+                        const bgColors = [
+                          'bg-emerald-400/90',
+                          'bg-green-400/90', 
+                          'bg-yellow-400/90'
+                        ];
+                        const textColors = [
+                          'text-emerald-900',
+                          'text-green-900',
+                          'text-yellow-900'
+                        ];
+                        
+                        return (
+                          <div
+                            key={tweet.id}
+                            className={`${bgColors[index]} p-6 flex flex-col justify-between h-full min-h-96`}
+                          >
+                            {/* Profile Header */}
+                            <div className="flex items-center mb-6">
+                              <div className={`w-12 h-12 bg-white/30 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
+                                {tweet.avatar}
+                              </div>
+                              <div>
+                                <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
+                                <div className={`${textColors[index]}/70 text-sm`}>{tweet.handle}</div>
+                              </div>
+                            </div>
 
-                        {/* Tweet Content */}
-                        <div className="space-y-4 flex-grow flex flex-col justify-center">
-                          <p className="text-white leading-relaxed font-medium">
-                            {tweet.content}
-                          </p>
-                          <p className="text-white/90 leading-relaxed">
-                            {tweet.content2}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                            {/* Tweet Content */}
+                            <div className="space-y-4 flex-grow flex flex-col justify-center">
+                              <p className={`${textColors[index]} leading-relaxed font-medium text-center`}>
+                                {tweet.content}
+                              </p>
+                              <p className={`${textColors[index]}/80 leading-relaxed text-center`}>
+                                {tweet.content2}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {/* Pagination Dots */}
