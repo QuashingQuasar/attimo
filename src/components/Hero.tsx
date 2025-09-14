@@ -57,8 +57,8 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         </div>
       </div>
       
-      {/* Quality Ticker - Enhanced prominence */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[hsl(67_15%_45%)] py-5 overflow-hidden border-t border-white/10">
+      {/* Quality Ticker - At bottom of hero section */}
+      <div className="absolute bottom-0 left-0 right-0 z-40 bg-[hsl(67_15%_45%)] py-5 overflow-hidden border-t border-white/10">
         <div className="flex animate-marquee">
           <span className="text-white font-bold text-lg md:text-xl tracking-[0.3em] whitespace-nowrap pr-12 drop-shadow-sm">
             PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH
