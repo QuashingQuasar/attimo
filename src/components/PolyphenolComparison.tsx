@@ -152,14 +152,14 @@ export const PolyphenolComparison = () => {
               {/* Tweet Carousel */}
               <div className="mt-16">
                 {/* Carousel Container */}
-                <div className="relative max-w-7xl mx-auto">
-                  {/* Navigation Arrows */}
+                <div className="relative">
+                  {/* Navigation Arrows - Outside the content area */}
                   <Button
                     variant="outline"
                     size="icon"
                     onClick={prevSlide}
                     disabled={currentIndex === 0}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 -translate-x-6"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 -translate-x-16"
                   >
                     <ChevronLeft className="h-5 w-5" />
                   </Button>
@@ -169,13 +169,13 @@ export const PolyphenolComparison = () => {
                     size="icon"
                     onClick={nextSlide}
                     disabled={currentIndex >= maxIndex}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 translate-x-6"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 translate-x-16"
                   >
                     <ChevronRight className="h-5 w-5" />
                   </Button>
 
                   {/* Tweet Cards Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {visibleTweets.map((tweet) => (
                       <div
                         key={tweet.id}
@@ -220,7 +220,7 @@ export const PolyphenolComparison = () => {
                     ))}
                   </div>
                 </div>
-                </div>
+              </div>
               </div>
             </div>
         </div>
