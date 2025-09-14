@@ -80,22 +80,22 @@ export const PolyphenolComparison = () => {
     {
       name: "Average Olive Oil",
       value: 180,
-      color: "bg-gray-400"
+      color: "bg-olive-light/60"
     },
     {
       name: "EU Health Claim", 
       value: 250,
-      color: "bg-slate-400"
+      color: "bg-olive-light/80"
     },
     {
       name: "Blueprint Olive Oil",
       value: 400,
-      color: "bg-blue-500"
+      color: "bg-olive-medium"
     },
     {
       name: "Our Oil",
       value: 904,
-      color: "bg-green-500"
+      color: "bg-olive-dark"
     }
   ];
 
@@ -123,14 +123,14 @@ export const PolyphenolComparison = () => {
                   
                   return (
                     <div key={index} className="flex items-center gap-4">
-                      <div 
-                        className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-white font-medium transition-all duration-700 ease-out`}
-                        style={{ width: `${width}px` }}
-                      >
-                        <span className="text-lg font-medium whitespace-nowrap">
-                          {item.name}
-                        </span>
-                      </div>
+                       <div 
+                         className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-cream font-medium transition-all duration-700 ease-out`}
+                         style={{ width: `${width}px` }}
+                       >
+                         <span className="text-lg font-medium whitespace-nowrap">
+                           {item.name}
+                         </span>
+                       </div>
                       <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
                         {item.value} mg/kg
                       </span>
@@ -174,46 +174,46 @@ export const PolyphenolComparison = () => {
                     <ChevronRight className="h-5 w-5" />
                   </Button>
 
-                  {/* Tweet Cards - Unified Tile */}
-                  <div className="bg-gradient-to-r from-emerald-400 via-green-400 to-yellow-400 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96">
-                    <div className="grid grid-cols-3 h-full">
-                      {visibleTweets.map((tweet, index) => {
-                        const bgColors = [
-                          'bg-emerald-400/90',
-                          'bg-green-400/90', 
-                          'bg-yellow-400/90'
-                        ];
-                        const textColors = [
-                          'text-emerald-900',
-                          'text-green-900',
-                          'text-yellow-900'
-                        ];
+                   {/* Tweet Cards - Unified Tile */}
+                   <div className="bg-gradient-to-r from-olive-light/20 via-accent/30 to-accent rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
+                     <div className="grid grid-cols-3 h-full">
+                       {visibleTweets.map((tweet, index) => {
+                         const bgColors = [
+                           'bg-olive-light/10',
+                           'bg-olive-medium/10', 
+                           'bg-accent/20'
+                         ];
+                         const textColors = [
+                           'text-olive-dark',
+                           'text-olive-dark',
+                           'text-olive-dark'
+                         ];
                         
                         return (
                           <div
                             key={tweet.id}
                             className={`${bgColors[index]} p-6 flex flex-col justify-between h-full min-h-96`}
                           >
-                            {/* Profile Header */}
-                            <div className="flex items-center mb-6">
-                              <div className={`w-12 h-12 bg-white/30 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
-                                {tweet.avatar}
-                              </div>
-                              <div>
-                                <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
-                                <div className={`${textColors[index]}/70 text-sm`}>{tweet.handle}</div>
-                              </div>
-                            </div>
+                             {/* Profile Header */}
+                             <div className="flex items-center mb-6">
+                               <div className={`w-12 h-12 bg-olive-light/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
+                                 {tweet.avatar}
+                               </div>
+                               <div>
+                                 <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
+                                 <div className={`text-olive-medium text-sm`}>{tweet.handle}</div>
+                               </div>
+                             </div>
 
-                            {/* Tweet Content */}
-                            <div className="space-y-4 flex-grow flex flex-col justify-center">
-                              <p className={`${textColors[index]} leading-relaxed font-medium`}>
-                                {tweet.content}
-                              </p>
-                              <p className={`${textColors[index]}/80 leading-relaxed`}>
-                                {tweet.content2}
-                              </p>
-                            </div>
+                             {/* Tweet Content */}
+                             <div className="space-y-4 flex-grow flex flex-col justify-center">
+                               <p className={`${textColors[index]} leading-relaxed font-medium`}>
+                                 {tweet.content}
+                               </p>
+                               <p className={`text-olive-medium leading-relaxed`}>
+                                 {tweet.content2}
+                               </p>
+                             </div>
                           </div>
                         );
                       })}
@@ -226,11 +226,11 @@ export const PolyphenolComparison = () => {
                       <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          currentIndex === index
-                            ? 'bg-emerald-600 w-8'
-                            : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                        }`}
+                         className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                           currentIndex === index
+                             ? 'bg-olive-dark w-8'
+                             : 'bg-olive-light/40 hover:bg-olive-light/60'
+                         }`}
                       />
                     ))}
                   </div>
