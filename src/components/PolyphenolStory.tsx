@@ -80,8 +80,11 @@ export const PolyphenolStory = () => {
 
       {/* Modal Story Overlay */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-none h-screen w-screen p-0 bg-black/95 border-none">
-          <div className="relative h-full flex items-center justify-center">
+        <DialogContent 
+          className="max-w-none h-screen w-screen p-0 bg-black/95 border-none fixed inset-0 translate-x-0 translate-y-0 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out [&>button]:hidden"
+          style={{ maxWidth: 'none', width: '100vw', height: '100vh' }}
+        >
+          <div className="relative h-full flex items-center justify-center overflow-hidden">
             {/* Close Button */}
             <Button
               variant="ghost"
