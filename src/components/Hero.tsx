@@ -35,7 +35,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           
           {/* Description */}
           <div className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-xl md:text-2xl font-light tracking-[0.2em] text-white uppercase leading-relaxed drop-shadow-lg">
+            <p className="text-xl md:text-2xl font-working-man-light tracking-[0.2em] text-white uppercase leading-relaxed drop-shadow-lg">
               Exceptional extra virgin olive oils<br />
               from small family groves
             </p>
