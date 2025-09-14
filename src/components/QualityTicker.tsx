@@ -4,7 +4,7 @@ export const QualityTicker = () => {
   return (
     <div className="bg-olive-dark py-6 overflow-hidden whitespace-nowrap">
       <div className="animate-marquee inline-block">
-        <span className="text-cream font-working-man-light font-bold text-xl tracking-wider">
+        <span className="text-cream font-working-man-light font-bold text-2xl tracking-wider">
           {qualities.repeat(10)}
         </span>
       </div>
