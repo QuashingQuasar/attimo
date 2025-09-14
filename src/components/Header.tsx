@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export const Header = ({ onWaitlistClick }: HeaderProps) => {
   return (
-    <header className="py-6 border-b border-white/10" style={{ backgroundColor: '#15CD5D !important' }}>
+    <header className="py-6 border-b border-white/10" style={{ backgroundColor: '#15CD5D !important', background: '#15CD5D !important' }}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Left - Navigation */}
