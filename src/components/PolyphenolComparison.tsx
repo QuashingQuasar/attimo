@@ -179,10 +179,10 @@ export const PolyphenolComparison = () => {
                     {visibleTweets.map((tweet) => (
                       <div
                         key={tweet.id}
-                        className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                        className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-96 flex flex-col"
                       >
                         {/* Profile Header */}
-                        <div className="flex items-center mb-6">
+                        <div className="flex items-center mb-6 flex-shrink-0">
                           <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl mr-3">
                             {tweet.avatar}
                           </div>
@@ -193,7 +193,7 @@ export const PolyphenolComparison = () => {
                         </div>
 
                         {/* Tweet Content */}
-                        <div className="space-y-4">
+                        <div className="space-y-4 flex-grow flex flex-col justify-center">
                           <p className="text-white leading-relaxed font-medium">
                             {tweet.content}
                           </p>
