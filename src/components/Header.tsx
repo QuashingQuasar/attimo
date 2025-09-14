@@ -20,8 +20,8 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
           {/* Right - CTA */}
           <Button 
             onClick={onWaitlistClick}
-            className="text-white hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-sm transition-all duration-300 border border-white/20"
-            style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#15CD5D' }}
+            className="text-white hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20"
+            style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D' }}
           >
             Join waitlist
           </Button>
