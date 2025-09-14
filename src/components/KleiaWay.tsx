@@ -4,7 +4,7 @@ export const KleiaWay = () => {
     <section className="py-24 bg-olive-dark">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-8 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#15CD5D' }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
           </h2>

@@ -6,7 +6,7 @@ interface HeaderProps {
 
 export const Header = ({ onWaitlistClick }: HeaderProps) => {
   return (
-    <header className="py-6 border-b border-white/10" style={{ backgroundColor: '#15CD5D !important', background: '#15CD5D !important' }}>
+    <header className="py-6 border-b border-white/10 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Left - Navigation */}
@@ -24,8 +24,8 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
           {/* Right - CTA */}
           <Button 
             onClick={onWaitlistClick}
-            className="bg-white text-black hover:bg-white/90 text-sm px-6 py-2 font-medium rounded-sm transition-all duration-300"
-            style={{ fontFamily: 'Space Grotesk, monospace' }}
+            className="text-white hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-sm transition-all duration-300 border border-white/20"
+            style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#15CD5D' }}
           >
             Join waitlist
           </Button>
