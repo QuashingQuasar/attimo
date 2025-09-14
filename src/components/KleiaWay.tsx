@@ -25,10 +25,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
-          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-olive-dark">FROM GROVE TO TABLE</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FROM GROVE TO TABLE</h4>
+              <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
@@ -48,10 +48,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-olive-dark">LAB-TESTED QUALITY</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>LAB-TESTED QUALITY</h4>
+              <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
@@ -71,10 +71,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-olive-dark">FRESH AND SINGLE-GROVE</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FRESH AND SINGLE-GROVE</h4>
+              <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
                 Every bottle is from the latest harvest and is sourced from just one grove.
               </p>
             </div>
