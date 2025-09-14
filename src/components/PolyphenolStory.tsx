@@ -1,153 +1,183 @@
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const storySlides = [
+const storyCards = [
   {
-    title: "What are Polyphenols?",
-    content: "Polyphenols are an umbrella group—kind of like 'vitamins.' Just like vitamins, different types have different structures and different effects on the body.",
-    visual: "🍃",
-    bgColor: "from-emerald-600 to-emerald-700"
+    front: {
+      title: "What are Polyphenols?",
+      subtitle: "Click to discover",
+      visual: "🍃",
+      bgColor: "from-emerald-600 to-emerald-700"
+    },
+    back: {
+      title: "Like Vitamins",
+      content: "Polyphenols are an umbrella group—kind of like 'vitamins.' Different types have different structures and effects on the body.",
+      bgColor: "from-emerald-700 to-emerald-800"
+    }
   },
   {
-    title: "Found in Nature",
-    content: "Polyphenols are micronutrients found in plants 🌱. There are over 8,000 types—each with a unique chemical structure 🧬.",
-    visual: "🌿",
-    bgColor: "from-green-600 to-green-700"
+    front: {
+      title: "8,000+ Types",
+      subtitle: "Naturally occurring",
+      visual: "🌿",
+      bgColor: "from-green-600 to-green-700"
+    },
+    back: {
+      title: "Found in Plants",
+      content: "Polyphenols are micronutrients found in plants. There are over 8,000 types—each with a unique chemical structure.",
+      bgColor: "from-green-700 to-green-800"
+    }
   },
   {
-    title: "The Health Connection",
-    content: "Some can support heart health, others may reduce inflammation—and some don't do much at all. The key is getting the right types in meaningful amounts.",
-    visual: "❤️",
-    bgColor: "from-teal-600 to-teal-700"
+    front: {
+      title: "Health Benefits",
+      subtitle: "Science-backed",
+      visual: "❤️",
+      bgColor: "from-red-500 to-red-600"
+    },
+    back: {
+      title: "Targeted Effects",
+      content: "Some support heart health, others reduce inflammation. The key is getting the right types in meaningful amounts.",
+      bgColor: "from-red-600 to-red-700"
+    }
   },
   {
-    title: "Most Oils Fall Short",
-    content: "Average olive oil contains just 180 mg/kg of polyphenols. Even premium brands rarely exceed 400 mg/kg. The EU health claim requires at least 250 mg/kg.",
-    visual: "📉",
-    bgColor: "from-amber-600 to-amber-700"
+    front: {
+      title: "Most Oils: 180mg",
+      subtitle: "Industry average",
+      visual: "📉",
+      bgColor: "from-amber-600 to-amber-700"
+    },
+    back: {
+      title: "The Problem",
+      content: "Average olive oil contains just 180 mg/kg. Even premium brands rarely exceed 400 mg/kg. EU health claim requires 250 mg/kg minimum.",
+      bgColor: "from-amber-700 to-amber-800"
+    }
   },
   {
-    title: "Our Difference",
-    content: "Our olive oil delivers 904 mg/kg of polyphenols—over 3x higher than premium oils. Fresh-pressed, single-grove, and lab-tested for potency.",
-    visual: "🏆",
-    bgColor: "from-emerald-500 to-green-600"
+    front: {
+      title: "Our Oil: 904mg",
+      subtitle: "Lab-tested potency",
+      visual: "🏆",
+      bgColor: "from-emerald-500 to-green-600"
+    },
+    back: {
+      title: "3x Higher",
+      content: "Our olive oil delivers 904 mg/kg of polyphenols—over 3x higher than premium oils. Fresh-pressed, single-grove, lab-tested.",
+      bgColor: "from-emerald-600 to-green-700"
+    }
   }
 ];
 
+const FlipCard = ({ card, index }: { card: typeof storyCards[0], index: number }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <div className="perspective-1000 group">
+      <div 
+        className={`relative w-full h-80 transform-style-preserve-3d transition-transform duration-700 cursor-pointer ${
+          isFlipped ? 'rotate-y-180' : ''
+        }`}
+        onClick={() => setIsFlipped(!isFlipped)}
+      >
+        {/* Front of card */}
+        <div className={`absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-gradient-to-br ${card.front.bgColor} p-8 text-white shadow-lg`}>
+          <div className="flex flex-col items-center justify-center h-full text-center">
+            <div className="text-5xl mb-4">{card.front.visual}</div>
+            <h3 className="text-2xl font-bold mb-2">{card.front.title}</h3>
+            <p className="text-white/80 text-sm uppercase tracking-wide">{card.front.subtitle}</p>
+            <div className="mt-6 text-xs text-white/60">Click to flip</div>
+          </div>
+        </div>
+
+        {/* Back of card */}
+        <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br ${card.back.bgColor} p-8 text-white shadow-lg`}>
+          <div className="flex flex-col justify-center h-full">
+            <h3 className="text-2xl font-bold mb-4 text-center">{card.back.title}</h3>
+            <p className="text-lg leading-relaxed text-white/95">{card.back.content}</p>
+            <div className="mt-6 text-center text-xs text-white/60">Click to flip back</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const PolyphenolStory = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [current, setCurrent] = useState(0);
-  const [api, setApi] = useState<CarouselApi>();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
 
-  useEffect(() => {
-    if (!api) return;
+  const nextCards = () => {
+    if (currentIndex + visibleCards < storyCards.length) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
-
-  const goToSlide = (index: number) => {
-    api?.scrollTo(index);
+  const prevCards = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
 
   return (
-    <>
-      {/* Trigger Section */}
-      <section className="py-16 bg-gradient-to-br from-olive-light to-cream">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-light text-olive-dark mb-6">
-              The Science Behind <span className="font-medium">Polyphenols</span>
-            </h3>
-            <p className="text-lg text-olive-medium mb-8 leading-relaxed">
-              Discover why polyphenol content matters and how our oil delivers exceptional levels for your health.
-            </p>
-            <Button 
-              onClick={() => setIsOpen(true)}
-              size="lg"
-              className="bg-olive-dark hover:bg-olive-dark/90 text-white px-8 py-4 text-lg font-medium"
-            >
-              Explore the Story
-            </Button>
+    <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+            The Science Behind <span className="font-medium text-emerald-400">Polyphenols</span>
+          </h2>
+          <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
+            Flip each card to discover the fascinating world of polyphenols and why our oil delivers exceptional health benefits.
+          </p>
+        </div>
+
+        {/* Card Stack Container */}
+        <div className="relative max-w-6xl mx-auto">
+          {/* Navigation Buttons */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white border-white/20"
+            onClick={prevCards}
+            disabled={currentIndex === 0}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 text-white border-white/20"
+            onClick={nextCards}
+            disabled={currentIndex + visibleCards >= storyCards.length}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-16">
+            {storyCards.slice(currentIndex, currentIndex + visibleCards).map((card, index) => (
+              <FlipCard key={currentIndex + index} card={card} index={currentIndex + index} />
+            ))}
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {Array.from({ length: Math.ceil(storyCards.length / visibleCards) }).map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  Math.floor(currentIndex / visibleCards) === index
+                    ? 'bg-emerald-400 scale-125'
+                    : 'bg-white/30'
+                }`}
+              />
+            ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Modal Story Overlay */}
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent 
-          className="max-w-none h-screen w-screen p-0 bg-black/95 border-none fixed inset-0 translate-x-0 translate-y-0 data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out [&>button]:hidden"
-          style={{ maxWidth: 'none', width: '100vw', height: '100vh' }}
-        >
-          <div className="relative h-full flex items-center justify-center overflow-hidden">
-            {/* Close Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute top-6 right-6 z-50 text-white hover:bg-white/10 h-12 w-12"
-              onClick={() => setIsOpen(false)}
-            >
-              <X className="h-6 w-6" />
-            </Button>
-
-            {/* Carousel */}
-            <div className="w-full max-w-4xl mx-auto px-8">
-              <Carousel setApi={setApi} className="w-full">
-                <CarouselContent>
-                  {storySlides.map((slide, index) => (
-                    <CarouselItem key={index}>
-                      <div className="flex items-center justify-center min-h-[600px]">
-                        <div className={`w-full max-w-3xl bg-gradient-to-br ${slide.bgColor} rounded-3xl p-12 text-white shadow-2xl`}>
-                          <div className="text-center">
-                            <div className="text-6xl mb-8">{slide.visual}</div>
-                            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-                              {slide.title}
-                            </h2>
-                            <p className="text-xl md:text-2xl leading-relaxed opacity-95">
-                              {slide.content}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                
-                {/* Custom Navigation */}
-                <CarouselPrevious className="left-8 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-                <CarouselNext className="right-8 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-              </Carousel>
-
-              {/* Progress Dots */}
-              <div className="flex justify-center mt-8 space-x-3">
-                {storySlides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      current === index 
-                        ? 'bg-white scale-125' 
-                        : 'bg-white/40 hover:bg-white/60'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Slide Counter */}
-              <div className="text-center mt-6">
-                <span className="text-white/70 text-sm">
-                  {current + 1} of {storySlides.length}
-                </span>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </>
+    </section>
   );
 };
