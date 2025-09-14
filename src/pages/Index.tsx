@@ -8,6 +8,7 @@ import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { PolyphenolStory } from "@/components/PolyphenolStory";
 import { PolyphenolTimeline } from "@/components/PolyphenolTimeline";
 import { PolyphenolScroll } from "@/components/PolyphenolScroll";
+import { PolyphenolCarousel } from "@/components/PolyphenolCarousel";
 import { Testimonials } from "@/components/Testimonials";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
@@ -25,6 +26,7 @@ const Index = () => {
       <PolyphenolStory />
       <PolyphenolTimeline />
       <PolyphenolScroll />
+      <PolyphenolCarousel />
       <Testimonials />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
