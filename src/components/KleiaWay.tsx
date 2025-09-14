@@ -1,7 +1,7 @@
 
 export const KleiaWay = () => {
   return (
-    <section className="py-24" style={{ backgroundColor: '#15CD5D' }}>
+    <section className="py-24 bg-olive-dark">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-8 tracking-tight">
