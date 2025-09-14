@@ -50,9 +50,9 @@ export const KleiaWay = () => {
           {/* Top row, col 4 - Text content (as shown in sketch) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-white">Premium Quality</h4>
+              <h4 className="text-2xl font-bold mb-4 text-white">LAB-TESTED QUALITY</h4>
               <p className="text-white/90 text-base leading-relaxed">
-                Each bottle represents the finest olive oil craftsmanship.
+                Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
           </div>
