@@ -133,7 +133,7 @@ export const HarvestProduct = () => {
               </div>
               
               {/* Add to Cart Button */}
-              <Button className="w-full bg-accent hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <Button className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl" style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D' }}>
                 Add to cart - €{selectedOption?.price}
               </Button>
             </div>
