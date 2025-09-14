@@ -7,7 +7,7 @@ interface HeroProps {
 
 export const Hero = ({ onWaitlistClick }: HeroProps) => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: 'calc(100vh - 80px)' }}>
+    <section className="relative flex items-center justify-center overflow-hidden h-screen">
       {/* Video Background */}
       <video
         autoPlay
@@ -23,7 +23,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - 80px)' }}>
+      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
         <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
           <div className="mb-12 flex justify-center animate-fade-in">
