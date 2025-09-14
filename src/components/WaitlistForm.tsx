@@ -83,6 +83,7 @@ export const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
               variant="hero"
               className="w-full"
               disabled={isSubmitting}
+              style={{ fontFamily: 'Space Grotesk, monospace' }}
             >
               {isSubmitting ? "Joining..." : "Join Waitlist"}
             </Button>
