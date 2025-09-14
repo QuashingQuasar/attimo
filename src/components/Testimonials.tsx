@@ -1,65 +1,143 @@
+import { useState } from "react";
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
+    category: "taste",
     name: "Maria S.",
     location: "Lisbon, Portugal",
+    date: "27 Feb 2025",
     text: "I finally understand what real olive oil should taste like. The intensity and freshness is incredible - nothing like the bland supermarket bottles I used to buy.",
-    rating: 5
+    rating: 5,
+    title: "For the olive oil fetishist..."
   },
   {
+    category: "health",
     name: "James R.",
     location: "London, UK", 
+    date: "21 Jul 2025",
     text: "As a chef, I appreciate knowing exactly where my ingredients come from. The lab reports and harvest details give me complete confidence in what I'm serving.",
-    rating: 5
+    rating: 5,
+    title: "Best olive oil i tried!"
   },
   {
+    category: "taste",
     name: "Sofia M.",
     location: "Barcelona, Spain",
+    date: "5 May 2024",
     text: "My grandmother always said you could taste the difference in good olive oil. This brings back memories of the oils from her village - authentic and full of character.",
-    rating: 5
+    rating: 5,
+    title: "Perfect product for health & longevity enthusiasts!"
   },
   {
+    category: "health",
     name: "David K.",
     location: "Amsterdam, Netherlands",
+    date: "11 Nov 2024",
     text: "I was skeptical about paying more for olive oil until I tried this. The polyphenol content is amazing and you can actually taste the difference in quality.",
-    rating: 5
+    rating: 5,
+    title: "Healthy and tasty 😋"
+  },
+  {
+    category: "transparency",
+    name: "Nicholas B.",
+    location: "SF",
+    date: "16 Apr 2024",
+    text: "Few oils to choose from, but once you taste, you'll realize, you dont need to search for another oil. Lab tested as The Green Machine, in less than 2 months :) And I am only using it on bread, veggies, pasta...",
+    rating: 5,
+    title: "Delicious"
+  },
+  {
+    category: "service",
+    name: "Marius K.",
+    location: "DE",
+    date: "27 Feb 2025",
+    text: "Super fast delivery, exceptional taste and great polyphenol content - and all at a decent price in a stylish bottle. Could not want more!",
+    rating: 5,
+    title: "Beautiful bottle, better olive oil"
   }
 ];
 
+const categories = [
+  { id: "all", label: "All" },
+  { id: "health", label: "Health" },
+  { id: "taste", label: "Taste" },
+  { id: "service", label: "Service" },
+  { id: "transparency", label: "Transparency" }
+];
+
 export const Testimonials = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
+  
+  const filteredTestimonials = activeCategory === "all" 
+    ? testimonials 
+    : testimonials.filter(t => t.category === activeCategory);
+
+  // Duplicate testimonials for seamless loop
+  const duplicatedTestimonials = [...filteredTestimonials, ...filteredTestimonials, ...filteredTestimonials];
+
   return (
-    <section className="py-20 bg-[hsl(var(--section-dark))] text-cream">
+    <section className="py-20 bg-[hsl(var(--section-light))]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-cream mb-6 tracking-tight">
-            WHAT PEOPLE SAY
-          </h2>
-           <p className="text-xl text-cream/90 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-             From home cooks to professional chefs, here's what happens when people taste authentic olive oil.
-           </p>
+        {/* Category Filters */}
+        <div className="flex justify-center gap-2 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeCategory === category.id
+                  ? 'text-white'
+                  : 'text-olive-dark hover:bg-olive-dark/10'
+              }`}
+              style={{ 
+                backgroundColor: activeCategory === category.id ? '#494F35' : 'transparent',
+                border: `1px solid ${activeCategory === category.id ? '#494F35' : '#494F35'}`
+              }}
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-cream/95 border-cream/20 shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center mb-4 text-gold-accent">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
-                  ))}
-                </div>
-                 <blockquote className="text-olive-dark text-lg leading-relaxed mb-6 italic" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                   "{testimonial.text}"
-                 </blockquote>
-                <div className="border-t border-olive-light/30 pt-4">
-                  <p className="font-medium text-olive-dark">{testimonial.name}</p>
-                  <p className="text-olive-medium text-sm" style={{ fontFamily: 'Space Grotesk, monospace' }}>{testimonial.location}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Scrolling Testimonials */}
+        <div className="overflow-hidden">
+          <div 
+            className="flex gap-6 animate-[marquee_60s_linear_infinite]"
+            style={{
+              width: `${duplicatedTestimonials.length * 400}px`
+            }}
+          >
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 w-96 bg-white/90 border-olive-light/20 shadow-sm">
+                <CardContent className="p-6">
+                  {/* Star Rating */}
+                  <div className="flex items-center mb-3">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-green-500 text-green-500" />
+                    ))}
+                  </div>
+                  
+                  {/* Title */}
+                  <h4 className="font-semibold text-olive-dark mb-3 text-sm">
+                    {testimonial.title}
+                  </h4>
+                  
+                  {/* Review Text */}
+                  <p className="text-olive-dark/80 text-sm leading-relaxed mb-4" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                    {testimonial.text}
+                  </p>
+                  
+                  {/* Author and Date */}
+                  <div className="flex justify-between items-center text-xs text-olive-medium">
+                    <span>{testimonial.name} ({testimonial.location})</span>
+                    <span>{testimonial.date}</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
