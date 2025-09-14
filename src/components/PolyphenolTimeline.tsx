@@ -59,7 +59,7 @@ export const PolyphenolTimeline = () => {
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
             Polyphenol <span className="font-medium text-emerald-600">Journey</span>
           </h2>
-           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Inconsolata, monospace' }}>
+           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Grotesk, monospace' }}>
              Navigate through the timeline to explore how polyphenols work and why our oil is different.
            </p>
         </div>
@@ -72,7 +72,7 @@ export const PolyphenolTimeline = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                 {currentStep.title}
               </h3>
-               <p className="text-lg md:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+               <p className="text-lg md:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                  {currentStep.content}
                </p>
             </div>

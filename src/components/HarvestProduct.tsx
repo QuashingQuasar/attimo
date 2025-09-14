@@ -83,14 +83,14 @@ export const HarvestProduct = () => {
                 Galega from Alentejo
               </h1>
               
-              <p className="text-lg text-olive-medium mb-4" style={{ fontFamily: 'Inconsolata, monospace' }}>
+              <p className="text-lg text-olive-medium mb-4" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 High-Antioxidant Extra Virgin Olive Oil
               </p>
             </header>
 
             {/* Key Benefits */}
             <div className="space-y-4">
-              <ul className="space-y-3 text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>
+              <ul className="space-y-3 text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                   <span>5x more antioxidant polyphenols than average EVOO</span>
@@ -149,8 +149,8 @@ export const HarvestProduct = () => {
                     {tile.value}
                     {tile.unit && <span className="text-xl ml-1 text-olive-dark/90">{tile.unit}</span>}
                   </div>
-                  <div className="text-lg text-olive-light mb-3" style={{ fontFamily: 'Inconsolata, monospace' }}>{tile.avg}</div>
-                  <p className="text-sm text-olive-medium/80 leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>{tile.description}</p>
+                  <div className="text-lg text-olive-light mb-3" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.avg}</div>
+                  <p className="text-sm text-olive-medium/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
                 </div>
               ))}
             </div>

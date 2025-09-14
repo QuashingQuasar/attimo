@@ -36,7 +36,7 @@ export const Testimonials = () => {
           <h2 className="text-5xl font-bold text-cream mb-6 tracking-tight">
             WHAT PEOPLE SAY
           </h2>
-           <p className="text-xl text-cream/90 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+           <p className="text-xl text-cream/90 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
              From home cooks to professional chefs, here's what happens when people taste authentic olive oil.
            </p>
         </div>
@@ -50,12 +50,12 @@ export const Testimonials = () => {
                     <Star key={i} className="w-5 h-5 fill-gold-accent text-gold-accent" />
                   ))}
                 </div>
-                 <blockquote className="text-olive-dark text-lg leading-relaxed mb-6 italic" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                 <blockquote className="text-olive-dark text-lg leading-relaxed mb-6 italic" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                    "{testimonial.text}"
                  </blockquote>
                 <div className="border-t border-olive-light/30 pt-4">
                   <p className="font-medium text-olive-dark">{testimonial.name}</p>
-                  <p className="text-olive-medium text-sm" style={{ fontFamily: 'Inconsolata, monospace' }}>{testimonial.location}</p>
+                  <p className="text-olive-medium text-sm" style={{ fontFamily: 'Space Grotesk, monospace' }}>{testimonial.location}</p>
                 </div>
               </CardContent>
             </Card>

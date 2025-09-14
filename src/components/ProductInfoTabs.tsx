@@ -35,29 +35,29 @@ export const ProductInfoTabs = () => {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                   ORIGIN
                 </div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>Alentejo, Portugal</div>
+                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Alentejo, Portugal</div>
               </div>
               <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                   OLIVE
                 </div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>Galega</div>
+                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Galega</div>
               </div>
             </div>
             <div>
-              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 FLAVOR
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>green & grassy</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>green & grassy</div>
             </div>
             <div>
-              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 STORE
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>keep away from light and heat</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>keep away from light and heat</div>
             </div>
           </div>
         </TabsContent>
@@ -71,7 +71,7 @@ export const ProductInfoTabs = () => {
               { label: "HERBAL", rating: 3 }
             ].map((flavor) => (
               <div key={flavor.label} className="flex items-center justify-between">
-                <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                   {flavor.label}
                 </span>
                 <div className="flex gap-1">
@@ -95,7 +95,7 @@ export const ProductInfoTabs = () => {
         </TabsContent>
         
         <TabsContent value="harvest" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
-           <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+           <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
             <p>
               Hand-picked in October 2024 during the optimal harvest window. The olives were processed within 4 hours of harvest using traditional stone mills, preserving maximum antioxidants and flavor compounds. This early harvest ensures the highest polyphenol content.
             </p>
@@ -103,7 +103,7 @@ export const ProductInfoTabs = () => {
         </TabsContent>
         
         <TabsContent value="uses" className="bg-cream/60 p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
-          <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+          <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
             <p>
               Like a sprinkle of flaky salt or the squeeze of a good condiment, Drizzle adds a big pop of flavor right before you dig in. (That's why it's called a finishing oil!) Drizzle's flavors are sensitive, though, so keep it off the heat.
             </p>

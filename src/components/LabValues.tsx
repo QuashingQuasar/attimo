@@ -10,7 +10,7 @@ export const LabValues = () => {
             <h2 className="text-5xl font-bold text-olive-dark mb-6 tracking-tight">
               STARTING WITH PORTUGAL 2024
             </h2>
-             <p className="text-xl text-olive-medium leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+             <p className="text-xl text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                Our first selection: 30L of exceptional Galega olives from Alentejo. 
                Here's why this oil represents everything we stand for.
              </p>
@@ -53,18 +53,18 @@ export const LabValues = () => {
                 <div className="space-y-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">904 MG/KG</div>
-                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>POLYPHENOLS</div>
-                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~180mg/kg</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>POLYPHENOLS</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~180mg/kg</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">0.16%</div>
-                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>ACIDITY</div>
-                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~0.8%</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>ACIDITY</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~0.8%</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">6.3</div>
-                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>PEROXIDES</div>
-                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~20meq/kg</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>PEROXIDES</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~20meq/kg</div>
                   </div>
                 </div>
               </CardContent>
@@ -73,7 +73,7 @@ export const LabValues = () => {
 
           <div className="bg-olive-dark text-cream p-8 rounded-lg">
             <h3 className="text-2xl font-bold mb-4">BUILDING TOWARDS 2026</h3>
-             <p className="text-lg leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+             <p className="text-lg leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                This Portuguese oil is just the beginning. Over the next two years, we'll be curating exceptional oils 
                from small groves across Greece, Italy, and Spain. Each harvest, each region, each story -
               all selected for their authenticity and quality.

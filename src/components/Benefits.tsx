@@ -47,7 +47,7 @@ export const Benefits = () => {
                 <h3 className="text-xl font-semibold text-olive-dark mb-4">
                   {benefit.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                   {benefit.description}
                 </p>
               </CardContent>
