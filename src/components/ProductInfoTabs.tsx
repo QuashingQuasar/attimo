@@ -38,26 +38,26 @@ export const ProductInfoTabs = () => {
                 <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
                   ORIGIN
                 </div>
-                <div className="text-olive-medium">Alentejo, Portugal</div>
+                <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>Alentejo, Portugal</div>
               </div>
               <div>
                 <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
                   OLIVE
                 </div>
-                <div className="text-olive-medium">Galega</div>
+                <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>Galega</div>
               </div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
                 FLAVOR
               </div>
-              <div className="text-olive-medium">green & grassy</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>green & grassy</div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Inconsolata, monospace' }}>
                 STORE
               </div>
-              <div className="text-olive-medium">keep away from light and heat</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>keep away from light and heat</div>
             </div>
           </div>
         </TabsContent>
