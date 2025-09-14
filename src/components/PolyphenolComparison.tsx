@@ -205,8 +205,8 @@ export const PolyphenolComparison = () => {
                                </div>
                              </div>
 
-                             {/* Tweet Content */}
-                             <div className="space-y-4 flex-grow flex flex-col justify-center">
+                              {/* Tweet Content */}
+                              <div className="space-y-4 flex-grow">
                                <p className={`${textColors[index]} leading-relaxed font-medium`} style={{ fontFamily: 'Inconsolata, monospace' }}>
                                  {tweet.content}
                                </p>
