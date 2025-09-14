@@ -1,11 +1,35 @@
+import { OliveLeaf } from './OliveLeaf';
+
 export const QualityTicker = () => {
-  const qualities = "PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • ";
+  const qualities = [
+    "PREMIUM QUALITY",
+    "DIRECT FROM GROVES", 
+    "LAB TESTED",
+    "FRESH HARVEST",
+    "TRACEABLE",
+    "ARTISANAL",
+    "SMALL BATCH"
+  ];
 
   return (
     <div className="bg-olive-dark py-6 overflow-hidden whitespace-nowrap">
       <div className="animate-marquee inline-block">
         <span className="text-cream font-working-man-light font-bold text-2xl tracking-wider">
-          {qualities.repeat(10)}
+          {Array(10).fill(null).map((_, i) => (
+            <span key={i}>
+              {qualities.map((quality, index) => (
+                <span key={index} className="inline-flex items-center">
+                  {quality}
+                  {index < qualities.length - 1 && (
+                    <OliveLeaf className="w-4 h-6 mx-4" fill="currentColor" />
+                  )}
+                  {index === qualities.length - 1 && (
+                    <OliveLeaf className="w-4 h-6 mx-4" fill="currentColor" />
+                  )}
+                </span>
+              ))}
+            </span>
+          ))}
         </span>
       </div>
     </div>

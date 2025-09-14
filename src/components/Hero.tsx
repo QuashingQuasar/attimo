@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { OliveLeaf } from './OliveLeaf';
 
 interface HeroProps {
   onWaitlistClick: () => void;
@@ -60,12 +61,24 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       {/* Quality Ticker - At bottom of hero section */}
       <div className="absolute bottom-0 left-0 right-0 z-40 bg-[hsl(67_15%_45%)] py-5 overflow-hidden border-t border-white/10">
         <div className="flex animate-marquee">
-          <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em] whitespace-nowrap pr-12 drop-shadow-sm">
-            PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH
-          </span>
-          <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em] whitespace-nowrap pr-12 drop-shadow-sm">
-            PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH • PREMIUM QUALITY • DIRECT FROM GROVES • LAB TESTED • FRESH HARVEST • TRACEABLE • ARTISANAL • SMALL BATCH
-          </span>
+          {Array(2).fill(null).map((_, i) => (
+            <div key={i} className="flex items-center whitespace-nowrap">
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">PREMIUM QUALITY</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">DIRECT FROM GROVES</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">LAB TESTED</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">FRESH HARVEST</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">TRACEABLE</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">ARTISANAL</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+              <span className="text-white font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">SMALL BATCH</span>
+              <OliveLeaf className="w-4 h-6 mx-6 text-white" fill="currentColor" />
+            </div>
+          ))}
         </div>
       </div>
     </section>
