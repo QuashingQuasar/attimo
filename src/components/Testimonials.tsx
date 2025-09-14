@@ -38,24 +38,6 @@ const testimonials = [
     text: "I was skeptical about paying more for olive oil until I tried this. The polyphenol content is amazing and you can actually taste the difference in quality.",
     rating: 5,
     title: "Healthy and tasty 😋"
-  },
-  {
-    category: "transparency",
-    name: "Nicholas B.",
-    location: "SF",
-    date: "16 Apr 2024",
-    text: "Few oils to choose from, but once you taste, you'll realize, you dont need to search for another oil. Lab tested as The Green Machine, in less than 2 months :) And I am only using it on bread, veggies, pasta...",
-    rating: 5,
-    title: "Delicious"
-  },
-  {
-    category: "service",
-    name: "Marius K.",
-    location: "DE",
-    date: "27 Feb 2025",
-    text: "Super fast delivery, exceptional taste and great polyphenol content - and all at a decent price in a stylish bottle. Could not want more!",
-    rating: 5,
-    title: "Beautiful bottle, better olive oil"
   }
 ];
 
