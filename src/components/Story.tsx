@@ -8,7 +8,7 @@ export const Story = () => {
               Five Centuries of
               <span className="block text-gold-rich">Mediterranean Tradition</span>
             </h2>
-            <div className="space-y-6 text-lg text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+            <div className="space-y-6 text-lg text-olive-medium leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
               <p>
                 Our story begins in the sun-drenched hills of the Mediterranean, where ancient olive groves have stood for over 500 years. These majestic trees, witnesses to countless seasons and generations, produce olives of unparalleled quality.
               </p>

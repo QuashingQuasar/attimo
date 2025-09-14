@@ -140,7 +140,7 @@ export const PolyphenolCarousel = () => {
               {currentSlideData.subtitle}
             </h3>
             
-             <p className="text-lg md:text-xl lg:text-2xl text-white/85 leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
+             <p className="text-lg md:text-xl lg:text-2xl text-white/85 leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Inconsolata, monospace' }}>
                {currentSlideData.content}
              </p>
           </div>

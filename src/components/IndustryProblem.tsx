@@ -26,7 +26,7 @@ export const IndustryProblem = () => {
             <h2 className="text-5xl md:text-7xl font-light text-white mb-8 leading-tight tracking-tight">
               The <span className="font-medium italic">"extra virgin" lie.</span>
             </h2>
-             <p className="text-2xl md:text-3xl text-white/90 max-w-4xl leading-relaxed font-light" style={{ fontFamily: 'Space Mono, monospace' }}>
+             <p className="text-2xl md:text-3xl text-white/90 max-w-4xl leading-relaxed font-light" style={{ fontFamily: 'Inconsolata, monospace' }}>
                80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
              </p>
           </div>
@@ -35,14 +35,14 @@ export const IndustryProblem = () => {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-lg">
               <div className="text-7xl font-working-man font-light text-white mb-4">~80%</div>
-               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
                  olive oils sold as "extra virgin" don't meet those standards
                </p>
             </div>
 
             <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-lg">
               <div className="text-7xl font-working-man font-light text-white mb-4">~90%</div>
-               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
                  "extra virgin" olive oils are low in health-boosting polyphenols
                </p>
             </div>
@@ -58,7 +58,7 @@ export const IndustryProblem = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Flavour and health get blended away
               </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
                  To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
                  fresh flavour, distinct character, and polyphenols that make it healthy.
                </p>
@@ -72,7 +72,7 @@ export const IndustryProblem = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 You've never tasted the real thing
               </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
@@ -86,7 +86,7 @@ export const IndustryProblem = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Big oil kills family groves
               </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
                  Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
                  sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
                </p>
