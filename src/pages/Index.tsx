@@ -5,8 +5,6 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
-import { PolyphenolStory } from "@/components/PolyphenolStory";
-import { PolyphenolTimeline } from "@/components/PolyphenolTimeline";
 import { PolyphenolScroll } from "@/components/PolyphenolScroll";
 import { PolyphenolCarousel } from "@/components/PolyphenolCarousel";
 import { Testimonials } from "@/components/Testimonials";
@@ -23,8 +21,6 @@ const Index = () => {
       <HarvestProduct />
       <KleiaWay />
       <PolyphenolComparison />
-      <PolyphenolStory />
-      <PolyphenolTimeline />
       <PolyphenolScroll />
       <PolyphenolCarousel />
       <Testimonials />
