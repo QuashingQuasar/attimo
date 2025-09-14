@@ -27,9 +27,9 @@ export const KleiaWay = () => {
           {/* Top row, col 2 - Not Blended (text) */}
           <div className="bg-gradient-to-br from-olive-dark to-olive-dark/80 rounded-2xl p-6 text-white">
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4 text-white">Not Blended</h4>
+              <h4 className="text-2xl font-bold mb-4 text-white">FROM GROVE TO TABLE</h4>
               <p className="text-white/90 text-base leading-relaxed">
-                Every bottle comes from just one region - no blends, no sneaky stuff.
+                We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
           </div>
