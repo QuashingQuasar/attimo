@@ -110,9 +110,9 @@ export const PolyphenolComparison = () => {
                 The Polyphenol Difference In<br />
                 <span className="font-medium">Olive Oil</span>
               </h2>
-               <p className="text-sm text-olive-medium leading-relaxed" style={{ fontFamily: 'Inconsolata, monospace' }}>
-                 See the polyphenol difference—what's in ours, what's in others, and why it matters.
-               </p>
+               <p className="text-lg text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Inconsolata, monospace' }}>
+                  See the polyphenol difference—what's in ours, what's in others, and why it matters.
+                </p>
 
               <div className="space-y-4">
                 {comparisonData.map((item, index) => {
