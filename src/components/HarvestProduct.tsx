@@ -120,11 +120,11 @@ export const HarvestProduct = () => {
                         : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
                     }`}
                   >
-                    <div className="font-semibold text-sm mb-1">{option.label}</div>
+                    <div className="font-semibold text-sm mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>{option.label}</div>
                     {option.subtitle && (
                       <div className={`text-xs ${
                         selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'
-                      }`}>
+                      }`} style={{ fontFamily: 'Space Grotesk, monospace' }}>
                         {option.subtitle}
                       </div>
                     )}
@@ -133,7 +133,7 @@ export const HarvestProduct = () => {
               </div>
               
               {/* Add to Cart Button */}
-              <Button className="w-full bg-accent hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl">
+              <Button className="w-full bg-accent hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 Add to cart - €{selectedOption?.price}
               </Button>
             </div>
