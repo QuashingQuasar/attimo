@@ -175,13 +175,13 @@ export const PolyphenolComparison = () => {
                   </Button>
 
                    {/* Tweet Cards - Unified Tile */}
-                   <div className="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
+                   <div className="bg-gradient-to-r from-olive-dark/10 via-olive-medium/15 to-accent/25 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
                      <div className="grid grid-cols-3 h-full">
                        {visibleTweets.map((tweet, index) => {
                          const bgColors = [
-                           'bg-olive-light/5 border-r border-olive-light/10',
-                           'bg-olive-medium/5 border-r border-olive-light/10', 
-                           'bg-accent/8'
+                           'bg-olive-dark/5',
+                           'bg-olive-medium/8', 
+                           'bg-accent/15'
                          ];
                          const textColors = [
                            'text-olive-dark',
