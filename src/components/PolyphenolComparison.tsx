@@ -148,91 +148,82 @@ export const PolyphenolComparison = () => {
                 <span>750</span>
                 <span>900</span>
               </div>
-            </div>
-        </div>
 
-        {/* Tweet Carousel */}
-        <div className="mt-20">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Our Story in Tweets
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Follow our journey to create the world's highest polyphenol olive oil
-            </p>
-          </div>
+              {/* Tweet Carousel */}
+              <div className="mt-16">
+                {/* Carousel Container */}
+                <div className="relative max-w-7xl mx-auto">
+                  {/* Navigation Arrows */}
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={prevSlide}
+                    disabled={currentIndex === 0}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 -translate-x-6"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </Button>
 
-          {/* Carousel Container */}
-          <div className="relative max-w-7xl mx-auto">
-            {/* Navigation Arrows */}
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              disabled={currentIndex === 0}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 -translate-x-6"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={nextSlide}
+                    disabled={currentIndex >= maxIndex}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 translate-x-6"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
 
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              disabled={currentIndex >= maxIndex}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 translate-x-6"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
+                  {/* Tweet Cards Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8">
+                    {visibleTweets.map((tweet) => (
+                      <div
+                        key={tweet.id}
+                        className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                      >
+                        {/* Profile Header */}
+                        <div className="flex items-center mb-6">
+                          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl mr-3">
+                            {tweet.avatar}
+                          </div>
+                          <div>
+                            <div className="font-semibold text-lg">{tweet.name}</div>
+                            <div className="text-white/80 text-sm">{tweet.handle}</div>
+                          </div>
+                        </div>
 
-            {/* Tweet Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8">
-              {visibleTweets.map((tweet) => (
-                <div
-                  key={tweet.id}
-                  className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-3xl p-6 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  {/* Profile Header */}
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-xl mr-3">
-                      {tweet.avatar}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-lg">{tweet.name}</div>
-                      <div className="text-white/80 text-sm">{tweet.handle}</div>
-                    </div>
+                        {/* Tweet Content */}
+                        <div className="space-y-4">
+                          <p className="text-white leading-relaxed font-medium">
+                            {tweet.content}
+                          </p>
+                          <p className="text-white/90 leading-relaxed">
+                            {tweet.content2}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Tweet Content */}
-                  <div className="space-y-4">
-                    <p className="text-white leading-relaxed font-medium">
-                      {tweet.content}
-                    </p>
-                    <p className="text-white/90 leading-relaxed">
-                      {tweet.content2}
-                    </p>
+                  {/* Pagination Dots */}
+                  <div className="flex justify-center mt-8 space-x-2">
+                    {Array.from({ length: maxIndex + 1 }, (_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentIndex(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          currentIndex === index
+                            ? 'bg-emerald-600 w-8'
+                            : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </div>
-              ))}
+                </div>
+              </div>
             </div>
-
-            {/* Pagination Dots */}
-            <div className="flex justify-center mt-8 space-x-2">
-              {Array.from({ length: maxIndex + 1 }, (_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentIndex === index
-                      ? 'bg-emerald-600 w-8'
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
         </div>
-      </div>
     </section>
   );
 };
