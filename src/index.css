@@ -164,7 +164,7 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4 {
-    font-family: 'UDC Working Man Sans Rough', sans-serif;
+    font-family: 'UDC Working Man Sans', sans-serif;
     @apply text-olive-dark;
     letter-spacing: -0.01em;
   }
