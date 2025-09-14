@@ -18,8 +18,8 @@ const Index = () => {
       <IndustryProblem />
       <HarvestProduct />
       <KleiaWay />
-      <PolyphenolComparison />
       <Testimonials />
+      <PolyphenolComparison />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
