@@ -5,6 +5,7 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+import { PolyphenolStory } from "@/components/PolyphenolStory";
 import { Testimonials } from "@/components/Testimonials";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
@@ -19,6 +20,7 @@ const Index = () => {
       <HarvestProduct />
       <KleiaWay />
       <PolyphenolComparison />
+      <PolyphenolStory />
       <Testimonials />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
