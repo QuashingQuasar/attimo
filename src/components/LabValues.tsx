@@ -53,18 +53,18 @@ export const LabValues = () => {
                 <div className="space-y-6">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">904 MG/KG</div>
-                    <div className="text-sm text-olive-medium">POLYPHENOLS</div>
-                    <div className="text-xs text-olive-light mt-1">avg. ~180mg/kg</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>POLYPHENOLS</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~180mg/kg</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">0.16%</div>
-                    <div className="text-sm text-olive-medium">ACIDITY</div>
-                    <div className="text-xs text-olive-light mt-1">avg. ~0.8%</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>ACIDITY</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~0.8%</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-olive-dark">6.3</div>
-                    <div className="text-sm text-olive-medium">PEROXIDES</div>
-                    <div className="text-xs text-olive-light mt-1">avg. ~20meq/kg</div>
+                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>PEROXIDES</div>
+                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Inconsolata, monospace' }}>avg. ~20meq/kg</div>
                   </div>
                 </div>
               </CardContent>

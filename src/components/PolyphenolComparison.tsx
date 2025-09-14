@@ -201,7 +201,7 @@ export const PolyphenolComparison = () => {
                                </div>
                                <div>
                                  <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
-                                 <div className={`text-olive-dark/70 text-sm`}>{tweet.handle}</div>
+                                 <div className={`text-olive-dark/70 text-sm`} style={{ fontFamily: 'Inconsolata, monospace' }}>{tweet.handle}</div>
                                </div>
                              </div>
 

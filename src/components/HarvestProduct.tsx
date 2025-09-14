@@ -83,14 +83,14 @@ export const HarvestProduct = () => {
                 Galega from Alentejo
               </h1>
               
-              <p className="text-lg text-olive-medium mb-4">
+              <p className="text-lg text-olive-medium mb-4" style={{ fontFamily: 'Inconsolata, monospace' }}>
                 High-Antioxidant Extra Virgin Olive Oil
               </p>
             </header>
 
             {/* Key Benefits */}
             <div className="space-y-4">
-              <ul className="space-y-3 text-olive-medium">
+              <ul className="space-y-3 text-olive-medium" style={{ fontFamily: 'Inconsolata, monospace' }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                   <span>5x more antioxidant polyphenols than average EVOO</span>

@@ -86,8 +86,8 @@ const FlipCard = ({ card, index }: { card: typeof storyCards[0], index: number }
           <div className="flex flex-col items-center justify-center h-full text-center">
             <div className="text-5xl mb-4">{card.front.visual}</div>
             <h3 className="text-2xl font-bold mb-2">{card.front.title}</h3>
-            <p className="text-white/80 text-sm uppercase tracking-wide">{card.front.subtitle}</p>
-            <div className="mt-6 text-xs text-white/60">Click to flip</div>
+            <p className="text-white/80 text-sm uppercase tracking-wide" style={{ fontFamily: 'Inconsolata, monospace' }}>{card.front.subtitle}</p>
+            <div className="mt-6 text-xs text-white/60" style={{ fontFamily: 'Inconsolata, monospace' }}>Click to flip</div>
           </div>
         </div>
 

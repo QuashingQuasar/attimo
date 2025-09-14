@@ -55,7 +55,7 @@ export const Testimonials = () => {
                  </blockquote>
                 <div className="border-t border-olive-light/30 pt-4">
                   <p className="font-medium text-olive-dark">{testimonial.name}</p>
-                  <p className="text-olive-medium text-sm">{testimonial.location}</p>
+                  <p className="text-olive-medium text-sm" style={{ fontFamily: 'Inconsolata, monospace' }}>{testimonial.location}</p>
                 </div>
               </CardContent>
             </Card>

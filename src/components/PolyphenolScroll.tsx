@@ -118,8 +118,8 @@ export const PolyphenolScroll = () => {
                     <div className="flex items-center space-x-3">
                       <span className="text-xl">{story.visual}</span>
                       <div>
-                        <div className="font-medium text-sm">{story.subtitle}</div>
-                        <div className="text-xs opacity-75">{story.title}</div>
+                        <div className="font-medium text-sm" style={{ fontFamily: 'Inconsolata, monospace' }}>{story.subtitle}</div>
+                        <div className="text-xs opacity-75" style={{ fontFamily: 'Inconsolata, monospace' }}>{story.title}</div>
                       </div>
                     </div>
                   </button>
