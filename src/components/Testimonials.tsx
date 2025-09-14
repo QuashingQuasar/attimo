@@ -41,7 +41,7 @@ export const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="py-20 bg-[hsl(var(--section-light))]">
+    <section className="py-20" style={{ backgroundColor: '#CDDB2D' }}>
       <div className="container mx-auto px-4">
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
