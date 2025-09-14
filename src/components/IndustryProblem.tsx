@@ -33,15 +33,15 @@ export const IndustryProblem = () => {
 
           {/* Statistics */}
           <div className="grid md:grid-cols-2 gap-12 mb-20">
-            <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-              <div className="text-7xl font-light text-white mb-4 font-serif">~80%</div>
+            <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-lg">
+              <div className="text-7xl font-working-man font-light text-white mb-4">~80%</div>
               <p className="text-xl text-white/90 font-light leading-relaxed">
                 olive oils sold as "extra virgin" don't meet those standards
               </p>
             </div>
 
-            <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
-              <div className="text-7xl font-light text-white mb-4 font-serif">~90%</div>
+            <div className="text-center p-12 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-lg">
+              <div className="text-7xl font-working-man font-light text-white mb-4">~90%</div>
               <p className="text-xl text-white/90 font-light leading-relaxed">
                 "extra virgin" olive oils are low in health-boosting polyphenols
               </p>
