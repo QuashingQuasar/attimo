@@ -207,10 +207,10 @@ export const PolyphenolComparison = () => {
 
                             {/* Tweet Content */}
                             <div className="space-y-4 flex-grow flex flex-col justify-center">
-                              <p className={`${textColors[index]} leading-relaxed font-medium text-center`}>
+                              <p className={`${textColors[index]} leading-relaxed font-medium`}>
                                 {tweet.content}
                               </p>
-                              <p className={`${textColors[index]}/80 leading-relaxed text-center`}>
+                              <p className={`${textColors[index]}/80 leading-relaxed`}>
                                 {tweet.content2}
                               </p>
                             </div>
