@@ -6,7 +6,7 @@ interface HeroProps {
 
 export const Hero = ({ onWaitlistClick }: HeroProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
