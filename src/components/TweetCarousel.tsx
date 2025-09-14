@@ -13,51 +13,51 @@ const tweets = [
   },
   {
     id: 2,
-    name: "Sarah Chen",
-    handle: "@sarahc_health",
-    avatar: "👩‍⚕️",
-    content: "After 3 months of using Kleia's olive oil, my inflammation markers dropped significantly",
-    content2: "My doctor was amazed at the lab results. This isn't just olive oil — it's medicine! 🩺"
+    name: "Olive",
+    handle: "@olvlimits",
+    avatar: "🫒", 
+    content: "904 mg/kg of polyphenols vs the industry average of 180 mg/kg",
+    content2: "That's over 5x more antioxidant power in every drop. Fresh-pressed perfection 🌿"
   },
   {
     id: 3,
-    name: "Marcus Romano", 
-    handle: "@chef_marcus",
-    avatar: "👨‍🍳",
-    content: "904 mg/kg of polyphenols? That's 3x higher than any premium oil I've worked with in 20 years",
-    content2: "The flavor profile is incredible — peppery, fresh, with that characteristic polyphenol bite ✨"
+    name: "Olive",
+    handle: "@olvlimits",
+    avatar: "🫒",
+    content: "Why settle for ordinary olive oil when you can have extraordinary health benefits?", 
+    content2: "Our single-grove harvest delivers the polyphenol density your body deserves ✨"
   },
   {
     id: 4,
-    name: "Dr. Elena Vasquez",
-    handle: "@dr_nutrition",
-    avatar: "🔬",
-    content: "The research on high-polyphenol olive oil is compelling for cardiovascular and cognitive health",
-    content2: "Kleia's lab-tested approach gives consumers the confidence they're getting real benefits 🧠"
+    name: "Olive",
+    handle: "@olvlimits",
+    avatar: "🫒",
+    content: "The EU health claim requires just 250 mg/kg of polyphenols. We deliver 904 mg/kg",
+    content2: "That's not just meeting standards — that's obliterating them 🚀"
   },
   {
     id: 5,
-    name: "James Thompson",
-    handle: "@fitness_james",
-    avatar: "💪",
-    content: "Been taking a tablespoon every morning for 6 months. My recovery time and energy levels are insane",
-    content2: "This oil is literally part of my supplement stack now. Worth every penny! ⚡"
+    name: "Olive", 
+    handle: "@olvlimits",
+    avatar: "🫒",
+    content: "Every bottle is lab-tested and traceable to a single grove in Greece",
+    content2: "No blends, no compromises, no mystery oils. Just pure polyphenol power 🇬🇷"
   },
   {
     id: 6,
-    name: "Maria Gonzalez",
-    handle: "@maria_wellness",
-    avatar: "🌱",
-    content: "Finally found an olive oil that matches the Mediterranean diet studies we read about",
-    content2: "The polyphenol content is what our ancestors were actually consuming. This is the real deal! 🇬🇷"
+    name: "Olive",
+    handle: "@olvlimits", 
+    avatar: "🫒",
+    content: "Fresh-pressed within hours of harvest to lock in maximum polyphenols",
+    content2: "Time is the enemy of antioxidants. We don't give it a chance ⏰"
   },
   {
     id: 7,
-    name: "Robert Kim",
-    handle: "@biohacker_rob",
-    avatar: "🧬",
-    content: "Tracked my biomarkers for 4 months. HDL up, inflammation down, cognitive clarity improved",
-    content2: "Data doesn't lie — high polyphenol olive oil is a game changer for longevity 📊"
+    name: "Olive",
+    handle: "@olvlimits",
+    avatar: "🫒",
+    content: "This isn't just olive oil — it's a daily dose of Mediterranean longevity",
+    content2: "The same polyphenol-rich oil that's been protecting hearts for thousands of years 💚"
   }
 ];
 
@@ -82,10 +82,10 @@ export const TweetCarousel = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What People Are Saying
+            Our Story in Tweets
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real experiences from customers who've made our high-polyphenol olive oil part of their daily routine
+            Follow our journey to create the world's highest polyphenol olive oil
           </p>
         </div>
 
