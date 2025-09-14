@@ -28,7 +28,7 @@ export const KleiaWay = () => {
           <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4 text-olive-dark">FROM GROVE TO TABLE</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed">
+              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
@@ -51,7 +51,7 @@ export const KleiaWay = () => {
           <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4 text-olive-dark">LAB-TESTED QUALITY</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed">
+              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
@@ -74,7 +74,7 @@ export const KleiaWay = () => {
           <div className="bg-gradient-to-br from-accent to-accent/80 rounded-2xl p-6 text-olive-dark">
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4 text-olive-dark">FRESH AND SINGLE-GROVE</h4>
-              <p className="text-olive-dark/90 text-base leading-relaxed">
+              <p className="text-olive-dark/90 text-base leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
                 Every bottle is from the latest harvest and is sourced from just one grove.
               </p>
             </div>
