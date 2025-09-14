@@ -1,88 +1,48 @@
-import { useState } from "react";
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
-    category: "taste",
     name: "Maria S.",
     location: "Lisbon, Portugal",
     date: "27 Feb 2025",
     text: "I finally understand what real olive oil should taste like. The intensity and freshness is incredible - nothing like the bland supermarket bottles I used to buy.",
     rating: 5,
-    title: "For the olive oil fetishist..."
+    title: "Amazing quality olive oil"
   },
   {
-    category: "health",
     name: "James R.",
     location: "London, UK", 
     date: "21 Jul 2025",
     text: "As a chef, I appreciate knowing exactly where my ingredients come from. The lab reports and harvest details give me complete confidence in what I'm serving.",
     rating: 5,
-    title: "Best olive oil i tried!"
+    title: "Perfect for professional use"
   },
   {
-    category: "taste",
     name: "Sofia M.",
     location: "Barcelona, Spain",
     date: "5 May 2024",
     text: "My grandmother always said you could taste the difference in good olive oil. This brings back memories of the oils from her village - authentic and full of character.",
     rating: 5,
-    title: "Perfect product for health & longevity enthusiasts!"
+    title: "Authentic taste"
   },
   {
-    category: "health",
     name: "David K.",
     location: "Amsterdam, Netherlands",
     date: "11 Nov 2024",
     text: "I was skeptical about paying more for olive oil until I tried this. The polyphenol content is amazing and you can actually taste the difference in quality.",
     rating: 5,
-    title: "Healthy and tasty 😋"
+    title: "Worth every penny"
   }
 ];
 
-const categories = [
-  { id: "all", label: "All" },
-  { id: "health", label: "Health" },
-  { id: "taste", label: "Taste" },
-  { id: "service", label: "Service" },
-  { id: "transparency", label: "Transparency" }
-];
-
 export const Testimonials = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
-  
-  const filteredTestimonials = activeCategory === "all" 
-    ? testimonials 
-    : testimonials.filter(t => t.category === activeCategory);
-
   // Duplicate testimonials for seamless loop
-  const duplicatedTestimonials = [...filteredTestimonials, ...filteredTestimonials, ...filteredTestimonials];
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section className="py-20 bg-[hsl(var(--section-light))]">
       <div className="container mx-auto px-4">
-        {/* Category Filters */}
-        <div className="flex justify-center gap-2 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeCategory === category.id
-                  ? 'text-white'
-                  : 'text-olive-dark hover:bg-olive-dark/10'
-              }`}
-              style={{ 
-                backgroundColor: activeCategory === category.id ? '#494F35' : 'transparent',
-                border: `1px solid ${activeCategory === category.id ? '#494F35' : '#494F35'}`
-              }}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
           <div 
