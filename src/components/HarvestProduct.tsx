@@ -149,8 +149,8 @@ export const HarvestProduct = () => {
                     {tile.value}
                     {tile.unit && <span className="text-lg ml-1 text-olive-dark/90">{tile.unit}</span>}
                   </div>
-                  <div className="text-xs text-olive-light mb-3">{tile.avg}</div>
-                  <p className="text-xs text-olive-medium/80 leading-relaxed">{tile.description}</p>
+                  <div className="text-sm text-olive-light mb-3">{tile.avg}</div>
+                  <p className="text-sm text-olive-medium/80 leading-relaxed">{tile.description}</p>
                 </div>
               ))}
             </div>
