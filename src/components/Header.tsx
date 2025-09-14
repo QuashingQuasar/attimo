@@ -16,10 +16,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
 
-          {/* Center - Logo */}
-          <div className="text-3xl font-light text-white tracking-wider italic">
-            KLEIA
-          </div>
 
           {/* Right - CTA */}
           <Button 
