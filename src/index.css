@@ -1,3 +1,28 @@
+/* UDC Working Man Sans Custom Fonts */
+@font-face {
+  font-family: 'UDC Working Man Sans';
+  src: url('/fonts/UDC_Working_Man_Sans.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'UDC Working Man Sans Light';
+  src: url('/fonts/UDC_Working_Man_Sans_Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'UDC Working Man Sans Rough';
+  src: url('/fonts/UDC_Working_Man_Sans_Rough.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -23,6 +23,9 @@ export default {
 				'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
 				'display': ['Playfair Display', 'serif'],
 				'body': ['Inter', 'sans-serif'],
+				'working-man': ['UDC Working Man Sans', 'sans-serif'],
+				'working-man-light': ['UDC Working Man Sans Light', 'sans-serif'],
+				'working-man-rough': ['UDC Working Man Sans Rough', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
