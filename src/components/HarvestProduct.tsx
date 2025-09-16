@@ -142,7 +142,7 @@ export const HarvestProduct = () => {
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
                 <div key={tile.key} className="bg-white/60 rounded-xl border border-olive-light/10 overflow-hidden">
-                  <div className="px-4 py-2" style={{ backgroundColor: '#CDDB2D' }}>
+                  <div className="px-4 py-2" style={{ backgroundColor: '#9EEF80' }}>
                     <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>
                       {tile.label}
                     </div>
