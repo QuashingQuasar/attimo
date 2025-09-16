@@ -31,7 +31,7 @@ const comparisonData = [
 
 export const QualityComparison = () => {
   return (
-    <section className="py-20 bg-[hsl(var(--product-background))]">
+    <section className="py-20" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-olive-dark mb-6 tracking-tight">
@@ -53,9 +53,8 @@ export const QualityComparison = () => {
               {comparisonData.map((row, index) => (
                 <div 
                   key={index} 
-                  className={`grid grid-cols-3 gap-4 p-6 border-b border-gray-100 ${
-                    index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
-                  }`}
+                  className={`grid grid-cols-3 gap-4 p-6 border-b border-gray-100`}
+                  style={{ backgroundColor: '#FFFAEA' }}
                 >
                   <div className="font-bold text-olive-dark text-lg flex items-center">
                     {row.category}

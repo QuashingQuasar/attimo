@@ -53,7 +53,7 @@ export const HarvestProduct = () => {
   ] as const;
 
   return (
-    <section className="py-24 bg-[hsl(var(--product-background))]">
+    <section className="py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
@@ -141,7 +141,7 @@ export const HarvestProduct = () => {
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
-                <div key={tile.key} className="bg-white/60 rounded-xl border border-olive-light/10 overflow-hidden">
+                <div key={tile.key} className="rounded-xl border border-olive-light/10 overflow-hidden" style={{ backgroundColor: '#FFFAEA' }}>
                   <div className="px-4 py-2" style={{ backgroundColor: '#4E5B2B' }}>
                     <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>
                       {tile.label}
