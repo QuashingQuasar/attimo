@@ -141,36 +141,20 @@ export const HarvestProduct = () => {
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
-                <div key={tile.key} className={`${tile.key === 'peroxides' ? 'bg-white/60 rounded-xl border border-olive-light/10 overflow-hidden' : 'bg-white/60 p-4 rounded-xl border border-olive-light/10'}`}>
-                  {tile.key === 'peroxides' ? (
-                    <>
-                      <div className="px-4 py-2" style={{ backgroundColor: '#CDDB2D' }}>
-                        <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>
-                          {tile.label}
-                        </div>
-                      </div>
-                      <div className="p-4">
-                        <div className="text-3xl font-bold text-olive-dark leading-none mb-1" style={{ fontFamily: 'UDC Working Man Sans, sans-serif' }}>
-                          {tile.value}
-                          {tile.unit && <span className="text-xl ml-1 text-olive-dark/90">{tile.unit}</span>}
-                        </div>
-                        <div className="text-lg text-olive-light mb-3" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.avg}</div>
-                        <p className="text-sm text-olive-medium/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="text-xs font-semibold text-olive-medium uppercase tracking-wide mb-2">
-                        {tile.label}
-                      </div>
-                      <div className="text-3xl font-bold text-olive-dark leading-none mb-1" style={{ fontFamily: 'UDC Working Man Sans, sans-serif' }}>
-                        {tile.value}
-                        {tile.unit && <span className="text-xl ml-1 text-olive-dark/90">{tile.unit}</span>}
-                      </div>
-                      <div className="text-lg text-olive-light mb-3" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.avg}</div>
-                      <p className="text-sm text-olive-medium/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
-                    </>
-                  )}
+                <div key={tile.key} className="bg-white/60 rounded-xl border border-olive-light/10 overflow-hidden">
+                  <div className="px-4 py-2" style={{ backgroundColor: '#CDDB2D' }}>
+                    <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>
+                      {tile.label}
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="text-3xl font-bold text-olive-dark leading-none mb-1" style={{ fontFamily: 'UDC Working Man Sans, sans-serif' }}>
+                      {tile.value}
+                      {tile.unit && <span className="text-xl ml-1 text-olive-dark/90">{tile.unit}</span>}
+                    </div>
+                    <div className="text-lg text-olive-light mb-3" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.avg}</div>
+                    <p className="text-sm text-olive-medium/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
