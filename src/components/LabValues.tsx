@@ -61,10 +61,16 @@ export const LabValues = () => {
                      <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>ACIDITY</div>
                      <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~0.8%</div>
                   </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold text-olive-dark">6.3</div>
-                     <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>PEROXIDES</div>
-                     <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~20meq/kg</div>
+                  <div className="border rounded-lg overflow-hidden">
+                    <div className="px-4 py-2" style={{ backgroundColor: '#CDDB2D' }}>
+                      <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>PEROXIDES</div>
+                    </div>
+                    <div className="p-4 text-center bg-white">
+                      <div className="text-3xl font-bold text-olive-dark">6.3</div>
+                      <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>MEQ/KG</div>
+                      <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~20meq/kg</div>
+                      <p className="mt-2 text-xs text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>lower = fresher oil, less oxidation and longer shelf life</p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
