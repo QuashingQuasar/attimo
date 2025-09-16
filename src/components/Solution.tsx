@@ -47,17 +47,21 @@ export const Solution = () => {
           {labTiles.map((tile) => (
             <article
               key={tile.key}
-              className="rounded-2xl bg-cream p-8 shadow-sm border border-olive-light/15"
+              className="rounded-2xl bg-cream shadow-sm border border-olive-light/15 overflow-hidden"
             >
-              <div className="text-xs font-semibold text-golden-text uppercase tracking-wide mb-2">
-                {tile.label}
+              <div className="px-8 py-4" style={{ backgroundColor: '#CDDB2D' }}>
+                <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>
+                  {tile.label}
+                </div>
               </div>
-              <div className="text-4xl md:text-5xl font-bold text-golden-text leading-none">
-                {tile.value}
-                {tile.unit && <span className="text-2xl md:text-3xl ml-1 text-golden-text/90">{tile.unit}</span>}
+              <div className="p-8">
+                <div className="text-4xl md:text-5xl font-bold text-golden-text leading-none">
+                  {tile.value}
+                  {tile.unit && <span className="text-2xl md:text-3xl ml-1 text-golden-text/90">{tile.unit}</span>}
+                </div>
+                <div className="text-sm text-golden-text mt-1">{tile.avg}</div>
+                <p className="mt-4 text-sm leading-relaxed text-golden-text/90" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
               </div>
-              <div className="text-sm text-golden-text mt-1">{tile.avg}</div>
-              <p className="mt-4 text-sm leading-relaxed text-golden-text/90" style={{ fontFamily: 'Space Grotesk, monospace' }}>{tile.description}</p>
             </article>
           ))}
         </div>
