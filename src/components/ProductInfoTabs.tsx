@@ -4,7 +4,7 @@ export const ProductInfoTabs = () => {
   return (
     <div className="w-full">
       <Tabs defaultValue="details" className="w-full">
-        <div className="border-2 border-olive-dark rounded-2xl overflow-hidden bg-white">
+        <div className="border border-olive-dark rounded-2xl overflow-hidden bg-white">
           <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0">
             <TabsTrigger 
               value="details" 
