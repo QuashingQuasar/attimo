@@ -106,9 +106,8 @@ export const HarvestProduct = () => {
               </ul>
             </div>
 
-            {/* Quantity Selection & Purchase */}
-            <div className="space-y-4 p-6 bg-white rounded-xl border-2 border-olive-dark">
-              {/* Quantity Options */}
+            {/* Quantity Selection */}
+            <div className="p-6 bg-white rounded-xl border border-olive-dark">
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {quantityOptions.map((option) => (
                   <button
@@ -131,12 +130,12 @@ export const HarvestProduct = () => {
                   </button>
                 ))}
               </div>
-              
-              {/* Add to Cart Button */}
-              <Button className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl" style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D' }}>
-                Add to cart - €{selectedOption?.price}
-              </Button>
             </div>
+
+            {/* Add to Cart Button */}
+            <Button className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-4 text-lg h-auto rounded-xl" style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D' }}>
+              Add to cart - €{selectedOption?.price}
+            </Button>
 
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
