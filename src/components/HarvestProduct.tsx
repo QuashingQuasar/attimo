@@ -89,7 +89,7 @@ export const HarvestProduct = () => {
             </header>
 
             {/* Key Benefits */}
-            <div className="space-y-4">
+            <div className="space-y-4 p-6 bg-white rounded-xl border-2 border-olive-dark">
               <ul className="space-y-3 text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
@@ -107,7 +107,7 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Quantity Selection & Purchase */}
-            <div className="space-y-4">
+            <div className="space-y-4 p-6 bg-white rounded-xl border-2 border-olive-dark">
               {/* Quantity Options */}
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {quantityOptions.map((option) => (
@@ -141,7 +141,7 @@ export const HarvestProduct = () => {
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
-                <div key={tile.key} className="rounded-xl border border-olive-light/10 overflow-hidden bg-white">
+                <div key={tile.key} className="rounded-xl border-2 border-olive-dark overflow-hidden bg-white">
                   <div className="px-4 py-2" style={{ backgroundColor: '#4E5B2B' }}>
                     <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>
                       {tile.label}
