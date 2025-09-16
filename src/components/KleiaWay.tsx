@@ -1,4 +1,3 @@
-
 export const KleiaWay = () => {
   return (
     <section className="py-24" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
@@ -25,7 +24,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#EFC11B' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#EFC11B' }}>FROM GROVE TO TABLE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#EFC11B' }}>
@@ -48,7 +47,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#EFC11B' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#EFC11B' }}>LAB-TESTED QUALITY</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#EFC11B' }}>
@@ -71,7 +70,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35', color: '#EFC11B' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#494F35' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#EFC11B' }}>FRESH AND SINGLE-GROVE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#EFC11B' }}>
