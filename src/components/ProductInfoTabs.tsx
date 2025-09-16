@@ -31,7 +31,7 @@ export const ProductInfoTabs = () => {
           </TabsTrigger>
         </TabsList>
         
-        <TabsContent value="details" className="p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]" style={{ backgroundColor: '#FFFAEA' }}>
+        <TabsContent value="details" className="bg-white p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -62,7 +62,7 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-        <TabsContent value="flavor" className="p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]" style={{ backgroundColor: '#FFFAEA' }}>
+        <TabsContent value="flavor" className="bg-white p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
           <div className="space-y-4">
             {[
               { label: "PEPPERY", rating: 4 },
@@ -94,7 +94,7 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-        <TabsContent value="harvest" className="p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]" style={{ backgroundColor: '#FFFAEA' }}>
+        <TabsContent value="harvest" className="bg-white p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
            <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
             <p>
               Hand-picked in October 2024 during the optimal harvest window. The olives were processed within 4 hours of harvest using traditional stone mills, preserving maximum antioxidants and flavor compounds. This early harvest ensures the highest polyphenol content.
@@ -102,7 +102,7 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-        <TabsContent value="uses" className="p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]" style={{ backgroundColor: '#FFFAEA' }}>
+        <TabsContent value="uses" className="bg-white p-6 rounded-b-2xl border border-t-0 border-olive-light/10 min-h-[200px]">
           <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
             <p>
               Like a sprinkle of flaky salt or the squeeze of a good condiment, Drizzle adds a big pop of flavor right before you dig in. (That's why it's called a finishing oil!) Drizzle's flavors are sensitive, though, so keep it off the heat.
