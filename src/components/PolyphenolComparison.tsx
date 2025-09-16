@@ -102,7 +102,7 @@ export const PolyphenolComparison = () => {
   const maxValue = Math.max(...comparisonData.map(item => item.value));
 
   return (
-    <section className="py-24 bg-cream">
+    <section className="py-24 bg-[hsl(var(--product-background))]">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>

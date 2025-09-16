@@ -71,13 +71,13 @@ All colors MUST be HSL.
     --olive-medium: 76 15% 40%; /* Lighter version */
     --olive-light: 76 10% 55%; /* Very light olive */
     --gold-accent: 42 65% 50%; /* Subtle gold accent */
-    --cream: 48 20% 96%; /* Clean cream */
+    --cream: 45 19% 92%; /* Light warm beige #EEECE6 */
     --warm-white: 45 15% 98%; /* Warm white */
     --product-background: 45 19% 92%; /* Light warm beige #EEECE6 */
     
     /* Wild Geese inspired sections */
     --section-dark: 67 30% 18%; /* Dark olive from #4E5B2B */
-    --section-light: 45 25% 95%; /* Light cream sections */
+    --section-light: 45 19% 92%; /* Light warm beige #EEECE6 */
     
     /* KLEIA Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(45 85% 55%) 0%, hsl(48 90% 65%) 100%);
@@ -173,6 +173,13 @@ All colors MUST be HSL.
   h2 { font-weight: 300; }
 
   em, i { font-family: var(--font-serif); font-style: italic; }
+}
+
+/* Section separator utility */
+.section-separator {
+  border-top: 2px dotted hsl(var(--olive-medium));
+  margin: 0;
+  opacity: 0.3;
 }
 
 /* 3D Card Flip Utilities */
