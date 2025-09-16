@@ -71,6 +71,7 @@ export default {
 					light: 'hsl(var(--gold-light))'
 				},
 				cream: 'hsl(var(--cream))',
+				"golden-text": "hsl(var(--golden-text))",
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
