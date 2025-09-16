@@ -177,7 +177,7 @@ All colors MUST be HSL.
 
 /* Section separator utility */
 .section-separator {
-  border-top: 4px dotted black;
+  border-top: 3px dashed black;
   margin: 0;
   opacity: 0.6;
 }
