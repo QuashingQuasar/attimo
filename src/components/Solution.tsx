@@ -50,8 +50,8 @@ export const Solution = () => {
               className="rounded-2xl shadow-sm border border-olive-light/15 overflow-hidden"
               style={{ backgroundColor: '#FFFAEA' }}
             >
-              <div className="px-8 py-4" style={{ backgroundColor: '#CDDB2D' }}>
-                <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>
+              <div className="px-8 py-4" style={{ backgroundColor: '#4E5B2B' }}>
+                <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>
                   {tile.label}
                 </div>
               </div>

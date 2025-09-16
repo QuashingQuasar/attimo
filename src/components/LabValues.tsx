@@ -62,8 +62,8 @@ export const LabValues = () => {
                      <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~0.8%</div>
                   </div>
                   <div className="border rounded-lg overflow-hidden">
-                    <div className="px-4 py-2" style={{ backgroundColor: '#CDDB2D' }}>
-                      <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>PEROXIDES</div>
+                    <div className="px-4 py-2" style={{ backgroundColor: '#4E5B2B' }}>
+                      <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>PEROXIDES</div>
                     </div>
                     <div className="p-4 text-center bg-white">
                       <div className="text-3xl font-bold text-olive-dark">6.3</div>
