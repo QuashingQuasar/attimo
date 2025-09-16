@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const LabValues = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-cream to-white">
+    <section className="py-20" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           
@@ -18,7 +18,7 @@ export const LabValues = () => {
 
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             {/* Product Details */}
-            <Card className="bg-white shadow-lg border-olive-light/30">
+            <Card className="shadow-lg border-olive-light/30" style={{ backgroundColor: '#FFFAEA' }}>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-olive-dark mb-6">ORIGIN & PROFILE</h3>
                 <div className="space-y-4 text-left">
@@ -47,7 +47,7 @@ export const LabValues = () => {
             </Card>
 
             {/* Lab Values */}
-            <Card className="bg-white shadow-lg border-olive-light/30">
+            <Card className="shadow-lg border-olive-light/30" style={{ backgroundColor: '#FFFAEA' }}>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-olive-dark mb-6">LAB VALUES</h3>
                 <div className="space-y-6">
@@ -65,7 +65,7 @@ export const LabValues = () => {
                     <div className="px-4 py-2" style={{ backgroundColor: '#4E5B2B' }}>
                       <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>PEROXIDES</div>
                     </div>
-                    <div className="p-4 text-center bg-white">
+                    <div className="p-4 text-center" style={{ backgroundColor: '#FFFAEA' }}>
                       <div className="text-3xl font-bold text-olive-dark">6.3</div>
                       <div className="text-sm text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>MEQ/KG</div>
                       <div className="text-xs text-olive-light mt-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>avg. ~20meq/kg</div>
