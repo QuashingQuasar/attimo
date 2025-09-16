@@ -73,6 +73,7 @@ All colors MUST be HSL.
     --gold-accent: 42 65% 50%; /* Subtle gold accent */
     --cream: 48 20% 96%; /* Clean cream */
     --warm-white: 45 15% 98%; /* Warm white */
+    --product-background: 27 62% 91%; /* Warm beige #F6E6D9 */
     
     /* Wild Geese inspired sections */
     --section-dark: 67 30% 18%; /* Dark olive from #4E5B2B */

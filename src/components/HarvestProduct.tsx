@@ -53,7 +53,7 @@ export const HarvestProduct = () => {
   ] as const;
 
   return (
-    <section className="py-24 bg-[hsl(var(--olive-dark)/0.07)]">
+    <section className="py-24 bg-[hsl(var(--product-background))]">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
