@@ -140,7 +140,7 @@ export const HarvestProduct = () => {
             {/* Lab Values Grid */}
             <div className="grid grid-cols-2 gap-4">
               {labTiles.map((tile) => (
-                <div key={tile.key} className="rounded-xl border-dashed border border-olive-dark overflow-hidden bg-white">
+                <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-white">
                   <div className="px-4 py-2" style={{ backgroundColor: '#4E5B2B' }}>
                     <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#FFFFFF' }}>
                       {tile.label}

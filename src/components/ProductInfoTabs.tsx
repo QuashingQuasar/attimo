@@ -4,8 +4,8 @@ export const ProductInfoTabs = () => {
   return (
     <div className="w-full">
       <Tabs defaultValue="details" className="w-full">
-        <div className="border-dashed border border-olive-dark rounded-2xl overflow-hidden bg-white">
-          <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0 border-b border-dashed border-olive-dark">
+        <div className="border border-olive-dark rounded-2xl overflow-hidden bg-white">
+          <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0 border-b border-olive-dark">
             <TabsTrigger 
               value="details" 
               className="data-[state=active]:bg-[#4E5B2B] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
