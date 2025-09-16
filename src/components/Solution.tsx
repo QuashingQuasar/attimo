@@ -47,7 +47,8 @@ export const Solution = () => {
           {labTiles.map((tile) => (
             <article
               key={tile.key}
-              className="rounded-2xl bg-cream shadow-sm border border-olive-light/15 overflow-hidden"
+              className="rounded-2xl shadow-sm border border-olive-light/15 overflow-hidden"
+              style={{ backgroundColor: '#FFFAEA' }}
             >
               <div className="px-8 py-4" style={{ backgroundColor: '#CDDB2D' }}>
                 <div className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#494F35' }}>

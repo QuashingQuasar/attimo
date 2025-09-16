@@ -66,7 +66,7 @@ export const PolyphenolTimeline = () => {
 
         {/* Content Display Area */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
+          <div className="rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100" style={{ backgroundColor: '#FFFAEA' }}>
             <div className="text-center">
               <div className="text-6xl mb-6">{currentStep.visual}</div>
               <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
