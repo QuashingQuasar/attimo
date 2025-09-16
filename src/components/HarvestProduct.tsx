@@ -89,7 +89,7 @@ export const HarvestProduct = () => {
             </header>
 
             {/* Key Benefits */}
-            <div className="space-y-4">
+            <div className="p-6 bg-white rounded-xl border border-olive-light/10">
               <ul className="space-y-3 text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
@@ -107,7 +107,7 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Quantity Selection & Purchase */}
-            <div className="space-y-4">
+            <div className="p-6 bg-white rounded-xl border border-olive-light/10 space-y-4">
               {/* Quantity Options */}
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
                 {quantityOptions.map((option) => (
