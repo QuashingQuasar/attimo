@@ -17,9 +17,9 @@ const Index = () => {
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
       <HarvestProduct />
+      <Testimonials />
       <hr className="section-separator" />
       <KleiaWay />
-      <Testimonials />
       <PolyphenolComparison />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
