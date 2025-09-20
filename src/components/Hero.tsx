@@ -31,7 +31,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             <img 
               src={kleiaLogo} 
               alt="KLEIA olive oil logo" 
-              className="w-160 h-160 md:w-192 md:h-192 object-contain drop-shadow-2xl"
+              className="w-128 h-128 md:w-154 md:h-154 object-contain drop-shadow-2xl"
             />
           </div>
 

@@ -19,10 +19,14 @@ export default {
 		},
 		extend: {
 			width: {
+				'128': '32rem',
+				'154': '38.5rem',
 				'160': '40rem',
 				'192': '48rem'
 			},
 			height: {
+				'128': '32rem',
+				'154': '38.5rem',
 				'160': '40rem',
 				'192': '48rem'
 			},
