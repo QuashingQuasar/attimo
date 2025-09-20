@@ -38,8 +38,8 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           {/* CTA Button */}
           <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button 
-              className="px-10 py-4 bg-white/90 text-olive-dark hover:bg-white hover:scale-105 transition-all duration-300 font-semibold rounded-sm backdrop-blur-sm shadow-2xl text-lg"
-              style={{ fontFamily: 'Space Grotesk, monospace' }}
+              className="px-10 py-4 hover:scale-105 transition-all duration-300 font-semibold rounded-sm backdrop-blur-sm shadow-2xl text-lg"
+              style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
             >
               Shop 2024 harvest
             </Button>
