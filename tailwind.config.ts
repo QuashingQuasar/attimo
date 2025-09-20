@@ -18,6 +18,14 @@ export default {
 			}
 		},
 		extend: {
+			width: {
+				'160': '40rem',
+				'192': '48rem'
+			},
+			height: {
+				'160': '40rem',
+				'192': '48rem'
+			},
 			fontFamily: {
 				'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
 				'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],

@@ -31,16 +31,8 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
             <img 
               src={kleiaLogo} 
               alt="KLEIA olive oil logo" 
-              className="w-80 h-80 md:w-96 md:h-96 object-contain drop-shadow-2xl"
+              className="w-160 h-160 md:w-192 md:h-192 object-contain drop-shadow-2xl"
             />
-          </div>
-          
-          {/* Description */}
-          <div className="mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-xl md:text-2xl font-working-man-light tracking-[0.2em] text-white uppercase leading-relaxed drop-shadow-lg">
-              Exceptional extra virgin olive oils<br />
-              from small family groves
-            </p>
           </div>
 
           {/* CTA Button */}
