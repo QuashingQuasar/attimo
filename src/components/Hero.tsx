@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OliveLeaf } from './OliveLeaf';
-import kleiaLogo from '@/assets/kleia-logo-replacement.svg';
+import kleiaLogo from '@/assets/kleia-logo-updated.svg';
 
 interface HeroProps {
   onWaitlistClick: () => void;
