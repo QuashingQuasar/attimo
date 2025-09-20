@@ -54,13 +54,6 @@ export const Testimonials = () => {
             {duplicatedTestimonials.map((testimonial, index) => (
               <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 w-96 bg-white/90 border-olive-light/20 shadow-sm">
                 <CardContent className="p-6">
-                  {/* Star Rating */}
-                  <div className="flex items-center mb-3">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-green-500 text-green-500" />
-                    ))}
-                  </div>
-                  
                   {/* Title */}
                   <h4 className="font-semibold text-olive-dark mb-3 text-sm">
                     {testimonial.title}
