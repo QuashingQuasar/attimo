@@ -52,7 +52,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-40 bg-accent py-5 overflow-hidden border-t border-olive-dark/10" style={{ width: '95vw' }}>
+      <div className="absolute bottom-0 z-40 bg-accent py-5 overflow-hidden border-t border-olive-dark/10" style={{ left: '2.5%', width: '95vw' }}>
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center whitespace-nowrap">
