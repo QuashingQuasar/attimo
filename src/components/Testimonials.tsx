@@ -42,7 +42,7 @@ export const Testimonials = () => {
 
   return (
     <section className="py-20" style={{ backgroundColor: '#9EEF80' }}>
-      <div className="container mx-auto px-4">
+      <div className="mx-auto overflow-hidden" style={{ width: '95vw' }}>
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
           <div 
