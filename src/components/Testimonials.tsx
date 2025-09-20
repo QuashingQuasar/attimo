@@ -42,7 +42,13 @@ export const Testimonials = () => {
 
   return (
     <section className="py-20" style={{ backgroundColor: '#9EEF80' }}>
-      <div className="mx-auto overflow-hidden" style={{ width: '95vw' }}>
+      <div className="mx-auto relative" style={{ width: '95vw' }}>
+        {/* Left fade overlay */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #9EEF80, transparent)' }}></div>
+        
+        {/* Right fade overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #9EEF80, transparent)' }}></div>
+        
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
           <div 
