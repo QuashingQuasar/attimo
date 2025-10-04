@@ -244,8 +244,8 @@ All colors MUST be HSL.
 /* ========== SITE-WIDE PATTERN OVERLAY ========== */
 :root {
   /* tweak these to taste */
-  --pattern-opacity: 0.5;      /* dramatically increased for testing */
-  --pattern-rotate: 0deg;      /* no rotation for testing */
+  --pattern-opacity: 0.08;      /* subtle but visible */
+  --pattern-rotate: -2deg;      /* tiny tilt breaks grid */
   --pattern-sat: 100%;          /* set to 0% if you want pure mono */
 }
 
@@ -253,10 +253,9 @@ All colors MUST be HSL.
 #site-pattern {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: -1;
   pointer-events: none;
-  opacity: 1;
-  background-color: rgba(255, 0, 0, 0.3);
+  opacity: var(--pattern-opacity);
   transform: rotate(var(--pattern-rotate));
   transform-origin: center;
   filter: saturate(var(--pattern-sat));
