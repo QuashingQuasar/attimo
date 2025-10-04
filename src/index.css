@@ -260,10 +260,30 @@ All colors MUST be HSL.
 #site-pattern {
   position: fixed;
   inset: 0;
-  z-index: 999999;
+  z-index: -1;
   pointer-events: none;
-  background: red;
-  opacity: 0.5;
+  opacity: 0.25;
+  background-image:
+    url("/assets/motifs/sun.svg"),
+    url("/assets/motifs/branch.svg"),
+    url("/assets/motifs/amphora.svg"),
+    url("/assets/motifs/column.svg"),
+    url("/assets/motifs/lyre.svg"),
+    url("/assets/motifs/basket.svg"),
+    url("/assets/motifs/bread.svg"),
+    url("/assets/motifs/book.svg"),
+    url("/assets/motifs/caraf.svg"),
+    url("/assets/motifs/lady.svg"),
+    url("/assets/motifs/mortar.svg");
+  background-repeat: repeat;
+  background-size:
+    28rem, 22rem, 26rem, 30rem, 34rem, 32rem,
+    24rem, 20rem, 24rem, 22rem, 26rem;
+  background-position:
+    0 0, 12rem 6rem, -8rem 16rem, 24rem -12rem,
+    -20rem -6rem, 6rem 28rem, -14rem 10rem,
+    30rem 18rem, -26rem -18rem, 18rem -26rem, -32rem 22rem;
+  filter: invert(0.9);
 }
 
 /* small screens: make the texture a touch lighter & sparser */
