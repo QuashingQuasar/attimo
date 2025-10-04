@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-[#1A431D]">
       <div className="container mx-auto px-4">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
