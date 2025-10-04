@@ -56,19 +56,19 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center whitespace-nowrap">
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>PREMIUM QUALITY</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>PREMIUM QUALITY</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>DIRECT FROM GROVES</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>DIRECT FROM GROVES</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>LAB TESTED</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>LAB TESTED</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>FRESH HARVEST</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>FRESH HARVEST</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>TRACEABLE</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>TRACEABLE</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>ARTISANAL</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>ARTISANAL</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>SMALL BATCH</span>
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>SMALL BATCH</span>
               <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
             </div>
           ))}
