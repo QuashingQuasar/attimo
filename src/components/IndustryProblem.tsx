@@ -4,20 +4,8 @@ import patternBg from "@/assets/testimonial-pattern.svg";
 
 export const IndustryProblem = () => {
   return (
-    <section className="py-12 bg-[#1B4229] snap-start min-h-screen flex items-center relative">
-      {/* Pattern Background */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${patternBg})`,
-          backgroundSize: '600px 600px',
-          backgroundRepeat: 'repeat',
-          opacity: 0.07,
-          filter: 'brightness(0)'
-        }}
-      ></div>
-      
-      <div className="mx-auto px-4 w-[90vw] relative z-10">
+    <section className="py-12 bg-[#1B4229] snap-start min-h-screen flex items-center">
+      <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
           {/* Video Background */}
@@ -33,6 +21,17 @@ export const IndustryProblem = () => {
           
           {/* Dark Blur Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          
+          {/* Pattern Overlay */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${patternBg})`,
+              backgroundSize: '600px 600px',
+              backgroundRepeat: 'repeat',
+              opacity: 0.25
+            }}
+          ></div>
           
           {/* Content */}
           <div className="relative z-10 py-20 px-12 md:px-20">
