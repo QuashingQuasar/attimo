@@ -4,6 +4,7 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
+import { BrandPattern } from "./BrandPattern";
 
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
@@ -53,8 +54,11 @@ export const HarvestProduct = () => {
   ] as const;
 
   return (
-    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
-      <div className="container mx-auto px-6">
+    <section className="py-24 snap-start min-h-screen flex items-center relative" style={{ backgroundColor: '#FFFAEA' }}>
+      {/* Brand Pattern */}
+      <BrandPattern variant="cream" density="medium" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
           <div className="flex justify-center">

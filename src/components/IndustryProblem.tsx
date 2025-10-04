@@ -1,5 +1,6 @@
 import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { BrandPattern } from "./BrandPattern";
 
 export const IndustryProblem = () => {
   return (
@@ -20,6 +21,9 @@ export const IndustryProblem = () => {
           
           {/* Dark Blur Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          
+          {/* Brand Pattern */}
+          <BrandPattern variant="green" density="sparse" />
           
           {/* Content */}
           <div className="relative z-10 py-20 px-12 md:px-20">
