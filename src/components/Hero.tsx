@@ -52,24 +52,24 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-5 overflow-hidden border-t border-olive-dark/10">
+      <div className="absolute bottom-0 left-0 right-0 z-40 py-5 overflow-hidden border-t border-olive-dark/10" style={{ backgroundColor: '#B3E58C' }}>
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center whitespace-nowrap">
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">PREMIUM QUALITY</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">DIRECT FROM GROVES</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">LAB TESTED</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">FRESH HARVEST</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">TRACEABLE</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">ARTISANAL</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
-              <span className="text-olive-dark font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]">SMALL BATCH</span>
-              <OliveLeaf className="w-3 h-5 mx-6 text-olive-dark" fill="currentColor" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>PREMIUM QUALITY</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>DIRECT FROM GROVES</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>LAB TESTED</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>FRESH HARVEST</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>TRACEABLE</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>ARTISANAL</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.3em]" style={{ color: '#1A431D' }}>SMALL BATCH</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
             </div>
           ))}
         </div>
