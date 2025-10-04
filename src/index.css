@@ -237,216 +237,85 @@ All colors MUST be HSL.
 .motif-after, .motif-before { isolation: isolate; }
 
 /* ---------- attach motifs to specific components ---------- */
+/* COMMENTED OUT - keeping for potential future use
+[Individual section motifs removed - now using site-wide pattern overlay]
+*/
 
-/* IndustryProblem: branch on left, caraf on right */
-.min-h-screen > *:nth-child(3)::before {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/branch.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: -1.5rem;
-  top: 40%;
-  transform: rotate(4deg);
-  opacity: var(--motif-opacity);
+/* ========== SITE-WIDE PATTERN OVERLAY ========== */
+:root {
+  /* tweak these to taste */
+  --pattern-opacity: 0.06;      /* 0.04–0.10 stays subtle */
+  --pattern-rotate: -2deg;      /* tiny tilt breaks grid */
+  --pattern-sat: 100%;          /* set to 0% if you want pure mono */
+}
+
+/* fixed overlay behind everything */
+#site-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
+  opacity: var(--pattern-opacity);
+  transform: rotate(var(--pattern-rotate));
+  transform-origin: center;
+  filter: saturate(var(--pattern-sat));
+  /* 11 layered, repeating backgrounds */
+  background-image:
+    url("/assets/motifs/sun.svg"),
+    url("/assets/motifs/olive-branch.svg"),
+    url("/assets/motifs/amphora.svg"),
+    url("/assets/motifs/column.svg"),
+    url("/assets/motifs/lyre.svg"),
+    url("/assets/motifs/basket.svg"),
+    url("/assets/motifs/bread.svg"),
+    url("/assets/motifs/book.svg"),
+    url("/assets/motifs/caraf.svg"),
+    url("/assets/motifs/lady.svg"),
+    url("/assets/motifs/mortar.svg");
+  /* each layer repeats; vary sizes to avoid a visible grid */
+  background-repeat:
+    repeat, repeat, repeat, repeat, repeat, repeat,
+    repeat, repeat, repeat, repeat, repeat;
+  /* tune these: larger = sparser; mix sizes for organic feel */
+  background-size:
+    28rem, 22rem, 26rem, 30rem, 34rem, 32rem,
+    24rem, 20rem, 24rem, 22rem, 26rem;
+  /* stagger starting offsets so the repeats don't align */
+  background-position:
+    0 0,
+    12rem 6rem,
+    -8rem 16rem,
+    24rem -12rem,
+    -20rem -6rem,
+    6rem 28rem,
+    -14rem 10rem,
+    30rem 18rem,
+    -26rem -18rem,
+    18rem -26rem,
+    -32rem 22rem;
+  /* keeps SVGs crisp when scaled */
+  background-clip: padding-box;
 }
 
-.min-h-screen > *:nth-child(3)::after {
-  content: "";
-  position: absolute;
-  width: clamp(95px, 13vw, 175px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/caraf.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  right: -1.5rem;
-  bottom: 5rem;
-  transform: rotate(-5deg);
-  opacity: 0.07;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
+/* ensure content sits above */
+body > *:not(#site-pattern) { 
+  position: relative; 
+  z-index: 0; 
 }
 
-/* HarvestProduct: amphora on right, book on left */
-.min-h-screen > *:nth-child(4)::after {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/amphora.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  right: -1rem;
-  bottom: 3rem;
-  transform: rotate(-2deg);
-  opacity: var(--motif-opacity);
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-.min-h-screen > *:nth-child(4)::before {
-  content: "";
-  position: absolute;
-  width: clamp(85px, 11vw, 155px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/book.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: -1.5rem;
-  top: 8rem;
-  transform: rotate(3deg);
-  opacity: 0.06;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-/* Testimonials: lyre on left, bread on right */
-.min-h-screen > *:nth-child(5)::before {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/lyre.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: -1rem;
-  top: 20%;
-  transform: rotate(-3deg);
-  opacity: 0.07;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-.min-h-screen > *:nth-child(5)::after {
-  content: "";
-  position: absolute;
-  width: clamp(90px, 12vw, 165px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/bread.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  right: -1.5rem;
-  bottom: 6rem;
-  transform: rotate(4deg);
-  opacity: 0.06;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-/* KleiaWay: column on right, sun on left bottom */
-.min-h-screen > *:nth-child(7)::after {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/column.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  right: -2rem;
-  top: 15%;
-  transform: rotate(2deg);
-  opacity: var(--motif-opacity);
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-.min-h-screen > *:nth-child(7)::before {
-  content: "";
-  position: absolute;
-  width: clamp(95px, 13vw, 175px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/sun.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: -2rem;
-  bottom: 8rem;
-  transform: rotate(-4deg);
-  opacity: 0.07;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-/* PolyphenolComparison: basket at bottom left, amphora top right */
-.min-h-screen > *:nth-child(8)::before {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/basket.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  left: 2rem;
-  bottom: 2rem;
-  transform: rotate(-4deg);
-  opacity: 0.06;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-.min-h-screen > *:nth-child(8)::after {
-  content: "";
-  position: absolute;
-  width: clamp(90px, 12vw, 165px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/amphora.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  right: -1rem;
-  top: 10rem;
-  transform: rotate(5deg);
-  opacity: 0.07;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-/* ---------- responsive guards ---------- */
-@media (max-width: 900px) {
-  :root {
-    --motif-size-vw: 18vw;    /* scale down slightly on tablets */
-  }
-  /* nudge motifs further into the margins on tighter layouts */
-  .min-h-screen > *:nth-child(2)::after { right: -3rem; top: 4rem; }
-  .min-h-screen > *:nth-child(3)::before { left: -2rem; }
-  .min-h-screen > *:nth-child(4)::after { right: -2rem; bottom: 2rem; }
-  .min-h-screen > *:nth-child(5)::before { left: -2rem; }
-  .min-h-screen > *:nth-child(7)::after { right: -3rem; }
-}
-
+/* small screens: make the texture a touch lighter & sparser */
 @media (max-width: 640px) {
-  /* dim some motifs on phones to reduce visual clutter */
-  .min-h-screen > *:nth-child(3)::before { opacity: 0.05; }
-  .min-h-screen > *:nth-child(5)::before { opacity: 0.04; }
-  .min-h-screen > *:nth-child(8)::before { opacity: 0.04; }
+  #site-pattern {
+    opacity: calc(var(--pattern-opacity) - 0.015);
+    background-size:
+      32rem, 26rem, 30rem, 34rem, 38rem, 36rem,
+      28rem, 24rem, 28rem, 26rem, 30rem;
+  }
 }
 
 /* respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
-  .motif-after::after, 
-  .motif-before::before { 
+  #site-pattern { 
     transition: none; 
   }
 }
