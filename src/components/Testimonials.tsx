@@ -41,7 +41,7 @@ export const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#9EEF80' }}>
+    <section className="py-20 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#9EEF80' }}>
       <div className="mx-auto relative" style={{ width: '95vw' }}>
         {/* Left fade overlay */}
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #9EEF80, transparent)' }}></div>
