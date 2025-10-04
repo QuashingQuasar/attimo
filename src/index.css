@@ -201,3 +201,116 @@ All colors MUST be HSL.
     transform: rotateY(180deg);
   }
 }
+
+/* ========== MOTIF DECORATIONS ========== */
+:root {
+  /* tweak these in one place */
+  --motif-opacity: 0.08;          /* 0.06–0.12 */
+  --motif-size-min: 80px;
+  --motif-size-vw: 12vw;
+  --motif-size-max: 160px;
+}
+
+/* make sure components are positioning contexts */
+.min-h-screen > * { position: relative; }
+
+/* ---------- motif utilities applied via pseudo ---------- */
+.motif-after::after,
+.motif-before::before {
+  content: "";
+  position: absolute;
+  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
+  aspect-ratio: 1 / 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: var(--motif-opacity);
+  pointer-events: none;
+  mix-blend-mode: multiply; /* ink-on-paper feel on light bg */
+  z-index: 0;
+}
+
+/* show motifs only on light sections to protect contrast */
+.motif-after, .motif-before { isolation: isolate; }
+
+/* ---------- attach motifs to specific components ---------- */
+
+/* Hero: sun in the top-right margin */
+.min-h-screen > *:nth-child(2)::after {
+  width: clamp(100px, 14vw, 180px);
+  background-image: url("/assets/motifs/sun.svg");
+  top: 6rem;
+  right: -2rem;
+  transform: rotate(-6deg);
+  opacity: 0.10;
+}
+
+/* IndustryProblem: olive branch on left mid-height */
+.min-h-screen > *:nth-child(3)::before {
+  background-image: url("/assets/motifs/branch.svg");
+  left: -1.5rem;
+  top: 40%;
+  transform: rotate(4deg);
+}
+
+/* HarvestProduct: amphora near bottom-right */
+.min-h-screen > *:nth-child(4)::after {
+  background-image: url("/assets/motifs/amphora.svg");
+  right: -1rem;
+  bottom: 3rem;
+  transform: rotate(-2deg);
+}
+
+/* Testimonials: lyre on left side */
+.min-h-screen > *:nth-child(5)::before {
+  background-image: url("/assets/motifs/lyre.svg");
+  left: -1rem;
+  top: 20%;
+  transform: rotate(-3deg);
+  opacity: 0.07;
+}
+
+/* KleiaWay: column on right side */
+.min-h-screen > *:nth-child(7)::after {
+  background-image: url("/assets/motifs/column.svg");
+  right: -2rem;
+  top: 15%;
+  transform: rotate(2deg);
+}
+
+/* PolyphenolComparison: basket at bottom */
+.min-h-screen > *:nth-child(8)::before {
+  background-image: url("/assets/motifs/basket.svg");
+  left: 2rem;
+  bottom: 2rem;
+  transform: rotate(-4deg);
+  opacity: 0.06;
+}
+
+/* ---------- responsive guards ---------- */
+@media (max-width: 900px) {
+  :root {
+    --motif-size-vw: 18vw;    /* scale down slightly on tablets */
+  }
+  /* nudge motifs further into the margins on tighter layouts */
+  .min-h-screen > *:nth-child(2)::after { right: -3rem; top: 4rem; }
+  .min-h-screen > *:nth-child(3)::before { left: -2rem; }
+  .min-h-screen > *:nth-child(4)::after { right: -2rem; bottom: 2rem; }
+  .min-h-screen > *:nth-child(5)::before { left: -2rem; }
+  .min-h-screen > *:nth-child(7)::after { right: -3rem; }
+}
+
+@media (max-width: 640px) {
+  /* dim some motifs on phones to reduce visual clutter */
+  .min-h-screen > *:nth-child(3)::before { opacity: 0.05; }
+  .min-h-screen > *:nth-child(5)::before { opacity: 0.04; }
+  .min-h-screen > *:nth-child(8)::before { opacity: 0.04; }
+}
+
+/* respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .motif-after::after, 
+  .motif-before::before { 
+    transition: none; 
+  }
+}
