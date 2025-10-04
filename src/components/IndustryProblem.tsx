@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return (
     <section className="py-24 bg-[#1A431D]">
-      <div className="mx-auto px-4 w-[85vw]">
+      <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
           {/* Video Background */}
