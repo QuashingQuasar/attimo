@@ -23,7 +23,7 @@ export const IndustryProblem = () => {
           
           {/* Content */}
           <div className="relative z-10 py-20 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-20 max-w-5xl">
             <h2 className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight" style={{ color: '#9EEF80' }}>
@@ -52,7 +52,7 @@ export const IndustryProblem = () => {
           </div>
 
           {/* Problem Breakdown */}
-          <div className="grid md:grid-cols-3 gap-16 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-16 mx-auto">
             {/* Flavor and Health */}
             <div className="space-y-6">
               <div className="w-12 h-12 flex items-center justify-center">
