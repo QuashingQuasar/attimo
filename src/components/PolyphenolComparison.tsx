@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import patternBg from "@/assets/testimonial-pattern.svg";
 const tweets = [{
   id: 1,
   name: "Olive",
@@ -81,24 +80,10 @@ export const PolyphenolComparison = () => {
     color: "bg-olive-dark"
   }];
   const maxValue = Math.max(...comparisonData.map(item => item.value));
-  return <section 
-    className="py-24 snap-start min-h-screen flex items-center relative" 
-    style={{
-      backgroundColor: '#FFFAEA'
-    }}
-  >
-    {/* Pattern Background with Opacity */}
-    <div 
-      className="absolute inset-0" 
-      style={{
-        backgroundImage: `url(${patternBg})`,
-        backgroundSize: '600px 600px',
-        backgroundRepeat: 'repeat',
-        opacity: 0.25,
-        pointerEvents: 'none'
-      }}
-    />
-      <div className="container mx-auto px-6 relative z-10">
+  return <section className="py-24 snap-start min-h-screen flex items-center" style={{
+    backgroundColor: '#FFFAEA'
+  }}>
+      <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>
               <h2 className="text-4xl md:text-5xl font-light text-olive-dark mb-6 tracking-tight">

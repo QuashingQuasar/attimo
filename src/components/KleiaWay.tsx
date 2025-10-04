@@ -1,20 +1,8 @@
-import patternBg from "@/assets/testimonial-pattern.svg";
 
 export const KleiaWay = () => {
   return (
-    <section className="py-24 snap-start min-h-screen flex items-center relative" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
-      {/* Pattern Background with Opacity */}
-      <div 
-        className="absolute inset-0" 
-        style={{
-          backgroundImage: `url(${patternBg})`,
-          backgroundSize: '600px 600px',
-          backgroundRepeat: 'repeat',
-          opacity: 0.25,
-          pointerEvents: 'none'
-        }}
-      />
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+      <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
             How We Make Sure<br />
