@@ -164,18 +164,11 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
   }
-  
-  #root {
-    position: relative;
-    z-index: 1;
-  }
 
   h1, h2, h3, h4 {
     font-family: 'UDC Working Man Sans', sans-serif;
     @apply text-olive-dark;
     letter-spacing: -0.01em;
-    position: relative;
-    z-index: 1;
   }
   h1 { font-weight: 300; }
   h2 { font-weight: 300; }
@@ -209,42 +202,4 @@ All colors MUST be HSL.
   }
 }
 
-/* ========== MOTIF DECORATIONS ========== */
-:root {
-  /* tweak these in one place */
-  --motif-opacity: 0.08;          /* 0.06–0.12 */
-  --motif-size-min: 80px;
-  --motif-size-vw: 12vw;
-  --motif-size-max: 160px;
-}
-
-/* Ensure sections can position motifs */
-.min-h-screen > * { 
-  position: relative;
-  isolation: isolate;
-}
-
-/* ---------- motif utilities applied via pseudo ---------- */
-.motif-after::after,
-.motif-before::before {
-  content: "";
-  position: absolute;
-  width: clamp(var(--motif-size-min), var(--motif-size-vw), var(--motif-size-max));
-  aspect-ratio: 1 / 1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: var(--motif-opacity);
-  pointer-events: none;
-  mix-blend-mode: multiply; /* ink-on-paper feel on light bg */
-  z-index: 0;
-}
-
-/* show motifs only on light sections to protect contrast */
-.motif-after, .motif-before { isolation: isolate; }
-
-/* ---------- attach motifs to specific components ---------- */
-/* COMMENTED OUT - keeping for potential future use
-[Individual section motifs removed - now using site-wide pattern overlay]
-*/
 
