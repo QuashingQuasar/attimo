@@ -56,17 +56,17 @@ export const BrandPattern = ({
       icon: icons[i % icons.length],
       top: `${random() * 100}%`,
       left: `${random() * 100}%`,
-      size: 80 + random() * 120, // 80-200px
+      size: 100 + random() * 150, // 100-250px
       rotation: random() * 360,
-      opacity: variant === 'cream' ? 0.03 : 0.05,
+      opacity: variant === 'dark' || variant === 'green' ? 0.08 : 0.12,
     }));
   }, [iconCount, variant]);
 
   const filterClass = variant === 'dark' || variant === 'green' 
-    ? 'brightness-[3] saturate-0' 
+    ? 'brightness-[2] saturate-[0.3]' 
     : variant === 'cream'
-    ? 'brightness-[0.8] saturate-50'
-    : 'brightness-[0.5] saturate-50';
+    ? 'brightness-[0.7] saturate-[0.5]'
+    : 'brightness-[1.5] saturate-[0.4]';
 
   return (
     <div 
