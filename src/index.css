@@ -238,7 +238,7 @@ All colors MUST be HSL.
 
 /* ---------- attach motifs to specific components ---------- */
 
-/* Hero: sun in the top-right margin */
+/* Hero: sun in top-right, lady in bottom-left */
 .min-h-screen > *:nth-child(2)::after {
   content: "";
   position: absolute;
@@ -257,7 +257,25 @@ All colors MUST be HSL.
   z-index: 0;
 }
 
-/* IndustryProblem: olive branch on left mid-height */
+.min-h-screen > *:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  width: clamp(90px, 13vw, 170px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/lady.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  bottom: 8rem;
+  left: -2rem;
+  transform: rotate(3deg);
+  opacity: 0.08;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* IndustryProblem: branch on left, caraf on right */
 .min-h-screen > *:nth-child(3)::before {
   content: "";
   position: absolute;
@@ -276,7 +294,25 @@ All colors MUST be HSL.
   z-index: 0;
 }
 
-/* HarvestProduct: amphora near bottom-right */
+.min-h-screen > *:nth-child(3)::after {
+  content: "";
+  position: absolute;
+  width: clamp(95px, 13vw, 175px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/caraf.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  right: -1.5rem;
+  bottom: 5rem;
+  transform: rotate(-5deg);
+  opacity: 0.07;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* HarvestProduct: amphora on right, book on left */
 .min-h-screen > *:nth-child(4)::after {
   content: "";
   position: absolute;
@@ -295,7 +331,25 @@ All colors MUST be HSL.
   z-index: 0;
 }
 
-/* Testimonials: lyre on left side */
+.min-h-screen > *:nth-child(4)::before {
+  content: "";
+  position: absolute;
+  width: clamp(85px, 11vw, 155px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/book.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  left: -1.5rem;
+  top: 8rem;
+  transform: rotate(3deg);
+  opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* Testimonials: lyre on left, bread on right */
 .min-h-screen > *:nth-child(5)::before {
   content: "";
   position: absolute;
@@ -314,7 +368,25 @@ All colors MUST be HSL.
   z-index: 0;
 }
 
-/* KleiaWay: column on right side */
+.min-h-screen > *:nth-child(5)::after {
+  content: "";
+  position: absolute;
+  width: clamp(90px, 12vw, 165px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/bread.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  right: -1.5rem;
+  bottom: 6rem;
+  transform: rotate(4deg);
+  opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* KleiaWay: column on right, sun on left bottom */
 .min-h-screen > *:nth-child(7)::after {
   content: "";
   position: absolute;
@@ -333,7 +405,25 @@ All colors MUST be HSL.
   z-index: 0;
 }
 
-/* PolyphenolComparison: basket at bottom */
+.min-h-screen > *:nth-child(7)::before {
+  content: "";
+  position: absolute;
+  width: clamp(95px, 13vw, 175px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/sun.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  left: -2rem;
+  bottom: 8rem;
+  transform: rotate(-4deg);
+  opacity: 0.07;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* PolyphenolComparison: basket at bottom left, amphora top right */
 .min-h-screen > *:nth-child(8)::before {
   content: "";
   position: absolute;
@@ -347,6 +437,24 @@ All colors MUST be HSL.
   bottom: 2rem;
   transform: rotate(-4deg);
   opacity: 0.06;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.min-h-screen > *:nth-child(8)::after {
+  content: "";
+  position: absolute;
+  width: clamp(90px, 12vw, 165px);
+  aspect-ratio: 1 / 1;
+  background-image: url("/assets/motifs/amphora.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  right: -1rem;
+  top: 10rem;
+  transform: rotate(5deg);
+  opacity: 0.07;
   pointer-events: none;
   mix-blend-mode: multiply;
   z-index: 0;
