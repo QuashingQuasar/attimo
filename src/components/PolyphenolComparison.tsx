@@ -83,19 +83,6 @@ export const PolyphenolComparison = () => {
   return <section className="relative py-24 snap-start min-h-screen flex items-center" style={{
     backgroundColor: '#FFFAEA'
   }}>
-      {/* Floating Brand Motifs */}
-      <img 
-        src="/assets/motifs/mortar.svg" 
-        alt="" 
-        className="absolute top-16 left-12 opacity-[0.15] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(6deg)'
-        }}
-      />
-      
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>

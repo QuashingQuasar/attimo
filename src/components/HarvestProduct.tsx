@@ -54,30 +54,6 @@ export const HarvestProduct = () => {
 
   return (
     <section className="relative py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
-      {/* Floating Brand Motifs */}
-      <img 
-        src="/assets/motifs/amphora.svg" 
-        alt="" 
-        className="absolute top-20 left-12 opacity-[0.12] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(-4deg)'
-        }}
-      />
-      <img 
-        src="/assets/motifs/olive-branch.svg" 
-        alt="" 
-        className="absolute bottom-16 right-16 opacity-[0.15] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(5deg)'
-        }}
-      />
-      
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}

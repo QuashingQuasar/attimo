@@ -23,32 +23,6 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       {/* Cinematic Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
-      {/* Floating Brand Motifs */}
-      <img 
-        src="/assets/motifs/sun.svg" 
-        alt="" 
-        className="absolute top-16 right-20 opacity-[0.15] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(-6deg)',
-          filter: 'invert(1)'
-        }}
-      />
-      <img 
-        src="/assets/motifs/olive-branch.svg" 
-        alt="" 
-        className="absolute bottom-24 left-16 opacity-[0.18] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(4deg)',
-          filter: 'invert(1)'
-        }}
-      />
-      
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
         <div className="max-w-5xl mx-auto text-center">

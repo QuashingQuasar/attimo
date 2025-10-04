@@ -21,20 +21,6 @@ export const IndustryProblem = () => {
           {/* Dark Blur Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
           
-          {/* Floating Brand Motifs */}
-          <img 
-            src="/assets/motifs/mortar.svg" 
-            alt="" 
-            className="absolute top-12 right-12 opacity-[0.15] pointer-events-none"
-            style={{ 
-              width: 'clamp(80px, 12vw, 160px)',
-              height: 'clamp(80px, 12vw, 160px)',
-              mixBlendMode: 'multiply',
-              transform: 'rotate(6deg)',
-              filter: 'invert(1)'
-            }}
-          />
-          
           {/* Content */}
           <div className="relative z-10 py-20 px-12 md:px-20">
         <div className="mx-auto">

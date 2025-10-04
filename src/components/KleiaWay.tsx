@@ -1,30 +1,6 @@
 export const KleiaWay = () => {
   return (
     <section className="relative py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
-      {/* Floating Brand Motifs */}
-      <img 
-        src="/assets/motifs/column.svg" 
-        alt="" 
-        className="absolute top-20 right-16 opacity-[0.15] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(-5deg)'
-        }}
-      />
-      <img 
-        src="/assets/motifs/sun.svg" 
-        alt="" 
-        className="absolute bottom-24 left-12 opacity-[0.12] pointer-events-none"
-        style={{ 
-          width: 'clamp(80px, 12vw, 160px)',
-          height: 'clamp(80px, 12vw, 160px)',
-          mixBlendMode: 'multiply',
-          transform: 'rotate(3deg)'
-        }}
-      />
-      
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
