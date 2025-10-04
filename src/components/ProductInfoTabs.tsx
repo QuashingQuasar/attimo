@@ -8,25 +8,25 @@ export const ProductInfoTabs = () => {
           <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0 border-b border-olive-dark">
             <TabsTrigger 
               value="details" 
-              className="data-[state=active]:bg-[#4E5B2B] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
+              className="data-[state=active]:bg-[#1A431D] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
             >
               DETAILS
             </TabsTrigger>
             <TabsTrigger 
               value="flavor" 
-              className="data-[state=active]:bg-[#4E5B2B] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
+              className="data-[state=active]:bg-[#1A431D] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
             >
               FLAVOR
             </TabsTrigger>
             <TabsTrigger 
               value="harvest" 
-              className="data-[state=active]:bg-[#4E5B2B] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
+              className="data-[state=active]:bg-[#1A431D] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
             >
               HARVEST
             </TabsTrigger>
             <TabsTrigger 
               value="uses" 
-              className="data-[state=active]:bg-[#4E5B2B] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
+              className="data-[state=active]:bg-[#1A431D] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-4 py-3 h-auto"
             >
               USES
             </TabsTrigger>
