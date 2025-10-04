@@ -211,9 +211,6 @@ All colors MUST be HSL.
   --motif-size-max: 160px;
 }
 
-/* make sure components are positioning contexts */
-.min-h-screen > * { position: relative; }
-
 /* ---------- motif utilities applied via pseudo ---------- */
 .motif-after::after,
 .motif-before::before {
