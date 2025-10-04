@@ -1,20 +1,12 @@
 import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-
 export const IndustryProblem = () => {
-  return (
-    <section className="py-24 bg-[#1A431D] snap-start min-h-screen flex items-center">
+  return <section className="py-24 bg-[#1A431D] snap-start min-h-screen flex items-center">
       <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
           {/* Video Background */}
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
+          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
             <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
           </video>
           
@@ -26,10 +18,14 @@ export const IndustryProblem = () => {
         <div className="mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-20 max-w-5xl">
-            <h2 className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight" style={{ color: '#CDDB2D' }}>
+            <h2 className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight" style={{
+                color: '#1A431D'
+              }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
-             <p className="text-2xl md:text-3xl text-white/90 max-w-[60rem] leading-relaxed font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+             <p className="text-2xl md:text-3xl text-white/90 max-w-[60rem] leading-relaxed font-light" style={{
+                fontFamily: 'Space Grotesk, monospace'
+              }}>
                80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
              </p>
           </div>
@@ -38,14 +34,18 @@ export const IndustryProblem = () => {
           <div className="grid md:grid-cols-2 gap-12 mb-20">
             <div className="text-center p-12 border border-white/20 rounded-lg">
               <div className="text-7xl font-working-man font-light text-white mb-4">~80%</div>
-               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+               <p className="text-xl text-white/90 font-light leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace'
+                }}>
                  olive oils sold as "extra virgin" don't meet those standards
                </p>
             </div>
 
             <div className="text-center p-12 border border-white/20 rounded-lg">
               <div className="text-7xl font-working-man font-light text-white mb-4">~90%</div>
-               <p className="text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+               <p className="text-xl text-white/90 font-light leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace'
+                }}>
                  "extra virgin" olive oils are low in health-boosting polyphenols
                </p>
             </div>
@@ -58,10 +58,10 @@ export const IndustryProblem = () => {
               <div className="w-12 h-12 flex items-center justify-center">
                 <Blend className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
-                Flavour and health get blended away
-              </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">Flavour and health are blended away</h3>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace'
+                }}>
                  To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
                  fresh flavour, distinct character, and polyphenols that make it healthy.
                </p>
@@ -75,7 +75,9 @@ export const IndustryProblem = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 You've never tasted the real thing
               </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace'
+                }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
@@ -89,7 +91,9 @@ export const IndustryProblem = () => {
               <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                 Big oil kills family groves
               </h3>
-               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+               <p className="text-lg md:text-xl text-white/80 leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace'
+                }}>
                  Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
                  sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
                </p>
@@ -99,6 +103,5 @@ export const IndustryProblem = () => {
         </div>
       </div>
       </div>
-    </section>
-  );
+    </section>;
 };
