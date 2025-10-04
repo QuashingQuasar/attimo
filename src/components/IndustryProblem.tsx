@@ -1,5 +1,6 @@
 import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import patternBg from "@/assets/testimonial-pattern.svg";
 
 export const IndustryProblem = () => {
   return (
@@ -20,6 +21,17 @@ export const IndustryProblem = () => {
           
           {/* Dark Blur Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          
+          {/* Pattern Overlay */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${patternBg})`,
+              backgroundSize: '600px 600px',
+              backgroundRepeat: 'repeat',
+              opacity: 0.25
+            }}
+          ></div>
           
           {/* Content */}
           <div className="relative z-10 py-20 px-12 md:px-20">
