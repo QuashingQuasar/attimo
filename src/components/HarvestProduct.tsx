@@ -4,7 +4,6 @@ import { Star } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
-import patternBg from "@/assets/testimonial-pattern.svg";
 
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
@@ -54,18 +53,8 @@ export const HarvestProduct = () => {
   ] as const;
 
   return (
-    <section className="py-24 snap-start min-h-screen flex items-center relative" style={{ backgroundColor: '#FFFAEA' }}>
-      {/* Pattern Overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `url(${patternBg})`,
-          backgroundSize: '600px 600px',
-          backgroundRepeat: 'repeat',
-          opacity: 0.25
-        }}
-      />
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
+      <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
           <div className="flex justify-center">
