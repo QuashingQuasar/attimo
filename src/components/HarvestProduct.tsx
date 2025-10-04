@@ -58,7 +58,7 @@ export const HarvestProduct = () => {
       <img 
         src="/assets/motifs/amphora.svg" 
         alt="" 
-        className="absolute top-20 left-12 opacity-[0.06] pointer-events-none"
+        className="absolute top-20 left-12 opacity-[0.12] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',
@@ -69,7 +69,7 @@ export const HarvestProduct = () => {
       <img 
         src="/assets/motifs/olive-branch.svg" 
         alt="" 
-        className="absolute bottom-16 right-16 opacity-[0.08] pointer-events-none"
+        className="absolute bottom-16 right-16 opacity-[0.15] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',

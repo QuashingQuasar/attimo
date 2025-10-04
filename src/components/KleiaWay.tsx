@@ -5,7 +5,7 @@ export const KleiaWay = () => {
       <img 
         src="/assets/motifs/column.svg" 
         alt="" 
-        className="absolute top-20 right-16 opacity-[0.07] pointer-events-none"
+        className="absolute top-20 right-16 opacity-[0.15] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',
@@ -16,7 +16,7 @@ export const KleiaWay = () => {
       <img 
         src="/assets/motifs/sun.svg" 
         alt="" 
-        className="absolute bottom-24 left-12 opacity-[0.06] pointer-events-none"
+        className="absolute bottom-24 left-12 opacity-[0.12] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',

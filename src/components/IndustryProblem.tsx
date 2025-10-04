@@ -25,7 +25,7 @@ export const IndustryProblem = () => {
           <img 
             src="/assets/motifs/mortar.svg" 
             alt="" 
-            className="absolute top-12 right-12 opacity-[0.07] pointer-events-none"
+            className="absolute top-12 right-12 opacity-[0.15] pointer-events-none"
             style={{ 
               width: 'clamp(80px, 12vw, 160px)',
               height: 'clamp(80px, 12vw, 160px)',

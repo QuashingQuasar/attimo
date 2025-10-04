@@ -27,7 +27,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       <img 
         src="/assets/motifs/sun.svg" 
         alt="" 
-        className="absolute top-16 right-20 opacity-[0.06] pointer-events-none"
+        className="absolute top-16 right-20 opacity-[0.15] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',
@@ -39,7 +39,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       <img 
         src="/assets/motifs/olive-branch.svg" 
         alt="" 
-        className="absolute bottom-24 left-16 opacity-[0.08] pointer-events-none"
+        className="absolute bottom-24 left-16 opacity-[0.18] pointer-events-none"
         style={{ 
           width: 'clamp(80px, 12vw, 160px)',
           height: 'clamp(80px, 12vw, 160px)',
