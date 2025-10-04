@@ -244,7 +244,7 @@ All colors MUST be HSL.
 /* ========== SITE-WIDE PATTERN OVERLAY ========== */
 :root {
   /* tweak these to taste */
-  --pattern-opacity: 0.08;      /* subtle but visible */
+  --pattern-opacity: 0.25;      /* much more visible */
   --pattern-rotate: -2deg;      /* tiny tilt breaks grid */
   --pattern-sat: 100%;          /* set to 0% if you want pure mono */
 }
