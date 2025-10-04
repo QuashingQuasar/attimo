@@ -12,7 +12,8 @@ export const IndustryProblem = () => {
           backgroundImage: `url(${patternBg})`,
           backgroundSize: '600px 600px',
           backgroundRepeat: 'repeat',
-          opacity: 0.25
+          opacity: 0.2,
+          filter: 'invert(1)'
         }}
       ></div>
       
