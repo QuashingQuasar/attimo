@@ -13,7 +13,7 @@ export const IndustryProblem = () => {
           backgroundSize: '600px 600px',
           backgroundRepeat: 'repeat',
           opacity: 0.2,
-          filter: 'invert(1)'
+          filter: 'brightness(0)'
         }}
       ></div>
       
