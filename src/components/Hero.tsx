@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { OliveLeaf } from './OliveLeaf';
-import { BrandPattern } from './BrandPattern';
 import kleiaLogo from '@/assets/kleia-logo-updated.svg';
 
 interface HeroProps {
@@ -23,9 +22,6 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       
       {/* Cinematic Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
-      
-      {/* Brand Pattern */}
-      <BrandPattern variant="light" density="sparse" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
