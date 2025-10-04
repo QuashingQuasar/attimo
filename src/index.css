@@ -161,8 +161,15 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: var(--font-sans);
+    background: transparent;
+  }
+  
+  #root {
+    @apply bg-background;
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4 {
