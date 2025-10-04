@@ -26,7 +26,7 @@ export const IndustryProblem = () => {
         <div className="mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-20 max-w-5xl">
-            <h2 className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight" style={{ color: '#B3E58C' }}>
+            <h2 className="text-5xl md:text-7xl font-light mb-8 leading-tight tracking-tight" style={{ color: '#1A431D' }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
              <p className="text-2xl md:text-3xl text-white/90 max-w-[60rem] leading-relaxed font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
