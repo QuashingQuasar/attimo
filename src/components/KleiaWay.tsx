@@ -1,25 +1,28 @@
-import oliveTreeIcon from '@/assets/brand-icons/olive-tree.svg';
-import basketIcon from '@/assets/brand-icons/basket.svg';
-import meanderPattern2 from '@/assets/brand-icons/meander-pattern-2.svg';
-
 export const KleiaWay = () => {
   return (
     <section className="relative py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
-      {/* Subtle Background Patterns */}
+      {/* Floating Brand Motifs */}
       <img 
-        src={oliveTreeIcon} 
+        src="/assets/motifs/column.svg" 
         alt="" 
-        className="absolute top-16 right-20 w-28 h-28 opacity-5 pointer-events-none"
+        className="absolute top-20 right-16 opacity-[0.07] pointer-events-none"
+        style={{ 
+          width: 'clamp(80px, 12vw, 160px)',
+          height: 'clamp(80px, 12vw, 160px)',
+          mixBlendMode: 'multiply',
+          transform: 'rotate(-5deg)'
+        }}
       />
       <img 
-        src={basketIcon} 
+        src="/assets/motifs/sun.svg" 
         alt="" 
-        className="absolute bottom-20 left-16 w-24 h-24 opacity-5 pointer-events-none"
-      />
-      <img 
-        src={meanderPattern2} 
-        alt="" 
-        className="absolute top-1/2 left-10 w-32 h-32 opacity-5 pointer-events-none transform -translate-y-1/2"
+        className="absolute bottom-24 left-12 opacity-[0.06] pointer-events-none"
+        style={{ 
+          width: 'clamp(80px, 12vw, 160px)',
+          height: 'clamp(80px, 12vw, 160px)',
+          mixBlendMode: 'multiply',
+          transform: 'rotate(3deg)'
+        }}
       />
       
       <div className="container mx-auto px-6">

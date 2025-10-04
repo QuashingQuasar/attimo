@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OliveLeaf } from './OliveLeaf';
 import kleiaLogo from '@/assets/kleia-logo-updated.svg';
-import meanderPattern1 from '@/assets/brand-icons/meander-pattern-1.svg';
-import lyreIcon from '@/assets/brand-icons/lyre.svg';
 
 interface HeroProps {
   onWaitlistClick: () => void;
@@ -25,18 +23,30 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
       {/* Cinematic Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
-      {/* Subtle Background Patterns */}
+      {/* Floating Brand Motifs */}
       <img 
-        src={meanderPattern1} 
+        src="/assets/motifs/sun.svg" 
         alt="" 
-        className="absolute top-20 left-10 w-32 h-32 opacity-10 pointer-events-none"
-        style={{ filter: 'invert(1)' }}
+        className="absolute top-16 right-20 opacity-[0.06] pointer-events-none"
+        style={{ 
+          width: 'clamp(80px, 12vw, 160px)',
+          height: 'clamp(80px, 12vw, 160px)',
+          mixBlendMode: 'multiply',
+          transform: 'rotate(-6deg)',
+          filter: 'invert(1)'
+        }}
       />
       <img 
-        src={lyreIcon} 
+        src="/assets/motifs/olive-branch.svg" 
         alt="" 
-        className="absolute bottom-32 right-16 w-24 h-24 opacity-10 pointer-events-none"
-        style={{ filter: 'invert(1)' }}
+        className="absolute bottom-24 left-16 opacity-[0.08] pointer-events-none"
+        style={{ 
+          width: 'clamp(80px, 12vw, 160px)',
+          height: 'clamp(80px, 12vw, 160px)',
+          mixBlendMode: 'multiply',
+          transform: 'rotate(4deg)',
+          filter: 'invert(1)'
+        }}
       />
       
       {/* Content */}
