@@ -3,23 +3,26 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Video Background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Dark Blur Overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-      
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4">
+    <section className="py-24 bg-background">
+      <div className="container mx-auto px-4">
+        {/* Contained section with video background */}
+        <div className="relative overflow-hidden rounded-3xl">
+          {/* Video Background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Dark Blur Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 py-20 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-20 max-w-5xl">
@@ -91,8 +94,10 @@ export const IndustryProblem = () => {
                  sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
                </p>
             </div>
+            </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
