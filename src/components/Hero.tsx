@@ -39,7 +39,7 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
           <div className="flex justify-center mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button 
               className="px-10 py-6 hover:scale-105 transition-all duration-300 font-semibold rounded-full backdrop-blur-sm shadow-2xl text-lg"
-              style={{ fontFamily: 'Space Grotesk, monospace', border: '2px solid #CDDB2D', color: '#1A431D', backgroundColor: '#CDDB2D' }}
+              style={{ fontFamily: 'Space Grotesk, monospace', border: '2px solid #CDDB2D', color: '#1B4229', backgroundColor: '#CDDB2D' }}
             >
               Shop 2024 harvest
             </Button>
@@ -56,20 +56,20 @@ export const Hero = ({ onWaitlistClick }: HeroProps) => {
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => (
             <div key={i} className="flex items-center whitespace-nowrap">
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>PREMIUM QUALITY</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>DIRECT FROM GROVES</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>LAB TESTED</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>FRESH HARVEST</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>TRACEABLE</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>ARTISANAL</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
-              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1A431D' }}>SMALL BATCH</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1A431D" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>PREMIUM QUALITY</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>DIRECT FROM GROVES</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>LAB TESTED</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>FRESH HARVEST</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>TRACEABLE</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>ARTISANAL</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <span className="font-working-man-light font-bold text-xl md:text-3xl tracking-[0.15em]" style={{ color: '#1B4229' }}>SMALL BATCH</span>
+              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
             </div>
           ))}
         </div>

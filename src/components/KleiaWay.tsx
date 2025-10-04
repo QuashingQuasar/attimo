@@ -4,7 +4,7 @@ export const KleiaWay = () => {
     <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1A431D' }}>
+          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
           </h2>
@@ -25,7 +25,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1A431D', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FROM GROVE TO TABLE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
@@ -48,7 +48,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1A431D', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>LAB-TESTED QUALITY</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
@@ -71,7 +71,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1A431D', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FRESH AND SINGLE-GROVE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
