@@ -1,7 +1,27 @@
+import oliveTreeIcon from '@/assets/brand-icons/olive-tree.svg';
+import basketIcon from '@/assets/brand-icons/basket.svg';
+import meanderPattern2 from '@/assets/brand-icons/meander-pattern-2.svg';
 
 export const KleiaWay = () => {
   return (
-    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="relative py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+      {/* Subtle Background Patterns */}
+      <img 
+        src={oliveTreeIcon} 
+        alt="" 
+        className="absolute top-16 right-20 w-28 h-28 opacity-5 pointer-events-none"
+      />
+      <img 
+        src={basketIcon} 
+        alt="" 
+        className="absolute bottom-20 left-16 w-24 h-24 opacity-5 pointer-events-none"
+      />
+      <img 
+        src={meanderPattern2} 
+        alt="" 
+        className="absolute top-1/2 left-10 w-32 h-32 opacity-5 pointer-events-none transform -translate-y-1/2"
+      />
+      
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
