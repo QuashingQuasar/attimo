@@ -47,7 +47,7 @@ export const Testimonials = () => {
       style={{ 
         backgroundColor: '#9EEF80',
         backgroundImage: `url(${patternBg})`,
-        backgroundSize: '350px 350px',
+        backgroundSize: '600px 600px',
         backgroundRepeat: 'repeat'
       }}
     >
