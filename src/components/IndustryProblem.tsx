@@ -22,7 +22,7 @@ export const IndustryProblem = () => {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
           
           {/* Content */}
-          <div className="relative z-10 py-20 px-6 md:px-12">
+          <div className="relative z-10 py-20 px-12 md:px-20">
         <div className="mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-20 max-w-5xl">
