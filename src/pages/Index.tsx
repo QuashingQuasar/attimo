@@ -7,7 +7,6 @@ import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { BrandIconGrid } from "@/components/BrandIconGrid";
 
 const Index = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
@@ -17,7 +16,6 @@ const Index = () => {
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
-      <BrandIconGrid />
       <HarvestProduct />
       <Testimonials />
       <hr className="section-separator" />
