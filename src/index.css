@@ -161,20 +161,13 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    background-color: hsl(var(--background));
-    position: relative;
   }
   
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background: red;
-    opacity: 0.5;
+  #root {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4 {
@@ -267,54 +260,10 @@ All colors MUST be HSL.
 #site-pattern {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 999999;
   pointer-events: none;
-  opacity: var(--pattern-opacity);
-  transform: rotate(var(--pattern-rotate));
-  transform-origin: center;
-  filter: saturate(var(--pattern-sat));
-  /* 11 layered, repeating backgrounds */
-  background-image:
-    url("/assets/motifs/sun.svg"),
-    url("/assets/motifs/branch.svg"),
-    url("/assets/motifs/amphora.svg"),
-    url("/assets/motifs/column.svg"),
-    url("/assets/motifs/lyre.svg"),
-    url("/assets/motifs/basket.svg"),
-    url("/assets/motifs/bread.svg"),
-    url("/assets/motifs/book.svg"),
-    url("/assets/motifs/caraf.svg"),
-    url("/assets/motifs/lady.svg"),
-    url("/assets/motifs/mortar.svg");
-  /* each layer repeats; vary sizes to avoid a visible grid */
-  background-repeat:
-    repeat, repeat, repeat, repeat, repeat, repeat,
-    repeat, repeat, repeat, repeat, repeat;
-  /* tune these: larger = sparser; mix sizes for organic feel */
-  background-size:
-    28rem, 22rem, 26rem, 30rem, 34rem, 32rem,
-    24rem, 20rem, 24rem, 22rem, 26rem;
-  /* stagger starting offsets so the repeats don't align */
-  background-position:
-    0 0,
-    12rem 6rem,
-    -8rem 16rem,
-    24rem -12rem,
-    -20rem -6rem,
-    6rem 28rem,
-    -14rem 10rem,
-    30rem 18rem,
-    -26rem -18rem,
-    18rem -26rem,
-    -32rem 22rem;
-  /* keeps SVGs crisp when scaled */
-  background-clip: padding-box;
-}
-
-/* ensure content sits above */
-body > *:not(#site-pattern) { 
-  position: relative; 
-  z-index: 1; 
+  background: red;
+  opacity: 0.5;
 }
 
 /* small screens: make the texture a touch lighter & sparser */
