@@ -238,43 +238,6 @@ All colors MUST be HSL.
 
 /* ---------- attach motifs to specific components ---------- */
 
-/* Hero: sun in top-right, lady in bottom-left */
-.min-h-screen > *:nth-child(2)::after {
-  content: "";
-  position: absolute;
-  width: clamp(100px, 14vw, 180px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/sun.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  top: 6rem;
-  right: -2rem;
-  transform: rotate(-6deg);
-  opacity: 0.10;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
-.min-h-screen > *:nth-child(2)::before {
-  content: "";
-  position: absolute;
-  width: clamp(90px, 13vw, 170px);
-  aspect-ratio: 1 / 1;
-  background-image: url("/assets/motifs/lady.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  bottom: 8rem;
-  left: -2rem;
-  transform: rotate(3deg);
-  opacity: 0.08;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 0;
-}
-
 /* IndustryProblem: branch on left, caraf on right */
 .min-h-screen > *:nth-child(3)::before {
   content: "";
