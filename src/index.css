@@ -161,18 +161,8 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: var(--font-sans);
-    background-color: hsl(var(--cream));
-    background-image: url('/patterns/greek-motif-pattern.svg');
-    background-repeat: repeat;
-    background-size: 600px;
-    background-attachment: fixed;
-  }
-  
-  #root {
-    position: relative;
-    z-index: 1;
   }
 
   h1, h2, h3, h4 {
@@ -211,5 +201,3 @@ All colors MUST be HSL.
     transform: rotateY(180deg);
   }
 }
-
-

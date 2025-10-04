@@ -53,7 +53,7 @@ export const HarvestProduct = () => {
   ] as const;
 
   return (
-    <section className="relative py-24 snap-start min-h-screen flex items-center bg-transparent">
+    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Product Image */}
