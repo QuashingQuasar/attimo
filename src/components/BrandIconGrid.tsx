@@ -1,13 +1,5 @@
-import sunIcon from '@/assets/brand-icons/sun.svg';
-import breadIcon from '@/assets/brand-icons/bread.svg';
-import mortarIcon from '@/assets/brand-icons/mortar.svg';
-import femaleBustIcon from '@/assets/brand-icons/female-bust.svg';
-import amphoraIcon from '@/assets/brand-icons/amphora.svg';
-import oliveBranchIcon from '@/assets/brand-icons/olive-branch.svg';
-import farmIcon from '@/assets/brand-icons/farm.svg';
-import columnIcon from '@/assets/brand-icons/column.svg';
-import jarIcon from '@/assets/brand-icons/jar.svg';
-import bookIcon from '@/assets/brand-icons/book.svg';
+import meanderPattern1 from '@/assets/brand-icons/meander-pattern-1.svg';
+import meanderPattern2 from '@/assets/brand-icons/meander-pattern-2.svg';
 import lyreIcon from '@/assets/brand-icons/lyre.svg';
 import basketIcon from '@/assets/brand-icons/basket.svg';
 import donkeyIcon from '@/assets/brand-icons/donkey.svg';
@@ -15,20 +7,12 @@ import oliveTreeIcon from '@/assets/brand-icons/olive-tree.svg';
 
 export const BrandIconGrid = () => {
   const icons = [
-    sunIcon,
-    oliveBranchIcon,
-    amphoraIcon,
     oliveTreeIcon,
-    farmIcon,
-    breadIcon,
-    mortarIcon,
-    jarIcon,
-    columnIcon,
-    femaleBustIcon,
     lyreIcon,
     basketIcon,
     donkeyIcon,
-    bookIcon,
+    meanderPattern1,
+    meanderPattern2,
   ];
 
   return (
@@ -43,7 +27,7 @@ export const BrandIconGrid = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-7 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-6 gap-8 max-w-4xl mx-auto">
           {icons.map((icon, index) => (
             <div
               key={index}
