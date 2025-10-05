@@ -65,20 +65,20 @@ export const HarvestProduct = () => {
     avg: "avg. ~0.8%",
     description: "lower = fresher olives and higher quality"
   }] as const;
-  return <section className="py-4 md:py-8 min-h-screen snap-start flex items-start" style={{
+  return <section className="min-h-screen snap-start flex items-start" style={{
     backgroundColor: '#FFFAEA'
   }}>
-      <div className="w-full h-full flex items-start py-8">
+      <div className="w-full h-full flex items-start">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Product Image */}
           <div className="flex justify-center items-start lg:pl-0">
-            <div className="w-full h-full rounded-r-2xl overflow-hidden bg-olive-light/10">
+            <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10">
               <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Product Details */}
-          <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6">
+          <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
