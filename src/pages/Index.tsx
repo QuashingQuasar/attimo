@@ -6,6 +6,7 @@ import { HarvestProduct } from "@/components/HarvestProduct";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
       <hr className="section-separator" />
       <Testimonials />
       <PolyphenolComparison />
+      <FAQ />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
