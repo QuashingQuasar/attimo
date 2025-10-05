@@ -144,9 +144,9 @@ export const PolyphenolComparison = () => {
                    <div className="bg-accent rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
                      <div className="grid grid-cols-3 h-full divide-x divide-olive-dark/10">
                        {visibleTweets.map((tweet, index) => {
-                    const bgColors = ['bg-accent/90', 'bg-accent/80', 'bg-accent/70'];
+                    const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
                     const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
-                    return <div key={tweet.id} className={`${bgColors[index]} p-6 flex flex-col justify-between h-full min-h-96`}>
+                    return <div key={tweet.id} className={`p-6 flex flex-col justify-between h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
                              {/* Profile Header */}
                              <div className="flex items-center mb-6">
                                <div className={`w-12 h-12 bg-olive-dark/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
