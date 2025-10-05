@@ -38,8 +38,8 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  // Duplicate testimonials for seamless loop
-  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  // Duplicate testimonials for seamless loop (2x is enough for infinite scroll effect)
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section 
@@ -61,9 +61,10 @@ export const Testimonials = () => {
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
           <div 
-            className="flex gap-6 animate-[marquee_60s_linear_infinite]"
+            className="flex gap-6"
             style={{
-              width: `${duplicatedTestimonials.length * 400}px`
+              width: `${duplicatedTestimonials.length * 400}px`,
+              animation: 'marquee 40s linear infinite'
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
