@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { useState } from "react";
-import oliveOilPlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
+import oliveOilPlaceholder from "@/assets/olive-oil-bottle-temp.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
