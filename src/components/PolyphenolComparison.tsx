@@ -133,11 +133,11 @@ export const PolyphenolComparison = () => {
                 <div className="relative">
                   {/* Navigation Arrows - Outside the content area */}
                   <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentIndex === 0} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-12 w-12 -translate-x-16">
-                    <ChevronLeft className="h-5 w-5" />
+                    <ChevronLeft className="h-8 w-8" />
                   </Button>
 
                   <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentIndex >= maxIndex} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-12 w-12 translate-x-16">
-                    <ChevronRight className="h-5 w-5" />
+                    <ChevronRight className="h-8 w-8" />
                   </Button>
 
                    {/* Tweet Cards - Unified Tile */}
