@@ -81,7 +81,7 @@ export const HarvestProduct = () => {
           <div className="space-y-4 max-h-[85vh] overflow-y-auto pr-2">
             <header>
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant="secondary" className="bg-olive-light/20 text-olive-dark">
+                <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
                   2024 HARVEST
                 </Badge>
                 <Badge variant="secondary" className="bg-gold/20 text-gold-dark">
