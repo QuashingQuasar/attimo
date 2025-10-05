@@ -12,7 +12,7 @@ const Index = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
-    <div className="min-h-screen snap-y snap-proximity overflow-y-scroll h-screen">
+    <div className="min-h-screen snap-y snap-mandatory overflow-y-scroll h-screen">
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
