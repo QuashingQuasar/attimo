@@ -69,19 +69,17 @@ export const HarvestProduct = () => {
     backgroundColor: '#FFFAEA'
   }}>
       <div className="container mx-auto px-4 md:px-6 h-full flex items-center">
-        <div className="max-w-7xl mx-auto w-full">
-          {/* Mobile/Tablet Layout - Vertical */}
-          <div className="lg:hidden space-y-4">
-            {/* Product Image Mobile */}
-            <div className="flex justify-center py-4">
-              <div className="w-full max-w-sm h-[40vh] rounded-2xl overflow-hidden bg-olive-light/10">
-                <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-contain" />
-              </div>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center w-full">
+          {/* Product Image */}
+          <div className="flex justify-center max-h-[40vh] lg:max-h-[85vh]">
+            <div className="w-full max-w-sm lg:max-w-lg h-full rounded-2xl overflow-hidden bg-olive-light/10">
+              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-contain" />
             </div>
+          </div>
 
-            {/* Product Details Mobile */}
-            <div className="space-y-3 overflow-y-auto max-h-[50vh]">
-              <header>
+          {/* Product Details */}
+          <div className="space-y-3 md:space-y-4 max-h-[85vh] overflow-y-auto pr-2">
+            <header>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
                   2024 HARVEST
@@ -175,115 +173,7 @@ export const HarvestProduct = () => {
 
             {/* Product Information Tabs */}
             <ProductInfoTabs />
-            </div>
-          </div>
 
-          {/* Desktop Layout - Horizontal */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center w-full">
-            {/* Product Image Desktop */}
-            <div className="flex justify-center h-full max-h-[85vh]">
-              <div className="w-full max-w-lg h-full rounded-2xl overflow-hidden bg-olive-light/10">
-                <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-contain" />
-              </div>
-            </div>
-
-            {/* Product Details Desktop */}
-            <div className="space-y-4 max-h-[85vh] overflow-y-auto pr-2">
-              <header>
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
-                    2024 HARVEST
-                  </Badge>
-                  <Badge variant="secondary" className="bg-gold/20 text-gold-dark">
-                    LAST BOTTLES
-                  </Badge>
-                </div>
-                
-                <h1 className="text-2xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
-                
-                <p className="text-base md:text-xl text-olive-medium mb-2" style={{
-                fontFamily: 'Space Grotesk, monospace'
-              }}>High-Polyphenol Extra Virgin Olive Oil</p>
-              </header>
-
-              {/* Key Benefits */}
-              <div className="space-y-2">
-                <ul className="space-y-2 text-olive-medium text-base" style={{
-                fontFamily: 'Space Grotesk, monospace'
-              }}>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                    <span>5x more antioxidant polyphenols than average EVOO</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Third-party lab tested for quality and purity</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                    <span>Directly sourced from a small family farm in Alentejo, Portugal</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Quantity Selection */}
-              <div className="space-y-2">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-                  {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} className={`p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
-                      <div className="font-semibold text-sm mb-1" style={{
-                    fontFamily: 'Space Grotesk, monospace'
-                  }}>{option.label}</div>
-                      {option.subtitle && <div className={`text-xs ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{
-                    fontFamily: 'Space Grotesk, monospace'
-                  }}>
-                          {option.subtitle}
-                        </div>}
-                    </button>)}
-                </div>
-              </div>
-
-              {/* Add to Cart Button */}
-              <Button className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 text-base h-auto rounded-xl" style={{
-              fontFamily: 'Space Grotesk, monospace',
-              backgroundColor: '#CDDB2D'
-            }}>
-                Add to cart - €{selectedOption?.price}
-              </Button>
-
-              {/* Lab Values Grid */}
-              <div className="grid grid-cols-2 gap-3">
-                {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-white">
-                    <div className="px-3 py-1.5" style={{
-                  backgroundColor: '#1B4229'
-                }}>
-                      <div className="text-xs font-semibold uppercase tracking-wide" style={{
-                    color: '#FFFFFF'
-                  }}>
-                        {tile.label}
-                      </div>
-                    </div>
-                    <div className="p-3">
-                      <div className="flex items-baseline gap-2 mb-1">
-                        <div className="text-2xl font-bold text-olive-dark leading-none" style={{
-                      fontFamily: 'UDC Working Man Sans, sans-serif'
-                    }}>
-                          {tile.value}
-                          {tile.unit && <span className="text-base ml-1 text-olive-dark/90">{tile.unit}</span>}
-                        </div>
-                        <div className="text-sm text-olive-light" style={{
-                      fontFamily: 'Space Grotesk, monospace'
-                    }}>{tile.avg}</div>
-                      </div>
-                      <p className="text-sm text-olive-medium/80 leading-relaxed" style={{
-                    fontFamily: 'Space Grotesk, monospace'
-                  }}>{tile.description}</p>
-                    </div>
-                  </div>)}
-              </div>
-
-              {/* Product Information Tabs */}
-              <ProductInfoTabs />
-            </div>
           </div>
         </div>
       </div>
