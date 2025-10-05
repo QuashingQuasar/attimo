@@ -75,9 +75,8 @@ export const OilComparison = () => {
                     }}
                   >
                     {/* Feature Column */}
-                    <td className="py-6 px-8 text-xl" style={{ 
-                      color: '#1B4229',
-                      fontFamily: 'Space Grotesk, monospace'
+                    <td className="py-6 px-8 text-xl font-working-man" style={{ 
+                      color: '#1B4229'
                     }}>
                       {row.feature}
                     </td>
