@@ -12,12 +12,24 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    const scrollContainer = document.querySelector('.overflow-y-scroll');
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = scrollContainer?.scrollTop || window.scrollY;
+      setIsScrolled(scrollY > 50);
     };
 
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleScroll);
+    }
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleScroll);
+      }
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
