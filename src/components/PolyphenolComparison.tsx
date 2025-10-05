@@ -109,10 +109,10 @@ export const PolyphenolComparison = () => {
                        </div>
                        {/* Line */}
                        <div 
-                         className={`h-16 transition-all duration-700 ease-out ${
+                         className={`h-[3px] transition-all duration-700 ease-out ${
                            isDarkest 
                              ? 'bg-olive-dark' 
-                             : 'bg-cream border-2 border-dashed border-olive-dark'
+                             : 'border-t-2 border-dashed border-olive-dark'
                          }`} 
                          style={{
                            width: `${widthPercent}%`,
