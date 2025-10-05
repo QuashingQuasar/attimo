@@ -69,16 +69,16 @@ export const HarvestProduct = () => {
     backgroundColor: '#FFFAEA'
   }}>
       <div className="container mx-auto px-4 md:px-6 h-full flex items-center">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full" style={{ alignItems: 'start' }}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start w-full">
           {/* Product Image */}
-          <div className="flex justify-center h-[45vh] md:h-[70vh] lg:h-[85vh]">
-            <div className="w-full max-w-sm lg:max-w-lg h-full rounded-2xl overflow-hidden bg-olive-light/10 flex items-center justify-center p-4">
-              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-contain" />
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm lg:max-w-lg rounded-2xl overflow-hidden bg-olive-light/10">
+              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-auto object-contain" />
             </div>
           </div>
 
           {/* Product Details */}
-          <div className="space-y-3 md:space-y-4 md:max-h-[70vh] lg:max-h-[85vh] overflow-y-auto pr-2">
+          <div className="space-y-3 md:space-y-4 pr-2">
             <header>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
