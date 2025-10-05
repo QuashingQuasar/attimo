@@ -172,7 +172,7 @@ export const PolyphenolComparison = () => {
 
                              {/* Icon Footer */}
                              <div className="flex items-center justify-center mt-6">
-                               <div className={`w-24 h-24 flex items-center justify-center`}>
+                               <div className={`w-[115px] h-[115px] flex items-center justify-center`}>
                                  <img 
                                    src={icons[currentIndex + index]} 
                                    alt="icon" 
