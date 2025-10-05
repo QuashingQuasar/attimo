@@ -155,19 +155,7 @@ export const PolyphenolComparison = () => {
                       '/icons/sun-2.svg',
                       '/icons/mortar.svg'
                     ];
-                    return <div key={tweet.id} className={`p-6 flex flex-col justify-between h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
-                             {/* Icon Header */}
-                             <div className="flex items-center justify-start mb-6">
-                               <div className={`w-20 h-20 flex items-center justify-center`}>
-                                 <img 
-                                   src={icons[currentIndex + index]} 
-                                   alt="icon" 
-                                   className="w-full h-full object-contain"
-                                   style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }}
-                                 />
-                               </div>
-                             </div>
-
+                    return <div key={tweet.id} className={`p-6 flex flex-col h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
                               {/* Tweet Content */}
                               <div className="space-y-4 flex-grow">
                                 <p className={`${textColors[index]} leading-relaxed font-medium`} style={{
@@ -180,6 +168,18 @@ export const PolyphenolComparison = () => {
                         }}>
                                   {tweet.content2}
                                 </p>
+                             </div>
+
+                             {/* Icon Footer */}
+                             <div className="flex items-center justify-center mt-6">
+                               <div className={`w-20 h-20 flex items-center justify-center`}>
+                                 <img 
+                                   src={icons[currentIndex + index]} 
+                                   alt="icon" 
+                                   className="w-full h-full object-contain"
+                                   style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }}
+                                 />
+                               </div>
                              </div>
                           </div>;
                   })}
