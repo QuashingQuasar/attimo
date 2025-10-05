@@ -12,10 +12,10 @@ export const KleiaWay = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[750px]">
           {/* Top row, col 1 - Not Blended (text) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#CDDB2D', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#CDDB2D' }}>FROM GROVE TO TABLE</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
+              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>FROM GROVE TO TABLE</h4>
+              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
@@ -35,10 +35,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#CDDB2D', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#CDDB2D' }}>LAB-TESTED QUALITY</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
+              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>LAB-TESTED QUALITY</h4>
+              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
@@ -58,10 +58,10 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#CDDB2D', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#CDDB2D' }}>FRESH AND SINGLE-GROVE</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
+              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>FRESH AND SINGLE-GROVE</h4>
+              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
                 Every bottle is from the latest harvest and is sourced from just one grove.
               </p>
             </div>
