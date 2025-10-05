@@ -147,7 +147,7 @@ export const PolyphenolComparison = () => {
                     const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
                     const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
                     const icons = [
-                      '/icons/amphora-2.svg',
+                      '/icons/lady-2.svg',
                       '/icons/basket-2.svg', 
                       '/icons/bread-2.svg',
                       '/icons/caraf-2.svg',
