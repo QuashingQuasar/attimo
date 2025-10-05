@@ -145,7 +145,7 @@ export const HarvestProduct = () => {
 
             {/* Lab Values Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-white">
+              {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
                   <div className="px-3 py-1.5" style={{
                 backgroundColor: '#1B4229'
               }}>
