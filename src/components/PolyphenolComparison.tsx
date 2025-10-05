@@ -91,28 +91,29 @@ export const PolyphenolComparison = () => {
                   See the polyphenol difference—what's in ours, what's in others, and why it matters.
                 </p>
 
-              <div className="space-y-6 mb-16">
+              <div className="space-y-3 mb-16">
                 {comparisonData.map((item, index) => {
               const proportion = item.value / 904;
               const widthPercent = proportion * 100;
+              const isDarkest = index === comparisonData.length - 1;
               
-              return <div key={index} className="transition-all duration-700 ease-out">
-                       {/* Label row */}
-                       <div className="flex items-center justify-between mb-2" style={{ width: `${widthPercent}%` }}>
-                         <span className="text-lg font-medium text-olive-dark">
+              return <div key={index} className="flex items-center gap-6">
+                       <div 
+                         className={`h-20 border-2 border-dashed flex items-center justify-between px-6 transition-all duration-700 ease-out ${
+                           isDarkest ? 'bg-olive-dark border-olive-dark' : 'border-olive-dark bg-cream'
+                         }`} 
+                         style={{
+                           width: `${widthPercent}%`,
+                           minWidth: '250px'
+                         }}
+                       >
+                         <span className={`text-lg font-medium whitespace-nowrap ${isDarkest ? 'text-cream' : 'text-olive-dark'}`}>
                            {item.name}
                          </span>
-                         <span className="text-xl font-bold text-olive-dark whitespace-nowrap ml-4">
-                           {item.value} mg/kg
-                         </span>
                        </div>
-                       {/* Line */}
-                       <div 
-                         className="h-[3px] transition-all duration-700 ease-out bg-olive-dark" 
-                         style={{
-                           width: `${widthPercent}%`
-                         }}
-                       />
+                       <span className="text-xl font-bold text-olive-dark whitespace-nowrap">
+                         {item.value} mg/kg
+                       </span>
                     </div>;
             })}
               </div>
