@@ -132,11 +132,11 @@ export const PolyphenolComparison = () => {
                 {/* Carousel Container */}
                 <div className="relative">
                   {/* Navigation Arrows - Outside the content area */}
-                  <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentIndex === 0} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-12 w-12 -translate-x-16">
+                  <Button variant="ghost" size="icon" onClick={prevSlide} disabled={currentIndex === 0} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-20 w-20 -translate-x-16">
                     <ChevronLeft className="h-16 w-16" />
                   </Button>
 
-                  <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentIndex >= maxIndex} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-12 w-12 translate-x-16">
+                  <Button variant="ghost" size="icon" onClick={nextSlide} disabled={currentIndex >= maxIndex} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-transparent h-20 w-20 translate-x-16">
                     <ChevronRight className="h-16 w-16" />
                   </Button>
 
