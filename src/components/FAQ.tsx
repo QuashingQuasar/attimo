@@ -41,8 +41,8 @@ export const FAQ = () => {
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-6xl font-light mb-4 tracking-tight" style={{ color: '#1B4229' }}>
-            Frequently Asked <span className="font-medium italic">Questions</span>
+          <h2 className="text-4xl md:text-6xl font-beverly mb-4 tracking-tight" style={{ color: '#1B4229' }}>
+            Frequently Asked Questions
           </h2>
           <p className="text-lg md:text-xl text-gray-600 font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
             Everything you need to know about KLEIA
