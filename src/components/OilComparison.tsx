@@ -2,34 +2,29 @@ import { Check, X } from "lucide-react";
 
 const comparisonData = [
   {
-    feature: "Fresh",
+    feature: "FRESH",
     attimo: { type: "check" },
     them: { type: "text", value: "No, mixed with old oils" }
   },
   {
-    feature: "Comes from 1 region",
+    feature: "SINGLE SOURCE",
     attimo: { type: "check" },
     them: { type: "text", value: "Oil blended from 3+ countries" }
   },
   {
-    feature: "Lab-tested on quality",
+    feature: "TRACEABLE",
     attimo: { type: "check" },
     them: { type: "cross" }
   },
   {
-    feature: "Traceable to origin",
+    feature: "LAB-TESTED",
     attimo: { type: "check" },
     them: { type: "cross" }
   },
   {
-    feature: "UV protective packaging",
-    attimo: { type: "check" },
-    them: { type: "cross" }
-  },
-  {
-    feature: "High in antioxidants",
-    attimo: { type: "text", value: "Yes: up to 799 mg/kg" },
-    them: { type: "text", value: "No: 100-200 mg/kg" }
+    feature: "POLYPHENOLS",
+    attimo: { type: "text", value: "799 mg/kg" },
+    them: { type: "text", value: "100-200 mg/kg" }
   }
 ];
 
