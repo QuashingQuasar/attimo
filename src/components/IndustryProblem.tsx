@@ -35,7 +35,7 @@ export const IndustryProblem = () => {
           </div>
 
           {/* Statistics */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20">
             <div className="text-center p-6 md:p-12 border border-white rounded-lg">
               <div className="text-4xl sm:text-5xl md:text-7xl font-working-man font-light text-white mb-2 md:mb-4">~80%</div>
                <p className="text-sm md:text-xl text-white/90 font-light leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
@@ -52,7 +52,7 @@ export const IndustryProblem = () => {
           </div>
 
           {/* Problem Breakdown */}
-          <div className="grid md:grid-cols-3 gap-8 md:gap-16 mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8 md:gap-16 mx-auto">
             {/* Flavor and Health */}
             <div className="space-y-3 md:space-y-6">
               <div className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center">
