@@ -73,6 +73,16 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
                 >
                   Producers
                 </span>
+                <Button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    onWaitlistClick();
+                  }}
+                  className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20 mt-4"
+                  style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
+                >
+                  Join waitlist
+                </Button>
               </nav>
             </SheetContent>
           </Sheet>
@@ -91,10 +101,10 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
               <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
             </nav>
 
-            {/* CTA */}
+            {/* CTA - Hidden on mobile, visible on tablet+ */}
             <Button 
               onClick={onWaitlistClick}
-              className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20"
+              className="hidden md:block hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20"
               style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
             >
               Join waitlist
