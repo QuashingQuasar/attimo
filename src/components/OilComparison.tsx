@@ -45,8 +45,7 @@ export const OilComparison = () => {
             </h2>
             <p className="text-2xl" style={{ 
               color: '#1B4229',
-              fontFamily: 'Space Grotesk, monospace',
-              fontStyle: 'italic'
+              fontFamily: 'Space Grotesk, monospace'
             }}>
               Not all olive oils are equal
             </p>
@@ -57,7 +56,7 @@ export const OilComparison = () => {
             <table className="w-full border-collapse">
               {/* Table Header */}
               <thead>
-                <tr style={{ borderBottom: '2px solid #1B4229' }}>
+                <tr style={{ borderBottom: '2px dashed #1B4229' }}>
                   <th className="py-6 px-8 text-left"></th>
                   <th className="py-6 px-8 text-center text-2xl font-bold" style={{ 
                     color: '#1B4229',
@@ -77,14 +76,13 @@ export const OilComparison = () => {
                   <tr 
                     key={index} 
                     style={{ 
-                      borderBottom: index < comparisonData.length - 1 ? '1px solid #1B4229' : 'none'
+                      borderBottom: index < comparisonData.length - 1 ? '1px dashed #1B4229' : 'none'
                     }}
                   >
                     {/* Feature Column */}
                     <td className="py-6 px-8 text-xl" style={{ 
                       color: '#1B4229',
-                      fontFamily: 'Space Grotesk, monospace',
-                      fontStyle: 'italic'
+                      fontFamily: 'Space Grotesk, monospace'
                     }}>
                       {row.feature}
                     </td>
