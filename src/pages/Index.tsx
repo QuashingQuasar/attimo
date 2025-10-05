@@ -9,6 +9,7 @@ import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
@@ -24,6 +25,7 @@ const Index = () => {
       <Testimonials />
       <PolyphenolComparison />
       <FAQ />
+      <Footer />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
