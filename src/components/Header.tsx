@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import navbarLogo from "@/assets/navbar-logo-new.svg";
+import navbarLogo from "@/assets/navbar-logo-latest.svg";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
