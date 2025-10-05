@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
   return (
-    <section className="py-12 bg-[#1B4229] min-h-screen flex items-center">
+    <section className="py-12 bg-[#1B4229] snap-start min-h-screen flex items-center">
       <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
