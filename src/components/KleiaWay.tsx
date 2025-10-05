@@ -10,9 +10,9 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-4 grid-rows-2 gap-6 max-w-[90vw] mx-auto h-[600px]">
-          {/* Large tile - Video (spans 2 rows) */}
-          <div className="row-span-2 rounded-2xl relative overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[600px]">
+          {/* Large tile - Video (spans 2 rows on desktop, full width on mobile) */}
+          <div className="lg:row-span-2 rounded-2xl relative overflow-hidden h-[400px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
               autoPlay
@@ -25,7 +25,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 2 - Not Blended (text) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FROM GROVE TO TABLE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
@@ -35,7 +35,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 3 - Video */}
-          <div className="rounded-2xl relative overflow-hidden">
+          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
               autoPlay
@@ -48,7 +48,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto md:col-start-1 lg:col-start-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>LAB-TESTED QUALITY</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
@@ -58,7 +58,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 2 - Video */}
-          <div className="rounded-2xl relative overflow-hidden">
+          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
               autoPlay
@@ -71,7 +71,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto md:col-start-1 lg:col-start-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FRESH AND SINGLE-GROVE</h4>
               <p className="text-base leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#CDDB2D' }}>
@@ -81,7 +81,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 4 - Video */}
-          <div className="rounded-2xl relative overflow-hidden">
+          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
               autoPlay
