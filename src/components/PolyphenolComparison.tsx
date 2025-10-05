@@ -106,7 +106,7 @@ export const PolyphenolComparison = () => {
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
                   width: `${width}px`
                 }}>
-                         <span className="text-lg font-medium whitespace-nowrap">
+                         <span className="text-lg font-medium whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                            {item.name}
                          </span>
                        </div>
