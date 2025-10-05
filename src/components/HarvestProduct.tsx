@@ -68,8 +68,8 @@ export const HarvestProduct = () => {
   return <section className="py-8 h-screen snap-start flex items-center overflow-hidden" style={{
     backgroundColor: '#FFFAEA'
   }}>
-      <div className="container mx-auto px-6 h-full flex items-center">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
+      <div className="container mx-auto px-4 md:px-6 h-full flex items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center w-full">
           {/* Product Image */}
           <div className="flex justify-center h-full max-h-[85vh]">
             <div className="w-full max-w-lg h-full rounded-2xl overflow-hidden bg-olive-light/10">
@@ -78,7 +78,7 @@ export const HarvestProduct = () => {
           </div>
 
           {/* Product Details */}
-          <div className="space-y-4 max-h-[85vh] overflow-y-auto pr-2">
+          <div className="space-y-3 md:space-y-4 max-h-[85vh] overflow-y-auto pr-2">
             <header>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
@@ -89,9 +89,9 @@ export const HarvestProduct = () => {
                 </Badge>
               </div>
               
-              <h1 className="text-3xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
+              <h1 className="text-2xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
-              <p className="text-xl text-olive-medium mb-2" style={{
+              <p className="text-base md:text-xl text-olive-medium mb-2" style={{
               fontFamily: 'Space Grotesk, monospace'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
@@ -118,7 +118,7 @@ export const HarvestProduct = () => {
 
             {/* Quantity Selection */}
             <div className="space-y-2">
-              <div className="grid grid-cols-2 lg:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                 {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} className={`p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
                     <div className="font-semibold text-sm mb-1" style={{
                   fontFamily: 'Space Grotesk, monospace'
