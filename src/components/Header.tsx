@@ -41,59 +41,49 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
       style={isScrolled ? { backgroundColor: '#1B4229' } : undefined}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo - Left */}
-          <div className="flex items-center">
+        <div className="flex items-center justify-between lg:justify-start">
+          {/* Hamburger Menu - Mobile/Tablet (Left) */}
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild className="lg:hidden">
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="text-white hover:bg-white/10"
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
+              <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                <span 
+                  className="hover:text-white/80 transition-colors cursor-pointer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Our story
+                </span>
+                <span 
+                  className="hover:text-white/80 transition-colors cursor-pointer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Quality
+                </span>
+                <span 
+                  className="hover:text-white/80 transition-colors cursor-pointer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Producers
+                </span>
+              </nav>
+            </SheetContent>
+          </Sheet>
+
+          {/* Logo - Center on mobile/tablet, Left on desktop */}
+          <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center">
             <img src={navbarLogo} alt="KLEIA" className="h-12 w-auto" />
           </div>
 
-          {/* Center/Right - Navigation and CTA */}
-          <div className="flex items-center gap-8">
-            {/* Hamburger Menu - Mobile/Tablet */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="lg:hidden">
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  className="text-white hover:bg-white/10"
-                >
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
-                <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  <span 
-                    className="hover:text-white/80 transition-colors cursor-pointer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Our story
-                  </span>
-                  <span 
-                    className="hover:text-white/80 transition-colors cursor-pointer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Quality
-                  </span>
-                  <span 
-                    className="hover:text-white/80 transition-colors cursor-pointer"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Producers
-                  </span>
-                  <Button 
-                    onClick={() => {
-                      setIsOpen(false);
-                      onWaitlistClick();
-                    }}
-                    className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20 mt-4"
-                    style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
-                  >
-                    Join waitlist
-                  </Button>
-                </nav>
-              </SheetContent>
-            </Sheet>
-
+          {/* Right side - Desktop Navigation and CTA */}
+          <div className="flex items-center gap-8 lg:ml-auto">
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8 text-sm text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
               <span className="hover:text-white/80 transition-colors cursor-pointer">Our story</span>
