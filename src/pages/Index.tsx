@@ -20,6 +20,7 @@ const Index = () => {
       <IndustryProblem />
       <HarvestProduct />
       <KleiaWay />
+      <hr className="section-separator" />
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />

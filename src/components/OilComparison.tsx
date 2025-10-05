@@ -34,7 +34,7 @@ export const OilComparison = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#1B4229' }}>
               ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
             </h2>
@@ -51,7 +51,7 @@ export const OilComparison = () => {
             <table className="w-full border-collapse">
               {/* Table Header */}
               <thead>
-                <tr>
+                <tr style={{ borderBottom: '2px dashed #1B4229' }}>
                   <th className="py-6 px-8 text-left"></th>
                   <th className="py-6 px-8 text-center text-2xl font-bold font-working-man" style={{ 
                     color: '#1B4229',
