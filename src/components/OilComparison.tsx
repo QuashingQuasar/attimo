@@ -30,11 +30,11 @@ const comparisonData = [
 
 export const OilComparison = () => {
   return (
-    <section className="pt-0 pb-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="pt-12 pb-24 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-4">
+          <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#1B4229' }}>
               ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
             </h2>
