@@ -36,7 +36,7 @@ export const OilComparison = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#1B4229' }}>
-              ATTIMO vs Others
+              ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
             </h2>
             <p className="text-2xl" style={{ 
               color: '#1B4229',
