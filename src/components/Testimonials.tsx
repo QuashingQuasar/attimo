@@ -63,8 +63,7 @@ export const Testimonials = () => {
           <div 
             className="flex gap-6"
             style={{
-              width: `${duplicatedTestimonials.length * 400}px`,
-              animation: 'marquee 40s linear infinite'
+              animation: 'testimonialScroll 40s linear infinite'
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
@@ -90,6 +89,13 @@ export const Testimonials = () => {
             ))}
           </div>
         </div>
+        
+        <style>{`
+          @keyframes testimonialScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </div>
     </section>
   );
