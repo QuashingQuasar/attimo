@@ -1,9 +1,9 @@
 
 export const KleiaWay = () => {
   return (
-    <section className="min-h-screen snap-start flex items-center mt-0 lg:-mt-64 pt-8 md:pt-12 lg:pt-8 pb-8" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="min-h-screen snap-start flex items-start lg:items-center mt-0 lg:-mt-64 pt-8 pb-8" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 lg:mb-20">
           <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
