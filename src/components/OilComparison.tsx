@@ -58,7 +58,7 @@ export const OilComparison = () => {
               <thead>
                 <tr style={{ borderBottom: '2px dashed #1B4229' }}>
                   <th className="py-6 px-8 text-left"></th>
-                  <th className="py-6 px-8 text-center text-2xl font-bold" style={{ 
+                  <th className="py-6 px-8 text-center text-2xl font-bold font-working-man" style={{ 
                     color: '#1B4229',
                     backgroundColor: '#B3E58C'
                   }}>
