@@ -80,46 +80,45 @@ export const PolyphenolComparison = () => {
     color: "bg-olive-dark"
   }];
   const maxValue = Math.max(...comparisonData.map(item => item.value));
-  return <section className="py-24 snap-start min-h-screen flex items-center bg-[--section-light]">
+  return <section className="py-24 snap-start min-h-screen flex items-center" style={{
+    backgroundColor: '#FFFAEA'
+  }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div>
-              <h2 className="text-5xl md:text-6xl font-light text-olive-dark mb-4 tracking-tight">
-                THE POLYPHENOL DIFFERENCE
+              <h2 className="text-4xl md:text-5xl font-light text-olive-dark mb-6 tracking-tight">
+                THE POLYPHENOL DIFFERENCE<br />
+                <span className="font-medium"></span>
               </h2>
-               <p className="text-lg text-olive-medium leading-relaxed mb-16">
+               <p className="text-lg text-olive-medium leading-relaxed mb-12" style={{
+            fontFamily: 'Space Grotesk, monospace'
+          }}>
                   See the polyphenol difference—what's in ours, what's in others, and why it matters.
                 </p>
 
-              <div className="space-y-3 mb-16">
+              <div className="space-y-4">
                 {comparisonData.map((item, index) => {
-              const proportion = item.value / 904;
-              const widthPercent = proportion * 100;
-              const isDarkest = index === comparisonData.length - 1;
-              
-              return <div key={index} className="flex items-center gap-6">
-                       <div 
-                         className={`h-20 border-2 border-dashed flex items-center justify-between px-6 transition-all duration-700 ease-out ${
-                           isDarkest ? 'bg-olive-dark border-olive-dark' : 'border-olive-dark bg-cream'
-                         }`} 
-                         style={{
-                           width: `${widthPercent}%`,
-                           minWidth: '250px'
-                         }}
-                       >
-                         <span className={`text-lg font-medium whitespace-nowrap ${isDarkest ? 'text-cream' : 'text-olive-dark'}`}>
+              // Calculate proportional width with minimum for text readability
+              const baseWidth = 200; // minimum width for smallest bar to fit text
+              const proportion = item.value / 180; // 180 is our baseline (smallest value)
+              const width = baseWidth * proportion;
+              return <div key={index} className="flex items-center gap-4">
+                       <div className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
+                  width: `${width}px`
+                }}>
+                         <span className="text-lg font-medium whitespace-nowrap">
                            {item.name}
                          </span>
                        </div>
-                       <span className="text-xl font-bold text-olive-dark whitespace-nowrap">
-                         {item.value} mg/kg
-                       </span>
+                      <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
+                        {item.value} mg/kg
+                      </span>
                     </div>;
             })}
               </div>
 
               {/* Scale indicators */}
-              <div className="flex justify-between text-sm text-olive-medium mb-16 pl-1" style={{ maxWidth: '75%' }}>
+              <div className="flex justify-between text-xs text-olive-light mt-4 px-32">
                 <span>150</span>
                 <span>300</span>
                 <span>450</span>
@@ -129,72 +128,61 @@ export const PolyphenolComparison = () => {
               </div>
 
               {/* Tweet Carousel */}
-              <div className="mt-20">
+              <div className="mt-16">
+                {/* Carousel Container */}
                 <div className="relative">
-                  {/* Navigation Arrows */}
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    onClick={prevSlide} 
-                    disabled={currentIndex === 0} 
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-cream border-2 border-dashed border-olive-dark h-12 w-12 -translate-x-16 disabled:opacity-30"
-                  >
-                    <ChevronLeft className="h-5 w-5 text-olive-dark" />
+                  {/* Navigation Arrows - Outside the content area */}
+                  <Button variant="outline" size="icon" onClick={prevSlide} disabled={currentIndex === 0} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 -translate-x-16">
+                    <ChevronLeft className="h-5 w-5" />
                   </Button>
 
-                  <Button 
-                    variant="outline" 
-                    size="icon" 
-                    onClick={nextSlide} 
-                    disabled={currentIndex >= maxIndex} 
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-cream border-2 border-dashed border-olive-dark h-12 w-12 translate-x-16 disabled:opacity-30"
-                  >
-                    <ChevronRight className="h-5 w-5 text-olive-dark" />
+                  <Button variant="outline" size="icon" onClick={nextSlide} disabled={currentIndex >= maxIndex} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background shadow-lg h-12 w-12 translate-x-16">
+                    <ChevronRight className="h-5 w-5" />
                   </Button>
 
-                   {/* Tweet Cards */}
-                   <div className="bg-[#D9A93D] border-2 border-dashed border-olive-dark overflow-hidden min-h-96">
-                     <div className="grid grid-cols-3 h-full divide-x-2 divide-dashed divide-olive-dark">
-                       {visibleTweets.map((tweet) => (
-                         <div key={tweet.id} className="p-8 flex flex-col justify-start h-full min-h-96 bg-[#D9A93D]">
-                           {/* Profile Header */}
-                           <div className="flex items-center mb-6">
-                             <div className="w-14 h-14 bg-olive-dark/15 flex items-center justify-center text-2xl mr-4 border-2 border-dashed border-olive-dark">
-                               {tweet.avatar}
+                   {/* Tweet Cards - Unified Tile */}
+                   <div className="bg-accent rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 min-h-96 border border-olive-light/20">
+                     <div className="grid grid-cols-3 h-full divide-x divide-olive-dark/10">
+                       {visibleTweets.map((tweet, index) => {
+                    const bgColors = ['bg-accent/90', 'bg-accent/80', 'bg-accent/70'];
+                    const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
+                    return <div key={tweet.id} className={`${bgColors[index]} p-6 flex flex-col justify-between h-full min-h-96`}>
+                             {/* Profile Header */}
+                             <div className="flex items-center mb-6">
+                               <div className={`w-12 h-12 bg-olive-dark/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
+                                 {tweet.avatar}
+                               </div>
+                               <div>
+                                 <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
+                                 <div className={`text-olive-dark/70 text-sm`} style={{
+                            fontFamily: 'Space Grotesk, monospace'
+                          }}>{tweet.handle}</div>
+                               </div>
                              </div>
-                             <div>
-                               <div className="font-bold text-lg text-olive-dark">{tweet.name}</div>
-                               <div className="text-olive-dark/70 text-sm">{tweet.handle}</div>
-                             </div>
-                           </div>
 
-                           {/* Tweet Content */}
-                           <div className="space-y-4">
-                             <p className="text-olive-dark leading-relaxed font-medium text-base">
-                               {tweet.content}
-                             </p>
-                             <p className="text-olive-dark/80 leading-relaxed text-sm">
-                               {tweet.content2}
-                             </p>
-                           </div>
-                         </div>
-                       ))}
-                     </div>
-                   </div>
+                              {/* Tweet Content */}
+                              <div className="space-y-4 flex-grow">
+                                <p className={`${textColors[index]} leading-relaxed font-medium`} style={{
+                          fontFamily: 'Space Grotesk, monospace'
+                        }}>
+                                  {tweet.content}
+                                </p>
+                                <p className={`text-olive-dark/80 leading-relaxed`} style={{
+                          fontFamily: 'Space Grotesk, monospace'
+                        }}>
+                                  {tweet.content2}
+                                </p>
+                             </div>
+                          </div>;
+                  })}
+                    </div>
+                  </div>
 
                   {/* Pagination Dots */}
-                  <div className="flex justify-center mt-8 space-x-3">
-                    {Array.from({ length: maxIndex + 1 }, (_, index) => (
-                      <button 
-                        key={index} 
-                        onClick={() => setCurrentIndex(index)} 
-                        className={`transition-all duration-300 border-2 border-olive-dark ${
-                          currentIndex === index 
-                            ? 'bg-olive-dark w-10 h-4' 
-                            : 'bg-transparent w-4 h-4 hover:bg-olive-dark/20'
-                        }`} 
-                      />
-                    ))}
+                  <div className="flex justify-center mt-8 space-x-2">
+                    {Array.from({
+                  length: maxIndex + 1
+                }, (_, index) => <button key={index} onClick={() => setCurrentIndex(index)} className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index ? 'bg-olive-dark w-8' : 'bg-olive-light/40 hover:bg-olive-light/60'}`} />)}
                   </div>
                 </div>
               </div>
