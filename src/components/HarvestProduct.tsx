@@ -91,7 +91,7 @@ export const HarvestProduct = () => {
               
               <h1 className="text-3xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
-              <p className="text-xl text-olive-medium mb-2" style={{
+              <p className="text-base text-olive-medium mb-2" style={{
               fontFamily: 'Space Grotesk, monospace'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
@@ -111,7 +111,7 @@ export const HarvestProduct = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Direct from family groves, traceable and artisanal</span>
+                  <span>Directly sourced from a family farm in Alentejo, Portugal</span>
                 </li>
               </ul>
             </div>
@@ -155,14 +155,14 @@ export const HarvestProduct = () => {
                   <div className="p-3">
                     <div className="flex items-baseline gap-2 mb-1">
                       <div className="text-2xl font-bold text-olive-dark leading-none" style={{
-                  fontFamily: 'UDC Working Man Sans, sans-serif'
-                }}>
+                    fontFamily: 'UDC Working Man Sans, sans-serif'
+                  }}>
                         {tile.value}
                         {tile.unit && <span className="text-base ml-1 text-olive-dark/90">{tile.unit}</span>}
                       </div>
                       <div className="text-sm text-olive-light" style={{
-                  fontFamily: 'Space Grotesk, monospace'
-                }}>{tile.avg}</div>
+                    fontFamily: 'Space Grotesk, monospace'
+                  }}>{tile.avg}</div>
                     </div>
                     <p className="text-sm text-olive-medium/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace'
