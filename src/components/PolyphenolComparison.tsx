@@ -158,7 +158,7 @@ export const PolyphenolComparison = () => {
                     return <div key={tweet.id} className={`p-6 flex flex-col justify-between h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
                              {/* Icon Header */}
                              <div className="flex items-center justify-start mb-6">
-                               <div className={`w-16 h-16 flex items-center justify-center`}>
+                               <div className={`w-20 h-20 flex items-center justify-center`}>
                                  <img 
                                    src={icons[currentIndex + index]} 
                                    alt="icon" 
