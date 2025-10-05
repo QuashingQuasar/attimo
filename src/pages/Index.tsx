@@ -5,6 +5,7 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { WaitlistForm } from "@/components/WaitlistForm";
@@ -20,6 +21,7 @@ const Index = () => {
       <HarvestProduct />
       <KleiaWay />
       <hr className="section-separator" />
+      <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
       <FAQ />
