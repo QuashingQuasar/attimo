@@ -10,21 +10,8 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[600px]">
-          {/* Large tile - Video (full width on mobile, spans 2 rows on desktop) */}
-          <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-2xl relative overflow-hidden h-[400px] lg:h-auto">
-            <video 
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          {/* Top row, col 2 - Not Blended (text) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[600px]">
+          {/* Top row, col 1 - Not Blended (text) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#CDDB2D' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-2xl font-bold mb-4" style={{ color: '#CDDB2D' }}>FROM GROVE TO TABLE</h4>
