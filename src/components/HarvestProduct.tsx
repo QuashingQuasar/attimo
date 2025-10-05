@@ -162,7 +162,7 @@ export const HarvestProduct = () => {
                     <div className="text-sm text-olive-light mb-1" style={{
                   fontFamily: 'Space Grotesk, monospace'
                 }}>{tile.avg}</div>
-                    <p className="text-xs text-olive-medium/80 leading-relaxed" style={{
+                    <p className="text-sm text-olive-medium/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace'
                 }}>{tile.description}</p>
                   </div>
