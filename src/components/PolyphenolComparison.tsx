@@ -86,8 +86,8 @@ export const PolyphenolComparison = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>
-              <h2 className="text-4xl md:text-5xl font-light text-olive-dark mb-6 tracking-tight">
-                THE <span className="font-beverly">Polyphenol</span> DIFFERENCE<br />
+              <h2 className="text-4xl md:text-5xl font-beverly text-olive-dark mb-6 tracking-tight">
+                The Polyphenol Difference<br />
                 <span className="font-medium"></span>
               </h2>
                <p className="text-lg text-olive-medium leading-relaxed mb-12" style={{
