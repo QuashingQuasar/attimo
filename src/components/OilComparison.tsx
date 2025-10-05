@@ -86,7 +86,7 @@ export const OilComparison = () => {
                       {row.attimo.type === "check" ? (
                         <div className="flex justify-center">
                           <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1A431D' }}>
-                            <Check className="w-6 h-6 text-white" strokeWidth={3} />
+                            <Check className="w-6 h-6" style={{ color: 'transparent' }} strokeWidth={3} />
                           </div>
                         </div>
                       ) : (
