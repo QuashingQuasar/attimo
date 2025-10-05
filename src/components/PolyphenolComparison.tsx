@@ -95,24 +95,22 @@ export const PolyphenolComparison = () => {
                 {comparisonData.map((item, index) => {
               const proportion = item.value / 904;
               const widthPercent = proportion * 100;
-              const isDarkest = index === comparisonData.length - 1;
               
               return <div key={index} className="transition-all duration-700 ease-out">
                        {/* Label row */}
-                       <div className="flex items-center justify-between mb-2" style={{ width: `${widthPercent}%`, minWidth: '300px' }}>
+                       <div className="flex items-center justify-between mb-2" style={{ width: `${widthPercent}%` }}>
                          <span className="text-lg font-medium text-olive-dark">
                            {item.name}
                          </span>
-                         <span className="text-xl font-bold text-olive-dark whitespace-nowrap">
+                         <span className="text-xl font-bold text-olive-dark whitespace-nowrap ml-4">
                            {item.value} mg/kg
                          </span>
                        </div>
                        {/* Line */}
                        <div 
-                         className={`h-[3px] transition-all duration-700 ease-out bg-olive-dark`} 
+                         className="h-[3px] transition-all duration-700 ease-out bg-olive-dark" 
                          style={{
-                           width: `${widthPercent}%`,
-                           minWidth: '300px'
+                           width: `${widthPercent}%`
                          }}
                        />
                     </div>;
