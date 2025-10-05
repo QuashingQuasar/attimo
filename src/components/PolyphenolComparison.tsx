@@ -149,7 +149,7 @@ export const PolyphenolComparison = () => {
                     const icons = [
                       '/icons/lady-2.svg',
                       '/icons/basket-2.svg', 
-                      '/icons/bread-2.svg',
+                      '/icons/branch-2.svg',
                       '/icons/caraf-2.svg',
                       '/icons/lyre-2.svg',
                       '/icons/sun-2.svg',
