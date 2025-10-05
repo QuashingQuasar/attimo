@@ -163,7 +163,7 @@ export const PolyphenolComparison = () => {
                                    src={icons[currentIndex + index]} 
                                    alt="icon" 
                                    className="w-full h-full object-contain"
-                                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                                   style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }}
                                  />
                                </div>
                              </div>
