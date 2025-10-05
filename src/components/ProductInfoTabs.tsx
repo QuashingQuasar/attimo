@@ -33,20 +33,18 @@ export const ProductInfoTabs = () => {
           </TabsList>
         
           <TabsContent value="details" className="p-6 m-0 min-h-[200px] rounded-none">
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  ORIGIN
-                </div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Alentejo, Portugal</div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                ORIGIN
               </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  OLIVE
-                </div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Galega</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Alentejo, Portugal</div>
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                OLIVE
               </div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Galega</div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
