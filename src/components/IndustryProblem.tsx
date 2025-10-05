@@ -27,7 +27,7 @@ export const IndustryProblem = () => {
           {/* Main Heading */}
           <div className="text-left mb-12 md:mb-20 max-w-5xl">
             <h2 className="text-3xl sm:text-4xl md:text-7xl font-beverly font-bold mb-4 md:mb-8 leading-tight tracking-tight" style={{ color: '#CDDB2D' }}>
-              The <span className="font-medium italic">"extra virgin" lie</span>
+              The <span className="font-medium italic">"Extra Virgin" Lie</span>
             </h2>
              <p className="text-base sm:text-lg md:text-3xl text-white/90 max-w-[60rem] leading-relaxed font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
