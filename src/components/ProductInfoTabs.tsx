@@ -4,7 +4,7 @@ export const ProductInfoTabs = () => {
   return (
     <div className="w-full">
       <Tabs defaultValue="details" className="w-full">
-        <div className="border border-olive-dark rounded-2xl overflow-hidden bg-white">
+        <div className="border border-olive-dark rounded-2xl overflow-hidden bg-transparent">
           <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0 border-b border-olive-dark">
             <TabsTrigger 
               value="details" 
@@ -32,7 +32,7 @@ export const ProductInfoTabs = () => {
             </TabsTrigger>
           </TabsList>
         
-          <TabsContent value="details" className="p-6 m-0 min-h-[200px] rounded-none">
+          <TabsContent value="details" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
@@ -61,7 +61,7 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-          <TabsContent value="flavor" className="p-6 m-0 min-h-[200px] rounded-none">
+          <TabsContent value="flavor" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
             <div className="space-y-4">
               {[
                 { label: "PEPPERY", rating: 4 },
@@ -93,7 +93,7 @@ export const ProductInfoTabs = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="harvest" className="p-6 m-0 min-h-[200px] rounded-none">
+          <TabsContent value="harvest" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
              <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
               <p>
                 Hand-picked in October 2024 during the optimal harvest window. The olives were processed within 4 hours of harvest using traditional stone mills, preserving maximum antioxidants and flavor compounds. This early harvest ensures the highest polyphenol content.
@@ -101,7 +101,7 @@ export const ProductInfoTabs = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="uses" className="p-6 m-0 min-h-[200px] rounded-none">
+          <TabsContent value="uses" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
             <div className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
               <p>
                 Like a sprinkle of flaky salt or the squeeze of a good condiment, Drizzle adds a big pop of flavor right before you dig in. (That's why it's called a finishing oil!) Drizzle's flavors are sensitive, though, so keep it off the heat.
