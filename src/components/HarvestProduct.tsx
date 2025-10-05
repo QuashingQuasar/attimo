@@ -98,7 +98,7 @@ export const HarvestProduct = () => {
 
             {/* Key Benefits */}
             <div className="space-y-2">
-              <ul className="space-y-2 text-olive-medium text-sm" style={{
+              <ul className="space-y-2 text-olive-medium text-base" style={{
               fontFamily: 'Space Grotesk, monospace'
             }}>
                 <li className="flex items-start gap-3">
