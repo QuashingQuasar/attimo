@@ -146,17 +146,25 @@ export const PolyphenolComparison = () => {
                        {visibleTweets.map((tweet, index) => {
                     const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
                     const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
+                    const icons = [
+                      '/icons/amphora-2.svg',
+                      '/icons/basket-2.svg', 
+                      '/icons/bread-2.svg',
+                      '/icons/caraf-2.svg',
+                      '/icons/lyre-2.svg',
+                      '/icons/sun-2.svg',
+                      '/icons/mortar.svg'
+                    ];
                     return <div key={tweet.id} className={`p-6 flex flex-col justify-between h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
-                             {/* Profile Header */}
-                             <div className="flex items-center mb-6">
-                               <div className={`w-12 h-12 bg-olive-dark/20 rounded-full flex items-center justify-center text-xl mr-3 ${textColors[index]}`}>
-                                 {tweet.avatar}
-                               </div>
-                               <div>
-                                 <div className={`font-semibold text-lg ${textColors[index]}`}>{tweet.name}</div>
-                                 <div className={`text-olive-dark/70 text-sm`} style={{
-                            fontFamily: 'Space Grotesk, monospace'
-                          }}>{tweet.handle}</div>
+                             {/* Icon Header */}
+                             <div className="flex items-center justify-center mb-6">
+                               <div className={`w-16 h-16 flex items-center justify-center`}>
+                                 <img 
+                                   src={icons[currentIndex + index]} 
+                                   alt="icon" 
+                                   className="w-full h-full object-contain"
+                                   style={{ filter: 'brightness(0) saturate(100%)' }}
+                                 />
                                </div>
                              </div>
 
