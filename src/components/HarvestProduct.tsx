@@ -68,17 +68,17 @@ export const HarvestProduct = () => {
   return <section className="py-4 md:py-8 min-h-screen snap-start flex items-start" style={{
     backgroundColor: '#FFFAEA'
   }}>
-      <div className="container mx-auto px-4 md:px-6 h-full flex items-start py-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start w-full">
+      <div className="w-full h-full flex items-start py-8">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Product Image */}
-          <div className="flex justify-center max-h-[calc(100vh-8rem)]">
-            <div className="w-full max-w-sm lg:max-w-lg h-full rounded-2xl overflow-hidden bg-olive-light/10">
-              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-contain" />
+          <div className="flex justify-center items-start lg:pl-0">
+            <div className="w-full h-full rounded-2xl overflow-hidden bg-olive-light/10">
+              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {/* Product Details */}
-          <div className="space-y-3 md:space-y-4 pr-2">
+          <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6">
             <header>
               <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
