@@ -38,28 +38,34 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-16 md:py-24 bg-[hsl(var(--section-light))]">
-      <div className="container mx-auto px-6 max-w-5xl">
+    <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
+      <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-tight text-[hsl(var(--olive-dark))]">
-            Frequently Asked <em>Questions</em>
+          <h2 className="text-4xl md:text-6xl font-light mb-4 tracking-tight" style={{ color: '#1B4229' }}>
+            Frequently Asked <span className="font-medium italic">Questions</span>
           </h2>
+          <p className="text-lg md:text-xl text-gray-600 font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+            Everything you need to know about KLEIA
+          </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-6">
+        <Accordion type="single" collapsible className="space-y-4">
           {faqs.map((faq, index) => (
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="border-2 border-dashed border-[hsl(var(--olive-dark))] rounded-none px-8 bg-transparent"
+              className="border rounded-2xl px-6 overflow-hidden"
+              style={{ borderColor: '#1B4229', backgroundColor: 'white' }}
             >
               <AccordionTrigger 
-                className="text-left text-xl md:text-2xl font-light py-8 hover:no-underline text-[hsl(var(--olive-dark))] [&[data-state=open]>svg]:rotate-180"
+                className="text-left text-lg md:text-xl font-medium py-6 hover:no-underline"
+                style={{ color: '#1B4229' }}
               >
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent 
-                className="text-base md:text-lg pb-8 leading-relaxed text-[hsl(var(--olive-dark))] opacity-80"
+                className="text-base md:text-lg pb-6 leading-relaxed"
+                style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}
               >
                 {faq.answer}
               </AccordionContent>
