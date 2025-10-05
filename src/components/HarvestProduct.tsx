@@ -91,8 +91,12 @@ export const HarvestProduct = () => {
               
               <h1 className="text-2xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
-              <p className="text-base md:text-xl text-olive-medium mb-2 border-b-2 border-dashed border-olive-medium pb-2 inline-block" style={{
-              fontFamily: 'Space Grotesk, monospace'
+              <p className="text-base md:text-xl text-olive-medium mb-2" style={{
+              fontFamily: 'Space Grotesk, monospace',
+              textDecoration: 'underline',
+              textDecorationStyle: 'dashed',
+              textDecorationColor: '#557A5E',
+              textUnderlineOffset: '4px'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
 
