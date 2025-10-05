@@ -30,7 +30,7 @@ const comparisonData = [
 
 export const OilComparison = () => {
   return (
-    <section className="py-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="pt-8 pb-24 snap-start min-h-screen flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
