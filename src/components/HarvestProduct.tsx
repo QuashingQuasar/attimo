@@ -89,7 +89,7 @@ export const HarvestProduct = () => {
                 </Badge>
               </div>
               
-              <h1 className="text-2xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
+              <h1 className="text-3xl md:text-5xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
               <p className="text-xl md:text-3xl text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
