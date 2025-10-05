@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
+import navbarLogo from "@/assets/navbar-logo.svg";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -40,66 +41,74 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Hamburger Menu - Mobile/Tablet */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button 
-                variant="ghost" 
-                size="icon"
-                className="text-white hover:bg-white/10"
-              >
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
-              <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Our story
-                </span>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Quality
-                </span>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Producers
-                </span>
+          {/* Logo - Left */}
+          <div className="flex items-center">
+            <img src={navbarLogo} alt="KLEIA" className="h-8 w-auto" />
+          </div>
+
+          {/* Center/Right - Navigation and CTA */}
+          <div className="flex items-center gap-8">
+            {/* Hamburger Menu - Mobile/Tablet */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild className="lg:hidden">
                 <Button 
-                  onClick={() => {
-                    setIsOpen(false);
-                    onWaitlistClick();
-                  }}
-                  className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20 mt-4"
-                  style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
+                  variant="ghost" 
+                  size="icon"
+                  className="text-white hover:bg-white/10"
                 >
-                  Join waitlist
+                  <Menu className="h-6 w-6" />
                 </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
+                <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                  <span 
+                    className="hover:text-white/80 transition-colors cursor-pointer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Our story
+                  </span>
+                  <span 
+                    className="hover:text-white/80 transition-colors cursor-pointer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Quality
+                  </span>
+                  <span 
+                    className="hover:text-white/80 transition-colors cursor-pointer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Producers
+                  </span>
+                  <Button 
+                    onClick={() => {
+                      setIsOpen(false);
+                      onWaitlistClick();
+                    }}
+                    className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20 mt-4"
+                    style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
+                  >
+                    Join waitlist
+                  </Button>
+                </nav>
+              </SheetContent>
+            </Sheet>
 
-          {/* Left - Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Our story</span>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
-          </nav>
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-8 text-sm text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+              <span className="hover:text-white/80 transition-colors cursor-pointer">Our story</span>
+              <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
+              <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
+            </nav>
 
-          {/* Right - CTA (Desktop only) */}
-          <Button 
-            onClick={onWaitlistClick}
-            className="hidden lg:block hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20"
-            style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
-          >
-            Join waitlist
-          </Button>
+            {/* CTA */}
+            <Button 
+              onClick={onWaitlistClick}
+              className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20"
+              style={{ fontFamily: 'Space Grotesk, monospace', backgroundColor: '#CDDB2D', color: '#494F35' }}
+            >
+              Join waitlist
+            </Button>
+          </div>
         </div>
       </div>
     </header>
