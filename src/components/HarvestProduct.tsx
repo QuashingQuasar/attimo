@@ -94,7 +94,7 @@ export const HarvestProduct = () => {
               <p className="text-xl md:text-3xl text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
               textDecorationStyle: 'dashed',
-              textDecorationColor: '#557A5E',
+              textDecorationColor: 'currentColor',
               textUnderlineOffset: '4px'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
