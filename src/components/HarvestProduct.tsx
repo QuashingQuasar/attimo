@@ -153,15 +153,17 @@ export const HarvestProduct = () => {
                     </div>
                   </div>
                   <div className="p-3">
-                    <div className="text-2xl font-bold text-olive-dark leading-none mb-1" style={{
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <div className="text-2xl font-bold text-olive-dark leading-none" style={{
                   fontFamily: 'UDC Working Man Sans, sans-serif'
                 }}>
-                      {tile.value}
-                      {tile.unit && <span className="text-base ml-1 text-olive-dark/90">{tile.unit}</span>}
-                    </div>
-                    <div className="text-sm text-olive-light mb-1" style={{
+                        {tile.value}
+                        {tile.unit && <span className="text-base ml-1 text-olive-dark/90">{tile.unit}</span>}
+                      </div>
+                      <div className="text-sm text-olive-light" style={{
                   fontFamily: 'Space Grotesk, monospace'
                 }}>{tile.avg}</div>
+                    </div>
                     <p className="text-sm text-olive-medium/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace'
                 }}>{tile.description}</p>
