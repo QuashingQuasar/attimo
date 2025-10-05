@@ -12,7 +12,7 @@ export const KleiaWay = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[750px]">
           {/* Top row, col 1 - Not Blended (text) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#B3E58C', color: '#1B4229' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto border-2 border-dashed" style={{ borderColor: '#1B4229', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>FROM GROVE TO TABLE</h4>
               <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
@@ -35,7 +35,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Top row, col 4 - Text content (as shown in sketch) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#B3E58C', color: '#1B4229' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto border-2 border-dashed" style={{ borderColor: '#1B4229', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>LAB-TESTED QUALITY</h4>
               <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
@@ -58,7 +58,7 @@ export const KleiaWay = () => {
           </div>
 
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#B3E58C', color: '#1B4229' }}>
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto border-2 border-dashed" style={{ borderColor: '#1B4229', color: '#1B4229' }}>
             <div className="h-full flex flex-col justify-center">
               <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#1B4229' }}>FRESH AND SINGLE-GROVE</h4>
               <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}>
