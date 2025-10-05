@@ -91,7 +91,7 @@ export const HarvestProduct = () => {
               
               <h1 className="text-3xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
-              <p className="text-lg text-olive-medium mb-2" style={{
+              <p className="text-xl text-olive-medium mb-2" style={{
               fontFamily: 'Space Grotesk, monospace'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
