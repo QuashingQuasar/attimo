@@ -36,8 +36,9 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${
-        isScrolled ? 'bg-olive-dark shadow-lg' : 'bg-transparent'
+        isScrolled ? 'shadow-lg' : 'bg-transparent'
       }`}
+      style={isScrolled ? { backgroundColor: '#1A431D' } : undefined}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
