@@ -41,7 +41,7 @@ export const OilComparison = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#1B4229' }}>
-              OlvLimits vs Others
+              ATTIMO vs Others
             </h2>
             <p className="text-2xl" style={{ 
               color: '#1B4229',
@@ -62,7 +62,7 @@ export const OilComparison = () => {
                     color: '#1B4229',
                     backgroundColor: '#B3E58C'
                   }}>
-                    OlvLimits
+                    ATTIMO
                   </th>
                   <th className="py-6 px-8 text-center text-2xl font-bold" style={{ color: '#1B4229' }}>
                     THEM
