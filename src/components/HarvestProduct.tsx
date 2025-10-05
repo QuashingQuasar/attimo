@@ -91,8 +91,7 @@ export const HarvestProduct = () => {
               
               <h1 className="text-2xl md:text-4xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
               
-              <p className="text-base md:text-xl text-olive-medium mb-2" style={{
-              fontFamily: 'Space Grotesk, monospace',
+              <p className="text-base md:text-xl text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
               textDecorationStyle: 'dashed',
               textDecorationColor: '#557A5E',

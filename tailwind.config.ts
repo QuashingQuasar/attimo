@@ -42,6 +42,7 @@ export default {
 				'working-man': ['UDC Working Man Sans', 'sans-serif'],
 				'working-man-light': ['UDC Working Man Sans Light', 'sans-serif'],
 				'working-man-rough': ['UDC Working Man Sans Rough', 'sans-serif'],
+				'beverly': ['Beverly Drive', 'cursive'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
