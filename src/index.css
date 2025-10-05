@@ -31,6 +31,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Beverly Drive';
+  src: url('/fonts/BeverlyDriveRight-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beverly Drive';
+  src: url('/fonts/BeverlyDriveRight-Extrabold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beverly Drive';
+  src: url('/fonts/BeverlyDriveRight-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
