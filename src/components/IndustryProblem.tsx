@@ -3,10 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const IndustryProblem = () => {
   return (
-    <section className="py-12 bg-[#1B4229] snap-start h-screen flex items-center overflow-hidden">
+    <section className="py-12 bg-[#1B4229] snap-start min-h-screen lg:h-screen flex items-center lg:overflow-hidden">
       <div className="mx-auto px-4 w-[90vw] h-full">
         {/* Contained section with video background */}
-        <div className="relative overflow-hidden rounded-3xl h-full">
+        <div className="relative overflow-hidden rounded-3xl lg:h-full">
           {/* Video Background */}
           <video
             autoPlay
