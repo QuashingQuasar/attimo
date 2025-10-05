@@ -67,7 +67,7 @@ export const Testimonials = () => {
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
-              <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 w-96 bg-white/90 border-olive-light/20 shadow-sm">
+              <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 w-96 bg-white border-olive-light/20 shadow-sm">
                 <CardContent className="p-6">
                   {/* Title */}
                   <h4 className="font-semibold text-olive-dark mb-3 text-sm">
