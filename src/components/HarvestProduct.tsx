@@ -69,11 +69,11 @@ export const HarvestProduct = () => {
     backgroundColor: '#FFFAEA'
   }}>
       <div className="w-full h-full flex items-start lg:py-8">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-end">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Product Image */}
-          <div className="flex justify-start items-end lg:pl-0">
-            <div className="w-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10">
-              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-auto object-cover" />
+          <div className="flex justify-start items-stretch lg:pl-0">
+            <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10">
+              <img src={oliveOilPlaceholder} alt="KLEIA 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
             </div>
           </div>
 
