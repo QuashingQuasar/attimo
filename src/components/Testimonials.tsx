@@ -63,7 +63,7 @@ export const Testimonials = () => {
           <div 
             className="flex gap-6"
             style={{
-              animation: 'testimonialScroll 40s linear infinite'
+              animation: 'testimonialScroll 20s linear infinite'
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
