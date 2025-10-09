@@ -79,9 +79,7 @@ export const OilComparison = () => {
                   </th>
                   <th className="py-6 px-8 text-center text-2xl font-bold" style={{
                   color: '#1B4229'
-                }}>
-                    THEM
-                  </th>
+                }}>Supermarket EVOO</th>
                 </tr>
               </thead>
 
