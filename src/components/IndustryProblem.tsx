@@ -1,10 +1,10 @@
 import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
-  return <section className="py-12 bg-[#1B4229] snap-start min-h-screen lg:h-screen flex items-center lg:overflow-hidden">
-      <div className="mx-auto px-4 w-[90vw] h-full">
+  return <section className="py-12 bg-[#1B4229] snap-start min-h-screen flex items-center">
+      <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
-        <div className="relative overflow-hidden rounded-3xl lg:h-full">
+        <div className="relative overflow-hidden rounded-3xl">
           {/* Video Background */}
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
             <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
