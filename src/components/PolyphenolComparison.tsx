@@ -3,22 +3,22 @@ const tweets = [{
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "Polyphenols are a type of antioxidant found in olives. They strengthen the body's defenses against cell aging and contribute to long-term metabolic and heart health.",
-  content2: ""
+  content: "Polyphenols are a type of antioxidant found in olives.",
+  content2: "They strengthen the body's defenses against cell aging and contribute to long-term metabolic and heart health."
 }, {
   id: 2,
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "The highest polyphenol counts come from early-harvest olives, picked and pressed within hours. Once bottled, levels steadily decline over time.",
-  content2: ""
+  content: "The highest polyphenol counts come from early-harvest olives, picked and pressed within hours.",
+  content2: "Once bottled, levels steadily decline over time."
 }, {
   id: 3,
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "Commercial oils combine batches from across countries and years to maintain supply. This process dilutes the polyphenol content far below fresh-pressed levels.",
-  content2: ""
+  content: "Commercial oils combine batches from across countries and years to maintain supply.",
+  content2: "This process dilutes the polyphenol content far below fresh-pressed levels."
 }];
 export const PolyphenolComparison = () => {
   const comparisonData = [{
