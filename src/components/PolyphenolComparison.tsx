@@ -6,22 +6,22 @@ const tweets = [{
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "Our Green Machine is crafted with the purpose to create olive oil ultra high in polyphenols",
-  content2: "It's so powerful, some people don't just cook with it — they take a tablespoon like a supplement 🥄"
+  content: "Polyphenols are a type of antioxidant found in olives. They strengthen the body's defenses against cell aging and contribute to long-term metabolic and heart health.",
+  content2: ""
 }, {
   id: 2,
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "904 mg/kg of polyphenols vs the industry average of 180 mg/kg",
-  content2: "That's over 5x more antioxidant power in every drop. Fresh-pressed perfection 🌿"
+  content: "The highest polyphenol counts come from early-harvest olives, picked and pressed within hours. Once bottled, levels steadily decline over time.",
+  content2: ""
 }, {
   id: 3,
   name: "Olive",
   handle: "@olvlimits",
   avatar: "🫒",
-  content: "Why settle for ordinary olive oil when you can have extraordinary health benefits?",
-  content2: "Our single-grove harvest delivers the polyphenol density your body deserves ✨"
+  content: "Commercial oils combine batches from across countries and years to maintain supply. This process dilutes the polyphenol content far below fresh-pressed levels.",
+  content2: ""
 }, {
   id: 4,
   name: "Olive",
