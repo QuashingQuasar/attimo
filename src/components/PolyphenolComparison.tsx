@@ -34,7 +34,7 @@ export const PolyphenolComparison = () => {
     value: 400,
     color: "bg-olive-medium"
   }, {
-    name: "Our Oil",
+    name: "ATTIMO Olive Oil",
     value: 904,
     color: "bg-olive-dark"
   }];
