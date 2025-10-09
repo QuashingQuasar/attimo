@@ -45,7 +45,7 @@ export const Testimonials = () => {
     <section 
       className="py-10 snap-start min-h-[50vh] flex items-center"
       style={{ 
-        backgroundColor: '#9EEF80',
+        backgroundColor: '#1A431D',
         backgroundImage: `url(${patternBg})`,
         backgroundSize: '600px 600px',
         backgroundRepeat: 'repeat'
@@ -53,10 +53,10 @@ export const Testimonials = () => {
     >
       <div className="mx-auto relative" style={{ width: '95vw' }}>
         {/* Left fade overlay */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #9EEF80, transparent)' }}></div>
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #1A431D, transparent)' }}></div>
         
         {/* Right fade overlay */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #9EEF80, transparent)' }}></div>
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #1A431D, transparent)' }}></div>
         
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
