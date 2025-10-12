@@ -135,5 +135,28 @@
       }
     })();
     </script>
+    <script>
+(function () {
+  if (!window.ShopifyBuy || !window.ShopifyBuy.UI) return;
+
+  const client = ShopifyBuy.buildClient({
+    domain: '00xpv6-0j.myshopify.com',
+    storefrontAccessToken: '30733c853377e0bfebe5596acf9066d2'
+  });
+
+  ShopifyBuy.UI.onReady(client).then(function (ui) {
+    window._ui = ui;
+
+    var anchor = document.getElementById('shopify-cart-anchor');
+    if (!anchor) {
+      anchor = document.createElement('div');
+      anchor.id = 'shopify-cart-anchor';
+      document.body.appendChild(anchor);
+    }
+
+    window._attimoCart = ui.createComponent('cart', { node: anchor });
+  });
+})();
+    </script>
   </body>
 </html>
