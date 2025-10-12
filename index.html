@@ -197,5 +197,72 @@
   loadAndInit();
 })();
     </script>
+    <script>
+(function () {
+  if (!window._ui) return; // wait until cart init has run
+
+  // 1) Create a hidden container
+  var hidden = document.getElementById('shopify-hidden-product');
+  if (!hidden) {
+    hidden = document.createElement('div');
+    hidden.id = 'shopify-hidden-product';
+    hidden.style.display = 'none';
+    document.body.appendChild(hidden);
+  }
+
+  // 2) Create a hidden product component for our product (all variants)
+  // Product ID: 15330876817791
+  // We'll use this component's addVariantToCart to add items into the same cart
+  window._attimoProduct = window._ui.createComponent('product', {
+    id: '15330876817791',
+    node: hidden,
+    options: {
+      product: {
+        contents: { img: false, title: false, price: false, options: false, button: false, buttonWithQuantity: false }
+      }
+    }
+  });
+
+  // 3) Wire your existing CTA to add the currently selected variant and open the cart
+  function getSelectedVariantId() {
+    // Update these selectors to match your "active" pill if needed
+    var active = document.querySelector('[data-variant].active') ||
+                 document.querySelector('[data-variant][aria-pressed="true"]');
+    return active ? active.getAttribute('data-variant') : null;
+  }
+
+  var addBtn = document.getElementById('add-to-cart-btn') || document.querySelector('[data-add-to-cart]');
+  if (!addBtn) return;
+
+  addBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    var variantId = getSelectedVariantId();
+    if (!variantId || !window._attimoProduct) return;
+
+    // tolerate either string or number ids
+    try {
+      var vId = String(variantId);
+      // Try both method signatures Shopify has used
+      var maybePromise =
+        (typeof _attimoProduct.addVariantToCart === 'function')
+          ? _attimoProduct.addVariantToCart(vId, 1)
+          : (_attimoProduct.model && typeof _attimoProduct.model.addVariantToCart === 'function')
+              ? _attimoProduct.model.addVariantToCart(vId, 1)
+              : null;
+
+      // Open the cart after it adds (promise or not)
+      if (maybePromise && typeof maybePromise.then === 'function') {
+        maybePromise.then(function () { window._ui.openCart(); });
+      } else {
+        window._ui.openCart();
+      }
+    } catch (err) {
+      console.warn('Add to cart failed:', err);
+      window._ui.openCart();
+    }
+  });
+})();
+    </script>
   </body>
 </html>
