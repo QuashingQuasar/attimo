@@ -233,3 +233,14 @@ All colors MUST be HSL.
     transform: rotateY(180deg);
   }
 }
+
+/* Shopify Buy Button Cart Visibility */
+.shopify-buy-cart-wrapper.is-visible,
+.shopify-buy__cart-wrapper.is-visible,
+.shopify-buy-frame--cart.is-visible {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  z-index: 2147483000 !important;
+}
