@@ -158,5 +158,20 @@
   });
 })();
     </script>
+    <script>
+(function() {
+  var client = ShopifyBuy.buildClient({
+    domain: '00xpv6-0j.myshopify.com',
+    storefrontAccessToken: '30733c853377e0bfebe5596acf9066d2'
+  });
+
+  ShopifyBuy.UI.onReady(client).then(function (ui) {
+    window._attimoCart = ui.createComponent('cart', {
+      node: document.getElementById('shopify-cart-anchor'),
+      options: { cart: { popup: true } }
+    });
+  });
+})();
+    </script>
   </body>
 </html>
