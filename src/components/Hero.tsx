@@ -25,7 +25,7 @@ export const Hero = ({
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mb-8 animate-fade-in" style={{
+          <div className="flex justify-center mb-3 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
             <Button className="px-10 py-6 hover:scale-105 transition-all duration-300 font-semibold rounded-full backdrop-blur-sm shadow-2xl text-lg" style={{
