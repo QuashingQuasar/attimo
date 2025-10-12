@@ -23,5 +23,81 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // helper to build GIDs from numeric variant ids
+      const gid = n => `gid://shopify/ProductVariant/${n}`;
+
+      // Real variant ids
+      const VARIANTS = {
+        1: gid('56203507597695'),
+        2: gid('56203507630463'),
+        3: gid('56203507663231'),
+        4: gid('56203507695999'),
+        8: gid('56203507728767'),
+      };
+
+      // ---------- UI wiring: pills + Add to cart ----------
+      (() => {
+        const PILL_SELECTOR = '[data-variant]';
+        const ADD_BTN_SELECTOR = '#add-to-cart-btn';
+
+        const pills = Array.from(document.querySelectorAll(PILL_SELECTOR));
+        const addBtn = document.querySelector(ADD_BTN_SELECTOR);
+
+        if (!pills.length || !addBtn) {
+          console.warn('[Attimo] Pills or Add button not found. Check selectors.');
+          return;
+        }
+
+        let selectedKey =
+          (pills.find(el => el.classList.contains('active'))?.getAttribute('data-variant')) ||
+          '2';
+
+        function setActive(key) {
+          selectedKey = String(key);
+          pills.forEach(el =>
+            el.classList.toggle('active', el.getAttribute('data-variant') === selectedKey)
+          );
+        }
+
+        pills.forEach(el => {
+          el.addEventListener('click', () => {
+            const key = el.getAttribute('data-variant');
+            if (!VARIANTS[key]) return console.error('[Attimo] Unknown variant key:', key);
+            setActive(key);
+          });
+        });
+
+        setActive(selectedKey);
+
+        addBtn.addEventListener('click', async () => {
+          try {
+            const variantGid = VARIANTS[selectedKey];
+            if (!variantGid) return console.error('[Attimo] No variant mapped for', selectedKey);
+
+            addBtn.disabled = true;
+            const originalLabel = addBtn.textContent;
+            addBtn.textContent = 'Adding…';
+
+            const res = await addLine(variantGid, 1);
+            const checkoutUrl =
+              res?.cartLinesAdd?.cart?.checkoutUrl ||
+              JSON.parse(localStorage.getItem(CART_KEY) || 'null')?.url;
+
+            if (checkoutUrl) {
+              window.location.href = checkoutUrl;
+            } else {
+              console.warn('[Attimo] No checkoutUrl returned');
+            }
+          } catch (err) {
+            console.error('[Attimo] Add to cart failed:', err);
+          } finally {
+            addBtn.disabled = false;
+            addBtn.textContent = 'Add to cart';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
