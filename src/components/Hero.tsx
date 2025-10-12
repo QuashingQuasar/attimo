@@ -42,7 +42,7 @@ export const Hero = ({
           <div className="text-white/80 text-base font-light tracking-wide drop-shadow-lg animate-fade-in cursor-pointer hover:text-white transition-colors" style={{
           animationDelay: '0.6s',
           fontFamily: 'Space Grotesk, monospace'
-        }} onClick={onWaitlistClick}>Harvest 2025 Waitlist</div>
+        }} onClick={onWaitlistClick}>Harvest 2025 waitlist</div>
         </div>
       </div>
       
