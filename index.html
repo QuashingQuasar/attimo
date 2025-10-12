@@ -25,6 +25,63 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <script>
+      // Shopify Storefront API Configuration
+      const SHOPIFY_DOMAIN = '00xpv6-0j.myshopify.com';
+      const STOREFRONT_TOKEN = '30733c853377e0bfebe5596acf9066d2';
+      const CART_KEY = 'shopify:cart';
+
+      // GraphQL helper
+      async function sfGQL(query, variables = {}) {
+        const res = await fetch(`https://${SHOPIFY_DOMAIN}/api/2025-01/graphql.json`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN,
+          },
+          body: JSON.stringify({ query, variables }),
+        });
+        if (!res.ok) throw new Error(`GraphQL failed: ${res.status}`);
+        const json = await res.json();
+        if (json.errors) throw new Error(JSON.stringify(json.errors));
+        return json.data;
+      }
+
+      // Ensure cart exists (create if needed)
+      async function ensureCart() {
+        let cart = JSON.parse(localStorage.getItem(CART_KEY) || 'null');
+        if (cart?.id) return cart;
+
+        const data = await sfGQL(`
+          mutation {
+            cartCreate(input: {}) {
+              cart { id checkoutUrl }
+            }
+          }
+        `);
+        cart = data.cartCreate.cart;
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+        return cart;
+      }
+
+      // Add line item to cart
+      async function addLine(variantId, quantity = 1) {
+        const cart = await ensureCart();
+        const data = await sfGQL(
+          `mutation($cartId: ID!, $lines: [CartLineInput!]!) {
+            cartLinesAdd(cartId: $cartId, lines: $lines) {
+              cart { id checkoutUrl }
+            }
+          }`,
+          {
+            cartId: cart.id,
+            lines: [{ merchandiseId: variantId, quantity }],
+          }
+        );
+        const updatedCart = data.cartLinesAdd.cart;
+        localStorage.setItem(CART_KEY, JSON.stringify(updatedCart));
+        return data;
+      }
+
       // helper to build GIDs from numeric variant ids
       const gid = n => `gid://shopify/ProductVariant/${n}`;
 
