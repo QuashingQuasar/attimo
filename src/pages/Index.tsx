@@ -30,7 +30,6 @@ const Index = () => {
         isOpen={isWaitlistOpen} 
         onClose={() => setIsWaitlistOpen(false)} 
       />
-      <div id="shopify-cart-anchor" style={{ display: 'none' }}></div>
     </div>
   );
 };
