@@ -23,5 +23,37 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      let selectedVariant = document.querySelector("[data-variant].active")?.getAttribute("data-variant");
+
+      // Handle pill clicks
+      document.querySelectorAll("[data-variant]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          selectedVariant = btn.getAttribute("data-variant");
+
+          // Highlight active pill
+          document.querySelectorAll("[data-variant]").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+
+      // Handle Add to cart
+      document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+        if (!selectedVariant) return alert("Please select a bundle");
+
+        fetch("/cart/add.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: selectedVariant, quantity: 1 })
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log("Added to cart:", data);
+          // 👉 If you're using a cart drawer, trigger it here.
+          // For example, if you use Shopify Buy Button UI, call window._attimoCart[0].open()
+        })
+        .catch(err => console.error("Cart error:", err));
+      });
+    </script>
   </body>
 </html>
