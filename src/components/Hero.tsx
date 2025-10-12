@@ -28,13 +28,12 @@ export const Hero = ({
           <div className="flex justify-center mb-8 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
-            <Button className="px-10 py-6 hover:scale-105 transition-all duration-300 font-semibold rounded-full backdrop-blur-sm shadow-2xl text-lg" style={{
-            fontFamily: 'Space Grotesk, monospace',
+            <Button className="px-10 py-6 hover:scale-105 transition-all duration-300 font-beverly rounded-full backdrop-blur-sm shadow-2xl text-lg" style={{
             border: '2px solid #CDDB2D',
             color: '#1B4229',
             backgroundColor: '#CDDB2D'
           }}>
-              Shop 2024 harvest
+              2024 harvest
             </Button>
           </div>
 
