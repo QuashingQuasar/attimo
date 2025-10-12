@@ -25,145 +25,15 @@
     <script type="module" src="/src/main.tsx"></script>
     
     <script>
-/** ---- Attimo storefront foundation (no drawer, no redirect) ---- **/
-(() => {
-  // 0) Config (known good)
-  const ATTIMO = {
-    DOMAIN:  'attimo-oil.myshopify.com',
-    VERSION: '2025-10',
-    TOKEN:   '79b950607019e5b5574dd3e5fe0fe15a'
-  };
-
-  // 1) Storefront GIDs (bundles)
-  const VARIANTS = {
-    '1': 'gid://shopify/ProductVariant/56203507597695',
-    '2': 'gid://shopify/ProductVariant/56203507630463',
-    '3': 'gid://shopify/ProductVariant/56203507663231',
-    '4': 'gid://shopify/ProductVariant/56203507695999',
-    '8': 'gid://shopify/ProductVariant/56203507728767'
-  };
-
-  // 2) Helper: GraphQL call
-  async function sfGQL(query, variables) {
-    const res = await fetch(`https://${ATTIMO.DOMAIN}/api/${ATTIMO.VERSION}/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': ATTIMO.TOKEN
-      },
-      body: JSON.stringify({ query, variables })
-    });
-    const json = await res.json();
-    if (json.errors) {
-      console.error('[attimo] GQL errors:', json.errors);
-      throw new Error('Storefront GQL error');
-    }
-    return json.data;
-  }
-
-  // 3) Ensure/reuse cart (saved to localStorage)
-  const CART_KEY = 'attimo_cart_v1';
-  async function ensureCart() {
-    let cart = null;
-    try { cart = JSON.parse(localStorage.getItem(CART_KEY) || 'null'); } catch {}
-    if (cart?.id) return cart;
-
-    const q = `mutation { cartCreate { cart { id checkoutUrl } } }`;
-    const data = await sfGQL(q);
-    const created = data?.cartCreate?.cart;
-    if (!created?.id) throw new Error('cartCreate failed');
-    localStorage.setItem(CART_KEY, JSON.stringify(created));
-    return created;
-  }
-
-  // 4) Add one line to cart
-  async function addLine(variantGid, qty = 1) {
-    const cart = await ensureCart();
-    const q = `
-      mutation($cartId: ID!, $lines: [CartLineInput!]!) {
-        cartLinesAdd(cartId: $cartId, lines: $lines) {
-          cart { id totalQuantity }
-          userErrors { field message }
-        }
-      }`;
-    const v = { cartId: cart.id, lines: [{ merchandiseId: variantGid, quantity: qty }] };
-    const data = await sfGQL(q, v);
-    const errs = data?.cartLinesAdd?.userErrors || [];
-    if (errs.length) {
-      console.error('[attimo] addToCart errors:', errs);
-      throw new Error('cartLinesAdd failed');
-    }
-    // persist (Shopify might change checkoutUrl across ops)
-    const updated = { id: data.cartLinesAdd.cart.id, checkoutUrl: (JSON.parse(localStorage.getItem(CART_KEY)||'{}')).checkoutUrl || cart.checkoutUrl };
-    localStorage.setItem(CART_KEY, JSON.stringify(updated));
-    return data.cartLinesAdd.cart;
-  }
-
-  // 5) Determine selected bundle key
-  function getSelectedKey() {
-    const byAria = document.querySelector('[data-variant][aria-selected="true"]')?.dataset.variant;
-    const byClass = document.querySelector('[data-variant].active')?.dataset.variant;
-    return byAria || byClass || window.__attimoLastKey || '1';
-  }
-
-  // Track last clicked pill (works even if UI doesn't set aria-selected/active)
-  document.querySelectorAll('[data-variant]').forEach(el => {
-    el.addEventListener('click', () => {
-      window.__attimoLastKey = el.dataset.variant;
-    }, { passive: true });
-  });
-
-  // 6) Wire CTA
-  const cta = document.getElementById('add-to-cart-btn');
-  if (!cta) {
-    console.warn('[attimo] CTA #add-to-cart-btn not found – foundation loaded but idle.');
-    return;
-  }
-
-  cta.addEventListener('click', async (e) => {
-    e.preventDefault();
-    try {
-      // sanity: token ping (once per page)
-      if (!window.__attimoPing) {
-        const ping = await fetch(`https://${ATTIMO.DOMAIN}/api/${ATTIMO.VERSION}/graphql.json`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Shopify-Storefront-Access-Token': ATTIMO.TOKEN
-          },
-          body: JSON.stringify({ query: '{ shop { name } }' })
-        });
-        console.log('[attimo] token ping HTTP:', ping.status);
-        window.__attimoPing = true;
-      }
-
-      const key = getSelectedKey();
-      const gid = VARIANTS[key];
-      if (!gid) {
-        console.error('[attimo] Unknown variant key', key);
-        return;
-      }
-
-      // optimistic UI
-      const old = cta.textContent;
-      cta.disabled = true;
-      cta.textContent = 'Adding…';
-
-      const cart = await addLine(gid, 1);
-      console.log('[attimo] Added:', { key, gid, cart });
-
-      // restore text (no redirect yet)
-      cta.textContent = 'Added!';
-      setTimeout(() => { cta.textContent = old; cta.disabled = false; }, 900);
-    } catch (err) {
-      console.error('[attimo] add-to-cart failed:', err);
-      alert('Sorry—could not add to cart. Check console.');
-      cta.disabled = false;
-    }
-  });
-
-  console.log('[attimo] storefront foundation ready. Click the CTA to test.');
-})();
+      // Define VARIANTS mapping for attimo-cart.js
+      window.VARIANTS = {
+        '1': 'gid://shopify/ProductVariant/56203507597695',
+        '2': 'gid://shopify/ProductVariant/56203507630463',
+        '3': 'gid://shopify/ProductVariant/56203507663231',
+        '4': 'gid://shopify/ProductVariant/56203507695999',
+        '8': 'gid://shopify/ProductVariant/56203507728767'
+      };
     </script>
+    <script defer src="/attimo-cart.js"></script>
   </body>
 </html>
