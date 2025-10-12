@@ -10,30 +10,35 @@ export const HarvestProduct = () => {
     quantity: 1,
     label: "1 Bottle",
     price: 23,
-    savings: null
+    savings: null,
+    variant: "56203507597695"
   }, {
     quantity: 2,
     label: "2 Bottles",
     price: 46,
-    savings: null
+    savings: null,
+    variant: "56203507630463"
   }, {
     quantity: 3,
     label: "3 Bottles",
     subtitle: "Save €3",
     price: 66,
-    savings: 3
+    savings: 3,
+    variant: "56203507663231"
   }, {
     quantity: 4,
     label: "4 Bottles",
     subtitle: "Save €6 + Free Shipping",
     price: 86,
-    savings: 6
+    savings: 6,
+    variant: "56203507695999"
   }, {
     quantity: 8,
     label: "8 Bottles",
     subtitle: "Save €15 + Free Shipping",
     price: 169,
-    savings: 15
+    savings: 15,
+    variant: "56203507728767"
   }];
   const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
   const labTiles = [{
@@ -122,7 +127,7 @@ export const HarvestProduct = () => {
             {/* Quantity Selection */}
             <div className="space-y-2">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-                {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} className={`p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
+                {quantityOptions.map(option => <button key={option.quantity} role="radio" aria-checked={selectedQuantity === option.quantity} data-variant={option.variant} onClick={() => setSelectedQuantity(option.quantity)} className={`p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream is-active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
                     <div className="font-semibold text-sm mb-1" style={{
                   fontFamily: 'Space Grotesk, monospace'
                 }}>{option.label}</div>
@@ -136,11 +141,11 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Add to Cart Button */}
-            <Button className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 text-base h-auto rounded-xl" style={{
+            <Button id="add-to-cart-btn" className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 text-base h-auto rounded-xl" style={{
             fontFamily: 'Space Grotesk, monospace',
             backgroundColor: '#CDDB2D'
           }}>
-              Add to cart - €{selectedOption?.price}
+              Add to cart – <span id="add-to-cart-price">€{selectedOption?.price}</span>
             </Button>
 
             {/* Lab Values Grid */}
