@@ -159,18 +159,42 @@
 })();
     </script>
     <script>
-(function() {
-  var client = ShopifyBuy.buildClient({
-    domain: '00xpv6-0j.myshopify.com',
-    storefrontAccessToken: '30733c853377e0bfebe5596acf9066d2'
-  });
+(function () {
+  var SDK_URL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
 
-  ShopifyBuy.UI.onReady(client).then(function (ui) {
-    window._attimoCart = ui.createComponent('cart', {
-      node: document.getElementById('shopify-cart-anchor'),
-      options: { cart: { popup: true } }
+  function ensureAnchor() {
+    var el = document.getElementById('shopify-cart-anchor');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'shopify-cart-anchor';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+
+  function initCart() {
+    var client = ShopifyBuy.buildClient({
+      domain: '00xpv6-0j.myshopify.com',
+      storefrontAccessToken: '30733c853377e0bfebe5596acf9066d2'
     });
-  });
+
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      window._ui = ui;
+      window._attimoCart = ui.createComponent('cart', { node: ensureAnchor() });
+      console.log('[Shopify] cart ready');
+    });
+  }
+
+  function loadAndInit() {
+    if (window.ShopifyBuy && window.ShopifyBuy.UI) { initCart(); return; }
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = SDK_URL;
+    s.onload = initCart;
+    document.head.appendChild(s);
+  }
+
+  loadAndInit();
 })();
     </script>
   </body>
