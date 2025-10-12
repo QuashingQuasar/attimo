@@ -94,66 +94,52 @@
         8: gid('56203507728767'),
       };
 
-      // ---------- UI wiring: pills + Add to cart ----------
-      (() => {
-        const PILL_SELECTOR = '[data-variant]';
-        const ADD_BTN_SELECTOR = '#add-to-cart-btn';
+      // ---- expose helpers to the page / console
+      window.sfGQL = sfGQL;
+      window.ensureCart = ensureCart;
+      window.addLine = addLine;
+      window.VARIANTS = VARIANTS;
 
-        const pills = Array.from(document.querySelectorAll(PILL_SELECTOR));
-        const addBtn = document.querySelector(ADD_BTN_SELECTOR);
-
-        if (!pills.length || !addBtn) {
-          console.warn('[Attimo] Pills or Add button not found. Check selectors.');
+      // ---- wire pills + CTA
+      (function initAttimoUI() {
+        const pills = document.querySelectorAll('[data-variant]');
+        const cta   = document.querySelector('#add-to-cart-btn');
+        if (!pills.length || !cta) {
+          console.warn('[attimo] pills or CTA not found');
           return;
         }
 
-        let selectedKey =
-          (pills.find(el => el.classList.contains('active'))?.getAttribute('data-variant')) ||
-          '2';
-
-        function setActive(key) {
-          selectedKey = String(key);
-          pills.forEach(el =>
-            el.classList.toggle('active', el.getAttribute('data-variant') === selectedKey)
-          );
-        }
-
-        pills.forEach(el => {
-          el.addEventListener('click', () => {
-            const key = el.getAttribute('data-variant');
-            if (!VARIANTS[key]) return console.error('[Attimo] Unknown variant key:', key);
-            setActive(key);
+        let selected = String(pills[0].getAttribute('data-variant'));
+        pills.forEach(btn => {
+          btn.addEventListener('click', () => {
+            selected = String(btn.getAttribute('data-variant'));
+            pills.forEach(b => b.classList.toggle('active', b === btn));
           });
         });
 
-        setActive(selectedKey);
-
-        addBtn.addEventListener('click', async () => {
+        cta.addEventListener('click', async () => {
           try {
-            const variantGid = VARIANTS[selectedKey];
-            if (!variantGid) return console.error('[Attimo] No variant mapped for', selectedKey);
-
-            addBtn.disabled = true;
-            const originalLabel = addBtn.textContent;
-            addBtn.textContent = 'Adding…';
-
-            const res = await addLine(variantGid, 1);
-            const checkoutUrl =
-              res?.cartLinesAdd?.cart?.checkoutUrl ||
-              JSON.parse(localStorage.getItem(CART_KEY) || 'null')?.url;
-
-            if (checkoutUrl) {
-              window.location.href = checkoutUrl;
-            } else {
-              console.warn('[Attimo] No checkoutUrl returned');
+            await ensureCart();
+            const gid = VARIANTS[selected];
+            if (!gid) {
+              console.error('[attimo] unknown variant', selected);
+              return;
             }
-          } catch (err) {
-            console.error('[Attimo] Add to cart failed:', err);
-          } finally {
-            addBtn.disabled = false;
-            addBtn.textContent = 'Add to cart';
+            const res = await addLine(gid, 1);
+
+            // Prefer cart from mutation; fall back to saved cart
+            const url =
+              res?.cartLinesAdd?.cart?.checkoutUrl ||
+              JSON.parse(localStorage.getItem('attimo_cart_v1') || '{}').url;
+
+            // Redirect to Shopify checkout (change to open drawer later if wanted)
+            if (url) location.href = url;
+          } catch (e) {
+            console.error('[attimo] add-to-cart failed', e);
           }
         });
+
+        console.log('[attimo] storefront ready');
       })();
     </script>
   </body>
