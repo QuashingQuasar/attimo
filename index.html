@@ -23,5 +23,101 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script async src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+    <script>
+    (function () {
+      // Shopify Buy Button credentials
+      const DOMAIN = '00xpv6-0j.myshopify.com';
+      const TOKEN  = '30733c853377e0bfebe5596acf9066d2';
+      const BUNDLE_PRODUCT_ID = '15330876817791'; // bundle product id
+
+      // Your variant IDs (you provided these)
+      const VARIANT_BY_QTY = {
+        1: '56203507597695',
+        2: '56203507630463',
+        3: '56203507663231',
+        4: '56203507695999',
+        8: '56203507728767'
+      };
+      const PRICE_BY_QTY = { 1: 23, 2: 46, 3: 66, 4: 86, 8: 164 };
+
+      // Hooks to YOUR existing UI (no redesign)
+      const pills   = Array.from(document.querySelectorAll('[data-variant]'));
+      const ctaBtn  = document.getElementById('add-to-cart-btn');
+      const ctaSpan = document.getElementById('add-to-cart-price');
+
+      let selectedBtn = document.querySelector('[data-variant].is-active') || pills[0];
+      let selectedVariant = selectedBtn ? selectedBtn.getAttribute('data-variant') : null;
+
+      function updateCTAFromVariant(variantId){
+        const entry = Object.entries(VARIANT_BY_QTY).find(([,v]) => v === variantId);
+        if (!entry) return;
+        const qty = Number(entry[0]);
+        const price = PRICE_BY_QTY[qty];
+        if (ctaSpan && price != null) ctaSpan.textContent = '€' + price;
+      }
+      function setActive(btn){
+        pills.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-checked','false'); });
+        btn.classList.add('is-active');
+        btn.setAttribute('aria-checked','true');
+      }
+
+      function initUI(){
+        const client = ShopifyBuy.buildClient({ domain: DOMAIN, storefrontAccessToken: TOKEN });
+
+        ShopifyBuy.UI.onReady(client).then(function (ui) {
+          // Create slide-out cart
+          window._attimoCart = ui.createComponent('cart', {
+            node: document.getElementById('shopify-cart-anchor'),
+            options: { cart: { popup: true, startOpen: false } }
+          });
+
+          // Hidden product component so we can call addVariantToCart
+          ui.createComponent('product', {
+            id: BUNDLE_PRODUCT_ID,
+            node: document.createElement('div'),
+            options: { product: { contents: { img:false, title:false, price:false, button:false } } }
+          }).then(function(product){
+
+            // Pills: set selected variant
+            pills.forEach(btn => {
+              btn.addEventListener('click', () => {
+                selectedBtn = btn;
+                selectedVariant = btn.getAttribute('data-variant');
+                setActive(btn);
+                updateCTAFromVariant(selectedVariant);
+              });
+              btn.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+              });
+            });
+
+            // CTA: add selected variant to cart and open drawer
+            if (ctaBtn) {
+              ctaBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!selectedVariant) return;
+                product.addVariantToCart(selectedVariant, { quantity: 1 }).then(function () {
+                  if (window._attimoCart && window._attimoCart[0] && window._attimoCart[0].open) {
+                    window._attimoCart[0].open();
+                  }
+                });
+              });
+            }
+
+            // Initial state
+            if (selectedBtn) { setActive(selectedBtn); updateCTAFromVariant(selectedVariant); }
+          });
+        });
+      }
+
+      if (window.ShopifyBuy) {
+        if (ShopifyBuy.UI) initUI();
+        else document.addEventListener('shopify-buy-ui-ready', initUI);
+      } else {
+        document.addEventListener('shopify-buy-ready', initUI);
+      }
+    })();
+    </script>
   </body>
 </html>
