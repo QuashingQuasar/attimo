@@ -199,68 +199,71 @@
     </script>
     <script>
 (function () {
-  if (!window._ui) return; // wait until cart init has run
-
-  // 1) Create a hidden container
-  var hidden = document.getElementById('shopify-hidden-product');
-  if (!hidden) {
-    hidden = document.createElement('div');
-    hidden.id = 'shopify-hidden-product';
-    hidden.style.display = 'none';
-    document.body.appendChild(hidden);
+  function onReady(cb){ 
+    if (document.readyState !== 'loading') cb(); 
+    else document.addEventListener('DOMContentLoaded', cb); 
+  }
+  function waitFor(cond, cb, interval=60, timeout=10000){
+    const start = Date.now();
+    (function loop(){
+      if (cond()) return cb();
+      if (Date.now() - start > timeout) { console.warn('waitFor _ui timeout'); return; }
+      setTimeout(loop, interval);
+    })();
   }
 
-  // 2) Create a hidden product component for our product (all variants)
-  // Product ID: 15330876817791
-  // We'll use this component's addVariantToCart to add items into the same cart
-  window._attimoProduct = window._ui.createComponent('product', {
-    id: '15330876817791',
-    node: hidden,
-    options: {
-      product: {
-        contents: { img: false, title: false, price: false, options: false, button: false, buttonWithQuantity: false }
+  onReady(function () {
+    waitFor(function(){ return window._ui && window.ShopifyBuy && window.ShopifyBuy.UI; }, function () {
+      // 1) Hidden container for the helper product component
+      var hidden = document.getElementById('shopify-hidden-product');
+      if (!hidden) {
+        hidden = document.createElement('div');
+        hidden.id = 'shopify-hidden-product';
+        hidden.style.display = 'none';
+        document.body.appendChild(hidden);
       }
-    }
-  });
 
-  // 3) Wire your existing CTA to add the currently selected variant and open the cart
-  function getSelectedVariantId() {
-    // Update these selectors to match your "active" pill if needed
-    var active = document.querySelector('[data-variant].active') ||
-                 document.querySelector('[data-variant][aria-pressed="true"]');
-    return active ? active.getAttribute('data-variant') : null;
-  }
+      // 2) Create hidden product component (your product ID)
+      window._attimoProduct = window._ui.createComponent('product', {
+        id: '15330876817791',
+        node: hidden,
+        options: {
+          product: { contents: { img:false, title:false, price:false, options:false, button:false, buttonWithQuantity:false } }
+        }
+      });
 
-  var addBtn = document.getElementById('add-to-cart-btn') || document.querySelector('[data-add-to-cart]');
-  if (!addBtn) return;
-
-  addBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    var variantId = getSelectedVariantId();
-    if (!variantId || !window._attimoProduct) return;
-
-    // tolerate either string or number ids
-    try {
-      var vId = String(variantId);
-      // Try both method signatures Shopify has used
-      var maybePromise =
-        (typeof _attimoProduct.addVariantToCart === 'function')
-          ? _attimoProduct.addVariantToCart(vId, 1)
-          : (_attimoProduct.model && typeof _attimoProduct.model.addVariantToCart === 'function')
-              ? _attimoProduct.model.addVariantToCart(vId, 1)
-              : null;
-
-      // Open the cart after it adds (promise or not)
-      if (maybePromise && typeof maybePromise.then === 'function') {
-        maybePromise.then(function () { window._ui.openCart(); });
-      } else {
-        window._ui.openCart();
+      // 3) Map your UI: find selected pill + hook the CTA
+      function getSelectedVariantId() {
+        var el = document.querySelector('[data-variant].active, [data-variant][aria-pressed="true"]');
+        return el ? el.getAttribute('data-variant') : null;
       }
-    } catch (err) {
-      console.warn('Add to cart failed:', err);
-      window._ui.openCart();
-    }
+      // expose for quick console testing if needed
+      window._getSelectedVariantId = getSelectedVariantId;
+
+      var addBtn = document.getElementById('add-to-cart-btn') || document.querySelector('[data-add-to-cart]');
+      if (!addBtn) { console.warn('Add-to-cart button not found'); return; }
+
+      addBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var vId = getSelectedVariantId();
+        if (!vId) { console.warn('No variant selected'); return; }
+
+        var addFn = (typeof _attimoProduct.addVariantToCart === 'function')
+          ? _attimoProduct.addVariantToCart
+          : (_attimoProduct.model && typeof _attimoProduct.model.addVariantToCart === 'function'
+              ? _attimoProduct.model.addVariantToCart
+              : null);
+
+        if (!addFn) { console.warn('addVariantToCart not available'); return; }
+
+        var p = addFn.call(_attimoProduct, String(vId), 1);
+        (p && typeof p.then === 'function' ? p : Promise.resolve())
+          .then(function(){ window._ui.openCart(); })
+          .catch(function(err){ console.warn('Add to cart failed:', err); window._ui.openCart(); });
+      });
+
+      console.log('[Shopify] helper product ready');
+    });
   });
 })();
     </script>
