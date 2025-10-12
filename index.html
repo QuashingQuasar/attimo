@@ -69,7 +69,23 @@
           // Create slide-out cart
           window._attimoCart = ui.createComponent('cart', {
             node: document.getElementById('shopify-cart-anchor'),
-            options: { cart: { popup: true, startOpen: false } }
+            options: {
+              cart: {
+                popup: false,
+                startOpen: false,
+                text: {
+                  title: "Your Cart",
+                  total: "Subtotal",
+                  button: "Secure Checkout"
+                },
+                styles: {
+                  button: { "background-color": "#A3D65C" }
+                }
+              },
+              toggle: {
+                sticky: true
+              }
+            }
           });
 
           // Hidden product component so we can call addVariantToCart
