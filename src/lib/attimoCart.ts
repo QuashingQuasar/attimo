@@ -1,3 +1,5 @@
+import { setCartBadge, reconcileCartBadge } from './cartBadge';
+
 type VariantKey = '1' | '2' | '3' | '4' | '8';
 
 const SHOP_DOMAIN = 'attimo-oil.myshopify.com';
@@ -18,7 +20,6 @@ export function initAttimoCart() {
     document.querySelectorAll<HTMLButtonElement>('#bundle-pills .pill')
   );
   const cta = document.getElementById('add-to-cart-btn') as HTMLButtonElement | null;
-  const badge = document.getElementById('cart-count-badge') as HTMLSpanElement | null;
 
   if (!pills.length || !cta) return;
 
@@ -42,14 +43,6 @@ export function initAttimoCart() {
     selectedKey = key;
     pills.forEach(p => p.classList.toggle('active', p.dataset.key === key));
     updateCTA();
-  }
-
-  function bumpBadge(n: number) {
-    if (!badge) return;
-    const current = Number(badge.textContent || 0);
-    const next = current + n;
-    badge.textContent = String(next);
-    badge.hidden = next <= 0;
   }
 
   async function ensureCartId(): Promise<string> {
@@ -108,13 +101,19 @@ export function initAttimoCart() {
     const original = cta.textContent;
     cta.disabled = true;
     cta.textContent = 'Added ✓';
-    bumpBadge(qty);
 
     try {
-      await addViaStorefrontAPI(variantId, qty);
+      const total = await addViaStorefrontAPI(variantId, qty);
+
+      // If mutation returned totalQuantity, use it; otherwise reconcile.
+      if (typeof total === 'number') {
+        setCartBadge(total);
+      } else {
+        reconcileCartBadge();
+      }
     } catch (e) {
       console.error('[attimo] add failed:', e);
-      bumpBadge(-qty);
+      reconcileCartBadge(); // Sync to actual cart state on error
       cta.textContent = 'Add failed';
       setTimeout(() => (cta.textContent = original || 'Add to cart'), 1200);
       cta.disabled = false;
