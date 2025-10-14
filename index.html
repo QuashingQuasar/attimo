@@ -20,106 +20,162 @@
     <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <script>
 (() => {
-  // ——— Config ———
-  const SF_GQL_DOMAIN = "attimo-oil.myshopify.com";       // Storefront GraphQL host (keep myshopify for API)
-  const CART_BASE      = "https://shop.attimo-oil.com";    // Where cart/checkout live (your subdomain)
-  const SF_TOKEN       = "79b950607019e5b5574dd3e5fe0fe15a";
+  // --- CONFIG
+  const SHOP_DOMAIN = 'shop.attimo-oil.com';
+  const API_VER     = '2025-10';
+  const SF_TOKEN    = '79b950607019e5b5574dd3e5fe0fe15a';
+  const CART_KEY    = 'attimo_cart_v1';          // localStorage key
+  const NAV_SEL     = 'a#nav-cart-link, a.cart-link, a[aria-label*="Cart"]'; // our nav link
+  const BADGE_SEL   = '#cart-badge';             // span we can update (create if missing)
 
-  // ——— GQL helper ———
-  async function sfGQL(query, variables = {}) {
-    const res = await fetch(`https://${SF_GQL_DOMAIN}/api/2025-01/graphql.json`, {
-      method: "POST",
+  // --- GraphQL helper
+  async function sfGQL(query, variables={}) {
+    const res = await fetch(`https://${SHOP_DOMAIN}/api/${API_VER}/graphql.json`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token": SF_TOKEN
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': SF_TOKEN,
+        'Accept': 'application/json'
       },
       body: JSON.stringify({ query, variables }),
-      credentials: "omit"
+      credentials: 'omit'
     });
-    const data = await res.json();
-    if (data.errors) console.error("[attimo] GQL errors:", data.errors);
-    return data.data;
+    const json = await res.json();
+    if (json.errors || json.data?.cartCreate?.userErrors?.length || json.data?.cartLinesAdd?.userErrors?.length) {
+      console.warn('[attimo] GQL errors: ', json.errors || json.data);
+    }
+    return json.data;
   }
 
-  // ——— Badge update ———
-  async function updateCartBadge() {
-    const badge = document.querySelector('#cart-badge');
-    if (!badge) return;
+  // --- Cart store
+  function loadCartCache() {
+    try { return JSON.parse(localStorage.getItem(CART_KEY) || 'null'); } catch { return null; }
+  }
+  function saveCartCache(obj) {
+    localStorage.setItem(CART_KEY, JSON.stringify(obj));
+  }
 
-    try {
-      const res = await fetch(`${CART_BASE}/cart.js`, {
-        credentials: 'include',
-        cache: 'no-store'
-      });
-      if (!res.ok) throw new Error('cart.js failed');
-      const cart = await res.json();
-      const count = Number(cart.item_count) || 0;
-      badge.textContent = count > 0 ? String(count) : '';
-      badge.classList.toggle('hidden', count <= 0);
-    } catch (e) {
-      // swallow; keep previous badge state
+  // --- UI helpers
+  function ensureBadgeEl() {
+    let badge = document.querySelector(BADGE_SEL);
+    if (!badge) {
+      // attach just after the nav cart link
+      const a = document.querySelector(NAV_SEL);
+      if (!a) return null;
+      badge = document.createElement('span');
+      badge.id = 'cart-badge';
+      badge.style.cssText = `
+        display:inline-flex;align-items:center;justify-content:center;
+        margin-left:6px; width:22px;height:22px;border-radius:50%;
+        background:#0E1522;color:#fff;font-weight:700;font-size:12px;line-height:1;
+      `;
+      a.appendChild(badge);
+    }
+    return badge;
+  }
+  function setBadge(qty) {
+    const badge = ensureBadgeEl();
+    if (!badge) return;
+    if (qty > 0) {
+      badge.textContent = String(qty);
+      badge.style.visibility = 'visible';
+    } else {
+      badge.textContent = '';
+      badge.style.visibility = 'hidden';
     }
   }
-
-  // ——— Force nav cart link to /cart and block any rogue handlers ———
-  function forceCartLink() {
-    const a = document.querySelector("#nav-cart-link");
+  function setNavHref(checkoutUrl) {
+    const a = document.querySelector(NAV_SEL);
     if (!a) return;
-    a.href   = `${CART_BASE}/cart`;
-    a.target = "_self";
-
-    // capture-phase handler to trump any downstream listener that tries /checkout
-    const forceCart = (e) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      e.stopPropagation();
-      window.location.href = a.href;  // always /cart
-    };
-    a.addEventListener("click", forceCart, true);
+    // Use the tokenized cart permalink returned by Storefront API
+    a.href = checkoutUrl;        // looks like /cart/c/<token>?key=<...>
+    a.target = '_self';
   }
 
- // ——— CTA wiring ———
-  function wireCTA() {
-    const cta = document.querySelector("#add-to-cart-btn");
-    if (!cta) return;
-    cta.addEventListener("click", async (e) => {
-      e.preventDefault();
-      const active = document.querySelector("[data-variant].active");
-      const merchandiseId = active?.dataset?.variant;
-      if (!merchandiseId) return console.warn("[attimo] no active pill / variant");
-
-      try {
-        const m = `
-          mutation AddLine($lines:[CartLineInput!]!) {
-            cartCreate(input:{ lines:$lines }) { cart { id totalQuantity } }
-          }
-        `;
-        await sfGQL(m, { lines: [{ merchandiseId, quantity: 1 }] });
-        const txt = cta.textContent;
-        cta.textContent = "Added!";
-        setTimeout(() => (cta.textContent = txt || "Add to cart"), 1200);
-        document.dispatchEvent(new Event('attimo:added'));
-        updateCartBadge();
-      } catch (err) {
-        console.error("[attimo] add-to-cart failed", err);
+  // --- API wrappers
+  async function fetchCart(id) {
+    const q = `
+      query cart($id: ID!) {
+        cart(id: $id) {
+          id
+          checkoutUrl
+          totalQuantity
+        }
       }
-    }, { once: false });
+    `;
+    const data = await sfGQL(q, { id });
+    return data?.cart || null;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    forceCartLink();     // ensure the icon goes to /cart on shop.attimo-oil.com
-    wireCTA();           // hook the add-to-cart
-    updateCartBadge();   // populate badge on load
+  async function createCart(lines) {
+    const m = `
+      mutation cartCreate($lines: [CartLineInput!]) {
+        cartCreate(input: { lines: $lines }) {
+          cart { id checkoutUrl totalQuantity }
+          userErrors { field message }
+        }
+      }
+    `;
+    const data = await sfGQL(m, { lines });
+    return data?.cartCreate?.cart || null;
+  }
 
-    // Refresh badge when tab regains focus (catches changes made on cart page)
-    window.addEventListener('focus', updateCartBadge);
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) updateCartBadge();
-    });
+  async function addLines(cartId, lines) {
+    const m = `
+      mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+        cartLinesAdd(cartId: $cartId, lines: $lines) {
+          cart { id checkoutUrl totalQuantity }
+          userErrors { field message }
+        }
+      }
+    `;
+    const data = await sfGQL(m, { cartId, lines });
+    return data?.cartLinesAdd?.cart || null;
+  }
 
-    // Listen for custom event fired after add-to-cart
-    document.addEventListener('attimo:added', updateCartBadge);
-  });
+  // --- Public mini-API the existing "Add to cart" code can call
+  // Call like: window.attimoAddToCart('gid://shopify/ProductVariant/<id>', qty)
+  window.attimoAddToCart = async (merchandiseId, quantity=1) => {
+    // 1) reuse or create cart
+    let cache = loadCartCache();
+    let cart  = null;
+
+    if (cache?.id) {
+      cart = await addLines(cache.id, [{ merchandiseId, quantity }]).catch(() => null);
+      if (!cart) {
+        // fallback: cart id stale → create new
+        cart = await createCart([{ merchandiseId, quantity }]);
+      }
+    } else {
+      cart = await createCart([{ merchandiseId, quantity }]);
+    }
+
+    if (cart) {
+      saveCartCache({ id: cart.id, checkoutUrl: cart.checkoutUrl, totalQuantity: cart.totalQuantity });
+      setBadge(cart.totalQuantity);
+      setNavHref(cart.checkoutUrl);
+      // You already show "Added"; we don't redirect here.
+    }
+  };
+
+  // --- On page load: hydrate from cache and verify
+  (async () => {
+    let cache = loadCartCache();
+    if (cache?.id) {
+      const fresh = await fetchCart(cache.id).catch(() => null);
+      if (fresh) {
+        saveCartCache({ id: fresh.id, checkoutUrl: fresh.checkoutUrl, totalQuantity: fresh.totalQuantity });
+        setBadge(fresh.totalQuantity);
+        setNavHref(fresh.checkoutUrl);
+      } else {
+        // stale cache
+        saveCartCache({ id: null, checkoutUrl: null, totalQuantity: 0 });
+        setBadge(0);
+      }
+    } else {
+      setBadge(0);
+    }
+  })();
 })();
     </script>
   </head>
