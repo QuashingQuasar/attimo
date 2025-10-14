@@ -82,28 +82,30 @@ export const HarvestProduct = () => {
           <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D' }}>
+                <Badge variant="secondary" className="bg-olive-dark" style={{ color: '#CDDB2D', fontSize: 'clamp(0.7rem, 0.9vw, 1rem)' }}>
                   2024 HARVEST
                 </Badge>
-                <Badge variant="secondary" className="bg-gold/20 text-gold-dark">
+                <Badge variant="secondary" className="bg-gold/20 text-gold-dark" style={{ fontSize: 'clamp(0.7rem, 0.9vw, 1rem)' }}>
                   LAST BOTTLES
                 </Badge>
               </div>
               
-              <h1 className="text-3xl md:text-5xl font-bold text-olive-dark mb-2">Galega from Alentejo</h1>
+              <h1 className="font-bold text-olive-dark mb-2" style={{ fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)' }}>Galega from Alentejo</h1>
               
-              <p className="text-xl md:text-3xl text-olive-medium mb-2 font-beverly" style={{
+              <p className="text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
               textDecorationStyle: 'dashed',
               textDecorationColor: 'currentColor',
-              textUnderlineOffset: '4px'
+              textUnderlineOffset: '4px',
+              fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
             }}>High-Polyphenol Extra Virgin Olive Oil</p>
             </header>
 
             {/* Key Benefits */}
             <div className="space-y-2">
-              <ul className="space-y-2 text-olive-medium text-base" style={{
-              fontFamily: 'Space Grotesk, monospace'
+              <ul className="space-y-2 text-olive-medium" style={{
+              fontFamily: 'Space Grotesk, monospace',
+              fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
             }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
@@ -124,11 +126,13 @@ export const HarvestProduct = () => {
             <div className="space-y-2">
               <div id="bundle-pills" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                 {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} data-variant={option.quantity} data-key={option.quantity} data-price={option.price} aria-selected={selectedQuantity === option.quantity} className={`pill p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
-                    <div className="font-semibold text-sm mb-1" style={{
-                  fontFamily: 'Space Grotesk, monospace'
+                    <div className="font-semibold mb-1" style={{
+                  fontFamily: 'Space Grotesk, monospace',
+                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                 }}>{option.label}</div>
-                    {option.subtitle && <div className={`text-xs ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{
-                  fontFamily: 'Space Grotesk, monospace'
+                    {option.subtitle && <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{
+                  fontFamily: 'Space Grotesk, monospace',
+                  fontSize: 'clamp(0.65rem, 0.75vw, 0.875rem)'
                 }}>
                         {option.subtitle}
                       </div>}
@@ -137,9 +141,10 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Buy Now Button */}
-            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 text-base h-auto rounded-xl" style={{
+            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 h-auto rounded-xl" style={{
             fontFamily: 'Space Grotesk, monospace',
-            backgroundColor: '#CDDB2D'
+            backgroundColor: '#CDDB2D',
+            fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
           }}>
               Buy now — €{selectedOption?.price}
             </Button>
@@ -150,26 +155,30 @@ export const HarvestProduct = () => {
                   <div className="px-3 py-1.5" style={{
                 backgroundColor: '#1B4229'
               }}>
-                    <div className="text-xs font-semibold uppercase tracking-wide" style={{
-                  color: '#FFFFFF'
+                    <div className="font-semibold uppercase tracking-wide" style={{
+                  color: '#FFFFFF',
+                  fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
                 }}>
                       {tile.label}
                     </div>
                   </div>
                   <div className="p-3">
                     <div className="flex items-baseline gap-2 mb-1">
-                      <div className="text-2xl font-bold text-olive-dark leading-none" style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif'
+                      <div className="font-bold text-olive-dark leading-none" style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: 'clamp(1.25rem, 1.8vw, 2rem)'
                   }}>
                         {tile.value}
-                        {tile.unit && <span className="text-base ml-1 text-olive-dark/90">{tile.unit}</span>}
+                        {tile.unit && <span className="ml-1 text-olive-dark/90" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.25rem)' }}>{tile.unit}</span>}
                       </div>
-                      <div className="text-sm text-olive-light" style={{
-                    fontFamily: 'Space Grotesk, monospace'
+                      <div className="text-olive-light" style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                   }}>{tile.avg}</div>
                     </div>
-                    <p className="text-sm text-olive-medium/80 leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace'
+                    <p className="text-olive-medium/80 leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace',
+                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                 }}>{tile.description}</p>
                   </div>
                 </div>)}

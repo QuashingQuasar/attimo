@@ -45,12 +45,15 @@ export const PolyphenolComparison = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>
-              <h2 className="text-5xl md:text-6xl font-beverly font-bold text-olive-dark mb-6 tracking-tight">
+              <h2 className="font-beverly font-bold text-olive-dark mb-6 tracking-tight" style={{
+                fontSize: 'clamp(2.5rem, 4vw, 4.5rem)'
+              }}>
                 The Polyphenol Difference<br />
                 <span className="font-medium"></span>
               </h2>
-               <p className="text-lg text-olive-medium leading-relaxed mb-12" style={{
-            fontFamily: 'Space Grotesk, monospace'
+               <p className="text-olive-medium leading-relaxed mb-12" style={{
+            fontFamily: 'Space Grotesk, monospace',
+            fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
           }}>
                   See the polyphenol difference—what's in ours, what's in others, and why it matters.
                 </p>
@@ -65,11 +68,13 @@ export const PolyphenolComparison = () => {
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
                   width: `${width}px`
                 }}>
-                         <span className={`text-lg font-medium whitespace-nowrap ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace' } : undefined}>
+                         <span className={`font-medium whitespace-nowrap ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' } : { fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>
                            {item.name}
                          </span>
                        </div>
-                      <span className="text-lg font-bold text-olive-dark whitespace-nowrap">
+                      <span className="font-bold text-olive-dark whitespace-nowrap" style={{
+                        fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
+                      }}>
                         {item.value} mg/kg
                       </span>
                     </div>;
@@ -102,12 +107,14 @@ export const PolyphenolComparison = () => {
                               {/* Tweet Content */}
                               <div className="space-y-4 flex-grow">
                                 <p className={`${textColors[index]} leading-relaxed`} style={{
-                          fontFamily: 'Space Grotesk, monospace'
+                          fontFamily: 'Space Grotesk, monospace',
+                          fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
                         }}>
                                   {tweet.content}
                                 </p>
                                 <p className={`text-olive-dark/80 leading-relaxed`} style={{
-                          fontFamily: 'Space Grotesk, monospace'
+                          fontFamily: 'Space Grotesk, monospace',
+                          fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
                         }}>
                                   {tweet.content2}
                                 </p>

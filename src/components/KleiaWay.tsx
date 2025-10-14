@@ -4,7 +4,10 @@ export const KleiaWay = () => {
     <section className="min-h-screen snap-start flex items-start lg:items-center mt-0 lg:-mt-64 pt-8 pb-0" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-20">
-          <h2 className="text-4xl md:text-5xl font-light mb-8 tracking-tight" style={{ color: '#1B4229' }}>
+          <h2 className="font-light mb-8 tracking-tight" style={{ 
+            color: '#1B4229',
+            fontSize: 'clamp(2rem, 3.5vw, 3.75rem)'
+          }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
           </h2>
@@ -14,8 +17,15 @@ export const KleiaWay = () => {
           {/* Top row, col 1 - Not Blended (text) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#B3E58C' }}>FROM GROVE TO TABLE</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#B3E58C' }}>
+              <h4 className="font-bold mb-6" style={{ 
+                color: '#B3E58C',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+              }}>FROM GROVE TO TABLE</h4>
+              <p className="leading-relaxed" style={{ 
+                fontFamily: 'Space Grotesk, monospace', 
+                color: '#B3E58C',
+                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+              }}>
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
@@ -37,8 +47,15 @@ export const KleiaWay = () => {
           {/* Top row, col 4 - Text content (as shown in sketch) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#B3E58C' }}>LAB-TESTED QUALITY</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#B3E58C' }}>
+              <h4 className="font-bold mb-6" style={{ 
+                color: '#B3E58C',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+              }}>LAB-TESTED QUALITY</h4>
+              <p className="leading-relaxed" style={{ 
+                fontFamily: 'Space Grotesk, monospace', 
+                color: '#B3E58C',
+                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+              }}>
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
@@ -60,8 +77,15 @@ export const KleiaWay = () => {
           {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#B3E58C' }}>FRESH AND SINGLE-GROVE</h4>
-              <p className="text-lg lg:text-xl leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', color: '#B3E58C' }}>
+              <h4 className="font-bold mb-6" style={{ 
+                color: '#B3E58C',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+              }}>FRESH AND SINGLE-GROVE</h4>
+              <p className="leading-relaxed" style={{ 
+                fontFamily: 'Space Grotesk, monospace', 
+                color: '#B3E58C',
+                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+              }}>
                 Every bottle is from the latest harvest and is sourced from just one grove.
               </p>
             </div>

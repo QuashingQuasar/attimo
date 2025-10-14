@@ -70,17 +70,24 @@ export const Testimonials = () => {
               <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 w-96 bg-white border-olive-light/20 shadow-sm">
                 <CardContent className="p-6">
                   {/* Title */}
-                  <h4 className="font-semibold text-olive-dark mb-3 text-sm">
+                  <h4 className="font-semibold text-olive-dark mb-3" style={{
+                    fontSize: 'clamp(0.875rem, 1vw, 1.125rem)'
+                  }}>
                     {testimonial.title}
                   </h4>
                   
                   {/* Review Text */}
-                  <p className="text-olive-dark/80 text-sm leading-relaxed mb-4" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                  <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ 
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(0.875rem, 1vw, 1.125rem)'
+                  }}>
                     {testimonial.text}
                   </p>
                   
                   {/* Author and Date */}
-                  <div className="flex justify-between items-center text-xs text-olive-medium">
+                  <div className="flex justify-between items-center text-olive-medium" style={{
+                    fontSize: 'clamp(0.75rem, 0.85vw, 1rem)'
+                  }}>
                     <span>{testimonial.name} ({testimonial.location})</span>
                     <span>{testimonial.date}</span>
                   </div>

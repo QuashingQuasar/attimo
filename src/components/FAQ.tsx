@@ -41,10 +41,16 @@ export const FAQ = () => {
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-6xl font-beverly font-bold mb-4 tracking-tight" style={{ color: '#1B4229' }}>
+          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ 
+            color: '#1B4229',
+            fontSize: 'clamp(2rem, 4vw, 4.5rem)'
+          }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+          <p className="text-gray-600 font-light" style={{ 
+            fontFamily: 'Space Grotesk, monospace',
+            fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+          }}>
             Everything you need to know about KLEIA
           </p>
         </div>
@@ -58,14 +64,21 @@ export const FAQ = () => {
               style={{ borderColor: '#1B4229', backgroundColor: 'white' }}
             >
               <AccordionTrigger 
-                className="text-left text-lg md:text-xl font-medium py-6 hover:no-underline"
-                style={{ color: '#1B4229' }}
+                className="text-left font-medium py-6 hover:no-underline"
+                style={{ 
+                  color: '#1B4229',
+                  fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+                }}
               >
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent 
-                className="text-base md:text-lg pb-6 leading-relaxed"
-                style={{ fontFamily: 'Space Grotesk, monospace', color: '#1B4229' }}
+                className="pb-6 leading-relaxed"
+                style={{ 
+                  fontFamily: 'Space Grotesk, monospace', 
+                  color: '#1B4229',
+                  fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
+                }}
               >
                 {faq.answer}
               </AccordionContent>

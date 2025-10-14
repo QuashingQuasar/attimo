@@ -52,8 +52,9 @@ export const OilComparison = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-bold mb-4" style={{
-            color: '#1B4229'
+            <h2 className="font-bold mb-4" style={{
+            color: '#1B4229',
+            fontSize: 'clamp(2.5rem, 4vw, 4.5rem)'
           }}>
               ATTIMO <span style={{
               fontFamily: 'Beverly Drive, cursive'
@@ -71,14 +72,16 @@ export const OilComparison = () => {
                 borderBottom: '2px dashed #1B4229'
               }}>
                   <th className="py-6 px-8 text-left"></th>
-                  <th className="py-6 px-8 text-center text-2xl font-bold font-working-man" style={{
+                  <th className="py-6 px-8 text-center font-bold font-working-man" style={{
                   color: '#1B4229',
-                  backgroundColor: '#B3E58C'
+                  backgroundColor: '#B3E58C',
+                  fontSize: 'clamp(1.25rem, 1.8vw, 2rem)'
                 }}>
                     ATTIMO
                   </th>
-                  <th className="py-6 px-8 text-center text-2xl font-bold" style={{
-                  color: '#1B4229'
+                  <th className="py-6 px-8 text-center font-bold" style={{
+                  color: '#1B4229',
+                  fontSize: 'clamp(1.25rem, 1.8vw, 2rem)'
                 }}>Supermarket EVOO</th>
                 </tr>
               </thead>
@@ -89,8 +92,9 @@ export const OilComparison = () => {
                 borderBottom: index < comparisonData.length - 1 ? '1px dashed #1B4229' : 'none'
               }}>
                     {/* Feature Column */}
-                    <td className="py-6 px-8 text-xl font-working-man" style={{
-                  color: '#1B4229'
+                    <td className="py-6 px-8 font-working-man" style={{
+                  color: '#1B4229',
+                  fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
                 }}>
                       {row.feature}
                     </td>
@@ -107,9 +111,10 @@ export const OilComparison = () => {
                         color: '#B3E58C'
                       }} strokeWidth={3} />
                           </div>
-                        </div> : <span className="text-lg font-medium" style={{
+                        </div> : <span className="font-medium" style={{
                     color: '#1B4229',
-                    fontFamily: 'Space Grotesk, monospace'
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
                   }}>
                           {row.attimo.value}
                         </span>}
@@ -123,9 +128,10 @@ export const OilComparison = () => {
                     }}>
                             <X className="w-6 h-6 text-white" strokeWidth={3} />
                           </div>
-                        </div> : <span className="text-lg font-medium" style={{
+                        </div> : <span className="font-medium" style={{
                     color: '#1B4229',
-                    fontFamily: 'Space Grotesk, monospace'
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
                   }}>
                           {row.them.value}
                         </span>}
