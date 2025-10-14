@@ -141,7 +141,7 @@ export const HarvestProduct = () => {
             fontFamily: 'Space Grotesk, monospace',
             backgroundColor: '#CDDB2D'
           }}>
-              Buy now - €{selectedOption?.price}
+              Buy now
             </Button>
 
             {/* Lab Values Grid */}

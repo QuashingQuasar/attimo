@@ -23,5 +23,22 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+(() => {
+  const SHOP = 'https://shop.attimo-oil.com';
+  const VARIANT = 56203507597695; // 1-bottle variant
+
+  const btn = document.getElementById('buy-now-btn');
+  if (!btn) {
+    console.error('[buy-now] button not found');
+    return;
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = `${SHOP}/cart/add?id=${VARIANT}&quantity=1&return_to=%2Fcheckout`;
+  });
+})();
+    </script>
   </body>
 </html>
