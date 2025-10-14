@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import oliveOilPlaceholder from "@/assets/olive-oil-bottle-temp.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
+import { initAttimoCart } from "@/lib/attimoCart";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
+
+  useEffect(() => {
+    initAttimoCart();
+  }, []);
   const quantityOptions = [{
     quantity: 1,
     label: "1 Bottle",
@@ -121,7 +126,7 @@ export const HarvestProduct = () => {
 
             {/* Quantity Selection */}
             <div className="space-y-2">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+              <div id="bundle-pills" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                 {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} data-variant={option.quantity} data-key={option.quantity} data-price={option.price} aria-selected={selectedQuantity === option.quantity} className={`pill p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
                     <div className="font-semibold text-sm mb-1" style={{
                   fontFamily: 'Space Grotesk, monospace'
