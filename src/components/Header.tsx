@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
 
 interface HeaderProps {
@@ -102,13 +101,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
-
-          {/* Cart Icon - Hidden on mobile */}
-          <Link to="/cart" className="hidden md:inline-flex nav-cart-link" aria-label="Cart">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="icon-cart" viewBox="0 0 40 40">
-              <path fill="none" stroke="currentColor" strokeWidth="2" fillRule="evenodd" d="M20.5 6.5a4.75 4.75 0 0 0-4.75 4.75v.56h-3.16l-.77 11.6a5 5 0 0 0 4.99 5.34h7.38a5 5 0 0 0 4.99-5.33l-.77-11.6h-3.16v-.57A4.75 4.75 0 0 0 20.5 6.5m3.75 5.31v-.56a3.75 3.75 0 1 0-7.5 0v.56zm-7.5 7.5v.56a3.75 3.75 0 1 0 7.5 0v-.56zm2.21.71 10.67a4 4 0 0 1-3.99 4.27h-7.38a4 4 0 0 1-4-4.27l.72-10.67z"/>
-            </svg>
-          </Link>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
           <Button 
