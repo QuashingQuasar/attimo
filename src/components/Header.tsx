@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
+import { initCartBadge } from "@/lib/cartBadge";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -31,6 +32,10 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
       }
       window.removeEventListener('scroll', handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    initCartBadge();
   }, []);
 
   return (
@@ -103,12 +108,12 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
 
           {/* Cart Link */}
           <a
-            id="cart-link"
+            id="nav-cart-link"
             href="https://attimo-oil.myshopify.com/cart"
             aria-label="Cart"
             className="cart-link text-white hover:text-white/80 transition-colors"
           >
-            <ShoppingCart className="h-5 w-5" />
+            <ShoppingCart className="cart-icon" />
             <span id="cart-count-badge" className="cart-badge" hidden>0</span>
           </a>
 
