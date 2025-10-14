@@ -1,43 +1,61 @@
 (() => {
-  // Prevent double-wiring across hot reloads
-  if (window.__attimoWireCartLinkOnce) return;
-  window.__attimoWireCartLinkOnce = true;
+  // Run only once and not on the /cart page
+  if (window.__attimoLockCartOnce || /\/cart(?:\/|$)/.test(location.pathname)) return;
+  window.__attimoLockCartOnce = true;
 
   const CART_URL = 'https://attimo-oil.myshopify.com/cart';
 
-  function wireNavCart() {
-    const el = document.querySelector('#nav-cart-link');
-    if (!el) {
-      console.warn('[cart] #nav-cart-link not found; nothing to wire');
+  // Keep the link correct even if header re-hydrates
+  function rewireLink() {
+    const a = document.querySelector('#nav-cart-link');
+    if (!a) return false;
+    a.setAttribute('href', CART_URL);
+    a.setAttribute('target', '_self');
+    a.onclick = null; // drop any inline redirectors
+    return true;
+  }
+
+  // MutationObserver so a re-render can't undo it
+  const mo = new MutationObserver(() => rewireLink());
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+
+  // Hard override in capture phase: any click from the cart icon area → /cart
+  function armCapture() {
+    const a = document.querySelector('#nav-cart-link');
+    const cartContainer = a?.parentElement || document.querySelector('.cart-link');
+    if (!cartContainer) {
+      console.warn('[cart] cart container not found yet; will retry after DOM updates.');
       return;
     }
 
-    // Make sure the anchor itself points to /cart (not checkout)
-    el.setAttribute('href', CART_URL);
-    el.setAttribute('target', '_self');
+    document.addEventListener(
+      'click',
+      (e) => {
+        const path = e.composedPath?.() || [];
+        const inCartIcon = path.some(
+          n =>
+            n === cartContainer ||
+            (n && n.id === 'nav-cart-link') ||
+            (n && n.tagName === 'A' && /cart/i.test(n.getAttribute?.('aria-label') || ''))
+        );
+        if (!inCartIcon) return;
 
-    // Build a capture-phase handler that cancels any other listeners and forces /cart
-    const forceCart = (e) => {
-      try {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        e.stopPropagation();
-      } catch (_) {}
-      window.location.href = el.href;
-    };
+        try {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+        } catch (_) {}
 
-    // Drop ALL previous handlers by cloning the node, then add our capture handler
-    const clone = el.cloneNode(true);
-    el.replaceWith(clone);
-    clone.addEventListener('click', forceCart, true);
-
-    console.log('[cart] nav-cart-link now forced to /cart:', clone.href);
+        window.location.href = CART_URL;
+      },
+      true
+    );
   }
 
-  // Run after DOM is ready (covers both fast/slow loads)
+  const boot = () => { rewireLink(); armCapture(); };
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', wireNavCart, { once: true });
+    document.addEventListener('DOMContentLoaded', boot, { once: true });
   } else {
-    wireNavCart();
+    boot();
   }
 })();
