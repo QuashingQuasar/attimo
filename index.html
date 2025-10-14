@@ -20,162 +20,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <script>
 (() => {
-  // --- CONFIG
-  const SHOP_DOMAIN = 'shop.attimo-oil.com';
-  const API_VER     = '2025-10';
-  const SF_TOKEN    = '79b950607019e5b5574dd3e5fe0fe15a';
-  const CART_KEY    = 'attimo_cart_v1';          // localStorage key
-  const NAV_SEL     = 'a#nav-cart-link, a.cart-link, a[aria-label*="Cart"]'; // our nav link
-  const BADGE_SEL   = '#cart-badge';             // span we can update (create if missing)
+  const SHOP = 'https://shop.attimo-oil.com';
 
-  // --- GraphQL helper
-  async function sfGQL(query, variables={}) {
-    const res = await fetch(`https://${SHOP_DOMAIN}/api/${API_VER}/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': SF_TOKEN,
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({ query, variables }),
-      credentials: 'omit'
-    });
-    const json = await res.json();
-    if (json.errors || json.data?.cartCreate?.userErrors?.length || json.data?.cartLinesAdd?.userErrors?.length) {
-      console.warn('[attimo] GQL errors: ', json.errors || json.data);
-    }
-    return json.data;
-  }
-
-  // --- Cart store
-  function loadCartCache() {
-    try { return JSON.parse(localStorage.getItem(CART_KEY) || 'null'); } catch { return null; }
-  }
-  function saveCartCache(obj) {
-    localStorage.setItem(CART_KEY, JSON.stringify(obj));
-  }
-
-  // --- UI helpers
-  function ensureBadgeEl() {
-    let badge = document.querySelector(BADGE_SEL);
-    if (!badge) {
-      // attach just after the nav cart link
-      const a = document.querySelector(NAV_SEL);
-      if (!a) return null;
-      badge = document.createElement('span');
-      badge.id = 'cart-badge';
-      badge.style.cssText = `
-        display:inline-flex;align-items:center;justify-content:center;
-        margin-left:6px; width:22px;height:22px;border-radius:50%;
-        background:#0E1522;color:#fff;font-weight:700;font-size:12px;line-height:1;
-      `;
-      a.appendChild(badge);
-    }
-    return badge;
-  }
-  function setBadge(qty) {
-    const badge = ensureBadgeEl();
-    if (!badge) return;
-    if (qty > 0) {
-      badge.textContent = String(qty);
-      badge.style.visibility = 'visible';
-    } else {
-      badge.textContent = '';
-      badge.style.visibility = 'hidden';
-    }
-  }
-  function setNavHref(checkoutUrl) {
-    const a = document.querySelector(NAV_SEL);
-    if (!a) return;
-    // Use the tokenized cart permalink returned by Storefront API
-    a.href = checkoutUrl;        // looks like /cart/c/<token>?key=<...>
-    a.target = '_self';
-  }
-
-  // --- API wrappers
-  async function fetchCart(id) {
-    const q = `
-      query cart($id: ID!) {
-        cart(id: $id) {
-          id
-          checkoutUrl
-          totalQuantity
-        }
-      }
-    `;
-    const data = await sfGQL(q, { id });
-    return data?.cart || null;
-  }
-
-  async function createCart(lines) {
-    const m = `
-      mutation cartCreate($lines: [CartLineInput!]) {
-        cartCreate(input: { lines: $lines }) {
-          cart { id checkoutUrl totalQuantity }
-          userErrors { field message }
-        }
-      }
-    `;
-    const data = await sfGQL(m, { lines });
-    return data?.cartCreate?.cart || null;
-  }
-
-  async function addLines(cartId, lines) {
-    const m = `
-      mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
-        cartLinesAdd(cartId: $cartId, lines: $lines) {
-          cart { id checkoutUrl totalQuantity }
-          userErrors { field message }
-        }
-      }
-    `;
-    const data = await sfGQL(m, { cartId, lines });
-    return data?.cartLinesAdd?.cart || null;
-  }
-
-  // --- Public mini-API the existing "Add to cart" code can call
-  // Call like: window.attimoAddToCart('gid://shopify/ProductVariant/<id>', qty)
-  window.attimoAddToCart = async (merchandiseId, quantity=1) => {
-    // 1) reuse or create cart
-    let cache = loadCartCache();
-    let cart  = null;
-
-    if (cache?.id) {
-      cart = await addLines(cache.id, [{ merchandiseId, quantity }]).catch(() => null);
-      if (!cart) {
-        // fallback: cart id stale → create new
-        cart = await createCart([{ merchandiseId, quantity }]);
-      }
-    } else {
-      cart = await createCart([{ merchandiseId, quantity }]);
-    }
-
-    if (cart) {
-      saveCartCache({ id: cart.id, checkoutUrl: cart.checkoutUrl, totalQuantity: cart.totalQuantity });
-      setBadge(cart.totalQuantity);
-      setNavHref(cart.checkoutUrl);
-      // You already show "Added"; we don't redirect here.
-    }
+  const VARIANTS = {
+    '1': 56203507597695,
+    '2': 56203507630463,
+    '3': 56203507663231,
+    '4': 56203507695999,
+    '8': 56203507728767,
   };
 
-  // --- On page load: hydrate from cache and verify
-  (async () => {
-    let cache = loadCartCache();
-    if (cache?.id) {
-      const fresh = await fetchCart(cache.id).catch(() => null);
-      if (fresh) {
-        saveCartCache({ id: fresh.id, checkoutUrl: fresh.checkoutUrl, totalQuantity: fresh.totalQuantity });
-        setBadge(fresh.totalQuantity);
-        setNavHref(fresh.checkoutUrl);
-      } else {
-        // stale cache
-        saveCartCache({ id: null, checkoutUrl: null, totalQuantity: 0 });
-        setBadge(0);
-      }
-    } else {
-      setBadge(0);
-    }
-  })();
+  function getSelectedKey() {
+    return document.querySelector('[data-variant].active')?.dataset.variant || '1';
+  }
+
+  const btn = document.querySelector('#add-to-cart-btn');
+  if (!btn) return;
+
+  const clean = btn.cloneNode(true);
+  btn.replaceWith(clean);
+
+  clean.addEventListener('click', (e) => {
+    e.preventDefault();
+    const key = getSelectedKey();
+    const variantId = VARIANTS[key];
+    if (!variantId) return;
+
+    const url = `${SHOP}/cart/add?id=${variantId}&quantity=1&return_to=%2Fcheckout`;
+    window.location.href = url;
+  });
 })();
     </script>
   </head>

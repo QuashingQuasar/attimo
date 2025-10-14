@@ -1,16 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/olive-oil-bottle-temp.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
-import { initAttimoCart } from "@/lib/attimoCart";
+
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
-
-  useEffect(() => {
-    initAttimoCart();
-  }, []);
   const quantityOptions = [{
     quantity: 1,
     label: "1 Bottle",
