@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
 
@@ -108,7 +108,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             aria-label="Cart"
             className="cart-link text-white hover:text-white/80 transition-colors"
           >
-            Cart
+            <ShoppingCart className="h-5 w-5" />
             <span id="cart-count-badge" className="cart-badge" hidden>0</span>
           </a>
 
