@@ -3,7 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
-import { initCartBadge } from "@/lib/cartBadge";
+import { initCartLink } from "@/lib/attimoCart";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -35,7 +35,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
   }, []);
 
   useEffect(() => {
-    initCartBadge();
+    initCartLink();
   }, []);
 
   return (

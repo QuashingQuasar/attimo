@@ -1,21 +1,96 @@
-import { setCartBadge, reconcileCartBadge } from './cartBadge';
-
+// Attimo cart using local storage + Shopify cart permalinks
 type VariantKey = '1' | '2' | '3' | '4' | '8';
 
-const SHOP_DOMAIN = 'attimo-oil.myshopify.com';
-const SF_API_VERSION = '2025-10';
-const STOREFRONT_TOKEN = '79b950607019e5b5574dd3e5fe0fe15a';
-const CART_STORAGE_KEY = 'attimo_cart_v1';
+const VARIANTS: Record<VariantKey, number> = {
+  '1': 56203507597695,
+  '2': 56203507630463,
+  '3': 56203507663231,
+  '4': 56203507695999,
+  '8': 56203507728767,
+};
+
+const SHOP_DOMAIN = 'https://attimo-oil.myshopify.com';
+const LS_KEY = 'attimo_local_cart_v1';
+
+type LocalCart = Record<number, number>;
+
+const getLocalCart = (): LocalCart => {
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+  } catch {
+    return {};
+  }
+};
+
+const setLocalCart = (cart: LocalCart) => {
+  localStorage.setItem(LS_KEY, JSON.stringify(cart || {}));
+};
+
+const localCount = (cart: LocalCart): number => {
+  return Object.values(cart).reduce((sum, qty) => sum + (Number(qty) || 0), 0);
+};
+
+// Badge helpers
+function ensureBadge() {
+  const cartLink = document.querySelector<HTMLElement>('#nav-cart-link, a[href="/cart"], .cart-link');
+  if (!cartLink) return null;
+  
+  cartLink.style.position = 'relative';
+  let badge = document.querySelector<HTMLElement>('#cart-count-badge');
+  
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.id = 'cart-count-badge';
+    Object.assign(badge.style, {
+      position: 'absolute',
+      right: '-10px',
+      top: '-8px',
+      background: '#111827',
+      color: '#fff',
+      minWidth: '18px',
+      height: '18px',
+      padding: '0 6px',
+      borderRadius: '999px',
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontWeight: '700',
+      fontSize: '12px',
+      lineHeight: '18px',
+      zIndex: '50'
+    });
+    cartLink.appendChild(badge);
+  }
+  return badge;
+}
+
+export function renderBadge() {
+  const badge = ensureBadge();
+  if (!badge) return;
+  
+  const count = localCount(getLocalCart());
+  if (count > 0) {
+    badge.style.display = 'inline-flex';
+    badge.textContent = String(count);
+  } else {
+    badge.style.display = 'none';
+    badge.textContent = '';
+  }
+}
+
+async function addBundleToLocalCart(pillKey: VariantKey, qty = 1) {
+  const vid = VARIANTS[pillKey];
+  if (!vid) {
+    console.warn('[attimo] No variant for pill', pillKey);
+    return;
+  }
+  const cart = getLocalCart();
+  cart[vid] = (cart[vid] || 0) + qty;
+  setLocalCart(cart);
+  renderBadge();
+}
 
 export function initAttimoCart() {
-  const VARIANTS: Record<VariantKey, number> = {
-    '1': 56203507597695,
-    '2': 56203507630463,
-    '3': 56203507663231,
-    '4': 56203507695999,
-    '8': 56203507728767,
-  };
-
   const pills = Array.from(
     document.querySelectorAll<HTMLButtonElement>('#bundle-pills .pill')
   );
@@ -24,7 +99,6 @@ export function initAttimoCart() {
   if (!pills.length || !cta) return;
 
   let selectedKey: VariantKey = (pills[0].dataset.key as VariantKey) || '1';
-  const qty = 1;
 
   const formatPrice = (n: number) => `€${Number(n).toFixed(0)}`;
 
@@ -45,80 +119,13 @@ export function initAttimoCart() {
     updateCTA();
   }
 
-  async function ensureCartId(): Promise<string> {
-    let cartId = localStorage.getItem(CART_STORAGE_KEY);
-    if (cartId) return cartId;
-
-    const createMutation = `
-      mutation cartCreate($input: CartInput) {
-        cartCreate(input: $input) { cart { id } userErrors { field message } }
-      }`;
-    const res = await fetch(`https://${SHOP_DOMAIN}/api/${SF_API_VERSION}/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN,
-      },
-      body: JSON.stringify({ query: createMutation, variables: { input: {} } }),
-    });
-    const json = await res.json();
-    cartId = json?.data?.cartCreate?.cart?.id;
-    if (!cartId) throw new Error('Failed to create cart');
-    localStorage.setItem(CART_STORAGE_KEY, cartId);
-    return cartId;
-  }
-
-  async function addViaStorefrontAPI(variantId: number, quantity: number) {
-    const cartId = await ensureCartId();
-    const addMutation = `
-      mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
-        cartLinesAdd(cartId: $cartId, lines: $lines) {
-          cart { id totalQuantity }
-          userErrors { field message }
-        }
-      }`;
-    const variables = {
-      cartId,
-      lines: [{ merchandiseId: `gid://shopify/ProductVariant/${variantId}`, quantity }],
-    };
-    const res = await fetch(`https://${SHOP_DOMAIN}/api/${SF_API_VERSION}/graphql.json`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN,
-      },
-      body: JSON.stringify({ query: addMutation, variables }),
-    });
-    const json = await res.json();
-    const err = json?.data?.cartLinesAdd?.userErrors?.[0]?.message;
-    if (err) throw new Error(err);
-    return json?.data?.cartLinesAdd?.cart?.totalQuantity as number | undefined;
-  }
-
-  async function onAddClick() {
-    const variantId = VARIANTS[selectedKey];
-
+  async function onAddClick(e: Event) {
+    e.preventDefault();
     const original = cta.textContent;
     cta.disabled = true;
     cta.textContent = 'Added ✓';
 
-    try {
-      const total = await addViaStorefrontAPI(variantId, qty);
-
-      // If mutation returned totalQuantity, use it; otherwise reconcile.
-      if (typeof total === 'number') {
-        setCartBadge(total);
-      } else {
-        reconcileCartBadge();
-      }
-    } catch (e) {
-      console.error('[attimo] add failed:', e);
-      reconcileCartBadge(); // Sync to actual cart state on error
-      cta.textContent = 'Add failed';
-      setTimeout(() => (cta.textContent = original || 'Add to cart'), 1200);
-      cta.disabled = false;
-      return;
-    }
+    await addBundleToLocalCart(selectedKey, 1);
 
     setTimeout(() => {
       cta.textContent = original || 'Add to cart';
@@ -129,6 +136,31 @@ export function initAttimoCart() {
   pills.forEach(p => p.addEventListener('click', () => selectPill(p.dataset.key as VariantKey)));
   cta.addEventListener('click', onAddClick);
 
-  // init
+  // Initialize
   selectPill(selectedKey);
+  renderBadge();
+}
+
+export function initCartLink() {
+  const cartLink = document.querySelector<HTMLAnchorElement>('#nav-cart-link, a[href="/cart"], .cart-link');
+  if (!cartLink) return;
+
+  cartLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const cart = getLocalCart();
+
+    // Build "vid:qty,vid:qty" string
+    const parts = Object.entries(cart)
+      .filter(([, q]) => Number(q) > 0)
+      .map(([vid, q]) => `${vid}:${q}`);
+
+    const url = parts.length
+      ? `${SHOP_DOMAIN}/cart/${parts.join(',')}`
+      : `${SHOP_DOMAIN}/cart`;
+
+    window.location.href = url;
+  });
+
+  // Initial badge render
+  renderBadge();
 }
