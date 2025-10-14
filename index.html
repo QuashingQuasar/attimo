@@ -58,5 +58,80 @@
   window.addEventListener('click', handler, true);
 })();
     </script>
+    <script>
+(() => {
+  // --- CONFIG ---
+  // If your pills already carry prices, add data-price="69" etc. to them.
+  // Example pill markup: <button data-variant="4" data-price="86" class="pill">4 bottles</button>
+  // If you ALSO have a DOM element that shows the selected price, set PRICE_SELECTOR to it.
+  const PRICE_SELECTOR = null; // e.g. '#selected-price-amount' if you have one
+
+  // Button finder (do NOT change your working click handler)
+  const btn = document.querySelector('#buy-now-btn') ||
+    [...document.querySelectorAll('button,a')].find(el =>
+      /buy now|add to cart/i.test(el.textContent.trim())
+    );
+  if (!btn) { console.warn('[btn-price] CTA not found'); return; }
+
+  // Keep base label and append price
+  const BASE_LABEL = 'Buy now';
+
+  // Helper: read active pill element
+  const getActivePill = () =>
+    document.querySelector('[data-variant][aria-selected="true"]') ||
+    document.querySelector('[data-variant][aria-pressed="true"]') ||
+    document.querySelector('[data-variant].active');
+
+  // Helper: read price from DOM (preferred: data-price on the active pill)
+  function readPriceEUR() {
+    // 1) Explicit selected-price element (if your UI already renders it)
+    if (PRICE_SELECTOR) {
+      const el = document.querySelector(PRICE_SELECTOR);
+      if (el) {
+        const raw = (el.textContent || '').replace(/[^\d.,]/g, '').replace(',', '.');
+        const val = parseFloat(raw);
+        if (!Number.isNaN(val)) return val;
+      }
+    }
+    // 2) data-price on the active pill
+    const pill = getActivePill();
+    if (pill && pill.dataset && pill.dataset.price) {
+      const val = parseFloat(String(pill.dataset.price).replace(',', '.'));
+      if (!Number.isNaN(val)) return val;
+    }
+    // 3) No price found → return null (button will show base label)
+    return null;
+  }
+
+  // Currency formatter (EU style)
+  const fmt = new Intl.NumberFormat('nl-BE', { style: 'currency', currency: 'EUR' });
+
+  function renderButtonLabel() {
+    const price = readPriceEUR();
+    btn.textContent = price != null ? `${BASE_LABEL} — ${fmt.format(price)}` : BASE_LABEL;
+  }
+
+  // Update on load
+  renderButtonLabel();
+
+  // Update when user changes selection
+  const pills = document.querySelectorAll('[data-variant]');
+  pills.forEach(p => {
+    p.addEventListener('click', () => {
+      // Give the UI a tick to flip classes/aria, then render
+      setTimeout(renderButtonLabel, 0);
+    });
+  });
+
+  // Optional: if your price element updates via DOM mutations, observe it
+  if (PRICE_SELECTOR) {
+    const target = document.querySelector(PRICE_SELECTOR);
+    if (target) {
+      new MutationObserver(() => renderButtonLabel())
+        .observe(target, { characterData: true, childList: true, subtree: true });
+    }
+  }
+})();
+    </script>
   </body>
 </html>
