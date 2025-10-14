@@ -222,7 +222,7 @@ All colors MUST be HSL.
   justify-content: center;
   width: 28px;
   height: 28px;
-  color: #1B4229;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -232,8 +232,15 @@ All colors MUST be HSL.
   display: block;
 }
 
-.nav-cart-link:hover {
-  opacity: 0.85;
+.icon-cart {
+  fill: none !important;
+  stroke: #FFFFFF !important;
+  stroke-width: 2;
+  transition: opacity 0.2s ease;
+}
+
+.icon-cart:hover {
+  opacity: 0.8;
 }
 
 /* 3D Card Flip Utilities */
