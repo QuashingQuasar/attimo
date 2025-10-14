@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
 
 interface HeaderProps {
@@ -101,6 +102,15 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
+
+          {/* Cart Icon */}
+          <Link 
+            to="/cart" 
+            className="text-white hover:opacity-80 transition-opacity"
+            aria-label="Shopping cart"
+          >
+            <ShoppingCart className="h-6 w-6" />
+          </Link>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
           <Button 
