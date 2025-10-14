@@ -10,14 +10,20 @@ function $badge(): HTMLElement | null {
 
 export function setCartBadge(count: number) {
   const badge = $badge();
-  if (!badge) return;
+  if (!badge) {
+    console.warn('[cartBadge] Badge element not found');
+    return;
+  }
+  console.log('[cartBadge] Setting badge count to:', count);
   badge.textContent = String(count);
   badge.hidden = count <= 0;
 }
 
 export async function reconcileCartBadge() {
+  console.log('[cartBadge] Reconciling badge with Shopify cart...');
   try {
     const cartId = localStorage.getItem(CART_STORAGE_KEY);
+    console.log('[cartBadge] Cart ID from storage:', cartId);
     if (!cartId) {
       setCartBadge(0);
       return;
@@ -34,6 +40,7 @@ export async function reconcileCartBadge() {
       body: JSON.stringify({ query, variables: { id: cartId } }),
     });
     const json = await res.json();
+    console.log('[cartBadge] Shopify response:', json);
     const total = json?.data?.cart?.totalQuantity ?? 0;
     setCartBadge(total);
   } catch (e) {
@@ -42,6 +49,7 @@ export async function reconcileCartBadge() {
 }
 
 export function initCartBadge() {
+  console.log('[cartBadge] Initializing cart badge...');
   // Initialize badge at boot from the latest Shopify totalQuantity
   reconcileCartBadge();
 }
