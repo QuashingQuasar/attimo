@@ -113,8 +113,8 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             aria-label="Cart"
             className="cart-link text-white hover:text-white/80 transition-colors"
           >
-            <ShoppingCart className="cart-icon" />
-            <span id="cart-count-badge" className="cart-badge" hidden>0</span>
+            <ShoppingCart className="h-[22px] w-[22px]" />
+            <span id="cart-badge" className="cart-badge" hidden>0</span>
           </a>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}

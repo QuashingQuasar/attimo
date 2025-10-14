@@ -35,30 +35,12 @@ function ensureBadge() {
   const cartLink = document.querySelector<HTMLElement>('#nav-cart-link, a[href="/cart"], .cart-link');
   if (!cartLink) return null;
   
-  cartLink.style.position = 'relative';
-  let badge = document.querySelector<HTMLElement>('#cart-count-badge');
-  
+  let badge = document.querySelector<HTMLElement>('#cart-badge');
   if (!badge) {
     badge = document.createElement('span');
-    badge.id = 'cart-count-badge';
-    Object.assign(badge.style, {
-      position: 'absolute',
-      right: '-10px',
-      top: '-8px',
-      background: '#111827',
-      color: '#fff',
-      minWidth: '18px',
-      height: '18px',
-      padding: '0 6px',
-      borderRadius: '999px',
-      display: 'none',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontWeight: '700',
-      fontSize: '12px',
-      lineHeight: '18px',
-      zIndex: '50'
-    });
+    badge.id = 'cart-badge';
+    badge.className = 'cart-badge';
+    badge.hidden = true;
     cartLink.appendChild(badge);
   }
   return badge;
@@ -70,10 +52,10 @@ export function renderBadge() {
   
   const count = localCount(getLocalCart());
   if (count > 0) {
-    badge.style.display = 'inline-flex';
+    badge.hidden = false;
     badge.textContent = String(count);
   } else {
-    badge.style.display = 'none';
+    badge.hidden = true;
     badge.textContent = '';
   }
 }

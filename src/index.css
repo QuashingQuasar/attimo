@@ -241,23 +241,18 @@ All colors MUST be HSL.
   align-items: center;
 }
 
-.cart-icon {
-  width: 22px;
-  height: 22px;
-}
-
-.cart-badge {
+#cart-badge.cart-badge {
   position: absolute;
-  top: -8px;
-  right: -10px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 6px;
+  bottom: -0.3rem;
+  left: 1.2rem;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 0.25rem;
   border-radius: 999px;
-  background: #111827;
+  background: #0E1525;
   color: #fff;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 0.72rem;
+  line-height: 1.1rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
 }
