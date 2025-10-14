@@ -109,6 +109,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             href="https://shop.attimo-oil.com/cart"
             className="text-white hover:opacity-80 transition-opacity"
             aria-label="Shopping cart"
+            rel="noopener noreferrer"
           >
             <ShoppingCart className="h-6 w-6" />
           </a>
