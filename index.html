@@ -21,7 +21,7 @@
     <script>
 (() => {
   const SHOP = 'https://shop.attimo-oil.com';
-
+  // Map pill keys to NUMERIC variant IDs (confirmed)
   const VARIANTS = {
     '1': 56203507597695,
     '2': 56203507630463,
@@ -30,23 +30,34 @@
     '8': 56203507728767,
   };
 
+  // Helper: return the selected pill key ("1","2","3","4","8")
   function getSelectedKey() {
-    return document.querySelector('[data-variant].active')?.dataset.variant || '1';
+    // Prefer an element with [data-variant].active
+    const active = document.querySelector('[data-variant].active');
+    if (active) return active.dataset.variant;
+    // Fallback: first pill on the page
+    const first = document.querySelector('[data-variant]');
+    return first ? first.dataset.variant : '1';
   }
 
-  const btn = document.querySelector('#add-to-cart-btn');
-  if (!btn) return;
+  // Wire Buy Now
+  const btn = document.getElementById('buy-now-btn');
+  if (!btn) { console.warn('[buy-now] #buy-now-btn not found'); return; }
 
+  // Remove any previous listeners tied to this element
   const clean = btn.cloneNode(true);
+  clean.id = 'buy-now-btn';
+  // Ensure visible label is "Buy now"
+  if (clean.textContent) clean.textContent = 'Buy now';
   btn.replaceWith(clean);
 
   clean.addEventListener('click', (e) => {
     e.preventDefault();
     const key = getSelectedKey();
-    const variantId = VARIANTS[key];
-    if (!variantId) return;
-
-    const url = `${SHOP}/cart/add?id=${variantId}&quantity=1&return_to=%2Fcheckout`;
+   const vid = VARIANTS[key];
+    if (!vid) { console.error('[buy-now] Unknown variant key', key); return; }
+    // Add line at Shopify and **return directly to checkout**
+    const url = `${SHOP}/cart/add?id=${vid}&quantity=1&return_to=%2Fcheckout`;
     window.location.href = url;
   });
 })();

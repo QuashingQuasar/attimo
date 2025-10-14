@@ -108,13 +108,14 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
 
-          {/* Cart Link */}
+           {/* Cart Link - Hidden for Buy Now flow */}
           <a
             id="nav-cart-link"
             href="https://shop.attimo-oil.com/cart"
             target="_self"
             aria-label="Cart"
             className="cart-link text-white hover:text-white/80 transition-colors"
+            style={{ display: 'none' }}
           >
             <ShoppingCart className="h-[22px] w-[22px]" />
             <span id="cart-badge" className="cart-badge"></span>
