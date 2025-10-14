@@ -25,19 +25,67 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
 (() => {
-  const SHOP = 'https://shop.attimo-oil.com';
-  const VARIANT = 56203507597695; // 1-bottle variant
+  // ---- SETTINGS ----
+  const SHOP = 'https://shop.attimo-oil.com'; // Shopify subdomain
+  const VARIANTS = {
+    '1': 56203507597695,
+    '2': 56203507630463,
+    '3': 56203507663231,
+    '4': 56203507695999,
+    '8': 56203507728767,
+  };
 
-  const btn = document.getElementById('buy-now-btn');
-  if (!btn) {
-    console.error('[buy-now] button not found');
-    return;
-  }
+  // 1) Find (or create) a stable CTA handle and ensure it says "Buy now"
+  let btn =
+    document.querySelector('#buy-now-btn') ||
+    [...document.querySelectorAll('button, a')].find(el =>
+      /^(add to cart|buy now)$/i.test(el.textContent.trim())
+    );
 
-  btn.addEventListener('click', (e) => {
+  if (!btn) return console.warn('[buy-now] CTA not found');
+
+  // Give it an id we can rely on and sane text
+  btn.id = 'buy-now-btn';
+  if (!/buy now/i.test(btn.textContent)) btn.textContent = 'Buy now';
+
+  // 2) Helper to read the selected pill key ("1" | "2" | "3" | "4" | "8")
+  const getSelectedKey = () => (
+    document.querySelector('[data-variant][aria-selected="true"]') ||
+    document.querySelector('[data-variant][aria-pressed="true"]') ||
+    document.querySelector('[data-variant].active')
+  )?.dataset?.variant || '1';
+
+  // 3) Hard-override the click (capture phase beats everything else)
+  const onClick = (e) => {
     e.preventDefault();
-    window.location.href = `${SHOP}/cart/add?id=${VARIANT}&quantity=1&return_to=%2Fcheckout`;
-  });
+    e.stopPropagation();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+
+    const key = getSelectedKey();
+    const id  = VARIANTS[key] || VARIANTS['1'];
+
+    // Add + go to cart so users can edit quantities
+    const url = `${SHOP}/cart/add?id=${id}&quantity=1&return_to=%2Fcart`;
+    // Optional: brief visual feedback
+    const orig = btn.textContent;
+    btn.textContent = 'Adding…';
+    btn.disabled = true;
+
+    window.location.href = url;
+
+    // In case navigation is blocked, restore UI after a moment
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.disabled = false;
+    }, 2000);
+  };
+
+  // Remove any previous listeners (in case of hot reloads), then arm once
+  btn.replaceWith(btn.cloneNode(true));
+  btn = document.getElementById('buy-now-btn');
+  btn.addEventListener('click', onClick, true);
+
+  console.log('[buy-now] wired: add selected bundle → /cart');
 })();
     </script>
   </body>
