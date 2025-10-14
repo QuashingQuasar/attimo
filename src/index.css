@@ -248,7 +248,7 @@ All colors MUST be HSL.
 
 .cart-badge {
   position: absolute;
-  top: -6px;
+  top: -8px;
   right: -10px;
   min-width: 18px;
   height: 18px;
@@ -259,5 +259,5 @@ All colors MUST be HSL.
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
 }
