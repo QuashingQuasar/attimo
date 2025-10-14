@@ -43,14 +43,21 @@
 
   // ——— Badge update ———
   async function updateCartBadge() {
+    const badge = document.querySelector('#cart-badge');
+    if (!badge) return;
+
     try {
-      const q = `query { cart { totalQuantity } }`;
-      const d = await sfGQL(q);
-      const qty = d?.cart?.totalQuantity ?? 0;
-      const badge = document.querySelector("#cart-badge");
-      if (badge) badge.textContent = qty > 0 ? String(qty) : "";
+      const res = await fetch(`${CART_BASE}/cart.js`, {
+        credentials: 'include',
+        cache: 'no-store'
+      });
+      if (!res.ok) throw new Error('cart.js failed');
+      const cart = await res.json();
+      const count = Number(cart.item_count) || 0;
+      badge.textContent = count > 0 ? String(count) : '';
+      badge.classList.toggle('hidden', count <= 0);
     } catch (e) {
-      console.warn("[attimo] badge update failed", e);
+      // swallow; keep previous badge state
     }
   }
 
@@ -91,6 +98,7 @@
         const txt = cta.textContent;
         cta.textContent = "Added!";
         setTimeout(() => (cta.textContent = txt || "Add to cart"), 1200);
+        document.dispatchEvent(new Event('attimo:added'));
         updateCartBadge();
       } catch (err) {
         console.error("[attimo] add-to-cart failed", err);
@@ -102,6 +110,15 @@
     forceCartLink();     // ensure the icon goes to /cart on shop.attimo-oil.com
     wireCTA();           // hook the add-to-cart
     updateCartBadge();   // populate badge on load
+
+    // Refresh badge when tab regains focus (catches changes made on cart page)
+    window.addEventListener('focus', updateCartBadge);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) updateCartBadge();
+    });
+
+    // Listen for custom event fired after add-to-cart
+    document.addEventListener('attimo:added', updateCartBadge);
   });
 })();
     </script>
