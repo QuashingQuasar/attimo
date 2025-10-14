@@ -104,13 +104,14 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
           </nav>
 
           {/* Cart Icon */}
-          <Link 
-            to="/cart" 
+          <a 
+            id="nav-cart-link"
+            href="https://shop.attimo-oil.com/cart"
             className="text-white hover:opacity-80 transition-opacity"
             aria-label="Shopping cart"
           >
             <ShoppingCart className="h-6 w-6" />
-          </Link>
+          </a>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
           <Button 
