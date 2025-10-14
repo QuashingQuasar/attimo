@@ -4,6 +4,7 @@ import { Menu, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
 import { initCartLink } from "@/lib/attimoCart";
+import { enforceCartLink } from "@/utils/enforceCartLink";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -36,6 +37,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
 
   useEffect(() => {
     initCartLink();
+    enforceCartLink();
   }, []);
 
   return (
