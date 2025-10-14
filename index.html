@@ -18,6 +18,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+(() => {
+  // ——— Config ———
+  const SF_GQL_DOMAIN = "attimo-oil.myshopify.com";       // Storefront GraphQL host (keep myshopify for API)
+  const CART_BASE      = "https://shop.attimo-oil.com";    // Where cart/checkout live (your subdomain)
+  const SF_TOKEN       = "79b950607019e5b5574dd3e5fe0fe15a";
+
+  // ——— GQL helper ———
+  async function sfGQL(query, variables = {}) {
+    const res = await fetch(`https://${SF_GQL_DOMAIN}/api/2025-01/graphql.json`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Shopify-Storefront-Access-Token": SF_TOKEN
+      },
+      body: JSON.stringify({ query, variables }),
+      credentials: "omit"
+    });
+    const data = await res.json();
+    if (data.errors) console.error("[attimo] GQL errors:", data.errors);
+    return data.data;
+  }
+
+  // ——— Badge update ———
+  async function updateCartBadge() {
+    try {
+      const q = `query { cart { totalQuantity } }`;
+      const d = await sfGQL(q);
+      const qty = d?.cart?.totalQuantity ?? 0;
+      const badge = document.querySelector("#cart-badge");
+      if (badge) badge.textContent = qty > 0 ? String(qty) : "";
+    } catch (e) {
+      console.warn("[attimo] badge update failed", e);
+    }
+  }
+
+  // ——— Force nav cart link to /cart and block any rogue handlers ———
+  function forceCartLink() {
+    const a = document.querySelector("#nav-cart-link");
+    if (!a) return;
+    a.href   = `${CART_BASE}/cart`;
+    a.target = "_self";
+
+    // capture-phase handler to trump any downstream listener that tries /checkout
+    const forceCart = (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      window.location.href = a.href;  // always /cart
+    };
+    a.addEventListener("click", forceCart, true);
+  }
+
+ // ——— CTA wiring ———
+  function wireCTA() {
+    const cta = document.querySelector("#add-to-cart-btn");
+    if (!cta) return;
+    cta.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const active = document.querySelector("[data-variant].active");
+      const merchandiseId = active?.dataset?.variant;
+      if (!merchandiseId) return console.warn("[attimo] no active pill / variant");
+
+      try {
+        const m = `
+          mutation AddLine($lines:[CartLineInput!]!) {
+            cartCreate(input:{ lines:$lines }) { cart { id totalQuantity } }
+          }
+        `;
+        await sfGQL(m, { lines: [{ merchandiseId, quantity: 1 }] });
+        const txt = cta.textContent;
+        cta.textContent = "Added!";
+        setTimeout(() => (cta.textContent = txt || "Add to cart"), 1200);
+        updateCartBadge();
+      } catch (err) {
+        console.error("[attimo] add-to-cart failed", err);
+      }
+    }, { once: false });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    forceCartLink();     // ensure the icon goes to /cart on shop.attimo-oil.com
+    wireCTA();           // hook the add-to-cart
+    updateCartBadge();   // populate badge on load
+  });
+})();
+    </script>
   </head>
 
   <body>

@@ -38,23 +38,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
     initCartLink();
   }, []);
 
-  useEffect(() => {
-    const a = document.getElementById('nav-cart-link') as HTMLAnchorElement | null;
-    if (!a) return;
-    a.href = 'https://attimo-oil.myshopify.com/cart';
-    a.target = '_self';
-
-    const forceCart = (e: MouseEvent) => {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      e.stopPropagation();
-      window.location.href = a.href;
-    };
-
-    a.addEventListener('click', forceCart, true);
-    return () => a.removeEventListener('click', forceCart, true);
-  }, []);
-
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${
@@ -126,13 +109,13 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
           {/* Cart Link */}
           <a
             id="nav-cart-link"
-            href="https://attimo-oil.myshopify.com/cart"
+            href="https://shop.attimo-oil.com/cart"
             target="_self"
             aria-label="Cart"
             className="cart-link text-white hover:text-white/80 transition-colors"
           >
             <ShoppingCart className="h-[22px] w-[22px]" />
-            <span id="cart-badge" className="cart-badge" hidden>0</span>
+            <span id="cart-badge" className="cart-badge"></span>
           </a>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
