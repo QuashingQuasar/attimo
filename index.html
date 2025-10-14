@@ -25,9 +25,8 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
 (() => {
-  // --- configuration ---
-  const SHOP = 'https://shop.attimo-oil.com';   // Shopify subdomain
-  const VARIANTS = {                            // Storefront GIDs (numeric ids) by pill key
+  const SHOP = 'https://shop.attimo-oil.com';
+  const VARIANTS = {
     '1': 56203507597695,
     '2': 56203507630463,
     '3': 56203507663231,
@@ -35,43 +34,28 @@
     '8': 56203507728767,
   };
 
-  // --- find/prepare CTA ---
-  const btn =
-    document.getElementById('buy-now-btn') ||
-    [...document.querySelectorAll('a,button')]
-      .find(el => /add to cart|buy now/i.test(el.textContent.trim()));
-
-  if (!btn) { console.warn('[buy-now] CTA not found'); return; }
-
-  // Label & id
-  btn.textContent = 'Buy now';
-  btn.id = 'buy-now-btn';
-
-  // Replace node to drop any pre-existing listeners from previous iterations
-  const clean = btn.cloneNode(true);
-  btn.replaceWith(clean);
-
-  // --- read currently selected pill key ---
   const getSelectedKey = () =>
     (document.querySelector('[data-variant][aria-selected="true"]') ||
      document.querySelector('[data-variant][aria-pressed="true"]') ||
      document.querySelector('[data-variant].active'))?.dataset?.variant || '1';
 
-  // --- wire navigation: add → /cart ---
-  const onClick = (e) => {
-    e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation?.();
+  const handler = (e) => {
+    const path = e.composedPath?.() || [];
+    const el = path.find(n => n && n.tagName && /^(BUTTON|A)$/i.test(n.tagName) &&
+                               /add to cart|buy now/i.test(n.textContent?.trim() || ''));
+    if (!el) return;
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation?.();
 
     const key = getSelectedKey();
     const id  = VARIANTS[key] || VARIANTS['1'];
-
-    // Add one unit of the selected variant and land on /cart for editing
     const url = `${SHOP}/cart/add?id=${id}&quantity=1&return_to=%2Fcart`;
+
     window.location.href = url;
   };
 
-  clean.addEventListener('click', onClick, true);
-
-  console.log('[buy-now] wired → add selected bundle then /cart.');
+  window.addEventListener('click', handler, true);
 })();
     </script>
   </body>
