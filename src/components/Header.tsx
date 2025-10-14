@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ShoppingCart } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
-import { initCartLink } from "@/lib/attimoCart";
-import { enforceCartLink } from "@/utils/enforceCartLink";
 
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -35,10 +33,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
     };
   }, []);
 
-  useEffect(() => {
-    initCartLink();
-    enforceCartLink();
-  }, []);
 
   return (
     <header 
@@ -107,19 +101,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
-
-           {/* Cart Link - Hidden for Buy Now flow */}
-          <a
-            id="nav-cart-link"
-            href="https://shop.attimo-oil.com/cart"
-            target="_self"
-            aria-label="Cart"
-            className="cart-link text-white hover:text-white/80 transition-colors"
-            style={{ display: 'none' }}
-          >
-            <ShoppingCart className="h-[22px] w-[22px]" />
-            <span id="cart-badge" className="cart-badge"></span>
-          </a>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
           <Button 

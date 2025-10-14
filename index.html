@@ -18,55 +18,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <script>
-(() => {
-  const SHOP = 'https://shop.attimo-oil.com';
-  // Map pill keys to NUMERIC variant IDs (confirmed)
-  const VARIANTS = {
-    '1': 56203507597695,
-    '2': 56203507630463,
-    '3': 56203507663231,
-    '4': 56203507695999,
-    '8': 56203507728767,
-  };
-
-  // Helper: return the selected pill key ("1","2","3","4","8")
-  function getSelectedKey() {
-    // Prefer an element with [data-variant].active
-    const active = document.querySelector('[data-variant].active');
-    if (active) return active.dataset.variant;
-    // Fallback: first pill on the page
-    const first = document.querySelector('[data-variant]');
-    return first ? first.dataset.variant : '1';
-  }
-
-  // Wire Buy Now
-  const btn = document.getElementById('buy-now-btn');
-  if (!btn) { console.warn('[buy-now] #buy-now-btn not found'); return; }
-
-  // Remove any previous listeners tied to this element
-  const clean = btn.cloneNode(true);
-  clean.id = 'buy-now-btn';
-  // Ensure visible label is "Buy now"
-  if (clean.textContent) clean.textContent = 'Buy now';
-  btn.replaceWith(clean);
-
-  clean.addEventListener('click', (e) => {
-    e.preventDefault();
-    const key = getSelectedKey();
-   const vid = VARIANTS[key];
-    if (!vid) { console.error('[buy-now] Unknown variant key', key); return; }
-    // Add line at Shopify and **return directly to checkout**
-    const url = `${SHOP}/cart/add?id=${vid}&quantity=1&return_to=%2Fcheckout`;
-    window.location.href = url;
-  });
-})();
-    </script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script src="/js/attimo-wire-cart-link.js"></script>
   </body>
 </html>
