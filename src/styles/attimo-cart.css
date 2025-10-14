@@ -1,0 +1,25 @@
+/* Simple badge and active pill, minimal styles */
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.cart-badge {
+  display: inline-block;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 .25rem;
+  border-radius: 9999px;
+  background: #1f2937; /* dark */
+  color: #fff;
+  font-size: .75rem;
+  line-height: 1.25rem;
+  text-align: center;
+}
+
+.pill.active {
+  outline: 2px solid #0f766e; /* teal-green ring */
+  outline-offset: 2px;
+}

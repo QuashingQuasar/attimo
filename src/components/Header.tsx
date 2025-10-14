@@ -101,6 +101,17 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
           </nav>
 
+          {/* Cart Link */}
+          <a
+            id="cart-link"
+            href="https://attimo-oil.myshopify.com/cart"
+            aria-label="Cart"
+            className="cart-link text-white hover:text-white/80 transition-colors"
+          >
+            Cart
+            <span id="cart-count-badge" className="cart-badge" hidden>0</span>
+          </a>
+
           {/* CTA - Hidden on mobile, visible on tablet+ */}
           <Button 
             onClick={onWaitlistClick}
