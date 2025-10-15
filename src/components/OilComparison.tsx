@@ -37,7 +37,7 @@ const comparisonData = [{
   feature: "POLYPHENOLS",
   attimo: {
     type: "text",
-    value: "799 mg/kg"
+    value: "904 mg/kg"
   },
   them: {
     type: "text",
