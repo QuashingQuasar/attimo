@@ -19,6 +19,7 @@ export const IndustryProblem = () => {
           {/* Main Heading */}
           <div className="text-left mb-12 md:mb-20 max-w-5xl">
             <h2 className="font-light mb-4 md:mb-8 leading-tight tracking-tight" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
                 fontSize: 'clamp(1.875rem, 4vw, 5rem)'
               }}>
@@ -65,6 +66,7 @@ export const IndustryProblem = () => {
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
               }}>
                 Flavour and health get blended away
@@ -82,6 +84,7 @@ export const IndustryProblem = () => {
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
               }}>
                 You've never tasted the real thing
@@ -99,6 +102,7 @@ export const IndustryProblem = () => {
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
               }}>
                 Big oil kills family groves

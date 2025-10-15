@@ -90,7 +90,7 @@ export const HarvestProduct = () => {
                 </Badge>
               </div>
               
-              <h1 className="font-bold text-olive-dark mb-2" style={{ fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)' }}>Galega from Alentejo</h1>
+              <h1 className="font-bold text-olive-dark mb-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)' }}>Galega from Alentejo</h1>
               
               <p className="text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
