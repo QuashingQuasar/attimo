@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { useState } from "react";
-import oliveOilPlaceholder from "@/assets/olive-oil-bottle-temp.png";
+import oliveOilPlaceholder from "@/assets/attimo-bottle.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 
 export const HarvestProduct = () => {
