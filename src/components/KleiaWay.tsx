@@ -5,6 +5,7 @@ export const KleiaWay = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-20">
           <h2 className="font-light mb-8 tracking-tight" style={{ 
+            fontFamily: 'UDC Working Man Sans, sans-serif',
             color: '#1B4229',
             fontSize: 'clamp(2rem, 3.5vw, 3.75rem)'
           }}>
@@ -18,6 +19,7 @@ export const KleiaWay = () => {
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{ 
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>FROM GROVE TO TABLE</h4>
@@ -48,6 +50,7 @@ export const KleiaWay = () => {
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{ 
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>LAB-TESTED QUALITY</h4>
@@ -78,6 +81,7 @@ export const KleiaWay = () => {
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{ 
+                fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>FRESH AND SINGLE-GROVE</h4>
