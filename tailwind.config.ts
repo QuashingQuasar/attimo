@@ -34,16 +34,17 @@ export default {
 				'169': '42.35rem',
 				'192': '48rem'
 			},
-			fontFamily: {
-				'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
-				'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
-				'display': ['Playfair Display', 'serif'],
-				'body': ['Inter', 'sans-serif'],
-				'working-man': ['UDC Working Man Sans', 'sans-serif'],
-				'working-man-light': ['UDC Working Man Sans Light', 'sans-serif'],
-				'working-man-rough': ['UDC Working Man Sans Rough', 'sans-serif'],
-				'beverly': ['Beverly Drive', 'cursive'],
-			},
+		fontFamily: {
+			'sans': ['Space Grotesk', 'Inter', 'sans-serif'],
+			'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
+			'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
+			'display': ['Playfair Display', 'serif'],
+			'body': ['Space Grotesk', 'Inter', 'sans-serif'],
+			'working-man': ['UDC Working Man Sans', 'sans-serif'],
+			'working-man-light': ['UDC Working Man Sans Light', 'sans-serif'],
+			'working-man-rough': ['UDC Working Man Sans Rough', 'sans-serif'],
+			'beverly': ['Beverly Drive', 'cursive'],
+		},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
