@@ -1,7 +1,7 @@
 import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
-  return <section className="py-12 bg-[#1B4229] snap-start min-h-screen flex items-center">
+  return <section className="py-24 bg-[#1B4229] snap-start flex items-center">
       <div className="mx-auto px-4 w-[90vw]">
         {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
