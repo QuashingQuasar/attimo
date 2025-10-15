@@ -43,7 +43,7 @@ export const Testimonials = () => {
 
   return (
     <section 
-      className="py-16 snap-start"
+      className="py-24 snap-start my-24"
       style={{ 
         backgroundColor: '#1A431D',
         backgroundImage: `url(${patternBg})`,
