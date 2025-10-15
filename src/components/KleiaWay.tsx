@@ -1,7 +1,7 @@
 
 export const KleiaWay = () => {
   return (
-    <section className="min-h-screen snap-start flex items-center py-8 lg:py-12" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="min-h-screen snap-start flex items-center py-4 lg:py-6" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 lg:mb-20">
           <h2 className="font-light mb-8 tracking-tight" style={{ 
