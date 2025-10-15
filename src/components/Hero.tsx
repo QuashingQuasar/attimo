@@ -10,7 +10,7 @@ export const Hero = ({
   return <section className="relative flex items-center justify-center overflow-hidden h-screen snap-start">
       {/* Video Background */}
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-        <source src="/videos/hero-video-3.mp4" type="video/mp4" />
+        <source src="/videos/hero-video-new.mp4" type="video/mp4" />
       </video>
       
       {/* Cinematic Overlay */}
