@@ -1,4 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Beaker } from "lucide-react";
 
 export const ProductInfoTabs = () => {
   return (
@@ -61,6 +62,21 @@ export const ProductInfoTabs = () => {
                 STORE
               </div>
               <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>keep away from light and heat</div>
+            </div>
+            <div>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                LAB VALUES
+              </div>
+              <a 
+                href="/documents/lab-report-galega-2024.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-olive-medium hover:text-olive-dark transition-colors" 
+                style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}
+              >
+                <Beaker size={16} className="flex-shrink-0" />
+                <span className="underline">View Lab Report</span>
+              </a>
             </div>
           </div>
         </TabsContent>
