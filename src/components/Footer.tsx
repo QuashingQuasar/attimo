@@ -5,19 +5,22 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4" style={{ color: '#B3E58C' }}>
+            <h3 className="text-2xl font-bold mb-4 font-working-man" style={{ color: '#B3E58C' }}>
               ATTIMO
             </h3>
             <p className="leading-relaxed mb-4" style={{ 
               fontFamily: 'Space Grotesk, monospace',
               color: '#B3E58C'
             }}>
-              High-polyphenol extra virgin olive oil, sourced directly from single groves and lab-tested for quality.
+              High-polyphenol extra virgin olive oil, sourced directly from small family groves and lab-tested for quality.
             </p>
           </div>
 
+          {/* Empty spacer for grid alignment */}
+          <div className="hidden md:block"></div>
+
           {/* Social */}
-          <div>
+          <div className="flex justify-start md:justify-end">
             <a 
               href="https://instagram.com/attimo-oil" 
               target="_blank" 
