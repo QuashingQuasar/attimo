@@ -21,8 +21,8 @@ const Index = () => {
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
       <HarvestProduct />
-      <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <KleiaWay />
+      <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
