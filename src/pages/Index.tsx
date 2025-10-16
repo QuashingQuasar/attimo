@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
+import { WaitlistCTA } from "@/components/WaitlistCTA";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { OilComparison } from "@/components/OilComparison";
@@ -20,6 +21,7 @@ const Index = () => {
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
       <HarvestProduct />
+      <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <KleiaWay />
       <OilComparison />
       <Testimonials />
