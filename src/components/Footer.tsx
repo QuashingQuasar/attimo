@@ -16,57 +16,29 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Social */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 uppercase tracking-wide" style={{ color: '#B3E58C' }}>
-              Quick Links
-            </h4>
-            <ul className="space-y-2" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-              <li>
-                <a href="#product" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>
-                  Product
-                </a>
-              </li>
-              <li>
-                <a href="#quality" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>
-                  Quality
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 uppercase tracking-wide" style={{ color: '#B3E58C' }}>
-              Contact
-            </h4>
-            <ul className="space-y-2" style={{ fontFamily: 'Space Grotesk, monospace', color: '#B3E58C' }}>
-              <li>
-                <a href="mailto:hello@attimo.com" className="hover:underline transition-colors">
-                  hello@attimo.com
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline transition-colors">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline transition-colors">
-                  Facebook
-                </a>
-              </li>
-            </ul>
+            <a 
+              href="https://instagram.com/attimo-oil" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="#B3E58C" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
           </div>
         </div>
 
