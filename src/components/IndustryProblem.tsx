@@ -21,13 +21,13 @@ export const IndustryProblem = () => {
             <h2 className="font-light mb-4 md:mb-8 leading-tight tracking-tight" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
-                fontSize: 'clamp(2.4375rem, 5.2vw, 6.5rem)'
+                fontSize: 'clamp(3.24rem, 6.916vw, 8.645rem)'
               }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
              <p className="text-white/90 max-w-[60rem] leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, monospace',
-                fontSize: 'clamp(1rem, 1.8vw, 2rem)'
+                fontSize: 'clamp(1.33rem, 2.394vw, 2.66rem)'
               }}>
                80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
              </p>
@@ -37,11 +37,11 @@ export const IndustryProblem = () => {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20">
             <div className="text-center p-6 md:p-12 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-4" style={{
-                fontSize: 'clamp(2.5rem, 4.5vw, 5rem)'
+                fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
               }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)'
+                  fontSize: 'clamp(1.164rem, 1.729vw, 1.995rem)'
                 }}>
                  olive oils sold as "extra virgin" don't meet those standards
                </p>
@@ -49,11 +49,11 @@ export const IndustryProblem = () => {
 
             <div className="text-center p-6 md:p-12 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-4" style={{
-                fontSize: 'clamp(2.5rem, 4.5vw, 5rem)'
+                fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
               }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)'
+                  fontSize: 'clamp(1.164rem, 1.729vw, 1.995rem)'
                 }}>
                  "extra virgin" olive oils are low in health-boosting polyphenols
                </p>
@@ -67,13 +67,13 @@ export const IndustryProblem = () => {
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
+                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
               }}>
                 Flavour and health get blended away
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                  fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
                 }}>
                  To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
                  fresh flavour, distinct character, and polyphenols that make it healthy.
@@ -85,13 +85,13 @@ export const IndustryProblem = () => {
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
+                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
               }}>
                 You've never tasted the real thing
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                  fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
                 }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
@@ -103,13 +103,13 @@ export const IndustryProblem = () => {
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.125rem, 1.8vw, 2rem)'
+                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
               }}>
                 Big oil kills family groves
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                  fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
                 }}>
                  Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
                  sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
