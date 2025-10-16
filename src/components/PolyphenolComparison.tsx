@@ -108,20 +108,20 @@ export const PolyphenolComparison = () => {
                               <div className="space-y-4 flex-grow">
                                 <p className={`${textColors[index]} leading-relaxed`} style={{
                           fontFamily: 'Space Grotesk, monospace',
-                          fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
+                          fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
                         }}>
                                   {tweet.content}
                                 </p>
                                 <p className={`text-olive-dark/80 leading-relaxed`} style={{
                           fontFamily: 'Space Grotesk, monospace',
-                          fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
+                          fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
                         }}>
                                   {tweet.content2}
                                 </p>
                              </div>
 
                              {/* Icon Footer */}
-                             <div className="flex items-center justify-center mt-6">
+                             <div className="flex items-center justify-center mt-4">
                                <div className={`w-[115px] h-[115px] flex items-center justify-center`}>
                                  <img 
                                    src={icons[index]} 
