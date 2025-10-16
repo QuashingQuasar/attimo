@@ -141,10 +141,11 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Buy Now Button */}
-            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-semibold px-6 py-3 h-auto rounded-xl" style={{
-            fontFamily: 'Space Grotesk, monospace',
+            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-bold px-8 py-6 h-auto transition-all duration-300 hover:scale-105" style={{
+            fontFamily: 'UDC Working Man Sans, sans-serif',
             backgroundColor: '#CDDB2D',
-            fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
+            fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
+            borderRadius: '8px'
           }}>
               Buy now — €{selectedOption?.price}
             </Button>
