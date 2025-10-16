@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star } from "lucide-react";
+import { Star, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
@@ -113,7 +113,17 @@ export const HarvestProduct = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                  <span>Third-party lab tested for quality and purity</span>
+                  <span className="flex items-center gap-1">
+                    Third-party lab tested for quality and purity
+                    <a 
+                      href="/documents/lab-report-galega-2024.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center transition-transform hover:scale-110"
+                    >
+                      <ArrowUpRight className="w-4 h-4" style={{ color: '#1B4229' }} strokeWidth={2.5} />
+                    </a>
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
