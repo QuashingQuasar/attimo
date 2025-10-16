@@ -4,7 +4,6 @@ import { Star, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
-
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
   const quantityOptions = [{
@@ -82,15 +81,23 @@ export const HarvestProduct = () => {
           <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant="secondary" className="bg-olive-dark px-3 py-1.5" style={{ color: '#CDDB2D', fontSize: 'clamp(0.7rem, 0.9vw, 1rem)' }}>
+                <Badge variant="secondary" className="bg-olive-dark px-3 py-1.5" style={{
+                color: '#CDDB2D',
+                fontSize: 'clamp(0.7rem, 0.9vw, 1rem)'
+              }}>
                   2024 HARVEST
                 </Badge>
-                <Badge variant="secondary" className="bg-gold/20 text-gold-dark" style={{ fontSize: 'clamp(0.7rem, 0.9vw, 1rem)' }}>
+                <Badge variant="secondary" className="bg-gold/20 text-gold-dark" style={{
+                fontSize: 'clamp(0.7rem, 0.9vw, 1rem)'
+              }}>
                   LAST BOTTLES
                 </Badge>
               </div>
               
-              <h1 className="font-bold text-olive-dark mb-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)' }}>Galega from Alentejo</h1>
+              <h1 className="font-bold text-olive-dark mb-2" style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
+              fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)'
+            }}>Galega from Alentejo</h1>
               
               <p className="text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
@@ -98,7 +105,7 @@ export const HarvestProduct = () => {
               textDecorationColor: 'currentColor',
               textUnderlineOffset: '4px',
               fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
-            }}>High-Polyphenol Extra Virgin Olive Oil</p>
+            }}>High-Phenolic Extra Virgin Olive Oil</p>
             </header>
 
             {/* Key Benefits */}
@@ -115,13 +122,10 @@ export const HarvestProduct = () => {
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                   <span className="flex items-center gap-1">
                     Third-party lab tested for quality and purity
-                    <a 
-                      href="/documents/lab-report-galega-2024.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center transition-transform hover:scale-110"
-                    >
-                      <ArrowUpRight className="w-4 h-4" style={{ color: '#1B4229' }} strokeWidth={2.5} />
+                    <a href="/documents/lab-report-galega-2024.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition-transform hover:scale-110">
+                      <ArrowUpRight className="w-4 h-4" style={{
+                      color: '#1B4229'
+                    }} strokeWidth={2.5} />
                     </a>
                   </span>
                 </li>
@@ -180,7 +184,9 @@ export const HarvestProduct = () => {
                     fontSize: 'clamp(1.25rem, 1.8vw, 2rem)'
                   }}>
                         {tile.value}
-                        {tile.unit && <span className="ml-1 text-olive-dark/90" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.25rem)' }}>{tile.unit}</span>}
+                        {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
+                      fontSize: 'clamp(0.875rem, 1.2vw, 1.25rem)'
+                    }}>{tile.unit}</span>}
                       </div>
                       <div className="text-olive-light" style={{
                     fontFamily: 'Space Grotesk, monospace',
