@@ -64,25 +64,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
               <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Our story
-                </span>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Quality
-                </span>
-                <span 
-                  className="hover:text-white/80 transition-colors cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Producers
-                </span>
-                <Button 
+                <Button
                   onClick={() => {
                     setIsOpen(false);
                     onWaitlistClick();
@@ -96,12 +78,6 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
             </SheetContent>
           </Sheet>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 text-sm text-white font-light" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Our story</span>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Quality</span>
-            <span className="hover:text-white/80 transition-colors cursor-pointer">Producers</span>
-          </nav>
 
           {/* Cart Icon */}
           <a 
