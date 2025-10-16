@@ -38,25 +38,25 @@ export const ProductInfoTabs = () => {
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 ORIGIN
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Alentejo, Portugal</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>Alentejo, Portugal</div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 OLIVE
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>Galega</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>Galega</div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 FLAVOR
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>green & grassy</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>green & grassy</div>
             </div>
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                 STORE
               </div>
-              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace' }}>keep away from light and heat</div>
+              <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>keep away from light and heat</div>
             </div>
           </div>
         </TabsContent>
