@@ -21,7 +21,7 @@ export const Hero = ({
         <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
           <div className="mb-12 flex justify-center animate-fade-in">
-            <img src={kleiaLogo} alt="KLEIA olive oil logo" className="w-[120px] h-[120px] md:w-169 md:h-169 object-contain drop-shadow-2xl" />
+            <img src={kleiaLogo} alt="KLEIA olive oil logo" className="w-[479px] h-[479px] md:w-169 md:h-169 object-contain drop-shadow-2xl" />
           </div>
 
           {/* CTA Button */}
