@@ -46,7 +46,7 @@ export const Header = ({ onWaitlistClick }: HeaderProps) => {
         <div className="flex items-center justify-between">
           {/* Logo - Left on all screens */}
           <div className="flex items-center">
-            <img src={navbarLogo} alt="KLEIA" className="h-8 md:h-10 lg:h-12 w-auto" />
+            <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
           </div>
 
           {/* Right side - Hamburger (mobile) / Desktop Navigation and CTA */}
