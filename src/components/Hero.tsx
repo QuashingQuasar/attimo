@@ -29,7 +29,7 @@ export const Hero = ({
           animationDelay: '0.4s'
         }}>
             <Button className="px-10 py-6 hover:scale-105 transition-all duration-300 font-semibold rounded-full backdrop-blur-sm shadow-2xl" style={{
-            fontFamily: 'Space Grotesk, monospace',
+            fontFamily: 'UDC Working Man Sans, sans-serif',
             border: '2px solid #CDDB2D',
             color: '#1B4229',
             backgroundColor: '#CDDB2D',
