@@ -77,7 +77,7 @@ export const Header = ({
             fontFamily: 'Space Grotesk, monospace',
             backgroundColor: '#CDDB2D',
             color: '#494F35'
-          }}>New harvest</Button>
+          }}>2025 Harvest</Button>
           </div>
         </div>
       </div>

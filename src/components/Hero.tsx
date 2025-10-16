@@ -34,9 +34,7 @@ export const Hero = ({
             color: '#1B4229',
             backgroundColor: '#CDDB2D',
             fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-          }}>
-              Shop 2024 harvest
-            </Button>
+          }}>Shop 2024 Harvest</Button>
           </div>
 
           {/* Secondary CTA */}
