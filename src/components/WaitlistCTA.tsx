@@ -13,17 +13,17 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
     >
       {/* Decorative background pattern - mixed icons in repeating grid */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-6 gap-8 p-8" style={{ opacity: 0.5 }}>
+        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-8 gap-4 p-4" style={{ opacity: 0.5 }}>
           {[
-            'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg',
-            'mortar.svg', 'branch-2.svg', 'caraf-2.svg', 'bread-2.svg', 'branch-2.svg', 'book-2.svg',
-            'branch-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg', 'branch-2.svg', 'basket-2.svg',
-            'sun-2.svg', 'branch-2.svg', 'column-2.svg', 'branch-2.svg', 'lyre-2.svg', 'branch-2.svg',
-            'branch-2.svg', 'mortar.svg', 'branch-2.svg', 'caraf-2.svg', 'branch-2.svg', 'bread-2.svg',
-            'book-2.svg', 'branch-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg', 'branch-2.svg'
+            'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg', 'branch-2.svg',
+            'caraf-2.svg', 'bread-2.svg', 'branch-2.svg', 'book-2.svg', 'branch-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg',
+            'branch-2.svg', 'basket-2.svg', 'sun-2.svg', 'branch-2.svg', 'column-2.svg', 'branch-2.svg', 'lyre-2.svg', 'branch-2.svg',
+            'branch-2.svg', 'mortar.svg', 'branch-2.svg', 'caraf-2.svg', 'branch-2.svg', 'bread-2.svg', 'book-2.svg', 'branch-2.svg',
+            'lady-2.svg', 'branch-2.svg', 'amphora-2.svg', 'branch-2.svg', 'basket-2.svg', 'branch-2.svg', 'sun-2.svg', 'branch-2.svg',
+            'column-2.svg', 'lyre-2.svg', 'branch-2.svg', 'mortar.svg', 'branch-2.svg', 'caraf-2.svg', 'branch-2.svg', 'bread-2.svg'
           ].map((icon, i) => (
-            <div key={i} className="w-full h-24 flex items-center justify-center">
-              <img src={`/icons/${icon}`} alt="" className="w-16 h-16 object-contain" />
+            <div key={i} className="w-full h-20 flex items-center justify-center">
+              <img src={`/icons/${icon}`} alt="" className="w-14 h-14 object-contain" />
             </div>
           ))}
         </div>
