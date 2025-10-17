@@ -20,9 +20,7 @@ const Index = () => {
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />
-      <div id="harvest-product">
-        <HarvestProduct />
-      </div>
+      <HarvestProduct />
       <KleiaWay />
       <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilComparison />

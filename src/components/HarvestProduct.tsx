@@ -65,7 +65,7 @@ export const HarvestProduct = () => {
     avg: "avg. ~0.8%",
     description: "lower = fresher olives and higher quality"
   }] as const;
-  return <section className="py-24 snap-start" style={{
+  return <section id="harvest-product" className="py-24 snap-start" style={{
     backgroundColor: '#FFFAEA'
   }}>
       <div className="w-full flex items-center">
