@@ -11,20 +11,38 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
       className="py-20 snap-start relative overflow-hidden" 
       style={{ backgroundColor: '#B3E58C' }}
     >
-      {/* Decorative background pattern - mixed icons in repeating grid */}
+      {/* Decorative background pattern - scattered icons */}
       <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-8 gap-0 p-0" style={{ opacity: 0.5 }}>
+        <div className="absolute top-0 left-0 w-full h-full" style={{ opacity: 0.5 }}>
           {[
-            'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg', 'caraf-2.svg',
-            'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg',
-            'lyre-2.svg', 'mortar.svg', 'caraf-2.svg', 'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg',
-            'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg', 'caraf-2.svg', 'bread-2.svg', 'book-2.svg',
-            'lady-2.svg', 'amphora-2.svg', 'basket-2.svg', 'branch-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg',
-            'caraf-2.svg', 'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg'
-          ].map((icon, i) => (
-            <div key={i} className="w-full h-32 flex items-center justify-center">
-              <img src={`/icons/${icon}`} alt="" className="w-24 h-24 object-contain" />
-            </div>
+            { icon: 'branch-2.svg', top: '5%', left: '8%', size: 'w-20 h-20', rotate: 'rotate-12' },
+            { icon: 'amphora-2.svg', top: '15%', left: '25%', size: 'w-24 h-24', rotate: '-rotate-6' },
+            { icon: 'basket-2.svg', top: '8%', left: '45%', size: 'w-20 h-20', rotate: 'rotate-45' },
+            { icon: 'sun-2.svg', top: '12%', left: '65%', size: 'w-28 h-28', rotate: 'rotate-0' },
+            { icon: 'column-2.svg', top: '18%', left: '85%', size: 'w-20 h-20', rotate: '-rotate-12' },
+            { icon: 'lyre-2.svg', top: '35%', left: '5%', size: 'w-22 h-22', rotate: 'rotate-6' },
+            { icon: 'mortar.svg', top: '40%', left: '20%', size: 'w-24 h-24', rotate: '-rotate-12' },
+            { icon: 'caraf-2.svg', top: '38%', left: '38%', size: 'w-20 h-20', rotate: 'rotate-24' },
+            { icon: 'bread-2.svg', top: '42%', left: '55%', size: 'w-22 h-22', rotate: '-rotate-6' },
+            { icon: 'book-2.svg', top: '35%', left: '72%', size: 'w-20 h-20', rotate: 'rotate-12' },
+            { icon: 'lady-2.svg', top: '45%', left: '90%', size: 'w-24 h-24', rotate: '-rotate-24' },
+            { icon: 'branch-2.svg', top: '65%', left: '10%', size: 'w-20 h-20', rotate: 'rotate-45' },
+            { icon: 'amphora-2.svg', top: '68%', left: '28%', size: 'w-22 h-22', rotate: '-rotate-12' },
+            { icon: 'basket-2.svg', top: '72%', left: '48%', size: 'w-24 h-24', rotate: 'rotate-6' },
+            { icon: 'sun-2.svg', top: '70%', left: '68%', size: 'w-20 h-20', rotate: '-rotate-6' },
+            { icon: 'column-2.svg', top: '75%', left: '88%', size: 'w-20 h-20', rotate: 'rotate-12' },
+            { icon: 'lyre-2.svg', top: '90%', left: '15%', size: 'w-22 h-22', rotate: '-rotate-24' },
+            { icon: 'mortar.svg', top: '88%', left: '35%', size: 'w-20 h-20', rotate: 'rotate-12' },
+            { icon: 'caraf-2.svg', top: '92%', left: '52%', size: 'w-24 h-24', rotate: '-rotate-6' },
+            { icon: 'bread-2.svg', top: '85%', left: '75%', size: 'w-20 h-20', rotate: 'rotate-6' }
+          ].map((item, i) => (
+            <img 
+              key={i}
+              src={`/icons/${item.icon}`} 
+              alt="" 
+              className={`absolute ${item.size} ${item.rotate} object-contain`}
+              style={{ top: item.top, left: item.left }}
+            />
           ))}
         </div>
       </div>
