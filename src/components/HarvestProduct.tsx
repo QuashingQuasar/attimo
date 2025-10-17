@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-import oliveOilPlaceholder from "@/assets/attimo-bottle.jpg";
+import oliveOilPlaceholder from "@/assets/attimo-bottle-new.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
