@@ -12,13 +12,32 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
       style={{ backgroundColor: '#B3E58C' }}
     >
       {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
+        {/* Branch pattern */}
         <div className="absolute top-0 left-0 w-full h-full" style={{
           backgroundImage: 'url(/icons/branch-2.svg)',
           backgroundSize: '200px',
           backgroundRepeat: 'repeat',
-          opacity: 0.3
+          opacity: 0.5
         }} />
+        
+        {/* Amphora icon - top right */}
+        <img src="/icons/amphora-2.svg" alt="" className="absolute top-10 right-[15%] w-24 h-24 opacity-40" />
+        
+        {/* Basket icon - bottom left */}
+        <img src="/icons/basket-2.svg" alt="" className="absolute bottom-16 left-[10%] w-20 h-20 opacity-35" />
+        
+        {/* Olive leaf - top left */}
+        <img src="/icons/sun-2.svg" alt="" className="absolute top-16 left-[8%] w-28 h-28 opacity-30" />
+        
+        {/* Column - bottom right */}
+        <img src="/icons/column-2.svg" alt="" className="absolute bottom-20 right-[20%] w-16 h-16 opacity-45" />
+        
+        {/* Lyre - middle right */}
+        <img src="/icons/lyre-2.svg" alt="" className="absolute top-1/2 right-[5%] w-20 h-20 opacity-35" />
+        
+        {/* Mortar - middle left */}
+        <img src="/icons/mortar.svg" alt="" className="absolute top-1/3 left-[15%] w-16 h-16 opacity-40" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
