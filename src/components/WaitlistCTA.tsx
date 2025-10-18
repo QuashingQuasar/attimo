@@ -17,7 +17,8 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
         style={{
           backgroundImage: 'url(/patterns/waitlist-tile.svg)',
           backgroundRepeat: 'repeat',
-          backgroundSize: '400px auto'
+          backgroundSize: '400px 428px',
+          backgroundPosition: '0 0'
         }}
       />
 
