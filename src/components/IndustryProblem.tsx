@@ -18,10 +18,10 @@ export const IndustryProblem = () => {
         <div className="mx-auto">
           {/* Main Heading */}
           <div className="text-left mb-12 md:mb-20 max-w-5xl">
-            <h2 className="font-light mb-4 md:mb-8 leading-tight tracking-tight" style={{
+            <h2 className="font-light mb-4 md:mb-8 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
-                fontSize: 'clamp(3.24rem, 6.916vw, 8.645rem)'
+                fontSize: 'clamp(2rem, 6.916vw, 8.645rem)'
               }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
