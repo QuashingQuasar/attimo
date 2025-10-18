@@ -11,23 +11,15 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
       className="py-20 snap-start relative overflow-hidden" 
       style={{ backgroundColor: '#B3E58C' }}
     >
-      {/* Decorative background pattern - mixed icons in repeating grid */}
-      <div className="absolute inset-0 opacity-15">
-        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-8 gap-0 p-0" style={{ opacity: 0.5 }}>
-          {[
-            'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg', 'caraf-2.svg',
-            'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg',
-            'lyre-2.svg', 'mortar.svg', 'caraf-2.svg', 'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'branch-2.svg', 'amphora-2.svg',
-            'basket-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg', 'caraf-2.svg', 'bread-2.svg', 'book-2.svg',
-            'lady-2.svg', 'amphora-2.svg', 'basket-2.svg', 'branch-2.svg', 'sun-2.svg', 'column-2.svg', 'lyre-2.svg', 'mortar.svg',
-            'caraf-2.svg', 'bread-2.svg', 'book-2.svg', 'lady-2.svg', 'amphora-2.svg', 'basket-2.svg', 'sun-2.svg', 'column-2.svg'
-          ].map((icon, i) => (
-            <div key={i} className="w-full h-32 flex items-center justify-center">
-              <img src={`/icons/${icon}`} alt="" className="w-24 h-24 object-contain" />
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Decorative background pattern */}
+      <div 
+        className="absolute inset-0 opacity-15"
+        style={{
+          backgroundImage: 'url(/patterns/waitlist-pattern.svg)',
+          backgroundRepeat: 'repeat',
+          backgroundSize: 'auto'
+        }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
