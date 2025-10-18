@@ -15,9 +15,9 @@ export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
       <div 
         className="absolute inset-0 opacity-15"
         style={{
-          backgroundImage: 'url(/patterns/waitlist-pattern.svg)',
+          backgroundImage: 'url(/patterns/waitlist-tile.svg)',
           backgroundRepeat: 'repeat',
-          backgroundSize: '800px 533px'
+          backgroundSize: '400px auto'
         }}
       />
 
