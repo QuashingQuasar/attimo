@@ -10,7 +10,7 @@ export const WaitlistCTA = ({
     backgroundColor: '#B3E58C'
   }}>
       {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-15" style={{
+      <div className="absolute inset-0 opacity-10" style={{
       backgroundImage: 'url(/patterns/waitlist-tile.svg)',
       backgroundRepeat: 'repeat'
     }} />
