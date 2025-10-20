@@ -79,14 +79,21 @@ export const HarvestProduct = () => {
                 <TooltipProvider>
                   <Tooltip delayDuration={200}>
                     <TooltipTrigger asChild>
-                      <Badge variant="secondary" className="bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 border border-cream/20 cursor-help" style={{
-                        color: '#FFFAEA',
-                        fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
-                      }}>
-                        LABEL PREVIEW
-                      </Badge>
+                      <button className="flex items-center gap-1.5 bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-cream/20 cursor-help transition-all hover:bg-olive-dark">
+                        <span className="font-semibold uppercase tracking-wide" style={{
+                          color: '#FFFAEA',
+                          fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
+                        }}>
+                          LABEL PREVIEW
+                        </span>
+                        <Info className="w-3.5 h-3.5" style={{ color: '#FFFAEA' }} />
+                      </button>
                     </TooltipTrigger>
-                    <TooltipContent side="right" className="max-w-xs bg-olive-dark border-olive-light/20 text-cream p-3">
+                    <TooltipContent side="right" align="start" className="max-w-xs p-3" style={{
+                      backgroundColor: '#1B4229',
+                      color: '#FFFAEA',
+                      borderColor: 'rgba(205, 219, 45, 0.3)'
+                    }}>
                       <p className="text-sm leading-relaxed">
                         This bottle shows our upcoming ATTIMO brand. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil.
                       </p>
