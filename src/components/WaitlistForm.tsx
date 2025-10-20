@@ -79,7 +79,7 @@ export const WaitlistForm = ({
             </div>
             
             <div className="space-y-3">
-              <Label>Preferred Contact Method</Label>
+              <Label>Where you want to messaged</Label>
               <RadioGroup value={contactMethod} onValueChange={(value: "email" | "phone") => {
                 setContactMethod(value);
                 setContactValue("");
