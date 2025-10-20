@@ -11,7 +11,7 @@ export const WaitlistCTA = ({
   }}>
       {/* Decorative background pattern */}
       <div className="absolute inset-0 opacity-15" style={{
-      backgroundImage: 'url(/patterns/waitlist-tile.svg?v=3)',
+      backgroundImage: 'url(/patterns/waitlist-tile.svg?v=4)',
       backgroundRepeat: 'repeat'
     }} />
 
