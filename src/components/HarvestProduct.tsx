@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, ArrowUpRight } from "lucide-react";
+import { Star, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle-new.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
@@ -72,8 +72,16 @@ export const HarvestProduct = () => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
           {/* Product Image */}
           <div className="flex justify-start items-stretch lg:pl-0">
-            <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10">
+            <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
               <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
+              <div className="absolute bottom-4 left-4">
+                <Badge variant="secondary" className="bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 border border-cream/20" style={{
+                  color: '#FFFAEA',
+                  fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
+                }}>
+                  LABEL PREVIEW
+                </Badge>
+              </div>
             </div>
           </div>
 
@@ -134,6 +142,19 @@ export const HarvestProduct = () => {
                   <span>Directly sourced from a small family farm in Alentejo, Portugal</span>
                 </li>
               </ul>
+              
+              {/* Label Disclosure Notice */}
+              <div className="mt-3 p-3 rounded-lg bg-cream/40 border border-olive-light/20">
+                <div className="flex items-start gap-2">
+                  <Info className="w-4 h-4 text-olive-medium flex-shrink-0 mt-0.5" />
+                  <p className="text-olive-medium/90 leading-relaxed" style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(0.8rem, 1vw, 1rem)'
+                  }}>
+                    The bottle shown features our upcoming ATTIMO brand label. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil and lab-verified values.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Quantity Selection */}
