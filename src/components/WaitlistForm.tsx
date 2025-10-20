@@ -67,7 +67,7 @@ export const WaitlistForm = ({
                 htmlFor="gdpr" 
                 className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                I agree to receive marketing emails and understand I can unsubscribe at any time. By submitting this form, I consent to the processing of my personal data in accordance with the Privacy Policy.
+                I agree to receive marketing emails
               </label>
             </div>
             <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{
