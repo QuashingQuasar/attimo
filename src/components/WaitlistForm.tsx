@@ -44,7 +44,7 @@ export const WaitlistForm = ({
           <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-2 top-2 text-muted-foreground hover:text-foreground">
             <X className="h-4 w-4" />
           </Button>
-          <CardTitle className="text-2xl text-olive-dark">News From The Grove</CardTitle>
+          <CardTitle className="text-2xl text-olive-dark">Fresh From The Press</CardTitle>
           <CardDescription>
             Be the first to know about new ATTIMO oils
           </CardDescription>
