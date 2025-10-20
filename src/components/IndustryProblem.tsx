@@ -74,7 +74,7 @@ export const IndustryProblem = () => {
                <p className="text-white/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
-                }}>To scale production, big producers mix oils from multiple sources and harvest years into a standardized taste. This practice destroys what makes real olive oil specal: fresh distinct flavor and polyphenols that make it super healthy.</p>
+                }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavor and polyphenols that make it super healthy.</p>
             </div>
 
             {/* Real Thing */}
