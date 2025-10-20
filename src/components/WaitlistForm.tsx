@@ -47,8 +47,8 @@ export const WaitlistForm = ({
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter your full name" required className="border-olive-light focus:border-gold-rich" />
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter your name" required className="border-olive-light focus:border-gold-rich" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
