@@ -108,8 +108,7 @@ export const IndustryProblem = () => {
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
                 }}>
-                 Under financial stress, small farmers have no choice but to sell to big players. Their sublime oil gets blended into cheap stuff and 
-                 sold for pennies. Making great EVOO is an art and when that art isn't paid for, it and great oil will disappear.
+                 Financial pressure forces small producers to sell to industrial players. Their sublime oil sold gets blended into cheap stuff and sold for pennies. Making olive oil is an art much like wine, but when the artists don't get paid, the art disappears.
                </p>
             </div>
             </div>
