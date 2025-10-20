@@ -4,6 +4,7 @@ import { Star, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle-new.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
   const quantityOptions = [{
@@ -75,12 +76,23 @@ export const HarvestProduct = () => {
             <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
               <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
               <div className="absolute bottom-4 left-4">
-                <Badge variant="secondary" className="bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 border border-cream/20" style={{
-                  color: '#FFFAEA',
-                  fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
-                }}>
-                  LABEL PREVIEW
-                </Badge>
+                <TooltipProvider>
+                  <Tooltip delayDuration={200}>
+                    <TooltipTrigger asChild>
+                      <Badge variant="secondary" className="bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 border border-cream/20 cursor-help" style={{
+                        color: '#FFFAEA',
+                        fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
+                      }}>
+                        LABEL PREVIEW
+                      </Badge>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="max-w-xs bg-olive-dark border-olive-light/20 text-cream p-3">
+                      <p className="text-sm leading-relaxed">
+                        This bottle shows our upcoming ATTIMO brand. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil.
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
           </div>
