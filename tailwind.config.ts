@@ -82,7 +82,8 @@ export default {
 				olive: {
 					dark: 'hsl(var(--olive-dark))',
 					medium: 'hsl(var(--olive-medium))',
-					light: 'hsl(var(--olive-light))'
+					light: 'hsl(var(--olive-light))',
+					bright: 'hsl(var(--olive-bright))'
 				},
 				gold: {
 					rich: 'hsl(var(--gold-rich))',
