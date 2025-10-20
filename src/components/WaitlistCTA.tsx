@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Bell } from "lucide-react";
+import basketIcon from "@/assets/basket-icon.svg";
 interface WaitlistCTAProps {
   onWaitlistClick: () => void;
 }
@@ -22,9 +22,7 @@ export const WaitlistCTA = ({
             <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{
             backgroundColor: '#1B4229'
           }}>
-              <Bell className="w-8 h-8" style={{
-              color: '#B3E58C'
-            }} strokeWidth={2.5} />
+              <img src={basketIcon} alt="Basket icon" className="w-8 h-8" />
             </div>
           </div>
 
