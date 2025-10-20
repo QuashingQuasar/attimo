@@ -19,11 +19,9 @@ export const WaitlistCTA = ({
         <div className="max-w-4xl mx-auto text-center">
           {/* Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{
-            backgroundColor: '#1B4229'
-          }}>
-              <img src={basketIcon} alt="Basket icon" className="w-8 h-8" />
-            </div>
+            <img src={basketIcon} alt="Basket icon" className="w-20 h-auto" style={{
+              filter: 'brightness(0) saturate(100%) invert(14%) sepia(27%) saturate(1588%) hue-rotate(99deg) brightness(95%) contrast(95%)'
+            }} />
           </div>
 
           {/* Heading */}
