@@ -233,7 +233,7 @@ export const HarvestProduct = () => {
                     fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                   }}>{tile.avg}</div>
                     </div>
-                    <p className="text-olive-medium/80 leading-relaxed" style={{
+                    <p className="text-olive-medium leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
                 }}>{tile.description}</p>
