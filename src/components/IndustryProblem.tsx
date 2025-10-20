@@ -37,8 +37,8 @@ export const IndustryProblem = () => {
           <div className="grid lg:grid-cols-2 gap-6 md:gap-12 mb-12 md:mb-20">
             <div className="text-center p-6 md:p-12 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-4" style={{
-                fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
-              }}>~80%</div>
+                  fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
+                }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1.164rem, 1.729vw, 1.995rem)'
@@ -49,8 +49,8 @@ export const IndustryProblem = () => {
 
             <div className="text-center p-6 md:p-12 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-4" style={{
-                fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
-              }}>~90%</div>
+                  fontSize: 'clamp(3.325rem, 5.985vw, 6.65rem)'
+                }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1.164rem, 1.729vw, 1.995rem)'
@@ -66,27 +66,24 @@ export const IndustryProblem = () => {
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
-              }}>
+                  fontFamily: 'UDC Working Man Sans, sans-serif',
+                  fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
+                }}>
                 Flavour and health get blended away
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1.164rem, 1.596vw, 1.829rem)'
-                }}>
-                 To scale production, oils from multiple sources are mixed into a standardized taste, losing what makes real olive oil special: 
-                 fresh flavour, distinct character, and polyphenols that make it healthy.
-               </p>
+                }}>To scale production, big producers mix oils from multiple sources and harvest years into a standardized taste. This practice destroys what makes real olive oil specal: fresh distinct flavor and polyphenols that make it super healthy.</p>
             </div>
 
             {/* Real Thing */}
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
-              }}>
+                  fontFamily: 'UDC Working Man Sans, sans-serif',
+                  fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
+                }}>
                 You've never tasted the real thing
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
@@ -102,9 +99,9 @@ export const IndustryProblem = () => {
             <div className="space-y-3 md:space-y-6">
               
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
-              }}>
+                  fontFamily: 'UDC Working Man Sans, sans-serif',
+                  fontSize: 'clamp(1.496rem, 2.394vw, 2.66rem)'
+                }}>
                 Big oil kills family groves
               </h3>
                <p className="text-white/80 leading-relaxed" style={{
