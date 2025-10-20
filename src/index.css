@@ -102,7 +102,7 @@ All colors MUST be HSL.
     --olive-dark: 122 42% 18%; /* Exact brand green #1B4229 */
     --olive-medium: 76 15% 40%; /* Lighter version */
     --olive-light: 76 10% 55%; /* Very light olive */
-    --olive-bright: 100 60% 75%; /* Bright light green */
+    --olive-bright: 65 71% 52%; /* Bright light green rgb(205, 219, 45) */
     --gold-accent: 42 65% 50%; /* Subtle gold accent */
     --golden-text: 49 85% 60%; /* Golden text color #EFC11B */
     --cream: 45 19% 92%; /* Light warm beige #EEECE6 */
