@@ -41,7 +41,7 @@ export const WaitlistForm = ({
           </Button>
           <CardTitle className="text-2xl text-olive-dark">News From The Grove</CardTitle>
           <CardDescription>
-            Be the first to experience our premium olive oil when we launch.
+            Be the first to know about new ATTIMO oils
           </CardDescription>
         </CardHeader>
         <CardContent>
