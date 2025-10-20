@@ -56,7 +56,7 @@ export const WaitlistForm = ({
               <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter your full name" required className="border-olive-light focus:border-gold-rich" />
             </div>
             <div className="space-y-3">
-              <Label>Preferred Contact Method</Label>
+              <Label>Where you want to be messaged</Label>
               <RadioGroup value={contactMethod} onValueChange={(value: "email" | "phone") => {
               setContactMethod(value);
               setContactValue("");
