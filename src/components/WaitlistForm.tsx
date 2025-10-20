@@ -39,7 +39,7 @@ export const WaitlistForm = ({
           <Button variant="ghost" size="icon" onClick={onClose} className="absolute right-2 top-2 text-muted-foreground hover:text-foreground">
             <X className="h-4 w-4" />
           </Button>
-          <CardTitle className="text-2xl text-olive-dark">Join Our Waitlist</CardTitle>
+          <CardTitle className="text-2xl text-olive-dark">News From The Grove</CardTitle>
           <CardDescription>
             Be the first to experience our premium olive oil when we launch.
           </CardDescription>
