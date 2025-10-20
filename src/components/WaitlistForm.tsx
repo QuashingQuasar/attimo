@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { X } from "lucide-react";
@@ -15,6 +16,7 @@ export const WaitlistForm = ({
 }: WaitlistFormProps) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [gdprConsent, setGdprConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,7 +56,21 @@ export const WaitlistForm = ({
               <Label htmlFor="email">Be the first to know about new oils.</Label>
               <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter your email address" required className="border-olive-light focus:border-gold-rich" />
             </div>
-            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting} style={{
+            <div className="flex items-start space-x-3 py-2">
+              <Checkbox 
+                id="gdpr" 
+                checked={gdprConsent}
+                onCheckedChange={(checked) => setGdprConsent(checked === true)}
+                required
+              />
+              <label 
+                htmlFor="gdpr" 
+                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                I agree to receive marketing emails and understand I can unsubscribe at any time. By submitting this form, I consent to the processing of my personal data in accordance with the Privacy Policy.
+              </label>
+            </div>
+            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{
             fontFamily: 'Space Grotesk, monospace'
           }}>
               {isSubmitting ? "Joining..." : "Join Waitlist"}
