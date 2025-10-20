@@ -34,7 +34,7 @@ export const WaitlistCTA = ({
           color: '#1B4229',
           fontSize: 'clamp(2rem, 3.5vw, 3.5rem)',
           lineHeight: '1.2'
-        }}>get message when new oils come in</h2>
+        }}>get messages when new oils come in</h2>
 
           {/* Subheading */}
           <p className="mb-8 max-w-2xl mx-auto" style={{
