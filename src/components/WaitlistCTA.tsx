@@ -40,7 +40,7 @@ export const WaitlistCTA = ({
           <p className="mb-8 max-w-2xl mx-auto" style={{
           fontFamily: 'Space Grotesk, monospace',
           color: '#1B4229',
-          fontSize: 'clamp(1rem, 1.3vw, 1.25rem)',
+          fontSize: 'clamp(1.25rem, 1.75vw, 1.75rem)',
           lineHeight: '1.6'
         }}>Harvest 2025 selection coming soon.</p>
 
