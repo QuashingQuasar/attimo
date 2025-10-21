@@ -117,7 +117,7 @@ export const HarvestProduct = () => {
           {/* Product Details */}
           <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
-              <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <div className="flex items-center gap-2 mb-2">
                 <Badge variant="secondary" className="bg-olive-dark px-4 py-2" style={{
                 color: '#CDDB2D',
                 fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
@@ -129,17 +129,17 @@ export const HarvestProduct = () => {
               }}>
                   LAST BOTTLES
                 </Badge>
-                <Badge variant="secondary" className="bg-olive-light/30 text-olive-dark px-4 py-2" style={{
-                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
-              }}>
-                  500ml
-                </Badge>
               </div>
               
-              <h1 className="font-bold text-olive-dark mb-2" style={{
+              <h1 className="font-bold text-olive-dark mb-2 flex items-baseline gap-3" style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)'
-            }}>Galega from Alentejo</h1>
+            }}>
+                Galega from Alentejo
+                <span className="font-beverly text-olive-medium" style={{
+                  fontSize: 'clamp(1.25rem, 2vw, 2rem)'
+                }}>500ml</span>
+              </h1>
               
               <p className="text-olive-medium mb-2 font-beverly" style={{
               textDecoration: 'underline',
