@@ -39,7 +39,7 @@ export const PolyphenolComparison = () => {
     color: "bg-olive-dark"
   }];
   const maxValue = Math.max(...comparisonData.map(item => item.value));
-  return <section className="py-24 snap-start flex items-center" style={{
+  return <section className="py-12 md:py-16 lg:py-24 snap-start flex items-center" style={{
     backgroundColor: '#FFFAEA'
   }}>
       <div className="container mx-auto px-6">
