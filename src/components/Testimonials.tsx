@@ -90,18 +90,6 @@ export const Testimonials = () => {
           Word from the grove
         </h2>
 
-        {/* Left fade overlay */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #1A431D, transparent)" }}
-        ></div>
-
-        {/* Right fade overlay */}
-        <div
-          className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, #1A431D, transparent)" }}
-        ></div>
-
         {/* Scrolling Testimonials */}
         <div className="overflow-hidden">
           <div
