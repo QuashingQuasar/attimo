@@ -5,6 +5,7 @@ import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle-new.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
   const quantityOptions = [{
@@ -152,7 +153,31 @@ export const HarvestProduct = () => {
             }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                  <span>5x more antioxidant polyphenols than average EVOO</span>
+                  <span className="flex items-center gap-1">
+                    5x more antioxidant polyphenols than average EVOO
+                    <HoverCard openDelay={0} closeDelay={0}>
+                      <HoverCardTrigger asChild>
+                        <button 
+                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream transition-colors cursor-help"
+                          style={{ fontSize: '0.65rem', fontWeight: 'bold' }}
+                        >
+                          ?
+                        </button>
+                      </HoverCardTrigger>
+                      <HoverCardContent 
+                        className="w-80 p-4" 
+                        style={{
+                          backgroundColor: '#1B4229',
+                          color: '#FFFAEA',
+                          borderColor: 'rgba(205, 219, 45, 0.3)'
+                        }}
+                      >
+                        <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                          Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending.
+                        </p>
+                      </HoverCardContent>
+                    </HoverCard>
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
