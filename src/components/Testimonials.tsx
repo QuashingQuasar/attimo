@@ -74,6 +74,17 @@ export const Testimonials = () => {
         }}
       />
       <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
+        {/* Title */}
+        <h2 
+          className="text-center mb-8 text-white font-beverly"
+          style={{ 
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            letterSpacing: '0.02em'
+          }}
+        >
+          Word from the grove
+        </h2>
+
         {/* Left fade overlay */}
         <div
           className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
