@@ -75,13 +75,14 @@ export const Testimonials = () => {
       <div className="mx-auto relative z-10 w-full">
         {/* Title */}
         <h2
-          className="text-center mb-8 text-white font-beverly"
+          className="text-center mb-8 font-beverly"
           style={{
             fontSize: "clamp(2rem, 4vw, 3.5rem)",
             letterSpacing: "0.02em",
             width: "95vw",
             marginLeft: "auto",
             marginRight: "auto",
+            color: "rgb(205, 219, 45)",
           }}
         >
           Word from the street
