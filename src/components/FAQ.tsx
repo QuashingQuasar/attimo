@@ -11,6 +11,10 @@ const faqs = [
     answer: "ATTIMO sources directly from single groves, ensuring every bottle comes from the latest harvest with no blending or middlemen. Each bottle is lab-tested for quality markers like polyphenol content, giving you the real, health-boosting extra virgin olive oil most people have never tasted."
   },
   {
+    question: "Where does ATTIMO olive oil come from?",
+    answer: "ATTIMO sources from small, family-owned groves in Mediterranean regions known for exceptional olive oil. Each bottle comes from a single grove and is never blended, so you can trace exactly where your oil was produced. Current harvest is from Alentejo, Portugal."
+  },
+  {
     question: "What are polyphenols and why do they matter?",
     answer: "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources."
   },
