@@ -91,25 +91,25 @@ export const Testimonials = () => {
         </h2>
 
         {/* Scrolling Testimonials */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden -mx-6">
           {/* Left fade gradient */}
           <div 
-            className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
+            className="absolute left-0 top-0 bottom-0 w-24 z-20 pointer-events-none"
             style={{
-              background: 'linear-gradient(to right, rgba(26, 67, 29, 0.9), transparent)'
+              background: 'linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent)'
             }}
           />
           
           {/* Right fade gradient */}
           <div 
-            className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 w-24 z-20 pointer-events-none"
             style={{
-              background: 'linear-gradient(to left, rgba(26, 67, 29, 0.9), transparent)'
+              background: 'linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent)'
             }}
           />
           
           <div
-            className="flex gap-6"
+            className="flex gap-6 px-6"
             style={{
               animation: "testimonialScroll 15s linear infinite",
             }}
