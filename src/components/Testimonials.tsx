@@ -72,7 +72,7 @@ export const Testimonials = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/kleia-way-video-3.mp4" type="video/mp4" />
+        <source src="/videos/kleia-way-video-2.mp4" type="video/mp4" />
       </video>
       
       <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
