@@ -82,11 +82,22 @@ export const Header = ({
           </a>
 
           {/* CTA - Hidden on mobile, visible on tablet+ */}
-          <Button onClick={onWaitlistClick} className="hidden md:block hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20" style={{
-            fontFamily: 'Space Grotesk, monospace',
-            backgroundColor: '#CDDB2D',
-            color: '#494F35'
-          }}>Shop</Button>
+          <Button 
+            onClick={() => {
+              const productSection = document.getElementById('harvest-product');
+              if (productSection) {
+                productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="hidden md:block hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20" 
+            style={{
+              fontFamily: 'Space Grotesk, monospace',
+              backgroundColor: '#CDDB2D',
+              color: '#494F35'
+            }}
+          >
+            Shop
+          </Button>
           </div>
         </div>
       </div>
