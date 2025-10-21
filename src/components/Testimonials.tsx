@@ -31,9 +31,9 @@ const testimonials = [
     name: "Elias N.",
     location: "Amsterdam, Netherlands",
     date: "06 June 2025",
-    text: "I was skeptical about the price but now I get it. You can really taste the difference in quality.",
+    text: "I tried a lot of olive oils and this one is my favourite. The smell is absolutely unreal, so fresh it's like the olives are being pressed right then and there.",
     rating: 5,
-    title: "You can taste the quality",
+    title: "Super fresh",
   },
   {
     name: "David K.",
@@ -42,6 +42,14 @@ const testimonials = [
     text: "I bought 4 bottles and they were gone in a month. Never buying in the supermarket again.",
     rating: 5,
     title: "I got hooked fast",
+  },
+   {
+    name: "Dag A.",
+    location: "Tallinn", Estonia",
+    date: "15 Aug 2025",
+    text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.",
+    rating: 5,
+    title: "You can taste the quality",
   },
 ];
 
