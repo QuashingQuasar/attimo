@@ -59,15 +59,21 @@ export const Testimonials = () => {
 
   return (
     <section
-      className="py-10 snap-start min-h-[50vh] flex items-center my-24"
+      className="py-10 snap-start min-h-[50vh] flex items-center my-24 relative overflow-hidden"
       style={{
         backgroundColor: "#1A431D",
-        backgroundImage: `url(${patternBg})`,
-        backgroundSize: "600px 600px",
-        backgroundRepeat: "repeat",
       }}
     >
-      <div className="mx-auto relative" style={{ width: "95vw" }}>
+      {/* Decorative background pattern */}
+      <div
+        className="absolute inset-0 opacity-15"
+        style={{
+          backgroundImage: 'url(/patterns/waitlist-tile.svg?v=4)',
+          backgroundRepeat: 'repeat',
+          filter: 'invert(1) brightness(2)',
+        }}
+      />
+      <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
         {/* Left fade overlay */}
         <div
           className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
