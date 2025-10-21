@@ -48,7 +48,7 @@ export const PolyphenolComparison = () => {
               <h2 className="font-beverly font-bold text-olive-dark mb-6 tracking-tight" style={{
                 fontSize: 'clamp(2.5rem, 4vw, 4.5rem)'
               }}>
-                Raising The Polyphenol Bar<br />
+                The Polyphenol Effect<br />
                 <span className="font-medium"></span>
               </h2>
                <p className="text-olive-medium leading-relaxed mb-12" style={{
