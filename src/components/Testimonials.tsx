@@ -72,7 +72,7 @@ export const Testimonials = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/videos/bottom-right-video.mp4" type="video/mp4" />
+        <source src="/videos/hero-video-3.mp4" type="video/mp4" />
       </video>
       
       {/* Subtle dark overlay */}
