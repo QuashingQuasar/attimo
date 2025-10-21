@@ -43,14 +43,14 @@ const testimonials = [
     rating: 5,
     title: "I got hooked fast",
   },
-   {
+  {
     name: "Dag A.",
-    location: "Tallinn", Estonia",
+    location: "Tallinn, Estonia",
     date: "15 Aug 2025",
     text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.",
     rating: 5,
     title: "You can taste the quality",
-  }
+  },
 ];
 
 export const Testimonials = () => {
