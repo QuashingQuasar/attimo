@@ -91,9 +91,9 @@ export const Testimonials = () => {
         </h2>
 
         {/* Scrolling Testimonials */}
-        <div className="overflow-hidden">
+        <div className="overflow-x-hidden">
           <div
-            className="flex gap-6"
+            className="flex gap-6 pl-6"
             style={{
               animation: "testimonialScroll 15s linear infinite",
             }}
