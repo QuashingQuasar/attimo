@@ -137,7 +137,7 @@ export const HarvestProduct = () => {
             }}>
                 Galega from Alentejo
                 <span className="font-beverly text-olive-medium" style={{
-                  fontSize: 'clamp(1.25rem, 2vw, 2rem)'
+                  fontSize: 'clamp(1rem, 1.5vw, 1.5rem)'
                 }}>500ml</span>
               </h1>
               
