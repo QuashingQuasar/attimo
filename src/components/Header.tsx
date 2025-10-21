@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
 interface HeaderProps {
   onWaitlistClick: () => void;
@@ -10,7 +8,6 @@ interface HeaderProps {
 export const Header = ({
   onWaitlistClick
 }: HeaderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const scrollContainer = document.querySelector('.overflow-y-scroll');
@@ -39,65 +36,39 @@ export const Header = ({
             <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
           </div>
 
-          {/* Right side - Hamburger (mobile) / Desktop Navigation and CTA */}
-          <div className="flex items-center gap-8">
-            {/* Hamburger Menu - Mobile/Tablet (Right) */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="w-[300px] bg-olive-dark border-olive-medium">
-              <nav className="flex flex-col space-y-6 mt-8 text-lg text-white font-light" style={{
-                fontFamily: 'Space Grotesk, monospace'
-              }}>
-                <Button onClick={() => {
-                  setIsOpen(false);
-                  onWaitlistClick();
-                }} className="hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20 mt-4" style={{
-                  fontFamily: 'Space Grotesk, monospace',
-                  backgroundColor: '#CDDB2D',
-                  color: '#494F35'
-                }}>
-                  Join waitlist
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          {/* Right side - Navigation and CTA */}
+          <div className="flex items-center gap-3 md:gap-6 ml-auto">
+            {/* Harvest 2025 link - Hidden on mobile */}
+            <button 
+              onClick={onWaitlistClick}
+              className="hidden md:block text-white hover:opacity-80 transition-opacity text-sm font-medium"
+              style={{ fontFamily: 'Space Grotesk, monospace' }}
+            >
+              Harvest 2025
+            </button>
 
+            {/* Cart Icon */}
+            <a id="nav-cart-link" href="https://shop.attimo-oil.com/cart" className="text-white hover:opacity-80 transition-opacity" aria-label="Shopping cart" rel="noopener noreferrer">
+              <ShoppingCart className="h-5 w-5 md:h-6 md:w-6" />
+            </a>
 
-          {/* Harvest 2025 link - Hidden on mobile */}
-          <button 
-            onClick={onWaitlistClick}
-            className="hidden md:block text-white hover:opacity-80 transition-opacity text-sm font-medium"
-            style={{ fontFamily: 'Space Grotesk, monospace' }}
-          >
-            Harvest 2025
-          </button>
-
-          {/* Cart Icon */}
-          <a id="nav-cart-link" href="https://shop.attimo-oil.com/cart" className="text-white hover:opacity-80 transition-opacity" aria-label="Shopping cart" rel="noopener noreferrer">
-            <ShoppingCart className="h-6 w-6" />
-          </a>
-
-          {/* CTA - Hidden on mobile, visible on tablet+ */}
-          <Button 
-            onClick={() => {
-              const productSection = document.getElementById('harvest-product');
-              if (productSection) {
-                productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
-            className="hidden md:block hover:bg-white/10 text-sm px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20" 
-            style={{
-              fontFamily: 'Space Grotesk, monospace',
-              backgroundColor: '#CDDB2D',
-              color: '#494F35'
-            }}
-          >
-            Shop
-          </Button>
+            {/* Shop CTA - Visible on all screens */}
+            <Button 
+              onClick={() => {
+                const productSection = document.getElementById('harvest-product');
+                if (productSection) {
+                  productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="hover:bg-white/10 text-xs md:text-sm px-4 md:px-6 py-2 font-medium rounded-full transition-all duration-300 border border-white/20" 
+              style={{
+                fontFamily: 'Space Grotesk, monospace',
+                backgroundColor: '#CDDB2D',
+                color: '#494F35'
+              }}
+            >
+              Shop
+            </Button>
           </div>
         </div>
       </div>
