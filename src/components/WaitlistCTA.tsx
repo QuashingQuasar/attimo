@@ -42,7 +42,7 @@ export const WaitlistCTA = ({
           color: '#1B4229',
           fontSize: 'clamp(1.25rem, 1.75vw, 1.75rem)',
           lineHeight: '1.6'
-        }}>Harvest 2025 getting pressed coming soon.</p>
+        }}>Harvest 2025 getting pressed soon.</p>
 
           {/* CTA Button */}
           <Button onClick={onWaitlistClick} className="text-lg px-8 py-6 font-bold transition-all duration-300 hover:scale-105" style={{
