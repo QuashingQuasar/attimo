@@ -158,8 +158,9 @@ export const HarvestProduct = () => {
                     <HoverCard openDelay={0} closeDelay={0}>
                       <HoverCardTrigger asChild>
                         <button 
-                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream transition-colors cursor-help"
+                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream active:bg-olive-medium active:text-cream transition-colors cursor-help"
                           style={{ fontSize: '0.65rem', fontWeight: 'bold' }}
+                          onClick={(e) => e.currentTarget.focus()}
                         >
                           ?
                         </button>
@@ -171,6 +172,7 @@ export const HarvestProduct = () => {
                           color: '#FFFAEA',
                           borderColor: 'rgba(205, 219, 45, 0.3)'
                         }}
+                        onPointerDownOutside={(e) => e.preventDefault()}
                       >
                         <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
                           Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending.
