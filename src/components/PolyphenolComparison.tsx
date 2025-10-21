@@ -55,7 +55,7 @@ export const PolyphenolComparison = () => {
             fontFamily: 'Space Grotesk, monospace',
             fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
           }}>
-                  See the polyphenol difference—what's in ours, what's in others, and why it matters.
+                  Polyphenols make all the difference. See what we got, how we compare, and why it matters.
                 </p>
 
               <div className="space-y-4">
