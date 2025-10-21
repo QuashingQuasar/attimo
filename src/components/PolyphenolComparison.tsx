@@ -69,7 +69,11 @@ export const PolyphenolComparison = () => {
                   width: `${width}px`
                 }}>
                          <span className={`font-medium whitespace-nowrap ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' } : { fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>
-                           {item.name}
+                           {index === 2 ? (
+                             <a href="https://blueprint.bryanjohnson.com/products/extra-virgin-olive-oil?variant=47471239790877" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                               {item.name}
+                             </a>
+                           ) : item.name}
                          </span>
                        </div>
                       <span className="font-bold text-olive-dark whitespace-nowrap" style={{
