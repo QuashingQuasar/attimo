@@ -54,8 +54,8 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  // Duplicate testimonials for seamless loop (2x is enough for infinite scroll effect)
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // Triple testimonials for seamless infinite loop
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section
@@ -165,7 +165,7 @@ export const Testimonials = () => {
         <style>{`
           @keyframes testimonialScroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-33.333%); }
           }
         `}</style>
       </div>
