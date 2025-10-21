@@ -210,7 +210,7 @@ export const HarvestProduct = () => {
                   <div className="px-3 py-1.5" style={{
                 backgroundColor: '#1B4229'
               }}>
-                    <div className="font-semibold uppercase tracking-wide" style={{
+                    <div className="font-semibold uppercase tracking-wide text-center" style={{
                   color: '#FFFFFF',
                   fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
                 }}>
