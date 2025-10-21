@@ -92,7 +92,7 @@ export const WaitlistForm = ({
             <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{
             fontFamily: 'Space Grotesk, monospace'
           }}>
-              {isSubmitting ? "Joining..." : "Join Waitlist"}
+              {isSubmitting ? "Joining..." : "Let me know"}
             </Button>
           </form>
           
