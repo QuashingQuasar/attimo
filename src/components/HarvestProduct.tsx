@@ -108,14 +108,14 @@ export const HarvestProduct = () => {
           <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant="secondary" className="bg-olive-dark px-3 py-1.5" style={{
+                <Badge variant="secondary" className="bg-olive-dark px-4 py-2" style={{
                 color: '#CDDB2D',
-                fontSize: 'clamp(0.7rem, 0.9vw, 1rem)'
+                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
               }}>
                   2024 HARVEST
                 </Badge>
-                <Badge variant="secondary" className="bg-gold/20 text-gold-dark" style={{
-                fontSize: 'clamp(0.7rem, 0.9vw, 1rem)'
+                <Badge variant="secondary" className="bg-gold/20 text-gold-dark px-4 py-2" style={{
+                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
               }}>
                   LAST BOTTLES
                 </Badge>
