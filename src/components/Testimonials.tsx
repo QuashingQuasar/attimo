@@ -84,7 +84,7 @@ export const Testimonials = () => {
             marginRight: "auto",
           }}
         >
-          Word from the grove
+          Word from the street
         </h2>
 
         {/* Scrolling Testimonials - Full Width */}
