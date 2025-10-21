@@ -117,7 +117,7 @@ export const HarvestProduct = () => {
           {/* Product Details */}
           <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
             <header>
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <Badge variant="secondary" className="bg-olive-dark px-4 py-2" style={{
                 color: '#CDDB2D',
                 fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
@@ -128,6 +128,11 @@ export const HarvestProduct = () => {
                 fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
               }}>
                   LAST BOTTLES
+                </Badge>
+                <Badge variant="secondary" className="bg-olive-light/30 text-olive-dark px-4 py-2" style={{
+                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
+              }}>
+                  500ml
                 </Badge>
               </div>
               
