@@ -67,6 +67,15 @@ export const Header = ({
           </Sheet>
 
 
+          {/* Harvest 2025 link - Hidden on mobile */}
+          <button 
+            onClick={onWaitlistClick}
+            className="hidden md:block text-white hover:opacity-80 transition-opacity text-sm font-medium"
+            style={{ fontFamily: 'Space Grotesk, monospace' }}
+          >
+            Harvest 2025
+          </button>
+
           {/* Cart Icon */}
           <a id="nav-cart-link" href="https://shop.attimo-oil.com/cart" className="text-white hover:opacity-80 transition-opacity" aria-label="Shopping cart" rel="noopener noreferrer">
             <ShoppingCart className="h-6 w-6" />
@@ -77,7 +86,7 @@ export const Header = ({
             fontFamily: 'Space Grotesk, monospace',
             backgroundColor: '#CDDB2D',
             color: '#494F35'
-          }}>2025 Harvest</Button>
+          }}>Shop</Button>
           </div>
         </div>
       </div>
