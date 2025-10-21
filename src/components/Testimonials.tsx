@@ -77,7 +77,7 @@ export const Testimonials = () => {
         <h2
           className="text-center mb-8 font-beverly"
           style={{
-            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            fontSize: "clamp(3rem, 5vw, 5rem)",
             letterSpacing: "0.02em",
             width: "95vw",
             marginLeft: "auto",
