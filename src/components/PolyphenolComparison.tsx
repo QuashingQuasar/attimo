@@ -86,7 +86,7 @@ export const PolyphenolComparison = () => {
               </div>
 
               {/* Scale indicators */}
-              <div className="flex justify-between text-xs text-olive-light mt-4 px-32">
+              <div className="hidden md:flex justify-between text-xs text-olive-light mt-4 px-32">
                 <span>150</span>
                 <span>300</span>
                 <span>450</span>
