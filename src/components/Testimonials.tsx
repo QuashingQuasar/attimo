@@ -91,7 +91,7 @@ export const Testimonials = () => {
         </h2>
 
         {/* Scrolling Testimonials */}
-        <div className="relative overflow-hidden -mx-6">
+        <div className="relative">
           {/* Left fade gradient */}
           <div 
             className="absolute left-0 top-0 bottom-0 w-24 z-20 pointer-events-none"
@@ -108,12 +108,13 @@ export const Testimonials = () => {
             }}
           />
           
-          <div
-            className="flex gap-6 px-6"
-            style={{
-              animation: "testimonialScroll 15s linear infinite",
-            }}
-          >
+          <div className="overflow-hidden">
+            <div
+              className="flex gap-6"
+              style={{
+                animation: "testimonialScroll 15s linear infinite",
+              }}
+            >
             {duplicatedTestimonials.map((testimonial, index) => (
               <Card
                 key={`${testimonial.name}-${index}`}
@@ -156,6 +157,7 @@ export const Testimonials = () => {
                 </CardContent>
               </Card>
             ))}
+            </div>
           </div>
         </div>
 
