@@ -78,23 +78,26 @@ export const Testimonials = () => {
       {/* Subtle dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
       
-      <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
+      <div className="mx-auto relative z-10 w-full">
         {/* Title */}
         <h2 
           className="text-center mb-8 text-white font-beverly"
           style={{ 
             fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            letterSpacing: '0.02em'
+            letterSpacing: '0.02em',
+            width: '95vw',
+            marginLeft: 'auto',
+            marginRight: 'auto'
           }}
         >
           Word from the grove
         </h2>
 
-        {/* Scrolling Testimonials */}
-        <div className="relative">
+        {/* Scrolling Testimonials - Full Width */}
+        <div className="relative overflow-hidden">
           {/* Left fade gradient */}
           <div 
-            className="absolute left-0 top-0 bottom-0 w-24 z-20 pointer-events-none"
+            className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
             style={{
               background: 'linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent)'
             }}
@@ -102,19 +105,18 @@ export const Testimonials = () => {
           
           {/* Right fade gradient */}
           <div 
-            className="absolute right-0 top-0 bottom-0 w-24 z-20 pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
             style={{
               background: 'linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent)'
             }}
           />
           
-          <div className="overflow-hidden">
-            <div
-              className="flex gap-6"
-              style={{
-                animation: "testimonialScroll 15s linear infinite",
-              }}
-            >
+          <div
+            className="flex gap-6"
+            style={{
+              animation: "testimonialScroll 15s linear infinite",
+            }}
+          >
             {duplicatedTestimonials.map((testimonial, index) => (
               <Card
                 key={`${testimonial.name}-${index}`}
@@ -157,7 +159,6 @@ export const Testimonials = () => {
                 </CardContent>
               </Card>
             ))}
-            </div>
           </div>
         </div>
 
