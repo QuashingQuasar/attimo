@@ -27,12 +27,12 @@ const faqs = [
     answer: "That bitterness and peppery kick come from polyphenols—the compounds that make olive oil healthy. Most people are used to bland, over-processed oils. Real extra virgin should have character: it's intense, fresh, and complex."
   },
   {
-    question: "How should I store my olive oil?",
-    answer: "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better."
+    question: "How should I use ATTIMO olive oil?",
+    answer: "Use ATTIMO as a finishing oil to get the most from its flavor and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special."
   },
   {
-    question: "When will my order ship?",
-    answer: "We're currently building our waitlist for the first harvest release. Join the waitlist to be notified as soon as we're ready to ship and get early access to order."
+    question: "How should I store my olive oil?",
+    answer: "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better."
   }
 ];
 
