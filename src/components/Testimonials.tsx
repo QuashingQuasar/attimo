@@ -64,15 +64,20 @@ export const Testimonials = () => {
         backgroundColor: "#1A431D",
       }}
     >
-      {/* Decorative background pattern */}
-      <div
-        className="absolute inset-0 opacity-15"
-        style={{
-          backgroundImage: 'url(/patterns/waitlist-tile.svg?v=4)',
-          backgroundRepeat: 'repeat',
-          filter: 'invert(1) brightness(2)',
-        }}
-      />
+      {/* Video Background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ opacity: 0.3 }}
+      >
+        <source src="/videos/content-video-1.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40" />
       <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
         {/* Title */}
         <h2 
