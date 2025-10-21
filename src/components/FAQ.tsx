@@ -24,7 +24,21 @@ const faqs = [
   },
   {
     question: "Can I see the lab results for my bottle?",
-    answer: "Absolutely. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency—you should know exactly what you're getting. View the lab results for the current 2024 harvest here: https://6d58e4d2-f58a-4be4-9573-b0db85d115b7.lovableproject.com/documents/lab-report-galega-2024.pdf"
+    answer: null,
+    answerElement: (
+      <>
+        Absolutely. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency—you should know exactly what you're getting. View the lab results for the current 2024 harvest{" "}
+        <a 
+          href="/documents/lab-report-galega-2024.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="underline hover:no-underline"
+          style={{ color: '#1B4229' }}
+        >
+          here
+        </a>.
+      </>
+    )
   },
   {
     question: "Why does real extra virgin olive oil taste bitter or peppery?",
@@ -84,7 +98,7 @@ export const FAQ = () => {
                   fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
                 }}
               >
-                {faq.answer}
+                {faq.answerElement || faq.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
