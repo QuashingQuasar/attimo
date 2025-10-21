@@ -6,22 +6,22 @@ export const ProductInfoTabs = () => {
         <div className="border border-olive-dark rounded-2xl overflow-hidden bg-transparent">
           <TabsList className="grid w-full grid-cols-4 bg-transparent p-0 h-auto rounded-none border-0 border-b border-olive-dark">
             <TabsTrigger value="details" className="data-[state=active]:bg-[#1B4229] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-3 py-1.5 h-auto uppercase tracking-wide" style={{
-            fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
+            fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
           }}>
               DETAILS
             </TabsTrigger>
             <TabsTrigger value="flavor" className="data-[state=active]:bg-[#1B4229] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-3 py-1.5 h-auto uppercase tracking-wide" style={{
-            fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
+            fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
           }}>
               FLAVOR
             </TabsTrigger>
             <TabsTrigger value="harvest" className="data-[state=active]:bg-[#1B4229] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-3 py-1.5 h-auto uppercase tracking-wide" style={{
-            fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
+            fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
           }}>
               HARVEST
             </TabsTrigger>
             <TabsTrigger value="uses" className="data-[state=active]:bg-[#1B4229] data-[state=active]:text-white text-olive-dark font-semibold rounded-none border-0 px-3 py-1.5 h-auto uppercase tracking-wide" style={{
-            fontSize: 'clamp(0.65rem, 0.8vw, 0.875rem)'
+            fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
           }}>
               USES
             </TabsTrigger>
