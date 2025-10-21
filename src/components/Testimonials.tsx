@@ -75,6 +75,9 @@ export const Testimonials = () => {
         <source src="/videos/bottom-right-video.mp4" type="video/mp4" />
       </video>
       
+      {/* Subtle dark overlay */}
+      <div className="absolute inset-0 bg-black/30" />
+      
       <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
         {/* Title */}
         <h2 
