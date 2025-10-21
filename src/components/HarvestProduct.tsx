@@ -4,7 +4,6 @@ import { Star, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/attimo-bottle-new.png";
 import { ProductInfoTabs } from "./ProductInfoTabs";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(2);
@@ -77,39 +76,37 @@ export const HarvestProduct = () => {
             <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
               <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
               <div className="absolute bottom-4 left-4">
-                <TooltipProvider>
-                  <Tooltip delayDuration={0}>
-                    <TooltipTrigger asChild>
-                      <button 
-                        className="flex items-center gap-1.5 bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-cream/20 cursor-help transition-all hover:bg-olive-dark active:bg-olive-dark"
-                        onClick={(e) => e.currentTarget.focus()}
-                      >
-                        <span className="font-semibold uppercase tracking-wide" style={{
-                          color: '#FFFAEA',
-                          fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
-                        }}>
-                          LABEL PREVIEW
-                        </span>
-                        <Info className="w-3.5 h-3.5" style={{ color: '#FFFAEA' }} />
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent 
-                      side="right" 
-                      align="start" 
-                      className="max-w-xs p-3" 
-                      style={{
-                        backgroundColor: '#1B4229',
-                        color: '#FFFAEA',
-                        borderColor: 'rgba(205, 219, 45, 0.3)'
-                      }}
-                      onPointerDownOutside={(e) => e.preventDefault()}
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger asChild>
+                    <button 
+                      className="flex items-center gap-1.5 bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-cream/20 cursor-help transition-all hover:bg-olive-dark active:bg-olive-dark"
+                      onClick={(e) => e.currentTarget.focus()}
                     >
-                      <p className="text-sm leading-relaxed">
-                        This bottle shows our upcoming ATTIMO brand. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil.
-                      </p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                      <span className="font-semibold uppercase tracking-wide" style={{
+                        color: '#FFFAEA',
+                        fontSize: 'clamp(0.7rem, 0.9vw, 0.875rem)'
+                      }}>
+                        LABEL PREVIEW
+                      </span>
+                      <Info className="w-3.5 h-3.5" style={{ color: '#FFFAEA' }} />
+                    </button>
+                  </HoverCardTrigger>
+                  <HoverCardContent 
+                    side="right" 
+                    align="start" 
+                    className="max-w-xs p-3" 
+                    style={{
+                      backgroundColor: '#1B4229',
+                      color: '#FFFAEA',
+                      borderColor: 'rgba(205, 219, 45, 0.3)'
+                    }}
+                    onPointerDownOutside={(e) => e.preventDefault()}
+                  >
+                    <p className="text-sm leading-relaxed">
+                      This bottle shows our upcoming ATTIMO brand. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil.
+                    </p>
+                  </HoverCardContent>
+                </HoverCard>
               </div>
             </div>
           </div>
