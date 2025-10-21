@@ -79,7 +79,10 @@ export const HarvestProduct = () => {
                 <HoverCard openDelay={0} closeDelay={0}>
                   <HoverCardTrigger asChild>
                     <button 
-                      className="flex items-center gap-1.5 bg-olive-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-md border border-cream/20 cursor-help transition-all hover:bg-olive-dark active:bg-olive-dark"
+                      className="flex items-center gap-1.5 backdrop-blur-sm px-3 py-1.5 rounded-md border border-cream/20 cursor-help transition-all hover:opacity-100 active:opacity-100"
+                      style={{
+                        backgroundColor: 'rgba(27, 66, 41, 0.9)'
+                      }}
                       onClick={(e) => e.currentTarget.focus()}
                     >
                       <span className="font-semibold uppercase tracking-wide" style={{
