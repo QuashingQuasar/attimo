@@ -87,6 +87,17 @@ export const ProductInfoTabs = () => {
                 <span className="underline">view lab results</span>
               </a>
             </div>
+            <div>
+              <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{
+                fontFamily: 'Space Grotesk, monospace'
+              }}>
+                VOLUME
+              </div>
+              <div className="text-olive-medium" style={{
+                fontFamily: 'Space Grotesk, monospace',
+                fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
+              }}>500ml</div>
+            </div>
           </div>
         </TabsContent>
         
