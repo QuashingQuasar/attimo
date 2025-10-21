@@ -15,7 +15,7 @@ const testimonials = [
     name: "Mario R.",
     location: "Freiburg, Germany",
     date: "28 September 2025",
-    text: "After living in Spain for some time, I got used to having amazing olive oil around. ATTIMO brought back some wonderful memories.",
+    text: "Living in Spain for some time, I got used to having amazing olive oil around. It's hard in Germany to find good ones; Attimo brought back some wonderful memories.",
     rating: 5,
     title: "Like living in Spain again",
   },
@@ -65,29 +65,23 @@ export const Testimonials = () => {
       }}
     >
       {/* Video Background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
+      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
         <source src="/videos/hero-video-3.mp4" type="video/mp4" />
       </video>
-      
+
       {/* Subtle dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
-      
+
       <div className="mx-auto relative z-10 w-full">
         {/* Title */}
-        <h2 
+        <h2
           className="text-center mb-8 text-white font-beverly"
-          style={{ 
-            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-            letterSpacing: '0.02em',
-            width: '95vw',
-            marginLeft: 'auto',
-            marginRight: 'auto'
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3.5rem)",
+            letterSpacing: "0.02em",
+            width: "95vw",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
           Word from the grove
@@ -96,21 +90,21 @@ export const Testimonials = () => {
         {/* Scrolling Testimonials - Full Width */}
         <div className="relative overflow-hidden">
           {/* Left fade gradient */}
-          <div 
+          <div
             className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
             style={{
-              background: 'linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent)'
+              background: "linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent)",
             }}
           />
-          
+
           {/* Right fade gradient */}
-          <div 
+          <div
             className="absolute right-0 top-0 bottom-0 w-32 z-20 pointer-events-none"
             style={{
-              background: 'linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent)'
+              background: "linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent)",
             }}
           />
-          
+
           <div
             className="flex gap-6"
             style={{
