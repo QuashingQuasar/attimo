@@ -71,13 +71,10 @@ export const Testimonials = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.3 }}
       >
         <source src="/videos/content-video-2.mp4" type="video/mp4" />
       </video>
       
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40" />
       <div className="mx-auto relative z-10" style={{ width: "95vw" }}>
         {/* Title */}
         <h2 
