@@ -108,19 +108,20 @@ export const Testimonials = () => {
 
           <div className="flex">
             <div
-              className="flex gap-6 animate-testimonial-scroll"
+              className="flex gap-7 animate-testimonial-scroll"
             >
               {duplicatedTestimonials.map((testimonial, index) => (
                 <Card
                   key={`${testimonial.name}-${index}`}
-                  className="flex-shrink-0 w-96 bg-white border-olive-light/20 shadow-sm"
+                  className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm"
+                  style={{ width: '442px' }}
                 >
-                  <CardContent className="p-6">
+                  <CardContent className="p-7">
                     {/* Title */}
                     <h4
                       className="font-semibold text-olive-dark mb-3"
                       style={{
-                        fontSize: "clamp(0.875rem, 1vw, 1.125rem)",
+                        fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)",
                       }}
                     >
                       {testimonial.title}
@@ -131,7 +132,7 @@ export const Testimonials = () => {
                       className="text-olive-dark/80 leading-relaxed mb-4"
                       style={{
                         fontFamily: "Space Grotesk, monospace",
-                        fontSize: "clamp(0.875rem, 1vw, 1.125rem)",
+                        fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)",
                       }}
                     >
                       {testimonial.text}
@@ -141,7 +142,7 @@ export const Testimonials = () => {
                     <div
                       className="flex justify-between items-center text-olive-medium"
                       style={{
-                        fontSize: "clamp(0.75rem, 0.85vw, 1rem)",
+                        fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)",
                       }}
                     >
                       <span>
@@ -154,20 +155,21 @@ export const Testimonials = () => {
               ))}
             </div>
             <div
-              className="flex gap-6 animate-testimonial-scroll"
+              className="flex gap-7 animate-testimonial-scroll"
               aria-hidden="true"
             >
               {duplicatedTestimonials.map((testimonial, index) => (
                 <Card
                   key={`duplicate-${testimonial.name}-${index}`}
-                  className="flex-shrink-0 w-96 bg-white border-olive-light/20 shadow-sm"
+                  className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm"
+                  style={{ width: '442px' }}
                 >
-                  <CardContent className="p-6">
+                  <CardContent className="p-7">
                     {/* Title */}
                     <h4
                       className="font-semibold text-olive-dark mb-3"
                       style={{
-                        fontSize: "clamp(0.875rem, 1vw, 1.125rem)",
+                        fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)",
                       }}
                     >
                       {testimonial.title}
@@ -178,7 +180,7 @@ export const Testimonials = () => {
                       className="text-olive-dark/80 leading-relaxed mb-4"
                       style={{
                         fontFamily: "Space Grotesk, monospace",
-                        fontSize: "clamp(0.875rem, 1vw, 1.125rem)",
+                        fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)",
                       }}
                     >
                       {testimonial.text}
@@ -188,7 +190,7 @@ export const Testimonials = () => {
                     <div
                       className="flex justify-between items-center text-olive-medium"
                       style={{
-                        fontSize: "clamp(0.75rem, 0.85vw, 1rem)",
+                        fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)",
                       }}
                     >
                       <span>
