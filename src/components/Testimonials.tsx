@@ -14,7 +14,7 @@ const testimonials = [
   {
     name: "Mario R.",
     location: "Freiburg, Germany",
-    date: "28 September 2025",
+    date: "28 Sep 2025",
     text: "Living in Spain for some time, I got used to having amazing olive oil around. It's hard in Germany to find good ones; Attimo brought back some wonderful memories.",
     rating: 5,
     title: "Like living in Spain again",
@@ -107,14 +107,12 @@ export const Testimonials = () => {
           />
 
           <div className="flex">
-            <div
-              className="flex gap-7 animate-testimonial-scroll"
-            >
+            <div className="flex gap-7 animate-testimonial-scroll">
               {duplicatedTestimonials.map((testimonial, index) => (
                 <Card
                   key={`${testimonial.name}-${index}`}
                   className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm"
-                  style={{ width: '442px' }}
+                  style={{ width: "442px" }}
                 >
                   <CardContent className="p-7">
                     {/* Title */}
@@ -154,15 +152,12 @@ export const Testimonials = () => {
                 </Card>
               ))}
             </div>
-            <div
-              className="flex gap-7 animate-testimonial-scroll"
-              aria-hidden="true"
-            >
+            <div className="flex gap-7 animate-testimonial-scroll" aria-hidden="true">
               {duplicatedTestimonials.map((testimonial, index) => (
                 <Card
                   key={`duplicate-${testimonial.name}-${index}`}
                   className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm"
-                  style={{ width: '442px' }}
+                  style={{ width: "442px" }}
                 >
                   <CardContent className="p-7">
                     {/* Title */}
