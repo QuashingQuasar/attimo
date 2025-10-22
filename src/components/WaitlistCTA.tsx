@@ -6,7 +6,7 @@ interface WaitlistCTAProps {
 export const WaitlistCTA = ({
   onWaitlistClick
 }: WaitlistCTAProps) => {
-  return <section className="py-12 md:py-16 lg:py-24 snap-start relative overflow-hidden" style={{
+  return <section className="pt-8 md:pt-12 lg:pt-16 pb-12 md:pb-16 lg:pb-24 snap-start relative overflow-hidden" style={{
     backgroundColor: '#B3E58C'
   }}>
       {/* Decorative background pattern */}
