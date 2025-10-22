@@ -61,7 +61,7 @@ const faqs = [
 
 export const FAQ = () => {
   return (
-    <section className="py-8 md:py-12 lg:py-16" style={{ backgroundColor: "#FFFAEA" }}>
+    <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
           <h2
