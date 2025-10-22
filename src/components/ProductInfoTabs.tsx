@@ -27,7 +27,7 @@ export const ProductInfoTabs = () => {
             </TabsTrigger>
           </TabsList>
         
-          <TabsContent value="details" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
+          <TabsContent value="details" className="p-6 m-0 min-h-[280px] rounded-none bg-transparent">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{
@@ -101,7 +101,7 @@ export const ProductInfoTabs = () => {
           </div>
         </TabsContent>
         
-          <TabsContent value="flavor" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
+          <TabsContent value="flavor" className="p-6 m-0 min-h-[280px] rounded-none bg-transparent">
             <div className="space-y-4">
               {[{
               label: "PEPPERY",
@@ -130,7 +130,7 @@ export const ProductInfoTabs = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="harvest" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
+          <TabsContent value="harvest" className="p-6 m-0 min-h-[280px] rounded-none bg-transparent">
              <div className="text-olive-medium leading-relaxed" style={{
             fontFamily: 'Space Grotesk, monospace',
             fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
@@ -141,7 +141,7 @@ export const ProductInfoTabs = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="uses" className="p-6 m-0 min-h-[200px] rounded-none bg-transparent">
+          <TabsContent value="uses" className="p-6 m-0 min-h-[280px] rounded-none bg-transparent">
             <div className="text-olive-medium leading-relaxed" style={{
             fontFamily: 'Space Grotesk, monospace',
             fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
