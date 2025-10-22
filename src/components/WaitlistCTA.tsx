@@ -48,7 +48,7 @@ export const WaitlistCTA = ({
           <Button onClick={onWaitlistClick} className="text-lg px-8 py-6 font-bold transition-all duration-300 hover:scale-105" style={{
           fontFamily: 'UDC Working Man Sans, sans-serif',
           backgroundColor: '#1B4229',
-          color: '#EBDE20',
+          color: 'rgb(205, 219, 45)',
           fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
           borderRadius: '8px'
         }}>
