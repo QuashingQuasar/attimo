@@ -122,8 +122,8 @@ export const ProductInfoTabs = () => {
                     {flavor.label}
                   </span>
                   <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map(i => <div key={i} className={`w-4 h-6 rounded-full ${i <= flavor.rating ? 'bg-olive-dark' : 'bg-olive-light/30'}`} style={{
-                  clipPath: 'ellipse(50% 70% at 50% 30%)'
+                    {[1, 2, 3, 4, 5].map(i => <img key={i} src="/icons/olive.svg" alt="" className={`w-4 h-6 ${i <= flavor.rating ? 'opacity-100' : 'opacity-30'}`} style={{
+                  filter: i <= flavor.rating ? 'none' : 'grayscale(100%)'
                 }} />)}
                   </div>
                 </div>)}
