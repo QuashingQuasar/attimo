@@ -28,7 +28,7 @@ export const IndustryProblem = () => {
              <p className="text-white/90 leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, monospace',
                 fontSize: 'clamp(1.33rem, 2.394vw, 2.66rem)'
-              }}>Extra virgin olive oil is known for its health and longevity benefits thanks to its polyphenol contents. But most supermarket EVOOs don't even meet basic standards and are actually low in the compounds that give real health and flavor.</p>
+              }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
           {/* Statistics */}
