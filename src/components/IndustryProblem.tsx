@@ -29,7 +29,7 @@ export const IndustryProblem = () => {
                 fontFamily: 'Space Grotesk, monospace',
                 fontSize: 'clamp(1.33rem, 2.394vw, 2.66rem)'
               }}>
-               Extra virgin olive oil is known for its health and longevity benefits thanks to its polyphenol contents. Yet most supermarket EVOO doesn't even meet basic standards and is low in polyphenols. Polyphenol levels are highest when olives are harvested early and pressed immediately, but most supermarket oils are instead blended across groves, regions, and even years.
+               Extra virgin olive oil is known for its health and longevity benefits thanks to its polyphenol contents. But most supermarket EVOOs don't even meet basic standards and are actually low in the compounds that give it real health and flavor.
              </p>
           </div>
 
