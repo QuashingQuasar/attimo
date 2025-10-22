@@ -41,7 +41,7 @@ export const Header = ({
             {/* Harvest 2025 link - Hidden on mobile */}
             <button 
               onClick={onWaitlistClick}
-              className="hidden md:block text-white hover:opacity-80 transition-opacity text-2xl font-medium"
+              className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium"
               style={{ fontFamily: 'Space Grotesk, monospace' }}
             >
               Harvest 2025
@@ -49,7 +49,7 @@ export const Header = ({
 
             {/* Cart Icon */}
             <a id="nav-cart-link" href="https://shop.attimo-oil.com/cart" className="text-white hover:opacity-80 transition-opacity" aria-label="Shopping cart" rel="noopener noreferrer">
-              <ShoppingCart className="h-10 w-10 md:h-12 md:w-12" />
+              <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
             </a>
 
             {/* Shop CTA - Visible on all screens */}
@@ -60,7 +60,7 @@ export const Header = ({
                   productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="hover:bg-white/10 text-xl md:text-2xl px-8 md:px-12 py-4 font-medium rounded-full transition-all duration-300 border border-white/20" 
+              className="hover:bg-white/10 text-sm md:text-base px-6 md:px-8 py-3 font-medium rounded-full transition-all duration-300 border border-white/20" 
               style={{
                 fontFamily: 'Space Grotesk, monospace',
                 backgroundColor: '#CDDB2D',
