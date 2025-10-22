@@ -29,7 +29,7 @@ export const IndustryProblem = () => {
                 fontFamily: 'Space Grotesk, monospace',
                 fontSize: 'clamp(1.33rem, 2.394vw, 2.66rem)'
               }}>
-               80% of olive oil sold as "extra virgin" doesn't meet those standards. It's blended, stripped of origin, taste and character.
+               Extra virgin olive oil is known for its health and longevity benefits thanks to its polyphenol contents. Yet most supermarket EVOO doesn't even meet basic standards and is low in polyphenols. Polyphenol levels are highest when olives are harvested early and pressed immediately, but most supermarket oils are instead blended across groves, regions, and even years.
              </p>
           </div>
 
