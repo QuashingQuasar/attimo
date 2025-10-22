@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, ArrowUpRight, Info } from "lucide-react";
 import { useState } from "react";
-import oliveOilPlaceholder from "@/assets/attimo-bottle-final.jpg";
+import oliveOilPlaceholder from "@/assets/product-attimo.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 export const HarvestProduct = () => {
