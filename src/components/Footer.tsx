@@ -11,7 +11,7 @@ export const Footer = () => {
             <img 
               src={footerLogo} 
               alt="ATTIMO" 
-              className="h-24 w-auto mb-4"
+              className="h-40 w-auto mb-4"
               style={{
                 filter: 'brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(1089%) hue-rotate(45deg) brightness(95%) contrast(92%)'
               }}
