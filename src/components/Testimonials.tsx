@@ -75,11 +75,11 @@ export const Testimonials = () => {
       <div className="mx-auto relative z-10 w-full">
         {/* Title */}
         <h2
-          className="text-center mb-8 font-beverly"
+          className="text-center mb-8 font-beverly px-6"
           style={{
-            fontSize: "clamp(3rem, 5vw, 5rem)",
+            fontSize: "clamp(2.5rem, 5vw, 5rem)",
             letterSpacing: "0.02em",
-            width: "95vw",
+            maxWidth: "90vw",
             marginLeft: "auto",
             marginRight: "auto",
             color: "rgb(205, 219, 45)",
