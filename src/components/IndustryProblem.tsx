@@ -17,7 +17,7 @@ export const IndustryProblem = () => {
           <div className="relative z-10 py-8 px-6 md:py-20 md:px-20">
         <div className="mx-auto">
           {/* Main Heading */}
-          <div className="text-left mb-12 md:mb-20 max-w-5xl">
+          <div className="text-left mb-12 md:mb-20">
             <h2 className="font-light mb-4 md:mb-8 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
