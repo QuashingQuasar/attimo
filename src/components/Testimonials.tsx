@@ -59,7 +59,7 @@ export const Testimonials = () => {
 
   return (
     <section
-      className="pt-12 md:pt-16 lg:pt-24 pb-24 md:pb-28 lg:pb-36 snap-start min-h-[50vh] flex items-center relative overflow-hidden"
+      className="pt-12 md:pt-16 lg:pt-24 pb-28 md:pb-32 lg:pb-40 snap-start min-h-[50vh] flex items-center relative overflow-hidden"
       style={{
         backgroundColor: "#1A431D",
       }}
