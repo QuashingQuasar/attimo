@@ -1,5 +1,3 @@
-import footerLogo from "@/assets/footer-logo.svg";
-
 export const Footer = () => {
   return <footer className="py-12 px-6" style={{
     backgroundColor: '#1B4229'
@@ -8,14 +6,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <img 
-              src={footerLogo} 
-              alt="ATTIMO" 
-              className="h-40 w-auto mb-4"
-              style={{
-                filter: 'brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(1089%) hue-rotate(45deg) brightness(95%) contrast(92%)'
-              }}
-            />
+            <h3 className="text-2xl font-bold mb-4 font-working-man" style={{
+            color: '#B3E58C'
+          }}>
+              ATTIMO
+            </h3>
             <p className="leading-relaxed mb-4" style={{
             fontFamily: 'Space Grotesk, monospace',
             color: '#B3E58C'
