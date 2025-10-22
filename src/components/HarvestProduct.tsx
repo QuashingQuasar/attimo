@@ -211,7 +211,7 @@ export const HarvestProduct = () => {
                     fontFamily: 'Space Grotesk, monospace',
                     fontSize: 'clamp(0.8rem, 1vw, 1rem)'
                   }}>
-                    The bottle shown features our upcoming ATTIMO brand label. Your 2024 harvest will arrive with the original producer's label, containing the same exceptional quality oil and lab-verified values.
+                    The bottle shown features our upcoming ATTIMO brand label. Your 2024 harvest oil will arrive under the original producer's label, containing the same super category extra virgin olive oil with lab-verified values.
                   </p>
                 </div>
               </div>
