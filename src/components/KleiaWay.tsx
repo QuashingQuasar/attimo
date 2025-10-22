@@ -42,7 +42,7 @@ export const KleiaWay = () => {
               muted
               playsInline
             >
-              <source src="/videos/third-column-upper-new.mp4" type="video/mp4" />
+              <source src="/videos/content-video-1.mp4" type="video/mp4" />
             </video>
           </div>
 
