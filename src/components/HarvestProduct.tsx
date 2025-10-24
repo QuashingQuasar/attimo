@@ -6,7 +6,7 @@ import oliveOilPlaceholder from "@/assets/product-attimo.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 export const HarvestProduct = () => {
-  const [selectedQuantity, setSelectedQuantity] = useState(2);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   const quantityOptions = [{
     quantity: 1,
     label: "1 Bottle",
