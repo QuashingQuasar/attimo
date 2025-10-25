@@ -147,7 +147,10 @@ export const ProductInfoTabs = () => {
             fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
           }}>
               <p>
-                Best used as a finishing oil—drizzle over dishes right before serving to add a vibrant pop of flavor and preserve its delicate polyphenols. While it's one of the healthiest oils for cooking, heat diminishes its exceptional antioxidant properties. Save the best qualities for the final touch.
+                Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor. 
+              </p>
+              <p className="mt-3">
+                You can cook with it too — extra virgin olive oil is one of the healthiest oils for cooking — but heat diminishes its special antioxidant properties and so it's best saved for last.
               </p>
             </div>
           </TabsContent>
