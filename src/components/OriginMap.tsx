@@ -1,4 +1,4 @@
-import mapImage from '@/assets/alentejo-map-light.png';
+import mapImage from '@/assets/alentejo-map-transparent.png';
 
 export const OriginMap = () => {
   return (
@@ -6,7 +6,7 @@ export const OriginMap = () => {
       <img 
         src={mapImage} 
         alt="Alentejo region map" 
-        className="absolute inset-0 w-full h-full object-cover opacity-15"
+        className="absolute inset-0 w-full h-full object-cover opacity-20"
       />
     </div>
   );
