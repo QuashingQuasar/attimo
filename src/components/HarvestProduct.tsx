@@ -5,6 +5,7 @@ import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/product-attimo.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { OriginMap } from "./OriginMap";
 export const HarvestProduct = () => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const quantityOptions = [{
@@ -245,41 +246,47 @@ export const HarvestProduct = () => {
               Buy now — €{selectedOption?.price}
             </Button>
 
-            {/* Lab Values Grid */}
+            {/* Lab Values Grid with Origin Map */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
-                  <div className="px-2.5 py-1.5" style={{
-                backgroundColor: '#1B4229'
-              }}>
-                    <div className="font-semibold uppercase tracking-wide text-center" style={{
-                  color: '#FFFFFF',
-                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
+              {/* Lab Values - Stacked vertically */}
+              <div className="grid grid-cols-1 gap-2">
+                {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
+                    <div className="px-2.5 py-1.5" style={{
+                  backgroundColor: '#1B4229'
                 }}>
-                      {tile.label}
-                    </div>
-                  </div>
-                  <div className="p-2.5">
-                    <div className="flex items-baseline gap-1.5 mb-0.5">
-                      <div className="font-bold text-olive-dark leading-none" style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: 'clamp(1.1rem, 1.5vw, 1.7rem)'
+                      <div className="font-semibold uppercase tracking-wide text-center" style={{
+                    color: '#FFFFFF',
+                    fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                   }}>
-                        {tile.value}
-                        {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
-                      fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)'
-                    }}>{tile.unit}</span>}
+                        {tile.label}
                       </div>
-                      <div className="text-olive-light" style={{
-                    fontFamily: 'Space Grotesk, monospace',
-                    fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
-                  }}>{tile.avg}</div>
                     </div>
-                    <p className="text-olive-medium leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.8rem, 1vw, 1.05rem)'
-                }}>{tile.description}</p>
-                  </div>
-                </div>)}
+                    <div className="p-2.5">
+                      <div className="flex items-baseline gap-1.5 mb-0.5">
+                        <div className="font-bold text-olive-dark leading-none" style={{
+                      fontFamily: 'UDC Working Man Sans, sans-serif',
+                      fontSize: 'clamp(1.1rem, 1.5vw, 1.7rem)'
+                    }}>
+                          {tile.value}
+                          {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
+                        fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)'
+                      }}>{tile.unit}</span>}
+                        </div>
+                        <div className="text-olive-light" style={{
+                      fontFamily: 'Space Grotesk, monospace',
+                      fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
+                    }}>{tile.avg}</div>
+                      </div>
+                      <p className="text-olive-medium leading-relaxed" style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    fontSize: 'clamp(0.8rem, 1vw, 1.05rem)'
+                  }}>{tile.description}</p>
+                    </div>
+                  </div>)}
+              </div>
+              
+              {/* Origin Map */}
+              <OriginMap />
             </div>
 
             {/* Product Information Tabs */}
