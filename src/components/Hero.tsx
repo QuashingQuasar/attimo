@@ -17,6 +17,7 @@ export const Hero = ({
         webkit-playsinline="true"
         disablePictureInPicture
         disableRemotePlayback
+        poster="/images/hero-poster.png"
         className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
         style={{ pointerEvents: 'none' }}
       >
