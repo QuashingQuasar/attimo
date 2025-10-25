@@ -147,7 +147,7 @@ export const ProductInfoTabs = () => {
             fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
           }}>
               <p>
-                Like a sprinkle of flaky salt or the squeeze of a good condiment, Drizzle adds a big pop of flavor right before you dig in. (That's why it's called a finishing oil!) Drizzle's flavors are sensitive, though, so keep it off the heat.
+                Best used as a finishing oil—drizzle over dishes right before serving to add a vibrant pop of flavor and preserve its delicate polyphenols. While it's one of the healthiest oils for cooking, heat diminishes its exceptional antioxidant properties. Save the best qualities for the final touch.
               </p>
             </div>
           </TabsContent>
