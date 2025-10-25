@@ -166,12 +166,13 @@ export const HarvestProduct = () => {
             }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="flex items-center gap-1">
+                  <span className="inline">
                     5x more antioxidant polyphenols than average EVOO
+                    {' '}
                     <HoverCard openDelay={0} closeDelay={0}>
                       <HoverCardTrigger asChild>
                         <button 
-                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream active:bg-olive-medium active:text-cream transition-colors cursor-help"
+                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream active:bg-olive-medium active:text-cream transition-colors cursor-help align-middle"
                           style={{ fontSize: '0.65rem', fontWeight: 'bold' }}
                           onClick={(e) => e.currentTarget.focus()}
                         >
