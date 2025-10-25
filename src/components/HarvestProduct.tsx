@@ -116,7 +116,7 @@ export const HarvestProduct = () => {
               </div>
 
               {/* Origin Map - Bottom Right */}
-              <div className="absolute bottom-4 right-4 w-44 h-44">
+              <div className="absolute bottom-4 right-4 w-[132px] h-[132px]">
                 <OriginMap />
               </div>
             </div>
