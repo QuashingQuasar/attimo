@@ -6,7 +6,7 @@ export const OriginMap = () => {
       <img 
         src={iberiaMap} 
         alt="Map of Iberian Peninsula showing Alentejo, Portugal" 
-        className="w-full h-full object-cover block rounded-2xl"
+        className="w-full h-full object-cover block rounded-2xl opacity-50"
       />
     </div>
   );
