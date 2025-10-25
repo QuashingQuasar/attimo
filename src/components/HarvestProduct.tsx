@@ -76,6 +76,8 @@ export const HarvestProduct = () => {
           <div className="flex justify-start items-stretch lg:pl-0">
             <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
               <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
+              
+              {/* Label Preview - Bottom Left */}
               <div className="absolute bottom-4 left-4">
                 <HoverCard openDelay={0} closeDelay={0}>
                   <HoverCardTrigger asChild>
@@ -111,6 +113,11 @@ export const HarvestProduct = () => {
                     </p>
                   </HoverCardContent>
                 </HoverCard>
+              </div>
+
+              {/* Origin Map - Bottom Right */}
+              <div className="absolute bottom-4 right-4 w-64 h-48">
+                <OriginMap />
               </div>
             </div>
           </div>
@@ -246,47 +253,41 @@ export const HarvestProduct = () => {
               Buy now — €{selectedOption?.price}
             </Button>
 
-            {/* Lab Values Grid with Origin Map */}
+            {/* Lab Values Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {/* Lab Values - Stacked vertically */}
-              <div className="grid grid-cols-1 gap-2">
-                {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
-                    <div className="px-2.5 py-1.5" style={{
-                  backgroundColor: '#1B4229'
+              {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
+                  <div className="px-2.5 py-1.5" style={{
+                backgroundColor: '#1B4229'
+              }}>
+                    <div className="font-semibold uppercase tracking-wide text-center" style={{
+                  color: '#FFFFFF',
+                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                 }}>
-                      <div className="font-semibold uppercase tracking-wide text-center" style={{
-                    color: '#FFFFFF',
-                    fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
+                      {tile.label}
+                    </div>
+                  </div>
+                  <div className="p-2.5">
+                    <div className="flex items-baseline gap-1.5 mb-0.5">
+                      <div className="font-bold text-olive-dark leading-none" style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: 'clamp(1.1rem, 1.5vw, 1.7rem)'
                   }}>
-                        {tile.label}
+                        {tile.value}
+                        {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
+                      fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)'
+                    }}>{tile.unit}</span>}
                       </div>
-                    </div>
-                    <div className="p-2.5">
-                      <div className="flex items-baseline gap-1.5 mb-0.5">
-                        <div className="font-bold text-olive-dark leading-none" style={{
-                      fontFamily: 'UDC Working Man Sans, sans-serif',
-                      fontSize: 'clamp(1.1rem, 1.5vw, 1.7rem)'
-                    }}>
-                          {tile.value}
-                          {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
-                        fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)'
-                      }}>{tile.unit}</span>}
-                        </div>
-                        <div className="text-olive-light" style={{
-                      fontFamily: 'Space Grotesk, monospace',
-                      fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
-                    }}>{tile.avg}</div>
-                      </div>
-                      <p className="text-olive-medium leading-relaxed" style={{
+                      <div className="text-olive-light" style={{
                     fontFamily: 'Space Grotesk, monospace',
-                    fontSize: 'clamp(0.8rem, 1vw, 1.05rem)'
-                  }}>{tile.description}</p>
+                    fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
+                  }}>{tile.avg}</div>
                     </div>
-                  </div>)}
-              </div>
-              
-              {/* Origin Map */}
-              <OriginMap />
+                    <p className="text-olive-medium leading-relaxed" style={{
+                  fontFamily: 'Space Grotesk, monospace',
+                  fontSize: 'clamp(0.8rem, 1vw, 1.05rem)'
+                }}>{tile.description}</p>
+                  </div>
+                </div>)}
             </div>
 
             {/* Product Information Tabs */}
