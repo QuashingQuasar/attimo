@@ -261,7 +261,7 @@ export const HarvestProduct = () => {
               }}>
                     <div className="font-semibold uppercase tracking-wide text-center" style={{
                   color: '#FFFFFF',
-                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
+                  fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
                 }}>
                       {tile.label}
                     </div>
