@@ -9,7 +9,17 @@ export const Hero = ({
 }: HeroProps) => {
   return <section className="relative flex items-center justify-center overflow-hidden h-screen snap-start">
       {/* Video Background */}
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline 
+        webkit-playsinline="true"
+        disablePictureInPicture
+        disableRemotePlayback
+        className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+        style={{ pointerEvents: 'none' }}
+      >
         <source src="/videos/hero-video-new.mp4" type="video/mp4" />
       </video>
       
