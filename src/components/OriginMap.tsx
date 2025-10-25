@@ -2,7 +2,8 @@ export const OriginMap = () => {
   return (
     <div className="rounded-xl overflow-hidden h-full relative transition-transform duration-300 hover:scale-[1.3] origin-bottom-right">
       <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
-           className="w-full h-full">
+           className="w-full h-full opacity-100"
+           style={{ background: '#0f2c1f' }}>
         {/* context: Portugal + Spain outline (faint) */}
         <g fill="none" stroke="#58d68d" strokeOpacity="0.35" strokeWidth="1">
           {/* placeholder path for Spain */}
