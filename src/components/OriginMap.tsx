@@ -1,29 +1,24 @@
 export const OriginMap = () => {
   return (
     <div className="rounded-xl overflow-hidden h-full relative transition-transform duration-300 hover:scale-[1.3] origin-bottom-right">
-      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
-           className="w-full h-full opacity-100"
-           style={{ background: '#0f2c1f' }}>
-        {/* context: Portugal + Spain outline (faint) */}
-        <g fill="none" stroke="#58d68d" strokeOpacity="0.35" strokeWidth="1">
-          {/* placeholder path for Spain */}
-          <path d="M 100 100 L 700 100 L 700 500 L 100 500 Z" />
-          {/* placeholder path for Portugal outline */}
-          <path d="M 150 120 L 300 120 L 300 480 L 150 480 Z" />
-        </g>
+      <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto block" style={{ borderRadius: '16px', background: '#0f2c1f' }}>
+        {/* Rounded background */}
+        <rect x="0" y="0" width="1200" height="400" rx="16" fill="#0f2c1f"/>
 
-        {/* highlight: Alentejo region */}
-        <g fill="none" stroke="#7CFFB2" strokeWidth="2">
-          {/* placeholder path for Alentejo */}
-          <path d="M 200 200 L 320 200 L 320 400 L 200 400 Z" />
-        </g>
+        {/* Context map (Iberian Peninsula outline) */}
+        <image
+          href="https://upload.wikimedia.org/wikipedia/commons/9/97/Blank_map_of_Iberia.svg"
+          x="120" y="-40" width="960" height="480"
+          preserveAspectRatio="xMidYMid meet"
+          style={{ opacity: 0.45, filter: 'invert(64%) sepia(15%) saturate(400%) hue-rotate(80deg) brightness(95%)' }}
+        />
 
-        {/* marker & leader line */}
-        <circle cx="260" cy="300" r="4" fill="#ffffff" />
-        <line x1="260" y1="300" x2="340" y2="240" stroke="#ffffff" strokeWidth="2" />
-        <text x="350" y="235" fontSize="22" fontWeight="700" fill="#ffffff" alignmentBaseline="middle">
-          Alentejo, Portugal
-        </text>
+        {/* Alentejo marker (Évora approx. lon/lat: -7.9076, 38.5667) */}
+        <circle cx="470" cy="225" r="5" fill="#fff"/>
+        <line x1="470" y1="225" x2="560" y2="175" stroke="#fff" strokeWidth="3"/>
+
+        {/* Label */}
+        <text x="575" y="170" fill="#fff" fontSize="34" fontWeight="800">Alentejo, Portugal</text>
       </svg>
     </div>
   );
