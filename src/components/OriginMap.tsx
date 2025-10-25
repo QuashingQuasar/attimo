@@ -6,7 +6,7 @@ export const OriginMap = () => {
       <img 
         src={mapImage} 
         alt="Alentejo region map" 
-        className="absolute inset-0 w-full h-full object-cover opacity-90"
+        className="absolute inset-0 w-full h-full object-cover opacity-15"
       />
     </div>
   );
