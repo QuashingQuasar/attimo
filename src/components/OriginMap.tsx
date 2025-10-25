@@ -2,7 +2,7 @@ import iberiaMap from "@/assets/iberia-map.png";
 
 export const OriginMap = () => {
   return (
-    <div className="h-full w-full relative group transition-transform duration-300 hover:scale-[1.2] origin-bottom-right">
+    <div className="h-full w-full relative group transition-transform duration-300 hover:scale-[1.6] origin-bottom-right">
       <div className="rounded-xl overflow-hidden h-full w-full">
         <img 
           src={iberiaMap} 
