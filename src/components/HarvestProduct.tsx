@@ -66,11 +66,11 @@ export const HarvestProduct = () => {
     avg: "avg. ~0.8%",
     description: "lower = fresher olives and higher quality"
   }] as const;
-  return <section id="harvest-product" className="pt-12 md:pt-16 lg:pt-24 pb-6 md:pb-8 lg:pb-12 snap-start" style={{
+  return <section id="harvest-product" className="pt-8 md:pt-10 lg:pt-12 pb-4 md:pb-6 lg:pb-8 snap-start" style={{
     backgroundColor: '#FFFAEA'
   }}>
       <div className="w-full flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-stretch">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           {/* Product Image */}
           <div className="flex justify-start items-stretch lg:pl-0">
             <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
@@ -115,46 +115,46 @@ export const HarvestProduct = () => {
           </div>
 
           {/* Product Details */}
-          <div className="space-y-3 md:space-y-4 px-4 md:px-6 lg:pr-6 py-4 md:py-8">
+          <div className="space-y-2 md:space-y-3 px-4 md:px-6 lg:pr-6 py-3 md:py-5">
             <header>
-              <div className="flex items-center gap-2 mb-2">
-                <Badge variant="secondary" className="bg-olive-dark px-4 py-2" style={{
+              <div className="flex items-center gap-2 mb-1.5">
+                <Badge variant="secondary" className="bg-olive-dark px-3 py-1.5" style={{
                 color: '#CDDB2D',
-                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
+                fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
               }}>
                   2024 HARVEST
                 </Badge>
-                <Badge variant="secondary" className="bg-gold/20 text-gold-dark px-4 py-2" style={{
-                fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
+                <Badge variant="secondary" className="bg-gold/20 text-gold-dark px-3 py-1.5" style={{
+                fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
               }}>
                   LAST BOTTLES
                 </Badge>
               </div>
               
-              <h1 className="font-bold text-olive-dark mb-2 flex items-baseline gap-3" style={{
+              <h1 className="font-bold text-olive-dark mb-1.5 flex items-baseline gap-2" style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
-              fontSize: 'clamp(1.875rem, 3.5vw, 3.5rem)'
+              fontSize: 'clamp(1.5rem, 2.8vw, 2.8rem)'
             }}>
                 Galega from Alentejo
                 <span className="font-beverly text-olive-medium" style={{
-                  fontSize: 'clamp(1rem, 1.5vw, 1.5rem)'
+                  fontSize: 'clamp(0.875rem, 1.2vw, 1.2rem)'
                 }}>500ml</span>
               </h1>
               
-              <p className="text-olive-medium mb-2 font-beverly" style={{
+              <p className="text-olive-medium mb-1.5 font-beverly" style={{
               textDecoration: 'underline',
               textDecorationStyle: 'dashed',
               textDecorationColor: 'currentColor',
-              textUnderlineOffset: '4px',
-              fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+              textUnderlineOffset: '3px',
+              fontSize: 'clamp(1.1rem, 1.6vw, 1.8rem)'
             }}>High-Phenolic Extra Virgin Olive Oil</p>
             </header>
 
             {/* Key Benefits */}
-            <div className="space-y-2">
-              <ul className="space-y-2 text-olive-medium" style={{
+            <div className="space-y-1.5">
+              <ul className="space-y-1.5 text-olive-medium" style={{
               fontFamily: 'Space Grotesk, monospace',
-              fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
+              fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
             }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
@@ -204,12 +204,12 @@ export const HarvestProduct = () => {
               </ul>
               
               {/* Label Disclosure Notice */}
-              <div className="mt-3 p-3 rounded-lg bg-cream/40 border border-olive-light/20">
+              <div className="mt-2 p-2.5 rounded-lg bg-cream/40 border border-olive-light/20">
                 <div className="flex items-start gap-2">
-                  <Info className="w-4 h-4 text-olive-medium flex-shrink-0 mt-0.5" />
+                  <Info className="w-3.5 h-3.5 text-olive-medium flex-shrink-0 mt-0.5" />
                   <p className="text-olive-medium/90 leading-relaxed" style={{
                     fontFamily: 'Space Grotesk, monospace',
-                    fontSize: 'clamp(0.8rem, 1vw, 1rem)'
+                    fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)'
                   }}>
                     The bottle shown features our upcoming ATTIMO brand label. Your 2024 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.
                   </p>
@@ -218,16 +218,16 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Quantity Selection */}
-            <div className="space-y-2">
-              <div id="bundle-pills" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-                {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} data-variant={option.quantity} data-key={option.quantity} data-price={option.price} aria-selected={selectedQuantity === option.quantity} className={`pill p-2 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
-                    <div className="font-semibold mb-1" style={{
+            <div className="space-y-1.5">
+              <div id="bundle-pills" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1.5">
+                {quantityOptions.map(option => <button key={option.quantity} onClick={() => setSelectedQuantity(option.quantity)} data-variant={option.quantity} data-key={option.quantity} data-price={option.price} aria-selected={selectedQuantity === option.quantity} className={`pill p-1.5 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}>
+                    <div className="font-semibold mb-0.5" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
+                  fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
                 }}>{option.label}</div>
                     {option.subtitle && <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.65rem, 0.75vw, 0.875rem)'
+                  fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)'
                 }}>
                         {option.subtitle}
                       </div>}
@@ -236,47 +236,47 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Buy Now Button */}
-            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-bold px-8 py-6 h-auto transition-all duration-300 hover:scale-105" style={{
+            <Button id="buy-now-btn" className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-4 h-auto transition-all duration-300 hover:scale-105" style={{
             fontFamily: 'UDC Working Man Sans, sans-serif',
             backgroundColor: '#CDDB2D',
-            fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
+            fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)',
             borderRadius: '8px'
           }}>
               Buy now — €{selectedOption?.price}
             </Button>
 
             {/* Lab Values Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {labTiles.map(tile => <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
-                  <div className="px-3 py-1.5" style={{
+                  <div className="px-2.5 py-1.5" style={{
                 backgroundColor: '#1B4229'
               }}>
                     <div className="font-semibold uppercase tracking-wide text-center" style={{
                   color: '#FFFFFF',
-                  fontSize: 'clamp(0.8rem, 1vw, 1.1rem)'
+                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
                 }}>
                       {tile.label}
                     </div>
                   </div>
-                  <div className="p-3">
-                    <div className="flex items-baseline gap-2 mb-1">
+                  <div className="p-2.5">
+                    <div className="flex items-baseline gap-1.5 mb-0.5">
                       <div className="font-bold text-olive-dark leading-none" style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: 'clamp(1.25rem, 1.8vw, 2rem)'
+                    fontSize: 'clamp(1.1rem, 1.5vw, 1.7rem)'
                   }}>
                         {tile.value}
                         {tile.unit && <span className="ml-1 text-olive-dark/90" style={{
-                      fontSize: 'clamp(0.875rem, 1.2vw, 1.25rem)'
+                      fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)'
                     }}>{tile.unit}</span>}
                       </div>
                       <div className="text-olive-light" style={{
                     fontFamily: 'Space Grotesk, monospace',
-                    fontSize: 'clamp(0.75rem, 0.9vw, 1rem)'
+                    fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)'
                   }}>{tile.avg}</div>
                     </div>
                     <p className="text-olive-medium leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)'
+                  fontSize: 'clamp(0.8rem, 1vw, 1.05rem)'
                 }}>{tile.description}</p>
                   </div>
                 </div>)}
