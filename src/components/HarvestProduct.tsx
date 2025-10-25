@@ -74,8 +74,8 @@ export const HarvestProduct = () => {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 items-stretch">
           {/* Product Image */}
           <div className="flex justify-start items-stretch lg:pl-0">
-            <div className="w-full h-full lg:rounded-r-2xl overflow-hidden bg-olive-light/10 relative">
-              <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover" />
+            <div className="w-full h-full lg:rounded-r-2xl bg-olive-light/10 relative">
+              <img src={oliveOilPlaceholder} alt="ATTIMO 2024 Harvest Extra Virgin Olive Oil" className="w-full h-full object-cover lg:rounded-r-2xl" />
               
               {/* Label Preview - Bottom Left */}
               <div className="absolute bottom-4 left-4">
