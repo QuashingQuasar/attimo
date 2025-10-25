@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Link2, Info } from "lucide-react";
+import { Star, Link, Info } from "lucide-react";
 import { useState } from "react";
 import oliveOilPlaceholder from "@/assets/product-attimo.jpg";
 import { ProductInfoTabs } from "./ProductInfoTabs";
@@ -199,7 +199,7 @@ export const HarvestProduct = () => {
                   <span className="flex items-center gap-1">
                     Third-party lab tested for quality and purity
                     <a href="/documents/lab-report-galega-2024.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition-transform hover:scale-110">
-                      <Link2 className="w-4 h-4" style={{
+                      <Link className="w-4 h-4" style={{
                       color: '#1B4229'
                     }} strokeWidth={2.5} />
                     </a>
