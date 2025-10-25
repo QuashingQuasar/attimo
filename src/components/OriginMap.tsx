@@ -1,53 +1,15 @@
-import { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import mapImage from '@/assets/alentejo-map.png';
 
 export const OriginMap = () => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-
-  useEffect(() => {
-    if (!mapContainer.current || map.current) return;
-
-    // Initialize map
-    mapboxgl.accessToken = 'pk.eyJ1IjoibG92YWJsZSIsImEiOiJjbTQ3djVsYjUwcmx5Mm1xNzFoNXlrenpmIn0.YxL0Hv8LvJe6Hx9KDPbvNg';
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
-      center: [-7.9, 38.5], // Alentejo coordinates
-      zoom: 6,
-      interactive: false,
-      attributionControl: false,
-    });
-
-    map.current.on('load', () => {
-      if (!map.current) return;
-
-      // Add a marker for Alentejo
-      new mapboxgl.Marker({
-        color: '#CDDB2D',
-        scale: 0.8,
-      })
-        .setLngLat([-7.9, 38.5])
-        .addTo(map.current);
-
-      // Add custom styling to make borders green
-      map.current.setPaintProperty('admin-0-boundary', 'line-color', '#7FB069');
-      map.current.setPaintProperty('admin-1-boundary', 'line-color', '#7FB069');
-    });
-
-    // Cleanup
-    return () => {
-      map.current?.remove();
-    };
-  }, []);
-
   return (
     <div className="rounded-xl border border-olive-dark overflow-hidden h-full bg-olive-dark relative">
-      <div ref={mapContainer} className="absolute inset-0" />
+      <img 
+        src={mapImage} 
+        alt="Alentejo region map" 
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+      />
       <div 
-        className="absolute top-3 right-3 px-3 py-1.5 rounded-md"
+        className="absolute top-3 right-3 px-3 py-1.5 rounded-md z-10"
         style={{
           backgroundColor: 'rgba(27, 66, 41, 0.95)',
         }}
