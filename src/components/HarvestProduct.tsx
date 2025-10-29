@@ -126,12 +126,31 @@ export const HarvestProduct = () => {
           <div className="space-y-2 md:space-y-3 px-4 md:px-6 lg:pr-6 py-3 md:py-5">
             <header>
               <div className="flex items-center gap-2 mb-1.5">
-                <Badge variant="secondary" className="bg-olive-dark hover:bg-olive-dark px-3 py-1.5" style={{
-                color: '#CDDB2D',
-                fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
-              }}>
-                  2024 HARVEST
-                </Badge>
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger asChild>
+                    <Badge variant="secondary" className="bg-olive-dark hover:bg-olive-dark px-3 py-1.5 cursor-help" style={{
+                      color: '#CDDB2D',
+                      fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
+                    }}>
+                      2024 HARVEST
+                    </Badge>
+                  </HoverCardTrigger>
+                  <HoverCardContent 
+                    side="bottom" 
+                    align="start" 
+                    className="max-w-xs p-3" 
+                    style={{
+                      backgroundColor: '#1B4229',
+                      color: '#FFFAEA',
+                      borderColor: 'rgba(205, 219, 45, 0.3)'
+                    }}
+                    onPointerDownOutside={(e) => e.preventDefault()}
+                  >
+                    <p className="text-sm leading-relaxed">
+                      Our latest harvest—pressed in 2024. The 2025 harvest is currently underway, with fresh oil arriving early 2026.
+                    </p>
+                  </HoverCardContent>
+                </HoverCard>
                 <Badge variant="secondary" className="bg-gold/20 text-gold-dark px-3 py-1.5" style={{
                 fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
               }}>
