@@ -69,7 +69,12 @@ export const CartDrawer = () => {
       
       <SheetContent className="w-full sm:max-w-lg flex flex-col h-full">
         <SheetHeader className="flex-shrink-0">
-          <SheetTitle>Shopping Cart</SheetTitle>
+          <SheetTitle 
+            className="text-3xl font-bold" 
+            style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#1B4229' }}
+          >
+            Shopping Cart
+          </SheetTitle>
           <SheetDescription>
             {totalItems === 0 ? "Your cart is empty" : `${totalItems} item${totalItems !== 1 ? 's' : ''} in your cart`}
           </SheetDescription>
@@ -154,18 +159,22 @@ export const CartDrawer = () => {
                 
                 <Button 
                   onClick={handleCheckout}
-                  className="w-full" 
-                  size="lg"
+                  className="w-full h-14 text-lg font-bold hover:opacity-90 transition-opacity" 
                   disabled={items.length === 0 || isLoading}
+                  style={{ 
+                    backgroundColor: 'rgb(205, 219, 45)', 
+                    color: '#1B4229',
+                    fontFamily: 'UDC Working Man Sans, sans-serif'
+                  }}
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                       Creating Checkout...
                     </>
                   ) : (
                     <>
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <ExternalLink className="w-5 h-5 mr-2" />
                       Checkout with Shopify
                     </>
                   )}
