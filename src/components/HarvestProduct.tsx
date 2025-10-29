@@ -128,12 +128,19 @@ export const HarvestProduct = () => {
               <div className="flex items-center gap-2 mb-1.5">
                 <HoverCard openDelay={0} closeDelay={0}>
                   <HoverCardTrigger asChild>
-                    <Badge variant="secondary" className="bg-olive-dark hover:bg-olive-dark px-3 py-1.5 cursor-help" style={{
-                      color: '#CDDB2D',
-                      fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
-                    }}>
-                      2024 HARVEST
-                    </Badge>
+                    <button 
+                      className="inline-flex items-center gap-1.5 rounded-full border-transparent px-3 py-1.5 cursor-help transition-all hover:opacity-100 active:opacity-100"
+                      style={{
+                        backgroundColor: '#1B4229',
+                        color: '#CDDB2D',
+                        fontSize: 'clamp(0.75rem, 0.95vw, 1rem)',
+                        fontWeight: 600
+                      }}
+                      onClick={(e) => e.currentTarget.focus()}
+                    >
+                      <span>2024 HARVEST</span>
+                      <Info className="w-3.5 h-3.5" style={{ color: '#CDDB2D' }} />
+                    </button>
                   </HoverCardTrigger>
                   <HoverCardContent 
                     side="bottom" 
