@@ -153,7 +153,7 @@ export const HarvestProduct = () => {
                     onPointerDownOutside={(e) => e.preventDefault()}
                   >
                     <p className="text-sm leading-relaxed">
-                      Our latest harvest—pressed in 2024. The 2025 harvest is currently underway, with fresh oil arriving early 2026.
+                      Oil from the latest harvest, pressed in 2024. The 2025 harvest is currently underway, with fresh oil arriving early 2026.
                     </p>
                   </HoverCardContent>
                 </HoverCard>
