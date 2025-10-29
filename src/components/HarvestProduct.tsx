@@ -126,7 +126,7 @@ export const HarvestProduct = () => {
           <div className="space-y-2 md:space-y-3 px-4 md:px-6 lg:pr-6 py-3 md:py-5">
             <header>
               <div className="flex items-center gap-2 mb-1.5">
-                <Badge variant="secondary" className="bg-olive-dark px-3 py-1.5" style={{
+                <Badge variant="secondary" className="bg-olive-dark hover:bg-olive-dark px-3 py-1.5" style={{
                 color: '#CDDB2D',
                 fontSize: 'clamp(0.75rem, 0.95vw, 1rem)'
               }}>
