@@ -93,9 +93,9 @@ export const CartDrawer = () => {
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.variantId} className="border rounded-lg">
-                      {/* Product Image - Aligned with text padding */}
-                      <div className="w-64 h-64 bg-secondary/20 pl-3 pt-3">
+                    <div key={item.variantId} className="border rounded-lg p-3">
+                      {/* Product Image - Same padding as text */}
+                      <div className="w-64 h-64 bg-secondary/20 mb-3">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
@@ -106,7 +106,7 @@ export const CartDrawer = () => {
                       </div>
                       
                       {/* Product Info Row Below */}
-                      <div className="flex items-start gap-3 justify-between p-3">
+                      <div className="flex items-start gap-3 justify-between">
                         <div className="flex-1 min-w-0">
                           <h4 className="font-medium text-sm">{item.product.node.title}</h4>
                           <p className="text-xs text-muted-foreground mt-1">
