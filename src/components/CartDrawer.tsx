@@ -94,13 +94,13 @@ export const CartDrawer = () => {
                 <div className="space-y-4">
                   {items.map((item) => (
                     <div key={item.variantId} className="flex flex-col gap-3 p-3 border rounded-lg">
-                      {/* Product Image - Full Width, 2x Bigger */}
-                      <div className="w-full h-32 bg-secondary/20 rounded-md overflow-hidden">
+                      {/* Product Image - Square, Centered */}
+                      <div className="w-32 h-32 mx-auto bg-secondary/20 rounded-md overflow-hidden">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         )}
                       </div>
