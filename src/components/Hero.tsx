@@ -44,7 +44,7 @@ export const Hero = ({
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mb-3 animate-fade-in" style={{
+          <div className="flex justify-center mb-6 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
             <Button 
