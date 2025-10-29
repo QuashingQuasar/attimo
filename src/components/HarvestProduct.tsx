@@ -172,7 +172,7 @@ export const HarvestProduct = () => {
               </div>
               
               <h1 className="font-bold text-olive-dark mb-1.5 flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.5rem, 2.8vw, 2.8rem)' }}>
-                {product.node.title}
+                GALEGA FROM ALENTEJO
                 <span className="font-beverly text-olive-medium" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.2rem)' }}>500ml</span>
               </h1>
               
