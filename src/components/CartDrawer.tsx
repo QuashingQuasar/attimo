@@ -51,13 +51,13 @@ export const CartDrawer = () => {
           className="text-white hover:opacity-80 transition-opacity relative" 
           aria-label="Shopping cart"
         >
-          <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" style={{ color: '#9EEF80' }} />
+          <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
           {totalItems > 0 && (
             <Badge 
               className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-semibold"
               style={{ 
-                backgroundColor: '#1B4229',
-                color: '#9EEF80',
+                backgroundColor: '#9EEF80',
+                color: '#1B4229',
                 border: 'none'
               }}
             >
