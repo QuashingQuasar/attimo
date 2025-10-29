@@ -52,8 +52,7 @@ export const WaitlistForm = ({
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Enter your full name" required className="border-olive-light focus:border-gold-rich" />
+              <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Name" required className="border-olive-light focus:border-gold-rich" />
             </div>
             <div className="space-y-3">
               <Label>Where you want to be messaged</Label>
@@ -72,8 +71,7 @@ export const WaitlistForm = ({
               </RadioGroup>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="contact">{contactMethod === "email" ? "Email Address" : "Phone Number"}</Label>
-              <Input id="contact" type={contactMethod === "email" ? "email" : "tel"} value={contactValue} onChange={e => setContactValue(e.target.value)} placeholder={contactMethod === "email" ? "Enter your email address" : "Enter your phone number"} required className="border-olive-light focus:border-gold-rich" />
+              <Input id="contact" type={contactMethod === "email" ? "email" : "tel"} value={contactValue} onChange={e => setContactValue(e.target.value)} placeholder={contactMethod === "email" ? "Email Address" : "Phone Number"} required className="border-olive-light focus:border-gold-rich" />
             </div>
             <div className="flex items-start space-x-3 py-2">
               <Checkbox 
