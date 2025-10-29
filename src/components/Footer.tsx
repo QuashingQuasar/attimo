@@ -8,7 +8,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <img src={attimoLogo} alt="ATTIMO" className="h-8 mb-4" />
+            <img src={attimoLogo} alt="ATTIMO" className="h-16 mb-4" />
             <p className="leading-relaxed mb-4" style={{
             fontFamily: 'Space Grotesk, monospace',
             color: '#B3E58C'
