@@ -31,23 +31,33 @@ export const Hero = ({
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
         <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
-          <div className="mb-12 flex justify-center animate-fade-in">
-            <img src={kleiaLogo} alt="ATTIMO olive oil logo" className="w-[479px] h-[479px] md:w-169 md:h-169 object-contain drop-shadow-2xl" />
+          <div className="mb-8 md:mb-12 flex justify-center animate-fade-in">
+            <img 
+              src={kleiaLogo} 
+              alt="ATTIMO olive oil logo" 
+              className="object-contain drop-shadow-2xl"
+              style={{
+                width: 'min(60vw, 60vh, 479px)',
+                height: 'min(60vw, 60vh, 479px)',
+                maxWidth: '479px',
+                maxHeight: '479px'
+              }}
+            />
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mb-3 animate-fade-in" style={{
+          <div className="flex justify-center mb-2 md:mb-3 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
             <Button 
               onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-10 py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl" 
+              className="px-6 md:px-10 py-4 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl" 
               style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 border: '2px solid #CDDB2D',
                 color: '#1B4229',
                 backgroundColor: '#CDDB2D',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)',
                 borderRadius: '8px'
               }}
             >
@@ -64,44 +74,44 @@ export const Hero = ({
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-5 overflow-hidden border-t border-olive-dark/10">
+      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-3 md:py-5 overflow-hidden border-t border-olive-dark/10">
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>PREMIUM QUALITY</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>DIRECT FROM GROVES</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>LAB TESTED</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>FRESH HARVEST</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>TRACEABLE</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>ARTISANAL</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
               <span className="font-working-man-light font-bold tracking-[0.15em]" style={{
             color: '#1B4229',
-            fontSize: 'clamp(1.25rem, 2vw, 2.25rem)'
+            fontSize: 'clamp(1rem, 2vw, 2.25rem)'
           }}>SMALL BATCH</span>
-              <OliveLeaf className="w-3 h-5 mx-6" fill="#1B4229" />
+              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
             </div>)}
         </div>
       </div>
