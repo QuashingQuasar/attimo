@@ -29,7 +29,7 @@ export const Hero = ({
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center" style={{ transform: 'scale(min(1, max(0.6, 100vh / 900)))' }}>
           {/* Logo */}
           <div className="mb-8 md:mb-12 flex justify-center animate-fade-in">
             <img 
