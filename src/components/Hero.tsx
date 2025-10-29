@@ -29,9 +29,9 @@ export const Hero = ({
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - 100px)' }}>
-        <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center" style={{ gap: 'min(3rem, 4vh)' }}>
+        <div className="max-w-5xl mx-auto text-center">
           {/* Logo */}
-          <div className="flex justify-center animate-fade-in">
+          <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
             <img 
               src={kleiaLogo} 
               alt="ATTIMO olive oil logo" 
@@ -44,7 +44,7 @@ export const Hero = ({
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center animate-fade-in" style={{
+          <div className="flex justify-center mb-2 animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
             <Button 
