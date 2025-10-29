@@ -93,9 +93,9 @@ export const CartDrawer = () => {
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.variantId} className="flex flex-col border rounded-lg">
-                      {/* Product Image - Square, Left Aligned */}
-                      <div className="w-64 h-64 bg-secondary/20 rounded-t-lg overflow-hidden">
+                    <div key={item.variantId} className="border rounded-lg">
+                      {/* Product Image - Aligned with text padding */}
+                      <div className="w-64 h-64 bg-secondary/20 pl-3 pt-3">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
