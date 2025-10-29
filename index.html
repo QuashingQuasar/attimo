@@ -34,40 +34,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-(() => {
-  const SHOP = 'https://shop.attimo-oil.com';
-  const VARIANTS = {
-    '1': 56203507597695,
-    '2': 56203507630463,
-    '3': 56203507663231,
-    '4': 56203507695999,
-    '8': 56203507728767,
-  };
-
-  const getSelectedKey = () =>
-    (document.querySelector('[data-variant][aria-selected="true"]') ||
-     document.querySelector('[data-variant][aria-pressed="true"]') ||
-     document.querySelector('[data-variant].active'))?.dataset?.variant || '1';
-
-  const handler = (e) => {
-    const path = e.composedPath?.() || [];
-    const el = path.find(n => n && n.tagName && /^(BUTTON|A)$/i.test(n.tagName) &&
-                               /add to cart|buy now/i.test(n.textContent?.trim() || ''));
-    if (!el) return;
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation?.();
-
-    const key = getSelectedKey();
-    const id  = VARIANTS[key] || VARIANTS['1'];
-    const url = `${SHOP}/cart/add?id=${id}&quantity=1&return_to=%2Fcart`;
-
-    window.location.href = url;
-  };
-
-  window.addEventListener('click', handler, true);
-})();
-    </script>
   </body>
 </html>
