@@ -56,7 +56,7 @@ export const CartDrawer = () => {
             <Badge 
               className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs font-semibold"
               style={{ 
-                backgroundColor: '#9EEF80',
+                backgroundColor: 'rgb(205, 219, 45)',
                 color: '#1B4229',
                 border: 'none'
               }}
