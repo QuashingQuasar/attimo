@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 import { CartItem, createStorefrontCheckout } from '@/lib/shopify';
 
 interface CartStore {
@@ -87,7 +87,6 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: 'shopify-cart',
-      storage: createJSONStorage(() => localStorage),
     }
   )
 );
