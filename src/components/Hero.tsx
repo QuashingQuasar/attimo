@@ -37,7 +37,8 @@ export const Hero = ({
               alt="ATTIMO olive oil logo" 
               className="object-contain drop-shadow-2xl"
               style={{
-                width: 'min(479px, 50vw)',
+                width: '479px',
+                maxWidth: '85vw',
                 height: 'auto'
               }}
             />
