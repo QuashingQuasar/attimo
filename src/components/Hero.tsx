@@ -28,28 +28,28 @@ export const Hero = ({
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center h-full">
-        <div className="max-w-5xl mx-auto text-center" style={{ transform: 'scale(min(1, max(0.6, 100vh / 900)))' }}>
+      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - 100px)' }}>
+        <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center" style={{ gap: 'min(3rem, 4vh)' }}>
           {/* Logo */}
-          <div className="mb-8 md:mb-12 flex justify-center animate-fade-in">
+          <div className="flex justify-center animate-fade-in">
             <img 
               src={kleiaLogo} 
               alt="ATTIMO olive oil logo" 
               className="object-contain drop-shadow-2xl"
               style={{
-                width: 'min(479px, 45vw, 60vh)',
+                width: 'min(479px, 45vw, 55vh)',
                 height: 'auto'
               }}
             />
           </div>
 
           {/* CTA Button */}
-          <div className="flex justify-center mb-2 md:mb-3 animate-fade-in" style={{
+          <div className="flex justify-center animate-fade-in" style={{
           animationDelay: '0.4s'
         }}>
             <Button 
               onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 md:px-10 py-4 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl" 
+              className="px-6 md:px-10 py-3 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl" 
               style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 border: '2px solid #CDDB2D',
