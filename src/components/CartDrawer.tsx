@@ -106,43 +106,44 @@ export const CartDrawer = () => {
                       </div>
                       
                       {/* Product Info Row Below */}
-                      <div className="flex items-start gap-3 justify-between">
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-sm">{item.product.node.title}</h4>
-                          <p className="font-semibold mt-1">
+                      <div className="flex flex-col gap-3">
+                        <h4 className="font-medium text-sm">{item.product.node.title}</h4>
+                        
+                        <div className="flex items-center justify-between">
+                          <p className="font-semibold">
                             {item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}
                           </p>
-                        </div>
-                        
-                        <div className="flex items-center gap-2 flex-shrink-0">
-                          <div className="flex items-center gap-1">
+                          
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1">
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                className="h-6 w-6"
+                                onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                              >
+                                <Minus className="h-3 w-3" />
+                              </Button>
+                              <span className="w-8 text-center text-sm">{item.quantity}</span>
+                              <Button
+                                variant="outline"
+                                size="icon"
+                                className="h-6 w-6"
+                                onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
+                              >
+                                <Plus className="h-3 w-3" />
+                              </Button>
+                            </div>
+                            
                             <Button
-                              variant="outline"
+                              variant="ghost"
                               size="icon"
                               className="h-6 w-6"
-                              onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
+                              onClick={() => removeItem(item.variantId)}
                             >
-                              <Minus className="h-3 w-3" />
-                            </Button>
-                            <span className="w-8 text-center text-sm">{item.quantity}</span>
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              className="h-6 w-6"
-                              onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                            >
-                              <Plus className="h-3 w-3" />
+                              <Trash2 className="h-3 w-3" />
                             </Button>
                           </div>
-                          
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-6 w-6"
-                            onClick={() => removeItem(item.variantId)}
-                          >
-                            <Trash2 className="h-3 w-3" />
-                          </Button>
                         </div>
                       </div>
                     </div>
