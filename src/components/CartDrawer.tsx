@@ -67,7 +67,7 @@ export const CartDrawer = () => {
         </button>
       </SheetTrigger>
       
-      <SheetContent className="w-full sm:max-w-lg flex flex-col h-full">
+      <SheetContent className="w-full sm:max-w-lg flex flex-col h-full" style={{ backgroundColor: 'rgb(255, 250, 234)' }}>
         <SheetHeader className="flex-shrink-0">
           <SheetTitle 
             className="text-3xl font-bold" 
