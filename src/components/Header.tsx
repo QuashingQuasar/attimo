@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
+import { CartDrawer } from "./CartDrawer";
 interface HeaderProps {
   onWaitlistClick: () => void;
 }
@@ -47,10 +47,8 @@ export const Header = ({
               Harvest 2025
             </button>
 
-            {/* Cart Icon */}
-            <a id="nav-cart-link" href="https://shop.attimo-oil.com/cart" className="text-white hover:opacity-80 transition-opacity" aria-label="Shopping cart" rel="noopener noreferrer">
-              <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
-            </a>
+            {/* Cart Drawer */}
+            <CartDrawer />
 
             {/* Shop CTA - Visible on all screens */}
             <Button 
