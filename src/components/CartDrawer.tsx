@@ -109,9 +109,6 @@ export const CartDrawer = () => {
                       <div className="flex items-start gap-3 justify-between">
                         <div className="flex-1 min-w-0">
                           <h4 className="font-medium text-sm">{item.product.node.title}</h4>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {item.selectedOptions.map(option => option.value).join(' • ')}
-                          </p>
                           <p className="font-semibold mt-1">
                             {item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}
                           </p>
