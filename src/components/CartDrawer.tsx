@@ -21,6 +21,8 @@ export const CartDrawer = () => {
     removeItem, 
     createCheckout 
   } = useCartStore();
+
+  console.log('[CartDrawer] Rendering, items:', items.length, 'isOpen:', isOpen);
   
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
@@ -41,7 +43,14 @@ export const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <button className="text-white hover:opacity-80 transition-opacity relative" aria-label="Shopping cart">
+        <button 
+          onClick={(e) => {
+            console.log('[CartDrawer] Cart icon clicked', e);
+            e.stopPropagation();
+          }}
+          className="text-white hover:opacity-80 transition-opacity relative" 
+          aria-label="Shopping cart"
+        >
           <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
           {totalItems > 0 && (
             <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs">

@@ -32,6 +32,7 @@ export const HarvestProduct = () => {
   const product = products[0];
 
   const handleAddToCart = () => {
+    console.log('[HarvestProduct] handleAddToCart called');
     if (!product) return;
 
     const variant = product.node.variants.edges[0].node;
@@ -44,6 +45,7 @@ export const HarvestProduct = () => {
       selectedOptions: variant.selectedOptions || []
     };
     
+    console.log('[HarvestProduct] Adding item to cart:', cartItem);
     addItem(cartItem);
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`);
   };
