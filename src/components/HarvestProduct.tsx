@@ -129,7 +129,7 @@ export const HarvestProduct = () => {
                 <HoverCard openDelay={0} closeDelay={0}>
                   <HoverCardTrigger asChild>
                     <button 
-                      className="inline-flex items-center gap-1.5 rounded-full border-transparent px-3 py-1.5 cursor-help transition-all hover:opacity-100 active:opacity-100"
+                      className="inline-flex items-center rounded-full border-transparent px-3 py-1.5 cursor-help transition-all hover:opacity-100 active:opacity-100"
                       style={{
                         backgroundColor: '#1B4229',
                         color: '#CDDB2D',
@@ -138,8 +138,7 @@ export const HarvestProduct = () => {
                       }}
                       onClick={(e) => e.currentTarget.focus()}
                     >
-                      <span>2024 HARVEST</span>
-                      <Info className="w-3.5 h-3.5" style={{ color: '#CDDB2D' }} />
+                      2024 HARVEST
                     </button>
                   </HoverCardTrigger>
                   <HoverCardContent 
