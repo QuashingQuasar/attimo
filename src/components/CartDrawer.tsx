@@ -95,12 +95,12 @@ export const CartDrawer = () => {
                   {items.map((item) => (
                     <div key={item.variantId} className="border rounded-lg p-3">
                       {/* Product Image - Same padding as text */}
-                      <div className="w-64 h-64 bg-secondary/20 mb-3">
+                      <div className="mb-3">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
-                            className="w-full h-full object-contain object-left"
+                            className="w-64 h-64 object-contain object-left"
                           />
                         )}
                       </div>
