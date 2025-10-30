@@ -270,7 +270,7 @@ export const HarvestProduct = () => {
               className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-4 h-auto transition-all duration-300 hover:scale-105" 
               style={{ fontFamily: 'UDC Working Man Sans, sans-serif', backgroundColor: '#CDDB2D', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)', borderRadius: '8px' }}
             >
-              Add to Cart — {currencyCode === 'EUR' ? '€' : currencyCode}{selectedOption?.price.toFixed(2)}
+              Add to Cart — {currencyCode === 'EUR' ? '€' : currencyCode}{selectedOption?.price.toFixed(0)}
             </Button>
 
             {/* Lab Values Grid */}
