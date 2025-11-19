@@ -219,6 +219,10 @@ export const HarvestProduct = () => {
                 <span className="font-beverly text-olive-medium" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.2rem)' }}>500ml</span>
               </h1>
               
+              <p className="text-olive-medium mb-1.5 font-beverly" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.1rem, 1.6vw, 1.8rem)' }}>
+                High-Phenolic Extra Virgin Olive Oil
+              </p>
+
               {/* Price Display */}
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-olive-medium/50 line-through font-beverly" style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.6rem)' }}>
@@ -231,10 +235,6 @@ export const HarvestProduct = () => {
                   per bottle
                 </span>
               </div>
-              
-              <p className="text-olive-medium mb-1.5 font-beverly" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.1rem, 1.6vw, 1.8rem)' }}>
-                High-Phenolic Extra Virgin Olive Oil
-              </p>
             </header>
 
             {/* Key Benefits */}
