@@ -274,7 +274,7 @@ export const HarvestProduct = () => {
                 <div className="flex items-start gap-2">
                   <Info className="w-3.5 h-3.5 text-olive-medium flex-shrink-0 mt-0.5" />
                   <p className="text-olive-medium/90 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                    The bottle shown features our upcoming ATTIMO brand label. Your 2024 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.
+                    The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.
                   </p>
                 </div>
               </div>
