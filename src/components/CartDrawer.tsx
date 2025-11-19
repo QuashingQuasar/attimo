@@ -107,7 +107,7 @@ export const CartDrawer = () => {
                       
                       {/* Product Info Row Below */}
                       <div className="flex flex-col gap-3">
-                        <h4 className="font-medium text-sm">{item.product.node.title}</h4>
+                        <h4 className="font-medium text-sm">{item.product.node.title} — {item.variantTitle}</h4>
                         
                         <div className="flex items-center justify-between">
                           <p className="font-semibold">
