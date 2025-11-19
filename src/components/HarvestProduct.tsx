@@ -29,7 +29,7 @@ export const HarvestProduct = () => {
     loadProducts();
   }, []);
 
-  const product = products[1]; // Use the new product with variants
+  const product = products[0]; // Use the first product with variants
 
   const handleAddToCart = () => {
     console.log('[HarvestProduct] handleAddToCart called');
