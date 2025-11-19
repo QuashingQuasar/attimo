@@ -98,8 +98,9 @@ export const HarvestProduct = () => {
     { 
       quantity: 2, 
       label: "2 Bottles", 
+      subtitle: "Save €2",
       price: parseFloat(variantMap[2]?.price.amount || "42"), 
-      savings: null 
+      savings: (basePrice * 2) - parseFloat(variantMap[2]?.price.amount || "42")
     },
     { 
       quantity: 3, 
