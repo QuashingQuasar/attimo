@@ -44,7 +44,7 @@ const testimonials = [
     title: "I got hooked fast",
   },
   {
-    name: "Dag A.",
+    name: "Madis K.",
     location: "Tallinn, Estonia",
     date: "15 Aug 2025",
     text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.",
