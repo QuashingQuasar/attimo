@@ -231,9 +231,6 @@ export const HarvestProduct = () => {
                 <span className="text-olive-dark font-bold font-beverly" style={{ fontSize: 'clamp(1.4rem, 2vw, 2.2rem)' }}>
                   €22
                 </span>
-                <span className="text-olive-medium font-beverly" style={{ fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)' }}>
-                  per bottle
-                </span>
               </div>
             </header>
 
