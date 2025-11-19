@@ -44,7 +44,7 @@ export const Header = ({
               className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium"
               style={{ fontFamily: 'Space Grotesk, monospace' }}
             >
-              Harvest 2025
+              New Harvest
             </button>
 
             {/* Cart Drawer */}
