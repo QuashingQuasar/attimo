@@ -29,19 +29,23 @@ export const HarvestProduct = () => {
     loadProducts();
   }, []);
 
-  const product = products[0];
+  const product = products[1]; // Use the new product with variants
 
   const handleAddToCart = () => {
     console.log('[HarvestProduct] handleAddToCart called');
     if (!product) return;
 
-    const variant = product.node.variants.edges[0].node;
+    // Find the variant that matches the selected quantity
+    const variant = product.node.variants.edges.find(
+      edge => edge.node.title === selectedQuantity.toString()
+    )?.node || product.node.variants.edges[0].node;
+    
     const cartItem = {
       product,
       variantId: variant.id,
       variantTitle: variant.title,
       price: variant.price,
-      quantity: selectedQuantity,
+      quantity: 1, // Always 1 because the variant already represents the quantity
       selectedOptions: variant.selectedOptions || []
     };
     
@@ -71,15 +75,53 @@ export const HarvestProduct = () => {
   }
 
   const productImage = product.node.images?.edges?.[0]?.node?.url;
-  const price = parseFloat(product.node.priceRange.minVariantPrice.amount);
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
   
+  // Map variants to quantity options with actual Shopify prices
+  const variantMap = {
+    1: product.node.variants.edges.find(e => e.node.title === "1")?.node,
+    2: product.node.variants.edges.find(e => e.node.title === "2")?.node,
+    3: product.node.variants.edges.find(e => e.node.title === "3")?.node,
+    4: product.node.variants.edges.find(e => e.node.title === "4")?.node,
+    8: product.node.variants.edges.find(e => e.node.title === "8")?.node,
+  };
+
+  const basePrice = parseFloat(variantMap[1]?.price.amount || "22");
+  
   const quantityOptions = [
-    { quantity: 1, label: "1 Bottle", price: price, savings: null },
-    { quantity: 2, label: "2 Bottles", price: price * 2, savings: null },
-    { quantity: 3, label: "3 Bottles", subtitle: "Save €3", price: price * 3 - 3, savings: 3 },
-    { quantity: 4, label: "4 Bottles", subtitle: "Save €6 + Free Shipping", price: price * 4 - 6, savings: 6 },
-    { quantity: 8, label: "8 Bottles", subtitle: "Save €15 + Free Shipping", price: price * 8 - 15, savings: 15 }
+    { 
+      quantity: 1, 
+      label: "1 Bottle", 
+      price: parseFloat(variantMap[1]?.price.amount || "22"), 
+      savings: null 
+    },
+    { 
+      quantity: 2, 
+      label: "2 Bottles", 
+      price: parseFloat(variantMap[2]?.price.amount || "42"), 
+      savings: null 
+    },
+    { 
+      quantity: 3, 
+      label: "3 Bottles", 
+      subtitle: "Save €4", 
+      price: parseFloat(variantMap[3]?.price.amount || "62"), 
+      savings: (basePrice * 3) - parseFloat(variantMap[3]?.price.amount || "62")
+    },
+    { 
+      quantity: 4, 
+      label: "4 Bottles", 
+      subtitle: "Save €8 + Free Shipping", 
+      price: parseFloat(variantMap[4]?.price.amount || "80"), 
+      savings: (basePrice * 4) - parseFloat(variantMap[4]?.price.amount || "80")
+    },
+    { 
+      quantity: 8, 
+      label: "8 Bottles", 
+      subtitle: "Save €24 + Free Shipping", 
+      price: parseFloat(variantMap[8]?.price.amount || "152"), 
+      savings: (basePrice * 8) - parseFloat(variantMap[8]?.price.amount || "152")
+    }
   ];
 
   const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
