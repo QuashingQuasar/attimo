@@ -27,7 +27,7 @@ const faqs = [
     answerElement: (
       <>
         Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in
-        complete transparency; you should know exactly what you're getting. View the lab results for the current 2024
+        complete transparency; you should know exactly what you're getting. View the lab results for the latest 2024/25
         harvest{" "}
         <a
           href="/documents/lab-report-galega-2024.pdf"
