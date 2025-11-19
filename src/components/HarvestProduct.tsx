@@ -220,7 +220,7 @@ export const HarvestProduct = () => {
               </h1>
               
               <p className="text-olive-medium mb-1.5 font-beverly" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.1rem, 1.6vw, 1.8rem)' }}>
-                High-Phenolic Extra Virgin Olive Oil
+                High-Polyphenol Extra Virgin Olive Oil
               </p>
 
               {/* Price Display */}
