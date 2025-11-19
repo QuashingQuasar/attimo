@@ -7,6 +7,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
 import { X } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const waitlistSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  contactValue: z.string().trim().min(1, "Contact information is required").max(255, "Contact must be less than 255 characters"),
+  contactMethod: z.enum(["email", "phone"]),
+  gdprConsent: z.boolean().refine((val) => val === true, "You must agree to receive marketing messages")
+});
 interface WaitlistFormProps {
   isOpen: boolean;
   onClose: () => void;
@@ -24,18 +33,48 @@ export const WaitlistForm = ({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Validate form data
+      const validatedData = waitlistSchema.parse({
+        name,
+        contactValue,
+        contactMethod,
+        gdprConsent
+      });
+
+      // Insert into database
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({
+          name: validatedData.name,
+          contact_method: validatedData.contactMethod,
+          contact_value: validatedData.contactValue,
+          gdpr_consent: validatedData.gdprConsent
+        });
+
+      if (error) throw error;
+
       toast({
         title: "Welcome to our waitlist!",
         description: `We'll contact you at your ${contactMethod}.`
       });
+      
       setContactValue("");
       setName("");
       setGdprConsent(false);
-      setIsSubmitting(false);
       onClose();
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting waitlist form:', error);
+      toast({
+        title: "Error",
+        description: error instanceof z.ZodError 
+          ? error.errors[0].message 
+          : "Failed to join waitlist. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   if (!isOpen) return null;
   return <div className="fixed inset-0 z-50 flex items-center justify-center bg-olive-dark/80 backdrop-blur-sm">
