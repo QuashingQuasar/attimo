@@ -68,7 +68,7 @@ export const Hero = ({
           animationDelay: '0.6s',
           fontFamily: 'Space Grotesk, monospace',
           fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
-        }} onClick={onWaitlistClick}>Harvest 2025/26 Waitlist</div>
+        }} onClick={onWaitlistClick}>New Harvest Waitlist</div>
         </div>
       </div>
       
