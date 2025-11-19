@@ -222,16 +222,6 @@ export const HarvestProduct = () => {
               <p className="text-olive-medium mb-1.5 font-beverly" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.1rem, 1.6vw, 1.8rem)' }}>
                 High-Polyphenol Extra Virgin Olive Oil
               </p>
-
-              {/* Price Display */}
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-olive-medium/50 line-through font-beverly" style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.6rem)' }}>
-                  €25
-                </span>
-                <span className="text-olive-dark font-bold font-beverly" style={{ fontSize: 'clamp(1.4rem, 2vw, 2.2rem)' }}>
-                  €22
-                </span>
-              </div>
             </header>
 
             {/* Key Benefits */}
@@ -306,7 +296,13 @@ export const HarvestProduct = () => {
                     <div className="font-semibold mb-0.5" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
                       {option.label}
                     </div>
-                    {option.subtitle && (
+                    {option.quantity === 1 && (
+                      <div className={`flex items-center justify-center gap-1.5 ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
+                        <span className="line-through opacity-60">€25</span>
+                        <span className="font-semibold">€22</span>
+                      </div>
+                    )}
+                    {option.subtitle && option.quantity !== 1 && (
                       <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
                         {option.subtitle}
                       </div>
