@@ -194,7 +194,7 @@ export const HarvestProduct = () => {
                       style={{ backgroundColor: '#1B4229', color: '#CDDB2D', fontSize: 'clamp(0.75rem, 0.95vw, 1rem)', fontWeight: 600 }}
                       onClick={(e) => e.currentTarget.focus()}
                     >
-                      2024 HARVEST
+                      2024/25 HARVEST
                     </button>
                   </HoverCardTrigger>
                   <HoverCardContent 
