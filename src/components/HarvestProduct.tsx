@@ -296,13 +296,7 @@ export const HarvestProduct = () => {
                     <div className="font-semibold mb-0.5" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
                       {option.label}
                     </div>
-                    {option.quantity === 1 && (
-                      <div className={`flex items-center justify-center gap-1.5 ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
-                        <span className="line-through opacity-60">€25</span>
-                        <span className="font-semibold">€22</span>
-                      </div>
-                    )}
-                    {option.subtitle && option.quantity !== 1 && (
+                    {option.subtitle && (
                       <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
                         {option.subtitle}
                       </div>
@@ -319,7 +313,13 @@ export const HarvestProduct = () => {
               className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-4 h-auto transition-all duration-300 hover:scale-105" 
               style={{ fontFamily: 'UDC Working Man Sans, sans-serif', backgroundColor: '#CDDB2D', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)', borderRadius: '8px' }}
             >
-              Add to Cart — {currencyCode === 'EUR' ? '€' : currencyCode}{selectedOption?.price.toFixed(0)}
+              {selectedQuantity === 1 ? (
+                <span className="flex items-center justify-center gap-2">
+                  Add to Cart — <span className="line-through opacity-60">€25</span> €22
+                </span>
+              ) : (
+                `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
+              )}
             </Button>
 
             {/* Lab Values Grid */}
