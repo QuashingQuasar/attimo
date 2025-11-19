@@ -59,7 +59,7 @@ export const Hero = ({
                 borderRadius: '8px'
               }}
             >
-              Shop 2024 Harvest
+              Shop 2024/25 Harvest
             </Button>
           </div>
 
@@ -68,7 +68,7 @@ export const Hero = ({
           animationDelay: '0.6s',
           fontFamily: 'Space Grotesk, monospace',
           fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
-        }} onClick={onWaitlistClick}>2025 Harvest Waitlist</div>
+        }} onClick={onWaitlistClick}>Harvest 2025/26 Waitlist</div>
         </div>
       </div>
       
