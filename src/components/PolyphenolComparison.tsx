@@ -22,7 +22,7 @@ const tweets = [{
 }];
 export const PolyphenolComparison = () => {
   const comparisonData = [{
-    name: "Supermarket EVOO",
+    name: "Avg. EVOO",
     value: 180,
     color: "bg-[#A8B88F]" // Light sage green
   }, {
@@ -60,11 +60,11 @@ export const PolyphenolComparison = () => {
 
               <div className="space-y-4">
                 {comparisonData.map((item, index) => {
-              // Set explicit widths that fit text but maintain hierarchy
+              // Set explicit widths - shorter for top 3, long for ATTIMO
               let width;
-              if (index === 0) width = '50%';      // Supermarket EVOO
-              else if (index === 1) width = '55%';  // EU Claim
-              else if (index === 2) width = '60%';  // Blueprint
+              if (index === 0) width = '35%';      // Avg. EVOO
+              else if (index === 1) width = '40%';  // EU Claim
+              else if (index === 2) width = '50%';  // Blueprint
               else width = '95%';                   // ATTIMO - much longer
               
               return <div key={index} className="flex items-center gap-4">
