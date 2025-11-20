@@ -28,15 +28,23 @@ export const CartDrawer = () => {
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
   const handleCheckout = async () => {
+    // Open window immediately (synchronously) to avoid Safari popup blockers
+    const checkoutWindow = window.open('about:blank', '_blank');
+    
     try {
       await createCheckout();
       const checkoutUrl = useCartStore.getState().checkoutUrl;
-      if (checkoutUrl) {
-        window.open(checkoutUrl, '_blank');
+      if (checkoutUrl && checkoutWindow) {
+        checkoutWindow.location.href = checkoutUrl;
         setIsOpen(false);
+      } else if (!checkoutWindow) {
+        console.error('Popup was blocked by browser');
       }
     } catch (error) {
       console.error('Checkout failed:', error);
+      if (checkoutWindow) {
+        checkoutWindow.close();
+      }
     }
   };
 
