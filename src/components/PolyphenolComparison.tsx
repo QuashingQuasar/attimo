@@ -22,11 +22,11 @@ const tweets = [{
 }];
 export const PolyphenolComparison = () => {
   const comparisonData = [{
-    name: "Average Olive Oil",
+    name: "Supermarket EVOO",
     value: 180,
     color: "bg-[#A8B88F]" // Light sage green
   }, {
-    name: "EU Health Claim",
+    name: "EU Claim",
     value: 250,
     color: "bg-[#8A9B6F]" // Medium sage green
   }, {
