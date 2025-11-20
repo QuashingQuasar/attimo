@@ -24,19 +24,19 @@ export const PolyphenolComparison = () => {
   const comparisonData = [{
     name: "Average Olive Oil",
     value: 180,
-    color: "bg-olive-light/60"
+    color: "bg-[#A8B88F]" // Light sage green
   }, {
     name: "EU Health Claim",
     value: 250,
-    color: "bg-olive-light/80"
+    color: "bg-[#8A9B6F]" // Medium sage green
   }, {
     name: "Blueprint Olive Oil",
     value: 400,
-    color: "bg-olive-medium"
+    color: "bg-[#5C6E45]" // Darker olive green
   }, {
     name: "ATTIMO Olive Oil",
     value: 904,
-    color: "bg-olive-dark"
+    color: "bg-[#1B4229]" // Dark forest green (brand color)
   }];
   const maxValue = Math.max(...comparisonData.map(item => item.value));
   return <section className="py-12 md:py-16 lg:py-24 snap-start flex items-center" style={{
