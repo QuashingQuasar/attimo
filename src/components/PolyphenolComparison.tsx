@@ -65,10 +65,10 @@ export const PolyphenolComparison = () => {
               if (index === 0) width = '50%';      // Supermarket EVOO
               else if (index === 1) width = '55%';  // EU Claim
               else if (index === 2) width = '60%';  // Blueprint
-              else width = '100%';                   // ATTIMO
+              else width = '95%';                   // ATTIMO - much longer
               
               return <div key={index} className="flex items-center gap-4">
-                       <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
+                       <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''}`} style={{
                   width: width
                 }}>
                          <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace' } : {}}>
@@ -78,12 +78,21 @@ export const PolyphenolComparison = () => {
                              </a>
                            ) : item.name}
                          </span>
+                         {index === 3 && (
+                           <span className="font-bold text-cream whitespace-nowrap text-sm md:text-base" style={{
+                             fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                           }}>
+                             {item.value} mg/kg
+                           </span>
+                         )}
                        </div>
-                      <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
-                        fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
-                      }}>
-                        {item.value} mg/kg
-                      </span>
+                      {index !== 3 && (
+                        <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
+                          fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                        }}>
+                          {item.value} mg/kg
+                        </span>
+                      )}
                     </div>;
             })}
               </div>
