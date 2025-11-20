@@ -60,15 +60,14 @@ export const PolyphenolComparison = () => {
 
               <div className="space-y-4">
                 {comparisonData.map((item, index) => {
-              // Calculate proportional width with minimum for text readability
-              const baseWidth = 200; // minimum width for smallest bar to fit text
-              const proportion = item.value / 180; // 180 is our baseline (smallest value)
-              const width = baseWidth * proportion;
+              // Calculate proportional width as percentage
+              const percentage = (item.value / maxValue) * 100;
               return <div key={index} className="flex items-center gap-4">
-                       <div className={`h-16 rounded-lg ${item.color} flex items-center px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
-                  width: `${width}px`
+                       <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
+                  width: `${percentage}%`,
+                  minWidth: '120px' // Ensure text fits on smallest screens
                 }}>
-                         <span className={`font-medium whitespace-nowrap ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' } : { fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>
+                         <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace' } : {}}>
                            {index === 2 ? (
                              <a href="https://blueprint.bryanjohnson.com/products/extra-virgin-olive-oil?variant=47471239790877" target="_blank" rel="noopener noreferrer" className="hover:underline">
                                {item.name}
@@ -76,8 +75,8 @@ export const PolyphenolComparison = () => {
                            ) : item.name}
                          </span>
                        </div>
-                      <span className="font-bold text-olive-dark whitespace-nowrap" style={{
-                        fontSize: 'clamp(1rem, 1.2vw, 1.375rem)'
+                      <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
+                        fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
                       }}>
                         {item.value} mg/kg
                       </span>
