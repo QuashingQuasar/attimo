@@ -60,14 +60,16 @@ export const PolyphenolComparison = () => {
 
               <div className="space-y-4">
                 {comparisonData.map((item, index) => {
-              // Calculate proportional width with minimum for text
-              const percentage = (item.value / maxValue) * 100;
-              // Boost smaller bars to fit text, but keep them clearly shorter than ATTIMO
-              const adjustedPercentage = index < 3 ? Math.max(percentage, 35 + (index * 5)) : percentage;
+              // Set explicit widths that fit text but maintain hierarchy
+              let width;
+              if (index === 0) width = '50%';      // Supermarket EVOO
+              else if (index === 1) width = '55%';  // EU Claim
+              else if (index === 2) width = '60%';  // Blueprint
+              else width = '100%';                   // ATTIMO
               
               return <div key={index} className="flex items-center gap-4">
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out`} style={{
-                  width: `${adjustedPercentage}%`
+                  width: width
                 }}>
                          <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace' } : {}}>
                            {index === 2 ? (
