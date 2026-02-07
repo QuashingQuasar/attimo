@@ -65,7 +65,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 />
                 <h3
                   style={{
-                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
@@ -111,7 +111,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 />
                 <h3
                   style={{
-                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
@@ -157,7 +157,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 />
                 <h3
                   style={{
-                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
