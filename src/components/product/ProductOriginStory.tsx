@@ -2,12 +2,13 @@ interface ProductOriginStoryProps {
   content: {
     headline: string;
     quickRef: Array<{ label: string; value: string }>;
-    features: Array<{ title: string; description: string; icon: string }>;
+    features: Array<{ title: string; description: string; icon: string; video?: string }>;
   };
 }
 
 export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
   const { headline, quickRef, features } = content;
+
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
@@ -18,7 +19,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
               className="font-beverly font-bold text-olive-dark tracking-tight"
               style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.2 }}
             >
-             {headline}
+              {headline}
             </p>
           </div>
 
@@ -51,46 +52,124 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             ))}
           </div>
 
-          {/* Feature cards — label editorial style */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-olive-dark/15 rounded-2xl overflow-hidden">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className={`p-10 flex flex-col items-center text-center gap-5 ${
-                  index < features.length - 1 ? 'border-b md:border-b-0 md:border-r border-olive-dark/15' : ''
-                }`}
-              >
-                <img
-                  src={feature.icon}
-                  alt=""
-                  className="w-[56px] h-[56px] object-contain"
-                  style={{
-                    filter:
-                      'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)',
-                  }}
-                />
-                <h3
-                  className="text-olive-dark"
-                  style={{
-                    fontFamily: 'Beverly Drive Right, cursive',
-                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
-                  }}
-                >
-                  {feature.title}
-                </h3>
-                <p
-                  className="text-olive-dark/70 tracking-wide leading-relaxed max-w-[260px]"
+          {/* Feature tiles — KleiaWay-style 3×2 grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[750px]">
+            {/* Row 1, Col 1 — Text tile */}
+            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center">
+                <h4
+                  className="font-bold mb-6"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.75rem',
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
                   }}
                 >
-                  {feature.description}
+                  {features[0]?.title.toUpperCase()}
+                </h4>
+                <p
+                  className="leading-relaxed"
+                  style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                  }}
+                >
+                  {features[0]?.description}
                 </p>
               </div>
-            ))}
+            </div>
+
+            {/* Row 1, Col 2 — Video tile */}
+            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={features[0]?.video || "/videos/content-video-1.mp4"} type="video/mp4" />
+              </video>
+            </div>
+
+            {/* Row 1, Col 3 — Text tile */}
+            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center">
+                <h4
+                  className="font-bold mb-6"
+                  style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
+                  }}
+                >
+                  {features[1]?.title.toUpperCase()}
+                </h4>
+                <p
+                  className="leading-relaxed"
+                  style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                  }}
+                >
+                  {features[1]?.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Row 2, Col 1 — Video tile */}
+            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={features[1]?.video || "/videos/kleia-way-video-3.mp4"} type="video/mp4" />
+              </video>
+            </div>
+
+            {/* Row 2, Col 2 — Text tile */}
+            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center">
+                <h4
+                  className="font-bold mb-6"
+                  style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
+                  }}
+                >
+                  {features[2]?.title.toUpperCase()}
+                </h4>
+                <p
+                  className="leading-relaxed"
+                  style={{
+                    fontFamily: 'Space Grotesk, monospace',
+                    color: '#B3E58C',
+                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                  }}
+                >
+                  {features[2]?.description}
+                </p>
+              </div>
+            </div>
+
+            {/* Row 2, Col 3 — Video tile */}
+            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={features[2]?.video || "/videos/kleia-way-video.mp4"} type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </div>
