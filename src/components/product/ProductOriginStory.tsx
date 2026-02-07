@@ -16,6 +16,14 @@ const features = [
   },
 ];
 
+const quickRef = [
+  { label: "VARIETY", value: "100% Galega" },
+  { label: "ORIGIN", value: "Alentejo, Portugal" },
+  { label: "FLAVOR", value: "Intense & Peppery" },
+  { label: "USE", value: "drizzle over fresh foods" },
+  { label: "STORE", value: "away from light and heat" },
+];
+
 export const ProductOriginStory = () => {
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
@@ -31,50 +39,75 @@ export const ProductOriginStory = () => {
             </p>
           </div>
 
-          {/* Feature cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {features.map((feature, index) => {
-              const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
-              return (
-                <div
-                  key={index}
-                  className="rounded-3xl p-8 flex flex-col justify-between min-h-[340px]"
-                  style={{ backgroundColor: bgColors[index] }}
+          {/* Quick-reference bar */}
+          <div className="mb-16 py-5 px-6 flex flex-wrap justify-center items-center gap-x-2 gap-y-3 border-y border-olive-dark/20">
+            {quickRef.map((item, i) => (
+              <span key={i} className="flex items-center gap-x-2">
+                <span
+                  className="text-olive-dark/50 tracking-[0.15em]"
+                  style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: '0.7rem',
+                  }}
                 >
-                  <div className="space-y-4">
-                    <h3
-                      className="font-bold text-olive-dark"
-                      style={{
-                        fontFamily: 'UDC Working Man Sans, sans-serif',
-                        fontSize: 'clamp(1.25rem, 1.5vw, 1.75rem)',
-                      }}
-                    >
-                      {feature.title}
-                    </h3>
-                    <p
-                      className="text-olive-dark/80 leading-relaxed"
-                      style={{
-                        fontFamily: 'Space Grotesk, monospace',
-                        fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)',
-                      }}
-                    >
-                      {feature.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center mt-6">
-                    <img
-                      src={feature.icon}
-                      alt=""
-                      className="w-[80px] h-[80px] object-contain"
-                      style={{
-                        filter:
-                          'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)',
-                      }}
-                    />
-                  </div>
-                </div>
-              );
-            })}
+                  {item.label}
+                </span>
+                <span
+                  className="text-olive-dark"
+                  style={{
+                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontSize: '1rem',
+                  }}
+                >
+                  {item.value}
+                </span>
+                {i < quickRef.length - 1 && (
+                  <span className="text-olive-dark/25 mx-2">·</span>
+                )}
+              </span>
+            ))}
+          </div>
+
+          {/* Feature cards — label editorial style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-olive-dark/15 rounded-2xl overflow-hidden">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`p-10 flex flex-col items-center text-center gap-5 ${
+                  index < features.length - 1 ? 'border-b md:border-b-0 md:border-r border-olive-dark/15' : ''
+                }`}
+              >
+                <img
+                  src={feature.icon}
+                  alt=""
+                  className="w-[56px] h-[56px] object-contain"
+                  style={{
+                    filter:
+                      'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)',
+                  }}
+                />
+                <h3
+                  className="text-olive-dark"
+                  style={{
+                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
+                  }}
+                >
+                  {feature.title}
+                </h3>
+                <p
+                  className="text-olive-dark/70 tracking-wide leading-relaxed max-w-[260px]"
+                  style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {feature.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
