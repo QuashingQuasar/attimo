@@ -4,16 +4,18 @@ import navbarLogo from "@/assets/navbar-logo-latest.svg";
 import { CartDrawer } from "./CartDrawer";
 interface HeaderProps {
   onWaitlistClick: () => void;
+  forceScrolled?: boolean;
 }
 export const Header = ({
-  onWaitlistClick
+  onWaitlistClick,
+  forceScrolled = false,
 }: HeaderProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(forceScrolled);
   useEffect(() => {
     const scrollContainer = document.querySelector('.overflow-y-scroll');
     const handleScroll = () => {
       const scrollY = scrollContainer?.scrollTop || window.scrollY;
-      setIsScrolled(scrollY > 50);
+      setIsScrolled(forceScrolled || scrollY > 50);
     };
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll);

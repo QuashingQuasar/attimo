@@ -65,7 +65,7 @@ const ProductPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
-        <Header onWaitlistClick={() => {}} />
+        <Header onWaitlistClick={() => {}} forceScrolled />
         <div className="flex items-center justify-center min-h-[60vh]">
           <p className="text-olive-medium">Loading product...</p>
         </div>
@@ -76,7 +76,7 @@ const ProductPage = () => {
   if (!product) {
     return (
       <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
-        <Header onWaitlistClick={() => {}} />
+        <Header onWaitlistClick={() => {}} forceScrolled />
         <div className="flex items-center justify-center min-h-[60vh]">
           <p className="text-olive-medium">Product not found</p>
         </div>
@@ -117,7 +117,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} />
+      <Header onWaitlistClick={() => {}} forceScrolled />
       
       {/* Product Section - OlvLimits style: sticky left image, scrolling right info */}
       <section className="pt-20 md:pt-24">
