@@ -25,7 +25,7 @@ export const ProductOriginStory = () => {
           <div className="mb-16 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)', lineHeight: 1.2 }}
+              style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.2 }}
             >
               Galega from Alentejo is 100% Extra Virgin, high in polyphenols — crafted with the purpose to bring you olive oil with powerful antioxidants known for their health benefits. Perfect for anyone looking to give their health a boost.
             </p>
