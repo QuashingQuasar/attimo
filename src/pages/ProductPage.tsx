@@ -363,9 +363,9 @@ const ProductPage = () => {
       {/* Content sections below product hero */}
       <ProductOriginStory />
       <ProductOriginRegion />
+      <Testimonials />
       <ProductLabTrust />
       <PolyphenolComparison />
-      <Testimonials />
       <ProductAlwaysNever />
       <FAQ />
 
