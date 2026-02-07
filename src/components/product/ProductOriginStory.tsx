@@ -20,9 +20,9 @@ export const ProductOriginStory = () => {
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Hero statement */}
-          <div className="mb-16 mx-auto text-center">
+          <div className="mb-16 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
               style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)', lineHeight: 1.2 }}
