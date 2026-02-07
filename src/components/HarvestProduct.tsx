@@ -8,6 +8,7 @@ import { OriginMap } from "./OriginMap";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { getProductContent } from "@/lib/productContent";
 
 export const HarvestProduct = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
@@ -350,7 +351,7 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Product Information Tabs */}
-            <ProductInfoTabs />
+            <ProductInfoTabs content={getProductContent("galega-from-alentejo")} />
           </div>
         </div>
       </div>

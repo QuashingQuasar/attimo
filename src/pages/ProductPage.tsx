@@ -18,6 +18,7 @@ import { Footer } from "@/components/Footer";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { getProductContent } from "@/lib/productContent";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -42,6 +43,7 @@ const ProductPage = () => {
   }, []);
 
   const product = products.find(p => p.node.handle === handle) || products[0];
+  const content = getProductContent(handle);
 
   const handleAddToCart = () => {
     if (!product) return;
@@ -108,12 +110,7 @@ const ProductPage = () => {
 
   const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
 
-  const labTiles = [
-    { key: "polyphenols", label: "POLYPHENOLS", value: "904", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
-    { key: "oleic-acid", label: "OLEIC ACID", value: "74.9%", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-    { key: "peroxides", label: "PEROXIDES", value: "6.3", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
-    { key: "acidity", label: "ACIDITY", value: "0.16%", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
-  ];
+  const labTiles = content.labTiles;
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
@@ -221,13 +218,13 @@ const ProductPage = () => {
 
             {/* Title */}
             <h1 className="font-bold text-olive-dark flex items-baseline gap-3" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3.5rem)' }}>
-              GALEGA FROM ALENTEJO
+              {content.heroTitle}
               <span className="font-beverly text-olive-medium" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.5rem)' }}>500ml</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-olive-medium font-beverly" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
-              High-Polyphenol Extra Virgin Olive Oil
+              {content.heroSubtitle}
             </p>
 
             {/* Key Benefits */}
@@ -235,7 +232,7 @@ const ProductPage = () => {
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                 <span className="inline">
-                  5x more antioxidant polyphenols than average EVOO
+                  {content.benefits[0]}
                   {' '}
                   <HoverCard openDelay={0} closeDelay={0}>
                     <HoverCardTrigger asChild>
@@ -253,7 +250,7 @@ const ProductPage = () => {
                       onPointerDownOutside={(e) => e.preventDefault()}
                     >
                       <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                        Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.
+                        {content.benefitTooltip}
                       </p>
                     </HoverCardContent>
                   </HoverCard>
@@ -262,15 +259,15 @@ const ProductPage = () => {
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                 <span className="flex items-center gap-1">
-                  Third-party lab tested for quality and purity
-                  <a href="/documents/lab-report-galega-2024.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition-transform hover:scale-110">
+                  {content.benefits[1]}
+                  <a href={content.labReportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition-transform hover:scale-110">
                     <Link className="w-4 h-4" style={{ color: '#1B4229' }} strokeWidth={2.5} />
                   </a>
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
-                <span>Directly sourced from a small family farm in Alentejo, Portugal</span>
+                <span>{content.benefits[2]}</span>
               </li>
             </ul>
 
@@ -279,7 +276,7 @@ const ProductPage = () => {
               <div className="flex items-start gap-2">
                 <Info className="w-3.5 h-3.5 text-olive-medium flex-shrink-0 mt-0.5" />
                 <p className="text-olive-medium/90 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                  The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.
+                  {content.labelDisclosure}
                 </p>
               </div>
             </div>
@@ -354,18 +351,18 @@ const ProductPage = () => {
 
             {/* Product Info Tabs */}
             <div className="pt-2">
-              <ProductInfoTabs />
+              <ProductInfoTabs content={content} />
             </div>
           </div>
         </div>
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory />
+      <ProductOriginStory content={content.originStory} />
       <Testimonials />
       <ProductOriginRegion />
-      <ProductLabTrust />
-      <PolyphenolComparison />
+      <ProductLabTrust content={content.labTrust} />
+      <PolyphenolComparison productValue={content.polyphenolValue} productLabel={content.polyphenolLabel} />
       <ProductAlwaysNever />
       <FAQ />
 

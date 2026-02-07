@@ -20,23 +20,28 @@ const tweets = [{
   content: "Commercial oils combine batches from across countries and years to maintain supply.",
   content2: "This process dilutes the polyphenol content far below fresh-pressed levels."
 }];
-export const PolyphenolComparison = () => {
+interface PolyphenolComparisonProps {
+  productValue?: number;
+  productLabel?: string;
+}
+
+export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO Olive Oil" }: PolyphenolComparisonProps) => {
   const comparisonData = [{
     name: "Avg. EVOO",
     value: 180,
-    color: "bg-[#A8B88F]" // Light sage green
+    color: "bg-[#A8B88F]"
   }, {
     name: "EU Claim",
     value: 250,
-    color: "bg-[#8A9B6F]" // Medium sage green
+    color: "bg-[#8A9B6F]"
   }, {
     name: "Blueprint Olive Oil",
     value: 400,
-    color: "bg-[#5C6E45]" // Darker olive green
+    color: "bg-[#5C6E45]"
   }, {
-    name: "ATTIMO Olive Oil",
-    value: 904,
-    color: "bg-[#1B4229]" // Dark forest green (brand color)
+    name: `ATTIMO ${productLabel}`,
+    value: productValue,
+    color: "bg-[#1B4229]"
   }];
   const maxValue = Math.max(...comparisonData.map(item => item.value));
   return <section className="py-12 md:py-16 lg:py-24 snap-start flex items-center" style={{

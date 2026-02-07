@@ -1,30 +1,13 @@
-const features = [
-  {
-    title: "Intense & Peppery",
-    description: "Its high polyphenol content gives the olive oil an intense, peppery kick — a sign of real, fresh EVOO.",
-    icon: "/icons/mortar.svg",
-  },
-  {
-    title: "Early Harvest",
-    description: "Harvested in October when the olives are green, hard, and very high in polyphenols.",
-    icon: "/icons/branch-2.svg",
-  },
-  {
-    title: "Galega Olives",
-    description: "A Portuguese variety known for its delicate, grassy flavour and exceptional polyphenol content.",
-    icon: "/icons/olive.svg",
-  },
-];
+interface ProductOriginStoryProps {
+  content: {
+    headline: string;
+    quickRef: Array<{ label: string; value: string }>;
+    features: Array<{ title: string; description: string; icon: string }>;
+  };
+}
 
-const quickRef = [
-  { label: "VARIETY", value: "100% Galega" },
-  { label: "ORIGIN", value: "Alentejo, Portugal" },
-  { label: "FLAVOR", value: "Intense & Peppery" },
-  { label: "USE", value: "drizzle over fresh foods" },
-  { label: "STORE", value: "away from light and heat" },
-];
-
-export const ProductOriginStory = () => {
+export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
+  const { headline, quickRef, features } = content;
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
@@ -35,7 +18,7 @@ export const ProductOriginStory = () => {
               className="font-beverly font-bold text-olive-dark tracking-tight"
               style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.2 }}
             >
-              Galega from Alentejo is 100% Extra Virgin, high in polyphenols — crafted with the purpose to bring you olive oil with powerful antioxidants known for their health benefits. Perfect for anyone looking to give their health a boost.
+             {headline}
             </p>
           </div>
 
