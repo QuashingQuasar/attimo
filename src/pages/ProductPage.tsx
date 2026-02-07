@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Info, Link, ArrowLeft } from "lucide-react";
@@ -124,7 +125,7 @@ const ProductPage = () => {
           <div className="lg:sticky lg:top-20 lg:self-start">
             <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
               <img
-                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
+                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover"
               />
