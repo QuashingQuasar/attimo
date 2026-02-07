@@ -53,30 +53,30 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
           </div>
 
           {/* Feature tiles — KleiaWay-style 3×2 grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[750px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[850px]">
             {/* Row 1, Col 1 — Text tile */}
-            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <img
                   src={features[0]?.icon}
                   alt=""
-                  className="w-[56px] h-[56px] object-contain"
+                  className="w-[64px] h-[64px] object-contain"
                   style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
                 />
                 <h3
                   style={{
                     fontFamily: 'Beverly Drive Right, cursive',
-                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
+                    fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
                 >
                   {features[0]?.title}
                 </h3>
                 <p
-                  className="tracking-wide leading-relaxed max-w-[260px]"
+                  className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.75rem',
+                    fontSize: '0.85rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
@@ -88,7 +88,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 1, Col 2 — Video tile */}
-            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
@@ -101,28 +101,28 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 1, Col 3 — Text tile */}
-            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <img
                   src={features[1]?.icon}
                   alt=""
-                  className="w-[56px] h-[56px] object-contain"
+                  className="w-[64px] h-[64px] object-contain"
                   style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
                 />
                 <h3
                   style={{
                     fontFamily: 'Beverly Drive Right, cursive',
-                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
+                    fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
                 >
                   {features[1]?.title}
                 </h3>
                 <p
-                  className="tracking-wide leading-relaxed max-w-[260px]"
+                  className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.75rem',
+                    fontSize: '0.85rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
@@ -134,7 +134,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 2, Col 1 — Video tile */}
-            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
@@ -147,28 +147,28 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 2, Col 2 — Text tile */}
-            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <img
                   src={features[2]?.icon}
                   alt=""
-                  className="w-[56px] h-[56px] object-contain"
+                  className="w-[64px] h-[64px] object-contain"
                   style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
                 />
                 <h3
                   style={{
                     fontFamily: 'Beverly Drive Right, cursive',
-                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
+                    fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
                     color: '#B3E58C',
                   }}
                 >
                   {features[2]?.title}
                 </h3>
                 <p
-                  className="tracking-wide leading-relaxed max-w-[260px]"
+                  className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.75rem',
+                    fontSize: '0.85rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
@@ -180,7 +180,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 2, Col 3 — Video tile */}
-            <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
