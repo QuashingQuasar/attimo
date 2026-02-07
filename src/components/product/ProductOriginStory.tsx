@@ -55,24 +55,31 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
           {/* Feature tiles — KleiaWay-style 3×2 grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[750px]">
             {/* Row 1, Col 1 — Text tile */}
-            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-              <div className="h-full flex flex-col justify-center items-center text-center">
-                <h4
-                  className="font-bold mb-6"
+            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
+                <img
+                  src={features[0]?.icon}
+                  alt=""
+                  className="w-[56px] h-[56px] object-contain"
+                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                />
+                <h3
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
                     color: '#B3E58C',
-                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
                   }}
                 >
-                  {features[0]?.title.toUpperCase()}
-                </h4>
+                  {features[0]?.title}
+                </h3>
                 <p
-                  className="leading-relaxed"
+                  className="tracking-wide leading-relaxed max-w-[260px]"
                   style={{
-                    fontFamily: 'Space Grotesk, monospace',
-                    color: '#B3E58C',
-                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(179, 229, 140, 0.7)',
                   }}
                 >
                   {features[0]?.description}
@@ -94,24 +101,31 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 1, Col 3 — Text tile */}
-            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-              <div className="h-full flex flex-col justify-center items-center text-center">
-                <h4
-                  className="font-bold mb-6"
+            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
+                <img
+                  src={features[1]?.icon}
+                  alt=""
+                  className="w-[56px] h-[56px] object-contain"
+                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                />
+                <h3
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
                     color: '#B3E58C',
-                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
                   }}
                 >
-                  {features[1]?.title.toUpperCase()}
-                </h4>
+                  {features[1]?.title}
+                </h3>
                 <p
-                  className="leading-relaxed"
+                  className="tracking-wide leading-relaxed max-w-[260px]"
                   style={{
-                    fontFamily: 'Space Grotesk, monospace',
-                    color: '#B3E58C',
-                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(179, 229, 140, 0.7)',
                   }}
                 >
                   {features[1]?.description}
@@ -133,24 +147,31 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </div>
 
             {/* Row 2, Col 2 — Text tile */}
-            <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-              <div className="h-full flex flex-col justify-center items-center text-center">
-                <h4
-                  className="font-bold mb-6"
+            <div className="rounded-2xl p-10 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
+                <img
+                  src={features[2]?.icon}
+                  alt=""
+                  className="w-[56px] h-[56px] object-contain"
+                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                />
+                <h3
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Beverly Drive Right, cursive',
+                    fontSize: 'clamp(1.3rem, 1.5vw, 1.6rem)',
                     color: '#B3E58C',
-                    fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)',
                   }}
                 >
-                  {features[2]?.title.toUpperCase()}
-                </h4>
+                  {features[2]?.title}
+                </h3>
                 <p
-                  className="leading-relaxed"
+                  className="tracking-wide leading-relaxed max-w-[260px]"
                   style={{
-                    fontFamily: 'Space Grotesk, monospace',
-                    color: '#B3E58C',
-                    fontSize: 'clamp(1rem, 1.3vw, 1.5rem)',
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(179, 229, 140, 0.7)',
                   }}
                 >
                   {features[2]?.description}
