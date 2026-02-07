@@ -1,35 +1,19 @@
-const labValues = [
-  {
-    label: "Polyphenols",
-    value: "904",
-    unit: "mg/kg",
-    standard: "standard: ≈ 180 mg/kg",
-    description: "Natural antioxidants that give olive oil its health benefits.",
-  },
-  {
-    label: "Acidity",
-    value: "0.16",
-    unit: "%",
-    standard: "standard: < 0.8%",
-    description: "Lower acidity means fresher olives and higher quality.",
-  },
-  {
-    label: "Peroxides",
-    value: "6.3",
-    unit: "meq/kg",
-    standard: "standard: < 20 meq/kg",
-    description: "Shows how fresh the oil is. Low peroxide = less oxidation and longer shelf life.",
-  },
-  {
-    label: "Oleic Acid",
-    value: "74.9",
-    unit: "%",
-    standard: "standard: ~67%",
-    description: "A healthy fat that protects the oil and supports heart health. The higher, the better.",
-  },
-];
+interface ProductLabTrustProps {
+  content: {
+    heading: string;
+    subheading: string;
+    values: Array<{
+      label: string;
+      value: string;
+      unit: string;
+      standard: string;
+      description: string;
+    }>;
+  };
+}
 
-export const ProductLabTrust = () => {
+export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
+  const { heading, subheading, values: labValues } = content;
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
@@ -39,7 +23,7 @@ export const ProductLabTrust = () => {
               className="font-beverly font-bold text-olive-dark mb-4 tracking-tight"
               style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}
             >
-              You deserve food you can trust — and trace.
+              {heading}
             </h2>
             <p
               className="text-olive-medium leading-relaxed"
@@ -48,8 +32,7 @@ export const ProductLabTrust = () => {
                 fontSize: 'clamp(1rem, 1.2vw, 1.25rem)',
               }}
             >
-              That's why we third-party lab-test every batch of our olive oil on
-              key quality markers and share the results with you.
+              {subheading}
             </p>
           </div>
 
