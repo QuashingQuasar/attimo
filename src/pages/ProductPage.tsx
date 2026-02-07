@@ -8,6 +8,7 @@ import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
 import { ProductAlwaysNever } from "@/components/product/ProductAlwaysNever";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
@@ -364,6 +365,7 @@ const ProductPage = () => {
       <ProductOriginRegion />
       <ProductLabTrust />
       <PolyphenolComparison />
+      <Testimonials />
       <ProductAlwaysNever />
       <FAQ />
 
