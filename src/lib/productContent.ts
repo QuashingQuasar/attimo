@@ -152,9 +152,9 @@ export const productContentMap: Record<string, ProductContent> = {
     heroTitle: "NOCELLARA FROM SICILY",
     heroSubtitle: "Round & Nutty Extra Virgin Olive Oil",
     benefits: [
-      "Rich in polyphenols with a smooth, balanced profile",
+      "100% Nocellara olives harvested early and cold-pressed within 4 hours",
+      "Smooth and fruity profile, perfect for everyday use",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family grove in Sicily, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
