@@ -224,7 +224,7 @@ const ProductPage = () => {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-olive-medium font-beverly -mt-2" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
+            <p className="text-olive-medium font-beverly !-mt-1" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
               {content.heroSubtitle}
             </p>
 
