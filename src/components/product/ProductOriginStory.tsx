@@ -23,22 +23,11 @@ export const ProductOriginStory = () => {
         <div className="max-w-5xl mx-auto">
           {/* Hero statement */}
           <div className="mb-16 max-w-3xl">
-            <h2
-              className="font-beverly font-bold text-olive-dark mb-6 tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)' }}
-            >
-              Galega from Alentejo
-            </h2>
             <p
-              className="text-olive-dark leading-relaxed"
-              style={{
-                fontFamily: 'Space Grotesk, monospace',
-                fontSize: 'clamp(1.1rem, 1.4vw, 1.5rem)',
-              }}
+              className="font-beverly font-bold text-olive-dark tracking-tight"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)', lineHeight: 1.2 }}
             >
-              is 100% Extra Virgin, high in polyphenols — crafted with the purpose
-              to bring you olive oil with powerful antioxidants known for their
-              health benefits. Perfect for anyone looking to give their health a boost.
+              Galega from Alentejo is 100% Extra Virgin, high in polyphenols — crafted with the purpose to bring you olive oil with powerful antioxidants known for their health benefits. Perfect for anyone looking to give their health a boost.
             </p>
           </div>
 
