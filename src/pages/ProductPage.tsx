@@ -3,6 +3,12 @@ import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Info, Link, ArrowLeft } from "lucide-react";
+import { ProductOriginStory } from "@/components/product/ProductOriginStory";
+import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
+import { ProductLabTrust } from "@/components/product/ProductLabTrust";
+import { ProductAlwaysNever } from "@/components/product/ProductAlwaysNever";
+import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+import { FAQ } from "@/components/FAQ";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
 import { OriginMap } from "@/components/OriginMap";
@@ -352,6 +358,14 @@ const ProductPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Content sections below product hero */}
+      <ProductOriginStory />
+      <ProductOriginRegion />
+      <ProductLabTrust />
+      <PolyphenolComparison />
+      <ProductAlwaysNever />
+      <FAQ />
 
       <Footer />
     </div>
