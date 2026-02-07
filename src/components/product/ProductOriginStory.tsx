@@ -22,7 +22,7 @@ export const ProductOriginStory = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           {/* Hero statement */}
-          <div className="mb-16 max-w-3xl">
+          <div className="mb-16 max-w-3xl mx-auto text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
               style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)', lineHeight: 1.2 }}
