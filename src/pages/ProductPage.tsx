@@ -272,15 +272,6 @@ const ProductPage = () => {
               </li>
             </ul>
 
-            {/* Label Disclosure */}
-            <div className="p-3 rounded-lg bg-cream/40 border border-olive-light/20">
-              <div className="flex items-start gap-2">
-                <Info className="w-3.5 h-3.5 text-olive-medium flex-shrink-0 mt-0.5" />
-                <p className="text-olive-medium/90 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                  {content.labelDisclosure}
-                </p>
-              </div>
-            </div>
 
             {/* Quantity Selection */}
             <div className="space-y-2 pt-2">
