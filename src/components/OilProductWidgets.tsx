@@ -5,6 +5,7 @@ const oils = [{
   name: "Coratina d'Italia",
   subtitle: "Intense & Peppery",
   origin: "Umbria, Italy",
+  flag: "🇮🇹",
   handle: "galega-from-alentejo",
   image: bottleImage,
   tagline: "For the bold. A peppery kick that lingers."
@@ -12,6 +13,7 @@ const oils = [{
   name: "Picual de España",
   subtitle: "Bold & Herbaceous",
   origin: "Jaén, Spain",
+  flag: "🇪🇸",
   handle: "picual",
   image: bottleImage,
   tagline: "Fresh grass and green tomato on the nose."
@@ -19,6 +21,7 @@ const oils = [{
   name: "Nocellara d'Italia",
   subtitle: "Gentle & Fruity",
   origin: "Sicily, Italy",
+  flag: "🇮🇹",
   handle: "nocellara",
   image: bottleImage,
   tagline: "Almond and golden pear. Smooth every day."
@@ -83,13 +86,13 @@ export const OilProductWidgets = () => {
                   {oil.name}
                 </h3>
 
-                <p className="uppercase tracking-[0.15em] mb-3" style={{
+                <p className="uppercase tracking-[0.15em] mb-3 flex items-center justify-center gap-1.5" style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               color: '#1B4229',
               fontSize: 'clamp(0.7rem, 0.85vw, 0.85rem)',
               opacity: 0.5
             }}>
-                  {oil.subtitle} · {oil.origin}
+                  {oil.subtitle} · <span className="not-italic">{oil.flag}</span> {oil.origin}
                 </p>
 
                 <p className="mb-5 italic" style={{
