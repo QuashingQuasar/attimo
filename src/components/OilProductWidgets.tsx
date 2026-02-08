@@ -56,13 +56,13 @@ export const OilProductWidgets = () => {
             <Link
               key={oil.handle}
               to={`/product/${oil.handle}`}
-              className="group flex flex-col items-center text-center rounded-2xl p-6 pb-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group flex flex-col items-center text-center rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               style={{
                 backgroundColor: 'rgba(27, 66, 41, 0.04)',
                 border: '1px solid rgba(27, 66, 41, 0.08)',
               }}
             >
-              <div className="w-full aspect-[3/4] mb-6 flex items-center justify-center overflow-hidden rounded-xl">
+              <div className="w-full aspect-[3/4] overflow-hidden">
                 <img
                   src={oil.image}
                   alt={`${oil.name} olive oil bottle`}
@@ -70,6 +70,7 @@ export const OilProductWidgets = () => {
                 />
               </div>
 
+              <div className="p-6 pb-8">
               <h3
                 className="tracking-[0.1em] mb-1"
                 style={{
@@ -117,6 +118,7 @@ export const OilProductWidgets = () => {
               >
                 Discover →
               </span>
+              </div>
             </Link>
           ))}
         </div>
