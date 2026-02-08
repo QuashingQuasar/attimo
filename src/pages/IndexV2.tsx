@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
-import { HarvestProduct } from "@/components/HarvestProduct";
+
 import { WaitlistCTA } from "@/components/WaitlistCTA";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
@@ -22,7 +22,7 @@ const IndexV2 = () => {
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilProductWidgets />
       <IndustryProblem />
-      <HarvestProduct />
+      
       <KleiaWay />
       <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilComparison />
