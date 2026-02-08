@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 import bottleImage from "@/assets/attimo-bottle-final.jpg";
 import { OliveLeaf } from "./OliveLeaf";
 const oils = [{
-  name: "Coratina",
-  subtitle: "d'Italia",
+  name: "Coratina d'Italia",
+  subtitle: "Intense & Peppery",
   origin: "Alentejo, Portugal",
   handle: "galega-from-alentejo",
   image: bottleImage,
   tagline: "For the bold. A peppery kick that lingers."
 }, {
-  name: "Picual",
-  subtitle: "de España",
+  name: "Picual de España",
+  subtitle: "Bold & Herbaceous",
   origin: "Jaén, Spain",
   handle: "picual",
   image: bottleImage,
   tagline: "Fresh grass and green tomato on the nose."
 }, {
-  name: "Nocellara",
-  subtitle: "d'Italia",
+  name: "Nocellara d'Italia",
+  subtitle: "Gentle & Fruity",
   origin: "Sicily, Italy",
   handle: "nocellara",
   image: bottleImage,
@@ -89,7 +89,7 @@ export const OilProductWidgets = () => {
               fontSize: 'clamp(0.7rem, 0.85vw, 0.85rem)',
               opacity: 0.5
             }}>
-                  {oil.subtitle}
+                  {oil.subtitle} · {oil.origin}
                 </p>
 
                 <p className="mb-5 italic" style={{
