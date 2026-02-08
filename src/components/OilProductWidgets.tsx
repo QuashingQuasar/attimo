@@ -8,7 +8,8 @@ const oils = [{
   flag: "🇮🇹",
   handle: "galega-from-alentejo",
   image: bottleImage,
-  tagline: "For the bold. A peppery kick that lingers."
+  tagline: "For the bold. A peppery kick that lingers.",
+  price: 22
 }, {
   name: "Picual de España",
   subtitle: "Bold & Herbaceous",
@@ -16,7 +17,8 @@ const oils = [{
   flag: "🇪🇸",
   handle: "picual",
   image: bottleImage,
-  tagline: "Fresh grass and green tomato on the nose."
+  tagline: "Fresh grass and green tomato on the nose.",
+  price: 20
 }, {
   name: "Nocellara d'Italia",
   subtitle: "Gentle & Fruity",
@@ -24,7 +26,8 @@ const oils = [{
   flag: "🇮🇹",
   handle: "nocellara",
   image: bottleImage,
-  tagline: "Almond and golden pear. Smooth every day."
+  tagline: "Almond and golden pear. Smooth every day.",
+  price: 20
 }];
 export const OilProductWidgets = () => {
   return <section className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden" style={{
@@ -105,6 +108,15 @@ export const OilProductWidgets = () => {
                   "{oil.tagline}"
                 </p>
 
+                <p className="mb-4" style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
+              color: '#1B4229',
+              fontSize: 'clamp(1.1rem, 1.4vw, 1.4rem)',
+              letterSpacing: '0.03em'
+            }}>
+                  €{oil.price}
+                </p>
+
                 <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 group-hover:scale-105" style={{
               backgroundColor: '#1B4229',
               color: '#CDDB2D',
@@ -112,7 +124,7 @@ export const OilProductWidgets = () => {
               fontSize: 'clamp(0.75rem, 0.9vw, 0.9rem)',
               letterSpacing: '0.1em'
             }}>
-                  DISCOVER
+                  SHOP
                   <OliveLeaf className="w-2.5 h-4" fill="#CDDB2D" />
                 </span>
               </div>
