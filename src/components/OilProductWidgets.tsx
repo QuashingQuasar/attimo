@@ -98,12 +98,12 @@ export const OilProductWidgets = () => {
                   {oil.subtitle} · <span className="not-italic">{oil.flag}</span> {oil.origin}
                 </p>
 
-                <p className="mb-5 italic" style={{
-              fontFamily: 'Cormorant Garamond, serif',
+                <p className="mb-5" style={{
+              fontFamily: 'Space Grotesk, sans-serif',
               color: '#1B4229',
-              fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)',
-              opacity: 0.7,
-              lineHeight: 1.5
+              fontSize: 'clamp(0.85rem, 1vw, 1rem)',
+              opacity: 0.6,
+              lineHeight: 1.6
             }}>
                   "{oil.tagline}"
                 </p>
