@@ -3,21 +3,21 @@ import bottleImage from "@/assets/attimo-bottle-final.jpg";
 import { OliveLeaf } from "./OliveLeaf";
 const oils = [{
   name: "Coratina",
-  subtitle: "Intense & Peppery",
+  subtitle: "d'Italia",
   origin: "Alentejo, Portugal",
   handle: "galega-from-alentejo",
   image: bottleImage,
   tagline: "For the bold. A peppery kick that lingers."
 }, {
   name: "Picual",
-  subtitle: "Bold & Herbaceous",
+  subtitle: "de España",
   origin: "Jaén, Spain",
   handle: "picual",
   image: bottleImage,
   tagline: "Fresh grass and green tomato on the nose."
 }, {
   name: "Nocellara",
-  subtitle: "Gentle & Fruity",
+  subtitle: "d'Italia",
   origin: "Sicily, Italy",
   handle: "nocellara",
   image: bottleImage,
@@ -89,7 +89,7 @@ export const OilProductWidgets = () => {
               fontSize: 'clamp(0.7rem, 0.85vw, 0.85rem)',
               opacity: 0.5
             }}>
-                  {oil.subtitle} · {oil.origin}
+                  {oil.subtitle}
                 </p>
 
                 <p className="mb-5 italic" style={{
