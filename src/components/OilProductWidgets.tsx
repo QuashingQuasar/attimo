@@ -27,8 +27,8 @@ const oils = [
 
 export const OilProductWidgets = () => {
   return (
-    <section className="py-16 md:py-24 px-6" style={{ backgroundColor: '#FFFAEA' }}>
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-16 md:py-24 px-4 md:px-6" style={{ backgroundColor: '#FFFAEA' }}>
+      <div className="mx-auto" style={{ maxWidth: '1400px' }}>
         <h2
           className="text-center mb-4 tracking-[0.15em]"
           style={{
@@ -51,22 +51,22 @@ export const OilProductWidgets = () => {
           Three single-variety oils, each with its own character. Discover which one suits your palate.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {oils.map((oil) => (
             <Link
               key={oil.handle}
               to={`/product/${oil.handle}`}
-              className="group flex flex-col items-center text-center rounded-2xl p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group flex flex-col items-center text-center rounded-2xl p-6 pb-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               style={{
                 backgroundColor: 'rgba(27, 66, 41, 0.04)',
                 border: '1px solid rgba(27, 66, 41, 0.08)',
               }}
             >
-              <div className="w-40 h-56 md:w-48 md:h-64 mb-6 flex items-center justify-center overflow-hidden">
+              <div className="w-full aspect-[3/4] mb-6 flex items-center justify-center overflow-hidden rounded-xl">
                 <img
                   src={oil.image}
                   alt={`${oil.name} olive oil bottle`}
-                  className="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
