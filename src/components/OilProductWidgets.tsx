@@ -161,30 +161,72 @@ export const OilProductWidgets = () => {
         </div>
 
         {/* Quiz CTA */}
-        <div className="text-center mt-14 md:mt-20">
+        <div className="mt-16 md:mt-24 rounded-2xl px-8 py-10 md:py-14 text-center relative overflow-hidden"
+          style={{
+            backgroundColor: 'rgba(205, 219, 45, 0.08)',
+            border: '1px solid rgba(205, 219, 45, 0.15)',
+          }}
+        >
+          {/* Decorative leaves */}
+          <div className="absolute top-4 left-6 opacity-20">
+            <OliveLeaf className="w-6 h-10" fill="#CDDB2D" />
+          </div>
+          <div className="absolute bottom-4 right-6 opacity-20 rotate-180">
+            <OliveLeaf className="w-6 h-10" fill="#CDDB2D" />
+          </div>
+
           <p
-            className="mb-5"
+            className="mb-2"
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               color: '#B3E58C',
-              fontSize: 'clamp(0.95rem, 1.2vw, 1.2rem)',
-              opacity: 0.85,
+              fontSize: 'clamp(0.85rem, 1vw, 1rem)',
+              opacity: 0.6,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
             }}
           >
-            Not sure which one is for you?
+            60 seconds · 5 questions
           </p>
+
+          <h3
+            className="mb-3"
+            style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
+              color: '#FFFAEA',
+              fontSize: 'clamp(1.5rem, 2.8vw, 2.5rem)',
+            }}
+          >
+            Not sure which oil is for you?
+          </h3>
+
+          <p
+            className="mb-8 max-w-lg mx-auto italic"
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              color: '#B3E58C',
+              fontSize: 'clamp(1rem, 1.3vw, 1.3rem)',
+              opacity: 0.8,
+              lineHeight: 1.6,
+            }}
+          >
+            Take our palate quiz and we'll match you with the oil that fits your taste, kitchen, and lifestyle.
+          </p>
+
           <Link
             to="/quiz"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               backgroundColor: '#CDDB2D',
               color: '#1B4229',
-              fontSize: 'clamp(0.875rem, 1.1vw, 1.1rem)',
-              letterSpacing: '0.05em',
+              fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)',
+              letterSpacing: '0.08em',
+              fontWeight: 600,
             }}
           >
-            Take The Palate Quiz
+            Find Your Oil
+            <span className="text-lg">→</span>
           </Link>
         </div>
       </div>
