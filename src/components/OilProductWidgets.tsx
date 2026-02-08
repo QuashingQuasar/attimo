@@ -184,7 +184,7 @@ export const OilProductWidgets = () => {
               letterSpacing: '0.05em',
             }}
           >
-            Take The Palate Quiz
+            Find Your Oil →
           </Link>
         </div>
       </div>
