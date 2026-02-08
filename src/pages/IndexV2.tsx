@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { OilProductWidgets } from "@/components/OilProductWidgets";
+
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
@@ -20,7 +20,7 @@ const IndexV2 = () => {
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
-      <OilProductWidgets />
+      
       <IndustryProblem />
       <HarvestProduct />
       <KleiaWay />
