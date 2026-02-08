@@ -4,7 +4,7 @@ import { OliveLeaf } from "./OliveLeaf";
 const oils = [{
   name: "Coratina d'Italia",
   subtitle: "Intense & Peppery",
-  origin: "Alentejo, Portugal",
+  origin: "Umbria, Italy",
   handle: "galega-from-alentejo",
   image: bottleImage,
   tagline: "For the bold. A peppery kick that lingers."
