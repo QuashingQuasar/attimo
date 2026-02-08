@@ -21,7 +21,7 @@ const oils = [
   },
   {
     name: "Nocellara",
-    subtitle: "Round & Nutty",
+    subtitle: "Gentle & Fruity",
     origin: "Sicily, Italy",
     handle: "nocellara",
     image: bottleImage,
