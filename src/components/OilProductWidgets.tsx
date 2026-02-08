@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import bottlePlaceholder from "@/assets/olive-oil-bottle-placeholder.png";
+import bottleImage from "@/assets/attimo-bottle-final.jpg";
 
 const oils = [
   {
@@ -7,21 +7,21 @@ const oils = [
     subtitle: "Intense & Peppery",
     origin: "Alentejo, Portugal",
     handle: "galega-from-alentejo",
-    image: bottlePlaceholder,
+    image: bottleImage,
   },
   {
     name: "Picual",
     subtitle: "Bold & Herbaceous",
     origin: "Jaén, Spain",
     handle: "picual",
-    image: bottlePlaceholder,
+    image: bottleImage,
   },
   {
     name: "Nocellara",
     subtitle: "Round & Nutty",
     origin: "Sicily, Italy",
     handle: "nocellara",
-    image: bottlePlaceholder,
+    image: bottleImage,
   },
 ];
 
