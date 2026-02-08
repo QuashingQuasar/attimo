@@ -117,15 +117,14 @@ export const OilProductWidgets = () => {
                   €{oil.price}
                 </p>
 
-                <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full transition-all duration-300 group-hover:scale-105" style={{
+                <span className="inline-flex items-center px-7 py-3 rounded-full transition-all duration-300 group-hover:scale-105" style={{
               backgroundColor: '#1B4229',
               color: '#CDDB2D',
               fontFamily: 'UDC Working Man Sans, sans-serif',
-              fontSize: 'clamp(0.75rem, 0.9vw, 0.9rem)',
+              fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
               letterSpacing: '0.1em'
             }}>
                   SHOP
-                  <OliveLeaf className="w-2.5 h-4" fill="#CDDB2D" />
                 </span>
               </div>
             </Link>)}
