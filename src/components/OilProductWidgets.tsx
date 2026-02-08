@@ -47,14 +47,13 @@ export const OilProductWidgets = () => {
             Three Groves, Three Characters
           </h2>
 
-          <p className="max-w-xl mx-auto" style={{
+          <p className="max-w-3xl mx-auto whitespace-nowrap" style={{
           fontFamily: 'Space Grotesk, sans-serif',
           color: '#B3E58C',
           opacity: 0.8,
-          fontSize: 'clamp(1.8rem, 2.2vw, 2.2rem)',
+          fontSize: 'clamp(1.4rem, 1.8vw, 1.8rem)',
           lineHeight: 1.7
-        }}>Single-variety oils from select groves across the Mediterranean.<br className="hidden md:block" />
-            Discover which one suits your palate.
+        }}>Single-variety oils from select groves across the Mediterranean. Discover which one suits your palate.
           </p>
         </div>
 
