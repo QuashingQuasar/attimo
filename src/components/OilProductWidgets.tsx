@@ -47,25 +47,10 @@ export const OilProductWidgets = () => {
       <div className="relative z-10 mx-auto" style={{ maxWidth: '1400px' }}>
         {/* Section header */}
         <div className="text-center mb-14 md:mb-20">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-12 md:w-20" style={{ backgroundColor: '#CDDB2D', opacity: 0.4 }} />
-            <span
-              className="uppercase tracking-[0.25em]"
-              style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#CDDB2D',
-                fontSize: 'clamp(0.75rem, 1vw, 0.95rem)',
-              }}
-            >
-              The Collection
-            </span>
-            <div className="h-px w-12 md:w-20" style={{ backgroundColor: '#CDDB2D', opacity: 0.4 }} />
-          </div>
-
           <h2
             className="mb-4"
             style={{
-              fontFamily: 'Beverly Drive, serif',
+              fontFamily: 'UDC Working Man Sans, sans-serif',
               color: '#FFFAEA',
               fontSize: 'clamp(2rem, 4vw, 3.5rem)',
               letterSpacing: '0.05em',
