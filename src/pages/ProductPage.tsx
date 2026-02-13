@@ -123,7 +123,7 @@ const ProductPage = () => {
     {
       icon: <Sprout size={20} className="text-olive-dark" />,
       label: "Harvest",
-      value: "Picked in October 2025, cold-pressed within 4 hours",
+      value: "October 2025",
     },
     {
       icon: <MapPin size={20} className="text-olive-dark" />,
