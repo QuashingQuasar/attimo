@@ -175,7 +175,7 @@ const ProductPage = () => {
               {/* Harvest Badge */}
               <div className="flex items-center gap-3">
                 <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                  2024/25 Harvest
+                  New Harvest
                 </span>
                 <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                   Last Bottles
