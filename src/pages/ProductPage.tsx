@@ -206,7 +206,7 @@ const ProductPage = () => {
               </p>
 
               {/* Attribute Grid — 2x2 like Arsenio */}
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2">
+              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
                 {attributes.map((attr) => (
                   <div key={attr.label} className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
