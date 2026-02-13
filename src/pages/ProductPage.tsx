@@ -174,27 +174,32 @@ const ProductPage = () => {
               
               {/* Harvest Badge */}
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-cream font-semibold uppercase tracking-wider" style={{ backgroundColor: '#4E5B2B', fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.8rem)' }}>
+                <span className="px-5 py-2 rounded-full bg-olive-dark text-cream font-bold uppercase tracking-wider" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                   2024/25 Harvest
                 </span>
-                <span className="text-olive-medium uppercase tracking-wider font-semibold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.8rem)' }}>
+                <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                   Last Bottles
                 </span>
               </div>
 
               {/* Title + Volume */}
-              <div className="flex items-baseline gap-3 -mt-2">
+              <div className="flex items-baseline gap-3">
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                 </h1>
-                <span className="text-olive-medium border border-olive-dark/20 rounded px-2 py-0.5 whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
+                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.3rem)' }}>
                   {content.tabs.details.volume}
                 </span>
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium italic -mt-4" style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.05rem, 1.2vw, 1.3rem)' }}>
+              <p className="text-olive-medium !-mt-1" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 2rem)' }}>
                 {content.heroSubtitle}
+              </p>
+
+              {/* Description */}
+              <p className="text-olive-medium leading-relaxed max-w-lg" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
+                {content.originStory.headline.split('.').slice(0, 2).join('.') + '.'}
               </p>
 
               {/* Attribute Grid — 2x2 like Arsenio */}
