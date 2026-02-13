@@ -149,69 +149,69 @@ export const productContentMap: Record<string, ProductContent> = {
   },
 
   nocellara: {
-    heroTitle: "NOCELLARA FROM SICILY",
-    heroSubtitle: "Round & Nutty Extra Virgin Olive Oil",
+    heroTitle: "NOCELLARA D'ITALIA",
+    heroSubtitle: "Gentle & Fruity Extra Virgin Olive Oil",
     benefits: [
-      "100% Nocellara olives harvested early and cold-pressed within 4 hours",
-      "Smooth and fruity profile, perfect for everyday use",
+      "100% Nocellara olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
+      "Directly sourced from a small family grove in Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Nocellara2025.pdf",
-    sourceLine: "Directly sourced from a small family grove in Sicily, Italy",
+    sourceLine: "Directly sourced from a small family grove in Italy",
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "POLYPHENOLS", value: "412", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
-      { key: "oleic-acid", label: "OLEIC ACID", value: "71.2%", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-      { key: "peroxides", label: "PEROXIDES", value: "7.1", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "polyphenols", label: "POLYPHENOLS", value: "400", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "", description: "a powerful natural anti-inflammatory found in quality EVOO" },
+      { key: "oleacin", label: "OLEACIN", value: "209", unit: "mg/kg", avg: "", description: "a potent antioxidant linked to heart health and longevity" },
       { key: "acidity", label: "ACIDITY", value: "0.21%", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
       details: {
-        origin: "Sicily, Italy",
-        olive: "Nocellara del Belice",
-        flavor: "round & nutty",
+        origin: "Italy",
+        olive: "Nocellara",
+        flavor: "gentle & fruity",
         store: "keep away from light and heat",
         volume: "500ml",
       },
       flavorProfile: [
-        { label: "NUTTY", rating: 5 },
-        { label: "FRUITY", rating: 4 },
-        { label: "PEPPERY", rating: 2 },
+        { label: "FRUITY", rating: 5 },
+        { label: "NUTTY", rating: 4 },
         { label: "BUTTERY", rating: 4 },
+        { label: "PEPPERY", rating: 2 },
       ],
       harvest:
-        "Hand-picked in October 2024 from centuries-old Nocellara del Belice trees in western Sicily. Cold-extracted within hours of harvest to preserve the oil's distinctive round, nutty character and natural antioxidants.",
-      uses: "An incredibly versatile oil — perfect for both finishing and cooking.",
+        "The olives are picked early in October when they're young, green and packed with polyphenols that boost taste and health. Cold-extracted within hours of harvest to preserve the oil's distinctive gentle, fruity character.",
+      uses: "Good on everything — drizzle over fresh foods to add a gentle pop of flavor.",
       usesExtra:
-        "Its round, nutty flavour pairs beautifully with fish, grilled vegetables, pasta, and fresh bread. Mild enough for everyday use, special enough to notice.",
+        "Perfect for pasta, enrich eggs, finish seafood, dress leafy greens — and try it on ice cream.",
     },
     originStory: {
       headline:
-        "Nocellara from Sicily is 100% Extra Virgin, single-variety — crafted to bring you a beautifully balanced olive oil with a round, nutty character. Notes of fresh almond and green banana, with a gentle finish that makes it perfect for everyday use.",
+        "Nocellara d'Italia is 100% Extra Virgin, single-variety — a generous olive with notes of fresh almond and green banana. Its oil has a velvety texture and round finish, perfect for all-round use.",
       quickRef: [
         { label: "VARIETY", value: "100% Nocellara" },
-        { label: "ORIGIN", value: "Sicily, Italy" },
-        { label: "FLAVOR", value: "Round & Nutty" },
-        { label: "USE", value: "finishing & cooking" },
+        { label: "ORIGIN", value: "Italy" },
+        { label: "FLAVOR", value: "Gentle & Fruity" },
+        { label: "USE", value: "drizzle over fresh foods" },
         { label: "STORE", value: "away from light and heat" },
       ],
       features: [
         {
-          title: "Round & Nutty",
-          description: "Notes of fresh almond and green banana with a rich, buttery texture and gentle finish.",
+          title: "Gentle & Fruity",
+          description: "Notes of fresh almond and green banana with a velvety texture and round finish. Perfect for all-round use.",
           icon: "/icons/bread-2.svg",
         },
         {
           title: "Early Harvest",
-          description: "Harvested in October from centuries-old trees, cold-extracted within hours to preserve freshness.",
+          description: "Picked early in October when the olives are young, green and packed with polyphenols that boost taste and health.",
           icon: "/icons/branch-2.svg",
         },
         {
           title: "Nocellara Olives",
-          description: "A prized Sicilian variety known for its large fruit, rich oil content, and exceptionally smooth character.",
+          description: "A generous Italian olive variety known for its rich oil content and exceptionally smooth, fruity character.",
           icon: "/icons/olive.svg",
         },
       ],
@@ -221,13 +221,13 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
-        { label: "Polyphenols", value: "412", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Polyphenols", value: "400", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "values at time of production", description: "A powerful natural anti-inflammatory compound found in quality extra virgin olive oil." },
+        { label: "Oleacin", value: "209", unit: "mg/kg", standard: "values at time of production", description: "A potent antioxidant linked to heart health and longevity." },
         { label: "Acidity", value: "0.21", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
-        { label: "Peroxides", value: "7.1", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation and longer shelf life." },
-        { label: "Oleic Acid", value: "71.2", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health. The higher, the better." },
       ],
     },
-    polyphenolValue: 412,
+    polyphenolValue: 400,
     polyphenolLabel: "Nocellara",
   },
 };
