@@ -267,23 +267,6 @@ const ProductPage = () => {
                 </Button>
               </div>
 
-              {/* Lab Report Link */}
-              <div className="flex items-center gap-3 pt-2 pb-2">
-                <a 
-                  href={content.labReportUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                  style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                >
-                  <Beaker size={18} />
-                  View 3rd party lab results
-                </a>
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-olive-dark/10" />
-
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map(tile => (
@@ -300,6 +283,20 @@ const ProductPage = () => {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              {/* Lab Report Link */}
+              <div className="flex items-center gap-3">
+                <a 
+                  href={content.labReportUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
+                  style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                >
+                  <Beaker size={18} />
+                  View 3rd party lab results
+                </a>
               </div>
 
               {/* Accordion Info */}
