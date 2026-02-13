@@ -224,23 +224,23 @@ const ProductPage = () => {
 
               {/* Quantity Selection */}
               <div className="space-y-3">
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-5 gap-2">
                   {quantityOptions.map(option => (
                     <button
                       key={option.quantity}
                       onClick={() => setSelectedQuantity(option.quantity)}
-                      className={`px-5 py-3 rounded-full border transition-all duration-200 ${
+                      className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
                         selectedQuantity === option.quantity
                           ? 'border-olive-dark bg-olive-dark text-cream'
                           : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
                       }`}
-                      style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}
+                      style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}
                     >
-                      {option.label}
+                      <div>{option.label}</div>
                       {option.subtitle && (
-                        <span className={`ml-1.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
-                          · {option.subtitle}
-                        </span>
+                        <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
+                          {option.subtitle}
+                        </div>
                       )}
                     </button>
                   ))}
