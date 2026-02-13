@@ -170,7 +170,7 @@ export const productContentMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Italy",
+        origin: "Sicily, Italy",
         olive: "Nocellara",
         flavor: "gentle & fruity",
         store: "keep away from light and heat",
@@ -193,7 +193,7 @@ export const productContentMap: Record<string, ProductContent> = {
         "Nocellara d'Italia is 100% Extra Virgin, single-variety — a generous olive with notes of fresh almond and green banana. Its oil has a velvety texture and round finish, perfect for all-round use.",
       quickRef: [
         { label: "VARIETY", value: "100% Nocellara" },
-        { label: "ORIGIN", value: "Italy" },
+        { label: "ORIGIN", value: "Sicily, Italy" },
         { label: "FLAVOR", value: "Gentle & Fruity" },
         { label: "USE", value: "drizzle over fresh foods" },
         { label: "STORE", value: "away from light and heat" },
