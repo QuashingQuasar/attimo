@@ -255,7 +255,7 @@ const ProductPage = () => {
                   fontFamily: 'UDC Working Man Sans, sans-serif', 
                   backgroundColor: '#CDDB2D', 
                   fontSize: 'clamp(1rem, 1.15vw, 1.2rem)', 
-                  borderRadius: '999px',
+                  borderRadius: '0.75rem',
                   letterSpacing: '0.05em',
                 }}
               >
