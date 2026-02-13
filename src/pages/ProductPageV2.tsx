@@ -117,9 +117,9 @@ const ProductPage = () => {
     <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
       
-      {/* Product Section - OlvLimits style: sticky left image, scrolling right info */}
+      {/* Product Section - Full-bleed left image, scrolling right info */}
       <section className="pt-20 md:pt-24">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-0 items-start">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-0 items-start">
           
           {/* Left: Sticky Image Gallery */}
           <div className="lg:sticky lg:top-20 lg:self-start">
