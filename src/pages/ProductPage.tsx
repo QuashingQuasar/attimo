@@ -206,20 +206,6 @@ const ProductPage = () => {
                 ))}
               </div>
 
-              {/* Lab Report Link */}
-              <div className="flex items-center gap-3 pt-2 pb-2">
-                <a 
-                  href={content.labReportUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                  style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                >
-                  <Beaker size={18} />
-                  View 3rd party lab results
-                </a>
-              </div>
-
               {/* Divider */}
               <div className="border-t border-olive-dark/10" />
 
@@ -271,6 +257,20 @@ const ProductPage = () => {
                   `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
                 )}
               </Button>
+
+              {/* Lab Report Link */}
+              <div className="flex items-center gap-3 pt-2 pb-2">
+                <a 
+                  href={content.labReportUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
+                  style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                >
+                  <Beaker size={18} />
+                  View 3rd party lab results
+                </a>
+              </div>
 
               {/* Divider */}
               <div className="border-t border-olive-dark/10" />
