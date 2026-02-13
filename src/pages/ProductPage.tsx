@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
-import { Droplets, Palette, UtensilsCrossed, Wind, Beaker, Link } from "lucide-react";
+import { Droplets, Cherry, UtensilsCrossed, Wind, Beaker, Link } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -115,8 +115,8 @@ const ProductPage = () => {
       value: `100% ${content.tabs.details.olive}`,
     },
     {
-      icon: <Palette size={20} className="text-olive-dark" />,
-      label: "Color",
+      icon: <Cherry size={20} className="text-olive-dark" />,
+      label: "Flavor",
       value: content.tabs.details.flavor,
     },
     {
