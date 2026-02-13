@@ -121,14 +121,14 @@ const ProductPage = () => {
       value: content.tabs.details.flavor,
     },
     {
-      icon: <MapPin size={20} className="text-olive-dark" />,
-      label: "Origin",
-      value: content.tabs.details.origin,
-    },
-    {
       icon: <Sprout size={20} className="text-olive-dark" />,
       label: "Harvest",
       value: content.tabs.harvest.split('.')[0],
+    },
+    {
+      icon: <MapPin size={20} className="text-olive-dark" />,
+      label: "Origin",
+      value: content.tabs.details.origin,
     },
   ];
 
