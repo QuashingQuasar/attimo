@@ -183,7 +183,7 @@ const ProductPage = () => {
               </div>
 
               {/* Title + Volume */}
-              <div className="flex items-baseline gap-3">
+              <div className="flex items-baseline gap-3 !-mt-4">
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                 </h1>
