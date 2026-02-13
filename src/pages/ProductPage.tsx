@@ -137,8 +137,8 @@ const ProductPage = () => {
       
       {/* Product Hero Section */}
       <section className="pt-24 md:pt-28 pb-16 md:pb-24">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-start">
             
             {/* Left: Image Gallery with vertical thumbnails */}
             <div className="flex gap-4 lg:sticky lg:top-28 lg:self-start">
@@ -162,7 +162,7 @@ const ProductPage = () => {
               )}
 
               {/* Main Image */}
-              <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden" style={{ backgroundColor: '#F0E8D8' }}>
+              <div className="flex-1 aspect-[2/3] lg:aspect-auto lg:min-h-[75vh] rounded-2xl overflow-hidden" style={{ backgroundColor: '#F0E8D8' }}>
                 <img
                   src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
                   alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
