@@ -190,7 +190,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Nocellara d'Italia is 100% Extra Virgin, single-variety — a generous olive with notes of fresh almond and green banana. Its oil has a velvety texture and round finish, perfect for all-round use.",
+        "Nocellara is a generous Sicilian olive, one of Italy's most prized cultivars. It yields an oil with notes of fresh almond and green banana, a velvety texture and a round, buttery finish. Nocellara Extra Virgin Olive Oil is gentle and fruity, with a mild peppery warmth and none of the bitterness — perfect for everyday use on everything you love.",
       quickRef: [
         { label: "VARIETY", value: "100% Nocellara" },
         { label: "ORIGIN", value: "Sicily, Italy" },
