@@ -174,7 +174,7 @@ const ProductPage = () => {
               
               {/* Harvest Badge */}
               <div className="flex items-center gap-3">
-                <span className="px-5 py-2 rounded-full bg-olive-dark text-cream font-bold uppercase tracking-wider" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                   2024/25 Harvest
                 </span>
                 <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
@@ -187,13 +187,13 @@ const ProductPage = () => {
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                 </h1>
-                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.3rem)' }}>
+                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)' }}>
                   {content.tabs.details.volume}
                 </span>
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-1" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 2rem)' }}>
+              <p className="text-olive-medium !-mt-1 underline decoration-dotted decoration-olive-medium/50 underline-offset-[6px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 2rem)' }}>
                 {content.heroSubtitle}
               </p>
 
