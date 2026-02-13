@@ -136,14 +136,12 @@ const ProductPage = () => {
       <Header onWaitlistClick={() => {}} forceScrolled />
       
       {/* Product Hero Section */}
-      <section className="pt-24 md:pt-28 pb-16 md:pb-24">
-        <div className="max-w-[1500px] mx-auto px-4 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-14 items-start">
+      <section className="pt-20 md:pt-24">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-0 items-start">
             
-            {/* Left: Image with overlay thumbnails */}
-            <div className="lg:sticky lg:top-28 lg:self-start relative">
-              {/* Main Image — squarish */}
-              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative" style={{ backgroundColor: '#F0E8D8' }}>
+            {/* Left: Full-bleed sticky image */}
+            <div className="lg:sticky lg:top-20 lg:self-start">
+              <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                   src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
                   alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
@@ -152,7 +150,7 @@ const ProductPage = () => {
 
                 {/* Overlay Thumbnails — bottom-left inside image */}
                 {productImages.length > 1 && (
-                  <div className="absolute bottom-4 left-4 flex flex-col gap-2">
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
                     {productImages.map((img, i) => (
                       <button
                         key={i}
@@ -172,7 +170,7 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="space-y-8 lg:pt-4">
+            <div className="px-6 md:px-10 lg:px-12 py-8 md:py-12 space-y-8">
               
               {/* Volume */}
               <p className="text-olive-medium tracking-widest uppercase" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
@@ -299,7 +297,6 @@ const ProductPage = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Content sections below product hero */}
