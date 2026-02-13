@@ -274,13 +274,20 @@ const ProductPage = () => {
                     <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.65rem, 0.8vw, 0.8rem)' }}>
                       {tile.label}
                     </p>
-                    <p className="text-olive-dark font-bold" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.4rem, 1.8vw, 2rem)' }}>
-                      {tile.value}
-                      {tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>{tile.unit}</span>}
+                    <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.4rem, 1.8vw, 2rem)' }}>
+                      <span>
+                        {tile.value}
+                        {tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>{tile.unit}</span>}
+                      </span>
+                      <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
+                        {tile.avg}
+                      </span>
                     </p>
-                    <p className="text-olive-light mt-0.5" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
-                      {tile.avg}
-                    </p>
+                    {tile.description && (
+                      <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
+                        {tile.description}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
