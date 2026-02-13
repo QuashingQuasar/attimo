@@ -137,53 +137,38 @@ const ProductPage = () => {
       
       {/* Product Hero Section */}
       <section className="pt-24 md:pt-28 pb-16 md:pb-24">
-        <div className="max-w-[1500px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-start">
+        <div className="max-w-[1500px] mx-auto px-4 md:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-14 items-start">
             
-            {/* Left: Image Gallery with vertical thumbnails */}
-            <div className="flex gap-4 lg:sticky lg:top-28 lg:self-start">
-              {/* Vertical Thumbnails */}
-              {productImages.length > 1 && (
-                <div className="hidden md:flex flex-col gap-3">
-                  {productImages.map((img, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setSelectedImageIndex(i)}
-                      className={`w-[72px] h-[72px] rounded-lg overflow-hidden border transition-all duration-200 flex-shrink-0 ${
-                        selectedImageIndex === i 
-                          ? 'border-olive-dark shadow-md ring-1 ring-olive-dark/20' 
-                          : 'border-olive-light/20 opacity-60 hover:opacity-100'
-                      }`}
-                    >
-                      <img src={img.node.url} alt="" className="w-full h-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              {/* Main Image */}
-              <div className="flex-1 aspect-[2/3] lg:aspect-auto lg:min-h-[75vh] rounded-2xl overflow-hidden" style={{ backgroundColor: '#F0E8D8' }}>
+            {/* Left: Image with overlay thumbnails */}
+            <div className="lg:sticky lg:top-28 lg:self-start relative">
+              {/* Main Image — squarish */}
+              <div className="w-full aspect-[4/5] rounded-2xl overflow-hidden relative" style={{ backgroundColor: '#F0E8D8' }}>
                 <img
                   src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
                   alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
                   className="w-full h-full object-cover"
                 />
-              </div>
 
-              {/* Mobile thumbnails */}
-              {productImages.length > 1 && (
-                <div className="md:hidden flex gap-2 absolute bottom-4 left-1/2 -translate-x-1/2">
-                  {productImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setSelectedImageIndex(i)}
-                      className={`w-2.5 h-2.5 rounded-full transition-all ${
-                        selectedImageIndex === i ? 'bg-olive-dark scale-110' : 'bg-olive-dark/30'
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
+                {/* Overlay Thumbnails — bottom-left inside image */}
+                {productImages.length > 1 && (
+                  <div className="absolute bottom-4 left-4 flex flex-col gap-2">
+                    {productImages.map((img, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setSelectedImageIndex(i)}
+                        className={`w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
+                          selectedImageIndex === i 
+                            ? 'border-white shadow-lg' 
+                            : 'border-white/40 opacity-60 hover:opacity-100'
+                        }`}
+                      >
+                        <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Right: Product Info */}
