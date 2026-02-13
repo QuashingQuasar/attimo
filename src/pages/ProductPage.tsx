@@ -172,24 +172,26 @@ const ProductPage = () => {
             {/* Right: Product Info */}
             <div className="px-6 md:px-10 lg:px-12 py-8 md:py-12 space-y-8">
               
-              {/* Harvest Badge */}
-              <div className="flex items-center gap-3">
-                <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                  New Harvest
-                </span>
-                <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                  Last Bottles
-                </span>
-              </div>
+              {/* Harvest Badge + Title Block */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                    New Harvest
+                  </span>
+                  <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                    Last Bottles
+                  </span>
+                </div>
 
-              {/* Title + Volume */}
-              <div className="flex items-baseline gap-3 !-mt-4">
+                {/* Title + Volume */}
+                <div className="flex items-baseline gap-3">
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                 </h1>
                 <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)', fontStyle: 'italic' }}>
                   {content.tabs.details.volume}
                 </span>
+              </div>
               </div>
 
               {/* Subtitle */}
