@@ -187,13 +187,13 @@ const ProductPage = () => {
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                 </h1>
-                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)' }}>
+                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)', fontStyle: 'italic' }}>
                   {content.tabs.details.volume}
                 </span>
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-1 underline decoration-dotted decoration-olive-medium/50 underline-offset-[6px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontSize: 'clamp(1.3rem, 2vw, 2rem)' }}>
+              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontWeight: 'bold', fontSize: 'clamp(1.3rem, 2vw, 2rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
                 {content.heroSubtitle}
               </p>
 
