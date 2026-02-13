@@ -222,14 +222,8 @@ const ProductPage = () => {
                 ))}
               </div>
 
-              {/* Divider */}
-              <div className="border-t border-olive-dark/10" />
-
-              {/* Quantity Selection — refined */}
+              {/* Quantity Selection */}
               <div className="space-y-3">
-                <p className="text-olive-dark font-semibold uppercase tracking-widest" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
-                  Quantity
-                </p>
                 <div className="flex flex-wrap gap-2">
                   {quantityOptions.map(option => (
                     <button
