@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
-import { Droplets, Cherry, UtensilsCrossed, Wind, Beaker, Link } from "lucide-react";
+import { Droplets, Cherry, UtensilsCrossed, Sprout, Beaker, Link } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -126,8 +126,8 @@ const ProductPage = () => {
       value: content.tabs.details.origin,
     },
     {
-      icon: <Wind size={20} className="text-olive-dark" />,
-      label: "Nose",
+      icon: <Sprout size={20} className="text-olive-dark" />,
+      label: "Harvest",
       value: content.tabs.harvest.split('.')[0],
     },
   ];
