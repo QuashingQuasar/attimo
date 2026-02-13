@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
-import { Droplets, Palette, UtensilsCrossed, Wind, Beaker, Link } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Info, Link } from "lucide-react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -107,29 +109,7 @@ const ProductPage = () => {
 
   const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
 
-  // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
-  const attributes = [
-    {
-      icon: <Droplets size={20} className="text-olive-dark" />,
-      label: "Composition",
-      value: `100% ${content.tabs.details.olive}`,
-    },
-    {
-      icon: <Palette size={20} className="text-olive-dark" />,
-      label: "Color",
-      value: content.tabs.details.flavor,
-    },
-    {
-      icon: <UtensilsCrossed size={20} className="text-olive-dark" />,
-      label: "Food Pairings",
-      value: content.tabs.uses.split('.')[0],
-    },
-    {
-      icon: <Wind size={20} className="text-olive-dark" />,
-      label: "Nose",
-      value: content.tabs.harvest.split('.')[0],
-    },
-  ];
+  const labTiles = content.labTiles;
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
@@ -170,65 +150,112 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 py-8 md:py-12 space-y-8">
+            <div className="px-6 md:px-10 lg:px-12 py-8 md:py-12 space-y-4">
               
-              {/* Volume */}
-              <p className="text-olive-medium tracking-widest uppercase" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
-                500 ml (16.9 fl oz)
-              </p>
-
-              {/* Title */}
-              <h1 className="text-olive-dark leading-[1.1] -mt-4" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
-                {content.heroTitle}
-              </h1>
-
-              {/* Description */}
-              <p className="text-olive-medium leading-relaxed max-w-lg" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
-                {content.originStory.headline.split('.').slice(0, 2).join('.') + '.'}
-              </p>
-
-              {/* Attribute Grid — 2x2 like Arsenio */}
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2">
-                {attributes.map((attr) => (
-                  <div key={attr.label} className="space-y-1.5">
-                    <div className="flex items-center gap-2.5">
-                      {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                        {attr.label}
-                      </span>
-                    </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                      {attr.value}
+              {/* Badges */}
+              <div className="flex items-center gap-2">
+                <HoverCard openDelay={0} closeDelay={0}>
+                  <HoverCardTrigger asChild>
+                    <button
+                      className="inline-flex items-center rounded-full border-transparent px-3 py-1.5 cursor-help transition-all hover:opacity-100"
+                      style={{ backgroundColor: '#1B4229', color: '#CDDB2D', fontSize: 'clamp(0.75rem, 0.95vw, 1rem)', fontWeight: 600 }}
+                      onClick={(e) => e.currentTarget.focus()}
+                    >
+                      2024/25 HARVEST
+                    </button>
+                  </HoverCardTrigger>
+                  <HoverCardContent
+                    side="bottom"
+                    align="start"
+                    className="max-w-xs p-3"
+                    style={{ backgroundColor: '#1B4229', color: '#FFFAEA', borderColor: 'rgba(205, 219, 45, 0.3)' }}
+                    onPointerDownOutside={(e) => e.preventDefault()}
+                  >
+                    <p className="text-sm leading-relaxed">
+                      Oil from the latest harvest 2024/25 season. The new harvest is currently underway, with fresh oil arriving early 2026.
                     </p>
-                  </div>
-                ))}
+                  </HoverCardContent>
+                </HoverCard>
+                <Badge variant="secondary" className="bg-gold/20 text-gold-dark px-3 py-1.5" style={{ fontSize: 'clamp(0.75rem, 0.95vw, 1rem)' }}>
+                  LAST BOTTLES
+                </Badge>
               </div>
 
-              {/* Divider */}
-              <div className="border-t border-olive-dark/10" />
+              {/* Title */}
+              <h1 className="font-bold text-olive-dark flex items-baseline gap-3" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3.5rem)' }}>
+                {content.heroTitle}
+                <span className="font-beverly text-olive-medium" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.5rem)' }}>500ml</span>
+              </h1>
 
-              {/* Quantity Selection — refined */}
-              <div className="space-y-3">
-                <p className="text-olive-dark font-semibold uppercase tracking-widest" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
-                  Quantity
-                </p>
-                <div className="flex flex-wrap gap-2">
+              {/* Subtitle */}
+              <p className="text-olive-medium font-beverly !-mt-1" style={{ textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'currentColor', textUnderlineOffset: '3px', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
+                {content.heroSubtitle}
+              </p>
+
+              {/* Key Benefits */}
+              <ul className="space-y-2.5 text-olive-medium pt-2" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1.05vw, 1.15rem)' }}>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="inline">
+                    {content.benefits[0]}
+                    {' '}
+                    <HoverCard openDelay={0} closeDelay={0}>
+                      <HoverCardTrigger asChild>
+                        <button
+                          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-olive-medium text-olive-medium hover:bg-olive-medium hover:text-cream transition-colors cursor-help align-middle"
+                          style={{ fontSize: '0.65rem', fontWeight: 'bold' }}
+                          onClick={(e) => e.currentTarget.focus()}
+                        >
+                          ?
+                        </button>
+                      </HoverCardTrigger>
+                      <HoverCardContent
+                        className="w-80 p-4"
+                        style={{ backgroundColor: '#1B4229', color: '#FFFAEA', borderColor: 'rgba(205, 219, 45, 0.3)' }}
+                        onPointerDownOutside={(e) => e.preventDefault()}
+                      >
+                        <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                          {content.benefitTooltip}
+                        </p>
+                      </HoverCardContent>
+                    </HoverCard>
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="flex items-center gap-1">
+                    {content.benefits[1]}
+                    <a href={content.labReportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center transition-transform hover:scale-110">
+                      <Link className="w-4 h-4" style={{ color: '#1B4229' }} strokeWidth={2.5} />
+                    </a>
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
+                  <span>{content.benefits[2]}</span>
+                </li>
+              </ul>
+
+              {/* Quantity Selection */}
+              <div className="space-y-2 pt-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
                   {quantityOptions.map(option => (
                     <button
                       key={option.quantity}
                       onClick={() => setSelectedQuantity(option.quantity)}
-                      className={`px-5 py-3 rounded-full border transition-all duration-200 ${
+                      className={`p-2 rounded-xl border-2 transition-all text-center ${
                         selectedQuantity === option.quantity
                           ? 'border-olive-dark bg-olive-dark text-cream'
-                          : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
+                          : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
                       }`}
-                      style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}
                     >
-                      {option.label}
+                      <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                        {option.label}
+                      </div>
                       {option.subtitle && (
-                        <span className={`ml-1.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
-                          · {option.subtitle}
-                        </span>
+                        <div className={`mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                          {option.subtitle}
+                        </div>
                       )}
                     </button>
                   ))}
@@ -238,60 +265,46 @@ const ProductPage = () => {
               {/* Add to Cart */}
               <Button
                 onClick={handleAddToCart}
-                className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                style={{ 
-                  fontFamily: 'UDC Working Man Sans, sans-serif', 
-                  backgroundColor: '#CDDB2D', 
-                  fontSize: 'clamp(1rem, 1.15vw, 1.2rem)', 
-                  borderRadius: '999px',
-                  letterSpacing: '0.05em',
-                }}
+                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-5 h-auto transition-all duration-300 hover:scale-[1.02]"
+                style={{ fontFamily: 'UDC Working Man Sans, sans-serif', backgroundColor: '#CDDB2D', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)', borderRadius: '10px' }}
               >
                 {selectedQuantity === 1 ? (
                   <span className="flex items-center justify-center gap-2">
-                    Add to Cart — <span className="line-through opacity-50">€25</span> €22
+                    Add to Cart — <span className="line-through opacity-60">€25</span> €22
                   </span>
                 ) : (
                   `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
                 )}
               </Button>
 
-              {/* Lab Report Link */}
-              <div className="flex items-center gap-3 pt-2 pb-2">
-                <a 
-                  href={content.labReportUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                  style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                >
-                  <Beaker size={18} />
-                  View 3rd party lab results
-                </a>
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-olive-dark/10" />
-
-              {/* Lab Values — minimal cards */}
-              <div className="grid grid-cols-2 gap-4">
-                {content.labTiles.map(tile => (
-                  <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
-                    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.65rem, 0.8vw, 0.8rem)' }}>
-                      {tile.label}
-                    </p>
-                    <p className="text-olive-dark font-bold" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.4rem, 1.8vw, 2rem)' }}>
-                      {tile.value}
-                      {tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>{tile.unit}</span>}
-                    </p>
-                    <p className="text-olive-light mt-0.5" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
-                      {tile.avg}
-                    </p>
+              {/* Lab Values Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2">
+                {labTiles.map(tile => (
+                  <div key={tile.key} className="rounded-xl border border-olive-dark overflow-hidden bg-transparent">
+                    <div className="px-3 py-2" style={{ backgroundColor: '#1B4229' }}>
+                      <div className="font-semibold uppercase tracking-wide text-center" style={{ color: '#FFFFFF', fontSize: 'clamp(0.8rem, 1vw, 1.1rem)' }}>
+                        {tile.label}
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <div className="flex items-baseline gap-1.5 mb-1">
+                        <div className="font-bold text-olive-dark leading-none" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.6vw, 1.8rem)' }}>
+                          {tile.value}
+                          {tile.unit && <span className="ml-1 text-olive-dark/90" style={{ fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)' }}>{tile.unit}</span>}
+                        </div>
+                        <div className="text-olive-light" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
+                          {tile.avg}
+                        </div>
+                      </div>
+                      <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.8rem, 1vw, 1.05rem)' }}>
+                        {tile.description}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {/* Accordion Info */}
+              {/* Product Info Tabs */}
               <div className="pt-2">
                 <ProductInfoTabs content={content} />
               </div>
