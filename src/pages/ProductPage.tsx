@@ -111,7 +111,7 @@ const ProductPage = () => {
   const attributes = [
     {
       icon: <Droplets size={20} className="text-olive-dark" />,
-      label: "Composition",
+      label: "Variety",
       value: `100% ${content.tabs.details.olive}`,
     },
     {
