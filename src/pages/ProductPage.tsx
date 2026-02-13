@@ -222,7 +222,7 @@ const ProductPage = () => {
                 ))}
               </div>
 
-              {/* Quantity Selection */}
+              {/* Quantity + Cart grouped tighter */}
               <div className="space-y-3">
                 <div className="grid grid-cols-5 gap-2">
                   {quantityOptions.map(option => (
@@ -245,28 +245,27 @@ const ProductPage = () => {
                     </button>
                   ))}
                 </div>
-              </div>
 
-              {/* Add to Cart */}
-              <Button
-                onClick={handleAddToCart}
-                className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                style={{ 
-                  fontFamily: 'UDC Working Man Sans, sans-serif', 
-                  backgroundColor: '#CDDB2D', 
-                  fontSize: 'clamp(1rem, 1.15vw, 1.2rem)', 
-                  borderRadius: '0.75rem',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                {selectedQuantity === 1 ? (
-                  <span className="flex items-center justify-center gap-2">
-                    Add to Cart — <span className="line-through opacity-50">€25</span> €22
-                  </span>
-                ) : (
-                  `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
-                )}
-              </Button>
+                <Button
+                  onClick={handleAddToCart}
+                  className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
+                  style={{ 
+                    fontFamily: 'UDC Working Man Sans, sans-serif', 
+                    backgroundColor: '#CDDB2D', 
+                    fontSize: 'clamp(1rem, 1.15vw, 1.2rem)', 
+                    borderRadius: '0.75rem',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {selectedQuantity === 1 ? (
+                    <span className="flex items-center justify-center gap-2">
+                      Add to Cart — <span className="line-through opacity-50">€25</span> €22
+                    </span>
+                  ) : (
+                    `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
+                  )}
+                </Button>
+              </div>
 
               {/* Lab Report Link */}
               <div className="flex items-center gap-3 pt-2 pb-2">
