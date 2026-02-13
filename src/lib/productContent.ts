@@ -150,7 +150,7 @@ export const productContentMap: Record<string, ProductContent> = {
 
   nocellara: {
     heroTitle: "NOCELLARA D'ITALIA",
-    heroSubtitle: "Gentle & Fruity Extra Virgin Olive Oil",
+    heroSubtitle: "Specialty Extra Virgin Olive Oil",
     benefits: [
       "100% Nocellara olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
