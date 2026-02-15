@@ -207,12 +207,12 @@ export const productContentMap: Record<string, ProductContent> = {
         {
           title: "Early Harvest",
           description: "Picked early in October when the olives are young, green and packed with polyphenols that boost taste and health.",
-          icon: "/icons/branch-2.svg",
+          icon: "/icons/basket-2.svg",
         },
         {
           title: "Nocellara Olives",
           description: "A generous Italian olive variety known for its rich oil content and exceptionally smooth, fruity character.",
-          icon: "/icons/olive.svg",
+          icon: "/icons/branch-2.svg",
         },
       ],
     },
