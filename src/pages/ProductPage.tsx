@@ -306,7 +306,7 @@ const ProductPage = () => {
                   <Beaker size={18} />
                   View full lab results
                 </a>
-                <span className="text-olive-light italic" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
+                <span className="text-olive-light" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
                   * Values measured at time of bottling
                 </span>
               </div>
