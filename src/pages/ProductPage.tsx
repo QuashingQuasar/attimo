@@ -265,6 +265,10 @@ const ProductPage = () => {
                 </Button>
               </div>
 
+              <p className="text-olive-medium text-center" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+                Third party lab-tested for quality and purity
+              </p>
+
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map(tile => (
