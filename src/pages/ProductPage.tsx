@@ -7,8 +7,7 @@ import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck 
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
-import { ProductAlwaysNever } from "@/components/product/ProductAlwaysNever";
-import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
@@ -322,8 +321,7 @@ const ProductPage = () => {
       <Testimonials />
       <ProductOriginRegion />
       <ProductLabTrust content={content.labTrust} />
-      <PolyphenolComparison productValue={content.polyphenolValue} productLabel={content.polyphenolLabel} />
-      <ProductAlwaysNever />
+      <OilComparison />
       <FAQ />
 
       <Footer />
