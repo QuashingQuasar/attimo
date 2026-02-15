@@ -23,34 +23,6 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             </p>
           </div>
 
-          {/* Quick-reference bar */}
-          <div className="mb-16 py-5 px-6 flex flex-wrap justify-center items-center gap-x-2 gap-y-3 border-y border-olive-dark/20">
-            {quickRef.map((item, i) => (
-              <span key={i} className="flex items-center gap-x-2">
-                <span
-                  className="text-olive-dark/50 tracking-[0.15em]"
-                  style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.7rem',
-                  }}
-                >
-                  {item.label}
-                </span>
-                <span
-                  className="text-olive-dark"
-                  style={{
-                    fontFamily: 'Beverly Drive Right, cursive',
-                    fontSize: '1rem',
-                  }}
-                >
-                  {item.value}
-                </span>
-                {i < quickRef.length - 1 && (
-                  <span className="text-olive-dark/25 mx-2">·</span>
-                )}
-              </span>
-            ))}
-          </div>
 
           {/* Feature tiles — KleiaWay-style 3×2 grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[850px]">
