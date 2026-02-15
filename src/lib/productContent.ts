@@ -172,7 +172,7 @@ export const productContentMap: Record<string, ProductContent> = {
       details: {
         origin: "Sicily, Italy",
         olive: "Nocellara",
-        flavor: "gentle & fruity",
+        flavor: "Gentle & Fruity",
         store: "keep away from light and heat",
         volume: "500ml",
       },
