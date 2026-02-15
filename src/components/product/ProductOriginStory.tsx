@@ -59,7 +59,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(236, 169, 72, 0.7)',
+                    color: '#ECA948',
                   }}
                 >
                   {features[0]?.description}
@@ -113,7 +113,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(236, 169, 72, 0.7)',
+                    color: '#ECA948',
                   }}
                 >
                   {features[1]?.description}
@@ -167,7 +167,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(236, 169, 72, 0.7)',
+                    color: '#ECA948',
                   }}
                 >
                   {features[2]?.description}
