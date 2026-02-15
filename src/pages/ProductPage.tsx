@@ -305,7 +305,7 @@ const ProductPage = () => {
                   style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
                 >
                   <Beaker size={18} />
-                  View 3rd party lab results
+                  View full lab results
                 </a>
               </div>
 
