@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -265,7 +265,8 @@ const ProductPage = () => {
                 </Button>
               </div>
 
-              <p className="text-olive-medium text-center" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+              <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+                <ShieldCheck size={18} strokeWidth={1.5} />
                 Third party lab-tested for quality and purity
               </p>
 
