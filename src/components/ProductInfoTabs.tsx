@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Beaker, Flower2, Sprout, UtensilsCrossed } from "lucide-react";
+import { Flower2, Sprout, UtensilsCrossed, Truck } from "lucide-react";
 import { ProductContent } from "@/lib/productContent";
 
 interface ProductInfoTabsProps {
@@ -65,6 +65,21 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
             <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
               <p>{tabs.uses}</p>
               {tabs.usesExtra && <p className="mt-3">{tabs.usesExtra}</p>}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Shipping & Delivery */}
+        <AccordionItem value="shipping" className="border-olive-light/30">
+          <AccordionTrigger className="py-5 hover:no-underline">
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+              <Truck size={20} className="text-olive-dark" />
+              Shipping & Delivery
+            </span>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
+              <p>We ship across Europe. Orders are carefully packed and dispatched within 2–3 business days. Delivery typically takes 3–7 business days depending on your location.</p>
             </div>
           </AccordionContent>
         </AccordionItem>
