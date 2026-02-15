@@ -29,11 +29,19 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             {/* Row 1, Col 1 — Text tile */}
             <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <img
-                  src={features[0]?.icon}
-                  alt=""
-                  className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                <div
+                  className="w-[80px] h-[80px]"
+                  style={{
+                    backgroundColor: '#B3E58C',
+                    WebkitMaskImage: `url(${features[0]?.icon})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center',
+                    maskImage: `url(${features[0]?.icon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                  }}
                 />
                 <h3
                   style={{
@@ -75,11 +83,19 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             {/* Row 1, Col 3 — Text tile */}
             <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <img
-                  src={features[1]?.icon}
-                  alt=""
-                  className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                <div
+                  className="w-[80px] h-[80px]"
+                  style={{
+                    backgroundColor: '#B3E58C',
+                    WebkitMaskImage: `url(${features[1]?.icon})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center',
+                    maskImage: `url(${features[1]?.icon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                  }}
                 />
                 <h3
                   style={{
@@ -121,11 +137,19 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
             {/* Row 2, Col 2 — Text tile */}
             <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <img
-                  src={features[2]?.icon}
-                  alt=""
-                  className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                <div
+                  className="w-[80px] h-[80px]"
+                  style={{
+                    backgroundColor: '#B3E58C',
+                    WebkitMaskImage: `url(${features[2]?.icon})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center',
+                    maskImage: `url(${features[2]?.icon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                  }}
                 />
                 <h3
                   style={{
