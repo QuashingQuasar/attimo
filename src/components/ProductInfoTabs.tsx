@@ -12,47 +12,6 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
   return (
     <div className="w-full">
       <Accordion type="single" collapsible className="w-full">
-        {/* Details / Lab Results */}
-        <AccordionItem value="details" className="border-olive-light/30">
-          <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
-              <Beaker size={20} className="text-olive-dark" />
-              3rd Party Laboratory Results
-            </span>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="grid grid-cols-2 gap-4 pt-1 pb-2">
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>ORIGIN</div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>{tabs.details.origin}</div>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>OLIVE</div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>{tabs.details.olive}</div>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>FLAVOR</div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>{tabs.details.flavor}</div>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>STORE</div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>{tabs.details.store}</div>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>LAB VALUES</div>
-                <a href={labReportUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-olive-medium hover:text-olive-dark transition-colors" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
-                  <Beaker size={16} className="flex-shrink-0" />
-                  <span className="underline">view lab results</span>
-                </a>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-olive-dark uppercase tracking-wide mb-1" style={{ fontFamily: 'Space Grotesk, monospace' }}>VOLUME</div>
-                <div className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>{tabs.details.volume}</div>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-
         {/* Taste Profile */}
         <AccordionItem value="flavor" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
