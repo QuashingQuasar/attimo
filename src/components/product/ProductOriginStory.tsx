@@ -58,7 +58,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: '#ECA948',
                   }}
                 >
@@ -112,7 +112,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: '#ECA948',
                   }}
                 >
@@ -166,7 +166,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
+                    textTransform: 'none',
                     color: '#ECA948',
                   }}
                 >
