@@ -116,9 +116,9 @@ const ProductPage = () => {
       value: `100% ${content.tabs.details.olive}`,
     },
     {
-      icon: <Sparkles size={20} className="text-olive-dark" />,
-      label: "Flavor",
-      value: content.tabs.details.flavor,
+      icon: <MapPin size={20} className="text-olive-dark" />,
+      label: "Origin",
+      value: content.tabs.details.origin,
     },
     {
       icon: <Sprout size={20} className="text-olive-dark" />,
@@ -126,9 +126,9 @@ const ProductPage = () => {
       value: "October 2025",
     },
     {
-      icon: <MapPin size={20} className="text-olive-dark" />,
-      label: "Origin",
-      value: content.tabs.details.origin,
+      icon: <Sparkles size={20} className="text-olive-dark" />,
+      label: "Flavor",
+      value: content.tabs.details.flavor,
     },
   ];
 
