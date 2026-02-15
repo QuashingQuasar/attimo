@@ -55,7 +55,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <p
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
@@ -109,7 +109,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <p
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
@@ -163,7 +163,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <p
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    fontFamily: 'Space Grotesk, monospace',
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
