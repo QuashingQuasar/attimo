@@ -210,7 +210,7 @@ export const productContentMap: Record<string, ProductContent> = {
           icon: "/icons/basket-2.svg",
         },
         {
-          title: "Nocellara Olives",
+          title: "100% Nocellara",
           description: "A generous Italian olive variety known for its rich oil content and exceptionally smooth, fruity character.",
           icon: "/icons/branch-2.svg",
         },
