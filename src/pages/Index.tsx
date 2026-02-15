@@ -5,7 +5,7 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { HarvestProduct } from "@/components/HarvestProduct";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
 import { KleiaWay } from "@/components/KleiaWay";
-import { PolyphenolComparison } from "@/components/PolyphenolComparison";
+
 import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
@@ -25,7 +25,7 @@ const Index = () => {
       <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilComparison />
       <Testimonials />
-      <PolyphenolComparison />
+      
       <FAQ />
       <Footer />
       <WaitlistForm 
