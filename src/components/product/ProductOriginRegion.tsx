@@ -19,7 +19,7 @@ export const ProductOriginRegion = () => {
             <h2
               className="font-beverly font-bold tracking-tight"
               style={{
-                color: '#CDDB2D',
+                color: '#ECA948',
                 fontSize: 'clamp(1.75rem, 3vw, 3rem)',
               }}
             >
