@@ -20,7 +20,7 @@ export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 max-w-3xl">
             <h2
-              className="font-beverly font-bold text-olive-dark mb-4 tracking-tight"
+              className="font-working-man font-bold text-olive-dark mb-4 tracking-tight"
               style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}
             >
               {heading}
