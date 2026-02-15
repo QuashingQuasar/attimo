@@ -32,7 +32,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#B3E58C',
+                    backgroundColor: '#ECA948',
                     WebkitMaskImage: `url(${features[0]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -47,7 +47,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
-                    color: '#B3E58C',
+                    color: '#ECA948',
                   }}
                 >
                   {features[0]?.title}
@@ -59,7 +59,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(179, 229, 140, 0.7)',
+                    color: 'rgba(236, 169, 72, 0.7)',
                   }}
                 >
                   {features[0]?.description}
@@ -86,7 +86,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#B3E58C',
+                    backgroundColor: '#ECA948',
                     WebkitMaskImage: `url(${features[1]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -101,7 +101,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
-                    color: '#B3E58C',
+                    color: '#ECA948',
                   }}
                 >
                   {features[1]?.title}
@@ -113,7 +113,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(179, 229, 140, 0.7)',
+                    color: 'rgba(236, 169, 72, 0.7)',
                   }}
                 >
                   {features[1]?.description}
@@ -140,7 +140,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#B3E58C',
+                    backgroundColor: '#ECA948',
                     WebkitMaskImage: `url(${features[2]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -155,7 +155,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
                     fontSize: 'clamp(1.6rem, 2vw, 2.2rem)',
-                    color: '#B3E58C',
+                    color: '#ECA948',
                   }}
                 >
                   {features[2]?.title}
@@ -167,7 +167,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     fontSize: '1.15rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
-                    color: 'rgba(179, 229, 140, 0.7)',
+                    color: 'rgba(236, 169, 72, 0.7)',
                   }}
                 >
                   {features[2]?.description}
