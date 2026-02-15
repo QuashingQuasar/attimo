@@ -200,7 +200,7 @@ const ProductPage = () => {
 
               {/* Description */}
               <p className="text-olive-medium leading-relaxed max-w-2xl" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
-                {content.originStory.headline.split('.').slice(0, 2).join('.') + '.'}
+                {content.originStory.headline.split('.').slice(0, 3).join('.') + '.'}
               </p>
 
               {/* Attribute Grid — 2x2 like Arsenio */}
