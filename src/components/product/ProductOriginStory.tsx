@@ -33,7 +33,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   src={features[0]?.icon}
                   alt=""
                   className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
                 <h3
                   style={{
@@ -79,7 +79,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   src={features[1]?.icon}
                   alt=""
                   className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
                 <h3
                   style={{
@@ -125,7 +125,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   src={features[2]?.icon}
                   alt=""
                   className="w-[80px] h-[80px] object-contain"
-                  style={{ filter: 'invert(75%) sepia(40%) saturate(500%) hue-rotate(40deg) brightness(95%)' }}
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
                 <h3
                   style={{
