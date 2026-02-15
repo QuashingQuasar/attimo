@@ -185,14 +185,12 @@ const ProductPage = () => {
                 </div>
 
                 {/* Title + Volume */}
-                <div className="flex items-baseline gap-3">
                 <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.2rem, 4vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
+                  <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)', fontStyle: 'italic', fontWeight: 400 }}>
+                    {content.tabs.details.volume}
+                  </span>
                 </h1>
-                <span className="text-olive-medium whitespace-nowrap" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(1.2rem, 1.5vw, 1.6rem)', fontStyle: 'italic' }}>
-                  {content.tabs.details.volume}
-                </span>
-              </div>
               </div>
 
               {/* Subtitle */}
