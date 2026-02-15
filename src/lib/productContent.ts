@@ -134,7 +134,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
     },
     labTrust: {
-      heading: "You deserve food you can trust — and trace.",
+      heading: "Third party lab-tested for quality and purity",
       subheading:
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
@@ -217,7 +217,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
     },
     labTrust: {
-      heading: "You deserve food you can trust — and trace.",
+      heading: "Third party lab-tested for quality and purity",
       subheading:
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
