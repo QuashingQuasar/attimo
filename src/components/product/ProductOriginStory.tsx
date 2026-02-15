@@ -76,7 +76,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.85rem',
+                    fontSize: '1rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
@@ -122,7 +122,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.85rem',
+                    fontSize: '1rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
@@ -168,7 +168,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                   className="tracking-wide leading-relaxed max-w-[300px]"
                   style={{
                     fontFamily: 'UDC Working Man Sans, sans-serif',
-                    fontSize: '0.85rem',
+                    fontSize: '1rem',
                     letterSpacing: '0.06em',
                     textTransform: 'uppercase',
                     color: 'rgba(179, 229, 140, 0.7)',
