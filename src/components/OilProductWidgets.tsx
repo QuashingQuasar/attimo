@@ -145,8 +145,8 @@ export const OilProductWidgets = () => {
 
               {/* Text below card */}
               <div className="flex flex-col items-center text-center px-2">
-                {/* Descriptor row: subtitle · "Name" · origin */}
-                <div className="flex items-baseline justify-center gap-3 mb-1.5 flex-wrap">
+                {/* Descriptor row: subtitle · Name · origin */}
+                <div className="flex items-baseline justify-center gap-3 mb-2 flex-wrap">
                   <span
                     className="uppercase"
                     style={{
@@ -159,7 +159,7 @@ export const OilProductWidgets = () => {
                   >
                     {oil.subtitle}
                   </span>
-                  <span
+                  <h3
                     style={{
                       fontFamily: "Beverly Drive, serif",
                       color: "#FFFAEA",
@@ -167,8 +167,8 @@ export const OilProductWidgets = () => {
                       letterSpacing: "0.04em",
                     }}
                   >
-                    "{oil.name}"
-                  </span>
+                    {oil.name} {oil.nameDetail}
+                  </h3>
                   <span
                     className="uppercase"
                     style={{
@@ -182,19 +182,6 @@ export const OilProductWidgets = () => {
                     {oil.flag} {oil.origin}
                   </span>
                 </div>
-
-                {/* Product type */}
-                <h3
-                  className="mb-3"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    color: "#FFFAEA",
-                    fontSize: "clamp(1.1rem, 1.5vw, 1.5rem)",
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  Extra Virgin Olive Oil
-                </h3>
 
                 {/* Tagline */}
                 <p
