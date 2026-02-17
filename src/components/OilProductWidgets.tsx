@@ -122,14 +122,14 @@ export const OilProductWidgets = () => {
                   </span>
                   <span
                     style={{
-                      fontFamily: "Space Grotesk, sans-serif",
-                      fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)",
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)",
                       color: "#1B4229",
-                      opacity: 0.7,
+                      letterSpacing: "0.03em",
                     }}
                   >
                     €{oil.price}
-                    <span style={{ fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)", opacity: 0.6, marginLeft: "4px" }}>
+                    <span style={{ fontSize: "clamp(0.8rem, 1vw, 1rem)", opacity: 0.5, marginLeft: "4px" }}>
                       / 500ml
                     </span>
                   </span>
