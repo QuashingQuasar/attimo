@@ -145,43 +145,33 @@ export const OilProductWidgets = () => {
 
               {/* Text below card */}
               <div className="flex flex-col items-center text-center px-2">
-                {/* Descriptor row: subtitle · Name · origin */}
-                <div className="flex items-baseline justify-center gap-3 mb-2 flex-wrap">
-                  <span
-                    className="uppercase"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      color: "#B3E58C",
-                      fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)",
-                      letterSpacing: "0.15em",
-                      opacity: 0.7,
-                    }}
-                  >
-                    {oil.subtitle}
-                  </span>
-                  <h3
-                    style={{
-                      fontFamily: "Beverly Drive, serif",
-                      color: "#FFFAEA",
-                      fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {oil.name} {oil.nameDetail}
-                  </h3>
-                  <span
-                    className="uppercase"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      color: "#B3E58C",
-                      fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)",
-                      letterSpacing: "0.15em",
-                      opacity: 0.7,
-                    }}
-                  >
-                    {oil.flag} {oil.origin}
-                  </span>
-                </div>
+                {/* Product name */}
+                <h3
+                  className="mb-1.5"
+                  style={{
+                    fontFamily: "Beverly Drive, serif",
+                    color: "#FFFAEA",
+                    fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {oil.name} {oil.nameDetail}
+                </h3>
+
+                {/* Subtitle · Origin on one line */}
+                <p
+                  className="uppercase mb-3"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    color: "#B3E58C",
+                    fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)",
+                    letterSpacing: "0.15em",
+                    opacity: 0.7,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {oil.subtitle} · {oil.flag} {oil.origin}
+                </p>
 
                 {/* Tagline */}
                 <p
