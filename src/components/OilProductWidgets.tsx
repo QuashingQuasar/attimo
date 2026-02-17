@@ -110,8 +110,8 @@ export const OilProductWidgets = () => {
                     className="px-5 py-2 rounded-full border"
                     style={{
                       fontFamily: "UDC Working Man Sans, sans-serif",
-                      fontSize: "0.7rem",
-                      letterSpacing: "0.15em",
+                      fontSize: "0.85rem",
+                      letterSpacing: "0.12em",
                       color: "#1B4229",
                       borderColor: "rgba(27, 66, 41, 0.25)",
                       backgroundColor: "rgba(255, 250, 234, 0.6)",
@@ -161,7 +161,7 @@ export const OilProductWidgets = () => {
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     color: "#B3E58C",
-                    fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)",
+                    fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
                     letterSpacing: "0.15em",
                     opacity: 0.7,
                   }}
