@@ -41,14 +41,14 @@ export const OilProductWidgets = () => {
   return (
     <section
       className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden"
-      style={{ backgroundColor: "#1B4229" }}
+      style={{ backgroundColor: "hsl(var(--section-light))" }}
     >
       {/* Subtle texture overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 1px 1px, #B3E58C 1px, transparent 0)",
+            "radial-gradient(circle at 1px 1px, #1B4229 1px, transparent 0)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -60,7 +60,7 @@ export const OilProductWidgets = () => {
             className="mb-4"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
-              color: "#FFFAEA",
+              color: "#1B4229",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               letterSpacing: "0.05em",
             }}
@@ -71,8 +71,8 @@ export const OilProductWidgets = () => {
             className="mx-auto text-center"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
-              color: "#B3E58C",
-              opacity: 0.8,
+              color: "#1B4229",
+              opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
             }}
@@ -92,14 +92,14 @@ export const OilProductWidgets = () => {
               {/* Image card */}
               <div
                 className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-7"
-                style={{ backgroundColor: "#FFFAEA" }}
+                style={{ backgroundColor: "#1B4229" }}
               >
                 {/* Subtle texture inside card */}
                 <div
                   className="absolute inset-0 opacity-[0.04] z-[1]"
                   style={{
                     backgroundImage:
-                      "radial-gradient(ellipse at 30% 20%, #1B4229 0.5px, transparent 0.5px), radial-gradient(ellipse at 70% 80%, #1B4229 0.3px, transparent 0.3px)",
+                      "radial-gradient(ellipse at 30% 20%, #FFFAEA 0.5px, transparent 0.5px), radial-gradient(ellipse at 70% 80%, #FFFAEA 0.3px, transparent 0.3px)",
                     backgroundSize: "18px 18px, 14px 14px",
                   }}
                 />
@@ -112,9 +112,9 @@ export const OilProductWidgets = () => {
                       fontFamily: "UDC Working Man Sans, sans-serif",
                       fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)",
                       letterSpacing: "0.1em",
-                      color: "#1B4229",
-                      borderColor: "rgba(27, 66, 41, 0.25)",
-                      backgroundColor: "rgba(255, 250, 234, 0.6)",
+                      color: "#FFFAEA",
+                      borderColor: "rgba(255, 250, 234, 0.25)",
+                      backgroundColor: "rgba(27, 66, 41, 0.6)",
                       backdropFilter: "blur(4px)",
                     }}
                   >
@@ -137,7 +137,7 @@ export const OilProductWidgets = () => {
                   className="mb-1.5"
                   style={{
                     fontFamily: "Beverly Drive, serif",
-                    color: "#FFFAEA",
+                    color: "#1B4229",
                     fontSize: "clamp(1.6rem, 2.4vw, 2.4rem)",
                     letterSpacing: "0.04em",
                   }}
@@ -150,7 +150,7 @@ export const OilProductWidgets = () => {
                   className="uppercase mb-3"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
-                    color: "#B3E58C",
+                    color: "#1B4229",
                     fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
                     letterSpacing: "0.15em",
                     opacity: 0.7,
@@ -164,7 +164,7 @@ export const OilProductWidgets = () => {
                   className="mb-3"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
-                    color: "#FFFAEA",
+                    color: "#1B4229",
                     fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)",
                     letterSpacing: "0.03em",
                   }}
@@ -176,7 +176,7 @@ export const OilProductWidgets = () => {
                 <p
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
-                    color: "#FFFAEA",
+                    color: "#1B4229",
                     fontSize: "clamp(0.9rem, 1.05vw, 1.05rem)",
                     opacity: 0.5,
                     lineHeight: 1.6,
@@ -195,7 +195,7 @@ export const OilProductWidgets = () => {
             className="mb-5"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
-              color: "#B3E58C",
+              color: "#1B4229",
               fontSize: "clamp(0.95rem, 1.2vw, 1.2rem)",
               opacity: 0.85,
             }}
@@ -207,8 +207,8 @@ export const OilProductWidgets = () => {
             className="inline-flex items-center gap-2 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
-              backgroundColor: "#CDDB2D",
-              color: "#1B4229",
+              backgroundColor: "#1B4229",
+              color: "#CDDB2D",
               fontSize: "clamp(0.875rem, 1.1vw, 1.1rem)",
               letterSpacing: "0.05em",
             }}
