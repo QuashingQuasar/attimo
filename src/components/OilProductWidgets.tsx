@@ -107,11 +107,11 @@ export const OilProductWidgets = () => {
                 {/* Top bar: origin pill + price */}
                 <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 pt-5">
                   <span
-                    className="px-5 py-2 rounded-full border"
+                    className="px-6 py-2.5 rounded-full border"
                     style={{
                       fontFamily: "UDC Working Man Sans, sans-serif",
-                      fontSize: "0.85rem",
-                      letterSpacing: "0.12em",
+                      fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)",
+                      letterSpacing: "0.1em",
                       color: "#1B4229",
                       borderColor: "rgba(27, 66, 41, 0.25)",
                       backgroundColor: "rgba(255, 250, 234, 0.6)",
@@ -161,7 +161,7 @@ export const OilProductWidgets = () => {
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     color: "#B3E58C",
-                    fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
+                    fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
                     letterSpacing: "0.15em",
                     opacity: 0.7,
                   }}
