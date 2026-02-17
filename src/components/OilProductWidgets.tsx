@@ -5,8 +5,7 @@ const oils = [
   {
     name: "Coratina",
     nameDetail: "d'Italia",
-    category: "INTENSE OIL",
-    subtitle: "Peppery",
+    flavor: "Bold & Punchy",
     origin: "Umbria, Italy",
     flag: "🇮🇹",
     handle: "galega-from-alentejo",
@@ -17,8 +16,7 @@ const oils = [
   {
     name: "Picual",
     nameDetail: "de España",
-    category: "HERBACEOUS OIL",
-    subtitle: "Bold",
+    flavor: "Green & Grassy",
     origin: "Jaén, Spain",
     flag: "🇪🇸",
     handle: "picual",
@@ -29,8 +27,7 @@ const oils = [
   {
     name: "Nocellara",
     nameDetail: "d'Italia",
-    category: "GENTLE OIL",
-    subtitle: "Fruity",
+    flavor: "Gentle & Fruity",
     origin: "Sicily, Italy",
     flag: "🇮🇹",
     handle: "nocellara",
@@ -107,7 +104,7 @@ export const OilProductWidgets = () => {
                   }}
                 />
 
-                {/* Top bar: category pill + price */}
+                {/* Top bar: origin pill + price */}
                 <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 pt-5">
                   <span
                     className="px-5 py-2 rounded-full border"
@@ -121,7 +118,7 @@ export const OilProductWidgets = () => {
                       backdropFilter: "blur(4px)",
                     }}
                   >
-                    {oil.category}
+                    {oil.flag} {oil.origin.toUpperCase()}
                   </span>
                   <span
                     style={{
@@ -158,7 +155,7 @@ export const OilProductWidgets = () => {
                   {oil.name} {oil.nameDetail}
                 </h3>
 
-                {/* Subtitle · Origin on one line */}
+                {/* Flavor */}
                 <p
                   className="uppercase mb-3"
                   style={{
@@ -167,10 +164,9 @@ export const OilProductWidgets = () => {
                     fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)",
                     letterSpacing: "0.15em",
                     opacity: 0.7,
-                    whiteSpace: "nowrap",
                   }}
                 >
-                  {oil.subtitle} · {oil.flag} {oil.origin}
+                  {oil.flavor}
                 </p>
 
                 {/* Tagline */}
