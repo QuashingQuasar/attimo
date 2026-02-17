@@ -104,8 +104,8 @@ export const OilProductWidgets = () => {
                   }}
                 />
 
-                {/* Top bar: origin pill + price */}
-                <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 pt-5">
+                {/* Top bar: origin pill only */}
+                <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5">
                   <span
                     className="px-6 py-2.5 rounded-full border"
                     style={{
@@ -119,19 +119,6 @@ export const OilProductWidgets = () => {
                     }}
                   >
                     {oil.flag} {oil.origin.toUpperCase()}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)",
-                      color: "#1B4229",
-                      letterSpacing: "0.03em",
-                    }}
-                  >
-                    €{oil.price}
-                    <span style={{ fontSize: "clamp(0.8rem, 1vw, 1rem)", opacity: 0.5, marginLeft: "4px" }}>
-                      / 500ml
-                    </span>
                   </span>
                 </div>
 
@@ -170,6 +157,22 @@ export const OilProductWidgets = () => {
                   }}
                 >
                   {oil.flavor}
+                </p>
+
+                {/* Price */}
+                <p
+                  className="mb-3"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    color: "#FFFAEA",
+                    fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  €{oil.price}
+                  <span style={{ fontSize: "clamp(0.8rem, 1vw, 1rem)", opacity: 0.5, marginLeft: "4px" }}>
+                    / 500ml
+                  </span>
                 </p>
 
                 {/* Tagline */}
