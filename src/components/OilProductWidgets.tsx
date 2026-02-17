@@ -10,7 +10,7 @@ const oils = [
     flag: "🇮🇹",
     handle: "galega-from-alentejo",
     image: bottleImage,
-    tagline: "Packed with polyphenols",
+    tagline: "A hit of healthy polyphenols",
     price: 22,
   },
   {
