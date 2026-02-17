@@ -89,23 +89,22 @@ export const OilProductWidgets = () => {
                   {oil.name}
                 </h3>
 
-                <p className="uppercase tracking-[0.15em] mb-3 flex items-center justify-center gap-1.5" style={{
+                <p className="uppercase tracking-[0.15em] mb-2" style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               color: '#1B4229',
-              fontSize: 'clamp(0.7rem, 0.85vw, 0.85rem)',
+              fontSize: 'clamp(0.85rem, 1vw, 1rem)',
               opacity: 0.5
             }}>
-                  {oil.subtitle} · <span className="not-italic">{oil.flag}</span> {oil.origin}
+                  {oil.subtitle}
                 </p>
 
-                <p className="mb-5" style={{
-              fontFamily: 'Space Grotesk, sans-serif',
+                <p className="uppercase tracking-[0.15em] mb-5 flex items-center justify-center gap-1.5" style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
               color: '#1B4229',
               fontSize: 'clamp(0.85rem, 1vw, 1rem)',
-              opacity: 0.6,
-              lineHeight: 1.6
+              opacity: 0.5
             }}>
-                  "{oil.tagline}"
+                  <span className="not-italic">{oil.flag}</span> {oil.origin}
                 </p>
 
                 <p className="mb-4" style={{
