@@ -32,7 +32,7 @@ const oils = [
     flag: "🇮🇹",
     handle: "nocellara",
     image: bottleImage,
-    tagline: "Almond and golden pear. Smooth every day.",
+    tagline: "Easy to like, easy to use",
     price: 20,
   },
 ];
