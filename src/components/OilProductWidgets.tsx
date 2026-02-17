@@ -21,7 +21,7 @@ const oils = [
     flag: "🇪🇸",
     handle: "picual",
     image: bottleImage,
-    tagline: "Fresh grass and green tomato on the nose.",
+    tagline: "The all-rounder",
     price: 20,
   },
   {
