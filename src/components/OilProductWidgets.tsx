@@ -129,6 +129,9 @@ export const OilProductWidgets = () => {
                     }}
                   >
                     €{oil.price}
+                    <span style={{ fontSize: "clamp(0.75rem, 0.9vw, 0.9rem)", opacity: 0.6, marginLeft: "4px" }}>
+                      / 500ml
+                    </span>
                   </span>
                 </div>
 
