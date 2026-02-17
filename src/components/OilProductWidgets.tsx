@@ -177,7 +177,7 @@ export const OilProductWidgets = () => {
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
                     color: "#1B4229",
-                    fontSize: "clamp(0.9rem, 1.05vw, 1.05rem)",
+                    fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
                     opacity: 0.5,
                     lineHeight: 1.6,
                   }}
