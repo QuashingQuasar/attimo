@@ -170,9 +170,6 @@ export const OilProductWidgets = () => {
                   }}
                 >
                   €{oil.price}
-                  <span style={{ fontSize: "clamp(0.8rem, 1vw, 1rem)", opacity: 0.5, marginLeft: "4px" }}>
-                    / 500ml
-                  </span>
                 </p>
 
                 {/* Tagline */}
