@@ -128,16 +128,16 @@ export const Header = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="mx-auto px-10 py-10" style={{ maxWidth: '900px' }}>
-            <div className="grid grid-cols-3 gap-8">
+          <div className="mx-auto px-12 py-14" style={{ maxWidth: '1400px' }}>
+            <div className="grid grid-cols-3 gap-12">
               {shopProducts.map((product) => (
                 <Link
                   key={product.handle}
                   to={`/product/${product.handle}`}
                   onClick={() => setShopOpen(false)}
-                  className="flex flex-col items-center gap-4 group"
+                  className="flex flex-col items-center gap-5 group"
                 >
-                  <div className="w-full aspect-[3/4] rounded-xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                  <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
                     <img
                       src={product.image}
                       alt={product.name}
@@ -148,7 +148,7 @@ export const Header = ({
                     style={{
                       fontFamily: 'Beverly Drive, serif',
                       color: '#FFFAEA',
-                      fontSize: '1.3rem',
+                      fontSize: '1.6rem',
                       letterSpacing: '0.03em',
                     }}
                   >
