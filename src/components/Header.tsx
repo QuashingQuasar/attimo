@@ -21,7 +21,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
-  const shopRef = useRef<HTMLDivElement>(null);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const scrollContainer = document.querySelector('.overflow-y-scroll');
@@ -41,16 +41,14 @@ export const Header = ({
     };
   }, []);
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (shopRef.current && !shopRef.current.contains(e.target as Node)) {
-        setShopOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const handleMouseEnter = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setShopOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => setShopOpen(false), 200);
+  };
 
   return (
     <header
@@ -66,51 +64,18 @@ export const Header = ({
 
           {/* Right side */}
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
-            {/* Shop dropdown */}
-            <div ref={shopRef} className="relative hidden md:block">
+            {/* Shop dropdown trigger */}
+            <div
+              className="relative hidden md:block"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
-                onClick={() => setShopOpen(!shopOpen)}
                 className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium"
                 style={{ fontFamily: 'Space Grotesk, monospace' }}
               >
                 Shop
               </button>
-
-              {shopOpen && (
-                <div
-                  className="absolute top-full right-0 mt-4 rounded-2xl shadow-2xl p-5 z-50 flex gap-5"
-                  style={{ backgroundColor: '#1B4229', minWidth: '420px' }}
-                >
-                  {shopProducts.map((product) => (
-                    <Link
-                      key={product.handle}
-                      to={`/product/${product.handle}`}
-                      onClick={() => setShopOpen(false)}
-                      className="flex flex-col items-center gap-3 group"
-                    >
-                      <div
-                        className="w-28 h-36 rounded-xl overflow-hidden"
-                        style={{ backgroundColor: 'rgba(255,250,234,0.08)' }}
-                      >
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                      <span
-                        style={{
-                          fontFamily: 'Beverly Drive, serif',
-                          color: '#FFFAEA',
-                          fontSize: '1rem',
-                        }}
-                      >
-                        {product.name}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* New Harvest link */}
@@ -145,6 +110,47 @@ export const Header = ({
           </div>
         </div>
       </div>
+
+      {/* Full-width dropdown panel */}
+      {shopOpen && (
+        <div
+          className="absolute left-0 right-0 top-full z-50 shadow-2xl"
+          style={{ backgroundColor: '#1B4229' }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="container mx-auto px-6 py-12">
+            <div className="flex justify-center gap-16">
+              {shopProducts.map((product) => (
+                <Link
+                  key={product.handle}
+                  to={`/product/${product.handle}`}
+                  onClick={() => setShopOpen(false)}
+                  className="flex flex-col items-center gap-5 group"
+                >
+                  <div className="w-48 h-60 rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: 'Beverly Drive, serif',
+                      color: '#FFFAEA',
+                      fontSize: '1.4rem',
+                      letterSpacing: '0.03em',
+                    }}
+                  >
+                    {product.name}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
