@@ -190,13 +190,13 @@ export const OilProductWidgets = () => {
         </div>
 
         {/* Quiz CTA */}
-        <div className="text-center mt-14 md:mt-20">
+        <div className="text-center mt-20 md:mt-28">
           <p
-            className="mb-5"
+            className="mb-7"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
-              fontSize: "clamp(0.95rem, 1.2vw, 1.2rem)",
+              fontSize: "clamp(1.4rem, 2vw, 2rem)",
               opacity: 0.85,
             }}
           >
@@ -204,12 +204,12 @@ export const OilProductWidgets = () => {
           </p>
           <Link
             to="/quiz"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
+            className="inline-flex items-center gap-3 px-12 py-5 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
               backgroundColor: "#1B4229",
               color: "#CDDB2D",
-              fontSize: "clamp(0.875rem, 1.1vw, 1.1rem)",
+              fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)",
               letterSpacing: "0.05em",
             }}
           >
