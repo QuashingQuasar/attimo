@@ -21,6 +21,7 @@ export const Header = ({
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -44,16 +45,19 @@ export const Header = ({
   const handleMouseEnter = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
     setShopOpen(true);
+    // Trigger dropdown fade-in on next frame
+    requestAnimationFrame(() => setDropdownVisible(true));
   };
 
   const handleMouseLeave = () => {
-    closeTimeout.current = setTimeout(() => setShopOpen(false), 200);
+    setDropdownVisible(false);
+    closeTimeout.current = setTimeout(() => setShopOpen(false), 300);
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
-      style={(isScrolled || shopOpen) ? { backgroundColor: '#1B4229' } : undefined}
+      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
+      style={{ backgroundColor: (isScrolled || shopOpen) ? '#1B4229' : 'transparent', transition: 'background-color 0.15s ease, box-shadow 0.3s ease' }}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
@@ -114,8 +118,13 @@ export const Header = ({
       {/* Full-width dropdown panel */}
       {shopOpen && (
         <div
-          className="absolute left-0 right-0 top-full z-50 shadow-2xl"
-          style={{ backgroundColor: '#1B4229' }}
+          className="absolute left-0 right-0 top-full z-50 shadow-2xl overflow-hidden"
+          style={{
+            backgroundColor: '#1B4229',
+            opacity: dropdownVisible ? 1 : 0,
+            maxHeight: dropdownVisible ? '500px' : '0px',
+            transition: 'opacity 0.25s ease, max-height 0.3s ease',
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
