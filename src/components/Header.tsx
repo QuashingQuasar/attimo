@@ -52,8 +52,8 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${isScrolled ? 'shadow-lg' : 'bg-transparent'}`}
-      style={isScrolled ? { backgroundColor: '#1B4229' } : undefined}
+      className={`fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-300 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
+      style={(isScrolled || shopOpen) ? { backgroundColor: '#1B4229' } : undefined}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
