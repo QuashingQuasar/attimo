@@ -128,8 +128,8 @@ export const Header = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="container mx-auto px-6 py-12">
-            <div className="flex justify-center gap-16">
+          <div className="container mx-auto px-6 py-14">
+            <div className="flex justify-center gap-20">
               {shopProducts.map((product) => (
                 <Link
                   key={product.handle}
@@ -137,7 +137,7 @@ export const Header = ({
                   onClick={() => setShopOpen(false)}
                   className="flex flex-col items-center gap-5 group"
                 >
-                  <div className="w-48 h-60 rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                  <div className="w-56 h-72 rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
                     <img
                       src={product.image}
                       alt={product.name}
