@@ -63,7 +63,7 @@ export const OilProductWidgets = () => {
               color: "#1B4229",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               letterSpacing: "0.05em"
-            }}>Single-Origin Early Harvest EVOO
+            }}>Early Harvest Extra Virgin Olive Oil
 
 
           </h2>
