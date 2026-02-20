@@ -59,7 +59,7 @@ export const OilProductWidgets = () => {
           <h2
             className="mb-4"
             style={{
-              fontFamily: "UDC Working Man Sans, sans-serif",
+              fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               letterSpacing: "0.05em",
