@@ -95,7 +95,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                         <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
                           fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
                         }}>
-                          {item.value} mg/kg
+                          {index === 2 ? '400 mg/kg' : `${item.value} mg/kg`}
                         </span>
                       )}
                     </div>;
