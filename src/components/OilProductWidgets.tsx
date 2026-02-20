@@ -65,7 +65,7 @@ export const OilProductWidgets = () => {
               letterSpacing: "0.05em",
             }}
           >
-            Three Groves, Three Characters
+            Specialty Extra Virgin Olive Oil
           </h2>
           <p
             className="mx-auto text-center"
@@ -75,9 +75,10 @@ export const OilProductWidgets = () => {
               opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
+              maxWidth: "700px",
             }}
           >
-            Single-variety oils from select groves across the Mediterranean.
+            Fresh, single-source and lab-tested for quality.
           </p>
         </div>
 
