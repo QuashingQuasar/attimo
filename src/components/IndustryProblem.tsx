@@ -28,7 +28,7 @@ export const IndustryProblem = () => {
              <p className="text-white/90 leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, monospace',
                 fontSize: 'clamp(1.1rem, 1.8vw, 2rem)'
-              }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
+              }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
           {/* Statistics */}
@@ -40,9 +40,9 @@ export const IndustryProblem = () => {
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
-                }}>
-                 olive oils sold as "extra virgin" don't meet those standards
-               </p>
+                }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
+
+                </p>
             </div>
 
             <div className="text-center p-4 md:p-8 border border-white rounded-lg">
@@ -52,9 +52,9 @@ export const IndustryProblem = () => {
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, monospace',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
-                }}>
-                 "extra virgin" olive oils are low in health-boosting polyphenols
-               </p>
+                }}>"extra virgin" olive oils are low in health-boosting polyphenols
+
+                </p>
             </div>
           </div>
 
