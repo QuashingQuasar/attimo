@@ -40,7 +40,7 @@ export const Footer = () => {
             <p className="text-sm" style={{
             fontFamily: 'Space Grotesk, monospace',
             color: '#B3E58C'
-          }}>© 2025 ATTIMO. All rights reserved.</p>
+          }}>© 2026 ATTIMO. All rights reserved.</p>
             <div className="flex gap-6 text-sm" style={{
             fontFamily: 'Space Grotesk, monospace'
           }}>
