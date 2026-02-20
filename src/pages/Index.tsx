@@ -22,7 +22,7 @@ const Index = () => {
       <IndustryProblem />
       <HarvestProduct />
       <KleiaWay />
-      <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      
       <OilComparison />
       <Testimonials />
       
