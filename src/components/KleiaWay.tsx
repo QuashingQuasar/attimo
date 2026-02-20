@@ -14,26 +14,26 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[750px]">
-          {/* Top row, col 1 - Not Blended (text) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-5 max-w-[95vw] mx-auto lg:h-[700px]">
+          {/* Row 1, Col 1 - Text: From Grove to Table */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{ 
+              <h4 className="font-bold mb-5" style={{ 
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+                fontSize: 'clamp(1.3rem, 2vw, 2.25rem)'
               }}>FROM GROVE TO TABLE</h4>
               <p className="leading-relaxed" style={{ 
                 fontFamily: 'Space Grotesk, monospace', 
                 color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+                fontSize: 'clamp(0.9rem, 1.1vw, 1.25rem)'
               }}>
                 We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
           </div>
 
-          {/* Top row, col 3 - Video */}
+          {/* Row 1, Col 2 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
@@ -46,25 +46,25 @@ export const KleiaWay = () => {
             </video>
           </div>
 
-          {/* Top row, col 4 - Text content (as shown in sketch) */}
+          {/* Row 1, Col 3 - Text: Lab-Tested Quality */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{ 
+              <h4 className="font-bold mb-5" style={{ 
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+                fontSize: 'clamp(1.3rem, 2vw, 2.25rem)'
               }}>LAB-TESTED QUALITY</h4>
               <p className="leading-relaxed" style={{ 
                 fontFamily: 'Space Grotesk, monospace', 
                 color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+                fontSize: 'clamp(0.9rem, 1.1vw, 1.25rem)'
               }}>
                 Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
           </div>
 
-          {/* Bottom row, col 2 - Video */}
+          {/* Row 1, Col 4 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
@@ -77,25 +77,7 @@ export const KleiaWay = () => {
             </video>
           </div>
 
-          {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{ 
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>FRESH AND SINGLE-GROVE</h4>
-              <p className="leading-relaxed" style={{ 
-                fontFamily: 'Space Grotesk, monospace', 
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>
-                Every bottle is from the latest harvest and is sourced from just one grove.
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom row, col 4 - Video */}
+          {/* Row 2, Col 1 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video 
               className="w-full h-full object-cover"
@@ -106,6 +88,55 @@ export const KleiaWay = () => {
             >
               <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
             </video>
+          </div>
+
+          {/* Row 2, Col 2 - Text: Single-Grove */}
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+            <div className="h-full flex flex-col justify-center items-center text-center">
+              <h4 className="font-bold mb-5" style={{ 
+                fontFamily: 'UDC Working Man Sans, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1.3rem, 2vw, 2.25rem)'
+              }}>FRESH AND SINGLE-GROVE</h4>
+              <p className="leading-relaxed" style={{ 
+                fontFamily: 'Space Grotesk, monospace', 
+                color: '#B3E58C',
+                fontSize: 'clamp(0.9rem, 1.1vw, 1.25rem)'
+              }}>
+                Every bottle is from the latest harvest and is sourced from just one grove.
+              </p>
+            </div>
+          </div>
+
+          {/* Row 2, Col 3 - Video */}
+          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+            <video 
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/videos/kleia-way-video-4.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Row 2, Col 4 - Text: Early Harvest */}
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+            <div className="h-full flex flex-col justify-center items-center text-center">
+              <h4 className="font-bold mb-5" style={{ 
+                fontFamily: 'UDC Working Man Sans, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1.3rem, 2vw, 2.25rem)'
+              }}>EARLY HARVEST</h4>
+              <p className="leading-relaxed" style={{ 
+                fontFamily: 'Space Grotesk, monospace', 
+                color: '#B3E58C',
+                fontSize: 'clamp(0.9rem, 1.1vw, 1.25rem)'
+              }}>
+                Picked at peak ripeness for maximum polyphenols, bold flavor and longer shelf life.
+              </p>
+            </div>
           </div>
         </div>
       </div>
