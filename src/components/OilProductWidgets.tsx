@@ -107,15 +107,11 @@ export const OilProductWidgets = () => {
                 {/* Top bar: origin pill only */}
                 <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5">
                   <span
-                    className="px-6 py-2.5 rounded-full border"
                     style={{
                       fontFamily: "UDC Working Man Sans, sans-serif",
                       fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)",
                       letterSpacing: "0.1em",
                       color: "#FFFAEA",
-                      borderColor: "rgba(255, 250, 234, 0.25)",
-                      backgroundColor: "rgba(27, 66, 41, 0.6)",
-                      backdropFilter: "blur(4px)",
                     }}
                   >
                     {oil.flag} {oil.origin.toUpperCase()}
