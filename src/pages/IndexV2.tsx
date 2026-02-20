@@ -24,7 +24,7 @@ const IndexV2 = () => {
       <IndustryProblem />
       
       <KleiaWay />
-      <WaitlistCTA onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
