@@ -144,27 +144,29 @@ export const Header = ({
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <span
-                    style={{
-                      fontFamily: 'Beverly Drive, serif',
-                      color: '#FFFAEA',
-                      fontSize: '1.6rem',
-                      letterSpacing: '0.03em',
-                    }}
-                  >
-                    {product.name}
-                  </span>
-                  <span
-                    className="uppercase"
-                    style={{
-                      fontFamily: 'UDC Working Man Sans, sans-serif',
-                      color: '#B3E58C',
-                      fontSize: '0.85rem',
-                      letterSpacing: '0.1em',
-                    }}
-                  >
-                    {product.flavor}
-                  </span>
+                  <div className="flex flex-col items-center gap-1">
+                    <span
+                      style={{
+                        fontFamily: 'Beverly Drive, serif',
+                        color: '#FFFAEA',
+                        fontSize: '1.6rem',
+                        letterSpacing: '0.03em',
+                      }}
+                    >
+                      {product.name}
+                    </span>
+                    <span
+                      className="uppercase"
+                      style={{
+                        fontFamily: 'UDC Working Man Sans, sans-serif',
+                        color: '#B3E58C',
+                        fontSize: '1.05rem',
+                        letterSpacing: '0.1em',
+                      }}
+                    >
+                      {product.flavor}
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
