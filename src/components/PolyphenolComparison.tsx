@@ -43,7 +43,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
     value: productValue,
     color: "bg-[#1B4229]"
   }];
-  const maxValue = Math.max(...comparisonData.map(item => item.value));
+  const maxValue = Math.max(...comparisonData.map((item) => item.value));
   return <section className="py-12 md:py-16 lg:py-24 snap-start flex items-center" style={{
     backgroundColor: '#FFFAEA'
   }}>
@@ -51,9 +51,9 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
         <div className="max-w-4xl mx-auto">
           <div>
               <h2 className="font-beverly font-bold text-olive-dark mb-6 tracking-tight" style={{
-                fontSize: 'clamp(2.5rem, 4vw, 4.5rem)'
-              }}>
-                The Polyphenol Effect<br />
+            fontSize: 'clamp(2.5rem, 4vw, 4.5rem)'
+          }}>Early Harvest For Maximum Polyphenol Goodness
+            <br />
                 <span className="font-medium"></span>
               </h2>
                <p className="text-olive-medium leading-relaxed mb-12" style={{
@@ -67,37 +67,37 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                 {comparisonData.map((item, index) => {
               // Set explicit widths - shorter for top 3, long for ATTIMO
               let width;
-              if (index === 0) width = '35%';      // Avg. EVOO
-              else if (index === 1) width = '40%';  // EU Claim
-              else if (index === 2) width = '50%';  // Blueprint
-              else width = '95%';                   // ATTIMO - much longer
-              
+              if (index === 0) width = '35%'; // Avg. EVOO
+              else if (index === 1) width = '40%'; // EU Claim
+              else if (index === 2) width = '50%'; // Blueprint
+              else width = '95%'; // ATTIMO - much longer
+
               return <div key={index} className="flex items-center gap-4">
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''}`} style={{
                   width: width
                 }}>
                          <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, monospace' } : {}}>
-                           {index === 2 ? (
-                             <a href="https://blueprint.bryanjohnson.com/products/extra-virgin-olive-oil?variant=47471239790877" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                           {index === 2 ?
+                    <a href="https://blueprint.bryanjohnson.com/products/extra-virgin-olive-oil?variant=47471239790877" target="_blank" rel="noopener noreferrer" className="hover:underline">
                                {item.name}
-                             </a>
-                           ) : item.name}
+                             </a> :
+                    item.name}
                          </span>
-                         {index === 3 && (
-                           <span className="font-bold text-cream whitespace-nowrap text-sm md:text-base" style={{
-                             fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
-                           }}>
+                         {index === 3 &&
+                  <span className="font-bold text-cream whitespace-nowrap text-sm md:text-base" style={{
+                    fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                  }}>
                               400-900 mg/kg
                            </span>
-                         )}
+                  }
                        </div>
-                      {index !== 3 && (
-                        <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
-                          fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
-                        }}>
+                      {index !== 3 &&
+                <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{
+                  fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)'
+                }}>
                           {index === 2 ? '400 mg/kg' : `${item.value} mg/kg`}
                         </span>
-                      )}
+                }
                     </div>;
             })}
               </div>
@@ -108,26 +108,26 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                      <div className="bg-accent rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-96">
                      <div className="grid grid-cols-1 md:grid-cols-3 h-full divide-y md:divide-y-0 md:divide-x divide-olive-dark/10">
                        {tweets.map((tweet, index) => {
-                    const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
-                    const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
-                    const icons = [
-                      '/icons/lady-2.svg',
-                      '/icons/basket-2.svg', 
-                      '/icons/branch-2.svg'
-                    ];
-                    return <div key={tweet.id} className={`p-6 flex flex-col h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
+                  const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
+                  const textColors = ['text-olive-dark', 'text-olive-dark', 'text-olive-dark'];
+                  const icons = [
+                  '/icons/lady-2.svg',
+                  '/icons/basket-2.svg',
+                  '/icons/branch-2.svg'];
+
+                  return <div key={tweet.id} className={`p-6 flex flex-col h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
                               {/* Tweet Content */}
                               <div className="space-y-4 flex-grow">
                                 <p className={`${textColors[index]} leading-relaxed`} style={{
-                          fontFamily: 'Space Grotesk, monospace',
-                          fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
-                        }}>
+                        fontFamily: 'Space Grotesk, monospace',
+                        fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
+                      }}>
                                   {tweet.content}
                                 </p>
                                 <p className={`text-olive-dark/80 leading-relaxed`} style={{
-                          fontFamily: 'Space Grotesk, monospace',
-                          fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
-                        }}>
+                        fontFamily: 'Space Grotesk, monospace',
+                        fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)'
+                      }}>
                                   {tweet.content2}
                                 </p>
                              </div>
@@ -135,16 +135,16 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                              {/* Icon Footer */}
                              <div className="flex items-center justify-center mt-4">
                                <div className={`w-[115px] h-[115px] flex items-center justify-center`}>
-                                 <img 
-                                   src={icons[index]} 
-                                   alt="icon" 
-                                   className="w-full h-full object-contain"
-                                   style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }}
-                                 />
+                                 <img
+                          src={icons[index]}
+                          alt="icon"
+                          className="w-full h-full object-contain"
+                          style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }} />
+
                                </div>
                              </div>
                           </div>;
-                  })}
+                })}
                     </div>
                   </div>
               </div>
