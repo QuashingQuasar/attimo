@@ -63,7 +63,7 @@ export const OilProductWidgets = () => {
               color: "#1B4229",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               letterSpacing: "0.05em"
-            }}>Early Harvest Extra Virgin Olive Oil
+            }}>Single-Variety Extra Virgin Olive Oil
 
 
           </h2>
@@ -76,8 +76,8 @@ export const OilProductWidgets = () => {
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "700px"
-            }}>Coldpressed from early-harvest, single-source olives.
-Lab-tested for quality and purity.
+            }}>Coldpressed from early harvested olives. Lab-tested for quality and purity.
+
 
           </p>
         </div>
