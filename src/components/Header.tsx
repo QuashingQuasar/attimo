@@ -6,9 +6,9 @@ import bottleImage from "@/assets/attimo-bottle-final.jpg";
 import { CartDrawer } from "./CartDrawer";
 
 const shopProducts = [
-  { name: "Coratina d'Italia", handle: "galega-from-alentejo", image: bottleImage },
-  { name: "Picual de España", handle: "picual", image: bottleImage },
-  { name: "Nocellara d'Italia", handle: "nocellara", image: bottleImage },
+  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "galega-from-alentejo", image: bottleImage },
+  { name: "Picual de España", flavor: "Green & Grassy", handle: "picual", image: bottleImage },
+  { name: "Nocellara d'Italia", flavor: "Gentle & Fruity", handle: "nocellara", image: bottleImage },
 ];
 
 interface HeaderProps {
@@ -153,6 +153,17 @@ export const Header = ({
                     }}
                   >
                     {product.name}
+                  </span>
+                  <span
+                    className="uppercase"
+                    style={{
+                      fontFamily: 'UDC Working Man Sans, sans-serif',
+                      color: '#B3E58C',
+                      fontSize: '0.85rem',
+                      letterSpacing: '0.1em',
+                    }}
+                  >
+                    {product.flavor}
                   </span>
                 </Link>
               ))}
