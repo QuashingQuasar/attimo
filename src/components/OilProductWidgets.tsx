@@ -76,7 +76,7 @@ export const OilProductWidgets = () => {
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "700px"
-            }}>Coldpressed from early harvested olives. Lab-tested for quality and purity.
+            }}>Single-variety olives harvested early and cold-pressed within hours. Lab-tested for quality.
 
 
           </p>
