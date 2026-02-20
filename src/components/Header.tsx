@@ -122,22 +122,22 @@ export const Header = ({
           style={{
             backgroundColor: '#1B4229',
             opacity: dropdownVisible ? 1 : 0,
-            maxHeight: dropdownVisible ? '500px' : '0px',
+            maxHeight: dropdownVisible ? '90vh' : '0px',
             transition: 'opacity 0.25s ease, max-height 0.3s ease',
           }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="mx-auto px-12 py-10" style={{ maxWidth: '1200px' }}>
-            <div className="grid grid-cols-3 gap-8">
+          <div className="mx-auto px-12 py-10" style={{ maxWidth: '1400px' }}>
+            <div className="grid grid-cols-3 gap-10">
               {shopProducts.map((product) => (
                 <Link
                   key={product.handle}
                   to={`/product/${product.handle}`}
                   onClick={() => setShopOpen(false)}
-                  className="flex flex-col items-center gap-4 group"
+                  className="flex flex-col items-center gap-5 group"
                 >
-                  <div className="w-full rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)', maxHeight: '280px' }}>
+                  <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
                     <img
                       src={product.image}
                       alt={product.name}
