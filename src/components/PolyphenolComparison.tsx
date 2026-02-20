@@ -25,7 +25,7 @@ interface PolyphenolComparisonProps {
   productLabel?: string;
 }
 
-export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO Olive Oil" }: PolyphenolComparisonProps) => {
+export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL" }: PolyphenolComparisonProps) => {
   const comparisonData = [{
     name: "Avg. EVOO",
     value: 180,
@@ -39,7 +39,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
     value: 400,
     color: "bg-[#5C6E45]"
   }, {
-    name: `ATTIMO ${productLabel}`,
+    name: productLabel,
     value: productValue,
     color: "bg-[#1B4229]"
   }];
