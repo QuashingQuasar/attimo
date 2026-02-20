@@ -76,8 +76,8 @@ export const OilProductWidgets = () => {
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "700px"
-            }}>Fresh, single-source and lab-tested for quality
-
+            }}>Coldpressed from early-harvest, single-source olives.
+Lab-tested for quality and purity.
 
           </p>
         </div>
