@@ -50,8 +50,10 @@ export const Header = ({
   };
 
   const handleMouseLeave = () => {
-    setDropdownVisible(false);
-    setShopOpen(false);
+    closeTimeout.current = setTimeout(() => {
+      setDropdownVisible(false);
+      setShopOpen(false);
+    }, 150);
   };
 
   return (
