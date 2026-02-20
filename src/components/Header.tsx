@@ -6,9 +6,9 @@ import bottleImage from "@/assets/attimo-bottle-final.jpg";
 import { CartDrawer } from "./CartDrawer";
 
 const shopProducts = [
-  { name: "Coratina", handle: "galega-from-alentejo", image: bottleImage },
-  { name: "Picual", handle: "picual", image: bottleImage },
-  { name: "Nocellara", handle: "nocellara", image: bottleImage },
+  { name: "Coratina d'Italia", handle: "galega-from-alentejo", image: bottleImage },
+  { name: "Picual de España", handle: "picual", image: bottleImage },
+  { name: "Nocellara d'Italia", handle: "nocellara", image: bottleImage },
 ];
 
 interface HeaderProps {
