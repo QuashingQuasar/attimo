@@ -102,15 +102,6 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
             })}
               </div>
 
-              {/* Scale indicators */}
-              <div className="hidden md:flex justify-between text-xs text-olive-light mt-4 px-32">
-                <span>150</span>
-                <span>300</span>
-                <span>450</span>
-                <span>600</span>
-                <span>750</span>
-                <span>900</span>
-              </div>
 
               {/* Three Column Cards */}
               <div className="mt-16">
