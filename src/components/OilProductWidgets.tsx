@@ -105,7 +105,7 @@ export const OilProductWidgets = () => {
                 />
 
                 {/* Top bar: origin pill only */}
-                <div className="absolute top-0 right-0 z-10 px-5 pt-5">
+                <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5">
                   <span
                     style={{
                       fontFamily: "UDC Working Man Sans, sans-serif",
