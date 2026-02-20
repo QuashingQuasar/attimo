@@ -204,8 +204,8 @@ export const OilProductWidgets = () => {
             className="inline-flex items-center gap-3 px-12 py-5 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
-              backgroundColor: "#1B4229",
-              color: "#CDDB2D",
+              backgroundColor: "#CDDB2D",
+              color: "#1B4229",
               fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)",
               letterSpacing: "0.05em"
             }}>
