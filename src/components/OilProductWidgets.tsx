@@ -125,7 +125,7 @@ export const OilProductWidgets = () => {
                 <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
-                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 group-hover:scale-[1.03]" />
+                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.15] group-hover:scale-[1.18]" />
 
               </div>
 
