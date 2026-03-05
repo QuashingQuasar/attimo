@@ -114,7 +114,7 @@ export const OilProductWidgets = () => {
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)",
                     letterSpacing: "0.1em",
-                    color: "#FFFAEA"
+                    color: "#1B4229"
                   }}>
 
                     {oil.flag} {oil.origin.toUpperCase()}
