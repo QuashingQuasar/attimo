@@ -2,13 +2,15 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import navbarLogo from "@/assets/navbar-logo-latest.svg";
-import bottleImage from "@/assets/attimo-bottle-final.jpg";
+import coratinaImage from "@/assets/bottle-coratina.jpg";
+import picualImage from "@/assets/bottle-picual.jpg";
+import nocellaraImage from "@/assets/bottle-nocellara.jpg";
 import { CartDrawer } from "./CartDrawer";
 
 const shopProducts = [
-  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "galega-from-alentejo", image: bottleImage },
-  { name: "Picual de España", flavor: "Green & Grassy", handle: "picual", image: bottleImage },
-  { name: "Nocellara d'Italia", flavor: "Gentle & Fruity", handle: "nocellara", image: bottleImage },
+  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "galega-from-alentejo", image: coratinaImage },
+  { name: "Picual de España", flavor: "Green & Grassy", handle: "picual", image: picualImage },
+  { name: "Nocellara d'Italia", flavor: "Gentle & Fruity", handle: "nocellara", image: nocellaraImage },
 ];
 
 interface HeaderProps {
