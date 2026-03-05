@@ -67,7 +67,7 @@ export interface ProductContent {
 export const productContentMap: Record<string, ProductContent> = {
   "galega-from-alentejo": {
     heroTitle: "GALEGA FROM ALENTEJO",
-    heroSubtitle: "High-Polyphenol Extra Virgin Olive Oil",
+    heroSubtitle: "Specialty Extra Virgin Olive Oil",
     benefits: [
       "5x more antioxidant polyphenols than average EVOO",
       "Third-party lab tested for quality and purity",
