@@ -127,7 +127,7 @@ export const Header = ({
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 scale-[1.25] group-hover:scale-[1.28]"
                     />
                   </div>
                   <div className="flex flex-col items-center gap-1">
