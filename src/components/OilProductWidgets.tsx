@@ -34,7 +34,7 @@ const oils = [
   flag: "🇮🇹",
   handle: "nocellara",
   image: nocellaraImage,
-  tagline: "Easy to like and use",
+  tagline: "Easy to love, easy to use",
   price: 20
 }];
 
