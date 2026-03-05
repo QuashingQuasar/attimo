@@ -197,29 +197,6 @@ const ProductPage = () => {
                 {content.heroSubtitle}
               </p>
 
-              {/* Key Benefits */}
-              <ul className="space-y-3 max-w-2xl">
-                {content.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-3 text-olive-medium" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
-                    <span className="mt-[0.45em] w-[7px] h-[7px] rounded-full bg-olive-dark/60 flex-shrink-0" />
-                    <span className="leading-relaxed">
-                      {benefit}
-                      {i === 0 && (
-                        <span 
-                          className="inline-flex items-center justify-center w-5 h-5 ml-1.5 rounded-full border border-olive-dark/30 text-olive-medium cursor-help align-middle" 
-                          style={{ fontSize: '0.75rem' }}
-                          title={content.benefitTooltip}
-                        >?</span>
-                      )}
-                      {i === 1 && content.labReportUrl && (
-                        <a href={content.labReportUrl} target="_blank" rel="noopener noreferrer" className="inline-flex ml-1.5 text-olive-dark/60 hover:text-olive-dark align-middle">
-                          <Link size={16} />
-                        </a>
-                      )}
-                    </span>
-                  </li>
-                ))}
-              </ul>
 
               {/* Attribute Grid — 2x2 like Arsenio */}
               <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
