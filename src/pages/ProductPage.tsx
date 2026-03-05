@@ -197,6 +197,10 @@ const ProductPage = () => {
                 {content.heroSubtitle}
               </p>
 
+              {/* Description */}
+              <p className="text-olive-medium leading-relaxed max-w-2xl" style={{ fontFamily: 'Space Grotesk, monospace', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
+                {content.originStory.headline.split('.').slice(0, 3).join('.') + '.'}
+              </p>
 
               {/* Attribute Grid — 2x2 like Arsenio */}
               <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
