@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import bottleImage from "@/assets/attimo-bottle-final.jpg";
+import coratinaImage from "@/assets/bottle-coratina.jpg";
+import picualImage from "@/assets/bottle-picual.jpg";
+import nocellaraImage from "@/assets/bottle-nocellara.jpg";
 
 const oils = [
 {
@@ -9,7 +11,7 @@ const oils = [
   origin: "Umbria, Italy",
   flag: "🇮🇹",
   handle: "galega-from-alentejo",
-  image: bottleImage,
+  image: coratinaImage,
   tagline: "A hit of healthy polyphenols",
   price: 22
 },
@@ -20,7 +22,7 @@ const oils = [
   origin: "Jaén, Spain",
   flag: "🇪🇸",
   handle: "picual",
-  image: bottleImage,
+  image: picualImage,
   tagline: "All-round goodness",
   price: 20
 },
@@ -31,7 +33,7 @@ const oils = [
   origin: "Sicily, Italy",
   flag: "🇮🇹",
   handle: "nocellara",
-  image: bottleImage,
+  image: nocellaraImage,
   tagline: "Easy to like and use",
   price: 20
 }];
