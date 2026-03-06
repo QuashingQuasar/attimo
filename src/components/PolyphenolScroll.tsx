@@ -64,8 +64,6 @@ export const PolyphenolScroll = () => {
           if (ref) {
             const rect = ref.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
-            
-            // Check if section is in the center of viewport
             if (rect.top <= viewportHeight / 2 && rect.bottom >= viewportHeight / 2) {
               setActiveSection(index + 1);
             }
@@ -75,8 +73,7 @@ export const PolyphenolScroll = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-    
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -94,13 +91,12 @@ export const PolyphenolScroll = () => {
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
             Scroll Through the <span className="font-medium text-emerald-600">Science</span>
           </h2>
-           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
              Each section reveals as you scroll - discover the polyphenol story through immersive storytelling.
            </p>
         </div>
 
         <div className="relative flex">
-          {/* Sticky Side Navigation */}
           <div className="hidden lg:block sticky top-1/2 -translate-y-1/2 w-64 h-fit mr-8">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
               <h3 className="text-lg font-semibold text-slate-800 mb-4">Navigation</h3>
@@ -118,8 +114,8 @@ export const PolyphenolScroll = () => {
                     <div className="flex items-center space-x-3">
                       <span className="text-xl">{story.visual}</span>
                       <div>
-                        <div className="font-medium text-sm" style={{ fontFamily: 'Space Grotesk, monospace' }}>{story.subtitle}</div>
-                        <div className="text-xs opacity-75" style={{ fontFamily: 'Space Grotesk, monospace' }}>{story.title}</div>
+                        <div className="font-medium text-sm" style={{ fontFamily: 'Space Mono, monospace' }}>{story.subtitle}</div>
+                        <div className="text-xs opacity-75" style={{ fontFamily: 'Space Mono, monospace' }}>{story.title}</div>
                       </div>
                     </div>
                   </button>
@@ -128,7 +124,6 @@ export const PolyphenolScroll = () => {
             </div>
           </div>
 
-          {/* Main Content Area */}
           <div className="flex-1 space-y-32">
             {scrollStories.map((story, index) => (
               <div
@@ -143,7 +138,6 @@ export const PolyphenolScroll = () => {
                 }`}>
                   <div className="max-w-4xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                      {/* Content Side */}
                       <div className={`${story.textColor} order-2 md:order-1`}>
                         <div className="mb-4">
                           <span className="text-sm font-medium opacity-75 uppercase tracking-wide">
@@ -156,12 +150,10 @@ export const PolyphenolScroll = () => {
                         <h4 className="text-xl md:text-2xl font-light mb-8 opacity-80">
                           {story.subtitle}
                         </h4>
-                         <p className="text-lg md:text-xl leading-relaxed opacity-90" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+                         <p className="text-lg md:text-xl leading-relaxed opacity-90" style={{ fontFamily: 'Space Mono, monospace' }}>
                            {story.content}
                          </p>
                       </div>
-
-                      {/* Visual Side */}
                       <div className="order-1 md:order-2 flex justify-center">
                         <div className="text-8xl md:text-9xl transform transition-transform duration-700 hover:scale-110">
                           {story.visual}
@@ -175,7 +167,6 @@ export const PolyphenolScroll = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
           <div className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-white/50">
             <div className="flex space-x-2">

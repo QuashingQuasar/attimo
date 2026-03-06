@@ -72,7 +72,7 @@ export const OilProductWidgets = () => {
           <p
             className="mx-auto text-center"
             style={{
-              fontFamily: "Space Grotesk, sans-serif",
+              fontFamily: "Space Mono, monospace",
               color: "#1B4229",
               opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
@@ -174,7 +174,7 @@ export const OilProductWidgets = () => {
                 {/* Tagline */}
                 <p
                 style={{
-                  fontFamily: "Space Grotesk, sans-serif",
+                  fontFamily: "Space Mono, monospace",
                   color: "#1B4229",
                   fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
                   opacity: 0.5,
@@ -193,7 +193,7 @@ export const OilProductWidgets = () => {
           <p
             className="mb-7"
             style={{
-              fontFamily: "Space Grotesk, sans-serif",
+              fontFamily: "Space Mono, monospace",
               color: "#1B4229",
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               opacity: 0.85

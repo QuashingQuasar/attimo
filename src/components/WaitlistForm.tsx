@@ -20,10 +20,7 @@ interface WaitlistFormProps {
   isOpen: boolean;
   onClose: () => void;
 }
-export const WaitlistForm = ({
-  isOpen,
-  onClose
-}: WaitlistFormProps) => {
+export const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
   const [contactMethod, setContactMethod] = useState<"email" | "phone">("email");
   const [contactValue, setContactValue] = useState("");
   const [name, setName] = useState("");
@@ -32,33 +29,16 @@ export const WaitlistForm = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
-      // Validate form data
-      const validatedData = waitlistSchema.parse({
-        name,
-        contactValue,
-        contactMethod,
-        gdprConsent
+      const validatedData = waitlistSchema.parse({ name, contactValue, contactMethod, gdprConsent });
+      const { error } = await supabase.from('waitlist').insert({
+        name: validatedData.name,
+        contact_method: validatedData.contactMethod,
+        contact_value: validatedData.contactValue,
+        gdpr_consent: validatedData.gdprConsent
       });
-
-      // Insert into database
-      const { error } = await supabase
-        .from('waitlist')
-        .insert({
-          name: validatedData.name,
-          contact_method: validatedData.contactMethod,
-          contact_value: validatedData.contactValue,
-          gdpr_consent: validatedData.gdprConsent
-        });
-
       if (error) throw error;
-
-      toast({
-        title: "Welcome to our waitlist!",
-        description: `We'll contact you at your ${contactMethod}.`
-      });
-      
+      toast({ title: "Welcome to our waitlist!", description: `We'll contact you at your ${contactMethod}.` });
       setContactValue("");
       setName("");
       setGdprConsent(false);
@@ -67,9 +47,7 @@ export const WaitlistForm = ({
       console.error('Error submitting waitlist form:', error);
       toast({
         title: "Error",
-        description: error instanceof z.ZodError 
-          ? error.errors[0].message 
-          : "Failed to join waitlist. Please try again.",
+        description: error instanceof z.ZodError ? error.errors[0].message : "Failed to join waitlist. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -84,9 +62,7 @@ export const WaitlistForm = ({
             <X className="h-4 w-4" />
           </Button>
           <CardTitle className="text-2xl text-olive-dark">Fresh From The Press</CardTitle>
-          <CardDescription>
-            Be the first to know about new ATTIMO oils
-          </CardDescription>
+          <CardDescription>Be the first to know about new ATTIMO oils</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,10 +71,7 @@ export const WaitlistForm = ({
             </div>
             <div className="space-y-3">
               <Label>Where you want to be messaged</Label>
-              <RadioGroup value={contactMethod} onValueChange={(value: "email" | "phone") => {
-              setContactMethod(value);
-              setContactValue("");
-            }}>
+              <RadioGroup value={contactMethod} onValueChange={(value: "email" | "phone") => { setContactMethod(value); setContactValue(""); }}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="email" id="email-option" />
                   <Label htmlFor="email-option" className="font-normal cursor-pointer">Email</Label>
@@ -113,26 +86,13 @@ export const WaitlistForm = ({
               <Input id="contact" type={contactMethod === "email" ? "email" : "tel"} value={contactValue} onChange={e => setContactValue(e.target.value)} placeholder={contactMethod === "email" ? "Email Address" : "Phone Number"} required className="border-olive-light focus:border-gold-rich" />
             </div>
             <div className="flex items-start space-x-3 py-2">
-              <Checkbox 
-                id="gdpr" 
-                checked={gdprConsent}
-                onCheckedChange={(checked) => setGdprConsent(checked === true)}
-                required
-              />
-              <label 
-                htmlFor="gdpr" 
-                className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                I agree to receive marketing messages
-              </label>
+              <Checkbox id="gdpr" checked={gdprConsent} onCheckedChange={(checked) => setGdprConsent(checked === true)} required />
+              <label htmlFor="gdpr" className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">I agree to receive marketing messages</label>
             </div>
-            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{
-            fontFamily: 'Space Grotesk, monospace'
-          }}>
+            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{ fontFamily: 'Space Mono, monospace' }}>
               {isSubmitting ? "Joining..." : "Let me know"}
             </Button>
           </form>
-          
         </CardContent>
       </Card>
     </div>;
