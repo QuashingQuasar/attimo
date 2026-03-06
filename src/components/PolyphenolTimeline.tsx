@@ -59,7 +59,7 @@ export const PolyphenolTimeline = () => {
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
             Polyphenol <span className="font-medium text-emerald-600">Journey</span>
           </h2>
-           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
              Navigate through the timeline to explore how polyphenols work and why our oil is different.
            </p>
         </div>
@@ -72,7 +72,7 @@ export const PolyphenolTimeline = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-slate-800 mb-6">
                 {currentStep.title}
               </h3>
-               <p className="text-lg md:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: 'Space Grotesk, monospace' }}>
+               <p className="text-lg md:text-xl text-slate-600 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
                  {currentStep.content}
                </p>
             </div>
@@ -82,20 +82,14 @@ export const PolyphenolTimeline = () => {
         {/* Interactive Timeline */}
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            {/* Progress Line Background */}
             <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-200 rounded-full -translate-y-1/2"></div>
-            
-            {/* Active Progress Line */}
             <div 
               className="absolute top-1/2 left-0 h-1 bg-emerald-500 rounded-full -translate-y-1/2 transition-all duration-500 ease-out"
               style={{ width: `${((activeStep - 1) / (timelineSteps.length - 1)) * 100}%` }}
             ></div>
-
-            {/* Timeline Nodes */}
             <div className="relative flex justify-between items-center">
               {timelineSteps.map((step, index) => (
                 <div key={step.id} className="flex flex-col items-center">
-                  {/* Node Button */}
                   <button
                     onClick={() => setActiveStep(step.id)}
                     className={`w-16 h-16 rounded-full border-4 border-white shadow-lg transition-all duration-300 z-10 flex items-center justify-center text-2xl ${
@@ -104,8 +98,6 @@ export const PolyphenolTimeline = () => {
                   >
                     {step.visual}
                   </button>
-
-                  {/* Step Label */}
                   <div className="mt-4 text-center max-w-32">
                     <div className={`text-sm font-medium transition-colors duration-300 ${
                       activeStep === step.id ? 'text-slate-800' : 'text-slate-500'
@@ -123,7 +115,6 @@ export const PolyphenolTimeline = () => {
             </div>
           </div>
 
-          {/* Navigation Helper */}
           <div className="text-center mt-12">
             <div className="flex items-center justify-center space-x-4">
               <button
@@ -133,11 +124,9 @@ export const PolyphenolTimeline = () => {
               >
                 Previous
               </button>
-              
               <span className="text-slate-500 text-sm">
                 {activeStep} of {timelineSteps.length}
               </span>
-              
               <button
                 onClick={() => setActiveStep(Math.min(timelineSteps.length, activeStep + 1))}
                 disabled={activeStep === timelineSteps.length}

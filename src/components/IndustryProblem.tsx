@@ -3,20 +3,13 @@ import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return <section className="py-12 md:py-16 bg-[#1B4229] snap-start flex items-center">
       <div className="mx-auto px-4 w-[90vw]">
-        {/* Contained section with video background */}
         <div className="relative overflow-hidden rounded-3xl">
-          {/* Video Background */}
           <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
             <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
           </video>
-          
-          {/* Dark Blur Overlay */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-          
-          {/* Content */}
           <div className="relative z-10 py-6 px-6 md:py-12 md:px-16">
         <div className="mx-auto">
-          {/* Main Heading */}
           <div className="text-left mb-6 md:mb-10">
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
@@ -26,86 +19,51 @@ export const IndustryProblem = () => {
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
              <p className="text-white/90 leading-relaxed font-light" style={{
-                fontFamily: 'Space Grotesk, monospace',
+                fontFamily: 'Space Mono, monospace',
                 fontSize: 'clamp(1.1rem, 1.8vw, 2rem)'
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
-          {/* Statistics */}
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
             <div className="text-center p-4 md:p-8 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{
-                  fontSize: 'clamp(2.5rem, 4.5vw, 5rem)'
-                }}>~80%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 5rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
+                  fontFamily: 'Space Mono, monospace',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
                 }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
-
                 </p>
             </div>
-
             <div className="text-center p-4 md:p-8 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{
-                  fontSize: 'clamp(2.5rem, 4.5vw, 5rem)'
-                }}>~90%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 5rem)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
+                  fontFamily: 'Space Mono, monospace',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
                 }}>"extra virgin" olive oils are low in health-boosting polyphenols
-
                 </p>
             </div>
           </div>
 
-          {/* Problem Breakdown */}
           <div className="grid lg:grid-cols-3 gap-6 md:gap-10 mx-auto">
-            {/* Flavor and Health */}
             <div className="space-y-2 md:space-y-4">
-              
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                  fontFamily: 'UDC Working Man Sans, sans-serif',
-                  fontSize: 'clamp(1.2rem, 1.8vw, 2rem)'
-                }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Flavour and health get blended away
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-                }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavor and polyphenols that make it super healthy.</p>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavor and polyphenols that make it super healthy.</p>
             </div>
-
-            {/* Real Thing */}
             <div className="space-y-2 md:space-y-4">
-              
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                  fontFamily: 'UDC Working Man Sans, sans-serif',
-                  fontSize: 'clamp(1.2rem, 1.8vw, 2rem)'
-                }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 You've never tasted the real thing
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-                }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
             </div>
-
-            {/* Big Oil Impact */}
             <div className="space-y-2 md:space-y-4">
-              
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{
-                  fontFamily: 'UDC Working Man Sans, sans-serif',
-                  fontSize: 'clamp(1.2rem, 1.8vw, 2rem)'
-                }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Big oil kills family groves
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{
-                  fontFamily: 'Space Grotesk, monospace',
-                  fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-                }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>
                  Financial stress forces small producers to sell to industrial players. Their sublime oil sold gets blended into cheap stuff and sold for pennies. Making olive oil is an art much like wine, but when the artists don't get paid, the art disappears.
                </p>
             </div>

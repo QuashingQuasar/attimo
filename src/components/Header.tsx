@@ -47,7 +47,6 @@ export const Header = ({
   const handleMouseEnter = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
     setShopOpen(true);
-    // Trigger dropdown fade-in on next frame
     requestAnimationFrame(() => setDropdownVisible(true));
   };
 
@@ -65,43 +64,23 @@ export const Header = ({
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <div className="flex items-center">
             <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
           </div>
-
-          {/* Right side */}
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
-            {/* Shop dropdown trigger */}
-            <div
-              className="relative hidden md:block"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium"
-                style={{ fontFamily: 'Space Grotesk, monospace' }}
-              >
+            <div className="relative hidden md:block" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+              <button className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Mono, monospace' }}>
                 Shop
               </button>
             </div>
-
-            {/* New Harvest link */}
-            <button
-              onClick={onWaitlistClick}
-              className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium"
-              style={{ fontFamily: 'Space Grotesk, monospace' }}
-            >
+            <button onClick={onWaitlistClick} className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Mono, monospace' }}>
               New Harvest
             </button>
-
-            {/* Cart Drawer */}
             <CartDrawer />
           </div>
         </div>
       </div>
 
-      {/* Full-width dropdown panel */}
       {shopOpen && (
         <div
           className="absolute left-0 right-0 top-full z-50 shadow-2xl overflow-hidden"
@@ -117,39 +96,15 @@ export const Header = ({
           <div className="mx-auto px-12 py-10" style={{ maxWidth: '1400px' }}>
             <div className="grid grid-cols-3 gap-10">
               {shopProducts.map((product) => (
-                <Link
-                  key={product.handle}
-                  to={`/product/${product.handle}`}
-                  onClick={() => setShopOpen(false)}
-                  className="flex flex-col items-center gap-5 group"
-                >
+                <Link key={product.handle} to={`/product/${product.handle}`} onClick={() => setShopOpen(false)} className="flex flex-col items-center gap-5 group">
                   <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 scale-[1.25] group-hover:scale-[1.28]"
-                    />
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 scale-[1.25] group-hover:scale-[1.28]" />
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span
-                      style={{
-                        fontFamily: 'Beverly Drive, serif',
-                        color: '#FFFAEA',
-                        fontSize: '1.6rem',
-                        letterSpacing: '0.03em',
-                      }}
-                    >
+                    <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: '1.6rem', letterSpacing: '0.03em' }}>
                       {product.name}
                     </span>
-                    <span
-                      className="uppercase"
-                      style={{
-                        fontFamily: 'UDC Working Man Sans, sans-serif',
-                        color: '#B3E58C',
-                        fontSize: '1.05rem',
-                        letterSpacing: '0.1em',
-                      }}
-                    >
+                    <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: '1.05rem', letterSpacing: '0.1em' }}>
                       {product.flavor}
                     </span>
                   </div>

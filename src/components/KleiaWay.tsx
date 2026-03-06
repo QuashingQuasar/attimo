@@ -24,7 +24,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>FROM GROVE TO TABLE</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, monospace',
+                fontFamily: 'Space Mono, monospace',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
@@ -55,7 +55,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>LAB-TESTED QUALITY</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, monospace',
+                fontFamily: 'Space Mono, monospace',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
@@ -86,7 +86,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>Early harvest</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, monospace',
+                fontFamily: 'Space Mono, monospace',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>Our olives are harvested early in season when they are highest in the polyphenols that give taste and health
