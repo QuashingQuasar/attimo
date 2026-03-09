@@ -55,7 +55,7 @@ export const Hero = ({
 
           <div className="text-white/80 font-light tracking-wide drop-shadow-lg animate-fade-in cursor-pointer hover:text-white transition-colors" style={{
           animationDelay: '0.6s',
-          fontFamily: 'Space Mono, monospace',
+          fontFamily: 'Space Grotesk, sans-serif',
           fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
         }} onClick={onWaitlistClick}>New Harvest Waitlist</div>
         </div>

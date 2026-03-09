@@ -69,11 +69,11 @@ export const Header = ({
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative hidden md:block" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <button className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Mono, monospace' }}>
+              <button className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </button>
             </div>
-            <button onClick={onWaitlistClick} className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Mono, monospace' }}>
+            <button onClick={onWaitlistClick} className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               New Harvest
             </button>
             <CartDrawer />
