@@ -19,7 +19,7 @@ export const FAQ = () => {
           <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(2rem, 4vw, 4.5rem)" }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 font-light" style={{ fontFamily: "Space Mono, monospace", fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}>
+          <p className="text-gray-600 font-light" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}>
             Everything you need to know about ATTIMO
           </p>
         </div>
@@ -30,7 +30,7 @@ export const FAQ = () => {
               <AccordionTrigger className="text-left font-medium py-6 hover:no-underline" style={{ color: "#1B4229", fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}>
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="pb-6 leading-relaxed" style={{ fontFamily: "Space Mono, monospace", color: "#1B4229", fontSize: "clamp(0.875rem, 1.1vw, 1.25rem)" }}>
+              <AccordionContent className="pb-6 leading-relaxed" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", fontSize: "clamp(0.875rem, 1.1vw, 1.25rem)" }}>
                 {faq.answerElement || faq.answer}
               </AccordionContent>
             </AccordionItem>

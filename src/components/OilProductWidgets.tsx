@@ -45,7 +45,6 @@ export const OilProductWidgets = () => {
       className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden"
       style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
-      {/* Subtle texture overlay */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -56,7 +55,6 @@ export const OilProductWidgets = () => {
 
 
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px" }}>
-        {/* Section header */}
         <div className="text-center mb-14 md:mb-20">
           <h2
             className="mb-4"
@@ -72,7 +70,7 @@ export const OilProductWidgets = () => {
           <p
             className="mx-auto text-center"
             style={{
-              fontFamily: "Space Mono, monospace",
+              fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
@@ -84,7 +82,6 @@ export const OilProductWidgets = () => {
           </p>
         </div>
 
-        {/* Product cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {oils.map((oil) =>
           <Link
@@ -92,12 +89,10 @@ export const OilProductWidgets = () => {
             to={`/product/${oil.handle}`}
             className="group flex flex-col">
 
-              {/* Image card */}
               <div
               className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-7"
               style={{ backgroundColor: "#1B4229" }}>
 
-                {/* Subtle texture inside card */}
                 <div
                 className="absolute inset-0 opacity-[0.04] z-[1]"
                 style={{
@@ -107,7 +102,6 @@ export const OilProductWidgets = () => {
                 }} />
 
 
-                {/* Top bar: origin pill only */}
                 <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5">
                   <span
                   style={{
@@ -121,7 +115,6 @@ export const OilProductWidgets = () => {
                   </span>
                 </div>
 
-                {/* Product image */}
                 <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
@@ -129,9 +122,7 @@ export const OilProductWidgets = () => {
 
               </div>
 
-              {/* Text below card */}
               <div className="flex flex-col items-center text-center px-2">
-                {/* Product name */}
                 <h3
                 className="mb-1.5"
                 style={{
@@ -144,7 +135,6 @@ export const OilProductWidgets = () => {
                   {oil.name} {oil.nameDetail}
                 </h3>
 
-                {/* Flavor */}
                 <p
                 className="uppercase mb-3"
                 style={{
@@ -158,7 +148,6 @@ export const OilProductWidgets = () => {
                   {oil.flavor}
                 </p>
 
-                {/* Price */}
                 <p
                 className="mb-3"
                 style={{
@@ -171,10 +160,9 @@ export const OilProductWidgets = () => {
                   €{oil.price}
                 </p>
 
-                {/* Tagline */}
                 <p
                 style={{
-                  fontFamily: "Space Mono, monospace",
+                  fontFamily: "Space Grotesk, sans-serif",
                   color: "#1B4229",
                   fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
                   opacity: 0.5,
@@ -188,12 +176,11 @@ export const OilProductWidgets = () => {
           )}
         </div>
 
-        {/* Quiz CTA */}
         <div className="text-center mt-20 md:mt-28">
           <p
             className="mb-7"
             style={{
-              fontFamily: "Space Mono, monospace",
+              fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               opacity: 0.85
