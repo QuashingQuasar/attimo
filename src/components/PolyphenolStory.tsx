@@ -19,15 +19,15 @@ const FlipCard = ({ card, index }: { card: typeof storyCards[0], index: number }
           <div className="flex flex-col items-center justify-center h-full text-center">
             <div className="text-5xl mb-4">{card.front.visual}</div>
             <h3 className="text-2xl font-bold mb-2">{card.front.title}</h3>
-            <p className="text-white/80 text-sm uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace' }}>{card.front.subtitle}</p>
-            <div className="mt-6 text-xs text-white/60" style={{ fontFamily: 'Space Mono, monospace' }}>Click to flip</div>
+            <p className="text-white/80 text-sm uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{card.front.subtitle}</p>
+            <div className="mt-6 text-xs text-white/60" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Click to flip</div>
           </div>
         </div>
         <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br ${card.back.bgColor} p-8 text-white shadow-lg`}>
           <div className="flex flex-col justify-center h-full">
             <h3 className="text-2xl font-bold mb-4 text-center">{card.back.title}</h3>
-            <p className="text-lg leading-relaxed text-white/95" style={{ fontFamily: 'Space Mono, monospace' }}>{card.back.content}</p>
-            <div className="mt-6 text-center text-xs text-white/60" style={{ fontFamily: 'Space Mono, monospace' }}>Click to flip back</div>
+            <p className="text-lg leading-relaxed text-white/95" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{card.back.content}</p>
+            <div className="mt-6 text-center text-xs text-white/60" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Click to flip back</div>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ export const PolyphenolStory = () => {
           <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
             The Science Behind <span className="font-medium text-emerald-400">Polyphenols</span>
           </h2>
-           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
+           <p className="text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
              Flip each card to discover the fascinating world of polyphenols and why our oil delivers exceptional health benefits.
            </p>
         </div>

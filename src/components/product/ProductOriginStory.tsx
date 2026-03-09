@@ -42,7 +42,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
                   {features[0]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Mono, monospace', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
                   {features[0]?.description}
                 </p>
               </div>
@@ -73,7 +73,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
                   {features[1]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Mono, monospace', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
                   {features[1]?.description}
                 </p>
               </div>
@@ -104,7 +104,7 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                 <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
                   {features[2]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Mono, monospace', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
                   {features[2]?.description}
                 </p>
               </div>
