@@ -35,7 +35,7 @@ export default {
 				'192': '48rem'
 			},
 		fontFamily: {
-			'sans': ['Space Mono', 'Inter', 'sans-serif'],
+			'sans': ['Space Grotesk', 'Inter', 'sans-serif'],
 			'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
 			'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
 			'display': ['Playfair Display', 'serif'],
