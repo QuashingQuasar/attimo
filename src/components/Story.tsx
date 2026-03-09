@@ -8,7 +8,7 @@ export const Story = () => {
               Five Centuries of
               <span className="block text-gold-rich">Mediterranean Tradition</span>
             </h2>
-            <div className="space-y-6 text-lg text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+            <div className="space-y-6 text-lg text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <p>Our story begins in the sun-drenched hills of the Mediterranean, where ancient olive groves have stood for over 500 years. These majestic trees, witnesses to countless seasons and generations, produce olives of unparalleled quality.</p>
               <p>Using time-honored methods passed down through generations, we harvest our olives at the perfect moment of ripeness. Within 24 hours, they're cold-pressed using traditional stone mills, ensuring every drop captures the essence of our heritage.</p>
               <p>Each bottle represents not just olive oil, but liquid history – a testament to the dedication of countless farmers who have tended these groves with love and respect for the land.</p>

@@ -14,7 +14,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="flavor" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Flower2 size={20} className="text-olive-dark" />
               Taste Profile
             </span>
@@ -23,7 +23,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
             <div className="space-y-4 pt-1 pb-2">
               {tabs.flavorProfile.map(flavor => (
                 <div key={flavor.label} className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace' }}>
+                  <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     {flavor.label}
                   </span>
                   <div className="flex gap-1">
@@ -39,13 +39,13 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
 
         <AccordionItem value="harvest" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Sprout size={20} className="text-olive-dark" />
               Harvest Details
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
+            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
               <p>{tabs.harvest}</p>
             </div>
           </AccordionContent>
@@ -53,13 +53,13 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
 
         <AccordionItem value="uses" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <UtensilsCrossed size={20} className="text-olive-dark" />
               Best Uses
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
+            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
               <p>{tabs.uses}</p>
               {tabs.usesExtra && <p className="mt-3">{tabs.usesExtra}</p>}
             </div>
@@ -68,13 +68,13 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
 
         <AccordionItem value="shipping" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Truck size={20} className="text-olive-dark" />
               Shipping & Delivery
             </span>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
+            <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
               <p>We ship across Europe. Orders are carefully packed and dispatched within 2–3 business days. Delivery typically takes 3–7 business days depending on your location.</p>
             </div>
           </AccordionContent>

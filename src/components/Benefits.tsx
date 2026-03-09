@@ -24,7 +24,7 @@ export const Benefits = () => {
                   <benefit.icon className="h-8 w-8 text-olive-dark" />
                 </div>
                 <h3 className="text-xl font-semibold text-olive-dark mb-4">{benefit.title}</h3>
-                <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>{benefit.description}</p>
+                <p className="text-muted-foreground leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{benefit.description}</p>
               </CardContent>
             </Card>
           ))}
