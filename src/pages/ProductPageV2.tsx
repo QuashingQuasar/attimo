@@ -228,7 +228,7 @@ const ProductPage = () => {
             </p>
 
             {/* Key Benefits */}
-            <ul className="space-y-2.5 text-olive-medium pt-2" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.85rem, 1.05vw, 1.15rem)' }}>
+            <ul className="space-y-2.5 text-olive-medium pt-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1.05vw, 1.15rem)' }}>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                 <span className="inline">
@@ -249,7 +249,7 @@ const ProductPage = () => {
                       style={{ backgroundColor: '#1B4229', color: '#FFFAEA', borderColor: 'rgba(205, 219, 45, 0.3)' }}
                       onPointerDownOutside={(e) => e.preventDefault()}
                     >
-                      <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+                      <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                         {content.benefitTooltip}
                       </p>
                     </HoverCardContent>
@@ -285,11 +285,11 @@ const ProductPage = () => {
                         : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
                     }`}
                   >
-                    <div className="font-semibold" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                    <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       {option.label}
                     </div>
                     {option.subtitle && (
-                      <div className={`mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                      <div className={`mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
                         {option.subtitle}
                       </div>
                     )}
@@ -328,11 +328,11 @@ const ProductPage = () => {
                         {tile.value}
                         {tile.unit && <span className="ml-1 text-olive-dark/90" style={{ fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)' }}>{tile.unit}</span>}
                       </div>
-                      <div className="text-olive-light" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
+                      <div className="text-olive-light" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
                         {tile.avg}
                       </div>
                     </div>
-                    <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.8rem, 1vw, 1.05rem)' }}>
+                    <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.05rem)' }}>
                       {tile.description}
                     </p>
                   </div>
