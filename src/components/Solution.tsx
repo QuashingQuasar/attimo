@@ -24,7 +24,7 @@ export const Solution = () => {
                   {tile.unit && <span className="text-2xl md:text-3xl ml-1 text-golden-text/90">{tile.unit}</span>}
                 </div>
                 <div className="text-sm text-golden-text mt-1">{tile.avg}</div>
-                <p className="mt-4 text-sm leading-relaxed text-golden-text/90" style={{ fontFamily: 'Space Mono, monospace' }}>{tile.description}</p>
+                <p className="mt-4 text-sm leading-relaxed text-golden-text/90" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{tile.description}</p>
               </div>
             </article>
           ))}

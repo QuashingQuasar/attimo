@@ -15,7 +15,6 @@ export const KleiaWay = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[750px]">
-          {/* Top row, col 1 - Not Blended (text) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{
@@ -24,7 +23,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>FROM GROVE TO TABLE</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Mono, monospace',
+                fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
@@ -33,20 +32,12 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Top row, col 3 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline>
-
+            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src="/videos/content-video-1.mp4" type="video/mp4" />
             </video>
           </div>
 
-          {/* Top row, col 4 - Text content (as shown in sketch) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{
@@ -55,7 +46,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>LAB-TESTED QUALITY</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Mono, monospace',
+                fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
@@ -64,20 +55,12 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Bottom row, col 2 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline>
-
+            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src="/videos/kleia-way-video-3.mp4" type="video/mp4" />
             </video>
           </div>
 
-          {/* Bottom row, col 3 - Lab Tested (text according to sketch) */}
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{
@@ -86,7 +69,7 @@ export const KleiaWay = () => {
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
               }}>Early harvest</h4>
               <p className="leading-relaxed" style={{
-                fontFamily: 'Space Mono, monospace',
+                fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>Our olives are harvested early in season when they are highest in the polyphenols that give taste and health
@@ -95,15 +78,8 @@ export const KleiaWay = () => {
             </div>
           </div>
 
-          {/* Bottom row, col 4 - Video */}
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline>
-
+            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
             </video>
           </div>

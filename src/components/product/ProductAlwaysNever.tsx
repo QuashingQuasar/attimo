@@ -14,7 +14,7 @@ export const ProductAlwaysNever = () => {
             </h3>
             <ul className="space-y-3">
               {alwaysItems.map((item, i) => (
-                <li key={i} className="flex items-center gap-3" style={{ fontFamily: 'Space Mono, monospace', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
+                <li key={i} className="flex items-center gap-3" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
                   <Check className="w-5 h-5 flex-shrink-0" style={{ color: '#CDDB2D' }} />
                   {item}
                 </li>
@@ -27,7 +27,7 @@ export const ProductAlwaysNever = () => {
             </h3>
             <ul className="space-y-3">
               {neverItems.map((item, i) => (
-                <li key={i} className="flex items-center gap-3" style={{ fontFamily: 'Space Mono, monospace', color: 'rgba(255, 250, 234, 0.7)', fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
+                <li key={i} className="flex items-center gap-3" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255, 250, 234, 0.7)', fontSize: 'clamp(1rem, 1.15vw, 1.2rem)' }}>
                   <X className="w-5 h-5 flex-shrink-0 text-red-400/80" />
                   {item}
                 </li>

@@ -1,51 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 
 const scrollStories = [
-  {
-    id: 1,
-    title: "What are Polyphenols?",
-    subtitle: "The Basics",
-    content: "Polyphenols are an umbrella group—kind of like 'vitamins.' Different types have different structures and effects on the body.",
-    visual: "🍃",
-    bgColor: "from-emerald-600/20 to-emerald-800/30",
-    textColor: "text-emerald-800"
-  },
-  {
-    id: 2,
-    title: "Found in Nature",
-    subtitle: "8,000+ Varieties",
-    content: "Polyphenols are micronutrients found in plants. There are over 8,000 types—each with a unique chemical structure.",
-    visual: "🌿",
-    bgColor: "from-green-600/20 to-green-800/30",
-    textColor: "text-green-800"
-  },
-  {
-    id: 3,
-    title: "Health Connection",
-    subtitle: "Targeted Benefits",
-    content: "Some support heart health, others reduce inflammation. The key is getting the right types in meaningful amounts.",
-    visual: "❤️",
-    bgColor: "from-red-500/20 to-red-700/30",
-    textColor: "text-red-800"
-  },
-  {
-    id: 4,
-    title: "The Problem",
-    subtitle: "Most Oils Fall Short",
-    content: "Average olive oil contains just 180 mg/kg. Even premium brands rarely exceed 400 mg/kg. EU health claim requires 250 mg/kg minimum.",
-    visual: "📉",
-    bgColor: "from-amber-500/20 to-amber-700/30",
-    textColor: "text-amber-800"
-  },
-  {
-    id: 5,
-    title: "Our Solution",
-    subtitle: "904mg/kg Potency",
-    content: "Our olive oil delivers 904 mg/kg of polyphenols—over 3x higher than premium oils. Fresh-pressed, single-grove, lab-tested.",
-    visual: "🏆",
-    bgColor: "from-emerald-500/20 to-green-600/30",
-    textColor: "text-emerald-800"
-  }
+  { id: 1, title: "What are Polyphenols?", subtitle: "The Basics", content: "Polyphenols are an umbrella group—kind of like 'vitamins.' Different types have different structures and effects on the body.", visual: "🍃", bgColor: "from-emerald-600/20 to-emerald-800/30", textColor: "text-emerald-800" },
+  { id: 2, title: "Found in Nature", subtitle: "8,000+ Varieties", content: "Polyphenols are micronutrients found in plants. There are over 8,000 types—each with a unique chemical structure.", visual: "🌿", bgColor: "from-green-600/20 to-green-800/30", textColor: "text-green-800" },
+  { id: 3, title: "Health Connection", subtitle: "Targeted Benefits", content: "Some support heart health, others reduce inflammation. The key is getting the right types in meaningful amounts.", visual: "❤️", bgColor: "from-red-500/20 to-red-700/30", textColor: "text-red-800" },
+  { id: 4, title: "The Problem", subtitle: "Most Oils Fall Short", content: "Average olive oil contains just 180 mg/kg. Even premium brands rarely exceed 400 mg/kg. EU health claim requires 250 mg/kg minimum.", visual: "📉", bgColor: "from-amber-500/20 to-amber-700/30", textColor: "text-amber-800" },
+  { id: 5, title: "Our Solution", subtitle: "904mg/kg Potency", content: "Our olive oil delivers 904 mg/kg of polyphenols—over 3x higher than premium oils. Fresh-pressed, single-grove, lab-tested.", visual: "🏆", bgColor: "from-emerald-500/20 to-green-600/30", textColor: "text-emerald-800" }
 ];
 
 export const PolyphenolScroll = () => {
@@ -91,7 +51,7 @@ export const PolyphenolScroll = () => {
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">
             Scroll Through the <span className="font-medium text-emerald-600">Science</span>
           </h2>
-           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>
+           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
              Each section reveals as you scroll - discover the polyphenol story through immersive storytelling.
            </p>
         </div>
@@ -114,8 +74,8 @@ export const PolyphenolScroll = () => {
                     <div className="flex items-center space-x-3">
                       <span className="text-xl">{story.visual}</span>
                       <div>
-                        <div className="font-medium text-sm" style={{ fontFamily: 'Space Mono, monospace' }}>{story.subtitle}</div>
-                        <div className="text-xs opacity-75" style={{ fontFamily: 'Space Mono, monospace' }}>{story.title}</div>
+                        <div className="font-medium text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{story.subtitle}</div>
+                        <div className="text-xs opacity-75" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{story.title}</div>
                       </div>
                     </div>
                   </button>
@@ -150,7 +110,7 @@ export const PolyphenolScroll = () => {
                         <h4 className="text-xl md:text-2xl font-light mb-8 opacity-80">
                           {story.subtitle}
                         </h4>
-                         <p className="text-lg md:text-xl leading-relaxed opacity-90" style={{ fontFamily: 'Space Mono, monospace' }}>
+                         <p className="text-lg md:text-xl leading-relaxed opacity-90" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                            {story.content}
                          </p>
                       </div>

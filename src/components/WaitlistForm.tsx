@@ -89,7 +89,7 @@ export const WaitlistForm = ({ isOpen, onClose }: WaitlistFormProps) => {
               <Checkbox id="gdpr" checked={gdprConsent} onCheckedChange={(checked) => setGdprConsent(checked === true)} required />
               <label htmlFor="gdpr" className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">I agree to receive marketing messages</label>
             </div>
-            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{ fontFamily: 'Space Mono, monospace' }}>
+            <Button type="submit" variant="hero" className="w-full" disabled={isSubmitting || !gdprConsent} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               {isSubmitting ? "Joining..." : "Let me know"}
             </Button>
           </form>

@@ -41,7 +41,7 @@ export const PolyphenolCarousel = () => {
             <div className="mb-6"><span className="text-white/70 text-sm font-medium uppercase tracking-wider">Chapter {currentSlideData.id} of {carouselSlides.length}</span></div>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">{currentSlideData.title}</h2>
             <h3 className="text-xl md:text-2xl lg:text-3xl font-light text-white/90 mb-8">{currentSlideData.subtitle}</h3>
-             <p className="text-lg md:text-xl lg:text-2xl text-white/85 leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Space Mono, monospace' }}>{currentSlideData.content}</p>
+             <p className="text-lg md:text-xl lg:text-2xl text-white/85 leading-relaxed max-w-4xl mx-auto" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>{currentSlideData.content}</p>
           </div>
         </div>
       </div>

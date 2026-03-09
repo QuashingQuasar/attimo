@@ -35,11 +35,11 @@ export default {
 				'192': '48rem'
 			},
 		fontFamily: {
-			'sans': ['Space Mono', 'Inter', 'sans-serif'],
+			'sans': ['Space Grotesk', 'Inter', 'sans-serif'],
 			'calluna': ['Caladea', 'Cormorant Garamond', 'serif'],
 			'canula': ['Playfair Display', 'Cormorant Garamond', 'serif'],
 			'display': ['Playfair Display', 'serif'],
-			'body': ['Space Mono', 'Inter', 'sans-serif'],
+			'body': ['Space Grotesk', 'Inter', 'sans-serif'],
 			'working-man': ['UDC Working Man Sans', 'sans-serif'],
 			'working-man-light': ['UDC Working Man Sans Light', 'sans-serif'],
 			'working-man-rough': ['UDC Working Man Sans Rough', 'sans-serif'],

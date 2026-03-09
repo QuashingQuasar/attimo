@@ -33,7 +33,7 @@ export const Testimonials = () => {
                 <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm" style={{ width: "442px" }}>
                   <CardContent className="p-7">
                     <h4 className="font-semibold text-olive-dark mb-3" style={{ fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.title}</h4>
-                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Mono, monospace", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
+                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
                     <div className="flex justify-between items-center text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <span>{testimonial.name} ({testimonial.location})</span>
                       <span>{testimonial.date}</span>
@@ -47,7 +47,7 @@ export const Testimonials = () => {
                 <Card key={`duplicate-${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm" style={{ width: "442px" }}>
                   <CardContent className="p-7">
                     <h4 className="font-semibold text-olive-dark mb-3" style={{ fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.title}</h4>
-                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Mono, monospace", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
+                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
                     <div className="flex justify-between items-center text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <span>{testimonial.name} ({testimonial.location})</span>
                       <span>{testimonial.date}</span>

@@ -31,7 +31,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
               <h2 className="font-beverly font-bold text-olive-dark mb-6 tracking-tight" style={{ fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>Early Harvest For Maximum Polyphenol Goodness
             <br /><span className="font-medium"></span>
               </h2>
-               <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>Polyphenols make all the difference for olive oil health and taste. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
+               <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>Polyphenols make all the difference for olive oil health and taste. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
           </p>
 
               <div className="space-y-4">
@@ -44,7 +44,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
 
               return <div key={index} className="flex items-center gap-4">
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''}`} style={{ width: width }}>
-                         <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Mono, monospace' } : {}}>
+                         <span className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`} style={index !== 3 ? { fontFamily: 'Space Grotesk, sans-serif' } : {}}>
                            {index === 2 ?
                     <a href="https://blueprint.bryanjohnson.com/products/extra-virgin-olive-oil?variant=47471239790877" target="_blank" rel="noopener noreferrer" className="hover:underline">
                                {item.name}
@@ -76,10 +76,10 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
 
                   return <div key={tweet.id} className={`p-6 flex flex-col h-full min-h-96`} style={{ backgroundColor: bgColors[index] }}>
                               <div className="space-y-4 flex-grow">
-                                <p className={`${textColors[index]} leading-relaxed`} style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
+                                <p className={`${textColors[index]} leading-relaxed`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
                                   {tweet.content}
                                 </p>
-                                <p className={`text-olive-dark/80 leading-relaxed`} style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
+                                <p className={`text-olive-dark/80 leading-relaxed`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
                                   {tweet.content2}
                                 </p>
                              </div>
