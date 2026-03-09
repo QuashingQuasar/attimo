@@ -175,10 +175,10 @@ const ProductPage = () => {
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                     New Harvest
                   </span>
-                  <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+                  <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
                     Last Bottles
                   </span>
                 </div>
@@ -198,7 +198,7 @@ const ProductPage = () => {
               </p>
 
               {/* Description */}
-              <p className="text-olive-medium leading-relaxed max-w-2xl" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
+              <p className="text-olive-medium leading-relaxed max-w-2xl" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
                 {content.originStory.headline.split('.').slice(0, 3).join('.') + '.'}
               </p>
 
@@ -208,11 +208,11 @@ const ProductPage = () => {
                   <div key={attr.label} className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
                       {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
+                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
                         {attr.label}
                       </span>
                     </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
+                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
                       {attr.value}
                     </p>
                   </div>
@@ -231,7 +231,7 @@ const ProductPage = () => {
                           ? 'border-olive-dark bg-olive-dark text-cream'
                           : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
                       }`}
-                      style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
                     >
                       <div>{option.label}</div>
                       {option.subtitle && (
@@ -264,7 +264,7 @@ const ProductPage = () => {
                 </Button>
               </div>
 
-              <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+              <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                 <ShieldCheck size={20} strokeWidth={1.5} />
                 Third party lab-tested for quality and purity
               </p>
@@ -273,7 +273,7 @@ const ProductPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map(tile => (
                   <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
-                    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       {tile.label}
                     </p>
                     <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
@@ -281,12 +281,12 @@ const ProductPage = () => {
                         {tile.value}
                         {tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{tile.unit}</span>}
                       </span>
-                      <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                      <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.avg}
                       </span>
                     </p>
                     {tile.description && (
-                      <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                      <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.description}
                       </p>
                     )}
@@ -301,12 +301,12 @@ const ProductPage = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                  style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
                 >
                   <Beaker size={18} />
                   View full lab results
                 </a>
-                <span className="text-olive-light" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
+                <span className="text-olive-light" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
                   * Values measured at time of bottling
                 </span>
               </div>
