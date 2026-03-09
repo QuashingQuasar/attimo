@@ -227,7 +227,7 @@ export const HarvestProduct = () => {
 
             {/* Key Benefits */}
             <div className="space-y-1.5">
-              <ul className="space-y-1.5 text-olive-medium" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.8rem, 1vw, 1.1rem)' }}>
+              <ul className="space-y-1.5 text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.1rem)' }}>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-olive-medium rounded-full mt-2 flex-shrink-0"></div>
                   <span className="inline">
@@ -248,7 +248,7 @@ export const HarvestProduct = () => {
                         style={{ backgroundColor: '#1B4229', color: '#FFFAEA', borderColor: 'rgba(205, 219, 45, 0.3)' }}
                         onPointerDownOutside={(e) => e.preventDefault()}
                       >
-                        <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Mono, monospace' }}>
+                        <p className="text-sm leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                           Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending.
                         </p>
                       </HoverCardContent>
@@ -274,7 +274,7 @@ export const HarvestProduct = () => {
               <div className="mt-2 p-2.5 rounded-lg bg-cream/40 border border-olive-light/20">
                 <div className="flex items-start gap-2">
                   <Info className="w-3.5 h-3.5 text-olive-medium flex-shrink-0 mt-0.5" />
-                  <p className="text-olive-medium/90 leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                  <p className="text-olive-medium/90 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                     The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.
                   </p>
                 </div>
@@ -294,11 +294,11 @@ export const HarvestProduct = () => {
                     aria-selected={selectedQuantity === option.quantity} 
                     className={`pill p-1.5 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}
                   >
-                    <div className="font-semibold mb-0.5" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
+                    <div className="font-semibold mb-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
                       {option.label}
                     </div>
                     {option.subtitle && (
-                      <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
+                      <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
                         {option.subtitle}
                       </div>
                     )}
@@ -338,11 +338,11 @@ export const HarvestProduct = () => {
                         {tile.value}
                         {tile.unit && <span className="ml-1 text-olive-dark/90" style={{ fontSize: 'clamp(0.8rem, 1.1vw, 1.15rem)' }}>{tile.unit}</span>}
                       </div>
-                      <div className="text-olive-light" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
+                      <div className="text-olive-light" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
                         {tile.avg}
                       </div>
                     </div>
-                    <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Mono, monospace', fontSize: 'clamp(0.8rem, 1vw, 1.05rem)' }}>
+                    <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 1vw, 1.05rem)' }}>
                       {tile.description}
                     </p>
                   </div>
