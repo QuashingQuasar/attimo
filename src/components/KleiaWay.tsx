@@ -119,7 +119,7 @@ export const KleiaWay = () => {
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                We only sell oil from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
+                ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
               </p>
             </div>
           </div>
