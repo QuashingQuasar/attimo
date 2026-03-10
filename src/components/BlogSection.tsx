@@ -60,7 +60,7 @@ export const BlogSection = () => {
                 fontSize: "clamp(2.2rem, 3.5vw, 4rem)",
               }}
             >
-              stories from the grove
+              the olive press
             </h2>
           </div>
         </div>
