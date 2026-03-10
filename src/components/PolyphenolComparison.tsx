@@ -18,18 +18,18 @@ interface PolyphenolComparisonProps {
 
 export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL" }: PolyphenolComparisonProps) => {
   const comparisonData = [
-    { name: "Avg. EVOO", value: 180, color: "bg-[#A8B88F]" },
-    { name: "EU Claim", value: 250, color: "bg-[#8A9B6F]" },
-    { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
-    { name: productLabel, value: productValue, color: "bg-[#1B4229]" },
-  ];
+  { name: "Avg. EVOO", value: 180, color: "bg-[#A8B88F]" },
+  { name: "EU Claim", value: 250, color: "bg-[#8A9B6F]" },
+  { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
+  { name: productLabel, value: productValue, color: "bg-[#1B4229]" }];
+
   const maxValue = Math.max(...comparisonData.map((item) => item.value));
   return <section className="py-12 md:py-16 lg:py-24 snap-start flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div>
-              <h2 className="font-bold text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>Early Harvest For Maximum Polyphenol Goodness
-            <br /><span className="font-medium"></span>
+              <h2 className="font-beverly font-bold text-olive-dark mb-6 tracking-tight" style={{ fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
+<br /><span className="font-medium"></span>
               </h2>
                <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>Polyphenols make all the difference for olive oil health and taste. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
           </p>
@@ -37,10 +37,10 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
               <div className="space-y-4">
                 {comparisonData.map((item, index) => {
               let width;
-              if (index === 0) width = '35%';
-              else if (index === 1) width = '40%';
-              else if (index === 2) width = '50%';
-              else width = '95%';
+              if (index === 0) width = '35%';else
+              if (index === 1) width = '40%';else
+              if (index === 2) width = '50%';else
+              width = '95%';
 
               return <div key={index} className="flex items-center gap-4">
                        <div className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''}`} style={{ width: width }}>
