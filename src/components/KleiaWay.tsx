@@ -103,7 +103,7 @@ export const KleiaWay = () => {
 
           <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
             <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src="/videos/content-video-3.mp4" type="video/mp4" />
+              <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
             </video>
           </div>
 
