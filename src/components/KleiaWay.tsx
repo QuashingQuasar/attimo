@@ -90,13 +90,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>LAB-TESTED QUALITY</h4>
+              }}>FROM GROVE TO TABLE</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
+                We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
           </div>
