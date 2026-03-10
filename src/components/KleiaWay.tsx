@@ -90,13 +90,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>SINGLE ORIGIN</h4>
+              }}>SINGLE VARIETY</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                Each bottle comes from a single estate, single variety — so you taste the terroir, not a blend.
+                Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from.
               </p>
             </div>
           </div>
