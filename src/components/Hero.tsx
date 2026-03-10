@@ -43,8 +43,9 @@ export const Hero = ({
               if (el) {
                 const container = el.closest('.overflow-y-scroll') as HTMLElement;
                 if (container) {
-                  const elTop = el.offsetTop;
-                  container.scrollTo({ top: elTop, behavior: 'smooth' });
+                  const headerHeight = 80;
+                  const offset = el.offsetTop - headerHeight;
+                  container.scrollTo({ top: offset, behavior: 'smooth' });
                 } else {
                   el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
