@@ -138,7 +138,7 @@ export const BlogSection = () => {
                   )}
                   {/* Category badge */}
                   <span className="absolute top-4 left-4 bg-olive-dark/80 backdrop-blur-sm text-cream px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase">
-                    {article.blog.title}
+                    {article.blogTitle}
                   </span>
                 </div>
 
