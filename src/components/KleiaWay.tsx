@@ -21,13 +21,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>FROM GROVE TO TABLE</h4>
+              }}>ALWAYS FRESH</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
+                ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
               </p>
             </div>
           </div>
@@ -113,13 +113,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>ALWAYS FRESH</h4>
+              }}>FROM GROVE TO TABLE</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
+                We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
               </p>
             </div>
           </div>
