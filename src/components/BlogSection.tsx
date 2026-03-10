@@ -12,30 +12,32 @@ interface BlogArticle {
     url: string;
     altText: string | null;
   } | null;
-  blog: {
-    title: string;
-  };
+  blogTitle: string;
   onlineStoreUrl: string | null;
 }
 
 const BLOG_ARTICLES_QUERY = `
   query GetBlogArticles($first: Int!) {
-    articles(first: $first, sortKey: PUBLISHED_AT, reverse: true) {
+    blogs(first: 5) {
       edges {
         node {
-          id
           title
-          handle
-          excerpt
-          publishedAt
-          image {
-            url
-            altText
+          articles(first: $first, sortKey: PUBLISHED_AT, reverse: true) {
+            edges {
+              node {
+                id
+                title
+                handle
+                excerpt
+                publishedAt
+                image {
+                  url
+                  altText
+                }
+                onlineStoreUrl
+              }
+            }
           }
-          blog {
-            title
-          }
-          onlineStoreUrl
         }
       }
     }
@@ -50,8 +52,17 @@ export const BlogSection = () => {
     const fetchArticles = async () => {
       try {
         const data = await storefrontApiRequest(BLOG_ARTICLES_QUERY, { first: 3 });
-        const edges = data?.data?.articles?.edges || [];
-        setArticles(edges.map((e: { node: BlogArticle }) => e.node));
+        const blogEdges = data?.data?.blogs?.edges || [];
+        const allArticles: BlogArticle[] = [];
+        for (const blogEdge of blogEdges) {
+          const blogTitle = blogEdge.node.title;
+          const articleEdges = blogEdge.node.articles?.edges || [];
+          for (const ae of articleEdges) {
+            allArticles.push({ ...ae.node, blogTitle });
+          }
+        }
+        allArticles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+        setArticles(allArticles.slice(0, 3));
       } catch (error) {
         console.error("Failed to fetch blog articles:", error);
       } finally {
@@ -127,7 +138,7 @@ export const BlogSection = () => {
                   )}
                   {/* Category badge */}
                   <span className="absolute top-4 left-4 bg-olive-dark/80 backdrop-blur-sm text-cream px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase">
-                    {article.blog.title}
+                    {article.blogTitle}
                   </span>
                 </div>
 
