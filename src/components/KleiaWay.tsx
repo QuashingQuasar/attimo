@@ -124,6 +124,7 @@ export const KleiaWay = () => {
             </div>
           </div>
         </div>
+      </div>
     </section>);
 
 };
