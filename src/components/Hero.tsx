@@ -39,16 +39,16 @@ export const Hero = ({
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button
             onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-6 md:px-10 py-4 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               border: '2px solid #CDDB2D',
               color: '#1B4229',
               backgroundColor: '#CDDB2D',
-              fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)',
-              borderRadius: '8px'
+              fontSize: 'clamp(1rem, 1.5vw, 1.6rem)',
+              borderRadius: '8px',
+              padding: 'clamp(14px, 1.5vw, 20px) clamp(32px, 3vw, 48px)',
             }}>
-            
               Shop new Harvest
             </Button>
           </div>
