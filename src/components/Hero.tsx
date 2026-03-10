@@ -49,7 +49,7 @@ export const Hero = ({
               borderRadius: '8px',
               padding: 'clamp(18px, 2vw, 28px) clamp(36px, 3.5vw, 56px)',
             }}>
-              Shop new Harvest
+              Shop fresh Harvest
             </Button>
           </div>
 
