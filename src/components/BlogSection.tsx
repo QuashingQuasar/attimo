@@ -20,22 +20,26 @@ interface BlogArticle {
 
 const BLOG_ARTICLES_QUERY = `
   query GetBlogArticles($first: Int!) {
-    articles(first: $first, sortKey: PUBLISHED_AT, reverse: true) {
+    blogs(first: 5) {
       edges {
         node {
-          id
           title
-          handle
-          excerpt
-          publishedAt
-          image {
-            url
-            altText
+          articles(first: $first, sortKey: PUBLISHED_AT, reverse: true) {
+            edges {
+              node {
+                id
+                title
+                handle
+                excerpt
+                publishedAt
+                image {
+                  url
+                  altText
+                }
+                onlineStoreUrl
+              }
+            }
           }
-          blog {
-            title
-          }
-          onlineStoreUrl
         }
       }
     }
