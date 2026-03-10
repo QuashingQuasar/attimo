@@ -113,13 +113,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>COLD EXTRACTED</h4>
+              }}>ALWAYS FRESH</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                Extracted at low temperatures to preserve the delicate flavours and health-giving compounds.
+                We only sell oil from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
               </p>
             </div>
           </div>
