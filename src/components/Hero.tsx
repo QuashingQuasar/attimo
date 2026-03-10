@@ -8,18 +8,18 @@ export const Hero = ({
   onWaitlistClick
 }: HeroProps) => {
   return <section className="relative flex items-center justify-center overflow-hidden h-screen snap-start">
-      <video 
-        autoPlay 
-        muted 
-        loop 
-        playsInline 
-        webkit-playsinline="true"
-        disablePictureInPicture
-        disableRemotePlayback
-        poster="/images/hero-poster.png"
-        className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
-        style={{ pointerEvents: 'none' }}
-      >
+      <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      webkit-playsinline="true"
+      disablePictureInPicture
+      disableRemotePlayback
+      poster="/images/hero-poster.png"
+      className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+      style={{ pointerEvents: 'none' }}>
+      
         <source src="/videos/hero-video-new.mp4" type="video/mp4" />
       </video>
       
@@ -28,36 +28,36 @@ export const Hero = ({
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - 100px)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
-            <img 
-              src={kleiaLogo} 
-              alt="ATTIMO olive oil logo" 
-              className="object-contain drop-shadow-2xl"
-              style={{ width: 'min(479px, 45vw, 55vh)', height: 'auto' }}
-            />
+            <img
+            src={kleiaLogo}
+            alt="ATTIMO olive oil logo"
+            className="object-contain drop-shadow-2xl"
+            style={{ width: 'min(479px, 45vw, 55vh)', height: 'auto' }} />
+          
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button 
-              onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 md:px-10 py-3 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl" 
-              style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                border: '2px solid #CDDB2D',
-                color: '#1B4229',
-                backgroundColor: '#CDDB2D',
-                fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)',
-                borderRadius: '8px'
-              }}
-            >
+            <Button
+            onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-6 md:px-10 py-3 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
+              border: '2px solid #CDDB2D',
+              color: '#1B4229',
+              backgroundColor: '#CDDB2D',
+              fontSize: 'clamp(0.875rem, 1.3vw, 1.5rem)',
+              borderRadius: '8px'
+            }}>
+            
               Shop new Harvest
             </Button>
           </div>
 
-          <div className="text-white/80 font-light tracking-wide drop-shadow-lg animate-fade-in cursor-pointer hover:text-white transition-colors" style={{
-          animationDelay: '0.6s',
-          fontFamily: 'Space Grotesk, sans-serif',
-          fontSize: 'clamp(0.875rem, 1.1vw, 1.25rem)'
-        }} onClick={onWaitlistClick}>New Harvest Waitlist</div>
+          
+
+
+
+        
         </div>
       </div>
       
