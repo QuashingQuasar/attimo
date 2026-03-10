@@ -46,18 +46,19 @@ export const BlogSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#FFFAEA" }}>
+    <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#1B4229" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
-            <p className="font-working-man text-olive-medium tracking-[0.2em] uppercase text-sm mb-3">
+            <p className="font-working-man tracking-[0.2em] uppercase text-sm mb-3" style={{ color: "#CDDB2D" }}>
               Journal
             </p>
             <h2
-              className="text-olive-dark tracking-tight leading-[0.95]"
+              className="tracking-tight leading-[0.95]"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(2.2rem, 3.5vw, 4rem)",
+                color: "#FFFAEA",
               }}
             >
               the olive press
@@ -67,13 +68,13 @@ export const BlogSection = () => {
 
         {isLoading && (
           <div className="flex justify-center py-16">
-            <Loader2 className="w-8 h-8 text-olive-medium animate-spin" />
+            <Loader2 className="w-8 h-8 animate-spin" style={{ color: "#CDDB2D" }} />
           </div>
         )}
 
         {!isLoading && articles.length === 0 && (
           <div className="text-center py-16">
-            <p className="font-working-man text-olive-medium text-lg">No articles found yet.</p>
+            <p className="font-working-man text-lg" style={{ color: "#FFFAEA99" }}>No articles found yet.</p>
           </div>
         )}
 
@@ -87,7 +88,7 @@ export const BlogSection = () => {
                 rel="noopener noreferrer"
                 className="group cursor-pointer block"
               >
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-olive-dark/5">
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-white/10">
                   {article.image ? (
                     <img
                       src={article.image.url}
@@ -95,28 +96,28 @@ export const BlogSection = () => {
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-muted">
-                      <span className="text-muted-foreground font-working-man text-sm">No image</span>
+                    <div className="w-full h-full flex items-center justify-center bg-white/5">
+                      <span className="font-working-man text-sm" style={{ color: "#FFFAEA66" }}>No image</span>
                     </div>
                   )}
-                  <span className="absolute top-4 left-4 bg-olive-dark/80 backdrop-blur-sm text-cream px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase">
+                  <span className="absolute top-4 left-4 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase" style={{ backgroundColor: "#CDDB2D", color: "#1B4229" }}>
                     {article.blogTitle}
                   </span>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-xs font-working-man text-olive-medium tracking-wide">
+                  <div className="flex items-center gap-3 text-xs font-working-man tracking-wide" style={{ color: "#FFFAEA99" }}>
                     <span>{formatDate(article.publishedAt)}</span>
                   </div>
-                  <h3 className="font-working-man text-olive-dark text-lg md:text-xl leading-snug group-hover:text-olive-medium transition-colors duration-300">
+                  <h3 className="font-working-man text-lg md:text-xl leading-snug transition-colors duration-300" style={{ color: "#FFFAEA" }}>
                     {article.title}
                   </h3>
                   {article.excerpt && (
-                    <p className="font-space-grotesk text-olive-medium text-sm leading-relaxed line-clamp-2">
+                    <p className="font-space-grotesk text-sm leading-relaxed line-clamp-2" style={{ color: "#FFFAEA99" }}>
                       {article.excerpt}
                     </p>
                   )}
-                  <span className="inline-flex items-center gap-1 text-olive-dark text-sm font-working-man group-hover:gap-2 transition-all duration-300">
+                  <span className="inline-flex items-center gap-1 text-sm font-working-man group-hover:gap-2 transition-all duration-300" style={{ color: "#CDDB2D" }}>
                     Read more <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
