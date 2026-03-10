@@ -49,7 +49,7 @@ export const Hero = ({
                 borderRadius: '8px'
               }}
             >
-              Shop 2024/25 Harvest
+              Shop new Harvest
             </Button>
           </div>
 
