@@ -1,6 +1,7 @@
 import { ArrowRight, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { storefrontApiRequest } from "@/lib/shopify";
+
+const BLOG_FEED_URL = "https://shop.attimo-oil.com/blogs/press.atom";
 
 interface BlogArticle {
   id: string;
@@ -16,33 +17,66 @@ interface BlogArticle {
   onlineStoreUrl: string | null;
 }
 
-const BLOG_ARTICLES_QUERY = `
-  query GetBlogArticles($first: Int!) {
-    blogs(first: 5) {
-      edges {
-        node {
-          title
-          articles(first: $first, sortKey: PUBLISHED_AT, reverse: true) {
-            edges {
-              node {
-                id
-                title
-                handle
-                excerpt
-                publishedAt
-                image {
-                  url
-                  altText
-                }
-                onlineStoreUrl
-              }
-            }
-          }
-        }
-      }
-    }
+const getFirstElementText = (parent: Element | Document, tagName: string) => {
+  return parent.getElementsByTagNameNS("*", tagName)[0]?.textContent?.trim() ?? "";
+};
+
+const stripHtml = (html: string) => {
+  if (!html) return "";
+
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent?.replace(/\s+/g, " ").trim() ?? "";
+};
+
+const extractImageFromHtml = (html: string) => {
+  if (!html) return null;
+
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const image = doc.querySelector("img");
+  const src = image?.getAttribute("src");
+
+  if (!src) return null;
+
+  return {
+    url: src,
+    altText: image.getAttribute("alt"),
+  };
+};
+
+const parseBlogFeed = (xmlText: string): BlogArticle[] => {
+  const xml = new DOMParser().parseFromString(xmlText, "application/xml");
+  const parserError = xml.querySelector("parsererror");
+
+  if (parserError) {
+    throw new Error("Invalid blog feed response");
   }
-`;
+
+  const feedTitle = getFirstElementText(xml, "title").replace(/^.*?-\s*/, "") || "Press";
+  const entries = Array.from(xml.getElementsByTagNameNS("*", "entry"));
+
+  return entries.slice(0, 3).map((entry, index) => {
+    const articleUrl = Array.from(entry.getElementsByTagNameNS("*", "link")).find(
+      (link) => link.getAttribute("rel") === "alternate"
+    )?.getAttribute("href") ?? getFirstElementText(entry, "id");
+
+    const summaryHtml = getFirstElementText(entry, "summary");
+    const contentHtml = getFirstElementText(entry, "content");
+    const excerpt = stripHtml(summaryHtml || contentHtml);
+    const image = extractImageFromHtml(contentHtml) ?? extractImageFromHtml(summaryHtml);
+    const handle = articleUrl ? articleUrl.split("/").filter(Boolean).pop() ?? `article-${index}` : `article-${index}`;
+
+    return {
+      id: getFirstElementText(entry, "id") || articleUrl || `article-${index}`,
+      title: getFirstElementText(entry, "title"),
+      handle,
+      excerpt,
+      publishedAt: getFirstElementText(entry, "published") || getFirstElementText(entry, "updated"),
+      image,
+      blogTitle: feedTitle,
+      onlineStoreUrl: articleUrl || null,
+    };
+  });
+};
 
 export const BlogSection = () => {
   const [articles, setArticles] = useState<BlogArticle[]>([]);
@@ -51,24 +85,21 @@ export const BlogSection = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const data = await storefrontApiRequest(BLOG_ARTICLES_QUERY, { first: 3 });
-        const blogEdges = data?.data?.blogs?.edges || [];
-        const allArticles: BlogArticle[] = [];
-        for (const blogEdge of blogEdges) {
-          const blogTitle = blogEdge.node.title;
-          const articleEdges = blogEdge.node.articles?.edges || [];
-          for (const ae of articleEdges) {
-            allArticles.push({ ...ae.node, blogTitle });
-          }
+        const response = await fetch(BLOG_FEED_URL);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch blog feed: ${response.status}`);
         }
-        allArticles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-        setArticles(allArticles.slice(0, 3));
+
+        const xmlText = await response.text();
+        setArticles(parseBlogFeed(xmlText));
       } catch (error) {
         console.error("Failed to fetch blog articles:", error);
       } finally {
         setIsLoading(false);
       }
     };
+
     fetchArticles();
   }, []);
 
