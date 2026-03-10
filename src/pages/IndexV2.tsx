@@ -29,8 +29,8 @@ const IndexV2 = () => {
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
-      <BlogSection />
       <FAQ />
+      <BlogSection />
       <Footer />
       <WaitlistForm 
         isOpen={isWaitlistOpen} 
