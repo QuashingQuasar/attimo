@@ -82,8 +82,8 @@ export const KleiaWay = () => {
             <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
             </video>
-          </div>
-        </div>
+
+</invoke>
       </div>
     </section>);
 
