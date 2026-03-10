@@ -39,7 +39,7 @@ export const Hero = ({
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button
             onClick={() => document.getElementById('harvest-product')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-6 md:px-10 py-3 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="px-6 md:px-10 py-4 md:py-6 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               border: '2px solid #CDDB2D',
