@@ -9,6 +9,7 @@ import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
+import { BlogSection } from "@/components/BlogSection";
 import { FAQ } from "@/components/FAQ";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Footer } from "@/components/Footer";
@@ -28,6 +29,7 @@ const IndexV2 = () => {
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
+      <BlogSection />
       <FAQ />
       <Footer />
       <WaitlistForm 
