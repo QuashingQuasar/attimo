@@ -14,7 +14,7 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 max-w-[90vw] mx-auto lg:h-[750px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-6 max-w-[90vw] mx-auto lg:h-[1125px]">
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{
@@ -82,6 +82,46 @@ export const KleiaWay = () => {
             <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
             </video>
+          </div>
+
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+            <div className="h-full flex flex-col justify-center items-center text-center">
+              <h4 className="font-bold mb-6" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+              }}>SINGLE ORIGIN</h4>
+              <p className="leading-relaxed" style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+              }}>
+                Each bottle comes from a single estate, single variety — so you taste the terroir, not a blend.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
+              <source src="/videos/kleia-way-video-4.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
+            <div className="h-full flex flex-col justify-center items-center text-center">
+              <h4 className="font-bold mb-6" style={{
+                fontFamily: 'UDC Working Man Sans, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
+              }}>COLD EXTRACTED</h4>
+              <p className="leading-relaxed" style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                color: '#B3E58C',
+                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
+              }}>
+                Extracted at low temperatures to preserve the delicate flavours and health-giving compounds.
+              </p>
+            </div>
           </div>
         </div>
       </div>
