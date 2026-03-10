@@ -112,7 +112,7 @@ export const BlogSection = () => {
                     {article.title}
                   </h3>
                   {article.excerpt && (
-                    <p className="font-working-man-light text-olive-medium text-sm leading-relaxed line-clamp-2">
+                    <p className="font-space-grotesk text-olive-medium text-sm leading-relaxed line-clamp-2">
                       {article.excerpt}
                     </p>
                   )}
