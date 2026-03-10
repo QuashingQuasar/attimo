@@ -100,9 +100,6 @@ export const BlogSection = () => {
                       <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>No image</span>
                     </div>
               }
-                  <span className="absolute top-4 left-4 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase" style={{ backgroundColor: "#1B4229", color: "#CDDB2D" }}>
-                    {article.blogTitle}
-                  </span>
                 </div>
 
                 <div className="space-y-3">
