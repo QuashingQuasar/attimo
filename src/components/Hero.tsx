@@ -41,7 +41,13 @@ export const Hero = ({
             onClick={() => {
               const el = document.getElementById('oil-collection');
               if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
+                const container = el.closest('.overflow-y-scroll') as HTMLElement;
+                if (container) {
+                  const elTop = el.offsetTop;
+                  container.scrollTo({ top: elTop, behavior: 'smooth' });
+                } else {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
               }
             }}
             className="hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
