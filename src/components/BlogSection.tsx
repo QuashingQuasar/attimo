@@ -52,8 +52,17 @@ export const BlogSection = () => {
     const fetchArticles = async () => {
       try {
         const data = await storefrontApiRequest(BLOG_ARTICLES_QUERY, { first: 3 });
-        const edges = data?.data?.articles?.edges || [];
-        setArticles(edges.map((e: { node: BlogArticle }) => e.node));
+        const blogEdges = data?.data?.blogs?.edges || [];
+        const allArticles: BlogArticle[] = [];
+        for (const blogEdge of blogEdges) {
+          const blogTitle = blogEdge.node.title;
+          const articleEdges = blogEdge.node.articles?.edges || [];
+          for (const ae of articleEdges) {
+            allArticles.push({ ...ae.node, blogTitle });
+          }
+        }
+        allArticles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+        setArticles(allArticles.slice(0, 3));
       } catch (error) {
         console.error("Failed to fetch blog articles:", error);
       } finally {
