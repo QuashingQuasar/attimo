@@ -19,49 +19,60 @@ type BlogArticle = {
   onlineStoreUrl: string | null;
 };
 
-const getFirstElementText = (parent: Element | Document, tagName: string) =>
-  parent.getElementsByTagNameNS("*", tagName)[0]?.textContent?.trim() ?? "";
+const decodeXmlEntities = (value: string) =>
+  value
+    .replace(/<!\[CDATA\[|\]\]>/g, "")
+    .replace(/<!--\[CDATA\[/g, "")
+    .replace(/\]\]-->/g, "")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .trim();
 
-const stripHtml = (html: string) => {
-  if (!html) return "";
-
-  const doc = new DOMParser().parseFromString(html, "text/html");
-  return doc?.body.textContent?.replace(/\s+/g, " ").trim() ?? "";
+const extractTagContent = (source: string, tagName: string) => {
+  const match = source.match(new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)</${tagName}>`, "i"));
+  return decodeXmlEntities(match?.[1] ?? "");
 };
 
-const extractImageFromHtml = (html: string) => {
-  if (!html) return null;
+const stripHtml = (html: string) =>
+  decodeXmlEntities(html)
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
-  const doc = new DOMParser().parseFromString(html, "text/html");
-  const image = doc?.querySelector("img");
-  const src = image?.getAttribute("src");
+const extractImageFromHtml = (html: string) => {
+  const normalizedHtml = decodeXmlEntities(html);
+  const src = normalizedHtml.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1];
+  const altText = normalizedHtml.match(/<img[^>]+alt=["']([^"']*)["']/i)?.[1] ?? null;
 
   if (!src) return null;
 
-  return {
-    url: src,
-    altText: image.getAttribute("alt"),
-  };
+  return { url: src, altText };
+};
+
+const extractAlternateLink = (entryXml: string) => {
+  const linkTags = entryXml.match(/<link\b[^>]*>/gi) ?? [];
+
+  for (const linkTag of linkTags) {
+    if (!/rel=["']alternate["']/i.test(linkTag)) continue;
+    const href = linkTag.match(/href=["']([^"']+)["']/i)?.[1];
+    if (href) return decodeXmlEntities(href);
+  }
+
+  return "";
 };
 
 const parseBlogFeed = (xmlText: string): BlogArticle[] => {
-  const xml = new DOMParser().parseFromString(xmlText, "application/xml");
-  const parserError = xml.querySelector("parsererror");
+  const feedPrefix = xmlText.split(/<entry\b/i)[0] ?? xmlText;
+  const feedTitle = extractTagContent(feedPrefix, "title").replace(/^.*?-\s*/, "") || "Press";
+  const entries = Array.from(xmlText.matchAll(/<entry\b[^>]*>([\s\S]*?)<\/entry>/gi), (match) => match[0]);
 
-  if (parserError) {
-    throw new Error("Invalid blog feed response");
-  }
-
-  const feedTitle = getFirstElementText(xml, "title").replace(/^.*?-\s*/, "") || "Press";
-  const entries = Array.from(xml.getElementsByTagNameNS("*", "entry"));
-
-  return entries.slice(0, 3).map((entry, index) => {
-    const articleUrl = Array.from(entry.getElementsByTagNameNS("*", "link")).find(
-      (link) => link.getAttribute("rel") === "alternate",
-    )?.getAttribute("href") ?? getFirstElementText(entry, "id");
-
-    const summaryHtml = getFirstElementText(entry, "summary");
-    const contentHtml = getFirstElementText(entry, "content");
+  return entries.slice(0, 3).map((entryXml, index) => {
+    const articleUrl = extractAlternateLink(entryXml) || extractTagContent(entryXml, "id");
+    const summaryHtml = extractTagContent(entryXml, "summary");
+    const contentHtml = extractTagContent(entryXml, "content");
     const excerpt = stripHtml(summaryHtml || contentHtml);
     const image = extractImageFromHtml(contentHtml) ?? extractImageFromHtml(summaryHtml);
     const handle = articleUrl
@@ -69,11 +80,11 @@ const parseBlogFeed = (xmlText: string): BlogArticle[] => {
       : `article-${index}`;
 
     return {
-      id: getFirstElementText(entry, "id") || articleUrl || `article-${index}`,
-      title: getFirstElementText(entry, "title"),
+      id: extractTagContent(entryXml, "id") || articleUrl || `article-${index}`,
+      title: extractTagContent(entryXml, "title"),
       handle,
       excerpt,
-      publishedAt: getFirstElementText(entry, "published") || getFirstElementText(entry, "updated"),
+      publishedAt: extractTagContent(entryXml, "published") || extractTagContent(entryXml, "updated"),
       image,
       blogTitle: feedTitle,
       onlineStoreUrl: articleUrl || null,
