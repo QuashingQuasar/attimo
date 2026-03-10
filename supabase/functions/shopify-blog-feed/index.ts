@@ -92,6 +92,25 @@ const parseBlogFeed = (xmlText: string): BlogArticle[] => {
   });
 };
 
+const fetchFeaturedImage = async (articleUrl: string): Promise<{ url: string; altText: string | null } | null> => {
+  try {
+    const res = await fetch(articleUrl, {
+      headers: { "User-Agent": "Lovable-Blog-Fetcher" },
+    });
+    if (!res.ok) { await res.text(); return null; }
+    const html = await res.text();
+    const ogImage = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i)?.[1]
+      ?? html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:image["']/i)?.[1];
+    if (!ogImage) return null;
+    const altText = html.match(/<meta[^>]+property=["']og:image:alt["'][^>]+content=["']([^"']*)["']/i)?.[1]
+      ?? html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+property=["']og:image:alt["']/i)?.[1]
+      ?? null;
+    return { url: ogImage, altText };
+  } catch {
+    return null;
+  }
+};
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -112,7 +131,20 @@ Deno.serve(async (req) => {
     const xmlText = await response.text();
     const articles = parseBlogFeed(xmlText);
 
-    return new Response(JSON.stringify({ articles }), {
+    // Fetch featured images in parallel
+    const enriched = await Promise.all(
+      articles.map(async (article) => {
+        if (article.onlineStoreUrl) {
+          const featuredImage = await fetchFeaturedImage(article.onlineStoreUrl);
+          if (featuredImage) {
+            return { ...article, image: featuredImage };
+          }
+        }
+        return article;
+      }),
+    );
+
+    return new Response(JSON.stringify({ articles: enriched }), {
       headers: {
         ...corsHeaders,
         "Content-Type": "application/json",
