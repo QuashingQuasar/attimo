@@ -1,7 +1,6 @@
 import { ArrowRight, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const BLOG_FEED_URL = "https://shop.attimo-oil.com/blogs/press.atom";
+import { supabase } from "@/integrations/supabase/client";
 
 interface BlogArticle {
   id: string;
@@ -17,67 +16,6 @@ interface BlogArticle {
   onlineStoreUrl: string | null;
 }
 
-const getFirstElementText = (parent: Element | Document, tagName: string) => {
-  return parent.getElementsByTagNameNS("*", tagName)[0]?.textContent?.trim() ?? "";
-};
-
-const stripHtml = (html: string) => {
-  if (!html) return "";
-
-  const doc = new DOMParser().parseFromString(html, "text/html");
-  return doc.body.textContent?.replace(/\s+/g, " ").trim() ?? "";
-};
-
-const extractImageFromHtml = (html: string) => {
-  if (!html) return null;
-
-  const doc = new DOMParser().parseFromString(html, "text/html");
-  const image = doc.querySelector("img");
-  const src = image?.getAttribute("src");
-
-  if (!src) return null;
-
-  return {
-    url: src,
-    altText: image.getAttribute("alt"),
-  };
-};
-
-const parseBlogFeed = (xmlText: string): BlogArticle[] => {
-  const xml = new DOMParser().parseFromString(xmlText, "application/xml");
-  const parserError = xml.querySelector("parsererror");
-
-  if (parserError) {
-    throw new Error("Invalid blog feed response");
-  }
-
-  const feedTitle = getFirstElementText(xml, "title").replace(/^.*?-\s*/, "") || "Press";
-  const entries = Array.from(xml.getElementsByTagNameNS("*", "entry"));
-
-  return entries.slice(0, 3).map((entry, index) => {
-    const articleUrl = Array.from(entry.getElementsByTagNameNS("*", "link")).find(
-      (link) => link.getAttribute("rel") === "alternate"
-    )?.getAttribute("href") ?? getFirstElementText(entry, "id");
-
-    const summaryHtml = getFirstElementText(entry, "summary");
-    const contentHtml = getFirstElementText(entry, "content");
-    const excerpt = stripHtml(summaryHtml || contentHtml);
-    const image = extractImageFromHtml(contentHtml) ?? extractImageFromHtml(summaryHtml);
-    const handle = articleUrl ? articleUrl.split("/").filter(Boolean).pop() ?? `article-${index}` : `article-${index}`;
-
-    return {
-      id: getFirstElementText(entry, "id") || articleUrl || `article-${index}`,
-      title: getFirstElementText(entry, "title"),
-      handle,
-      excerpt,
-      publishedAt: getFirstElementText(entry, "published") || getFirstElementText(entry, "updated"),
-      image,
-      blogTitle: feedTitle,
-      onlineStoreUrl: articleUrl || null,
-    };
-  });
-};
-
 export const BlogSection = () => {
   const [articles, setArticles] = useState<BlogArticle[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -85,14 +23,13 @@ export const BlogSection = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch(BLOG_FEED_URL);
+        const { data, error } = await supabase.functions.invoke("shopify-blog-feed");
 
-        if (!response.ok) {
-          throw new Error(`Failed to fetch blog feed: ${response.status}`);
+        if (error) {
+          throw error;
         }
 
-        const xmlText = await response.text();
-        setArticles(parseBlogFeed(xmlText));
+        setArticles(data?.articles || []);
       } catch (error) {
         console.error("Failed to fetch blog articles:", error);
       } finally {
@@ -109,9 +46,8 @@ export const BlogSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
             <p className="font-working-man text-olive-medium tracking-[0.2em] uppercase text-sm mb-3">
@@ -120,8 +56,8 @@ export const BlogSection = () => {
             <h2
               className="text-olive-dark tracking-tight leading-[0.95]"
               style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                fontSize: 'clamp(2.2rem, 3.5vw, 4rem)',
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                fontSize: "clamp(2.2rem, 3.5vw, 4rem)",
               }}
             >
               stories from the grove
@@ -129,21 +65,18 @@ export const BlogSection = () => {
           </div>
         </div>
 
-        {/* Loading state */}
         {isLoading && (
           <div className="flex justify-center py-16">
             <Loader2 className="w-8 h-8 text-olive-medium animate-spin" />
           </div>
         )}
 
-        {/* Empty state */}
         {!isLoading && articles.length === 0 && (
           <div className="text-center py-16">
             <p className="font-working-man text-olive-medium text-lg">No articles found yet.</p>
           </div>
         )}
 
-        {/* Blog Grid */}
         {!isLoading && articles.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {articles.map((article) => (
@@ -154,7 +87,6 @@ export const BlogSection = () => {
                 rel="noopener noreferrer"
                 className="group cursor-pointer block"
               >
-                {/* Image */}
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5 bg-olive-dark/5">
                   {article.image ? (
                     <img
@@ -167,13 +99,11 @@ export const BlogSection = () => {
                       <span className="text-muted-foreground font-working-man text-sm">No image</span>
                     </div>
                   )}
-                  {/* Category badge */}
                   <span className="absolute top-4 left-4 bg-olive-dark/80 backdrop-blur-sm text-cream px-3 py-1 rounded-full text-xs font-working-man tracking-wider uppercase">
                     {article.blogTitle}
                   </span>
                 </div>
 
-                {/* Text content */}
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-xs font-working-man text-olive-medium tracking-wide">
                     <span>{formatDate(article.publishedAt)}</span>
