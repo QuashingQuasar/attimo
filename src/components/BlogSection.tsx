@@ -12,9 +12,7 @@ interface BlogArticle {
     url: string;
     altText: string | null;
   } | null;
-  blog: {
-    title: string;
-  };
+  blogTitle: string;
   onlineStoreUrl: string | null;
 }
 
