@@ -90,13 +90,13 @@ export const KleiaWay = () => {
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>SINGLE VARIETY</h4>
+              }}>LAB-TESTED QUALITY</h4>
               <p className="leading-relaxed" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 color: '#B3E58C',
                 fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
               }}>
-                Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from.
+                Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
               </p>
             </div>
           </div>
