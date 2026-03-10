@@ -29,6 +29,7 @@ const IndexV2 = () => {
       <OilComparison />
       <Testimonials />
       <PolyphenolComparison />
+      <BlogSection />
       <FAQ />
       <Footer />
       <WaitlistForm 
