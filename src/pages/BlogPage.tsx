@@ -110,7 +110,7 @@ const BlogPage = () => {
                   </span>
                   <h2
                     className="font-working-man uppercase"
-                    style={{ fontSize: "16px", color: "#1b411c", marginTop: "4px" }}
+                    style={{ fontSize: "26px", color: "#1b411c", marginTop: "4px" }}
                   >
                     {post.title}
                   </h2>
