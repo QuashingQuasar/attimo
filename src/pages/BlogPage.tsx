@@ -118,8 +118,8 @@ const BlogPage = () => {
                     <p
                       style={{
                         fontFamily: "Space Grotesk, sans-serif",
-                        fontSize: "14px",
-                        lineHeight: 1.6,
+                        fontSize: "20px",
+                        lineHeight: 1.8,
                         color: "#555",
                         marginTop: "8px",
                         overflow: "hidden",
