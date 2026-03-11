@@ -167,13 +167,13 @@ const BlogPostPage = () => {
                   remarkPlugins={[remarkGfm]}
                   components={{
                     h1: ({ children }) => (
-                      <h1 className="mt-12 mb-4 uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "24px", fontWeight: 700, color: "#1b411c" }}>{children}</h1>
+                      <h1 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "24px", fontWeight: 700, color: "#1b411c" }}>{children}</h1>
                     ),
                     h2: ({ children }) => (
-                      <h2 className="mt-12 mb-4 uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "22px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
+                      <h2 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "22px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
                     ),
                     h3: ({ children }) => (
-                      <h3 className="mt-8 mb-3" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "19px", fontWeight: 600, color: "#1b411c" }}>{children}</h3>
+                      <h3 className="font-working-man mt-8 mb-3" style={{ fontSize: "19px", fontWeight: 600, color: "#1b411c" }}>{children}</h3>
                     ),
                     p: ({ children }) => <p className="mb-6">{children}</p>,
                     a: ({ href, children }) => (
