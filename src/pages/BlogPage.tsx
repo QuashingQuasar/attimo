@@ -44,7 +44,7 @@ const BlogPage = () => {
       <title>The Olive Press — ATTIMO Blog</title>
       <meta name="description" content="Stories, science, and sourcing behind high-polyphenol extra virgin olive oil." />
 
-      <main className="pt-28 pb-20 px-6 md:px-12 lg:px-20">
+      <main className="flex-1 pt-28 pb-20 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h1
             className="mb-4 tracking-tight leading-[0.95]"
