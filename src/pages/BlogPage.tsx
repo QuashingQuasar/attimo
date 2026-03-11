@@ -44,7 +44,7 @@ const BlogPage = () => {
       <title>The Olive Press — ATTIMO Blog</title>
       <meta name="description" content="Stories, science, and sourcing behind high-polyphenol extra virgin olive oil." />
 
-      <main className="flex-1 pt-28 pb-20 px-6 md:px-12 lg:px-20">
+      <main className="flex-1 pt-32 pb-32 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h1
             className="mb-4 tracking-tight leading-[0.95]"
@@ -57,7 +57,7 @@ const BlogPage = () => {
             the olive press
           </h1>
           <p
-            className="mb-16 max-w-xl text-lg leading-relaxed"
+            className="mb-20 max-w-xl text-lg leading-relaxed"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B422999" }}
           >
             Stories, science, and sourcing behind real extra virgin olive oil.
@@ -76,19 +76,19 @@ const BlogPage = () => {
           )}
 
           {!isLoading && posts && posts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
               {posts.map((post) => (
                 <Link
                   key={post._id}
                   to={`/blog/${post.slug.current}`}
                   className="group block"
                 >
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B422910" }}>
+                  <div className="rounded-xl overflow-hidden mb-6" style={{ aspectRatio: "16/9", backgroundColor: "#1B422910" }}>
                     {post.coverImage ? (
                       <img
-                        src={urlFor(post.coverImage).width(800).height(600).auto("format").url()}
+                        src={urlFor(post.coverImage).width(960).auto("format").url()}
                         alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
                     ) : (
@@ -108,14 +108,14 @@ const BlogPage = () => {
                       {formatDate(post.publishedAt)}
                     </span>
                     <h2
-                      className="font-working-man text-xl leading-snug transition-colors duration-300"
+                      className="font-working-man text-2xl leading-snug transition-colors duration-300"
                       style={{ color: "#1B4229" }}
                     >
                       {post.title}
                     </h2>
                     {post.excerpt && (
                       <p
-                        className="text-sm leading-relaxed line-clamp-3"
+                        className="text-base leading-relaxed line-clamp-3"
                         style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229BB" }}
                       >
                         {post.excerpt}
