@@ -132,7 +132,7 @@ const ProductPage = () => {
   ];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
       
       {/* Product Hero Section */}

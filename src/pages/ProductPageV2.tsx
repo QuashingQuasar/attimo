@@ -113,7 +113,7 @@ const ProductPage = () => {
   const labTiles = content.labTiles;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
       
       {/* Product Section - Full-bleed left image, scrolling right info */}

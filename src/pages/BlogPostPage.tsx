@@ -93,10 +93,10 @@ const BlogPostPage = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FAF9F6" }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FAF9F6" }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
 
-      <main className="pt-28 pb-20 px-6 md:px-12 lg:px-20">
+      <main className="flex-1 pt-28 pb-20 px-6 md:px-12 lg:px-20">
         <div className="max-w-3xl mx-auto">
           <Link
             to="/blog"
