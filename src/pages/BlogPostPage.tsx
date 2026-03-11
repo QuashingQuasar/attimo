@@ -4,36 +4,8 @@ import { sanityClient, urlFor } from "@/lib/sanity";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { PortableText } from "@portabletext/react";
 import { useEffect } from "react";
-
-/**
- * The Sanity body field is stored as plain text with whitespace structure
- * but no markdown syntax. This function normalizes it into proper markdown
- * by detecting paragraph breaks and preserving the text structure.
- */
-function normalizeBody(body: string): string {
-  if (!body) return "";
-  
-  // The body comes with inconsistent whitespace. Clean it up:
-  // 1. Normalize line endings
-  let text = body.replace(/\r\n/g, "\n");
-  
-  // 2. Collapse runs of whitespace around newlines into clean paragraph breaks
-  text = text.replace(/\n\s*\n\s*\n*/g, "\n\n");
-  
-  // 3. Trim leading/trailing whitespace from each line
-  text = text
-    .split("\n")
-    .map((line) => line.trim())
-    .join("\n");
-  
-  // 4. Remove empty leading/trailing content
-  text = text.trim();
-  
-  return text;
-}
 
 interface BlogPost {
   _id: string;
@@ -42,11 +14,57 @@ interface BlogPost {
   publishedAt: string;
   excerpt: string;
   coverImage: any;
-  body: string;
+  body: any[];
   seoTitle: string;
   seoDescription: string;
   noIndex: boolean;
 }
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }: { value: any }) => {
+      if (!value?.asset) return null;
+      return (
+        <div className="my-8 rounded-xl overflow-hidden">
+          <img
+            src={urlFor(value).width(1200).auto("format").url()}
+            alt={value.alt || ""}
+            className="w-full h-auto"
+          />
+        </div>
+      );
+    },
+  },
+  block: {
+    h1: ({ children }: any) => (
+      <h1 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "24px", fontWeight: 700, color: "#1b411c" }}>{children}</h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "26px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="font-working-man mt-8 mb-3" style={{ fontSize: "19px", fontWeight: 600, color: "#1b411c" }}>{children}</h3>
+    ),
+    normal: ({ children }: any) => <p className="mb-6">{children}</p>,
+    blockquote: ({ children }: any) => (
+      <blockquote className="border-l-4 pl-6 my-8 italic" style={{ borderColor: "#CDDB2D", color: "#1B4229BB" }}>{children}</blockquote>
+    ),
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
+    number: ({ children }: any) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+    number: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+  },
+  marks: {
+    strong: ({ children }: any) => <strong className="font-semibold" style={{ color: "#1B4229" }}>{children}</strong>,
+    link: ({ value, children }: any) => (
+      <a href={value?.href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#1B4229" }}>{children}</a>
+    ),
+  },
+};
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -164,50 +182,9 @@ const BlogPostPage = () => {
                   maxWidth: "720px",
                 }}
               >
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={{
-                    h1: ({ children }) => (
-                      <h1 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "24px", fontWeight: 700, color: "#1b411c" }}>{children}</h1>
-                    ),
-                    h2: ({ children }) => (
-                      <h2 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "26px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
-                    ),
-                    h3: ({ children }) => (
-                      <h3 className="font-working-man mt-8 mb-3" style={{ fontSize: "19px", fontWeight: 600, color: "#1b411c" }}>{children}</h3>
-                    ),
-                    p: ({ children }) => <p className="mb-6">{children}</p>,
-                    a: ({ href, children }) => (
-                      <a href={href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#1B4229" }}>{children}</a>
-                    ),
-                    ul: ({ children }) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
-                    ol: ({ children }) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
-                    li: ({ children }) => <li className="leading-relaxed">{children}</li>,
-                    blockquote: ({ children }) => (
-                      <blockquote className="border-l-4 pl-6 my-8 italic" style={{ borderColor: "#CDDB2D", color: "#1B4229BB" }}>{children}</blockquote>
-                    ),
-                    table: ({ children }) => (
-                      <div className="overflow-x-auto my-8 rounded-lg" style={{ border: "1px solid #1b411c20" }}>
-                        <table className="w-full" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "inherit", borderCollapse: "collapse" }}>{children}</table>
-                      </div>
-                    ),
-                    thead: ({ children }) => <thead style={{ backgroundColor: "#1b411c", color: "#ffffff" }}>{children}</thead>,
-                    th: ({ children }) => (
-                      <th className="px-5 py-3 text-left font-semibold" style={{ fontSize: "inherit", borderBottom: "1px solid #1b411c30" }}>{children}</th>
-                    ),
-                    tr: ({ children, ...props }) => {
-                      const isHeader = (children as any)?.[0]?.type === 'th' || (props as any).node?.parentNode?.tagName === 'thead';
-                      return <tr style={{ backgroundColor: isHeader ? undefined : undefined }} className="even:bg-[#f5f0e8]">{children}</tr>;
-                    },
-                    td: ({ children }) => (
-                      <td className="px-5 py-3" style={{ fontSize: "inherit", borderBottom: "1px solid #1b411c10" }}>{children}</td>
-                    ),
-                    hr: () => <hr className="my-10" style={{ borderColor: "#1B422915" }} />,
-                    strong: ({ children }) => <strong className="font-semibold" style={{ color: "#1B4229" }}>{children}</strong>,
-                  }}
-                >
-                  {normalizeBody(post.body)}
-                </ReactMarkdown>
+                {post.body && (
+                  <PortableText value={post.body} components={portableTextComponents} />
+                )}
               </div>
             </article>
           )}
