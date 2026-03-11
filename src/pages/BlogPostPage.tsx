@@ -138,68 +138,42 @@ const BlogPostPage = () => {
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   components={{
+                    h1: ({ children }) => (
+                      <h1 className="font-working-man text-3xl mt-12 mb-4" style={{ color: "#1B4229" }}>{children}</h1>
+                    ),
                     h2: ({ children }) => (
-                      <h2
-                        className="font-working-man text-2xl mt-12 mb-4"
-                        style={{ color: "#1B4229" }}
-                      >
-                        {children}
-                      </h2>
+                      <h2 className="font-working-man text-2xl mt-12 mb-4" style={{ color: "#1B4229" }}>{children}</h2>
                     ),
                     h3: ({ children }) => (
-                      <h3
-                        className="font-working-man text-xl mt-8 mb-3"
-                        style={{ color: "#1B4229" }}
-                      >
-                        {children}
-                      </h3>
+                      <h3 className="font-working-man text-xl mt-8 mb-3" style={{ color: "#1B4229" }}>{children}</h3>
                     ),
                     p: ({ children }) => <p className="mb-6">{children}</p>,
                     a: ({ href, children }) => (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline"
-                        style={{ color: "#1B4229" }}
-                      >
-                        {children}
-                      </a>
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#1B4229" }}>{children}</a>
                     ),
                     ul: ({ children }) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
                     ol: ({ children }) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
                     li: ({ children }) => <li className="leading-relaxed">{children}</li>,
                     blockquote: ({ children }) => (
-                      <blockquote
-                        className="border-l-4 pl-6 my-8 italic"
-                        style={{ borderColor: "#CDDB2D", color: "#1B4229BB" }}
-                      >
-                        {children}
-                      </blockquote>
+                      <blockquote className="border-l-4 pl-6 my-8 italic" style={{ borderColor: "#CDDB2D", color: "#1B4229BB" }}>{children}</blockquote>
                     ),
                     table: ({ children }) => (
                       <div className="overflow-x-auto my-8 rounded-lg border" style={{ borderColor: "#1B422920" }}>
                         <table className="w-full text-sm">{children}</table>
                       </div>
                     ),
-                    thead: ({ children }) => (
-                      <thead style={{ backgroundColor: "#1B422910" }}>{children}</thead>
-                    ),
+                    thead: ({ children }) => <thead style={{ backgroundColor: "#1B422910" }}>{children}</thead>,
                     th: ({ children }) => (
-                      <th className="px-4 py-3 text-left font-working-man text-xs tracking-wide" style={{ color: "#1B4229", borderBottom: "1px solid #1B422920" }}>
-                        {children}
-                      </th>
+                      <th className="px-4 py-3 text-left font-working-man text-xs tracking-wide" style={{ color: "#1B4229", borderBottom: "1px solid #1B422920" }}>{children}</th>
                     ),
                     td: ({ children }) => (
-                      <td className="px-4 py-3 text-sm" style={{ borderBottom: "1px solid #1B422910" }}>
-                        {children}
-                      </td>
+                      <td className="px-4 py-3 text-sm" style={{ borderBottom: "1px solid #1B422910" }}>{children}</td>
                     ),
                     hr: () => <hr className="my-10" style={{ borderColor: "#1B422915" }} />,
                     strong: ({ children }) => <strong className="font-semibold" style={{ color: "#1B4229" }}>{children}</strong>,
                   }}
                 >
-                  {post.body}
+                  {normalizeBody(post.body)}
                 </ReactMarkdown>
               </div>
             </article>
