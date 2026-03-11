@@ -31,7 +31,6 @@ const BlogPage = () => {
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString("en-US", {
       month: "long",
-      day: "numeric",
       year: "numeric"
     });
   };
@@ -104,7 +103,7 @@ const BlogPage = () => {
 
                   <span
                     className="block font-working-man tracking-wide"
-                    style={{ fontSize: "12px", color: "#1B422980", marginTop: "12px" }}
+                    style={{ fontSize: "16px", color: "#1B422980", marginTop: "12px" }}
                   >
                     {formatDate(post.publishedAt)}
                   </span>
