@@ -189,11 +189,11 @@ const BlogPostPage = () => {
               </h1>
 
               {post.coverImage && (
-                <div className="rounded-xl overflow-hidden mb-12" style={{ aspectRatio: "16/9" }}>
+                <div className="rounded-xl mb-12">
                   <img
                     src={urlFor(post.coverImage).width(1200).auto("format").url()}
                     alt={post.title}
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-auto rounded-xl"
                   />
                 </div>
               )}
