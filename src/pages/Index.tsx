@@ -16,7 +16,7 @@ const Index = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
+    <div className="min-h-screen flex flex-col overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <IndustryProblem />

@@ -37,7 +37,7 @@ const BlogPage = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FAF9F6" }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FAF9F6" }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
 
       {/* SEO */}
