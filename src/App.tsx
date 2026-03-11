@@ -10,6 +10,8 @@ import Values from "./pages/Values";
 import ProductPage from "./pages/ProductPage";
 import ProductPageV2 from "./pages/ProductPageV2";
 import QuizPage from "./pages/QuizPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/product/:handle" element={<ProductPage />} />
           <Route path="/product-v2/:handle" element={<ProductPageV2 />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
