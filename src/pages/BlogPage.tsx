@@ -44,14 +44,16 @@ const BlogPage = () => {
       <title>The Olive Press — ATTIMO Blog</title>
       <meta name="description" content="Stories, science, and sourcing behind high-polyphenol extra virgin olive oil." />
 
-      <main className="flex-1 pt-32 pb-32 px-6 md:px-12 lg:px-20">
+      <main className="flex-1 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h1
-            className="mb-20 tracking-tight leading-[0.95]"
+            className="tracking-tight leading-[0.95] uppercase"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
               fontSize: "clamp(2.4rem, 4vw, 4.5rem)",
               color: "#1B4229",
+              paddingTop: "64px",
+              paddingBottom: "8px",
             }}
           >
             the olive press
@@ -70,7 +72,10 @@ const BlogPage = () => {
           )}
 
           {!isLoading && posts && posts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+            <div
+              className="grid grid-cols-1 md:grid-cols-3"
+              style={{ gap: "32px", paddingTop: "48px", paddingBottom: "80px" }}
+            >
               {posts.map((post) => (
                 <Link
                   key={post._id}
@@ -78,7 +83,7 @@ const BlogPage = () => {
                   className="group block"
                 >
                   <div
-                    className="rounded-xl overflow-hidden mb-6"
+                    className="rounded-xl overflow-hidden"
                     style={{ aspectRatio: "16/9", backgroundColor: "#1B422910" }}
                   >
                     {post.coverImage ? (
@@ -97,28 +102,35 @@ const BlogPage = () => {
                     )}
                   </div>
 
-                  <div className="space-y-3">
-                    <span
-                      className="text-xs font-working-man tracking-wide"
-                      style={{ color: "#1B422980" }}
+                  <span
+                    className="block font-working-man tracking-wide"
+                    style={{ fontSize: "12px", color: "#1B422980", marginTop: "12px" }}
+                  >
+                    {formatDate(post.publishedAt)}
+                  </span>
+                  <h2
+                    className="font-working-man uppercase"
+                    style={{ fontSize: "16px", color: "#1b411c", marginTop: "4px" }}
+                  >
+                    {post.title}
+                  </h2>
+                  {post.excerpt && (
+                    <p
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        fontSize: "14px",
+                        lineHeight: 1.6,
+                        color: "#555",
+                        marginTop: "8px",
+                        overflow: "hidden",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                      }}
                     >
-                      {formatDate(post.publishedAt)}
-                    </span>
-                    <h2
-                      className="font-working-man text-2xl leading-snug transition-colors duration-300"
-                      style={{ color: "#1B4229" }}
-                    >
-                      {post.title}
-                    </h2>
-                    {post.excerpt && (
-                      <p
-                        className="text-base leading-relaxed line-clamp-3"
-                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229BB" }}
-                      >
-                        {post.excerpt}
-                      </p>
-                    )}
-                  </div>
+                      {post.excerpt}
+                    </p>
+                  )}
                 </Link>
               ))}
             </div>
