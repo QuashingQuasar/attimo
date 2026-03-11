@@ -34,6 +34,32 @@ const portableTextComponents = {
         </div>
       );
     },
+    table: ({ value }: { value: { rows: { cells: string[] }[] } }) => {
+      if (!value?.rows?.length) return null;
+      const [headerRow, ...bodyRows] = value.rows;
+      return (
+        <div className="my-8 overflow-x-auto rounded-xl border" style={{ borderColor: "#1B422920" }}>
+          <table className="w-full border-collapse text-left" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "16px" }}>
+            <thead>
+              <tr style={{ backgroundColor: "#1B4229", color: "#fff" }}>
+                {headerRow.cells.map((cell, i) => (
+                  <th key={i} className="px-5 py-3 font-semibold tracking-wide uppercase" style={{ fontSize: "13px", letterSpacing: "0.05em" }}>{cell}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, ri) => (
+                <tr key={ri} style={{ backgroundColor: ri % 2 === 0 ? "#FAF9F6" : "#f5f0e8" }}>
+                  {row.cells.map((cell, ci) => (
+                    <td key={ci} className="px-5 py-3" style={{ borderTop: "1px solid #1B422915" }}>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    },
   },
   block: {
     h1: ({ children }: any) => (
@@ -51,11 +77,11 @@ const portableTextComponents = {
     ),
   },
   list: {
-    bullet: ({ children }: any) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
+    bullet: ({ children }: any) => <ul className="list-disc pl-6 mb-6 space-y-2" style={{ color: "#1a1a1a" }}>{children}</ul>,
     number: ({ children }: any) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
   },
   listItem: {
-    bullet: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
+    bullet: ({ children }: any) => <li className="leading-relaxed pl-1">{children}</li>,
     number: ({ children }: any) => <li className="leading-relaxed">{children}</li>,
   },
   marks: {
