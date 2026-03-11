@@ -159,7 +159,7 @@ const BlogPostPage = () => {
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
                   color: "#1a1a1a",
-                  fontSize: "18px",
+                  fontSize: "20px",
                   lineHeight: 1.8,
                   maxWidth: "720px",
                 }}
