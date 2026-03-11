@@ -8,6 +8,33 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useEffect } from "react";
 
+/**
+ * The Sanity body field is stored as plain text with whitespace structure
+ * but no markdown syntax. This function normalizes it into proper markdown
+ * by detecting paragraph breaks and preserving the text structure.
+ */
+function normalizeBody(body: string): string {
+  if (!body) return "";
+  
+  // The body comes with inconsistent whitespace. Clean it up:
+  // 1. Normalize line endings
+  let text = body.replace(/\r\n/g, "\n");
+  
+  // 2. Collapse runs of whitespace around newlines into clean paragraph breaks
+  text = text.replace(/\n\s*\n\s*\n*/g, "\n\n");
+  
+  // 3. Trim leading/trailing whitespace from each line
+  text = text
+    .split("\n")
+    .map((line) => line.trim())
+    .join("\n");
+  
+  // 4. Remove empty leading/trailing content
+  text = text.trim();
+  
+  return text;
+}
+
 interface BlogPost {
   _id: string;
   title: string;
