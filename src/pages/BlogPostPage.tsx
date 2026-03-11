@@ -158,7 +158,7 @@ const BlogPostPage = () => {
                 className="prose prose-lg mx-auto"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229DD",
+                  color: "#1a1a1a",
                   lineHeight: 1.75,
                   maxWidth: "720px",
                 }}
