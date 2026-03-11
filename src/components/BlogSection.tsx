@@ -64,20 +64,17 @@ export const BlogSection = () => {
         {!isLoading && articles.length > 0 &&
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {articles.map((article) =>
-          <a
-            key={article.id}
-            href={article.onlineStoreUrl || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            key={article._id}
+            to={`/blog/${article.slug.current}`}
             className="group cursor-pointer block">
             
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B4229" }}>
-                  {article.image ?
+                  {article.coverImage ?
               <img
-                src={article.image.url}
-                alt={article.image.altText || article.title}
+                src={urlFor(article.coverImage).width(800).height(600).url()}
+                alt={article.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /> :
-
 
               <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#1B422920" }}>
                       <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>No image</span>
@@ -101,7 +98,7 @@ export const BlogSection = () => {
                     Read more <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
-              </a>
+              </Link>
           )}
           </div>
         }
