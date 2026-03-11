@@ -8,7 +8,7 @@ import { Loader2 } from "lucide-react";
 interface BlogPost {
   _id: string;
   title: string;
-  slug: { current: string };
+  slug: {current: string;};
   publishedAt: string;
   excerpt: string;
   coverImage: any;
@@ -21,117 +21,117 @@ const BlogPage = () => {
   const { data: posts, isLoading } = useQuery({
     queryKey: ["blog-posts"],
     queryFn: () =>
-      sanityClient.fetch<BlogPost[]>(
-        `*[_type == "post"] | order(publishedAt desc) {
+    sanityClient.fetch<BlogPost[]>(
+      `*[_type == "post"] | order(publishedAt desc) {
           _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex
         }`
-      ),
+    )
   });
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString("en-US", {
       month: "long",
       day: "numeric",
-      year: "numeric",
+      year: "numeric"
     });
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FAF9F6" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#FAF9F6" }}>
       <Header onWaitlistClick={() => {}} forceScrolled />
 
       {/* SEO */}
       <title>The Olive Press — ATTIMO Blog</title>
       <meta name="description" content="Stories, science, and sourcing behind high-polyphenol extra virgin olive oil." />
 
-      <main className="flex-1 pt-32 pb-32 px-6 md:px-12 lg:px-20">
+      <main className="pt-28 pb-20 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h1
             className="mb-4 tracking-tight leading-[0.95]"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
               fontSize: "clamp(2.4rem, 4vw, 4.5rem)",
-              color: "#1B4229",
-            }}
-          >
+              color: "#1B4229"
+            }}>
+            
             the olive press
           </h1>
-          <p
-            className="mb-20 max-w-xl text-lg leading-relaxed"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B422999" }}
-          >
-            Stories, science, and sourcing behind real extra virgin olive oil.
-          </p>
+          
 
-          {isLoading && (
-            <div className="flex justify-center py-20">
+
+
+
+          
+
+          {isLoading &&
+          <div className="flex justify-center py-20">
               <Loader2 className="w-8 h-8 animate-spin" style={{ color: "#1B4229" }} />
             </div>
-          )}
+          }
 
-          {!isLoading && posts && posts.length === 0 && (
-            <p className="text-center py-20 font-working-man text-lg" style={{ color: "#1B422966" }}>
+          {!isLoading && posts && posts.length === 0 &&
+          <p className="text-center py-20 font-working-man text-lg" style={{ color: "#1B422966" }}>
               No posts yet — check back soon.
             </p>
-          )}
+          }
 
-          {!isLoading && posts && posts.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-              {posts.map((post) => (
-                <Link
-                  key={post._id}
-                  to={`/blog/${post.slug.current}`}
-                  className="group block"
-                >
-                  <div className="rounded-xl overflow-hidden mb-6" style={{ aspectRatio: "16/9", backgroundColor: "#1B422910" }}>
-                    {post.coverImage ? (
-                      <img
-                        src={urlFor(post.coverImage).width(960).auto("format").url()}
-                        alt={post.title}
-                        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
+          {!isLoading && posts && posts.length > 0 &&
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map((post) =>
+            <Link
+              key={post._id}
+              to={`/blog/${post.slug.current}`}
+              className="group block">
+              
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B422910" }}>
+                    {post.coverImage ?
+                <img
+                  src={urlFor(post.coverImage).width(800).height(600).auto("format").url()}
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy" /> :
+
+
+                <div className="w-full h-full flex items-center justify-center">
                         <span className="font-working-man text-sm" style={{ color: "#1B422940" }}>
                           No image
                         </span>
                       </div>
-                    )}
+                }
                   </div>
 
                   <div className="space-y-3">
                     <span
-                      className="text-xs font-working-man tracking-wide"
-                      style={{ color: "#1B422980" }}
-                    >
+                  className="text-xs font-working-man tracking-wide"
+                  style={{ color: "#1B422980" }}>
+                  
                       {formatDate(post.publishedAt)}
                     </span>
                     <h2
-                      className="font-working-man text-2xl leading-snug transition-colors duration-300"
-                      style={{ color: "#1B4229" }}
-                    >
+                  className="font-working-man text-xl leading-snug transition-colors duration-300"
+                  style={{ color: "#1B4229" }}>
+                  
                       {post.title}
                     </h2>
-                    {post.excerpt && (
-                      <p
-                        className="text-base leading-relaxed line-clamp-3"
-                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229BB" }}
-                      >
+                    {post.excerpt &&
+                <p
+                  className="text-sm leading-relaxed line-clamp-3"
+                  style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229BB" }}>
+                  
                         {post.excerpt}
                       </p>
-                    )}
+                }
                   </div>
                 </Link>
-              ))}
+            )}
             </div>
-          )}
+          }
         </div>
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default BlogPage;
