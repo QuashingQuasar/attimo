@@ -171,7 +171,7 @@ const BlogPostPage = () => {
                       <h1 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "24px", fontWeight: 700, color: "#1b411c" }}>{children}</h1>
                     ),
                     h2: ({ children }) => (
-                      <h2 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "22px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
+                      <h2 className="font-working-man mt-12 mb-4 uppercase tracking-wide" style={{ fontSize: "26px", fontWeight: 700, color: "#1b411c" }}>{children}</h2>
                     ),
                     h3: ({ children }) => (
                       <h3 className="font-working-man mt-8 mb-3" style={{ fontSize: "19px", fontWeight: 600, color: "#1b411c" }}>{children}</h3>
