@@ -1,44 +1,27 @@
 import { ArrowRight, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+import { sanityClient, urlFor } from "@/lib/sanity";
+import { Link } from "react-router-dom";
 
-interface BlogArticle {
-  id: string;
+interface SanityPost {
+  _id: string;
   title: string;
-  handle: string;
-  excerpt: string;
+  slug: { current: string };
   publishedAt: string;
-  image: {
-    url: string;
-    altText: string | null;
-  } | null;
-  blogTitle: string;
-  onlineStoreUrl: string | null;
+  excerpt: string;
+  coverImage: any;
 }
 
 export const BlogSection = () => {
-  const [articles, setArticles] = useState<BlogArticle[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const { data, error } = await supabase.functions.invoke("shopify-blog-feed");
-
-        if (error) {
-          throw error;
-        }
-
-        setArticles(data?.articles || []);
-      } catch (error) {
-        console.error("Failed to fetch blog articles:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  const { data: articles = [], isLoading } = useQuery({
+    queryKey: ["blog-posts-homepage"],
+    queryFn: () =>
+      sanityClient.fetch<SanityPost[]>(
+        `*[_type == "post"] | order(publishedAt desc)[0..2] {
+          _id, title, slug, publishedAt, excerpt, coverImage
+        }`
+      ),
+  });
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
@@ -81,20 +64,17 @@ export const BlogSection = () => {
         {!isLoading && articles.length > 0 &&
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {articles.map((article) =>
-          <a
-            key={article.id}
-            href={article.onlineStoreUrl || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            key={article._id}
+            to={`/blog/${article.slug.current}`}
             className="group cursor-pointer block">
             
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B4229" }}>
-                  {article.image ?
+                  {article.coverImage ?
               <img
-                src={article.image.url}
-                alt={article.image.altText || article.title}
+                src={urlFor(article.coverImage).width(800).height(600).url()}
+                alt={article.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /> :
-
 
               <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#1B422920" }}>
                       <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>No image</span>
@@ -118,7 +98,7 @@ export const BlogSection = () => {
                     Read more <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
-              </a>
+              </Link>
           )}
           </div>
         }
