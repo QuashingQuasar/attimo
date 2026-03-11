@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useEffect } from "react";
 
 interface BlogPost {
@@ -135,6 +136,7 @@ const BlogPostPage = () => {
                 }}
               >
                 <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
                   components={{
                     h2: ({ children }) => (
                       <h2
@@ -166,6 +168,7 @@ const BlogPostPage = () => {
                     ),
                     ul: ({ children }) => <ul className="list-disc pl-6 mb-6 space-y-2">{children}</ul>,
                     ol: ({ children }) => <ol className="list-decimal pl-6 mb-6 space-y-2">{children}</ol>,
+                    li: ({ children }) => <li className="leading-relaxed">{children}</li>,
                     blockquote: ({ children }) => (
                       <blockquote
                         className="border-l-4 pl-6 my-8 italic"
@@ -174,6 +177,26 @@ const BlogPostPage = () => {
                         {children}
                       </blockquote>
                     ),
+                    table: ({ children }) => (
+                      <div className="overflow-x-auto my-8 rounded-lg border" style={{ borderColor: "#1B422920" }}>
+                        <table className="w-full text-sm">{children}</table>
+                      </div>
+                    ),
+                    thead: ({ children }) => (
+                      <thead style={{ backgroundColor: "#1B422910" }}>{children}</thead>
+                    ),
+                    th: ({ children }) => (
+                      <th className="px-4 py-3 text-left font-working-man text-xs tracking-wide" style={{ color: "#1B4229", borderBottom: "1px solid #1B422920" }}>
+                        {children}
+                      </th>
+                    ),
+                    td: ({ children }) => (
+                      <td className="px-4 py-3 text-sm" style={{ borderBottom: "1px solid #1B422910" }}>
+                        {children}
+                      </td>
+                    ),
+                    hr: () => <hr className="my-10" style={{ borderColor: "#1B422915" }} />,
+                    strong: ({ children }) => <strong className="font-semibold" style={{ color: "#1B4229" }}>{children}</strong>,
                   }}
                 >
                   {post.body}
