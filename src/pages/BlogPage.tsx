@@ -122,10 +122,6 @@ const BlogPage = () => {
                         lineHeight: 1.8,
                         color: "#555",
                         marginTop: "8px",
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 3,
-                        WebkitBoxOrient: "vertical",
                       }}
                     >
                       {post.excerpt}
