@@ -52,7 +52,7 @@ const BlogPage = () => {
               fontFamily: "UDC Working Man Sans, sans-serif",
               fontSize: "clamp(2.4rem, 4vw, 4.5rem)",
               color: "#1B4229",
-              paddingTop: "64px",
+              paddingTop: "140px",
               paddingBottom: "8px",
             }}
           >
