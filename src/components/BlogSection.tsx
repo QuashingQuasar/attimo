@@ -1,44 +1,27 @@
 import { ArrowRight, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
+import { sanityClient, urlFor } from "@/lib/sanity";
+import { Link } from "react-router-dom";
 
-interface BlogArticle {
-  id: string;
+interface SanityPost {
+  _id: string;
   title: string;
-  handle: string;
-  excerpt: string;
+  slug: { current: string };
   publishedAt: string;
-  image: {
-    url: string;
-    altText: string | null;
-  } | null;
-  blogTitle: string;
-  onlineStoreUrl: string | null;
+  excerpt: string;
+  coverImage: any;
 }
 
 export const BlogSection = () => {
-  const [articles, setArticles] = useState<BlogArticle[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const { data, error } = await supabase.functions.invoke("shopify-blog-feed");
-
-        if (error) {
-          throw error;
-        }
-
-        setArticles(data?.articles || []);
-      } catch (error) {
-        console.error("Failed to fetch blog articles:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, []);
+  const { data: articles = [], isLoading } = useQuery({
+    queryKey: ["blog-posts-homepage"],
+    queryFn: () =>
+      sanityClient.fetch<SanityPost[]>(
+        `*[_type == "post"] | order(publishedAt desc)[0..2] {
+          _id, title, slug, publishedAt, excerpt, coverImage
+        }`
+      ),
+  });
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
