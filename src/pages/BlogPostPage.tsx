@@ -186,16 +186,20 @@ const BlogPostPage = () => {
                       <blockquote className="border-l-4 pl-6 my-8 italic" style={{ borderColor: "#CDDB2D", color: "#1B4229BB" }}>{children}</blockquote>
                     ),
                     table: ({ children }) => (
-                      <div className="overflow-x-auto my-8 rounded-lg border" style={{ borderColor: "#1B422920" }}>
-                        <table className="w-full text-sm">{children}</table>
+                      <div className="overflow-x-auto my-8 rounded-lg" style={{ border: "1px solid #1b411c20" }}>
+                        <table className="w-full" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "inherit", borderCollapse: "collapse" }}>{children}</table>
                       </div>
                     ),
-                    thead: ({ children }) => <thead style={{ backgroundColor: "#1B422910" }}>{children}</thead>,
+                    thead: ({ children }) => <thead style={{ backgroundColor: "#1b411c", color: "#ffffff" }}>{children}</thead>,
                     th: ({ children }) => (
-                      <th className="px-4 py-3 text-left font-working-man text-xs tracking-wide" style={{ color: "#1B4229", borderBottom: "1px solid #1B422920" }}>{children}</th>
+                      <th className="px-5 py-3 text-left font-semibold" style={{ fontSize: "inherit", borderBottom: "1px solid #1b411c30" }}>{children}</th>
                     ),
+                    tr: ({ children, ...props }) => {
+                      const isHeader = (children as any)?.[0]?.type === 'th' || (props as any).node?.parentNode?.tagName === 'thead';
+                      return <tr style={{ backgroundColor: isHeader ? undefined : undefined }} className="even:bg-[#f5f0e8]">{children}</tr>;
+                    },
                     td: ({ children }) => (
-                      <td className="px-4 py-3 text-sm" style={{ borderBottom: "1px solid #1B422910" }}>{children}</td>
+                      <td className="px-5 py-3" style={{ fontSize: "inherit", borderBottom: "1px solid #1b411c10" }}>{children}</td>
                     ),
                     hr: () => <hr className="my-10" style={{ borderColor: "#1B422915" }} />,
                     strong: ({ children }) => <strong className="font-semibold" style={{ color: "#1B4229" }}>{children}</strong>,
