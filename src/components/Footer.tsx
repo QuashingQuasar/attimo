@@ -7,9 +7,9 @@ export const Footer = () => {
  mb-8">
           <div className="col-span-1 md:col-span-2">
             <img src={attimoLogo} alt="ATTIMO" className="h-16 mb-4" />
-            <p className="leading-relaxed mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>
-              High-polyphenol extra virgin olive oil, sourced directly from small family groves and lab-tested for quality.
-            </p>
+            <p className="leading-relaxed mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>Specialty extra virgin olive oil, sourced directly from small family groves and lab-tested for quality.
+
+          </p>
           </div>
           <div className="hidden md:block"></div>
           <div className="flex justify-start md:justify-end">
