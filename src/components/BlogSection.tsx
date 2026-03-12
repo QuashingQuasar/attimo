@@ -153,7 +153,7 @@ export const BlogSection = () => {
               type="submit"
               disabled={isSubmitting}
               className="px-5 py-2.5 rounded-lg text-sm font-working-man tracking-wide uppercase transition-opacity duration-200 hover:opacity-90 disabled:opacity-50 whitespace-nowrap"
-              style={{ backgroundColor: "#1B4229", color: "#B3E58C" }}>
+              style={{ backgroundColor: "#CDDB2D", color: "#1B4229" }}>
               {isSubmitting ? "..." : "Subscribe"}
             </button>
           </form>
