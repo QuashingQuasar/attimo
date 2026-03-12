@@ -187,11 +187,11 @@ export function PalateQuiz() {
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             to="/"
-            className="text-sm text-muted-foreground hover:text-olive-dark transition-colors"
+            className="text-base text-muted-foreground hover:text-olive-dark transition-colors"
           >
             ← Back to ATTIMO
           </Link>
-          <span className="text-xs font-working-man tracking-[0.2em] uppercase text-olive-medium">
+          <span className="text-sm font-working-man tracking-[0.2em] uppercase text-olive-medium">
             {results ? "Results" : `${currentStep + 1} / ${totalQuestions}`}
           </span>
         </div>
