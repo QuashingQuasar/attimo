@@ -1,21 +1,7 @@
-/**
- * Palate Assessment Quiz — Scoring Engine
- * 
- * Each answer distributes weighted points across three oils.
- * To add questions: push a new entry to `quizQuestions`.
- * To tweak weights: edit the `scores` object on each option.
- */
-
-export interface OilScores {
-  coratina: number;
-  picual: number;
-  nocellara: number;
-}
-
 export interface QuizOption {
   label: string;
   description: string;
-  scores: OilScores;
+  scores: { coratina: number; picual: number; nocellara: number };
 }
 
 export interface QuizQuestion {
@@ -26,227 +12,143 @@ export interface QuizQuestion {
 }
 
 export interface OilResult {
-  key: keyof OilScores;
+  key: string;
   name: string;
-  origin: string;
-  profile: string;
   percentage: number;
   summary: string;
-  handle: string; // for product page link
+  handle: string;
 }
-
-// ── Questions ────────────────────────────────────────────────────────────
 
 export const quizQuestions: QuizQuestion[] = [
   {
     id: "intensity",
     category: "Intensity",
-    question: "How do you feel about intense flavors like a ginger shot or strong espresso?",
+    question: "How do you take your espresso?",
     options: [
-      {
-        label: "Love it",
-        description: "I enjoy bold, punchy flavors",
-        scores: { coratina: 8, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "Balanced",
-        description: "I like flavors with character but not overwhelming",
-        scores: { coratina: 2, picual: 7, nocellara: 3 },
-      },
-      {
-        label: "Smooth",
-        description: "I prefer mellow, easy-going flavors",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
-    ],
-  },
-  {
-    id: "routine",
-    category: "Routine",
-    question: "How will you use the oil most often?",
-    options: [
-      {
-        label: "Health shot or rich meals",
-        description: "Drizzled straight or on hearty dishes",
-        scores: { coratina: 8, picual: 2, nocellara: 1 },
-      },
-      {
-        label: "Finishing dishes",
-        description: "A final drizzle to elevate salads, pasta, fish",
-        scores: { coratina: 2, picual: 7, nocellara: 2 },
-      },
-      {
-        label: "Everything",
-        description: "Bread, eggs, daily meals — a true all-rounder",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
-    ],
-  },
-  {
-    id: "tasting-notes",
-    category: "Tasting Notes",
-    question: "Which flavors do you prefer?",
-    options: [
-      {
-        label: "Artichoke & black pepper",
-        description: "Herbaceous and peppery",
-        scores: { coratina: 8, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "Fresh grass & green tomato",
-        description: "Bright and grassy",
-        scores: { coratina: 2, picual: 8, nocellara: 1 },
-      },
-      {
-        label: "Almond & golden pear",
-        description: "Nutty and fruity",
-        scores: { coratina: 1, picual: 1, nocellara: 8 },
-      },
-    ],
-  },
-  {
-    id: "goal",
-    category: "The Goal",
-    question: "What is your main priority?",
-    options: [
-      {
-        label: "Maximum health benefits",
-        description: "Highest polyphenol content possible",
-        scores: { coratina: 8, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "A vibrant green finish",
-        description: "Beautiful colour and fresh herbaceous notes",
-        scores: { coratina: 2, picual: 8, nocellara: 2 },
-      },
-      {
-        label: "Elegant & reliable",
-        description: "A refined oil for any occasion",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
-    ],
-  },
-  {
-    id: "stove",
-    category: "The Stove",
-    question: "Will this oil see the heat of a pan?",
-    options: [
-      {
-        label: "Never (Raw only)",
-        description: "I want every polyphenol intact",
-        scores: { coratina: 7, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "Occasionally",
-        description: "Light sauté or roast",
-        scores: { coratina: 2, picual: 7, nocellara: 3 },
-      },
-      {
-        label: "Versatile all-rounder",
-        description: "From pan to plate",
-        scores: { coratina: 1, picual: 2, nocellara: 7 },
-      },
-    ],
-  },
-  {
-    id: "cuisine",
-    category: "Cuisine",
-    question: "Which cuisine do you cook most at home?",
-    options: [
-      {
-        label: "Italian",
-        description: "Pasta, bruschetta, grilled vegetables",
-        scores: { coratina: 7, picual: 2, nocellara: 4 },
-      },
-      {
-        label: "Mediterranean / Spanish",
-        description: "Gazpacho, tapas, seafood",
-        scores: { coratina: 2, picual: 8, nocellara: 2 },
-      },
-      {
-        label: "International / Fusion",
-        description: "A mix of everything from Asian to Middle Eastern",
-        scores: { coratina: 1, picual: 3, nocellara: 7 },
-      },
+      { label: "Ristretto, no sugar", description: "The punch is the point", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "Double shot, maybe a splash of milk", description: "", scores: { coratina: 1, picual: 2, nocellara: 0 } },
+      { label: "Flat white or cappuccino", description: "", scores: { coratina: 0, picual: 1, nocellara: 2 } },
+      { label: "I don't drink coffee", description: "", scores: { coratina: 0, picual: 0, nocellara: 3 } },
     ],
   },
   {
     id: "bitterness",
     category: "Bitterness",
-    question: "How do you feel about bitter flavors — like dark chocolate or radicchio?",
+    question: "Dark chocolate: what % do you reach for?",
     options: [
-      {
-        label: "I crave them",
-        description: "The more bitter, the better",
-        scores: { coratina: 8, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "In moderation",
-        description: "A touch of bitterness adds depth",
-        scores: { coratina: 3, picual: 7, nocellara: 2 },
-      },
-      {
-        label: "Not for me",
-        description: "I prefer sweet and mild flavors",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
+      { label: "85% or higher", description: "", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "70% — some edge, still enjoyable", description: "", scores: { coratina: 1, picual: 2, nocellara: 1 } },
+      { label: "Milk chocolate", description: "", scores: { coratina: 0, picual: 0, nocellara: 3 } },
+      { label: "I skip chocolate", description: "", scores: { coratina: 0, picual: 1, nocellara: 2 } },
+    ],
+  },
+  {
+    id: "peppery",
+    category: "Peppery Finish",
+    question: "A throat catch at the end of an olive oil — that slight burn:",
+    options: [
+      { label: "That's exactly what I want", description: "", scores: { coratina: 3, picual: 2, nocellara: 0 } },
+      { label: "Fine, but not the main event", description: "", scores: { coratina: 0, picual: 2, nocellara: 1 } },
+      { label: "I'd rather not feel it", description: "", scores: { coratina: 0, picual: 0, nocellara: 3 } },
+    ],
+  },
+  {
+    id: "use",
+    category: "Use",
+    question: "Where does this oil end up most?",
+    options: [
+      { label: "Raw, straight on food", description: "Drizzled at the table", scores: { coratina: 2, picual: 2, nocellara: 1 } },
+      { label: "Cooking — sautéing, roasting, high heat", description: "", scores: { coratina: 0, picual: 3, nocellara: 2 } },
+      { label: "Dipping, bread, cheese", description: "", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "All of the above", description: "", scores: { coratina: 1, picual: 2, nocellara: 2 } },
+    ],
+  },
+  {
+    id: "food",
+    category: "Food",
+    question: "Pick the dish you'd most want a great olive oil on:",
+    options: [
+      { label: "Grilled lamb with charred aubergine", description: "", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "Burrata, tomatoes, sea salt", description: "", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "Gazpacho or pan con tomate", description: "", scores: { coratina: 1, picual: 3, nocellara: 0 } },
+      { label: "Soft-boiled egg on toast", description: "", scores: { coratina: 0, picual: 0, nocellara: 3 } },
+    ],
+  },
+  {
+    id: "health",
+    category: "Health Intent",
+    question: "Why are you here?",
+    options: [
+      { label: "Polyphenols first, taste second", description: "", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "I want both — high quality and good for me", description: "", scores: { coratina: 2, picual: 2, nocellara: 0 } },
+      { label: "Taste is everything, health is a bonus", description: "", scores: { coratina: 0, picual: 2, nocellara: 2 } },
+      { label: "I honestly just want something that tastes good", description: "", scores: { coratina: 0, picual: 0, nocellara: 3 } },
+    ],
+  },
+  {
+    id: "complexity",
+    category: "Complexity",
+    question: "When you eat, do you pick up subtle flavors or just enjoy the whole?",
+    options: [
+      { label: "I notice everything", description: "The back-of-throat finish, the aftertaste", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "I appreciate complexity when it's there", description: "", scores: { coratina: 1, picual: 2, nocellara: 1 } },
+      { label: "I eat for pleasure, not analysis", description: "", scores: { coratina: 0, picual: 1, nocellara: 3 } },
     ],
   },
   {
     id: "pairing",
     category: "Pairing",
-    question: "Pick a pairing that excites you most:",
+    question: "Which sounds most like your kitchen right now?",
     options: [
-      {
-        label: "Steak & charred vegetables",
-        description: "Rich, smoky, robust",
-        scores: { coratina: 8, picual: 3, nocellara: 1 },
-      },
-      {
-        label: "Burrata & fresh tomatoes",
-        description: "Bright, fresh, vibrant",
-        scores: { coratina: 2, picual: 8, nocellara: 3 },
-      },
-      {
-        label: "Warm bread & aged cheese",
-        description: "Comforting, smooth, classic",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
+      { label: "Lentil soup, hearty stews, bitter greens", description: "", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "Fish, salads, light pasta", description: "", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "Tapas, seafood, anything Mediterranean", description: "", scores: { coratina: 0, picual: 3, nocellara: 1 } },
+      { label: "Lots of eggs, bread, simple weeknight food", description: "", scores: { coratina: 0, picual: 2, nocellara: 2 } },
     ],
   },
   {
-    id: "morning",
-    category: "Morning Ritual",
-    question: "What does your ideal morning drink look like?",
+    id: "occasion",
+    category: "Occasion",
+    question: "When do you reach for a special bottle?",
     options: [
-      {
-        label: "Double espresso, no sugar",
-        description: "Strong and unapologetic",
-        scores: { coratina: 8, picual: 2, nocellara: 1 },
-      },
-      {
-        label: "Matcha or green tea",
-        description: "Clean energy, grassy undertones",
-        scores: { coratina: 2, picual: 8, nocellara: 2 },
-      },
-      {
-        label: "Golden milk or chai latte",
-        description: "Warm, creamy, gently spiced",
-        scores: { coratina: 1, picual: 2, nocellara: 8 },
-      },
+      { label: "Every meal", description: "Good oil is a daily non-negotiable", scores: { coratina: 2, picual: 2, nocellara: 1 } },
+      { label: "When I want to impress", description: "A dinner, guests, something worth showing off", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "When I'm eating simply and want the oil to be the thing", description: "", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "I don't really think about it that way", description: "", scores: { coratina: 0, picual: 2, nocellara: 2 } },
+    ],
+  },
+  {
+    id: "memory",
+    category: "Memory",
+    question: "Pick the food memory that resonates most:",
+    options: [
+      { label: "A market in Sicily", description: "Ripe tomatoes, warm bread, oil that tasted like the harvest", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "A meal in Puglia", description: "Bitter greens, white beans, oil so green it almost stung", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "Grilled fish on a terrace in Andalusia", description: "Bright, grassy, clean", scores: { coratina: 0, picual: 3, nocellara: 1 } },
+      { label: "None of these — I'm building the memory", description: "", scores: { coratina: 1, picual: 2, nocellara: 2 } },
     ],
   },
 ];
 
-// ── Scoring ──────────────────────────────────────────────────────────────
+const oilSummaries: Record<string, string> = {
+  nocellara: "Delicate, round, and elegant. An oil that lets the food breathe while adding something quietly beautiful.",
+  picual: "Bright, grassy, and versatile. At home raw or cooked, it carries Mediterranean character without demanding attention.",
+  coratina: "Intense, bitter, peppery — built for people who want to feel the oil. The highest polyphenol count in our lineup.",
+};
+
+const oilNames: Record<string, string> = {
+  nocellara: "Nocellara d'Italia",
+  picual: "Picual de España",
+  coratina: "Coratina d'Italia",
+};
 
 export function calculateResults(answers: Record<string, number>): OilResult[] {
-  const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
+  const totals = { coratina: 0, picual: 0, nocellara: 0 };
 
-  for (const question of quizQuestions) {
-    const chosenIndex = answers[question.id];
-    if (chosenIndex === undefined) continue;
-    const option = question.options[chosenIndex];
+  for (const [questionId, answerIdx] of Object.entries(answers)) {
+    const question = quizQuestions.find((q) => q.id === questionId);
+    if (!question) continue;
+    const option = question.options[answerIdx];
     if (!option) continue;
     totals.coratina += option.scores.coratina;
     totals.picual += option.scores.picual;
@@ -255,41 +157,14 @@ export function calculateResults(answers: Record<string, number>): OilResult[] {
 
   const sum = totals.coratina + totals.picual + totals.nocellara || 1;
 
-  const results: OilResult[] = [
-    {
-      key: "coratina",
-      name: "Coratina",
-      origin: "Puglia, Italy",
-      profile: "Bold & Peppery",
-      percentage: Math.round((totals.coratina / sum) * 100),
-      summary:
-        "You gravitate toward bold intensity and maximum health benefits. Coratina's high polyphenol count and peppery finish are made for you.",
-      handle: "coratina-evoo",
-    },
-    {
-      key: "picual",
-      name: "Picual",
-      origin: "Andalusia, Spain",
-      profile: "Fresh & Herbaceous",
-      percentage: Math.round((totals.picual / sum) * 100),
-      summary:
-        "You love a vibrant, grassy character that elevates any dish. Picual's fresh green notes and balanced bitterness are your perfect match.",
-      handle: "picual-evoo",
-    },
-    {
-      key: "nocellara",
-      name: "Nocellara",
-      origin: "Sicily, Italy",
-      profile: "Round & Nutty",
-      percentage: Math.round((totals.nocellara / sum) * 100),
-      summary:
-        "You value elegance and versatility. Nocellara's almond-butter smoothness and golden-pear sweetness make it an everyday essential.",
-      handle: "nocellara-evoo",
-    },
-  ];
+  const results: OilResult[] = (["coratina", "picual", "nocellara"] as const).map((key) => ({
+    key,
+    name: oilNames[key],
+    percentage: Math.round((totals[key] / sum) * 100),
+    summary: oilSummaries[key],
+    handle: key,
+  }));
 
-  // Sort descending by percentage
   results.sort((a, b) => b.percentage - a.percentage);
-
   return results;
 }
