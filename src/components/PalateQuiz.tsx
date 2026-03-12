@@ -44,9 +44,11 @@ function QuestionStep({
               <span className={`block font-sans font-medium text-lg ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
                 {option.label}
               </span>
-              <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                {option.description}
-              </span>
+              {option.description && (
+                <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                  {option.description}
+                </span>
+              )}
             </button>
           );
         })}
@@ -69,7 +71,7 @@ function ResultsScreen({
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
       <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
-        Your top match is <span className="font-working-man font-medium">{topMatch.name}</span>
+        Your match is <span className="font-working-man font-medium">{topMatch.name}</span>
       </h2>
 
       {/* Match bars */}
@@ -77,14 +79,9 @@ function ResultsScreen({
         {results.map((oil) => (
           <div key={oil.key}>
             <div className="flex items-baseline justify-between mb-1.5">
-              <div>
-                <span className="font-sans font-medium text-lg text-olive-dark">
-                  {oil.name}
-                </span>
-                <span className="text-base text-muted-foreground ml-2">
-                  {oil.profile}
-                </span>
-              </div>
+              <span className="font-sans font-medium text-lg text-olive-dark">
+                {oil.name}
+              </span>
               <span className="text-xl font-sans font-medium text-olive-dark tabular-nums">
                 {oil.percentage}%
               </span>
@@ -107,17 +104,14 @@ function ResultsScreen({
         <p className="text-base text-foreground/80 leading-relaxed">
           {topMatch.summary}
         </p>
-        <p className="text-sm text-muted-foreground mt-2">
-          {topMatch.origin}
-        </p>
       </div>
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button asChild variant="hero" size="lg" className="flex-1">
-          <Link to={`/product/${topMatch.handle}`}>
+          <a href={`https://shop.attimo-oil.com`} target="_blank" rel="noopener noreferrer">
             Shop {topMatch.name}
-          </Link>
+          </a>
         </Button>
         <Button
           variant="outline"
@@ -198,10 +192,9 @@ export function PalateQuiz() {
       {/* Body */}
       <div className="flex-1 flex items-start justify-center px-6 py-12 md:py-20">
         <div className="w-full max-w-xl">
-          {/* Intro / title on first step */}
           {currentStep === 0 && !results && (
             <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-              Answer five quick questions and we'll show you which of our three
+              Answer ten quick questions and we'll show you which of our three
               single-origin oils matches your palate best.
             </p>
           )}
