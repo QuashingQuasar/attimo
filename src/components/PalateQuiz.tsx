@@ -193,7 +193,7 @@ export function PalateQuiz() {
       <div className="flex-1 flex items-start justify-center px-6 py-12 md:py-20">
         <div className="w-full max-w-xl">
           {currentStep === 0 && !results && (
-            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
               Answer some quick questions and we'll show you which of our three
               single-variety oils matches you best.
             </p>
