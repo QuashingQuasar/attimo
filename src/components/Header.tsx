@@ -65,7 +65,9 @@ export const Header = ({
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
+            <Link to="/v2">
+              <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
+            </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative hidden md:block" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
