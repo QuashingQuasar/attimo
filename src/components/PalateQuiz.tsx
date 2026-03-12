@@ -18,10 +18,10 @@ function QuestionStep({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-      <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
+      <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
         {question.category}
       </p>
-      <h2 className="font-sans text-2xl md:text-3xl font-light text-olive-dark leading-snug mb-8">
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
         {question.question}
       </h2>
 
@@ -41,10 +41,10 @@ function QuestionStep({
                 }
               `}
             >
-              <span className={`block font-sans font-medium text-base ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
+              <span className={`block font-sans font-medium text-lg ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
                 {option.label}
               </span>
-              <span className={`block text-sm mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+              <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                 {option.description}
               </span>
             </button>
@@ -68,10 +68,10 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
+      <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
         Your Palate Profile
       </p>
-      <h2 className="font-sans text-2xl md:text-3xl font-light text-olive-dark leading-snug mb-8">
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
         Your top match is <span className="font-medium">{topMatch.name}</span>
       </h2>
 
@@ -81,14 +81,14 @@ function ResultsScreen({
           <div key={oil.key}>
             <div className="flex items-baseline justify-between mb-1.5">
               <div>
-                <span className="font-sans font-medium text-olive-dark">
+                <span className="font-sans font-medium text-lg text-olive-dark">
                   {oil.name}
                 </span>
-                <span className="text-sm text-muted-foreground ml-2">
+                <span className="text-base text-muted-foreground ml-2">
                   {oil.profile}
                 </span>
               </div>
-              <span className="text-lg font-sans font-medium text-olive-dark tabular-nums">
+              <span className="text-xl font-sans font-medium text-olive-dark tabular-nums">
                 {oil.percentage}%
               </span>
             </div>
@@ -104,10 +104,10 @@ function ResultsScreen({
 
       {/* Top match summary */}
       <div className="bg-card border border-border rounded-lg p-5 mb-8">
-        <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
+        <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
           Why {topMatch.name}?
         </p>
-        <p className="text-foreground/80 leading-relaxed">
+        <p className="text-base text-foreground/80 leading-relaxed">
           {topMatch.summary}
         </p>
         <p className="text-sm text-muted-foreground mt-2">
@@ -187,11 +187,11 @@ export function PalateQuiz() {
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             to="/"
-            className="text-sm text-muted-foreground hover:text-olive-dark transition-colors"
+            className="text-base text-muted-foreground hover:text-olive-dark transition-colors"
           >
             ← Back to ATTIMO
           </Link>
-          <span className="text-xs font-working-man tracking-[0.2em] uppercase text-olive-medium">
+          <span className="text-sm font-working-man tracking-[0.2em] uppercase text-olive-medium">
             {results ? "Results" : `${currentStep + 1} / ${totalQuestions}`}
           </span>
         </div>
@@ -203,7 +203,7 @@ export function PalateQuiz() {
         <div className="w-full max-w-xl">
           {/* Intro / title on first step */}
           {currentStep === 0 && !results && (
-            <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
               Answer five quick questions and we'll show you which of our three
               single-origin oils matches your palate best.
             </p>
