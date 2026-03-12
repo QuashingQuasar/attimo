@@ -96,6 +96,17 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
+    id: "provenance",
+    category: "Provenance",
+    question: "How important is organic certification to you?",
+    options: [
+      { label: "Essential — it's a baseline requirement", description: "", scores: { coratina: 3, picual: 0, nocellara: 0 } },
+      { label: "Important but not a dealbreaker", description: "", scores: { coratina: 2, picual: 1, nocellara: 0 } },
+      { label: "Nice to have, not something I actively seek", description: "", scores: { coratina: 0, picual: 1, nocellara: 1 } },
+      { label: "Doesn't factor into my decisions", description: "", scores: { coratina: 1, picual: 1, nocellara: 1 } },
+    ],
+  },
+  {
     id: "pairing",
     category: "Pairing",
     question: "Which sounds most like your kitchen right now?",
