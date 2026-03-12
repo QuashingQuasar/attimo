@@ -70,12 +70,9 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-2">
-        Your match is
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
+        Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
       </h2>
-      <p className="font-beverly text-4xl md:text-5xl lg:text-6xl text-olive-dark mb-8">
-        {topMatch.name}
-      </p>
 
       {/* Match bars */}
       <div className="flex flex-col gap-5 mb-8">
