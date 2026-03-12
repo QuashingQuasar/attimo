@@ -65,13 +65,13 @@ export const BlogSection = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
             <h2
-              className="tracking-tight leading-[0.95] uppercase"
+              className="tracking-tight leading-[0.95]"
               style={{
-                fontFamily: "UDC Working Man Sans, sans-serif",
+                fontFamily: "'Beverly Drive Right', serif",
                 fontSize: "clamp(2.5rem, 4.5vw, 5.5rem)",
                 color: "#1B4229"
               }}>
-              the olive press
+              The Olive Press
             </h2>
           </div>
         </div>
