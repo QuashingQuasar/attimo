@@ -203,7 +203,7 @@ export function PalateQuiz() {
         <div className="w-full max-w-xl">
           {/* Intro / title on first step */}
           {currentStep === 0 && !results && (
-            <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-base text-muted-foreground mb-8 leading-relaxed">
               Answer five quick questions and we'll show you which of our three
               single-origin oils matches your palate best.
             </p>
