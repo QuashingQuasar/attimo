@@ -18,10 +18,10 @@ function QuestionStep({
 }) {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
-      <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
+      <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
         {question.category}
       </p>
-      <h2 className="font-sans text-2xl md:text-3xl font-light text-olive-dark leading-snug mb-8">
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
         {question.question}
       </h2>
 
@@ -41,10 +41,10 @@ function QuestionStep({
                 }
               `}
             >
-              <span className={`block font-sans font-medium text-base ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
+              <span className={`block font-sans font-medium text-lg ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
                 {option.label}
               </span>
-              <span className={`block text-sm mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+              <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                 {option.description}
               </span>
             </button>
