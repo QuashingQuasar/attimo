@@ -194,8 +194,8 @@ export function PalateQuiz() {
         <div className="w-full max-w-xl">
           {currentStep === 0 && !results && (
             <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-              Answer ten quick questions and we'll show you which of our three
-              single-origin oils matches your palate best.
+              Answer some quick questions and we'll show you which of our three
+              single-origin oils matches you best.
             </p>
           )}
 
