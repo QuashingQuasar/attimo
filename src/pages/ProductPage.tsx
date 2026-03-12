@@ -19,12 +19,12 @@ import { toast } from "sonner";
 import { getProductContent } from "@/lib/productContent";
 
 const ProductPage = () => {
-  const { handle } = useParams<{ handle: string }>();
+  const { handle } = useParams<{handle: string;}>();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const addItem = useCartStore(state => state.addItem);
+  const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -40,15 +40,15 @@ const ProductPage = () => {
     loadProducts();
   }, []);
 
-  const product = products.find(p => p.node.handle === handle) || products[0];
+  const product = products.find((p) => p.node.handle === handle) || products[0];
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
     if (!product) return;
     const variant = product.node.variants.edges.find(
-      edge => edge.node.title === selectedQuantity.toString()
+      (edge) => edge.node.title === selectedQuantity.toString()
     )?.node || product.node.variants.edges[0].node;
-    
+
     addItem({
       product,
       variantId: variant.id,
@@ -69,8 +69,8 @@ const ProductPage = () => {
         <div className="flex items-center justify-center min-h-[60vh]">
           <p className="text-olive-medium">Loading product...</p>
         </div>
-      </div>
-    );
+      </div>);
+
   }
 
   if (!product) {
@@ -80,56 +80,56 @@ const ProductPage = () => {
         <div className="flex items-center justify-center min-h-[60vh]">
           <p className="text-olive-medium">Product not found</p>
         </div>
-      </div>
-    );
+      </div>);
+
   }
 
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
   const variantMap = {
-    1: product.node.variants.edges.find(e => e.node.title === "1")?.node,
-    2: product.node.variants.edges.find(e => e.node.title === "2")?.node,
-    3: product.node.variants.edges.find(e => e.node.title === "3")?.node,
-    4: product.node.variants.edges.find(e => e.node.title === "4")?.node,
-    8: product.node.variants.edges.find(e => e.node.title === "8")?.node,
+    1: product.node.variants.edges.find((e) => e.node.title === "1")?.node,
+    2: product.node.variants.edges.find((e) => e.node.title === "2")?.node,
+    3: product.node.variants.edges.find((e) => e.node.title === "3")?.node,
+    4: product.node.variants.edges.find((e) => e.node.title === "4")?.node,
+    8: product.node.variants.edges.find((e) => e.node.title === "8")?.node
   };
 
   const basePrice = parseFloat(variantMap[1]?.price.amount || "22");
 
   const quantityOptions = [
-    { quantity: 1, label: "1 Bottle", price: parseFloat(variantMap[1]?.price.amount || "22"), savings: null },
-    { quantity: 2, label: "2 Bottles", subtitle: "Save €2", price: parseFloat(variantMap[2]?.price.amount || "42"), savings: (basePrice * 2) - parseFloat(variantMap[2]?.price.amount || "42") },
-    { quantity: 3, label: "3 Bottles", subtitle: "Save €4", price: parseFloat(variantMap[3]?.price.amount || "62"), savings: (basePrice * 3) - parseFloat(variantMap[3]?.price.amount || "62") },
-    { quantity: 4, label: "4 Bottles", subtitle: "Save €8 + Free Shipping", price: parseFloat(variantMap[4]?.price.amount || "80"), savings: (basePrice * 4) - parseFloat(variantMap[4]?.price.amount || "80") },
-    { quantity: 8, label: "8 Bottles", subtitle: "Save €24 + Free Shipping", price: parseFloat(variantMap[8]?.price.amount || "152"), savings: (basePrice * 8) - parseFloat(variantMap[8]?.price.amount || "152") },
-  ];
+  { quantity: 1, label: "1 Bottle", price: parseFloat(variantMap[1]?.price.amount || "22"), savings: null },
+  { quantity: 2, label: "2 Bottles", subtitle: "Save €2", price: parseFloat(variantMap[2]?.price.amount || "42"), savings: basePrice * 2 - parseFloat(variantMap[2]?.price.amount || "42") },
+  { quantity: 3, label: "3 Bottles", subtitle: "Save €4", price: parseFloat(variantMap[3]?.price.amount || "62"), savings: basePrice * 3 - parseFloat(variantMap[3]?.price.amount || "62") },
+  { quantity: 4, label: "4 Bottles", subtitle: "Save €8 + Free Shipping", price: parseFloat(variantMap[4]?.price.amount || "80"), savings: basePrice * 4 - parseFloat(variantMap[4]?.price.amount || "80") },
+  { quantity: 8, label: "8 Bottles", subtitle: "Save €24 + Free Shipping", price: parseFloat(variantMap[8]?.price.amount || "152"), savings: basePrice * 8 - parseFloat(variantMap[8]?.price.amount || "152") }];
 
-  const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
+
+  const selectedOption = quantityOptions.find((option) => option.quantity === selectedQuantity);
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
   const attributes = [
-    {
-      icon: <Droplets size={20} className="text-olive-dark" />,
-      label: "Variety",
-      value: `100% ${content.tabs.details.olive}`,
-    },
-    {
-      icon: <MapPin size={20} className="text-olive-dark" />,
-      label: "Origin",
-      value: content.tabs.details.origin,
-    },
-    {
-      icon: <Sprout size={20} className="text-olive-dark" />,
-      label: "Harvest",
-      value: "October 2025",
-    },
-    {
-      icon: <Sparkles size={20} className="text-olive-dark" />,
-      label: "Flavor",
-      value: content.tabs.details.flavor,
-    },
-  ];
+  {
+    icon: <Droplets size={20} className="text-olive-dark" />,
+    label: "Variety",
+    value: `100% ${content.tabs.details.olive}`
+  },
+  {
+    icon: <MapPin size={20} className="text-olive-dark" />,
+    label: "Origin",
+    value: content.tabs.details.origin
+  },
+  {
+    icon: <Sprout size={20} className="text-olive-dark" />,
+    label: "Harvest",
+    value: "October 2025"
+  },
+  {
+    icon: <Sparkles size={20} className="text-olive-dark" />,
+    label: "Flavor",
+    value: content.tabs.details.flavor
+  }];
+
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
@@ -143,29 +143,29 @@ const ProductPage = () => {
             <div className="lg:sticky lg:top-20 lg:self-start">
               <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
-                  src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
-                  alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
-                  className="w-full h-full object-cover"
-                />
+                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
+                alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
+                className="w-full h-full object-cover" />
+              
 
                 {/* Overlay Thumbnails — bottom-left inside image */}
-                {productImages.length > 1 && (
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-                    {productImages.map((img, i) => (
-                      <button
-                        key={i}
-                        onClick={() => setSelectedImageIndex(i)}
-                        className={`w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
-                          selectedImageIndex === i 
-                            ? 'border-white shadow-lg' 
-                            : 'border-white/40 opacity-60 hover:opacity-100'
-                        }`}
-                      >
+                {productImages.length > 1 &&
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                    {productImages.map((img, i) =>
+                <button
+                  key={i}
+                  onClick={() => setSelectedImageIndex(i)}
+                  className={`w-[56px] h-[56px] md:w-[64px] md:h-[64px] rounded-lg overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
+                  selectedImageIndex === i ?
+                  'border-white shadow-lg' :
+                  'border-white/40 opacity-60 hover:opacity-100'}`
+                  }>
+                  
                         <img src={img.node.url} alt="" className="w-full h-full object-cover" />
                       </button>
-                    ))}
-                  </div>
                 )}
+                  </div>
+              }
               </div>
             </div>
 
@@ -178,9 +178,9 @@ const ProductPage = () => {
                   <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                     New Harvest
                   </span>
-                  <span className="text-olive-dark uppercase tracking-wider font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
-                    Last Bottles
-                  </span>
+                  
+
+                
                 </div>
 
                 {/* Title + Volume */}
@@ -204,8 +204,8 @@ const ProductPage = () => {
 
               {/* Attribute Grid — 2x2 like Arsenio */}
               <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
-                {attributes.map((attr) => (
-                  <div key={attr.label} className="space-y-1.5">
+                {attributes.map((attr) =>
+              <div key={attr.label} className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
                       {attr.icon}
                       <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
@@ -216,51 +216,51 @@ const ProductPage = () => {
                       {attr.value}
                     </p>
                   </div>
-                ))}
+              )}
               </div>
 
               {/* Quantity + Cart grouped tighter */}
               <div className="space-y-3">
                 <div className="grid grid-cols-5 gap-2">
-                  {quantityOptions.map(option => (
-                    <button
-                      key={option.quantity}
-                      onClick={() => setSelectedQuantity(option.quantity)}
-                      className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
-                        selectedQuantity === option.quantity
-                          ? 'border-olive-dark bg-olive-dark text-cream'
-                          : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
-                      }`}
-                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                    >
+                  {quantityOptions.map((option) =>
+                <button
+                  key={option.quantity}
+                  onClick={() => setSelectedQuantity(option.quantity)}
+                  className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
+                  selectedQuantity === option.quantity ?
+                  'border-olive-dark bg-olive-dark text-cream' :
+                  'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'}`
+                  }
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                  
                       <div>{option.label}</div>
-                      {option.subtitle && (
-                        <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
+                      {option.subtitle &&
+                  <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
                           {option.subtitle}
                         </div>
-                      )}
+                  }
                     </button>
-                  ))}
+                )}
                 </div>
 
                 <Button
-                  onClick={handleAddToCart}
-                  className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                  style={{ 
-                    fontFamily: 'UDC Working Man Sans, sans-serif', 
-                    backgroundColor: '#CDDB2D', 
-                    fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)', 
-                    borderRadius: '0.75rem',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {selectedQuantity === 1 ? (
-                    <span className="flex items-center justify-center gap-2">
+                onClick={handleAddToCart}
+                className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
+                style={{
+                  fontFamily: 'UDC Working Man Sans, sans-serif',
+                  backgroundColor: '#CDDB2D',
+                  fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
+                  borderRadius: '0.75rem',
+                  letterSpacing: '0.05em'
+                }}>
+                
+                  {selectedQuantity === 1 ?
+                <span className="flex items-center justify-center gap-2">
                       Add to Cart — <span className="line-through opacity-50">€25</span> €22
-                    </span>
-                  ) : (
-                    `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
-                  )}
+                    </span> :
+
+                `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
+                }
                 </Button>
               </div>
 
@@ -271,8 +271,8 @@ const ProductPage = () => {
 
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
-                {content.labTiles.map(tile => (
-                  <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+                {content.labTiles.map((tile) =>
+              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
                     <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       {tile.label}
                     </p>
@@ -285,24 +285,24 @@ const ProductPage = () => {
                         {tile.avg}
                       </span>
                     </p>
-                    {tile.description && (
-                      <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                    {tile.description &&
+                <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.description}
                       </p>
-                    )}
+                }
                   </div>
-                ))}
+              )}
               </div>
 
               {/* Lab Report Link */}
               <div className="flex items-center justify-between gap-3">
-                <a 
-                  href={content.labReportUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                >
+                <a
+                href={content.labReportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
+                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                
                   <Beaker size={18} />
                   View full lab results
                 </a>
@@ -328,8 +328,8 @@ const ProductPage = () => {
       <FAQ />
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 };
 
 export default ProductPage;
