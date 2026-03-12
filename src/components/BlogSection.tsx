@@ -144,7 +144,7 @@ export const BlogSection = () => {
               placeholder="your@email.com"
               className="px-4 py-2.5 rounded-lg text-sm font-space-grotesk flex-1 md:w-64 outline-none transition-shadow duration-200 focus:ring-2"
               style={{
-                backgroundColor: "#1B422912",
+                backgroundColor: "#FFFFFF",
                 color: "#1B4229",
                 border: "1px solid #1B422925",
               }}
