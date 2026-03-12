@@ -68,11 +68,8 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
-        Your Palate Profile
-      </p>
       <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
-        Your top match is <span className="font-medium">{topMatch.name}</span>
+        Your top match is <span className="font-working-man font-medium">{topMatch.name}</span>
       </h2>
 
       {/* Match bars */}
