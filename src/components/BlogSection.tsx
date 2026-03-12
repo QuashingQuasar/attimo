@@ -134,7 +134,7 @@ export const BlogSection = () => {
           <p
             className="text-sm md:text-base leading-relaxed max-w-md"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229CC" }}>
-            Get olive oil insights, harvest updates & new releases — no spam, ever.
+            Get Olive Press insights, stories, harvest updates and product releases in your mailbox.
           </p>
           <form onSubmit={handleNewsletterSubmit} className="flex gap-3 w-full md:w-auto">
             <input
