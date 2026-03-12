@@ -39,7 +39,7 @@ export const BlogSection = () => {
             <h2
               className="tracking-tight leading-[0.95]"
               style={{
-                fontFamily: "Beverly Drive Right, serif",
+                fontFamily: "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(2.2rem, 3.5vw, 4rem)",
                 color: "#1B4229"
               }}>
