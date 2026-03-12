@@ -189,7 +189,7 @@ export function PalateQuiz() {
             to="/"
             className="text-sm text-muted-foreground hover:text-olive-dark transition-colors"
           >
-            ← Back to KLEIA
+            ← Back to ATTIMO
           </Link>
           <span className="text-xs font-working-man tracking-[0.2em] uppercase text-olive-medium">
             {results ? "Results" : `${currentStep + 1} / ${totalQuestions}`}
