@@ -37,13 +37,12 @@ export const BlogSection = () => {
 
             
             <h2
-              className="tracking-tight leading-[0.95]"
+              className="tracking-tight leading-[0.95] uppercase"
               style={{
-                fontFamily: "Beverly Drive Right, serif",
-                fontSize: "clamp(2.2rem, 3.5vw, 4rem)",
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                fontSize: "clamp(3rem, 6vw, 7rem)",
                 color: "#1B4229"
               }}>
-              
               the olive press
             </h2>
           </div>
