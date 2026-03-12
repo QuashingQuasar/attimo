@@ -40,7 +40,7 @@ export const BlogSection = () => {
               className="tracking-tight leading-[0.95] uppercase"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
-                fontSize: "clamp(3rem, 6vw, 7rem)",
+                fontSize: "clamp(2.5rem, 4.5vw, 5.5rem)",
                 color: "#1B4229"
               }}>
               the olive press
