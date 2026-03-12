@@ -103,10 +103,10 @@ export const Header = ({
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 scale-[1.25] group-hover:scale-[1.28]" />
                   </div>
                   <div className="flex flex-col items-center gap-1">
-                    <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: '1.6rem', letterSpacing: '0.03em' }}>
+                    <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: '2rem', letterSpacing: '0.03em' }}>
                       {product.name}
                     </span>
-                    <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: '1.05rem', letterSpacing: '0.1em' }}>
+                    <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: '1.25rem', letterSpacing: '0.1em' }}>
                       {product.flavor}
                     </span>
                   </div>
