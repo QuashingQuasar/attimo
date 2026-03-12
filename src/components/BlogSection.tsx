@@ -60,7 +60,7 @@ export const BlogSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
+    <section className="pt-20 md:pt-28 pb-12 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
@@ -130,7 +130,7 @@ export const BlogSection = () => {
         }
 
         {/* Newsletter signup */}
-        <div className="mt-16 pt-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
+        <div className="mt-16 pt-12 pb-0 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
           <p
             className="text-sm md:text-base leading-relaxed max-w-md"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229CC" }}>
