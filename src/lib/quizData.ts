@@ -148,6 +148,94 @@ export const quizQuestions: QuizQuestion[] = [
       },
     ],
   },
+  {
+    id: "cuisine",
+    category: "Cuisine",
+    question: "Which cuisine do you cook most at home?",
+    options: [
+      {
+        label: "Italian",
+        description: "Pasta, bruschetta, grilled vegetables",
+        scores: { coratina: 7, picual: 2, nocellara: 4 },
+      },
+      {
+        label: "Mediterranean / Spanish",
+        description: "Gazpacho, tapas, seafood",
+        scores: { coratina: 2, picual: 8, nocellara: 2 },
+      },
+      {
+        label: "International / Fusion",
+        description: "A mix of everything from Asian to Middle Eastern",
+        scores: { coratina: 1, picual: 3, nocellara: 7 },
+      },
+    ],
+  },
+  {
+    id: "bitterness",
+    category: "Bitterness",
+    question: "How do you feel about bitter flavors — like dark chocolate or radicchio?",
+    options: [
+      {
+        label: "I crave them",
+        description: "The more bitter, the better",
+        scores: { coratina: 8, picual: 3, nocellara: 1 },
+      },
+      {
+        label: "In moderation",
+        description: "A touch of bitterness adds depth",
+        scores: { coratina: 3, picual: 7, nocellara: 2 },
+      },
+      {
+        label: "Not for me",
+        description: "I prefer sweet and mild flavors",
+        scores: { coratina: 1, picual: 2, nocellara: 8 },
+      },
+    ],
+  },
+  {
+    id: "pairing",
+    category: "Pairing",
+    question: "Pick a pairing that excites you most:",
+    options: [
+      {
+        label: "Steak & charred vegetables",
+        description: "Rich, smoky, robust",
+        scores: { coratina: 8, picual: 3, nocellara: 1 },
+      },
+      {
+        label: "Burrata & fresh tomatoes",
+        description: "Bright, fresh, vibrant",
+        scores: { coratina: 2, picual: 8, nocellara: 3 },
+      },
+      {
+        label: "Warm bread & aged cheese",
+        description: "Comforting, smooth, classic",
+        scores: { coratina: 1, picual: 2, nocellara: 8 },
+      },
+    ],
+  },
+  {
+    id: "morning",
+    category: "Morning Ritual",
+    question: "What does your ideal morning drink look like?",
+    options: [
+      {
+        label: "Double espresso, no sugar",
+        description: "Strong and unapologetic",
+        scores: { coratina: 8, picual: 2, nocellara: 1 },
+      },
+      {
+        label: "Matcha or green tea",
+        description: "Clean energy, grassy undertones",
+        scores: { coratina: 2, picual: 8, nocellara: 2 },
+      },
+      {
+        label: "Golden milk or chai latte",
+        description: "Warm, creamy, gently spiced",
+        scores: { coratina: 1, picual: 2, nocellara: 8 },
+      },
+    ],
+  },
 ];
 
 // ── Scoring ──────────────────────────────────────────────────────────────
