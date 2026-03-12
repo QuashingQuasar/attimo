@@ -73,9 +73,9 @@ export const Header = ({
                 Shop
               </button>
             </div>
-            <button onClick={onWaitlistClick} className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              New Harvest
-            </button>
+            <Link to="/blog" className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Blog
+            </Link>
             <CartDrawer />
           </div>
         </div>
