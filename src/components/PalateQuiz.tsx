@@ -68,10 +68,10 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
+      <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
         Your Palate Profile
       </p>
-      <h2 className="font-sans text-2xl md:text-3xl font-light text-olive-dark leading-snug mb-8">
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
         Your top match is <span className="font-medium">{topMatch.name}</span>
       </h2>
 
@@ -81,14 +81,14 @@ function ResultsScreen({
           <div key={oil.key}>
             <div className="flex items-baseline justify-between mb-1.5">
               <div>
-                <span className="font-sans font-medium text-olive-dark">
+                <span className="font-sans font-medium text-lg text-olive-dark">
                   {oil.name}
                 </span>
-                <span className="text-sm text-muted-foreground ml-2">
+                <span className="text-base text-muted-foreground ml-2">
                   {oil.profile}
                 </span>
               </div>
-              <span className="text-lg font-sans font-medium text-olive-dark tabular-nums">
+              <span className="text-xl font-sans font-medium text-olive-dark tabular-nums">
                 {oil.percentage}%
               </span>
             </div>
@@ -104,10 +104,10 @@ function ResultsScreen({
 
       {/* Top match summary */}
       <div className="bg-card border border-border rounded-lg p-5 mb-8">
-        <p className="text-xs font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
+        <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
           Why {topMatch.name}?
         </p>
-        <p className="text-foreground/80 leading-relaxed">
+        <p className="text-base text-foreground/80 leading-relaxed">
           {topMatch.summary}
         </p>
         <p className="text-sm text-muted-foreground mt-2">
