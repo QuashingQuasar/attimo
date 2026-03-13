@@ -14,7 +14,6 @@ export const HarvestProduct = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [customQuantity, setCustomQuantity] = useState(5);
   const [useCustom, setUseCustom] = useState(false);
   const addItem = useCartStore(state => state.addItem);
 
