@@ -252,29 +252,6 @@ export const HarvestProduct = () => {
               </div>
             </div>
 
-            {/* Quantity Selection — Preset Cards */}
-            <div className="space-y-3">
-              <div className="grid grid-cols-4 gap-2">
-                {[1, 2, 3].map(qty => (
-                  <button
-                    key={qty}
-                    onClick={() => setSelectedQuantity(qty)}
-                    className={`p-2 rounded-xl border-2 transition-all text-center ${
-                      selectedQuantity === qty
-                        ? 'border-olive-dark bg-olive-dark text-cream'
-                        : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
-                    }`}
-                  >
-                    <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
-                      {qty} Bottle{qty > 1 ? 's' : ''}
-                    </div>
-                    {qty >= 2 && (
-                      <div className={`${selectedQuantity === qty ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
-                        Free Shipping
-                      </div>
-                    )}
-                  </button>
-                ))}
             {/* Quantity Selector */}
             <div className="space-y-2">
               <div className="flex items-center gap-0">
