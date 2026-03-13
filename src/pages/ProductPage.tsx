@@ -16,7 +16,7 @@ import { Footer } from "@/components/Footer";
 import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
-import { getProductContent } from "@/lib/productContent";
+import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -40,7 +40,8 @@ const ProductPage = () => {
     loadProducts();
   }, []);
 
-  const product = products.find((p) => p.node.handle === handle);
+  const shopifyHandle = resolveShopifyHandle(handle);
+  const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
