@@ -76,7 +76,7 @@ export const productContentMap: Record<string, ProductContent> = {
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Directly sourced from a small family grove in Puglia, Italy",
+    sourceLine: "Directly sourced from a small family grove in Umbria, Italy",
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
