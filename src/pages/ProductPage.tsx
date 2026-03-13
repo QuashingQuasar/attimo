@@ -233,50 +233,52 @@ const ProductPage = () => {
               )}
               </div>
 
-              {/* Quantity + Cart */}
+              {/* Shipping text + Cart row */}
               <div className="space-y-3">
-                <div className="flex items-center gap-0">
-                  <button
-                    type="button"
-                    onClick={() => updateQuantity(selectedQuantity - 1)}
-                    className="w-12 h-12 rounded-l-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
-                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                  >−</button>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={inputValue}
-                    onChange={(e) => handleInputChange(e.target.value)}
-                    onBlur={handleInputBlur}
-                    className="w-16 h-12 border-y-2 border-olive-dark/20 bg-transparent text-center font-bold text-olive-dark outline-none"
-                    style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)' }}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => updateQuantity(selectedQuantity + 1)}
-                    className="w-12 h-12 rounded-r-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
-                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                  >+</button>
-                </div>
                 <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
                   {selectedQuantity < 2
                     ? 'Add 1 more bottle for free shipping'
                     : 'Free shipping applied ✓'}
                 </p>
 
-                <Button
-                  onClick={handleAddToCart}
-                  className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                  style={{
-                    fontFamily: 'UDC Working Man Sans, sans-serif',
-                    backgroundColor: '#CDDB2D',
-                    fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
-                    borderRadius: '0.75rem',
-                    letterSpacing: '0.05em'
-                  }}
-                >
-                  Add to Cart — €{totalPrice}
-                </Button>
+                <div className="flex items-stretch gap-2">
+                  <Button
+                    onClick={handleAddToCart}
+                    className="flex-[3] hover:opacity-90 text-olive-dark font-semibold px-8 h-auto transition-all duration-300"
+                    style={{
+                      fontFamily: 'UDC Working Man Sans, sans-serif',
+                      backgroundColor: '#CDDB2D',
+                      fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
+                      borderRadius: '0.75rem',
+                      letterSpacing: '0.05em'
+                    }}
+                  >
+                    Add to Cart — €{totalPrice}
+                  </Button>
+                  <div className="flex-1 flex items-center gap-0">
+                    <button
+                      type="button"
+                      onClick={() => updateQuantity(selectedQuantity - 1)}
+                      className="flex-1 h-full rounded-l-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                      style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                    >−</button>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={inputValue}
+                      onChange={(e) => handleInputChange(e.target.value)}
+                      onBlur={handleInputBlur}
+                      className="w-10 h-full border-y-2 border-olive-dark/20 bg-transparent text-center font-bold text-olive-dark outline-none"
+                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => updateQuantity(selectedQuantity + 1)}
+                      className="flex-1 h-full rounded-r-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                      style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                    >+</button>
+                  </div>
+                </div>
               </div>
 
               <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
