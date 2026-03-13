@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
