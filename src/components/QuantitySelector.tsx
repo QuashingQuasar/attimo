@@ -70,7 +70,7 @@ export const QuantitySelector = ({
       <Button
         id={buttonId}
         onClick={onAddToCart}
-        className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-5 h-auto transition-all duration-300 hover:scale-[1.02]"
+        className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-7 h-auto transition-all duration-300 hover:scale-[1.02]"
         style={{
           fontFamily: "UDC Working Man Sans, sans-serif",
           backgroundColor: "#CDDB2D",
