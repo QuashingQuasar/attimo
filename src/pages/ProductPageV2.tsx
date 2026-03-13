@@ -285,45 +285,42 @@ const ProductPage = () => {
                     )}
                   </button>
                 ))}
-                {/* Expandable 4+ button */}
-                <button
-                  onClick={() => { if (selectedQuantity < 4) setSelectedQuantity(4); }}
-                  className={`p-2 rounded-xl border-2 transition-all text-center ${
-                    selectedQuantity >= 4
-                      ? 'border-olive-dark bg-olive-dark text-cream'
-                      : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
-                  }`}
-                >
-                  {selectedQuantity >= 4 ? (
-                    <>
-                      <div className="flex items-center justify-center gap-1">
-                        <span
-                          onClick={(e) => { e.stopPropagation(); setSelectedQuantity(Math.max(4, selectedQuantity - 1)); }}
-                          className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
-                        >−</span>
-                        <span className="font-semibold min-w-[2ch] text-center" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                          {selectedQuantity}
-                        </span>
-                        <span
-                          onClick={(e) => { e.stopPropagation(); setSelectedQuantity(selectedQuantity + 1); }}
-                          className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
-                        >+</span>
-                      </div>
-                      <div className="text-cream/80 mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
-                        Free Shipping
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                        4+ Bottles
-                      </div>
-                      <div className="text-olive-medium mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
-                        Free Shipping
-                      </div>
-                    </>
-                  )}
-                </button>
+                {selectedQuantity >= 4 ? (
+                  <div
+                    className="p-2 rounded-xl border-2 border-olive-dark bg-olive-dark text-cream text-center"
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedQuantity(Math.max(4, selectedQuantity - 1))}
+                        className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
+                      >−</button>
+                      <span className="font-semibold min-w-[2ch] text-center" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                        {selectedQuantity}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedQuantity(selectedQuantity + 1)}
+                        className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
+                      >+</button>
+                    </div>
+                    <div className="text-cream/80 mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                      Free Shipping
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setSelectedQuantity(4)}
+                    className="p-2 rounded-xl border-2 border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10 transition-all text-center"
+                  >
+                    <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                      4+ Bottles
+                    </div>
+                    <div className="text-olive-medium mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                      Free Shipping
+                    </div>
+                  </button>
+                )}
               </div>
             </div>
 

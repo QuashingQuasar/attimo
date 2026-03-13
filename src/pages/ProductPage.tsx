@@ -232,38 +232,35 @@ const ProductPage = () => {
                       )}
                     </button>
                   ))}
-                  {/* Expandable 4+ button */}
-                  <button
-                    onClick={() => { if (selectedQuantity < 4) setSelectedQuantity(4); }}
-                    className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
-                      selectedQuantity >= 4
-                        ? 'border-olive-dark bg-olive-dark text-cream'
-                        : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
-                    }`}
-                    style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                  >
-                    {selectedQuantity >= 4 ? (
-                      <>
-                        <div className="flex items-center justify-center gap-1">
-                          <span
-                            onClick={(e) => { e.stopPropagation(); setSelectedQuantity(Math.max(4, selectedQuantity - 1)); }}
-                            className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
-                          >−</span>
-                          <span className="font-semibold min-w-[2ch] text-center">{selectedQuantity}</span>
-                          <span
-                            onClick={(e) => { e.stopPropagation(); setSelectedQuantity(selectedQuantity + 1); }}
-                            className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
-                          >+</span>
-                        </div>
-                        <div className="text-[0.7rem] mt-0.5 text-cream/70">Free Shipping</div>
-                      </>
-                    ) : (
-                      <>
-                        <div>4+ Bottles</div>
-                        <div className="text-[0.7rem] mt-0.5 text-olive-medium">Free Shipping</div>
-                      </>
-                    )}
-                  </button>
+                  {selectedQuantity >= 4 ? (
+                    <div
+                      className="px-2 py-3 rounded-xl border border-olive-dark bg-olive-dark text-cream text-center"
+                    >
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setSelectedQuantity(Math.max(4, selectedQuantity - 1))}
+                          className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
+                        >−</button>
+                        <span className="font-semibold min-w-[2ch] text-center">{selectedQuantity}</span>
+                        <button
+                          type="button"
+                          onClick={() => setSelectedQuantity(selectedQuantity + 1)}
+                          className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
+                        >+</button>
+                      </div>
+                      <div className="text-[0.7rem] mt-0.5 text-cream/70">Free Shipping</div>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => setSelectedQuantity(4)}
+                      className="px-2 py-3 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all duration-200 text-center"
+                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                    >
+                      <div>4+ Bottles</div>
+                      <div className="text-[0.7rem] mt-0.5 text-olive-medium">Free Shipping</div>
+                    </button>
+                  )}
                 </div>
 
                 <Button
