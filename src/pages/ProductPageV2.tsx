@@ -26,29 +26,6 @@ const ProductPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [inputValue, setInputValue] = useState('1');
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const updateQuantity = useCallback((qty: number) => {
-    const clamped = Math.max(1, qty);
-    setSelectedQuantity(clamped);
-    setInputValue(String(clamped));
-  }, []);
-
-  const handleInputChange = (val: string) => {
-    setInputValue(val);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      const parsed = parseInt(val, 10);
-      if (!isNaN(parsed) && parsed >= 1) setSelectedQuantity(parsed);
-    }, 300);
-  };
-
-  const handleInputBlur = () => {
-    const parsed = parseInt(inputValue, 10);
-    if (isNaN(parsed) || parsed < 1) updateQuantity(1);
-    else updateQuantity(parsed);
-  };
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore(state => state.addItem);
 
