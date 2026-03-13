@@ -72,9 +72,7 @@ export const HarvestProduct = () => {
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
   
   const PRICE_PER_BOTTLE = 24;
-  const FREE_SHIPPING_THRESHOLD = 2;
-  const activeQuantity = useCustom ? customQuantity : selectedQuantity;
-  const totalPrice = activeQuantity * PRICE_PER_BOTTLE;
+  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
 
   const labTiles = [
     { key: "polyphenols", label: "POLYPHENOLS", value: "904", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
