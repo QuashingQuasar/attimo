@@ -4,6 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
+import bottleCoratina from "@/assets/bottle-coratina.jpg";
+import bottlePicual from "@/assets/bottle-picual.jpg";
+import bottleNocellara from "@/assets/bottle-nocellara.jpg";
+
+const oilImages: Record<string, string> = {
+  coratina: bottleCoratina,
+  picual: bottlePicual,
+  nocellara: bottleNocellara,
+};
 
 // ── Question Step ────────────────────────────────────────────────────────
 
@@ -70,6 +79,15 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
+      {/* Top match image */}
+      <div className="flex justify-center mb-8">
+        <img
+          src={oilImages[topMatch.key]}
+          alt={topMatch.name}
+          className="h-64 md:h-80 object-contain drop-shadow-lg"
+        />
+      </div>
+
       <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
         Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
       </h2>
