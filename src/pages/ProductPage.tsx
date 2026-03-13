@@ -97,25 +97,10 @@ const ProductPage = () => {
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
-  const variantMap = {
-    1: product.node.variants.edges.find((e) => e.node.title === "1")?.node,
-    2: product.node.variants.edges.find((e) => e.node.title === "2")?.node,
-    3: product.node.variants.edges.find((e) => e.node.title === "3")?.node,
-    4: product.node.variants.edges.find((e) => e.node.title === "4")?.node,
-    8: product.node.variants.edges.find((e) => e.node.title === "8")?.node
-  };
-
-  const basePrice = parseFloat(variantMap[1]?.price.amount || "22");
-
-  const quantityOptions = [
-  { quantity: 1, label: "1 Bottle", price: parseFloat(variantMap[1]?.price.amount || "22"), savings: null },
-  { quantity: 2, label: "2 Bottles", subtitle: "Save €2", price: parseFloat(variantMap[2]?.price.amount || "42"), savings: basePrice * 2 - parseFloat(variantMap[2]?.price.amount || "42") },
-  { quantity: 3, label: "3 Bottles", subtitle: "Save €4", price: parseFloat(variantMap[3]?.price.amount || "62"), savings: basePrice * 3 - parseFloat(variantMap[3]?.price.amount || "62") },
-  { quantity: 4, label: "4 Bottles", subtitle: "Save €8 + Free Shipping", price: parseFloat(variantMap[4]?.price.amount || "80"), savings: basePrice * 4 - parseFloat(variantMap[4]?.price.amount || "80") },
-  { quantity: 8, label: "8 Bottles", subtitle: "Save €24 + Free Shipping", price: parseFloat(variantMap[8]?.price.amount || "152"), savings: basePrice * 8 - parseFloat(variantMap[8]?.price.amount || "152") }];
-
-
-  const selectedOption = quantityOptions.find((option) => option.quantity === selectedQuantity);
+  const PRICE_PER_BOTTLE = 24;
+  const FREE_SHIPPING_THRESHOLD = 2;
+  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
+  const bottlesNeeded = FREE_SHIPPING_THRESHOLD - selectedQuantity;
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
   const attributes = [
