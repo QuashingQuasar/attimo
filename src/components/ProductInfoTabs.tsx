@@ -14,25 +14,25 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="flavor" className="border-olive-light/30">
           <AccordionTrigger className="py-5 hover:no-underline">
-            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
+            <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>FLAVOUR PROFILE
               <Flower2 size={20} className="text-olive-dark" />
               Taste Profile
             </span>
           </AccordionTrigger>
           <AccordionContent>
             <div className="space-y-4 pt-1 pb-2">
-              {tabs.flavorProfile.map(flavor => (
-                <div key={flavor.label} className="flex items-center justify-between">
+              {tabs.flavorProfile.map((flavor) =>
+              <div key={flavor.label} className="flex items-center justify-between">
                   <span className="text-sm font-semibold text-olive-dark uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                     {flavor.label}
                   </span>
                   <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <img key={i} src="/icons/olive.svg" alt="" className={`w-4 h-6 ${i <= flavor.rating ? 'opacity-100' : 'opacity-30'}`} style={{ filter: i <= flavor.rating ? 'none' : 'grayscale(100%)' }} />
-                    ))}
+                    {[1, 2, 3, 4, 5].map((i) =>
+                  <img key={i} src="/icons/olive.svg" alt="" className={`w-4 h-6 ${i <= flavor.rating ? 'opacity-100' : 'opacity-30'}`} style={{ filter: i <= flavor.rating ? 'none' : 'grayscale(100%)' }} />
+                  )}
                   </div>
                 </div>
-              ))}
+              )}
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -80,6 +80,6 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
-  );
+    </div>);
+
 };
