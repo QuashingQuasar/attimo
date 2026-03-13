@@ -42,7 +42,8 @@ const ProductPage = () => {
     loadProducts();
   }, []);
 
-  const product = products.find(p => p.node.handle === handle) || products[0];
+  const shopifyHandle = resolveShopifyHandle(handle);
+  const product = products.find(p => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
