@@ -3,7 +3,7 @@ import { toast } from "sonner";
 const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = '00xpv6-0j.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN || '';
+const SHOPIFY_STOREFRONT_TOKEN = 'b5fb21ec3074847a5a0d0739ba445521';
 
 export interface ShopifyProduct {
   node: {
@@ -83,8 +83,8 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
 }
 
 const PRODUCTS_QUERY = `
-  query GetProducts($first: Int!) {
-    products(first: $first) {
+  query GetProducts($first: Int!, $query: String) {
+    products(first: $first, query: $query) {
       edges {
         node {
           id
@@ -132,8 +132,8 @@ const PRODUCTS_QUERY = `
   }
 `;
 
-export async function fetchProducts(limit = 10): Promise<ShopifyProduct[]> {
-  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit });
+export async function fetchProducts(limit = 10, query?: string): Promise<ShopifyProduct[]> {
+  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit, query });
   return data?.data?.products?.edges || [];
 }
 
