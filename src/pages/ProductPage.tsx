@@ -26,6 +26,8 @@ const ProductPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore((state) => state.addItem);
 
+  const shopifyHandle = resolveShopifyHandle(handle);
+
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -48,7 +50,6 @@ const ProductPage = () => {
     loadProducts();
   }, [shopifyHandle]);
 
-  const shopifyHandle = resolveShopifyHandle(handle);
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
