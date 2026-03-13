@@ -33,25 +33,17 @@ export const HarvestProduct = () => {
   const product = products[0]; // Use the first product with variants
 
   const handleAddToCart = () => {
-    console.log('[HarvestProduct] handleAddToCart called');
     if (!product) return;
-
-    // Find the variant that matches the selected quantity
-    const variant = product.node.variants.edges.find(
-      edge => edge.node.title === selectedQuantity.toString()
-    )?.node || product.node.variants.edges[0].node;
+    const variant = product.node.variants.edges[0].node;
     
-    const cartItem = {
+    addItem({
       product,
       variantId: variant.id,
       variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1, // Always 1 because the variant already represents the quantity
+      price: { amount: '24', currencyCode: 'EUR' },
+      quantity: selectedQuantity,
       selectedOptions: variant.selectedOptions || []
-    };
-    
-    console.log('[HarvestProduct] Adding item to cart:', cartItem);
-    addItem(cartItem);
+    });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`);
   };
 
@@ -78,55 +70,10 @@ export const HarvestProduct = () => {
   const productImage = product.node.images?.edges?.[0]?.node?.url;
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
   
-  // Map variants to quantity options with actual Shopify prices
-  const variantMap = {
-    1: product.node.variants.edges.find(e => e.node.title === "1")?.node,
-    2: product.node.variants.edges.find(e => e.node.title === "2")?.node,
-    3: product.node.variants.edges.find(e => e.node.title === "3")?.node,
-    4: product.node.variants.edges.find(e => e.node.title === "4")?.node,
-    8: product.node.variants.edges.find(e => e.node.title === "8")?.node,
-  };
-
-  const basePrice = parseFloat(variantMap[1]?.price.amount || "22");
-  
-  const quantityOptions = [
-    { 
-      quantity: 1, 
-      label: "1 Bottle", 
-      price: parseFloat(variantMap[1]?.price.amount || "22"), 
-      savings: null 
-    },
-    { 
-      quantity: 2, 
-      label: "2 Bottles", 
-      subtitle: "Save €2",
-      price: parseFloat(variantMap[2]?.price.amount || "42"), 
-      savings: (basePrice * 2) - parseFloat(variantMap[2]?.price.amount || "42")
-    },
-    { 
-      quantity: 3, 
-      label: "3 Bottles", 
-      subtitle: "Save €4", 
-      price: parseFloat(variantMap[3]?.price.amount || "62"), 
-      savings: (basePrice * 3) - parseFloat(variantMap[3]?.price.amount || "62")
-    },
-    { 
-      quantity: 4, 
-      label: "4 Bottles", 
-      subtitle: "Save €8 + Free Shipping", 
-      price: parseFloat(variantMap[4]?.price.amount || "80"), 
-      savings: (basePrice * 4) - parseFloat(variantMap[4]?.price.amount || "80")
-    },
-    { 
-      quantity: 8, 
-      label: "8 Bottles", 
-      subtitle: "Save €24 + Free Shipping", 
-      price: parseFloat(variantMap[8]?.price.amount || "152"), 
-      savings: (basePrice * 8) - parseFloat(variantMap[8]?.price.amount || "152")
-    }
-  ];
-
-  const selectedOption = quantityOptions.find(option => option.quantity === selectedQuantity);
+  const PRICE_PER_BOTTLE = 24;
+  const FREE_SHIPPING_THRESHOLD = 2;
+  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
+  const bottlesNeeded = FREE_SHIPPING_THRESHOLD - selectedQuantity;
 
   const labTiles = [
     { key: "polyphenols", label: "POLYPHENOLS", value: "904", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
@@ -282,29 +229,31 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Quantity Selection */}
-            <div className="space-y-1.5">
-              <div id="bundle-pills" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1.5">
-                {quantityOptions.map(option => (
-                  <button 
-                    key={option.quantity} 
-                    onClick={() => setSelectedQuantity(option.quantity)} 
-                    data-variant={option.quantity} 
-                    data-key={option.quantity} 
-                    data-price={option.price} 
-                    aria-selected={selectedQuantity === option.quantity} 
-                    className={`pill p-1.5 rounded-xl border-2 transition-all text-center ${selectedQuantity === option.quantity ? 'border-olive-dark bg-olive-dark text-cream active' : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'}`}
-                  >
-                    <div className="font-semibold mb-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.85vw, 0.9rem)' }}>
-                      {option.label}
-                    </div>
-                    {option.subtitle && (
-                      <div className={`${selectedQuantity === option.quantity ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.7vw, 0.8rem)' }}>
-                        {option.subtitle}
-                      </div>
-                    )}
-                  </button>
-                ))}
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setSelectedQuantity(Math.max(1, selectedQuantity - 1))}
+                  className="w-10 h-10 rounded-xl border-2 border-olive-dark/20 bg-white/60 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold text-lg"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  −
+                </button>
+                <span className="w-10 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
+                  {selectedQuantity}
+                </span>
+                <button
+                  onClick={() => setSelectedQuantity(selectedQuantity + 1)}
+                  className="w-10 h-10 rounded-xl border-2 border-olive-dark/20 bg-white/60 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold text-lg"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                >
+                  +
+                </button>
               </div>
+              <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
+                {bottlesNeeded > 0
+                  ? `Add ${bottlesNeeded} more bottle${bottlesNeeded > 1 ? 's' : ''} for free shipping`
+                  : '✓ Free shipping applied'}
+              </p>
             </div>
 
             {/* Add to Cart Button */}
@@ -314,13 +263,7 @@ export const HarvestProduct = () => {
               className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-4 h-auto transition-all duration-300 hover:scale-105" 
               style={{ fontFamily: 'UDC Working Man Sans, sans-serif', backgroundColor: '#CDDB2D', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)', borderRadius: '8px' }}
             >
-              {selectedQuantity === 1 ? (
-                <span className="flex items-center justify-center gap-2">
-                  Add to Cart — <span className="line-through opacity-60">€25</span> €22
-                </span>
-              ) : (
-                `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
-              )}
+              Add to Cart — €{totalPrice}
             </Button>
 
             {/* Lab Values Grid */}
