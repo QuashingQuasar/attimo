@@ -230,10 +230,93 @@ export const productContentMap: Record<string, ProductContent> = {
     polyphenolValue: 400,
     polyphenolLabel: "Nocellara",
   },
+
+  "attimo-extra-virgin-olive-oil-picual-500ml": {
+    heroTitle: "PICUAL DE ESPAÑA",
+    heroSubtitle: "Specialty Extra Virgin Olive Oil",
+    benefits: [
+      "100% Picual olives harvested early and cold-pressed within hours",
+      "Third-party lab tested for quality and purity",
+      "Directly sourced from a small family grove in Andalusia, Spain",
+    ],
+    benefitTooltip:
+      "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
+    labReportUrl: "/lab/Picual2025.pdf",
+    sourceLine: "Directly sourced from a small family grove in Andalusia, Spain",
+    labelDisclosure:
+      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
+    labTiles: [
+      { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
+      { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
+      { key: "peroxides", label: "PEROXIDES", value: "—", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+    ],
+    tabs: {
+      details: {
+        origin: "Jaén, Spain",
+        olive: "Picual",
+        flavor: "Green & Grassy",
+        store: "keep away from light and heat",
+        volume: "500ml",
+      },
+      flavorProfile: [
+        { label: "PEPPERY", rating: 4 },
+        { label: "FRUITY", rating: 3 },
+        { label: "BITTER", rating: 3 },
+        { label: "HERBAL", rating: 5 },
+      ],
+      harvest:
+        "Early harvest Picual olives, cold-pressed within hours to preserve maximum polyphenols and flavour.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      usesExtra:
+        "Great on grilled vegetables, soups, legumes, and toasted bread.",
+    },
+    originStory: {
+      headline:
+        "Picual is the world's most planted olive variety and Spain's pride. It presses an oil that is green, grassy and full of character — rich in polyphenols and built to last.",
+      quickRef: [
+        { label: "VARIETY", value: "100% Picual" },
+        { label: "ORIGIN", value: "Jaén, Spain" },
+        { label: "FLAVOR", value: "Green & Grassy" },
+        { label: "USE", value: "drizzle over fresh foods" },
+        { label: "STORE", value: "away from light and heat" },
+      ],
+      features: [
+        {
+          title: "Green & Grassy",
+          description: "Fresh tomato leaf and cut grass aromas with a clean, assertive finish.",
+          icon: "/icons/mortar.svg",
+        },
+        {
+          title: "Early Harvest",
+          description: "Picked early when the olives are green and packed with polyphenols.",
+          icon: "/icons/basket-2.svg",
+        },
+        {
+          title: "100% Picual",
+          description: "Spain's flagship variety, known for its stability, bold character and high polyphenol content.",
+          icon: "/icons/branch-2.svg",
+        },
+      ],
+    },
+    labTrust: {
+      heading: "Third party lab-tested for quality and purity",
+      subheading:
+        "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
+      values: [
+        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
+        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
+      ],
+    },
+    polyphenolValue: 675,
+    polyphenolLabel: "Picual",
+  },
 };
 
-// Default to galega if handle not found
+// Default to nocellara if handle not found
 export function getProductContent(handle: string | undefined): ProductContent {
-  if (!handle) return productContentMap["galega-from-alentejo"];
-  return productContentMap[handle] || productContentMap["galega-from-alentejo"];
+  if (!handle) return productContentMap["nocellara"];
+  return productContentMap[handle] || productContentMap["nocellara"];
 }
