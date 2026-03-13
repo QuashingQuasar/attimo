@@ -78,11 +78,7 @@ export const QuantitySelector = ({
           borderRadius: "0.75rem",
         }}
       >
-        ADD TO CART — €{totalPrice}
-        <span className="font-normal opacity-70" style={{ fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)" }}>
-          {" · "}
-          {quantity < 2 ? "Add 1 more bottle for free shipping" : "Free Shipping ✓"}
-        </span>
+        ADD TO CART — €{totalPrice} · {quantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}
       </Button>
     </div>
   );
