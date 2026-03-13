@@ -65,7 +65,7 @@ export interface ProductContent {
 }
 
 export const productContentMap: Record<string, ProductContent> = {
-  "galega-from-alentejo": {
+  "attimo-extra-virgin-olive-oil-coratina-500ml": {
     heroTitle: "GALEGA FROM ALENTEJO",
     heroSubtitle: "Specialty Extra Virgin Olive Oil",
     benefits: [
