@@ -66,19 +66,6 @@ export const QuantitySelector = ({
         ))}
       </div>
 
-      {/* Shipping status */}
-      <p
-        className="text-olive-medium"
-        style={{
-          fontFamily: "Space Grotesk, sans-serif",
-          fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
-        }}
-      >
-        {quantity < 2
-          ? "Add 1 more bottle for free shipping"
-          : "Free shipping applied ✓"}
-      </p>
-
       {/* Add to Cart */}
       <Button
         id={buttonId}
@@ -91,7 +78,11 @@ export const QuantitySelector = ({
           borderRadius: "0.75rem",
         }}
       >
-        Add to Cart — €{totalPrice}
+        ADD TO CART — €{totalPrice}
+        <span className="font-normal opacity-70" style={{ fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)" }}>
+          {" · "}
+          {quantity < 2 ? "Add 1 more bottle for free shipping" : "Free Shipping ✓"}
+        </span>
       </Button>
     </div>
   );
