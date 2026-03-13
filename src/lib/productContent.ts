@@ -71,7 +71,7 @@ export const productContentMap: Record<string, ProductContent> = {
     benefits: [
       "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family grove in Puglia, Italy",
+      "Directly sourced from a small family grove in Umbria, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
