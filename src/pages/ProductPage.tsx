@@ -41,7 +41,10 @@ const ProductPage = () => {
   }, []);
 
   const shopifyHandle = resolveShopifyHandle(handle);
-  const product = products.find((p) => p.node.handle === shopifyHandle);
+  const normalizedHandle = (handle || "").toLowerCase();
+  const product =
+    products.find((p) => p.node.handle === shopifyHandle) ||
+    products.find((p) => p.node.title.toLowerCase().includes(normalizedHandle));
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
