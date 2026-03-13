@@ -23,6 +23,7 @@ const ProductPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [customQty, setCustomQty] = useState(4);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore((state) => state.addItem);
 
