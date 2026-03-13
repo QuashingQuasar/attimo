@@ -17,6 +17,7 @@ import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
+import { QuantitySelector } from "@/components/QuantitySelector";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
