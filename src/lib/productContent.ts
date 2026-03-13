@@ -101,7 +101,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
       harvest:
         "Early harvest Coratina olives, cold-pressed within hours to preserve maximum polyphenols and bold flavour.",
-      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Perfect for steak, grilled vegetables, hearty soups, and bruschetta.",
     },
