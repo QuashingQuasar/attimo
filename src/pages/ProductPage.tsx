@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import bottleFallback from "@/assets/attimo-bottle-final.jpg";
+
 import { Button } from "@/components/ui/button";
 import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
