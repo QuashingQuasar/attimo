@@ -315,6 +315,19 @@ export const productContentMap: Record<string, ProductContent> = {
   },
 };
 
+// Map URL slugs to Shopify handles (when they differ)
+export const handleToShopifyHandle: Record<string, string> = {
+  "nocellara": "attimo-evoo-galega-from-alentejo-24-25-500ml",
+  // These match directly:
+  // "attimo-extra-virgin-olive-oil-coratina-500ml" → same
+  // "attimo-extra-virgin-olive-oil-picual-500ml" → same
+};
+
+export function resolveShopifyHandle(urlHandle: string | undefined): string {
+  if (!urlHandle) return "attimo-evoo-galega-from-alentejo-24-25-500ml";
+  return handleToShopifyHandle[urlHandle] || urlHandle;
+}
+
 // Default to nocellara if handle not found
 export function getProductContent(handle: string | undefined): ProductContent {
   if (!handle) return productContentMap["nocellara"];
