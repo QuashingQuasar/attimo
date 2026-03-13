@@ -55,16 +55,14 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     if (!product) return;
-    const variant = product.node.variants.edges.find(
-      (edge) => edge.node.title === selectedQuantity.toString()
-    )?.node || product.node.variants.edges[0].node;
+    const variant = product.node.variants.edges[0].node;
 
     addItem({
       product,
       variantId: variant.id,
       variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1,
+      price: { amount: '24', currencyCode: 'EUR' },
+      quantity: selectedQuantity,
       selectedOptions: variant.selectedOptions || []
     });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {

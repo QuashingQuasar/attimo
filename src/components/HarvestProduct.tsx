@@ -33,25 +33,17 @@ export const HarvestProduct = () => {
   const product = products[0]; // Use the first product with variants
 
   const handleAddToCart = () => {
-    console.log('[HarvestProduct] handleAddToCart called');
     if (!product) return;
-
-    // Find the variant that matches the selected quantity
-    const variant = product.node.variants.edges.find(
-      edge => edge.node.title === selectedQuantity.toString()
-    )?.node || product.node.variants.edges[0].node;
+    const variant = product.node.variants.edges[0].node;
     
-    const cartItem = {
+    addItem({
       product,
       variantId: variant.id,
       variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1, // Always 1 because the variant already represents the quantity
+      price: { amount: '24', currencyCode: 'EUR' },
+      quantity: selectedQuantity,
       selectedOptions: variant.selectedOptions || []
-    };
-    
-    console.log('[HarvestProduct] Adding item to cart:', cartItem);
-    addItem(cartItem);
+    });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`);
   };
 
