@@ -216,30 +216,53 @@ const ProductPage = () => {
 
               {/* Quantity + Cart grouped tighter */}
               <div className="space-y-3">
-                <div className="flex items-center gap-3">
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { qty: 1, label: '1 Bottle', sub: null },
+                    { qty: 2, label: '2 Bottles', sub: 'Free Shipping' },
+                    { qty: 3, label: '3 Bottles', sub: 'Free Shipping' },
+                    { qty: 4, label: '4 Bottles', sub: 'Free Shipping' },
+                  ].map(opt => (
+                    <button
+                      key={opt.qty}
+                      onClick={() => { setSelectedQuantity(opt.qty); setUseCustom(false); }}
+                      className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
+                        !useCustom && selectedQuantity === opt.qty
+                          ? 'border-olive-dark bg-olive-dark text-cream'
+                          : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
+                      }`}
+                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
+                    >
+                      <div>{opt.label}</div>
+                      {opt.sub && (
+                        <div className={`text-[0.7rem] mt-0.5 ${!useCustom && selectedQuantity === opt.qty ? 'text-cream/70' : 'text-olive-medium'}`}>
+                          {opt.sub}
+                        </div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Custom quantity row */}
+                <div className={`flex items-center gap-3 p-3 rounded-xl border transition-all ${useCustom ? 'border-olive-dark bg-olive-dark/5' : 'border-olive-dark/20'}`}>
+                  <span className="text-olive-medium font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>Want more?</span>
                   <button
-                    onClick={() => setSelectedQuantity(Math.max(1, selectedQuantity - 1))}
-                    className="w-11 h-11 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    onClick={() => { setUseCustom(true); setCustomQuantity(Math.max(5, customQuantity - 1)); }}
+                    className="w-9 h-9 rounded-lg border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                  >
-                    −
-                  </button>
-                  <span className="w-10 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)' }}>
-                    {selectedQuantity}
+                  >−</button>
+                  <span className="w-8 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
+                    {customQuantity}
                   </span>
                   <button
-                    onClick={() => setSelectedQuantity(selectedQuantity + 1)}
-                    className="w-11 h-11 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    onClick={() => { setUseCustom(true); setCustomQuantity(customQuantity + 1); }}
+                    className="w-9 h-9 rounded-lg border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                  >
-                    +
-                  </button>
+                  >+</button>
+                  <span className="text-olive-medium ml-auto" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
+                    Free Shipping
+                  </span>
                 </div>
-                <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                  {bottlesNeeded > 0
-                    ? `Add ${bottlesNeeded} more bottle${bottlesNeeded > 1 ? 's' : ''} for free shipping`
-                    : '✓ Free shipping applied'}
-                </p>
 
                 <Button
                   onClick={handleAddToCart}
