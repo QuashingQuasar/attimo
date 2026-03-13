@@ -10,12 +10,12 @@ import { Link } from "react-router-dom";
 function QuestionStep({
   question,
   selectedIndex,
-  onSelect,
-}: {
-  question: (typeof quizQuestions)[0];
-  selectedIndex: number | undefined;
-  onSelect: (idx: number) => void;
-}) {
+  onSelect
+
+
+
+
+}: {question: (typeof quizQuestions)[0];selectedIndex: number | undefined;onSelect: (idx: number) => void;}) {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
@@ -35,37 +35,37 @@ function QuestionStep({
               className={`
                 text-left px-5 py-4 rounded-lg border transition-all duration-300
                 ${
-                  isSelected
-                    ? "border-olive-dark bg-olive-dark text-primary-foreground shadow-md"
-                    : "border-border bg-card hover:border-olive-medium hover:shadow-sm"
-                }
-              `}
-            >
+              isSelected ?
+              "border-olive-dark bg-olive-dark text-primary-foreground shadow-md" :
+              "border-border bg-card hover:border-olive-medium hover:shadow-sm"}
+              `
+              }>
+              
               <span className={`block font-sans font-medium text-lg ${isSelected ? "text-primary-foreground" : "text-olive-dark"}`}>
                 {option.label}
               </span>
-              {option.description && (
-                <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+              {option.description &&
+              <span className={`block text-base mt-0.5 ${isSelected ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
                   {option.description}
                 </span>
-              )}
-            </button>
-          );
+              }
+            </button>);
+
         })}
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 // ── Results Screen ───────────────────────────────────────────────────────
 
 function ResultsScreen({
   results,
-  onRestart,
-}: {
-  results: OilResult[];
-  onRestart: () => void;
-}) {
+  onRestart
+
+
+
+}: {results: OilResult[];onRestart: () => void;}) {
   const topMatch = results[0];
 
   return (
@@ -76,8 +76,8 @@ function ResultsScreen({
 
       {/* Match bars */}
       <div className="flex flex-col gap-5 mb-8">
-        {results.map((oil) => (
-          <div key={oil.key}>
+        {results.map((oil) =>
+        <div key={oil.key}>
             <div className="flex items-baseline justify-between mb-1.5">
               <span className="font-sans font-medium text-lg text-olive-dark">
                 {oil.name}
@@ -88,12 +88,12 @@ function ResultsScreen({
             </div>
             <div className="h-2.5 w-full rounded-full bg-secondary overflow-hidden">
               <div
-                className="h-full rounded-full bg-olive-dark transition-all duration-700 ease-out"
-                style={{ width: `${oil.percentage}%` }}
-              />
+              className="h-full rounded-full bg-olive-dark transition-all duration-700 ease-out"
+              style={{ width: `${oil.percentage}%` }} />
+            
             </div>
           </div>
-        ))}
+        )}
       </div>
 
       {/* Top match summary */}
@@ -117,14 +117,14 @@ function ResultsScreen({
           variant="outline"
           size="lg"
           onClick={onRestart}
-          className="gap-2"
-        >
+          className="gap-2">
+          
           <RotateCcw className="w-4 h-4" />
           Retake Quiz
         </Button>
       </div>
-    </div>
-  );
+    </div>);
+
 }
 
 // ── Main Quiz Component ──────────────────────────────────────────────────
@@ -136,9 +136,9 @@ export function PalateQuiz() {
 
   const totalQuestions = quizQuestions.length;
   const currentQuestion = quizQuestions[currentStep];
-  const progressValue = results
-    ? 100
-    : ((currentStep) / totalQuestions) * 100;
+  const progressValue = results ?
+  100 :
+  currentStep / totalQuestions * 100;
 
   const handleSelect = useCallback(
     (idx: number) => {
@@ -178,8 +178,8 @@ export function PalateQuiz() {
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             to="/"
-            className="text-base text-muted-foreground hover:text-olive-dark transition-colors"
-          >
+            className="text-base text-muted-foreground hover:text-olive-dark transition-colors">
+            
             ← Back to ATTIMO
           </Link>
           <span className="text-sm font-working-man tracking-[0.2em] uppercase text-olive-medium">
@@ -192,49 +192,49 @@ export function PalateQuiz() {
       {/* Body */}
       <div className="flex-1 flex items-start justify-center px-6 py-12 md:py-20">
         <div className="w-full max-w-xl">
-          {currentStep === 0 && !results && (
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-              Answer some quick questions and we'll show you which of our three
-              single-variety oils matches you best.
-            </p>
-          )}
+          {currentStep === 0 && !results &&
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">Answer a few quick questions to find out which of our three single-variety oils matches you best.
 
-          {results ? (
-            <ResultsScreen results={results} onRestart={restart} />
-          ) : (
-            <>
+
+          </p>
+          }
+
+          {results ?
+          <ResultsScreen results={results} onRestart={restart} /> :
+
+          <>
               <QuestionStep
-                key={currentQuestion.id}
-                question={currentQuestion}
-                selectedIndex={answers[currentQuestion.id]}
-                onSelect={handleSelect}
-              />
+              key={currentQuestion.id}
+              question={currentQuestion}
+              selectedIndex={answers[currentQuestion.id]}
+              onSelect={handleSelect} />
+            
 
               {/* Navigation */}
               <div className="flex items-center justify-between mt-10">
                 <Button
-                  variant="ghost"
-                  onClick={goBack}
-                  disabled={currentStep === 0}
-                  className="gap-1.5 text-muted-foreground"
-                >
+                variant="ghost"
+                onClick={goBack}
+                disabled={currentStep === 0}
+                className="gap-1.5 text-muted-foreground">
+                
                   <ArrowLeft className="w-4 h-4" />
                   Back
                 </Button>
                 <Button
-                  variant="hero"
-                  onClick={goNext}
-                  disabled={!canProceed}
-                  className="gap-1.5"
-                >
+                variant="hero"
+                onClick={goNext}
+                disabled={!canProceed}
+                className="gap-1.5">
+                
                   {currentStep === totalQuestions - 1 ? "See Results" : "Next"}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
             </>
-          )}
+          }
         </div>
       </div>
-    </div>
-  );
+    </div>);
+
 }
