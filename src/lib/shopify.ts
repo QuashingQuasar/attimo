@@ -132,8 +132,8 @@ const PRODUCTS_QUERY = `
   }
 `;
 
-export async function fetchProducts(limit = 10): Promise<ShopifyProduct[]> {
-  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit });
+export async function fetchProducts(limit = 10, query?: string): Promise<ShopifyProduct[]> {
+  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit, query });
   return data?.data?.products?.edges || [];
 }
 

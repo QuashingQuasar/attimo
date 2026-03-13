@@ -29,8 +29,16 @@ const ProductPage = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const fetchedProducts = await fetchProducts(10);
-        setProducts(fetchedProducts);
+        const [fetchedProducts, exactHandleProducts] = await Promise.all([
+          fetchProducts(50),
+          shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`) : Promise.resolve([]),
+        ]);
+
+        const dedupedProducts = [...fetchedProducts, ...exactHandleProducts].filter(
+          (product, index, arr) => arr.findIndex((p) => p.node.id === product.node.id) === index
+        );
+
+        setProducts(dedupedProducts);
       } catch (error) {
         console.error('Error loading products:', error);
       } finally {
@@ -38,13 +46,10 @@ const ProductPage = () => {
       }
     };
     loadProducts();
-  }, []);
+  }, [shopifyHandle]);
 
   const shopifyHandle = resolveShopifyHandle(handle);
-  const normalizedHandle = (handle || "").toLowerCase();
-  const product =
-    products.find((p) => p.node.handle === shopifyHandle) ||
-    products.find((p) => p.node.title.toLowerCase().includes(normalizedHandle));
+  const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {

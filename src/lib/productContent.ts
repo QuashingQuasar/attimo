@@ -316,7 +316,11 @@ export const productContentMap: Record<string, ProductContent> = {
 };
 
 // Map URL slugs to Shopify handles (when they differ)
-export const handleToShopifyHandle: Record<string, string> = {};
+export const handleToShopifyHandle: Record<string, string> = {
+  nocellara: "nocellara",
+  coratina: "attimo-extra-virgin-olive-oil-coratina-500ml",
+  picual: "attimo-extra-virgin-olive-oil-picual-500ml",
+};
 
 export function resolveShopifyHandle(urlHandle: string | undefined): string {
   if (!urlHandle) return "nocellara";
@@ -326,5 +330,7 @@ export function resolveShopifyHandle(urlHandle: string | undefined): string {
 // Default to nocellara if handle not found
 export function getProductContent(handle: string | undefined): ProductContent {
   if (!handle) return productContentMap["nocellara"];
-  return productContentMap[handle] || productContentMap["nocellara"];
+
+  const contentKey = handleToShopifyHandle[handle] || handle;
+  return productContentMap[contentKey] || productContentMap["nocellara"];
 }
