@@ -233,61 +233,36 @@ const ProductPage = () => {
               )}
               </div>
 
-              {/* Quantity + Cart grouped tighter */}
+              {/* Quantity + Cart */}
               <div className="space-y-3">
-                <div className="grid grid-cols-4 gap-2">
-                  {[1, 2, 3].map(qty => (
-                    <button
-                      key={qty}
-                      onClick={() => setSelectedQuantity(qty)}
-                      className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
-                        selectedQuantity === qty
-                          ? 'border-olive-dark bg-olive-dark text-cream'
-                          : 'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'
-                      }`}
-                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                    >
-                      <div>{qty} Bottle{qty > 1 ? 's' : ''}</div>
-                      {qty >= 2 && (
-                        <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity === qty ? 'text-cream/70' : 'text-olive-medium'}`}>
-                          Free Shipping
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                  {/* 4+ Bottles — always-visible input */}
-                  <div
-                    className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
-                      selectedQuantity >= 4
-                        ? 'border-olive-dark bg-olive-dark text-cream'
-                        : 'border-olive-dark/20 text-olive-dark'
-                    }`}
-                  >
-                    <div className={`mb-0.5 ${selectedQuantity >= 4 ? 'text-cream' : 'text-olive-dark'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
-                      4+ Bottles
-                    </div>
-                    <div className="flex items-center justify-center gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => { const next = Math.max(4, customQty - 1); setCustomQty(next); setSelectedQuantity(next); }}
-                        className={`w-6 h-6 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer transition-colors ${
-                          selectedQuantity >= 4 ? 'bg-cream/20 hover:bg-cream/40 text-cream' : 'bg-olive-dark/10 hover:bg-olive-dark/20 text-olive-dark'
-                        }`}
-                      >−</button>
-                      <span className="font-semibold min-w-[2ch] text-center" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                        {customQty}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => { const next = customQty + 1; setCustomQty(next); setSelectedQuantity(next); }}
-                        className={`w-6 h-6 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer transition-colors ${
-                          selectedQuantity >= 4 ? 'bg-cream/20 hover:bg-cream/40 text-cream' : 'bg-olive-dark/10 hover:bg-olive-dark/20 text-olive-dark'
-                        }`}
-                      >+</button>
-                    </div>
-                    <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity >= 4 ? 'text-cream/70' : 'text-olive-medium'}`}>Free Shipping</div>
-                  </div>
+                <div className="flex items-center gap-0">
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(selectedQuantity - 1)}
+                    className="w-12 h-12 rounded-l-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >−</button>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={inputValue}
+                    onChange={(e) => handleInputChange(e.target.value)}
+                    onBlur={handleInputBlur}
+                    className="w-16 h-12 border-y-2 border-olive-dark/20 bg-transparent text-center font-bold text-olive-dark outline-none"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)' }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => updateQuantity(selectedQuantity + 1)}
+                    className="w-12 h-12 rounded-r-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >+</button>
                 </div>
+                <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                  {selectedQuantity < 2
+                    ? 'Add 1 more bottle for free shipping'
+                    : 'Free shipping applied ✓'}
+                </p>
 
                 <Button
                   onClick={handleAddToCart}
