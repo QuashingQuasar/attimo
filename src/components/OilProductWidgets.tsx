@@ -21,7 +21,7 @@ const oils = [
   flavor: "Green & Grassy",
   origin: "Jaén, Spain",
   flag: "🇪🇸",
-  handle: "attimo-extra-virgin-olive-oil-picual-500ml",
+  handle: "picual",
   image: picualImage,
   tagline: "All-round goodness",
   price: 20

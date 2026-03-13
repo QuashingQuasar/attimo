@@ -8,8 +8,8 @@ import nocellaraImage from "@/assets/bottle-nocellara.jpg";
 import { CartDrawer } from "./CartDrawer";
 
 const shopProducts = [
-  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "attimo-extra-virgin-olive-oil-coratina-500ml", image: coratinaImage },
-  { name: "Picual de España", flavor: "Green & Grassy", handle: "attimo-extra-virgin-olive-oil-picual-500ml", image: picualImage },
+  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "coratina", image: coratinaImage },
+  { name: "Picual de España", flavor: "Green & Grassy", handle: "picual", image: picualImage },
   { name: "Nocellara d'Italia", flavor: "Gentle & Fruity", handle: "nocellara", image: nocellaraImage },
 ];
 
