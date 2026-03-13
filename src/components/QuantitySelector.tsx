@@ -78,7 +78,7 @@ export const QuantitySelector = ({
           borderRadius: "0.75rem",
         }}
       >
-        ADD TO CART — €{totalPrice} · {quantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}
+        ADD TO CART — €{totalPrice}<span className="font-normal">{" · "}{quantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}</span>
       </Button>
     </div>
   );
