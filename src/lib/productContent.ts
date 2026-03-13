@@ -267,7 +267,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
       harvest:
         "Early harvest Picual olives, cold-pressed within hours to preserve maximum polyphenols and flavour.",
-      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Great on grilled vegetables, soups, legumes, and toasted bread.",
     },

@@ -88,7 +88,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "complexity",
     category: "Complexity",
-    question: "When you eat, do you pick up subtle flavors or just enjoy the whole?",
+    question: "When you eat, do you pick up subtle flavours or just enjoy the whole?",
     options: [
       { label: "I notice everything", description: "The back-of-throat finish, the aftertaste", scores: { coratina: 3, picual: 1, nocellara: 0 } },
       { label: "I appreciate complexity when it's there", description: "", scores: { coratina: 1, picual: 2, nocellara: 1 } },

@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Droplets, Leaf, Award, Heart } from "lucide-react";
 
 const benefits = [
-  { icon: Droplets, title: "Cold-Pressed Excellence", description: "Our olives are pressed within 24 hours of harvest using traditional stone mills, preserving maximum flavor and nutrients." },
+  { icon: Droplets, title: "Cold-Pressed Excellence", description: "Our olives are pressed within 24 hours of harvest using traditional stone mills, preserving maximum flavour and nutrients." },
   { icon: Leaf, title: "Ancient Heritage", description: "Sourced from 500-year-old olive trees in the heart of the Mediterranean, carrying centuries of tradition in every drop." },
   { icon: Award, title: "Premium Quality", description: "Award-winning extra virgin olive oil with less than 0.2% acidity, meeting the highest international standards." },
   { icon: Heart, title: "Health & Wellness", description: "Rich in antioxidants and healthy monounsaturated fats, supporting your journey to a healthier lifestyle." }
