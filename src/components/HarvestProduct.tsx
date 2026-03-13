@@ -264,7 +264,7 @@ export const HarvestProduct = () => {
               <Button 
                 id="buy-now-btn" 
                 onClick={handleAddToCart}
-                className="flex-[3] hover:bg-accent/90 text-olive-dark font-bold px-6 h-auto transition-all duration-300 hover:scale-[1.02]" 
+                className="flex-[3] hover:bg-accent/90 text-olive-dark font-bold px-6 py-4 h-auto transition-all duration-300 hover:scale-[1.02]" 
                 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', backgroundColor: '#CDDB2D', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)', borderRadius: '8px' }}
               >
                 Add to Cart — €{totalPrice}
