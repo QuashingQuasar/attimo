@@ -87,7 +87,7 @@ export const productContentMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Puglia, Italy",
+        origin: "Umbria, Italy",
         olive: "Coratina",
         flavor: "Bold & Punchy",
         store: "keep away from light and heat",
