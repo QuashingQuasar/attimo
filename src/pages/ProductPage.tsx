@@ -23,6 +23,7 @@ const ProductPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [customQty, setCustomQty] = useState(4);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore((state) => state.addItem);
 
@@ -232,35 +233,38 @@ const ProductPage = () => {
                       )}
                     </button>
                   ))}
-                  {selectedQuantity >= 4 ? (
-                    <div
-                      className="px-2 py-3 rounded-xl border border-olive-dark bg-olive-dark text-cream text-center"
-                    >
-                      <div className="flex items-center justify-center gap-2">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedQuantity(Math.max(4, selectedQuantity - 1))}
-                          className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
-                        >−</button>
-                        <span className="font-semibold min-w-[2ch] text-center">{selectedQuantity}</span>
-                        <button
-                          type="button"
-                          onClick={() => setSelectedQuantity(selectedQuantity + 1)}
-                          className="w-6 h-6 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
-                        >+</button>
-                      </div>
-                      <div className="text-[0.7rem] mt-0.5 text-cream/70">Free Shipping</div>
+                  {/* 4+ Bottles — always-visible input */}
+                  <div
+                    className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
+                      selectedQuantity >= 4
+                        ? 'border-olive-dark bg-olive-dark text-cream'
+                        : 'border-olive-dark/20 text-olive-dark'
+                    }`}
+                  >
+                    <div className={`mb-0.5 ${selectedQuantity >= 4 ? 'text-cream' : 'text-olive-dark'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
+                      4+ Bottles
                     </div>
-                  ) : (
-                    <button
-                      onClick={() => setSelectedQuantity(4)}
-                      className="px-2 py-3 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all duration-200 text-center"
-                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}
-                    >
-                      <div>4+ Bottles</div>
-                      <div className="text-[0.7rem] mt-0.5 text-olive-medium">Free Shipping</div>
-                    </button>
-                  )}
+                    <div className="flex items-center justify-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => { const next = Math.max(4, customQty - 1); setCustomQty(next); setSelectedQuantity(next); }}
+                        className={`w-6 h-6 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer transition-colors ${
+                          selectedQuantity >= 4 ? 'bg-cream/20 hover:bg-cream/40 text-cream' : 'bg-olive-dark/10 hover:bg-olive-dark/20 text-olive-dark'
+                        }`}
+                      >−</button>
+                      <span className="font-semibold min-w-[2ch] text-center" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                        {customQty}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => { const next = customQty + 1; setCustomQty(next); setSelectedQuantity(next); }}
+                        className={`w-6 h-6 rounded-md flex items-center justify-center text-sm font-bold cursor-pointer transition-colors ${
+                          selectedQuantity >= 4 ? 'bg-cream/20 hover:bg-cream/40 text-cream' : 'bg-olive-dark/10 hover:bg-olive-dark/20 text-olive-dark'
+                        }`}
+                      >+</button>
+                    </div>
+                    <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity >= 4 ? 'text-cream/70' : 'text-olive-medium'}`}>Free Shipping</div>
+                  </div>
                 </div>
 
                 <Button
