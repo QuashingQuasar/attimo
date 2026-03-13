@@ -66,24 +66,24 @@ export interface ProductContent {
 
 export const productContentMap: Record<string, ProductContent> = {
   "attimo-extra-virgin-olive-oil-coratina-500ml": {
-    heroTitle: "GALEGA FROM ALENTEJO",
+    heroTitle: "CORATINA D'ITALIA",
     heroSubtitle: "Specialty Extra Virgin Olive Oil",
     benefits: [
-      "5x more antioxidant polyphenols than average EVOO",
+      "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family farm in Alentejo, Portugal",
+      "Directly sourced from a small family grove in Puglia, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Directly sourced from a small family farm in Alentejo, Portugal",
+    sourceLine: "Directly sourced from a small family grove in Puglia, Italy",
     labelDisclosure:
-      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.",
+      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "POLYPHENOLS", value: "904", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
-      { key: "oleic-acid", label: "OLEIC ACID", value: "74.9%", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-      { key: "peroxides", label: "PEROXIDES", value: "6.3", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
-      { key: "acidity", label: "ACIDITY", value: "0.16%", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+      { key: "polyphenols", label: "POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
+      { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
+      { key: "peroxides", label: "PEROXIDES", value: "—", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
       details: {
