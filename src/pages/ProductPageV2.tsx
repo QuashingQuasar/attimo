@@ -25,8 +25,6 @@ const ProductPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [customQuantity, setCustomQuantity] = useState(5);
-  const [useCustom, setUseCustom] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore(state => state.addItem);
 
@@ -66,10 +64,10 @@ const ProductPage = () => {
       variantId: variant.id,
       variantTitle: variant.title,
       price: { amount: '24', currencyCode: 'EUR' },
-      quantity: activeQuantity,
+      quantity: selectedQuantity,
       selectedOptions: variant.selectedOptions || []
     });
-    toast.success(`Added ${activeQuantity} bottle${activeQuantity > 1 ? 's' : ''} to cart`, {
+    toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
       position: "top-center"
     });
   };
@@ -101,9 +99,7 @@ const ProductPage = () => {
 
   // Map variants to quantity options
   const PRICE_PER_BOTTLE = 24;
-  const FREE_SHIPPING_THRESHOLD = 2;
-  const activeQuantity = useCustom ? customQuantity : selectedQuantity;
-  const totalPrice = activeQuantity * PRICE_PER_BOTTLE;
+  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
 
   const labTiles = content.labTiles;
 
@@ -266,56 +262,68 @@ const ProductPage = () => {
               </li>
             </ul>
 
-
             {/* Quantity Selection — Preset Cards */}
             <div className="space-y-3 pt-2">
               <div className="grid grid-cols-4 gap-2">
-                {[
-                  { qty: 1, label: '1 Bottle', sub: null },
-                  { qty: 2, label: '2 Bottles', sub: 'Free Shipping' },
-                  { qty: 3, label: '3 Bottles', sub: 'Free Shipping' },
-                  { qty: 4, label: '4 Bottles', sub: 'Free Shipping' },
-                ].map(opt => (
+                {[1, 2, 3].map(qty => (
                   <button
-                    key={opt.qty}
-                    onClick={() => { setSelectedQuantity(opt.qty); setUseCustom(false); }}
+                    key={qty}
+                    onClick={() => setSelectedQuantity(qty)}
                     className={`p-2 rounded-xl border-2 transition-all text-center ${
-                      !useCustom && selectedQuantity === opt.qty
+                      selectedQuantity === qty
                         ? 'border-olive-dark bg-olive-dark text-cream'
                         : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
                     }`}
                   >
                     <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                      {opt.label}
+                      {qty} Bottle{qty > 1 ? 's' : ''}
                     </div>
-                    {opt.sub && (
-                      <div className={`mt-0.5 ${!useCustom && selectedQuantity === opt.qty ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
-                        {opt.sub}
+                    {qty >= 2 && (
+                      <div className={`mt-0.5 ${selectedQuantity === qty ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                        Free Shipping
                       </div>
                     )}
                   </button>
                 ))}
-              </div>
-
-              {/* Custom quantity row */}
-              <div className={`flex items-center gap-3 p-2 rounded-xl border-2 transition-all ${useCustom ? 'border-olive-dark bg-olive-dark/5' : 'border-olive-light/20'}`}>
-                <span className="text-olive-medium font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>Want more?</span>
+                {/* Expandable 4+ button */}
                 <button
-                  onClick={() => { setUseCustom(true); setCustomQuantity(Math.max(5, customQuantity - 1)); }}
-                  className="w-8 h-8 rounded-lg border border-olive-dark/20 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                >−</button>
-                <span className="w-8 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)' }}>
-                  {customQuantity}
-                </span>
-                <button
-                  onClick={() => { setUseCustom(true); setCustomQuantity(customQuantity + 1); }}
-                  className="w-8 h-8 rounded-lg border border-olive-dark/20 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold"
-                  style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                >+</button>
-                <span className="text-olive-medium ml-auto" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
-                  Free Shipping
-                </span>
+                  onClick={() => { if (selectedQuantity < 4) setSelectedQuantity(4); }}
+                  className={`p-2 rounded-xl border-2 transition-all text-center ${
+                    selectedQuantity >= 4
+                      ? 'border-olive-dark bg-olive-dark text-cream'
+                      : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
+                  }`}
+                >
+                  {selectedQuantity >= 4 ? (
+                    <>
+                      <div className="flex items-center justify-center gap-1">
+                        <span
+                          onClick={(e) => { e.stopPropagation(); setSelectedQuantity(Math.max(4, selectedQuantity - 1)); }}
+                          className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
+                        >−</span>
+                        <span className="font-semibold min-w-[2ch] text-center" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                          {selectedQuantity}
+                        </span>
+                        <span
+                          onClick={(e) => { e.stopPropagation(); setSelectedQuantity(selectedQuantity + 1); }}
+                          className="w-5 h-5 rounded-md bg-cream/20 hover:bg-cream/40 flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
+                        >+</span>
+                      </div>
+                      <div className="text-cream/80 mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                        Free Shipping
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                        4+ Bottles
+                      </div>
+                      <div className="text-olive-medium mt-0.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                        Free Shipping
+                      </div>
+                    </>
+                  )}
+                </button>
               </div>
             </div>
 
