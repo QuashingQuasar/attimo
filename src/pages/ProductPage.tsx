@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import bottleFallback from "@/assets/attimo-bottle-final.jpg";
+
 import { Button } from "@/components/ui/button";
 import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
@@ -40,7 +40,7 @@ const ProductPage = () => {
     loadProducts();
   }, []);
 
-  const product = products.find((p) => p.node.handle === handle) || products[0];
+  const product = products.find((p) => p.node.handle === handle);
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
@@ -143,7 +143,7 @@ const ProductPage = () => {
             <div className="lg:sticky lg:top-20 lg:self-start">
               <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
-                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url || bottleFallback}
+                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover" />
               
