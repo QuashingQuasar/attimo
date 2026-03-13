@@ -43,10 +43,10 @@ export const HarvestProduct = () => {
       variantId: variant.id,
       variantTitle: variant.title,
       price: { amount: '24', currencyCode: 'EUR' },
-      quantity: selectedQuantity,
+      quantity: activeQuantity,
       selectedOptions: variant.selectedOptions || []
     });
-    toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`);
+    toast.success(`Added ${activeQuantity} bottle${activeQuantity > 1 ? 's' : ''} to cart`);
   };
 
   if (loading) {
