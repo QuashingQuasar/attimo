@@ -244,7 +244,7 @@ const ProductPage = () => {
                 <div className="flex items-stretch gap-2">
                   <Button
                     onClick={handleAddToCart}
-                    className="flex-[3] hover:opacity-90 text-olive-dark font-semibold px-8 h-auto transition-all duration-300"
+                    className="flex-[3] hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
                     style={{
                       fontFamily: 'UDC Working Man Sans, sans-serif',
                       backgroundColor: '#CDDB2D',
