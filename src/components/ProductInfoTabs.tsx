@@ -16,7 +16,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           <AccordionTrigger className="py-5 hover:no-underline">
             <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Flower2 size={20} className="text-olive-dark" />
-              Taste Profile
+              Flavour Profile
             </span>
           </AccordionTrigger>
           <AccordionContent>
