@@ -102,8 +102,8 @@ const ProductPage = () => {
   // Map variants to quantity options
   const PRICE_PER_BOTTLE = 24;
   const FREE_SHIPPING_THRESHOLD = 2;
-  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
-  const bottlesNeeded = FREE_SHIPPING_THRESHOLD - selectedQuantity;
+  const activeQuantity = useCustom ? customQuantity : selectedQuantity;
+  const totalPrice = activeQuantity * PRICE_PER_BOTTLE;
 
   const labTiles = content.labTiles;
 
