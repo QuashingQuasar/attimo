@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
@@ -17,35 +17,13 @@ import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
+import { QuantitySelector } from "@/components/QuantitySelector";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [inputValue, setInputValue] = useState('1');
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const updateQuantity = useCallback((qty: number) => {
-    const clamped = Math.max(1, qty);
-    setSelectedQuantity(clamped);
-    setInputValue(String(clamped));
-  }, []);
-
-  const handleInputChange = (val: string) => {
-    setInputValue(val);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      const parsed = parseInt(val, 10);
-      if (!isNaN(parsed) && parsed >= 1) setSelectedQuantity(parsed);
-    }, 300);
-  };
-
-  const handleInputBlur = () => {
-    const parsed = parseInt(inputValue, 10);
-    if (isNaN(parsed) || parsed < 1) updateQuantity(1);
-    else updateQuantity(parsed);
-  };
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore((state) => state.addItem);
 
@@ -233,53 +211,12 @@ const ProductPage = () => {
               )}
               </div>
 
-              {/* Shipping text + Cart row */}
-              <div className="space-y-3">
-                <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                  {selectedQuantity < 2
-                    ? 'Add 1 more bottle for free shipping'
-                    : 'Free shipping applied ✓'}
-                </p>
-
-                <div className="flex items-stretch gap-2">
-                  <Button
-                    onClick={handleAddToCart}
-                    className="flex-[3] hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                    style={{
-                      fontFamily: 'UDC Working Man Sans, sans-serif',
-                      backgroundColor: '#CDDB2D',
-                      fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
-                      borderRadius: '0.75rem',
-                      letterSpacing: '0.05em'
-                    }}
-                  >
-                    Add to Cart — €{totalPrice}
-                  </Button>
-                  <div className="flex-1 flex items-center gap-0">
-                    <button
-                      type="button"
-                      onClick={() => updateQuantity(selectedQuantity - 1)}
-                      className="flex-1 h-full rounded-l-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
-                      style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                    >−</button>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      value={inputValue}
-                      onChange={(e) => handleInputChange(e.target.value)}
-                      onBlur={handleInputBlur}
-                      className="w-10 h-full border-y-2 border-olive-dark/20 bg-transparent text-center font-bold text-olive-dark outline-none"
-                      style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => updateQuantity(selectedQuantity + 1)}
-                      className="flex-1 h-full rounded-r-xl border-2 border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
-                      style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                    >+</button>
-                  </div>
-                </div>
-              </div>
+              <QuantitySelector
+                quantity={selectedQuantity}
+                onQuantityChange={setSelectedQuantity}
+                pricePerUnit={24}
+                onAddToCart={handleAddToCart}
+              />
 
               <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                 <ShieldCheck size={20} strokeWidth={1.5} />
