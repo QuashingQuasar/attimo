@@ -71,12 +71,12 @@ export const productContentMap: Record<string, ProductContent> = {
     benefits: [
       "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family grove in Puglia, Italy",
+      "Directly sourced from a small family grove in Umbria, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Directly sourced from a small family grove in Puglia, Italy",
+    sourceLine: "Directly sourced from a small family grove in Umbria, Italy",
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
@@ -87,7 +87,7 @@ export const productContentMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Puglia, Italy",
+        origin: "Umbria, Italy",
         olive: "Coratina",
         flavor: "Bold & Punchy",
         store: "keep away from light and heat",
@@ -110,7 +110,7 @@ export const productContentMap: Record<string, ProductContent> = {
         "Coratina is a bold, punchy Italian olive prized for its exceptionally high polyphenol content. It presses an intense oil with a peppery kick — a sign of real, fresh EVOO packed with antioxidants.",
       quickRef: [
         { label: "VARIETY", value: "100% Coratina" },
-        { label: "ORIGIN", value: "Puglia, Italy" },
+        { label: "ORIGIN", value: "Umbria, Italy" },
         { label: "FLAVOR", value: "Bold & Punchy" },
         { label: "USE", value: "drizzle over fresh foods" },
         { label: "STORE", value: "away from light and heat" },
