@@ -10,7 +10,7 @@ const oils = [
   flavor: "Bold & Punchy",
   origin: "Umbria, Italy",
   flag: "🇮🇹",
-  handle: "galega-from-alentejo",
+  handle: "attimo-extra-virgin-olive-oil-coratina-500ml",
   image: coratinaImage,
   tagline: "A hit of healthy polyphenols",
   price: 22
