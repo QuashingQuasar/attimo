@@ -25,6 +25,8 @@ const ProductPage = () => {
   const [products, setProducts] = useState<ShopifyProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [customQuantity, setCustomQuantity] = useState(5);
+  const [useCustom, setUseCustom] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const addItem = useCartStore(state => state.addItem);
 
@@ -64,10 +66,10 @@ const ProductPage = () => {
       variantId: variant.id,
       variantTitle: variant.title,
       price: { amount: '24', currencyCode: 'EUR' },
-      quantity: selectedQuantity,
+      quantity: activeQuantity,
       selectedOptions: variant.selectedOptions || []
     });
-    toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
+    toast.success(`Added ${activeQuantity} bottle${activeQuantity > 1 ? 's' : ''} to cart`, {
       position: "top-center"
     });
   };
@@ -100,8 +102,8 @@ const ProductPage = () => {
   // Map variants to quantity options
   const PRICE_PER_BOTTLE = 24;
   const FREE_SHIPPING_THRESHOLD = 2;
-  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
-  const bottlesNeeded = FREE_SHIPPING_THRESHOLD - selectedQuantity;
+  const activeQuantity = useCustom ? customQuantity : selectedQuantity;
+  const totalPrice = activeQuantity * PRICE_PER_BOTTLE;
 
   const labTiles = content.labTiles;
 
@@ -265,32 +267,56 @@ const ProductPage = () => {
             </ul>
 
 
-            {/* Quantity Selection */}
-            <div className="space-y-2 pt-2">
-              <div className="flex items-center gap-3">
+            {/* Quantity Selection — Preset Cards */}
+            <div className="space-y-3 pt-2">
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { qty: 1, label: '1 Bottle', sub: null },
+                  { qty: 2, label: '2 Bottles', sub: 'Free Shipping' },
+                  { qty: 3, label: '3 Bottles', sub: 'Free Shipping' },
+                  { qty: 4, label: '4 Bottles', sub: 'Free Shipping' },
+                ].map(opt => (
+                  <button
+                    key={opt.qty}
+                    onClick={() => { setSelectedQuantity(opt.qty); setUseCustom(false); }}
+                    className={`p-2 rounded-xl border-2 transition-all text-center ${
+                      !useCustom && selectedQuantity === opt.qty
+                        ? 'border-olive-dark bg-olive-dark text-cream'
+                        : 'border-olive-light/20 bg-white/60 text-olive-dark hover:bg-olive-light/10'
+                    }`}
+                  >
+                    <div className="font-semibold" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                      {opt.label}
+                    </div>
+                    {opt.sub && (
+                      <div className={`mt-0.5 ${!useCustom && selectedQuantity === opt.qty ? 'text-cream/80' : 'text-olive-medium'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.6rem, 0.75vw, 0.8rem)' }}>
+                        {opt.sub}
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Custom quantity row */}
+              <div className={`flex items-center gap-3 p-2 rounded-xl border-2 transition-all ${useCustom ? 'border-olive-dark bg-olive-dark/5' : 'border-olive-light/20'}`}>
+                <span className="text-olive-medium font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>Want more?</span>
                 <button
-                  onClick={() => setSelectedQuantity(Math.max(1, selectedQuantity - 1))}
-                  className="w-10 h-10 rounded-xl border-2 border-olive-dark/20 bg-white/60 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold text-lg"
+                  onClick={() => { setUseCustom(true); setCustomQuantity(Math.max(5, customQuantity - 1)); }}
+                  className="w-8 h-8 rounded-lg border border-olive-dark/20 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                >
-                  −
-                </button>
-                <span className="w-10 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
-                  {selectedQuantity}
+                >−</button>
+                <span className="w-8 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.9rem, 1.1vw, 1.15rem)' }}>
+                  {customQuantity}
                 </span>
                 <button
-                  onClick={() => setSelectedQuantity(selectedQuantity + 1)}
-                  className="w-10 h-10 rounded-xl border-2 border-olive-dark/20 bg-white/60 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold text-lg"
+                  onClick={() => { setUseCustom(true); setCustomQuantity(customQuantity + 1); }}
+                  className="w-8 h-8 rounded-lg border border-olive-dark/20 text-olive-dark hover:bg-olive-light/10 transition-all flex items-center justify-center font-bold"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-                >
-                  +
-                </button>
+                >+</button>
+                <span className="text-olive-medium ml-auto" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.7rem, 0.8vw, 0.85rem)' }}>
+                  Free Shipping
+                </span>
               </div>
-              <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
-                {bottlesNeeded > 0
-                  ? `Add ${bottlesNeeded} more bottle${bottlesNeeded > 1 ? 's' : ''} for free shipping`
-                  : '✓ Free shipping applied'}
-              </p>
             </div>
 
             {/* Add to Cart */}
