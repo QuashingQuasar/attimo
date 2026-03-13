@@ -10,7 +10,7 @@ const oils = [
   flavor: "Bold & Punchy",
   origin: "Umbria, Italy",
   flag: "🇮🇹",
-  handle: "attimo-extra-virgin-olive-oil-coratina-500ml",
+  handle: "coratina",
   image: coratinaImage,
   tagline: "A hit of healthy polyphenols",
   price: 22
@@ -21,7 +21,7 @@ const oils = [
   flavor: "Green & Grassy",
   origin: "Jaén, Spain",
   flag: "🇪🇸",
-  handle: "attimo-extra-virgin-olive-oil-picual-500ml",
+  handle: "picual",
   image: picualImage,
   tagline: "All-round goodness",
   price: 20
