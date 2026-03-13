@@ -216,46 +216,43 @@ const ProductPage = () => {
 
               {/* Quantity + Cart grouped tighter */}
               <div className="space-y-3">
-                <div className="grid grid-cols-5 gap-2">
-                  {quantityOptions.map((option) =>
-                <button
-                  key={option.quantity}
-                  onClick={() => setSelectedQuantity(option.quantity)}
-                  className={`px-2 py-3 rounded-xl border transition-all duration-200 text-center ${
-                  selectedQuantity === option.quantity ?
-                  'border-olive-dark bg-olive-dark text-cream' :
-                  'border-olive-dark/20 text-olive-dark hover:border-olive-dark/50'}`
-                  }
-                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                  
-                      <div>{option.label}</div>
-                      {option.subtitle &&
-                  <div className={`text-[0.7rem] mt-0.5 ${selectedQuantity === option.quantity ? 'text-cream/70' : 'text-olive-medium'}`}>
-                          {option.subtitle}
-                        </div>
-                  }
-                    </button>
-                )}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setSelectedQuantity(Math.max(1, selectedQuantity - 1))}
+                    className="w-11 h-11 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    −
+                  </button>
+                  <span className="w-10 text-center font-bold text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)' }}>
+                    {selectedQuantity}
+                  </span>
+                  <button
+                    onClick={() => setSelectedQuantity(selectedQuantity + 1)}
+                    className="w-11 h-11 rounded-xl border border-olive-dark/20 text-olive-dark hover:border-olive-dark/50 transition-all flex items-center justify-center font-bold text-lg"
+                    style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                  >
+                    +
+                  </button>
                 </div>
+                <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                  {bottlesNeeded > 0
+                    ? `Add ${bottlesNeeded} more bottle${bottlesNeeded > 1 ? 's' : ''} for free shipping`
+                    : '✓ Free shipping applied'}
+                </p>
 
                 <Button
-                onClick={handleAddToCart}
-                className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
-                style={{
-                  fontFamily: 'UDC Working Man Sans, sans-serif',
-                  backgroundColor: '#CDDB2D',
-                  fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
-                  borderRadius: '0.75rem',
-                  letterSpacing: '0.05em'
-                }}>
-                
-                  {selectedQuantity === 1 ?
-                <span className="flex items-center justify-center gap-2">
-                      Add to Cart — <span className="line-through opacity-50">€25</span> €22
-                    </span> :
-
-                `Add to Cart — ${currencyCode === 'EUR' ? '€' : currencyCode}${selectedOption?.price.toFixed(0)}`
-                }
+                  onClick={handleAddToCart}
+                  className="w-full hover:opacity-90 text-olive-dark font-semibold px-8 py-6 h-auto transition-all duration-300"
+                  style={{
+                    fontFamily: 'UDC Working Man Sans, sans-serif',
+                    backgroundColor: '#CDDB2D',
+                    fontSize: 'clamp(1.1rem, 1.3vw, 1.35rem)',
+                    borderRadius: '0.75rem',
+                    letterSpacing: '0.05em'
+                  }}
+                >
+                  Add to Cart — €{totalPrice}
                 </Button>
               </div>
 
