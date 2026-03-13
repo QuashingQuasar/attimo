@@ -40,7 +40,7 @@ const ProductPage = () => {
     loadProducts();
   }, []);
 
-  const product = products.find((p) => p.node.handle === handle) || products[0];
+  const product = products.find((p) => p.node.handle === handle);
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
