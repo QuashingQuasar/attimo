@@ -65,71 +65,71 @@ export interface ProductContent {
 }
 
 export const productContentMap: Record<string, ProductContent> = {
-  "galega-from-alentejo": {
-    heroTitle: "GALEGA FROM ALENTEJO",
+  "attimo-extra-virgin-olive-oil-coratina-500ml": {
+    heroTitle: "CORATINA D'ITALIA",
     heroSubtitle: "Specialty Extra Virgin Olive Oil",
     benefits: [
-      "5x more antioxidant polyphenols than average EVOO",
+      "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family farm in Alentejo, Portugal",
+      "Directly sourced from a small family grove in Puglia, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Directly sourced from a small family farm in Alentejo, Portugal",
+    sourceLine: "Directly sourced from a small family grove in Puglia, Italy",
     labelDisclosure:
-      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior category olive oil with lab-verified values.",
+      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "POLYPHENOLS", value: "904", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
-      { key: "oleic-acid", label: "OLEIC ACID", value: "74.9%", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-      { key: "peroxides", label: "PEROXIDES", value: "6.3", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
-      { key: "acidity", label: "ACIDITY", value: "0.16%", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+      { key: "polyphenols", label: "POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
+      { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
+      { key: "peroxides", label: "PEROXIDES", value: "—", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
       details: {
-        origin: "Alentejo, Portugal",
-        olive: "Galega",
-        flavor: "green & grassy",
+        origin: "Puglia, Italy",
+        olive: "Coratina",
+        flavor: "Bold & Punchy",
         store: "keep away from light and heat",
         volume: "500ml",
       },
       flavorProfile: [
-        { label: "PEPPERY", rating: 4 },
-        { label: "FRUITY", rating: 5 },
-        { label: "BITTER", rating: 4 },
+        { label: "PEPPERY", rating: 5 },
+        { label: "FRUITY", rating: 4 },
+        { label: "BITTER", rating: 5 },
         { label: "HERBAL", rating: 3 },
       ],
       harvest:
-        "Hand-picked in October 2024 during the optimal harvest window. The olives were processed within 4 hours of harvest using traditional stone mills, preserving maximum antioxidants and flavor compounds. This early harvest ensures the highest polyphenol content.",
+        "Early harvest Coratina olives, cold-pressed within hours to preserve maximum polyphenols and bold flavour.",
       uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
       usesExtra:
-        "You can cook with it too — extra virgin olive oil is one of the healthiest oils for cooking — but heat diminishes its special antioxidant properties and so it's best saved for last.",
+        "Perfect for steak, grilled vegetables, hearty soups, and bruschetta.",
     },
     originStory: {
       headline:
-        "Galega from Alentejo is 100% Extra Virgin, high in polyphenols — crafted with the purpose to bring you olive oil with powerful antioxidants known for their health benefits. Perfect for anyone looking to give their health a boost.",
+        "Coratina is a bold, punchy Italian olive prized for its exceptionally high polyphenol content. It presses an intense oil with a peppery kick — a sign of real, fresh EVOO packed with antioxidants.",
       quickRef: [
-        { label: "VARIETY", value: "100% Galega" },
-        { label: "ORIGIN", value: "Alentejo, Portugal" },
-        { label: "FLAVOR", value: "Intense & Peppery" },
+        { label: "VARIETY", value: "100% Coratina" },
+        { label: "ORIGIN", value: "Puglia, Italy" },
+        { label: "FLAVOR", value: "Bold & Punchy" },
         { label: "USE", value: "drizzle over fresh foods" },
         { label: "STORE", value: "away from light and heat" },
       ],
       features: [
         {
-          title: "Intense & Peppery",
+          title: "Bold & Punchy",
           description: "Its high polyphenol content gives the olive oil an intense, peppery kick — a sign of real, fresh EVOO.",
           icon: "/icons/mortar.svg",
         },
         {
           title: "Early Harvest",
-          description: "Harvested in October when the olives are green, hard, and very high in polyphenols.",
-          icon: "/icons/branch-2.svg",
+          description: "Harvested early when the olives are green and packed with polyphenols that boost taste and health.",
+          icon: "/icons/basket-2.svg",
         },
         {
-          title: "Galega Olives",
-          description: "A Portuguese variety known for its delicate, grassy flavour and exceptional polyphenol content.",
-          icon: "/icons/olive.svg",
+          title: "100% Coratina",
+          description: "An Italian variety renowned for its exceptionally high polyphenol content and bold character.",
+          icon: "/icons/branch-2.svg",
         },
       ],
     },
@@ -138,14 +138,14 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
-        { label: "Polyphenols", value: "904", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Acidity", value: "0.16", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
-        { label: "Peroxides", value: "6.3", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation and longer shelf life." },
-        { label: "Oleic Acid", value: "74.9", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health. The higher, the better." },
+        { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
+        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
       ],
     },
-    polyphenolValue: 904,
-    polyphenolLabel: "Galega",
+    polyphenolValue: 847,
+    polyphenolLabel: "Coratina",
   },
 
   nocellara: {
@@ -230,10 +230,93 @@ export const productContentMap: Record<string, ProductContent> = {
     polyphenolValue: 400,
     polyphenolLabel: "Nocellara",
   },
+
+  "attimo-extra-virgin-olive-oil-picual-500ml": {
+    heroTitle: "PICUAL DE ESPAÑA",
+    heroSubtitle: "Specialty Extra Virgin Olive Oil",
+    benefits: [
+      "100% Picual olives harvested early and cold-pressed within hours",
+      "Third-party lab tested for quality and purity",
+      "Directly sourced from a small family grove in Andalusia, Spain",
+    ],
+    benefitTooltip:
+      "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
+    labReportUrl: "/lab/Picual2025.pdf",
+    sourceLine: "Directly sourced from a small family grove in Andalusia, Spain",
+    labelDisclosure:
+      "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
+    labTiles: [
+      { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
+      { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
+      { key: "peroxides", label: "PEROXIDES", value: "—", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+    ],
+    tabs: {
+      details: {
+        origin: "Jaén, Spain",
+        olive: "Picual",
+        flavor: "Green & Grassy",
+        store: "keep away from light and heat",
+        volume: "500ml",
+      },
+      flavorProfile: [
+        { label: "PEPPERY", rating: 4 },
+        { label: "FRUITY", rating: 3 },
+        { label: "BITTER", rating: 3 },
+        { label: "HERBAL", rating: 5 },
+      ],
+      harvest:
+        "Early harvest Picual olives, cold-pressed within hours to preserve maximum polyphenols and flavour.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      usesExtra:
+        "Great on grilled vegetables, soups, legumes, and toasted bread.",
+    },
+    originStory: {
+      headline:
+        "Picual is the world's most planted olive variety and Spain's pride. It presses an oil that is green, grassy and full of character — rich in polyphenols and built to last.",
+      quickRef: [
+        { label: "VARIETY", value: "100% Picual" },
+        { label: "ORIGIN", value: "Jaén, Spain" },
+        { label: "FLAVOR", value: "Green & Grassy" },
+        { label: "USE", value: "drizzle over fresh foods" },
+        { label: "STORE", value: "away from light and heat" },
+      ],
+      features: [
+        {
+          title: "Green & Grassy",
+          description: "Fresh tomato leaf and cut grass aromas with a clean, assertive finish.",
+          icon: "/icons/mortar.svg",
+        },
+        {
+          title: "Early Harvest",
+          description: "Picked early when the olives are green and packed with polyphenols.",
+          icon: "/icons/basket-2.svg",
+        },
+        {
+          title: "100% Picual",
+          description: "Spain's flagship variety, known for its stability, bold character and high polyphenol content.",
+          icon: "/icons/branch-2.svg",
+        },
+      ],
+    },
+    labTrust: {
+      heading: "Third party lab-tested for quality and purity",
+      subheading:
+        "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
+      values: [
+        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
+        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
+      ],
+    },
+    polyphenolValue: 675,
+    polyphenolLabel: "Picual",
+  },
 };
 
-// Default to galega if handle not found
+// Default to nocellara if handle not found
 export function getProductContent(handle: string | undefined): ProductContent {
-  if (!handle) return productContentMap["galega-from-alentejo"];
-  return productContentMap[handle] || productContentMap["galega-from-alentejo"];
+  if (!handle) return productContentMap["nocellara"];
+  return productContentMap[handle] || productContentMap["nocellara"];
 }

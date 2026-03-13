@@ -351,7 +351,7 @@ export const HarvestProduct = () => {
             </div>
 
             {/* Product Information Tabs */}
-            <ProductInfoTabs content={getProductContent("galega-from-alentejo")} />
+            <ProductInfoTabs content={getProductContent("attimo-extra-virgin-olive-oil-coratina-500ml")} />
           </div>
         </div>
       </div>
