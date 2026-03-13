@@ -19,7 +19,7 @@ export const LabValues = () => {
                   <div><span className="font-bold text-olive-dark">ORIGIN:</span><span className="text-olive-medium ml-2">Alentejo, Portugal</span></div>
                   <div><span className="font-bold text-olive-dark">OLIVE:</span><span className="text-olive-medium ml-2">Galega variety</span></div>
                   <div><span className="font-bold text-olive-dark">HARVEST:</span><span className="text-olive-medium ml-2">October 2024</span></div>
-                  <div><span className="font-bold text-olive-dark">FLAVOR:</span><span className="text-olive-medium ml-2">Green & grassy, peppery finish</span></div>
+                  <div><span className="font-bold text-olive-dark">FLAVOUR:</span><span className="text-olive-medium ml-2">Green & grassy, peppery finish</span></div>
                   <div><span className="font-bold text-olive-dark">FARM:</span><span className="text-olive-medium ml-2">3rd generation family grove</span></div>
                 </div>
               </CardContent>

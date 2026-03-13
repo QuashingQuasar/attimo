@@ -101,7 +101,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
       harvest:
         "Early harvest Coratina olives, cold-pressed within hours to preserve maximum polyphenols and bold flavour.",
-      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Perfect for steak, grilled vegetables, hearty soups, and bruschetta.",
     },
@@ -184,7 +184,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
       harvest:
         "The olives are picked early in October when they're young, green and packed with polyphenols that boost taste and health. Cold-extracted within hours of harvest to preserve the oil's distinctive gentle, fruity character.",
-      uses: "Good on everything — drizzle over fresh foods to add a gentle pop of flavor.",
+      uses: "Good on everything — drizzle over fresh foods to add a gentle pop of flavour.",
       usesExtra:
         "Perfect for pasta, enrich eggs, finish seafood, dress leafy greens — and try it on ice cream.",
     },
@@ -267,7 +267,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
       harvest:
         "Early harvest Picual olives, cold-pressed within hours to preserve maximum polyphenols and flavour.",
-      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavor.",
+      uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Great on grilled vegetables, soups, legumes, and toasted bread.",
     },

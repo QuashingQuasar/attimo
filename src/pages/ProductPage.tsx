@@ -118,7 +118,7 @@ const ProductPage = () => {
   },
   {
     icon: <Sparkles size={20} className="text-olive-dark" />,
-    label: "Flavor",
+    label: "Flavour",
     value: content.tabs.details.flavor
   }];
 
