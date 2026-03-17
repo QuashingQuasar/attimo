@@ -153,25 +153,41 @@ const oilNames: Record<string, string> = {
   coratina: "Coratina d'Italia",
 };
 
+const oilKeys = ["coratina", "picual", "nocellara"] as const;
+type OilKey = (typeof oilKeys)[number];
+type OilScores = Record<OilKey, number>;
+
+const maximumPossibleScores: OilScores = quizQuestions.reduce(
+  (maxScores, question) => {
+    oilKeys.forEach((key) => {
+      const questionMax = Math.max(...question.options.map((option) => option.scores[key]));
+      maxScores[key] += questionMax;
+    });
+
+    return maxScores;
+  },
+  { coratina: 0, picual: 0, nocellara: 0 }
+);
+
 export function calculateResults(answers: Record<string, number>): OilResult[] {
-  const totals = { coratina: 0, picual: 0, nocellara: 0 };
+  const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
 
   for (const [questionId, answerIdx] of Object.entries(answers)) {
     const question = quizQuestions.find((q) => q.id === questionId);
     if (!question) continue;
+
     const option = question.options[answerIdx];
     if (!option) continue;
-    totals.coratina += option.scores.coratina;
-    totals.picual += option.scores.picual;
-    totals.nocellara += option.scores.nocellara;
+
+    oilKeys.forEach((key) => {
+      totals[key] += option.scores[key];
+    });
   }
 
-  const sum = totals.coratina + totals.picual + totals.nocellara || 1;
-
-  const results: OilResult[] = (["coratina", "picual", "nocellara"] as const).map((key) => ({
+  const results: OilResult[] = oilKeys.map((key) => ({
     key,
     name: oilNames[key],
-    percentage: Math.round((totals[key] / sum) * 100),
+    percentage: Math.round((totals[key] / Math.max(maximumPossibleScores[key], 1)) * 100),
     summary: oilSummaries[key],
     handle: key,
   }));
