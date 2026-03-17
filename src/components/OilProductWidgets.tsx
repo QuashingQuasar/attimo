@@ -13,7 +13,7 @@ const oils = [
   handle: "coratina",
   image: coratinaImage,
   tagline: "A hit of healthy polyphenols",
-  price: 22
+  price: 24
 },
 {
   name: "Picual",
@@ -24,7 +24,7 @@ const oils = [
   handle: "picual",
   image: picualImage,
   tagline: "All-round goodness",
-  price: 20
+  price: 24
 },
 {
   name: "Nocellara",
@@ -35,7 +35,7 @@ const oils = [
   handle: "nocellara",
   image: nocellaraImage,
   tagline: "Easy to love, easy to use",
-  price: 20
+  price: 24
 }];
 
 
