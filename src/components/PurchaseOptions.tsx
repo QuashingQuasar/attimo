@@ -60,7 +60,7 @@ export const PurchaseOptions = ({
             }`}
           >
             {purchaseType === "one-time" && (
-              <div className="w-[10px] h-[10px] rounded-full bg-olive-dark" />
+              <div className="w-[10px] h-[10px] rounded-full bg-cream" />
             )}
           </div>
           <span
