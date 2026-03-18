@@ -21,7 +21,7 @@ export const Testimonials = () => {
       </video>
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
-        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: "rgb(205, 219, 45)" }}>
+        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: "#ECA948" }}>
           Word from the street
         </h2>
         <div className="relative overflow-hidden">
