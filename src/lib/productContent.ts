@@ -62,6 +62,7 @@ export interface ProductContent {
   // Polyphenol comparison
   polyphenolValue: number;
   polyphenolLabel: string;
+  buttonColor?: string;
 }
 
 export const productContentMap: Record<string, ProductContent> = {
