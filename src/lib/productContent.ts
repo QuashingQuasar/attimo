@@ -62,6 +62,7 @@ export interface ProductContent {
   // Polyphenol comparison
   polyphenolValue: number;
   polyphenolLabel: string;
+  buttonColor?: string;
 }
 
 export const productContentMap: Record<string, ProductContent> = {
@@ -229,6 +230,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     polyphenolValue: 400,
     polyphenolLabel: "Nocellara",
+    buttonColor: "#ECA948",
   },
 
   "attimo-extra-virgin-olive-oil-picual-500ml": {
