@@ -58,7 +58,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         source: "ne-countries",
         paint: {
           "line-color": outlineGreen,
-          "line-width": 2.5,
+          "line-width": 5,
           "line-opacity": 0.85,
         },
         layout: {
