@@ -1,4 +1,4 @@
-import iberiaMap from "@/assets/iberia-map.png";
+import sicilyMap from "@/assets/sicily-map.png";
 
 export const ProductOriginRegion = () => {
   return (
