@@ -9,8 +9,8 @@ export const ProductOriginRegion = () => {
             <SicilyMapbox className="w-full max-w-[400px] aspect-square" />
           </div>
           <div className="space-y-6">
-            <h2 className="font-bold tracking-tight" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
-              Origin: Sicily, Italy
+            <h2 className="font-beverly font-bold tracking-tight" style={{ color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
+              Harvested and Pressed in Sicily   
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
               Nocellara is home to the Belice valley on the west coast of Sicily, where people have been making olive oil since Greek times. Here, limestone soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour. We work directly with a small farm dedicated to making elite olive oil just outside of Trapani.                         
