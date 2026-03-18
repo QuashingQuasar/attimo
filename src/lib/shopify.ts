@@ -173,41 +173,52 @@ const PRODUCTS_QUERY = `
               }
             }
           }
-          sellingPlanGroups(first: 5) {
-            edges {
-              node {
-                name
-                options {
+          options {
+            name
+            values
+          }
+        }
+      }
+    }
+  }
+`;
+
+const SELLING_PLANS_QUERY = `
+  query GetProductSellingPlans($handle: String!) {
+    product(handle: $handle) {
+      sellingPlanGroups(first: 5) {
+        edges {
+          node {
+            name
+            options {
+              name
+              values
+            }
+            sellingPlans(first: 10) {
+              edges {
+                node {
+                  id
                   name
-                  values
-                }
-                sellingPlans(first: 10) {
-                  edges {
-                    node {
-                      id
-                      name
-                      options {
-                        name
-                        value
+                  options {
+                    name
+                    value
+                  }
+                  priceAdjustments {
+                    adjustmentValue {
+                      __typename
+                      ... on SellingPlanPercentagePriceAdjustment {
+                        adjustmentPercentage
                       }
-                      priceAdjustments {
-                        adjustmentValue {
-                          __typename
-                          ... on SellingPlanPercentagePriceAdjustment {
-                            adjustmentPercentage
-                          }
-                          ... on SellingPlanFixedAmountPriceAdjustment {
-                            adjustmentAmount {
-                              amount
-                              currencyCode
-                            }
-                          }
-                          ... on SellingPlanFixedPriceAdjustment {
-                            price {
-                              amount
-                              currencyCode
-                            }
-                          }
+                      ... on SellingPlanFixedAmountPriceAdjustment {
+                        adjustmentAmount {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanFixedPriceAdjustment {
+                        price {
+                          amount
+                          currencyCode
                         }
                       }
                     }
@@ -215,10 +226,6 @@ const PRODUCTS_QUERY = `
                 }
               }
             }
-          }
-          options {
-            name
-            values
           }
         }
       }
