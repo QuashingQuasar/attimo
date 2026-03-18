@@ -9,7 +9,7 @@ export const ProductOriginRegion = () => {
             <SicilyMapbox className="w-full max-w-[400px] aspect-square" />
           </div>
           <div className="space-y-6">
-            <h2 className="font-beverly font-bold tracking-tight" style={{ color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
+            <h2 className="font-bold tracking-tight" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
               Origin: Sicily, Italy
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
