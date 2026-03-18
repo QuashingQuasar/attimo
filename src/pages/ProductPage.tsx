@@ -241,9 +241,19 @@ const ProductPage = () => {
               <QuantitySelector
                 quantity={selectedQuantity}
                 onQuantityChange={setSelectedQuantity}
-                pricePerUnit={24}
+                pricePerUnit={activePrice}
                 onAddToCart={handleAddToCart}
                 buttonColor={content.buttonColor}
+              />
+
+              <PurchaseOptions
+                sellingPlans={sellingPlans}
+                oneTimePrice={ONE_TIME_PRICE}
+                subscriptionPrice={SUBSCRIPTION_PRICE}
+                purchaseType={purchaseType}
+                onPurchaseTypeChange={setPurchaseType}
+                selectedSellingPlanId={selectedSellingPlanId}
+                onSellingPlanChange={setSelectedSellingPlanId}
               />
 
               <div className="flex items-center gap-6">
