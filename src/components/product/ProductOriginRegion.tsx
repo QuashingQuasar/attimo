@@ -18,9 +18,6 @@ export const ProductOriginRegion = () => {
 
 
             </p>
-            <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255, 250, 234, 0.8)', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
-              Every bottle is traceable to its exact grove — no blending, no middlemen, no mystery. You know exactly where your oil comes from.
-            </p>
           </div>
         </div>
       </div>
