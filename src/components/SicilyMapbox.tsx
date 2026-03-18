@@ -58,7 +58,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
   // Map center and zoom
   const cx = 14.5;
   const cy = 39.5;
-  const zoom = 8;
+  const zoom = 18;
 
   // SVG viewBox dimensions
   const vw = 500;
