@@ -68,20 +68,6 @@ export const QuantitySelector = ({
         ))}
       </div>
 
-      {/* Add to Cart */}
-      <Button
-        id={buttonId}
-        onClick={onAddToCart}
-        className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-7 h-auto transition-all duration-300 hover:scale-[1.02]"
-        style={{
-          fontFamily: "UDC Working Man Sans, sans-serif",
-          backgroundColor: buttonColor,
-          fontSize: "clamp(1.1rem, 1.4vw, 1.45rem)",
-          borderRadius: "0.75rem",
-        }}
-      >
-        ADD TO CART €{totalPrice}<span className="font-normal">{" — "}{quantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}</span>
-      </Button>
     </div>
   );
 };

@@ -253,6 +253,19 @@ const ProductPage = () => {
                 onSellingPlanChange={setSelectedSellingPlanId}
               />
 
+              <Button
+                onClick={handleAddToCart}
+                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-7 h-auto transition-all duration-300 hover:scale-[1.02]"
+                style={{
+                  fontFamily: "UDC Working Man Sans, sans-serif",
+                  backgroundColor: content.buttonColor,
+                  fontSize: "clamp(1.1rem, 1.4vw, 1.45rem)",
+                  borderRadius: "0.75rem",
+                }}
+              >
+                ADD TO CART €{selectedQuantity * activePrice}<span className="font-normal">{" — "}{selectedQuantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}</span>
+              </Button>
+
               <div className="flex items-center gap-6">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <ShieldCheck size={20} strokeWidth={1.5} />
