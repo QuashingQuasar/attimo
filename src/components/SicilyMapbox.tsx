@@ -10,60 +10,15 @@ interface SicilyMapboxProps {
 
 export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current || map.current) return;
+    if (!mapContainer.current || mapRef.current) return;
 
     const darkGreen = "#1B4229";
     const outlineGreen = "#2d6b3f";
 
-    m = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: {
-        version: 8,
-        sources: {
-          "countries": {
-            type: "vector",
-            url: "mapbox://mapbox.country-boundaries-v1",
-          },
-        },
-        layers: [
-          {
-            id: "background",
-            type: "background",
-            paint: { "background-color": darkGreen },
-          },
-          {
-            id: "country-fills",
-            type: "fill",
-            source: "countries",
-            "source-layer": "country_boundaries",
-            paint: { "fill-color": darkGreen, "fill-opacity": 1 },
-          },
-          {
-            id: "country-borders",
-            type: "line",
-            source: "countries",
-            "source-layer": "country_boundaries",
-            paint: {
-              "line-color": outlineGreen,
-              "line-width": 1.5,
-              "line-opacity": 0.8,
-            },
-          },
-        ],
-      },
-      center: [14.5, 39.5],
-      zoom: 4.2,
-      interactive: false,
-      attributionControl: false,
-      pitch: 0,
-    });
-
-    let m = map.current!;
-
-    m = new mapboxgl.Map({
+    const m = new mapboxgl.Map({
       container: mapContainer.current,
       style: {
         version: 8,
@@ -82,16 +37,14 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
       attributionControl: false,
     });
 
-    map.current = m;
+    mapRef.current = m;
 
     m.on("load", () => {
-      // Add country boundaries source
       m.addSource("countries", {
         type: "vector",
         url: "mapbox://mapbox.country-boundaries-v1",
       });
 
-      // Country fills - same dark green as background
       m.addLayer({
         id: "country-fills",
         type: "fill",
@@ -100,7 +53,6 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         paint: { "fill-color": darkGreen, "fill-opacity": 1 },
       });
 
-      // Country borders - lighter green outlines
       m.addLayer({
         id: "country-borders",
         type: "line",
@@ -113,7 +65,6 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         },
       });
 
-      // Add marker for Trapani / Belice Valley
       const markerEl = document.createElement("div");
       markerEl.innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;pointer-events:none;">
@@ -132,7 +83,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
 
     return () => {
       m.remove();
-      map.current = null;
+      mapRef.current = null;
     };
   }, []);
 
