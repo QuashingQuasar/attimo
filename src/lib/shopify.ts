@@ -266,14 +266,21 @@ export interface CartItem {
     name: string;
     value: string;
   }>;
+  sellingPlanId?: string;
 }
 
 export async function createStorefrontCheckout(items: CartItem[]): Promise<string> {
   try {
-    const lines = items.map(item => ({
-      quantity: item.quantity,
-      merchandiseId: item.variantId,
-    }));
+    const lines = items.map(item => {
+      const line: any = {
+        quantity: item.quantity,
+        merchandiseId: item.variantId,
+      };
+      if (item.sellingPlanId) {
+        line.sellingPlanId = item.sellingPlanId;
+      }
+      return line;
+    });
 
     const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
       input: { lines },
