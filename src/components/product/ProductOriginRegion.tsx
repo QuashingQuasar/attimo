@@ -10,10 +10,10 @@ export const ProductOriginRegion = () => {
           </div>
           <div className="space-y-6">
             <h2 className="font-beverly font-bold tracking-tight" style={{ color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
-              Origin: Alentejo, Portugal
+              Origin: Sicily, Italy
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
-              Our olive oil comes from Alentejo, the sun-drenched region in southern Portugal. The soil there is rich and ancient, and olive trees have been growing for generations. We work directly with a small family farm dedicated to producing world-class olive oil.
+              Our olive oil comes from Sicily, the sun-drenched island in southern Italy. The volcanic soil is rich and ancient, and olive trees have been growing for generations. We work directly with a small family farm dedicated to producing world-class olive oil.
             </p>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255, 250, 234, 0.8)', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
               Every bottle is traceable to its exact grove — no blending, no middlemen, no mystery. You know exactly where your oil comes from.
