@@ -232,7 +232,7 @@ const ProductPage = () => {
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map((tile) =>
-              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)', border: '1.5px dotted #1B4229' }}>
+              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)', border: '2px dashed #1B4229' }}>
                     <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       {tile.label}
                     </p>
