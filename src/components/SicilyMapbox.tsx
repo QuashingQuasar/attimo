@@ -119,7 +119,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         <text
           x={bx + 43}
           y={by + 79}
-          fill="#ECA948"
+          fill="#FFFAEA"
           fontFamily="'Space Grotesk', sans-serif"
           fontSize={13}
           fontWeight={700}
