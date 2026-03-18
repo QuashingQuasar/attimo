@@ -110,15 +110,15 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         <line
           x1={bx}
           y1={by}
-          x2={bx + 80}
-          y2={by}
+          x2={bx + 75}
+          y2={by + 29}
           stroke="#ECA948"
           strokeWidth={1.2}
           opacity={0.9}
         />
         <text
-          x={bx + 85}
-          y={by + 4}
+          x={bx + 80}
+          y={by + 33}
           fill="#ECA948"
           fontFamily="'Space Grotesk', sans-serif"
           fontSize={13}
