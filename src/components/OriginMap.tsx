@@ -1,31 +1,9 @@
-import sicilyMap from "@/assets/sicily-map.png";
-import { useState } from "react";
+import { SicilyMapbox } from "@/components/SicilyMapbox";
 
 export const OriginMap = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleToggle = () => {
-    setIsExpanded(!isExpanded);
-  };
-
   return (
-    <div 
-      className={`h-full w-full relative transition-transform duration-300 origin-bottom-right cursor-pointer ${
-        isExpanded ? 'scale-[1.6]' : ''
-      }`}
-      onClick={handleToggle}
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
-    >
-      <div className="rounded-xl overflow-hidden h-full w-full">
-        <img 
-          src={sicilyMap} 
-          alt="Map of Sicily, Italy showing Trapani and the Belice Valley"
-          className={`w-full h-full object-cover block rounded-2xl transition-opacity duration-300 ${
-            isExpanded ? 'opacity-100' : 'opacity-75'
-          }`}
-        />
-      </div>
+    <div className="h-full w-full">
+      <SicilyMapbox className="h-full w-full" />
     </div>
   );
 };
