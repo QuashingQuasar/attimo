@@ -106,7 +106,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         ))}
 
         {/* Belice Valley label - clean line to the right, away from outlines */}
-        <circle cx={bx} cy={by} r={3} fill="#ECA948" />
+        <circle cx={bx} cy={by} r={3} fill="#FFFAEA" />
         <line
           x1={bx}
           y1={by}
