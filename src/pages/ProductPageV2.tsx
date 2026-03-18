@@ -307,7 +307,7 @@ const ProductPage = () => {
 
       {/* Content sections below product hero */}
       <ProductOriginStory content={content.originStory} />
-      <Testimonials />
+      <Testimonials headingColor="#ECA948" />
       <ProductOriginRegion />
       <ProductLabTrust content={content.labTrust} />
       <OilComparison />
