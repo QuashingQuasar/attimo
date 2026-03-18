@@ -6,73 +6,92 @@ mapboxgl.accessToken = "pk.eyJ1IjoiZ2lsbGVzZGMxMSIsImEiOiJjbWg2OWJpemMwaTc3MmxwZ
 
 interface SicilyMapboxProps {
   className?: string;
-  interactive?: boolean;
 }
 
-export const SicilyMapbox = ({ className = "", interactive = false }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
+  const mapRef = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
-    if (!mapContainer.current || map.current) return;
+    if (!mapContainer.current || mapRef.current) return;
 
-    map.current = new mapboxgl.Map({
+    const darkGreen = "#1B4229";
+    const outlineGreen = "#2d6b3f";
+
+    const m = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/satellite-streets-v12",
-      center: [12.8, 37.85],
-      zoom: 7.2,
-      interactive,
+      style: {
+        version: 8,
+        sources: {},
+        layers: [
+          {
+            id: "background",
+            type: "background",
+            paint: { "background-color": darkGreen },
+          },
+        ],
+      },
+      center: [14.5, 39.5],
+      zoom: 4.2,
+      interactive: false,
       attributionControl: false,
-      pitch: 0,
     });
 
-    const m = map.current;
+    mapRef.current = m;
 
     m.on("load", () => {
-      // Marker for Trapani / Belice Valley
+      m.addSource("countries", {
+        type: "vector",
+        url: "mapbox://mapbox.country-boundaries-v1",
+      });
+
+      m.addLayer({
+        id: "country-fills",
+        type: "fill",
+        source: "countries",
+        "source-layer": "country_boundaries",
+        paint: { "fill-color": darkGreen, "fill-opacity": 1 },
+      });
+
+      m.addLayer({
+        id: "country-borders",
+        type: "line",
+        source: "countries",
+        "source-layer": "country_boundaries",
+        paint: {
+          "line-color": outlineGreen,
+          "line-width": 1.5,
+          "line-opacity": 0.85,
+        },
+      });
+
       const markerEl = document.createElement("div");
       markerEl.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="background:#ECA948;color:#1B4229;font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.3);">
-            Belice Valley
+        <div style="display:flex;flex-direction:column;align-items:center;pointer-events:none;">
+          <div style="color:#FFFAEA;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;white-space:nowrap;text-shadow:0 1px 4px rgba(0,0,0,0.4);">
+            Sicily, Italy
           </div>
-          <div style="width:2px;height:8px;background:#ECA948;"></div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#ECA948;border:2px solid #1B4229;"></div>
+          <div style="width:1.5px;height:28px;background:#FFFAEA;opacity:0.9;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#FFFAEA;"></div>
         </div>
       `;
 
       new mapboxgl.Marker({ element: markerEl, anchor: "bottom" })
-        .setLngLat([12.95, 37.78])
-        .addTo(m);
-
-      // Marker for Trapani
-      const trapaniEl = document.createElement("div");
-      trapaniEl.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div style="background:rgba(255,250,234,0.9);color:#1B4229;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;padding:3px 8px;border-radius:4px;white-space:nowrap;">
-            Trapani
-          </div>
-          <div style="width:2px;height:6px;background:rgba(255,250,234,0.9);"></div>
-          <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,250,234,0.9);"></div>
-        </div>
-      `;
-
-      new mapboxgl.Marker({ element: trapaniEl, anchor: "bottom" })
-        .setLngLat([12.51, 38.02])
+        .setLngLat([13.3, 37.85])
         .addTo(m);
     });
 
     return () => {
       m.remove();
-      map.current = null;
+      mapRef.current = null;
     };
-  }, [interactive]);
+  }, []);
 
   return (
     <div
       ref={mapContainer}
       className={`rounded-2xl overflow-hidden ${className}`}
-      style={{ minHeight: 300 }}
+      style={{ minHeight: 280 }}
     />
   );
 };
