@@ -55,7 +55,7 @@ export const PurchaseOptions = ({
           <div
             className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
               purchaseType === "one-time"
-                ? "border-olive-dark"
+                ? "border-cream"
                 : "border-olive-dark/30"
             }`}
           >
