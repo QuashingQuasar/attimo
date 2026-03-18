@@ -6,7 +6,7 @@ export const ProductOriginRegion = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
-            <img src={iberiaMap} alt="Map of Iberian Peninsula showing Alentejo, Portugal" className="w-full max-w-[400px] rounded-2xl" />
+            <img src={sicilyMap} alt="Map of Sicily, Italy showing Trapani and the Belice Valley" className="w-full max-w-[400px] rounded-2xl" />
           </div>
           <div className="space-y-6">
             <h2 className="font-beverly font-bold tracking-tight" style={{ color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>

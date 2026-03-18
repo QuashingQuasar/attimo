@@ -19,8 +19,8 @@ export const OriginMap = () => {
     >
       <div className="rounded-xl overflow-hidden h-full w-full">
         <img 
-          src={iberiaMap} 
-          alt="Map of Iberian Peninsula showing Alentejo, Portugal" 
+          src={sicilyMap} 
+          alt="Map of Sicily, Italy showing Trapani and the Belice Valley"
           className={`w-full h-full object-cover block rounded-2xl transition-opacity duration-300 ${
             isExpanded ? 'opacity-100' : 'opacity-75'
           }`}
