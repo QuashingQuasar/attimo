@@ -77,8 +77,10 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
       .catch(console.error);
   }, []);
 
-  // Marker position
+  // Sicily label position (pointing down-left, ~150° clockwise)
   const [mx, my] = project(13.3, 37.85, cx, cy, zoom);
+  // Belice Valley marker
+  const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
 
   return (
     <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: "#1B4229" }}>
@@ -103,28 +105,50 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
           />
         ))}
 
-        {/* Marker line */}
+        {/* Sicily label - line going down-left (~150°) */}
         <line
           x1={mx}
           y1={my}
-          x2={mx + 15}
-          y2={my - 40}
+          x2={mx - 30}
+          y2={my + 35}
           stroke="#FFFAEA"
           strokeWidth={1.2}
           opacity={0.9}
         />
-        {/* Marker dot */}
         <circle cx={mx} cy={my} r={3.5} fill="#FFFAEA" />
-        {/* Label */}
         <text
-          x={mx + 18}
-          y={my - 43}
+          x={mx - 33}
+          y={my + 50}
           fill="#FFFAEA"
           fontFamily="'Space Grotesk', sans-serif"
           fontSize={12}
           fontWeight={700}
+          textAnchor="end"
         >
           Sicily, Italy
+        </text>
+
+        {/* Belice Valley marker */}
+        <line
+          x1={bx}
+          y1={by}
+          x2={bx - 40}
+          y2={by + 30}
+          stroke="#ECA948"
+          strokeWidth={1}
+          opacity={0.8}
+        />
+        <circle cx={bx} cy={by} r={2.5} fill="#ECA948" />
+        <text
+          x={bx - 43}
+          y={by + 44}
+          fill="#ECA948"
+          fontFamily="'Space Grotesk', sans-serif"
+          fontSize={10}
+          fontWeight={600}
+          textAnchor="end"
+        >
+          Belice Valley
         </text>
       </svg>
     </div>
