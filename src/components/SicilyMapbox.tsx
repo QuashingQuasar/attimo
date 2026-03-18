@@ -77,8 +77,10 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
       .catch(console.error);
   }, []);
 
-  // Marker position
+  // Sicily label position (pointing down-left, ~150° clockwise)
   const [mx, my] = project(13.3, 37.85, cx, cy, zoom);
+  // Belice Valley marker
+  const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
 
   return (
     <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: "#1B4229" }}>
