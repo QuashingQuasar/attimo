@@ -23,6 +23,7 @@ export const QuantitySelector = ({
   pricePerUnit,
   onAddToCart,
   buttonId,
+  buttonColor = "#CDDB2D",
 }: QuantitySelectorProps) => {
   const totalPrice = quantity * pricePerUnit;
 
