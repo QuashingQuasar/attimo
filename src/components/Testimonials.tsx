@@ -11,7 +11,7 @@ const testimonials = [
   { name: "Madis K.", location: "Tallinn, Estonia", date: "15 Aug 2025", text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.", rating: 5, title: "You can taste the quality" },
 ];
 
-export const Testimonials = () => {
+export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingColor?: string }) => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
@@ -21,7 +21,7 @@ export const Testimonials = () => {
       </video>
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
-        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: "#ECA948" }}>
+        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
           Word from the street
         </h2>
         <div className="relative overflow-hidden">
