@@ -105,48 +105,48 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
           />
         ))}
 
-        {/* Sicily label - line going down-left (~150°) */}
+        {/* Sicily label - line going to the right */}
         <line
           x1={mx}
           y1={my}
-          x2={mx - 30}
-          y2={my + 35}
+          x2={mx + 50}
+          y2={my - 15}
           stroke="#FFFAEA"
           strokeWidth={1.2}
           opacity={0.9}
         />
         <circle cx={mx} cy={my} r={3.5} fill="#FFFAEA" />
         <text
-          x={mx - 33}
-          y={my + 50}
+          x={mx + 54}
+          y={my - 18}
           fill="#FFFAEA"
           fontFamily="'Space Grotesk', sans-serif"
           fontSize={12}
           fontWeight={700}
-          textAnchor="end"
+          textAnchor="start"
         >
           Sicily, Italy
         </text>
 
-        {/* Belice Valley marker */}
+        {/* Belice Valley marker - label below-right, offset from Sicily label */}
         <line
           x1={bx}
           y1={by}
-          x2={bx - 40}
-          y2={by + 30}
+          x2={bx + 45}
+          y2={by + 25}
           stroke="#ECA948"
           strokeWidth={1}
           opacity={0.8}
         />
         <circle cx={bx} cy={by} r={2.5} fill="#ECA948" />
         <text
-          x={bx - 43}
-          y={by + 44}
+          x={bx + 48}
+          y={by + 29}
           fill="#ECA948"
           fontFamily="'Space Grotesk', sans-serif"
           fontSize={10}
           fontWeight={600}
-          textAnchor="end"
+          textAnchor="start"
         >
           Belice Valley
         </text>
