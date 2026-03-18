@@ -52,13 +52,13 @@ interface SicilyMapboxProps {
 }
 
 export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
-  const [paths, setPaths] = useState<string[]>([]);
+  const [countryPaths, setCountryPaths] = useState<{ d: string; isItaly: boolean }[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Map center and zoom
+  // Map center shifted north to show all of Italy
   const cx = 14.5;
-  const cy = 39.5;
-  const zoom = 18;
+  const cy = 41.5;
+  const zoom = 14;
 
   // SVG viewBox dimensions
   const vw = 500;
@@ -68,16 +68,20 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
     fetch(NE_110M_URL)
       .then((r) => r.json())
       .then((geojson) => {
-        const allPaths: string[] = [];
+        const allPaths: { d: string; isItaly: boolean }[] = [];
         for (const feature of geojson.features) {
-          allPaths.push(...geometryToPaths(feature.geometry, cx, cy, zoom));
+          const isItaly = feature.properties?.admin === "Italy" || feature.properties?.name === "Italy";
+          const featurePaths = geometryToPaths(feature.geometry, cx, cy, zoom);
+          for (const d of featurePaths) {
+            allPaths.push({ d, isItaly });
+          }
         }
-        setPaths(allPaths);
+        setCountryPaths(allPaths);
       })
       .catch(console.error);
   }, []);
 
-  // Sicily label position (pointing down-left, ~150° clockwise)
+  // Sicily label position
   const [mx, my] = project(13.3, 37.85, cx, cy, zoom);
   // Belice Valley marker
   const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
@@ -93,18 +97,17 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
       >
         <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill="#1B4229" />
 
-        {paths.map((d, i) => (
+        {countryPaths.map(({ d, isItaly }, i) => (
           <path
             key={i}
             d={d}
-            fill="none"
+            fill={isItaly ? "#2A5A3A" : "none"}
             stroke="#ECA948"
             strokeWidth={4}
             strokeLinejoin="round"
             strokeLinecap="round"
           />
         ))}
-
         {/* Belice Valley label - clean line to the right, away from outlines */}
         <circle cx={bx} cy={by} r={3} fill="#FFFAEA" />
         <line
