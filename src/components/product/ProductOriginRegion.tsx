@@ -13,7 +13,10 @@ export const ProductOriginRegion = () => {
               Origin: Sicily, Italy
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
-              Our olive oil comes from Sicily, the sun-drenched island in southern Italy. The volcanic soil is rich and ancient, and olive trees have been growing for generations. We work directly with a small family farm dedicated to producing world-class olive oil.
+              Sicily has a rich olive oil tradition since before Roman times. Nocellara is the icon of the Belice valley, on the western half of the island around Trapani. Here the summers are dry, the soil chalky, the harvest short. The oil it produces is round and fruit-forward. the kind that makes simple food taste like it was planned that way.
+
+
+
             </p>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255, 250, 234, 0.8)', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}>
               Every bottle is traceable to its exact grove — no blending, no middlemen, no mystery. You know exactly where your oil comes from.
@@ -21,6 +24,4 @@ export const ProductOriginRegion = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </section>);};
