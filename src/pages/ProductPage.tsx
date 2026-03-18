@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -218,10 +218,16 @@ const ProductPage = () => {
                 onAddToCart={handleAddToCart}
               />
 
-              <p className="text-olive-medium text-left flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                <ShieldCheck size={20} strokeWidth={1.5} />
-                Third party lab-tested for quality and purity
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                  <ShieldCheck size={20} strokeWidth={1.5} />
+                  Third party lab-tested for quality and purity
+                </p>
+                <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                  <Truck size={20} strokeWidth={1.5} />
+                  Ships within 1 business day
+                </p>
+              </div>
 
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
