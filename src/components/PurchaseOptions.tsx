@@ -47,7 +47,7 @@ export const PurchaseOptions = ({
         onClick={() => onPurchaseTypeChange("one-time")}
         className={`w-full flex items-center justify-between rounded-xl border-2 px-5 py-4 transition-all duration-200 text-left ${
           purchaseType === "one-time"
-            ? "border-olive-dark bg-olive-dark/5"
+            ? "border-olive-dark bg-olive-dark text-cream"
             : "border-olive-dark/20 bg-white/60 hover:border-olive-dark/40"
         }`}
       >
