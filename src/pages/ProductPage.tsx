@@ -13,7 +13,7 @@ import { FAQ } from "@/components/FAQ";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import { fetchProducts, ShopifyProduct, SellingPlan } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
