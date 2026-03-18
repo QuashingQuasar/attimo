@@ -28,6 +28,7 @@ const ProductPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [purchaseType, setPurchaseType] = useState<"one-time" | "subscribe">("one-time");
   const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(null);
+  const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
 
   const shopifyHandle = resolveShopifyHandle(handle);
