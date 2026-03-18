@@ -57,6 +57,25 @@ const ProductPage = () => {
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
+  // Extract selling plans from product
+  const sellingPlans: SellingPlan[] = useMemo(() => {
+    if (!product) return [];
+    return product.node.sellingPlanGroups?.edges?.flatMap(
+      (group) => group.node.sellingPlans.edges.map((sp) => sp.node)
+    ) || [];
+  }, [product]);
+
+  // Set default selling plan when plans load
+  useEffect(() => {
+    if (sellingPlans.length > 0 && !selectedSellingPlanId) {
+      setSelectedSellingPlanId(sellingPlans[0].id);
+    }
+  }, [sellingPlans, selectedSellingPlanId]);
+
+  const ONE_TIME_PRICE = 24;
+  const SUBSCRIPTION_PRICE = 22;
+  const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
+
   const handleAddToCart = () => {
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
@@ -65,9 +84,10 @@ const ProductPage = () => {
       product,
       variantId: variant.id,
       variantTitle: variant.title,
-      price: { amount: '24', currencyCode: 'EUR' },
+      price: { amount: String(activePrice), currencyCode: 'EUR' },
       quantity: selectedQuantity,
-      selectedOptions: variant.selectedOptions || []
+      selectedOptions: variant.selectedOptions || [],
+      ...(purchaseType === "subscribe" && selectedSellingPlanId ? { sellingPlanId: selectedSellingPlanId } : {}),
     });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
       position: "top-center"
