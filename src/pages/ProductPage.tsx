@@ -18,6 +18,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
+import { PurchaseOptions } from "@/components/PurchaseOptions";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
