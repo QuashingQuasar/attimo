@@ -13,7 +13,7 @@ export const ProductOriginRegion = () => {
               Origin: Sicily, Italy
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
-              Nocellara is grown in the Belice valley on the west coast of Sicily, where people have been making olive oil since long before the Romans. Here, limestone soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour.
+              Nocellara is home to the Belice valley on the west coast of Sicily, where people have been making olive oil since Greek times. Here, limestone soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour. We work directly with a small farm dedicated to making elite olive oil just outside of Trapani.                         
             </p>
           </div>
         </div>
