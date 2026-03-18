@@ -263,7 +263,7 @@ const ProductPage = () => {
                   borderRadius: "0.75rem",
                 }}
               >
-                ADD TO CART €{selectedQuantity * activePrice}<span className="font-normal">{" — "}{selectedQuantity < 2 ? "Add 1 more for free shipping" : "Free Shipping ✓"}</span>
+                ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">({selectedQuantity < 2 ? "ADD 1 MORE FOR FREE SHIPPING" : "FREE SHIPPING ✓"})</span>
               </Button>
 
               <div className="flex items-center gap-6">
