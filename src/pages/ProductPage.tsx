@@ -170,9 +170,14 @@ const ProductPage = () => {
                   <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                     New Harvest
                   </span>
-                  <span className="font-bold uppercase tracking-wider text-olive-dark" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                    In Stock
-                  </span>
+                  {(() => {
+                    const inStock = product.node.variants.edges.some(v => v.node.availableForSale);
+                    return (
+                      <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : 'text-red-600'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                        {inStock ? 'In Stock' : 'Sold Out'}
+                      </span>
+                    );
+                  })()}
                 </div>
 
                 {/* Title + Volume */}
