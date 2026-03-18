@@ -42,11 +42,62 @@ export interface ShopifyProduct {
         };
       }>;
     };
+    sellingPlanGroups: {
+      edges: Array<{
+        node: {
+          name: string;
+          options: Array<{
+            name: string;
+            values: string[];
+          }>;
+          sellingPlans: {
+            edges: Array<{
+              node: {
+                id: string;
+                name: string;
+                options: Array<{
+                  name: string;
+                  value: string;
+                }>;
+                priceAdjustments: Array<{
+                  adjustmentValue: {
+                    __typename: string;
+                    adjustmentPercentage?: number;
+                    adjustmentAmount?: {
+                      amount: string;
+                      currencyCode: string;
+                    };
+                    price?: {
+                      amount: string;
+                      currencyCode: string;
+                    };
+                  };
+                }>;
+              };
+            }>;
+          };
+        };
+      }>;
+    };
     options: Array<{
       name: string;
       values: string[];
     }>;
   };
+}
+
+export interface SellingPlan {
+  id: string;
+  name: string;
+  options: Array<{ name: string; value: string }>;
+  priceAdjustments: Array<{
+    adjustmentValue: {
+      __typename: string;
+      adjustmentPercentage?: number;
+      adjustmentAmount?: { amount: string; currencyCode: string };
+      price?: { amount: string; currencyCode: string };
+    };
+  }>;
 }
 
 export async function storefrontApiRequest(query: string, variables: any = {}) {
@@ -122,6 +173,49 @@ const PRODUCTS_QUERY = `
               }
             }
           }
+          sellingPlanGroups(first: 5) {
+            edges {
+              node {
+                name
+                options {
+                  name
+                  values
+                }
+                sellingPlans(first: 10) {
+                  edges {
+                    node {
+                      id
+                      name
+                      options {
+                        name
+                        value
+                      }
+                      priceAdjustments {
+                        adjustmentValue {
+                          __typename
+                          ... on SellingPlanPercentagePriceAdjustment {
+                            adjustmentPercentage
+                          }
+                          ... on SellingPlanFixedAmountPriceAdjustment {
+                            adjustmentAmount {
+                              amount
+                              currencyCode
+                            }
+                          }
+                          ... on SellingPlanFixedPriceAdjustment {
+                            price {
+                              amount
+                              currencyCode
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
           options {
             name
             values
@@ -172,14 +266,21 @@ export interface CartItem {
     name: string;
     value: string;
   }>;
+  sellingPlanId?: string;
 }
 
 export async function createStorefrontCheckout(items: CartItem[]): Promise<string> {
   try {
-    const lines = items.map(item => ({
-      quantity: item.quantity,
-      merchandiseId: item.variantId,
-    }));
+    const lines = items.map(item => {
+      const line: any = {
+        quantity: item.quantity,
+        merchandiseId: item.variantId,
+      };
+      if (item.sellingPlanId) {
+        line.sellingPlanId = item.sellingPlanId;
+      }
+      return line;
+    });
 
     const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
       input: { lines },

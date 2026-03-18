@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
@@ -13,11 +13,12 @@ import { FAQ } from "@/components/FAQ";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProducts, ShopifyProduct } from "@/lib/shopify";
+import { fetchProducts, ShopifyProduct, SellingPlan } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
+import { PurchaseOptions } from "@/components/PurchaseOptions";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -25,6 +26,8 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [purchaseType, setPurchaseType] = useState<"one-time" | "subscribe">("one-time");
+  const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(null);
   const addItem = useCartStore((state) => state.addItem);
 
   const shopifyHandle = resolveShopifyHandle(handle);
@@ -54,6 +57,25 @@ const ProductPage = () => {
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
+  // Extract selling plans from product
+  const sellingPlans: SellingPlan[] = useMemo(() => {
+    if (!product) return [];
+    return product.node.sellingPlanGroups?.edges?.flatMap(
+      (group) => group.node.sellingPlans.edges.map((sp) => sp.node)
+    ) || [];
+  }, [product]);
+
+  // Set default selling plan when plans load
+  useEffect(() => {
+    if (sellingPlans.length > 0 && !selectedSellingPlanId) {
+      setSelectedSellingPlanId(sellingPlans[0].id);
+    }
+  }, [sellingPlans, selectedSellingPlanId]);
+
+  const ONE_TIME_PRICE = 24;
+  const SUBSCRIPTION_PRICE = 22;
+  const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
+
   const handleAddToCart = () => {
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
@@ -62,9 +84,10 @@ const ProductPage = () => {
       product,
       variantId: variant.id,
       variantTitle: variant.title,
-      price: { amount: '24', currencyCode: 'EUR' },
+      price: { amount: String(activePrice), currencyCode: 'EUR' },
       quantity: selectedQuantity,
-      selectedOptions: variant.selectedOptions || []
+      selectedOptions: variant.selectedOptions || [],
+      ...(purchaseType === "subscribe" && selectedSellingPlanId ? { sellingPlanId: selectedSellingPlanId } : {}),
     });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
       position: "top-center"
@@ -96,8 +119,7 @@ const ProductPage = () => {
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
-  const PRICE_PER_BOTTLE = 24;
-  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
+  const totalPrice = selectedQuantity * activePrice;
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
   const attributes = [
@@ -219,9 +241,19 @@ const ProductPage = () => {
               <QuantitySelector
                 quantity={selectedQuantity}
                 onQuantityChange={setSelectedQuantity}
-                pricePerUnit={24}
+                pricePerUnit={activePrice}
                 onAddToCart={handleAddToCart}
                 buttonColor={content.buttonColor}
+              />
+
+              <PurchaseOptions
+                sellingPlans={sellingPlans}
+                oneTimePrice={ONE_TIME_PRICE}
+                subscriptionPrice={SUBSCRIPTION_PRICE}
+                purchaseType={purchaseType}
+                onPurchaseTypeChange={setPurchaseType}
+                selectedSellingPlanId={selectedSellingPlanId}
+                onSellingPlanChange={setSelectedSellingPlanId}
               />
 
               <div className="flex items-center gap-6">
