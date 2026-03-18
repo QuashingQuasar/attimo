@@ -52,7 +52,7 @@ interface SicilyMapboxProps {
 }
 
 export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
-  const [countryPaths, setCountryPaths] = useState<{ d: string; isItaly: boolean }[]>([]);
+  const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Map center shifted north to show all of Italy
@@ -68,21 +68,15 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
     fetch(NE_110M_URL)
       .then((r) => r.json())
       .then((geojson) => {
-        const allPaths: { d: string; isItaly: boolean }[] = [];
+        const allPaths: string[] = [];
         for (const feature of geojson.features) {
-          const isItaly = feature.properties?.admin === "Italy" || feature.properties?.name === "Italy";
-          const featurePaths = geometryToPaths(feature.geometry, cx, cy, zoom);
-          for (const d of featurePaths) {
-            allPaths.push({ d, isItaly });
-          }
+          allPaths.push(...geometryToPaths(feature.geometry, cx, cy, zoom));
         }
-        setCountryPaths(allPaths);
+        setPaths(allPaths);
       })
       .catch(console.error);
   }, []);
 
-  // Sicily label position
-  const [mx, my] = project(13.3, 37.85, cx, cy, zoom);
   // Belice Valley marker
   const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
 
@@ -97,31 +91,32 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
       >
         <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill="#1B4229" />
 
-        {countryPaths.map(({ d, isItaly }, i) => (
+        {paths.map((d, i) => (
           <path
             key={i}
             d={d}
-            fill={isItaly ? "#2A5A3A" : "none"}
+            fill="none"
             stroke="#ECA948"
             strokeWidth={4}
             strokeLinejoin="round"
             strokeLinecap="round"
           />
         ))}
-        {/* Belice Valley label - clean line to the right, away from outlines */}
+
+        {/* Belice Valley label */}
         <circle cx={bx} cy={by} r={3} fill="#FFFAEA" />
         <line
           x1={bx}
           y1={by}
-          x2={bx + 38}
-          y2={by + 75}
+          x2={bx + 25}
+          y2={by + 45}
           stroke="#FFFAEA"
           strokeWidth={1.2}
           opacity={0.9}
         />
         <text
-          x={bx + 43}
-          y={by + 79}
+          x={bx + 30}
+          y={by + 49}
           fill="#FFFAEA"
           fontFamily="'UDC Working Man Sans', sans-serif"
           fontSize={18}
