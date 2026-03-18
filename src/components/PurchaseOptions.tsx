@@ -105,7 +105,7 @@ export const PurchaseOptions = ({
               }`}
             >
               {purchaseType === "subscribe" && (
-                <div className="w-[10px] h-[10px] rounded-full bg-olive-dark" />
+                <div className="w-[10px] h-[10px] rounded-full bg-cream" />
               )}
             </div>
             <span
