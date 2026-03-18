@@ -6,6 +6,7 @@ interface QuantitySelectorProps {
   pricePerUnit: number;
   onAddToCart: () => void;
   buttonId?: string;
+  buttonColor?: string;
 }
 
 const presets = [
