@@ -220,12 +220,12 @@ const ProductPage = () => {
 
               <div className="flex items-center justify-between">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                  <ShieldCheck size={20} strokeWidth={1.5} />
-                  Third party lab-tested for quality and purity
+                  <Truck size={20} strokeWidth={1.5} />
+                  Order today, ships tomorrow
                 </p>
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                  <Truck size={20} strokeWidth={1.5} />
-                  Ships within 1 business day
+                  <ShieldCheck size={20} strokeWidth={1.5} />
+                  Third party lab-tested for quality and purity
                 </p>
               </div>
 
