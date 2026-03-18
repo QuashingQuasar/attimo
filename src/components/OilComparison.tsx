@@ -4,7 +4,7 @@ const comparisonData = [
 { feature: "SINGLE SOURCE", attimo: { type: "check" }, them: { type: "text", value: "Oil blended from 3+ countries" } },
 { feature: "TRACEABLE", attimo: { type: "check" }, them: { type: "cross" } },
 { feature: "LAB-TESTED", attimo: { type: "check" }, them: { type: "cross" } },
-{ feature: "POLYPHENOLS", attimo: { type: "text", value: "400 mg/kg" }, them: { type: "text", value: "100-200 mg/kg" } }];
+{ feature: "POLYPHENOLS", attimo: { type: "text", value: "400-900 mg/kg" }, them: { type: "text", value: "100-200 mg/kg" } }];
 
 export const OilComparison = () => {
   return <section className="pt-0 pb-24 md:pb-28 lg:pb-36 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
@@ -20,7 +20,7 @@ export const OilComparison = () => {
               <thead>
                 <tr style={{ borderBottom: '2px dashed #1B4229' }}>
                   <th className="py-3 px-2 md:py-6 md:px-8 text-left"></th>
-                  <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold font-working-man" style={{ color: '#1B4229', backgroundColor: '#B3E58C', fontSize: 'clamp(1rem, 1.8vw, 2rem)' }}>Nocellara d'Italia </th>
+                  <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold font-working-man" style={{ color: '#1B4229', backgroundColor: '#B3E58C', fontSize: 'clamp(1rem, 1.8vw, 2rem)' }}>Nocellara </th>
                   <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold" style={{ color: '#1B4229', fontSize: 'clamp(0.875rem, 1.8vw, 2rem)' }}>Supermarket EVOO</th>
                 </tr>
               </thead>
