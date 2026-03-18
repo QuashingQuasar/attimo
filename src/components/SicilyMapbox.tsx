@@ -97,7 +97,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
             d={d}
             fill="none"
             stroke="#2d6b3f"
-            strokeWidth={1.8}
+            strokeWidth={4}
             strokeLinejoin="round"
             strokeLinecap="round"
           />
