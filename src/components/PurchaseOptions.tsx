@@ -64,7 +64,7 @@ export const PurchaseOptions = ({
             )}
           </div>
           <span
-            className="text-olive-dark font-semibold"
+            className={`font-semibold ${purchaseType === "one-time" ? "text-cream" : "text-olive-dark"}`}
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
