@@ -121,7 +121,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
           y={by + 79}
           fill="#FFFAEA"
           fontFamily="'UDC Working Man Sans', sans-serif"
-          fontSize={13}
+          fontSize={18}
           fontWeight={700}
           textAnchor="start"
         >
