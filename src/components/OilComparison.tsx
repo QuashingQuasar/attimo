@@ -4,7 +4,7 @@ const comparisonData = [
 { feature: "SINGLE SOURCE", attimo: { type: "check" }, them: { type: "text", value: "Oil blended from 3+ countries" } },
 { feature: "TRACEABLE", attimo: { type: "check" }, them: { type: "cross" } },
 { feature: "LAB-TESTED", attimo: { type: "check" }, them: { type: "cross" } },
-{ feature: "POLYPHENOLS", attimo: { type: "text", value: "400-900 mg/kg" }, them: { type: "text", value: "100-200 mg/kg" } }];
+{ feature: "POLYPHENOLS", attimo: { type: "text", value: "400 mg/kg" }, them: { type: "text", value: "100-200 mg/kg" } }];
 
 export const OilComparison = () => {
   return <section className="pt-0 pb-24 md:pb-28 lg:pb-36 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
