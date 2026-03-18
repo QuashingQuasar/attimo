@@ -47,7 +47,7 @@ export const PurchaseOptions = ({
         onClick={() => onPurchaseTypeChange("one-time")}
         className={`w-full flex items-center justify-between rounded-xl border-2 px-5 py-4 transition-all duration-200 text-left ${
           purchaseType === "one-time"
-            ? "border-olive-dark bg-olive-dark/5"
+            ? "border-olive-dark bg-olive-dark text-cream"
             : "border-olive-dark/20 bg-white/60 hover:border-olive-dark/40"
         }`}
       >
@@ -55,16 +55,16 @@ export const PurchaseOptions = ({
           <div
             className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
               purchaseType === "one-time"
-                ? "border-olive-dark"
+                ? "border-cream"
                 : "border-olive-dark/30"
             }`}
           >
             {purchaseType === "one-time" && (
-              <div className="w-[10px] h-[10px] rounded-full bg-olive-dark" />
+              <div className="w-[10px] h-[10px] rounded-full bg-cream" />
             )}
           </div>
           <span
-            className="text-olive-dark font-semibold"
+            className={`font-semibold ${purchaseType === "one-time" ? "text-cream" : "text-olive-dark"}`}
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
@@ -74,14 +74,14 @@ export const PurchaseOptions = ({
           </span>
         </div>
         <span
-          className="text-olive-dark font-bold"
+          className={`font-bold ${purchaseType === "one-time" ? "text-cream" : "text-olive-dark"}`}
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
           }}
         >
           €{oneTimePrice}
-          <span className="font-normal text-olive-medium"> / bottle</span>
+          <span className={`font-normal ${purchaseType === "one-time" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
         </span>
       </button>
 
@@ -92,7 +92,7 @@ export const PurchaseOptions = ({
           onClick={() => onPurchaseTypeChange("subscribe")}
           className={`w-full flex items-center justify-between rounded-xl border-2 px-5 py-4 transition-all duration-200 text-left ${
             purchaseType === "subscribe"
-              ? "border-olive-dark bg-olive-dark/5 rounded-b-none"
+              ? "border-olive-dark bg-olive-dark text-cream rounded-b-none"
               : "border-olive-dark/20 bg-white/60 hover:border-olive-dark/40"
           }`}
         >
@@ -100,16 +100,16 @@ export const PurchaseOptions = ({
             <div
               className={`w-[18px] h-[18px] rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
                 purchaseType === "subscribe"
-                  ? "border-olive-dark"
+                  ? "border-cream"
                   : "border-olive-dark/30"
               }`}
             >
               {purchaseType === "subscribe" && (
-                <div className="w-[10px] h-[10px] rounded-full bg-olive-dark" />
+                <div className="w-[10px] h-[10px] rounded-full bg-cream" />
               )}
             </div>
             <span
-              className="text-olive-dark font-semibold"
+              className={`font-semibold ${purchaseType === "subscribe" ? "text-cream" : "text-olive-dark"}`}
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
@@ -119,14 +119,14 @@ export const PurchaseOptions = ({
             </span>
           </div>
           <span
-            className="text-olive-dark font-bold"
+            className={`font-bold ${purchaseType === "subscribe" ? "text-cream" : "text-olive-dark"}`}
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
             }}
           >
             €{subscriptionPrice}
-            <span className="font-normal text-olive-medium"> / bottle</span>
+            <span className={`font-normal ${purchaseType === "subscribe" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
           </span>
         </button>
 
