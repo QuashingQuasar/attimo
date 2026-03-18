@@ -55,6 +55,17 @@ const ProductPage = () => {
     loadProducts();
   }, [shopifyHandle]);
 
+  // Fetch selling plans separately (requires unauthenticated_read_selling_plans scope)
+  useEffect(() => {
+    if (!shopifyHandle) return;
+    fetchSellingPlans(shopifyHandle).then((plans) => {
+      setSellingPlans(plans);
+      if (plans.length > 0) {
+        setSelectedSellingPlanId(plans[0].id);
+      }
+    });
+  }, [shopifyHandle]);
+
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
