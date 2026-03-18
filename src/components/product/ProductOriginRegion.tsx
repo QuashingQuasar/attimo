@@ -19,7 +19,9 @@ export const ProductOriginRegion = () => {
 
 
 
-ATTIMO Nocellara is directly sourced from a small farm in the Belice valley, on the west coast of Sicily. Here, in the Belice valley, people have been making olive oil since before the Romans. Limestone soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour.                         
+ATTIMO Nocellara is directly sourced from a small farm in Belice on Sicily's west coast. where people have been making olive oil since before the Romans. Here, chalky soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour. The coast keeps the nights cool, which slows the accumulation of the more aggressive phenolic compounds. Harvested early, the result is an oil that is high in polyphenols but gentle in character — softer and rounder than anything produced further inland.                         
+            
+            
             
             
             
