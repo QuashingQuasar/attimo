@@ -119,14 +119,14 @@ export const PurchaseOptions = ({
             </span>
           </div>
           <span
-            className="text-olive-dark font-bold"
+            className={`font-bold ${purchaseType === "subscribe" ? "text-cream" : "text-olive-dark"}`}
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
             }}
           >
             €{subscriptionPrice}
-            <span className="font-normal text-olive-medium"> / bottle</span>
+            <span className={`font-normal ${purchaseType === "subscribe" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
           </span>
         </button>
 
