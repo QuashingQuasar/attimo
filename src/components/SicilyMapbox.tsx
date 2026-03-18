@@ -105,47 +105,24 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
           />
         ))}
 
-        {/* Sicily label - line going to the right */}
-        <line
-          x1={mx}
-          y1={my}
-          x2={mx + 50}
-          y2={my - 15}
-          stroke="#FFFAEA"
-          strokeWidth={1.2}
-          opacity={0.9}
-        />
-        <circle cx={mx} cy={my} r={3.5} fill="#FFFAEA" />
-        <text
-          x={mx + 54}
-          y={my - 18}
-          fill="#FFFAEA"
-          fontFamily="'Space Grotesk', sans-serif"
-          fontSize={12}
-          fontWeight={700}
-          textAnchor="start"
-        >
-          Sicily, Italy
-        </text>
-
-        {/* Belice Valley marker - label below-right, offset from Sicily label */}
+        {/* Single Belice Valley label */}
         <line
           x1={bx}
           y1={by}
-          x2={bx + 45}
-          y2={by + 25}
+          x2={bx + 58}
+          y2={by - 10}
           stroke="#ECA948"
-          strokeWidth={1}
-          opacity={0.8}
+          strokeWidth={1.2}
+          opacity={0.9}
         />
-        <circle cx={bx} cy={by} r={2.5} fill="#ECA948" />
+        <circle cx={bx} cy={by} r={3} fill="#ECA948" />
         <text
-          x={bx + 48}
-          y={by + 29}
+          x={bx + 62}
+          y={by - 14}
           fill="#ECA948"
           fontFamily="'Space Grotesk', sans-serif"
-          fontSize={10}
-          fontWeight={600}
+          fontSize={11}
+          fontWeight={700}
           textAnchor="start"
         >
           Belice Valley
