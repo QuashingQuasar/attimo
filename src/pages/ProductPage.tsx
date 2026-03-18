@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
@@ -13,7 +13,7 @@ import { FAQ } from "@/components/FAQ";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProducts, ShopifyProduct, SellingPlan } from "@/lib/shopify";
+import { fetchProducts, fetchSellingPlans, ShopifyProduct, SellingPlan } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
@@ -28,6 +28,7 @@ const ProductPage = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [purchaseType, setPurchaseType] = useState<"one-time" | "subscribe">("one-time");
   const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(null);
+  const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
 
   const shopifyHandle = resolveShopifyHandle(handle);
@@ -54,23 +55,19 @@ const ProductPage = () => {
     loadProducts();
   }, [shopifyHandle]);
 
+  // Fetch selling plans separately (requires unauthenticated_read_selling_plans scope)
+  useEffect(() => {
+    if (!shopifyHandle) return;
+    fetchSellingPlans(shopifyHandle).then((plans) => {
+      setSellingPlans(plans);
+      if (plans.length > 0) {
+        setSelectedSellingPlanId(plans[0].id);
+      }
+    });
+  }, [shopifyHandle]);
+
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
-
-  // Extract selling plans from product
-  const sellingPlans: SellingPlan[] = useMemo(() => {
-    if (!product) return [];
-    return product.node.sellingPlanGroups?.edges?.flatMap(
-      (group) => group.node.sellingPlans.edges.map((sp) => sp.node)
-    ) || [];
-  }, [product]);
-
-  // Set default selling plan when plans load
-  useEffect(() => {
-    if (sellingPlans.length > 0 && !selectedSellingPlanId) {
-      setSelectedSellingPlanId(sellingPlans[0].id);
-    }
-  }, [sellingPlans, selectedSellingPlanId]);
 
   const ONE_TIME_PRICE = 24;
   const SUBSCRIPTION_PRICE = 22;

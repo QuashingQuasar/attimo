@@ -42,43 +42,6 @@ export interface ShopifyProduct {
         };
       }>;
     };
-    sellingPlanGroups: {
-      edges: Array<{
-        node: {
-          name: string;
-          options: Array<{
-            name: string;
-            values: string[];
-          }>;
-          sellingPlans: {
-            edges: Array<{
-              node: {
-                id: string;
-                name: string;
-                options: Array<{
-                  name: string;
-                  value: string;
-                }>;
-                priceAdjustments: Array<{
-                  adjustmentValue: {
-                    __typename: string;
-                    adjustmentPercentage?: number;
-                    adjustmentAmount?: {
-                      amount: string;
-                      currencyCode: string;
-                    };
-                    price?: {
-                      amount: string;
-                      currencyCode: string;
-                    };
-                  };
-                }>;
-              };
-            }>;
-          };
-        };
-      }>;
-    };
     options: Array<{
       name: string;
       values: string[];
@@ -173,49 +136,6 @@ const PRODUCTS_QUERY = `
               }
             }
           }
-          sellingPlanGroups(first: 5) {
-            edges {
-              node {
-                name
-                options {
-                  name
-                  values
-                }
-                sellingPlans(first: 10) {
-                  edges {
-                    node {
-                      id
-                      name
-                      options {
-                        name
-                        value
-                      }
-                      priceAdjustments {
-                        adjustmentValue {
-                          __typename
-                          ... on SellingPlanPercentagePriceAdjustment {
-                            adjustmentPercentage
-                          }
-                          ... on SellingPlanFixedAmountPriceAdjustment {
-                            adjustmentAmount {
-                              amount
-                              currencyCode
-                            }
-                          }
-                          ... on SellingPlanFixedPriceAdjustment {
-                            price {
-                              amount
-                              currencyCode
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
           options {
             name
             values
@@ -226,9 +146,70 @@ const PRODUCTS_QUERY = `
   }
 `;
 
+const SELLING_PLANS_QUERY = `
+  query GetProductSellingPlans($handle: String!) {
+    product(handle: $handle) {
+      sellingPlanGroups(first: 5) {
+        edges {
+          node {
+            name
+            options {
+              name
+              values
+            }
+            sellingPlans(first: 10) {
+              edges {
+                node {
+                  id
+                  name
+                  options {
+                    name
+                    value
+                  }
+                  priceAdjustments {
+                    adjustmentValue {
+                      __typename
+                      ... on SellingPlanPercentagePriceAdjustment {
+                        adjustmentPercentage
+                      }
+                      ... on SellingPlanFixedAmountPriceAdjustment {
+                        adjustmentAmount {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanFixedPriceAdjustment {
+                        price {
+                          amount
+                          currencyCode
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 export async function fetchProducts(limit = 10, query?: string): Promise<ShopifyProduct[]> {
   const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit, query });
   return data?.data?.products?.edges || [];
+}
+
+export async function fetchSellingPlans(handle: string): Promise<SellingPlan[]> {
+  try {
+    const data = await storefrontApiRequest(SELLING_PLANS_QUERY, { handle });
+    const groups = data?.data?.product?.sellingPlanGroups?.edges || [];
+    return groups.flatMap((g: any) => g.node.sellingPlans.edges.map((sp: any) => sp.node));
+  } catch (error) {
+    console.warn('Could not fetch selling plans (scope may not be enabled):', error);
+    return [];
+  }
 }
 
 const CART_CREATE_MUTATION = `
