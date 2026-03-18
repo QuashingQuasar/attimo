@@ -1,4 +1,4 @@
-import iberiaMap from "@/assets/iberia-map.png";
+import sicilyMap from "@/assets/sicily-map.png";
 import { useState } from "react";
 
 export const OriginMap = () => {
