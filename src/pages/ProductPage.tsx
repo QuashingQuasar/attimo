@@ -119,8 +119,7 @@ const ProductPage = () => {
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
-  const PRICE_PER_BOTTLE = 24;
-  const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
+  const totalPrice = selectedQuantity * activePrice;
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
   const attributes = [
