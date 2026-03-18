@@ -42,11 +42,62 @@ export interface ShopifyProduct {
         };
       }>;
     };
+    sellingPlanGroups: {
+      edges: Array<{
+        node: {
+          name: string;
+          options: Array<{
+            name: string;
+            values: string[];
+          }>;
+          sellingPlans: {
+            edges: Array<{
+              node: {
+                id: string;
+                name: string;
+                options: Array<{
+                  name: string;
+                  value: string;
+                }>;
+                priceAdjustments: Array<{
+                  adjustmentValue: {
+                    __typename: string;
+                    adjustmentPercentage?: number;
+                    adjustmentAmount?: {
+                      amount: string;
+                      currencyCode: string;
+                    };
+                    price?: {
+                      amount: string;
+                      currencyCode: string;
+                    };
+                  };
+                }>;
+              };
+            }>;
+          };
+        };
+      }>;
+    };
     options: Array<{
       name: string;
       values: string[];
     }>;
   };
+}
+
+export interface SellingPlan {
+  id: string;
+  name: string;
+  options: Array<{ name: string; value: string }>;
+  priceAdjustments: Array<{
+    adjustmentValue: {
+      __typename: string;
+      adjustmentPercentage?: number;
+      adjustmentAmount?: { amount: string; currencyCode: string };
+      price?: { amount: string; currencyCode: string };
+    };
+  }>;
 }
 
 export async function storefrontApiRequest(query: string, variables: any = {}) {
