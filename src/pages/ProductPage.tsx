@@ -269,7 +269,7 @@ const ProductPage = () => {
               <div className="flex items-center gap-6">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <ShieldCheck size={20} strokeWidth={1.5} />
-                  Third party lab-tested for quality and purity
+                  Third party lab-tested quality
                 </p>
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <Truck size={20} strokeWidth={1.5} />
