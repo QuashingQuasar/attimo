@@ -238,6 +238,17 @@ export async function fetchProducts(limit = 10, query?: string): Promise<Shopify
   return data?.data?.products?.edges || [];
 }
 
+export async function fetchSellingPlans(handle: string): Promise<SellingPlan[]> {
+  try {
+    const data = await storefrontApiRequest(SELLING_PLANS_QUERY, { handle });
+    const groups = data?.data?.product?.sellingPlanGroups?.edges || [];
+    return groups.flatMap((g: any) => g.node.sellingPlans.edges.map((sp: any) => sp.node));
+  } catch (error) {
+    console.warn('Could not fetch selling plans (scope may not be enabled):', error);
+    return [];
+  }
+}
+
 const CART_CREATE_MUTATION = `
   mutation cartCreate($input: CartInput!) {
     cartCreate(input: $input) {
