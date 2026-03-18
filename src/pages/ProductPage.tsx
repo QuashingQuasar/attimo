@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck } from "lucide-react";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
