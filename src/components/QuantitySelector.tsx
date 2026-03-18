@@ -75,7 +75,7 @@ export const QuantitySelector = ({
         className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-7 h-auto transition-all duration-300 hover:scale-[1.02]"
         style={{
           fontFamily: "UDC Working Man Sans, sans-serif",
-          backgroundColor: "#CDDB2D",
+          backgroundColor: buttonColor,
           fontSize: "clamp(1.1rem, 1.4vw, 1.45rem)",
           borderRadius: "0.75rem",
         }}

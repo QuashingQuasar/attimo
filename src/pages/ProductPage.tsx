@@ -216,6 +216,7 @@ const ProductPage = () => {
                 onQuantityChange={setSelectedQuantity}
                 pricePerUnit={24}
                 onAddToCart={handleAddToCart}
+                buttonColor={content.buttonColor}
               />
 
               <div className="flex items-center gap-6">
