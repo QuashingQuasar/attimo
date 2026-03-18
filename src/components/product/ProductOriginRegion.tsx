@@ -13,7 +13,7 @@ export const ProductOriginRegion = () => {
               Origin: Sicily, Italy
             </h2>
             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#FFFAEA', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>
-              Sicily has a rich olive oil tradition since before Roman times. Nocellara is the icon of the Belice valley, on the western half of the island around Trapani. Here the summers are dry, the soil chalky, the harvest short. The oil it produces is round and fruit-forward. the kind that makes simple food taste like it was planned that way.
+              Nocellara is home to the Belice valley on the west coast of Sicily, where people have been making olive oil since Greek times. Here, limestone soil and dry summers stress the trees, causing its fruits to stay small and packed with flavour. Nocellara is harvested in early October, before polyphenols convert into simpler compounds so to press at peak aromatic complexity.                                                                                   
 
 
 
