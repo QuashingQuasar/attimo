@@ -235,14 +235,6 @@ const ProductPage = () => {
               )}
               </div>
 
-              <QuantitySelector
-                quantity={selectedQuantity}
-                onQuantityChange={setSelectedQuantity}
-                pricePerUnit={activePrice}
-                onAddToCart={handleAddToCart}
-                buttonColor={content.buttonColor}
-              />
-
               <PurchaseOptions
                 sellingPlans={sellingPlans}
                 oneTimePrice={ONE_TIME_PRICE}
@@ -251,6 +243,14 @@ const ProductPage = () => {
                 onPurchaseTypeChange={setPurchaseType}
                 selectedSellingPlanId={selectedSellingPlanId}
                 onSellingPlanChange={setSelectedSellingPlanId}
+              />
+
+              <QuantitySelector
+                quantity={selectedQuantity}
+                onQuantityChange={setSelectedQuantity}
+                pricePerUnit={activePrice}
+                onAddToCart={handleAddToCart}
+                buttonColor={content.buttonColor}
               />
 
               <div className="flex items-center gap-6">
