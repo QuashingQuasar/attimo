@@ -1,4 +1,4 @@
-import sicilyMap from "@/assets/sicily-map.png";
+import { SicilyMapbox } from "@/components/SicilyMapbox";
 
 export const ProductOriginRegion = () => {
   return (
@@ -6,7 +6,7 @@ export const ProductOriginRegion = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
-            <img src={sicilyMap} alt="Map of Sicily, Italy showing Trapani and the Belice Valley" className="w-full max-w-[400px] rounded-2xl" />
+            <SicilyMapbox className="w-full max-w-[400px] aspect-square" />
           </div>
           <div className="space-y-6">
             <h2 className="font-beverly font-bold tracking-tight" style={{ color: '#ECA948', fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
