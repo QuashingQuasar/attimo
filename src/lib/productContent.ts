@@ -141,6 +141,16 @@ export const productContentMap: Record<string, ProductContent> = {
           description: "An Italian variety renowned for its exceptionally high polyphenol content and intense character.",
           icon: "/icons/branch-2.svg",
         },
+        {
+          title: "Cold Pressed",
+          description: "Pressed within hours of harvest at low temperatures to preserve every drop of flavour and nutrition.",
+          icon: "/icons/olive.svg",
+        },
+        {
+          title: "Lab Tested",
+          description: "Every batch is third-party lab tested on key quality markers so you can verify what's in your bottle.",
+          icon: "/icons/amphora-2.svg",
+        },
       ],
     },
     labTrust: {

@@ -26,7 +26,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[850px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-6 lg:h-[1275px]">
             <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
