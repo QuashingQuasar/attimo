@@ -27,6 +27,7 @@ export const ProductOriginRegion = ({
   centerLon,
   centerLat,
   mapZoom,
+  markerStyle,
 }: ProductOriginRegionProps) => {
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor }}>
