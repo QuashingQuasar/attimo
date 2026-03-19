@@ -45,6 +45,7 @@ export const ProductOriginRegion = ({
               centerLon={centerLon}
               centerLat={centerLat}
               mapZoom={mapZoom}
+              markerStyle={markerStyle}
             />
           </div>
           <div className="space-y-6">

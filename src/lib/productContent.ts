@@ -365,6 +365,7 @@ export const productContentMap: Record<string, ProductContent> = {
       centerLon: -3.5,
       centerLat: 39.5,
       mapZoom: 18,
+      markerStyle: "pill-only" as const,
     },
   },
 };
