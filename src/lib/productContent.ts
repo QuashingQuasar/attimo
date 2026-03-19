@@ -138,7 +138,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "100% Coratina",
-          description: "An Italian variety renowned for its exceptionally high polyphenol content and intense character.",
+          description: "An Italian variety renowned for its exceptionally high polyphenol content and vigorous character.",
           icon: "/icons/branch-2.svg",
         },
         {
