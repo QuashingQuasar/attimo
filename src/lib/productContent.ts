@@ -147,9 +147,9 @@ export const productContentMap: Record<string, ProductContent> = {
           icon: "/icons/olive.svg",
         },
         {
-          title: "Lab Tested",
-          description: "Every batch is third-party lab tested on key quality markers so you can verify what's in your bottle.",
-          icon: "/icons/amphora-2.svg",
+          title: "Good On Everything",
+          description: "Drizzle over VEGGIES\nFinish MEAT and FISH\nPunch up SOUPS\nDip with BREAD\nTry on ICE CREAM",
+          icon: "/icons/bread-2.svg",
         },
       ],
     },
