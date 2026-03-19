@@ -52,9 +52,12 @@ interface SicilyMapboxProps {
   bgColor?: string;
   strokeColor?: string;
   labelColor?: string;
+  markerLon?: number;
+  markerLat?: number;
+  markerLabel?: string;
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA" }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
