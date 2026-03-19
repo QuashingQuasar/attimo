@@ -120,12 +120,21 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           strokeWidth={1.2}
           opacity={0.9}
         />
+        <rect
+          x={bx + 36}
+          y={by + 76}
+          rx={6}
+          ry={6}
+          width={markerLabel.length * 11 + 16}
+          height={28}
+          fill="#10221B"
+        />
         <text
-          x={bx + 40}
-          y={by + 94}
+          x={bx + 44}
+          y={by + 95}
           fill={labelColor}
           fontFamily="'UDC Working Man Sans', sans-serif"
-          fontSize={18}
+          fontSize={16}
           fontWeight={700}
           textAnchor="start"
         >
