@@ -49,9 +49,12 @@ function geometryToPaths(
 
 interface SicilyMapboxProps {
   className?: string;
+  bgColor?: string;
+  strokeColor?: string;
+  labelColor?: string;
 }
 
-export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -81,7 +84,7 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
   const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
 
   return (
-    <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: "#1B4229" }}>
+    <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: bgColor }}>
       <svg
         viewBox={`${-vw / 2} ${-vh / 2} ${vw} ${vh}`}
         width="100%"
@@ -89,14 +92,14 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         preserveAspectRatio="xMidYMid slice"
         style={{ display: "block" }}
       >
-        <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill="#1B4229" />
+        <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill={bgColor} />
 
         {paths.map((d, i) => (
           <path
             key={i}
             d={d}
             fill="none"
-            stroke="#ECA948"
+            stroke={strokeColor}
             strokeWidth={4}
             strokeLinejoin="round"
             strokeLinecap="round"
@@ -104,20 +107,20 @@ export const SicilyMapbox = ({ className = "" }: SicilyMapboxProps) => {
         ))}
 
         {/* Belice Valley label */}
-        <circle cx={bx} cy={by} r={3} fill="#FFFAEA" />
+        <circle cx={bx} cy={by} r={3} fill={labelColor} />
         <line
           x1={bx}
           y1={by}
           x2={bx + 25}
           y2={by + 45}
-          stroke="#FFFAEA"
+          stroke={labelColor}
           strokeWidth={1.2}
           opacity={0.9}
         />
         <text
           x={bx + 30}
           y={by + 49}
-          fill="#FFFAEA"
+          fill={labelColor}
           fontFamily="'UDC Working Man Sans', sans-serif"
           fontSize={18}
           fontWeight={700}
