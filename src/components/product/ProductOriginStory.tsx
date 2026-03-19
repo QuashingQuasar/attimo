@@ -6,9 +6,10 @@ interface ProductOriginStoryProps {
   };
   tileBackground?: string;
   tileAccent?: string;
+  headlineMaxWidth?: string;
 }
 
-export const ProductOriginStory = ({ content, tileBackground, tileAccent }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
   const { headline, quickRef, features } = content;
   const bg = tileBackground || '#1B4229';
   const accent = tileAccent || '#ECA948';
