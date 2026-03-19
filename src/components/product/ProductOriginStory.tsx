@@ -171,7 +171,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
                 <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
                   {features[4]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px] whitespace-pre-line" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
                   {features[4]?.description}
                 </p>
               </div>
