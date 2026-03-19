@@ -341,7 +341,7 @@ const ProductPage = () => {
         markerLabel={content.originRegion?.markerLabel}
       />
       <ProductLabTrust content={content.labTrust} />
-      <OilComparison />
+      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
       <FAQ />
 
       <Footer />
