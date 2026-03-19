@@ -318,7 +318,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Picual is Spain’s most expressive olive, the pride of Andalucía. It presses a vibrant oil with a fresh green bite. An all-rounder in the kitchen, with enough character to stay interesting.",
+        "Picual is Spain’s most expressive and most planted olive. It presses a vibrant oil with a fresh green bite. An all-rounder in the kitchen, with enough character to stay interesting.",
       quickRef: [
         { label: "VARIETY", value: "100% Picual" },
         { label: "ORIGIN", value: "Jaén, Spain" },
