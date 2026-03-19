@@ -4,10 +4,14 @@ interface ProductOriginStoryProps {
     quickRef: Array<{ label: string; value: string }>;
     features: Array<{ title: string; description: string; icon: string; video?: string }>;
   };
+  tileBackground?: string;
+  tileAccent?: string;
 }
 
-export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent }: ProductOriginStoryProps) => {
   const { headline, quickRef, features } = content;
+  const bg = tileBackground || '#1B4229';
+  const accent = tileAccent || '#ECA948';
 
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
