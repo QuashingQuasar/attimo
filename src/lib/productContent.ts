@@ -244,6 +244,16 @@ export const productContentMap: Record<string, ProductContent> = {
           description: "A generous Italian olive variety known for its rich oil content and exceptionally smooth, fruity character.",
           icon: "/icons/branch-2.svg",
         },
+        {
+          title: "Cold Pressed",
+          description: "Pressed within hours of harvest at low temperatures to preserve every drop of flavour and nutrition.",
+          icon: "/icons/olive.svg",
+        },
+        {
+          title: "Good On Everything",
+          description: "drizzle over pasta\nenrich eggs\nfinish seafood\ndress leafy greens\ntry on ice cream",
+          icon: "/icons/bread-2.svg",
+        },
       ],
     },
     labTrust: {
