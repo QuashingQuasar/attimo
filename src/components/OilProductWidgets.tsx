@@ -102,7 +102,7 @@ export const OilProductWidgets = () => {
                 }} />
 
 
-                <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5">
+                <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5 flex justify-between items-start">
                   <span
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
@@ -112,6 +112,15 @@ export const OilProductWidgets = () => {
                   }}>
 
                     {oil.flag} {oil.origin.toUpperCase()}
+                  </span>
+                  <span
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    fontSize: "clamp(0.85rem, 1.1vw, 1.1rem)",
+                    letterSpacing: "0.1em",
+                    color: "#1B4229"
+                  }}>
+                    500ML
                   </span>
                 </div>
 
