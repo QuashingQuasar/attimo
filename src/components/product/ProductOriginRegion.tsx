@@ -9,6 +9,9 @@ interface ProductOriginRegionProps {
   markerLon?: number;
   markerLat?: number;
   markerLabel?: string;
+  centerLon?: number;
+  centerLat?: number;
+  mapZoom?: number;
 }
 
 export const ProductOriginRegion = ({
@@ -20,6 +23,9 @@ export const ProductOriginRegion = ({
   markerLon,
   markerLat,
   markerLabel,
+  centerLon,
+  centerLat,
+  mapZoom,
 }: ProductOriginRegionProps) => {
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor }}>
@@ -34,6 +40,9 @@ export const ProductOriginRegion = ({
               markerLon={markerLon}
               markerLat={markerLat}
               markerLabel={markerLabel}
+              centerLon={centerLon}
+              centerLat={centerLat}
+              mapZoom={mapZoom}
             />
           </div>
           <div className="space-y-6">

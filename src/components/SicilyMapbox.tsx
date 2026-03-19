@@ -55,16 +55,18 @@ interface SicilyMapboxProps {
   markerLon?: number;
   markerLat?: number;
   markerLabel?: string;
+  centerLon?: number;
+  centerLat?: number;
+  mapZoom?: number;
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley" }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Map center shifted north to show all of Italy
-  const cx = 14.5;
-  const cy = 41.5;
-  const zoom = 14;
+  const cx = centerLon ?? 14.5;
+  const cy = centerLat ?? 41.5;
+  const zoom = mapZoom ?? 14;
 
   // SVG viewBox dimensions
   const vw = 500;
