@@ -4,10 +4,14 @@ interface ProductOriginStoryProps {
     quickRef: Array<{ label: string; value: string }>;
     features: Array<{ title: string; description: string; icon: string; video?: string }>;
   };
+  tileBackground?: string;
+  tileAccent?: string;
 }
 
-export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent }: ProductOriginStoryProps) => {
   const { headline, quickRef, features } = content;
+  const bg = tileBackground || '#1B4229';
+  const accent = tileAccent || '#ECA948';
 
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
@@ -23,12 +27,12 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[850px]">
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#ECA948',
+                    backgroundColor: accent,
                     WebkitMaskImage: `url(${features[0]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -39,10 +43,10 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     maskPosition: 'center',
                   }}
                 />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
+                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
                   {features[0]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
                   {features[0]?.description}
                 </p>
               </div>
@@ -54,12 +58,12 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
               </video>
             </div>
 
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#ECA948',
+                    backgroundColor: accent,
                     WebkitMaskImage: `url(${features[1]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -70,10 +74,10 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     maskPosition: 'center',
                   }}
                 />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
+                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
                   {features[1]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
                   {features[1]?.description}
                 </p>
               </div>
@@ -85,12 +89,12 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
               </video>
             </div>
 
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#ECA948',
+                    backgroundColor: accent,
                     WebkitMaskImage: `url(${features[2]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -101,10 +105,10 @@ export const ProductOriginStory = ({ content }: ProductOriginStoryProps) => {
                     maskPosition: 'center',
                   }}
                 />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
+                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
                   {features[2]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
                   {features[2]?.description}
                 </p>
               </div>
