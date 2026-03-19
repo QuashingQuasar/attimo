@@ -15,7 +15,7 @@ export const ProductOriginRegion = ({
   backgroundColor = '#1B4229',
   headingColor = '#ECA948',
   textColor = '#FFFAEA',
-  heading = 'Harvested and Cold-Pressed in Sicily',
+  heading = 'From grove to bottle',
   body = "ATTIMO Nocellara is directly sourced from a small farm in Belice on Sicily's west coast, where people have been making olive oil since before the Romans.\n\nHere, chalky soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour. The coast keeps the nights cool, which slows the accumulation of the more aggressive phenolic compounds. Harvested early, the result is an oil that is high in polyphenols but gentle in character — softer and rounder than anything produced further inland.",
   markerLon,
   markerLat,
