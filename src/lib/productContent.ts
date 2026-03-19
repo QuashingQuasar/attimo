@@ -149,8 +149,8 @@ export const productContentMap: Record<string, ProductContent> = {
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
         { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
-        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "", description: "A potent anti-inflammatory compound unique to olive oil." },
+        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "", description: "A powerful antioxidant linked to cardiovascular protection." },
         { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
       ],
     },
