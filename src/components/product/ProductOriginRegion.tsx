@@ -12,7 +12,7 @@ export const ProductOriginRegion = ({ backgroundColor = '#1B4229', headingColor 
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">
-            <SicilyMapbox className="w-full max-w-[400px] aspect-square" />
+            <SicilyMapbox className="w-full max-w-[400px] aspect-square" bgColor={backgroundColor} strokeColor={headingColor} labelColor={textColor} />
           </div>
           <div className="space-y-6">
             <h2 className="font-bold tracking-tight" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", color: headingColor, fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>
