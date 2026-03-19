@@ -93,7 +93,7 @@ export const productContentMap: Record<string, ProductContent> = {
       { key: "polyphenols", label: "POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
       { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "a powerful natural anti-inflammatory found in quality EVOO" },
       { key: "oleacin", label: "OLEACIN", value: "336", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "a potent antioxidant linked to cardiovascular protection" },
-      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+      { key: "acidity", label: "ACIDITY", value: "0.19", unit: "%", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
       details: {
