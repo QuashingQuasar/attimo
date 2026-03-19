@@ -14,19 +14,19 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
   const accent = tileAccent || '#ECA948';
 
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-8 md:py-12" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center">
+          <div className="mb-8 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.2 }}
+              style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', lineHeight: 1.2 }}
             >
               {headline}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-6 lg:h-[1275px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-8rem)]">
             <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
