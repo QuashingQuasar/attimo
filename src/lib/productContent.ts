@@ -342,6 +342,16 @@ export const productContentMap: Record<string, ProductContent> = {
           description: "Spain's flagship variety, known for its stability, bold character and high polyphenol content.",
           icon: "/icons/branch-2.svg",
         },
+        {
+          title: "Cold Pressed",
+          description: "Pressed within hours of harvest at low temperatures to preserve every drop of flavour and nutrition.",
+          icon: "/icons/olive.svg",
+        },
+        {
+          title: "Good On Everything",
+          description: "drizzle over veggies\nfinish meat and fish\npunch up soups\ndip with bread\ntry on ice cream",
+          icon: "/icons/bread-2.svg",
+        },
       ],
     },
     labTrust: {
