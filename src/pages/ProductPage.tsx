@@ -330,7 +330,7 @@ const ProductPage = () => {
       {/* Content sections below product hero */}
       <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} />
       <Testimonials headingColor={content.tileAccent || "#ECA948"} />
-      <ProductOriginRegion />
+      <ProductOriginRegion backgroundColor={content.tileBackground} headingColor={content.tileAccent} textColor={content.tileAccent} />
       <ProductLabTrust content={content.labTrust} />
       <OilComparison />
       <FAQ />
