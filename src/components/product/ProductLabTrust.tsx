@@ -18,18 +18,24 @@ export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {labValues.map((item, index) => (
-              <div key={index} className="rounded-2xl border overflow-hidden" style={{ borderColor: '#1B4229' }}>
-                <div className="px-5 py-3" style={{ backgroundColor: '#1B4229' }}>
-                  <span className="font-semibold uppercase tracking-wider" style={{ color: '#FFFFFF', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>{item.label}</span>
-                </div>
-                <div className="p-5 space-y-2" style={{ backgroundColor: '#FFFAEA' }}>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-bold text-olive-dark" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.75rem, 2.5vw, 2.75rem)' }}>{item.value}</span>
-                    <span className="text-olive-dark/80" style={{ fontSize: 'clamp(0.9rem, 1vw, 1.1rem)' }}>{item.unit}</span>
-                  </div>
-                  <p className="text-olive-light" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>{item.standard}</p>
-                  <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{item.description}</p>
-                </div>
+              <div key={index} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+                <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                  {item.label}
+                </p>
+                <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
+                  <span>
+                    {item.value}
+                    {item.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{item.unit}</span>}
+                  </span>
+                  <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                    {item.standard}
+                  </span>
+                </p>
+                {item.description &&
+                  <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                    {item.description}
+                  </p>
+                }
               </div>
             ))}
           </div>
