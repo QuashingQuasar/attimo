@@ -12,6 +12,7 @@ interface ProductOriginRegionProps {
   centerLon?: number;
   centerLat?: number;
   mapZoom?: number;
+  markerStyle?: "dot-line" | "pill-only";
 }
 
 export const ProductOriginRegion = ({
