@@ -58,9 +58,10 @@ interface SicilyMapboxProps {
   centerLon?: number;
   centerLat?: number;
   mapZoom?: number;
+  markerStyle?: "dot-line" | "pill-only";
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom, markerStyle = "dot-line" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -115,6 +116,32 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         {(() => {
           const pillW = markerLabel.length * 11 + 16;
           const pillH = 28;
+          if (markerStyle === "pill-only") {
+            return (
+              <>
+                <rect
+                  x={bx - pillW / 2}
+                  y={by - pillH / 2}
+                  rx={14}
+                  ry={14}
+                  width={pillW}
+                  height={pillH}
+                  fill={labelColor}
+                />
+                <text
+                  x={bx}
+                  y={by + 5}
+                  fill={bgColor}
+                  fontFamily="'UDC Working Man Sans', sans-serif"
+                  fontSize={16}
+                  fontWeight={700}
+                  textAnchor="middle"
+                >
+                  {markerLabel}
+                </text>
+              </>
+            );
+          }
           const ox = pillW * 0.35;
           const oy = pillH * 2;
           const pillCx = bx + ox;

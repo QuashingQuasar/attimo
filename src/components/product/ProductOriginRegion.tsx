@@ -12,6 +12,7 @@ interface ProductOriginRegionProps {
   centerLon?: number;
   centerLat?: number;
   mapZoom?: number;
+  markerStyle?: "dot-line" | "pill-only";
 }
 
 export const ProductOriginRegion = ({
@@ -26,6 +27,7 @@ export const ProductOriginRegion = ({
   centerLon,
   centerLat,
   mapZoom,
+  markerStyle,
 }: ProductOriginRegionProps) => {
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor }}>
@@ -43,6 +45,7 @@ export const ProductOriginRegion = ({
               centerLon={centerLon}
               centerLat={centerLat}
               mapZoom={mapZoom}
+              markerStyle={markerStyle}
             />
           </div>
           <div className="space-y-6">
