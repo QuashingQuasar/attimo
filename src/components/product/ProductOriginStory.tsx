@@ -27,12 +27,12 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 lg:h-[850px]">
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
               <div className="h-full flex flex-col justify-center items-center text-center gap-5">
                 <div
                   className="w-[80px] h-[80px]"
                   style={{
-                    backgroundColor: '#ECA948',
+                    backgroundColor: accent,
                     WebkitMaskImage: `url(${features[0]?.icon})`,
                     WebkitMaskSize: 'contain',
                     WebkitMaskRepeat: 'no-repeat',
@@ -43,10 +43,10 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
                     maskPosition: 'center',
                   }}
                 />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: '#ECA948' }}>
+                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
                   {features[0]?.title}
                 </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: '#ECA948' }}>
+                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
                   {features[0]?.description}
                 </p>
               </div>
