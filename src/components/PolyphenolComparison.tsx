@@ -29,6 +29,11 @@ const barTooltips: Record<number, { title: string; subtitle: string; description
     title: "Blueprint Olive Oil",
     subtitle: "400 mg/kg polyphenols",
     description: "Bryan Johnson spends millions optimizing his health for longevity. His Blueprint olive oil, at 400 mg/kg polyphenols, is one of the most recognized high-polyphenol oils on the market."
+  },
+  3: {
+    title: "ATTIMO Olive Oil",
+    subtitle: "400–900 mg/kg polyphenols",
+    description: "Our olive oils range between 400 and 900 mg/kg polyphenols depending on the variety — all early-harvest, single-origin, and lab-verified."
   }
 };
 
