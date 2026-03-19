@@ -22,8 +22,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/v2" element={<IndexV2 />} />
+          <Route path="/" element={<IndexV2 />} />
           <Route path="/values" element={<Values />} />
           <Route path="/product/:handle" element={<ProductPage />} />
           <Route path="/product-v2/:handle" element={<ProductPageV2 />} />
