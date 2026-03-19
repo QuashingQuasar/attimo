@@ -1,9 +1,9 @@
 
 export const KleiaWay = () => {
   return (
-    <section className="snap-start pt-12 md:pt-16 lg:pt-24 pb-24 md:pb-28 lg:pb-36" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="snap-start pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12 lg:mb-20">
+        <div className="text-center mb-8 lg:mb-12">
           <h2 className="font-light mb-8 tracking-tight" style={{
             fontFamily: 'UDC Working Man Sans, sans-serif',
             color: '#1B4229',
@@ -14,7 +14,7 @@ export const KleiaWay = () => {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-6 max-w-[90vw] mx-auto lg:h-[1125px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[calc(100vh-200px)]">
           <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
             <div className="h-full flex flex-col justify-center items-center text-center">
               <h4 className="font-bold mb-6" style={{
