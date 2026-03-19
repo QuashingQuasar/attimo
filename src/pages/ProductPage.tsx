@@ -214,7 +214,7 @@ const ProductPage = () => {
               </p>
 
               {/* Description */}
-              <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)', maxWidth: '37.8rem' }}>
+              <p className="text-olive-medium leading-relaxed max-w-xl" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
                 {content.originStory.headline.split('.').slice(0, 3).join('.') + '.'}
               </p>
 
@@ -328,7 +328,7 @@ const ProductPage = () => {
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' ? '70.35rem' : undefined} />
+      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.tileAccent || "#ECA948"} />
       <ProductOriginRegion
         backgroundColor={content.tileBackground}
