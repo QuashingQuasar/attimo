@@ -364,7 +364,7 @@ export const productContentMap: Record<string, ProductContent> = {
       markerLabel: "Jaén",
       centerLon: -3.5,
       centerLat: 39.5,
-      mapZoom: 12,
+      mapZoom: 18,
     },
   },
 };
