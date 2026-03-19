@@ -71,6 +71,9 @@ export interface ProductContent {
     markerLon: number;
     markerLat: number;
     markerLabel: string;
+    centerLon?: number;
+    centerLat?: number;
+    mapZoom?: number;
   };
 }
 
