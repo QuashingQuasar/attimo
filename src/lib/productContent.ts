@@ -220,7 +220,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Nocellara is a generous Sicilian olive, one of Italy's most prized cultivars. It presses a gentle oil, with fruity notes and a velvety texture. Easy to like and use every day.",
+        "Nocellara di Belice is a generous Sicilian olive, one of Italy's most prized cultivars. It presses a gentle oil with fruity notes and a velvety texture that is very easy to like and use every day.",
       quickRef: [
         { label: "VARIETY", value: "100% Nocellara" },
         { label: "ORIGIN", value: "Sicily, Italy" },
