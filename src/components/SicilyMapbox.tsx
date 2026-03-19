@@ -115,14 +115,14 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           x1={bx}
           y1={by}
           x2={bx - 21}
-          y2={by + 45}
+          y2={by + 17}
           stroke={labelColor}
           strokeWidth={1.2}
           opacity={0.9}
         />
         <rect
           x={bx - 25}
-          y={by + 37}
+          y={by + 9}
           rx={6}
           ry={6}
           width={markerLabel.length * 11 + 16}
@@ -131,7 +131,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         />
         <text
           x={bx - 17}
-          y={by + 56}
+          y={by + 28}
           fill={labelColor}
           fontFamily="'UDC Working Man Sans', sans-serif"
           fontSize={16}
