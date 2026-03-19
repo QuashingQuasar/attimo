@@ -63,6 +63,8 @@ export interface ProductContent {
   polyphenolValue: number;
   polyphenolLabel: string;
   buttonColor?: string;
+  tileBackground?: string;
+  tileAccent?: string;
 }
 
 export const productContentMap: Record<string, ProductContent> = {
