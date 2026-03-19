@@ -84,7 +84,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
   const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
 
   return (
-    <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: "#1B4229" }}>
+    <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: bgColor }}>
       <svg
         viewBox={`${-vw / 2} ${-vh / 2} ${vw} ${vh}`}
         width="100%"
