@@ -150,6 +150,8 @@ export const productContentMap: Record<string, ProductContent> = {
     polyphenolValue: 847,
     polyphenolLabel: "Coratina",
     buttonColor: "#B3E58C",
+    tileBackground: "#10221B",
+    tileAccent: "#B3E58C",
   },
 
   nocellara: {
