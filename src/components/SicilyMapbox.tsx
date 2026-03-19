@@ -113,7 +113,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         {(() => {
           const pillW = markerLabel.length * 11 + 16;
           const pillH = 28;
-          const ox = pillW * 0.3;
+          const ox = pillW * 0.35;
           const oy = pillH * 2;
           const pillCx = bx + ox;
           const pillCy = by + oy;
