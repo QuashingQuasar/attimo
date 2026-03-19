@@ -357,7 +357,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     polyphenolValue: 675,
     polyphenolLabel: "Picual",
-    buttonColor: "#6B8F3C",
+    buttonColor: "#B3E58C",
     tileBackground: "#2B3A1E",
     tileAccent: "#C5D46A",
     originRegion: {
