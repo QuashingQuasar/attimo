@@ -91,8 +91,8 @@ export const productContentMap: Record<string, ProductContent> = {
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
       { key: "polyphenols", label: "POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "", description: "a powerful natural anti-inflammatory found in quality EVOO" },
-      { key: "oleacein", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "", description: "a potent antioxidant linked to cardiovascular protection" },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "a powerful natural anti-inflammatory found in quality EVOO" },
+      { key: "oleacin", label: "OLEACIN", value: "336", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "a potent antioxidant linked to cardiovascular protection" },
       { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
@@ -149,8 +149,8 @@ export const productContentMap: Record<string, ProductContent> = {
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
         { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "", description: "A potent anti-inflammatory compound unique to olive oil." },
-        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "", description: "A powerful antioxidant linked to cardiovascular protection." },
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "avg. 10-30 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+        { label: "Oleacin", value: "336", unit: "mg/kg", standard: "avg. 10-30 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
         { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
       ],
     },
