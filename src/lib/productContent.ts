@@ -349,7 +349,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Good On Everything",
-          description: "drizzle over veggies\nfinish meat and fish\npunch up soups\ndip with bread\ntry on ice cream",
+          description: "dress veggies & salads\ntop anything grilled\nliven up salads\nfinish fresh cheese & yogurt\ntry with chocolate",
           icon: "/icons/bread-2.svg",
         },
       ],
