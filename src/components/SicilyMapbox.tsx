@@ -99,7 +99,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
             key={i}
             d={d}
             fill="none"
-            stroke="#ECA948"
+            stroke={strokeColor}
             strokeWidth={4}
             strokeLinejoin="round"
             strokeLinecap="round"
