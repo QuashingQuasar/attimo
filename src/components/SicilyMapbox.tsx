@@ -110,26 +110,36 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         ))}
 
         {/* Marker pill */}
-        <rect
-          x={bx - (markerLabel.length * 11 + 16) / 2}
-          y={by - 14}
-          rx={14}
-          ry={14}
-          width={markerLabel.length * 11 + 16}
-          height={28}
-          fill={labelColor}
-        />
-        <text
-          x={bx}
-          y={by + 5}
-          fill={bgColor}
-          fontFamily="'UDC Working Man Sans', sans-serif"
-          fontSize={16}
-          fontWeight={700}
-          textAnchor="middle"
-        >
-          {markerLabel}
-        </text>
+        {(() => {
+          const pillW = markerLabel.length * 11 + 16;
+          const pillH = 28;
+          const ox = pillW / 2;
+          const oy = pillH * 2;
+          return (
+            <>
+              <rect
+                x={bx + ox - pillW / 2}
+                y={by + oy - pillH / 2}
+                rx={14}
+                ry={14}
+                width={pillW}
+                height={pillH}
+                fill={labelColor}
+              />
+              <text
+                x={bx + ox}
+                y={by + oy + 5}
+                fill={bgColor}
+                fontFamily="'UDC Working Man Sans', sans-serif"
+                fontSize={16}
+                fontWeight={700}
+                textAnchor="middle"
+              >
+                {markerLabel}
+              </text>
+            </>
+          );
+        })()}
       </svg>
     </div>
   );
