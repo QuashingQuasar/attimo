@@ -107,20 +107,20 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         ))}
 
         {/* Belice Valley label */}
-        <circle cx={bx} cy={by} r={3} fill="#FFFAEA" />
+        <circle cx={bx} cy={by} r={3} fill={labelColor} />
         <line
           x1={bx}
           y1={by}
           x2={bx + 25}
           y2={by + 45}
-          stroke="#FFFAEA"
+          stroke={labelColor}
           strokeWidth={1.2}
           opacity={0.9}
         />
         <text
           x={bx + 30}
           y={by + 49}
-          fill="#FFFAEA"
+          fill={labelColor}
           fontFamily="'UDC Working Man Sans', sans-serif"
           fontSize={18}
           fontWeight={700}
