@@ -41,7 +41,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
   const comparisonData = [
-    { name: "Avg. EVOO", value: 180, color: "bg-[#A8B88F]" },
+    { name: "Avg. Supermarket EVOO", value: 180, color: "bg-[#A8B88F]" },
     { name: "EU Health Claim", value: 250, color: "bg-[#8A9B6F]" },
     { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
     { name: productLabel, value: productValue, color: "bg-[#1B4229]" }
