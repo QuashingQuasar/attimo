@@ -65,6 +65,13 @@ export interface ProductContent {
   buttonColor?: string;
   tileBackground?: string;
   tileAccent?: string;
+  originRegion?: {
+    heading: string;
+    body: string;
+    markerLon: number;
+    markerLat: number;
+    markerLabel: string;
+  };
 }
 
 export const productContentMap: Record<string, ProductContent> = {
