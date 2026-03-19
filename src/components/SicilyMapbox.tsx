@@ -129,7 +129,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           fontWeight={700}
           textAnchor="start"
         >
-          Belice Valley
+          {markerLabel}
         </text>
       </svg>
     </div>
