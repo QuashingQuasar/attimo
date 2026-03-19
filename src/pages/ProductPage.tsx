@@ -328,7 +328,7 @@ const ProductPage = () => {
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} />
+      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.tileAccent || "#ECA948"} />
       <ProductOriginRegion
         backgroundColor={content.tileBackground}

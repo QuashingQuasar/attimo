@@ -6,9 +6,10 @@ interface ProductOriginStoryProps {
   };
   tileBackground?: string;
   tileAccent?: string;
+  headlineMaxWidth?: string;
 }
 
-export const ProductOriginStory = ({ content, tileBackground, tileAccent }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
   const { headline, quickRef, features } = content;
   const bg = tileBackground || '#1B4229';
   const accent = tileAccent || '#ECA948';
@@ -54,8 +55,8 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 text-center">
             <p
-              className="font-beverly font-bold text-olive-dark tracking-tight max-w-[67rem] mx-auto"
-              style={{ fontSize: 'clamp(1.65rem, 2.75vw, 2.75rem)', lineHeight: 1.2 }}
+              className="font-beverly font-bold text-olive-dark tracking-tight mx-auto"
+              style={{ maxWidth: headlineMaxWidth || '67rem', fontSize: 'clamp(1.65rem, 2.75vw, 2.75rem)', lineHeight: 1.2 }}
             >
               {headline}
             </p>
