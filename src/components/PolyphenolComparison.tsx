@@ -28,7 +28,7 @@ const barTooltips: Record<number, { title: string; subtitle: string; description
   2: {
     title: "Blueprint Olive Oil",
     subtitle: "400 mg/kg polyphenols",
-    description: "Bryan Johnson's Blueprint Olive Oil contains 400 mg/kg polyphenols — a premium benchmark, but still below early-harvest single-variety oils."
+    description: "Bryan Johnson spends millions optimizing his health for longevity. His Blueprint olive oil, at 400 mg/kg polyphenols, is one of the most recognized high-polyphenol oils on the market."
   }
 };
 
