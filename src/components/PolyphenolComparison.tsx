@@ -80,7 +80,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                   <div
                     key={index}
                     className="relative flex items-center gap-4"
-                    onMouseEnter={() => index < 3 && setHoveredBar(index)}
+                    onMouseEnter={() => setHoveredBar(index)}
                     onMouseLeave={() => setHoveredBar(null)}
                   >
                     <div
