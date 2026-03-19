@@ -318,7 +318,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Picual is the world's most planted olive variety and Spain's pride. It presses an oil that is green, grassy and full of character — rich in polyphenols and built to last.",
+        "Picual is Spain’s most expressive olive, the pride of Andalucía. It presses a vibrant oil with a fresh green bite. An all-rounder in the kitchen, with enough character to stay interesting.",
       quickRef: [
         { label: "VARIETY", value: "100% Picual" },
         { label: "ORIGIN", value: "Jaén, Spain" },
