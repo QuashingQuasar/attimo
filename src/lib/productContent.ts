@@ -74,6 +74,7 @@ export interface ProductContent {
     centerLon?: number;
     centerLat?: number;
     mapZoom?: number;
+    markerStyle?: "dot-line" | "pill-only";
   };
 }
 
