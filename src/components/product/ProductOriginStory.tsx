@@ -49,10 +49,10 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
   );
 
   return (
-    <section className="py-8 md:py-12" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-6 text-center">
+          <div className="mb-12 md:mb-16 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
               style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', lineHeight: 1.2 }}
