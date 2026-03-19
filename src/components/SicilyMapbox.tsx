@@ -92,7 +92,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         preserveAspectRatio="xMidYMid slice"
         style={{ display: "block" }}
       >
-        <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill="#1B4229" />
+        <rect x={-vw / 2} y={-vh / 2} width={vw} height={vh} fill={bgColor} />
 
         {paths.map((d, i) => (
           <path
