@@ -237,7 +237,7 @@ export const productContentMap: Record<string, ProductContent> = {
       ],
     },
     labTrust: {
-      heading: "Third party lab-tested for quality and purity",
+      heading: "lab-tested for quality and purity",
       subheading:
         "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
       values: [
