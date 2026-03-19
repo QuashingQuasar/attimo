@@ -84,7 +84,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                     onMouseLeave={() => setHoveredBar(null)}
                   >
                     <div
-                      className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''} ${index < 3 ? 'cursor-default' : ''}`}
+                      className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''} cursor-default`}
                       style={{ width }}
                     >
                       <span
