@@ -124,10 +124,6 @@ export const HarvestProduct = () => {
                 </HoverCard>
               </div>
 
-              {/* Origin Map - Bottom Right */}
-              <div className="absolute bottom-4 right-4 w-[80px] h-[80px] md:w-[132px] md:h-[132px]">
-                <OriginMap />
-              </div>
             </div>
           </div>
 
