@@ -117,7 +117,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Coratina is a bold, punchy Italian olive prized for its exceptionally high polyphenol content. It presses an intense oil with a peppery kick — a sign of real, fresh EVOO packed with antioxidants.",
+        "Coratina is an uncomprimising olive, the queen of polyphenols. It presses an intense, bitter oil with real grip, the kind aficionados take by the spoon as a daily longevity shot.",
       quickRef: [
         { label: "VARIETY", value: "100% Coratina" },
         { label: "ORIGIN", value: "Umbria, Italy" },
