@@ -13,169 +13,69 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent }: Prod
   const bg = tileBackground || '#1B4229';
   const accent = tileAccent || '#ECA948';
 
+  const renderTile = (index: number, extraClass?: string) => (
+    <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
+      <div className={`h-full flex flex-col justify-center items-center text-center gap-3 ${extraClass || ''}`}>
+        <div
+          className="w-[56px] h-[56px]"
+          style={{
+            backgroundColor: accent,
+            WebkitMaskImage: `url(${features[index]?.icon})`,
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskImage: `url(${features[index]?.icon})`,
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+          }}
+        />
+        <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)', color: accent }}>
+          {features[index]?.title}
+        </h3>
+        <p className="tracking-wide leading-relaxed max-w-[280px] whitespace-pre-line" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)', letterSpacing: '0.04em', color: accent }}>
+          {features[index]?.description}
+        </p>
+      </div>
+    </div>
+  );
+
+  const renderVideo = (index: number, fallback: string) => (
+    <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+      <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
+        <source src={features[index]?.video || fallback} type="video/mp4" />
+      </video>
+    </div>
+  );
+
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-8 md:py-12" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16 text-center">
+          <div className="mb-6 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight"
-              style={{ fontSize: 'clamp(2rem, 3vw, 3rem)', lineHeight: 1.2 }}
+              style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', lineHeight: 1.2 }}
             >
               {headline}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-6 lg:h-[1275px]">
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
-              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <div
-                  className="w-[80px] h-[80px]"
-                  style={{
-                    backgroundColor: accent,
-                    WebkitMaskImage: `url(${features[0]?.icon})`,
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskImage: `url(${features[0]?.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }}
-                />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
-                  {features[0]?.title}
-                </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
-                  {features[0]?.description}
-                </p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
+            {/* Row 1: content - video - content */}
+            {renderTile(0)}
+            {renderVideo(0, "/videos/content-video-1.mp4")}
+            {renderTile(1)}
 
-            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
-              <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-                <source src={features[0]?.video || "/videos/content-video-1.mp4"} type="video/mp4" />
-              </video>
-            </div>
+            {/* Row 2: video - content - video */}
+            {renderVideo(1, "/videos/kleia-way-video-3.mp4")}
+            {renderTile(2)}
+            {renderVideo(2, "/videos/kleia-way-video.mp4")}
 
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
-              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <div
-                  className="w-[80px] h-[80px]"
-                  style={{
-                    backgroundColor: accent,
-                    WebkitMaskImage: `url(${features[1]?.icon})`,
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskImage: `url(${features[1]?.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }}
-                />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
-                  {features[1]?.title}
-                </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
-                  {features[1]?.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
-              <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-                <source src={features[1]?.video || "/videos/kleia-way-video-3.mp4"} type="video/mp4" />
-              </video>
-            </div>
-
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
-              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <div
-                  className="w-[80px] h-[80px]"
-                  style={{
-                    backgroundColor: accent,
-                    WebkitMaskImage: `url(${features[2]?.icon})`,
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskImage: `url(${features[2]?.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }}
-                />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
-                  {features[2]?.title}
-                </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
-                  {features[2]?.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
-              <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-                <source src={features[2]?.video || "/videos/kleia-way-video.mp4"} type="video/mp4" />
-              </video>
-            </div>
-
-            {/* Third row: content - video - content */}
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
-              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <div
-                  className="w-[80px] h-[80px]"
-                  style={{
-                    backgroundColor: accent,
-                    WebkitMaskImage: `url(${features[3]?.icon})`,
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskImage: `url(${features[3]?.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }}
-                />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
-                  {features[3]?.title}
-                </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px]" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
-                  {features[3]?.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl relative overflow-hidden h-[300px] lg:h-auto">
-              <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-                <source src={features[3]?.video || "/videos/harvest-2024-1.mp4"} type="video/mp4" />
-              </video>
-            </div>
-
-            <div className="rounded-2xl p-10 h-[300px] lg:h-auto" style={{ backgroundColor: bg }}>
-              <div className="h-full flex flex-col justify-center items-center text-center gap-5">
-                <div
-                  className="w-[80px] h-[80px]"
-                  style={{
-                    backgroundColor: accent,
-                    WebkitMaskImage: `url(${features[4]?.icon})`,
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'center',
-                    maskImage: `url(${features[4]?.icon})`,
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'center',
-                  }}
-                />
-                <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2vw, 2.2rem)', color: accent }}>
-                  {features[4]?.title}
-                </h3>
-                <p className="tracking-wide leading-relaxed max-w-[300px] whitespace-pre-line" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.15rem', letterSpacing: '0.06em', textTransform: 'none', color: accent }}>
-                  {features[4]?.description}
-                </p>
-              </div>
-            </div>
+            {/* Row 3: content - video - content */}
+            {renderTile(3)}
+            {renderVideo(3, "/videos/harvest-2024-1.mp4")}
+            {renderTile(4)}
           </div>
         </div>
       </div>
