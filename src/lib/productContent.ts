@@ -147,7 +147,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     polyphenolValue: 847,
     polyphenolLabel: "Coratina",
-    buttonColor: "#CDDB2D",
+    buttonColor: "#B3E58C",
   },
 
   nocellara: {
