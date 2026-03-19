@@ -342,6 +342,7 @@ const ProductPage = () => {
         centerLon={content.originRegion?.centerLon}
         centerLat={content.originRegion?.centerLat}
         mapZoom={content.originRegion?.mapZoom}
+        markerStyle={content.originRegion?.markerStyle}
       />
       <ProductLabTrust content={content.labTrust} />
       <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
