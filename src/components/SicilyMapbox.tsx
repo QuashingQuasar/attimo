@@ -109,34 +109,24 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           />
         ))}
 
-        {/* Belice Valley label */}
-        <circle cx={bx} cy={by} r={3} fill={labelColor} />
-        <line
-          x1={bx}
-          y1={by}
-          x2={bx - 21}
-          y2={by + 17}
-          stroke={labelColor}
-          strokeWidth={1.2}
-          opacity={0.9}
-        />
+        {/* Marker pill */}
         <rect
-          x={bx - 25}
-          y={by + 9}
-          rx={6}
-          ry={6}
+          x={bx - (markerLabel.length * 11 + 16) / 2}
+          y={by - 14}
+          rx={14}
+          ry={14}
           width={markerLabel.length * 11 + 16}
           height={28}
-          fill="#10221B"
+          fill={labelColor}
         />
         <text
-          x={bx - 17}
-          y={by + 28}
-          fill={labelColor}
+          x={bx}
+          y={by + 5}
+          fill={bgColor}
           fontFamily="'UDC Working Man Sans', sans-serif"
           fontSize={16}
           fontWeight={700}
-          textAnchor="start"
+          textAnchor="middle"
         >
           {markerLabel}
         </text>
