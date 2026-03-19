@@ -83,8 +83,8 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
       .catch(console.error);
   }, []);
 
-  // Belice Valley marker
-  const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
+  // Marker
+  const [bx, by] = project(markerLon, markerLat, cx, cy, zoom);
 
   return (
     <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: bgColor }}>
