@@ -52,9 +52,12 @@ interface SicilyMapboxProps {
   bgColor?: string;
   strokeColor?: string;
   labelColor?: string;
+  markerLon?: number;
+  markerLat?: number;
+  markerLabel?: string;
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA" }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -80,8 +83,8 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
       .catch(console.error);
   }, []);
 
-  // Belice Valley marker
-  const [bx, by] = project(12.95, 37.65, cx, cy, zoom);
+  // Marker
+  const [bx, by] = project(markerLon, markerLat, cx, cy, zoom);
 
   return (
     <div ref={containerRef} className={`rounded-2xl overflow-hidden ${className}`} style={{ minHeight: 280, backgroundColor: bgColor }}>
@@ -126,7 +129,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           fontWeight={700}
           textAnchor="start"
         >
-          Belice Valley
+          {markerLabel}
         </text>
       </svg>
     </div>

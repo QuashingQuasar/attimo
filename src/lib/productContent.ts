@@ -65,6 +65,13 @@ export interface ProductContent {
   buttonColor?: string;
   tileBackground?: string;
   tileAccent?: string;
+  originRegion?: {
+    heading: string;
+    body: string;
+    markerLon: number;
+    markerLat: number;
+    markerLabel: string;
+  };
 }
 
 export const productContentMap: Record<string, ProductContent> = {
@@ -152,6 +159,13 @@ export const productContentMap: Record<string, ProductContent> = {
     buttonColor: "#B3E58C",
     tileBackground: "#10221B",
     tileAccent: "#B3E58C",
+    originRegion: {
+      heading: "Harvested and Cold-Pressed in Umbria",
+      body: "ATTIMO Coratina is directly sourced from a small family grove in Umbria, the green heart of Italy. Nestled between Tuscany and Le Marche, this landlocked region produces some of the country's most intense olive oils.\n\nThe hilly terrain and clay-rich soils create ideal growing conditions for the Coratina variety. Hot, dry summers concentrate the fruit's polyphenols, while cool autumn nights slow ripening — preserving the bold, peppery character that makes this oil exceptional.",
+      markerLon: 12.6,
+      markerLat: 42.7,
+      markerLabel: "Umbria",
+    },
   },
 
   nocellara: {
