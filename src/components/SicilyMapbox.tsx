@@ -109,17 +109,21 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
           />
         ))}
 
-        {/* Marker pill */}
+        {/* Marker dot + line + pill */}
         {(() => {
           const pillW = markerLabel.length * 11 + 16;
           const pillH = 28;
-          const ox = pillW / 2;
+          const ox = pillW * 0.3;
           const oy = pillH * 2;
+          const pillCx = bx + ox;
+          const pillCy = by + oy;
           return (
             <>
+              <circle cx={bx} cy={by} r={4} fill={labelColor} />
+              <line x1={bx} y1={by} x2={pillCx} y2={pillCy} stroke={labelColor} strokeWidth={1.5} />
               <rect
-                x={bx + ox - pillW / 2}
-                y={by + oy - pillH / 2}
+                x={pillCx - pillW / 2}
+                y={pillCy - pillH / 2}
                 rx={14}
                 ry={14}
                 width={pillW}
@@ -127,8 +131,8 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
                 fill={labelColor}
               />
               <text
-                x={bx + ox}
-                y={by + oy + 5}
+                x={pillCx}
+                y={pillCy + 5}
                 fill={bgColor}
                 fontFamily="'UDC Working Man Sans', sans-serif"
                 fontSize={16}
