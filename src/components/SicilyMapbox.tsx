@@ -58,9 +58,10 @@ interface SicilyMapboxProps {
   centerLon?: number;
   centerLat?: number;
   mapZoom?: number;
+  markerStyle?: "dot-line" | "pill-only";
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom, markerStyle = "dot-line" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
