@@ -128,7 +128,7 @@ export const productContentMap: Record<string, ProductContent> = {
       features: [
         {
           title: "Bold & Punchy",
-          description: "Its high polyphenol content gives the olive oil an intense, peppery kick — a sign of real, fresh EVOO.",
+          description: "Notes of fresh herbs, artichoke and black pepper. Ultra high in polyphenols, the oil has an intense kick and dry finish.",
           icon: "/icons/mortar.svg",
         },
         {
