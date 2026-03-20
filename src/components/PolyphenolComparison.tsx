@@ -14,7 +14,7 @@ const tweets = [{
   content2: "This process dilutes the polyphenol content far below fresh-pressed levels."
 }];
 
-const barTooltips: Record<number, { title: string; subtitle: string; description: string }> = {
+const barTooltips: Record<number, {title: string;subtitle: string;description: string;}> = {
   0: {
     title: "Average Extra Virgin",
     subtitle: "~180 mg/kg polyphenols",
@@ -46,11 +46,11 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
   const comparisonData = [
-    { name: "Avg. Supermarket EVOO", value: 180, color: "bg-[#A8B88F]" },
-    { name: "EU Health Claim", value: 250, color: "bg-[#8A9B6F]" },
-    { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
-    { name: productLabel, value: productValue, color: "bg-[#1B4229]" }
-  ];
+  { name: "Avg. Supermarket EVOO", value: 180, color: "bg-[#A8B88F]" },
+  { name: "EU Health Claim", value: 250, color: "bg-[#8A9B6F]" },
+  { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
+  { name: productLabel, value: productValue, color: "bg-[#1B4229]" }];
+
 
   const maxValue = Math.max(...comparisonData.map((item) => item.value));
 
@@ -62,17 +62,17 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
             <h2 className="font-bold text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
               the polyphenol difference
             </h2>
-            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>
-              Polyphenols make all the difference for olive oil health and taste. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
+            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)' }}>Polyphenols make all the difference for olive oil health benefits and flavour. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
+
             </p>
 
             <div className="space-y-4">
               {comparisonData.map((item, index) => {
                 let width: string;
-                if (index === 0) width = '35%';
-                else if (index === 1) width = '40%';
-                else if (index === 2) width = '50%';
-                else width = '95%';
+                if (index === 0) width = '35%';else
+                if (index === 1) width = '40%';else
+                if (index === 2) width = '50%';else
+                width = '95%';
 
                 const tooltip = barTooltips[index];
 
@@ -81,44 +81,44 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                     key={index}
                     className="relative flex items-center gap-4"
                     onMouseEnter={() => setHoveredBar(index)}
-                    onMouseLeave={() => setHoveredBar(null)}
-                  >
+                    onMouseLeave={() => setHoveredBar(null)}>
+                    
                     <div
                       className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''} cursor-default`}
-                      style={{ width }}
-                    >
+                      style={{ width }}>
+                      
                       <span
                         className={`font-medium whitespace-nowrap text-sm md:text-base ${index === 3 ? 'font-working-man' : ''}`}
-                        style={index !== 3 ? { fontFamily: 'Space Grotesk, sans-serif' } : {}}
-                      >
+                        style={index !== 3 ? { fontFamily: 'Space Grotesk, sans-serif' } : {}}>
+                        
                         {item.name}
                       </span>
-                      {index === 3 && (
-                        <span className="font-bold text-cream whitespace-nowrap text-sm md:text-base" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)' }}>
+                      {index === 3 &&
+                      <span className="font-bold text-cream whitespace-nowrap text-sm md:text-base" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)' }}>
                           400-900 mg/kg
                         </span>
-                      )}
+                      }
                     </div>
-                    {index !== 3 && (
-                      <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)' }}>
+                    {index !== 3 &&
+                    <span className="font-bold text-olive-dark whitespace-nowrap text-sm md:text-base" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.375rem)' }}>
                         {index === 2 ? '400 mg/kg' : `${item.value} mg/kg`}
                       </span>
-                    )}
+                    }
 
                     {/* Hover tooltip */}
-                    {tooltip && hoveredBar === index && (
-                      <div
-                        className="absolute z-50 rounded-xl shadow-xl border border-olive-dark/10 p-5 w-72 md:w-80 pointer-events-none"
-                        style={{
-                          backgroundColor: '#FFFAEA',
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          left: width,
-                          marginLeft: '4.5rem',
-                          animation: 'fadeInTooltip 0.2s ease-out',
-                          boxShadow: '0 8px 32px -4px rgba(27, 66, 41, 0.12), 0 2px 8px -2px rgba(27, 66, 41, 0.08)'
-                        }}
-                      >
+                    {tooltip && hoveredBar === index &&
+                    <div
+                      className="absolute z-50 rounded-xl shadow-xl border border-olive-dark/10 p-5 w-72 md:w-80 pointer-events-none"
+                      style={{
+                        backgroundColor: '#FFFAEA',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        left: width,
+                        marginLeft: '4.5rem',
+                        animation: 'fadeInTooltip 0.2s ease-out',
+                        boxShadow: '0 8px 32px -4px rgba(27, 66, 41, 0.12), 0 2px 8px -2px rgba(27, 66, 41, 0.08)'
+                      }}>
+                      
                         <h4 className="font-bold text-olive-dark text-base mb-1" style={{ fontFamily: 'UDC Working Man Sans, sans-serif' }}>
                           {tooltip.title}
                         </h4>
@@ -129,9 +129,9 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                           {tooltip.description}
                         </p>
                       </div>
-                    )}
-                  </div>
-                );
+                    }
+                  </div>);
+
               })}
             </div>
 
@@ -158,8 +158,8 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                             <img src={icons[index]} alt="icon" className="w-full h-full object-contain" style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }} />
                           </div>
                         </div>
-                      </div>
-                    );
+                      </div>);
+
                   })}
                 </div>
               </div>
@@ -174,6 +174,6 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
           to { opacity: 1; transform: translateY(-50%) translateX(0); }
         }
       `}</style>
-    </section>
-  );
+    </section>);
+
 };
