@@ -362,7 +362,7 @@ export const productContentMap: Record<string, ProductContent> = {
         { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
         { label: "Peroxides", value: "5.7", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
         { label: "Acidity", value: "0.13", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
-        { label: "Oleic Acid", value: "", unit: "", standard: "", description: "Waiting for results" },
+        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ≈ 73%", description: "Waiting for results" },
       ],
     },
     polyphenolValue: 675,
