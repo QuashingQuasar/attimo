@@ -65,7 +65,7 @@ export const Header = ({
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <Link to="/v2">
+            <Link to="/">
               <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
             </Link>
           </div>
