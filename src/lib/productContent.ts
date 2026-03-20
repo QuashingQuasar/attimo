@@ -293,8 +293,8 @@ export const productContentMap: Record<string, ProductContent> = {
     labTiles: [
       { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "antioxidants that give EVOO its special health benefits" },
       { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-      { key: "peroxides", label: "PEROXIDES", value: "—", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
-      { key: "acidity", label: "ACIDITY", value: "—", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+      { key: "peroxides", label: "PEROXIDES", value: "5.7", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "acidity", label: "ACIDITY", value: "0.13", unit: "%", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
     ],
     tabs: {
       details: {
@@ -361,8 +361,8 @@ export const productContentMap: Record<string, ProductContent> = {
       values: [
         { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
         { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
-        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
-        { label: "Acidity", value: "—", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
+        { label: "Peroxides", value: "5.7", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Acidity", value: "0.13", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
       ],
     },
     polyphenolValue: 675,
