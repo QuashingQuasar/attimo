@@ -315,7 +315,7 @@ export const productContentMap: Record<string, ProductContent> = {
         { label: "HERBAL", rating: 5 },
       ],
       harvest:
-        "Early harvest Picual olives, cold-pressed within hours to preserve maximum polyphenols and flavour.",
+        "The olives are picked early in October when they're young, green and packed with polyphenols that boost flavour and health benefits. Cold-extracted within hours of harvest to preserve the oil's distinctive vibrant character.",
       uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Great on grilled vegetables, soups, legumes, and toasted bread.",
