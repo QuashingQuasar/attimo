@@ -269,7 +269,7 @@ const ProductPage = () => {
                 </span>
               </Button>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <ShieldCheck size={20} strokeWidth={1.5} />
                   Third party lab-tested quality
