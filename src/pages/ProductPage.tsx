@@ -183,7 +183,7 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-12 pb-8 md:pb-12 space-y-8">
+            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-28 pb-8 md:pb-12 space-y-8">
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
