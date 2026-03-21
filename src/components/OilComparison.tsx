@@ -5,7 +5,7 @@ const getComparisonData = (polyphenolValue: string) => [
   { feature: "SINGLE SOURCE", attimo: { type: "check" }, them: { type: "text", value: "Oil blended from 3+ countries" } },
   { feature: "TRACEABLE", attimo: { type: "check" }, them: { type: "cross" } },
   { feature: "LAB-TESTED", attimo: { type: "check" }, them: { type: "cross" } },
-  { feature: "POLYPHENOLS", attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "100-200 mg/kg" } },
+  { feature: "POLYPHENOLS", attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "120-210 mg/kg" } },
 ];
 
 interface OilComparisonProps {
