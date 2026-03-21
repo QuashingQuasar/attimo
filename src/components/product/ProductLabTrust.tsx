@@ -1,12 +1,15 @@
+import { Beaker } from "lucide-react";
+
 interface ProductLabTrustProps {
   content: {
     heading: string;
     subheading: string;
     values: Array<{ label: string; value: string; unit: string; standard: string; description: string }>;
   };
+  labReportUrl?: string;
 }
 
-export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
+export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps) => {
   const { heading, subheading, values: labValues } = content;
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
@@ -16,6 +19,18 @@ export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
             <div className="max-w-3xl">
               <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
               <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>{subheading}</p>
+              {labReportUrl && (
+                <a
+                  href={labReportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 mt-4 rounded-full px-3.5 py-1.5 text-olive-dark transition-opacity hover:opacity-70"
+                  style={{ backgroundColor: 'rgba(27, 66, 41, 0.08)', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}
+                >
+                  <Beaker size={14} />
+                  View full lab results
+                </a>
+              )}
             </div>
             <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0" style={{ width: '230px', height: '230px' }} />
           </div>
