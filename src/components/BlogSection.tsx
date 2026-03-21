@@ -74,6 +74,12 @@ export const BlogSection = () => {
               The Olive Press
             </h2>
           </div>
+          <Link
+            to="/blog"
+            className="font-working-man text-sm tracking-wide flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            style={{ color: "#1B4229CC" }}>
+            See more posts <span className="text-base">→</span>
+          </Link>
         </div>
 
         {isLoading &&
