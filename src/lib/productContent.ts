@@ -357,7 +357,7 @@ export const productContentMap: Record<string, ProductContent> = {
     labTrust: {
       heading: "lab-tested for quality and purity",
       subheading:
-        "That's why we third-party lab-test every batch of our olive oil on key quality markers and share the results with you.",
+        "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
         { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
         { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
