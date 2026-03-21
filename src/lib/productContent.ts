@@ -162,12 +162,12 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
-        { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
         { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
         { label: "Oleacin", value: "336", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
-        { label: "Acidity", value: "0.19", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
-        { label: "Peroxides", value: "7.2", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
-        { label: "K270", value: "0.15", unit: "", standard: "standard: < 0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
+        { label: "Acidity", value: "0.19", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
+        { label: "Peroxides", value: "7.2", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "K270", value: "0.15", unit: "", standard: "avg. ~0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
       ],
     },
     polyphenolValue: 847,
