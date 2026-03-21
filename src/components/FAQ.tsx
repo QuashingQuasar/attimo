@@ -16,7 +16,7 @@ export const FAQ = () => {
     <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(2rem, 4vw, 4.5rem)" }}>
+          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(2.8rem, 5.6vw, 6.3rem)" }}>
             Frequently Asked Questions
           </h2>
           <p className="text-gray-600 font-light" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}>

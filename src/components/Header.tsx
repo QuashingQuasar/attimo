@@ -63,26 +63,26 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(!forceTransparent && (isScrolled || shopOpen)) ? 'shadow-lg' : 'bg-transparent'}`}
-      style={{ backgroundColor: (!forceTransparent && (isScrolled || shopOpen)) ? '#1B4229' : 'transparent', transition: 'box-shadow 0.3s ease' }}
+      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
+      style={{ backgroundColor: (isScrolled || shopOpen) ? '#1B4229' : 'transparent', transition: 'box-shadow 0.3s ease, background-color 0.3s ease' }}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
-              <img src={navbarLogo} alt="ATTIMO" className={`h-8 md:h-10 lg:h-12 w-auto ${darkNav && !isScrolled ? 'brightness-0' : ''}`} />
+              <img src={navbarLogo} alt="ATTIMO" className={`h-8 md:h-10 lg:h-12 w-auto ${darkNav && !isScrolled && !shopOpen ? 'brightness-0' : ''}`} />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative hidden md:block" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <button className={`${darkNav && !isScrolled ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <button className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </button>
             </div>
-            <Link to="/blog" className={`hidden md:block ${darkNav && !isScrolled ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/blog" className={`hidden md:block ${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
-            <CartDrawer darkIcon={darkNav && !isScrolled} />
+            <CartDrawer darkIcon={darkNav && !isScrolled && !shopOpen} />
           </div>
         </div>
       </div>
