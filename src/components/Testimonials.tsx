@@ -16,7 +16,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
 
   return (
     <section className="pt-12 md:pt-16 lg:pt-24 pb-28 md:pb-32 lg:pb-40 snap-start min-h-[50vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}>
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+      <video autoPlay muted loop playsInline webkit-playsinline="true" disablePictureInPicture disableRemotePlayback className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" style={{ pointerEvents: 'none' }} ref={(el) => { if (el) el.play().catch(() => {}); }}>
         <source src="/videos/hero-video-3.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black/30" />

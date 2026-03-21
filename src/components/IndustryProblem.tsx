@@ -4,7 +4,7 @@ export const IndustryProblem = () => {
   return <section className="py-12 md:py-16 bg-[#1B4229] snap-start flex items-center">
       <div className="mx-auto px-4 w-[90vw]">
         <div className="relative overflow-hidden rounded-3xl">
-          <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
+          <video autoPlay muted loop playsInline webkit-playsinline="true" disablePictureInPicture disableRemotePlayback className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" style={{ pointerEvents: 'none' }} ref={(el) => { if (el) el.play().catch(() => {}); }}>
             <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>

@@ -43,7 +43,15 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
 
   const renderVideo = (index: number, fallback: string) => (
     <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-      <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
+      <video
+        className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+        autoPlay loop muted playsInline
+        webkit-playsinline="true"
+        disablePictureInPicture
+        disableRemotePlayback
+        style={{ pointerEvents: 'none' }}
+        ref={(el) => { if (el) el.play().catch(() => {}); }}
+      >
         <source src={features[index]?.video || fallback} type="video/mp4" />
       </video>
     </div>
