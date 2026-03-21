@@ -144,15 +144,15 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} forceScrolled />
+      <Header onWaitlistClick={() => {}} />
       
       {/* Product Hero Section */}
-      <section className="pt-20 md:pt-24">
+      <section className="lg:pt-24">
         <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-start">
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full aspect-[4/5] md:aspect-[5/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
