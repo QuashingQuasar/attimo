@@ -152,7 +152,7 @@ const ProductPage = () => {
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full max-h-[65vh] md:max-h-[75vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full max-h-[81vh] md:max-h-[75vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
@@ -200,16 +200,16 @@ const ProductPage = () => {
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.78rem, 5.4vw, 5.13rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 5.4vw, 5.13rem)', fontWeight: 400 }}>
                   {content.heroTitle}
-                  <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(0.97rem, 2.025vw, 2.16rem)', fontStyle: 'italic', fontWeight: 400 }}>
+                  <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontSize: 'clamp(1.07rem, 2.025vw, 2.16rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {content.tabs.details.volume}
                   </span>
                 </h1>
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontWeight: 'bold', fontSize: 'clamp(1.22rem, 3.1vw, 3.1rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
+              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontWeight: 'bold', fontSize: 'clamp(1.34rem, 3.1vw, 3.1rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
                 {content.heroSubtitle}
               </p>
 
