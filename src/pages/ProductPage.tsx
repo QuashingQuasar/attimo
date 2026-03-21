@@ -263,13 +263,13 @@ const ProductPage = () => {
                   borderRadius: "0.75rem",
                 }}
               >
-                <span className="flex flex-col items-center gap-0.5">
+                <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-2">
                   <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
                   <span className="font-normal" style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.3rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
                 </span>
               </Button>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <ShieldCheck size={20} strokeWidth={1.5} />
                   Third party lab-tested quality
@@ -287,15 +287,15 @@ const ProductPage = () => {
                     <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       {tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}
                     </p>
-                    <div className="space-y-1">
-                      <p className="text-olive-dark font-bold" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
+                    <p className="text-olive-dark font-bold md:flex md:items-baseline md:gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
+                      <span>
                         {tile.value}
                         {tile.value !== '—' && tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{tile.unit}</span>}
-                      </p>
-                      <p className="text-olive-light whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.72rem, 0.82vw, 0.88rem)' }}>
+                      </span>
+                      <span className="block md:inline text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.72rem, 0.82vw, 0.88rem)' }}>
                         {tile.avg}
-                      </p>
-                    </div>
+                      </span>
+                    </p>
                     {tile.description && (
                 <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.description}
