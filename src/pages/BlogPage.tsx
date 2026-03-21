@@ -51,7 +51,7 @@ const BlogPage = () => {
               fontFamily: "Beverly Drive Right, serif",
               fontSize: "clamp(3rem, 6vw, 7rem)",
               color: "#1B4229",
-              paddingTop: "140px",
+              paddingTop: "200px",
               paddingBottom: "8px",
             }}
           >
