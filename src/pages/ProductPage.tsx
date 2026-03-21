@@ -152,16 +152,16 @@ const ProductPage = () => {
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full max-h-[65vh] md:max-h-[72vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full max-h-[65vh] md:max-h-[75vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover object-center" />
               
 
-                {/* Overlay Thumbnails — bottom-left inside image */}
+                {/* Overlay Thumbnails — bottom-right inside image */}
                 {productImages.length > 1 &&
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-6 right-6 flex gap-2">
                     {productImages.map((img, i) =>
                 <button
                   key={i}
