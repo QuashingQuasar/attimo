@@ -146,7 +146,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} forceTransparent darkNav />
+      <Header onWaitlistClick={() => {}} forceTransparent={isMobile} darkNav={isMobile} forceScrolled={!isMobile} />
       
       {/* Product Hero Section */}
       <section className="lg:pt-24">
