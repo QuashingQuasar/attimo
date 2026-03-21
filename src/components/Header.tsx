@@ -99,18 +99,18 @@ export const Header = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="mx-auto px-12 py-10" style={{ maxWidth: '1400px' }}>
-            <div className="grid grid-cols-3 gap-10">
+          <div className="mx-auto px-6 md:px-12 py-6 md:py-10" style={{ maxWidth: '1400px' }}>
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-10">
               {shopProducts.map((product) => (
-                <Link key={product.handle} to={`/product/${product.handle}`} onClick={() => setShopOpen(false)} className="flex flex-col items-center gap-5 group">
-                  <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                <Link key={product.handle} to={`/product/${product.handle}`} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
+                  <div className="w-20 h-20 md:w-full md:aspect-[3/4] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 scale-[1.25] group-hover:scale-[1.28]" />
                   </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: '2rem', letterSpacing: '0.03em' }}>
+                  <div className="flex flex-col md:items-center gap-0 md:gap-1">
+                    <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(1.1rem, 2vw, 2rem)', letterSpacing: '0.03em' }}>
                       {product.name}
                     </span>
-                    <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: '1.25rem', letterSpacing: '0.1em' }}>
+                    <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.75rem, 1vw, 1.25rem)', letterSpacing: '0.1em' }}>
                       {product.flavor}
                     </span>
                   </div>
