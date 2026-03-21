@@ -49,11 +49,12 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                     {item.standard}
                   </span>
                 </p>
-                {item.value === '—' ? (
+                {item.value === '—' && (
                   <p className="text-olive-medium/60 italic mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                     Waiting for results
                   </p>
-                ) : item.description && (
+                )}
+                {item.description && (
                   <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                     {item.description}
                   </p>

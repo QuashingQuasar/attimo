@@ -293,11 +293,12 @@ const ProductPage = () => {
                         {tile.avg}
                       </span>
                     </p>
-                    {tile.value === '—' ? (
+                    {tile.value === '—' && (
                       <p className="text-olive-medium/60 italic mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         Waiting for results
                       </p>
-                    ) : tile.description && (
+                    )}
+                    {tile.description && (
                 <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.description}
                       </p>
