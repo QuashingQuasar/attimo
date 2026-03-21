@@ -137,7 +137,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Early Harvest",
-          description: "Harvested early when the olives are green and packed with polyphenols that boost taste and health.",
+          description: "Harvested early when the olives are green and packed with polyphenols that boost flavour and health benefits.",
           icon: "/icons/basket-2.svg",
         },
         {
@@ -219,7 +219,7 @@ export const productContentMap: Record<string, ProductContent> = {
         { label: "PEPPERY", rating: 2 },
       ],
       harvest:
-        "The olives are picked early in October when they're young, green and packed with polyphenols that boost taste and health. Cold-extracted within hours of harvest to preserve the oil's distinctive gentle, fruity character.",
+        "The olives are picked early in October when they're young, green and packed with polyphenols that boost flavour and health benefits. Cold-extracted within hours of harvest to preserve the oil's distinctive gentle, fruity character.",
       uses: "Good on everything — drizzle over fresh foods to add a gentle pop of flavour.",
       usesExtra:
         "Perfect for pasta, enrich eggs, finish seafood, dress leafy greens — and try it on ice cream.",
@@ -242,7 +242,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Early Harvest",
-          description: "Picked early in October when the olives are young, green and packed with polyphenols that boost taste and health.",
+          description: "Picked early in October when the olives are young, green and packed with polyphenols that boost flavour and health benefits.",
           icon: "/icons/basket-2.svg",
         },
         {
