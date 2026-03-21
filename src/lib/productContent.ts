@@ -363,12 +363,12 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
-        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "standard: ≈ 180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleic Acid", value: "—", unit: "%", standard: "standard: ~67%", description: "A healthy fat that protects the oil and supports heart health." },
-        { label: "Peroxides", value: "5.7", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
-        { label: "Acidity", value: "0.13", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
-        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
-        { label: "K270", value: "—", unit: "", standard: "standard: < 0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
+        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleic Acid", value: "—", unit: "%", standard: "avg. ~67%", description: "A healthy fat that protects the oil and supports heart health." },
+        { label: "Peroxides", value: "5.7", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "Acidity", value: "0.13", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
+        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "K270", value: "—", unit: "", standard: "avg. ~0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
       ],
     },
     polyphenolValue: 675,
