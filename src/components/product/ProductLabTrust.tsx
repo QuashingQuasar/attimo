@@ -24,10 +24,10 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   href={labReportUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 mt-4 rounded-full px-3.5 py-1.5 text-olive-dark transition-opacity hover:opacity-70"
-                  style={{ backgroundColor: 'rgba(27, 66, 41, 0.08)', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}
+                  className="inline-flex items-center gap-2 mt-4 text-olive-dark underline underline-offset-4 decoration-olive-dark/40 transition-opacity hover:opacity-70"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
                 >
-                  <Beaker size={14} />
+                  <Beaker size={18} />
                   View full lab results
                 </a>
               )}
