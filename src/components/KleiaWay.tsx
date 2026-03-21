@@ -1,5 +1,45 @@
 
 export const KleiaWay = () => {
+  const tiles = [
+    { title: "ALWAYS FRESH", text: "ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness." },
+    { title: "SINGLE VARIETY", text: "Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from." },
+    { title: "EARLY HARVEST", text: "Our olives are harvested early in season when they are highest in the polyphenols that give taste and health" },
+    { title: "FROM GROVE TO TABLE", text: "We source directly from the people who make the oil. No middlemen, no blending, no shortcuts." },
+    { title: "LAB-TESTED QUALITY", text: "Every bottle is lab-tested by third parties on key quality markers you can verify for yourself." },
+  ];
+
+  const videos = [
+    "/videos/content-video-1.mp4",
+    "/videos/kleia-way-video-3.mp4",
+    "/videos/kleia-way-video.mp4",
+    "/videos/harvest-2024-1.mp4",
+  ];
+
+  const renderTile = (index: number) => (
+    <div className="rounded-2xl p-4 lg:p-5 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+      <div className="h-full flex flex-col justify-center items-center text-center">
+        <h4 className="font-bold mb-3" style={{
+          fontFamily: 'UDC Working Man Sans, sans-serif',
+          color: '#B3E58C',
+          fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)'
+        }}>{tiles[index].title}</h4>
+        <p className="leading-relaxed max-w-[280px]" style={{
+          fontFamily: 'Space Grotesk, sans-serif',
+          color: '#B3E58C',
+          fontSize: 'clamp(0.85rem, 1vw, 1rem)'
+        }}>{tiles[index].text}</p>
+      </div>
+    </div>
+  );
+
+  const renderVideo = (index: number) => (
+    <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+      <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
+        <source src={videos[index]} type="video/mp4" />
+      </video>
+    </div>
+  );
+
   return (
     <section className="snap-start pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
@@ -15,116 +55,22 @@ export const KleiaWay = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[calc(100vh-200px)]">
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>ALWAYS FRESH</h4>
-              <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>
-                ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.
-              </p>
-            </div>
-          </div>
+          {/* Row 1: content - video - content */}
+          {renderTile(0)}
+          {renderVideo(0)}
+          {renderTile(1)}
 
-          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src="/videos/content-video-1.mp4" type="video/mp4" />
-            </video>
-          </div>
+          {/* Row 2: video - content - video */}
+          {renderVideo(1)}
+          {renderTile(2)}
+          {renderVideo(2)}
 
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>SINGLE VARIETY</h4>
-              <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>
-                Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from.
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src="/videos/kleia-way-video-3.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>Early harvest</h4>
-              <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>Our olives are harvested early in season when they are highest in the polyphenols that give taste and health
-
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>FROM GROVE TO TABLE</h4>
-              <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>
-                We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.
-              </p>
-            </div>
-          </div>
-
-          <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-            <video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src="/videos/harvest-2024-1.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229', color: '#B3E58C' }}>
-            <div className="h-full flex flex-col justify-center items-center text-center">
-              <h4 className="font-bold mb-6" style={{
-                fontFamily: 'UDC Working Man Sans, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1.5rem, 2.5vw, 2.75rem)'
-              }}>LAB-TESTED QUALITY</h4>
-              <p className="leading-relaxed" style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                color: '#B3E58C',
-                fontSize: 'clamp(1rem, 1.3vw, 1.5rem)'
-              }}>
-                Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.
-              </p>
-            </div>
-          </div>
+          {/* Row 3: content - video - content */}
+          {renderTile(3)}
+          {renderVideo(3)}
+          {renderTile(4)}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
