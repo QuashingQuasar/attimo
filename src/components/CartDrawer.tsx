@@ -94,12 +94,12 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                   {items.map((item) => (
                     <div key={item.variantId} className="border rounded-lg overflow-hidden">
                       {/* Product Image - Full width, cropped top/bottom */}
-                      <div className="w-full overflow-hidden">
+                      <div className="w-full aspect-[1/0.86] overflow-hidden">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
-                            className="w-full h-auto"
+                            className="w-full h-full object-cover object-center"
                           />
                         )}
                       </div>
