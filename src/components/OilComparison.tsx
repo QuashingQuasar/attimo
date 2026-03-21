@@ -13,7 +13,7 @@ interface OilComparisonProps {
   polyphenolDisplay?: string;
 }
 
-export const OilComparison = ({ columnHeading = "Nocellara", polyphenolDisplay = "400 mg/kg" }: OilComparisonProps) => {
+export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "400-900 mg/kg" }: OilComparisonProps) => {
   const comparisonData = getComparisonData(polyphenolDisplay);
 
   return <section className="pt-0 pb-24 md:pb-28 lg:pb-36 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
