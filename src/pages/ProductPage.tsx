@@ -255,11 +255,11 @@ const ProductPage = () => {
 
               <Button
                 onClick={handleAddToCart}
-                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-6 py-7 h-auto transition-all duration-300 hover:scale-[1.02]"
+                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] whitespace-normal text-center leading-tight"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   backgroundColor: content.buttonColor,
-                  fontSize: "clamp(1.1rem, 1.4vw, 1.45rem)",
+                  fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
                   borderRadius: "0.75rem",
                 }}
               >
