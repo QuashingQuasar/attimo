@@ -144,7 +144,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} />
+      <Header onWaitlistClick={() => {}} forceTransparent />
       
       {/* Product Hero Section */}
       <section className="lg:pt-24">
