@@ -106,7 +106,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                       </div>
                       
                       {/* Product Info Row Below */}
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-3 p-3">
                         <h4 className="font-medium text-sm">{item.product.node.title}</h4>
                         
                         <div className="flex items-center justify-between">
