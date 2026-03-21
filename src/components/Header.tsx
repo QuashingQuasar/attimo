@@ -16,10 +16,12 @@ const shopProducts = [
 interface HeaderProps {
   onWaitlistClick: () => void;
   forceScrolled?: boolean;
+  forceTransparent?: boolean;
 }
 export const Header = ({
   onWaitlistClick,
   forceScrolled = false,
+  forceTransparent = false,
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
@@ -59,8 +61,8 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
-      style={{ backgroundColor: (isScrolled || shopOpen) ? '#1B4229' : 'transparent', transition: 'box-shadow 0.3s ease' }}
+      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(!forceTransparent && (isScrolled || shopOpen)) ? 'shadow-lg' : 'bg-transparent'}`}
+      style={{ backgroundColor: (!forceTransparent && (isScrolled || shopOpen)) ? '#1B4229' : 'transparent', transition: 'box-shadow 0.3s ease' }}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
