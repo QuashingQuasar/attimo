@@ -31,6 +31,7 @@ const ProductPage = () => {
   const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(null);
   const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
+  const isMobile = useIsMobile();
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
