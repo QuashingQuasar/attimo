@@ -310,7 +310,7 @@ const ProductPage = () => {
       <Testimonials headingColor="#ECA948" />
       <ProductOriginRegion />
       <ProductLabTrust content={content.labTrust} />
-      <OilComparison />
+      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
       <FAQ />
 
       <Footer />
