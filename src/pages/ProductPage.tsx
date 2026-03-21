@@ -292,10 +292,9 @@ const ProductPage = () => {
                         {tile.value}
                         {tile.value !== '—' && tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{tile.unit}</span>}
                       </p>
-                      <div className="text-olive-light leading-tight" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
-                        <span className="block">avg.</span>
-                        <span className="block">{tile.avg.replace(/^avg\.\s*/, '')}</span>
-                      </div>
+                      <p className="text-olive-light whitespace-nowrap" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.72rem, 0.82vw, 0.88rem)' }}>
+                        {tile.avg}
+                      </p>
                     </div>
                     {tile.description && (
                 <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
