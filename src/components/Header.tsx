@@ -82,7 +82,7 @@ export const Header = ({
             <Link to="/blog" className={`hidden md:block ${darkNav && !isScrolled ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
-            <CartDrawer />
+            <CartDrawer darkIcon={darkNav && !isScrolled} />
           </div>
         </div>
       </div>
