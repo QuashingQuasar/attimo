@@ -61,7 +61,7 @@ export const OilProductWidgets = () => {
             style={{
               fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
-              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
             }}>Specialty Extra Virgin Olive Oil
 
@@ -75,7 +75,7 @@ export const OilProductWidgets = () => {
               opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
-              maxWidth: "900px"
+              maxWidth: "800px"
             }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
 
 
