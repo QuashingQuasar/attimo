@@ -94,7 +94,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                   {items.map((item) => (
                     <div key={item.variantId} className="border rounded-lg p-3">
                       {/* Product Image - Full width */}
-                      <div className="mb-3 rounded-lg overflow-hidden bg-white/50">
+                      <div className="mb-3 rounded-lg overflow-hidden bg-white/50" style={{ marginTop: '-7%', marginBottom: '-7%' }}>
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
