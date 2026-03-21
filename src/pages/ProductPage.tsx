@@ -200,7 +200,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 5.4vw, 5.13rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 3.8vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(1.07rem, 2.025vw, 2.16rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {content.tabs.details.volume}
@@ -255,17 +255,20 @@ const ProductPage = () => {
 
               <Button
                 onClick={handleAddToCart}
-                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center"
+                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   backgroundColor: content.buttonColor,
-                  fontSize: "clamp(1.37rem, 2.25vw, 2.33rem)",
+                  fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
                   borderRadius: "0.75rem",
                 }}
               >
-                <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-2">
+                <span className="hidden md:inline">
+                  ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                </span>
+                <span className="flex flex-col items-center gap-0.5 md:hidden">
                   <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                  <span className="font-normal" style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.3rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                  <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
                 </span>
               </Button>
 
