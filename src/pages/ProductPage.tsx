@@ -259,7 +259,7 @@ const ProductPage = () => {
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   backgroundColor: content.buttonColor,
-                  fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
+                  fontSize: "clamp(1.19rem, 1.96vw, 2.03rem)",
                   borderRadius: "0.75rem",
                 }}
               >
