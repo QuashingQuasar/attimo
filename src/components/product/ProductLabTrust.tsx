@@ -17,7 +17,7 @@ export const ProductLabTrust = ({ content }: ProductLabTrustProps) => {
               <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
               <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>{subheading}</p>
             </div>
-            <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0 opacity-70" style={{ width: '230px', height: '230px' }} />
+            <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0" style={{ width: '230px', height: '230px' }} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {labValues.map((item, index) => (
