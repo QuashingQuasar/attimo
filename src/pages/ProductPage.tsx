@@ -163,7 +163,7 @@ const ProductPage = () => {
 
                 {/* Overlay Thumbnails — bottom-right inside image */}
                 {productImages.length > 1 &&
-              <div className="absolute bottom-6 right-6 flex gap-2">
+              <div className="absolute bottom-6 right-6 lg:right-1/2 lg:translate-x-1/2 flex gap-2">
                     {productImages.map((img, i) =>
                 <button
                   key={i}
