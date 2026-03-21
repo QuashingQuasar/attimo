@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
@@ -30,6 +31,7 @@ const ProductPage = () => {
   const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(null);
   const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
+  const isMobile = useIsMobile();
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
@@ -144,7 +146,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} forceTransparent darkNav />
+      <Header onWaitlistClick={() => {}} forceTransparent={isMobile} darkNav={isMobile} forceScrolled={!isMobile} />
       
       {/* Product Hero Section */}
       <section className="lg:pt-24">
