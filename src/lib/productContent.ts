@@ -296,8 +296,8 @@ export const productContentMap: Record<string, ProductContent> = {
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
       { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-      { key: "oleic-acid", label: "OLEIC ACID", value: "—", unit: "", avg: "avg. ~67%", description: "healthy fats that protect the oil and your health, higher = better" },
-      { key: "peroxides", label: "PEROXIDES", value: "5.7", unit: "meq/kg", avg: "avg. ~20meq/kg", description: "lower = fresher oil, less oxidation and longer shelf life" },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+      { key: "oleacin", label: "OLEACIN", value: "—", unit: "mg/kg", avg: "avg. <40mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
       { key: "acidity", label: "ACIDITY", value: "0.13", unit: "%", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
     ],
     tabs: {
