@@ -271,6 +271,8 @@ export const productContentMap: Record<string, ProductContent> = {
         { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "values at time of production", description: "A powerful natural anti-inflammatory compound found in quality extra virgin olive oil." },
         { label: "Oleacin", value: "209", unit: "mg/kg", standard: "values at time of production", description: "A potent antioxidant linked to heart health and longevity." },
         { label: "Acidity", value: "0.21", unit: "%", standard: "standard: < 0.8%", description: "Lower acidity means fresher olives and higher quality." },
+        { label: "Peroxides", value: "—", unit: "meq/kg", standard: "standard: < 20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
+        { label: "K270", value: "—", unit: "", standard: "standard: < 0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
       ],
     },
     polyphenolValue: 400,
