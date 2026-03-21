@@ -372,7 +372,7 @@ export const productContentMap: Record<string, ProductContent> = {
     tileAccent: "#1B4229",
     originRegion: {
       heading: "From grove to bottle",
-      body: "ATTIMO Picual is directly sourced from a small family grove in Jaén, the heart of Andalucía and the olive oil capital of the world. This province alone produces more olive oil than any entire country outside Spain.\n\nThe rugged Sierra landscape, with its hot days and cool nights, pushes the Picual olive to concentrate its natural defences — resulting in an oil that is exceptionally rich in polyphenols and built for stability. Harvested early and pressed within hours, the result is an intensely green, grassy oil with real character.",
+      body: "ATTIMO Picual is directly sourced from a small family grove in Jaén, the heart of Andalucía and the olive oil capital of the world. This province alone produces more olive oil than any entire country outside Spain.\n\nThe rugged Sierra landscape, with its hot days and cool nights, pushes the Picual olive to concentrate its natural defences — resulting in an oil that is exceptionally rich in polyphenols and built for stability. Harvested early and pressed within hours, the result is a vibrantly green oil with a structured character.",
       markerLon: -3.79,
       markerLat: 37.77,
       markerLabel: "Jaén",
