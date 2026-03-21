@@ -100,7 +100,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
                             className="block w-full h-auto"
-                            style={{ transform: 'scaleY(1.14)', transformOrigin: 'center' }}
+                            style={{ margin: '-7% 0' }}
                           />
                         )}
                       </div>
