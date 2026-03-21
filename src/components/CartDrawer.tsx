@@ -93,20 +93,20 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                 <div className="space-y-4">
                   {items.map((item) => (
                     <div key={item.variantId} className="border rounded-lg p-3">
-                      {/* Product Image - Same padding as text */}
-                      <div className="mb-3">
+                      {/* Product Image - Full width */}
+                      <div className="mb-3 rounded-lg overflow-hidden bg-white/50">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
-                            className="w-64 h-64 object-contain object-left"
+                            className="w-full h-auto object-cover"
                           />
                         )}
                       </div>
                       
                       {/* Product Info Row Below */}
                       <div className="flex flex-col gap-3">
-                        <h4 className="font-medium text-sm">{item.product.node.title} — {item.variantTitle}</h4>
+                        <h4 className="font-medium text-sm">{item.product.node.title}</h4>
                         
                         <div className="flex items-center justify-between">
                           <p className="font-semibold">
