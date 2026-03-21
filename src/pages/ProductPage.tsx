@@ -209,7 +209,7 @@ const ProductPage = () => {
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive Right, Georgia, serif', fontStyle: 'italic', fontWeight: 'bold', fontSize: 'clamp(1.34rem, 3.1vw, 3.1rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
+              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive, cursive', fontStyle: 'italic', fontWeight: 'bold', fontSize: 'clamp(1.34rem, 3.1vw, 3.1rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
                 {content.heroSubtitle}
               </p>
 
