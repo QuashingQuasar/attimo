@@ -152,11 +152,11 @@ const ProductPage = () => {
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full max-h-[65vh] md:max-h-[68vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full max-h-[65vh] md:max-h-[62vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
-                className="w-full h-full object-cover" />
+                className="w-full h-full object-cover md:object-[center_46%]" />
               
 
                 {/* Overlay Thumbnails — bottom-left inside image */}
