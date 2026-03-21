@@ -202,7 +202,7 @@ export const productContentMap: Record<string, ProductContent> = {
       { key: "polyphenols", label: "POLYPHENOLS", value: "400", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
       { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "avg. <10mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
       { key: "oleacin", label: "OLEACIN", value: "209", unit: "mg/kg", avg: "avg. <40mg/kg", description: "a potent antioxidant linked to heart health and longevity" },
-      { key: "acidity", label: "ACIDITY", value: "0.21%", unit: "", avg: "avg. ~0.8%", description: "lower = fresher olives and higher quality" },
+      { key: "acidity", label: "ACIDITY", value: "0.21%", unit: "", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
     ],
     tabs: {
       details: {
