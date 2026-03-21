@@ -200,7 +200,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 5.4vw, 5.13rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1]" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 3.8vw, 3.8rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(1.07rem, 2.025vw, 2.16rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {content.tabs.details.volume}
