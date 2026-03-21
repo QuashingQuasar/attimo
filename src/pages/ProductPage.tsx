@@ -266,7 +266,7 @@ const ProductPage = () => {
                 ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">({selectedQuantity < 2 ? "ADD 1 MORE FOR FREE SHIPPING" : "FREE SHIPPING ✓"})</span>
               </Button>
 
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col gap-2">
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
                   <ShieldCheck size={20} strokeWidth={1.5} />
                   Third party lab-tested quality
