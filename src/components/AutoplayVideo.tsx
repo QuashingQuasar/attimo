@@ -63,7 +63,6 @@ export const AutoplayVideo = ({ src, className, poster, style }: AutoplayVideoPr
       ref={videoRef}
       autoPlay
       muted
-      defaultMuted
       loop
       playsInline
       preload="auto"

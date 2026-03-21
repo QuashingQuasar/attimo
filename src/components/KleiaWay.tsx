@@ -1,3 +1,4 @@
+import { AutoplayVideo } from "@/components/AutoplayVideo";
 
 export const KleiaWay = () => {
   const tiles = [
@@ -34,10 +35,10 @@ export const KleiaWay = () => {
 
   const renderVideo = (index: number) => (
     <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
-      <video
+      <AutoplayVideo
+        src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
-        autoPlay loop muted playsInline
-        webkit-playsinline="true"
+      />
         disablePictureInPicture
         disableRemotePlayback
         style={{ pointerEvents: 'none' }}

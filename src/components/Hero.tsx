@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { OliveLeaf } from './OliveLeaf';
 import kleiaLogo from '@/assets/attimo-main-logo.svg';
 interface HeroProps {
@@ -8,20 +9,11 @@ export const Hero = ({
   onWaitlistClick
 }: HeroProps) => {
   return <section className="relative flex items-center justify-center overflow-hidden h-screen snap-start">
-      <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      webkit-playsinline="true"
-      disablePictureInPicture
-      disableRemotePlayback
-      poster="/images/hero-poster.png"
-      className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
-      style={{ pointerEvents: 'none' }}>
-      
-        <source src="/videos/hero-video-new.mp4" type="video/mp4" />
-      </video>
+      <AutoplayVideo
+        src="/videos/hero-video-new.mp4"
+        poster="/images/hero-poster.png"
+        className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+      />
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       

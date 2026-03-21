@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { Card, CardContent } from "@/components/ui/card";
 import patternBg from "@/assets/testimonial-pattern.svg";
 
@@ -16,9 +17,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
 
   return (
     <section className="pt-12 md:pt-16 lg:pt-24 pb-28 md:pb-32 lg:pb-40 snap-start min-h-[50vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}>
-      <video autoPlay muted loop playsInline webkit-playsinline="true" disablePictureInPicture disableRemotePlayback className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" style={{ pointerEvents: 'none' }} ref={(el) => { if (el) el.play().catch(() => {}); }}>
-        <source src="/videos/hero-video-3.mp4" type="video/mp4" />
-      </video>
+      <AutoplayVideo src="/videos/hero-video-3.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
         <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
