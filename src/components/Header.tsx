@@ -16,6 +16,7 @@ const shopProducts = [
 interface HeaderProps {
   onWaitlistClick: () => void;
   forceScrolled?: boolean;
+  forceTransparent?: boolean;
 }
 export const Header = ({
   onWaitlistClick,
