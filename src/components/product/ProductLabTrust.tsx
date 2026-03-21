@@ -46,14 +46,10 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                     {item.value !== '—' && item.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{item.unit}</span>}
                   </span>
                   <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                    {item.value === '—' && <span className="italic text-olive-medium/60 mr-2">(Waiting for results)</span>}
                     {item.standard}
                   </span>
                 </p>
-                {item.value === '—' && (
-                  <p className="text-olive-medium/60 italic mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
-                    Waiting for results
-                  </p>
-                )}
                 {item.description && (
                   <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                     {item.description}
