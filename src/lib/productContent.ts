@@ -268,7 +268,7 @@ export const productContentMap: Record<string, ProductContent> = {
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
         { label: "Polyphenols", value: "400", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A powerful natural anti-inflammatory compound found in quality extra virgin olive oil." },
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
         { label: "Oleacin", value: "209", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A potent antioxidant linked to heart health and longevity." },
         { label: "Acidity", value: "0.21", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
         { label: "Peroxides", value: "7.8", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
