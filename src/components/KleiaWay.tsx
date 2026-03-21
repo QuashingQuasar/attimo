@@ -39,13 +39,6 @@ export const KleiaWay = () => {
         src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
       />
-        disablePictureInPicture
-        disableRemotePlayback
-        style={{ pointerEvents: 'none' }}
-        ref={(el) => { if (el) el.play().catch(() => {}); }}
-      >
-        <source src={videos[index]} type="video/mp4" />
-      </video>
     </div>
   );
 
