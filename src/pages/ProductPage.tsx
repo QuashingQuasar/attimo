@@ -152,7 +152,7 @@ const ProductPage = () => {
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full max-h-[65vh] md:max-h-[60vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full max-h-[65vh] md:max-h-[68vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
@@ -181,7 +181,7 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 py-8 md:py-12 space-y-8">
+            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-12 pb-8 md:pb-12 space-y-8">
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
