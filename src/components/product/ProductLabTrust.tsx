@@ -38,7 +38,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
             {labValues.map((item, index) => (
               <div key={index} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
                 <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                  {item.label}
+                  {item.label}{item.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}
                 </p>
                 <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
                   <span>
@@ -46,7 +46,6 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                     {item.value !== '—' && item.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{item.unit}</span>}
                   </span>
                   <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
-                    {item.value === '—' && <span className="italic text-olive-medium/60 mr-2">(Waiting for results)</span>}
                     {item.standard}
                   </span>
                 </p>
