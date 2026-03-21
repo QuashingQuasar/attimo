@@ -23,7 +23,7 @@ const Index = () => {
       <HarvestProduct />
       <KleiaWay />
       
-      <OilComparison />
+      <OilComparison columnHeading="ATTIMO" polyphenolDisplay="400-900 mg/kg" />
       <Testimonials />
       
       <FAQ />
