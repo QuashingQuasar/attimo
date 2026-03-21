@@ -17,11 +17,13 @@ interface HeaderProps {
   onWaitlistClick: () => void;
   forceScrolled?: boolean;
   forceTransparent?: boolean;
+  darkNav?: boolean;
 }
 export const Header = ({
   onWaitlistClick,
   forceScrolled = false,
   forceTransparent = false,
+  darkNav = false,
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
