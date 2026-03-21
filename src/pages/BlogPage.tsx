@@ -48,7 +48,7 @@ const BlogPage = () => {
           <h1
             className="tracking-tight leading-[0.95]"
             style={{
-              fontFamily: "Beverly Drive Right, serif",
+              fontFamily: "Beverly Drive, cursive",
               fontSize: "clamp(3rem, 6vw, 7rem)",
               color: "#1B4229",
               paddingTop: "200px",
