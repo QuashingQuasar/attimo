@@ -133,7 +133,7 @@ export const BlogSection = () => {
         <div className="mt-16 pt-12 pb-0 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
           <p
             className="text-sm md:text-base leading-relaxed max-w-md"
-            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229CC" }}>Get ATTIMO stories, insights and updates in your box
+            style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229CC" }}>Get ATTIMO stories, insights and updates in your inbox
 
           </p>
           <form onSubmit={handleNewsletterSubmit} className="flex gap-3 w-full md:w-auto">
