@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
 
