@@ -92,14 +92,15 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.variantId} className="border rounded-lg p-3">
-                      {/* Product Image - Full width */}
-                      <div className="mb-3 rounded-lg overflow-hidden bg-white/50" style={{ marginTop: '-7%', marginBottom: '-7%' }}>
+                    <div key={item.variantId} className="border rounded-lg overflow-hidden">
+                      {/* Product Image - Full width, cropped top/bottom */}
+                      <div className="w-full h-[280px] sm:h-[320px] overflow-hidden">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
                             alt={item.product.node.title}
-                            className="w-full h-auto object-cover"
+                            className="w-full h-[120%] object-cover object-center"
+                            style={{ marginTop: '-10%' }}
                           />
                         )}
                       </div>
