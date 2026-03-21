@@ -144,7 +144,7 @@ const ProductPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => {}} forceTransparent />
+      <Header onWaitlistClick={() => {}} forceTransparent darkNav />
       
       {/* Product Hero Section */}
       <section className="lg:pt-24">
@@ -152,7 +152,7 @@ const ProductPage = () => {
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-20 lg:self-start">
-              <div className="w-full aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
+              <div className="w-full max-h-[65vh] md:max-h-[60vh] lg:max-h-none aspect-[3/4] lg:aspect-auto lg:h-[calc(100vh-5rem)] relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}

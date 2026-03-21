@@ -17,11 +17,13 @@ interface HeaderProps {
   onWaitlistClick: () => void;
   forceScrolled?: boolean;
   forceTransparent?: boolean;
+  darkNav?: boolean;
 }
 export const Header = ({
   onWaitlistClick,
   forceScrolled = false,
   forceTransparent = false,
+  darkNav = false,
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
@@ -68,19 +70,19 @@ export const Header = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
-              <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
+              <img src={navbarLogo} alt="ATTIMO" className={`h-8 md:h-10 lg:h-12 w-auto ${darkNav && !isScrolled ? 'brightness-0' : ''}`} />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative hidden md:block" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <button className="text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <button className={`${darkNav && !isScrolled ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </button>
             </div>
-            <Link to="/blog" className="hidden md:block text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/blog" className={`hidden md:block ${darkNav && !isScrolled ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
-            <CartDrawer />
+            <CartDrawer darkIcon={darkNav && !isScrolled} />
           </div>
         </div>
       </div>

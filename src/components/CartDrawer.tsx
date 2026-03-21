@@ -12,7 +12,7 @@ import {
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 
-export const CartDrawer = () => {
+export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { 
     items, 
@@ -47,7 +47,7 @@ export const CartDrawer = () => {
             console.log('[CartDrawer] Cart icon clicked', e);
             e.stopPropagation();
           }}
-          className="text-white hover:opacity-80 transition-opacity relative" 
+          className={`${darkIcon ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity relative`} 
           aria-label="Shopping cart"
         >
           <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
