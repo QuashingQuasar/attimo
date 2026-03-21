@@ -90,7 +90,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
           ) : (
             <>
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
-                <div className="space-y-4">
+                <div className="divide-y divide-olive-dark/10">
                   {items.map((item) => (
                     <div key={item.variantId} className="flex items-center gap-5 py-3">
                       {/* Thumbnail */}
