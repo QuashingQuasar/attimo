@@ -46,16 +46,16 @@ const BlogPage = () => {
       <main className="flex-1 px-6 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <h1
-            className="tracking-tight leading-[0.95] uppercase"
+            className="tracking-tight leading-[0.95]"
             style={{
-              fontFamily: "UDC Working Man Sans, sans-serif",
-              fontSize: "clamp(2.4rem, 4vw, 4.5rem)",
+              fontFamily: "Beverly Drive Right, serif",
+              fontSize: "clamp(3rem, 6vw, 7rem)",
               color: "#1B4229",
               paddingTop: "140px",
               paddingBottom: "8px",
             }}
           >
-            the olive press
+            The Olive Press
           </h1>
 
           {isLoading && (
