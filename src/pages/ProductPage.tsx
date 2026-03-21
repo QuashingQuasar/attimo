@@ -263,7 +263,7 @@ const ProductPage = () => {
                   borderRadius: "0.75rem",
                 }}
               >
-                <span className="flex flex-col items-center gap-0.5">
+                <span className="flex flex-col md:flex-row items-center gap-0.5 md:gap-2">
                   <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
                   <span className="font-normal" style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.3rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
                 </span>
