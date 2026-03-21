@@ -75,7 +75,7 @@ export const Header = ({
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <Link to="/" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <Link to="/#shop" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </Link>
             </div>
