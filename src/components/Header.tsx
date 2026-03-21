@@ -70,7 +70,7 @@ export const Header = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
-              <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" />
+              <img src={navbarLogo} alt="ATTIMO" className={`h-8 md:h-10 lg:h-12 w-auto ${darkNav && !isScrolled ? 'brightness-0' : ''}`} />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
