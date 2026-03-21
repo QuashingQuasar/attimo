@@ -70,7 +70,7 @@ export const Header = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/">
-              <img src={navbarLogo} alt="ATTIMO" className={`h-8 md:h-10 lg:h-12 w-auto ${darkNav && !isScrolled && !shopOpen ? 'brightness-0' : ''}`} />
+              <img src={navbarLogo} alt="ATTIMO" className="h-8 md:h-10 lg:h-12 w-auto" style={darkNav && !isScrolled && !shopOpen ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
