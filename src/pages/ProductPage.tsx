@@ -192,7 +192,7 @@ const ProductPage = () => {
                   {(() => {
                     const inStock = product.node.variants.edges.some(v => v.node.availableForSale);
                     return (
-                      <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : 'text-red-600'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                      <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : (handle === 'picual' ? 'text-olive-dark' : 'text-red-600')}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
                         {inStock ? 'In Stock' : (handle === 'picual' ? 'Coming Soon' : 'Sold Out')}
                       </span>
                     );
