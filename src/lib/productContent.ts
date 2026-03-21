@@ -114,7 +114,7 @@ export const productContentMap: Record<string, ProductContent> = {
         { label: "HERBAL", rating: 3 },
       ],
       harvest:
-        "Early harvest Coratina olives, cold-pressed within hours to preserve maximum polyphenols and bold flavour.",
+        "The olives are picked early in October when they're young, green and packed with polyphenols that boost flavour and health benefits. Cold-extracted within hours of harvest to preserve the oil's distinctive character.",
       uses: "Best used as a finishing touch; drizzle over food to add a vibrant pop of flavour.",
       usesExtra:
         "Perfect for steak, grilled vegetables, hearty soups, and bruschetta.",
