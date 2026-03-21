@@ -92,9 +92,9 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.variantId} className="flex items-center gap-4 border rounded-xl p-3">
+                    <div key={item.variantId} className="flex items-center gap-5 py-3">
                       {/* Thumbnail */}
-                      <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                      <div className="w-28 h-28 rounded-lg overflow-hidden flex-shrink-0">
                         {item.product.node.images?.edges?.[0]?.node && (
                           <img
                             src={item.product.node.images.edges[0].node.url}
