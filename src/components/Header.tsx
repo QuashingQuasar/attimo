@@ -21,6 +21,7 @@ interface HeaderProps {
 export const Header = ({
   onWaitlistClick,
   forceScrolled = false,
+  forceTransparent = false,
 }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [shopOpen, setShopOpen] = useState(false);
