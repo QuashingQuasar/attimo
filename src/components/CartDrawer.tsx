@@ -12,7 +12,7 @@ import {
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 
-export const CartDrawer = () => {
+export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { 
     items, 
