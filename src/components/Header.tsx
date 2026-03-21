@@ -31,10 +31,17 @@ export const Header = ({
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    if (forceTransparent) {
+      setIsScrolled(false);
+    }
     const scrollContainer = document.querySelector('.overflow-y-scroll');
     const handleScroll = () => {
       const scrollY = scrollContainer?.scrollTop || window.scrollY;
-      setIsScrolled(forceScrolled || scrollY > 50);
+      if (forceTransparent) {
+        setIsScrolled(scrollY > 50);
+      } else {
+        setIsScrolled(forceScrolled || scrollY > 50);
+      }
     };
     if (scrollContainer) {
       scrollContainer.addEventListener('scroll', handleScroll);
@@ -46,7 +53,7 @@ export const Header = ({
       }
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [forceScrolled, forceTransparent]);
 
   const handleMouseEnter = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
