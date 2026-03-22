@@ -42,7 +42,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
   if (submitted) {
     return (
       <div
-        className="rounded-xl border-2 border-olive-dark/20 px-5 py-6 text-center"
+        className="rounded-xl px-5 py-6 text-center"
         style={{ backgroundColor }}
       >
         <p
