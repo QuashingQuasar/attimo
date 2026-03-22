@@ -39,9 +39,9 @@ const ProductPage = () => {
     const loadProducts = async () => {
       try {
         const [fetchedProducts, exactHandleProducts] = await Promise.all([
-          fetchProducts(50),
-          shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`) : Promise.resolve([]),
-        ]);
+        fetchProducts(50),
+        shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`) : Promise.resolve([])]
+        );
 
         const dedupedProducts = [...fetchedProducts, ...exactHandleProducts].filter(
           (product, index, arr) => arr.findIndex((p) => p.node.id === product.node.id) === index
@@ -86,7 +86,7 @@ const ProductPage = () => {
       price: { amount: String(activePrice), currencyCode: 'EUR' },
       quantity: selectedQuantity,
       selectedOptions: variant.selectedOptions || [],
-      ...(purchaseType === "subscribe" && selectedSellingPlanId ? { sellingPlanId: selectedSellingPlanId } : {}),
+      ...(purchaseType === "subscribe" && selectedSellingPlanId ? { sellingPlanId: selectedSellingPlanId } : {})
     });
     toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
       position: "top-center"
@@ -192,13 +192,13 @@ const ProductPage = () => {
                     New Harvest
                   </span>
                   {(() => {
-                    const inStock = product.node.variants.edges.some(v => v.node.availableForSale);
-                    return (
-                      <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : (handle === 'picual' ? 'text-olive-dark' : 'text-red-600')}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                        {inStock ? 'In Stock' : (handle === 'picual' ? 'Coming Soon' : 'Sold Out')}
-                      </span>
-                    );
-                  })()}
+                  const inStock = product.node.variants.edges.some((v) => v.node.availableForSale);
+                  return (
+                    <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : handle === 'picual' ? 'text-olive-dark' : 'text-red-600'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                        {inStock ? 'In Stock' : handle === 'picual' ? 'Coming Soon' : 'Sold Out'}
+                      </span>);
+
+                })()}
                 </div>
 
                 {/* Title + Volume */}
@@ -211,7 +211,7 @@ const ProductPage = () => {
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-1 underline-offset-[8px] sm-only-subtitle-size md-only-subtitle-size" style={{ fontFamily: 'Beverly Drive, cursive', fontWeight: 'bold', fontSize: 'clamp(0.96rem, 2.23vw, 2.23rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
+              <p className="text-olive-medium !-mt-1 underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive, cursive', fontWeight: 'bold', fontSize: 'clamp(1.07rem, 2.48vw, 2.48rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
                 {content.heroSubtitle}
               </p>
 
@@ -238,33 +238,33 @@ const ProductPage = () => {
               </div>
 
               <QuantitySelector
-                quantity={selectedQuantity}
-                onQuantityChange={setSelectedQuantity}
-                pricePerUnit={activePrice}
-                onAddToCart={handleAddToCart}
-                buttonColor={content.buttonColor}
-              />
+              quantity={selectedQuantity}
+              onQuantityChange={setSelectedQuantity}
+              pricePerUnit={activePrice}
+              onAddToCart={handleAddToCart}
+              buttonColor={content.buttonColor} />
+            
 
               <PurchaseOptions
-                sellingPlans={sellingPlans}
-                oneTimePrice={ONE_TIME_PRICE}
-                subscriptionPrice={SUBSCRIPTION_PRICE}
-                purchaseType={purchaseType}
-                onPurchaseTypeChange={setPurchaseType}
-                selectedSellingPlanId={selectedSellingPlanId}
-                onSellingPlanChange={setSelectedSellingPlanId}
-              />
+              sellingPlans={sellingPlans}
+              oneTimePrice={ONE_TIME_PRICE}
+              subscriptionPrice={SUBSCRIPTION_PRICE}
+              purchaseType={purchaseType}
+              onPurchaseTypeChange={setPurchaseType}
+              selectedSellingPlanId={selectedSellingPlanId}
+              onSellingPlanChange={setSelectedSellingPlanId} />
+            
 
               <Button
-                onClick={handleAddToCart}
-                className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
-                style={{
-                  fontFamily: "UDC Working Man Sans, sans-serif",
-                  backgroundColor: content.buttonColor,
-                  fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
-                  borderRadius: "0.75rem",
-                }}
-              >
+              onClick={handleAddToCart}
+              className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
+              style={{
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                backgroundColor: content.buttonColor,
+                fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
+                borderRadius: "0.75rem"
+              }}>
+              
                 <span className="hidden md:inline">
                   ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
                 </span>
@@ -301,11 +301,11 @@ const ProductPage = () => {
                         {tile.avg}
                       </span>
                     </p>
-                    {tile.description && (
+                    {tile.description &&
                 <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
                         {tile.description}
                       </p>
-                )}
+                }
                   </div>
               )}
               </div>
@@ -322,9 +322,9 @@ const ProductPage = () => {
                   <Beaker size={18} />
                   View full lab results
                 </a>
-                <span className="text-olive-light" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.9rem)' }}>
-                  * Values measured at time of bottling
-                </span>
+                
+
+              
               </div>
 
               {/* Accordion Info */}
@@ -350,8 +350,8 @@ const ProductPage = () => {
         centerLon={content.originRegion?.centerLon}
         centerLat={content.originRegion?.centerLat}
         mapZoom={content.originRegion?.mapZoom}
-        markerStyle={content.originRegion?.markerStyle}
-      />
+        markerStyle={content.originRegion?.markerStyle} />
+      
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
       <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
       <FAQ />
