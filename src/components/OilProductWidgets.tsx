@@ -57,7 +57,7 @@ export const OilProductWidgets = () => {
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px" }}>
         <div className="text-center mb-14 md:mb-20">
           <h2
-            className="mb-4 max-w-[90%] md:max-w-none mx-auto"
+            className="mb-4 mx-auto collection-heading-mobile-width"
             style={{
               fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
@@ -66,12 +66,12 @@ export const OilProductWidgets = () => {
             }}>Specialty Extra Virgin Olive Oil
           </h2>
           <p
-            className="mx-auto text-center max-w-[90%] md:max-w-none"
+            className="mx-auto text-center collection-subtitle-mobile-width collection-subtitle-mobile-size"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
-              fontSize: "clamp(1.19rem, 1.53vw, 1.53rem)",
+              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
             }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
