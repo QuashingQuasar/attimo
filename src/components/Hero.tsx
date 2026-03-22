@@ -76,9 +76,9 @@ export const Hero = ({
                 { text: "ALWAYS FRESH", icon: "/icons/sun-2.svg" },
                 { text: "COLD-PRESSED", icon: "/icons/mortar.svg" },
               ].map((item, idx) => (
-                <span key={`${i}-${idx}`} className="inline-flex items-center">
-                  <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229' }}>{item.text}</span>
-                  <img src={item.icon} alt="" className="h-[1.1em] w-auto mx-4 md:mx-6 lg:mx-4" />
+                <span key={`${i}-${idx}`} className="inline-flex items-center text-olive-dark">
+                  <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]">{item.text}</span>
+                  <span className="hero-ticker-icon mx-4 md:mx-6 lg:mx-4" style={{ maskImage: `url(${item.icon})`, WebkitMaskImage: `url(${item.icon})` }} aria-hidden="true" />
                 </span>
               ))}
             </div>)}

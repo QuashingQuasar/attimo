@@ -12,6 +12,20 @@
   font-size: clamp(1rem, 2vw, 2.25rem);
 }
 
+.hero-ticker-icon {
+  width: 1.45em;
+  height: 1.45em;
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
 .hero-ticker-marquee {
   animation: marquee 20s linear infinite;
 }
