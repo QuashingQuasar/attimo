@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      restock_notifications: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          product_name: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          product_name: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          product_name?: string
+        }
+        Relationships: []
+      }
       waitlist: {
         Row: {
           contact_method: string
