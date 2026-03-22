@@ -128,6 +128,8 @@ export const OilProductWidgets = () => {
                         letterSpacing: "0.1em",
                         color: "#FFFAEA",
                         backgroundColor: "#1B4229",
+                        borderRadius: "9999px",
+                        padding: "0.35em 1em",
                       }}>
                       COMING SOON
                     </span>
