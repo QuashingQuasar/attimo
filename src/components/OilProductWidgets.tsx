@@ -78,7 +78,7 @@ export const OilProductWidgets = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
           {oils.map((oil) =>
           <Link
             key={oil.handle}
