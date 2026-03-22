@@ -66,22 +66,22 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
-            {/* Row 1: content - video - content */}
-            <div className="md:order-1 lg:order-none">{renderTile(0)}</div>
-            <div className="md:order-2 lg:order-none">{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-            <div className="md:order-4 lg:order-none">{renderTile(1)}</div>
+            {/* Row 1 */}
+            <div className="md:order-1 lg:!order-[0]">{renderTile(0)}</div>
+            <div className="md:order-2 lg:!order-[0]">{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+            <div className="md:order-4 lg:!order-[0]">{renderTile(1)}</div>
 
-            {/* Row 2: video - content - video */}
-            <div className="md:order-3 lg:order-none">{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div className="md:order-5 lg:order-none">{renderTile(2)}</div>
-            <div className="md:order-6 lg:order-none">{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+            {/* Row 2 */}
+            <div className="md:order-3 lg:!order-[0]">{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
+            <div className="md:order-5 lg:!order-[0]">{renderTile(2)}</div>
+            <div className="md:order-6 lg:!order-[0]">{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
 
-            {/* Row 3: content - video - content (Cold Pressed tile hidden on tablet for even 4x2 grid) */}
+            {/* Row 3 (Cold Pressed tile hidden on tablet) */}
             <div className="block md:hidden lg:block">
               {renderTile(3)}
             </div>
-            <div className="md:order-7 lg:order-none">{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div className="md:order-8 lg:order-none">{renderTile(4)}</div>
+            <div className="md:order-7 lg:!order-[0]">{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
+            <div className="md:order-8 lg:!order-[0]">{renderTile(4)}</div>
           </div>
         </div>
       </div>
