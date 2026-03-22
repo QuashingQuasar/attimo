@@ -78,7 +78,7 @@ export const OilProductWidgets = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {oils.map((oil) =>
           <Link
             key={oil.handle}
@@ -183,7 +183,7 @@ export const OilProductWidgets = () => {
 
         <div className="text-center mt-20 md:mt-28">
           <p
-            className="mb-7 text-xl"
+            className="mb-7 text-lg"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
