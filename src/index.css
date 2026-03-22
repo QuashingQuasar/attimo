@@ -65,10 +65,31 @@
       font-size: clamp(1.1rem, 2.56vw, 2.56rem) !important;
     }
   }
+
   @media (min-width: 768px) and (max-width: 1023px) {
     .md-only-subtitle-size {
       font-size: clamp(1.06rem, 2.45vw, 2.45rem) !important;
     }
+
+    .origin-story-tablet-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+      grid-template-areas:
+        "tile-0 video-0"
+        "video-1 tile-1"
+        "tile-2 video-2"
+        "video-3 tile-4";
+    }
+
+    .origin-story-item-0 { grid-area: tile-0; }
+    .origin-story-item-1 { grid-area: video-0; }
+    .origin-story-item-2 { grid-area: tile-1; }
+    .origin-story-item-3 { grid-area: video-1; }
+    .origin-story-item-4 { grid-area: tile-2; }
+    .origin-story-item-5 { grid-area: video-2; }
+    .origin-story-item-6 { display: none; }
+    .origin-story-item-7 { grid-area: video-3; }
+    .origin-story-item-8 { grid-area: tile-4; }
   }
 }
 
