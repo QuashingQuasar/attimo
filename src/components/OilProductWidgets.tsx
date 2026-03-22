@@ -42,8 +42,8 @@ const oils = [
 export const OilProductWidgets = () => {
   return (
     <section id="oil-collection"
-      className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
-      style={{ backgroundColor: "hsl(var(--section-light))" }}>
+    className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
+    style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -183,11 +183,11 @@ export const OilProductWidgets = () => {
 
         <div className="text-center mt-20 md:mt-28">
           <p
-            className="mb-7"
+            className="mb-7 text-xl"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
-              fontSize: "clamp(1.05rem, 1.35vw, 1.35rem)",
+              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               opacity: 0.85
             }}>
 
