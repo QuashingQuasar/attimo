@@ -65,13 +65,13 @@ export const Hero = ({
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-2 md:py-3 overflow-hidden border-t border-olive-dark/10">
+      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-2 md:py-3 lg:py-2 overflow-hidden border-t border-olive-dark/10">
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
               {["LAB-TESTED", "EARLY HARVEST", "SINGLE VARIETY", "FROM GROVE TO TABLE", "ALWAYS FRESH", "COLD-PRESSED"].map((term, idx) => (
                 <span key={`${i}-${idx}`} className="inline-flex items-center">
-                  <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(0.7rem, 1.4vw, 1.575rem)' }}>{term}</span>
-                  <OliveLeaf className="w-1.5 md:w-2 h-3 md:h-3.5 mx-3 md:mx-4" fill="#1B4229" />
+                  <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229' }}>{term}</span>
+                  <OliveLeaf className="w-1.5 md:w-3 lg:w-2 h-3 md:h-5 lg:h-3.5 mx-3 md:mx-6 lg:mx-4" fill="#1B4229" />
                 </span>
               ))}
             </div>)}

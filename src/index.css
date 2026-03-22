@@ -7,6 +7,21 @@
   font-display: swap;
 }
 
+/* Hero ticker font sizing: small on mobile, original on tablet, scaled-down on desktop */
+.hero-ticker-text {
+  font-size: clamp(0.7rem, 1.4vw, 1.575rem);
+}
+@media (min-width: 768px) {
+  .hero-ticker-text {
+    font-size: clamp(1rem, 2vw, 2.25rem);
+  }
+}
+@media (min-width: 1024px) {
+  .hero-ticker-text {
+    font-size: clamp(0.7rem, 1.4vw, 1.575rem);
+  }
+}
+
 /* Oil card origin/volume label sizing */
 .oil-card-label {
   font-size: 0.95rem;
