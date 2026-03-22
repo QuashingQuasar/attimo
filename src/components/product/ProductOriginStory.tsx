@@ -16,9 +16,9 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   const bg = tileBackground || "#1B4229";
   const accent = tileAccent || "#ECA948";
 
-  const renderTile = (index: number, extraClass?: string) => (
+  const renderTile = (index: number) => (
     <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
-      <div className={`h-full flex flex-col justify-center items-center text-center gap-3 ${extraClass || ""}`}>
+      <div className="h-full flex flex-col justify-center items-center text-center gap-3">
         <div
           className="w-[56px] h-[56px]"
           style={{
@@ -63,43 +63,41 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12 md:mb-16 text-center">
-            <p
-              className="font-beverly font-bold text-olive-dark tracking-tight mx-auto"
-              style={{ maxWidth: headlineMaxWidth || "67rem", fontSize: "clamp(1.9rem, 3.16vw, 3.16rem)", lineHeight: 1.2 }}
-            >
-              {headline}
-            </p>
-          </div>
+        <div className="text-center mb-12 md:mb-16">
+          <p
+            className="font-beverly font-bold text-olive-dark tracking-tight mx-auto"
+            style={{ maxWidth: headlineMaxWidth || "67rem", fontSize: "clamp(1.9rem, 3.16vw, 3.16rem)", lineHeight: 1.2 }}
+          >
+            {headline}
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 gap-4 md:max-lg:hidden lg:grid-cols-3 lg:grid-rows-3 lg:h-[calc(100vh-10rem)]">
-            <div>{renderTile(0)}</div>
-            <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-            <div>{renderTile(1)}</div>
+        <div className="grid grid-cols-1 md:hidden lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[calc(100vh-200px)]">
+          {renderTile(0)}
+          {renderVideo(0, "/videos/content-video-1.mp4")}
+          {renderTile(1)}
 
-            <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div>{renderTile(2)}</div>
-            <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+          {renderVideo(1, "/videos/kleia-way-video-3.mp4")}
+          {renderTile(2)}
+          {renderVideo(2, "/videos/kleia-way-video.mp4")}
 
-            <div>{renderTile(3)}</div>
-            <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div>{renderTile(4)}</div>
-          </div>
+          {renderTile(3)}
+          {renderVideo(3, "/videos/harvest-2024-1.mp4")}
+          {renderTile(4)}
+        </div>
 
-          <div className="hidden md:max-lg:grid md:max-lg:grid-cols-2 gap-4">
-            <div>{renderTile(0)}</div>
-            <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+        <div className="hidden md:grid md:grid-cols-2 lg:hidden gap-4 max-w-[90vw] mx-auto">
+          {renderTile(0)}
+          {renderVideo(0, "/videos/content-video-1.mp4")}
 
-            <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div>{renderTile(1)}</div>
+          {renderVideo(1, "/videos/kleia-way-video-3.mp4")}
+          {renderTile(1)}
 
-            <div>{renderTile(2)}</div>
-            <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+          {renderTile(2)}
+          {renderVideo(2, "/videos/kleia-way-video.mp4")}
 
-            <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div>{renderTile(4)}</div>
-          </div>
+          {renderVideo(3, "/videos/harvest-2024-1.mp4")}
+          {renderTile(4)}
         </div>
       </div>
     </section>
