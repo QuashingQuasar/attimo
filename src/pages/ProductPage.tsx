@@ -123,7 +123,7 @@ const ProductPage = () => {
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
   const attributes = [
   {
-    icon: <Droplets size={20} className="text-olive-dark" />,
+    icon: <img src="/icons/olive.svg" alt="Olive" className="w-5 h-5 object-contain" />,
     label: "Variety",
     value: `100% ${content.tabs.details.olive}`
   },
