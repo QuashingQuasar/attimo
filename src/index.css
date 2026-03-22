@@ -11,9 +11,16 @@
 .hero-ticker-text {
   font-size: clamp(1rem, 2vw, 2.25rem);
 }
+.hero-ticker-track {
+  animation-duration: 13s;
+}
 @media (min-width: 1024px) {
   .hero-ticker-text {
     font-size: clamp(0.7rem, 1.4vw, 1.575rem);
+  }
+
+  .hero-ticker-track {
+    animation-duration: 10s;
   }
 }
 
