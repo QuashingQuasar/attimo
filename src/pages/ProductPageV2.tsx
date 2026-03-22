@@ -99,6 +99,8 @@ const ProductPage = () => {
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
+  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
+
   // Map variants to quantity options
   const PRICE_PER_BOTTLE = 24;
   const totalPrice = selectedQuantity * PRICE_PER_BOTTLE;
