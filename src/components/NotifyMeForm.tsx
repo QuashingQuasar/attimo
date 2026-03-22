@@ -7,7 +7,7 @@ interface NotifyMeFormProps {
   backgroundColor?: string;
 }
 
-export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
+export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 0.05)" }: NotifyMeFormProps) => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
