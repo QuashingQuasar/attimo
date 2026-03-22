@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 
 interface ProductOriginStoryProps {
@@ -12,59 +11,32 @@ interface ProductOriginStoryProps {
   headlineMaxWidth?: string;
 }
 
-type ViewportMode = "mobile" | "tablet" | "desktop";
-
-const getViewportMode = (): ViewportMode => {
-  if (typeof window === "undefined") return "desktop";
-  if (window.innerWidth >= 1024) return "desktop";
-  if (window.innerWidth >= 768) return "tablet";
-  return "mobile";
-};
-
 export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
-  const { headline, features } = content;
-  const bg = tileBackground || "#1B4229";
-  const accent = tileAccent || "#ECA948";
-  const [viewportMode, setViewportMode] = useState<ViewportMode>(getViewportMode);
-
-  useEffect(() => {
-    const handleResize = () => setViewportMode(getViewportMode());
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { headline, quickRef, features } = content;
+  const bg = tileBackground || '#1B4229';
+  const accent = tileAccent || '#ECA948';
 
   const renderTile = (index: number, extraClass?: string) => (
     <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
-      <div className={`h-full flex flex-col justify-center items-center text-center gap-3 ${extraClass || ""}`}>
+      <div className={`h-full flex flex-col justify-center items-center text-center gap-3 ${extraClass || ''}`}>
         <div
           className="w-[56px] h-[56px]"
           style={{
             backgroundColor: accent,
             WebkitMaskImage: `url(${features[index]?.icon})`,
-            WebkitMaskSize: "contain",
-            WebkitMaskRepeat: "no-repeat",
-            WebkitMaskPosition: "center",
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
             maskImage: `url(${features[index]?.icon})`,
-            maskSize: "contain",
-            maskRepeat: "no-repeat",
-            maskPosition: "center",
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
           }}
         />
-        <h3 style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontSize: "clamp(1.2rem, 1.6vw, 1.7rem)", color: accent }}>
+        <h3 style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)', color: accent }}>
           {features[index]?.title}
         </h3>
-        <p
-          className="tracking-wide leading-relaxed max-w-[280px] whitespace-pre-line"
-          style={{
-            fontFamily: "Space Grotesk, sans-serif",
-            fontSize: "clamp(0.85rem, 1vw, 1rem)",
-            letterSpacing: "0.04em",
-            color: accent,
-          }}
-        >
+        <p className="tracking-wide leading-relaxed max-w-[280px] whitespace-pre-line" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)', letterSpacing: '0.04em', color: accent }}>
           {features[index]?.description}
         </p>
       </div>
@@ -80,67 +52,32 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
     </div>
   );
 
-  const renderLayout = () => {
-    if (viewportMode === "mobile") {
-      return (
-        <div className="grid grid-cols-1 gap-4">
-          <div>{renderTile(0)}</div>
-          <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-          <div>{renderTile(1)}</div>
-          <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-          <div>{renderTile(2)}</div>
-          <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-          <div>{renderTile(3)}</div>
-          <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-          <div>{renderTile(4)}</div>
-        </div>
-      );
-    }
-
-    if (viewportMode === "tablet") {
-      return (
-        <div className="grid grid-cols-2 grid-rows-4 gap-4">
-          <div>{renderTile(0)}</div>
-          <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-          <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-          <div>{renderTile(1)}</div>
-          <div>{renderTile(2)}</div>
-          <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-          <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-          <div>{renderTile(4)}</div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="grid grid-cols-3 grid-rows-3 gap-4 h-[calc(100vh-10rem)]">
-        <div>{renderTile(0)}</div>
-        <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-        <div>{renderTile(1)}</div>
-        <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-        <div>{renderTile(2)}</div>
-        <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-        <div>{renderTile(3)}</div>
-        <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-        <div>{renderTile(4)}</div>
-      </div>
-    );
-  };
-
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: "#FFFAEA" }}>
+    <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 md:mb-16 text-center">
             <p
               className="font-beverly font-bold text-olive-dark tracking-tight mx-auto"
-              style={{ maxWidth: headlineMaxWidth || "67rem", fontSize: "clamp(1.9rem, 3.16vw, 3.16rem)", lineHeight: 1.2 }}
+              style={{ maxWidth: headlineMaxWidth || '67rem', fontSize: 'clamp(1.9rem, 3.16vw, 3.16rem)', lineHeight: 1.2 }}
             >
               {headline}
             </p>
           </div>
 
-          {renderLayout()}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
+            <div className="md:max-lg:order-1">{renderTile(0)}</div>
+            <div className="md:max-lg:order-2">{renderVideo(0, '/videos/content-video-1.mp4')}</div>
+            <div className="md:max-lg:order-4 lg:order-none">{renderTile(1)}</div>
+
+            <div className="md:max-lg:order-3 lg:order-none">{renderVideo(1, '/videos/kleia-way-video-3.mp4')}</div>
+            <div className="md:max-lg:order-5 lg:order-none">{renderTile(2)}</div>
+            <div className="md:max-lg:order-6 lg:order-none">{renderVideo(2, '/videos/kleia-way-video.mp4')}</div>
+
+            <div className="md:max-lg:hidden lg:block">{renderTile(3)}</div>
+            <div className="md:max-lg:order-7 lg:order-none">{renderVideo(3, '/videos/harvest-2024-1.mp4')}</div>
+            <div className="md:max-lg:order-8 lg:order-none">{renderTile(4)}</div>
+          </div>
         </div>
       </div>
     </section>
