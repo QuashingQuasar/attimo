@@ -59,6 +59,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .md-only-subtitle-size {
+      font-size: clamp(1.06rem, 2.45vw, 2.45rem) !important;
+    }
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
