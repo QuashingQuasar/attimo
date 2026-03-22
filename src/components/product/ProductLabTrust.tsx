@@ -16,11 +16,12 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
-            <div className="flex items-start justify-between gap-4 md:gap-8 mb-4">
-              <h2 className="font-working-man font-bold text-olive-dark tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
-              <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0 w-[100px] h-[100px] md:w-[230px] md:h-[230px]" />
-            </div>
-            <div>
+            {/* Mobile: heading + small flask row, then paragraph below */}
+            <div className="md:hidden">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h2 className="font-working-man font-bold text-olive-dark tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
+                <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0 w-[100px] h-[100px]" />
+              </div>
               <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>{subheading}</p>
               {labReportUrl && (
                 <a
@@ -34,6 +35,26 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   View full lab results
                 </a>
               )}
+            </div>
+            {/* Desktop: original layout — heading + subheading left, flask right */}
+            <div className="hidden md:flex items-start justify-between gap-8">
+              <div className="max-w-3xl">
+                <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
+                <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>{subheading}</p>
+              {labReportUrl && (
+                <a
+                  href={labReportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-4 text-olive-dark underline underline-offset-4 decoration-olive-dark/40 transition-opacity hover:opacity-70"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
+                >
+                  <Beaker size={18} />
+                  View full lab results
+                </a>
+              )}
+              </div>
+              <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0" style={{ width: '230px', height: '230px' }} />
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
