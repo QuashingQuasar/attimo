@@ -69,12 +69,12 @@ export const Hero = ({
         <div className="flex hero-ticker-marquee" style={{ width: 'max-content' }}>
           {Array(4).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
               {[
-                { text: "LAB-TESTED", icon: "/icons/flask.svg" },
-                { text: "EARLY HARVEST", icon: "/icons/branch-2.svg" },
-                { text: "SINGLE VARIETY", icon: "/icons/olive.svg" },
-                { text: "FROM GROVE TO TABLE", icon: "/icons/basket-2.svg" },
-                { text: "ALWAYS FRESH", icon: "/icons/sun-2.svg" },
-                { text: "COLD-PRESSED", icon: "/icons/mortar.svg" },
+                { text: "LAB-TESTED", icon: "/icons/branch-2.svg" },
+                { text: "EARLY HARVEST", icon: "/icons/lady-2.svg" },
+                { text: "SINGLE VARIETY", icon: "/icons/basket-2.svg" },
+                { text: "FROM GROVE TO TABLE", icon: "/icons/bread-2.svg" },
+                { text: "ALWAYS FRESH", icon: "/icons/mortar.svg" },
+                { text: "COLD-PRESSED", icon: "/icons/sun-2.svg" },
               ].map((item, idx) => (
                 <span key={`${i}-${idx}`} className="inline-flex items-center text-olive-dark">
                   <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]">{item.text}</span>
