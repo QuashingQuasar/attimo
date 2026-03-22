@@ -66,17 +66,15 @@ export const OilProductWidgets = () => {
             }}>Specialty Extra Virgin Olive Oil
           </h2>
           <p
-            className="mx-auto text-center"
+            className="mx-auto text-center max-w-[90%] md:max-w-none"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
-              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
+              fontSize: "clamp(1.19rem, 1.53vw, 1.53rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
             }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
-
-
           </p>
         </div>
 
