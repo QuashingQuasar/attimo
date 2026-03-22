@@ -89,7 +89,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
         >
-          Get notified when {productName} is back in stock.
+          Get notified when {productName} is in stock.
         </p>
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
