@@ -49,9 +49,9 @@ export const Hero = ({
               border: '2px solid #CDDB2D',
               color: '#1B4229',
               backgroundColor: '#CDDB2D',
-              fontSize: 'clamp(0.85rem, 1vw, 1rem)',
+              fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
               borderRadius: '8px',
-              padding: 'clamp(12px, 1.2vw, 17px) clamp(24px, 2.2vw, 34px)',
+              padding: 'clamp(14px, 1.5vw, 20px) clamp(29px, 2.6vw, 41px)',
             }}>
               Shop fresh Harvest
             </Button>
