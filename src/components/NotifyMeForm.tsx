@@ -61,7 +61,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
         >
-          We'll email you when {productName} is back in stock.
+          We'll email you when {productName} is in stock.
         </p>
       </div>
     );
