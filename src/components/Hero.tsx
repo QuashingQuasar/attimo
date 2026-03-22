@@ -24,7 +24,7 @@ export const Hero = ({
             src={kleiaLogo}
             alt="ATTIMO olive oil logo"
             className="object-contain drop-shadow-2xl"
-            style={{ width: 'min(479px, 45vw, 55vh)', height: 'auto' }} />
+            style={{ width: 'min(287px, 27vw, 33vh)', height: 'auto' }} />
           
           </div>
 
@@ -49,9 +49,9 @@ export const Hero = ({
               border: '2px solid #CDDB2D',
               color: '#1B4229',
               backgroundColor: '#CDDB2D',
-              fontSize: 'clamp(1.1rem, 1.5vw, 1.6rem)',
+              fontSize: 'clamp(0.85rem, 1vw, 1rem)',
               borderRadius: '8px',
-              padding: 'clamp(18px, 2vw, 28px) clamp(36px, 3.5vw, 56px)',
+              padding: 'clamp(12px, 1.2vw, 17px) clamp(24px, 2.2vw, 34px)',
             }}>
               Shop fresh Harvest
             </Button>
