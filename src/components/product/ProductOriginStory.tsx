@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 
 interface ProductOriginStoryProps {
@@ -11,10 +12,29 @@ interface ProductOriginStoryProps {
   headlineMaxWidth?: string;
 }
 
+type ViewportMode = "mobile" | "tablet" | "desktop";
+
+const getViewportMode = (): ViewportMode => {
+  if (typeof window === "undefined") return "desktop";
+  if (window.innerWidth >= 1024) return "desktop";
+  if (window.innerWidth >= 768) return "tablet";
+  return "mobile";
+};
+
 export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
   const { headline, features } = content;
   const bg = tileBackground || "#1B4229";
   const accent = tileAccent || "#ECA948";
+  const [viewportMode, setViewportMode] = useState<ViewportMode>(getViewportMode);
+
+  useEffect(() => {
+    const handleResize = () => setViewportMode(getViewportMode());
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const renderTile = (index: number, extraClass?: string) => (
     <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
@@ -60,6 +80,53 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
     </div>
   );
 
+  const renderLayout = () => {
+    if (viewportMode === "mobile") {
+      return (
+        <div className="grid grid-cols-1 gap-4">
+          <div>{renderTile(0)}</div>
+          <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+          <div>{renderTile(1)}</div>
+          <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
+          <div>{renderTile(2)}</div>
+          <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+          <div>{renderTile(3)}</div>
+          <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
+          <div>{renderTile(4)}</div>
+        </div>
+      );
+    }
+
+    if (viewportMode === "tablet") {
+      return (
+        <div className="grid grid-cols-2 grid-rows-4 gap-4">
+          <div>{renderTile(0)}</div>
+          <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+          <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
+          <div>{renderTile(1)}</div>
+          <div>{renderTile(2)}</div>
+          <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+          <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
+          <div>{renderTile(4)}</div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="grid grid-cols-3 grid-rows-3 gap-4 h-[calc(100vh-10rem)]">
+        <div>{renderTile(0)}</div>
+        <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+        <div>{renderTile(1)}</div>
+        <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
+        <div>{renderTile(2)}</div>
+        <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+        <div>{renderTile(3)}</div>
+        <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
+        <div>{renderTile(4)}</div>
+      </div>
+    );
+  };
+
   return (
     <section className="py-16 md:py-24" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6">
@@ -73,40 +140,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:hidden">
-            <div>{renderTile(0)}</div>
-            <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-            <div>{renderTile(1)}</div>
-            <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div>{renderTile(2)}</div>
-            <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-            <div>{renderTile(3)}</div>
-            <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div>{renderTile(4)}</div>
-          </div>
-
-          <div className="hidden md:grid md:grid-cols-2 md:grid-rows-4 gap-4 lg:hidden">
-            <div>{renderTile(0)}</div>
-            <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-            <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div>{renderTile(1)}</div>
-            <div>{renderTile(2)}</div>
-            <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-            <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div>{renderTile(4)}</div>
-          </div>
-
-          <div className="hidden lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
-            <div>{renderTile(0)}</div>
-            <div>{renderVideo(0, "/videos/content-video-1.mp4")}</div>
-            <div>{renderTile(1)}</div>
-            <div>{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
-            <div>{renderTile(2)}</div>
-            <div>{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
-            <div>{renderTile(3)}</div>
-            <div>{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
-            <div>{renderTile(4)}</div>
-          </div>
+          {renderLayout()}
         </div>
       </div>
     </section>
