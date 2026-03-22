@@ -17,10 +17,10 @@ export const KleiaWay = () => {
   ];
 
   const renderTile = (index: number) => (
-    <div className="rounded-2xl p-4 lg:p-5 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
-      <div className="h-full flex flex-col justify-center items-center text-center">
+    <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+      <div className="h-full flex flex-col justify-center items-center text-center gap-3">
         <div
-          className="w-[48px] h-[48px] mb-3"
+          className="w-[56px] h-[48px] flex-shrink-0"
           style={{
             backgroundColor: '#B3E58C',
             WebkitMaskImage: `url(${tiles[index].icon})`,
@@ -33,7 +33,7 @@ export const KleiaWay = () => {
             maskPosition: 'center',
           }}
         />
-        <h4 className="font-bold mb-3" style={{
+        <h4 className="font-bold" style={{
           fontFamily: 'UDC Working Man Sans, sans-serif',
           color: '#B3E58C',
           fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)'

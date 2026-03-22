@@ -20,7 +20,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
     <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-3">
         <div
-          className="w-[56px] h-[56px] flex-shrink-0"
+          className="w-[56px] h-[48px] flex-shrink-0"
           style={{
             backgroundColor: accent,
             WebkitMaskImage: `url(${features[index]?.icon})`,
