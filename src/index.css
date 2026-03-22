@@ -20,10 +20,6 @@
   .hero-ticker-text {
     font-size: clamp(0.7rem, 1.4vw, 1.575rem);
   }
-
-  .hero-ticker-marquee {
-    animation: marquee 10s linear infinite;
-  }
 }
 
 /* Oil card origin/volume label sizing */
