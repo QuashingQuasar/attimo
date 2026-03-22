@@ -7,20 +7,22 @@
   font-display: swap;
 }
 
-/* Hero ticker font sizing: original on mobile+tablet, scaled-down on desktop */
+/* Hero ticker sizing and speed */
 .hero-ticker-text {
   font-size: clamp(1rem, 2vw, 2.25rem);
 }
-.hero-ticker-track {
-  animation-duration: 13s;
+
+.hero-ticker-marquee {
+  animation: marquee 20s linear infinite;
 }
+
 @media (min-width: 1024px) {
   .hero-ticker-text {
     font-size: clamp(0.7rem, 1.4vw, 1.575rem);
   }
 
-  .hero-ticker-track {
-    animation-duration: 10s;
+  .hero-ticker-marquee {
+    animation: marquee 10s linear infinite;
   }
 }
 
