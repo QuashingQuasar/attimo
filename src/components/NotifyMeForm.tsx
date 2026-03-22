@@ -43,7 +43,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
     return (
       <div
         className="rounded-xl border-2 border-olive-dark/20 px-5 py-6 text-center"
-        style={{ backgroundColor: "rgba(27, 66, 41, 0.05)" }}
+        style={{ backgroundColor }}
       >
         <p
           className="font-semibold text-olive-dark"
