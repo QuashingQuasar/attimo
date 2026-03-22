@@ -61,7 +61,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
         >
-          We'll email you when {productName} is back in stock.
+          We'll email you when {productName} is in stock.
         </p>
       </div>
     );
@@ -80,7 +80,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.95rem, 1.1vw, 1.15rem)",
           }}
         >
-          Sold Out
+          Coming Soon
         </p>
         <p
           className="text-olive-medium mb-4"
@@ -89,7 +89,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
         >
-          Get notified when {productName} is back in stock.
+          Get notified when {productName} is in stock.
         </p>
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
