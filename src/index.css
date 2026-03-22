@@ -60,6 +60,11 @@
 @tailwind utilities;
 
 @layer utilities {
+  @media (max-width: 767px) {
+    .sm-only-subtitle-size {
+      font-size: clamp(1.1rem, 2.56vw, 2.56rem) !important;
+    }
+  }
   @media (min-width: 768px) and (max-width: 1023px) {
     .md-only-subtitle-size {
       font-size: clamp(1.06rem, 2.45vw, 2.45rem) !important;
