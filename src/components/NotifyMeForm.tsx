@@ -4,9 +4,10 @@ import { toast } from "sonner";
 
 interface NotifyMeFormProps {
   productName: string;
+  backgroundColor?: string;
 }
 
-export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
+export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 0.05)" }: NotifyMeFormProps) => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -41,8 +42,8 @@ export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
   if (submitted) {
     return (
       <div
-        className="rounded-xl border-2 border-olive-dark/20 px-5 py-6 text-center"
-        style={{ backgroundColor: "rgba(27, 66, 41, 0.05)" }}
+        className="rounded-xl px-5 py-6 text-center"
+        style={{ backgroundColor }}
       >
         <p
           className="font-semibold text-olive-dark"
@@ -69,8 +70,8 @@ export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
   return (
     <div className="space-y-3">
       <div
-        className="rounded-xl border-2 border-olive-dark/20 px-5 py-5"
-        style={{ backgroundColor: "rgba(27, 66, 41, 0.05)" }}
+        className="rounded-xl px-5 py-5"
+        style={{ backgroundColor }}
       >
         <p
           className="font-semibold text-olive-dark mb-1"
