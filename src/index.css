@@ -7,6 +7,21 @@
   font-display: swap;
 }
 
+/* Oil card origin/volume label sizing */
+.oil-card-label {
+  font-size: 1.36rem;
+}
+@media (min-width: 768px) {
+  .oil-card-label {
+    font-size: 1.49rem;
+  }
+}
+@media (min-width: 1024px) {
+  .oil-card-label {
+    font-size: clamp(0.85rem, 1.1vw, 1.1rem);
+  }
+}
+
 @font-face {
   font-family: 'UDC Working Man Sans Light';
   src: url('/fonts/UDC_Working_Man_Sans_Light.otf') format('opentype');
