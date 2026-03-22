@@ -288,7 +288,7 @@ const ProductPage = () => {
                   </div>
                 </>
               ) : (
-                <NotifyMeForm productName={content.heroTitle} />
+                <NotifyMeForm productName={content.heroTitle} backgroundColor={content.tileBackground} />
               )}
 
               {/* Lab Values — minimal cards */}
