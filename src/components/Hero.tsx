@@ -78,7 +78,7 @@ export const Hero = ({
               ].map((item, idx) => (
                 <span key={`${i}-${idx}`} className="inline-flex items-center">
                   <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229' }}>{item.text}</span>
-                  <img src={item.icon} alt="" className="w-3 md:w-4 lg:w-3 h-4 md:h-5 lg:h-4 mx-4 md:mx-6 lg:mx-4" style={{ filter: 'brightness(0) saturate(100%)' }} />
+                  <img src={item.icon} alt="" className="h-[1.1em] w-auto mx-4 md:mx-6 lg:mx-4" />
                 </span>
               ))}
             </div>)}
