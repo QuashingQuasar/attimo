@@ -57,15 +57,13 @@ export const OilProductWidgets = () => {
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px" }}>
         <div className="text-center mb-14 md:mb-20">
           <h2
-            className="mb-4"
+            className="mb-4 max-w-[90%] md:max-w-none mx-auto"
             style={{
               fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
               fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
             }}>Specialty Extra Virgin Olive Oil
-
-
           </h2>
           <p
             className="mx-auto text-center"
