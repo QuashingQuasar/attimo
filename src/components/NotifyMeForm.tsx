@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 interface NotifyMeFormProps {
   productName: string;
+  backgroundColor?: string;
 }
 
 export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
