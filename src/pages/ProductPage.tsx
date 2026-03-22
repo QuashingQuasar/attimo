@@ -119,6 +119,8 @@ const ProductPage = () => {
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
+  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
+
   const totalPrice = selectedQuantity * activePrice;
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
