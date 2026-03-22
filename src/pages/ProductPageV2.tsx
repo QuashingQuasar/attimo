@@ -266,12 +266,16 @@ const ProductPage = () => {
               </li>
             </ul>
 
-            <QuantitySelector
-              quantity={selectedQuantity}
-              onQuantityChange={setSelectedQuantity}
-              pricePerUnit={24}
-              onAddToCart={handleAddToCart}
-            />
+            {isInStock ? (
+              <QuantitySelector
+                quantity={selectedQuantity}
+                onQuantityChange={setSelectedQuantity}
+                pricePerUnit={24}
+                onAddToCart={handleAddToCart}
+              />
+            ) : (
+              <NotifyMeForm productName={content.heroTitle} />
+            )}
 
             {/* Lab Values Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2">
