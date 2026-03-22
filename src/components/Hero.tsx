@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
-import { OliveLeaf } from './OliveLeaf';
+
 import kleiaLogo from '@/assets/attimo-main-logo.svg';
 interface HeroProps {
   onWaitlistClick: () => void;
