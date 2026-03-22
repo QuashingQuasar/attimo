@@ -15,9 +15,12 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
     <section className="py-16 md:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-12 flex items-start justify-between gap-8">
-            <div className="max-w-3xl">
-              <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
+          <div className="mb-12">
+            <div className="flex items-start justify-between gap-4 md:gap-8 mb-4">
+              <h2 className="font-working-man font-bold text-olive-dark tracking-tight" style={{ fontSize: 'clamp(1.75rem, 3vw, 3rem)' }}>{heading}</h2>
+              <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0 w-[100px] h-[100px] md:w-[230px] md:h-[230px]" />
+            </div>
+            <div>
               <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.25rem)' }}>{subheading}</p>
               {labReportUrl && (
                 <a
@@ -32,7 +35,6 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                 </a>
               )}
             </div>
-            <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0" style={{ width: '230px', height: '230px' }} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {labValues.map((item, index) => (
