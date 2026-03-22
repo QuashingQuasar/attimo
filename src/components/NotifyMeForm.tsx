@@ -17,11 +17,9 @@ export const NotifyMeForm = ({ productName }: NotifyMeFormProps) => {
 
     setSubmitting(true);
     try {
-      const { error } = await supabase.from("waitlist").insert({
-        name: `Notify: ${productName}`,
-        contact_method: "email",
-        contact_value: email.trim(),
-        gdpr_consent: true,
+      const { error } = await supabase.from("restock_notifications").insert({
+        email: email.trim(),
+        product_name: productName,
       });
 
       if (error) throw error;
