@@ -152,7 +152,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Good On Everything",
-          description: "drizzle over veggies\nfinish meat and fish\npunch up soups\ndip with bread\ntry on ice cream",
+          description: "drizzle over veggies, finish meat and fish, punch up soups, dip with bread, try on ice cream",
           icon: "/icons/bread-2.svg",
         },
       ],
@@ -257,7 +257,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Good On Everything",
-          description: "perfect for pasta\nenrich eggs\nfinish seafood\ndress leafy greens\ntry on ice cream",
+          description: "perfect for pasta, enrich eggs, finish seafood, dress leafy greens, try on ice cream",
           icon: "/icons/bread-2.svg",
         },
       ],
@@ -353,7 +353,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Good On Everything",
-          description: "dress veggies & salads\ntop anything grilled\nliven up salads\nfinish fresh cheese & yogurt\ntry with chocolate",
+          description: "dress veggies & salads, top anything grilled, liven up salads, finish fresh cheese & yogurt, try with chocolate",
           icon: "/icons/bread-2.svg",
         },
       ],
