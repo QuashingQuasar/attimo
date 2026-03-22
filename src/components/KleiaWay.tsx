@@ -2,11 +2,11 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 
 export const KleiaWay = () => {
   const tiles = [
-    { title: "ALWAYS FRESH", text: "ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness." },
-    { title: "SINGLE VARIETY", text: "Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from." },
-    { title: "EARLY HARVEST", text: "Our olives are harvested early in season when they are highest in the polyphenols that give taste and health" },
-    { title: "FROM GROVE TO TABLE", text: "We source directly from the people who make the oil. No middlemen, no blending, no shortcuts." },
-    { title: "LAB-TESTED QUALITY", text: "Every bottle is lab-tested by third parties on key quality markers you can verify for yourself." },
+    { title: "ALWAYS FRESH", text: "ATTIMO olive oil is always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.", icon: "/icons/sun-2.svg" },
+    { title: "SINGLE VARIETY", text: "Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from.", icon: "/icons/olive.svg" },
+    { title: "EARLY HARVEST", text: "Our olives are harvested early in season when they are highest in the polyphenols that give taste and health", icon: "/icons/branch-2.svg" },
+    { title: "FROM GROVE TO TABLE", text: "We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.", icon: "/icons/basket-2.svg" },
+    { title: "LAB-TESTED QUALITY", text: "Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.", icon: "/icons/flask.svg" },
   ];
 
   const videos = [
@@ -19,6 +19,20 @@ export const KleiaWay = () => {
   const renderTile = (index: number) => (
     <div className="rounded-2xl p-4 lg:p-5 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
       <div className="h-full flex flex-col justify-center items-center text-center">
+        <div
+          className="w-[48px] h-[48px] mb-3"
+          style={{
+            backgroundColor: '#B3E58C',
+            WebkitMaskImage: `url(${tiles[index].icon})`,
+            WebkitMaskSize: 'contain',
+            WebkitMaskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskImage: `url(${tiles[index].icon})`,
+            maskSize: 'contain',
+            maskRepeat: 'no-repeat',
+            maskPosition: 'center',
+          }}
+        />
         <h4 className="font-bold mb-3" style={{
           fontFamily: 'UDC Working Man Sans, sans-serif',
           color: '#B3E58C',
