@@ -65,7 +65,7 @@ export const Hero = ({
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-3 lg:py-2 overflow-hidden border-t border-olive-dark/10">
+      <div className="absolute bottom-0 left-0 right-0 z-40 py-3 lg:py-2 overflow-hidden border-t border-olive-dark/10" style={{ backgroundColor: '#CDDB2D' }}>
         <div className="flex hero-ticker-marquee" style={{ width: 'max-content' }}>
           {Array(4).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
               {[
