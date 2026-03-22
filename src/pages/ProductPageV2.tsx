@@ -20,6 +20,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
+import { NotifyMeForm } from "@/components/NotifyMeForm";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -97,6 +98,8 @@ const ProductPage = () => {
 
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
+
+  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
 
   // Map variants to quantity options
   const PRICE_PER_BOTTLE = 24;
@@ -263,12 +266,16 @@ const ProductPage = () => {
               </li>
             </ul>
 
-            <QuantitySelector
-              quantity={selectedQuantity}
-              onQuantityChange={setSelectedQuantity}
-              pricePerUnit={24}
-              onAddToCart={handleAddToCart}
-            />
+            {isInStock ? (
+              <QuantitySelector
+                quantity={selectedQuantity}
+                onQuantityChange={setSelectedQuantity}
+                pricePerUnit={24}
+                onAddToCart={handleAddToCart}
+              />
+            ) : (
+              <NotifyMeForm productName={content.heroTitle} />
+            )}
 
             {/* Lab Values Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2">
