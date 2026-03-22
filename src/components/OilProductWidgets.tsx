@@ -127,9 +127,6 @@ export const OilProductWidgets = () => {
                         fontFamily: "UDC Working Man Sans, sans-serif",
                         letterSpacing: "0.1em",
                         color: "#C8E06A",
-                        backgroundColor: "#1B4229",
-                        borderRadius: "9999px",
-                        padding: "0.5em 1.3em",
                       }}>
                       COMING SOON
                     </span>
