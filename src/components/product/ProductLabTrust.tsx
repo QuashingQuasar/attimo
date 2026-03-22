@@ -32,7 +32,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
                 >
                   <Beaker size={18} />
-                  View full lab results
+                  View lab results
                 </a>
               )}
             </div>
@@ -50,7 +50,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
                 >
                   <Beaker size={18} />
-                  View full lab results
+                  View lab results
                 </a>
               )}
               </div>
