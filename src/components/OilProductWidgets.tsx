@@ -132,7 +132,7 @@ export const OilProductWidgets = () => {
                 style={{
                   fontFamily: "Beverly Drive, serif",
                   color: "#1B4229",
-                  fontSize: "clamp(2.4rem, 3.6vw, 3.6rem)",
+                  fontSize: "clamp(1.8rem, 2.7vw, 2.7rem)",
                   letterSpacing: "0.04em"
                 }}>
 
@@ -144,7 +144,7 @@ export const OilProductWidgets = () => {
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   color: "#1B4229",
-                  fontSize: "clamp(1.575rem, 1.95vw, 1.95rem)",
+                  fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   letterSpacing: "0.15em",
                   opacity: 0.7
                 }}>
@@ -157,7 +157,7 @@ export const OilProductWidgets = () => {
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   color: "#1B4229",
-                  fontSize: "clamp(1.8rem, 2.4vw, 2.4rem)",
+                  fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
                   letterSpacing: "0.03em"
                 }}>
 
@@ -168,7 +168,7 @@ export const OilProductWidgets = () => {
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
                   color: "#1B4229",
-                  fontSize: "clamp(1.575rem, 1.95vw, 1.95rem)",
+                  fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   opacity: 0.5,
                   lineHeight: 1.6
                 }}>
