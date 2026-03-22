@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
+import { NotifyMeForm } from "@/components/NotifyMeForm";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -117,6 +118,8 @@ const ProductPage = () => {
 
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
+
+  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
 
   const totalPrice = selectedQuantity * activePrice;
 
@@ -237,53 +240,56 @@ const ProductPage = () => {
               )}
               </div>
 
-              <QuantitySelector
-              quantity={selectedQuantity}
-              onQuantityChange={setSelectedQuantity}
-              pricePerUnit={activePrice}
-              onAddToCart={handleAddToCart}
-              buttonColor={content.buttonColor} />
-            
+              {isInStock ? (
+                <>
+                  <QuantitySelector
+                    quantity={selectedQuantity}
+                    onQuantityChange={setSelectedQuantity}
+                    pricePerUnit={activePrice}
+                    onAddToCart={handleAddToCart}
+                    buttonColor={content.buttonColor} />
 
-              <PurchaseOptions
-              sellingPlans={sellingPlans}
-              oneTimePrice={ONE_TIME_PRICE}
-              subscriptionPrice={SUBSCRIPTION_PRICE}
-              purchaseType={purchaseType}
-              onPurchaseTypeChange={setPurchaseType}
-              selectedSellingPlanId={selectedSellingPlanId}
-              onSellingPlanChange={setSelectedSellingPlanId} />
-            
+                  <PurchaseOptions
+                    sellingPlans={sellingPlans}
+                    oneTimePrice={ONE_TIME_PRICE}
+                    subscriptionPrice={SUBSCRIPTION_PRICE}
+                    purchaseType={purchaseType}
+                    onPurchaseTypeChange={setPurchaseType}
+                    selectedSellingPlanId={selectedSellingPlanId}
+                    onSellingPlanChange={setSelectedSellingPlanId} />
 
-              <Button
-              onClick={handleAddToCart}
-              className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
-              style={{
-                fontFamily: "UDC Working Man Sans, sans-serif",
-                backgroundColor: content.buttonColor,
-                fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
-                borderRadius: "0.75rem"
-              }}>
-              
-                <span className="hidden md:inline">
-                  ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
-                </span>
-                <span className="flex flex-col items-center gap-0.5 md:hidden">
-                  <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                  <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
-                </span>
-              </Button>
+                  <Button
+                    onClick={handleAddToCart}
+                    className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      backgroundColor: content.buttonColor,
+                      fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
+                      borderRadius: "0.75rem"
+                    }}>
+                    <span className="hidden md:inline">
+                      ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                    </span>
+                    <span className="flex flex-col items-center gap-0.5 md:hidden">
+                      <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
+                      <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                    </span>
+                  </Button>
 
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                  <ShieldCheck size={20} strokeWidth={1.5} />
-                  Third party lab-tested quality
-                </p>
-                <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                  <Truck size={20} strokeWidth={1.5} />
-                  Order today, ships tomorrow
-                </p>
-              </div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+                    <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                      <ShieldCheck size={20} strokeWidth={1.5} />
+                      Third party lab-tested quality
+                    </p>
+                    <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                      <Truck size={20} strokeWidth={1.5} />
+                      Order today, ships tomorrow
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <NotifyMeForm productName={content.heroTitle} />
+              )}
 
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
