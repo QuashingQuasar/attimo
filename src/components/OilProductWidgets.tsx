@@ -120,16 +120,16 @@ export const OilProductWidgets = () => {
                 </div>
 
                 {oil.handle === "picual" && (
-                  <div className="absolute bottom-0 left-0 z-10 px-5 pb-5">
+                  <div className="absolute bottom-0 right-0 z-10 px-5 pb-5">
                     <span
                       className="oil-card-label"
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
                         letterSpacing: "0.1em",
-                        color: "#FFFAEA",
+                        color: "#C8E06A",
                         backgroundColor: "#1B4229",
                         borderRadius: "9999px",
-                        padding: "0.35em 1em",
+                        padding: "0.5em 1.3em",
                       }}>
                       COMING SOON
                     </span>
