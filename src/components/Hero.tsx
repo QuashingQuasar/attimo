@@ -65,23 +65,15 @@ export const Hero = ({
         </div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-3 md:py-5 overflow-hidden border-t border-olive-dark/10">
+      <div className="absolute bottom-0 left-0 right-0 z-40 bg-accent py-2 md:py-3 overflow-hidden border-t border-olive-dark/10">
         <div className="flex animate-marquee">
           {Array(2).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>PREMIUM QUALITY</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>DIRECT FROM GROVES</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>LAB TESTED</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>FRESH HARVEST</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>TRACEABLE</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>ARTISANAL</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
-              <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(1rem, 2vw, 2.25rem)' }}>SMALL BATCH</span>
-              <OliveLeaf className="w-2 md:w-3 h-4 md:h-5 mx-4 md:mx-6" fill="#1B4229" />
+              {["LAB-TESTED", "EARLY HARVEST", "SINGLE VARIETY", "FROM GROVE TO TABLE", "ALWAYS FRESH", "COLD-PRESSED"].map((term, idx) => (
+                <span key={`${i}-${idx}`} className="inline-flex items-center">
+                  <span className="font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229', fontSize: 'clamp(0.7rem, 1.4vw, 1.575rem)' }}>{term}</span>
+                  <OliveLeaf className="w-1.5 md:w-2 h-3 md:h-3.5 mx-3 md:mx-4" fill="#1B4229" />
+                </span>
+              ))}
             </div>)}
         </div>
       </div>
