@@ -80,7 +80,7 @@ export const NotifyMeForm = ({ productName, backgroundColor = "rgba(27, 66, 41, 
             fontSize: "clamp(0.95rem, 1.1vw, 1.15rem)",
           }}
         >
-          Sold Out
+          Coming Soon
         </p>
         <p
           className="text-olive-medium mb-4"
