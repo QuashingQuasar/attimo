@@ -76,8 +76,10 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             {renderTile(2)}
             {renderVideo(2, "/videos/kleia-way-video.mp4")}
 
-            {/* Row 3: content - video - content */}
-            {renderTile(3)}
+            {/* Row 3: content - video - content (Cold Pressed tile hidden on tablet for even 4x2 grid) */}
+            <div className="hidden md:hidden lg:block contents-none max-md:block">
+              {renderTile(3)}
+            </div>
             {renderVideo(3, "/videos/harvest-2024-1.mp4")}
             {renderTile(4)}
           </div>
