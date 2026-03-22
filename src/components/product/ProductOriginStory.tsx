@@ -65,18 +65,16 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
-            <div className="md:max-lg:order-1">{renderTile(0)}</div>
-            <div className="md:max-lg:order-2">{renderVideo(0, '/videos/content-video-1.mp4')}</div>
-            <div className="md:max-lg:order-4 lg:order-none">{renderTile(1)}</div>
-
-            <div className="md:max-lg:order-3 lg:order-none">{renderVideo(1, '/videos/kleia-way-video-3.mp4')}</div>
-            <div className="md:max-lg:order-5 lg:order-none">{renderTile(2)}</div>
-            <div className="md:max-lg:order-6 lg:order-none">{renderVideo(2, '/videos/kleia-way-video.mp4')}</div>
-
-            <div className="md:max-lg:hidden lg:block">{renderTile(3)}</div>
-            <div className="md:max-lg:order-7 lg:order-none">{renderVideo(3, '/videos/harvest-2024-1.mp4')}</div>
-            <div className="md:max-lg:order-8 lg:order-none">{renderTile(4)}</div>
+          <div className="origin-story-tablet-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 lg:h-[calc(100vh-10rem)]">
+            <div className="origin-story-item-0">{renderTile(0)}</div>
+            <div className="origin-story-item-1">{renderVideo(0, "/videos/content-video-1.mp4")}</div>
+            <div className="origin-story-item-2">{renderTile(1)}</div>
+            <div className="origin-story-item-3">{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
+            <div className="origin-story-item-4">{renderTile(2)}</div>
+            <div className="origin-story-item-5">{renderVideo(2, "/videos/kleia-way-video.mp4")}</div>
+            <div className="origin-story-item-6">{renderTile(3)}</div>
+            <div className="origin-story-item-7">{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
+            <div className="origin-story-item-8">{renderTile(4)}</div>
           </div>
         </div>
       </div>
