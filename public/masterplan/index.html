@@ -1,4 +1,13 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Masterplan: WEB3 (B45) </title><style>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Masterplan: WEB3 (B45) </title>
+<script>
+(function(){
+  if(sessionStorage.getItem('mp_auth')==='1') return;
+  var p=prompt('Enter password to view this page:');
+  if(p!=='magari'){document.documentElement.innerHTML='<body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif"><h1>Access Denied</h1></body>';return;}
+  sessionStorage.setItem('mp_auth','1');
+})();
+</script>
+<style>
 /* cspell:disable-file */
 /* webkit printing magic: print all background colors */
 html {
