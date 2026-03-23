@@ -85,12 +85,12 @@ export const productContentMap: Record<string, ProductContent> = {
     benefits: [
       "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
-      "Directly sourced from a small family grove in Umbria, Italy",
+      "Directly sourced from a small family grove in Puglia, Italy",
     ],
     benefitTooltip:
       "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Directly sourced from a small family grove in Umbria, Italy",
+    sourceLine: "Directly sourced from a small family grove in Puglia, Italy",
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
@@ -101,7 +101,7 @@ export const productContentMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Umbria, Italy",
+        origin: "Puglia, Italy",
         olive: "Coratina",
         flavor: "Bold & Punchy",
         store: "keep away from light and heat",
@@ -124,7 +124,7 @@ export const productContentMap: Record<string, ProductContent> = {
         "Coratina is an uncomprimising olive, the queen of polyphenols. It presses an intense, bitter oil with real grip, the kind aficionados take by the spoon as a daily longevity shot.",
       quickRef: [
         { label: "VARIETY", value: "100% Coratina" },
-        { label: "ORIGIN", value: "Umbria, Italy" },
+        { label: "ORIGIN", value: "Puglia, Italy" },
         { label: "FLAVOR", value: "Bold & Punchy" },
         { label: "USE", value: "drizzle over fresh foods" },
         { label: "STORE", value: "away from light and heat" },
@@ -177,10 +177,10 @@ export const productContentMap: Record<string, ProductContent> = {
     tileAccent: "#B3E58C",
     originRegion: {
       heading: "From grove to bottle",
-      body: "ATTIMO Coratina is directly sourced from a small family grove in Umbria, the green heart of Italy. Nestled between Tuscany and Le Marche, this landlocked region produces some of the country's most intense olive oils.\n\nThe hilly terrain and clay-rich soils create ideal growing conditions for the Coratina variety. Hot, dry summers concentrate the fruit's polyphenols, while cool autumn nights slow ripening — preserving the bold, peppery character that makes this oil exceptional.",
-      markerLon: 12.6,
-      markerLat: 42.7,
-      markerLabel: "Umbria",
+      body: "ATTIMO Coratina is directly sourced from a small family grove in Puglia, Italy. The region is the largest producer of olive oil in the country, known for its centuries-old trees and exceptional quality.\n\nThe coastal plains and Mediterranean climate create ideal growing conditions for the Coratina variety. Long, sun-drenched days concentrate the fruit's polyphenols, preserving the bold, peppery character that makes this oil exceptional.",
+      markerLon: 16.8,
+      markerLat: 41.1,
+      markerLabel: "Puglia",
     },
   },
 
