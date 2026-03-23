@@ -1,17 +1,110 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ReactNode } from "react";
 
-const faqs = [
-  { question: "What makes ATTIMO olive oil different?", answer: "ATTIMO sources directly from single groves, ensuring every bottle comes from the latest harvest with no blending or middlemen. Each bottle is lab-tested for quality markers like polyphenol content, giving you the real, health-boosting extra virgin olive oil most people have never tasted." },
-  { question: "Where does ATTIMO olive oil come from?", answer: "ATTIMO sources from small, family-owned groves in Mediterranean regions known for exceptional olive oil. Each bottle comes from a single grove and is never blended, so you can trace exactly where your oil was produced. Current batch on sale is from Alentejo, Portugal." },
-  { question: "What are polyphenols and why do they matter?", answer: "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources." },
-  { question: "How fresh is the olive oil?", answer: "Every bottle is from the latest harvest and bottled quickly to preserve freshness. Unlike mass-produced oils that can sit for months or years, ATTIMO delivers oil within months of harvest. This ensures you get maximum flavour and health benefits." },
-  { question: "Can I see the lab results for my bottle?", answer: null, answerElement: (<>Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting. View the lab results for the latest 2024/25 harvest{" "}<a href="/documents/lab-report-galega-2024.pdf" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline" style={{ color: "#1B4229" }}>here</a>.</>) },
-  { question: "Why does real extra virgin olive oil taste bitter or peppery?", answer: "That bitterness and peppery kick come from polyphenols; the compounds that make olive oil healthy. Most people are used to bland, over-processed oils. Real extra virgin should have character: it's intense, fresh, and complex." },
-  { question: "How should I use ATTIMO olive oil?", answer: "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special." },
-  { question: "How should I store my olive oil?", answer: "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better." },
-];
+interface FaqItem {
+  question: string;
+  answer: string | null;
+  answerElement?: ReactNode;
+}
 
-export const FAQ = () => {
+const originAnswers: Record<string, string> = {
+  coratina:
+    "ATTIMO Coratina is directly sourced from a small family grove in Puglia, Italy — the country's largest olive oil producing region, known for its centuries-old trees and exceptional quality.",
+  nocellara:
+    "ATTIMO Nocellara is directly sourced from a small family grove in the Belice Valley, Sicily — a region renowned for its mineral-rich soils and ideal Mediterranean growing conditions.",
+  picual:
+    "ATTIMO Picual is directly sourced from a small family grove in Jaén, Spain — the world's largest olive oil producing region, where Picual has been cultivated for centuries.",
+};
+
+const flavorAnswers: Record<string, string> = {
+  coratina:
+    "Coratina is one of the most intensely flavoured olive varieties. Expect bold notes of fresh herbs, artichoke and black pepper, with an ultra-high polyphenol kick and a dry, lingering finish. It's the olive oil aficionados take by the spoon.",
+  nocellara:
+    "Nocellara produces a gentle, fruity oil with notes of fresh tomato, almond, and green apple. It's smooth and approachable with a mild peppery finish — perfect for those who prefer a softer flavour profile.",
+  picual:
+    "Picual delivers a robust, grassy oil with notes of fresh-cut herbs, fig leaf, and a clean peppery finish. It's a versatile all-rounder, packed with polyphenols and perfect for everyday use.",
+};
+
+const useAnswers: Record<string, string> = {
+  coratina:
+    "Coratina is best used as a finishing oil to get the most from its bold flavour and health benefits. Drizzle it over steak, grilled vegetables, hearty soups, bruschetta, or even ice cream. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols.",
+  nocellara:
+    "Nocellara is a versatile everyday oil. Drizzle it over salads, fish, pasta, and fresh bread. Its gentle character makes it great for lighter dishes where you want flavour without overpowering the food. Best enjoyed raw or added after cooking.",
+  picual:
+    "Picual is a brilliant all-rounder. Use it to finish roasted vegetables, drizzle over hummus, dress grains and legumes, or dip with crusty bread. Its robust character holds up well, but it's best enjoyed raw or added after cooking to preserve the polyphenols.",
+};
+
+function getFaqs(handle?: string): FaqItem[] {
+  const h = handle || "";
+
+  return [
+    {
+      question: "What makes ATTIMO olive oil different?",
+      answer:
+        "ATTIMO sources directly from single groves, ensuring every bottle comes from the latest harvest with no blending or middlemen. Each bottle is lab-tested for quality markers like polyphenol content, giving you the real, health-boosting extra virgin olive oil most people have never tasted.",
+    },
+    {
+      question: "Where does this olive oil come from?",
+      answer:
+        originAnswers[h] ||
+        "ATTIMO sources from small, family-owned groves in Mediterranean regions known for exceptional olive oil. Each bottle comes from a single grove and is never blended, so you can trace exactly where your oil was produced.",
+    },
+    {
+      question: "What does it taste like?",
+      answer:
+        flavorAnswers[h] ||
+        "That bitterness and peppery kick come from polyphenols; the compounds that make olive oil healthy. Most people are used to bland, over-processed oils. Real extra virgin should have character: it's intense, fresh, and complex.",
+    },
+    {
+      question: "What are polyphenols and why do they matter?",
+      answer:
+        "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.",
+    },
+    {
+      question: "How fresh is the olive oil?",
+      answer:
+        "Every bottle is from the latest harvest and bottled quickly to preserve freshness. Unlike mass-produced oils that can sit for months or years, ATTIMO delivers oil within months of harvest. This ensures you get maximum flavour and health benefits.",
+    },
+    {
+      question: "Can I see the lab results for my bottle?",
+      answer: null,
+      answerElement: (
+        <>
+          Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting. View the lab results for the latest 2024/25 harvest{" "}
+          <a
+            href="/documents/lab-report-galega-2024.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            here
+          </a>
+          .
+        </>
+      ),
+    },
+    {
+      question: "How should I use this olive oil?",
+      answer:
+        useAnswers[h] ||
+        "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special.",
+    },
+    {
+      question: "How should I store my olive oil?",
+      answer:
+        "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better.",
+    },
+  ];
+}
+
+interface FAQProps {
+  handle?: string;
+}
+
+export const FAQ = ({ handle }: FAQProps) => {
+  const faqs = getFaqs(handle);
+
   return (
     <section className="pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
