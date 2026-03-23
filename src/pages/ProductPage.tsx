@@ -362,7 +362,7 @@ const ProductPage = () => {
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
       <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
       <YouMightAlsoLike currentHandle={handle} />
-      <FAQ />
+      <FAQ handle={handle} />
 
       <Footer />
     </div>);
