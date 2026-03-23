@@ -68,21 +68,30 @@ function getFaqs(handle?: string): FaqItem[] {
     {
       question: "Can I see the lab results for my bottle?",
       answer: null,
-      answerElement: (
-        <>
-          Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting. View the lab results for the latest 2024/25 harvest{" "}
-          <a
-            href="/documents/lab-report-galega-2024.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:no-underline"
-            style={{ color: "#1B4229" }}
-          >
-            here
-          </a>
-          .
-        </>
-      ),
+      answerElement: (() => {
+        const labUrls: Record<string, string> = {
+          coratina: "/lab/Coratina2025.pdf",
+          nocellara: "/lab/Nocellara2025.pdf",
+          picual: "/lab/Picual2025.pdf",
+        };
+        const labUrl = labUrls[h] || "/documents/lab-report-galega-2024.pdf";
+        const varietyName = h ? h.charAt(0).toUpperCase() + h.slice(1) : "";
+        return (
+          <>
+            Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting.{" "}
+            <a
+              href={labUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:no-underline"
+              style={{ color: "#1B4229" }}
+            >
+              View lab results{varietyName ? ` for ${varietyName}` : ""}
+            </a>
+            .
+          </>
+        );
+      })(),
     },
     {
       question: "How should I use this olive oil?",
