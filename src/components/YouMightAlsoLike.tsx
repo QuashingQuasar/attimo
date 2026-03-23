@@ -41,21 +41,33 @@ const allOils = [
 
 interface YouMightAlsoLikeProps {
   currentHandle?: string;
+  accentColor?: string;
 }
 
-export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
+// Helper: determine if a hex color is "light" (needs dark text) or "dark" (needs light text)
+const isLightColor = (hex: string): boolean => {
+  const c = hex.replace("#", "");
+  const r = parseInt(c.substring(0, 2), 16);
+  const g = parseInt(c.substring(2, 4), 16);
+  const b = parseInt(c.substring(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 150;
+};
+
+export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLikeProps) => {
   const otherOils = allOils.filter((oil) => oil.handle !== currentHandle);
+  const bgColor = accentColor || "hsl(var(--section-light))";
+  const textColor = accentColor && isLightColor(accentColor) ? "#1B4229" : accentColor ? "#FFFAEA" : "#1B4229";
 
   return (
     <section
       className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden"
-      style={{ backgroundColor: "hsl(var(--section-light))" }}>
+      style={{ backgroundColor: bgColor }}>
       
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-          "radial-gradient(circle at 1px 1px, #1B4229 1px, transparent 0)",
+          `radial-gradient(circle at 1px 1px, ${textColor} 1px, transparent 0)`,
           backgroundSize: "32px 32px"
         }} />
       
@@ -66,7 +78,7 @@ export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
             className="mb-4 mx-auto"
             style={{
               fontFamily: "Beverly Drive, serif",
-              color: "#1B4229",
+              color: textColor,
               fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
             }}>
@@ -151,7 +163,7 @@ export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
                 className="mb-1.5"
                 style={{
                   fontFamily: "Beverly Drive, serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.8rem, 2.7vw, 2.7rem)",
                   letterSpacing: "0.04em"
                 }}>
@@ -163,7 +175,7 @@ export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
                 className="uppercase mb-3"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   letterSpacing: "0.15em",
                   opacity: 0.7
@@ -176,7 +188,7 @@ export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
                 className="mb-3"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
                   letterSpacing: "0.03em"
                 }}>
@@ -187,7 +199,7 @@ export const YouMightAlsoLike = ({ currentHandle }: YouMightAlsoLikeProps) => {
                 <p
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   opacity: 0.5,
                   lineHeight: 1.6
