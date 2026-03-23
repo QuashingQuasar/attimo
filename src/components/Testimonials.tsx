@@ -10,6 +10,7 @@ const testimonials = [
   { name: "Elias N.", location: "Amsterdam, Netherlands", date: "06 June 2025", text: "I tried a lot of olive oils and this one is my favourite. The smell is absolutely unreal, so fresh it's like the olives are being pressed right then and there.", rating: 5, title: "Super fresh" },
   { name: "David K.", location: "Antwerp, Belgium", date: "04 May 2025", text: "I bought 4 bottles and they were gone in a month. Never buying in the supermarket again.", rating: 5, title: "I got hooked fast" },
   { name: "Madis K.", location: "Tallinn, Estonia", date: "15 Aug 2025", text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.", rating: 5, title: "You can taste the quality" },
+  { name: "Nicoleta P.", location: "Bucharest, Romania", date: "28 Nov 2025", text: "It tastes like I just picked the olives and pressed them myself. Super fresh and natural, I love it!", rating: 5, title: "Fresh and natural" },
 ];
 
 export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingColor?: string }) => {
