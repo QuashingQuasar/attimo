@@ -34,8 +34,11 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
                   <CardContent className="p-7">
                     <h4 className="font-semibold text-olive-dark mb-3" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.title}</h4>
                     <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
-                    <div className="flex justify-between items-center text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
-                      <span>{testimonial.name} ({testimonial.location})</span>
+                    <div className="flex justify-between items-start text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
+                      <div className="flex flex-col">
+                        <span>{testimonial.name}</span>
+                        <span>{testimonial.location}</span>
+                      </div>
                       <span>{testimonial.date}</span>
                     </div>
                   </CardContent>
