@@ -50,7 +50,7 @@ function getFaqs(handle?: string): FaqItem[] {
         "ATTIMO sources from small, family-owned groves in Mediterranean regions known for exceptional olive oil. Each bottle comes from a single grove and is never blended, so you can trace exactly where your oil was produced.",
     },
     {
-      question: "What does it taste like?",
+      question: h ? `What does ATTIMO ${h.charAt(0).toUpperCase() + h.slice(1)} taste like?` : "What does it taste like?",
       answer:
         flavorAnswers[h] ||
         "That bitterness and peppery kick come from polyphenols; the compounds that make olive oil healthy. Most people are used to bland, over-processed oils. Real extra virgin should have character: it's intense, fresh, and complex.",
