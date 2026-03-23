@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
+import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
@@ -318,6 +319,7 @@ const ProductPage = () => {
       <ProductOriginRegion />
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
       <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
+      <YouMightAlsoLike currentHandle={handle} />
       <FAQ />
 
       <Footer />
