@@ -1,0 +1,727 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Masterplan: WEB3 (B45) </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6d86c13a-f2ea-427c-be64-59a777b0b4d3" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">💜</span></div><h1 class="page-title" dir="auto">Masterplan: WEB3 (B45) </h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><div id="aa2daf23-683d-44b2-a8d2-2bf50ba63b90" class="column-list"><div style="display:contents" dir="auto"><div id="e4adf470-5e18-497f-8959-44b63209f49d" style="width:25%" class="column"><div style="display:contents" dir="ltr"><nav id="d744e879-6e0e-4f24-b412-0b3aa7faaaa7" class="block-color-red_background table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a3ca5b45-a3d7-4a0d-890e-cb272ef0f58e">ABOUT THE BATCH</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#bd24bb15-0a94-4bea-8448-0db6c8f99860">🙌 TEAM:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#3643dead-4770-4534-b8f8-54f261f3fc55">🔗 USEFUL LINKS: </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b0ef22c3-8ae0-4403-afeb-1dba8a1b5da6">🎯<strong>OBJECTIVE</strong>:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cfe735dc-538b-4000-aa6a-f4e48263cdfa">🤝 THE DEAL:</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#637a8a63-2660-4e42-9235-6e720c0cfa30">SCOUTING </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6fda537d-4d43-4cfb-8ddb-69b3f60bc204">MARKETING &amp; COMMS</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#07bfce12-1272-4d0a-bcc4-8b0485b15992">PROGRAM PLANNING</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2fb1bcd1-b8f1-4288-9755-8261becf6d88">BLUEPRINTS</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cb17b7f5-7002-41a0-9efa-40c37d139a4f">Tools</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55db56ed-e927-4921-ab2d-2fceefdd968c">Sources on: What is WEB3</a></div></nav></div><div style="display:contents" dir="auto"><p id="9ac57fb4-b957-439a-ac28-23845595b3c0" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="b9439fc8-7afd-44d8-8138-0552ed685985" style="width:75%" class="column"><div style="display:contents" dir="auto"><h1 id="a3ca5b45-a3d7-4a0d-890e-cb272ef0f58e" class="">ABOUT THE BATCH</h1></div><div style="display:contents" dir="auto"><p id="1a7d8cd4-1184-4281-898b-eba73bd4a20f" class=""><mark class="highlight-red_background">BATCH FULL NAME</mark>:   Startup Wise Guys Web3 </p></div><div style="display:contents" dir="auto"><p id="02bde711-a667-4ac7-ad32-06be26afe86b" class=""><mark class="highlight-red_background">BATCH SHORT-CODE</mark>:  web3-2023-b45</p></div><div style="display:contents" dir="auto"><p id="00bd0a7b-3d70-4f74-b4f7-16fd3ebe1ee1" class=""><mark class="highlight-red_background">VERTICAL</mark>:  Web3</p></div><div style="display:contents" dir="auto"><p id="e1ee2a2e-2212-4a32-8681-3be2b6cea40c" class=""><mark class="highlight-red_background">LOCATION</mark>: Global and <em>Lisboa (with Startup Lisboa as host partners)</em></p></div><div style="display:contents" dir="auto"><p id="f92df31a-c479-45ac-8700-9832520d2004" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><ul id="9658a7d9-53b8-4e7c-8569-0bed9093f68e" class="block-color-orange_background toggle"><li><details open=""><summary>🌪️ TIMELINE </summary><div style="display:contents" dir="ltr"><div id="fb35fd66-550c-493a-b9a1-c0c0d4572966" class="collection-content"><h4 class="collection-title">Dates</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Events</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Date</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Status</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Comments</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/friends_gray.svg" style="width:14px;height:14px;display:block"/></span>Person managing</th></tr></thead><tbody><tr id="9aae6a35-8023-45b4-9264-2cb9cbe21bbd"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%93%A2%20Applications%20Open%209aae6a35802345b492642cb9cbe21bbd.html">📢 Applications Open </a></td><td class="cell-sX&gt;j">May 17</td><td class="cell-Z;AN"><span class="selected-value select-value-color-green">Done</span></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="a7213b3f-2bde-4496-ba15-7cbbfd26f513"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%91%A9%F0%9F%8F%BC%E2%80%8D%E2%9A%96%EF%B8%8F%20Decentralised%20Scouting%20a7213b3f2bde4496ba157cbbfd26f513.html">👩🏼‍⚖️ Decentralised Scouting</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="6b22f208-b20b-4e20-8e5e-aa37bd02a86c"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%91%A9%F0%9F%8F%BC%E2%80%8D%E2%9A%96%EF%B8%8F%20Onsite%20event%20in%20Lisbon%206b22f208b20b4e208e5eaa37bd02a86c.html">👩🏼‍⚖️ Onsite event in Lisbon</a></td><td class="cell-sX&gt;j">Oct 12</td><td class="cell-Z;AN"><span class="selected-value select-value-color-pink">In planning</span></td><td class="cell-@Y^H"><a href="https://www.linkedin.com/posts/activity-7113086800553721856-tb7M/">https://www.linkedin.com/posts/activity-7113086800553721856-tb7M/</a></td><td class="cell-BTnN"></td></tr><tr id="affbd2db-d799-41a5-b4a8-5d3dda10c96d"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%8F%81%20Applications%20Close%20affbd2dbd79941a5b4a85d3dda10c96d.html">🏁 Applications Close</a></td><td class="cell-sX&gt;j">Oct 9</td><td class="cell-Z;AN"><span class="selected-value select-value-color-green">Confirmed</span></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="c5dd6059-667a-4ed9-844b-56d37d8f89e7"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%8D%AD%20Program%20Launch%20c5dd6059667a4ed9844b56d37d8f89e7.html">🍭 Program Launch </a></td><td class="cell-sX&gt;j">Nov 13 TBC</td><td class="cell-Z;AN"><span class="selected-value select-value-color-pink">In planning</span></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="54e98a28-2441-4f0f-aef9-65c5f326b972"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%AB%A0%20Progress%20Day%2054e98a2824414f0faef965c5f326b972.html">🫠 Progress Day</a></td><td class="cell-sX&gt;j">TBC</td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="c234d6ac-d58c-417c-88d7-f2222b5a1c5b"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/%F0%9F%8E%89%20Program%20End%20c234d6acd58c417c88d7f2222b5a1c5b.html">🎉 Program End</a></td><td class="cell-sX&gt;j">Feb ?</td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="4de53a0f-2657-42d4-8dd1-b23e5a4f17d1"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Untitled%204de53a0f265742d48dd1b23e5a4f17d1.html">Untitled</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="4d35c08b-c785-49fb-b251-9a399d7be9d7"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/PROGRAM%20PLANNING%20DATES%204d35c08bc78549fbb2519a399d7be9d7.html">PROGRAM PLANNING DATES:</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="b6c1f626-ab0a-4a89-bc1f-fd0b56c1cf58"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Kick-off%20call%20b6c1f626ab0a4a89bc1ffd0b56c1cf58.html">Kick-off call</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"><span class="selected-value select-value-color-green">Done</span></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="6972e2dd-09ef-4db5-8770-a21392d28de1"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Program%20onboarding%20call%206972e2dd09ef4db58770a21392d28de1.html">Program onboarding call</a></td><td class="cell-sX&gt;j">Sept 29</td><td class="cell-Z;AN"><span class="selected-value select-value-color-green">Confirmed</span></td><td class="cell-@Y^H">calendar sent</td><td class="cell-BTnN"></td></tr><tr id="d4a803f7-3a51-46d8-a40b-b27e1765ccaf"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Program%20set-up%20call%20d4a803f73a5146d8a40bb27e1765ccaf.html">Program set-up call</a></td><td class="cell-sX&gt;j">Oct 13</td><td class="cell-Z;AN"><span class="selected-value select-value-color-green">Confirmed</span></td><td class="cell-@Y^H">calendar sent</td><td class="cell-BTnN"></td></tr><tr id="897263c7-be12-473c-8aca-7d079951deef"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%201%20planning%20897263c7be12473c8aca7d079951deef.html">Module 1 planning</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="0edb00c2-c55c-4905-aaf5-31a313792d6d"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%202%20planning%200edb00c2c55c4905aaf531a313792d6d.html">Module 2 planning</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="d5809985-7ebd-47dd-8d84-ba95c076ff56"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%201%20Retro%20d58099857ebd47dd8d84ba95c076ff56.html">Module 1 Retro</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="59d3a6d1-fcfb-4b48-a397-bbd31f5333c8"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%203%20planning%2059d3a6d1fcfb4b48a397bbd31f5333c8.html">Module 3 planning</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="1171a715-e018-43aa-a56b-95fb9c1f075a"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%202%20Retro%201171a715e01843aaa56b95fb9c1f075a.html">Module 2 Retro</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="8691802c-6337-4ed4-9fe5-40bed300120d"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%204%20planning%208691802c63374ed49fe540bed300120d.html">Module 4 planning</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="d8d0b0f6-9357-4e91-890d-c374ecedfa78"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%203%20Retro%20d8d0b0f693574e91890dc374ecedfa78.html">Module 3 Retro</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="c7ef402b-e85c-49d4-8226-cedb39b2ba23"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Graduation%20planning%20c7ef402be85c49d48226cedb39b2ba23.html">Graduation planning</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr><tr id="f3800f14-d71a-414c-ac93-1d3a8ee2315f"><td class="cell-title"><a href="Masterplan%20WEB3%20(B45)/Dates/Module%204%20+%20Program%20Retro%20f3800f14d71a414cac931d3a8ee2315f.html">Module 4 + Program Retro</a></td><td class="cell-sX&gt;j"></td><td class="cell-Z;AN"></td><td class="cell-@Y^H"></td><td class="cell-BTnN"></td></tr></tbody></table><br/><br/></div></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="17060bfc-5b35-40b6-aec5-6bd673f65dab" class="">
+</p></div><div style="display:contents" dir="auto"><div id="af1a444d-4f23-40a4-b292-67a0822a33f3" class="column-list"><div style="display:contents" dir="auto"><div id="e46865a7-496c-4fee-af3d-642766805da8" style="width:25%" class="column"><div style="display:contents" dir="auto"><h3 id="bd24bb15-0a94-4bea-8448-0db6c8f99860" class="">🙌 TEAM:</h3></div></div></div><div style="display:contents" dir="auto"><div id="d5bac551-9739-43e0-90c5-707205eb319d" style="width:75%" class="column"><div style="display:contents" dir="auto"><h3 id="3643dead-4770-4534-b8f8-54f261f3fc55" class="">🔗 USEFUL LINKS: </h3></div></div></div></div></div><div style="display:contents" dir="auto"><div id="718a7b42-21fb-4155-befc-b16d3be25516" class="column-list"><div style="display:contents" dir="auto"><div id="58b84226-0017-4735-8f39-39d761bad6e4" style="width:28.125%" class="column"><div style="display:contents" dir="auto"><p id="42fa1913-a38b-483a-ac4a-dae699e16d60" class="">🧑‍🚒  Program Director (PD):<em>(if applicable)</em><br/>🧑🏻‍💻 Managing Director (MD):  Gilles<br/>🥷🏻  Entrepreneur in Residence (EiR):<em> </em><br/>🧙🏼  Program Manager (PM): Nicoleta<br/>💁🏻  Program Intern or Coordinator: -</p></div></div></div><div style="display:contents" dir="auto"><div id="9fbcad3d-d9aa-4916-a72b-3a6293cd259e" style="width:21.874999999999996%" class="column"><div style="display:contents" dir="auto"><p id="462bd382-01a0-424b-8080-f06efbe89a08" class="">Batch external page: </p></div><div style="display:contents" dir="auto"><p id="62f39978-00f3-43f3-a6b2-3f9bade6003c" class="">Google Drive:<a href="https://drive.google.com/drive/u/0/folders/189V-_-2NkR4hiSMXdOFJcAKOYzLMK8x2"> is here</a></p></div><div style="display:contents" dir="auto"><p id="1746ad34-0ab1-41e6-9ca7-8024e63f9db2" class="">Program planning: </p></div><div style="display:contents" dir="auto"><p id="6b065bd1-8482-463b-9e84-b0df421bfa0f" class=""><mark class="highlight-red">Program planning:  (Owners - Product team):</mark></p></div><div style="display:contents" dir="auto"><p id="b2aa44b2-911b-4ecb-88f6-baa799234887" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="0f84157a-76c9-48e8-b2ff-b5fb2e8c4c28" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="e1820b2e-8a68-47e2-94a4-b2d5d16e5018" class="">🔎 <a href="https://docs.google.com/spreadsheets/d/1FlQysZwriiUdjraOZLk-RZqj5OFYzyeKOSLqDLvrknE/edit#gid=473416836">Masterfile / heartbeat</a></p></div><div style="display:contents" dir="auto"><p id="4d60c862-809c-4e6e-a6b9-b4fc404bde0b" class="">🔗 Website: </p></div><div style="display:contents" dir="auto"><p id="de0191d2-ace5-4917-a4f5-5a4d5e56bdef" class="">Dealum external: <a href="https://app.dealum.com/#/company/application/new/110198/jgfsap4gr38bjmwvht10zob415c4urmy">CLICK HERE</a></p></div><div style="display:contents" dir="auto"><p id="de8c5604-5c96-4e66-a4b0-13014dae69d8" class="">Dealum internal: <a href="https://app.dealum.com/#/dealroom/18045?guide=tab%3Ddatabase">CLICK HERE</a></p></div><div style="display:contents" dir="auto"><p id="b0a8594c-8b23-424f-a6e7-06f415cb04de" class=""><a href="https://docs.google.com/presentation/d/1X_3ABhq4YpoVq1MBoo0uL8Ak7pxOx-HLdsBKtgaPYQw/edit?usp=drive_web&amp;ouid=105110170015908539141">Scouting funnel call slides</a></p></div><div style="display:contents" dir="auto"><p id="6c17f19a-0e70-4f49-9b34-c007c2eb3e9b" class=""><a href="https://drive.google.com/drive/u/0/folders/1GeIjAAc7HafJzAa3GquQFOyQ8u17Nd-y">Scouting folder </a></p></div><div style="display:contents" dir="auto"><p id="b1c0442c-a1a4-443d-b481-5598dd5464d6" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="a09696da-9af5-48e9-99d8-573f534f4cf7" style="width:25%" class="column"><div style="display:contents" dir="auto"><p id="1a647b7d-7090-45dc-8708-a8db7c31d7c8" class="">Supporting materials (one-pager, visuals, email templates) :</p></div><div style="display:contents" dir="auto"><p id="b325c054-8d27-4e06-8c83-4e9e2706c91d" class="">Shareables package (External):  <a href="https://www.notion.so/SaaS-Flagship-Program-7013d715acc44888b26e59d72736e54c?pvs=21"><img class="icon" src="Masterplan%20WEB3%20(B45)/SaaS_Waitlist_Icon.png"/>SaaS Flagship Program </a> </p></div><div style="display:contents" dir="auto"><p id="0b605288-1381-4e34-86b8-b45773fdb933" class=""><a href="https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&amp;ik=7b3f610b61&amp;attid=0.1&amp;permmsgid=msg-f:1765608871591243422&amp;th=1880b3ea03796e9e&amp;view=att&amp;disp=inline&amp;realattid=f_lhj4zo6h0&amp;ser=1&amp;saddbat=ANGjdJ_e-us9vCNM-_GmYG9JzqLa-QMeRaCRoyuVd1L4kTZxjUsz7hAnOHKT6oiBqT0a9hopmOND5HET8J-NRdVrL1VyYEQO2ZrHiT5O284lNnHc7TUbYG1EyNzE8g46FDleNOIQKi68oTyDV6VnIZUeh5JzpX89Lg9sFGl1PDo_UiPXXkUm-uGJ7UCiDXPmEIMbz1FeMPhCUo25sYgYgqi__DVWaJ2NLh9wLzKd9bvXcspcsz_4Dl3roZJGQTI6QViwr9CXiqKd2gY2IBwYATPnRUQZUPtRSKlbQ3djRpU5CJ4QD9Epyfl9wmBAYMkk9jT8ywlXywxrO-d0xz9QolCC85L9gzxdBuu7MdcdhwvEdu8v7oeqq2g6ImSa3yDdgzTWr4dCN2cYdmOW6Z-w8wPQnFAzLapDL3O0tT-9lHiYJbtIL_dYxG7rne6YZnnUb7plTWmW1GQF_yRWhuJvBYZyJ_XJzQYKxElxsCjGKbJQ3bmdbXif0jWee9rBLU5TT4b9RvvCaWIc1ud2IsAqDmCXIz5v6OqzNQ5qOrDYC3beQXP145I-HL2JetXMTdE-zL6iHVwT2GtD5KxBMpvazyXzXEr3FUOtAPJScORVp1EZJqz23QEkEUzg_zxKPQS4er3kg_99oYwC8W5GQl0_Pt9fRVwQzccbkvyZ-bvnOvZcK00yvi4a5F8fa3iC4ZwoVZcY82WsCD6MjI_QNIwj0bi0dETa4PYdathXTbKLZ5lUndUEnXO8sb_FkTTY_2rexbEcwTe4wLl0iI8FYclqVSL42c-kRAjlcwuDjH9dZk8Q8VU0q2W-poneDC5KOP4EnyZPgar4W7FDghXmSlOEhTxARajgWVuSgggYgQXRDsW_v0qONNIVgQJn5J1ieMIds37c6OE_8Sh7vH0j_rVr-Sa-B6aOkTP_FYy1V8B186nIEpRj17JSMthucR_WS06s8bJmH87WGRgIOQanNG9geWKLYqPdCuvoob9C7EdJ03n5wni0ZfUHTX_l9ndaJNGcozJX7G9zlsMDrcyW2RhS52KTTA-868_e6FQIQoNqEw">WEB3</a> conferences</p></div><div style="display:contents" dir="auto"><p id="ad8f0d1c-3c02-4d19-8457-560bcf8af3a1" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><div id="f5736d7a-4053-41ba-8653-bf4182dff940" class="column-list"><div style="display:contents" dir="auto"><div id="f44110c1-6a69-4c31-acb6-a8a92c62a4b8" style="width:33.33333333333333%" class="column"><div style="display:contents" dir="auto"><h3 id="b0ef22c3-8ae0-4403-afeb-1dba8a1b5da6" class="">🎯<strong>OBJECTIVE</strong>:</h3></div><div style="display:contents" dir="auto"><p id="a1206208-7f4e-4f94-b550-7f83978629f0" class="">8 - 10 startups / batch</p></div><div style="display:contents" dir="auto"><p id="d6a45d91-7e34-4d1e-af61-c50abc63e31b" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="618e5e87-9a84-40b5-8f75-6879a44ed5c8" style="width:62.500000000000014%" class="column"><div style="display:contents" dir="auto"><h3 id="cfe735dc-538b-4000-aa6a-f4e48263cdfa" class="">🤝 THE DEAL:</h3></div><div style="display:contents" dir="auto"><p id="8419a7b6-a17b-450b-98b1-3717b3c20c77" class=""><mark class="highlight-red_background">FUNDS INVESTING &amp; LIST OF GPs: </mark></p></div><div style="display:contents" dir="auto"><p id="307d418b-eddd-4d8c-8579-9b37d8dc9376" class="">
+</p></div><div style="display:contents" dir="auto"><p id="c71e5f9b-67bd-4c4f-93d5-2c13b8055fa9" class=""><mark class="highlight-red_background">THE DEAL</mark>:</p></div><div style="display:contents" dir="auto"><p id="b04ae349-7d28-4369-9f2a-64633d5169e6" class=""><mark class="highlight-red"><strong>UPDATED: </strong></mark><strong>•Get up to €150K convertible investment (115K cash + 35K program) with a €300K follow-on possibility.</strong></p></div><div style="display:contents" dir="auto"><p id="5742a413-30a5-4862-b46d-7add211c6190" class="">BEFORE:</p></div><div style="display:contents" dir="auto"><p id="fbe02d5f-c959-4266-bf75-eea2c2407e5d" class="">Investment (min): 100,000 € or 150,000 € cash investment for up to 9% (we use Convertible Loan Agreement (CLA) as our default investment instrument) (35k program cost)<div class="indented"><div style="display:contents" dir="auto"><p id="8be1226f-e491-4957-930d-7d508cfc7adc" class="">In marketing comms: convertible investment up to 150k € </p></div></div></p></div><div style="display:contents" dir="auto"><p id="08002933-4f3f-4211-9695-c531dce1133f" class="">Investment committee: </p></div><div style="display:contents" dir="auto"><p id="0c973411-56c5-4052-a5a5-82899251da3b" class="">Follow-on investment: up to 250,000 € follow on opportunity after the program to be allocated among co-investors of the program with super pro-rata rights</p></div><div style="display:contents" dir="auto"><p id="9f6e47da-b99e-4ca7-bb19-b844c39b47d7" class="">Office deal: </p></div><div style="display:contents" dir="auto"><p id="e60b5f2e-6325-4106-843e-f6fc80c1bf5e" class="">Program setup: Onsite/Online/Hybrid</p></div><div style="display:contents" dir="auto"><p id="802d3a98-35b8-4699-9c2b-7c6e217f5e41" class=""><mark class="highlight-red_background">PROGRAM PARTNERS:</mark> </p></div><div style="display:contents" dir="auto"><ol type="1" id="217b815c-a873-4fe3-8b8e-e458fa6203d6" class="numbered-list" start="1"><li><mark class="highlight-red">3 Comma Capital SCR (VC - they co-invest 50% of ticket with us, we need them as EiR 3 people on bo</mark><mark class="highlight-red">ard)</mark></li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="7b7e3ebf-a941-400d-a50b-d7df69fc33ec" class="numbered-list" start="2"><li><mark class="highlight-red">Startup Lisboa - governmental organisation of Lisbon municipality, they are host partners - we should do everything at their premises, they can help with mentors, offsite organisation (venue, catering was covered - need to discuss) </mark><a href="mailto:pedro.teixeira@startuplisboa.com">pedro.teixeira@startuplisboa.com</a></li></ol></div><div style="display:contents" dir="auto"><p id="22c060ab-fd35-4ce1-8a3f-70e6953a7933" class="">Nuno Serafim <a href="mailto:nuno.serafim@2iqresearch.com">nuno.serafim@2iqresearch.com</a> Pedro Cerdeira <a href="mailto:pmc@businessplug.com">pmc@businessplug.com</a>, Patrick Hable <a href="mailto:patrick.hable@2iqresearch.com">patrick.hable@2iqresearch.com</a> - Mariia did into in emails</p></div><div style="display:contents" dir="auto"><p id="1f88847f-69e0-498f-a1f1-afd9b28d2014" class=""><mark class="highlight-red_background">ANY LIMITATIONS</mark>:  </p></div><div style="display:contents" dir="auto"><p id="cab0891c-c2cb-4b52-83fa-e960ce40a5c3" class="">Nov 13-16 websummit maybe onsite before - potentially implementation week can be websummit</p></div></div></div><div style="display:contents" dir="auto"><div id="641e8d48-e1d6-4f25-9a8b-7179dff551ca" style="width:4.166666666666666%" class="column"><div style="display:contents" dir="ltr"><figure id="9b0117f6-0393-4821-8aa9-5cdd2eb236a3" class="image"><a href="1.jpeg"><img style="width:1067px" src="1.jpeg"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><hr id="5aa9cdbe-846c-47c6-bd28-043ef1d3c36c"/></div><div style="display:contents" dir="auto"><h2 id="637a8a63-2660-4e42-9235-6e720c0cfa30" class="">SCOUTING </h2></div><div style="display:contents" dir="auto"><p id="7d64dc89-88f5-44ad-b6c8-e7fe495e8b3a" class=""><mark class="highlight-red_background">TARGET REGIONs</mark>: Lisbon (Portugal), UK, Switzerland, Germany</p></div><div style="display:contents" dir="auto"><p id="401513c8-27bd-4e75-a419-bfa931b98d46" class="">VERTICAL FOCUS: Web3</p></div><div style="display:contents" dir="auto"><p id="23b9bfcc-3e97-4a2a-a586-056734a751a0" class="">Subverticals: DeFi; NFTs; Metaverse; Infrastructure; Privacy; DAO Tooling; Gaming;<br/>Custody Solutions; Data &amp; Analytics; ID Management; KYC and/AML.</p></div><div style="display:contents" dir="auto"><p id="5c07b087-795c-4e52-bb5e-5df3c9e83df5" class="">Business focus: B2B (eventually B2B2C or B2C if very unique solutions/teams or so-called prosumers as the key audience) and marketplaces.</p></div><div style="display:contents" dir="auto"><p id="dea86573-7795-4a77-ae46-c873c7569885" class=""><mark class="highlight-red_background">SCOUTING KPIs</mark>:  180 applications</p></div><div style="display:contents" dir="auto"><p id="eb3b8ecb-5e95-4f49-a8bb-ae23b339df96" class=""><mark class="highlight-red_background">SCOUTING TEAM:</mark> Darja + Karina + Natalia</p></div><div style="display:contents" dir="auto"><p id="d832a4ba-64d1-40b5-8431-13b981dc8b47" class=""><mark class="highlight-red_background">SCOUTING STRATEGY:</mark> <br/></p></div><div style="display:contents" dir="auto"><p id="be40d07a-314c-4b06-81af-a5702770b2a7" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="6f3c1ac6-84ca-4135-be62-f2f4ad93b6f4"/></div><div style="display:contents" dir="auto"><h2 id="6fda537d-4d43-4cfb-8ddb-69b3f60bc204" class="">MARKETING &amp; COMMS</h2></div><div style="display:contents" dir="auto"><div id="0e1cfc6b-9efd-40eb-8917-f2f3a36de6fa" class="column-list"><div style="display:contents" dir="auto"><div id="ae4b4663-0ea2-4a4f-931a-a76379098f06" style="width:81.25%" class="column"><div style="display:contents" dir="auto"><p id="c3f96afb-1087-4f38-ba06-aa7c634e265e" class="">Ads Budget: 1000€ </p></div><div style="display:contents" dir="auto"><p id="018dcee3-043d-4ec4-a92b-06a7a6ed066d" class="">Objective: 180 applications</p></div><div style="display:contents" dir="auto"><p id="64373068-4029-46cd-a634-851cf4679a72" class="">Website users: 2000 users</p></div><div style="display:contents" dir="auto"><p id="ef1ac274-73e7-4d0a-9e30-06ce630edfb7" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="4b3067a4-235c-4cb6-91a8-bacd95bab417" class="toggle"><li><details open=""><summary>COMMS TIMELINE (click the ▶ to open)</summary><div style="display:contents" dir="ltr"><figure id="619142d1-a8eb-4dfb-aacd-b74e3e1fb393"><div class="source"><a href="https://airtable.com/shrHc0iHTA0va5UAS">https://airtable.com/shrHc0iHTA0va5UAS</a></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="44869df8-ec8a-44be-aaa3-5e88073ee695" class="">FYI</p></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="0f55f8bd-4b99-4e6b-a144-826d560cebde"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">For Marketing to be able to deliver all the things mentioned below, we need as much information on the program as possible, especially if there’s a partnership and additional things promised in the agreement with the partner (to details like which website (SWG or partners) will be used for program, who does the design work, etc.) If it’s a brand new program, Marketing department might need more than a month for preps to launch Applications. </div></figure></div><div style="display:contents" dir="auto"><ul id="04f4bc03-8688-4b5a-99c6-e230f7fb648b" class="toggle"><li><details open=""><summary><mark class="highlight-red_background">Marketing Question to be answered before Marketing can start working on Campaign planning, etc.</mark></summary><div style="display:contents" dir="auto"><ul id="8e1288d5-7a74-4024-a232-214b3f46d5b2" class="toggle"><li><details open=""><summary>Do we have to have any partners on the landing page (if yes, please, provide those)? </summary></details></li></ul></div><div style="display:contents" dir="auto"><ul id="98b1a137-7fe5-4461-8025-eee6acc788c1" class="toggle"><li><details open=""><summary>What’s the correct wording to be used to refer to the partner/-s if we have them. </summary></details></li></ul></div><div style="display:contents" dir="auto"><ul id="b832205a-c31d-4774-be49-091bc281cd67" class="toggle"><li><details open=""><summary>Please, provide names and at least LinkedIn profile links to mentors we can and should show in the landing page of the program</summary></details></li></ul></div><div style="display:contents" dir="auto"><ul id="b5d2202a-0d2b-41cb-8bcb-24d56b4884f3" class="toggle"><li><details open=""><summary>Event presence - is the batch team going to any events during the Scouting period and should that be promoted?</summary></details></li></ul></div><div style="display:contents" dir="auto"><p id="c02299de-d477-4eee-8459-42f9a702ca09" class="">
+</p></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="091268ce-7230-45eb-95c3-b76acd0c714a" class="toggle"><li><details open=""><summary><mark class="highlight-red_background">SPECIAL REQUESTS / NEEDS</mark>:</summary><div style="display:contents" dir="auto"><p id="330c7d0c-d224-45cb-8cdd-84accc63e119" class="">We just spoke about what could be the nearest Web3 campaign moves and here are a couple of ideas. Comma will help with reaching out to people for:</p></div><div style="display:contents" dir="auto"><ol type="1" id="95a6dc5f-2ccf-43c8-824a-0e43cfa823b4" class="numbered-list" start="1"><li>mentor posts - 10</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="d78d0333-ea75-431f-8173-2ec994d6253d" class="numbered-list" start="2"><li>community posts - 5</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="1689adf0-c388-4c70-908c-5d854f3d6431" class="numbered-list" start="3"><li>(solo SWG) shorter post as a main &quot;go-to&quot; link everyone will bookmark on their phones (can even be info pic + link to our website)</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="f6bf365c-dbc3-4f4f-ad12-f6baff0bbc3a" class="numbered-list" start="4"><li>we should create something for Startup Lisboa to post about the program (especially if next week is so heavily about web3)</li></ol></div><div style="display:contents" dir="auto"><p id="210360a6-e531-43a3-8080-d44efee8ce7c" class="">There is a number of events on Web3 in Lisbon June 5-9 and Comma team will be there. So:</p></div><div style="display:contents" dir="auto"><ol type="1" id="6fc47b36-ced8-4308-aac8-2f21743792ef" class="numbered-list" start="1"><li>making a visual for Comma to be able to post about attending and saying they are bringing the program</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="147a732b-7a11-4149-a240-61c222db3d4e" class="numbered-list" start="2"><li>small content plan conencted to telegram (Pedro shared this is a big medium for Web3 community and we should have a public group there, so they can cross-reference it while events and lure in people to consider applying)</li></ol></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="6e11c686-2b96-488d-8484-76f3ba2c6bc7" class="toggle"><li><details open=""><summary>WHAT TO EXPECT FROM THE MARKETING DEPARTMENT: </summary><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Marketing material preparation</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="c4e00fd6-eef6-4a4c-be51-b02ad85a2e5e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Designs &amp; Texts</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="4dbf33c6-a388-4fd6-9b93-a69c58b2f6dd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Website</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="03104c15-7e02-4cff-8b2c-e6b9c3d686c3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">One-Pager</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="d851cdd1-28b1-4d42-945d-0c7a88104d2d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Shareable folder</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="97573133-4dcb-4f42-96a9-f0907aa34aaf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Batch “logo” for Slack, etc. </span><div class="indented"></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">Scouting Campaign</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="78251628-a9ad-400d-bc38-4e66c09de5d2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">FB ads campaign</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="1b8ff934-e49f-4d15-a789-bb85d66a77f0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Social media campaign</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3524e06c-1985-4312-a727-40a7b4bcd986" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Streamed live Q&amp;A session on socials</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="c130df1a-17bc-45b8-b8c7-b080eed68fa2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Help with partner &amp; mentor outreach - work together with Batch team on this! </span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="297c0d2b-da2d-496e-9f9a-743c7292b5ef" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Scouting event preps &amp; promotion - if something is happening</span><div class="indented"></div></li></ul></div></div></details></div><div style="display:contents" dir="auto"><details open=""><summary style="font-weight:600;font-size:1.25em;line-height:1.3;margin:0">During program</summary><div class="indented"><div style="display:contents" dir="auto"><ul id="b1732f8a-ed79-42ad-9183-e1ed529ce59b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Help with Batch Launch event invitation setup (not the event itself)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="0b5fa55e-8b8c-4eeb-8f79-1171110804c9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">A blog post about the selected teams (team descriptions (oneliners, websites and countries) as well as a photo/screenshot form the launch party needs to be provided by the batch team)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2dba60d5-4ee7-4bbb-aa89-1e4709403b4e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Helping with batch newsletter setup &amp; execution (if batch team decides to do it)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="dc662102-65cb-47d3-bead-a226caabc1dd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Helping with Graduation day invitation setup (not the event itself)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="b3a01bd2-7e9f-4fa0-80f9-ec9065b43559" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">After movie shared on social media the next day after the Graduation day</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="7ce40d4b-b8bb-446c-b8a4-9f458a6a8686" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Designs &amp; Texts</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="b61b1866-0303-4107-bb7a-e867ed762360" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Website</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="c80b360a-2d31-4927-8927-6321d7d3fd0a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">One-Pager</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="b649d08e-cc11-4597-a39f-1771d8d86126" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Shareable folder</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="ec423d63-5fa9-4f58-8ef2-c3851c269e4d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Batch “logo” for Slack, etc. </span><div class="indented"></div></li></ul></div></div></details></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="cf9611c5-4baf-4f63-8bb0-673136f0a82e" class="toggle"><li><details open=""><summary></summary></details></li></ul></div><div style="display:contents" dir="auto"><p id="6fb6f845-5362-47ef-83c1-09424905273e" class="">
+</p></div></div></div><div style="display:contents" dir="auto"><div id="09b3db71-f8d0-4914-8be9-820635dad8d3" style="width:18.749999999999996%" class="column"><div style="display:contents" dir="ltr"><figure id="956d3ea1-b231-4509-bd17-dc5b56464ee0" class="image"><a href="power_ranvgers.gif"><img style="width:308.420166015625px" src="power_ranvgers.gif"/></a></figure></div><div style="display:contents" dir="auto"><p id="5df78abd-a67e-4242-9d08-c3bf1a1fb7c7" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><hr id="6f1c83ca-64e0-4802-af86-62065ff88acb"/></div><div style="display:contents" dir="auto"><h1 id="07bfce12-1272-4d0a-bcc4-8b0485b15992" class="">PROGRAM PLANNING</h1></div><div style="display:contents" dir="auto"><p id="28777d06-397a-4795-b84b-0aec184e6a5c" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="874e844c-9e57-4ad1-a38c-a56235a23fa9" class="toggle"><li><details open=""><summary>PROGRAM OVERVIEW FROM AIRTABLE</summary></details></li></ul></div><div style="display:contents" dir="auto"><h2 id="2fb1bcd1-b8f1-4288-9755-8261becf6d88" class="">BLUEPRINTS</h2></div><div style="display:contents" dir="auto"><p id="f7b60aa7-7fa3-4054-963b-3b65ffef0d3a" class="">The Blueprints of the main 4 tracks are being updated for each batch, please find below the version of the beginning of 2021</p></div><div style="display:contents" dir="auto"><ul id="bf39a853-340c-4585-8eaa-432fedd825fe" class="toggle"><li><details open=""><summary><strong>Company Building, </strong>track owner - Cristobal </summary><div style="display:contents" dir="ltr"><figure id="045c3d2e-92c1-4102-bb6c-682afbcd7b99"><div class="source"><a href="Masterplan%20WEB3%20(B45)/Blueprint_Company_Building_Framework_(LG).pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2f4f6ebc-49cb-43d6-b13f-0a0c573d5c9b/Blueprint_Company_Building_Framework_(LG).pdf</a></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="186323d7-4240-4944-af95-8bea2fdbeefa" class="toggle"><li><details open=""><summary><strong>Sales,</strong> track owner - Mariia</summary><div style="display:contents" dir="ltr"><figure id="daf68759-b829-43ea-ac48-38e388b1128c"><div class="source"><a href="Masterplan%20WEB3%20(B45)/Blueprint_Sales_Framework_(LG).pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f264fba1-f79b-46e7-a54c-9cc54315c076/Blueprint_Sales_Framework_(LG).pdf</a></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="8e6c674c-faf6-4720-b6a9-de8549558bfd" class="toggle"><li><details open=""><summary><strong>Pitching,</strong> track owner - Cristobal &amp; Zane</summary><div style="display:contents" dir="ltr"><figure id="dd294e11-e4f7-4caa-b4b2-6e02c2f16e3f"><div class="source"><a href="Masterplan%20WEB3%20(B45)/Blueprint_Pitching_Framework_(LG)_.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/823385ed-4568-4ba0-a12e-2c7d2a0cc3ca/Blueprint_Pitching_Framework_(LG)_.pdf</a></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="19e7f375-26bc-45ff-a83d-71996cf8b95a" class="toggle"><li><details open=""><summary><strong>Fundraising, </strong>track owner - Alexandra</summary><div style="display:contents" dir="ltr"><figure id="0978d1e6-d164-4a02-b036-dbf26d8c2e65"><div class="source"><a href="Masterplan%20WEB3%20(B45)/Blueprint_Fundraising_Framework_(LG).pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/94f8db87-09f6-4431-b10f-3d5219696d7a/Blueprint_Fundraising_Framework_(LG).pdf</a></div></figure></div></details></li></ul></div><div style="display:contents" dir="auto"><h1 id="cb17b7f5-7002-41a0-9efa-40c37d139a4f" class="">Tools</h1></div><div style="display:contents" dir="ltr"><figure id="185a83f5-6874-4858-a17e-a7902e3b3688"><div class="source"><a href="https://airtable.com/shrlytefp59aYnnAD">https://airtable.com/shrlytefp59aYnnAD</a></div></figure></div><div style="display:contents" dir="auto"><hr id="d18981a1-45d4-46b8-9fbe-087d46eda4b2"/></div><div style="display:contents" dir="auto"><h1 id="55db56ed-e927-4921-ab2d-2fceefdd968c" class="">Sources on: What is WEB3</h1></div><div style="display:contents" dir="auto"><ul id="6575d81f-0033-4b57-ad7c-c927579d4c97" class="toggle"><li><details open=""><summary><strong>What Is Web3? </strong>Article by Harvard business review</summary><div style="display:contents" dir="auto"><p id="86927ab3-a52e-4996-aa4d-d21ef0b722f1" class="">Do you remember the first time you heard about Bitcoin? Maybe it was a faint buzz about a new technology that would change everything. Perhaps you felt a tingle of FOMO as the folks who got in early suddenly amassed a small fortune — even if it wasn’t clear what the “money” could legitimately be spent on (really <a href="https://www.yahoo.com/video/bitcoin-pizza-day-sees-first-112000121.html">expensive pizza</a>?). Maybe you just wondered whether your company should be working on a crypto strategy in case it <em>did</em> take off in your industry, even if you didn’t really care one way about it or the other.</p></div><div style="display:contents" dir="auto"><p id="eecec62f-cd29-4fb2-8375-e17e66018afb" class="">Most likely, soon after Bitcoin came to your attention — whenever that may have been — there was a crash. Every year or two, bitcoin’s value has tanked. Each time it does, skeptics rush to <a href="https://www.bitcoinisdead.org/">dismiss it as dead</a>, railing that it was always a scam for nerds and crooks and was nothing more than a fringe curiosity pushed by techno-libertarians and people who hate banks. Bitcoin never had a future alongside <em>real</em> tech companies, they’d contend, and then they’d forget about it and move on with their lives.</p></div><div style="display:contents" dir="auto"><p id="17c7017c-e141-4146-a1a5-65aa8107faa9" class="">And, of course, it would come back.</p></div><div style="display:contents" dir="auto"><p id="08f82e27-994a-4d7f-a684-eef2f7024027" class="">Bitcoin now seems to be everywhere. Amidst all the demands on our attention, many of us didn’t notice cryptocurrencies slowly seeping into the mainstream. Until suddenly <a href="https://www.youtube.com/watch?v=Ut3m9OK1c7Y">Larry David was pitching them during the Super Bowl</a>; stars like Paris Hilton, Tom Brady, and Jamie Foxx were hawking them in ads; and a frankly terrifying <a href="https://nymag.com/intelligencer/2022/04/miamis-wall-street-bull-is-a-crime-against-god.html">Wall Street–inspired robot bull celebrating cryptocurrency</a> was unveiled in Miami. What was first a curiosity and then a speculative niche has become <a href="https://www.weforum.org/agenda/2022/01/top-cryptocurrencies-performance-2021/">big business</a>.</p></div><div style="display:contents" dir="auto"><p id="455b46b8-495f-4037-bda4-8f3d59e47710" class="">Crypto, however, is just the tip of the spear. The underlying technology, blockchain, is what’s called a “distributed ledger” — a database hosted by a network of computers instead of a single server — that offers users an immutable and transparent way to store information. Blockchain is now being deployed to new ends: for instance, to create “digital deed” ownership records of unique digital objects — or nonfungible tokens. NFTs have exploded in 2022, conjuring <a href="https://markets.businessinsider.com/news/currencies/nft-market-41-billion-nearing-fine-art-market-size-2022-1">a $41 billion market</a> seemingly out of thin air. Beeple, for example, caused a sensation last year when an NFT of his artwork sold for <a href="https://www.theverge.com/2021/3/11/22325054/beeple-christies-nft-sale-cost-everydays-69-million">$69 million at Christie’s</a>. Even more esoteric cousins, such as DAOs, or “decentralized autonomous organizations,” operate like headless corporations: They raise and spend money, but all decisions are voted on by members and executed by encoded rules. One DAO recently <a href="https://www.theverge.com/2021/11/18/22790452/constitutiondao-loses-auction-for-rare-us-constitution-copy-sothebys">raised $47 million in an attempt to buy a rare copy of the U.S. Constitution</a>. Advocates of <a href="https://en.wikipedia.org/wiki/Decentralized_finance">DeFi</a> (or “decentralized finance,” which aims to <a href="https://www.nytimes.com/2021/09/05/us/politics/cryptocurrency-explainer.html">remake the global financial system</a>) are <a href="https://www.politico.com/newsletters/politico-influence/2021/11/08/decentralized-finance-group-lobbies-up-798743">lobbying Congress</a> and <a href="https://fortune.com/2022/02/17/what-is-defi-banks-blockchain/">pitching a future without banks</a>.</p></div><div style="display:contents" dir="auto"><p id="20a25ba1-588d-4f7f-84d9-74f1ac16326b" class="">The totality of these efforts is called “Web3.” The moniker is a convenient shorthand for the project of rewiring how the web works, using blockchain to change how information is stored, shared, and owned. In theory, a blockchain-based web could shatter the monopolies on who controls information, who makes money, and even how networks and corporations work. Advocates argue that Web3 will create new economies, new classes of products, and new services online; that it will return democracy to the web; and that is going to define the next era of the internet. Like the Marvel villain Thanos, Web3 is inevitable.</p></div><div style="display:contents" dir="auto"><p id="176e4fde-53bf-4308-9215-cfbdd1cb9317" class="">Or is it? While it’s undeniable that energy, money, and talent are surging into Web3 projects, remaking the web is a major undertaking. For all its promise, blockchain faces significant technical, environmental, ethical, and regulatory hurdles between here and hegemony. A growing chorus of skeptics warns that Web3 is rotten with speculation, theft, and privacy problems, and that the pull of centralization and the proliferation of new intermediaries is already undermining the utopian pitch for a decentralized web.</p></div><div style="display:contents" dir="auto"><p id="29f03c62-7898-4716-ae02-aa499dc47e52" class="">Meanwhile, businesses and leaders are trying to make sense of the potential — and pitfalls — of a rapidly changing landscape that could pay serious dividends to organizations that get it right. Many companies are testing the Web3 waters, and while some have enjoyed major successes, several high-profile firms are <a href="https://www.digitaltrends.com/gaming/canceled-gaming-nft-2022-2021/">finding</a> that they (or <a href="https://futurism.com/wwf-cancels-nft-project">their customers</a>) <a href="https://www.glossy.co/fashion/meundies-nfts-customer-backlash/">don’t like</a> the temperature. Most people, of course, don’t even really know what Web3 is: In <a href="https://www.linkedin.com/feed/update/urn:li:activity:6905189041239584768/">a casual poll of HBR readers on LinkedIn</a> in March 2022, almost 70% said they didn’t know what the term meant.</p></div><div style="display:contents" dir="auto"><p id="c1a405ab-d0f9-4bb1-9452-77d16eaf6ad7" class="">Welcome to the confusing, contested, exciting, utopian, scam-ridden, disastrous, democratizing, (maybe) decentralized world of Web3. Here’s what you need to know.</p></div><div style="display:contents" dir="auto"><h2 id="c093759f-72f2-4c15-a748-42a8dd047f36" class=""><strong>Install Update: From Web1 to Web3</strong></h2></div><div style="display:contents" dir="auto"><p id="9fbabf5f-5a8b-4223-a3c2-d5566b169eca" class="">To put Web3 into context, let me offer a quick refresher.</p></div><div style="display:contents" dir="auto"><p id="b37fc9d2-fc95-41bb-be1a-dc7450878177" class="">In the beginning, there was the internet: the physical infrastructure of wires and servers that lets computers, and the people in front of them, talk to each other. The U.S. government’s ARPANET sent its first message in 1969, but the web as we know it today didn’t emerge until 1991, when HTML and URLs made it possible for users to navigate between static pages. Consider this the read-only web, or Web1.</p></div><div style="display:contents" dir="auto"><p id="f5e552d5-7c69-4820-8ea7-f9814294459f" class="">In the early 2000s, things started to change. For one, the internet was becoming more interactive; it was an era of user-generated content, or the read/write web. Social media was a key feature of Web2 (or Web 2.0, as you may know it), and Facebook, Twitter, and Tumblr came to define the experience of being online. YouTube, Wikipedia, and Google, along with the ability to comment on content, expanded our ability to watch, learn, search, and communicate.</p></div><div style="display:contents" dir="auto"><p id="08b0a579-0f06-4b9d-9683-809839cdf0ee" class="">The Web2 era has also been one of centralization. Network effects and economies of scale have led to clear winners, and those companies (many of which are listed above) have produced mind-boggling wealth for themselves and their shareholders by scraping users’ data and selling targeted ads against it. This has allowed services to be offered for “free,” though users initially didn’t understand the implications of that bargain. Web2 also created new ways for regular people to make money, such as through the sharing economy and the <a href="https://www.businessinsider.com/how-much-money-instagram-influencers-earn-examples-2021-6">sometimes lucrative</a> job of <a href="https://www.cnbc.com/2021/04/30/how-much-money-you-can-make-off-social-media-following-calculator.html">being an influencer</a>.</p></div><div style="display:contents" dir="auto"><p id="93cddcad-a41d-427f-a0fc-ea3e6c1da1fe" class="">There’s plenty to critique in the current system: The companies with concentrated or near-monopoly power have often failed to wield it responsibly, consumers who now realize that they <em>are</em> the product are becoming increasingly uncomfortable with ceding control of their personal data, and <a href="https://techcrunch.com/2019/05/31/targeted-ads-offer-little-extra-value-for-online-publishers-study-suggests/">it’s possible that</a><a href="https://www.wired.com/story/ad-tech-could-be-the-next-internet-bubble/">the targeted-ad</a> <a href="https://www.thenation.com/article/culture/qa-tim-hwang-subprime-attention-crisis/">economy </a>is a fragile bubble that does little to actually boost advertisers. As the web has grown up, centralized, and gone corporate, many have started to wonder whether there’s a better future out there.</p></div><div style="display:contents" dir="auto"><p id="37a90ba0-3820-45eb-98d6-08df843b4b1c" class="">Which brings us to Web3. Advocates of this vision are pitching it as a roots-deep update that will correct the problems and perverse incentives of Web2. Worried about privacy? Encrypted wallets protect your online identity. About censorship? A decentralized database stores everything immutably and transparently, preventing moderators from swooping in to delete offending content. Centralization? You get a real vote on decisions made by the networks you spend time on. More than that, you get a stake that’s <em>worth something</em> — you’re not a product, you’re an owner. This is the vision of the read/write/own web.</p></div><div style="display:contents" dir="auto"><h2 id="a96397a0-cf36-4c56-b323-a50e15447616" class=""><strong>OK, but What </strong><em><strong>Is</strong></em><strong> Web3?</strong></h2></div><div style="display:contents" dir="auto"><p id="539a5fb6-9072-4080-baa6-311712ace4c2" class="">The seeds of what would become Web3 were planted in 1991, when scientists W. Scott Stornetta and Stuart Haber <a href="https://www.anf.es/pdf/Haber_Stornetta.pdf">launched</a> <a href="https://www.vice.com/en/article/j5nzx4/what-was-the-first-blockchain">the first blockchain</a> — a project to time-stamp digital documents. But the idea didn’t really take root until 2009, when <a href="https://www.ussc.gov/sites/default/files/pdf/training/annual-national-training-seminar/2018/Emerging_Tech_Bitcoin_Crypto.pdf">Bitcoin</a> was launched in the wake of the financial crisis (and at least partially in response to it) by the pseudonymous inventor Satoshi Nakamoto. It and its undergirding blockchain technology work like this: Ownership of the cryptocurrency is tracked on a shared public ledger, and when one user wants to make a transfer, “miners” process the transaction by solving a complex math problem, adding a new “block” of data to the chain and earning newly created bitcoin for their efforts. While the Bitcoin chain is used just for currency, newer blockchains offer other options. Ethereum, which launched in 2015, is both a cryptocurrency and a platform that can be used to build other cryptocurrencies and blockchain projects. Gavin Wood, one of its cofounders, <a href="https://www.newstatesman.com/science-tech/2016/04/ethereum-competitor-bitcoin-which-could-transform-entire-industries">described</a> Ethereum as “one computer for the entire planet,” with computing power distributed across the globe and controlled nowhere. Now, after more than a decade, proponents of a blockchain-based web are proclaiming that a new era — Web3 — has dawned.</p></div><div style="display:contents" dir="auto"><p id="70ed2a63-14f7-4163-ac47-03e86a6a4d4e" class="">Put <em>very</em> simply, Web3 is an extension of cryptocurrency, using blockchain in new ways to new ends. A blockchain can store the number of tokens in a wallet, the terms of a self-executing contract, or the code for a decentralized app (dApp). Not all blockchains work the same way, but in general, coins are used as incentives for miners to process transactions. On “proof of work” chains like Bitcoin, solving the complex math problems necessary to process transactions is energy-intensive by design. On a “proof of stake” chain, which are newer but increasingly common, processing transactions simply requires that the verifiers with a stake in the chain agree that a transaction is legit — a process that’s significantly more efficient. In both cases, transaction data is public, though users’ wallets are identified only by a cryptographically generated address. Blockchains are “write only,” which means you can add data to them but can’t delete it.</p></div><div style="display:contents" dir="auto"><p id="719e0696-6934-4e6a-90de-d25c7935aeb7" class="">Web3 and cryptocurrencies run on what are called “permissionless” blockchains, which have no centralized control and don’t require users to trust — or even know anything about — other users to do business with them. This is mostly what people are talking about when they say blockchain. “Web3 is the internet owned by the builders and users, orchestrated with tokens,” says Chris Dixon, a partner at the venture capital firm a16z and one of Web3’s foremost advocates and investors, borrowing the definition from Web3 adviser Packy McCormick. This is a big deal because it changes a foundational dynamic of today’s web, in which companies squeeze users for every bit of data they can. Tokens and shared ownership, Dixon says, fix “the core problem of centralized networks, where the value is accumulated by one company, and the company ends up fighting its own users and partners.”</p></div><div style="display:contents" dir="auto"><blockquote id="d57eb1a1-4ea3-4416-81ef-cd2dd6b111e2" class=""></blockquote></div><div style="display:contents" dir="auto"><p id="6e678dc2-6e82-4ab5-aeeb-937064292108" class=""><em>Read a short Web3 glossary.</em></p></div><div style="display:contents" dir="auto"><p id="0118c192-8145-4c42-8456-c0200bc363da" class="">In 2014, Ethereum’s Wood wrote a foundational blog post in which he sketched out his view of the new era. Web3 is a “reimagination of the sorts of things we already use the web for, but with a fundamentally different model for the interactions between parties,” he said. “Information that we assume to be public, we publish. Information that we assume to be agreed, we place on a consensus-ledger. Information that we assume to be private, we keep secret and never reveal.” In this vision, all communication is encrypted, and identities are hidden. “In short, we engineer the system to mathematically enforce our prior assumptions, since no government or organization can reasonably be trusted.”</p></div><div style="display:contents" dir="auto"><p id="7d75565b-2791-4193-a6c0-53ab2d09e406" class="">The idea has evolved since then, and new use cases have started popping up. The Web3 streaming service Sound.xyz promises a better deal for artists. Blockchain-based games, like the Pokémon-esque <a href="https://axieinfinity.com/">Axie Infinity</a>, let users earn money as they play. So-called “stablecoins,” whose value is pegged to the dollar, the euro, or some other external reference, have been pitched as upgrades to the global financial system. And crypto has gained traction as a <a href="https://techcrunch.com/2021/10/09/crypto-remittances-are-a-lifeline-for-the-worlds-most-vulnerable/">solution for cross-border payments</a>, especially for users in volatile environments.</p></div><div style="display:contents" dir="auto"><p id="fee81dee-5212-436d-bbd6-4e3410288bc5" class="">“Blockchain is a new type of computer,” Dixon tells me. Just like it took years to understand the extent to which PCs and smartphones transformed the way we use technology, blockchain has been in a long incubation phase. Now, he says, “I think we might be in the golden period of Web3, where all the entrepreneurs are entering.” Although the eye-popping price tags, like the Beeple sale, have garnered much of the attention, there’s more to the story. “The vast majority of what I’m seeing is smaller-dollar things that are much more around communities,” he notes, like Sound.xyz. Whereas scale has been a key measure of a Web2 company, engagement is a better indicator of what might succeed in Web3.</p></div><div style="display:contents" dir="auto"><p id="3a02d441-9e5f-475f-95e3-0b477ea5f34d" class="">Dixon is betting big on this future. He and a16z started putting money into the space in 2013 and invested <a href="https://a16z.com/2021/06/24/crypto-fund-iii/">$2.2 billion</a> in Web3 companies last year. He is looking <a href="https://www.ft.com/content/6bf0ed56-1de5-4750-877f-c9cff753935c">to double that</a> in 2022. The number of active developers working on Web3 code <a href="https://medium.com/electric-capital/electric-capital-developer-report-2021-f37874efea6d">nearly doubled</a> in 2021, to roughly 18,000 — not huge, considering global numbers, but notable nonetheless. Perhaps most significantly, Web3 projects have become part of the zeitgeist, and the buzz is undeniable.</p></div><div style="display:contents" dir="auto"><p id="0247a8d4-f7f5-4ea9-98e8-195328676dc8" class="">But as high-profile, self-immolating startups like Theranos and WeWork remind us, buzz isn’t everything. So what happens next? And what should you watch out for?</p></div><div style="display:contents" dir="auto"><h2 id="91abf16a-784a-46f6-9e8b-f1ef75be44d5" class=""><strong>What Web3 Might Mean for Companies</strong></h2></div><div style="display:contents" dir="auto"><p id="d5b7ceef-ee33-456c-9fdc-5f279b864193" class="">Web3 will have a few key differences from Web2: Users won’t need separate log-ins for every site they visit but instead will use a centralized identity (probably their crypto wallet) that carries their information. They’ll have more control over the sites they visit, as they earn or buy tokens that allow them to vote on decisions or unlock functionality.</p></div><div style="display:contents" dir="auto"><p id="67c47196-eaa6-4e02-a66f-84c11bdc1775" class="">It’s still unclear whether the product lives up to the pitch. Predictions as to what Web3 might look like at scale are just guesses, but some projects have grown pretty big. The Bored Ape Yacht Club (BAYC), NBA Top Shot, and the cryptogaming giant Dapper Labs have built successful NFT communities. Clearinghouses such as Coinbase (for buying, selling, and storing cryptocurrency) and OpenSea (the largest digital marketplace for crypto collectibles and NFTs) have created Web3 on-ramps for people with little to no technical know-how.</p></div><div style="display:contents" dir="auto"><p id="d4410e43-fb3c-440b-ad7b-3d045a60fa68" class="">While companies such as Microsoft, Overstock, and PayPal have <a href="https://www.yahoo.com/video/10-major-companies-accept-bitcoin-190340692.html">accepted cryptocurrencies</a> for years, NFTs — which have recently exploded in popularity — are the primary way brands are now experimenting with Web3. Practically speaking, an NFT is some mix of a deed, a certificate of authenticity, and a membership card. It can confer “ownership” of digital art (typically, ownership is recorded on the blockchain and a link points to an image somewhere) or rights or access to a group. NFTs can operate on a smaller scale than coins because they create their own ecosystems and require nothing more than a community of people who find value in the project. For example, baseball cards are valuable only to certain collectors, but that group <em>really</em> believes in their value.</p></div><div style="display:contents" dir="auto"><p id="4317d6ef-aca5-491f-b6be-97cd4417dc6e" class=""><em>Listen to our Spotify playlist on Web3 &amp; finance.</em></p></div><div style="display:contents" dir="auto"><p id="97a01e37-cd9a-4edb-ab39-82be910b8486" class="">Most successful forays by traditional companies into Web3 have been ones that create communities or plug in to existing ones. Consider the NBA: Top Shot was one of the first NFT projects from a legacy brand, and it offered fans the opportunity to buy and trade clips, called “moments” (a <a href="https://nbatopshot.com/moment/kyloren+5408a71c-50f1-4588-86e3-354b40519ce3">LeBron James dunk</a>, for instance), that function like trading cards. It took off because it created a new kind of community space for fans, many of whom may have already been collecting basketball cards. Other front-runner brands, such as <a href="https://www.wsj.com/articles/nike-adidas-nft-sneakers-11642160548">Nike, Adidas, and Under Armour</a>, similarly added a digital layer to their existing collector communities. All three companies offer NFTs that can be used in the virtual world — for example, allowing the owner to <a href="https://www.cbsnews.com/news/nike-metaverse-rtfkt-nikeland-roblox-nft/">gear up an avatar</a> — or that confer rights to products or <a href="https://www.theverge.com/2021/12/16/22822143/adidas-nft-launch-into-the-metaverse-price-release-date">exclusive streetwear drops</a> in the real world. Adidas sold $23 million worth of NFTs in less than a day and instantly created a resale market on OpenSea, just like what you might see after a limited drop of new shoes. Similarly, <a href="https://time.com/6100404/timepieces-nft-collection/">Time magazine launched an NFT project</a> to build an online community that leverages the publication’s deep history.</p></div><div style="display:contents" dir="auto"><p id="d6a2d220-3e7d-4255-b619-f4340ecc615f" class="">Bored Ape Yacht Club is the biggest success story of an NFT project going mainstream. Combining hype and exclusivity, BAYC offers access to real-life parties and to online spaces, along with usage rights to the ape’s image — further reinforcing the brand. An ape NFT puts the owner in an exclusive club, both figuratively and literally.</p></div><div style="display:contents" dir="auto"><p id="e0b2b0f5-5a0b-4223-bc2c-e2926675e65a" class="">One lesson from these efforts is that on-ramps matter, but less so the more committed the community is. Getting a crypto wallet isn’t hard, but it is an added step. So Top Shot doesn’t require a one — users can just plug in their credit card — which helped it acquire interested users new to NFTs. The Bored Ape Yacht Club was a niche interest, but when it took off, it became a catalyst for people to create wallets and drove interest in OpenSea.</p></div><div style="display:contents" dir="auto"><p id="d7ff26ce-b9b0-4024-8c55-7ea36359bf1e" class="">Some companies have had rockier experiences with NFT projects and crytpo features. For example, when Jason Citron, the CEO of Discord, a voice, video, and text communication service, teased a feature that could connect the app to crypto wallets, Discord users mutinied, leading him to <a href="https://twitter.com/jasoncitron/status/1458607550677405699?s=20&amp;t=0Ttlg7NT0Ur78oprboSniw">clarify</a> that the company had “no current plans” to launch the tie-in. The underwear brand MeUndies and the UK branch of the World Wildlife Fund both <a href="https://www.glossy.co/fashion/meundies-nfts-customer-backlash/">quickly pulled</a> <a href="https://futurism.com/wwf-cancels-nft-project">the plug</a> on NFT projects after a fierce backlash by customers furious about their <a href="https://www.theverge.com/2021/3/15/22328203/nft-cryptoart-ethereum-blockchain-climate-change">sizable carbon footprint</a>. Even the success stories have hit bumps in the road. Nike is currently fighting to have unauthorized NFTs “destroyed,” and OpenSea is full of knockoffs and imitators. Given that blockchain is immutable, this is <a href="https://decrypt.co/96456/nike-destroy-unauthorized-nfts-how-will-that-work">raising novel legal questions</a>, and <a href="https://www.wired.com/story/opensea-nfts-twitter/">it isn’t clear</a> how companies will handle the issue. Further, there’s <a href="https://www.wsj.com/articles/nft-sales-are-flatlining-11651552616">recent evidence that the market for NFTs is stalling entirely</a>.</p></div><div style="display:contents" dir="auto"><p id="173fb1db-90b0-4ea3-8bc9-4a3a7561d14a" class="">Companies who are considering stepping into this space should remember this: Web3 is polarizing, and there are no guarantees. Amid many points of disagreement, the chief divide is between people who believe in what Web3 <em>could</em> be and critics who decry the many problems dogging it right now.</p></div><div style="display:contents" dir="auto"><h2 id="1cd71824-c855-45ca-b696-618e96385660" class=""><strong>System Error: The Case Against Web3</strong></h2></div><div style="display:contents" dir="auto"><p id="ef1c3a72-77df-444c-8e56-856456ab96b6" class="">The early days of a technology are a heady time. The possibilities are endless, and there’s a focus on what it can do — or <em>will</em> do, according to optimists. I’m old enough to remember when the unfettered discourse enabled by Twitter and Facebook was supposed to sow democracy the world over. As Web3’s aura of inevitability (and profitability) wins converts, it’s important to consider what could go wrong and recognize what’s <em>already</em> going wrong.</p></div><div style="display:contents" dir="auto"><h3 id="74212376-aab4-43fb-9f32-76e19d2df85c" class=""><strong>It’s rife with speculation.</strong></h3></div><div style="display:contents" dir="auto"><p id="48da3b78-4b7b-4587-abb2-08c119b3d009" class="">Skeptics argue that for all the rhetoric about democratization, ownership opportunities, and mass wealth building, Web3 is nothing more than a giant speculative economy that will mostly make some already-rich people even richer. It’s easy to see why this argument makes sense. The top 0.01% of bitcoin holders <a href="https://www.wsj.com/articles/bitcoins-one-percent-controls-lions-share-of-the-cryptocurrencys-wealth-11639996204">own 27% of the supply</a>. Wash trading, or selling assets to yourself, and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0304393217301666">market manipulation</a> have been reported in both <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362153">crypto</a> and <a href="https://www.bloomberg.com/news/articles/2022-04-05/hottest-nft-marketplace-is-mostly-users-selling-to-themselves?sref=gKSeqgQQ">NFT markets</a>, artificially pumping up value and allowing owners to earn coins through sham trades. In an interview on the podcast <em>The Dig, </em>reporters Edward Ongweso Jr. and Jacob Silverman characterized the whole system as an <a href="https://www.thedigradio.com/podcast/cryptocurrency-w-edward-ongweso-jr-jacob-silverman/">elaborate upward transfer of wealth</a>. Writing in The Atlantic, investor Rex Woodbury called Web3 “<a href="https://www.theatlantic.com/ideas/archive/2021/11/financialization-everything-investment-system-token/620804/">the financialization of everything</a>” (and not in a good way). On a more granular level, Molly White, a software engineer, created <a href="https://web3isgoinggreat.com/">Web3 Is Going Just Great</a>, where she tracks the many hacks, scams, and implosions in the Web3 world, underscoring the pitfalls of the unregulated, Wild West territory.</p></div><div style="display:contents" dir="auto"><p id="03a95cbc-fe51-4772-9058-300b991f6dca" class="">Magdiel Lopez/Belmont Creative</p></div><div style="display:contents" dir="auto"><p id="c7aef7f8-c485-40b6-9103-cef5b2ee0145" class="">The unpredictable, speculative nature of the markets may be a feature, not a bug. According to technologist David Rosenthal, speculation on cryptocurrencies is the engine that drives Web3 — that it can’t work without it. “[A] permissionless blockchain <em>requires</em> a cryptocurrency to function, and this cryptocurrency <em>requires</em> speculation to function,” he <a href="https://blog.dshr.org/2022/02/ee380-talk.html">said in a talk</a> at Stanford in early 2022. Basically, he’s describing a pyramid scheme: Blockchains need to give people something in exchange for volunteering computing power, and cryptocurrencies fill that role — but the system works only if other people are willing to buy them believing that they’ll be worth more in the future. Stephen Diehl, a technologist and vocal critic of Web3, <a href="https://www.stephendiehl.com/blog/web3-bullshit.html">floridly dismissed</a> blockchain as “a one-trick pony whose only application is creating censorship-resistant crypto investment schemes, an invention whose negative externalities and capacity for harm vastly outweigh any possible uses.”</p></div><div style="display:contents" dir="auto"><h3 id="ce0b5b47-3a43-4859-8d95-678286e09b77" class=""><strong>The tech isn’t practical (and it’s</strong><em><strong> expensive</strong></em><strong>).</strong></h3></div><div style="display:contents" dir="auto"><p id="e7ee099c-555e-4825-a709-575c99e13266" class="">Questions abound as to whether Web3 — or blockchain, really — makes sense as the technology that will define the web’s next era. “Whether or not you agree with the philosophy/economics behind cryptocurrencies, they are — simply put — a software architecture disaster in the making,” says <a href="https://mobile.twitter.com/techgirl1908/status/1501216120707162118">Grady Booch</a>, chief scientist for software engineering at IBM Research. All technology comes with trade-offs, Booch explained in a <a href="https://twitter.com/i/spaces/1DXxyDVRBjvJM?s=20">Twitter Spaces conversation</a>, and the cost of a “trustless” system is that it’s highly inefficient, capable of processing only a few transactions per minute — tiny amounts of data compared with a centralized system like, say, Amazon Web Services. Decentralization makes technology more complicated and further out of reach for basic users, rather than simpler and more accessible.</p></div><div style="display:contents" dir="auto"><p id="9d7edaea-ffb4-4c86-b490-e424a8eb60a5" class="">While it’s possible to fix this by adding new layers that can speed things up, doing so makes the whole system more centralized, which defeats the purpose. Moxie Marlinspike, founder of the encrypted messaging app Signal, put it this way: “Once a distributed ecosystem centralizes around a platform for convenience, it becomes the worst of both worlds: centralized control, but still distributed enough to become mired in time.”</p></div><div style="display:contents" dir="auto"><p id="588c673a-8e58-4ecb-b44f-6c6463d1b8e9" class="">Right now, the inefficiency of blockchain <a href="https://www.coindesk.com/tech/2021/11/22/ethereums-fees-are-too-damn-high/">comes at a cost</a>, quite literally. Transaction costs on <a href="https://www.wsj.com/articles/crypto-and-its-many-fees-what-to-know-about-the-hidden-costs-of-digital-currency-11639825202">Bitcoin and Ethereum</a> (which calls them gas fees) can run anywhere from a few bucks to hundreds of dollars. Storing one megabyte of data on a blockchain distributed ledger <a href="https://www.linkedin.com/pulse/costs-storing-data-blockchain-rohan-pinto/">can cost thousands, or even tens of thousands, of dollars</a> — yes, you read that correctly. That’s why the NFT you bought probably isn’t actually on a blockchain. The code on the chain indicating your ownership includes an address, pointing to where the image is stored. Which can <a href="https://www.protocol.com/fintech/frosties-nft-rug-pull">and has</a> caused problems, including your pricy purchase <a href="https://www.theverge.com/2021/3/25/22349242/nft-metadata-explained-art-crypto-urls-links-ipfs">disappearing</a> if the server it <em>actually</em> lives on goes down.</p></div><div style="display:contents" dir="auto"><h3 id="12da99b4-a31f-49ed-856e-1c37a603911e" class=""><strong>It enables harassment and abuse.</strong></h3></div><div style="display:contents" dir="auto"><p id="5277acaa-de3b-4256-9938-bfa97a08f990" class="">The potential for disastrous unintended consequences is very real. “While blockchain proponents speak about a ‘future of the web’ based around public ledgers, anonymity, and immutability,” <a href="https://blog.mollywhite.net/abuse-and-harassment-on-the-blockchain/">writes</a> Molly White, “those of us who have been harassed online look on in horror as obvious vectors for harassment and abuse are overlooked, if not outright touted as features.” Although crypto wallets theoretically provide anonymity, the fact that transactions are public means that they can be traced back to individuals. (The FBI is <a href="https://www.nytimes.com/2021/06/09/technology/bitcoin-untraceable-pipeline-ransomware.html">pretty good at doing this</a>, which is why crypto isn’t great for criminal enterprise.) “Imagine if, when you Venmo-ed your Tinder date for your half of the meal, they could now see every other transaction you’d ever made,” including with other dates, your therapist, and the corner store by your house. That information in the hands of an abusive ex-partner or a stalker could be life-threatening.</p></div><div style="display:contents" dir="auto"><p id="e8a2299f-5b2d-4a42-a86f-452fa39066ec" class="">The immutability of the blockchain also means that data can’t be taken down. There’s no way to erase anything, whether it’s a regrettable post or revenge porn. Immutability also could spell major problems for Web3 in some places, such as Europe, where the General Data Protection Regulation (GDPR) <a href="https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/individual-rights/right-to-erasure/">enshrines the right</a> to have personal data erased.</p></div><div style="display:contents" dir="auto"><h3 id="85ce6309-9010-4dc5-9bc2-7bfe7d151e19" class=""><strong>It’s currently terrible for the environment.</strong></h3></div><div style="display:contents" dir="auto"><p id="db846e82-6fa8-4647-a1e8-7419ecf11c19" class="">Web3’s environmental impact is vast and deeply damaging. It can be broken into two categories: energy use and tech waste, both of which are products of mining. Running a network that depends on supercomputers competing to solve complex equations every time you want to save data on a blockchain takes a tremendous amount of energy. It also generates e-waste: According to Rosenthal, Bitcoin produces “an average of one whole MacBook Air of e-waste per ‘economically meaningful’ transaction” as miners cycle through quantities of short-lived computer hardware. The <a href="https://www.sciencedirect.com/science/article/abs/pii/S0921344921005103?via%3Dihub">research he bases this claim on</a>, by Alex de Vries and Christian Stoll, found that the annual e-waste created by Bitcoin is comparable to the amount produced by a country the size of the Netherlands.</p></div><div style="display:contents" dir="auto"><p id="a2d188fd-5dfe-46b8-94a1-c7a804ffa61c" class="">Subscribe to our Bimonthly Newsletter</p></div><div style="display:contents" dir="auto"><p id="9bc1ed3f-6bd3-4b04-a0e2-1fdf8246f5b3" class="">The Big Idea</p></div><div style="display:contents" dir="auto"><p id="19ad615e-2524-4f97-9391-aed13ae850fd" class="">A special series on the most pressing topics facing business today.</p></div><div style="display:contents" dir="auto"><p id="95178349-dd94-4cdf-b4db-a062526324f7" class="">Sign Up</p></div><div style="display:contents" dir="auto"><p id="7bab272b-2eff-4a95-84bb-5106b8c492cf" class="">Whether and how these issues will be addressed is hard to say, in part because it’s still unclear whether Web3 will really catch on. Blockchain is a technology in search of a real use, says technology writer Evgeny Morozov. “The business model of most Web3 ventures is self-referential in the extreme, feeding off people’s faith in the inevitable transition from Web 2.0 to Web3.” Tim O’Reilly, who coined “Web 2.0” to describe the platform web of the early 2000s, <a href="https://www.fastcompany.com/90716841/tim-oreilly-on-web3">claims</a>that we’re in an investment boom reminiscent of the dot-com era before the bottom fell out. “Web 2.0 was not a version number, it was the second coming of the web after the dot-com bust,” he says. “I don’t think we’re going to be able to call Web3 ‘Web3’ until after the crypto bust. Because only then will we get to see what’s stuck around.”</p></div><div style="display:contents" dir="auto"><p id="d4b757e5-05aa-42c2-be6d-0cf462d5d91b" class="">If that’s true, then innovation is going to come at significant cost. As Hilary Allen, an American University law professor who studies the 2008 financial crisis, points out, the system now “mirrors and magnifies the fragilities of shadow banking innovations that resulted in the 2008 financial crisis.” If the Web3 bubble bursts, it could leave a lot of folks high and dry.</p></div><div style="display:contents" dir="auto"><h2 id="a1e05306-42d2-4559-b0ae-c63cbd011305" class=""><strong>Early Days Are Here Again</strong></h2></div><div style="display:contents" dir="auto"><p id="25c3e399-f9a0-453c-95d1-ba020e66c6b4" class="">So, where exactly is Web3 headed? Ethereum cofounder Vitalik Buterin has <a href="https://time.com/6158182/vitalik-buterin-ethereum-profile/">expressed concerns</a> about the direction his creation has taken but continues to be optimistic. In a response to Marlinspike on the Ethereum <a href="https://np.reddit.com/r/ethereum/comments/ryk3it/my_first_impressions_of_web3/hrrz15r/">Reddit</a> page, he conceded that the Signal founder presented “a correct criticism of the <em>current state</em> of the ecosystem” but maintained that the decentralized web is catching up, and pretty quickly at that. The work being done now — creating libraries of code — will soon make it easier for other developers to start working on Web3 projects. “I think the properly authenticated decentralized blockchain world is coming and is much closer to being here than many people think.”</p></div><div style="display:contents" dir="auto"><p id="5a76a5e3-33ad-4b69-8295-3f72e56f583c" class="">For one, proof of work — the inefficient-by-design system Bitcoin and Ethereum run on — is falling out of vogue. Instead of mining, which uses intensive amounts of energy, validation increasingly comes from users buying in (owning a stake) to approve transactions. Ethereum estimates that the update to proof of stake will <a href="https://blog.ethereum.org/2021/05/18/country-power-no-more/">cut its energy usage by 99.95%</a>, while making the platform faster and more efficient. Solana, a newer blockchain that uses proof of stake and “proof of history,” a mechanism that relies on time stamps, can process 65,000 transactions per second (compared with Ethereum’s current rate of about <a href="https://blog.coinbase.com/scaling-ethereum-crypto-for-a-billion-users-715ce15afc0b">15 per second</a> and Bitcoin’s seven) and uses about as much energy as <a href="https://solana.com/news/solana-foundation-carbon-neutral-2021">two Google searches</a> — consumption it buys carbon offsets for.</p></div><div style="display:contents" dir="auto"><p id="032dac10-2a1b-4ac5-8f1d-3846479a735e" class="">Some companies are adopting a hybrid approach to blockchain, which offers the benefits without the constraints. “There are a lot of really interesting new architectures, which put certain things on the blockchain but not others,” he tells me. A social network, for instance, could record your followers and who you follow on the blockchain, but not your posts, giving you the option to delete them.</p></div><div style="display:contents" dir="auto"><p id="5383e32e-97de-4d3c-8cf3-4dfad8022f2a" class="">Hybrid models can also help companies address GDPR and other regulations. “To comply with the right to erasure,” explain Cindy Compert, Maurizio Luinetti, and Bertrand Portier in <a href="https://iapp.org/media/pdf/resource_center/blockchain_and_gdpr.pdf">an IBM white paper</a>, “personal data should be kept private from the blockchain in an ‘off-chain’ data store, with only its evidence (cryptographic hash) exposed to the chain.” That way, personal data can be deleted in keeping with GDPR without affecting the chain.</p></div><div style="display:contents" dir="auto"><p id="d8472d51-756b-440b-9d02-61e2a564ae09" class="">For better or worse, regulation is coming — slowly — and it will define the next chapter of Web3. China has <a href="https://fortune.com/2022/01/04/crypto-banned-china-other-countries/">banned cryptocurrencies outright</a>, along with Algeria, Bangladesh, Egypt, Iraq, Morocco, Oman, Qatar, and Tunisia. Europe is considering environmental regulations that would <a href="https://www.bloomberg.com/news/articles/2022-03-12/eu-near-vote-on-new-regulatory-framework-for-cryptocurrencies?sref=gKSeqgQQ">curb or ban proof-of-work blockchains</a>. In the U.S., the Biden administration <a href="https://www.nytimes.com/2022/03/09/us/politics/crypto-regulation-biden.html">issued an executive order</a> in March directing the federal government to look into regulating cryptocurrencies.</p></div><div style="display:contents" dir="auto"><p id="d0816870-664e-410d-aa8e-09052bb69c4c" class="">With so much of Web3 still being hashed out, it remains a high-risk, high-reward bet. Certain companies and sectors have more incentive than others to try their luck, particularly those that got burned by being left out in earlier eras of the web. It’s not a coincidence that a media company like Time is interested in the opportunities of Web3 after Web2 decimated its business model. Other organizations — like Nike and the NBA, which already have experience with limited drops and commoditizing moments — may have simply found that their business models are an easy fit. Other businesses won’t have as clear a path.</p></div><div style="display:contents" dir="auto"><p id="bd1067cd-843d-4450-9c58-7ecb14019ae4" class="">The soaring claims around Web3 — that it will take over the internet, upend the financial system, redistribute wealth, and make the web democratic again — should be taken with a grain of salt. We’ve heard all this before, and we’ve seen how earlier episodes of Web3 euphoria fizzled. But that doesn’t mean it should be written off entirely. Maybe it booms, maybe it busts, but we’ll be living with some form of it either way. What version — and how your company responds — could determine the future of the digital economy and what life online looks like for the next internet epoch. For now, that future is still up for grabs. Nothing, after all, is inevitable.</p></div></details></li></ul></div><div style="display:contents" dir="auto"><ul id="5262a72f-f9f3-4c74-b9a9-18e352ef0420" class="toggle"><li><details open=""><summary>Summery of WEB3 call</summary><div style="display:contents" dir="auto"><p id="58106ca6-3135-4cef-8d02-9e5756a89767" class="">During the call, participants discussed various aspects of Web3, blockchain technology, and investment opportunities in the rapidly growing sector. The conversation covered the differences between Web2 and Web3, the potential areas to invest in, and the importance of community building in Web3 projects.<br/>Web3 represents the next generation of the internet, focusing on decentralization and the use of blockchain technology. In this new paradigm, users have more control over their data and assets, enabling a more equitable distribution of value. The participants discussed how Web3 differs from Web2 in terms of building products and attracting consumers. In Web3, the focus is on building a community around the product first, then using tokenization to finance and guide the development process through decentralized autonomous organizations (DAOs).<br/>The conversation also touched on various sectors within the Web3 space, such as infrastructure, security, and transaction processing. As the demand for blockchain technology increases, investing in companies that provide the necessary infrastructure becomes crucial. This includes companies that offer high-speed transaction processing, security solutions, and bridges between Web2 and Web3.<br/>In addition, the participants discussed the geolocation of Web3 projects, noting that while many teams are decentralized, there are certain hubs in Europe, such as Lisbon, Portugal, where a significant number of projects are based. They also mentioned other European hubs like the UK, Switzerland, and Germany.<br/>Investment opportunities in Web3 projects can come in different forms, such as equity or tokens. While equity investments remain popular, token investments can offer unique benefits, such as aligning the interests of token investors and incentivizing the community to promote the project. However, it&#x27;s essential to consider the high failure rate in the sector and carefully evaluate potential investments.<br/>Lastly, the participants talked about various collaboration and communication tools used by Web3 teams, such as GitHub, Discord, and Telegram. These platforms are essential for managing decentralized teams and enabling community involvement through voting and discussions.<br/>Overall, the call provided valuable insights into the Web3 space and offered useful guidance for those interested in exploring investment opportunities in this rapidly growing sector.</p></div><div style="display:contents" dir="auto"><p id="eea7f86e-c7c5-4b6e-89f9-b840daf3800f" class=""><br/>Explore resources such as podcasts and YouTube channels to learn more about Web3, blockchain, and related technologies.<br/>Investigate successful Web3 projects and their approaches to building products and attracting consumers through community building and tokenization.<br/>Research popular collaboration and communication tools used by Web3 teams for project management and voting platforms.<br/>Look into the geographical distribution of Web3 projects and potential hubs of interest in Europe and other regions.<br/>Consider the pros and cons of investing in equity or tokens in Web3 projects, as well as the potential risks involved.</p></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="4c7f1d03-fb21-4c96-8e13-019f6bcd6acd" class="">
+</p></div><div style="display:contents" dir="auto"><p id="34f4b5e4-0566-42b7-b3fc-4edd30bfc2ae" class=""><a href="https://open.spotify.com/show/41TNnXSv5ExcQSzEGLlGhy?si=cff1c51ad9a54f2e">Podcast about WEB3</a></p></div><div style="display:contents" dir="auto"><p id="b77b74bb-948b-4547-8dbb-b87bb49b1ace" class="">WEB2 vs WEB3 <a href="https://www.youtube.com/watch?v=nHhAEkG1y2U&amp;t=3s">explanatory video</a></p></div><div style="display:contents" dir="auto"><p id="5224fc84-8378-4ea3-9896-9f6c1c1c29b9" class=""><a href="https://www.youtube.com/watch?v=1i5wOpAg-lc"><strong><strong>Web3 Tech Stack 2022</strong></strong></a></p></div><div style="display:contents" dir="auto"><p id="1bc11059-b563-483f-95a9-f2bec458edc5" class="">
+</p></div><div style="display:contents" dir="auto"><p id="eb00b641-feb5-4646-82ed-5c77d0a76ee6" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
