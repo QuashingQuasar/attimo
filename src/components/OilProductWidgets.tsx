@@ -8,7 +8,7 @@ const oils = [
   name: "Coratina",
   nameDetail: "d'Italia",
   flavor: "Bold & Punchy",
-  origin: "Umbria, Italy",
+  origin: "Puglia, Italy",
   flag: "🇮🇹",
   handle: "coratina",
   image: coratinaImage,
