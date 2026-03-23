@@ -67,7 +67,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-          "radial-gradient(circle at 1px 1px, #1B4229 1px, transparent 0)",
+          `radial-gradient(circle at 1px 1px, ${textColor} 1px, transparent 0)`,
           backgroundSize: "32px 32px"
         }} />
       
@@ -78,7 +78,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
             className="mb-4 mx-auto"
             style={{
               fontFamily: "Beverly Drive, serif",
-              color: "#1B4229",
+              color: textColor,
               fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
             }}>
@@ -163,7 +163,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                 className="mb-1.5"
                 style={{
                   fontFamily: "Beverly Drive, serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.8rem, 2.7vw, 2.7rem)",
                   letterSpacing: "0.04em"
                 }}>
@@ -175,7 +175,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                 className="uppercase mb-3"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   letterSpacing: "0.15em",
                   opacity: 0.7
@@ -188,7 +188,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                 className="mb-3"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
                   letterSpacing: "0.03em"
                 }}>
@@ -199,7 +199,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                 <p
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229",
+                  color: textColor,
                   fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
                   opacity: 0.5,
                   lineHeight: 1.6
