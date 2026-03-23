@@ -37,7 +37,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
                     <div className="flex justify-between items-start text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <div className="flex flex-col">
                         <span>{testimonial.name}</span>
-                        <span>{testimonial.location}</span>
+                        <span>({testimonial.location})</span>
                       </div>
                       <span>{testimonial.date}</span>
                     </div>
@@ -54,7 +54,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
                     <div className="flex justify-between items-start text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <div className="flex flex-col">
                         <span>{testimonial.name}</span>
-                        <span>{testimonial.location}</span>
+                        <span>({testimonial.location})</span>
                       </div>
                       <span>{testimonial.date}</span>
                     </div>
