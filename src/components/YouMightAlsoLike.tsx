@@ -73,7 +73,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
       
 
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px", transform: "scale(0.87)", transformOrigin: "top center" }}>
-        <div className="text-center mb-14 md:mb-20">
+        <div className="text-center mb-8 md:mb-12">
           <h2
             className="mb-4 mx-auto"
             style={{
