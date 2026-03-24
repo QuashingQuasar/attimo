@@ -293,7 +293,7 @@ const ProductPage = () => {
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
                         backgroundColor: content.buttonColor,
-                        fontSize: "clamp(1.05rem, 2vw, 1.45rem)",
+                        fontSize: "clamp(1.25rem, 2vw, 1.45rem)",
                         borderRadius: "0.75rem"
                       }}>
                       <span className="flex flex-col items-center gap-0.5">
