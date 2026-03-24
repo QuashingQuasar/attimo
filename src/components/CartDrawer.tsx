@@ -107,7 +107,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                       <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                         <h4 className="font-medium text-sm leading-tight">{item.product.node.title}</h4>
                         <p className="font-semibold text-sm">
-                          {item.price.currencyCode} {parseFloat(item.price.amount).toFixed(2)}
+                          {item.price.currencyCode === 'EUR' ? '€' : item.price.currencyCode} {parseFloat(item.price.amount) % 1 === 0 ? parseFloat(item.price.amount).toFixed(0) : parseFloat(item.price.amount).toFixed(2)}
                         </p>
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
@@ -133,7 +133,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold">Total</span>
                   <span className="text-xl font-bold">
-                    {items[0]?.price.currencyCode || '$'} {totalPrice.toFixed(2)}
+                    {items[0]?.price.currencyCode === 'EUR' ? '€' : (items[0]?.price.currencyCode || '$')} {totalPrice % 1 === 0 ? totalPrice.toFixed(0) : totalPrice.toFixed(2)}
                   </span>
                 </div>
                 
