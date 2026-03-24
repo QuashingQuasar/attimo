@@ -13,7 +13,7 @@ export const IndustryProblem = () => {
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
-                fontSize: 'clamp(1.5rem, 5vw, 6rem)'
+                fontSize: 'clamp(1.2rem, 4vw, 4.8rem)'
               }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
