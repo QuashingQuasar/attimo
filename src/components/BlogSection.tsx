@@ -138,7 +138,7 @@ export const BlogSection = () => {
         {/* Newsletter signup */}
         <div className="mt-16 pt-12 pb-0 flex flex-col md:flex-row md:items-center md:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
           <p
-            className="text-sm md:text-base leading-relaxed max-w-md"
+            className="text-sm md:text-base leading-relaxed max-w-md font-semibold"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229CC" }}>Get ATTIMO stories, insights and updates in your inbox
 
           </p>
