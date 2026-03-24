@@ -35,6 +35,33 @@ export type Database = {
         }
         Relationships: []
       }
+      shipping_expansion_requests: {
+        Row: {
+          country_code: string
+          country_name: string | null
+          created_at: string
+          email: string
+          id: string
+          product_name: string | null
+        }
+        Insert: {
+          country_code: string
+          country_name?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          product_name?: string | null
+        }
+        Update: {
+          country_code?: string
+          country_name?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          product_name?: string | null
+        }
+        Relationships: []
+      }
       waitlist: {
         Row: {
           contact_method: string
