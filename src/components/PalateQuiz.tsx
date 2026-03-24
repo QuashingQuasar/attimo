@@ -130,7 +130,7 @@ function ResultsScreen({
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button asChild variant="hero" size="lg" className="flex-1">
-          <a href={`https://shop.attimo-oil.com`} target="_blank" rel="noopener noreferrer">
+          <a href={`https://attimo-oil.com/product/${topMatch.key}`} target="_blank" rel="noopener noreferrer">
             Shop {topMatch.name}
           </a>
         </Button>
