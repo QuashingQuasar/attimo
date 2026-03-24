@@ -137,7 +137,7 @@ function ResultsScreen({
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <Button asChild variant="hero" size="lg" className="flex-1">
+        <Button asChild variant="hero" size="lg" className="flex-1 shadow-none hover:shadow-none hover:translate-y-0">
           <Link to={`/product/${topMatch.key}`}>
             Shop {topMatch.name}
           </Link>
