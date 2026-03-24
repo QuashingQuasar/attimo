@@ -192,7 +192,7 @@ export const FAQ = ({ handle }: FAQProps) => {
   const faqs = getFaqs(handle);
 
   return (
-    <section className="pt-[30px] pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FFFAEA" }}>
+    <section className="pt-[26px] pb-16 md:pb-24 lg:pb-32" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
           <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(1.82rem, 3.64vw, 4.1rem)" }}>
