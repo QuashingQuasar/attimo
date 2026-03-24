@@ -6,6 +6,8 @@ const TIER_3: string[] = [
 ];
 const TIER_4: string[] = ["FI", "GR", "PT", "RO"];
 
+const SUPPORTED_COUNTRIES = [...TIER_2, ...TIER_3, ...TIER_4];
+
 const DEFAULT_THRESHOLD = 3;
 
 export function getFreeShippingThreshold(countryCode: string | null): number {
@@ -17,13 +19,32 @@ export function getFreeShippingThreshold(countryCode: string | null): number {
   return DEFAULT_THRESHOLD;
 }
 
-export async function detectCountryCode(): Promise<string | null> {
+export function isCountrySupported(countryCode: string | null): boolean | null {
+  if (!countryCode) return null; // undetected — no opinion
+  return SUPPORTED_COUNTRIES.includes(countryCode.toUpperCase());
+}
+
+export interface GeoResult {
+  countryCode: string | null;
+  countryName: string | null;
+}
+
+export async function detectCountry(): Promise<GeoResult> {
   try {
     const res = await fetch("https://ipapi.co/json/", { signal: AbortSignal.timeout(3000) });
-    if (!res.ok) return null;
+    if (!res.ok) return { countryCode: null, countryName: null };
     const data = await res.json();
-    return data.country_code ?? null;
+    return {
+      countryCode: data.country_code ?? null,
+      countryName: data.country_name ?? null,
+    };
   } catch {
-    return null;
+    return { countryCode: null, countryName: null };
   }
+}
+
+// Keep backward-compat alias
+export async function detectCountryCode(): Promise<string | null> {
+  const { countryCode } = await detectCountry();
+  return countryCode;
 }

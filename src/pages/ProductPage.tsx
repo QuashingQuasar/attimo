@@ -22,7 +22,8 @@ import { QuantitySelector } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
-import { detectCountryCode, getFreeShippingThreshold } from "@/lib/shipping";
+import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult } from "@/lib/shipping";
+import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -36,10 +37,15 @@ const ProductPage = () => {
   const addItem = useCartStore((state) => state.addItem);
   const isMobile = useIsMobile();
   const [countryCode, setCountryCode] = useState<string | null>(null);
+  const [countryName, setCountryName] = useState<string | null>(null);
   const freeShippingThreshold = useMemo(() => getFreeShippingThreshold(countryCode), [countryCode]);
+  const countrySupported = useMemo(() => isCountrySupported(countryCode), [countryCode]);
 
   useEffect(() => {
-    detectCountryCode().then(setCountryCode);
+    detectCountry().then(({ countryCode: cc, countryName: cn }) => {
+      setCountryCode(cc);
+      setCountryName(cn);
+    });
   }, []);
 
   const shopifyHandle = resolveShopifyHandle(handle);
@@ -249,53 +255,61 @@ const ProductPage = () => {
               </div>
 
               {isInStock ? (
-                <>
-                  <QuantitySelector
-                    quantity={selectedQuantity}
-                    onQuantityChange={setSelectedQuantity}
-                    pricePerUnit={activePrice}
-                    onAddToCart={handleAddToCart}
-                    buttonColor={content.buttonColor}
-                    freeShippingThreshold={freeShippingThreshold} />
+                countrySupported === false && countryName && countryCode ? (
+                  <UnsupportedCountryNotice
+                    countryName={countryName}
+                    countryCode={countryCode}
+                    productName={content.heroTitle}
+                  />
+                ) : (
+                  <>
+                    <QuantitySelector
+                      quantity={selectedQuantity}
+                      onQuantityChange={setSelectedQuantity}
+                      pricePerUnit={activePrice}
+                      onAddToCart={handleAddToCart}
+                      buttonColor={content.buttonColor}
+                      freeShippingThreshold={freeShippingThreshold} />
 
-                  <PurchaseOptions
-                    sellingPlans={sellingPlans}
-                    oneTimePrice={ONE_TIME_PRICE}
-                    subscriptionPrice={SUBSCRIPTION_PRICE}
-                    purchaseType={purchaseType}
-                    onPurchaseTypeChange={setPurchaseType}
-                    selectedSellingPlanId={selectedSellingPlanId}
-                    onSellingPlanChange={setSelectedSellingPlanId} />
+                    <PurchaseOptions
+                      sellingPlans={sellingPlans}
+                      oneTimePrice={ONE_TIME_PRICE}
+                      subscriptionPrice={SUBSCRIPTION_PRICE}
+                      purchaseType={purchaseType}
+                      onPurchaseTypeChange={setPurchaseType}
+                      selectedSellingPlanId={selectedSellingPlanId}
+                      onSellingPlanChange={setSelectedSellingPlanId} />
 
-                  <Button
-                    onClick={handleAddToCart}
-                    className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      backgroundColor: content.buttonColor,
-                      fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
-                      borderRadius: "0.75rem"
-                    }}>
-                    <span className="hidden md:inline">
-                      ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
-                    </span>
-                    <span className="flex flex-col items-center gap-0.5 md:hidden">
-                      <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                      <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
-                    </span>
-                  </Button>
+                    <Button
+                      onClick={handleAddToCart}
+                      className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
+                      style={{
+                        fontFamily: "UDC Working Man Sans, sans-serif",
+                        backgroundColor: content.buttonColor,
+                        fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
+                        borderRadius: "0.75rem"
+                      }}>
+                      <span className="hidden md:inline">
+                        ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
+                      </span>
+                      <span className="flex flex-col items-center gap-0.5 md:hidden">
+                        <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
+                        <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
+                      </span>
+                    </Button>
 
-                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                    <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                      <ShieldCheck size={20} strokeWidth={1.5} />
-                      Third party lab-tested quality
-                    </p>
-                    <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
-                      <Truck size={20} strokeWidth={1.5} />
-                      Order today, ships tomorrow
-                    </p>
-                  </div>
-                </>
+                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                        <ShieldCheck size={20} strokeWidth={1.5} />
+                        Third party lab-tested quality
+                      </p>
+                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                        <Truck size={20} strokeWidth={1.5} />
+                        Order today, ships tomorrow
+                      </p>
+                    </div>
+                  </>
+                )
               ) : (
                 <NotifyMeForm productName={content.heroTitle} backgroundColor={content.tileBackground} />
               )}
