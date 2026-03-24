@@ -133,7 +133,7 @@ export const CartDrawer = ({ darkIcon = false }: { darkIcon?: boolean }) => {
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold">Total</span>
                   <span className="text-xl font-bold">
-                    {items[0]?.price.currencyCode || '$'} {totalPrice.toFixed(2)}
+                    {items[0]?.price.currencyCode === 'EUR' ? '€' : (items[0]?.price.currencyCode || '$')} {totalPrice % 1 === 0 ? totalPrice.toFixed(0) : totalPrice.toFixed(2)}
                   </span>
                 </div>
                 
