@@ -93,6 +93,13 @@ const ProductPage = () => {
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
+  useEffect(() => {
+    if (!content) return;
+    const productName = content.heroTitle?.split(" D'")[0]?.split(" DE ")[0] || handle || '';
+    document.title = `ATTIMO ${productName.charAt(0) + productName.slice(1).toLowerCase()} | Specialty Extra Virgin Olive Oil`;
+    return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; };
+  }, [handle, content]);
+
   const ONE_TIME_PRICE = 24;
   const SUBSCRIPTION_PRICE = 22;
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
