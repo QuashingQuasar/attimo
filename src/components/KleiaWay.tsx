@@ -41,7 +41,7 @@ export const KleiaWay = () => {
         <p className="leading-relaxed max-w-[280px]" style={{
           fontFamily: 'Space Grotesk, sans-serif',
           color: '#B3E58C',
-          fontSize: 'clamp(0.85rem, 1vw, 1rem)'
+          fontSize: 'clamp(0.935rem, 1.1vw, 1.1rem)'
         }}>{tiles[index].text}</p>
       </div>
     </div>
