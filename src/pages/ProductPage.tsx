@@ -298,7 +298,7 @@ const ProductPage = () => {
                       }}>
                       <span className="flex flex-col items-center gap-0.5">
                         <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                        <span className="font-normal" style={{ fontSize: 'clamp(0.85rem, 1.4vw, 1.1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
+                        <span className="font-normal" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
                       </span>
                     </Button>
 
