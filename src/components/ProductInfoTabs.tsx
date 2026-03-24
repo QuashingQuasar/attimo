@@ -75,7 +75,10 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           </AccordionTrigger>
           <AccordionContent>
             <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
-              <p>We ship across Europe. Orders are carefully packed and dispatched within 2–3 business days. Delivery typically takes 3–7 business days depending on your location.</p>
+              <p>We ship across Europe. Orders are carefully packed and dispatched the next business day. Delivery typically takes 2–7 business days depending on your location. Most multi-bottle orders qualify for free shipping.</p>
+              <p className="mt-3">
+                <a href="/shipping" className="underline hover:no-underline text-olive-dark font-medium">View full shipping rates & delivery times →</a>
+              </p>
             </div>
           </AccordionContent>
         </AccordionItem>

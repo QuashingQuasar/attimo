@@ -104,6 +104,23 @@ function getFaqs(handle?: string): FaqItem[] {
       answer:
         "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better.",
     },
+    {
+      question: "Where do you ship and how much does it cost?",
+      answer: null,
+      answerElement: (
+        <>
+          We ship across the European Union, from Belgium and the Netherlands to Finland and Portugal. Shipping starts at €7 for core countries and goes up to €22 for more remote destinations — but most orders qualify for free shipping when you order 2–4 bottles depending on your location. Orders placed today ship tomorrow, and delivery takes 2–7 business days depending on where you are.{" "}
+          <a
+            href="/shipping"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            View full shipping details
+          </a>
+          .
+        </>
+      ),
+    },
   ];
 }
 
