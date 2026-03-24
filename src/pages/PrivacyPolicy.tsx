@@ -5,6 +5,7 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 
 const PrivacyPolicy = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  useEffect(() => { document.title = 'Privacy Policy | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
 
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
