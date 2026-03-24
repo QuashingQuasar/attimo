@@ -80,9 +80,20 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
-        Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
-      </h2>
+      {/* Top match bottle + name */}
+      <div className="flex items-center gap-6 mb-8">
+        <img
+          src={bottleImages[topMatch.key]}
+          alt={topMatch.name}
+          className="w-24 md:w-32 object-contain drop-shadow-lg"
+        />
+        <div>
+          <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-1">Your match is</p>
+          <h2 className="font-beverly text-4xl md:text-[2.75rem] text-olive-dark leading-snug">
+            {topMatch.name}
+          </h2>
+        </div>
+      </div>
 
       {/* Match bars */}
       <div className="flex flex-col gap-5 mb-8">
