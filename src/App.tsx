@@ -15,6 +15,7 @@ import BlogPostPage from "./pages/BlogPostPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import ShippingPage from "./pages/ShippingPage";
+import ContactPage from "./pages/ContactPage";
 
 const queryClient = new QueryClient();
 
