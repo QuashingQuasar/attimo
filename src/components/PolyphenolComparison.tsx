@@ -58,7 +58,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
     <section className="pb-[30px] snap-start flex items-center" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6" style={{ transform: "scale(0.88)", transformOrigin: "top center" }}>
         <div className="max-w-4xl mx-auto">
-          <div className="pt-[46px]">
+          <div className="pt-[50px]">
             <h2 className="font-bold text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
               the polyphenol difference
             </h2>
