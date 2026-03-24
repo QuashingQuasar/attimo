@@ -19,12 +19,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright above line on mobile */}
-        <p className="block md:hidden text-sm mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
-
-        <div className="border-t pt-6" style={{ borderColor: '#B3E58C' }}>
-          {/* Mobile: links + instagram */}
-          <div className="flex md:hidden justify-between items-start">
+        {/* Mobile: links + instagram, then line, then copyright */}
+        <div className="md:hidden">
+          <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col gap-3 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
@@ -39,9 +36,14 @@ export const Footer = () => {
               </svg>
             </a>
           </div>
+          <div className="border-t pt-4" style={{ borderColor: '#B3E58C' }}>
+            <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
+          </div>
+        </div>
 
-          {/* Desktop: original layout */}
-          <div className="hidden md:flex justify-between items-center gap-4">
+        {/* Desktop: original layout */}
+        <div className="hidden md:block border-t pt-6" style={{ borderColor: '#B3E58C' }}>
+          <div className="flex justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
