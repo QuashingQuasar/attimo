@@ -296,12 +296,9 @@ const ProductPage = () => {
                         fontSize: "clamp(0.85rem, 1.4vw, 1.45rem)",
                         borderRadius: "0.75rem"
                       }}>
-                      <span className="hidden md:inline">
-                        ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
-                      </span>
-                      <span className="flex flex-col items-center gap-0.5 md:hidden">
+                      <span className="flex flex-col items-center gap-0.5">
                         <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                        <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
+                        <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1.1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
                       </span>
                     </Button>
 
