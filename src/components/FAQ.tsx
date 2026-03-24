@@ -79,19 +79,19 @@ function getFaqs(handle?: string): FaqItem[] {
         "Every bottle is from the latest harvest and bottled quickly to preserve freshness. Unlike mass-produced oils that can sit for months or years, ATTIMO delivers oil within months of harvest. This ensures you get maximum flavour and health benefits.",
     },
     {
-      question: "Can I see the lab results for my bottle?",
+      question: "Can I see the lab results?",
       answer: null,
-      answerElement: (() => {
+      answerElement: h ? (() => {
         const labUrls: Record<string, string> = {
           coratina: "/lab/Coratina2025.pdf",
           nocellara: "/lab/Nocellara2025.pdf",
           picual: "/lab/Picual2025.pdf",
         };
-        const labUrl = labUrls[h] || "/documents/lab-report-galega-2024.pdf";
-        const varietyName = h ? h.charAt(0).toUpperCase() + h.slice(1) : "";
+        const labUrl = labUrls[h];
+        const varietyName = h.charAt(0).toUpperCase() + h.slice(1);
         return (
           <>
-            Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting.{" "}
+            Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency — you should know exactly what you're getting.{" "}
             <a
               href={labUrl}
               target="_blank"
@@ -99,12 +99,13 @@ function getFaqs(handle?: string): FaqItem[] {
               className="underline hover:no-underline"
               style={{ color: "#1B4229" }}
             >
-              View lab results{varietyName ? ` for ${varietyName}` : ""}
+              View lab results for {varietyName}
             </a>
             .
           </>
         );
-      })(),
+      })() : undefined,
+      answer2: h ? null : "Absolutely. Every batch of ATTIMO oil is independently lab tested by a third party, and the results are available on each product page. We test for polyphenol content, acidity, peroxide values and more. We believe in complete transparency — you should always be able to verify the quality of what you're putting on your plate.",
     },
     {
       question: "How should I use this olive oil?",
