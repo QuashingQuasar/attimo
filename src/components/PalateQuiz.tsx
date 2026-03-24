@@ -106,13 +106,23 @@ function ResultsScreen({
         )}
       </div>
 
-      {/* Bottle image */}
+      {/* Bottle image — matches homepage product card styling */}
       <div className="flex justify-center mb-8">
-        <img
-          src={bottleImages[topMatch.key]}
-          alt={topMatch.name}
-          className="w-32 md:w-40 object-contain drop-shadow-lg"
-        />
+        <div
+          className="relative rounded-2xl overflow-hidden aspect-[3/4] w-full max-w-sm"
+          style={{ backgroundColor: "#1B4229" }}>
+          <div
+            className="absolute inset-0 opacity-[0.04] z-[1]"
+            style={{
+              backgroundImage:
+                "radial-gradient(ellipse at 30% 20%, #FFFAEA 0.5px, transparent 0.5px), radial-gradient(ellipse at 70% 80%, #FFFAEA 0.3px, transparent 0.3px)",
+              backgroundSize: "18px 18px, 14px 14px"
+            }} />
+          <img
+            src={bottleImages[topMatch.key]}
+            alt={topMatch.name}
+            className="w-full h-full object-cover relative z-[2] scale-[1.25]" />
+        </div>
       </div>
 
       {/* Top match summary */}
