@@ -27,6 +27,7 @@ export const Footer = () => {
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
               <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
+              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
             </div>
             <a href="https://www.instagram.com/attimo.oil" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3E58C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
