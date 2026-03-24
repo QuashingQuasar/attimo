@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface FaqItem {
   question: string;
@@ -57,8 +58,20 @@ function getFaqs(handle?: string): FaqItem[] {
     },
     {
       question: "What are polyphenols and why do they matter?",
-      answer:
-        "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.",
+      answer: null,
+      answerElement: (
+        <>
+          Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.{" "}
+          <Link
+            to="/blog/polyphenols-in-olive-oil-explained"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            Learn more about polyphenols
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: "How fresh is the olive oil?",
@@ -66,19 +79,19 @@ function getFaqs(handle?: string): FaqItem[] {
         "Every bottle is from the latest harvest and bottled quickly to preserve freshness. Unlike mass-produced oils that can sit for months or years, ATTIMO delivers oil within months of harvest. This ensures you get maximum flavour and health benefits.",
     },
     {
-      question: "Can I see the lab results for my bottle?",
-      answer: null,
-      answerElement: (() => {
+      question: "Can I see the lab results?",
+      answer: h ? null : "Absolutely. Every batch of ATTIMO oil is independently lab tested by a third party, and the full results are available on each product page. We test for polyphenol content, acidity, peroxide values and more. We believe in complete transparency — you should always be able to verify the quality of what you're putting on your plate.",
+      answerElement: h ? (() => {
         const labUrls: Record<string, string> = {
           coratina: "/lab/Coratina2025.pdf",
           nocellara: "/lab/Nocellara2025.pdf",
           picual: "/lab/Picual2025.pdf",
         };
-        const labUrl = labUrls[h] || "/documents/lab-report-galega-2024.pdf";
-        const varietyName = h ? h.charAt(0).toUpperCase() + h.slice(1) : "";
+        const labUrl = labUrls[h];
+        const varietyName = h.charAt(0).toUpperCase() + h.slice(1);
         return (
           <>
-            Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency; you should know exactly what you're getting.{" "}
+            Yes. Every batch is third-party lab tested, and you can verify the quality markers yourself. We believe in complete transparency — you should know exactly what you're getting.{" "}
             <a
               href={labUrl}
               target="_blank"
@@ -86,18 +99,30 @@ function getFaqs(handle?: string): FaqItem[] {
               className="underline hover:no-underline"
               style={{ color: "#1B4229" }}
             >
-              View lab results{varietyName ? ` for ${varietyName}` : ""}
+              View lab results for {varietyName}
             </a>
             .
           </>
         );
-      })(),
+      })() : undefined,
     },
     {
       question: "How should I use this olive oil?",
-      answer:
-        useAnswers[h] ||
-        "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special.",
+      answer: null,
+      answerElement: (
+        <>
+          {useAnswers[h] ||
+            "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special."}{" "}
+          <Link
+            to="/blog/should-you-cook-with-olive-oil"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            Read more about cooking with olive oil
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: "How should I store my olive oil?",
