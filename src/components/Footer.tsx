@@ -41,8 +41,9 @@ export const Footer = () => {
           </div>
         </div>
 
-          {/* Desktop: original layout */}
-          <div className="hidden md:flex justify-between items-center gap-4">
+        {/* Desktop: original layout */}
+        <div className="hidden md:block border-t pt-6" style={{ borderColor: '#B3E58C' }}>
+          <div className="flex justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
