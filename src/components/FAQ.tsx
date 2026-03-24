@@ -58,8 +58,20 @@ function getFaqs(handle?: string): FaqItem[] {
     },
     {
       question: "What are polyphenols and why do they matter?",
-      answer:
-        "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.",
+      answer: null,
+      answerElement: (
+        <>
+          Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.{" "}
+          <Link
+            to="/blog/polyphenols-in-olive-oil-explained"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            Learn more about polyphenols
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: "How fresh is the olive oil?",
