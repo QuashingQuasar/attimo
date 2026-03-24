@@ -19,6 +19,7 @@ interface BlogPost {
 }
 
 const BlogPage = () => {
+  useEffect(() => { document.title = 'Blog | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
   const { data: posts, isLoading } = useQuery({
     queryKey: ["blog-posts"],
     queryFn: () =>

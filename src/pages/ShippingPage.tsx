@@ -45,6 +45,7 @@ const tiers = [
 
 const ShippingPage = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  useEffect(() => { document.title = 'Shipping | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
 
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
