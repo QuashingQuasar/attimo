@@ -68,7 +68,7 @@ export const BlogSection = () => {
               className="tracking-tight leading-[0.95]"
               style={{
                 fontFamily: "Beverly Drive, cursive",
-                fontSize: "clamp(3rem, 6vw, 7rem)",
+                fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
                 color: "#1B4229"
               }}>
               The Olive Press
