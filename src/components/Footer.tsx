@@ -51,6 +51,7 @@ export const Footer = () => {
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
               <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
+              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
             </div>
           </div>
         </div>
