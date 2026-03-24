@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Truck, Package, ShieldCheck, Clock } from "lucide-react";
 
@@ -45,6 +45,7 @@ const tiers = [
 
 const ShippingPage = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  useEffect(() => { document.title = 'Shipping | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
 
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>

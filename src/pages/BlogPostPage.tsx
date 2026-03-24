@@ -109,7 +109,7 @@ const BlogPostPage = () => {
 
   useEffect(() => {
     if (post) {
-      document.title = post.seoTitle || post.title;
+      document.title = `${post.seoTitle || post.title} | ATTIMO Specialty Extra Virgin Olive Oil`;
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute("content", post.seoDescription || post.excerpt || "");
