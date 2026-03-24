@@ -80,20 +80,10 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      {/* Top match bottle + name */}
-      <div className="flex items-center gap-6 mb-8">
-        <img
-          src={bottleImages[topMatch.key]}
-          alt={topMatch.name}
-          className="w-24 md:w-32 object-contain drop-shadow-lg"
-        />
-        <div>
-          <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-1">Your match is</p>
-          <h2 className="font-beverly text-4xl md:text-[2.75rem] text-olive-dark leading-snug">
-            {topMatch.name}
-          </h2>
-        </div>
-      </div>
+      {/* Title */}
+      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
+        Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
+      </h2>
 
       {/* Match bars */}
       <div className="flex flex-col gap-5 mb-8">
@@ -111,10 +101,18 @@ function ResultsScreen({
               <div
               className="h-full rounded-full bg-olive-dark transition-all duration-700 ease-out"
               style={{ width: `${oil.percentage}%` }} />
-            
             </div>
           </div>
         )}
+      </div>
+
+      {/* Bottle image */}
+      <div className="flex justify-center mb-8">
+        <img
+          src={bottleImages[topMatch.key]}
+          alt={topMatch.name}
+          className="w-32 md:w-40 object-contain drop-shadow-lg"
+        />
       </div>
 
       {/* Top match summary */}
@@ -130,16 +128,15 @@ function ResultsScreen({
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button asChild variant="hero" size="lg" className="flex-1">
-          <a href={`https://attimo-oil.com/product/${topMatch.key}`} target="_blank" rel="noopener noreferrer">
+          <Link to={`/product/${topMatch.key}`}>
             Shop {topMatch.name}
-          </a>
+          </Link>
         </Button>
         <Button
           variant="outline"
           size="lg"
           onClick={onRestart}
           className="gap-2">
-          
           <RotateCcw className="w-4 h-4" />
           Retake Quiz
         </Button>
