@@ -84,7 +84,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
         setPaths(allPaths);
       })
       .catch(console.error);
-  }, []);
+  }, [cx, cy, zoom]);
 
   // Marker
   const [bx, by] = project(markerLon, markerLat, cx, cy, zoom);
