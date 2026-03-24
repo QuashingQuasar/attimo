@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Header } from "@/components/Header";
 
 import bottleCoratina from "@/assets/bottle-coratina.jpg";
 import bottlePicual from "@/assets/bottle-picual.jpg";
@@ -200,15 +201,10 @@ export function PalateQuiz() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
-      {/* Header bar */}
-      <div className="w-full border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link
-            to="/"
-            className="text-base text-muted-foreground hover:text-olive-dark transition-colors">
-            
-            ← Back to ATTIMO
-          </Link>
+      <Header onWaitlistClick={() => {}} forceScrolled />
+      {/* Progress bar */}
+      <div className="w-full sticky top-0 z-[9]">
+        <div className="max-w-2xl mx-auto px-6 py-2 flex justify-end">
           <span className="text-sm font-working-man tracking-[0.2em] uppercase text-olive-medium">
             {results ? "Results" : `${currentStep + 1} / ${totalQuestions}`}
           </span>
