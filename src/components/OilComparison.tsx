@@ -2,6 +2,7 @@ import { Check, X } from "lucide-react";
 
 const getComparisonData = (polyphenolValue: string) => [
   { feature: "FRESH", attimo: { type: "check" }, them: { type: "text", value: "No, mixed with old oils" } },
+  { feature: "EARLY HARVEST", attimo: { type: "check" }, them: { type: "cross" } },
   { feature: "SINGLE SOURCE", attimo: { type: "check" }, them: { type: "text", value: "Oil blended from 3+ countries" } },
   { feature: "TRACEABLE", attimo: { type: "check" }, them: { type: "cross" } },
   { feature: "LAB-TESTED", attimo: { type: "check" }, them: { type: "cross" } },
