@@ -201,7 +201,7 @@ export function PalateQuiz() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
-      <Header />
+      <Header onWaitlistClick={() => {}} forceScrolled />
       {/* Progress bar */}
       <div className="w-full sticky top-0 z-[9]">
         <div className="max-w-2xl mx-auto px-6 py-2 flex justify-end">
