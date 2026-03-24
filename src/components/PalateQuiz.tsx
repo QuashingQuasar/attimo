@@ -137,7 +137,7 @@ function ResultsScreen({
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
-        <Button asChild variant="hero" size="lg" className="flex-1 shadow-none hover:shadow-none hover:translate-y-0">
+        <Button asChild variant="hero" size="lg" className="flex-1 h-14 sm:h-11 shadow-none hover:shadow-none hover:translate-y-0">
           <Link to={`/product/${topMatch.key}`}>
             Shop {topMatch.name}
           </Link>
@@ -146,7 +146,7 @@ function ResultsScreen({
           variant="outline"
           size="lg"
           onClick={onRestart}
-          className="gap-2">
+          className="gap-2 h-14 sm:h-11">
           <RotateCcw className="w-4 h-4" />
           Retake Quiz
         </Button>
