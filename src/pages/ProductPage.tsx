@@ -48,6 +48,13 @@ const ProductPage = () => {
     });
   }, []);
 
+  // Scroll to top when navigating between products
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.overflow-y-scroll');
+    if (scrollContainer) scrollContainer.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }, [handle]);
+
   const shopifyHandle = resolveShopifyHandle(handle);
 
   useEffect(() => {
