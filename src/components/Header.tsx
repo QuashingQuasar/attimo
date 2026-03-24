@@ -107,7 +107,7 @@ export const Header = ({
           onMouseLeave={handleMouseLeave}
         >
           <div className="mx-auto px-6 md:px-12 py-5 md:py-8" style={{ maxWidth: '1200px' }}>
-            <div className="flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-8" style={{ transform: 'scale(0.8)', transformOrigin: 'top center' }}>
+            <div className="flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-8" style={{ transform: 'scale(0.9)', transformOrigin: 'top center' }}>
               {shopProducts.map((product) => (
                 <Link key={product.handle} to={`/product/${product.handle}`} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
                   <div className="w-28 h-28 md:w-full md:aspect-[3/4] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
