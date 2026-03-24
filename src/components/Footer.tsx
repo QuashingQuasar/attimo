@@ -25,7 +25,7 @@ export const Footer = () => {
         <div className="border-t pt-6" style={{ borderColor: '#B3E58C' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
-            <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <div className="flex flex-col md:flex-row gap-3 md:gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
