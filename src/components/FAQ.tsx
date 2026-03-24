@@ -105,8 +105,7 @@ function getFaqs(handle?: string): FaqItem[] {
           </>
         );
       })() : undefined,
-      answer2: h ? null : "Absolutely. Every batch of ATTIMO oil is independently lab tested by a third party, and the results are available on each product page. We test for polyphenol content, acidity, peroxide values and more. We believe in complete transparency — you should always be able to verify the quality of what you're putting on your plate.",
-    },
+    } as FaqItem,
     {
       question: "How should I use this olive oil?",
       answer:
