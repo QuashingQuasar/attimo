@@ -3,7 +3,7 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return <section className="py-12 md:py-16 bg-[#1B4229] snap-start flex items-center">
-      <div className="mx-auto px-4 w-[90vw]">
+      <div className="mx-auto px-4 w-[85vw]">
         <div className="relative overflow-hidden rounded-3xl">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
@@ -13,19 +13,19 @@ export const IndustryProblem = () => {
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
-                fontSize: 'clamp(1.5rem, 5vw, 6rem)'
+                fontSize: 'clamp(1.2rem, 4vw, 4.8rem)'
               }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
              <p className="text-white/90 leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(1.1rem, 1.8vw, 2rem)'
+                fontSize: 'clamp(0.94rem, 1.53vw, 1.7rem)'
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
             <div className="text-center p-4 md:p-8 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 5rem)' }}>~80%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
@@ -33,7 +33,7 @@ export const IndustryProblem = () => {
                 </p>
             </div>
             <div className="text-center p-4 md:p-8 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 5rem)' }}>~90%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
