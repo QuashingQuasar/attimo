@@ -37,10 +37,15 @@ const ProductPage = () => {
   const addItem = useCartStore((state) => state.addItem);
   const isMobile = useIsMobile();
   const [countryCode, setCountryCode] = useState<string | null>(null);
+  const [countryName, setCountryName] = useState<string | null>(null);
   const freeShippingThreshold = useMemo(() => getFreeShippingThreshold(countryCode), [countryCode]);
+  const countrySupported = useMemo(() => isCountrySupported(countryCode), [countryCode]);
 
   useEffect(() => {
-    detectCountryCode().then(setCountryCode);
+    detectCountry().then(({ countryCode: cc, countryName: cn }) => {
+      setCountryCode(cc);
+      setCountryName(cn);
+    });
   }, []);
 
   const shopifyHandle = resolveShopifyHandle(handle);
