@@ -35,6 +35,12 @@ const ProductPage = () => {
   const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
   const isMobile = useIsMobile();
+  const [countryCode, setCountryCode] = useState<string | null>(null);
+  const freeShippingThreshold = useMemo(() => getFreeShippingThreshold(countryCode), [countryCode]);
+
+  useEffect(() => {
+    detectCountryCode().then(setCountryCode);
+  }, []);
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
