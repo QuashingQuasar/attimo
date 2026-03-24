@@ -130,6 +130,41 @@ function getFaqs(handle?: string): FaqItem[] {
         "Keep it in a cool, dark place away from heat and light. Once opened, use it within a few months for optimal freshness. The compounds that make it healthy break down over time, so fresher is always better.",
     },
     {
+      question: "Can I change or cancel my order?",
+      answer: null,
+      answerElement: (
+        <>
+          Orders can be changed or cancelled before they are fulfilled. Once your order has shipped, we're unable to make changes. To request a change or cancellation, contact us as soon as possible at{" "}
+          <a href="mailto:hello@attimo-oil.com" className="underline hover:no-underline" style={{ color: "#1B4229" }}>
+            hello@attimo-oil.com
+          </a>
+          . Once your order ships you'll receive a tracking link by email so you can follow your delivery.
+        </>
+      ),
+    },
+    {
+      question: "Is your olive oil organic?",
+      answer:
+        "Our Coratina is certified organic. For our other oils, organic certification isn't the primary lens we use — we care deeply about how olives are grown and processed, prioritising low-intervention farming, early harvest, and quality above all. Certified or not, we hold every oil to the same high standards.",
+    },
+    {
+      question: "Do you sell wholesale or to restaurants?",
+      answer: null,
+      answerElement: (
+        <>
+          Yes — we work with restaurants, delis, specialty food shops, hotels, and other businesses, whether you're looking to serve it at the table, use it in the kitchen, or stock it on your shelves. Reach out via our{" "}
+          <Link to="/contact" className="underline hover:no-underline" style={{ color: "#1B4229" }}>
+            contact form
+          </Link>
+          {" "}or write directly to{" "}
+          <a href="mailto:hello@attimo-oil.com" className="underline hover:no-underline" style={{ color: "#1B4229" }}>
+            hello@attimo-oil.com
+          </a>
+          {" "}and we'll take it from there.
+        </>
+      ),
+    },
+    {
       question: "Where do you ship and how much does it cost?",
       answer: null,
       answerElement: (
