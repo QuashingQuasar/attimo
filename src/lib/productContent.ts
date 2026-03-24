@@ -181,6 +181,7 @@ export const productContentMap: Record<string, ProductContent> = {
       markerLon: 16.8,
       markerLat: 41.1,
       markerLabel: "Puglia",
+      markerStyle: "pill-only" as const,
     },
   },
 
