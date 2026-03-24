@@ -34,6 +34,8 @@ export const QuantitySelector = ({
   buttonColor = "#CDDB2D",
 }: QuantitySelectorProps) => {
   const totalPrice = quantity * pricePerUnit;
+  const threshold = freeShippingThreshold ?? 2;
+  const presets = buildPresets(threshold);
 
   return (
     <div className="space-y-3">
