@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled />
       
       <main className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-3xl">
