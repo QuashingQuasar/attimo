@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
@@ -22,6 +22,7 @@ import { QuantitySelector } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
+import { detectCountryCode, getFreeShippingThreshold } from "@/lib/shipping";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -34,6 +35,12 @@ const ProductPage = () => {
   const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>([]);
   const addItem = useCartStore((state) => state.addItem);
   const isMobile = useIsMobile();
+  const [countryCode, setCountryCode] = useState<string | null>(null);
+  const freeShippingThreshold = useMemo(() => getFreeShippingThreshold(countryCode), [countryCode]);
+
+  useEffect(() => {
+    detectCountryCode().then(setCountryCode);
+  }, []);
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
@@ -248,7 +255,8 @@ const ProductPage = () => {
                     onQuantityChange={setSelectedQuantity}
                     pricePerUnit={activePrice}
                     onAddToCart={handleAddToCart}
-                    buttonColor={content.buttonColor} />
+                    buttonColor={content.buttonColor}
+                    freeShippingThreshold={freeShippingThreshold} />
 
                   <PurchaseOptions
                     sellingPlans={sellingPlans}
@@ -269,11 +277,11 @@ const ProductPage = () => {
                       borderRadius: "0.75rem"
                     }}>
                     <span className="hidden md:inline">
-                      ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                      ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice} <span className="font-normal">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
                     </span>
                     <span className="flex flex-col items-center gap-0.5 md:hidden">
                       <span>ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                      <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < 2 ? "(ADD 1 MORE FOR FREE SHIPPING)" : "(FREE SHIPPING ✓)"}</span>
+                      <span className="font-normal" style={{ fontSize: 'clamp(0.75rem, 1vw, 1rem)' }}>{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
                     </span>
                   </Button>
 

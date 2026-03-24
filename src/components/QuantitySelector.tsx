@@ -7,15 +7,23 @@ interface QuantitySelectorProps {
   onAddToCart: () => void;
   buttonId?: string;
   buttonColor?: string;
+  freeShippingThreshold?: number;
 }
 
-const presets = [
+const BASE_PRESETS = [
   { qty: 1, label: "1 Bottle" },
-  { qty: 2, label: "2 Bottles", sub: "Free Shipping" },
-  { qty: 3, label: "3 Bottles", sub: "Free Shipping" },
-  { qty: 4, label: "4 Bottles", sub: "Free Shipping" },
-  { qty: 8, label: "8 Bottles", sub: "Free Shipping" },
+  { qty: 2, label: "2 Bottles" },
+  { qty: 3, label: "3 Bottles" },
+  { qty: 4, label: "4 Bottles" },
+  { qty: 8, label: "8 Bottles" },
 ];
+
+function buildPresets(threshold: number) {
+  return BASE_PRESETS.map((p) => ({
+    ...p,
+    sub: p.qty >= threshold ? "Free Shipping" : undefined,
+  }));
+}
 
 export const QuantitySelector = ({
   quantity,
@@ -23,9 +31,11 @@ export const QuantitySelector = ({
   pricePerUnit,
   onAddToCart,
   buttonId,
-  buttonColor = "#CDDB2D",
+  freeShippingThreshold = 2,
 }: QuantitySelectorProps) => {
   const totalPrice = quantity * pricePerUnit;
+  const threshold = freeShippingThreshold ?? 2;
+  const presets = buildPresets(threshold);
 
   return (
     <div className="space-y-3">
