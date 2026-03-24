@@ -247,7 +247,7 @@ const ProductPage = () => {
               </p>
 
               {/* Description */}
-              <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)', maxWidth: '38.93rem' }}>
+              <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)', maxWidth: '38.93rem' }}>
                 {content.originStory.headline.split('.').slice(0, 3).filter(Boolean).join('.') + '.'}
               </p>
 
