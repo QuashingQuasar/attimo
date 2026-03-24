@@ -3,7 +3,7 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return <section className="py-12 md:py-16 bg-[#1B4229] snap-start flex items-center">
-      <div className="mx-auto px-4 w-[76.5vw]">
+      <div className="mx-auto px-4 w-[70vw]">
         <div className="relative overflow-hidden rounded-3xl">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
