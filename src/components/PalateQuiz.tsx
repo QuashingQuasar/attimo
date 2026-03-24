@@ -126,11 +126,11 @@ function ResultsScreen({
       </div>
 
       {/* Top match summary */}
-      <div className="bg-card border border-border rounded-lg p-5 mb-8">
+      <div className="text-center mb-8">
         <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
           Why {topMatch.name}?
         </p>
-        <p className="text-base text-foreground/80 leading-relaxed">
+        <p className="text-base text-foreground/80 leading-relaxed max-w-md mx-auto">
           {topMatch.summary}
         </p>
       </div>
