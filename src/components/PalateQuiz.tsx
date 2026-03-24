@@ -5,6 +5,16 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import bottleCoratina from "@/assets/bottle-coratina.jpg";
+import bottlePicual from "@/assets/bottle-picual.jpg";
+import bottleNocellara from "@/assets/bottle-nocellara.jpg";
+
+const bottleImages: Record<string, string> = {
+  coratina: bottleCoratina,
+  picual: bottlePicual,
+  nocellara: bottleNocellara,
+};
+
 // ── Question Step ────────────────────────────────────────────────────────
 
 function QuestionStep({
