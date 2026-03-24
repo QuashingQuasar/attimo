@@ -5,6 +5,16 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import bottleCoratina from "@/assets/bottle-coratina.jpg";
+import bottlePicual from "@/assets/bottle-picual.jpg";
+import bottleNocellara from "@/assets/bottle-nocellara.jpg";
+
+const bottleImages: Record<string, string> = {
+  coratina: bottleCoratina,
+  picual: bottlePicual,
+  nocellara: bottleNocellara,
+};
+
 // ── Question Step ────────────────────────────────────────────────────────
 
 function QuestionStep({
@@ -70,9 +80,20 @@ function ResultsScreen({
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
-      <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
-        Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
-      </h2>
+      {/* Top match bottle + name */}
+      <div className="flex items-center gap-6 mb-8">
+        <img
+          src={bottleImages[topMatch.key]}
+          alt={topMatch.name}
+          className="w-24 md:w-32 object-contain drop-shadow-lg"
+        />
+        <div>
+          <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-1">Your match is</p>
+          <h2 className="font-beverly text-4xl md:text-[2.75rem] text-olive-dark leading-snug">
+            {topMatch.name}
+          </h2>
+        </div>
+      </div>
 
       {/* Match bars */}
       <div className="flex flex-col gap-5 mb-8">
@@ -109,7 +130,7 @@ function ResultsScreen({
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button asChild variant="hero" size="lg" className="flex-1">
-          <a href={`https://shop.attimo-oil.com`} target="_blank" rel="noopener noreferrer">
+          <a href={`https://attimo-oil.com/product/${topMatch.key}`} target="_blank" rel="noopener noreferrer">
             Shop {topMatch.name}
           </a>
         </Button>

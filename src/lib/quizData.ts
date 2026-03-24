@@ -131,11 +131,11 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "memory",
     category: "Memory",
-    question: "Pick the food memory that resonates most:",
+    question: "Pick the meal that stays with you:",
     options: [
-      { label: "A market in Sicily", description: "Ripe tomatoes, warm bread, oil that tasted like the harvest", scores: { coratina: 0, picual: 1, nocellara: 3 } },
-      { label: "A meal in Puglia", description: "Bitter greens, white beans, oil so green it almost stung", scores: { coratina: 3, picual: 1, nocellara: 0 } },
-      { label: "Grilled fish on a terrace in Andalusia", description: "Bright, grassy, clean", scores: { coratina: 0, picual: 3, nocellara: 1 } },
+      { label: "Ripe tomatoes, warm bread, oil that tasted like the harvest", description: "Soft, fruity, generous", scores: { coratina: 0, picual: 1, nocellara: 3 } },
+      { label: "Bitter greens, white beans, oil so green it almost stung", description: "Intense, peppery, uncompromising", scores: { coratina: 3, picual: 1, nocellara: 0 } },
+      { label: "Grilled fish, lemon, something bright and clean", description: "Grassy, fresh, direct", scores: { coratina: 0, picual: 3, nocellara: 1 } },
       { label: "None of these — I'm building the memory", description: "", scores: { coratina: 1, picual: 2, nocellara: 2 } },
     ],
   },
