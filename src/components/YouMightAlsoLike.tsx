@@ -60,7 +60,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
 
   return (
     <section
-      className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden"
+      className="py-20 md:pt-28 pb-6 md:pb-8 px-4 md:px-6 relative overflow-hidden"
       style={{ backgroundColor: bgColor }}>
       
       <div
