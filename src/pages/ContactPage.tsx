@@ -8,6 +8,7 @@ import { Mail, Send } from "lucide-react";
 
 const ContactPage = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  useEffect(() => { document.title = 'Contact | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");

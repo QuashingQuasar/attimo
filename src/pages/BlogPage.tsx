@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import { Header } from "@/components/Header";

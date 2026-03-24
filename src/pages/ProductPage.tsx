@@ -53,7 +53,10 @@ const ProductPage = () => {
     const scrollContainer = document.querySelector('.overflow-y-scroll');
     if (scrollContainer) scrollContainer.scrollTop = 0;
     window.scrollTo(0, 0);
-  }, [handle]);
+    const productName = content?.heroTitle?.split(" D'")[0]?.split(" DE ")[0] || handle || '';
+    document.title = `ATTIMO ${productName.charAt(0) + productName.slice(1).toLowerCase()} | Specialty Extra Virgin Olive Oil`;
+    return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; };
+  }, [handle, content]);
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
