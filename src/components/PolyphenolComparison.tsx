@@ -55,7 +55,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
   const maxValue = Math.max(...comparisonData.map((item) => item.value));
 
   return (
-    <section className="pt-[50px] pb-[30px] snap-start" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="pt-[50px] lg:pt-[5px] pb-[30px] snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto origin-top scale-[0.88]">
