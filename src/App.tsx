@@ -12,6 +12,8 @@ import ProductPageV2 from "./pages/ProductPageV2";
 import QuizPage from "./pages/QuizPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
