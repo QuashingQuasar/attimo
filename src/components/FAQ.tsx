@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface FaqItem {
   question: string;
