@@ -233,7 +233,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.96rem, 3.8vw, 3.8rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline tablet-volume-size" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(1.07rem, 2.025vw, 2.16rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {content.tabs.details.volume}
