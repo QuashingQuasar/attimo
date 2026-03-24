@@ -80,7 +80,7 @@ function getFaqs(handle?: string): FaqItem[] {
     },
     {
       question: "Can I see the lab results?",
-      answer: null,
+      answer: h ? null : "Absolutely. Every batch of ATTIMO oil is independently lab tested by a third party, and the full results are available on each product page. We test for polyphenol content, acidity, peroxide values and more. We believe in complete transparency — you should always be able to verify the quality of what you're putting on your plate.",
       answerElement: h ? (() => {
         const labUrls: Record<string, string> = {
           coratina: "/lab/Coratina2025.pdf",
@@ -105,12 +105,24 @@ function getFaqs(handle?: string): FaqItem[] {
           </>
         );
       })() : undefined,
-    } as FaqItem,
+    },
     {
       question: "How should I use this olive oil?",
-      answer:
-        useAnswers[h] ||
-        "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special.",
+      answer: null,
+      answerElement: (
+        <>
+          {useAnswers[h] ||
+            "Use ATTIMO as a finishing oil to get the most from its flavour and health benefits. Drizzle it over salads, cooked vegetables, pasta, bread, or grilled meats. It's best enjoyed raw or added after cooking, as high heat can break down the polyphenols that make it special."}{" "}
+          <Link
+            to="/blog/should-you-cook-with-olive-oil"
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            Read more about cooking with olive oil
+          </Link>
+          .
+        </>
+      ),
     },
     {
       question: "How should I store my olive oil?",
