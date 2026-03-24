@@ -126,6 +126,15 @@
     .md-only-subtitle-size {
       font-size: clamp(1.06rem, 2.45vw, 2.45rem) !important;
     }
+    .tablet-title-size {
+      font-size: clamp(2.88rem, 5.6vw, 5.6rem) !important;
+    }
+    .tablet-volume-size {
+      font-size: clamp(1.57rem, 2.98vw, 3.18rem) !important;
+    }
+    .tablet-subtitle-size {
+      font-size: clamp(1.57rem, 3.65vw, 3.65rem) !important;
+    }
   }
 }
 
