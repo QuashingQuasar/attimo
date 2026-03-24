@@ -51,7 +51,7 @@ const ContactPage = () => {
             className="text-lg md:text-xl leading-relaxed mb-12"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.7 }}
           >
-            Got a question, an idea, a collaboration in mind — or just want to talk olive oil? Whatever it is, we'd love to hear from you.
+            Got a question, an idea, a collaboration in mind — or just want to talk olive oil? We love to hear from you.
           </p>
 
           {submitted ? (
