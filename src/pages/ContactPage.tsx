@@ -35,10 +35,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
+    <div className="min-h-screen overflow-y-scroll h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled />
 
-      <main className="pt-32 pb-20 px-6">
+      <main className="pt-32 pb-20 px-6 flex-1">
         <div className="container mx-auto max-w-2xl">
           {/* Heading */}
           <h1
