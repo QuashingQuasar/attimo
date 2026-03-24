@@ -34,7 +34,7 @@ const oils = [
   flag: "🇮🇹",
   handle: "nocellara",
   image: nocellaraImage,
-  tagline: "Loved by everyone",
+  tagline: "Effortlessly likeable",
   price: 24
 }];
 
