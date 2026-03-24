@@ -38,7 +38,7 @@ export const KleiaWay = () => {
           color: '#B3E58C',
           fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)'
         }}>{tiles[index].title}</h4>
-        <p className="leading-relaxed max-w-[308px]" style={{
+        <p className="leading-relaxed max-w-[325px]" style={{
           fontFamily: 'Space Grotesk, sans-serif',
           color: '#B3E58C',
           fontSize: 'clamp(0.98rem, 1.15vw, 1.155rem)'
