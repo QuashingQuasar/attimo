@@ -22,7 +22,8 @@ import { QuantitySelector } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
-import { detectCountryCode, getFreeShippingThreshold } from "@/lib/shipping";
+import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult } from "@/lib/shipping";
+import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
