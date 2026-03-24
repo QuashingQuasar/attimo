@@ -28,6 +28,7 @@ export const Footer = () => {
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
+              <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
             </div>
           </div>
         </div>
