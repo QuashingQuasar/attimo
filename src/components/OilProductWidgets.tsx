@@ -42,7 +42,7 @@ const oils = [
 export const OilProductWidgets = () => {
   return (
     <section id="oil-collection"
-    className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
+    className="py-14 md:py-20 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
     style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
       <div
@@ -54,7 +54,7 @@ export const OilProductWidgets = () => {
         }} />
 
 
-      <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px" }}>
+      <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px", transform: "scale(0.85)", transformOrigin: "top center" }}>
         <div className="text-center mb-14 md:mb-20">
           <h2
             className="mb-4 mx-auto collection-heading-mobile-width"
