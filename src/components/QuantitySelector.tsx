@@ -31,7 +31,7 @@ export const QuantitySelector = ({
   pricePerUnit,
   onAddToCart,
   buttonId,
-  buttonColor = "#CDDB2D",
+  freeShippingThreshold = 2,
 }: QuantitySelectorProps) => {
   const totalPrice = quantity * pricePerUnit;
   const threshold = freeShippingThreshold ?? 2;
