@@ -2,7 +2,7 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 
 export const KleiaWay = () => {
   const tiles = [
-    { title: "ALWAYS FRESH", text: "Olive oilalways from the latest harvest. Pressed within hours after picking, bottled at peak freshness.", icon: "/icons/mortar.svg" },
+    { title: "ALWAYS FRESH", text: "Olive oil always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.", icon: "/icons/mortar.svg" },
     { title: "SINGLE VARIETY", text: "Each bottle is from a single olive variety, unblended. What you taste is the pure expression of that cultivar and where it comes from.", icon: "/icons/olive.svg" },
     { title: "EARLY HARVEST", text: "Our olives are harvested early in season when they are highest in the polyphenols that give taste and health", icon: "/icons/branch-2.svg" },
     { title: "FROM GROVE TO TABLE", text: "We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.", icon: "/icons/basket-2.svg" },
