@@ -214,7 +214,7 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-8">
+            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-6">
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
