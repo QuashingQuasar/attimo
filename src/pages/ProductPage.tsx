@@ -261,7 +261,7 @@ const ProductPage = () => {
                         {attr.label}
                       </span>
                     </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
+                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.9rem)' }}>
                       {attr.value}
                     </p>
                   </div>
