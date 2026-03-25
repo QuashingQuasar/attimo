@@ -36,7 +36,7 @@ export const IndustryProblem = () => {
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2rem, 2.8vw, 100vw)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                   fontSize: 'clamp(0.85rem, 1.1vw, 1.4rem)'
+                   fontSize: 'clamp(0.85rem, 0.9vw, 100vw)'
                  }}>"extra virgin" olive oils are low in health-boosting polyphenols
                 </p>
             </div>
