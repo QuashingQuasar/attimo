@@ -21,7 +21,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
       <AutoplayVideo src="/videos/hero-video-3.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
-        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
+        <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(1.6rem, 2.2vw, 2.2rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
           Word from the street
         </h2>
         <div className="relative overflow-hidden">
