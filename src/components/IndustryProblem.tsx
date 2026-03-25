@@ -44,7 +44,7 @@ export const IndustryProblem = () => {
 
           <div className="grid lg:grid-cols-3 gap-6 md:gap-10 mx-auto">
             <div className="space-y-2 md:space-y-2">
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 1.25rem)' }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1rem, 1.4vw, 1.5rem)' }}>
                 Flavour and health get blended away
               </h3>
                <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)' }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavour and polyphenols that make it super healthy.</p>
