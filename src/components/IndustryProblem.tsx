@@ -23,8 +23,8 @@ export const IndustryProblem = () => {
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
-            <div className="text-center p-4 md:p-8 border border-white rounded-lg">
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6">
+            <div className="text-center p-4 md:p-5 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
