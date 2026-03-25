@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
   return <section className="py-16 md:py-28 lg:py-32 lg:min-h-screen px-8 md:px-12 lg:px-16 bg-[#1B4229] snap-start flex items-center">
       <div className="mx-auto px-4 w-[85vw]">
-        <div className="relative overflow-hidden rounded-3xl">
+        <div className="relative overflow-hidden rounded-3xl lg:min-h-[85vh] lg:flex lg:flex-col lg:justify-center">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
           <div className="relative z-10 py-5 px-5 md:py-7 lg:py-24 md:px-10 max-w-[70vw] mx-auto">
