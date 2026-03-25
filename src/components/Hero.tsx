@@ -23,7 +23,7 @@ export const Hero = ({
             <img
             src={kleiaLogo}
             alt="ATTIMO olive oil logo"
-            className="object-contain drop-shadow-2xl w-auto max-h-[260px] md:max-h-[320px] lg:max-h-[380px]"
+            className="object-contain drop-shadow-2xl w-auto max-h-[290px] md:max-h-[358px] lg:max-h-[426px]"
             style={{ width: 'min(444px, 61.25vw, 43vh)', height: 'auto' }} />
           
           </div>
