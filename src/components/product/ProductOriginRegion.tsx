@@ -30,7 +30,7 @@ export const ProductOriginRegion = ({
   markerStyle,
 }: ProductOriginRegionProps) => {
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor }}>
+    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor }}>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex justify-center">

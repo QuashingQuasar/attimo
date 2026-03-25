@@ -5,7 +5,7 @@ const neverItems = ["Old", "Blended", "From unknown sources", "Mixed with cheap 
 
 export const ProductAlwaysNever = () => {
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: '#1B4229' }}>
+    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#1B4229' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="rounded-2xl p-8 space-y-5" style={{ backgroundColor: 'rgba(205, 219, 45, 0.15)', border: '1px solid rgba(205, 219, 45, 0.3)' }}>

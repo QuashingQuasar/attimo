@@ -42,7 +42,7 @@ export const PolyphenolStory = () => {
   const prevCards = () => { if (currentIndex > 0) setCurrentIndex(currentIndex - 1); };
 
   return (
-    <section className="pt-28 md:pt-32 lg:pt-40 pb-24 md:pb-28 lg:pb-36 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
