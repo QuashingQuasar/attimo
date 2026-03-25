@@ -19,7 +19,7 @@ export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "4
 
   return <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-bold mb-4" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#1B4229', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
               ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
