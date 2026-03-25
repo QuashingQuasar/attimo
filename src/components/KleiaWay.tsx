@@ -77,7 +77,7 @@ export const KleiaWay = () => {
           {renderVideo(1)}
           {renderTile(2)}
           {renderVideo(2)}
-          {renderTile(3)}
+          <div className="md:hidden lg:block">{renderTile(3)}</div>
           {renderVideo(3)}
           {renderTile(4)}
         </div>
