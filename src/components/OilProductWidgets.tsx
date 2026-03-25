@@ -61,7 +61,7 @@ export const OilProductWidgets = () => {
             style={{
               fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
-              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+              fontSize: "clamp(1.4rem, 2vw, 2rem)",
               letterSpacing: "0.05em"
             }}>Specialty Extra Virgin Olive Oil
           </h2>
