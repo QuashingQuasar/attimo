@@ -100,7 +100,7 @@ export const OilProductWidgets = () => {
 
                 <div className="absolute top-0 left-0 right-0 z-10 px-5 pt-5 flex justify-between items-start">
                   <span
-                  className="oil-card-label"
+                  className="oil-card-label whitespace-nowrap"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     letterSpacing: "0.1em",
