@@ -43,11 +43,8 @@ export const BlogSection = () => {
     }
     setIsSubmitting(true);
     try {
-      const { error } = await supabase.from("waitlist").insert({
-        name: "Newsletter Subscriber",
-        contact_method: "email",
-        contact_value: trimmed,
-        gdpr_consent: true
+      const { error } = await supabase.from("newsletter_subscribers").insert({
+        email: trimmed,
       });
       if (error) throw error;
       toast.success("You're on the list!");
