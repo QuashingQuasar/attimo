@@ -247,7 +247,7 @@ const ProductPage = () => {
               </p>
 
               {/* Description */}
-              <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)', maxWidth: '38.93rem' }}>
+              <p className="text-olive-medium leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)', maxWidth: '38.93rem' }}>
                 {content.originStory.headline.split('.').slice(0, 3).filter(Boolean).join('.') + '.'}
               </p>
 
@@ -257,11 +257,11 @@ const ProductPage = () => {
               <div key={attr.label} className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
                       {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         {attr.label}
                       </span>
                     </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1rem)' }}>
+                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                       {attr.value}
                     </p>
                   </div>
@@ -342,7 +342,7 @@ const ProductPage = () => {
                       </span>
                     </p>
                     {tile.description &&
-                <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         {tile.description}
                       </p>
                 }
