@@ -154,7 +154,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                           </p>
                         </div>
                         <div className="flex items-center justify-center mt-4">
-                          <div className="w-[115px] h-[115px] flex items-center justify-center">
+                          <div className="w-[92px] h-[92px] md:w-[92px] md:h-[92px] lg:w-[115px] lg:h-[115px] flex items-center justify-center">
                             <img src={icons[index]} alt="icon" className="w-full h-full object-contain" style={{ filter: 'invert(14%) sepia(23%) saturate(1471%) hue-rotate(98deg) brightness(95%) contrast(92%)' }} />
                           </div>
                         </div>
