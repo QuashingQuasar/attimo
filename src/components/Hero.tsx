@@ -31,15 +31,17 @@ export const Hero = ({
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button
             onClick={() => {
-              const el = document.getElementById('oil-collection');
-              if (el) {
-                const container = el.closest('.overflow-y-scroll') as HTMLElement;
-                if (container) {
-                  const headerHeight = 80;
-                  const offset = el.offsetTop - headerHeight;
-                  container.scrollTo({ top: offset, behavior: 'smooth' });
+              const section = document.getElementById('oil-collection');
+              const heading = section?.querySelector('h2');
+              const target = heading || section;
+              if (target) {
+                const scrollContainer = document.querySelector('.overflow-y-scroll') as HTMLElement | null;
+                if (scrollContainer) {
+                  const top = target.getBoundingClientRect().top + scrollContainer.scrollTop - 24;
+                  scrollContainer.scrollTo({ top, behavior: 'smooth' });
                 } else {
-                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const top = target.getBoundingClientRect().top + window.scrollY - 24;
+                  window.scrollTo({ top, behavior: 'smooth' });
                 }
               }
             }}
