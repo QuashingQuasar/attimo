@@ -19,7 +19,7 @@ export const IndustryProblem = () => {
             </h2>
              <p className="text-white/90 leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(1rem, 1.3vw, 1.6rem)'
+                fontSize: 'clamp(1rem, 1.1vw, 100vw)'
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
