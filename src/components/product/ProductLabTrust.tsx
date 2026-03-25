@@ -12,7 +12,7 @@ interface ProductLabTrustProps {
 export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps) => {
   const { heading, subheading, values: labValues } = content;
   return (
-    <section className="py-14 md:py-20 lg:py-24" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="pt-14 md:pt-20 lg:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12">
