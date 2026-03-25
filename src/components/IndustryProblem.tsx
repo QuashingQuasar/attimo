@@ -33,7 +33,7 @@ export const IndustryProblem = () => {
                 </p>
             </div>
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~90%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 3rem)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                   fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
