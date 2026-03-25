@@ -59,7 +59,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
       <div>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto" style={{ zoom: 0.88 }}>
-            <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.2vw, 2.2rem)' }}> }}>
+            <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.2vw, 2.2rem)' }}>
               the polyphenol difference
             </h2>
             <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)', maxWidth: '53.2rem' }}>Polyphenols make all the difference for olive oil health benefits and flavour. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
