@@ -13,30 +13,30 @@ export const IndustryProblem = () => {
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
-                fontSize: 'clamp(1.2rem, 4vw, 4.8rem)'
+                fontSize: 'clamp(1.2rem, 4vw, 3rem)'
               }}>
               The <span className="font-medium italic">"extra virgin" lie</span>
             </h2>
              <p className="text-white/90 leading-relaxed font-light" style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(0.94rem, 1.53vw, 1.7rem)'
+                fontSize: 'clamp(0.94rem, 1.53vw, 1.125rem)'
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6">
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~80%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 3rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
+                   fontSize: 'clamp(1rem, 1.4vw, 1rem)'
                 }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
                 </p>
             </div>
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~90%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 3rem)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: 'clamp(1rem, 1.4vw, 1.6rem)'
+                  fontSize: 'clamp(1rem, 1.4vw, 1rem)'
                 }}>"extra virgin" olive oils are low in health-boosting polyphenols
                 </p>
             </div>
@@ -44,25 +44,25 @@ export const IndustryProblem = () => {
 
           <div className="grid lg:grid-cols-3 gap-6 md:gap-10 mx-auto">
             <div className="space-y-2 md:space-y-2">
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 1.25rem)' }}>
                 Flavour and health get blended away
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavour and polyphenols that make it super healthy.</p>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1rem)' }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavour and polyphenols that make it super healthy.</p>
             </div>
             <div className="space-y-2 md:space-y-2">
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 1.25rem)' }}>
                 You've never tasted the real thing
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1rem)' }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
             </div>
             <div className="space-y-2 md:space-y-2">
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 1.25rem)' }}>
                 Big oil kills family groves
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1rem)' }}>
                  Financial stress forces small producers to sell to industrial players. Their sublime oil sold gets blended into cheap stuff and sold for pennies. Making olive oil is an art much like wine, but when the artists don't get paid, the art disappears.
                </p>
             </div>
