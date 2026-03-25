@@ -198,9 +198,6 @@ export const FAQ = ({ handle }: FAQProps) => {
           <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(1.82rem, 3.64vw, 4.1rem)" }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-600 font-light" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}>
-            Everything you need to know about ATTIMO
-          </p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4">
