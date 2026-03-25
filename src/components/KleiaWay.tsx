@@ -17,10 +17,10 @@ export const KleiaWay = () => {
   ];
 
   const renderTile = (index: number) => (
-    <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
-      <div className="h-full flex flex-col justify-center items-center text-center gap-3">
+    <div className="rounded-xl p-5 h-[208px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+      <div className="h-full flex flex-col justify-center items-center text-center gap-2">
         <div
-          className="w-[56px] h-[48px] flex-shrink-0"
+          className="w-[46px] h-[40px] flex-shrink-0"
           style={{
             backgroundColor: '#B3E58C',
             WebkitMaskImage: `url(${tiles[index].icon})`,
@@ -36,19 +36,19 @@ export const KleiaWay = () => {
         <h4 className="font-bold" style={{
           fontFamily: 'UDC Working Man Sans, sans-serif',
           color: '#B3E58C',
-          fontSize: 'clamp(1.2rem, 1.6vw, 1.7rem)'
+          fontSize: 'clamp(1rem, 1.33vw, 1.41rem)'
         }}>{tiles[index].title}</h4>
-        <p className="leading-relaxed max-w-[325px]" style={{
+        <p className="leading-relaxed max-w-[270px]" style={{
           fontFamily: 'Space Grotesk, sans-serif',
           color: '#B3E58C',
-          fontSize: 'clamp(0.98rem, 1.15vw, 1.155rem)'
+          fontSize: 'clamp(0.81rem, 0.95vw, 0.96rem)'
         }}>{tiles[index].text}</p>
       </div>
     </div>
   );
 
   const renderVideo = (index: number) => (
-    <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+    <div className="rounded-xl relative overflow-hidden h-[208px] lg:h-auto">
       <AutoplayVideo
         src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
@@ -58,19 +58,19 @@ export const KleiaWay = () => {
 
   return (
     <section className="snap-start py-14 md:py-20 lg:py-24" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
-      <div className="container mx-auto px-6" style={{ zoom: 0.83 }}>
-        <div className="text-center mb-8 lg:mb-12">
-          <h2 className="font-light mb-8 tracking-tight" style={{
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-6 lg:mb-10">
+          <h2 className="font-light mb-6 tracking-tight" style={{
             fontFamily: 'UDC Working Man Sans, sans-serif',
             color: '#1B4229',
-            fontSize: 'clamp(2.4rem, 4.2vw, 4.5rem)'
+            fontSize: 'clamp(2rem, 3.5vw, 3.7rem)'
           }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[75vw] mx-auto">
           {/* Row 1: content - video - content */}
           {renderTile(0)}
           {renderVideo(0)}
