@@ -59,7 +59,7 @@ export const IndustryProblem = () => {
                </p>
             </div>
             <div className="space-y-2 md:space-y-2">
-              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.9rem, 1.1vw, 1.4rem)' }}>
+              <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.9rem, 1.1vw, 1.8rem)' }}>
                 Big oil kills family groves
               </h3>
                <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 1.1rem)' }}>
