@@ -7,9 +7,9 @@ export const IndustryProblem = () => {
         <div className="relative overflow-hidden rounded-3xl lg:min-h-[85vh] lg:flex lg:flex-col lg:justify-center">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-          <div className="relative z-10 py-5 px-5 md:py-7 lg:py-24 md:px-10 max-w-[70vw] mx-auto">
+          <div className="relative z-10 py-5 px-5 md:py-7 lg:py-24 md:px-10 max-w-[70vw] lg:max-w-4xl lg:mx-auto mx-auto">
         <div className="mx-auto">
-          <div className="text-left mb-6 md:mb-6">
+          <div className="text-left mb-6 md:mb-6 lg:mb-10">
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
@@ -23,7 +23,7 @@ export const IndustryProblem = () => {
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6">
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6 lg:mb-10">
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 3rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
