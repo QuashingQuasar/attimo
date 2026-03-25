@@ -25,7 +25,7 @@ export const IndustryProblem = () => {
 
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6 lg:mb-10">
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
-              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2rem, 3.5vw, 5rem)' }}>~80%</div>
+              <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2rem, 2.8vw, 100vw)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
                     fontSize: 'clamp(0.85rem, 1.1vw, 1.4rem)'
