@@ -195,7 +195,7 @@ export const FAQ = ({ handle }: FAQProps) => {
     <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-10 md:pb-14 lg:pb-16" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(1.82rem, 3.64vw, 4.1rem)" }}>
+          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)" }}> }}>
             Frequently Asked Questions
           </h2>
         </div>

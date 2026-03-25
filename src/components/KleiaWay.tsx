@@ -63,7 +63,7 @@ export const KleiaWay = () => {
           <h2 className="font-light mb-6 tracking-tight" style={{
             fontFamily: 'UDC Working Man Sans, sans-serif',
             color: '#1B4229',
-            fontSize: 'clamp(2rem, 3.5vw, 3.7rem)'
+            fontSize: 'clamp(1.4rem, 1.8vw, 1.8rem)'
           }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
