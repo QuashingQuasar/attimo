@@ -61,7 +61,7 @@ export const HarvestProduct = () => {
 
   if (!product) {
     return (
-      <section id="harvest-product" className="pt-8 md:pt-10 lg:pt-12 pb-4 md:pb-6 lg:pb-8 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
+      <section id="harvest-product" className="py-12 md:py-16 lg:py-20 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
         <div className="w-full flex items-center justify-center min-h-[600px]">
           <p className="text-olive-medium">No products found</p>
         </div>
