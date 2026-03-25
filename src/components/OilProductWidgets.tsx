@@ -86,7 +86,7 @@ export const OilProductWidgets = () => {
             className="group flex flex-col">
 
               <div
-              className="relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-[3/4] mb-7"
+              className="relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-[3/4] mb-7 max-w-[85%] md:max-w-full mx-auto"
               style={{ backgroundColor: "#1B4229" }}>
 
                 <div
