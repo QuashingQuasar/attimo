@@ -2,7 +2,7 @@ import { AlertTriangle, Blend, Eye, Building2 } from "lucide-react";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { Card, CardContent } from "@/components/ui/card";
 export const IndustryProblem = () => {
-  return <section className="py-16 md:py-20 bg-[#1B4229] snap-start flex items-center">
+  return <section className="py-16 md:py-20 px-8 md:px-12 lg:px-16 bg-[#1B4229] snap-start flex items-center">
       <div className="mx-auto px-4 w-[85vw]">
         <div className="relative overflow-hidden rounded-3xl">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
