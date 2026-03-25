@@ -23,7 +23,7 @@ export const Hero = ({
             <img
             src={kleiaLogo}
             alt="ATTIMO olive oil logo"
-            className="object-contain drop-shadow-2xl w-auto max-h-[260px] md:max-h-[320px] lg:max-h-[380px]"
+            className="object-contain drop-shadow-2xl w-auto max-h-[290px] md:max-h-[358px] lg:max-h-[426px]"
             style={{ width: 'min(444px, 61.25vw, 43vh)', height: 'auto' }} />
           
           </div>
@@ -46,7 +46,7 @@ export const Hero = ({
                 }
               }
             }}
-            className="text-sm md:text-base lg:text-base py-3 px-8 lg:py-3.5 lg:px-10 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="text-base md:text-lg lg:text-lg py-3.5 px-9 lg:py-4 lg:px-11 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               border: '2px solid #CDDB2D',
