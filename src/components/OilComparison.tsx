@@ -17,7 +17,7 @@ interface OilComparisonProps {
 export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "400-900 mg/kg" }: OilComparisonProps) => {
   const comparisonData = getComparisonData(polyphenolDisplay);
 
-  return <section className="pt-11 md:pt-16 lg:pt-[77px] pb-14 md:pb-20 lg:pb-24 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
+  return <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
