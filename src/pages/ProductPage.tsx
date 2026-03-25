@@ -310,11 +310,11 @@ const ProductPage = () => {
                     </Button>
 
                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         <ShieldCheck size={20} strokeWidth={1.5} />
                         Third party lab-tested quality
                       </p>
-                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.15rem)' }}>
+                      <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         <Truck size={20} strokeWidth={1.5} />
                         Order today, ships tomorrow
                       </p>
