@@ -28,8 +28,8 @@ export const IndustryProblem = () => {
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2rem, 3.5vw, 4rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
-                   fontSize: 'clamp(1rem, 1.4vw, 1rem)'
-                }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
+                    fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)'
+                 }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
                 </p>
             </div>
             <div className="text-center p-4 md:p-5 border border-white rounded-lg">
