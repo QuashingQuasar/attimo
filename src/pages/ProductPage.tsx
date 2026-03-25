@@ -214,7 +214,7 @@ const ProductPage = () => {
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-8">
+            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-6">
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
@@ -296,11 +296,11 @@ const ProductPage = () => {
 
                     <Button
                       onClick={handleAddToCart}
-                      className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 lg:py-5 md:py-7 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
+                      className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
                         backgroundColor: content.buttonColor,
-                        fontSize: "clamp(1.1rem, 2vw, 1.45rem)",
+                        fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
                         borderRadius: "0.75rem"
                       }}>
                       <span className="flex flex-col items-center gap-0.5">
