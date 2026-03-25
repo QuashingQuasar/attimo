@@ -71,7 +71,7 @@ export const OilProductWidgets = () => {
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
-              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
+              fontSize: "clamp(0.9rem, 1vw, 1rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
             }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
