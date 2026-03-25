@@ -43,15 +43,13 @@ export const Hero = ({
                 }
               }
             }}
-            className="hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="text-sm md:text-base lg:text-base py-3 px-8 lg:py-3.5 lg:px-10 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               border: '2px solid #CDDB2D',
               color: '#1B4229',
               backgroundColor: '#CDDB2D',
-              fontSize: 'clamp(1.15rem, 1.38vw, 1.38rem)',
               borderRadius: '8px',
-              padding: 'clamp(21px, 2.23vw, 28px) clamp(33px, 3vw, 47px)'
             }}>
               Shop New Harvest
             </Button>
