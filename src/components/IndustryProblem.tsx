@@ -7,9 +7,9 @@ export const IndustryProblem = () => {
         <div className="relative overflow-hidden rounded-3xl">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-          <div className="relative z-10 py-5 px-5 md:py-11 md:px-14 max-w-[70vw] mx-auto" style={{ transform: "scale(0.9)", transformOrigin: "center center" }}>
+          <div className="relative z-10 py-5 px-5 md:py-7 md:px-10 max-w-[70vw] mx-auto">
         <div className="mx-auto">
-          <div className="text-left mb-6 md:mb-10">
+          <div className="text-left mb-6 md:mb-6">
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
@@ -23,8 +23,8 @@ export const IndustryProblem = () => {
               }}>Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don't even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-10">
-            <div className="text-center p-4 md:p-8 border border-white rounded-lg">
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 mb-6 md:mb-6">
+            <div className="text-center p-4 md:p-5 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~80%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
@@ -32,7 +32,7 @@ export const IndustryProblem = () => {
                 }}>olive oils sold as "extra virgin" in supermarkets don't meet those standards
                 </p>
             </div>
-            <div className="text-center p-4 md:p-8 border border-white rounded-lg">
+            <div className="text-center p-4 md:p-5 border border-white rounded-lg">
               <div className="font-working-man font-light text-white mb-2 md:mb-3" style={{ fontSize: 'clamp(2.13rem, 3.83vw, 4.25rem)' }}>~90%</div>
                <p className="text-white/90 font-light leading-relaxed" style={{
                   fontFamily: 'Space Grotesk, sans-serif',
@@ -43,13 +43,13 @@ export const IndustryProblem = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 md:gap-10 mx-auto">
-            <div className="space-y-2 md:space-y-4">
+            <div className="space-y-2 md:space-y-2">
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Flavour and health get blended away
               </h3>
                <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1.5rem)' }}>Big producers scale by mixing oils from multiple sources and years into a standardized taste. This practice kills what makes real olive oil special: fresh distinct flavour and polyphenols that make it super healthy.</p>
             </div>
-            <div className="space-y-2 md:space-y-4">
+            <div className="space-y-2 md:space-y-2">
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 You've never tasted the real thing
               </h3>
@@ -58,7 +58,7 @@ export const IndustryProblem = () => {
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
             </div>
-            <div className="space-y-2 md:space-y-4">
+            <div className="space-y-2 md:space-y-2">
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Big oil kills family groves
               </h3>
