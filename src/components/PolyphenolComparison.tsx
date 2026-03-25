@@ -136,7 +136,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
             </div>
 
             <div className="mt-4 md:mt-8 lg:mt-16">
-              <div className="bg-accent rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-96">
+              <div className="bg-accent rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-0 md:min-h-64 lg:min-h-96">
                 <div className="grid grid-cols-1 md:grid-cols-3 h-full divide-y md:divide-y-0 md:divide-x divide-olive-dark/10">
                   {tweets.map((tweet, index) => {
                     const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
@@ -144,7 +144,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                     const icons = ['/icons/lady-2.svg', '/icons/basket-2.svg', '/icons/branch-2.svg'];
 
                     return (
-                      <div key={tweet.id} className="p-6 flex flex-col h-full min-h-96" style={{ backgroundColor: bgColors[index] }}>
+                      <div key={tweet.id} className="p-6 flex flex-col h-full min-h-0 md:min-h-64 lg:min-h-96" style={{ backgroundColor: bgColors[index] }}>
                         <div className="space-y-4 flex-grow">
                           <p className={`${textColors[index]} leading-relaxed`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
                             {tweet.content}
