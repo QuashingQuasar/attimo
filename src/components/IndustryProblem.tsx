@@ -62,7 +62,7 @@ export const IndustryProblem = () => {
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.9rem, 1.1vw, 1.8rem)' }}>
                 Big oil kills family groves
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 1.1rem)' }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 1.5rem)' }}>
                  Financial stress forces small producers to sell to industrial players. Their sublime oil sold gets blended into cheap stuff and sold for pennies. Making olive oil is an art much like wine, but when the artists don't get paid, the art disappears.
                </p>
             </div>
