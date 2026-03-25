@@ -196,7 +196,7 @@ export const OilProductWidgets = () => {
 
         <div className="text-center mt-20 md:mt-28">
           <p
-            className="mb-7 text-lg"
+            className="mb-7 text-sm md:text-base lg:text-lg"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
@@ -208,7 +208,7 @@ export const OilProductWidgets = () => {
           </p>
           <Link
             to="/quiz"
-            className="inline-flex items-center gap-3 px-12 py-5 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
+            className="text-sm md:text-base inline-flex items-center gap-3 px-12 py-5 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",
               backgroundColor: "#CDDB2D",
