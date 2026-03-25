@@ -180,7 +180,7 @@ const ProductPage = () => {
       <Header onWaitlistClick={() => {}} forceTransparent darkNav />
       
       {/* Product Hero Section */}
-      <section className="lg:pt-0">
+      <section className="product-hero lg:pt-0">
         <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-start">
             
             {/* Left: Full-bleed sticky image */}
@@ -393,7 +393,9 @@ const ProductPage = () => {
         markerStyle={content.originRegion?.markerStyle} />
       
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
+      <div className="pt-[35px] md:pt-[51px] lg:pt-[62px]">
+        <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
+      </div>
       <FAQ handle={handle} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} />
 
