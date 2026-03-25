@@ -54,7 +54,7 @@ export const OilProductWidgets = () => {
         }} />
 
 
-      <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px", transform: "scale(0.79)", transformOrigin: "top center", marginBottom: "-28%" }}>
+      <div className="relative z-10 mx-auto -mb-[22rem] md:-mb-[18rem] lg:-mb-[18%]" style={{ maxWidth: "1400px", transform: "scale(0.79)", transformOrigin: "top center" }}>
         <div className="text-center mb-14 md:mb-20">
           <h2
             className="mb-4 mx-auto collection-heading-mobile-width"
