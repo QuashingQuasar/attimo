@@ -136,7 +136,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
             </div>
 
             <div className="mt-4 md:mt-8 lg:mt-16">
-              <div className="bg-accent rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-96">
+              <div className="bg-accent rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1 min-h-0 md:min-h-64 lg:min-h-96">
                 <div className="grid grid-cols-1 md:grid-cols-3 h-full divide-y md:divide-y-0 md:divide-x divide-olive-dark/10">
                   {tweets.map((tweet, index) => {
                     const bgColors = ['#B3E58C', '#CDDB2D', '#EBDD21'];
