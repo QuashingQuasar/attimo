@@ -25,7 +25,7 @@ export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "4
               ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
             </h2>
           </div>
-          <div>
+          <div className="max-w-2xl mx-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr style={{ borderBottom: '2px dashed #1B4229' }}>
