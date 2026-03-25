@@ -257,7 +257,7 @@ const ProductPage = () => {
               <div key={attr.label} className="space-y-1.5">
                     <div className="flex items-center gap-2.5">
                       {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.95rem, 1.15vw, 1.2rem)' }}>
+                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.9rem)' }}>
                         {attr.label}
                       </span>
                     </div>
