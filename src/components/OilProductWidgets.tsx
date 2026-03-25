@@ -194,7 +194,7 @@ export const OilProductWidgets = () => {
           )}
         </div>
 
-        <div className="text-center mt-20 md:mt-28">
+        <div className="text-center mt-4 md:mt-6">
           <p
             className="mb-7 text-lg"
             style={{
