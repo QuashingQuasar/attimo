@@ -109,7 +109,7 @@ export const OilProductWidgets = () => {
                     {oil.flag} {oil.origin.toUpperCase()}
                   </span>
                   <span
-                  className="oil-card-label"
+                  className="oil-card-label whitespace-nowrap"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     letterSpacing: "0.1em",
