@@ -144,7 +144,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                     const icons = ['/icons/lady-2.svg', '/icons/basket-2.svg', '/icons/branch-2.svg'];
 
                     return (
-                      <div key={tweet.id} className="p-6 flex flex-col h-full min-h-96" style={{ backgroundColor: bgColors[index] }}>
+                      <div key={tweet.id} className="p-6 flex flex-col h-full min-h-0 md:min-h-64 lg:min-h-96" style={{ backgroundColor: bgColors[index] }}>
                         <div className="space-y-4 flex-grow">
                           <p className={`${textColors[index]} leading-relaxed`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.125rem, 1.1vw, 1.25rem)' }}>
                             {tweet.content}
