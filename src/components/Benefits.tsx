@@ -10,7 +10,7 @@ const benefits = [
 
 export const Benefits = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-background to-secondary/30">
+    <section className="py-14 md:py-20 lg:py-24 bg-gradient-to-b from-background to-secondary/30">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-olive-dark mb-6">Why Our Olive Oil is Different</h2>

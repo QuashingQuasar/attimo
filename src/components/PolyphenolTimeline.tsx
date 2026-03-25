@@ -23,7 +23,7 @@ export const PolyphenolTimeline = () => {
   const currentStep = timelineSteps.find(step => step.id === activeStep) || timelineSteps[0];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-14 md:py-20 lg:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-6">

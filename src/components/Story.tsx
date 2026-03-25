@@ -1,6 +1,6 @@
 export const Story = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-[hsl(var(--product-background))]">
+    <section className="py-14 md:py-20 lg:py-24 bg-[hsl(var(--product-background))]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
