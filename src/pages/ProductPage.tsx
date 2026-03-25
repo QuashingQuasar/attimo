@@ -393,7 +393,9 @@ const ProductPage = () => {
         markerStyle={content.originRegion?.markerStyle} />
       
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
+      <div className="pt-[35px] md:pt-[51px] lg:pt-[62px]">
+        <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
+      </div>
       <FAQ handle={handle} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} />
 
