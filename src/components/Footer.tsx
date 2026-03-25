@@ -1,7 +1,7 @@
 import attimoLogo from '@/assets/attimo-footer-logo.svg';
 
 export const Footer = () => {
-  return <footer className="py-12 px-6" style={{ backgroundColor: '#1B4229' }}>
+  return <footer className="py-12 md:py-16 lg:py-20 px-6" style={{ backgroundColor: '#1B4229' }}>
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">

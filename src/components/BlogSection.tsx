@@ -60,7 +60,7 @@ export const BlogSection = () => {
   };
 
   return (
-    <section className="pt-20 md:pt-28 pb-12 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
+    <section className="py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>

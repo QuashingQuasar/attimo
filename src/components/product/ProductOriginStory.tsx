@@ -61,7 +61,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   );
 
   return (
-    <section className="py-16 md:py-24" style={{ backgroundColor: "#FFFAEA" }}>
+    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
           <p
