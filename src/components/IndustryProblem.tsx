@@ -53,7 +53,7 @@ export const IndustryProblem = () => {
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1rem, 1.4vw, 1.5rem)' }}>
                 You've never tasted the real thing
               </h3>
-               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.3vw, 1rem)' }}>
+               <p className="text-white/80 leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1.1vw, 1.2rem)' }}>
                  True extra virgin is intense: bitter, peppery, fragrant. Each oil has a fingerprint: olive variety, grove, harvest, craft. 
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
