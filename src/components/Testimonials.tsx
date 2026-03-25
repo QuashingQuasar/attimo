@@ -30,10 +30,10 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
           <div className="flex">
             <div className="flex gap-7 animate-testimonial-scroll">
               {duplicatedTestimonials.map((testimonial, index) => (
-                <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm" style={{ width: "442px" }}>
+                <Card key={`${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm w-[85vw] sm:w-[340px] lg:w-[442px]">
                   <CardContent className="p-7">
                     <h4 className="font-semibold text-olive-dark mb-3" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.title}</h4>
-                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
+                    <p className="text-sm md:text-base text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif" }}>{testimonial.text}</p>
                     <div className="flex justify-between items-start text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <div className="flex flex-col">
                         <span>{testimonial.name}</span>
@@ -47,10 +47,10 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
             </div>
             <div className="flex gap-7 animate-testimonial-scroll" aria-hidden="true">
               {duplicatedTestimonials.map((testimonial, index) => (
-                <Card key={`duplicate-${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm" style={{ width: "442px" }}>
+                <Card key={`duplicate-${testimonial.name}-${index}`} className="flex-shrink-0 bg-white border-olive-light/20 shadow-sm w-[85vw] sm:w-[340px] lg:w-[442px]">
                   <CardContent className="p-7">
                     <h4 className="font-semibold text-olive-dark mb-3" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.title}</h4>
-                    <p className="text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.006rem, 1.15vw, 1.294rem)" }}>{testimonial.text}</p>
+                    <p className="text-sm md:text-base text-olive-dark/80 leading-relaxed mb-4" style={{ fontFamily: "Space Grotesk, sans-serif" }}>{testimonial.text}</p>
                     <div className="flex justify-between items-start text-olive-medium" style={{ fontSize: "clamp(0.863rem, 0.978vw, 1.15rem)" }}>
                       <div className="flex flex-col">
                         <span>{testimonial.name}</span>
