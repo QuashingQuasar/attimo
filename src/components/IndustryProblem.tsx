@@ -9,7 +9,7 @@ export const IndustryProblem = () => {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
           <div className="relative z-10 py-5 px-5 md:py-7 md:px-10 max-w-[70vw] mx-auto">
         <div className="mx-auto">
-          <div className="text-left mb-6 md:mb-10">
+          <div className="text-left mb-6 md:mb-6">
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
                 fontFamily: 'UDC Working Man Sans, sans-serif',
                 color: '#CDDB2D',
