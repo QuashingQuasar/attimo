@@ -17,7 +17,7 @@ export const KleiaWay = () => {
   ];
 
   const renderTile = (index: number) => (
-    <div className="rounded-xl p-5 h-[208px] lg:h-auto" style={{ backgroundColor: '#1B4229' }}>
+    <div className="rounded-xl p-5 h-[208px] lg:h-[280px]" style={{ backgroundColor: '#1B4229' }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-2">
         <div
           className="w-[46px] h-[40px] flex-shrink-0"
@@ -48,7 +48,7 @@ export const KleiaWay = () => {
   );
 
   const renderVideo = (index: number) => (
-    <div className="rounded-xl relative overflow-hidden h-[208px] lg:h-auto">
+    <div className="rounded-xl relative overflow-hidden h-[208px] lg:h-[280px]">
       <AutoplayVideo
         src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
@@ -69,19 +69,14 @@ export const KleiaWay = () => {
             <span className="font-medium italic">You Get The Good Stuff</span>
           </h2>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[75vw] mx-auto">
-          {/* Row 1: content - video - content */}
           {renderTile(0)}
           {renderVideo(0)}
           {renderTile(1)}
-
-          {/* Row 2: video - content - video */}
           {renderVideo(1)}
           {renderTile(2)}
           {renderVideo(2)}
-
-          {/* Row 3: content - video - content */}
           {renderTile(3)}
           {renderVideo(3)}
           {renderTile(4)}
