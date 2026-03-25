@@ -7,7 +7,7 @@ export const IndustryProblem = () => {
         <div className="relative overflow-hidden rounded-3xl lg:min-h-[85vh] lg:flex lg:flex-col lg:justify-center">
           <AutoplayVideo src="/videos/harvest-2024-1.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-          <div className="relative z-10 py-5 px-5 md:py-7 lg:py-24 md:px-10 max-w-[50vw] lg:max-w-4xl lg:mx-auto mx-auto">
+          <div className="relative z-10 py-5 px-5 md:py-7 lg:py-24 md:px-10 max-w-[55vw] lg:max-w-4xl lg:mx-auto mx-auto">
         <div className="mx-auto">
           <div className="text-left mb-6 md:mb-6 lg:mb-10">
             <h2 className="font-light mb-3 md:mb-5 leading-tight tracking-tight whitespace-nowrap" style={{
