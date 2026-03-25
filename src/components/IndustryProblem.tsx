@@ -58,7 +58,7 @@ export const IndustryProblem = () => {
                  These are also the healthiest oils, but most people never get to taste them.
                </p>
             </div>
-            <div className="space-y-2 md:space-y-4">
+            <div className="space-y-2 md:space-y-2">
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Big oil kills family groves
               </h3>
