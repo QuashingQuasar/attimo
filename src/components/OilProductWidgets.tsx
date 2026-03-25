@@ -196,7 +196,7 @@ export const OilProductWidgets = () => {
 
         <div className="text-center mt-20 md:mt-28">
           <p
-            className="mb-7 text-lg"
+            className="mb-7 text-sm md:text-base lg:text-lg"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
