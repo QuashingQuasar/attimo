@@ -57,7 +57,7 @@ export const KleiaWay = () => {
   );
 
   return (
-    <section <section className="snap-start pt-10 md:pt-14 lg:pt-16 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}> style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="snap-start pt-10 md:pt-14 lg:pt-16 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-6 lg:mb-10">
           <h2 className="font-light mb-6 tracking-tight" style={{

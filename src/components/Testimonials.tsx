@@ -17,7 +17,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section <section className="py-10 md:py-14 lg:py-16 snap-start min-h-[50vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}> flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}>
+    <section className="py-10 md:py-14 lg:py-16 snap-start min-h-[50vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}>
       <AutoplayVideo src="/videos/hero-video-3.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
