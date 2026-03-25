@@ -43,7 +43,7 @@ export const IndustryProblem = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 md:gap-10 mx-auto">
-            <div className="space-y-2 md:space-y-4">
+            <div className="space-y-2 md:space-y-2">
               <h3 className="font-bold text-white tracking-tight leading-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.2rem, 1.8vw, 2rem)' }}>
                 Flavour and health get blended away
               </h3>
