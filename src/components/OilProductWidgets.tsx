@@ -42,7 +42,7 @@ const oils = [
 export const OilProductWidgets = () => {
   return (
     <section id="oil-collection"
-    className="pt-14 md:pt-20 pb-6 md:pb-10 lg:pb-14 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
+    className="pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
     style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
       <div
@@ -61,7 +61,7 @@ export const OilProductWidgets = () => {
             style={{
               fontFamily: "Beverly Drive, serif",
               color: "#1B4229",
-              fontSize: "clamp(1.4rem, 2vw, 2rem)",
+              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
             }}>Specialty Extra Virgin Olive Oil
           </h2>
@@ -71,7 +71,7 @@ export const OilProductWidgets = () => {
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
-              fontSize: "clamp(0.9rem, 1vw, 1rem)",
+              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
             }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
@@ -200,7 +200,7 @@ export const OilProductWidgets = () => {
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
-              fontSize: "clamp(0.9rem, 1vw, 1rem)",
+              fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               opacity: 0.85
             }}>
 

@@ -60,7 +60,7 @@ export const BlogSection = () => {
   };
 
   return (
-    <section className="py-10 md:py-14 lg:py-16 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
+    <section className="py-14 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
           <div>
@@ -68,7 +68,7 @@ export const BlogSection = () => {
               className="tracking-tight leading-[0.95]"
               style={{
                 fontFamily: "Beverly Drive, cursive",
-                fontSize: "clamp(1.6rem, 2.2vw, 2.2rem)",
+                fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
                 color: "#1B4229"
               }}>
               The Olive Press

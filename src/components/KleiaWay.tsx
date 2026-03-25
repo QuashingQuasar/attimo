@@ -57,13 +57,13 @@ export const KleiaWay = () => {
   );
 
   return (
-    <section className="snap-start pt-10 md:pt-14 lg:pt-16 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="snap-start pt-14 md:pt-20 lg:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-6 lg:mb-10">
           <h2 className="font-light mb-6 tracking-tight" style={{
             fontFamily: 'UDC Working Man Sans, sans-serif',
             color: '#1B4229',
-            fontSize: 'clamp(1.4rem, 1.8vw, 1.8rem)'
+            fontSize: 'clamp(2rem, 3.5vw, 3.7rem)'
           }}>
             How We Make Sure<br />
             <span className="font-medium italic">You Get The Good Stuff</span>
