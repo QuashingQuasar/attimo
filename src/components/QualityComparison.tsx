@@ -31,7 +31,7 @@ const comparisonData = [
 
 export const QualityComparison = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-14 md:py-20 lg:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold text-olive-dark mb-6 tracking-tight">

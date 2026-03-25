@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const LabValues = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#FFFAEA' }}>
+    <section className="py-14 md:py-20 lg:py-24" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-16">

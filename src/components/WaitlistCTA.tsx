@@ -4,7 +4,7 @@ interface WaitlistCTAProps {
   onWaitlistClick: () => void;
 }
 export const WaitlistCTA = ({ onWaitlistClick }: WaitlistCTAProps) => {
-  return <section className="py-12 md:py-16 lg:py-20 snap-start relative overflow-hidden" style={{ backgroundColor: '#B3E58C' }}>
+  return <section className="py-14 md:py-20 lg:py-24 snap-start relative overflow-hidden" style={{ backgroundColor: '#B3E58C' }}>
       <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'url(/patterns/waitlist-tile.svg?v=4)', backgroundRepeat: 'repeat' }} />
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
