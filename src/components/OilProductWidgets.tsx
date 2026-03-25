@@ -42,7 +42,7 @@ const oils = [
 export const OilProductWidgets = () => {
   return (
     <section id="oil-collection"
-    className="pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden className="pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden scroll-mt-20""
+    className="pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden scroll-mt-20"
     style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
       <div
