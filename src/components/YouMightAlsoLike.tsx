@@ -101,7 +101,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
             className="group flex flex-col">
             
               <div
-              className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-7"
+              className="relative rounded-2xl overflow-hidden aspect-[4/5] mb-7 max-w-[85%] mx-auto"
               style={{ backgroundColor: "#1B4229" }}>
               
                 <div
