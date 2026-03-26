@@ -258,7 +258,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Good On Everything",
-          description: "perfect for pasta, enrich eggs, finish seafood, dress leafy greens, try on ice cream",
+          description: "Perfect for pasta, enrich eggs, finish seafood, dress leafy greens, try on ice cream.",
           icon: "/icons/bread-2.svg",
         },
       ],
