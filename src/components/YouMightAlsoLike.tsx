@@ -88,7 +88,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
         </div>
 
         <div
-          className={`grid grid-cols-1 gap-8 lg:gap-10 mx-auto ${
+          className={`grid grid-cols-1 gap-16 lg:gap-10 mx-auto ${
           otherOils.length === 2 ?
           "lg:grid-cols-2 max-w-[950px]" :
           "lg:grid-cols-3"}`
