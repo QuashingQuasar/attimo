@@ -37,7 +37,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
           {features[index]?.title}
         </h3>
         <p
-          className="tracking-wide leading-relaxed max-w-[280px] whitespace-pre-line"
+          className="tracking-wide leading-relaxed max-w-[280px] xl:max-w-[340px] whitespace-pre-line"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.85rem, 1vw, 1rem)",
