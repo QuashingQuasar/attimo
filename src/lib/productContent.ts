@@ -248,7 +248,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "100% Nocellara",
-          description: "A generous Italian olive variety known for its rich oil content and exceptionally smooth, fruity character.",
+          description: "A generous Sicilian olive variety known for its gentle character and round, fruity notes.",
           icon: "/icons/branch-2.svg",
         },
         {
