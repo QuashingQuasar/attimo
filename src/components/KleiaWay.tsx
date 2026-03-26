@@ -17,7 +17,7 @@ export const KleiaWay = () => {
   ];
 
   const renderTile = (index: number) => (
-    <div className="rounded-xl p-5 h-[180px] lg:h-[190px] xl:h-[248px]" style={{ backgroundColor: '#1B4229' }}>
+    <div className="rounded-xl p-5 h-[180px] lg:h-[165px] xl:h-[248px]" style={{ backgroundColor: '#1B4229' }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-2">
         <div
           className="w-[46px] h-[40px] flex-shrink-0"
