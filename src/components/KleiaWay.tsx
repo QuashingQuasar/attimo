@@ -70,7 +70,7 @@ export const KleiaWay = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[75vw] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[90vw] lg:max-w-[88vw] xl:max-w-[75vw] mx-auto">
           {renderTile(0)}
           {renderVideo(0)}
           {renderTile(1)}
