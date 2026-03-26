@@ -17,7 +17,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   const accent = tileAccent || "#ECA948";
 
   const renderTile = (index: number) => (
-    <div className="rounded-2xl p-8 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
+    <div className="rounded-2xl px-4 py-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-3">
         <div
           className="w-[56px] h-[48px] flex-shrink-0"
