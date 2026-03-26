@@ -17,7 +17,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   const accent = tileAccent || "#ECA948";
 
   const renderTile = (index: number) => (
-    <div className="rounded-2xl p-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
+    <div className="rounded-2xl p-8 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-3">
         <div
           className="w-[56px] h-[48px] flex-shrink-0"
@@ -33,7 +33,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             maskPosition: "center",
           }}
         />
-        <h3 style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontSize: "clamp(1.2rem, 1.6vw, 1.7rem)", color: accent }}>
+        <h3 className="text-lg" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: accent }}>
           {features[index]?.title}
         </h3>
         <p
