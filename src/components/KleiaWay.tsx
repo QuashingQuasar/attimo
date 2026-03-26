@@ -17,7 +17,7 @@ export const KleiaWay = () => {
   ];
 
   const renderTile = (index: number) => (
-    <div className="rounded-xl p-5 h-[208px] lg:h-[220px] xl:h-[248px]" style={{ backgroundColor: '#1B4229' }}>
+    <div className="rounded-xl p-5 h-[208px] lg:h-[180px] xl:h-[248px]" style={{ backgroundColor: '#1B4229' }}>
       <div className="h-full flex flex-col justify-center items-center text-center gap-2">
         <div
           className="w-[46px] h-[40px] flex-shrink-0"
@@ -48,7 +48,7 @@ export const KleiaWay = () => {
   );
 
   const renderVideo = (index: number) => (
-    <div className="rounded-xl relative overflow-hidden h-[208px] lg:h-[220px] xl:h-[248px]">
+    <div className="rounded-xl relative overflow-hidden h-[208px] lg:h-[180px] xl:h-[248px]">
       <AutoplayVideo
         src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
@@ -57,7 +57,7 @@ export const KleiaWay = () => {
   );
 
   return (
-    <section className="snap-start pt-14 md:pt-20 lg:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
+    <section className="snap-start pt-14 md:pt-20 lg:pt-16 xl:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: 'hsl(var(--section-light))' }}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-6 lg:mb-10">
           <h2 className="font-light mb-6 tracking-tight" style={{
