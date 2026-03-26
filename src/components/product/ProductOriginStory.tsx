@@ -33,7 +33,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             maskPosition: "center",
           }}
         />
-        <h3 style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontSize: "clamp(1.2rem, 1.6vw, 1.7rem)", color: accent }}>
+        <h3 className="text-lg" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: accent }}>
           {features[index]?.title}
         </h3>
         <p
