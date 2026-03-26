@@ -340,7 +340,7 @@ All colors MUST be HSL.
 
 @media (min-width: 1280px) {
   section:not(.product-hero):not(.hero-full) {
-    zoom: 0.80;
+    zoom: 0.78;
   }
 }
 
