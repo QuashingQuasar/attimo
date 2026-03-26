@@ -137,7 +137,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Early Harvest",
-          description: "Harvested early when the olives are green and packed with polyphenols that boost flavour and health benefits.",
+          description: "Harvested early when the olives are high in polyphenols that boost flavour and health benefits.",
           icon: "/icons/basket-2.svg",
         },
         {
