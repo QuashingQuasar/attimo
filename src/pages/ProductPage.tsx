@@ -305,7 +305,7 @@ const ProductPage = () => {
                       }}>
                       <span className="flex flex-col items-center gap-0.5">
                         <span className="text-lg">ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">€{selectedQuantity * ONE_TIME_PRICE}</span>} €{selectedQuantity * activePrice}</span>
-                        <span className="font-normal text-xs">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span>
+                        <span className="font-normal text-xs">{selectedQuantity < freeShippingThreshold ? <span className="font-normal text-xs">{selectedQuantity < freeShippingThreshold ? `(ADD ${freeShippingThreshold - selectedQuantity} MORE BOTTLE${freeShippingThreshold - selectedQuantity > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span> : "(FREE SHIPPING ✓)"}</span>
                       </span>
                     </Button>
 
