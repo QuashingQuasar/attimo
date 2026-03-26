@@ -78,8 +78,8 @@ export const KleiaWay = () => {
           {renderTile(2)}
           {renderVideo(2)}
           <div className="md:hidden lg:block">{renderTile(3)}</div>
-          <div className="md:order-9">{renderVideo(3)}</div>
-          <div className="md:order-8">{renderTile(4)}</div>
+          <div className="md:order-9 lg:order-none">{renderVideo(3)}</div>
+          <div className="md:order-8 lg:order-none">{renderTile(4)}</div>
         </div>
       </div>
     </section>
