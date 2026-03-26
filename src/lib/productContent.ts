@@ -243,7 +243,7 @@ export const productContentMap: Record<string, ProductContent> = {
         },
         {
           title: "Early Harvest",
-          description: "Picked early in October when the olives are young, green and packed with polyphenols that boost flavour and health benefits.",
+          description: "Picked early in October when the olives are packed with polyphenols that boost flavour and health benefits.",
           icon: "/icons/basket-2.svg",
         },
         {
