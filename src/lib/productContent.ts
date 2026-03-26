@@ -132,7 +132,7 @@ export const productContentMap: Record<string, ProductContent> = {
       features: [
         {
           title: "Bold & Punchy",
-          description: "Notes of fresh herbs, artichoke and black pepper. Ultra high in polyphenols, the oil has an intense kick and dry finish.",
+          description: "Fresh herbs, artichoke and black pepper. Ultra high in polyphenols: intense kick and dry finish.",
           icon: "/icons/mortar.svg",
         },
         {
