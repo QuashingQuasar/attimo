@@ -48,7 +48,7 @@ export const KleiaWay = () => {
   );
 
   const renderVideo = (index: number) => (
-    <div className="rounded-xl relative overflow-hidden h-[180px] lg:h-[165px] xl:h-[248px]">
+    <div className="rounded-xl relative overflow-hidden h-[180px] lg:h-[165px] xl:h-[190px] 3xl:h-[248px]">
       <AutoplayVideo
         src={videos[index]}
         className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
