@@ -238,7 +238,7 @@ export const productContentMap: Record<string, ProductContent> = {
       features: [
         {
           title: "Gentle & Fruity",
-          description: "Notes of fresh almond and green banana with a velvety texture and round finish. Perfect for all-round use.",
+          description: "Fresh almond and green banana with a velvety texture and round finish. Perfect for all-round use.",
           icon: "/icons/bread-2.svg",
         },
         {
