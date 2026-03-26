@@ -72,7 +72,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:hidden lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[calc(100vh-80px)]">
+        <div className="grid grid-cols-1 md:hidden lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[580px] xl:h-[640px] 3xl:h-[760px]">
           {renderTile(0)}
           {renderVideo(0, "/videos/content-video-1.mp4")}
           {renderTile(1)}
