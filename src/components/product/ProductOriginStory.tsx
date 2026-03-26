@@ -65,8 +65,8 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 md:mb-16">
           <p
-            className="font-beverly font-bold text-olive-dark tracking-tight mx-auto text-2xl md:text-3xl lg:text-3xl xl:text-4xl"
-            style={{ maxWidth: headlineMaxWidth || "67rem", fontSize: "clamp(1.6rem, 2.6vw, 2.6rem)", lineHeight: 1.2 }}
+            className="font-beverly font-bold text-olive-dark tracking-tight mx-auto text-xl lg:text-2xl xl:text-3xl"
+            style={{ maxWidth: headlineMaxWidth || "67rem", lineHeight: 1.2 }}
           >
             {headline}
           </p>
