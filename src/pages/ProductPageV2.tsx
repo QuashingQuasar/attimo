@@ -119,6 +119,19 @@ const ProductPage = () => {
     return () => { document.head.removeChild(script); };
   }, [handle]);
 
+  // Update og:description meta tag per product
+  useEffect(() => {
+    const ogDescMap: Record<string, string> = {
+      nocellara: 'Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.',
+    };
+    const desc = handle ? ogDescMap[handle] : undefined;
+    if (!desc) return;
+    const metaOgDesc = document.querySelector('meta[property="og:description"]');
+    const original = metaOgDesc?.getAttribute('content');
+    if (metaOgDesc) metaOgDesc.setAttribute('content', desc);
+    return () => { if (metaOgDesc && original) metaOgDesc.setAttribute('content', original); };
+  }, [handle]);
+
   const product = products.find(p => p.node.handle === shopifyHandle);
   const content = getProductContent(handle);
 
