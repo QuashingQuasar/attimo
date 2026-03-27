@@ -349,3 +349,32 @@ All colors MUST be HSL.
     zoom: 0.85;
   }
 }
+
+/* Klaro cookie consent – Attimo brand overrides */
+.klaro .cookie-modal .cm-btn-success,
+.klaro .cookie-notice .cm-btn-success {
+  background-color: #C8D800;
+  color: #1a1a1a;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.klaro .cookie-modal .cm-btn-success:hover,
+.klaro .cookie-notice .cm-btn-success:hover {
+  background-color: #b5c200;
+}
+.klaro .cookie-modal .cm-btn-decline,
+.klaro .cookie-notice .cm-btn-decline {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.klaro .cookie-notice {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-top: 2px solid #C8D800;
+}
+.klaro .cookie-notice .cn-body p {
+  color: rgba(255,255,255,0.8);
+}
