@@ -385,15 +385,17 @@ All colors MUST be HSL.
   color: #1B4229 !important;
   border: none !important;
   font-weight: 700 !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   letter-spacing: 0.05em !important;
   border-radius: 2px !important;
+  padding: 8px 20px !important;
 }
 .klaro .cookie-notice .cm-btn-decline {
   background-color: transparent !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255,255,255,0.4) !important;
+  color: #CDDB2D !important;
+  border: 1px solid #CDDB2D !important;
   border-radius: 2px !important;
+  padding: 8px 20px !important;
 }
 .klaro .cookie-notice .cn-learn-more {
   color: #CDDB2D !important;

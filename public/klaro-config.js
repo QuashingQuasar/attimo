@@ -14,7 +14,7 @@ var klaroConfig = {
       consentNotice: {
         description: 'We use cookies to measure performance and improve your experience.',
       },
-      acceptAll: 'Accept all',
+      acceptAll: "That's ok",
       declineAll: 'Decline',
       acceptSelected: 'Accept selected',
       purposes: {
