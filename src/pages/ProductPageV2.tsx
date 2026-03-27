@@ -91,6 +91,23 @@ const ProductPage = () => {
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition"
         }
+      },
+      picual: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Picual Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Picual extra virgin olive oil from Andalusia. Early harvest, cold-pressed. 675mg/kg polyphenols — lab tested. 500ml.",
+        "sku": "ATTIMO-PIC-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://attimo-oil.com/product/picual",
+          "price": "24.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
       }
     };
     const data = handle ? jsonLdMap[handle] : undefined;
