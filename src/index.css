@@ -527,3 +527,24 @@ All colors MUST be HSL.
 .klaro .cm-bg {
   background-color: rgba(0,0,0,0.7) !important;
 }
+
+.klaro .cookie-modal .cm-modal .cm-footer .cm-btn {
+  padding: 8px 20px !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-body,
+.klaro .cookie-modal .cm-modal .cm-body p,
+.klaro .cookie-modal .cm-modal .cm-purposes p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.klaro .cookie-modal input.required:checked + .cm-list-label .slider,
+.klaro .cookie-modal input:checked + .cm-list-label .slider {
+  background-color: #CDDB2D !important;
+}
+.klaro .cookie-modal .cm-list-label .slider {
+  background-color: rgba(255,255,255,0.2) !important;
+}
+.klaro .cookie-modal .cm-list-label .slider:before {
+  background-color: #ffffff !important;
+}
