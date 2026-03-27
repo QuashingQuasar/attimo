@@ -400,3 +400,18 @@ All colors MUST be HSL.
 .klaro .cookie-notice .cn-learn-more {
   color: #CDDB2D !important;
 }
+
+.klaro .cookie-notice .cm-btn.cm-btn-decline,
+.klaro .cookie-notice button.cm-btn-decline {
+  background-color: transparent !important;
+  color: #CDDB2D !important;
+  border: 1px solid #CDDB2D !important;
+  border-radius: 2px !important;
+  padding: 8px 20px !important;
+  box-shadow: none !important;
+}
+
+.klaro .cookie-notice .cm-btn.cm-btn-decline:hover,
+.klaro .cookie-notice button.cm-btn-decline:hover {
+  background-color: rgba(205, 219, 45, 0.1) !important;
+}
