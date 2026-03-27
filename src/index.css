@@ -464,3 +464,66 @@ All colors MUST be HSL.
   padding: 6px 0 !important;
   color: #CDDB2D !important;
 }
+
+/* Klaro modal - Attimo brand */
+.klaro .cookie-modal .cm-modal {
+  background-color: #1B4229 !important;
+  color: #ffffff !important;
+}
+.klaro .cookie-modal .cm-modal .cm-header {
+  border-bottom: 1px solid rgba(205, 219, 45, 0.3) !important;
+}
+.klaro .cookie-modal .cm-modal .cm-header h1 {
+  color: #ffffff !important;
+}
+.klaro .cookie-modal .cm-modal .cm-body {
+  color: rgba(255,255,255,0.85) !important;
+}
+.klaro .cookie-modal .cm-modal .cm-body p {
+  color: rgba(255,255,255,0.85) !important;
+}
+.klaro .cookie-modal .cm-modal .cm-footer {
+  border-top: 1px solid rgba(205, 219, 45, 0.3) !important;
+  background-color: #1B4229 !important;
+}
+.klaro .cookie-modal .cm-modal .cm-btn-success {
+  background-color: #CDDB2D !important;
+  color: #1B4229 !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+.klaro .cookie-modal .cm-modal .cm-btn-danger {
+  background-color: transparent !important;
+  color: #CDDB2D !important;
+  border: 1px solid #CDDB2D !important;
+}
+.klaro .cookie-modal .cm-modal .cm-btn-accept-all {
+  background-color: #CDDB2D !important;
+  color: #1B4229 !important;
+  border: none !important;
+  font-weight: 700 !important;
+}
+.klaro .cookie-modal .cm-modal .slider {
+  background-color: rgba(255,255,255,0.2) !important;
+}
+.klaro .cookie-modal .cm-modal input:checked + .slider {
+  background-color: #CDDB2D !important;
+}
+.klaro .cookie-modal .cm-modal .cm-list-label .slider:before {
+  background-color: #ffffff !important;
+}
+.klaro .cookie-modal .cm-modal a {
+  color: #CDDB2D !important;
+}
+.klaro .cookie-modal .cm-modal .cm-list-title {
+  color: #ffffff !important;
+}
+.klaro .cookie-modal .cm-modal .cm-list-description {
+  color: rgba(255,255,255,0.7) !important;
+}
+.klaro .cookie-modal .cm-modal .cm-divider {
+  border-color: rgba(205, 219, 45, 0.2) !important;
+}
+.klaro .cm-bg {
+  background-color: rgba(0,0,0,0.7) !important;
+}
