@@ -424,3 +424,35 @@ All colors MUST be HSL.
 .klaro .cookie-notice button.cm-btn-decline:hover {
   background-color: rgba(205, 219, 45, 0.1) !important;
 }
+
+/* Fix button row vertical alignment */
+.klaro .cookie-notice .cn-ok {
+  align-items: center !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+/* Fix Let me choose vertical alignment */
+.klaro .cookie-notice .cn-ok .cn-learn-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Fix I decline - override inline style */
+.klaro .cookie-notice .cn-ok .cm-btn-danger {
+  padding: 6px 15px !important;
+  background-color: transparent !important;
+  color: #CDDB2D !important;
+  border: 1px solid #CDDB2D !important;
+  box-shadow: none !important;
+}
+
+/* Text - full width with right margin for spacing */
+.klaro .cookie-notice .cn-body p {
+  max-width: none !important;
+  margin-right: 30px !important;
+  flex: 1 !important;
+  color: rgba(255,255,255,0.85) !important;
+}
