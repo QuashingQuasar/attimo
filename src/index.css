@@ -352,9 +352,9 @@ All colors MUST be HSL.
 
 /* Klaro Cookie Banner - Attimo Brand */
 .klaro .cookie-notice {
-  background-color: #1a1a1a !important;
+  background-color: #1B4229 !important;
   color: #ffffff !important;
-  border-top: 2px solid #C8D800 !important;
+  border-top: 2px solid #CDDB2D !important;
   border-radius: 0 !important;
   bottom: 0 !important;
   left: 0 !important;
@@ -381,8 +381,8 @@ All colors MUST be HSL.
   gap: 8px !important;
 }
 .klaro .cookie-notice .cm-btn-success {
-  background-color: #C8D800 !important;
-  color: #1a1a1a !important;
+  background-color: #CDDB2D !important;
+  color: #1B4229 !important;
   border: none !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -396,5 +396,5 @@ All colors MUST be HSL.
   border-radius: 2px !important;
 }
 .klaro .cookie-notice .cn-learn-more {
-  color: #C8D800 !important;
+  color: #CDDB2D !important;
 }
