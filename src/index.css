@@ -548,3 +548,7 @@ All colors MUST be HSL.
 .klaro .cookie-modal .cm-list-label .slider:before {
   background-color: #ffffff !important;
 }
+
+.klaro .cookie-notice .cn-ok .cm-btn {
+  margin-top: 3px !important;
+}
