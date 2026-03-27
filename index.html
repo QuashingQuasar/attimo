@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script id="consentmo-gcmv2-advanced-mode-integration">
+      const consentOutOfRegion = { analytics: true, marketing: true, functionality: true, adsDataRedaction: false, urlPassthrough: false };
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', { ad_storage: 'denied', ad_personalization: 'denied', ad_user_data: 'denied', analytics_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted', wait_for_update: 1500 });
+      document.addEventListener('consentmoSignal_onLoad', function(eventData) {
+        const csmLoadSignal = eventData.detail || {isActive:false};
+        if (!csmLoadSignal.isActive) {
+          gtag('consent', 'update', { ad_storage: consentOutOfRegion.marketing ? 'granted' : 'denied', ad_personalization: consentOutOfRegion.marketing ? 'granted' : 'denied', ad_user_data: consentOutOfRegion.marketing ? 'granted' : 'denied', analytics_storage: consentOutOfRegion.analytics ? 'granted' : 'denied', functionality_storage: consentOutOfRegion.functionality ? 'granted' : 'denied', personalization_storage: consentOutOfRegion.functionality ? 'granted' : 'denied', security_storage: 'granted' });
+          gtag('set', 'ads_data_redaction', consentOutOfRegion.adsDataRedaction);
+          gtag('set', 'url_passthrough', consentOutOfRegion.urlPassthrough);
+        } else {
+          document.addEventListener('consentmoSignal', function(event) {
+            const csmSignal = event.detail;
+            const consentState = csmSignal.integration?.gcm?.isEnabled ? csmSignal.integration.gcm.state : csmSignal.state;
+            gtag('consent', 'update', consentState);
+            if (csmSignal.integration?.gcm?.isEnabled) { gtag('set', 'ads_data_redaction', csmSignal.integration.gcm.adsDataRedaction); gtag('set', 'url_passthrough', csmSignal.integration.gcm.urlPassthrough); }
+          });
+        }
+      });
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATTIMO Specialty Extra Virgin Olive Oil</title>
@@ -23,6 +44,36 @@
     <meta name="twitter:title" content="ATTIMO Specialty Extra Virgin Olive Oil">
     <meta property="og:description" content="Single-variety extra virgin olive oil from small family groves. High-polyphenol, early harvest, cold-pressed. Lab-tested for quality.">
     <meta name="twitter:description" content="Single-variety extra virgin olive oil from small family groves. High-polyphenol, early harvest, cold-pressed. Lab-tested for quality.">
+
+    <script defer src='/klaro-config.js'></script>
+    <link rel='stylesheet' href='https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css'>
+    <script defer src='https://cdn.kiprotect.com/klaro/v0.7/klaro.js' data-config='klaroConfig'></script>
+    <style>
+.klaro .cookie-notice { background-color: #1B4229 !important; color: #ffffff !important; border-top: 2px solid #CDDB2D !important; border-radius: 0 !important; bottom: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; max-width: 100% !important; position: fixed !important; padding: 16px 24px !important; }
+.klaro .cookie-notice .cn-body { display: flex !important; align-items: center !important; justify-content: space-between !important; flex-wrap: wrap !important; gap: 24px !important; }
+.klaro .cookie-notice .cn-body p { color: rgba(255,255,255,0.85) !important; margin: 0 !important; flex: 1 !important; max-width: none !important; margin-right: 40px !important; }
+.klaro .cookie-notice .cn-ok { align-items: center !important; display: flex !important; gap: 12px !important; }
+.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-learn-more { display: inline-flex !important; align-items: center !important; flex-grow: 0 !important; padding: 6px 0 !important; color: #CDDB2D !important; }
+.klaro .cookie-notice .cm-btn-success { background-color: #CDDB2D !important; color: #1B4229 !important; border: none !important; font-weight: 700 !important; text-transform: none !important; border-radius: 2px !important; padding: 6px 15px !important; margin-top: 3px !important; }
+.klaro .cookie-notice .cm-btn.cm-btn-danger.cn-decline, .klaro .cookie-notice button.cm-btn-danger, .klaro .cookie-notice button.cn-decline { background-color: transparent !important; color: #CDDB2D !important; border: 1px solid #CDDB2D !important; border-radius: 2px !important; padding: 6px 15px !important; box-shadow: none !important; }
+.klaro .cookie-modal .cm-modal { background-color: #1B4229 !important; color: #ffffff !important; }
+.klaro .cookie-modal .cm-modal .cm-header { border-bottom: 1px solid rgba(205,219,45,0.3) !important; }
+.klaro .cookie-modal .cm-modal .cm-header h1 { color: #ffffff !important; }
+.klaro .cookie-modal .cm-modal .cm-body p, .klaro .cookie-modal .cm-modal .cm-purposes p, .klaro .cookie-modal .cm-modal p { color: rgba(255,255,255,0.9) !important; }
+.klaro .cookie-modal .cm-modal .cm-footer { border-top: 1px solid rgba(205,219,45,0.3) !important; background-color: #1B4229 !important; }
+.klaro .cookie-modal .cm-modal .cm-footer .cm-btn { padding: 8px 20px !important; }
+.klaro .cookie-modal .cm-modal .cm-btn-success, .klaro .cookie-modal .cm-modal .cm-btn-accept-all { background-color: #CDDB2D !important; color: #1B4229 !important; border: none !important; font-weight: 700 !important; }
+.klaro .cookie-modal .cm-modal .cm-btn-danger { background-color: transparent !important; color: #CDDB2D !important; border: 1px solid #CDDB2D !important; }
+.klaro .cookie-modal input:checked + .cm-list-label .slider { background-color: #CDDB2D !important; }
+.klaro .cookie-modal .cm-list-label .slider { background-color: rgba(255,255,255,0.2) !important; }
+.klaro .cookie-modal .cm-list-label .slider:before { background-color: #ffffff !important; }
+.klaro .cookie-modal .cm-modal a { color: #CDDB2D !important; }
+.klaro .cookie-modal .cm-modal .cm-list-title { color: #ffffff !important; }
+.klaro .cookie-modal .cm-modal .cm-list-description { color: rgba(255,255,255,0.7) !important; }
+.klaro .cookie-modal .cm-modal .cm-divider { border-color: rgba(205,219,45,0.2) !important; }
+.klaro .cm-bg { background-color: rgba(0,0,0,0.7) !important; }
+.klaro .cookie-modal .cm-modal .cm-header .hide, .klaro .cookie-modal .cm-modal .cm-header button.hide, .klaro .cookie-modal .cm-modal .cm-header .hide svg { color: rgba(255,255,255,0.8) !important; opacity: 0.8 !important; fill: rgba(255,255,255,0.8) !important; stroke: rgba(255,255,255,0.8) !important; }
+    </style>
 
     <!-- Google Tag Manager -->
     <script>
