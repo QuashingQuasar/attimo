@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => ({
     componentTagger(),
     sitemap({
       hostname: 'https://attimo-oil.com',
+      generateRobotsTxt: false,
       dynamicRoutes: [
         '/',
         '/blog',
