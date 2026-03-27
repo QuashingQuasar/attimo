@@ -78,31 +78,6 @@ export const QuantitySelector = ({
         ))}
       </div>
 
-      {/* Add to Cart Button */}
-      <Button
-        id={buttonId}
-        type="button"
-        onClick={onAddToCart}
-        className="w-full rounded-xl py-3 text-cream font-bold transition-all duration-200 hover:opacity-90"
-        style={{
-          backgroundColor: '#1B4229',
-          fontFamily: 'UDC Working Man Sans, sans-serif',
-        }}
-      >
-        <span className="flex flex-col items-center leading-tight">
-          <span className="text-lg" style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)' }}>
-            ADD TO CART — €{totalPrice}
-          </span>
-          {quantity < threshold && (
-            <span className="text-xs text-cream/70">
-              (ADD {threshold - quantity} MORE BOTTLE{threshold - quantity > 1 ? 'S' : ''} FOR FREE SHIPPING)
-            </span>
-          )}
-          {quantity >= threshold && (
-            <span className="text-xs text-cream/70">FREE SHIPPING</span>
-          )}
-        </span>
-      </Button>
     </div>
   );
 };

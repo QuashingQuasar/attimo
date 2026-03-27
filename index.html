@@ -1,51 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script id="consentmo-gcmv2-advanced-mode-integration">
-      const consentOutOfRegion = {
-        analytics: true,
-        marketing: true,
-        functionality: true,
-        adsDataRedaction: false,
-        urlPassthrough: false,
-      };
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_personalization: 'denied',
-        ad_user_data: 'denied',
-        analytics_storage: 'denied',
-        functionality_storage: 'denied',
-        personalization_storage: 'denied',
-        security_storage: 'granted',
-        wait_for_update: 1500
-      });
-      document.addEventListener('consentmoSignal_onLoad', function(eventData) {
-        const csmLoadSignal = eventData.detail || {isActive:false};
-        if (!csmLoadSignal.isActive) {
-          gtag('consent', 'update', {
-            ad_storage: consentOutOfRegion.marketing ? 'granted' : 'denied',
-            ad_personalization: consentOutOfRegion.marketing ? 'granted' : 'denied',
-            ad_user_data: consentOutOfRegion.marketing ? 'granted' : 'denied',
-            analytics_storage: consentOutOfRegion.analytics ? 'granted' : 'denied',
-            functionality_storage: consentOutOfRegion.functionality ? 'granted' : 'denied',
-            personalization_storage: consentOutOfRegion.functionality ? 'granted' : 'denied',
-            security_storage: 'granted',
-          });
-        } else {
-          document.addEventListener('consentmoSignal', function(event) {
-            const csmSignal = event.detail;
-            const consentState = csmSignal.integration?.gcm?.isEnabled ? csmSignal.integration.gcm.state : csmSignal.state;
-            gtag('consent', 'update', consentState);
-            if (csmSignal.integration?.gcm?.isEnabled) {
-              gtag('set', 'ads_data_redaction', csmSignal.integration.gcm.adsDataRedaction);
-              gtag('set', 'url_passthrough', csmSignal.integration.gcm.urlPassthrough);
-            }
-          });
-        }
-      });
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATTIMO Specialty Extra Virgin Olive Oil</title>
@@ -68,27 +23,6 @@
     <meta name="twitter:title" content="ATTIMO Specialty Extra Virgin Olive Oil">
     <meta property="og:description" content="Discover liquid gold from 500-year-old olive trees. Premium extra virgin olive oil crafted using traditional methods. Join our waitlist for early access to Mediterranean heritage.">
     <meta name="twitter:description" content="Discover liquid gold from 500-year-old olive trees. Premium extra virgin olive oil crafted using traditional methods. Join our waitlist for early access to Mediterranean heritage.">
-
-    <script defer src='/klaro-config.js'></script>
-    <link rel='stylesheet' href='https://cdn.kiprotect.com/klaro/v0.7/klaro.min.css'>
-    <script defer src='https://cdn.kiprotect.com/klaro/v0.7/klaro.js' data-config='klaroConfig'></script>
-    <style>
-      .klaro .cookie-notice .cn-ok {
-        align-items: center !important;
-      }
-      .klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-learn-more {
-        display: inline-flex !important;
-        align-items: center !important;
-        flex-grow: 0 !important;
-        padding: 6px 0 !important;
-      }
-      .klaro .cookie-notice .cn-body p {
-        max-width: none !important;
-        flex: 1 !important;
-        color: rgba(255,255,255,0.85) !important;
-        margin-right: 40px !important;
-      }
-    </style>
 
     <!-- Google Tag Manager -->
     <script>
