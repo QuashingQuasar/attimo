@@ -375,7 +375,7 @@ All colors MUST be HSL.
   color: rgba(255,255,255,0.85) !important;
   margin: 0 !important;
   flex: 1 !important;
-  max-width: 480px !important;
+  max-width: 960px !important;
 }
 .klaro .cookie-notice .cn-buttons,
 .klaro .cookie-notice .cn-ok {
@@ -384,7 +384,12 @@ All colors MUST be HSL.
   gap: 12px !important;
 }
 .klaro .cookie-notice .cm-link.cn-learn-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 6px 0 !important;
   margin-right: 12px !important;
+  color: #CDDB2D !important;
+  vertical-align: middle !important;
 }
 .klaro .cookie-notice .cm-btn-success {
   background-color: #CDDB2D !important;
@@ -396,6 +401,9 @@ All colors MUST be HSL.
   border-radius: 2px !important;
   padding: 6px 15px !important;
 }
+.klaro .cookie-notice .cm-btn.cm-btn-danger.cn-decline,
+.klaro .cookie-notice button.cm-btn-danger,
+.klaro .cookie-notice button.cn-decline,
 .klaro .cookie-notice .cm-btn-decline,
 .klaro .cookie-notice .cm-btn.cm-btn-decline,
 .klaro .cookie-notice button.cm-btn-decline,
@@ -407,13 +415,12 @@ All colors MUST be HSL.
   border-radius: 2px !important;
   padding: 6px 15px !important;
   box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 .klaro .cookie-notice .cm-btn-danger:hover,
 .klaro .cookie-notice .cn-decline:hover,
 .klaro .cookie-notice .cm-btn.cm-btn-decline:hover,
 .klaro .cookie-notice button.cm-btn-decline:hover {
   background-color: rgba(205, 219, 45, 0.1) !important;
-}
-.klaro .cookie-notice .cn-learn-more {
-  color: #CDDB2D !important;
 }
