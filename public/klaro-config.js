@@ -32,8 +32,7 @@ var klaroConfig = {
   ],
 };
 
-// Fix Klaro 'Let me choose' vertical alignment after render
-var klaroObserver = new MutationObserver(function(mutations) {
+var klaroAlignFix = setInterval(function() {
   var learnMore = document.querySelector('.klaro .cookie-notice .cn-learn-more');
   var cnOk = document.querySelector('.klaro .cookie-notice .cn-ok');
   if (learnMore && cnOk) {
@@ -42,8 +41,6 @@ var klaroObserver = new MutationObserver(function(mutations) {
     learnMore.style.setProperty('align-items', 'center', 'important');
     learnMore.style.setProperty('padding-top', '6px', 'important');
     learnMore.style.setProperty('padding-bottom', '6px', 'important');
-    learnMore.style.setProperty('line-height', '1', 'important');
-    klaroObserver.disconnect();
+    clearInterval(klaroAlignFix);
   }
-});
-klaroObserver.observe(document.body, { childList: true, subtree: true });
+}, 100);
