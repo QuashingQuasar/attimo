@@ -123,6 +123,7 @@ const ProductPage = () => {
   useEffect(() => {
     const ogDescMap: Record<string, string> = {
       nocellara: 'Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.',
+      coratina: 'Single-variety Coratina extra virgin olive oil from Puglia. Early harvest, cold-pressed. 847mg/kg polyphenols — lab tested. Certified organic. 500ml.',
     };
     const desc = handle ? ogDescMap[handle] : undefined;
     if (!desc) return;
