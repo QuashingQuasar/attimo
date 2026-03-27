@@ -375,11 +375,16 @@ All colors MUST be HSL.
   color: rgba(255,255,255,0.85) !important;
   margin: 0 !important;
   flex: 1 !important;
-  max-width: 600px !important;
+  max-width: 480px !important;
 }
-.klaro .cookie-notice .cn-buttons {
+.klaro .cookie-notice .cn-buttons,
+.klaro .cookie-notice .cn-ok {
   display: flex !important;
-  gap: 8px !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.klaro .cookie-notice .cm-link.cn-learn-more {
+  margin-right: 12px !important;
 }
 .klaro .cookie-notice .cm-btn-success {
   background-color: #CDDB2D !important;
@@ -389,45 +394,27 @@ All colors MUST be HSL.
   text-transform: none !important;
   letter-spacing: 0.05em !important;
   border-radius: 2px !important;
-  padding: 8px 20px !important;
+  padding: 6px 15px !important;
 }
-.klaro .cookie-notice .cm-btn-decline {
-  background-color: transparent !important;
-  color: #CDDB2D !important;
-  border: 1px solid #CDDB2D !important;
-  border-radius: 2px !important;
-  padding: 8px 20px !important;
-}
-.klaro .cookie-notice .cn-learn-more {
-  color: #CDDB2D !important;
-}
-
+.klaro .cookie-notice .cm-btn-decline,
 .klaro .cookie-notice .cm-btn.cm-btn-decline,
-.klaro .cookie-notice button.cm-btn-decline {
-  background-color: transparent !important;
-  color: #CDDB2D !important;
-  border: 1px solid #CDDB2D !important;
-  border-radius: 2px !important;
-  padding: 8px 20px !important;
-  box-shadow: none !important;
-}
-
-.klaro .cookie-notice .cm-btn.cm-btn-decline:hover,
-.klaro .cookie-notice button.cm-btn-decline:hover {
-  background-color: rgba(205, 219, 45, 0.1) !important;
-}
-
+.klaro .cookie-notice button.cm-btn-decline,
 .klaro .cookie-notice .cm-btn-danger,
 .klaro .cookie-notice .cn-decline {
   background-color: transparent !important;
   color: #CDDB2D !important;
   border: 1px solid #CDDB2D !important;
   border-radius: 2px !important;
-  padding: 8px 20px !important;
+  padding: 6px 15px !important;
   box-shadow: none !important;
 }
-
 .klaro .cookie-notice .cm-btn-danger:hover,
-.klaro .cookie-notice .cn-decline:hover {
+.klaro .cookie-notice .cn-decline:hover,
+.klaro .cookie-notice .cm-btn.cm-btn-decline:hover,
+.klaro .cookie-notice button.cm-btn-decline:hover {
   background-color: rgba(205, 219, 45, 0.1) !important;
+}
+.klaro .cookie-notice .cn-learn-more {
+  color: #CDDB2D !important;
+}
 }
