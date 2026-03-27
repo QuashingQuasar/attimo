@@ -41,6 +41,7 @@ var klaroAlignFix = setInterval(function() {
     learnMore.style.setProperty('align-items', 'center', 'important');
     learnMore.style.setProperty('padding-top', '6px', 'important');
     learnMore.style.setProperty('padding-bottom', '6px', 'important');
+    learnMore.style.setProperty('line-height', '1', 'important');
     clearInterval(klaroAlignFix);
   }
 }, 100);
