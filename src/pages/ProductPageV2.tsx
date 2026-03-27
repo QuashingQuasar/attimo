@@ -55,28 +55,49 @@ const ProductPage = () => {
     loadProducts();
   }, [shopifyHandle]);
 
-  // Inject JSON-LD for Nocellara product page
+  // Inject JSON-LD for product pages
   useEffect(() => {
-    if (handle !== 'nocellara') return;
+    const jsonLdMap: Record<string, object> = {
+      nocellara: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Nocellara Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.",
+        "sku": "ATTIMO-NOC-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://attimo-oil.com/product/nocellara",
+          "price": "24.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
+      },
+      coratina: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Coratina Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Coratina extra virgin olive oil from Puglia. Early harvest, cold-pressed. 847mg/kg polyphenols — lab tested. Certified organic. 500ml.",
+        "sku": "ATTIMO-COR-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://attimo-oil.com/product/coratina",
+          "price": "24.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition"
+        }
+      }
+    };
+    const data = handle ? jsonLdMap[handle] : undefined;
+    if (!data) return;
     const script = document.createElement('script');
     script.type = 'application/ld+json';
-    script.text = JSON.stringify({
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "Attimo Nocellara Extra Virgin Olive Oil 500ml",
-      "description": "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.",
-      "sku": "ATTIMO-NOC-500",
-      "brand": { "@type": "Brand", "name": "Attimo" },
-      "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
-      "offers": {
-        "@type": "Offer",
-        "url": "https://attimo-oil.com/product/nocellara",
-        "price": "24.00",
-        "priceCurrency": "EUR",
-        "availability": "https://schema.org/InStock",
-        "itemCondition": "https://schema.org/NewCondition"
-      }
-    });
+    script.text = JSON.stringify(data);
     document.head.appendChild(script);
     return () => { document.head.removeChild(script); };
   }, [handle]);
