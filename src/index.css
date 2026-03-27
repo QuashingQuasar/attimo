@@ -456,3 +456,11 @@ All colors MUST be HSL.
   flex: 1 !important;
   color: rgba(255,255,255,0.85) !important;
 }
+
+.klaro .cookie-notice:not(.cookie-modal-notice) .cn-body .cn-learn-more {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-grow: 0 !important;
+  padding: 6px 0 !important;
+  color: #CDDB2D !important;
+}
