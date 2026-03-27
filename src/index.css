@@ -552,3 +552,20 @@ All colors MUST be HSL.
 .klaro .cookie-notice .cn-ok .cm-btn {
   margin-top: 3px !important;
 }
+
+.klaro .cookie-modal .cm-modal .cm-body p,
+.klaro .cookie-modal .cm-modal .cm-purposes p,
+.klaro .cookie-modal .cm-modal p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.klaro .cookie-modal .cm-modal .hide {
+  color: rgba(255,255,255,0.9) !important;
+  opacity: 0.9 !important;
+}
+
+.klaro .cookie-modal .cm-modal .cm-header .hide svg,
+.klaro .cookie-modal .cm-modal .cm-header button {
+  color: rgba(255,255,255,0.9) !important;
+  opacity: 0.9 !important;
+}
