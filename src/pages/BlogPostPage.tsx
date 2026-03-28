@@ -66,6 +66,10 @@ const portableTextComponents = {
         </div>
       );
     },
+    tweet: ({ value }: { value: { url: string } }) => {
+      if (!value?.url) return null;
+      return <TweetEmbed url={value.url} />;
+    },
     table: ({ value }: { value: { rows: { cells: string[] }[] } }) => {
       if (!value?.rows?.length) return null;
       const [headerRow, ...bodyRows] = value.rows;
