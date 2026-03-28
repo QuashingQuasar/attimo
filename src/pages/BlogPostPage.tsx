@@ -135,6 +135,8 @@ const portableTextComponents = {
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [nlEmail, setNlEmail] = useState("");
+  const [nlSubmitting, setNlSubmitting] = useState(false);
 
   const { data: post, isLoading } = useQuery({
     queryKey: ["blog-post", slug],
@@ -142,6 +144,18 @@ const BlogPostPage = () => {
       sanityClient.fetch<BlogPost>(
         `*[_type == "post" && slug.current == $slug][0] {
           _id, title, slug, publishedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex
+        }`,
+        { slug }
+      ),
+    enabled: !!slug,
+  });
+
+  const { data: morePosts = [] } = useQuery({
+    queryKey: ["blog-more-posts", slug],
+    queryFn: () =>
+      sanityClient.fetch<SanityPostPreview[]>(
+        `*[_type == "post" && slug.current != $slug] | order(publishedAt desc)[0..2] {
+          _id, title, slug, publishedAt, excerpt, coverImage
         }`,
         { slug }
       ),
@@ -174,6 +188,33 @@ const BlogPostPage = () => {
       month: "long",
       year: "numeric",
     });
+  };
+
+  const formatDateShort = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString("en-US", {
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = nlEmail.trim();
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    setNlSubmitting(true);
+    try {
+      const { error } = await supabase.from("newsletter_subscribers").insert({ email: trimmed });
+      if (error) throw error;
+      toast.success("You're on the list!");
+      setNlEmail("");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setNlSubmitting(false);
+    }
   };
 
   return (
@@ -256,6 +297,103 @@ const BlogPostPage = () => {
           )}
         </div>
       </main>
+
+      {/* Keep reading + Newsletter */}
+      {!isLoading && post && (
+        <section className="py-14 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+              <h2
+                className="tracking-tight leading-[0.95]"
+                style={{
+                  fontFamily: "Beverly Drive, cursive",
+                  fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
+                  color: "#1B4229",
+                }}
+              >
+                Keep reading
+              </h2>
+              <Link
+                to="/blog"
+                className="font-working-man text-sm tracking-wide flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+                style={{ color: "#1B4229CC" }}
+              >
+                See more posts <span className="text-base">→</span>
+              </Link>
+            </div>
+
+            {morePosts.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                {morePosts.map((article) => (
+                  <Link
+                    key={article._id}
+                    to={`/blog/${article.slug.current}`}
+                    className="group cursor-pointer block"
+                  >
+                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B4229" }}>
+                      {article.coverImage ? (
+                        <img
+                          src={urlFor(article.coverImage).width(800).height(600).url()}
+                          alt={article.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#1B422920" }}>
+                          <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>No image</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3 text-xs font-working-man tracking-wide" style={{ color: "#1B422999" }}>
+                        <span>{formatDateShort(article.publishedAt)}</span>
+                      </div>
+                      <h3 className="font-working-man text-lg md:text-xl leading-snug transition-colors duration-300" style={{ color: "#1B4229" }}>
+                        {article.title}
+                      </h3>
+                      {article.excerpt && (
+                        <p className="font-space-grotesk text-sm leading-relaxed line-clamp-2" style={{ color: "#1B4229CC" }}>
+                          {article.excerpt}
+                        </p>
+                      )}
+                      <span className="inline-flex items-center gap-1 text-sm font-working-man group-hover:gap-2 transition-all duration-300" style={{ color: "#1B4229" }}>
+                        Read more <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* Newsletter signup */}
+            <div className="mt-16 pt-12 pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
+              <p
+                className="text-xl md:text-2xl leading-snug max-w-2xl font-semibold font-working-man"
+                style={{ color: "#1B4229CC" }}
+              >
+                Get ATTIMO stories, insights and updates in your inbox
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="flex gap-3 w-full lg:w-auto">
+                <input
+                  type="email"
+                  value={nlEmail}
+                  onChange={(e) => setNlEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="px-4 py-2.5 rounded-lg text-sm font-space-grotesk flex-1 md:w-64 outline-none transition-shadow duration-200 focus:ring-2"
+                  style={{ backgroundColor: "#FFFFFF", color: "#1B4229", border: "1px solid #1B422925" }}
+                />
+                <button
+                  type="submit"
+                  disabled={nlSubmitting}
+                  className="px-5 py-2.5 rounded-lg text-sm font-working-man tracking-wide uppercase transition-opacity duration-200 hover:opacity-90 disabled:opacity-50 whitespace-nowrap"
+                  style={{ backgroundColor: "#CDDB2D", color: "#1B4229" }}
+                >
+                  {nlSubmitting ? "..." : "Subscribe"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </div>
