@@ -3,9 +3,20 @@ import { useQuery } from "@tanstack/react-query";
 import { sanityClient, urlFor } from "@/lib/sanity";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+
+interface SanityPostPreview {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt: string;
+  excerpt: string;
+  coverImage: any;
+}
 
 const TweetEmbed = ({ url }: { url: string }) => {
   const ref = useRef<HTMLDivElement>(null);
