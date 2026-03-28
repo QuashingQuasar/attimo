@@ -30,7 +30,7 @@ const TweetEmbed = ({ url }: { url: string }) => {
     }
   }, [url]);
 
-  return <div ref={ref} className="my-8 flex justify-center" />;
+  return <div ref={ref} className="my-8" style={{ margin: 0, display: "block" }} />;
 };
 
 interface BlogPost {
