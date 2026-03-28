@@ -9,34 +9,28 @@ import { useEffect, useRef, useState } from "react";
 
 const TweetEmbed = ({ url }: { url: string }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const loadWidget = () => {
-      if ((window as any).twttr?.widgets) {
-        (window as any).twttr.widgets.load(ref.current);
-        setLoaded(true);
-      }
+    const tweetId = url.split("/").pop()?.split("?")[0];
+    if (!tweetId || !ref.current) return;
+
+    const render = () => {
+      ref.current!.innerHTML = "";
+      (window as any).twttr.widgets.createTweet(tweetId, ref.current!, { dnt: true });
     };
 
     if (!(window as any).twttr) {
       const script = document.createElement("script");
       script.src = "https://platform.twitter.com/widgets.js";
       script.async = true;
-      script.onload = loadWidget;
+      script.onload = () => render();
       document.head.appendChild(script);
     } else {
-      loadWidget();
+      render();
     }
   }, [url]);
 
-  return (
-    <div ref={ref} className="my-8 flex justify-center">
-      <blockquote className="twitter-tweet" data-dnt="true">
-        <a href={url}>{url}</a>
-      </blockquote>
-    </div>
-  );
+  return <div ref={ref} className="my-8 flex justify-center" />;
 };
 
 interface BlogPost {
