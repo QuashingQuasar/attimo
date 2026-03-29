@@ -49,6 +49,13 @@ export const BlogSection = () => {
       if (error) throw error;
       toast.success("You're on the list!");
       setEmail("");
+
+      // Fire-and-forget: also add to Brevo contact list
+      supabase.functions.invoke("add-brevo-contact", {
+        body: { email: trimmed },
+      }).catch((brevoErr) => {
+        console.error("Brevo sync failed (non-blocking):", brevoErr);
+      });
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
