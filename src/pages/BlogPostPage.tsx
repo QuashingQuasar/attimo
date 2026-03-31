@@ -179,6 +179,15 @@ const BlogPostPage = () => {
           meta.content = "noindex";
           document.head.appendChild(meta);
         }
+      } else {
+        if (metaRobots) {
+          metaRobots.setAttribute("content", "index, follow");
+        } else {
+          const meta = document.createElement("meta");
+          meta.name = "robots";
+          meta.content = "index, follow";
+          document.head.appendChild(meta);
+        }
       }
 
       // Canonical link
