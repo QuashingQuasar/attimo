@@ -201,11 +201,41 @@ const BlogPostPage = () => {
         link.href = canonicalUrl;
         document.head.appendChild(link);
       }
+
+      // OG tags
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      const ogImg = document.querySelector('meta[property="og:image"]');
+      if (ogTitle) ogTitle.setAttribute('content', post.seoTitle || post.title);
+      if (ogDesc) ogDesc.setAttribute('content', post.seoDescription || post.excerpt || '');
+      if (ogImg && post.coverImage) ogImg.setAttribute('content', urlFor(post.coverImage).width(1200).auto('format').url());
+
+      // Article JSON-LD
+      const jsonLd = {
+        "@context": "https://schema.org/",
+        "@type": "Article",
+        "headline": post.seoTitle || post.title,
+        "description": post.seoDescription || post.excerpt || "",
+        "datePublished": post.publishedAt,
+        "author": { "@type": "Organization", "name": "Attimo" },
+        "url": `https://attimo-oil.com/blog/${slug}`
+      };
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(jsonLd);
+      document.head.appendChild(script);
     }
 
     return () => {
       const link = document.querySelector('link[rel="canonical"]');
       if (link) link.remove();
+      const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+      scripts.forEach((s) => {
+        try {
+          const data = JSON.parse(s.textContent || '');
+          if (data["@type"] === "Article") s.remove();
+        } catch {}
+      });
     };
   }, [post, slug]);
 

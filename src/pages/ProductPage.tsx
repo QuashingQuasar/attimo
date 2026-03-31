@@ -100,6 +100,72 @@ const ProductPage = () => {
     return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; };
   }, [handle, content]);
 
+  useEffect(() => {
+    const jsonLdMap: Record<string, object> = {
+      nocellara: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Nocellara Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.",
+        "sku": "ATTIMO-NOC-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/nocellara", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+      },
+      coratina: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Coratina Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Coratina extra virgin olive oil from Puglia. Early harvest, cold-pressed. 847mg/kg polyphenols — lab tested. Certified organic. 500ml.",
+        "sku": "ATTIMO-COR-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/coratina", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+      },
+      picual: {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Attimo Picual Extra Virgin Olive Oil 500ml",
+        "description": "Single-variety Picual extra virgin olive oil from Andalusia. Early harvest, cold-pressed. 675mg/kg polyphenols — lab tested. 500ml.",
+        "sku": "ATTIMO-PIC-500",
+        "brand": { "@type": "Brand", "name": "Attimo" },
+        "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/picual", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+      }
+    };
+    const data = handle ? jsonLdMap[handle] : undefined;
+    if (!data) return;
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(data);
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, [handle]);
+
+  useEffect(() => {
+    const ogMap: Record<string, { title: string; description: string; image: string }> = {
+      nocellara: { title: "Attimo Nocellara Extra Virgin Olive Oil | 400mg/kg Polyphenols", description: "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.", image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243" },
+      coratina: { title: "Attimo Coratina Extra Virgin Olive Oil | 847mg/kg Polyphenols", description: "Single-variety Coratina extra virgin olive oil from Puglia. Early harvest, cold-pressed. 847mg/kg polyphenols — lab tested. Certified organic. 500ml.", image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330" },
+      picual: { title: "Attimo Picual Extra Virgin Olive Oil | 675mg/kg Polyphenols", description: "Single-variety Picual extra virgin olive oil from Andalusia. Early harvest, cold-pressed. 675mg/kg polyphenols — lab tested. 500ml.", image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549" }
+    };
+    const og = handle ? ogMap[handle] : undefined;
+    if (!og) return;
+    const titleEl = document.querySelector('meta[property="og:title"]');
+    const descEl = document.querySelector('meta[property="og:description"]');
+    const imgEl = document.querySelector('meta[property="og:image"]');
+    const origTitle = titleEl?.getAttribute('content');
+    const origDesc = descEl?.getAttribute('content');
+    const origImg = imgEl?.getAttribute('content');
+    if (titleEl) titleEl.setAttribute('content', og.title);
+    if (descEl) descEl.setAttribute('content', og.description);
+    if (imgEl) imgEl.setAttribute('content', og.image);
+    return () => {
+      if (titleEl && origTitle) titleEl.setAttribute('content', origTitle);
+      if (descEl && origDesc) descEl.setAttribute('content', origDesc);
+      if (imgEl && origImg) imgEl.setAttribute('content', origImg);
+    };
+  }, [handle]);
+
   const ONE_TIME_PRICE = 24;
   const SUBSCRIPTION_PRICE = 22;
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
