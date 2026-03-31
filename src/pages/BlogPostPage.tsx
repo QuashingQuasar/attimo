@@ -180,8 +180,25 @@ const BlogPostPage = () => {
           document.head.appendChild(meta);
         }
       }
+
+      // Canonical link
+      const canonicalUrl = `https://attimo-oil.com/blog/${slug}`;
+      let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+      if (link) {
+        link.href = canonicalUrl;
+      } else {
+        link = document.createElement("link");
+        link.rel = "canonical";
+        link.href = canonicalUrl;
+        document.head.appendChild(link);
+      }
     }
-  }, [post]);
+
+    return () => {
+      const link = document.querySelector('link[rel="canonical"]');
+      if (link) link.remove();
+    };
+  }, [post, slug]);
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString("en-US", {
