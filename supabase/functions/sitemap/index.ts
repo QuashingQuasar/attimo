@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const SANITY_PROJECT_ID = "jnnskynr";
+const SANITY_PROJECT_ID = "25tuybj3";
 const SANITY_DATASET = "production";
 
 const STATIC_URLS = [
