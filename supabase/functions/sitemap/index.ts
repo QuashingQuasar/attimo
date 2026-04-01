@@ -16,9 +16,15 @@ const STATIC_URLS = [
 serve(async () => {
   try {
     const query = encodeURIComponent(`*[_type == "post" && defined(slug.current)]{ "slug": slug.current, publishedAt }`);
-    const res = await fetch(`https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_DATASET}?query=${query}`);
-    const data = await res.json();
-    const posts = data.result || [];
+    const token = Deno.env.get("SANITY_API_TOKEN");
+    const res = await fetch(`https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_DATASET}?query=${query}`, {
+      headers: {
+        Accept: "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    });
+    if (!res.ok) throw new Error(`Sanity ${res.status}: ${await res.text()}`);
+    const { result: posts = [] } = await res.json();
 
     const staticEntries = STATIC_URLS.map(({ loc, priority }) => `
   <url>
