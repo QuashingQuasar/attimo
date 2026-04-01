@@ -54,6 +54,7 @@ ${postEntries}
       },
     });
   } catch (e) {
-    return new Response("Error generating sitemap", { status: 500 });
+    console.error("Sitemap error:", e);
+    return new Response(`Error generating sitemap: ${e.message}`, { status: 500 });
   }
 });
