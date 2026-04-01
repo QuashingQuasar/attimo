@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
@@ -16,6 +17,22 @@ import { Footer } from "@/components/Footer";
 
 const IndexV2 = () => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+
+  useEffect(() => {
+    const orgSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Attimo Olive Oil",
+      "url": "https://attimo-oil.com",
+      "aggregateRating": aggregateRating,
+      "review": reviews
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(orgSchema);
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, []);
 
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>

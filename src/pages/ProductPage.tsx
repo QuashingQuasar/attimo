@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";
@@ -110,7 +111,9 @@ const ProductPage = () => {
         "sku": "ATTIMO-NOC-500",
         "brand": { "@type": "Brand", "name": "Attimo" },
         "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
-        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/nocellara", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/nocellara", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       },
       coratina: {
         "@context": "https://schema.org/",
@@ -120,7 +123,9 @@ const ProductPage = () => {
         "sku": "ATTIMO-COR-500",
         "brand": { "@type": "Brand", "name": "Attimo" },
         "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
-        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/coratina", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/coratina", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       },
       picual: {
         "@context": "https://schema.org/",
@@ -130,7 +135,9 @@ const ProductPage = () => {
         "sku": "ATTIMO-PIC-500",
         "brand": { "@type": "Brand", "name": "Attimo" },
         "image": "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
-        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/picual", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" }
+        "offers": { "@type": "Offer", "url": "https://attimo-oil.com/product/picual", "price": "24.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition" },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       }
     };
     const data = handle ? jsonLdMap[handle] : undefined;
