@@ -74,7 +74,9 @@ const ProductPage = () => {
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition"
-        }
+        },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       },
       coratina: {
         "@context": "https://schema.org/",
@@ -91,7 +93,9 @@ const ProductPage = () => {
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition"
-        }
+        },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       },
       picual: {
         "@context": "https://schema.org/",
@@ -108,7 +112,9 @@ const ProductPage = () => {
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "itemCondition": "https://schema.org/NewCondition"
-        }
+        },
+        "aggregateRating": aggregateRating,
+        "review": reviews
       }
     };
     const data = handle ? jsonLdMap[handle] : undefined;
