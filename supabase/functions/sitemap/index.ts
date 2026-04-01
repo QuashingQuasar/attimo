@@ -17,7 +17,7 @@ serve(async () => {
   try {
     const query = encodeURIComponent(`*[_type == "post" && defined(slug.current)]{ "slug": slug.current, publishedAt }`);
     const token = Deno.env.get("SANITY_API_TOKEN");
-    const res = await fetch(`https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_DATASET}?query=${query}`, {
+    const res = await fetch(`https://${SANITY_PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/query/${SANITY_DATASET}?query=${query}`, {
       headers: {
         Accept: "application/json",
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
