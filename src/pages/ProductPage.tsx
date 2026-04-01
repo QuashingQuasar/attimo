@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useParams } from "react-router-dom";
 import { MapPin } from "lucide-react";

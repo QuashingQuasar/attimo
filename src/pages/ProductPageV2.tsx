@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { useParams } from "react-router-dom";
 import bottleFallback from "@/assets/attimo-bottle-final.jpg";
 import { Button } from "@/components/ui/button";
