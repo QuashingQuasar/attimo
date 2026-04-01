@@ -24,7 +24,9 @@ serve(async () => {
       },
     });
     if (!res.ok) throw new Error(`Sanity ${res.status}: ${await res.text()}`);
-    const { result: posts = [] } = await res.json();
+    const data = await res.json();
+    const posts = data.result || [];
+    console.log('posts found:', posts.length);
 
     const staticEntries = STATIC_URLS.map(({ loc, priority }) => `
   <url>
