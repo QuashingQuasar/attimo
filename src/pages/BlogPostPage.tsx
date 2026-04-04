@@ -326,6 +326,8 @@ const BlogPostPage = () => {
                 {post.title}
               </h1>
 
+              <ShareButtons title={post.title} />
+
               {post.coverImage && (
                 <div className="rounded-xl mb-12">
                   <img
