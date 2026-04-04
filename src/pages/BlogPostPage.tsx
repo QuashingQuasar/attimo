@@ -8,6 +8,7 @@ import { PortableText } from "@portabletext/react";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import ShareButtons from "@/components/ShareButtons";
 
 interface SanityPostPreview {
   _id: string;
@@ -324,6 +325,8 @@ const BlogPostPage = () => {
               >
                 {post.title}
               </h1>
+
+              <ShareButtons title={post.title} />
 
               {post.coverImage && (
                 <div className="rounded-xl mb-12">
