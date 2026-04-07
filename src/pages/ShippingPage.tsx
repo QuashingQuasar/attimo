@@ -20,8 +20,8 @@ const tiers = [
       "France", "Hungary", "Liechtenstein", "Malta", "Poland",
       "Slovakia", "Slovenia",
     ],
-    shippingCost: "€14",
-    freeFrom: "3 bottles",
+    shippingCost: "€11",
+    freeFrom: "2 bottles",
     delivery: "3–5 business days",
   },
   {
