@@ -8,7 +8,7 @@ const tiers = [
   {
     name: "Core",
     countries: ["Belgium", "Germany", "Luxembourg", "Netherlands"],
-    shippingCost: "€11",
+    shippingCost: "€7",
     freeFrom: "2 bottles",
     delivery: "2–3 business days",
     highlight: true,
