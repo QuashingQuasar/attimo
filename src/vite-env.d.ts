@@ -1,7 +1,5 @@
 /// <reference types="vite/client" />
 
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-  }
+interface Window {
+  dataLayer: Record<string, unknown>[];
 }
