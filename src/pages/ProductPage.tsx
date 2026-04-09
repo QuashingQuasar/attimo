@@ -178,6 +178,8 @@ const ProductPage = () => {
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
 
   const handleAddToCart = () => {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: 'add_to_cart_custom' });
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
 

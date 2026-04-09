@@ -143,6 +143,8 @@ const ProductPage = () => {
   const content = getProductContent(handle);
 
   const handleAddToCart = () => {
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: 'add_to_cart_custom' });
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
     
