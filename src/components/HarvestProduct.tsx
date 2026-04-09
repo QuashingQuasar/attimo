@@ -35,8 +35,8 @@ export const HarvestProduct = () => {
   const product = products[0]; // Use the first product with variants
 
   const handleAddToCart = () => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'add_to_cart_custom' });
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({ event: 'add_to_cart_custom' });
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
     
