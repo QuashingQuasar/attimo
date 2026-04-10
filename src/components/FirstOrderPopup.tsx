@@ -2,30 +2,24 @@ import { useState, useEffect, useCallback } from "react";
 import { X, Copy, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-const STORAGE_KEY_WELCOMED = "attimo_welcomed";
 const SESSION_KEY_DISMISSED = "attimo_popup_dismissed";
-const SESSION_KEY_SHOWN = "attimo_popup_shown";
 const DISCOUNT_CODE = "FIRSTPRESS";
 
 export const FirstOrderPopup = () => {
-  const [visible, setVisible] = useState(true); // TODO: restore delayed show logic
+  const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
-  // TODO: restore this effect for production
-  // useEffect(() => {
-  //   if (localStorage.getItem(STORAGE_KEY_WELCOMED) === "true") return;
-  //   if (sessionStorage.getItem(SESSION_KEY_DISMISSED) === "true") return;
-  //   if (sessionStorage.getItem(SESSION_KEY_SHOWN) === "true") return;
-  //   const timer = setTimeout(() => {
-  //     sessionStorage.setItem(SESSION_KEY_SHOWN, "true");
-  //     setVisible(true);
-  //   }, 20000);
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    if (sessionStorage.getItem(SESSION_KEY_DISMISSED) === "true") return;
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 20000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleClose = useCallback(() => {
     setVisible(false);
