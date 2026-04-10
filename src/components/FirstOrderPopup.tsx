@@ -36,7 +36,7 @@ export const FirstOrderPopup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || submitting) return;
+    if (!email.trim() || submitting || !agreed) return;
 
     setSubmitting(true);
     try {
@@ -82,7 +82,7 @@ export const FirstOrderPopup = () => {
       <div
         className="relative w-full max-w-md rounded-xl p-8 shadow-2xl"
         style={{
-          backgroundColor: "hsl(122, 42%, 18%)",
+          backgroundColor: "#1B4229",
           animation: "popupSlideUp 0.35s ease-out",
         }}
       >
