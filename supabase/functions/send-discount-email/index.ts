@@ -47,17 +47,17 @@ serve(async (req) => {
         <tr><td style="text-align:center;">
           <h1 style="color:#ffffff;font-size:24px;margin:0 0 8px;font-weight:700;">Welcome to ATTIMO</h1>
           <p style="color:hsl(45,25%,80%);font-size:15px;margin:0 0 28px;line-height:1.5;">
-            Here's your exclusive 15% discount on your first order.
+            Here's 15% off on your first order.
           </p>
           <div style="background-color:hsl(122,42%,25%);border-radius:8px;padding:20px;margin-bottom:24px;">
             <p style="color:hsl(45,25%,80%);font-size:13px;margin:0 0 6px;">Your discount code</p>
             <p style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:4px;margin:0;">FIRSTPRESS</p>
           </div>
-          <a href="https://attimo-oil.com" style="display:inline-block;background-color:hsl(46,87%,53%);color:#1B4229;font-size:15px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;">
+          <a href="https://attimo-oil.com" style="display:inline-block;background-color:#CDDB2D;color:#1B4229;font-size:15px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;">
             Shop Now
           </a>
           <p style="color:hsl(45,25%,55%);font-size:12px;margin:28px 0 0;line-height:1.5;">
-            Apply the code at checkout. Valid for your first order only.
+            Apply the code at checkout. Valid for your first order.
           </p>
         </td></tr>
       </table>
