@@ -13,6 +13,7 @@ export const FirstOrderPopup = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
     // Never show if already welcomed or dismissed/shown this session
