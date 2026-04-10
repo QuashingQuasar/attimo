@@ -410,6 +410,7 @@ const ProductPage = () => {
       <FAQ />
 
       <Footer />
+      <FirstOrderPopup />
     </div>
   );
 };
