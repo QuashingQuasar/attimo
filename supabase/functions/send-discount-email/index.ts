@@ -36,29 +36,27 @@ serve(async (req) => {
         to: [{ email }],
         sender: { name: 'ATTIMO', email: 'hello@attimo-oil.com' },
         subject: 'Your 15% discount code from ATTIMO',
-        htmlContent: `
-<!DOCTYPE html>
+        htmlContent: `<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;background-color:#f5f3ee;font-family:'Helvetica Neue',Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f5f3ee;padding:40px 20px;">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:rgb(27,66,41);font-family:'Helvetica Neue',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:rgb(27,66,41);padding:60px 20px;">
     <tr><td align="center">
-      <table width="100%" style="max-width:520px;background-color:#1B4229;border-radius:12px;padding:40px 32px;" cellpadding="0" cellspacing="0">
+      <table width="100%" style="max-width:480px;" cellpadding="0" cellspacing="0">
+        <tr><td style="text-align:center;padding-bottom:32px;">
+          <p style="color:rgba(255,255,255,0.35);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin:0;font-weight:600;">ATTIMO</p>
+        </td></tr>
+        <tr><td style="text-align:center;padding-bottom:36px;">
+          <p style="color:rgba(255,255,255,0.7);font-size:16px;line-height:1.6;margin:0;">Here's your 15% off code for your first order.</p>
+        </td></tr>
+        <tr><td style="text-align:center;padding-bottom:36px;">
+          <p style="color:#f5f0e8;font-size:32px;font-weight:700;letter-spacing:6px;margin:0;font-family:'Courier New',Courier,monospace;">FIRSTPRESS</p>
+        </td></tr>
+        <tr><td style="text-align:center;padding-bottom:40px;">
+          <a href="https://attimo-oil.com" style="display:inline-block;background-color:#CDDB2D;color:#1B4229;font-size:15px;font-weight:600;text-decoration:none;padding:14px 36px;border-radius:8px;">Shop Now</a>
+        </td></tr>
         <tr><td style="text-align:center;">
-          <h1 style="color:#ffffff;font-size:24px;margin:0 0 8px;font-weight:700;">Welcome to ATTIMO</h1>
-          <p style="color:hsl(45,25%,80%);font-size:15px;margin:0 0 28px;line-height:1.5;">
-            Here's 15% off on your first order.
-          </p>
-          <div style="background-color:hsl(122,42%,25%);border-radius:8px;padding:20px;margin-bottom:24px;">
-            <p style="color:hsl(45,25%,80%);font-size:13px;margin:0 0 6px;">Your discount code</p>
-            <p style="color:#ffffff;font-size:28px;font-weight:700;letter-spacing:4px;margin:0;">FIRSTPRESS</p>
-          </div>
-          <a href="https://attimo-oil.com" style="display:inline-block;background-color:#CDDB2D;color:#1B4229;font-size:15px;font-weight:600;text-decoration:none;padding:14px 32px;border-radius:8px;">
-            Shop Now
-          </a>
-          <p style="color:hsl(45,25%,55%);font-size:12px;margin:28px 0 0;line-height:1.5;">
-            Apply the code at checkout. Valid for your first order.
-          </p>
+          <p style="color:rgba(255,255,255,0.3);font-size:12px;margin:0;line-height:1.5;">Apply at checkout. Valid for your first order.</p>
         </td></tr>
       </table>
     </td></tr>
