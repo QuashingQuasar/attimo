@@ -38,15 +38,15 @@ export const FirstOrderPopup = () => {
 
     setSubmitting(true);
     try {
-      // Add to Brevo newsletter list
-      await supabase.functions.invoke("add-brevo-contact", {
-        body: { email: email.trim() },
-      });
-
-      // Send transactional discount email
-      await supabase.functions.invoke("send-discount-email", {
-        body: { email: email.trim() },
-      });
+      // Fire both API calls in parallel
+      await Promise.all([
+        supabase.functions.invoke("add-brevo-contact", {
+          body: { email: email.trim() },
+        }),
+        supabase.functions.invoke("send-discount-email", {
+          body: { email: email.trim() },
+        }),
+      ]);
 
       localStorage.setItem(STORAGE_KEY_WELCOMED, "true");
       setSubmitted(true);
@@ -174,7 +174,7 @@ export const FirstOrderPopup = () => {
                 color: "hsl(45, 25%, 80%)",
               }}
             >
-              Your code is
+              Apply your code at checkout for 15% off
             </p>
             <div className="flex items-center justify-center gap-3 mb-4">
               <span
