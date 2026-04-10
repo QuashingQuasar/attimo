@@ -23,6 +23,7 @@ import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector } from "@/components/QuantitySelector";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
+import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 
 const ProductPage = () => {
   const { handle } = useParams<{ handle: string }>();
