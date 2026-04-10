@@ -150,6 +150,25 @@ const ProductPage = () => {
     return () => { document.head.removeChild(script); };
   }, [handle]);
 
+  // Meta Pixel: ViewContent
+  useEffect(() => {
+    if (!handle) return;
+    const nameMap: Record<string, string> = {
+      nocellara: 'Nocellara del Belice',
+      coratina: 'Coratina',
+      picual: 'Picual',
+    };
+    const productName = nameMap[handle];
+    if (!productName) return;
+    (window as any).fbq?.('track', 'ViewContent', {
+      content_name: productName,
+      content_ids: [handle],
+      content_type: 'product',
+      value: 24.00,
+      currency: 'EUR',
+    });
+  }, [handle]);
+
   useEffect(() => {
     const ogMap: Record<string, { title: string; description: string; image: string }> = {
       nocellara: { title: "Attimo Nocellara Extra Virgin Olive Oil | 400mg/kg Polyphenols", description: "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.", image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243" },
@@ -181,6 +200,28 @@ const ProductPage = () => {
   const handleAddToCart = () => {
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({ event: 'add_to_cart_custom' });
+
+    // Meta Pixel: AddToCart + InitiateCheckout
+    const nameMap: Record<string, string> = {
+      nocellara: 'Nocellara del Belice',
+      coratina: 'Coratina',
+      picual: 'Picual',
+    };
+    const pixelName = nameMap[handle || ''] || handle || '';
+    const totalValue = activePrice * selectedQuantity;
+    (window as any).fbq?.('track', 'AddToCart', {
+      content_name: pixelName,
+      content_ids: [handle],
+      content_type: 'product',
+      value: totalValue,
+      currency: 'EUR',
+    });
+    (window as any).fbq?.('track', 'InitiateCheckout', {
+      value: totalValue,
+      currency: 'EUR',
+      num_items: selectedQuantity,
+    });
+
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
 
