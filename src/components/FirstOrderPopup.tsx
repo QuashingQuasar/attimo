@@ -13,6 +13,7 @@ export const FirstOrderPopup = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
     // Never show if already welcomed or dismissed/shown this session
@@ -35,7 +36,7 @@ export const FirstOrderPopup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || submitting) return;
+    if (!email.trim() || submitting || !agreed) return;
 
     setSubmitting(true);
     try {
@@ -81,7 +82,7 @@ export const FirstOrderPopup = () => {
       <div
         className="relative w-full max-w-md rounded-xl p-8 shadow-2xl"
         style={{
-          backgroundColor: "hsl(122, 42%, 18%)",
+          backgroundColor: "#1B4229",
           animation: "popupSlideUp 0.35s ease-out",
         }}
       >
@@ -131,31 +132,39 @@ export const FirstOrderPopup = () => {
                   backgroundColor: "hsl(45, 25%, 97%)",
                 }}
               />
+              <label className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 rounded border-2 border-white/30 accent-[#EFC11B] flex-shrink-0"
+                />
+                <span
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "0.75rem",
+                    color: "hsl(45, 25%, 70%)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  I agree to get emails from ATTIMO
+                </span>
+              </label>
+
               <button
                 type="submit"
-                disabled={submitting}
-                className="w-full rounded-lg py-3 font-semibold transition-all disabled:opacity-50"
+                disabled={submitting || !agreed}
+                className="w-full rounded-lg py-3 font-semibold transition-all disabled:opacity-40"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
-                  backgroundColor: "hsl(46, 87%, 53%)",
-                  color: "hsl(122, 42%, 18%)",
+                  backgroundColor: "#EFC11B",
+                  color: "#1B4229",
                 }}
               >
                 {submitting ? "Submitting…" : "Get my code"}
               </button>
             </form>
-
-            <p
-              className="mt-3 text-center"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "0.75rem",
-                color: "hsl(45, 25%, 60%)",
-              }}
-            >
-              I agree to get emails from ATTIMO
-            </p>
           </>
         ) : (
           <div className="text-center py-2">
@@ -183,8 +192,8 @@ export const FirstOrderPopup = () => {
                 onClick={handleCopy}
                 className="rounded-md p-2 transition-colors"
                 style={{
-                  backgroundColor: "hsl(122, 42%, 25%)",
-                  color: copied ? "hsl(46, 87%, 53%)" : "hsl(45, 25%, 80%)",
+                  backgroundColor: "rgba(27, 66, 41, 0.6)",
+                  color: copied ? "#EFC11B" : "hsl(45, 25%, 80%)",
                 }}
                 aria-label="Copy code"
               >
