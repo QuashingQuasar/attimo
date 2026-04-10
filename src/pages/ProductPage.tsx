@@ -25,6 +25,7 @@ import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
+import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 
 const ProductPage = () => {
   const { handle } = useParams<{handle: string;}>();
@@ -473,6 +474,7 @@ const ProductPage = () => {
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} />
 
       <Footer />
+      <FirstOrderPopup />
     </div>);
 
 };
