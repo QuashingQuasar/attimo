@@ -8,26 +8,24 @@ const SESSION_KEY_SHOWN = "attimo_popup_shown";
 const DISCOUNT_CODE = "FIRSTPRESS";
 
 export const FirstOrderPopup = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true); // TODO: restore delayed show logic
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
-  useEffect(() => {
-    // Never show if already welcomed or dismissed/shown this session
-    if (localStorage.getItem(STORAGE_KEY_WELCOMED) === "true") return;
-    if (sessionStorage.getItem(SESSION_KEY_DISMISSED) === "true") return;
-    if (sessionStorage.getItem(SESSION_KEY_SHOWN) === "true") return;
-
-    const timer = setTimeout(() => {
-      sessionStorage.setItem(SESSION_KEY_SHOWN, "true");
-      setVisible(true);
-    }, 20000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  // TODO: restore this effect for production
+  // useEffect(() => {
+  //   if (localStorage.getItem(STORAGE_KEY_WELCOMED) === "true") return;
+  //   if (sessionStorage.getItem(SESSION_KEY_DISMISSED) === "true") return;
+  //   if (sessionStorage.getItem(SESSION_KEY_SHOWN) === "true") return;
+  //   const timer = setTimeout(() => {
+  //     sessionStorage.setItem(SESSION_KEY_SHOWN, "true");
+  //     setVisible(true);
+  //   }, 20000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleClose = useCallback(() => {
     setVisible(false);
