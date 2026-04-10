@@ -42,7 +42,7 @@ export const FirstOrderPopup = () => {
         }),
       ]);
 
-      localStorage.setItem(STORAGE_KEY_WELCOMED, "true");
+      sessionStorage.setItem(SESSION_KEY_DISMISSED, "true");
       setSubmitted(true);
     } catch (err) {
       console.error("Popup submit error:", err);
