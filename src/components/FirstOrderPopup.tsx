@@ -132,31 +132,39 @@ export const FirstOrderPopup = () => {
                   backgroundColor: "hsl(45, 25%, 97%)",
                 }}
               />
+              <label className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 rounded border-2 border-white/30 accent-[#EFC11B] flex-shrink-0"
+                />
+                <span
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "0.75rem",
+                    color: "hsl(45, 25%, 70%)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  I agree to get emails from ATTIMO
+                </span>
+              </label>
+
               <button
                 type="submit"
-                disabled={submitting}
-                className="w-full rounded-lg py-3 font-semibold transition-all disabled:opacity-50"
+                disabled={submitting || !agreed}
+                className="w-full rounded-lg py-3 font-semibold transition-all disabled:opacity-40"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
-                  backgroundColor: "hsl(46, 87%, 53%)",
-                  color: "hsl(122, 42%, 18%)",
+                  backgroundColor: "#EFC11B",
+                  color: "#1B4229",
                 }}
               >
                 {submitting ? "Submitting…" : "Get my code"}
               </button>
             </form>
-
-            <p
-              className="mt-3 text-center"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "0.75rem",
-                color: "hsl(45, 25%, 60%)",
-              }}
-            >
-              I agree to get emails from ATTIMO
-            </p>
           </>
         ) : (
           <div className="text-center py-2">
