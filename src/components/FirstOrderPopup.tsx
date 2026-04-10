@@ -135,7 +135,7 @@ export const FirstOrderPopup = () => {
                   type="checkbox"
                   checked={agreed}
                   onChange={(e) => setAgreed(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 rounded border-2 border-white/30 accent-[#EFC11B] flex-shrink-0"
+                  className="mt-0.5 h-4 w-4 rounded border-2 border-white/30 flex-shrink-0 appearance-none checked:bg-white checked:border-white relative after:content-['✓'] after:absolute after:inset-0 after:flex after:items-center after:justify-center after:text-[#1B4229] after:text-xs after:font-bold after:hidden checked:after:block"
                 />
                 <span
                   style={{
@@ -156,7 +156,7 @@ export const FirstOrderPopup = () => {
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
-                  backgroundColor: "#EFC11B",
+                  backgroundColor: "#CDDB2D",
                   color: "#1B4229",
                 }}
               >
@@ -191,7 +191,7 @@ export const FirstOrderPopup = () => {
                 className="rounded-md p-2 transition-colors"
                 style={{
                   backgroundColor: "rgba(27, 66, 41, 0.6)",
-                  color: copied ? "#EFC11B" : "hsl(45, 25%, 80%)",
+                  color: copied ? "#CDDB2D" : "hsl(45, 25%, 80%)",
                 }}
                 aria-label="Copy code"
               >
