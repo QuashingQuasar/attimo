@@ -192,8 +192,8 @@ export const FirstOrderPopup = () => {
                 onClick={handleCopy}
                 className="rounded-md p-2 transition-colors"
                 style={{
-                  backgroundColor: "hsl(122, 42%, 25%)",
-                  color: copied ? "hsl(46, 87%, 53%)" : "hsl(45, 25%, 80%)",
+                  backgroundColor: "rgba(27, 66, 41, 0.6)",
+                  color: copied ? "#EFC11B" : "hsl(45, 25%, 80%)",
                 }}
                 aria-label="Copy code"
               >
