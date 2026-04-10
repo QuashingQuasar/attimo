@@ -474,6 +474,7 @@ const ProductPage = () => {
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} />
 
       <Footer />
+      <FirstOrderPopup />
     </div>);
 
 };
