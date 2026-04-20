@@ -81,7 +81,7 @@ export interface ProductContent {
 export const productContentMap: Record<string, ProductContent> = {
   "attimo-extra-virgin-olive-oil-coratina-500ml": {
     heroTitle: "CORATINA D'ITALIA",
-    heroSubtitle: "Specialty Extra Virgin Olive Oil",
+    heroSubtitle: "Organic Specialty Extra Virgin Olive Oil",
     benefits: [
       "100% Coratina olives harvested early and cold-pressed within hours",
       "Third-party lab tested for quality and purity",
