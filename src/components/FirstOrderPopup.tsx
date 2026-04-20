@@ -17,7 +17,7 @@ export const FirstOrderPopup = () => {
     if (sessionStorage.getItem(SESSION_KEY_DISMISSED) === "true") return;
     const timer = setTimeout(() => {
       setVisible(true);
-    }, 15000);
+    }, 10000);
     return () => clearTimeout(timer);
   }, []);
 
