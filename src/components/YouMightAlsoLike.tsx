@@ -136,21 +136,6 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                   </span>
                 </div>
 
-                {oil.handle === "picual" &&
-              <div className="absolute bottom-0 right-0 z-10 px-5 pb-5">
-                    <span
-                  className="oil-card-label"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    letterSpacing: "0.1em",
-                    color: "#1B4229"
-                  }}>
-                  
-                      COMING SOON
-                    </span>
-                  </div>
-              }
-
                 <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
