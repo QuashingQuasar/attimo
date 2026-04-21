@@ -136,6 +136,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                   </span>
                 </div>
 
+                <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
                 className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]" />
