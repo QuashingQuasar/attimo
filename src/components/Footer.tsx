@@ -23,6 +23,7 @@ export const Footer = () => {
         <div className="md:hidden">
           <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col gap-3 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
@@ -47,6 +48,7 @@ export const Footer = () => {
           <div className="flex justify-between items-center gap-4">
             <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href="/shipping" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
