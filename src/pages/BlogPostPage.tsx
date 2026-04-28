@@ -136,6 +136,11 @@ const portableTextComponents = {
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   const [nlEmail, setNlEmail] = useState("");
   const [nlSubmitting, setNlSubmitting] = useState(false);
 
