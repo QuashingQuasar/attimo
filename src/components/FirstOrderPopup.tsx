@@ -97,7 +97,7 @@ export const FirstOrderPopup = () => {
                 lineHeight: 1.2,
               }}
             >
-              Get 15% off your first order
+              Get 10% off your first order
             </h2>
             <p
               className="mb-6"
@@ -168,7 +168,7 @@ export const FirstOrderPopup = () => {
                 color: "hsl(45, 25%, 80%)",
               }}
             >
-              Apply your code at checkout for 15% off
+              Apply your code at checkout for 10% off
             </p>
             <div className="flex items-center justify-center gap-3 mb-4">
               <span
