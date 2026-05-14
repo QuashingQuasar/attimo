@@ -216,23 +216,24 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             var root = document.documentElement;
             root.style.setProperty("--announce-bar-h", h + "px");
             // Pages nest content inside `.overflow-y-scroll` containers, so
-            // `body` itself never scrolls. Watch every plausible scroll source
-            // and snap the bar away (and the navbar up to top:0) on first
-            // scroll - that way the bar disappears instead of appearing stuck.
-            var dismissed = false;
-            function dismiss() {
-              if (dismissed) return;
+            // `body` itself never scrolls. Track scroll across every plausible
+            // source - the bar shows when at the very top and hides otherwise,
+            // with the navbar offset snapping in/out to match.
+            function sync() {
               var scrollY = window.scrollY || 0;
               document.querySelectorAll(".overflow-y-scroll").forEach(function (c) {
                 if (c.scrollTop > scrollY) scrollY = c.scrollTop;
               });
-              if (scrollY <= 0) return;
-              dismissed = true;
-              bar.style.display = "none";
-              root.style.setProperty("--announce-bar-h", "0px");
+              if (scrollY > 0) {
+                bar.style.display = "none";
+                root.style.setProperty("--announce-bar-h", "0px");
+              } else {
+                bar.style.display = "block";
+                root.style.setProperty("--announce-bar-h", h + "px");
+              }
             }
-            window.addEventListener("scroll", dismiss, { passive: true });
-            document.addEventListener("scroll", dismiss, { passive: true, capture: true });
+            window.addEventListener("scroll", sync, { passive: true });
+            document.addEventListener("scroll", sync, { passive: true, capture: true });
           })();
         </script>
       </>
