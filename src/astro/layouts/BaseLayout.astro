@@ -213,7 +213,26 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             text.textContent = msg;
             bar.style.display = "block";
             var h = bar.getBoundingClientRect().height || 40;
-            document.documentElement.style.setProperty("--announce-bar-h", h + "px");
+            var root = document.documentElement;
+            root.style.setProperty("--announce-bar-h", h + "px");
+            // Pages nest content inside `.overflow-y-scroll` containers, so
+            // `body` itself never scrolls. Watch every plausible scroll source
+            // and snap the bar away (and the navbar up to top:0) on first
+            // scroll - that way the bar disappears instead of appearing stuck.
+            var dismissed = false;
+            function dismiss() {
+              if (dismissed) return;
+              var scrollY = window.scrollY || 0;
+              document.querySelectorAll(".overflow-y-scroll").forEach(function (c) {
+                if (c.scrollTop > scrollY) scrollY = c.scrollTop;
+              });
+              if (scrollY <= 0) return;
+              dismissed = true;
+              bar.style.display = "none";
+              root.style.setProperty("--announce-bar-h", "0px");
+            }
+            window.addEventListener("scroll", dismiss, { passive: true });
+            document.addEventListener("scroll", dismiss, { passive: true, capture: true });
           })();
         </script>
       </>
