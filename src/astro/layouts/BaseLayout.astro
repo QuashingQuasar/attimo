@@ -175,14 +175,9 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
-          :root { --announce-bar-h: 0px; }
-          header.fixed { transform: translateY(var(--announce-bar-h, 0px)); }
           #announce-bar {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             z-index: 60;
             width: 100%;
             text-align: center;
@@ -216,9 +211,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             if (!bar || !text) return;
             text.textContent = msg;
             bar.style.display = "block";
-            // Push the fixed Header below the bar so it doesn't overlap.
-            var h = bar.getBoundingClientRect().height || 40;
-            document.documentElement.style.setProperty("--announce-bar-h", h + "px");
           })();
         </script>
       </>
