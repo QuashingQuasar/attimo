@@ -175,8 +175,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
-          :root { --announce-bar-h: 0px; }
-          header.fixed { top: var(--announce-bar-h, 0px) !important; }
           #announce-bar {
             display: none;
             position: static;
@@ -212,14 +210,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             if (!bar || !text) return;
             text.textContent = msg;
             bar.style.display = "block";
-            var h = bar.getBoundingClientRect().height || 40;
-            var root = document.documentElement;
-            function update() {
-              var visible = Math.max(0, h - window.scrollY);
-              root.style.setProperty("--announce-bar-h", visible + "px");
-            }
-            update();
-            window.addEventListener("scroll", update, { passive: true });
           })();
         </script>
       </>
