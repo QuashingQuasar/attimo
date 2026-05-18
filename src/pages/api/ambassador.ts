@@ -1,21 +1,20 @@
+import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
+export const prerender = false;
+
 const RECIPIENT = "gilles@attimo-oil.com";
-const FROM = process.env.RESEND_FROM || "ATTIMO Ambassadors <ambassadors@send.attimo-oil.com>";
+const FROM = import.meta.env.RESEND_FROM || "ATTIMO Ambassadors <ambassadors@send.attimo-oil.com>";
 
-export default async function handler(req: Request): Promise<Response> {
-  if (req.method !== "POST") {
-    return Response.json({ error: "Method not allowed" }, { status: 405 });
-  }
-
-  const apiKey = process.env.RESEND_API_KEY;
+export const POST: APIRoute = async ({ request }) => {
+  const apiKey = import.meta.env.RESEND_API_KEY;
   if (!apiKey) {
     return Response.json({ error: "Email service not configured" }, { status: 500 });
   }
 
   let body: { name?: string; handle?: string; message?: string };
   try {
-    body = await req.json();
+    body = await request.json();
   } catch {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
@@ -57,4 +56,4 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   return Response.json({ ok: true });
-}
+};
