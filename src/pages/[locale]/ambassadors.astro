@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import AmbassadorsPage from "@astro/react-pages/AmbassadorsPage";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+
+export function getStaticPaths() {
+  return LOCALES
+    .filter((l) => l.slug !== "")
+    .map((locale) => ({
+      params: { locale: locale.slug },
+      props: { locale },
+    }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const canonical = `https://attimo-oil.com/${locale.slug}/ambassadors`;
+---
+
+<BaseLayout
+  title="Ambassadors | ATTIMO Specialty Extra Virgin Olive Oil"
+  description="Become an ATTIMO ambassador. Share a personal discount code — your people get 15% off and you earn 15% on every bottle."
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/ambassadors"
+>
+  <AmbassadorsPage locale={locale} client:load />
+</BaseLayout>

@@ -122,6 +122,9 @@ export const Header = ({
             <Link to="/blog" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
+            <Link to="/quiz" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              Quiz
+            </Link>
             <CartDrawer darkIcon={darkNav && !isScrolled && !shopOpen} locale={locale} />
           </div>
         </div>
