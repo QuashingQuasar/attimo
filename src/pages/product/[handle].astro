@@ -4,6 +4,8 @@ import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
+import { sanityClient } from "@/lib/sanity";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 
 export function getStaticPaths() {
   return [
@@ -16,10 +18,15 @@ export function getStaticPaths() {
 const { handle } = Astro.params as { handle: "coratina" | "nocellara" | "picual" };
 const shopifyHandle = resolveShopifyHandle(handle);
 
-const [allProducts, exactHandleProducts, sellingPlans] = await Promise.all([
+const [allProducts, exactHandleProducts, sellingPlans, blogPosts] = await Promise.all([
   fetchProducts(50).catch(() => []),
   shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`).catch(() => []) : Promise.resolve([]),
   shopifyHandle ? fetchSellingPlans(shopifyHandle).catch(() => []) : Promise.resolve([]),
+  sanityClient.fetch(
+    `*[_type == "post"] | order(publishedAt desc)[0..2] {
+      _id, title, slug, publishedAt, excerpt, coverImage
+    }`
+  ).catch(() => []),
 ]);
 
 const initialProducts = [...allProducts, ...exactHandleProducts].filter(
@@ -37,27 +44,27 @@ interface Meta {
 
 const META: Record<typeof handle, Meta> = {
   coratina: {
-    title: "Attimo Coratina Extra Virgin Olive Oil | 847mg/kg Polyphenols",
+    title: "Coratina | High-Polyphenol, Single-Variety, Early Harvest Olive Oil",
     description:
-      "Single-variety Coratina extra virgin olive oil from Puglia. Early harvest, cold-pressed. 847mg/kg polyphenols — lab tested. Certified organic. 500ml.",
+      "Coratina extra virgin olive oil with 847mg/kg polyphenols — our highest. Organically certified, single-variety, early harvest, cold-pressed. 500ml — €24.",
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
     productName: "Attimo Coratina Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-COR-500",
     polyphenols: "847",
   },
   nocellara: {
-    title: "Attimo Nocellara Extra Virgin Olive Oil | 400mg/kg Polyphenols",
+    title: "Nocellara | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
     description:
-      "Single-variety Nocellara extra virgin olive oil from Sicily. Early harvest, cold-pressed. 400mg/kg polyphenols — lab tested. 500ml.",
+      "Nocellara extra virgin olive oil from Sicily. Single-variety, early harvest, cold-pressed. 400mg/kg polyphenols, lab-tested. 500ml — €24.",
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
     productName: "Attimo Nocellara Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-NOC-500",
     polyphenols: "400",
   },
   picual: {
-    title: "Attimo Picual Extra Virgin Olive Oil | 675mg/kg Polyphenols",
+    title: "Picual | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
     description:
-      "Single-variety Picual extra virgin olive oil from Andalusia. Early harvest, cold-pressed. 675mg/kg polyphenols — lab tested. 500ml.",
+      "Picual extra virgin olive oil from Andalusia. Single-variety, early harvest, cold-pressed. 675mg/kg polyphenols, lab-tested. 500ml — €24.",
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
     productName: "Attimo Picual Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-PIC-500",
@@ -67,6 +74,8 @@ const META: Record<typeof handle, Meta> = {
 
 const meta = META[handle];
 const canonicalUrl = `https://attimo-oil.com/product/${handle}`;
+const locale = DEFAULT_LOCALE;
+const priceAmount = locale.prices[handle];
 
 const productJsonLd = {
   "@context": "https://schema.org/",
@@ -79,14 +88,16 @@ const productJsonLd = {
   offers: {
     "@type": "Offer",
     url: canonicalUrl,
-    price: "24.00",
-    priceCurrency: "EUR",
+    price: priceAmount.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,
   review: reviews,
 };
+
+const hreflangPath = `/product/${handle}`;
 ---
 
 <BaseLayout
@@ -97,6 +108,7 @@ const productJsonLd = {
   ogType="product"
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
+  hreflangPath={hreflangPath}
 >
   <script is:inline define:vars={{ handle }}>
     if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };
@@ -105,6 +117,7 @@ const productJsonLd = {
     handle={handle}
     initialProducts={initialProducts}
     initialSellingPlans={sellingPlans}
+    initialBlogPosts={blogPosts}
     client:load
   />
 </BaseLayout>

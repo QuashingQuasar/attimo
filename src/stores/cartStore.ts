@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { toast } from 'sonner';
 import { CartItem, createStorefrontCheckout } from '@/lib/shopify';
 
 interface CartStore {
@@ -80,6 +81,8 @@ export const useCartStore = create<CartStore>()(
           setCheckoutUrl(checkoutUrl);
         } catch (error) {
           console.error('Failed to create checkout:', error);
+          const message = error instanceof Error ? error.message : 'Could not start checkout. Please try again.';
+          toast.error(message);
         } finally {
           setLoading(false);
         }

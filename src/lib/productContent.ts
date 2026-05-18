@@ -403,6 +403,22 @@ export function resolveShopifyHandle(urlHandle: string | undefined): string {
   return handleToShopifyHandle[urlHandle] || urlHandle;
 }
 
+// Inverse: given a Shopify handle, return the URL slug we use as the key into
+// locale.prices[]. Returns null when no product matches (defensive).
+const SHOPIFY_HANDLE_TO_URL_SLUG: Record<string, "coratina" | "nocellara" | "picual"> =
+  Object.fromEntries(
+    Object.entries(handleToShopifyHandle).map(
+      ([url, shop]) => [shop, url as "coratina" | "nocellara" | "picual"]
+    )
+  );
+
+export function urlSlugForShopifyHandle(
+  shopifyHandle: string | undefined
+): "coratina" | "nocellara" | "picual" | null {
+  if (!shopifyHandle) return null;
+  return SHOPIFY_HANDLE_TO_URL_SLUG[shopifyHandle] ?? null;
+}
+
 // Default to nocellara if handle not found
 export function getProductContent(handle: string | undefined): ProductContent {
   if (!handle) return productContentMap["nocellara"];

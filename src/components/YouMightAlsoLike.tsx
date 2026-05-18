@@ -2,46 +2,46 @@ import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
 
-const allOils = [
-{
-  name: "Coratina",
-  nameDetail: "d'Italia",
-  flavor: "Bold & Punchy",
-  origin: "Puglia, Italy",
-  flag: "🇮🇹",
-  handle: "coratina",
-  image: coratinaImage,
-  tagline: "A hit of healthy polyphenols",
-  price: 24
-},
-{
-  name: "Picual",
-  nameDetail: "de España",
-  flavor: "Green & Grassy",
-  origin: "Jaén, Spain",
-  flag: "🇪🇸",
-  handle: "picual",
-  image: picualImage,
-  tagline: "All-round goodness",
-  price: 24
-},
-{
-  name: "Nocellara",
-  nameDetail: "d'Italia",
-  flavor: "Gentle & Fruity",
-  origin: "Sicily, Italy",
-  flag: "🇮🇹",
-  handle: "nocellara",
-  image: nocellaraImage,
-  tagline: "Loved by everyone",
-  price: 24
-}];
+const oilDefs = [
+  {
+    name: "Coratina",
+    nameDetail: "d'Italia",
+    flavor: "Bold & Punchy",
+    origin: "Puglia, Italy",
+    flag: "🇮🇹",
+    handle: "coratina" as const,
+    image: coratinaImage,
+    tagline: "A hit of healthy polyphenols",
+  },
+  {
+    name: "Picual",
+    nameDetail: "de España",
+    flavor: "Green & Grassy",
+    origin: "Jaén, Spain",
+    flag: "🇪🇸",
+    handle: "picual" as const,
+    image: picualImage,
+    tagline: "All-round goodness",
+  },
+  {
+    name: "Nocellara",
+    nameDetail: "d'Italia",
+    flavor: "Gentle & Fruity",
+    origin: "Sicily, Italy",
+    flag: "🇮🇹",
+    handle: "nocellara" as const,
+    image: nocellaraImage,
+    tagline: "Loved by everyone",
+  },
+];
 
 
 interface YouMightAlsoLikeProps {
   currentHandle?: string;
   accentColor?: string;
+  locale?: Locale;
 }
 
 // Helper: determine if a hex color is "light" (needs dark text) or "dark" (needs light text)
@@ -53,10 +53,12 @@ const isLightColor = (hex: string): boolean => {
   return (r * 299 + g * 587 + b * 114) / 1000 > 150;
 };
 
-export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLikeProps) => {
+export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_LOCALE }: YouMightAlsoLikeProps) => {
+  const allOils = oilDefs.map((o) => ({ ...o, price: locale.prices[o.handle] }));
   const otherOils = allOils.filter((oil) => oil.handle !== currentHandle);
-  const bgColor = accentColor || "hsl(var(--section-light))";
-  const textColor = accentColor && isLightColor(accentColor) ? "#1B4229" : accentColor ? "#FFFAEA" : "#1B4229";
+  // Fixed light bg so the section visually separates from BlogSection below.
+  const bgColor = "#FFFAEA";
+  const textColor = "#1B4229";
 
   return (
     <section
@@ -97,7 +99,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
           {otherOils.map((oil) =>
           <Link
             key={oil.handle}
-            to={`/product/${oil.handle}`}
+            to={localizeHref(`/product/${oil.handle}`, locale)}
             className="group flex flex-col">
             
               <div
@@ -178,7 +180,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor }: YouMightAlsoLik
                   letterSpacing: "0.03em"
                 }}>
                 
-                  €{oil.price}
+                  {formatPrice(oil.price, locale)}
                 </p>
 
                 <p

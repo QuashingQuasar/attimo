@@ -3,7 +3,7 @@ import { toast } from "sonner";
 const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = '00xpv6-0j.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = 'b5fb21ec3074847a5a0d0739ba445521';
+const SHOPIFY_STOREFRONT_TOKEN = '79b950607019e5b5574dd3e5fe0fe15a';
 
 export interface ShopifyProduct {
   node: {
@@ -205,9 +205,18 @@ export async function fetchSellingPlans(handle: string): Promise<SellingPlan[]> 
   try {
     const data = await storefrontApiRequest(SELLING_PLANS_QUERY, { handle });
     const groups = data?.data?.product?.sellingPlanGroups?.edges || [];
-    return groups.flatMap((g: any) => g.node.sellingPlans.edges.map((sp: any) => sp.node));
+    const plans = groups.flatMap((g: any) =>
+      g.node.sellingPlans.edges.map((sp: any) => sp.node)
+    );
+    console.log('[shopify.fetchSellingPlans]', {
+      handle,
+      groupCount: groups.length,
+      planCount: plans.length,
+      planIds: plans.map((p: SellingPlan) => p.id),
+    });
+    return plans;
   } catch (error) {
-    console.warn('Could not fetch selling plans (scope may not be enabled):', error);
+    console.warn('[shopify.fetchSellingPlans] failed (scope may not be enabled):', { handle, error });
     return [];
   }
 }
@@ -248,31 +257,97 @@ export interface CartItem {
     value: string;
   }>;
   sellingPlanId?: string;
+  // True when the user added this line as Subscribe & Save. Tracked
+  // separately from `sellingPlanId` because the Storefront API may not
+  // return a selling plan (scope-dependent), but we still need the cart
+  // to display the subscription price.
+  isSubscription?: boolean;
+}
+
+// Per-session cache mapping product handle → list of currently-valid
+// sellingPlan IDs returned by Shopify. Populated lazily at checkout time.
+// We always validate the cart item's stored sellingPlanId against this list
+// because Shopify rotates plan IDs when the subscription app is reinstalled
+// or plans are recreated, leaving persisted cart entries with stale IDs.
+const sellingPlansByHandle: Record<string, string[] | null> = {};
+
+async function ensureSellingPlanId(item: CartItem): Promise<string | null> {
+  const handle = item.product?.node?.handle;
+  if (!handle) {
+    console.warn('[shopify.ensureSellingPlanId] item has no product handle', item);
+    return null;
+  }
+
+  let validIds = sellingPlansByHandle[handle];
+  if (validIds === undefined) {
+    const plans = await fetchSellingPlans(handle);
+    validIds = plans.map((p) => p.id);
+    sellingPlansByHandle[handle] = validIds.length ? validIds : null;
+  }
+  if (!validIds || validIds.length === 0) {
+    console.error('[shopify.ensureSellingPlanId] no plans available for', handle);
+    return null;
+  }
+
+  // Use the cart's stored ID only if Shopify still recognizes it.
+  if (item.sellingPlanId && validIds.includes(item.sellingPlanId)) {
+    console.log('[shopify.ensureSellingPlanId] reusing stored id', {
+      handle,
+      id: item.sellingPlanId,
+    });
+    return item.sellingPlanId;
+  }
+
+  const fresh = validIds[0];
+  console.log('[shopify.ensureSellingPlanId] using fresh id', {
+    handle,
+    fresh,
+    storedWasStale: !!item.sellingPlanId,
+    storedId: item.sellingPlanId ?? null,
+    allValidIds: validIds,
+  });
+  return fresh;
 }
 
 export async function createStorefrontCheckout(items: CartItem[]): Promise<string> {
   try {
-    const lines = items.map(item => {
+    // Resolve a sellingPlanId for every subscription line. If the cart was
+    // added before fetchSellingPlans completed (or the storefront scope was
+    // briefly unavailable), backfill here so the price the customer saw in
+    // the drawer is the price Shopify actually charges.
+    const lines = await Promise.all(items.map(async (item) => {
       const line: any = {
         quantity: item.quantity,
         merchandiseId: item.variantId,
       };
-      if (item.sellingPlanId) {
-        line.sellingPlanId = item.sellingPlanId;
+      if (item.isSubscription || item.sellingPlanId) {
+        const planId = await ensureSellingPlanId(item);
+        if (!planId) {
+          throw new Error(
+            'Subscription plan unavailable. Please refresh the page and try again, or remove the subscription item from your cart.'
+          );
+        }
+        line.sellingPlanId = planId;
       }
       return line;
-    });
+    }));
+
+    console.log('[shopify.createStorefrontCheckout] cartCreate input lines:', JSON.stringify(lines, null, 2));
 
     const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
       input: { lines },
     });
 
     if (cartData.data.cartCreate.userErrors.length > 0) {
-      throw new Error(`Cart creation failed: ${cartData.data.cartCreate.userErrors.map((e: any) => e.message).join(', ')}`);
+      console.error('[shopify.createStorefrontCheckout] userErrors from Shopify:', cartData.data.cartCreate.userErrors);
+      const detail = cartData.data.cartCreate.userErrors
+        .map((e: any) => `${(e.field || []).join('.') || 'cart'}: ${e.message}`)
+        .join('; ');
+      throw new Error(`Cart creation failed: ${detail}`);
     }
 
     const cart = cartData.data.cartCreate.cart;
-    
+
     if (!cart.checkoutUrl) {
       throw new Error('No checkout URL returned from Shopify');
     }

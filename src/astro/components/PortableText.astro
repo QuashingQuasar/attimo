@@ -29,9 +29,9 @@ const components: PortableTextOptions["components"] = {
       if (!value?.url) return "";
       const url = String(value.url);
       const tweetId = url.split("/").pop()?.split("?")[0] || "";
-      const safeUrl = escapeHtml(url);
+      if (!tweetId) return "";
       const safeId = escapeHtml(tweetId);
-      return `<div class="my-8 tweet-embed" data-tweet-id="${safeId}"><blockquote class="twitter-tweet" data-dnt="true"><a href="${safeUrl}"></a></blockquote></div>`;
+      return `<div class="my-8 tweet-embed" data-tweet-id="${safeId}"></div>`;
     },
     table: ({ value }) => {
       if (!value?.rows?.length) return "";
@@ -100,5 +100,37 @@ const hasTweet = (value || []).some((b: any) => b?._type === "tweet");
 <div set:html={html} />
 
 {hasTweet && (
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script is:inline>
+    (function () {
+      function renderAll() {
+        var widgets = window.twttr && window.twttr.widgets;
+        if (!widgets) return;
+        document.querySelectorAll(".tweet-embed").forEach(function (el) {
+          if (el.dataset.rendered === "true") return;
+          var id = el.getAttribute("data-tweet-id");
+          if (!id) return;
+          el.dataset.rendered = "true";
+          widgets.createTweet(id, el, { dnt: true, theme: "light" });
+        });
+      }
+
+      if (window.twttr && window.twttr.widgets) {
+        renderAll();
+        return;
+      }
+
+      var existing = document.querySelector('script[data-twttr-loader="true"]');
+      if (!existing) {
+        var s = document.createElement("script");
+        s.src = "https://platform.twitter.com/widgets.js";
+        s.async = true;
+        s.charset = "utf-8";
+        s.setAttribute("data-twttr-loader", "true");
+        s.onload = renderAll;
+        document.head.appendChild(s);
+      } else {
+        existing.addEventListener("load", renderAll);
+      }
+    })();
+  </script>
 )}

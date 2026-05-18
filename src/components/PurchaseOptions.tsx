@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SellingPlan } from "@/lib/shopify";
+import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
 
 interface PurchaseOptionsProps {
   sellingPlans: SellingPlan[];
@@ -9,6 +10,7 @@ interface PurchaseOptionsProps {
   onPurchaseTypeChange: (type: "one-time" | "subscribe") => void;
   selectedSellingPlanId: string | null;
   onSellingPlanChange: (id: string) => void;
+  locale?: Locale;
 }
 
 const FREQUENCY_OPTIONS = [
@@ -25,6 +27,7 @@ export const PurchaseOptions = ({
   onPurchaseTypeChange,
   selectedSellingPlanId,
   onSellingPlanChange,
+  locale = DEFAULT_LOCALE,
 }: PurchaseOptionsProps) => {
 
   // Map selling plans to frequency options, or use defaults
@@ -80,7 +83,7 @@ export const PurchaseOptions = ({
             fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
           }}
         >
-          €{oneTimePrice}
+          {formatPrice(oneTimePrice, locale)}
           <span className={`font-normal ${purchaseType === "one-time" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
         </span>
       </button>
@@ -125,7 +128,7 @@ export const PurchaseOptions = ({
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
             }}
           >
-            €{subscriptionPrice}
+            {formatPrice(subscriptionPrice, locale)}
             <span className={`font-normal ${purchaseType === "subscribe" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
           </span>
         </button>

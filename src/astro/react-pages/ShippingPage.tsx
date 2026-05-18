@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { useState, useEffect } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Truck, Package, ShieldCheck, Clock } from "lucide-react";
+import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
 
 const tiers = [
   {
@@ -43,13 +44,21 @@ const tiers = [
   },
 ];
 
-const ShippingPage = () => {
+interface ShippingPageProps {
+  locale?: Locale;
+}
+
+const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   useEffect(() => { document.title = 'Shipping | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
 
+  const isLocalized = locale.slug !== "";
+  const localStandard = formatPrice(locale.shipping.standard, locale);
+  const localFreeFrom = formatPrice(locale.shipping.freeThreshold, locale);
+
   return (
     <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled />
+      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled locale={locale} />
 
       <main className="pt-32 pb-20 px-6">
         <div className="container mx-auto max-w-4xl">
@@ -101,6 +110,36 @@ const ShippingPage = () => {
               Shipping rates & free shipping thresholds
             </h2>
 
+            {isLocalized ? (
+              <div className="rounded-2xl border-2 overflow-hidden" style={{ borderColor: "#1B4229", backgroundColor: "#1B4229" }}>
+                <div className="p-5 md:p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", backgroundColor: "#B3E58C", color: "#1B4229" }}
+                      >
+                        {locale.countryName}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span
+                        className="text-sm"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(255,250,234,0.7)" }}
+                      >
+                        Standard: {localStandard}
+                      </span>
+                      <span
+                        className="text-sm font-bold px-3 py-1 rounded-full"
+                        style={{ fontFamily: "Space Grotesk, sans-serif", backgroundColor: "#CDDB2D", color: "#1B4229" }}
+                      >
+                        FREE from {localFreeFrom}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
             <div className="space-y-4">
               {tiers.map((tier) => (
                 <div
@@ -181,6 +220,7 @@ const ShippingPage = () => {
                 </div>
               ))}
             </div>
+            )}
 
             <p
               className="mt-4 text-sm italic"
@@ -278,7 +318,7 @@ const ShippingPage = () => {
         </div>
       </main>
 
-      <Footer />
+      <Footer locale={locale} />
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
     </div>
   );
