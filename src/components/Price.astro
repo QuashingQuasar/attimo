@@ -1,0 +1,11 @@
+---
+import { formatPrice, type Locale } from "@/lib/i18n/config";
+
+interface Props {
+  amount: number;
+  locale: Locale;
+}
+
+const { amount, locale } = Astro.props;
+---
+{formatPrice(amount, locale)}

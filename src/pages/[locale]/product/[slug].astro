@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
+import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
+import { resolveShopifyHandle } from "@/lib/productContent";
+import { sanityClient } from "@/lib/sanity";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+
+type Handle = "coratina" | "nocellara" | "picual";
+const PRODUCTS: Handle[] = ["coratina", "nocellara", "picual"];
+
+export function getStaticPaths() {
+  const products: Handle[] = ["coratina", "nocellara", "picual"];
+  const paths: Array<{ params: { locale: string; slug: Handle }; props: { locale: Locale; handle: Handle } }> = [];
+  for (const locale of LOCALES.filter((l) => l.slug !== "")) {
+    for (const slug of products) {
+      paths.push({
+        params: { locale: locale.slug, slug },
+        props: { locale, handle: slug },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, handle } = Astro.props as { locale: Locale; handle: Handle };
+const shopifyHandle = resolveShopifyHandle(handle);
+
+const [allProducts, exactHandleProducts, sellingPlans, blogPosts] = await Promise.all([
+  fetchProducts(50).catch(() => []),
+  shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`).catch(() => []) : Promise.resolve([]),
+  shopifyHandle ? fetchSellingPlans(shopifyHandle).catch(() => []) : Promise.resolve([]),
+  sanityClient.fetch(
+    `*[_type == "post"] | order(publishedAt desc)[0..2] {
+      _id, title, slug, publishedAt, excerpt, coverImage
+    }`
+  ).catch(() => []),
+]);
+
+const initialProducts = [...allProducts, ...exactHandleProducts].filter(
+  (product, index, arr) => arr.findIndex((p) => p.node.id === product.node.id) === index
+);
+
+interface Meta {
+  title: string;
+  description: string;
+  image: string;
+  productName: string;
+  sku: string;
+  polyphenols: string;
+}
+
+const META: Record<Handle, Meta> = {
+  coratina: {
+    title: "Coratina | High-Polyphenol, Single-Variety, Early Harvest Olive Oil",
+    description:
+      "Coratina extra virgin olive oil with 847mg/kg polyphenols — our highest. Organically certified, single-variety, early harvest, cold-pressed. 500ml.",
+    image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
+    productName: "Attimo Coratina Extra Virgin Olive Oil 500ml",
+    sku: "ATTIMO-COR-500",
+    polyphenols: "847",
+  },
+  nocellara: {
+    title: "Nocellara | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
+    description:
+      "Nocellara extra virgin olive oil from Sicily. Single-variety, early harvest, cold-pressed. 400mg/kg polyphenols, lab-tested. 500ml.",
+    image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
+    productName: "Attimo Nocellara Extra Virgin Olive Oil 500ml",
+    sku: "ATTIMO-NOC-500",
+    polyphenols: "400",
+  },
+  picual: {
+    title: "Picual | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
+    description:
+      "Picual extra virgin olive oil from Andalusia. Single-variety, early harvest, cold-pressed. 675mg/kg polyphenols, lab-tested. 500ml.",
+    image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
+    productName: "Attimo Picual Extra Virgin Olive Oil 500ml",
+    sku: "ATTIMO-PIC-500",
+    polyphenols: "675",
+  },
+};
+
+const meta = META[handle];
+const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/${handle}`;
+const priceAmount = locale.prices[handle];
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: meta.productName,
+  description: meta.description,
+  sku: meta.sku,
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: meta.image,
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: priceAmount.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingDestination: {
+        "@type": "DefinedRegion",
+        addressCountry: locale.country,
+      },
+      shippingRate: {
+        "@type": "MonetaryAmount",
+        value: locale.shipping.standard.toFixed(locale.currency.decimals),
+        currency: locale.currency.code,
+      },
+    },
+  },
+  aggregateRating,
+  review: reviews,
+};
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  canonical={canonicalUrl}
+  ogImage={meta.image}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+  hreflangPath={`/product/${handle}`}
+>
+  <script is:inline define:vars={{ handle }}>
+    if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };
+  </script>
+  <ProductPageWrapper
+    handle={handle}
+    initialProducts={initialProducts}
+    initialSellingPlans={sellingPlans}
+    initialBlogPosts={blogPosts}
+    locale={locale}
+    client:load
+  />
+</BaseLayout>

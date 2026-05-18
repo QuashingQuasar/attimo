@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import ShippingPage from "@astro/react-pages/ShippingPage";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+
+export function getStaticPaths() {
+  return LOCALES
+    .filter((l) => l.slug !== "")
+    .map((locale) => ({
+      params: { locale: locale.slug },
+      props: { locale },
+    }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const canonical = `https://attimo-oil.com/${locale.slug}/shipping`;
+---
+
+<BaseLayout
+  title="Shipping | ATTIMO Specialty Extra Virgin Olive Oil"
+  description="ATTIMO shipping rates, free-shipping thresholds, and delivery times across Europe."
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/shipping"
+>
+  <ShippingPage locale={locale} client:load />
+</BaseLayout>
