@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "jsx": "preserve",
     "jsxImportSource": "react",
+    "verbatimModuleSyntax": false,
     "paths": {
       "@/*": ["src/*"],
       "@astro/*": ["src/astro/*"]

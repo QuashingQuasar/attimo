@@ -16,6 +16,12 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
   ],
   vite: {
+    // Expose `VITE_*` env vars to the client bundle (Astro's default is
+    // `PUBLIC_*` only). The React tree uses `VITE_SUPABASE_URL`,
+    // `VITE_SUPABASE_PUBLISHABLE_KEY`, etc. — without this, those resolve
+    // to `undefined` in the browser and the Supabase client throws on
+    // import, killing all React hydration.
+    envPrefix: ["PUBLIC_", "VITE_"],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
