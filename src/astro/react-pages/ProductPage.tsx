@@ -66,7 +66,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const isMobile = useIsMobile();
   const [countryCode, setCountryCode] = useState<string | null>(null);
   const [countryName, setCountryName] = useState<string | null>(null);
-  const freeShippingThreshold = useMemo(() => getFreeShippingThreshold(countryCode), [countryCode]);
+  // Prefer the tier set by middleware (read from cookie) — single source of
+  // truth shared with the announce bar. Fall back to ipapi-based detection.
+  const freeShippingThreshold = useMemo(() => {
+    if (typeof document !== "undefined") {
+      const m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d+)/);
+      if (m) return parseInt(m[1], 10);
+    }
+    return getFreeShippingThreshold(countryCode);
+  }, [countryCode]);
   const countrySupported = useMemo(() => isCountrySupported(countryCode), [countryCode]);
 
   useEffect(() => {

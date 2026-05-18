@@ -83,10 +83,17 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
     0
   );
 
-  const freeShippingThreshold = useMemo(
-    () => getFreeShippingThreshold(countryCode),
-    [countryCode]
-  );
+  // Prefer the tier set by middleware (read from cookie) — it's the same
+  // source as the announce-bar's "FREE SHIPPING ON N+ BOTTLES" message and
+  // is set instantly on first paint from Vercel's edge geo. Fall back to the
+  // ipapi.co detection only when the cookie is missing.
+  const freeShippingThreshold = useMemo(() => {
+    if (typeof document !== "undefined") {
+      const m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d+)/);
+      if (m) return parseInt(m[1], 10);
+    }
+    return getFreeShippingThreshold(countryCode);
+  }, [countryCode]);
   const qualifiesForFreeShipping = totalItems >= freeShippingThreshold;
   const bottlesNeeded = Math.max(0, freeShippingThreshold - totalItems);
 

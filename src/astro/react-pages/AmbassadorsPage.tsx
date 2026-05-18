@@ -132,7 +132,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
       {/* THIS IS FOR YOU IF */}
       <section
         className="mx-auto w-full px-6"
-        style={{ maxWidth: 1100, padding: "96px 24px", borderTop: `1px solid ${BORDER}` }}
+        style={{ maxWidth: 1100, padding: "96px 24px 32px", borderTop: `1px solid ${BORDER}` }}
       >
         <div style={sectionLabel}>This is for you if</div>
         <h2 style={sectionHeading}>
@@ -149,7 +149,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
       {/* GET STARTED + DEAL CARDS */}
       <section
         className="mx-auto w-full px-6"
-        style={{ maxWidth: 1100, padding: "96px 24px", borderTop: `1px solid ${BORDER}` }}
+        style={{ maxWidth: 1100, padding: "16px 24px 96px" }}
       >
         <div style={sectionLabel}>Get started today</div>
 
