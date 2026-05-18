@@ -2,7 +2,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useState, useEffect } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Mail, Send } from "lucide-react";
 
@@ -21,12 +20,19 @@ const ContactPage = () => {
 
     setLoading(true);
     try {
-      const { error } = await supabase.from("contact_messages").insert({
-        name: name.trim(),
-        email: email.trim(),
-        message: message.trim(),
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
+        }),
       });
-      if (error) throw error;
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send");
+      }
       setSubmitted(true);
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -70,13 +76,13 @@ const ContactPage = () => {
                 className="text-2xl font-semibold mb-2"
                 style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
               >
-                Thanks for reaching out!
+                Thanks !
               </h2>
               <p
                 className="leading-relaxed"
                 style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.7 }}
               >
-                We'll get back to you soon. In the meantime, feel free to browse our oils.
+                We'll get back to you soon.
               </p>
             </div>
           ) : (

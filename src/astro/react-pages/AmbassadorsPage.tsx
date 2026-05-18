@@ -224,7 +224,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
               maxWidth: 700,
             }}
           >
-            Thanks — we got your application. We'll be in touch within a couple of days.
+            Thanks ! We'll get back to you soon.
           </p>
         ) : (
           <form onSubmit={handleSubmit} noValidate>
