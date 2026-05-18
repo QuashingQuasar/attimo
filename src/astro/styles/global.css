@@ -7,6 +7,14 @@
   font-display: swap;
 }
 
+/* Hero fills the viewport minus the announce bar so the bottom ticker
+   stays above the fold on first paint. Falls back to 100vh when the
+   bar is hidden. */
+.hero-full {
+  height: 100vh;
+  height: calc(100vh - var(--announce-bar-h, 0px));
+}
+
 /* Hero ticker sizing and speed */
 .hero-ticker-text {
   font-size: clamp(1rem, 2vw, 2.25rem);
