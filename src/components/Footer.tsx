@@ -32,10 +32,10 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
           <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col gap-3 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
+              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
-              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
               <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
               <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
             </div>
@@ -64,10 +64,10 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
             </div>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
+              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
               <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
               <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
               <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
-              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
               <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
               <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
             </div>

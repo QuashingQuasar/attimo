@@ -8,7 +8,7 @@ interface HeroProps {
 export const Hero = ({
   onWaitlistClick
 }: HeroProps) => {
-  return <section className="relative flex items-center justify-center overflow-hidden h-screen snap-start hero-full">
+  return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px))' }}>
       <AutoplayVideo
       src="/videos/hero-video-new.mp4"
       poster="/images/hero-poster.png"

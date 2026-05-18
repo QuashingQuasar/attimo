@@ -202,18 +202,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
         className="mx-auto w-full px-6"
         style={{ maxWidth: 1100, padding: "104px 24px", borderTop: `1px solid ${BORDER}` }}
       >
-        <h2 style={{ ...sectionHeading, marginBottom: 12 }}>Ready to share ATTIMO?</h2>
-        <p
-          style={{
-            fontSize: "clamp(17px, 1.35vw, 22px)",
-            color: TEXT_MUTED,
-            marginBottom: 48,
-            fontWeight: 300,
-            maxWidth: 700,
-          }}
-        >
-          We'll get back to you within a couple of days.
-        </p>
+        <h2 style={{ ...sectionHeading, marginBottom: 48 }}>Ready to share ATTIMO?</h2>
 
         {status === "sent" ? (
           <p
