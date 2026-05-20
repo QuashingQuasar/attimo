@@ -5,7 +5,7 @@ import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
 import { sanityClient } from "@/lib/sanity";
-import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 
 export function getStaticPaths() {
   return [
@@ -42,11 +42,15 @@ interface Meta {
   polyphenols: string;
 }
 
+const locale = DEFAULT_LOCALE;
+const priceAmount = locale.prices[handle];
+const priceLabel = formatPrice(priceAmount, locale);
+
 const META: Record<typeof handle, Meta> = {
   coratina: {
     title: "Coratina | High-Polyphenol, Single-Variety, Early Harvest Olive Oil",
     description:
-      "Coratina extra virgin olive oil with 847mg/kg polyphenols — our highest. Organically certified, single-variety, early harvest, cold-pressed. 500ml — €24.",
+      `Coratina extra virgin olive oil with 847mg/kg polyphenols — our highest. Organically certified, single-variety, early harvest, cold-pressed. 500ml — ${priceLabel}.`,
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Coratina-2_1_1.png?v=1773399330",
     productName: "Attimo Coratina Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-COR-500",
@@ -55,7 +59,7 @@ const META: Record<typeof handle, Meta> = {
   nocellara: {
     title: "Nocellara | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
     description:
-      "Nocellara extra virgin olive oil from Sicily. Single-variety, early harvest, cold-pressed. 400mg/kg polyphenols, lab-tested. 500ml — €24.",
+      `Nocellara extra virgin olive oil from Sicily. Single-variety, early harvest, cold-pressed. 400mg/kg polyphenols, lab-tested. 500ml — ${priceLabel}.`,
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/NOCELLARA1_1.png?v=1772735243",
     productName: "Attimo Nocellara Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-NOC-500",
@@ -64,7 +68,7 @@ const META: Record<typeof handle, Meta> = {
   picual: {
     title: "Picual | Single-Variety, High-Polyphenol, Early Harvest Olive Oil",
     description:
-      "Picual extra virgin olive oil from Andalusia. Single-variety, early harvest, cold-pressed. 675mg/kg polyphenols, lab-tested. 500ml — €24.",
+      `Picual extra virgin olive oil from Andalusia. Single-variety, early harvest, cold-pressed. 675mg/kg polyphenols, lab-tested. 500ml — ${priceLabel}.`,
     image: "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/Picual-v21.png?v=1773401549",
     productName: "Attimo Picual Extra Virgin Olive Oil 500ml",
     sku: "ATTIMO-PIC-500",
@@ -74,8 +78,6 @@ const META: Record<typeof handle, Meta> = {
 
 const meta = META[handle];
 const canonicalUrl = `https://attimo-oil.com/product/${handle}`;
-const locale = DEFAULT_LOCALE;
-const priceAmount = locale.prices[handle];
 
 const productJsonLd = {
   "@context": "https://schema.org/",

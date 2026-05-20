@@ -32,8 +32,8 @@ export const DEFAULT_LOCALE: Locale = {
   },
   prices: {
     coratina: 24,
-    nocellara: 24,
-    picual: 24,
+    nocellara: 23,
+    picual: 22,
   },
   shipping: {
     standard: 5.95,
@@ -56,8 +56,8 @@ export const LOCALES: Locale[] = [
     },
     prices: {
       coratina: 183,
-      nocellara: 183,
-      picual: 183,
+      nocellara: 175,
+      picual: 168,
     },
     shipping: {
       standard: 90,
