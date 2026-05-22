@@ -3,6 +3,16 @@ import { getAllPostMeta } from "@/lib/sanity";
 
 const SITE = "https://attimo-oil.com";
 
+// Slugs published in the standalone blog sitemap (public/sitemap-blog.xml).
+// Excluded here so each URL appears in exactly one sitemap.
+const BLOG_SITEMAP_SLUGS = new Set([
+  "olive-oil-shot",
+  "bryan-johnson-olive-oil",
+  "should-you-cook-with-olive-oil",
+  "polyphenols-olive-oil",
+  "olive-color-ripeness-polyphenols",
+]);
+
 const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },
   { loc: "/product/coratina", changefreq: "weekly", priority: "0.9" },
@@ -25,6 +35,7 @@ export const GET: APIRoute = async () => {
   ).join("\n");
 
   const postEntries = posts
+    .filter((p) => !BLOG_SITEMAP_SLUGS.has(p.slug))
     .map((p) => {
       const lastmod = (p.updatedAt || p.publishedAt).split("T")[0];
       return `  <url>\n    <loc>${SITE}/blog/${p.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
