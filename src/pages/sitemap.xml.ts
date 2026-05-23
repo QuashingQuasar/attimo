@@ -11,6 +11,7 @@ const BLOG_SITEMAP_SLUGS = new Set([
   "should-you-cook-with-olive-oil",
   "polyphenols-olive-oil",
   "olive-color-ripeness-polyphenols",
+  "unfiltered-olive-oil",
 ]);
 
 const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
