@@ -201,6 +201,36 @@ export async function fetchProducts(limit = 10, query?: string): Promise<Shopify
   return data?.data?.products?.edges || [];
 }
 
+const VARIANT_INVENTORY_QUERY = `
+  query GetVariantInventory($id: ID!) {
+    node(id: $id) {
+      ... on ProductVariant {
+        quantityAvailable
+        availableForSale
+      }
+    }
+  }
+`;
+
+/**
+ * Returns the live quantityAvailable for a Shopify product variant, or null
+ * when the value is unknown (the Storefront API access token lacks the
+ * `unauthenticated_read_product_inventory` scope, inventory tracking is off
+ * for the variant, or the request fails). Callers must treat null as
+ * "unknown" — do NOT disable UI on null, fall back to existing behaviour.
+ */
+export async function fetchVariantQuantityAvailable(variantId: string): Promise<number | null> {
+  if (!variantId) return null;
+  try {
+    const data = await storefrontApiRequest(VARIANT_INVENTORY_QUERY, { id: variantId });
+    const qty = data?.data?.node?.quantityAvailable;
+    return typeof qty === "number" ? qty : null;
+  } catch (error) {
+    console.warn("[shopify.fetchVariantQuantityAvailable] failed:", { variantId, error });
+    return null;
+  }
+}
+
 export async function fetchSellingPlans(handle: string): Promise<SellingPlan[]> {
   try {
     const data = await storefrontApiRequest(SELLING_PLANS_QUERY, { handle });

@@ -258,6 +258,31 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
   const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
 
+  // Per-product out-of-stock copy. Anything not listed falls back to the
+  // generic "Sold Out" / default NotifyMeForm copy below.
+  // - Picual: launching ("Coming Soon")
+  // - Coratina: restocking ("Back Soon" / "New Batch on the Way")
+  const OOS_COPY: Record<string, {
+    badge: string;
+    badgeClass: string;
+    formHeading?: string;
+    formSubtitle?: string;
+  }> = {
+    picual: {
+      badge: "Coming Soon",
+      badgeClass: "text-olive-dark",
+      // formHeading / formSubtitle omitted → NotifyMeForm uses its defaults.
+    },
+    coratina: {
+      badge: "Back Soon",
+      badgeClass: "text-olive-dark",
+      formHeading: "New Batch on the Way",
+      formSubtitle:
+        "We'll send you an email when Coratina d'Italia is available again (estimated 1–2 weeks).",
+    },
+  };
+  const oosCopy = handle ? OOS_COPY[handle] : undefined;
+
   const totalPrice = selectedQuantity * activePrice;
 
   // Attribute grid inspired by Arsenio — Composition, Color, Food pairings, Nose
@@ -332,10 +357,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     New Harvest
                   </span>
                   {(() => {
+                  // Mirrors the isInStock computation above.
                   const inStock = product.node.variants.edges.some((v) => v.node.availableForSale);
+                  const badgeText = inStock ? 'In Stock' : (oosCopy?.badge ?? 'Sold Out');
+                  const badgeColor = inStock
+                    ? 'text-olive-dark'
+                    : (oosCopy?.badgeClass ?? 'text-red-600');
                   return (
-                    <span className={`font-bold uppercase tracking-wider ${inStock ? 'text-olive-dark' : handle === 'picual' ? 'text-olive-dark' : 'text-red-600'}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                        {inStock ? 'In Stock' : handle === 'picual' ? 'Coming Soon' : 'Sold Out'}
+                    <span className={`font-bold uppercase tracking-wider ${badgeColor}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                        {badgeText}
                       </span>);
 
                 })()}
@@ -392,7 +422,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       pricePerUnit={activePrice}
                       onAddToCart={handleAddToCart}
                       buttonColor={content.buttonColor}
-                      freeShippingThreshold={freeShippingThreshold} />
+                      freeShippingThreshold={freeShippingThreshold}
+                      variantId={product.node.variants.edges[0]?.node.id} />
 
                     <PurchaseOptions
                       sellingPlans={sellingPlans}
@@ -432,7 +463,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   </>
                 )
               ) : (
-                <NotifyMeForm productName={content.heroTitle} backgroundColor={content.tileBackground} />
+                <NotifyMeForm
+                  productName={content.heroTitle}
+                  backgroundColor={content.tileBackground}
+                  buttonBackgroundColor={content.buttonColor}
+                  heading={oosCopy?.formHeading}
+                  subtitle={oosCopy?.formSubtitle}
+                  restockProductKey={content.polyphenolLabel}
+                />
               )}
 
               {/* Lab Values — minimal cards */}
