@@ -46,6 +46,16 @@ const locale = DEFAULT_LOCALE;
 const priceAmount = locale.prices[handle];
 const priceLabel = formatPrice(priceAmount, locale);
 
+// Real availability comes from Shopify's `availableForSale` on the matching
+// product variant. Default to true if we can't find the product (don't break
+// the JSON-LD on transient Shopify failures).
+const matchingProduct = initialProducts.find((p) => p.node.handle === shopifyHandle);
+const isInStock =
+  matchingProduct?.node.variants.edges.some((v) => v.node.availableForSale) ?? true;
+const availability = isInStock
+  ? "https://schema.org/InStock"
+  : "https://schema.org/OutOfStock";
+
 const META: Record<typeof handle, Meta> = {
   coratina: {
     title: "Coratina | High-Polyphenol, Single-Variety, Early Harvest Olive Oil",
@@ -92,7 +102,7 @@ const productJsonLd = {
     url: canonicalUrl,
     price: priceAmount.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: "https://schema.org/InStock",
+    availability,
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,
