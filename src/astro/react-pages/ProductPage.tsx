@@ -422,7 +422,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       pricePerUnit={activePrice}
                       onAddToCart={handleAddToCart}
                       buttonColor={content.buttonColor}
-                      freeShippingThreshold={freeShippingThreshold} />
+                      freeShippingThreshold={freeShippingThreshold}
+                      variantId={product.node.variants.edges[0]?.node.id} />
 
                     <PurchaseOptions
                       sellingPlans={sellingPlans}

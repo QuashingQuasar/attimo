@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { fetchVariantQuantityAvailable } from "@/lib/shopify";
 
 interface QuantitySelectorProps {
   quantity: number;
@@ -8,6 +10,12 @@ interface QuantitySelectorProps {
   buttonId?: string;
   buttonColor?: string;
   freeShippingThreshold?: number;
+  /**
+   * Shopify variant GID. When provided, the component fetches live
+   * `quantityAvailable` on mount and disables preset buttons whose qty
+   * exceeds the available stock. Omit to keep all presets enabled.
+   */
+  variantId?: string;
 }
 
 const BASE_PRESETS = [
@@ -32,50 +40,81 @@ export const QuantitySelector = ({
   onAddToCart,
   buttonId,
   freeShippingThreshold = 2,
+  variantId,
 }: QuantitySelectorProps) => {
   const totalPrice = quantity * pricePerUnit;
   const threshold = freeShippingThreshold ?? 2;
   const presets = buildPresets(threshold);
 
+  // Live stock from Shopify; null = unknown (keep every preset enabled).
+  const [available, setAvailable] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!variantId) {
+      setAvailable(null);
+      return;
+    }
+    let cancelled = false;
+    fetchVariantQuantityAvailable(variantId).then((qty) => {
+      if (!cancelled) setAvailable(qty);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [variantId]);
+
   return (
     <div className="space-y-3">
       {/* Preset buttons */}
       <div className="grid grid-cols-5 gap-2">
-        {presets.map((p) => (
-          <button
-            key={p.qty}
-            type="button"
-            onClick={() => onQuantityChange(p.qty)}
-            className={`rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
-              quantity === p.qty
-                ? "border-olive-dark bg-olive-dark text-cream"
-                : "border-olive-dark/20 bg-white/60 text-olive-dark hover:border-olive-dark/40"
-            }`}
-          >
-            <span
-              className="block font-semibold leading-tight"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.75rem, 0.9vw, 0.95rem)",
-              }}
+        {presets.map((p) => {
+          const disabled = available !== null && p.qty > available;
+          return (
+            <button
+              key={p.qty}
+              type="button"
+              disabled={disabled}
+              onClick={() => onQuantityChange(p.qty)}
+              aria-label={
+                disabled ? `${p.label} — only ${available} in stock` : p.label
+              }
+              className={`rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
+                disabled
+                  ? "border-olive-dark/15 bg-white/30 text-olive-dark/40 cursor-not-allowed"
+                  : quantity === p.qty
+                  ? "border-olive-dark bg-olive-dark text-cream"
+                  : "border-olive-dark/20 bg-white/60 text-olive-dark hover:border-olive-dark/40"
+              }`}
             >
-              {p.label}
-            </span>
-            {p.sub && (
               <span
-                className={`block leading-tight mt-0.5 ${
-                  quantity === p.qty ? "text-cream/70" : "text-olive-medium/70"
-                }`}
+                className="block font-semibold leading-tight"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
+                  fontSize: "clamp(0.75rem, 0.9vw, 0.95rem)",
                 }}
               >
-                {p.sub}
+                {p.label}
               </span>
-            )}
-          </button>
-        ))}
+              {p.sub && (
+                <span
+                  className={`block leading-tight mt-0.5 ${
+                    disabled
+                      ? "text-olive-medium/30"
+                      : quantity === p.qty
+                      ? "text-cream/70"
+                      : "text-olive-medium/70"
+                  }`}
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
+                  }}
+                >
+                  {p.sub}
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
 
     </div>
