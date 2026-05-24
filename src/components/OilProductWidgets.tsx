@@ -169,16 +169,14 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                 {!oil.isAvailable && (
                   <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
                     <span
-                      className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5"
+                      className="oil-card-label whitespace-nowrap"
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
                         letterSpacing: "0.1em",
-                        color: "#FFFAEA",
-                        backgroundColor: "rgba(27, 66, 41, 0.85)",
-                        textTransform: "uppercase",
+                        color: "#1B4229",
                       }}
                     >
-                      Temporarily Sold Out
+                      Back Soon
                     </span>
                   </div>
                 )}
@@ -231,8 +229,23 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   lineHeight: 1.6
                 }}>
 
-                  {oil.isAvailable ? oil.tagline : "Back Soon"}
+                  {oil.tagline}
                 </p>
+
+                {!oil.isAvailable && (
+                  <span
+                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#CDDB2D",
+                      backgroundColor: "#1B4229",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Temporarily Sold Out
+                  </span>
+                )}
               </div>
             </Link>
           )}
