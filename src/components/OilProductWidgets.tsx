@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { fetchProducts } from "@/lib/shopify";
+import { resolveShopifyHandle } from "@/lib/productContent";
 
 const oilDefs = [
   {
@@ -42,7 +45,42 @@ interface OilProductWidgetsProps {
 }
 
 export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgetsProps = {}) => {
-  const oils = oilDefs.map((o) => ({ ...o, price: locale.prices[o.handle] }));
+  // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
+  // (treat as available — never accidentally hide an in-stock product).
+  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchProducts(10)
+      .then((products) => {
+        if (cancelled) return;
+        const map: Record<string, boolean> = {};
+        for (const p of products) {
+          const inStock = p.node.variants.edges.some(
+            (v) => v.node.availableForSale,
+          );
+          map[p.node.handle] = inStock;
+        }
+        setAvailability(map);
+      })
+      .catch((err) => {
+        console.warn("[OilProductWidgets] availability fetch failed:", err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const oils = oilDefs.map((o) => {
+    const shopifyHandle = resolveShopifyHandle(o.handle);
+    // Default to true so a fetch failure leaves cards looking normal.
+    const isAvailable = availability[shopifyHandle] ?? true;
+    return {
+      ...o,
+      price: locale.prices[o.handle],
+      isAvailable,
+    };
+  });
   return (
     <section id="oil-collection"
     className="snap-start pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
@@ -128,6 +166,22 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                 alt={`${oil.name} olive oil bottle`}
                 className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]" />
 
+                {!oil.isAvailable && (
+                  <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
+                    <span
+                      className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5"
+                      style={{
+                        fontFamily: "UDC Working Man Sans, sans-serif",
+                        letterSpacing: "0.1em",
+                        color: "#FFFAEA",
+                        backgroundColor: "rgba(27, 66, 41, 0.85)",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Temporarily Sold Out
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col items-center text-center px-2">
@@ -177,7 +231,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   lineHeight: 1.6
                 }}>
 
-                  {oil.tagline}
+                  {oil.isAvailable ? oil.tagline : "Back Soon"}
                 </p>
               </div>
             </Link>
