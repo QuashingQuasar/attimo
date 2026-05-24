@@ -164,8 +164,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                 <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
-                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]"
-                style={{ opacity: oil.isAvailable ? 1 : 0.65 }} />
+                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]" />
 
                 {!oil.isAvailable && (
                   <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
