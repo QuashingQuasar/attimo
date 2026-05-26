@@ -15,7 +15,12 @@ const shopProducts = [
 ];
 
 interface HeaderProps {
-  onWaitlistClick: () => void;
+  /**
+   * Legacy hook for the waitlist CTA — currently a no-op everywhere it's
+   * passed. Optional so the component can be mounted from an Astro island
+   * (functions don't cross the client-island boundary).
+   */
+  onWaitlistClick?: () => void;
   forceScrolled?: boolean;
   forceTransparent?: boolean;
   darkNav?: boolean;
