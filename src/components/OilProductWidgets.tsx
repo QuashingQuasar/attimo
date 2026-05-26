@@ -261,7 +261,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               opacity: 0.85
             }}>
 
-            Not sure which one is for you?
+            Not sure which olive oil is for you?
           </p>
           <Link
             to="/quiz"
@@ -274,7 +274,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               letterSpacing: "0.05em"
             }}>
 
-            Find Your Oil →
+            Find Your Flavour →
           </Link>
         </div>
       </div>
