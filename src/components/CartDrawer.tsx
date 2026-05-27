@@ -374,7 +374,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                         {formatPrice(subtotalBeforeDiscount, locale)}
                       </span>
                     )}
-                    {formatPrice(subtotal, locale)}
+                    {/* Use 2 decimals when discounted so the UI matches the
+                        amount Shopify actually charges (e.g. €149.60, not €150). */}
+                    {formatPrice(subtotal, locale, hasVolumeDiscount ? 2 : undefined)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center pb-2">

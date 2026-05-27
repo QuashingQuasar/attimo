@@ -460,6 +460,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           // (vs un-discounted one-time total).
                           const showStrikethrough =
                             purchaseType === "subscribe" || volumeDiscount > 0;
+                          // When a volume discount is in effect, display two
+                          // decimals so the UI matches what Shopify will
+                          // charge to the cent. Subscription path keeps the
+                          // existing locale default (0 decimals for EUR/DKK).
+                          const finalDecimals = volumeDiscount > 0 ? 2 : undefined;
                           return (
                             <span className="text-lg">
                               ADD TO CART{" "}
@@ -468,7 +473,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                                   {formatPrice(originalOneTimeTotal, locale)}
                                 </span>
                               )}{" "}
-                              {formatPrice(finalTotal, locale)}
+                              {formatPrice(finalTotal, locale, finalDecimals)}
                             </span>
                           );
                         })()}
