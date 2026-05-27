@@ -18,18 +18,32 @@ interface QuantitySelectorProps {
   variantId?: string;
 }
 
+// Display-only volume discount tiers. The actual discount is configured as
+// a Shopify automatic discount; these labels just inform the customer.
+// Keep in sync with the Shopify discount setup before launch.
+const VOLUME_DISCOUNTS: Record<number, string> = {
+  3: "5% Off",
+  4: "8% Off",
+  6: "12% Off",
+  8: "15% Off",
+};
+
 const BASE_PRESETS = [
   { qty: 1, label: "1 Bottle" },
   { qty: 2, label: "2 Bottles" },
   { qty: 3, label: "3 Bottles" },
   { qty: 4, label: "4 Bottles" },
+  { qty: 6, label: "6 Bottles" },
   { qty: 8, label: "8 Bottles" },
 ];
 
 function buildPresets(threshold: number) {
   return BASE_PRESETS.map((p) => ({
     ...p,
-    sub: p.qty >= threshold ? "Free Shipping" : undefined,
+    // Free shipping label is market-driven (per getFreeShippingThreshold).
+    freeShipping: p.qty >= threshold,
+    // Volume discount label is global, independent of market.
+    discount: VOLUME_DISCOUNTS[p.qty],
   }));
 }
 
@@ -66,9 +80,20 @@ export const QuantitySelector = ({
   return (
     <div className="space-y-3">
       {/* Preset buttons */}
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-6 gap-2">
         {presets.map((p) => {
           const disabled = available !== null && p.qty > available;
+          const subClass = `block leading-tight mt-0.5 ${
+            disabled
+              ? "text-olive-medium/30"
+              : quantity === p.qty
+              ? "text-cream/70"
+              : "text-olive-medium/70"
+          }`;
+          const subStyle = {
+            fontFamily: "Space Grotesk, sans-serif",
+            fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
+          };
           return (
             <button
               key={p.qty}
@@ -95,21 +120,14 @@ export const QuantitySelector = ({
               >
                 {p.label}
               </span>
-              {p.sub && (
-                <span
-                  className={`block leading-tight mt-0.5 ${
-                    disabled
-                      ? "text-olive-medium/30"
-                      : quantity === p.qty
-                      ? "text-cream/70"
-                      : "text-olive-medium/70"
-                  }`}
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
-                  }}
-                >
-                  {p.sub}
+              {p.freeShipping && (
+                <span className={subClass} style={subStyle}>
+                  Free Shipping
+                </span>
+              )}
+              {p.discount && (
+                <span className={subClass} style={subStyle}>
+                  {p.discount}
                 </span>
               )}
             </button>
