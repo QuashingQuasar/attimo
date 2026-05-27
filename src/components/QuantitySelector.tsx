@@ -18,15 +18,28 @@ interface QuantitySelectorProps {
   variantId?: string;
 }
 
-// Display-only volume discount tiers. The actual discount is configured as
-// a Shopify automatic discount; these labels just inform the customer.
-// Keep in sync with the Shopify discount setup before launch.
-const VOLUME_DISCOUNTS: Record<number, string> = {
-  3: "5% Off",
-  4: "8% Off",
-  6: "12% Off",
-  8: "15% Off",
+// Volume discount tiers. Single source of truth for the button label AND the
+// displayed total on the Add-to-Cart row in ProductPage. The actual discount
+// applied at checkout is configured as a Shopify automatic discount — keep
+// the Shopify side in sync with this map before launch.
+const VOLUME_DISCOUNT_PERCENTS: Record<number, number> = {
+  3: 0.05,
+  4: 0.08,
+  6: 0.12,
+  8: 0.15,
 };
+
+const VOLUME_DISCOUNTS: Record<number, string> = Object.fromEntries(
+  Object.entries(VOLUME_DISCOUNT_PERCENTS).map(([qty, percent]) => [
+    qty,
+    `${Math.round(percent * 100)}% Off`,
+  ]),
+);
+
+/** Returns the volume discount for a given quantity as a decimal (0 if none). */
+export function getVolumeDiscountPercent(qty: number): number {
+  return VOLUME_DISCOUNT_PERCENTS[qty] ?? 0;
+}
 
 const BASE_PRESETS = [
   { qty: 1, label: "1 Bottle" },
