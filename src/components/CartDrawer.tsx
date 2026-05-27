@@ -13,6 +13,7 @@ import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
 import { urlSlugForShopifyHandle } from "@/lib/productContent";
+import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
 import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify";
 import { detectCountry, getFreeShippingThreshold } from "@/lib/shipping";
@@ -36,6 +37,15 @@ function localizedUnitPrice(item: CartItem, locale: Locale): number {
   const base = locale.prices[slug];
   const isSubscription = !!(item.isSubscription || item.sellingPlanId);
   return isSubscription ? base * SUBSCRIPTION_RATIO : base;
+}
+
+// Per-line total with volume discount applied. Subscriptions keep their own
+// pricing — the volume discount does not stack on top of Subscribe & Save.
+function localizedLineTotal(item: CartItem, locale: Locale): number {
+  const baseTotal = localizedUnitPrice(item, locale) * item.quantity;
+  const isSubscription = !!(item.isSubscription || item.sellingPlanId);
+  if (isSubscription) return baseTotal;
+  return baseTotal * (1 - getVolumeDiscountPercent(item.quantity));
 }
 
 export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { darkIcon?: boolean; locale?: Locale }) => {
@@ -78,10 +88,15 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   console.log('[CartDrawer] Rendering, items:', items.length, 'isOpen:', isOpen);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = items.reduce(
+  const subtotalBeforeDiscount = items.reduce(
     (sum, item) => sum + localizedUnitPrice(item, locale) * item.quantity,
     0
   );
+  const subtotal = items.reduce(
+    (sum, item) => sum + localizedLineTotal(item, locale),
+    0
+  );
+  const hasVolumeDiscount = subtotalBeforeDiscount > subtotal + 0.005;
 
   // Prefer the tier set by middleware (read from cookie) — it's the same
   // source as the announce-bar's "FREE SHIPPING ON N+ BOTTLES" message and
@@ -354,6 +369,11 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 <div className="flex justify-between items-center">
                   <span className="text-base" style={{ color: '#1B4229' }}>Subtotal</span>
                   <span className="text-base font-semibold" style={{ color: '#1B4229' }}>
+                    {hasVolumeDiscount && (
+                      <span className="line-through opacity-60 font-normal mr-2">
+                        {formatPrice(subtotalBeforeDiscount, locale)}
+                      </span>
+                    )}
                     {formatPrice(subtotal, locale)}
                   </span>
                 </div>
