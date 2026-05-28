@@ -175,7 +175,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
-          :root { --announce-bar-h: 0px; }
           #announce-bar {
             display: none;
             position: static;
@@ -211,12 +210,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             if (!bar || !text) return;
             text.textContent = msg;
             bar.style.display = "block";
-            // Set the --announce-bar-h variable once so the (non-sticky)
-            // header positions itself below the bar at the top of the
-            // document. Bar stays in normal flow and scrolls away with the
-            // page; no scroll listener needed.
-            var h = bar.getBoundingClientRect().height || 40;
-            document.documentElement.style.setProperty("--announce-bar-h", h + "px");
           })();
         </script>
       </>

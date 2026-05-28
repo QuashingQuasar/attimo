@@ -27,25 +27,20 @@ interface HeaderProps {
   locale?: Locale;
 }
 export const Header = ({
-  onWaitlistClick,
-  forceScrolled = false,
-  // `forceTransparent` was previously used to keep the header transparent
-  // until the user scrolled, then fade in. Now that the header isn't sticky
-  // there's no "scrolled" state to fade into — the prop is kept in the API
-  // for backwards compatibility with existing callers but no longer drives
-  // any styling.
+  // The following props are kept for back-compat with existing callers but
+  // no longer drive styling — the header is in normal flow, always rendered
+  // on the dark forest-green brand surface.
+  onWaitlistClick: _onWaitlistClick,
+  forceScrolled: _forceScrolled = false,
   forceTransparent: _forceTransparent = false,
-  darkNav = false,
+  darkNav: _darkNav = false,
   locale = DEFAULT_LOCALE,
 }: HeaderProps) => {
-  // The header is now part of the document flow (position: absolute, no
-  // scroll listeners). Background color is derived only from `forceScrolled`
-  // and the dropdown's open state — no scroll position involved.
+  // Header sits in normal document flow (position: relative). No scroll
+  // listeners; the dropdown is the only interactive state.
   const [shopOpen, setShopOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const solidBackground = forceScrolled || shopOpen;
 
   const handleMouseEnter = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -62,33 +57,34 @@ export const Header = ({
 
   return (
     <header
-      className={`absolute left-0 right-0 z-50 py-6 ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      className="relative z-50 py-6 shadow-lg"
       style={{
-        top: 'var(--announce-bar-h, 0px)',
-        backgroundColor: solidBackground ? '#1B4229' : 'transparent',
-        transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
+        // Always render with the dark forest-green background — the header is
+        // now in normal flow (not pinned), so it sits at the top of each page
+        // on its own brand surface and scrolls away with the content.
+        backgroundColor: '#1B4229',
       }}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to={localizeHref("/", locale)}>
-              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto" />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <Link to={`${localizeHref("/", locale)}#shop`} className={`text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </Link>
             </div>
-            <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/blog" className={`text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
-            <Link to="/quiz" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/quiz" className={`text-white hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Quiz
             </Link>
-            <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
+            <CartDrawer locale={locale} />
           </div>
         </div>
       </div>
