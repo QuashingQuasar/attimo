@@ -311,7 +311,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#FFFAEA' }}>
+    <div className="relative min-h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => {}} forceTransparent darkNav locale={locale} />
       
       {/* Product Hero Section */}

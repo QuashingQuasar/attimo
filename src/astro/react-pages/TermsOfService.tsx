@@ -8,7 +8,7 @@ const TermsOfService = () => {
   useEffect(() => { document.title = 'Terms of Service | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: '#FFFAEA' }}>
+    <div className="relative min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled />
       
       <main className="pt-32 pb-20 px-6">
