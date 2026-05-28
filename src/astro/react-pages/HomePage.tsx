@@ -35,7 +35,7 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
+    <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
       <OilProductWidgets locale={locale} />
