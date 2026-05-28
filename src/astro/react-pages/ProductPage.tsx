@@ -480,7 +480,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
                     <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}</span>
-                      {tile.key === 'polyphenols' && tile.value !== '—' && (
+                      {tile.key === 'polyphenols' && tile.label === 'BIOACTIVE POLYPHENOLS' && tile.value !== '—' && (
                         <HoverCard openDelay={0} closeDelay={100}>
                           <HoverCardTrigger asChild>
                             <button
