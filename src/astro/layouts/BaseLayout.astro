@@ -175,8 +175,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
-          :root { --announce-bar-h: 0px; }
-          header.fixed { top: var(--announce-bar-h, 0px) !important; }
           #announce-bar {
             display: none;
             position: static;
@@ -212,28 +210,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             if (!bar || !text) return;
             text.textContent = msg;
             bar.style.display = "block";
-            var h = bar.getBoundingClientRect().height || 40;
-            var root = document.documentElement;
-            root.style.setProperty("--announce-bar-h", h + "px");
-            // Pages nest content inside `.overflow-y-scroll` containers, so
-            // `body` itself never scrolls. Track scroll across every plausible
-            // source - the bar shows when at the very top and hides otherwise,
-            // with the navbar offset snapping in/out to match.
-            function sync() {
-              var scrollY = window.scrollY || 0;
-              document.querySelectorAll(".overflow-y-scroll").forEach(function (c) {
-                if (c.scrollTop > scrollY) scrollY = c.scrollTop;
-              });
-              if (scrollY > 0) {
-                bar.style.display = "none";
-                root.style.setProperty("--announce-bar-h", "0px");
-              } else {
-                bar.style.display = "block";
-                root.style.setProperty("--announce-bar-h", h + "px");
-              }
-            }
-            window.addEventListener("scroll", sync, { passive: true });
-            document.addEventListener("scroll", sync, { passive: true, capture: true });
           })();
         </script>
       </>

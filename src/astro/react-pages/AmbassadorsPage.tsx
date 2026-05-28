@@ -56,7 +56,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
 
   return (
     <div
-      className="min-h-screen overflow-y-scroll h-screen"
+      className="relative min-h-screen overflow-y-scroll h-screen"
       style={{ backgroundColor: CREAM, fontFamily: FONT, color: TEXT }}
     >
       <Header

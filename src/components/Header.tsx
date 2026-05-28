@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Link } from "@/lib/router-stub";
 import navbarLogo from "@/assets/navbar-logo-latest.svg?url";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
@@ -27,71 +27,21 @@ interface HeaderProps {
   locale?: Locale;
 }
 export const Header = ({
-  onWaitlistClick,
+  onWaitlistClick: _onWaitlistClick,
   forceScrolled = false,
-  forceTransparent = false,
+  forceTransparent: _forceTransparent = false,
   darkNav = false,
   locale = DEFAULT_LOCALE,
 }: HeaderProps) => {
-  const [isScrolled, setIsScrolled] = useState(forceScrolled);
+  // Header is no longer sticky. Background is transparent by default so the
+  // hero shows through; solid only when (a) the consuming page passes
+  // forceScrolled (non-hero pages like blog/contact where transparent text
+  // on cream would be unreadable) or (b) the Shop dropdown is open.
   const [shopOpen, setShopOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Always-solid case: don't bother with listeners
-    if (forceScrolled && !forceTransparent) {
-      setIsScrolled(true);
-      return;
-    }
-
-    let raf: number | null = null;
-
-    const readScroll = () => {
-      // Check every plausible scroll source — the page might scroll on the
-      // window, the document element, the body, or the `.overflow-y-scroll`
-      // wrapper that the React app sometimes nests its content inside.
-      const candidates: number[] = [
-        window.scrollY || 0,
-        document.documentElement?.scrollTop || 0,
-        document.body?.scrollTop || 0,
-      ];
-      document.querySelectorAll<HTMLElement>('.overflow-y-scroll').forEach((el) => {
-        candidates.push(el.scrollTop || 0);
-      });
-      return Math.max(...candidates);
-    };
-
-    const apply = () => {
-      raf = null;
-      const scrollY = readScroll();
-      const next = forceTransparent ? scrollY > 50 : (forceScrolled || scrollY > 50);
-      setIsScrolled((prev) => (prev === next ? prev : next));
-    };
-
-    const onScroll = () => {
-      if (raf !== null) return;
-      raf = requestAnimationFrame(apply);
-    };
-
-    // Set the correct initial state — handles page-loads where the user is
-    // already scrolled (back-button, anchor link, etc.).
-    apply();
-
-    const containers = Array.from(document.querySelectorAll<HTMLElement>('.overflow-y-scroll'));
-    window.addEventListener('scroll', onScroll, { passive: true });
-    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
-    containers.forEach((c) => c.addEventListener('scroll', onScroll, { passive: true }));
-
-    return () => {
-      if (raf !== null) cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', onScroll);
-      document.removeEventListener('scroll', onScroll, { capture: true } as any);
-      containers.forEach((c) => c.removeEventListener('scroll', onScroll));
-    };
-  }, [forceScrolled, forceTransparent]);
+  const solidBackground = forceScrolled || shopOpen;
 
   const handleMouseEnter = () => {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -108,29 +58,32 @@ export const Header = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 py-6 ${(isScrolled || shopOpen) ? 'shadow-lg' : 'bg-transparent'}`}
-      style={{ backgroundColor: (isScrolled || shopOpen) ? '#1B4229' : 'transparent', transition: 'box-shadow 0.3s ease, background-color 0.3s ease' }}
+      className={`absolute top-0 left-0 right-0 z-50 py-6 ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      style={{
+        backgroundColor: solidBackground ? '#1B4229' : 'transparent',
+        transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
+      }}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to={localizeHref("/", locale)}>
-              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto" style={darkNav && !isScrolled && !shopOpen ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 Shop
               </Link>
             </div>
-            <Link to="/blog" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Blog
             </Link>
-            <Link to="/quiz" className={`${darkNav && !isScrolled && !shopOpen ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+            <Link to="/quiz" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               Quiz
             </Link>
-            <CartDrawer darkIcon={darkNav && !isScrolled && !shopOpen} locale={locale} />
+            <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
           </div>
         </div>
       </div>

@@ -57,7 +57,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
   const localFreeFrom = formatPrice(locale.shipping.freeThreshold, locale);
 
   return (
-    <div className="min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
+    <div className="relative min-h-screen overflow-y-scroll h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled locale={locale} />
 
       <main className="pt-32 pb-20 px-6">
