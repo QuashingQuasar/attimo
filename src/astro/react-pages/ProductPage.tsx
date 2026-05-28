@@ -4,7 +4,8 @@ import { useParams } from "@/lib/router-stub";
 import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck, Info } from "lucide-react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
@@ -477,8 +478,38 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map((tile) =>
               <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
-                    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                      {tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}
+                    <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+                      <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}</span>
+                      {tile.key === 'polyphenols' && tile.value !== '—' && (
+                        <HoverCard openDelay={0} closeDelay={100}>
+                          <HoverCardTrigger asChild>
+                            <button
+                              type="button"
+                              aria-label="What does Bioactive Polyphenols mean?"
+                              className="inline-flex items-center justify-center rounded-full text-olive-medium hover:text-olive-dark transition-colors cursor-help align-middle"
+                              onClick={(e) => e.currentTarget.focus()}
+                            >
+                              <Info size={14} strokeWidth={2} />
+                            </button>
+                          </HoverCardTrigger>
+                          <HoverCardContent
+                            side="top"
+                            align="start"
+                            className="p-4 normal-case tracking-normal"
+                            style={{
+                              backgroundColor: '#FFFAEA',
+                              color: '#1B4229',
+                              borderColor: 'rgba(27, 66, 41, 0.2)',
+                              maxWidth: '300px',
+                            }}
+                            onPointerDownOutside={(e) => e.preventDefault()}
+                          >
+                            <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.85rem' }}>
+                              Not all polyphenols are equal. Our {tile.value} {tile.unit} is measured using the EU-standard HPLC method at an ISO-accredited lab. Many producers report "total polyphenols" using broader methods that include compounds with less documented health activity, producing higher-sounding numbers that aren't directly comparable.
+                            </p>
+                          </HoverCardContent>
+                        </HoverCard>
+                      )}
                     </p>
                     <p className="text-olive-dark font-bold md:flex md:items-baseline md:gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
                       <span>
