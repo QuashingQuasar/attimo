@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getAllPostMeta } from "@/lib/sanity";
+import { LOCALES, pathHasLocaleVariants } from "@/lib/i18n/config";
 
 const SITE = "https://attimo-oil.com";
 
@@ -27,13 +28,43 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/terms", changefreq: "yearly", priority: "0.3" },
 ];
 
+// Build the xhtml:link block listing every hreflang variant for a given
+// unprefixed locale-variant path. Used per <url> entry so search engines see
+// the cluster of locale alternatives together.
+function buildHreflangLinks(unprefixedPath: string): string {
+  const links = LOCALES.map((locale) => {
+    const tag = locale.slug === "" ? "en" : `en-${locale.country}`;
+    const href = locale.slug === ""
+      ? `${SITE}${unprefixedPath}`
+      : `${SITE}/${locale.slug}${unprefixedPath === "/" ? "/" : unprefixedPath}`;
+    return `    <xhtml:link rel="alternate" hreflang="${tag}" href="${href}" />`;
+  });
+  links.push(
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${unprefixedPath}" />`
+  );
+  return links.join("\n");
+}
+
 export const GET: APIRoute = async () => {
   const posts = await getAllPostMeta();
 
-  const staticEntries = STATIC_URLS.map(
-    (u) =>
-      `  <url>\n    <loc>${SITE}${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`
-  ).join("\n");
+  // Locale-variant URLs (homepage, /product/*, /shipping) are emitted once
+  // per locale, each with the full hreflang cluster. Non-variant URLs (blog,
+  // quiz, contact, legal) are emitted once on the default locale.
+  const staticEntries = STATIC_URLS.flatMap((u) => {
+    if (!pathHasLocaleVariants(u.loc)) {
+      return [
+        `  <url>\n    <loc>${SITE}${u.loc}</loc>\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+      ];
+    }
+    const hreflangBlock = buildHreflangLinks(u.loc);
+    return LOCALES.map((locale) => {
+      const localizedLoc = locale.slug === ""
+        ? u.loc
+        : `/${locale.slug}${u.loc === "/" ? "/" : u.loc}`;
+      return `  <url>\n    <loc>${SITE}${localizedLoc}</loc>\n${hreflangBlock}\n    <changefreq>${u.changefreq}</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`;
+    });
+  }).join("\n");
 
   const postEntries = posts
     .filter((p) => !BLOG_SITEMAP_SLUGS.has(p.slug))
@@ -43,7 +74,7 @@ export const GET: APIRoute = async () => {
     })
     .join("\n");
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${staticEntries}\n${postEntries}\n</urlset>\n`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${staticEntries}\n${postEntries}\n</urlset>\n`;
 
   return new Response(xml, {
     headers: { "Content-Type": "application/xml; charset=utf-8" },

@@ -55,15 +55,39 @@ export const LOCALES: Locale[] = [
       decimals: 0,
     },
     prices: {
-      coratina: 183,
-      nocellara: 175,
-      picual: 168,
+      coratina: 190,
+      nocellara: 180,
+      picual: 170,
     },
     shipping: {
       standard: 90,
       freeThreshold: 366,
     },
     flag: "🇩🇰",
+  },
+  {
+    slug: "se",
+    country: "SE",
+    countryName: "Sverige",
+    currency: {
+      code: "SEK",
+      symbol: "kr",
+      symbolPosition: "after",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 270,
+      nocellara: 260,
+      picual: 250,
+    },
+    // Shipping numbers approximate the DK pattern (Postnord-tier rates,
+    // free-from at ≈€50 equivalent). Adjust once you have firm SEK quotes
+    // from your carrier.
+    shipping: {
+      standard: 99,
+      freeThreshold: 550,
+    },
+    flag: "🇸🇪",
   },
 ];
 
