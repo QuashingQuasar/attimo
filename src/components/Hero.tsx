@@ -42,7 +42,7 @@ export const Hero = ({
               textShadow: '0 1px 16px rgba(0,0,0,0.3)',
             }}
           >
-            Always fresh from single-variety olives that were harvested early and cold-pressed within hours for maximum flavour and health benefits.
+            Always fresh olive oil from single-variety olives that were harvested early for maximum flavour and health benefits.
           </p>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
