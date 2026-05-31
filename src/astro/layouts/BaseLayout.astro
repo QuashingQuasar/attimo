@@ -210,6 +210,18 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             if (!bar || !text) return;
             text.textContent = msg;
             bar.style.display = "block";
+            // Expose the bar's rendered height as a CSS variable so the
+            // hero (.hero-full) can subtract it from its 100vh and the
+            // ticker stays above the fold.
+            var setBarHeight = function () {
+              var h = bar.getBoundingClientRect().height || 0;
+              document.documentElement.style.setProperty(
+                "--announce-bar-h",
+                h + "px"
+              );
+            };
+            setBarHeight();
+            window.addEventListener("resize", setBarHeight, { passive: true });
           })();
         </script>
       </>
