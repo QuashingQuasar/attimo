@@ -119,7 +119,7 @@ export const QuantitySelector = ({
                   ? `${p.label}, ${Math.round(discountPct * 100)}% off`
                   : p.label
               }
-              className={`relative rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
+              className={`relative rounded-xl border-2 transition-all duration-200 text-center pt-5 pb-2.5 px-1 ${
                 disabled
                   ? "border-olive-dark/15 bg-white/30 text-olive-dark/40 cursor-not-allowed"
                   : quantity === p.qty
