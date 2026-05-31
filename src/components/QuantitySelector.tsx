@@ -130,7 +130,7 @@ export const QuantitySelector = ({
               {discountLabel && (
                 <span
                   aria-hidden="true"
-                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-2 py-0.5 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
+                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-3 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
                     disabled ? "opacity-40" : ""
                   }`}
                   style={{
