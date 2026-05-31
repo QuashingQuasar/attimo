@@ -15,19 +15,15 @@ export const Hero = ({
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
-      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-between" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
-        {/* Top-left: headline */}
-        <div className="pt-12 md:pt-20 lg:pt-24">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
+        {/* Grouped text block, positioned in the upper-mid area on the left */}
+        <div className="max-w-2xl -mt-16 md:-mt-20 lg:-mt-24">
           <h1
             className="tracking-tight leading-[1.05] animate-fade-in"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               fontWeight: 400,
               color: '#FFFAEA',
-              // Stays on one line at every viewport AND keeps the line
-              // shorter than the container at desktop so the headline reads
-              // as left-positioned (not centered-feeling because it filled
-              // the container width).
               fontSize: 'clamp(1rem, 3.5vw, 3rem)',
               whiteSpace: 'nowrap',
               letterSpacing: '0.01em',
@@ -36,12 +32,9 @@ export const Hero = ({
           >
             OLIVE OIL THE WAY IT SHOULD BE
           </h1>
-        </div>
 
-        {/* Bottom-left: subheader + CTA */}
-        <div className="pb-8 md:pb-12 lg:pb-16 max-w-2xl">
           <p
-            className="mb-6 md:mb-8 leading-relaxed animate-fade-in"
+            className="mt-5 md:mt-6 mb-7 md:mb-8 leading-relaxed animate-fade-in"
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: 400,
