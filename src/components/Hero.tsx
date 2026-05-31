@@ -23,7 +23,11 @@ export const Hero = ({
               fontFamily: 'UDC Working Man Sans, sans-serif',
               fontWeight: 400,
               color: '#FFFAEA',
-              fontSize: 'clamp(2rem, 5.2vw, 4.75rem)',
+              // Sized so the full headline stays on one line from ~320px
+              // mobile up through 1920px desktop. Lower bound covers the
+              // smallest phones (text gets small, but never wraps).
+              fontSize: 'clamp(1.1rem, 5vw, 4rem)',
+              whiteSpace: 'nowrap',
               letterSpacing: '0.01em',
               textShadow: '0 2px 24px rgba(0,0,0,0.35)',
             }}
