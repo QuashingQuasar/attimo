@@ -16,8 +16,8 @@ export const Hero = ({
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
-        {/* Grouped text block, positioned in the upper-mid area on the left */}
-        <div className="max-w-2xl -mt-16 md:-mt-20 lg:-mt-24">
+        {/* Grouped text block, sat lower on the left (~75% of viewport height) */}
+        <div className="max-w-2xl mt-32 md:mt-40 lg:mt-48">
           <h1
             className="tracking-tight leading-[1.05] animate-fade-in"
             style={{
