@@ -32,7 +32,7 @@ export const Hero = ({
               textShadow: '0 2px 24px rgba(0,0,0,0.35)',
             }}
           >
-            Specialty Extra Virgin Olive Oil
+            OLIVE OIL THE WAY IT SHOULD BE
           </h1>
 
           <p
@@ -46,7 +46,7 @@ export const Hero = ({
               textShadow: '0 1px 16px rgba(0,0,0,0.3)',
             }}
           >
-            Always fresh olive oil from single-variety olives that were harvested early for maximum flavour and health benefits.
+            ATTIMO olive oil is always fresh, single-variety and pressed from olives that were picked early for maximum flavour and health benefits. Lab-tested quality.
           </p>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
