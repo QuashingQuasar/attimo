@@ -24,9 +24,11 @@ export const Hero = ({
               fontFamily: 'UDC Working Man Sans, sans-serif',
               fontWeight: 400,
               color: '#FFFAEA',
-              // Sized so the full headline stays on one line from ~320px
-              // mobile up through 1920px desktop.
-              fontSize: 'clamp(1.1rem, 5vw, 4rem)',
+              // Stays on one line at every viewport AND keeps the line
+              // shorter than the container at desktop so the headline reads
+              // as left-positioned (not centered-feeling because it filled
+              // the container width).
+              fontSize: 'clamp(1rem, 3.5vw, 3rem)',
               whiteSpace: 'nowrap',
               letterSpacing: '0.01em',
               textShadow: '0 2px 24px rgba(0,0,0,0.35)',
