@@ -29,13 +29,6 @@ const VOLUME_DISCOUNT_PERCENTS: Record<number, number> = {
   8: 0.15,
 };
 
-const VOLUME_DISCOUNTS: Record<number, string> = Object.fromEntries(
-  Object.entries(VOLUME_DISCOUNT_PERCENTS).map(([qty, percent]) => [
-    qty,
-    `${Math.round(percent * 100)}% Off`,
-  ]),
-);
-
 /** Returns the volume discount for a given quantity as a decimal (0 if none). */
 export function getVolumeDiscountPercent(qty: number): number {
   return VOLUME_DISCOUNT_PERCENTS[qty] ?? 0;
@@ -54,9 +47,9 @@ function buildPresets(threshold: number) {
   return BASE_PRESETS.map((p) => ({
     ...p,
     // Free shipping label is market-driven (per getFreeShippingThreshold).
+    // Volume discount badge is rendered separately from VOLUME_DISCOUNT_PERCENTS
+    // at render time (see getVolumeDiscountPercent).
     freeShipping: p.qty >= threshold,
-    // Volume discount label is global, independent of market.
-    discount: VOLUME_DISCOUNTS[p.qty],
   }));
 }
 
@@ -107,6 +100,12 @@ export const QuantitySelector = ({
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
           };
+          // Volume discount percent for this quantity (0 if none). Single
+          // source: VOLUME_DISCOUNT_PERCENTS via getVolumeDiscountPercent.
+          const discountPct = getVolumeDiscountPercent(p.qty);
+          const discountLabel = discountPct > 0
+            ? `−${Math.round(discountPct * 100)}%`
+            : null;
           return (
             <button
               key={p.qty}
@@ -114,9 +113,13 @@ export const QuantitySelector = ({
               disabled={disabled}
               onClick={() => onQuantityChange(p.qty)}
               aria-label={
-                disabled ? `${p.label} — only ${available} in stock` : p.label
+                disabled
+                  ? `${p.label} — only ${available} in stock`
+                  : discountLabel
+                  ? `${p.label}, ${Math.round(discountPct * 100)}% off`
+                  : p.label
               }
-              className={`rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
+              className={`relative rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
                 disabled
                   ? "border-olive-dark/15 bg-white/30 text-olive-dark/40 cursor-not-allowed"
                   : quantity === p.qty
@@ -124,6 +127,24 @@ export const QuantitySelector = ({
                   : "border-olive-dark/20 bg-white/60 text-olive-dark hover:border-olive-dark/40"
               }`}
             >
+              {discountLabel && (
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-2 py-0.5 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
+                    disabled ? "opacity-40" : ""
+                  }`}
+                  style={{
+                    backgroundColor: "#CDDB2D",
+                    color: "#1B4229",
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    fontSize: "clamp(0.55rem, 0.7vw, 0.75rem)",
+                    letterSpacing: "0.04em",
+                    lineHeight: 1,
+                  }}
+                >
+                  {discountLabel}
+                </span>
+              )}
               <span
                 className="block font-semibold leading-tight"
                 style={{
@@ -136,11 +157,6 @@ export const QuantitySelector = ({
               {p.freeShipping && (
                 <span className={subClass} style={subStyle}>
                   Free Shipping
-                </span>
-              )}
-              {p.discount && (
-                <span className={subClass} style={subStyle}>
-                  {p.discount}
                 </span>
               )}
             </button>
