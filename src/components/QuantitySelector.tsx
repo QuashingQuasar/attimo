@@ -18,18 +18,38 @@ interface QuantitySelectorProps {
   variantId?: string;
 }
 
+// Volume discount tiers. Single source of truth for the button label AND the
+// displayed total on the Add-to-Cart row in ProductPage. The actual discount
+// applied at checkout is configured as a Shopify automatic discount — keep
+// the Shopify side in sync with this map before launch.
+const VOLUME_DISCOUNT_PERCENTS: Record<number, number> = {
+  3: 0.05,
+  4: 0.08,
+  6: 0.12,
+  8: 0.15,
+};
+
+/** Returns the volume discount for a given quantity as a decimal (0 if none). */
+export function getVolumeDiscountPercent(qty: number): number {
+  return VOLUME_DISCOUNT_PERCENTS[qty] ?? 0;
+}
+
 const BASE_PRESETS = [
   { qty: 1, label: "1 Bottle" },
   { qty: 2, label: "2 Bottles" },
   { qty: 3, label: "3 Bottles" },
   { qty: 4, label: "4 Bottles" },
+  { qty: 6, label: "6 Bottles" },
   { qty: 8, label: "8 Bottles" },
 ];
 
 function buildPresets(threshold: number) {
   return BASE_PRESETS.map((p) => ({
     ...p,
-    sub: p.qty >= threshold ? "Free Shipping" : undefined,
+    // Free shipping label is market-driven (per getFreeShippingThreshold).
+    // Volume discount badge is rendered separately from VOLUME_DISCOUNT_PERCENTS
+    // at render time (see getVolumeDiscountPercent).
+    freeShipping: p.qty >= threshold,
   }));
 }
 
@@ -66,9 +86,26 @@ export const QuantitySelector = ({
   return (
     <div className="space-y-3">
       {/* Preset buttons */}
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-6 gap-2">
         {presets.map((p) => {
           const disabled = available !== null && p.qty > available;
+          const subClass = `block leading-tight mt-0.5 ${
+            disabled
+              ? "text-olive-medium/30"
+              : quantity === p.qty
+              ? "text-cream/70"
+              : "text-olive-medium/70"
+          }`;
+          const subStyle = {
+            fontFamily: "Space Grotesk, sans-serif",
+            fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
+          };
+          // Volume discount percent for this quantity (0 if none). Single
+          // source: VOLUME_DISCOUNT_PERCENTS via getVolumeDiscountPercent.
+          const discountPct = getVolumeDiscountPercent(p.qty);
+          const discountLabel = discountPct > 0
+            ? `−${Math.round(discountPct * 100)}%`
+            : null;
           return (
             <button
               key={p.qty}
@@ -76,9 +113,13 @@ export const QuantitySelector = ({
               disabled={disabled}
               onClick={() => onQuantityChange(p.qty)}
               aria-label={
-                disabled ? `${p.label} — only ${available} in stock` : p.label
+                disabled
+                  ? `${p.label} — only ${available} in stock`
+                  : discountLabel
+                  ? `${p.label}, ${Math.round(discountPct * 100)}% off`
+                  : p.label
               }
-              className={`rounded-xl border-2 transition-all duration-200 text-center py-2.5 px-1 ${
+              className={`relative rounded-xl border-2 transition-all duration-200 text-center flex flex-col items-center justify-center min-h-[60px] py-3 px-1 ${
                 disabled
                   ? "border-olive-dark/15 bg-white/30 text-olive-dark/40 cursor-not-allowed"
                   : quantity === p.qty
@@ -86,6 +127,24 @@ export const QuantitySelector = ({
                   : "border-olive-dark/20 bg-white/60 text-olive-dark hover:border-olive-dark/40"
               }`}
             >
+              {discountLabel && (
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[65%] rounded-full px-3 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
+                    disabled ? "opacity-40" : ""
+                  }`}
+                  style={{
+                    backgroundColor: "#CDDB2D",
+                    color: "#1B4229",
+                    fontFamily: "Space Grotesk, sans-serif",
+                    fontSize: "clamp(0.55rem, 0.7vw, 0.75rem)",
+                    letterSpacing: "0.04em",
+                    lineHeight: 1,
+                  }}
+                >
+                  {discountLabel}
+                </span>
+              )}
               <span
                 className="block font-semibold leading-tight"
                 style={{
@@ -95,21 +154,9 @@ export const QuantitySelector = ({
               >
                 {p.label}
               </span>
-              {p.sub && (
-                <span
-                  className={`block leading-tight mt-0.5 ${
-                    disabled
-                      ? "text-olive-medium/30"
-                      : quantity === p.qty
-                      ? "text-cream/70"
-                      : "text-olive-medium/70"
-                  }`}
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
-                  }}
-                >
-                  {p.sub}
+              {p.freeShipping && (
+                <span className={subClass} style={subStyle}>
+                  Free Shipping
                 </span>
               )}
             </button>

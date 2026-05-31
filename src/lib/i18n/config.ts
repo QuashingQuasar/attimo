@@ -99,8 +99,13 @@ export const SLUG_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
   LOCALES.map((l) => [l.slug, l])
 );
 
-export function formatPrice(amount: number, locale: Locale): string {
-  const { symbol, symbolPosition, decimals } = locale.currency;
+export function formatPrice(
+  amount: number,
+  locale: Locale,
+  decimalsOverride?: number,
+): string {
+  const { symbol, symbolPosition, decimals: defaultDecimals } = locale.currency;
+  const decimals = decimalsOverride ?? defaultDecimals;
   const formatted = amount.toFixed(decimals);
   return symbolPosition === "before"
     ? `${symbol}${formatted}`

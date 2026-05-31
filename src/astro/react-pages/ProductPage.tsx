@@ -19,7 +19,7 @@ import { fetchProducts, fetchSellingPlans, ShopifyProduct, SellingPlan } from "@
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
-import { QuantitySelector } from "@/components/QuantitySelector";
+import { QuantitySelector, getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
@@ -446,7 +446,38 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         borderRadius: "0.75rem"
                       }}>
                       <span className="flex flex-col items-center gap-0.5">
-                        <span className="text-lg">ADD TO CART {purchaseType === "subscribe" && <span className="line-through opacity-60 font-normal">{formatPrice(selectedQuantity * ONE_TIME_PRICE, locale)}</span>} {formatPrice(selectedQuantity * activePrice, locale)}</span>
+                        {(() => {
+                          // Volume discount only applies to one-time orders.
+                          // Subscriptions already have their own discounted
+                          // per-bottle price baked in (SUBSCRIPTION_PRICE).
+                          const volumeDiscount = purchaseType === "subscribe"
+                            ? 0
+                            : getVolumeDiscountPercent(selectedQuantity);
+                          const baseTotal = selectedQuantity * activePrice;
+                          const finalTotal = baseTotal * (1 - volumeDiscount);
+                          const originalOneTimeTotal = selectedQuantity * ONE_TIME_PRICE;
+                          // Show strikethrough when subscribing (vs one-time
+                          // total) OR when a volume discount is in effect
+                          // (vs un-discounted one-time total).
+                          const showStrikethrough =
+                            purchaseType === "subscribe" || volumeDiscount > 0;
+                          // When a volume discount is in effect, display two
+                          // decimals so the UI matches what Shopify will
+                          // charge to the cent. Subscription path keeps the
+                          // existing locale default (0 decimals for EUR/DKK).
+                          const finalDecimals = volumeDiscount > 0 ? 2 : undefined;
+                          return (
+                            <span className="text-lg">
+                              ADD TO CART{" "}
+                              {showStrikethrough && (
+                                <span className="line-through opacity-60 font-normal">
+                                  {formatPrice(originalOneTimeTotal, locale)}
+                                </span>
+                              )}{" "}
+                              {formatPrice(finalTotal, locale, finalDecimals)}
+                            </span>
+                          );
+                        })()}
                         <span className="font-normal text-xs">{cartBottleCount < freeShippingThreshold ? <span className="font-normal text-xs">{cartBottleCount < freeShippingThreshold ? `(ADD ${freeShippingThreshold - cartBottleCount} MORE BOTTLE${freeShippingThreshold - cartBottleCount > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span> : "(FREE SHIPPING ✓)"}</span>
                       </span>
                     </Button>
