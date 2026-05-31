@@ -17,7 +17,7 @@ export const Hero = ({
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
-      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - 100px)' }}>
+      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
             <img
