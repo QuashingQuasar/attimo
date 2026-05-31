@@ -320,7 +320,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-0 lg:self-start">
-              <div className="w-full h-[75vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
+              <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
                 <img
                 src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
                 alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
