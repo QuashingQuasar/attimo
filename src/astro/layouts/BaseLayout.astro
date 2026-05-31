@@ -183,7 +183,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             background-color: rgb(27 66 41);
             color: #FFFAEA;
             font-family: 'UDC Working Man Sans', sans-serif;
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             padding: 6px 12px;
@@ -199,10 +199,19 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             var m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d)/);
             if (!m) return;
             var tier = m[1];
+            // The volume-discount half ("SAVE UP TO 15%") is shown in every
+            // market because the discount tiers are global (3/4/6/8 bottles
+            // → 5/8/12/15%). The shipping half is geo-tiered.
+            // Tier 2 (Core + most of EU): free shipping at 2+, so the two
+            // halves anchor at different thresholds — separator with double
+            // spaces around a middle dot for legibility.
+            // Tier 3 (FI/GR/PT/RO + Tier-2 spillover): both perks kick in at
+            // 3+, so the second half drops the redundant "ON 3+ BOTTLES" to
+            // avoid repetition.
             var msg = tier === "2"
-              ? "FREE SHIPPING ON 2+ BOTTLES"
+              ? "FREE SHIPPING ON 2+ BOTTLES  ·  SAVE UP TO 15% ON 3+ BOTTLES"
               : tier === "3"
-              ? "FREE SHIPPING ON 3+ BOTTLES"
+              ? "FREE SHIPPING ON 3+ BOTTLES  ·  SAVE UP TO 15%"
               : null;
             if (!msg) return;
             var bar = document.getElementById("announce-bar");
