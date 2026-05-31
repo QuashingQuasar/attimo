@@ -1,7 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
-import { OliveLeaf } from './OliveLeaf';
-import kleiaLogo from '@/assets/attimo-main-logo.svg?url';
 interface HeroProps {
   onWaitlistClick: () => void;
 }
@@ -19,14 +17,33 @@ export const Hero = ({
       
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
         <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
-            <img
-            src={kleiaLogo}
-            alt="ATTIMO olive oil logo"
-            className="object-contain drop-shadow-2xl w-auto max-h-[290px] md:max-h-[358px] lg:max-h-[426px]"
-            style={{ width: 'min(444px, 61.25vw, 43vh)', height: 'auto' }} />
-          
-          </div>
+          <h1
+            className="tracking-tight leading-[1.05] mb-5 md:mb-6 animate-fade-in"
+            style={{
+              fontFamily: 'UDC Working Man Sans, sans-serif',
+              fontWeight: 400,
+              color: '#FFFAEA',
+              fontSize: 'clamp(2rem, 5.2vw, 4.75rem)',
+              letterSpacing: '0.01em',
+              textShadow: '0 2px 24px rgba(0,0,0,0.35)',
+            }}
+          >
+            Specialty Extra Virgin Olive Oil
+          </h1>
+
+          <p
+            className="mx-auto mb-8 md:mb-10 max-w-3xl leading-relaxed animate-fade-in"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontWeight: 400,
+              color: 'rgba(255, 250, 234, 0.92)',
+              fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
+              animationDelay: '0.2s',
+              textShadow: '0 1px 16px rgba(0,0,0,0.3)',
+            }}
+          >
+            Always fresh from single-variety olives that were harvested early and cold-pressed within hours for maximum flavour and health benefits.
+          </p>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button
