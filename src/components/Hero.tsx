@@ -20,7 +20,7 @@ export const Hero = ({
           <h1
             className="tracking-tight leading-[1.05] mb-5 md:mb-6 animate-fade-in"
             style={{
-              fontFamily: 'Beverly Drive, serif',
+              fontFamily: 'UDC Working Man Sans, sans-serif',
               fontWeight: 400,
               color: '#FFFAEA',
               fontSize: 'clamp(2rem, 5.2vw, 4.75rem)',
