@@ -15,17 +15,17 @@ export const Hero = ({
       
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
-      <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 flex flex-col justify-between" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
+        {/* Top-left: headline */}
+        <div className="pt-12 md:pt-20 lg:pt-24">
           <h1
-            className="tracking-tight leading-[1.05] mb-5 md:mb-6 animate-fade-in"
+            className="tracking-tight leading-[1.05] animate-fade-in"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
               fontWeight: 400,
               color: '#FFFAEA',
               // Sized so the full headline stays on one line from ~320px
-              // mobile up through 1920px desktop. Lower bound covers the
-              // smallest phones (text gets small, but never wraps).
+              // mobile up through 1920px desktop.
               fontSize: 'clamp(1.1rem, 5vw, 4rem)',
               whiteSpace: 'nowrap',
               letterSpacing: '0.01em',
@@ -34,9 +34,12 @@ export const Hero = ({
           >
             OLIVE OIL THE WAY IT SHOULD BE
           </h1>
+        </div>
 
+        {/* Bottom-left: subheader + CTA */}
+        <div className="pb-8 md:pb-12 lg:pb-16 max-w-2xl">
           <p
-            className="mx-auto mb-8 md:mb-10 max-w-3xl leading-relaxed animate-fade-in"
+            className="mb-6 md:mb-8 leading-relaxed animate-fade-in"
             style={{
               fontFamily: 'Space Grotesk, sans-serif',
               fontWeight: 400,
@@ -46,10 +49,10 @@ export const Hero = ({
               textShadow: '0 1px 16px rgba(0,0,0,0.3)',
             }}
           >
-            ATTIMO olive oil is always fresh, single-variety and pressed from olives that were picked early for maximum flavour and health benefits. Lab-tested quality.
+            ATTIMO olive oil is always fresh, pressed from single-variety olives that were picked early in harvest for maximum flavour and health benefits. Lab-tested quality.
           </p>
 
-          <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <Button
             onClick={() => {
               const el = document.getElementById('oil-collection');
