@@ -119,7 +119,7 @@ export const QuantitySelector = ({
                   ? `${p.label}, ${Math.round(discountPct * 100)}% off`
                   : p.label
               }
-              className={`relative rounded-xl border-2 transition-all duration-200 text-center pt-5 pb-2.5 px-1 ${
+              className={`relative rounded-xl border-2 transition-all duration-200 text-center flex flex-col items-center justify-center min-h-[60px] py-3 px-1 ${
                 disabled
                   ? "border-olive-dark/15 bg-white/30 text-olive-dark/40 cursor-not-allowed"
                   : quantity === p.qty
@@ -130,7 +130,7 @@ export const QuantitySelector = ({
               {discountLabel && (
                 <span
                   aria-hidden="true"
-                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full px-3 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
+                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[65%] rounded-full px-3 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
                     disabled ? "opacity-40" : ""
                   }`}
                   style={{
