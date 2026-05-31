@@ -136,7 +136,7 @@ export const QuantitySelector = ({
                   style={{
                     backgroundColor: "#CDDB2D",
                     color: "#1B4229",
-                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    fontFamily: "Space Grotesk, sans-serif",
                     fontSize: "clamp(0.55rem, 0.7vw, 0.75rem)",
                     letterSpacing: "0.04em",
                     lineHeight: 1,
