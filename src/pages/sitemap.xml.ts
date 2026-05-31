@@ -13,6 +13,7 @@ const BLOG_SITEMAP_SLUGS = new Set([
   "polyphenols-olive-oil",
   "olive-color-ripeness-polyphenols",
   "unfiltered-olive-oil",
+  "squeeze-bottles-olive-oil",
 ]);
 
 const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
