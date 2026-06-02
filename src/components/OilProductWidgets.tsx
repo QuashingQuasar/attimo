@@ -5,7 +5,7 @@ import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
 import { fetchProducts } from "@/lib/shopify";
-import { resolveShopifyHandle } from "@/lib/productContent";
+import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
 
 const oilDefs = [
   {
@@ -74,11 +74,21 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
   const oils = oilDefs.map((o) => {
     const shopifyHandle = resolveShopifyHandle(o.handle);
     // Default to true so a fetch failure leaves cards looking normal.
-    const isAvailable = availability[shopifyHandle] ?? true;
+    const shopifyInStock = availability[shopifyHandle] ?? true;
+    // TEMP_PREVIEW: force Coratina to render as in-stock so the new
+    // "Ships in 5–7 days" badge can be previewed locally while Shopify
+    // still reports availableForSale=false. Remove before merging.
+    const TEMP_PREVIEW_CORATINA_INSTOCK = o.handle === "coratina";
+    const isAvailable = TEMP_PREVIEW_CORATINA_INSTOCK ? true : shopifyInStock;
+    // Per-product shipping notice (e.g. "Ships in 5–7 days" for products on
+    // restock). Sourced from productContent.ts so PDP and home card stay in
+    // sync — undefined means the product ships normally.
+    const shippingNotice = getProductContent(o.handle).shippingNotice;
     return {
       ...o,
       price: locale.prices[o.handle],
       isAvailable,
+      shippingNotice,
     };
   });
   return (
@@ -244,6 +254,20 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                     }}
                   >
                     Temporarily Sold Out
+                  </span>
+                )}
+                {oil.isAvailable && oil.shippingNotice && (
+                  <span
+                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#CDDB2D",
+                      backgroundColor: "#1B4229",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {oil.shippingNotice}
                   </span>
                 )}
               </div>
