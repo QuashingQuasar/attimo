@@ -478,7 +478,17 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                             </span>
                           );
                         })()}
-                        <span className="font-normal text-xs">{cartBottleCount < freeShippingThreshold ? <span className="font-normal text-xs">{cartBottleCount < freeShippingThreshold ? `(ADD ${freeShippingThreshold - cartBottleCount} MORE BOTTLE${freeShippingThreshold - cartBottleCount > 1 ? 'S' : ''} FOR FREE SHIPPING)` : "(FREE SHIPPING ✓)"}</span> : "(FREE SHIPPING ✓)"}</span>
+                        <span className="font-normal text-xs">{(() => {
+                          if (cartBottleCount >= freeShippingThreshold) return "(FREE SHIPPING ✓)";
+                          const needed = freeShippingThreshold - cartBottleCount;
+                          const plural = needed > 1 ? "S" : "";
+                          // Empty cart drops "MORE" — "ADD 2 BOTTLES FOR FREE
+                          // SHIPPING" reads as a baseline instruction. Once the
+                          // customer has any bottle in cart, switch to the
+                          // "MORE" framing so it's clearly incremental.
+                          const more = cartBottleCount === 0 ? "" : "MORE ";
+                          return `(ADD ${needed} ${more}BOTTLE${plural} FOR FREE SHIPPING)`;
+                        })()}</span>
                       </span>
                     </Button>
 
