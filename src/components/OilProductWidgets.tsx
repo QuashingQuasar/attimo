@@ -74,12 +74,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
   const oils = oilDefs.map((o) => {
     const shopifyHandle = resolveShopifyHandle(o.handle);
     // Default to true so a fetch failure leaves cards looking normal.
-    const shopifyInStock = availability[shopifyHandle] ?? true;
-    // TEMP_PREVIEW: force Coratina to render as in-stock so the new
-    // "Ships in 5–7 days" badge can be previewed locally while Shopify
-    // still reports availableForSale=false. Remove before merging.
-    const TEMP_PREVIEW_CORATINA_INSTOCK = o.handle === "coratina";
-    const isAvailable = TEMP_PREVIEW_CORATINA_INSTOCK ? true : shopifyInStock;
+    const isAvailable = availability[shopifyHandle] ?? true;
     // Per-product shipping notice (e.g. "Ships in 5–7 days" for products on
     // restock). Sourced from productContent.ts so PDP and home card stay in
     // sync — undefined means the product ships normally.

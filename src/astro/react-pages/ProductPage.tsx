@@ -257,13 +257,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const productImages = product.node.images?.edges || [];
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
-  // TEMP_PREVIEW: force Coratina to render as in-stock so the new
-  // "Ships in 5–7 days" notice can be previewed locally while Shopify
-  // still reports availableForSale=false. Remove before merging.
-  const TEMP_PREVIEW_CORATINA_INSTOCK = handle === "coratina";
-  const isInStock = TEMP_PREVIEW_CORATINA_INSTOCK
-    ? true
-    : product.node.variants.edges.some(v => v.node.availableForSale);
+  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
 
   // Per-product out-of-stock copy. Anything not listed falls back to the
   // generic "Sold Out" / default NotifyMeForm copy below.
@@ -364,11 +358,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     New Harvest
                   </span>
                   {(() => {
-                  // Mirrors the isInStock computation above, including the
-                  // TEMP_PREVIEW Coratina override.
-                  const inStock = TEMP_PREVIEW_CORATINA_INSTOCK
-                    ? true
-                    : product.node.variants.edges.some((v) => v.node.availableForSale);
+                  // Mirrors the isInStock computation above.
+                  const inStock = product.node.variants.edges.some((v) => v.node.availableForSale);
                   const badgeText = inStock ? 'In Stock' : (oosCopy?.badge ?? 'Sold Out');
                   const badgeColor = inStock
                     ? 'text-olive-dark'
