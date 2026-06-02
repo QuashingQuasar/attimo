@@ -489,7 +489,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       </p>
                       <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         <Truck size={20} strokeWidth={1.5} />
-                        Order today, ships tomorrow
+                        {content.shippingNotice ?? "Order today, ships tomorrow"}
                       </p>
                     </div>
                   </>
