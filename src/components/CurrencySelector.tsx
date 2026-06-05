@@ -6,6 +6,36 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { DK, EU, FR, SE } from "country-flag-icons/react/3x2";
+
+// Flat SVG flags (country-flag-icons), keyed by Locale.flagCode — replaces the
+// OS emoji flags so the selector renders consistent, neutral flag art across
+// platforms. Named imports are tree-shaken to just these four.
+const FLAG_COMPONENTS = { EU, DK, SE, FR } as const;
+
+const FlagIcon = ({
+  code,
+  size,
+}: {
+  code: Locale["flagCode"];
+  size: string;
+}) => {
+  const Flag = FLAG_COMPONENTS[code];
+  return (
+    <Flag
+      aria-hidden="true"
+      style={{
+        height: size,
+        width: "auto",
+        display: "block",
+        borderRadius: 2,
+        // Hairline edge so the white in the EU/FR flags stays defined on
+        // light backgrounds.
+        boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.12)",
+      }}
+    />
+  );
+};
 
 interface Props {
   locale?: Locale;
@@ -77,7 +107,7 @@ export const CurrencySelector = ({
           fontFamily: "Space Grotesk, sans-serif",
         }}
       >
-        <span aria-hidden="true" style={{ fontSize: "2.25rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
+        <FlagIcon code={locale.flagCode} size="1.5rem" />
         <span
           aria-hidden="true"
           style={{
@@ -135,7 +165,7 @@ export const CurrencySelector = ({
                     if (!isCurrent) e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
-                  <span aria-hidden="true" style={{ fontSize: "2rem", lineHeight: 1, display: "inline-block" }}>{l.flag}</span>
+                  <FlagIcon code={l.flagCode} size="1.25rem" />
                 </a>
               </li>
             );

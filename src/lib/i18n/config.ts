@@ -34,6 +34,10 @@ export type Locale = {
     freeThreshold: number;
   };
   flag: string;
+  // ISO-style code for the flat SVG flag shown in the locale selector
+  // (country-flag-icons). The default market shows the EU flag, not Belgium's,
+  // so this is tracked separately from `country`.
+  flagCode: "EU" | "DK" | "SE" | "FR";
 };
 
 export const DEFAULT_LOCALE: Locale = {
@@ -59,6 +63,7 @@ export const DEFAULT_LOCALE: Locale = {
     freeThreshold: 50,
   },
   flag: "🇪🇺",
+  flagCode: "EU",
 };
 
 export const LOCALES: Locale[] = [
@@ -86,6 +91,7 @@ export const LOCALES: Locale[] = [
       freeThreshold: 366,
     },
     flag: "🇩🇰",
+    flagCode: "DK",
   },
   {
     slug: "se",
@@ -113,6 +119,7 @@ export const LOCALES: Locale[] = [
       freeThreshold: 550,
     },
     flag: "🇸🇪",
+    flagCode: "SE",
   },
   {
     // France — the first LANGUAGE market (not a currency market). France uses
@@ -145,6 +152,7 @@ export const LOCALES: Locale[] = [
       freeThreshold: 50,
     },
     flag: "🇫🇷",
+    flagCode: "FR",
   },
 ];
 
