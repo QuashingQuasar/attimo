@@ -287,7 +287,6 @@ export const en = {
     trustLab: "Third party lab-tested quality", // REVIEW
     shipsTomorrow: "Order today, ships tomorrow", // REVIEW
     viewLabResults: "View lab results",
-    howToReadLabValues: "How to read olive oil lab values",
     waitingResults: "(Waiting for results)",
     polyTooltipAria: "What does Bioactive Polyphenols mean?",
     // Placeholders: {value} {unit}

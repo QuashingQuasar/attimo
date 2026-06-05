@@ -4,7 +4,7 @@ import { useParams } from "@/lib/router-stub";
 import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck, Info, Lightbulb } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck, Info } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
@@ -585,14 +585,9 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   <Beaker size={18} />
                   {t.viewLabResults}
                 </a>
+                
 
-                <a
-                href="/blog/how-to-read-olive-oil-lab-analysis"
-                className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
-                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
-                  <Lightbulb size={18} />
-                  {t.howToReadLabValues}
-                </a>
+              
               </div>
 
               {/* Accordion Info */}

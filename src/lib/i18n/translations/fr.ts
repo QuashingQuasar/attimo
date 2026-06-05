@@ -267,7 +267,6 @@ export const fr: Dict = {
     trustLab: "Qualité testée en laboratoire indépendant", // REVIEW
     shipsTomorrow: "Commandez aujourd'hui, expédié demain", // REVIEW
     viewLabResults: "Voir les résultats de laboratoire",
-    howToReadLabValues: "Comment lire une analyse d'huile d'olive",
     waitingResults: "(En attente des résultats)",
     polyTooltipAria: "Que signifie Polyphénols bioactifs ?",
     polyTooltipText:
