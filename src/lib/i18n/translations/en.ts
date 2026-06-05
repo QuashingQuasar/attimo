@@ -51,6 +51,30 @@ export const en = {
     changeRegion: "Change currency or country",
   },
 
+  // Cart drawer (CartDrawer.tsx). Pluralized strings are functions so each
+  // language applies its own plural rule. Product line titles come from
+  // Shopify (already localized via @inContext) — not here.
+  cart: {
+    ariaLabel: "Shopping cart",
+    title: "Shopping Cart",
+    emptyDescription: "Your shopping cart is currently empty.",
+    itemsInCart: (n: number) => `${n} item${n !== 1 ? "s" : ""} in your cart`,
+    emptyHeading:
+      "Looks like you haven't added anything yet. Let's get you started.", // REVIEW
+    freeShipping: "Free shipping ✓",
+    freeShippingNudge: (n: number) =>
+      `Add ${n} more bottle${n > 1 ? "s" : ""} for free shipping`, // REVIEW
+    youMightAlsoLike: "You might also like",
+    add: "+ Add",
+    viewProduct: (name: string) => `View ${name}`,
+    subtotal: "Subtotal",
+    shipping: "Shipping",
+    free: "Free",
+    calculatedAtCheckout: "Calculated at checkout",
+    creatingCheckout: "Creating Checkout...",
+    checkout: "Checkout with Shopify",
+  },
+
   // Shared per-variety flavour descriptors + one-liners. Reused by the Header
   // shop menu, homepage product cards, and product pages so they translate
   // once. Proper names ("Coratina d'Italia") and origins are NOT here — they
