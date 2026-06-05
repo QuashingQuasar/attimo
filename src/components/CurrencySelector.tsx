@@ -66,7 +66,7 @@ export const CurrencySelector = ({
           e.stopPropagation();
           setOpen((v) => !v);
         }}
-        className="inline-flex items-center gap-1.5 hover:underline"
+        className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-70"
         style={{
           padding: 0,
           background: "none",
@@ -77,7 +77,7 @@ export const CurrencySelector = ({
           fontFamily: "Space Grotesk, sans-serif",
         }}
       >
-        <span aria-hidden="true" style={{ fontSize: "1.5rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
+        <span aria-hidden="true" style={{ fontSize: "3rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
         <span
           aria-hidden="true"
           style={{
@@ -135,7 +135,7 @@ export const CurrencySelector = ({
                     if (!isCurrent) e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
-                  <span aria-hidden="true" style={{ fontSize: "1.5rem", lineHeight: 1, display: "inline-block" }}>{l.flag}</span>
+                  <span aria-hidden="true" style={{ fontSize: "2rem", lineHeight: 1, display: "inline-block" }}>{l.flag}</span>
                 </a>
               </li>
             );
