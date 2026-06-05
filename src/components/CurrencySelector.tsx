@@ -77,7 +77,7 @@ export const CurrencySelector = ({
           fontFamily: "Space Grotesk, sans-serif",
         }}
       >
-        <span aria-hidden="true" style={{ fontSize: "3rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
+        <span aria-hidden="true" style={{ fontSize: "2.25rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
         <span
           aria-hidden="true"
           style={{
