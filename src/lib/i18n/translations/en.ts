@@ -22,6 +22,7 @@ export const en = {
   announce: {
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
+    coratinaRestock: "Orders including Coratina ship in 5–7 days",
   },
 
   // <title> / meta description per page (server-rendered in BaseLayout).

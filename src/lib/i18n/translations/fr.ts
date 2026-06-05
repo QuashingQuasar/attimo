@@ -21,6 +21,7 @@ export const fr: Dict = {
   announce: {
     freeShipping2: "LIVRAISON GRATUITE DÈS 2 BOUTEILLES",
     freeShipping3: "LIVRAISON GRATUITE DÈS 3 BOUTEILLES",
+    coratinaRestock: "Commandes avec Coratina expédiées sous 5 à 7 jours", // REVIEW
   },
 
   meta: {
