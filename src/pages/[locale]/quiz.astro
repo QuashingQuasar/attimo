@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import QuizPageWrapper from "@astro/react-pages/QuizPageWrapper";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+export function getStaticPaths() {
+  return LOCALES
+    .filter((l) => l.slug !== "")
+    .map((locale) => ({
+      params: { locale: locale.slug },
+      props: { locale },
+    }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const t = getDict(locale);
+const canonical = `https://attimo-oil.com/${locale.slug}/quiz`;
+---
+
+<BaseLayout
+  title={t.meta.quiz.title}
+  description={t.meta.quiz.description}
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/quiz"
+  htmlLang={locale.lang}
+  hideAnnounceBar
+>
+  <QuizPageWrapper locale={locale} client:load />
+</BaseLayout>

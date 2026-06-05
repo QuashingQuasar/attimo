@@ -1,9 +1,13 @@
 import { useState, useCallback } from "react";
-import { quizQuestions, calculateResults, type OilResult } from "@/lib/quizData";
+import { getQuizQuestions, calculateResults, type OilResult, type QuizQuestion } from "@/lib/quizData";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "@/lib/router-stub";
+import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+type QuizDict = ReturnType<typeof getDict>["quiz"];
 
 import bottleCoratina from "@/assets/bottle-coratina.jpg?url";
 import bottlePicual from "@/assets/bottle-picual.jpg?url";
@@ -25,7 +29,7 @@ function QuestionStep({
 
 
 
-}: {question: (typeof quizQuestions)[0];selectedIndex: number | undefined;onSelect: (idx: number) => void;}) {
+}: {question: QuizQuestion;selectedIndex: number | undefined;onSelect: (idx: number) => void;}) {
   return (
     <div className="animate-in fade-in slide-in-from-right-4 duration-500">
       <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-3">
@@ -71,18 +75,17 @@ function QuestionStep({
 
 function ResultsScreen({
   results,
-  onRestart
-
-
-
-}: {results: OilResult[];onRestart: () => void;}) {
+  onRestart,
+  t,
+  locale,
+}: {results: OilResult[];onRestart: () => void;t: QuizDict;locale: Locale;}) {
   const topMatch = results[0];
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-600">
       {/* Title */}
       <h2 className="font-sans text-3xl md:text-4xl font-light text-olive-dark leading-snug mb-8">
-        Your match is <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
+        {t.yourMatchIs} <span className="font-beverly text-4xl md:text-[2.75rem]">{topMatch.name}</span>
       </h2>
 
       {/* Match bars */}
@@ -128,7 +131,7 @@ function ResultsScreen({
       {/* Top match summary */}
       <div className="text-center mb-8">
         <p className="text-sm font-working-man tracking-[0.25em] uppercase text-olive-medium mb-2">
-          Why {topMatch.name}?
+          {t.why(topMatch.name)}
         </p>
         <p className="text-base text-foreground/80 leading-relaxed max-w-md mx-auto">
           {topMatch.summary}
@@ -138,8 +141,8 @@ function ResultsScreen({
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3">
         <Button asChild variant="hero" className="flex-1 rounded-md px-8 py-4 shadow-none hover:shadow-none hover:translate-y-0">
-          <Link to={`/product/${topMatch.key}`}>
-            Shop {topMatch.name}
+          <Link to={localizeHref(`/product/${topMatch.key}`, locale)}>
+            {t.shop(topMatch.name)}
           </Link>
         </Button>
         <Button
@@ -147,7 +150,7 @@ function ResultsScreen({
           onClick={onRestart}
           className="gap-2 rounded-md px-8 py-4">
           <RotateCcw className="w-4 h-4" />
-          Retake Quiz
+          {t.retake}
         </Button>
       </div>
     </div>);
@@ -156,7 +159,9 @@ function ResultsScreen({
 
 // ── Main Quiz Component ──────────────────────────────────────────────────
 
-export function PalateQuiz() {
+export function PalateQuiz({ locale = DEFAULT_LOCALE }: { locale?: Locale } = {}) {
+  const t = getDict(locale).quiz;
+  const quizQuestions = getQuizQuestions(locale);
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [results, setResults] = useState<OilResult[] | null>(null);
@@ -178,7 +183,7 @@ export function PalateQuiz() {
     if (currentStep < totalQuestions - 1) {
       setCurrentStep((s) => s + 1);
     } else {
-      setResults(calculateResults(answers));
+      setResults(calculateResults(answers, locale));
     }
   }, [currentStep, totalQuestions, answers]);
 
@@ -204,13 +209,13 @@ export function PalateQuiz() {
       <div className="w-full border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
-            to="/"
+            to={localizeHref("/", locale)}
             className="text-base text-muted-foreground hover:text-olive-dark transition-colors">
-            
-            ← Back to ATTIMO
+
+            {t.backToAttimo}
           </Link>
           <span className="text-sm font-working-man tracking-[0.2em] uppercase text-olive-medium">
-            {results ? "Results" : `${currentStep + 1} / ${totalQuestions}`}
+            {results ? t.resultsLabel : `${currentStep + 1} / ${totalQuestions}`}
           </span>
         </div>
         <Progress value={progressValue} className="h-1 rounded-none" />
@@ -220,14 +225,12 @@ export function PalateQuiz() {
       <div className="flex-1 flex items-start justify-center px-6 py-12 md:py-20">
         <div className="w-full max-w-xl">
           {currentStep === 0 && !results &&
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">Answer a few quick questions to find out which of our three single-variety oils matches you best.
-
-
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">{t.intro}
           </p>
           }
 
           {results ?
-          <ResultsScreen results={results} onRestart={restart} /> :
+          <ResultsScreen results={results} onRestart={restart} t={t} locale={locale} /> :
 
           <>
               <QuestionStep
@@ -246,7 +249,7 @@ export function PalateQuiz() {
                 className="gap-1.5 text-muted-foreground">
                 
                   <ArrowLeft className="w-4 h-4" />
-                  Back
+                  {t.back}
                 </Button>
                 <Button
                 variant="hero"
@@ -254,7 +257,7 @@ export function PalateQuiz() {
                 disabled={!canProceed}
                 className="gap-1.5">
                 
-                  {currentStep === totalQuestions - 1 ? "See Results" : "Next"}
+                  {currentStep === totalQuestions - 1 ? t.seeResults : t.next}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>

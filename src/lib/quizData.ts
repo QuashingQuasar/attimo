@@ -1,3 +1,6 @@
+import type { Locale } from "@/lib/i18n/config";
+import { quizQuestionsFr, oilSummariesFr } from "@/lib/quizData.fr";
+
 export interface QuizOption {
   label: string;
   description: string;
@@ -169,7 +172,32 @@ const maximumPossibleScores: OilScores = quizQuestions.reduce(
   { coratina: 0, picual: 0, nocellara: 0 }
 );
 
-export function calculateResults(answers: Record<string, number>): OilResult[] {
+// Returns the quiz questions with text localized for the given locale. Scores,
+// ids and option order are taken from the canonical English `quizQuestions`;
+// for French the visible text is overlaid from quizData.fr (by id + index).
+export function getQuizQuestions(locale?: Pick<Locale, "lang">): QuizQuestion[] {
+  if (locale?.lang !== "fr") return quizQuestions;
+  return quizQuestions.map((q) => {
+    const fr = quizQuestionsFr[q.id];
+    if (!fr) return q;
+    return {
+      ...q,
+      category: fr.category,
+      question: fr.question,
+      options: q.options.map((opt, i) => ({
+        ...opt,
+        label: fr.options[i]?.label ?? opt.label,
+        description: fr.options[i]?.description ?? opt.description,
+      })),
+    };
+  });
+}
+
+export function calculateResults(
+  answers: Record<string, number>,
+  locale?: Pick<Locale, "lang">,
+): OilResult[] {
+  const summaries = locale?.lang === "fr" ? oilSummariesFr : oilSummaries;
   const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
 
   for (const [questionId, answerIdx] of Object.entries(answers)) {
@@ -188,7 +216,7 @@ export function calculateResults(answers: Record<string, number>): OilResult[] {
     key,
     name: oilNames[key],
     percentage: Math.round((totals[key] / Math.max(maximumPossibleScores[key], 1)) * 100),
-    summary: oilSummaries[key],
+    summary: summaries[key],
     handle: key,
   }));
 
