@@ -227,7 +227,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             // separator. Plain text in textContent → inherits the bar's
             // existing typography/colour exactly; no new styles.
             var second = bar.getAttribute("data-coratina");
-            if (second) msg = msg + " • " + second;
+            if (second) msg = msg + " // " + second;
             text.textContent = msg;
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the

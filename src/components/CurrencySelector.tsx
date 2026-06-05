@@ -77,8 +77,7 @@ export const CurrencySelector = ({
           fontFamily: "Space Grotesk, sans-serif",
         }}
       >
-        <span aria-hidden="true">{locale.flag}</span>
-        <span style={{ letterSpacing: "0.02em" }}>{locale.selectorLabel ?? locale.currency.code}</span>
+        <span aria-hidden="true" style={{ fontSize: "1.5rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
         <span
           aria-hidden="true"
           style={{
@@ -119,12 +118,12 @@ export const CurrencySelector = ({
                 <a
                   href={getLocaleSwitchHref(pathname, l)}
                   role="menuitem"
+                  aria-label={l.countryName}
                   aria-current={isCurrent ? "true" : undefined}
-                  className="flex items-center gap-2 transition-colors"
+                  className="flex items-center justify-center transition-colors"
                   style={{
                     padding: "6px 10px",
                     borderRadius: 6,
-                    fontSize: "0.875rem",
                     color: isCurrent ? "#CDDB2D" : "#B3E58C",
                     backgroundColor: isCurrent ? "rgba(205, 219, 45, 0.12)" : "transparent",
                     textDecoration: "none",
@@ -136,8 +135,7 @@ export const CurrencySelector = ({
                     if (!isCurrent) e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
-                  <span aria-hidden="true">{l.flag}</span>
-                  <span style={{ letterSpacing: "0.02em" }}>{l.selectorLabel ?? l.currency.code}</span>
+                  <span aria-hidden="true" style={{ fontSize: "1.5rem", lineHeight: 1, display: "inline-block" }}>{l.flag}</span>
                 </a>
               </li>
             );
