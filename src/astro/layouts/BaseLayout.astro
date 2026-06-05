@@ -199,7 +199,9 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            padding: 6px 12px;
+            /* Vertical padding compensates for the smaller 19px font so the
+               bar keeps its original ~38px height (was 22px font @ 6px pad). */
+            padding: 8px 12px;
             font-size: 19px;
             line-height: 1.2;
           }
