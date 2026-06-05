@@ -2,6 +2,7 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ShippingPage from "@astro/react-pages/ShippingPage";
 import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 export function getStaticPaths() {
   return LOCALES
@@ -14,14 +15,19 @@ export function getStaticPaths() {
 
 const { locale } = Astro.props as { locale: Locale };
 const canonical = `https://attimo-oil.com/${locale.slug}/shipping`;
+const t = getDict(locale);
 ---
 
 <BaseLayout
-  title="Shipping | ATTIMO Specialty Extra Virgin Olive Oil"
-  description="ATTIMO shipping rates, free-shipping thresholds, and delivery times across Europe."
+  title={t.meta.shipping.title}
+  description={t.meta.shipping.description}
   canonical={canonical}
   bodyStyle="background-color: #FFFAEA;"
   hreflangPath="/shipping"
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+  announceCoratina={t.announce.coratinaRestock}
 >
   <ShippingPage locale={locale} client:load />
 </BaseLayout>

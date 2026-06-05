@@ -5,7 +5,8 @@ import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
 import { sanityClient } from "@/lib/sanity";
-import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { LOCALES, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 type Handle = "coratina" | "nocellara" | "picual";
 const PRODUCTS: Handle[] = ["coratina", "nocellara", "picual"];
@@ -26,11 +27,12 @@ export function getStaticPaths() {
 
 const { locale, handle } = Astro.props as { locale: Locale; handle: Handle };
 const shopifyHandle = resolveShopifyHandle(handle);
+const shopCtx = shopifyContextForLocale(locale);
 
 const [allProducts, exactHandleProducts, sellingPlans, blogPosts] = await Promise.all([
-  fetchProducts(50).catch(() => []),
-  shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`).catch(() => []) : Promise.resolve([]),
-  shopifyHandle ? fetchSellingPlans(shopifyHandle).catch(() => []) : Promise.resolve([]),
+  fetchProducts(50, undefined, shopCtx).catch(() => []),
+  shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`, shopCtx).catch(() => []) : Promise.resolve([]),
+  shopifyHandle ? fetchSellingPlans(shopifyHandle, shopCtx).catch(() => []) : Promise.resolve([]),
   sanityClient.fetch(
     `*[_type == "post"] | order(publishedAt desc)[0..2] {
       _id, title, slug, publishedAt, excerpt, coverImage
@@ -81,7 +83,16 @@ const META: Record<Handle, Meta> = {
   },
 };
 
-const meta = META[handle];
+// Image / SKU / polyphenols are locale-independent; the localized title,
+// description and JSON-LD product name come from the dictionary.
+const dict = getDict(locale);
+const localizedMeta = dict.productMeta[handle];
+const meta = {
+  ...META[handle],
+  title: localizedMeta.title,
+  description: localizedMeta.description,
+  productName: localizedMeta.productName,
+};
 const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/${handle}`;
 const priceAmount = locale.prices[handle];
 
@@ -127,6 +138,10 @@ const productJsonLd = {
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
   hreflangPath={`/product/${handle}`}
+  htmlLang={locale.lang}
+  announceTier2={dict.announce.freeShipping2}
+  announceTier3={dict.announce.freeShipping3}
+  announceCoratina={dict.announce.coratinaRestock}
 >
   <script is:inline define:vars={{ handle }}>
     if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };

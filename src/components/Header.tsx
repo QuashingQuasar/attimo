@@ -6,12 +6,17 @@ import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
 import { CartDrawer } from "./CartDrawer";
+import { CurrencySelector } from "./CurrencySelector";
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
+// Proper names + origins stay verbatim across locales; the flavour descriptor
+// is pulled from the shared dictionary so it translates once. `image` and
+// `handle` (used for the dictionary key) are locale-independent.
 const shopProducts = [
-  { name: "Coratina d'Italia", flavor: "Bold & Punchy", handle: "coratina", image: coratinaImage },
-  { name: "Picual de España", flavor: "Green & Grassy", handle: "picual", image: picualImage },
-  { name: "Nocellara d'Italia", flavor: "Gentle & Fruity", handle: "nocellara", image: nocellaraImage },
+  { name: "Coratina d'Italia", handle: "coratina" as const, image: coratinaImage },
+  { name: "Picual de España", handle: "picual" as const, image: picualImage },
+  { name: "Nocellara d'Italia", handle: "nocellara" as const, image: nocellaraImage },
 ];
 
 interface HeaderProps {
@@ -40,6 +45,7 @@ export const Header = ({
   const [shopOpen, setShopOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const t = getDict(locale);
 
   const solidBackground = forceScrolled || shopOpen;
 
@@ -74,16 +80,21 @@ export const Header = ({
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                Shop
+                {t.nav.shop}
               </Link>
             </div>
             <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              Blog
+              {t.nav.blog}
             </Link>
             <Link to="/quiz" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              Quiz
+              {t.nav.quiz}
             </Link>
             <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
+            <CurrencySelector
+              locale={locale}
+              placement="down"
+              triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'}
+            />
           </div>
         </div>
       </div>
@@ -112,7 +123,7 @@ export const Header = ({
                       {product.name}
                     </span>
                     <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.9rem, 1vw, 1.25rem)', letterSpacing: '0.1em' }}>
-                      {product.flavor}
+                      {t.products.flavour[product.handle]}
                     </span>
                   </div>
                 </Link>

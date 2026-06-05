@@ -4,44 +4,15 @@ import { useState, useEffect } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Truck, Package, ShieldCheck, Clock } from "lucide-react";
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const tiers = [
-  {
-    name: "Core",
-    countries: ["Belgium", "Germany", "Luxembourg", "Netherlands"],
-    shippingCost: "€7",
-    freeFrom: "2 bottles",
-    delivery: "2–3 business days",
-    highlight: true,
-  },
-  {
-    name: "Tier 1",
-    countries: [
-      "Austria", "Bulgaria", "Croatia", "Czechia", "Denmark",
-      "France", "Hungary", "Liechtenstein", "Malta", "Poland",
-      "Slovakia", "Slovenia",
-    ],
-    shippingCost: "€11",
-    freeFrom: "2 bottles",
-    delivery: "3–5 business days",
-  },
-  {
-    name: "Tier 2",
-    countries: [
-      "Estonia", "Ireland", "Italy", "Latvia",
-      "Lithuania", "Spain", "Sweden",
-    ],
-    shippingCost: "€19",
-    freeFrom: "3 bottles",
-    delivery: "4–6 business days",
-  },
-  {
-    name: "Tier 3",
-    countries: ["Finland", "Greece", "Portugal", "Romania"],
-    shippingCost: "€22",
-    freeFrom: "4 bottles",
-    delivery: "5–7 business days",
-  },
+// Tier shape is locale-independent (cost numbers, country keys, free-from
+// bottle counts, highlight); names/delivery/country labels come from the dict.
+const TIERS = [
+  { key: "core" as const, countries: ["Belgium", "Germany", "Luxembourg", "Netherlands"], shippingCost: "€7", freeFromN: 2, highlight: true },
+  { key: "tier1" as const, countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "France", "Hungary", "Liechtenstein", "Malta", "Poland", "Slovakia", "Slovenia"], shippingCost: "€11", freeFromN: 2 },
+  { key: "tier2" as const, countries: ["Estonia", "Ireland", "Italy", "Latvia", "Lithuania", "Spain", "Sweden"], shippingCost: "€19", freeFromN: 3 },
+  { key: "tier3" as const, countries: ["Finland", "Greece", "Portugal", "Romania"], shippingCost: "€22", freeFromN: 4 },
 ];
 
 interface ShippingPageProps {
@@ -49,8 +20,17 @@ interface ShippingPageProps {
 }
 
 const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
+  const t = getDict(locale).shippingPage;
+  const countryLabels = t.countries as Record<string, string>;
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  useEffect(() => { document.title = 'Shipping | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
+  useEffect(() => { document.title = t.title; return () => { document.title = `ATTIMO ${getDict(locale).product.titleSuffix}`; }; }, [t.title, locale]);
+
+  const tiers = TIERS.map((tier) => ({
+    ...tier,
+    name: t.tierNames[tier.key],
+    delivery: t.delivery[tier.key],
+    freeFrom: t.freeFromBottles.replace("{n}", String(tier.freeFromN)),
+  }));
 
   const isLocalized = locale.slug !== "";
   const localStandard = formatPrice(locale.shipping.standard, locale);
@@ -68,22 +48,22 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="text-4xl md:text-5xl font-bold mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
             >
-              Shipping Information
+              {t.heading}
             </h1>
             <p
               className="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.7 }}
             >
-              We ship across the European Union. The more you order, the less you pay for shipping — or nothing at all.
+              {t.intro}
             </p>
           </div>
 
           {/* Quick facts */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
             {[
-              { icon: Clock, label: "Order today, ships tomorrow" },
-              { icon: Truck, label: "Free shipping on multi-bottle orders" },
-              { icon: Package, label: "Carefully packed for safe delivery" },
+              { icon: Clock, label: t.factShipsTomorrow },
+              { icon: Truck, label: t.factFreeMulti },
+              { icon: Package, label: t.factPacked },
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}
@@ -107,7 +87,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="text-2xl md:text-3xl font-semibold mb-8"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
             >
-              Shipping rates & free shipping thresholds
+              {t.ratesHeading}
             </h2>
 
             {isLocalized ? (
@@ -127,13 +107,13 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                         className="text-sm"
                         style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(255,250,234,0.7)" }}
                       >
-                        Standard: {localStandard}
+                        {t.standardLabel} {localStandard}
                       </span>
                       <span
                         className="text-sm font-bold px-3 py-1 rounded-full"
                         style={{ fontFamily: "Space Grotesk, sans-serif", backgroundColor: "#CDDB2D", color: "#1B4229" }}
                       >
-                        FREE from {localFreeFrom}
+                        {t.freeFromLabel} {localFreeFrom}
                       </span>
                     </div>
                   </div>
@@ -172,7 +152,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                             opacity: 0.7,
                           }}
                         >
-                          Est. {tier.delivery}
+                          {t.estLabel} {tier.delivery}
                         </span>
                       </div>
                       <div className="flex items-center gap-4">
@@ -183,7 +163,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                             color: tier.highlight ? "rgba(255,250,234,0.6)" : "rgba(27,66,41,0.5)",
                           }}
                         >
-                          Standard: {tier.shippingCost}
+                          {t.standardLabel} {tier.shippingCost}
                         </span>
                         <span
                           className="text-sm font-bold px-3 py-1 rounded-full"
@@ -193,7 +173,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                             color: "#1B4229",
                           }}
                         >
-                          FREE from {tier.freeFrom}
+                          {t.freeFromLabel} {tier.freeFrom}
                         </span>
                       </div>
                     </div>
@@ -212,7 +192,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                             color: tier.highlight ? "#B3E58C" : "#1B4229",
                           }}
                         >
-                          {country}
+                          {countryLabels[country] ?? country}
                         </span>
                       ))}
                     </div>
@@ -226,7 +206,7 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="mt-4 text-sm italic"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.5 }}
             >
-              Shipping costs are automatically calculated at checkout based on your delivery country.
+              {t.autoCalcNote}
             </p>
           </section>
 
@@ -236,17 +216,17 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="text-2xl md:text-3xl font-semibold mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
             >
-              Processing & delivery
+              {t.processingHeading}
             </h2>
             <div
               className="space-y-4 leading-relaxed"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.8 }}
             >
               <p>
-                Orders placed before the end of the day are packed and shipped the following business day. You'll receive a tracking link by email as soon as your order leaves our facility.
+                {t.processingP1}
               </p>
               <p>
-                Delivery times depend on your location. Most Core countries (Belgium, Germany, Luxembourg, Netherlands) receive their order within 2–3 business days. For other EU destinations, expect 3–7 business days depending on the carrier and destination.
+                {t.processingP2}
               </p>
             </div>
           </section>
@@ -257,14 +237,14 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="text-2xl md:text-3xl font-semibold mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
             >
-              Returns & damages
+              {t.returnsHeading}
             </h2>
             <div
               className="space-y-4 leading-relaxed"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.8 }}
             >
               <p>
-                Because olive oil is a food product, it is exempt from the standard EU 14-day right of withdrawal under the Consumer Rights Directive. We do not accept returns on opened or undamaged products.
+                {t.returnsP1}
               </p>
               <div
                 className="rounded-xl p-5 flex items-start gap-3"
@@ -272,15 +252,15 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               >
                 <ShieldCheck size={22} strokeWidth={1.5} style={{ color: "#1B4229", flexShrink: 0, marginTop: 2 }} />
                 <p className="text-sm" style={{ opacity: 1 }}>
-                  <strong>Damaged in transit?</strong> If your order arrives damaged or defective, contact us within 14 days at{" "}
+                  <strong>{t.damagedStrong}</strong>{t.damagedPre}{" "}
                   <a
                     href="mailto:hello@attimo-oil.com"
                     className="underline font-medium"
                     style={{ color: "#1B4229" }}
                   >
                     hello@attimo-oil.com
-                  </a>{" "}
-                  with a photo of the damage. We'll arrange a replacement or full refund — no hassle.
+                  </a>
+                  {t.damagedPost}
                 </p>
               </div>
             </div>
@@ -295,13 +275,13 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               className="text-xl font-semibold mb-2"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFAEA" }}
             >
-              Questions about your order?
+              {t.contactHeading}
             </h3>
             <p
               className="text-sm mb-4"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#B3E58C" }}
             >
-              We're here to help. Reach out anytime.
+              {t.contactSub}
             </p>
             <a
               href="mailto:hello@attimo-oil.com"

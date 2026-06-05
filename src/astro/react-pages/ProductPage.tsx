@@ -28,6 +28,7 @@ import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult 
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface BlogPost {
   _id: string;
@@ -49,6 +50,7 @@ interface ProductPageProps {
 const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
+  const t = getDict(locale).product;
   const [products, setProducts] = useState<ShopifyProduct[]>(initialProducts ?? []);
   const [loading, setLoading] = useState(initialProducts && initialProducts.length > 0 ? false : true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
@@ -130,13 +132,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }, [shopifyHandle, initialSellingPlans]);
 
   const product = products.find((p) => p.node.handle === shopifyHandle);
-  const content = getProductContent(handle);
+  const content = getProductContent(handle, locale);
 
   useEffect(() => {
     if (!content) return;
     const productName = content.heroTitle?.split(" D'")[0]?.split(" DE ")[0] || handle || '';
-    document.title = `ATTIMO ${productName.charAt(0) + productName.slice(1).toLowerCase()} | Specialty Extra Virgin Olive Oil`;
-    return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; };
+    document.title = `ATTIMO ${productName.charAt(0) + productName.slice(1).toLowerCase()} | ${t.titleSuffix}`;
+    return () => { document.title = `ATTIMO ${t.titleSuffix}`; };
   }, [handle, content]);
 
   // Meta Pixel: ViewContent
@@ -227,7 +229,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       isSubscription: purchaseType === "subscribe",
       ...(purchaseType === "subscribe" && selectedSellingPlanId ? { sellingPlanId: selectedSellingPlanId } : {})
     });
-    toast.success(`Added ${selectedQuantity} bottle${selectedQuantity > 1 ? 's' : ''} to cart`, {
+    toast.success(t.toastAdded.replace("{n}", String(selectedQuantity)).replace(/\{plural\}/g, selectedQuantity > 1 ? "s" : ""), {
       position: "top-center"
     });
   };
@@ -237,7 +239,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
         <Header onWaitlistClick={() => {}} forceScrolled locale={locale} />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <p className="text-olive-medium">Loading product...</p>
+          <p className="text-olive-medium">{t.loading}</p>
         </div>
       </div>);
 
@@ -248,7 +250,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <div className="min-h-screen" style={{ backgroundColor: '#FFFAEA' }}>
         <Header onWaitlistClick={() => {}} forceScrolled locale={locale} />
         <div className="flex items-center justify-center min-h-[60vh]">
-          <p className="text-olive-medium">Product not found</p>
+          <p className="text-olive-medium">{t.notFound}</p>
         </div>
       </div>);
 
@@ -270,16 +272,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     formSubtitle?: string;
   }> = {
     picual: {
-      badge: "Coming Soon",
+      badge: t.comingSoon,
       badgeClass: "text-olive-dark",
       // formHeading / formSubtitle omitted → NotifyMeForm uses its defaults.
     },
     coratina: {
-      badge: "Back Soon",
+      badge: t.backSoon,
       badgeClass: "text-olive-dark",
-      formHeading: "New Batch on the Way",
-      formSubtitle:
-        "We'll send you an email when Coratina d'Italia is available again (estimated 1–2 weeks).",
+      formHeading: t.newBatchHeading,
+      formSubtitle: t.newBatchSubtitle,
     },
   };
   const oosCopy = handle ? OOS_COPY[handle] : undefined;
@@ -290,22 +291,22 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const attributes = [
   {
     icon: <Droplets size={20} className="text-olive-dark" />,
-    label: "Variety",
+    label: t.attrVariety,
     value: `100% ${content.tabs.details.olive}`
   },
   {
     icon: <MapPin size={20} className="text-olive-dark" />,
-    label: "Origin",
+    label: t.attrOrigin,
     value: content.tabs.details.origin
   },
   {
     icon: <Sprout size={20} className="text-olive-dark" />,
-    label: "Harvest",
-    value: "October 2025"
+    label: t.attrHarvest,
+    value: t.harvestDate
   },
   {
     icon: <Sparkles size={20} className="text-olive-dark" />,
-    label: "Flavour",
+    label: t.attrFlavour,
     value: content.tabs.details.flavor
   }];
 
@@ -355,12 +356,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                    New Harvest
+                    {t.newHarvest}
                   </span>
                   {(() => {
                   // Mirrors the isInStock computation above.
                   const inStock = product.node.variants.edges.some((v) => v.node.availableForSale);
-                  const badgeText = inStock ? 'In Stock' : (oosCopy?.badge ?? 'Sold Out');
+                  const badgeText = inStock ? t.inStock : (oosCopy?.badge ?? t.soldOut);
                   const badgeColor = inStock
                     ? 'text-olive-dark'
                     : (oosCopy?.badgeClass ?? 'text-red-600');
@@ -424,7 +425,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       onAddToCart={handleAddToCart}
                       buttonColor={content.buttonColor}
                       freeShippingThreshold={freeShippingThreshold}
-                      variantId={product.node.variants.edges[0]?.node.id} />
+                      variantId={product.node.variants.edges[0]?.node.id}
+                      locale={locale} />
 
                     <PurchaseOptions
                       sellingPlans={sellingPlans}
@@ -468,7 +470,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           const finalDecimals = volumeDiscount > 0 ? 2 : undefined;
                           return (
                             <span className="text-lg">
-                              ADD TO CART{" "}
+                              {t.addToCart}{" "}
                               {showStrikethrough && (
                                 <span className="line-through opacity-60 font-normal">
                                   {formatPrice(originalOneTimeTotal, locale)}
@@ -479,15 +481,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           );
                         })()}
                         <span className="font-normal text-xs">{(() => {
-                          if (cartBottleCount >= freeShippingThreshold) return "(FREE SHIPPING ✓)";
+                          if (cartBottleCount >= freeShippingThreshold) return t.freeShipCheck;
                           const needed = freeShippingThreshold - cartBottleCount;
                           const plural = needed > 1 ? "S" : "";
                           // Empty cart drops "MORE" — "ADD 2 BOTTLES FOR FREE
                           // SHIPPING" reads as a baseline instruction. Once the
                           // customer has any bottle in cart, switch to the
                           // "MORE" framing so it's clearly incremental.
-                          const more = cartBottleCount === 0 ? "" : "MORE ";
-                          return `(ADD ${needed} ${more}BOTTLE${plural} FOR FREE SHIPPING)`;
+                          const more = cartBottleCount === 0 ? "" : t.moreWord;
+                          return t.addForFreeShip.replace("{n}", String(needed)).replace("{more}", more).replace("{plural}", plural);
                         })()}</span>
                       </span>
                     </Button>
@@ -495,11 +497,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
                       <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         <ShieldCheck size={20} strokeWidth={1.5} />
-                        Third party lab-tested quality
+                        {t.trustLab}
                       </p>
                       <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         <Truck size={20} strokeWidth={1.5} />
-                        {content.shippingNotice ?? "Order today, ships tomorrow"}
+                        {content.shippingNotice ?? t.shipsTomorrow}
                       </p>
                     </div>
                   </>
@@ -512,6 +514,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   heading={oosCopy?.formHeading}
                   subtitle={oosCopy?.formSubtitle}
                   restockProductKey={content.polyphenolLabel}
+                  locale={locale}
                 />
               )}
 
@@ -520,13 +523,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 {content.labTiles.map((tile) =>
               <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
                     <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                      <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}</span>
+                      <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}</span>
                       {tile.key === 'polyphenols' && tile.label === 'BIOACTIVE POLYPHENOLS' && tile.value !== '—' && (
                         <HoverCard openDelay={0} closeDelay={100}>
                           <HoverCardTrigger asChild>
                             <button
                               type="button"
-                              aria-label="What does Bioactive Polyphenols mean?"
+                              aria-label={t.polyTooltipAria}
                               className="inline-flex items-center justify-center rounded-full text-olive-medium hover:text-olive-dark transition-colors cursor-help align-middle"
                               onClick={(e) => e.currentTarget.focus()}
                             >
@@ -546,7 +549,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                             onPointerDownOutside={(e) => e.preventDefault()}
                           >
                             <p className="leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.85rem' }}>
-                              Not all polyphenols are equal. Our {tile.value} {tile.unit} is measured using the EU-standard HPLC method at an ISO-accredited lab. Many producers report "total polyphenols" using broader methods that include compounds with less documented health activity, producing higher-sounding numbers that aren't directly comparable.
+                              {t.polyTooltipText.replace("{value}", tile.value).replace("{unit}", tile.unit)}
                             </p>
                           </HoverCardContent>
                         </HoverCard>
@@ -580,7 +583,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
                 
                   <Beaker size={18} />
-                  View lab results
+                  {t.viewLabResults}
                 </a>
                 
 
@@ -589,7 +592,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
               {/* Accordion Info */}
               <div className="pt-2">
-                <ProductInfoTabs content={content} />
+                <ProductInfoTabs content={content} locale={locale} />
               </div>
             </div>
           </div>
@@ -597,7 +600,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
       {/* Content sections below product hero */}
       <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
-      <Testimonials headingColor={content.buttonColor || "#B3E58C"} />
+      <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
       <ProductOriginRegion
         backgroundColor={content.tileBackground}
         headingColor={content.tileAccent}
@@ -610,14 +613,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
         centerLon={content.originRegion?.centerLon}
         centerLat={content.originRegion?.centerLat}
         mapZoom={content.originRegion?.mapZoom}
-        markerStyle={content.originRegion?.markerStyle} />
+        markerStyle={content.originRegion?.markerStyle}
+        locale={locale} />
       
-      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} />
-      <FAQ handle={handle} />
+      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
+      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />
+      <FAQ handle={handle} locale={locale} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} />
 
-      <BlogSection initialPosts={initialBlogPosts} />
+      <BlogSection initialPosts={initialBlogPosts} locale={locale} />
 
       <Footer locale={locale} />
       <FirstOrderPopup />

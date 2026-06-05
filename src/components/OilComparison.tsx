@@ -1,28 +1,32 @@
 import { Check, X } from "lucide-react";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict, type Dict } from "@/lib/i18n/dictionaries";
 
-const getComparisonData = (polyphenolValue: string) => [
-  { feature: "FRESH", attimo: { type: "check" }, them: { type: "text", value: "No, mixed with old oils" } },
-  { feature: "EARLY HARVEST", attimo: { type: "check" }, them: { type: "cross" } },
-  { feature: "SINGLE SOURCE", attimo: { type: "check" }, them: { type: "text", value: "Oil blended from 3+ countries" } },
-  { feature: "TRACEABLE", attimo: { type: "check" }, them: { type: "cross" } },
-  { feature: "LAB-TESTED", attimo: { type: "check" }, them: { type: "cross" } },
-  { feature: "POLYPHENOLS", attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "120-210 mg/kg" } },
+const getComparisonData = (polyphenolValue: string, oc: Dict["oilComparison"]) => [
+  { feature: oc.features.fresh, attimo: { type: "check" }, them: { type: "text", value: oc.themFreshNo } },
+  { feature: oc.features.earlyHarvest, attimo: { type: "check" }, them: { type: "cross" } },
+  { feature: oc.features.singleSource, attimo: { type: "check" }, them: { type: "text", value: oc.themBlended } },
+  { feature: oc.features.traceable, attimo: { type: "check" }, them: { type: "cross" } },
+  { feature: oc.features.labTested, attimo: { type: "check" }, them: { type: "cross" } },
+  { feature: oc.features.polyphenols, attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "120-210 mg/kg" } },
 ];
 
 interface OilComparisonProps {
   columnHeading?: string;
   polyphenolDisplay?: string;
+  locale?: Locale;
 }
 
-export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "400-900 mg/kg" }: OilComparisonProps) => {
-  const comparisonData = getComparisonData(polyphenolDisplay);
+export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "400-900 mg/kg", locale = DEFAULT_LOCALE }: OilComparisonProps) => {
+  const t = getDict(locale);
+  const comparisonData = getComparisonData(polyphenolDisplay, t.oilComparison);
 
   return <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24 snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-bold mb-4" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#1B4229', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
-              ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>vs</span> Others
+              ATTIMO <span style={{ fontFamily: 'Beverly Drive, cursive' }}>{t.oilComparison.vs}</span> {t.oilComparison.others}
             </h2>
           </div>
           <div>
@@ -31,7 +35,7 @@ export const OilComparison = ({ columnHeading = "ATTIMO", polyphenolDisplay = "4
                 <tr style={{ borderBottom: '2px dashed #1B4229' }}>
                   <th className="py-3 px-2 md:py-6 md:px-8 text-left"></th>
                   <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold font-working-man" style={{ color: '#1B4229', backgroundColor: '#B3E58C', fontSize: 'clamp(1rem, 1.8vw, 2rem)' }}>{columnHeading}</th>
-                  <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold" style={{ color: '#1B4229', fontSize: 'clamp(0.875rem, 1.8vw, 2rem)' }}>Supermarket EVOO</th>
+                  <th className="py-3 px-2 md:py-6 md:px-8 text-center font-bold" style={{ color: '#1B4229', fontSize: 'clamp(0.875rem, 1.8vw, 2rem)' }}>{t.oilComparison.supermarketColumn}</th>
                 </tr>
               </thead>
               <tbody>

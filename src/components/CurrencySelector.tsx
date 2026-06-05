@@ -5,19 +5,31 @@ import {
   getLocaleSwitchHref,
   type Locale,
 } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface Props {
   locale?: Locale;
+  // Which way the menu opens. "up" suits the footer (page bottom); "down"
+  // suits the top navbar. Default "up" for back-compat.
+  placement?: "up" | "down";
+  // Trigger text/caret colour. Lets the navbar match its link colour
+  // (white over the hero, dark green on cream pages). Default is the footer's
+  // light green.
+  triggerColor?: string;
 }
 
-// Footer-bar locale dropdown. Shows the current locale as a small pill
-// (cream text on dark green, sized to match the copyright line); clicking
-// reveals a small menu *above* the trigger (footer is at the page bottom,
-// so opening downward would clip).
-export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
+// Locale dropdown. Shows the current locale as a small pill; clicking reveals a
+// menu of the available markets. Used in the top navbar (opens down) and
+// previously the footer (opens up).
+export const CurrencySelector = ({
+  locale = DEFAULT_LOCALE,
+  placement = "up",
+  triggerColor = "#B3E58C",
+}: Props) => {
   const [open, setOpen] = useState(false);
   const [pathname, setPathname] = useState("/");
   const ref = useRef<HTMLDivElement>(null);
+  const t = getDict(locale);
 
   useEffect(() => {
     if (typeof window !== "undefined") setPathname(window.location.pathname);
@@ -47,26 +59,25 @@ export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
     >
       <button
         type="button"
-        aria-label="Change currency or country"
+        aria-label={t.footer.changeRegion}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={(e) => {
           e.stopPropagation();
           setOpen((v) => !v);
         }}
-        className="inline-flex items-center gap-1.5 hover:underline"
+        className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-70"
         style={{
           padding: 0,
           background: "none",
           border: "none",
           fontSize: "0.875rem",
-          color: "#B3E58C",
+          color: triggerColor,
           cursor: "pointer",
           fontFamily: "Space Grotesk, sans-serif",
         }}
       >
-        <span aria-hidden="true">{locale.flag}</span>
-        <span style={{ letterSpacing: "0.02em" }}>{locale.currency.code}</span>
+        <span aria-hidden="true" style={{ fontSize: "2.25rem", lineHeight: 1, display: "inline-block" }}>{locale.flag}</span>
         <span
           aria-hidden="true"
           style={{
@@ -84,8 +95,11 @@ export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
           role="menu"
           className="absolute"
           style={{
-            bottom: "calc(100% + 6px)",
-            left: 0,
+            // Footer opens up from the trigger; navbar opens down. Navbar
+            // anchors to the right edge so the menu doesn't run off-screen.
+            ...(placement === "down"
+              ? { top: "calc(100% + 6px)", right: 0, boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25)" }
+              : { bottom: "calc(100% + 6px)", left: 0, boxShadow: "0 -6px 20px rgba(0, 0, 0, 0.25)" }),
             margin: 0,
             padding: 4,
             listStyle: "none",
@@ -93,7 +107,6 @@ export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
             border: "1px solid rgba(179, 229, 140, 0.3)",
             borderRadius: 10,
             minWidth: "100%",
-            boxShadow: "0 -6px 20px rgba(0, 0, 0, 0.25)",
             whiteSpace: "nowrap",
             zIndex: 70,
           }}
@@ -105,12 +118,12 @@ export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
                 <a
                   href={getLocaleSwitchHref(pathname, l)}
                   role="menuitem"
+                  aria-label={l.countryName}
                   aria-current={isCurrent ? "true" : undefined}
-                  className="flex items-center gap-2 transition-colors"
+                  className="flex items-center justify-center transition-colors"
                   style={{
                     padding: "6px 10px",
                     borderRadius: 6,
-                    fontSize: "0.875rem",
                     color: isCurrent ? "#CDDB2D" : "#B3E58C",
                     backgroundColor: isCurrent ? "rgba(205, 219, 45, 0.12)" : "transparent",
                     textDecoration: "none",
@@ -122,8 +135,7 @@ export const CurrencySelector = ({ locale = DEFAULT_LOCALE }: Props) => {
                     if (!isCurrent) e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
-                  <span aria-hidden="true">{l.flag}</span>
-                  <span style={{ letterSpacing: "0.02em" }}>{l.currency.code}</span>
+                  <span aria-hidden="true" style={{ fontSize: "2rem", lineHeight: 1, display: "inline-block" }}>{l.flag}</span>
                 </a>
               </li>
             );

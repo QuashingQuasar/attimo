@@ -34,7 +34,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
 // the cluster of locale alternatives together.
 function buildHreflangLinks(unprefixedPath: string): string {
   const links = LOCALES.map((locale) => {
-    const tag = locale.slug === "" ? "en" : `en-${locale.country}`;
+    const tag = locale.hreflang;
     const href = locale.slug === ""
       ? `${SITE}${unprefixedPath}`
       : `${SITE}/${locale.slug}${unprefixedPath === "/" ? "/" : unprefixedPath}`;

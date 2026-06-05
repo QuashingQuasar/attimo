@@ -1,5 +1,15 @@
 import { toast } from "sonner";
 
+// Shopify Storefront localization context. When set, queries run under
+// @inContext(country, language) so Shopify returns market-appropriate data
+// and the created cart's checkoutUrl opens in the right market/currency.
+// `undefined` (or null vars) means "no context" — identical to the previous
+// behaviour, so the default/dk/se markets are unaffected.
+export interface ShopifyContext {
+  country?: string;  // ISO country code, e.g. "FR"
+  language?: string; // Storefront LanguageCode, e.g. "FR"
+}
+
 const SHOPIFY_API_VERSION = '2025-07';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = '00xpv6-0j.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
@@ -97,7 +107,7 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
 }
 
 const PRODUCTS_QUERY = `
-  query GetProducts($first: Int!, $query: String) {
+  query GetProducts($first: Int!, $query: String, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
     products(first: $first, query: $query) {
       edges {
         node {
@@ -147,7 +157,7 @@ const PRODUCTS_QUERY = `
 `;
 
 const SELLING_PLANS_QUERY = `
-  query GetProductSellingPlans($handle: String!) {
+  query GetProductSellingPlans($handle: String!, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
     product(handle: $handle) {
       sellingPlanGroups(first: 5) {
         edges {
@@ -196,13 +206,18 @@ const SELLING_PLANS_QUERY = `
   }
 `;
 
-export async function fetchProducts(limit = 10, query?: string): Promise<ShopifyProduct[]> {
-  const data = await storefrontApiRequest(PRODUCTS_QUERY, { first: limit, query });
+export async function fetchProducts(limit = 10, query?: string, context?: ShopifyContext): Promise<ShopifyProduct[]> {
+  const data = await storefrontApiRequest(PRODUCTS_QUERY, {
+    first: limit,
+    query,
+    country: context?.country ?? null,
+    language: context?.language ?? null,
+  });
   return data?.data?.products?.edges || [];
 }
 
 const VARIANT_INVENTORY_QUERY = `
-  query GetVariantInventory($id: ID!) {
+  query GetVariantInventory($id: ID!, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
     node(id: $id) {
       ... on ProductVariant {
         quantityAvailable
@@ -219,10 +234,14 @@ const VARIANT_INVENTORY_QUERY = `
  * for the variant, or the request fails). Callers must treat null as
  * "unknown" — do NOT disable UI on null, fall back to existing behaviour.
  */
-export async function fetchVariantQuantityAvailable(variantId: string): Promise<number | null> {
+export async function fetchVariantQuantityAvailable(variantId: string, context?: ShopifyContext): Promise<number | null> {
   if (!variantId) return null;
   try {
-    const data = await storefrontApiRequest(VARIANT_INVENTORY_QUERY, { id: variantId });
+    const data = await storefrontApiRequest(VARIANT_INVENTORY_QUERY, {
+      id: variantId,
+      country: context?.country ?? null,
+      language: context?.language ?? null,
+    });
     const qty = data?.data?.node?.quantityAvailable;
     return typeof qty === "number" ? qty : null;
   } catch (error) {
@@ -231,9 +250,13 @@ export async function fetchVariantQuantityAvailable(variantId: string): Promise<
   }
 }
 
-export async function fetchSellingPlans(handle: string): Promise<SellingPlan[]> {
+export async function fetchSellingPlans(handle: string, context?: ShopifyContext): Promise<SellingPlan[]> {
   try {
-    const data = await storefrontApiRequest(SELLING_PLANS_QUERY, { handle });
+    const data = await storefrontApiRequest(SELLING_PLANS_QUERY, {
+      handle,
+      country: context?.country ?? null,
+      language: context?.language ?? null,
+    });
     const groups = data?.data?.product?.sellingPlanGroups?.edges || [];
     const plans = groups.flatMap((g: any) =>
       g.node.sellingPlans.edges.map((sp: any) => sp.node)
@@ -339,7 +362,10 @@ async function ensureSellingPlanId(item: CartItem): Promise<string | null> {
   return fresh;
 }
 
-export async function createStorefrontCheckout(items: CartItem[]): Promise<string> {
+export async function createStorefrontCheckout(
+  items: CartItem[],
+  opts?: { buyerCountryCode?: string },
+): Promise<string> {
   try {
     // Resolve a sellingPlanId for every subscription line. If the cart was
     // added before fetchSellingPlans completed (or the storefront scope was
@@ -364,9 +390,16 @@ export async function createStorefrontCheckout(items: CartItem[]): Promise<strin
 
     console.log('[shopify.createStorefrontCheckout] cartCreate input lines:', JSON.stringify(lines, null, 2));
 
-    const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
-      input: { lines },
-    });
+    // buyerIdentity.countryCode pins the cart to a market so the returned
+    // checkoutUrl opens in that country's currency (e.g. FR → French/EUR
+    // checkout). Only attached when a caller passes a country (France); the
+    // default/dk/se markets pass nothing and keep their prior behaviour.
+    const input: { lines: typeof lines; buyerIdentity?: { countryCode: string } } = { lines };
+    if (opts?.buyerCountryCode) {
+      input.buyerIdentity = { countryCode: opts.buyerCountryCode };
+    }
+
+    const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, { input });
 
     if (cartData.data.cartCreate.userErrors.length > 0) {
       console.error('[shopify.createStorefrontCheckout] userErrors from Shopify:', cartData.data.cartCreate.userErrors);

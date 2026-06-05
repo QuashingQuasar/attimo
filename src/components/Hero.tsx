@@ -2,12 +2,17 @@ import { Button } from "@/components/ui/button";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { OliveLeaf } from './OliveLeaf';
 import kleiaLogo from '@/assets/attimo-main-logo.svg?url';
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 interface HeroProps {
   onWaitlistClick: () => void;
+  locale?: Locale;
 }
 export const Hero = ({
-  onWaitlistClick
+  onWaitlistClick,
+  locale = DEFAULT_LOCALE
 }: HeroProps) => {
+  const t = getDict(locale);
   return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full">
       <AutoplayVideo
       src="/videos/hero-video-new.mp4"
@@ -54,7 +59,7 @@ export const Hero = ({
               backgroundColor: '#CDDB2D',
               borderRadius: '8px',
             }}>
-              Shop New Harvest
+              {t.hero.cta}
             </Button>
           </div>
 
@@ -70,12 +75,12 @@ export const Hero = ({
         <div className="flex hero-ticker-marquee" style={{ width: 'max-content' }}>
           {Array(4).fill(null).map((_, i) => <div key={i} className="flex items-center whitespace-nowrap">
               {[
-                { text: "LAB-TESTED", icon: "/icons/branch-2.svg" },
-                { text: "EARLY HARVEST", icon: "/icons/lady-2.svg" },
-                { text: "SINGLE VARIETY", icon: "/icons/basket-2.svg" },
-                { text: "FROM GROVE TO TABLE", icon: "/icons/bread-2.svg" },
-                { text: "ALWAYS FRESH", icon: "/icons/mortar.svg" },
-                { text: "COLD-PRESSED", icon: "/icons/sun-2.svg" },
+                { text: t.hero.badges[0], icon: "/icons/branch-2.svg" },
+                { text: t.hero.badges[1], icon: "/icons/lady-2.svg" },
+                { text: t.hero.badges[2], icon: "/icons/basket-2.svg" },
+                { text: t.hero.badges[3], icon: "/icons/bread-2.svg" },
+                { text: t.hero.badges[4], icon: "/icons/mortar.svg" },
+                { text: t.hero.badges[5], icon: "/icons/sun-2.svg" },
               ].map((item, idx) =>
           <span key={`${i}-${idx}`} className="inline-flex items-center">
                   <span className="hero-ticker-text font-working-man-light font-bold tracking-[0.15em]" style={{ color: '#1B4229' }}>{item.text}</span>

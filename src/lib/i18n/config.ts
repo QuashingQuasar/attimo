@@ -2,6 +2,22 @@ export type Locale = {
   slug: string;
   country: string;
   countryName: string;
+  // Content language for this market. Drives which translation dictionary is
+  // served (see src/lib/i18n/translations) and the <html lang> attribute.
+  // Existing currency-only markets (default, dk, se) stay "en"; France is "fr".
+  lang: "en" | "fr";
+  // BCP-47 value emitted in the hreflang alternate link. Single source of
+  // truth so getHreflangs stays a pure lookup. English-currency variants use
+  // "en" / "en-DK" / "en-SE"; the French-language market uses "fr".
+  hreflang: string;
+  // Shopify Storefront @inContext language code (LanguageCode enum). Most
+  // markets present English; France presents French. Country comes from
+  // `country` above.
+  shopifyLanguage: "EN" | "FR";
+  // Label shown in the footer locale switcher next to the flag. Defaults to
+  // the currency code (EUR/DKK/SEK). France shares EUR with the default market,
+  // so it overrides this to a country code ("FRA") to stay distinguishable.
+  selectorLabel?: string;
   currency: {
     code: string;
     symbol: string;
@@ -24,6 +40,9 @@ export const DEFAULT_LOCALE: Locale = {
   slug: "",
   country: "BE",
   countryName: "Europe",
+  lang: "en",
+  hreflang: "en",
+  shopifyLanguage: "EN",
   currency: {
     code: "EUR",
     symbol: "€",
@@ -48,6 +67,9 @@ export const LOCALES: Locale[] = [
     slug: "dk",
     country: "DK",
     countryName: "Danmark",
+    lang: "en",
+    hreflang: "en-DK",
+    shopifyLanguage: "EN",
     currency: {
       code: "DKK",
       symbol: "kr",
@@ -69,6 +91,9 @@ export const LOCALES: Locale[] = [
     slug: "se",
     country: "SE",
     countryName: "Sverige",
+    lang: "en",
+    hreflang: "en-SE",
+    shopifyLanguage: "EN",
     currency: {
       code: "SEK",
       symbol: "kr",
@@ -89,6 +114,38 @@ export const LOCALES: Locale[] = [
     },
     flag: "🇸🇪",
   },
+  {
+    // France — the first LANGUAGE market (not a currency market). France uses
+    // EUR, so currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; the
+    // only thing that differs is the content language (French). hreflang is
+    // "fr" (language-targeted, serves all French speakers) while Shopify
+    // @inContext + checkout buyer country is FR/EUR.
+    slug: "fr",
+    country: "FR",
+    countryName: "France",
+    lang: "fr",
+    hreflang: "fr",
+    shopifyLanguage: "FR",
+    // Same currency (EUR) as the default market — show the country code so the
+    // two EUR entries are distinguishable in the switcher.
+    selectorLabel: "FRA",
+    currency: {
+      code: "EUR",
+      symbol: "€",
+      symbolPosition: "before",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 24,
+      nocellara: 23,
+      picual: 22,
+    },
+    shipping: {
+      standard: 5.95,
+      freeThreshold: 50,
+    },
+    flag: "🇫🇷",
+  },
 ];
 
 export const COUNTRY_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
@@ -98,6 +155,18 @@ export const COUNTRY_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
 export const SLUG_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
   LOCALES.map((l) => [l.slug, l])
 );
+
+// Shopify Storefront localization context for a locale. Returns a context
+// ONLY for language markets (France); the English-currency markets (default,
+// dk, se) return undefined so their Shopify calls and checkout stay exactly
+// as before (no @inContext, no buyerIdentity). Future language markets get
+// their context automatically via `lang !== "en"`.
+export function shopifyContextForLocale(
+  locale: Locale,
+): { country: string; language: string } | undefined {
+  if (locale.lang === "en") return undefined;
+  return { country: locale.country, language: locale.shopifyLanguage };
+}
 
 export function formatPrice(
   amount: number,
@@ -162,11 +231,10 @@ export type HreflangEntry = { hreflang: string; href: string };
 // locale's URL. Only call this for pages that have locale variants.
 export function getHreflangs(unprefixedPath: string): HreflangEntry[] {
   const entries: HreflangEntry[] = LOCALES.map((locale) => {
-    const tag = locale.slug === "" ? "en" : `en-${locale.country}`;
     const href = locale.slug === ""
       ? `${SITE_ORIGIN}${unprefixedPath}`
       : `${SITE_ORIGIN}/${locale.slug}${unprefixedPath === "/" ? "/" : unprefixedPath}`;
-    return { hreflang: tag, href };
+    return { hreflang: locale.hreflang, href };
   });
   entries.push({ hreflang: "x-default", href: `${SITE_ORIGIN}${unprefixedPath}` });
   return entries;

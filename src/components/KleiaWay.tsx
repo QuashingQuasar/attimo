@@ -1,13 +1,15 @@
 import { AutoplayVideo } from "@/components/AutoplayVideo";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-export const KleiaWay = () => {
-  const tiles = [
-    { title: "ALWAYS FRESH", text: "Olive oil always from the latest harvest. Pressed within hours after picking, bottled at peak freshness.", icon: "/icons/mortar.svg" },
-    { title: "SINGLE VARIETY", text: "Each bottle is from a single olive variety. You get the pure expression of the cultivar and its origin.", icon: "/icons/olive.svg" },
-    { title: "EARLY HARVEST", text: "Olives are harvested early in season when they are highest in polyphenols that give taste and health", icon: "/icons/branch-2.svg" },
-    { title: "FROM GROVE TO TABLE", text: "We source directly from the people who make the oil. No middlemen, no blending, no shortcuts.", icon: "/icons/basket-2.svg" },
-    { title: "LAB-TESTED QUALITY", text: "Every bottle is lab-tested by third parties on key quality markers you can verify for yourself.", icon: "/icons/flask.svg" },
-  ];
+interface KleiaWayProps {
+  locale?: Locale;
+}
+
+export const KleiaWay = ({ locale = DEFAULT_LOCALE }: KleiaWayProps = {}) => {
+  const t = getDict(locale);
+  const icons = ["/icons/mortar.svg", "/icons/olive.svg", "/icons/branch-2.svg", "/icons/basket-2.svg", "/icons/flask.svg"];
+  const tiles = t.kleiaWay.tiles.map((tile, i) => ({ ...tile, icon: icons[i] }));
 
   const videos = [
     "/videos/content-video-1.mp4",
@@ -65,8 +67,8 @@ export const KleiaWay = () => {
             color: '#1B4229',
             fontSize: 'clamp(2rem, 3.5vw, 3.7rem)'
           }}>
-            How We Make Sure<br />
-            <span className="font-medium italic">You Get The Good Stuff</span>
+            {t.kleiaWay.headingLine1}<br />
+            <span className="font-medium italic">{t.kleiaWay.headingLine2}</span>
           </h2>
         </div>
 

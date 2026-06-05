@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface NotifyMeFormProps {
   productName: string;
+  locale?: Locale;
   /**
    * @deprecated kept for API back-compat; the container is now always rendered
    * on the dark forest-green brand surface.
@@ -37,9 +40,11 @@ export const NotifyMeForm = ({
   subtitle,
   buttonBackgroundColor = "#CDDB2D",
   restockProductKey,
+  locale = DEFAULT_LOCALE,
 }: NotifyMeFormProps) => {
-  const headingText = heading ?? "Coming Soon";
-  const subtitleText = subtitle ?? `Get notified when ${productName} is in stock.`;
+  const t = getDict(locale).notify;
+  const headingText = heading ?? t.comingSoon;
+  const subtitleText = subtitle ?? t.subtitle.replace("{name}", productName);
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -71,12 +76,12 @@ export const NotifyMeForm = ({
       }
 
       setSubmitted(true);
-      toast.success("You'll be notified when it's back in stock!", {
+      toast.success(t.success, {
         position: "top-center",
       });
     } catch (err) {
       console.error("Error submitting notify form:", err);
-      toast.error("Something went wrong. Please try again.", {
+      toast.error(t.error, {
         position: "top-center",
       });
     } finally {
@@ -98,7 +103,7 @@ export const NotifyMeForm = ({
             fontSize: "clamp(0.95rem, 1.1vw, 1.15rem)",
           }}
         >
-          ✓ You're on the list
+          {t.onList}
         </p>
         <p
           className="mt-1"
@@ -108,7 +113,7 @@ export const NotifyMeForm = ({
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
         >
-          We'll email you when {productName} is in stock.
+          {t.emailWhenStock.replace("{name}", productName)}
         </p>
       </div>
     );
@@ -144,7 +149,7 @@ export const NotifyMeForm = ({
           <input
             type="email"
             required
-            placeholder="Your email address"
+            placeholder={t.placeholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="flex-1 rounded-lg border-2 border-transparent bg-white px-4 py-2.5 text-olive-dark placeholder:text-olive-medium/60 focus:outline-none focus:border-white transition-colors"
@@ -164,7 +169,7 @@ export const NotifyMeForm = ({
               fontSize: "clamp(0.85rem, 1vw, 1rem)",
             }}
           >
-            {submitting ? "..." : "Notify Me"}
+            {submitting ? "..." : t.notifyMe}
           </button>
         </form>
       </div>
