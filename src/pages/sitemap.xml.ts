@@ -14,6 +14,7 @@ const BLOG_SITEMAP_SLUGS = new Set([
   "olive-color-ripeness-polyphenols",
   "unfiltered-olive-oil",
   "squeeze-bottles-olive-oil",
+  "how-to-read-olive-oil-lab-analysis",
 ]);
 
 const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
