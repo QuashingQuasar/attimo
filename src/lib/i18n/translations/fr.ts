@@ -35,6 +35,11 @@ export const fr: Dict = {
       description:
         "Tarifs de livraison, seuils de livraison gratuite et délais pour l'huile d'olive ATTIMO dans toute l'Union européenne.", // REVIEW
     },
+    quiz: {
+      title: "Quiz du palais | ATTIMO", // REVIEW
+      description:
+        "Trouvez votre huile d'olive ATTIMO idéale. Faites le quiz du palais de 60 secondes pour associer votre goût à la bonne huile d'olive vierge extra monovariétale.", // REVIEW
+    },
   },
 
   footer: {
@@ -69,6 +74,20 @@ export const fr: Dict = {
     calculatedAtCheckout: "Calculée au paiement",
     creatingCheckout: "Création du paiement...",
     checkout: "Payer avec Shopify",
+  },
+
+  quiz: {
+    intro:
+      "Répondez à quelques questions rapides pour découvrir laquelle de nos trois huiles monovariétales vous correspond le mieux.", // REVIEW
+    backToAttimo: "← Retour à ATTIMO",
+    resultsLabel: "Résultats",
+    back: "Retour",
+    next: "Suivant",
+    seeResults: "Voir les résultats",
+    yourMatchIs: "Votre match, c'est",
+    why: (name: string) => `Pourquoi ${name} ?`,
+    shop: (name: string) => `Acheter ${name}`,
+    retake: "Refaire le quiz",
   },
 
   products: {

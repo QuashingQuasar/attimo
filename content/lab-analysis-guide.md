@@ -1,0 +1,325 @@
+# How To Read A Lab Report For Olive Oil: Polyphenols, Oleocanthal, Oleacein, Acidity, Hydroxytyrosol And More
+
+If you have ever looked at a Certificate of Analysis for olive oil and felt like you were reading a blood test for a plant, you are not alone. The document is dense, the units are unfamiliar, and nobody explains what any of it means in practical terms.
+
+This is a problem because the lab report is the only document that tells you what is actually in a bottle of olive oil. The label tells you the grade (extra virgin), the origin (usually vague), and the best-before date (mostly useless). The lab report tells you the polyphenol content, the freshness markers, the acidity, the individual bioactive compounds, and whether the oil is actually what the label claims it is.
+
+Most producers do not publish lab reports. The ones that do are telling you something important: they tested their oil, and they are not afraid of the numbers. This guide explains what those numbers mean.
+
+## TL;DR
+
+A Certificate of Analysis (COA) for olive oil typically includes acidity, peroxide value, polyphenol content, oleic acid percentage, and sometimes individual compound breakdowns (oleocanthal, oleacein, hydroxytyrosol). Each metric tells you something specific about the oil's quality, freshness and health properties. Knowing how to read these numbers lets you compare oils based on what is actually inside them rather than what is printed on the front of the bottle.
+
+![Quality thresholds reference table for olive oil lab metrics](chart-4-quality-thresholds.png)
+
+## Acidity (Free Fatty Acids / FFA)
+
+**What it measures:** The percentage of free fatty acids in the oil, expressed as oleic acid equivalence.
+
+**Where it comes from:** When an olive is still on the tree, its oil is locked inside intact fat molecules (triglycerides). The moment the fruit is damaged — by bruising during harvest, sitting in a pile waiting to be pressed, or simply being picked overripe — enzymes begin breaking these triglycerides apart, releasing free fatty acids. The longer the delay between picking and pressing, the more free fatty acids accumulate. Acidity is essentially a timer that starts the moment the olive leaves the tree.
+
+**What it tells you:** How carefully the fruit was handled and how quickly it was processed. An oil with 0.19% acidity (like Attimo's Coratina) means the olives were picked intact, transported without damage, and pressed within hours. An oil at 0.7% got there through some combination of bruised fruit, delayed processing, or poor handling. Both technically qualify as extra virgin. The difference in care is measurable.
+
+Acidity is not something you can taste. A low-acidity oil does not taste "less acidic" in the way you might expect. It is a processing quality marker, not a flavour descriptor.
+
+**The numbers:**
+- Extra virgin standard: below 0.8%
+- Good quality oil: below 0.5%
+- High quality oil: below 0.3%
+- Exceptional: below 0.2%
+
+## Peroxide Value
+
+**What it measures:** The degree of primary oxidation in the oil, expressed in milliequivalents of active oxygen per kilogram (meq O₂/kg).
+
+**What it tells you:** How fresh the oil is and how much oxidative damage it has accumulated since pressing. Peroxides are the first products of oxidation. They form when the oil's fatty acids react with oxygen. Over time, peroxides break down further into secondary oxidation products (aldehydes, ketones) that produce rancid flavours and smells.
+
+**The numbers:**
+- Extra virgin standard: below 20 meq/kg
+- Good quality oil: below 12 meq/kg
+- High quality oil: below 9 meq/kg
+- Fresh, well-handled oil: below 6 meq/kg
+
+**What to look for:** A peroxide value under 9 means the oil has seen minimal oxidation since pressing. A value approaching 20 means the oil is technically still extra virgin but has been exposed to enough oxygen, light, or heat to raise concerns about how much longer it will hold up. Combined with acidity, peroxide value gives you a two-dimensional picture of quality: acidity tells you how the fruit was handled, peroxide tells you what has happened to the oil since.
+
+## K232 and K270 (UV Absorbance)
+
+**What it measures:** How much ultraviolet light the oil absorbs at two specific wavelengths: 232 nanometres and 270 nanometres.
+
+**What it tells you:** K232 correlates with primary oxidation products (conjugated dienes). K270 correlates with secondary oxidation products (conjugated trienes). Together they provide a more detailed picture of oxidative degradation than peroxide value alone, because peroxide value only captures the first stage.
+
+**The numbers:**
+- Extra virgin standard: K232 below 2.50, K270 below 0.22
+- Good quality: K232 below 2.0, K270 below 0.15
+
+**What to look for:** These values matter most when evaluating oils that have been stored for a while. An oil can have a low peroxide value (because peroxides have already decomposed) but a high K270 (because the secondary oxidation products are now present). If the peroxide value looks fine but K270 is elevated, the oil has been through oxidation and come out the other side. It is stale, even if the primary markers look acceptable.
+
+Most consumers will never need to interpret UV absorbance values directly. But if they appear on a COA and K270 is above 0.20, the oil is not in its best condition.
+
+## Delta K (ΔK)
+
+**What it measures:** The difference between the K270 value and the average of K266 and K274, expressed as a small decimal number.
+
+**Where it comes from:** Delta K is derived from the same UV absorbance test as K232 and K270. It isolates a very specific signal within the K270 band that correlates with the presence of refined or adulterated oil. Natural extra virgin olive oil produces a Delta K close to zero or slightly negative. Refined oils and oils that have been chemically processed show elevated Delta K because the refining process creates specific conjugated compounds that absorb UV light at these wavelengths in a characteristic pattern.
+
+**Why it matters:** This is primarily an authenticity marker rather than a quality marker. A Delta K above 0.01 is a red flag that the oil may have been blended with refined oil, even if the other numbers look acceptable. Attimo's Coratina measures -0.003, which is exactly what you expect from a genuine, unrefined extra virgin oil; the negative value confirms that no refining has occurred.
+
+**The numbers:**
+- Extra virgin standard: below 0.01
+- Good: below 0.005
+- Typical for fresh, genuine EVOO: near zero or slightly negative
+
+**What to look for:** Delta K is a small number and easy to overlook on a COA, but it answers a simple question: is this oil genuinely unrefined? If Delta K is below 0.01, it is. If it exceeds 0.01, something has been added or processed that should not have been.
+
+## Oleic Acid
+
+**What it measures:** The percentage of oleic acid (a monounsaturated omega-9 fatty acid) in the total fatty acid profile of the oil.
+
+**Where it comes from:** Oleic acid is the primary fat in olive oil. It is not a polyphenol — it is the fat itself. The olive fruit accumulates oleic acid as it develops, and it makes up 55–83% of the oil depending on variety, climate, and altitude. Some varieties (Picual, Coratina) naturally produce more oleic acid than others.
+
+**Why it matters:** Oleic acid is the reason olive oil is more stable than other cooking oils. Monounsaturated fats resist oxidation better than polyunsaturated fats (like those in sunflower or soybean oil), which is why [olive oil holds up under heat](https://attimo-oil.com/blog/should-you-cook-with-olive-oil) and lasts longer in the bottle. A higher oleic acid percentage means a more oxidation-resistant oil.
+
+But oleic acid is also health-relevant on its own, independent of polyphenols. The FDA allows a qualified health claim for oleic acid and reduced risk of coronary heart disease. The mechanism is straightforward: replacing saturated fats with monounsaturated fats (primarily oleic acid) improves blood lipid profiles. This is the fat component of the Mediterranean diet story; the polyphenols add to it, but the oleic acid base matters too.
+
+**The numbers:**
+- Typical range for EVOO: 55–83%
+- Good: above 65%
+- Very good: above 70%
+
+**What to look for:** Oleic acid content varies by variety and growing conditions. Cooler climates and higher altitudes tend to produce oil with higher oleic acid. The number is relevant for understanding both shelf stability and baseline health value. An oil with 75% oleic acid will degrade more slowly and deliver more monounsaturated fat per serving than one at 60%.
+
+## Squalene
+
+**What it measures:** The concentration of squalene, a triterpene hydrocarbon, typically expressed in mg/kg or as a percentage of the oil.
+
+**Where it comes from:** Squalene is not a polyphenol. It is a lipid compound found in relatively high concentrations in olive oil compared to other plant oils. The name comes from shark liver oil (Squalus is the genus of dogfish sharks), which was historically the primary commercial source. Olive oil is the richest plant-based source of squalene, typically containing 3,000–7,000 mg/kg, orders of magnitude more than most other vegetable oils.
+
+**Why it matters:** Squalene has its own distinct line of health research, separate from polyphenols. It is a precursor to cholesterol synthesis in the body, but dietary squalene has been associated with the opposite effect. Studies suggest it may help regulate cholesterol levels rather than raise them. Research has also documented antioxidant activity, skin-protective properties (squalene is a major component of human sebum), and emerging evidence for anti-tumour activity, particularly in relation to colorectal cancer.
+
+Squalene is one of the reasons olive oil has historically been used in skincare across Mediterranean cultures. It is also being studied as a vaccine adjuvant; the MF59 adjuvant used in some influenza vaccines is squalene-based.
+
+In the context of olive oil quality, squalene content varies by variety and is relatively stable compared to polyphenols. It does not degrade as rapidly with time or heat, which means even a mediocre oil can have decent squalene content. It is not a quality differentiator the way polyphenols are, but it is part of what makes olive oil nutritionally distinct from other fats.
+
+**The numbers:**
+- Typical range in EVOO: 3,000–7,000 mg/kg
+- Not all COAs include squalene. It is more commonly reported in research contexts than in commercial lab reports.
+
+**What to look for:** Squalene is a bonus rather than a purchase criterion. If it appears on a COA, higher is generally better. But unlike polyphenols, squalene content does not vary dramatically with harvest timing or storage, so it is less useful for distinguishing a good oil from a bad one. Its value is in understanding why olive oil, as a category, delivers health benefits beyond what its fatty acid profile alone would suggest.
+
+## Total Polyphenols (Total Biophenols)
+
+**What it measures:** The combined concentration of all phenolic compounds in the oil, typically expressed in milligrams per kilogram (mg/kg).
+
+**Where they come from:** Polyphenols are defence compounds. The olive fruit produces them to protect itself against UV radiation, insects, fungi, and oxidative stress while the seed is still developing. Polyphenol production peaks when the fruit is green and vulnerable. As the olive ripens and its biological role shifts from self-protection to seed dispersal (attracting birds and animals to eat it and spread the seed), polyphenol levels decline. The fruit becomes softer, sweeter, fattier — and less interesting from a health perspective. This is why harvest timing is the single biggest determinant of polyphenol content. An early-harvest Coratina can measure above 800 mg/kg. The same tree, harvested six weeks later, might produce oil below 200 mg/kg.
+
+**Why it matters:** This is the single most important health-relevant number on the COA. Polyphenols are the bioactive compounds responsible for the [bitterness, the peppery throat catch, and most of the documented health benefits](https://attimo-oil.com/blog/polyphenols-olive-oil) of olive oil: the cardiovascular protection documented in the PREDIMED trial, the anti-inflammatory effects, and the LDL oxidation reduction. They are also the compounds that degrade fastest with time, heat, light, and oxygen, which is why a fresh, early-harvest oil and a year-old supermarket oil can share the same "extra virgin" grade while delivering completely different health profiles.
+
+**The numbers:**
+- Typical supermarket EVOO: 80–200 mg/kg
+- EU health claim threshold: 250 mg/kg
+- Good specialty oil: 300–500 mg/kg
+- High quality early-harvest oil: 500–800 mg/kg
+- Exceptional: above 800 mg/kg
+
+**What to look for:** The EU has approved a specific health claim: olive oil polyphenols contribute to the protection of blood lipids from oxidative stress. The oil must contain at least 250 mg/kg to carry this claim. Most supermarket oils do not reach this threshold. Most labels do not disclose the number at all.
+
+**A note on measurement methods:** Total polyphenols can be measured by different methods (Folin-Ciocalteu, HPLC, EU health claim method) and each produces a different number from the same oil. The Folin-Ciocalteu method tends to give higher readings. HPLC gives compound-specific data. When comparing oils, check that the same method was used. If the method is not stated, the numbers are harder to compare.
+
+![Same oil, three methods, three numbers](chart-6-measurement-methods.png)
+
+## Oleocanthal
+
+**What it measures:** The concentration of oleocanthal, a secoiridoid phenolic compound, in mg/kg.
+
+**Where it comes from:** Oleocanthal is part of the olive fruit's defence system. The olive produces it while still green and developing, primarily to protect its seed from insects and microbial attack. As the fruit ripens and shifts toward attracting animals for seed dispersal, oleocanthal production slows. This is why early-harvest oils contain far more of it than late-harvest oils. The compound is named after the olive itself: oleo (olive), canth (sting), al (aldehyde).
+
+**Why it matters:** Oleocanthal was identified in 2005 by pharmacologist Gary Beauchamp, who noticed that freshly pressed olive oil produced the same throat irritation as liquid ibuprofen. That observation led to the discovery that oleocanthal inhibits the same COX-1 and COX-2 enzymes that ibuprofen targets. The mechanism is the same. The dose from a daily serving of high-oleocanthal oil is lower than a pharmaceutical dose, but the effect is cumulative over time: sustained, low-level anti-inflammatory activity from food rather than a pill.
+
+Beyond COX inhibition, more recent research has linked oleocanthal to inhibition of tau protein aggregation, one of the pathological hallmarks of Alzheimer's disease. It has also shown antiproliferative effects on cancer cell lines in vitro. This is the compound Bryan Johnson cites as one of the primary reasons he treats olive oil as a daily health intervention.
+
+The throat burn you feel with a good oil is a direct sensory signal of oleocanthal concentration. No burn, no oleocanthal.
+
+**The numbers:**
+- Not present in all oils. Low-polyphenol or late-harvest oils may contain very little.
+- Meaningful concentration: above 100 mg/kg
+- High: above 200 mg/kg
+- Exceptional: above 400 mg/kg
+
+**What to look for:** Oleocanthal is one of the two headline compounds that drive the health research on olive oil. A COA that breaks it out individually is far more informative than one that only reports total polyphenols. Two oils with the same total polyphenol count can have very different oleocanthal levels. If a COA only shows total polyphenols, you do not know how much of that total is oleocanthal.
+
+## Oleacein
+
+**What it measures:** The concentration of oleacein, a secoiridoid phenolic compound, in mg/kg.
+
+**Where it comes from:** Oleacein is derived from oleuropein, the most abundant polyphenol in raw olive fruit. During pressing, oleuropein is enzymatically converted into oleacein. Like oleocanthal, it is most concentrated in green, early-harvest olives when the fruit is still in its protective phase. The conversion happens during malaxation (the kneading of olive paste before pressing), which is why extraction technique matters as well as harvest timing.
+
+**Why it matters:** Oleacein is one of the most potent natural antioxidants identified in food. Its primary documented effect is on LDL cholesterol oxidation. LDL itself is not inherently harmful, but when oxidised LDL accumulates in arterial walls, it triggers the inflammatory cascade that leads to atherosclerosis. Oleacein has been shown to reduce this oxidation process directly.
+
+Beyond LDL protection, oleacein supports endothelial function, the health of the cells that line your blood vessels. It also modulates several pro-inflammatory signalling pathways. In terms of raw antioxidant capacity, oleacein performs strongly relative to hydroxytyrosol in several comparative assays, even though hydroxytyrosol gets more attention because of the EU health claim.
+
+Oleacein is responsible for much of the bitterness you taste in a high-quality oil, particularly the mid-palate bitterness as opposed to the throat burn (which is oleocanthal). Together, these two compounds are why a genuinely good olive oil tastes intense and why that intensity is a feature, not a flaw.
+
+**The numbers:**
+- Meaningful concentration: above 100 mg/kg
+- High: above 200 mg/kg
+- Exceptional: above 300 mg/kg
+
+**What to look for:** Oleacein and oleocanthal together form the biological core of what makes a high-polyphenol olive oil distinct from a commodity one. An oil with high total polyphenols but low oleacein and oleocanthal is not delivering the same health profile as one where these two compounds dominate the total. Oleacein is often present in similar or higher concentrations than oleocanthal in a given oil. Both vary significantly by variety and harvest timing.
+
+## Hydroxytyrosol
+
+**What it measures:** The concentration of hydroxytyrosol, a simple phenol, in mg/kg.
+
+**Where it comes from:** Hydroxytyrosol exists in olive fruit primarily as part of larger molecules, especially oleuropein. During pressing and over time in the bottle, these precursors break down and release free hydroxytyrosol. This means that in a freshly pressed oil, the free hydroxytyrosol reading is often low (the compound is still locked up in its precursor forms), while in an older oil, the reading can be higher because the precursors have degraded. A high hydroxytyrosol reading alongside low oleocanthal and oleacein can actually indicate an older oil, not a better one. Context matters.
+
+**Why it matters:** Hydroxytyrosol is the compound that carries the EU health claim. The European Food Safety Authority evaluated the evidence and concluded that olive oil polyphenols, specifically hydroxytyrosol and its derivatives, contribute to the protection of blood lipids from oxidative stress. This is the only officially authorised health claim for olive oil in the EU. The oil must provide at least 5 mg of hydroxytyrosol and derivatives per 20g daily serving (roughly 1.5 tablespoons) to qualify.
+
+Beyond the EU claim, hydroxytyrosol is among the most bioavailable polyphenols known. It is rapidly absorbed in the small intestine, appears in plasma within hours of consumption, and crosses the blood-brain barrier. Research has documented antioxidant, anti-inflammatory, cardioprotective, and neuroprotective effects. Bryan Johnson includes it among his key olive oil criteria for precisely this reason.
+
+Hydroxytyrosol is also being studied for its effects on mitochondrial function and exercise performance, which is part of why it is the most researched single phenolic compound in olive oil.
+
+What makes hydroxytyrosol unusual is that your body can also produce it. It is a metabolite of dopamine. The dietary form from olive oil adds to this baseline, and the documented health effects relate to the total exposure over time, the same logic of sustained, daily, low-dose intervention that underpins the broader case for high-polyphenol olive oil.
+
+**The numbers:**
+- The EU health claim requires at least 5 mg of hydroxytyrosol and its derivatives per 20g daily serving
+- Typical range in fresh, early-harvest oil: 5–50 mg/kg
+- Higher values are possible but read them in context: very high free hydroxytyrosol alongside low oleocanthal and oleacein suggests degradation, not quality
+
+**What to look for:** Hydroxytyrosol is important, but it should be read alongside oleocanthal and oleacein. A fresh, high-quality oil will have meaningful concentrations of all three. An oil with high hydroxytyrosol but depleted secoiridoids has likely aged past its best; the complex compounds have broken down into simpler ones. The number alone does not tell you enough.
+
+## DAGs (Diacylglycerols)
+
+**What it measures:** The ratio of 1,2-diacylglycerols to total diacylglycerols, expressed as a percentage.
+
+**What it tells you:** DAGs are a freshness marker. In fresh olive oil, most diacylglycerols are in the 1,2 form. Over time, they isomerise to the 1,3 form. The ratio declines predictably, making it one of the most reliable indicators of genuine freshness, and harder to manipulate than peroxide value or acidity.
+
+**The numbers:**
+- Fresh oil: above 90%
+- Acceptable: above 85%
+- Declining: below 80%
+
+**What to look for:** A DAG percentage above 90% confirms that the oil is genuinely recent. It is particularly useful for catching oils that have been blended with older stock; the older component will drag the DAG ratio down even if other freshness markers have been manipulated.
+
+Not all COAs include DAGs. When they do, it is one of the most trustworthy numbers on the page.
+
+## PPPs (Pyropheophytins)
+
+**What it measures:** The percentage of pyropheophytins relative to total pheophytins, expressed as a percentage.
+
+**What it tells you:** Like DAGs, PPPs are a freshness and age indicator. Pyropheophytins form from the degradation of chlorophyll in the oil. The percentage increases over time.
+
+**The numbers:**
+- Fresh oil: below 5%
+- Acceptable: below 17% (the standard used by some quality authorities)
+- Elevated: above 17%
+
+**What to look for:** PPPs increase with age and with exposure to heat. Combined with DAGs, they provide a two-dimensional freshness fingerprint. DAGs decline over time; PPPs increase. An oil with high DAGs and low PPPs is genuinely fresh. An oil with low DAGs and high PPPs has been stored too long or exposed to heat, regardless of what the label says.
+
+## Not all polyphenols are equal, and not all numbers mean what you think
+
+This is where the transparency conversation in olive oil gets uncomfortable.
+
+Some brands claim polyphenol counts above 1,000 or even 1,300 mg/kg. The numbers look extraordinary. They are also misleading.
+
+Here is a real example. A Coratina oil tested by the World Olive Center for Health (Magiatis lab, University of Athens) reports:
+
+- Oleocanthal: 292 mg/kg
+- Oleacein: 148 mg/kg
+- Total polyphenols analysed: 832 mg/kg
+- Oleuropein aglycon (dialdehyde form): 1,295 mg/kg
+
+The brand advertises "1,300+ polyphenols." That number comes from a single precursor compound: oleuropein aglycon in its dialdehyde form. This is a secoiridoid derivative. It is a polyphenol by chemical classification. But it is not oleocanthal. It is not oleacein. It is not the compound the anti-inflammatory or antioxidant research is primarily about.
+
+Now compare the compounds that the health research actually focuses on.
+
+That brand's oleocanthal: **292 mg/kg**. Oleacein: **148 mg/kg**.
+
+Attimo's Coratina, tested by Chemiservice Monopoli (ISO/IEC 17025 accredited): oleocanthal **471 mg/kg**. Oleacein **336 mg/kg**.
+
+The brand with the bigger headline number has substantially lower concentrations of the two compounds that matter most. The "1,300" is real in a narrow chemical sense. It is misleading in every practical sense.
+
+![Headline polyphenol claims versus actual bioactive compound concentrations](chart-1-headline-vs-bioactive.png)
+
+![Breakdown of what is inside Attimo Coratina's 847 mg/kg total](chart-2-polyphenol-breakdown.png)
+
+This happens because "total polyphenols" is not a single number with a single definition. There are multiple measurement methods, each counting different things:
+
+**Folin-Ciocalteu (FC)** is a colorimetric assay that measures the total reducing capacity of a sample. It reacts with any oxidisable substance, not just bioactive polyphenols. It is cheap, fast, and produces the highest number. For marketing purposes, this is convenient.
+
+**IOC HPLC method** uses chromatography to separate and identify individual phenolic compounds. The "total biophenols" from this method sums all identified compounds including lignans, tyrosol, flavonoids and various aglycones. More precise than FC, but the total still includes compounds with very different levels of documented bioactivity.
+
+**Targeted HPLC for specific compounds** quantifies the individual compounds that the health research is actually about: oleocanthal, oleacein, hydroxytyrosol. This is the most informative analysis.
+
+The practical consequence: a brand can report "1,300 mg/kg polyphenols" without lying, while the compounds that drove the PREDIMED trial, the COX inhibition research, the LDL oxidation studies — oleocanthal and oleacein — sit at modest concentrations. The headline number is doing marketing work, not science work.
+
+When evaluating a COA, ask three questions:
+
+1. Does it break out oleocanthal and oleacein individually?
+2. What method was used for the total?
+3. Is the impressive number driven by the bioactive compounds, or by everything else?
+
+A total polyphenol count without a compound breakdown is like a blood test that reports "total cells" without distinguishing red from white. The number is technically accurate. It tells you almost nothing about what matters.
+
+## Putting it together
+
+A lab report is not a single number. It is a set of measurements that, read together, tell a coherent story about the oil.
+
+**A fresh, high-quality early-harvest oil** will show: low acidity (below 0.3%), low peroxide (below 9), high polyphenols (above 400 mg/kg), meaningful oleocanthal and oleacein concentrations, high DAGs (above 90%), low PPPs (below 5%), and high oleic acid (above 65%).
+
+**A commercial oil approaching its limits** will show: acidity creeping toward 0.8%, peroxide above 15, polyphenols below 200 mg/kg, no compound breakdown available, DAGs below 85%, and PPPs climbing.
+
+**An old or degraded oil** will show: peroxide that may actually be low (because peroxides have decomposed into secondary products), K270 elevated, DAGs below 80%, PPPs above 17%, and polyphenols significantly reduced from whatever they were at pressing.
+
+The numbers do not lie, which is exactly why most producers do not publish them.
+
+![Annotated Certificate of Analysis for Attimo Coratina](chart-3-annotated-coa.png)
+
+![Polyphenol degradation over 12 months from pressing](chart-7-polyphenol-degradation-12m.png)
+
+## Why We Publish Ours
+
+Every Attimo oil is tested by an independent, accredited laboratory. The full COA — total polyphenols, oleocanthal, oleacein, hydroxytyrosol, acidity, peroxides, oleic acid, DAGs — is published alongside the product. Not a summary, not a minimum threshold, not a marketing claim. The actual numbers from the actual test.
+
+We do this because the only honest way to sell olive oil for its health properties is to prove those properties are in the bottle.
+
+![Attimo's three oils compared on lab metrics](chart-5-three-oils-compared.png)
+
+## FAQ
+
+**What is a Certificate of Analysis?**
+A COA is a document issued by a laboratory that reports the chemical composition and quality parameters of a specific batch of olive oil. It is produced by testing a sample of the oil using standardised methods.
+
+**Do all olive oil producers publish COAs?**
+No. Most do not. Publishing a COA is voluntary. Producers who do are making a transparency choice that allows buyers to verify the quality of the oil rather than relying on the label alone.
+
+**Can I compare COAs from different labs?**
+Generally yes, but check the methodology. Total polyphenol measurements using Folin-Ciocalteu will produce higher numbers than HPLC. If two COAs use the same method, the numbers are directly comparable. If they use different methods, they are not.
+
+**What is the most important number on a COA?**
+Total polyphenols is the single most consequential number for health purposes. But it is more informative when accompanied by a compound breakdown (oleocanthal, oleacein, hydroxytyrosol) and freshness markers (DAGs, PPPs, peroxide value).
+
+**My olive oil doesn't have a COA. Is it bad?**
+Not necessarily. But without a COA, you have no way of knowing the polyphenol content, the freshness, or whether the oil meets the claims on its label. You are trusting the brand. A COA replaces trust with evidence.
+
+**What does the EU health claim mean exactly?**
+The EU has authorised the claim: "Olive oil polyphenols contribute to the protection of blood lipids from oxidative stress." The oil must contain at least 250 mg/kg of hydroxytyrosol and its derivatives (measured by a specific HPLC method), and the claim requires a daily intake of 20g of oil providing at least 5mg of these compounds.
+
+**Can I request a COA from a producer?**
+Yes. Any producer who tests their oil can share the results. If they refuse or say they do not test, that tells you something about the product.
+
+## Sources
+
+1. Beauchamp GK, Keast RSJ, Morel D, et al. Phytochemistry: ibuprofen-like activity in extra-virgin olive oil. *Nature*. 2005;437:45–46. https://doi.org/10.1038/437045a
+2. Estruch R, Ros E, Salas-Salvadó J, et al. Primary prevention of cardiovascular disease with a Mediterranean diet supplemented with extra-virgin olive oil or nuts (PREDIMED). *New England Journal of Medicine*. 2018;378:e34. https://doi.org/10.1056/NEJMoa1800389
+3. EFSA Panel on Dietetic Products, Nutrition and Allergies (NDA). Scientific Opinion on the substantiation of health claims related to polyphenols in olive oil. *EFSA Journal*. 2011;9(4):2033. https://doi.org/10.2903/j.efsa.2011.2033
+4. Commission Regulation (EU) No 432/2012 establishing a list of permitted health claims made on foods. *Official Journal of the European Union*. https://eur-lex.europa.eu/eli/reg/2012/432/oj
+5. International Olive Council. Trade Standard Applying to Olive Oils and Olive Pomace Oils (COI/T.15/NC No 3). https://www.internationaloliveoil.org/what-we-do/chemistry-standardisation-unit/standards-and-methods/
+6. Commission Regulation (EEC) No 2568/91 on the characteristics of olive oil and the relevant methods of analysis. *Official Journal*. https://eur-lex.europa.eu/eli/reg/1991/2568/oj
+7. US Food and Drug Administration. Qualified health claim for oleic acid and reduced risk of coronary heart disease (Docket FDA-2017-Q-5749). 2018. https://www.fda.gov/food/cfsan-constituent-updates/fda-completes-review-qualified-health-claim-petition-oleic-acid-and-risk-coronary-heart-disease
+8. LeGendre O, Breslin PAS, Foster DA. (-)-Oleocanthal rapidly and selectively induces cancer cell death via lysosomal membrane permeabilization. *Molecular & Cellular Oncology*. 2015;2(4):e1006077. https://doi.org/10.1080/23723556.2015.1006077
+9. Abuznait AH, Qosa H, Busnena BA, El Sayed KA, Kaddoumi A. Olive-oil-derived oleocanthal enhances β-amyloid clearance as a potential neuroprotective mechanism against Alzheimer's disease. *ACS Chemical Neuroscience*. 2013;4(6):973–982. https://doi.org/10.1021/cn400024q
+10. Monti MC, Margarucci L, Tosco A, Riccio R, Casapullo A. New insights on the interaction mechanism between tau protein and oleocanthal using STD-NMR spectroscopy. *Food & Function*. 2011;2(7):423–428. https://doi.org/10.1039/c1fo10064e
+11. Rao CV, Newmark HL, Reddy BS. Chemopreventive effect of squalene on colon cancer. *Carcinogenesis*. 1998;19(2):287–290. https://doi.org/10.1093/carcin/19.2.287
+12. O'Hagan DT, Ott GS, Van Nest G, Rappuoli R, Del Giudice G. The history of MF59 adjuvant. *Expert Review of Vaccines*. 2013;12(1):13–30. https://doi.org/10.1586/erv.12.140
+13. Robles-Almazan M, Pulido-Moran M, Moreno-Fernandez J, et al. Hydroxytyrosol: bioavailability, toxicity, and clinical applications. *Food Research International*. 2018;105:654–667. https://doi.org/10.1016/j.foodres.2017.11.053
+14. Filipek A, Czerwińska ME, Kiss AK, Wrzosek M, Naruszewicz M. Oleacein enhances anti-inflammatory activity of human macrophages by increasing CD163 receptor expression. *Phytomedicine*. 2015;22(14):1255–1261. https://doi.org/10.1016/j.phymed.2015.10.005

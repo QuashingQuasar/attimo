@@ -285,7 +285,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
             {t.oilCollection.quizPrompt}
           </p>
           <Link
-            to="/quiz"
+            to={localizeHref("/quiz", locale)}
             className="text-sm md:text-base inline-flex items-center gap-3 px-12 py-5 rounded-lg transition-all duration-300 hover:scale-105 font-semibold"
             style={{
               fontFamily: "UDC Working Man Sans, sans-serif",

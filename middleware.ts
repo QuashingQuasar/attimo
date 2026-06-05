@@ -33,7 +33,8 @@ export default function middleware(request: Request) {
     const shouldLocalize =
       pathname === "/" ||
       pathname.startsWith("/product/") ||
-      pathname === "/shipping";
+      pathname === "/shipping" ||
+      pathname === "/quiz";
     if (shouldLocalize) {
       const matchedLocale = COUNTRY_TO_LOCALE[country];
       if (matchedLocale && matchedLocale.slug) {

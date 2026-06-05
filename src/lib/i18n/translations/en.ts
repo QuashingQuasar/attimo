@@ -37,6 +37,11 @@ export const en = {
       description:
         "Shipping rates, free-shipping thresholds and delivery times for ATTIMO olive oil across the European Union.", // REVIEW
     },
+    quiz: {
+      title: "Olive Oil Palate Quiz | ATTIMO", // REVIEW
+      description:
+        "Find your perfect ATTIMO olive oil. Take the 60-second palate quiz to match your taste with the right single-variety extra virgin olive oil.", // REVIEW
+    },
   },
 
   footer: {
@@ -73,6 +78,22 @@ export const en = {
     calculatedAtCheckout: "Calculated at checkout",
     creatingCheckout: "Creating Checkout...",
     checkout: "Checkout with Shopify",
+  },
+
+  // Palate quiz UI chrome (PalateQuiz.tsx). The questions/options/result
+  // summaries themselves are content and live in quizData / quizData.fr.
+  quiz: {
+    intro:
+      "Answer a few quick questions to find out which of our three single-variety oils matches you best.", // REVIEW
+    backToAttimo: "← Back to ATTIMO",
+    resultsLabel: "Results",
+    back: "Back",
+    next: "Next",
+    seeResults: "See Results",
+    yourMatchIs: "Your match is",
+    why: (name: string) => `Why ${name}?`,
+    shop: (name: string) => `Shop ${name}`,
+    retake: "Retake Quiz",
   },
 
   // Shared per-variety flavour descriptors + one-liners. Reused by the Header
