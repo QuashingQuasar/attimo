@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { toast } from 'sonner';
-import { CartItem, createStorefrontCheckout } from '@/lib/shopify';
+import { CartItem, createStorefrontCheckout, type ShopifyContext } from '@/lib/shopify';
 
 interface CartStore {
   items: CartItem[];
@@ -16,10 +16,11 @@ interface CartStore {
   setCartId: (cartId: string) => void;
   setCheckoutUrl: (url: string) => void;
   setLoading: (loading: boolean) => void;
-  // buyerCountryCode pins the Shopify checkout to a market/currency. Callers
-  // pass it for language markets (France → "FR"); omitting it keeps the prior
-  // behaviour for default/dk/se.
-  createCheckout: (buyerCountryCode?: string) => Promise<void>;
+  // Shopify localization context for the active storefront locale: country
+  // pins the checkout market/currency (buyerIdentity), language sets the
+  // checkout language (@inContext). Pass it for language markets (France →
+  // {country:"FR",language:"FR"}); omit for default/dk/se (English checkout).
+  createCheckout: (context?: ShopifyContext) => Promise<void>;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -74,13 +75,13 @@ export const useCartStore = create<CartStore>()(
       setCheckoutUrl: (checkoutUrl) => set({ checkoutUrl }),
       setLoading: (isLoading) => set({ isLoading }),
 
-      createCheckout: async (buyerCountryCode?: string) => {
+      createCheckout: async (context?: ShopifyContext) => {
         const { items, setLoading, setCheckoutUrl } = get();
         if (items.length === 0) return;
 
         setLoading(true);
         try {
-          const checkoutUrl = await createStorefrontCheckout(items, { buyerCountryCode });
+          const checkoutUrl = await createStorefrontCheckout(items, context);
           setCheckoutUrl(checkoutUrl);
         } catch (error) {
           console.error('Failed to create checkout:', error);

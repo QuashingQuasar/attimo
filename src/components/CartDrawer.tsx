@@ -150,9 +150,12 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
 
   const handleCheckout = async () => {
     try {
-      // For language markets (France) pin the checkout to that country so it
-      // opens in the right currency; default/dk/se pass undefined (unchanged).
-      await createCheckout(shopifyContextForLocale(locale)?.country);
+      // Pass the active locale's full Shopify context: country pins the
+      // checkout market/currency AND language sets the checkout language
+      // (France → French/EUR). default/dk/se resolve to undefined → English
+      // checkout, unchanged. Resolved from the SSR-provided `locale` prop, so
+      // it's correct on first paint without waiting on client state.
+      await createCheckout(shopifyContextForLocale(locale));
       const checkoutUrl = useCartStore.getState().checkoutUrl;
       if (checkoutUrl) {
         window.location.href = checkoutUrl;
