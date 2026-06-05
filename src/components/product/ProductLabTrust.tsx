@@ -1,4 +1,6 @@
 import { Beaker } from "lucide-react";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface ProductLabTrustProps {
   content: {
@@ -7,10 +9,12 @@ interface ProductLabTrustProps {
     values: Array<{ label: string; value: string; unit: string; standard: string; description: string }>;
   };
   labReportUrl?: string;
+  locale?: Locale;
 }
 
-export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps) => {
+export const ProductLabTrust = ({ content, labReportUrl, locale = DEFAULT_LOCALE }: ProductLabTrustProps) => {
   const { heading, subheading, values: labValues } = content;
+  const t = getDict(locale).product;
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px]" style={{ backgroundColor: '#FFFAEA' }}>
       <div className="container mx-auto px-6">
@@ -32,7 +36,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
                 >
                   <Beaker size={18} />
-                  View lab results
+                  {t.viewLabResults}
                 </a>
               )}
             </div>
@@ -50,7 +54,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
                   style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.15rem)' }}
                 >
                   <Beaker size={18} />
-                  View lab results
+                  {t.viewLabResults}
                 </a>
               )}
               </div>
@@ -61,7 +65,7 @@ export const ProductLabTrust = ({ content, labReportUrl }: ProductLabTrustProps)
             {labValues.map((item, index) => (
               <div key={index} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
                 <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
-                  {item.label}{item.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">(Waiting for results)</span>}
+                  {item.label}{item.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}
                 </p>
                 <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
                   <span>

@@ -2,18 +2,24 @@ import { Star } from "lucide-react";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { Card, CardContent } from "@/components/ui/card";
 import patternBg from "@/assets/testimonial-pattern.svg?url";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const testimonials = [
-  { name: "Sandra V.", location: "Ghent, Belgium", date: "02 Sep 2025", text: "I used to just cook with olive oil. Now I'm putting it on everything. Didn't know it could have so much taste.", rating: 5, title: "Good on everything!" },
-  { name: "Mario R.", location: "Freiburg, Germany", date: "28 Sep 2025", text: "Living in Spain for some time, I got used to having amazing olive oil around. It's hard in Germany to find good ones; Attimo brought back some wonderful memories.", rating: 5, title: "Like living in Spain again" },
-  { name: "Sofia M.", location: "Antwerp, Belgium", date: "07 May 2025", text: "I always bring back tons of olive oil from vacation, but it runs out fast. Very happy to have finally found real olive oil at home.", rating: 5, title: "Finally" },
-  { name: "Elias N.", location: "Amsterdam, Netherlands", date: "06 June 2025", text: "I tried a lot of olive oils and this one is my favourite. The smell is absolutely unreal, so fresh it's like the olives are being pressed right then and there.", rating: 5, title: "Super fresh" },
-  { name: "David K.", location: "Antwerp, Belgium", date: "04 May 2025", text: "I bought 4 bottles and they were gone in a month. Never buying in the supermarket again.", rating: 5, title: "I got hooked fast" },
-  { name: "Madis K.", location: "Tallinn, Estonia", date: "15 Aug 2025", text: "I was skeptical about the price but now I get it. You can really taste the difference in quality, there's nothing like this in the local shops here.", rating: 5, title: "You can taste the quality" },
-  { name: "Nicoleta A. P.", location: "Bucharest, Romania", date: "28 Nov 2025", text: "It tastes like I just picked the olives and pressed them myself. Super fresh and natural, I love it!", rating: 5, title: "Fresh harvest in a bottle" },
+// Names, cities and dates are real and stay verbatim across locales; the
+// review title + body are translated (matched by index to the dictionary).
+const testimonialMeta = [
+  { name: "Sandra V.", location: "Ghent, Belgium", date: "02 Sep 2025", rating: 5 },
+  { name: "Mario R.", location: "Freiburg, Germany", date: "28 Sep 2025", rating: 5 },
+  { name: "Sofia M.", location: "Antwerp, Belgium", date: "07 May 2025", rating: 5 },
+  { name: "Elias N.", location: "Amsterdam, Netherlands", date: "06 June 2025", rating: 5 },
+  { name: "David K.", location: "Antwerp, Belgium", date: "04 May 2025", rating: 5 },
+  { name: "Madis K.", location: "Tallinn, Estonia", date: "15 Aug 2025", rating: 5 },
+  { name: "Nicoleta A. P.", location: "Bucharest, Romania", date: "28 Nov 2025", rating: 5 },
 ];
 
-export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingColor?: string }) => {
+export const Testimonials = ({ headingColor = "rgb(205, 219, 45)", locale = DEFAULT_LOCALE }: { headingColor?: string; locale?: Locale }) => {
+  const t = getDict(locale).testimonials;
+  const testimonials = testimonialMeta.map((m, i) => ({ ...m, title: t.reviews[i].title, text: t.reviews[i].text }));
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
@@ -22,7 +28,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)" }: { headingCo
       <div className="absolute inset-0 bg-black/30" />
       <div className="mx-auto relative z-10 w-full">
         <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
-          Word from the street
+          {t.heading}
         </h2>
         <div className="relative overflow-hidden">
           <div className="absolute left-0 top-0 bottom-0 w-32 z-20 pointer-events-none" style={{ background: "linear-gradient(to right, rgba(0, 0, 0, 0.6), transparent)" }} />

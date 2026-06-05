@@ -1,4 +1,6 @@
 import { SicilyMapbox } from "@/components/SicilyMapbox";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface ProductOriginRegionProps {
   backgroundColor?: string;
@@ -13,14 +15,15 @@ interface ProductOriginRegionProps {
   centerLat?: number;
   mapZoom?: number;
   markerStyle?: "dot-line" | "pill-only";
+  locale?: Locale;
 }
 
 export const ProductOriginRegion = ({
   backgroundColor = '#1B4229',
   headingColor = '#ECA948',
   textColor = '#FFFAEA',
-  heading = 'From grove to bottle',
-  body = "ATTIMO Nocellara is directly sourced from a small farm in the Belice valley on Sicily's west coast, where people have been making olive oil since before the Romans.\n\nHere, chalky soil and dry summers stress the olive trees, causing fruits to stay small with concentrated flavour. The coast keeps the nights cool, which slows the accumulation of the more aggressive phenolic compounds. Harvested early, the result is an oil that is high in polyphenols but gentle in character — softer and rounder than anything produced further inland.",
+  heading: headingProp,
+  body: bodyProp,
   markerLon,
   markerLat,
   markerLabel,
@@ -28,7 +31,14 @@ export const ProductOriginRegion = ({
   centerLat,
   mapZoom,
   markerStyle,
+  locale = DEFAULT_LOCALE,
 }: ProductOriginRegionProps) => {
+  // Products with their own originRegion (Coratina, Picual) pass localized
+  // heading/body; products without one (Nocellara) fall back to the
+  // locale-aware default so the section is translated too.
+  const fallback = getDict(locale).originRegionFallback;
+  const heading = headingProp ?? fallback.heading;
+  const body = bodyProp ?? fallback.body;
   return (
     <section className="py-14 md:py-20 lg:py-24" style={{ backgroundColor }}>
       <div className="container mx-auto px-6">

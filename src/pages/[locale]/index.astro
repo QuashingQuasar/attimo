@@ -3,6 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import HomePage from "@astro/react-pages/HomePage";
 import { sanityClient } from "@/lib/sanity";
 import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 export function getStaticPaths() {
   return LOCALES
@@ -31,15 +32,19 @@ const homepagePosts = await sanityClient.fetch(
 );
 
 const canonical = `https://attimo-oil.com/${locale.slug}/`;
+const t = getDict(locale);
 ---
 
 <BaseLayout
-  title="ATTIMO Single-Variety, High-Polyphenol, Early Harvest Olive Oil"
-  description="Single-variety, high-polyphenol olive oil. Early harvest, lab-tested for quality. From small family groves to your table. Shop now."
+  title={t.meta.home.title}
+  description={t.meta.home.description}
   canonical={canonical}
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={websiteJsonLd}
   hreflangPath="/"
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
 >
   <HomePage initialPosts={homepagePosts} locale={locale} client:load />
 </BaseLayout>

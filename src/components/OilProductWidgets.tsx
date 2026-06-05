@@ -3,7 +3,8 @@ import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
 
@@ -45,13 +46,14 @@ interface OilProductWidgetsProps {
 }
 
 export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgetsProps = {}) => {
+  const t = getDict(locale);
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
   const [availability, setAvailability] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     let cancelled = false;
-    fetchProducts(10)
+    fetchProducts(10, undefined, shopifyContextForLocale(locale))
       .then((products) => {
         if (cancelled) return;
         const map: Record<string, boolean> = {};
@@ -78,7 +80,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
     // Per-product shipping notice (e.g. "Ships in 5–7 days" for products on
     // restock). Sourced from productContent.ts so PDP and home card stay in
     // sync — undefined means the product ships normally.
-    const shippingNotice = getProductContent(o.handle).shippingNotice;
+    const shippingNotice = getProductContent(o.handle, locale).shippingNotice;
     return {
       ...o,
       price: locale.prices[o.handle],
@@ -109,7 +111,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               color: "#1B4229",
               fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
-            }}>Specialty Extra Virgin Olive Oil
+            }}>{t.oilCollection.heading}
           </h2>
           <p
             className="mx-auto text-center collection-subtitle-mobile-width collection-subtitle-mobile-size"
@@ -120,7 +122,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
-            }}>Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.
+            }}>{t.oilCollection.subtitle}
           </p>
         </div>
 
@@ -161,7 +163,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                     letterSpacing: "0.1em",
                     color: "#1B4229"
                   }}>
-                    500ML
+                    {t.oilCollection.size}
                   </span>
                 </div>
 
@@ -181,7 +183,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                         color: "#1B4229",
                       }}
                     >
-                      Back Soon
+                      {t.oilCollection.backSoon}
                     </span>
                   </div>
                 )}
@@ -210,7 +212,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   opacity: 0.7
                 }}>
 
-                  {oil.flavor}
+                  {t.products.flavour[oil.handle]}
                 </p>
 
                 <p
@@ -234,7 +236,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   lineHeight: 1.6
                 }}>
 
-                  {oil.tagline}
+                  {t.products.tagline[oil.handle]}
                 </p>
 
                 {!oil.isAvailable && (
@@ -248,7 +250,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                       textTransform: "uppercase",
                     }}
                   >
-                    Temporarily Sold Out
+                    {t.oilCollection.soldOut}
                   </span>
                 )}
                 {oil.isAvailable && oil.shippingNotice && (
@@ -280,7 +282,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               opacity: 0.85
             }}>
 
-            Not sure which olive oil is for you?
+            {t.oilCollection.quizPrompt}
           </p>
           <Link
             to="/quiz"
@@ -293,7 +295,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               letterSpacing: "0.05em"
             }}>
 
-            Find Your Flavour →
+            {t.oilCollection.quizCta}
           </Link>
         </div>
       </div>

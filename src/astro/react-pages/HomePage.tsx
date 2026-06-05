@@ -37,15 +37,15 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} />
+      <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <OilProductWidgets locale={locale} />
-      <IndustryProblem />
-      <KleiaWay />
-      <OilComparison />
-      <Testimonials />
-      <PolyphenolComparison />
-      <FAQ />
-      <BlogSection initialPosts={initialPosts} />
+      <IndustryProblem locale={locale} />
+      <KleiaWay locale={locale} />
+      <OilComparison locale={locale} />
+      <Testimonials locale={locale} />
+      <PolyphenolComparison locale={locale} />
+      <FAQ locale={locale} />
+      <BlogSection initialPosts={initialPosts} locale={locale} />
       <Footer locale={locale} />
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
       <Sonner />

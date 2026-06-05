@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SellingPlan } from "@/lib/shopify";
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface PurchaseOptionsProps {
   sellingPlans: SellingPlan[];
@@ -13,12 +14,6 @@ interface PurchaseOptionsProps {
   locale?: Locale;
 }
 
-const FREQUENCY_OPTIONS = [
-  { label: "Every month", value: "every-month" },
-  { label: "Every 2 months", value: "every-2-months" },
-  { label: "Every 3 months", value: "every-3-months" },
-];
-
 export const PurchaseOptions = ({
   sellingPlans,
   oneTimePrice,
@@ -29,6 +24,15 @@ export const PurchaseOptions = ({
   onSellingPlanChange,
   locale = DEFAULT_LOCALE,
 }: PurchaseOptionsProps) => {
+  const t = getDict(locale).purchase;
+
+  // Default frequency options, localized. Used when Shopify returns no selling
+  // plans (otherwise the Shopify plan names are shown as-is).
+  const localizedDefaults = [
+    { label: t.everyMonth, value: "every-month" },
+    { label: t.every2Months, value: "every-2-months" },
+    { label: t.every3Months, value: "every-3-months" },
+  ];
 
   // Map selling plans to frequency options, or use defaults
   const frequencyOptions = sellingPlans.length > 0
@@ -36,7 +40,7 @@ export const PurchaseOptions = ({
         label: plan.name,
         value: plan.id,
       }))
-    : FREQUENCY_OPTIONS;
+    : localizedDefaults;
 
   const handleFrequencyChange = (value: string) => {
     onSellingPlanChange(value);
@@ -73,7 +77,7 @@ export const PurchaseOptions = ({
               fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
             }}
           >
-            One-time purchase
+            {t.oneTime}
           </span>
         </div>
         <span
@@ -84,7 +88,7 @@ export const PurchaseOptions = ({
           }}
         >
           {formatPrice(oneTimePrice, locale)}
-          <span className={`font-normal ${purchaseType === "one-time" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
+          <span className={`font-normal ${purchaseType === "one-time" ? "text-cream/70" : "text-olive-medium"}`}>{t.perBottle}</span>
         </span>
       </button>
 
@@ -118,7 +122,7 @@ export const PurchaseOptions = ({
                 fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
               }}
             >
-              Subscribe & save
+              {t.subscribe}
             </span>
           </div>
           <span
@@ -129,7 +133,7 @@ export const PurchaseOptions = ({
             }}
           >
             {formatPrice(subscriptionPrice, locale)}
-            <span className={`font-normal ${purchaseType === "subscribe" ? "text-cream/70" : "text-olive-medium"}`}> / bottle</span>
+            <span className={`font-normal ${purchaseType === "subscribe" ? "text-cream/70" : "text-olive-medium"}`}>{t.perBottle}</span>
           </span>
         </button>
 
@@ -143,7 +147,7 @@ export const PurchaseOptions = ({
                 fontSize: "clamp(0.75rem, 0.85vw, 0.9rem)",
               }}
             >
-              Delivery frequency
+              {t.deliveryFrequency}
             </label>
             <select
               value={selectedSellingPlanId || frequencyOptions[0]?.value}

@@ -5,6 +5,8 @@ import { Link } from "@/lib/router-stub";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface SanityPost {
   _id: string;
@@ -17,9 +19,11 @@ interface SanityPost {
 
 interface BlogSectionProps {
   initialPosts?: SanityPost[];
+  locale?: Locale;
 }
 
-export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
+export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE }: BlogSectionProps = {}) => {
+  const t = getDict(locale).blog;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,14 +41,14 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+    return d.toLocaleDateString(locale.lang === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" });
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = email.trim();
     if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      toast.error("Please enter a valid email address.");
+      toast.error(t.invalidEmail);
       return;
     }
     setIsSubmitting(true);
@@ -53,7 +57,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
         email: trimmed,
       });
       if (error) throw error;
-      toast.success("You're on the list!");
+      toast.success(t.subscribed);
       setEmail("");
 
       // Fire-and-forget: also add to Brevo contact list
@@ -63,7 +67,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
         console.error("Brevo sync failed (non-blocking):", brevoErr);
       });
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -81,14 +85,14 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
                 fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
                 color: "#1B4229"
               }}>
-              The Olive Press
+              {t.heading}
             </h2>
           </div>
           <Link
             to="/blog"
             className="font-working-man text-sm tracking-wide flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
             style={{ color: "#1B4229CC" }}>
-            See more posts <span className="text-base">→</span>
+            {t.seeMore} <span className="text-base">→</span>
           </Link>
         </div>
 
@@ -100,7 +104,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
 
         {!isLoading && articles.length === 0 &&
         <div className="text-center py-16">
-            <p className="font-working-man text-lg" style={{ color: "#1B422999" }}>No articles found yet.</p>
+            <p className="font-working-man text-lg" style={{ color: "#1B422999" }}>{t.noArticles}</p>
           </div>
         }
 
@@ -119,7 +123,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
                 alt={article.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /> :
               <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#1B422920" }}>
-                      <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>No image</span>
+                      <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>{t.noImage}</span>
                     </div>
               }
                 </div>
@@ -137,7 +141,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
                     </p>
               }
                   <span className="inline-flex items-center gap-1 text-sm font-working-man group-hover:gap-2 transition-all duration-300" style={{ color: "#1B4229" }}>
-                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                    {t.readMore} <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </Link>
@@ -149,14 +153,14 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
         <div className="mt-16 pt-12 pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6" style={{ borderTop: "1px solid #1B422930" }}>
           <p
             className="text-xl md:text-2xl leading-snug max-w-2xl font-semibold font-working-man"
-            style={{ color: "#1B4229CC" }}>Get ATTIMO stories, insights and updates in your inbox
+            style={{ color: "#1B4229CC" }}>{t.newsletterPrompt}
           </p>
           <form onSubmit={handleNewsletterSubmit} className="flex gap-3 w-full lg:w-auto">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
+              placeholder={t.emailPlaceholder}
               className="px-4 py-2.5 rounded-lg text-sm font-space-grotesk flex-1 md:w-64 outline-none transition-shadow duration-200 focus:ring-2"
               style={{
                 backgroundColor: "#FFFFFF",
@@ -169,7 +173,7 @@ export const BlogSection = ({ initialPosts }: BlogSectionProps = {}) => {
               disabled={isSubmitting}
               className="px-5 py-2.5 rounded-lg text-sm font-working-man tracking-wide uppercase transition-opacity duration-200 hover:opacity-90 disabled:opacity-50 whitespace-nowrap"
               style={{ backgroundColor: "#CDDB2D", color: "#1B4229" }}>
-              {isSubmitting ? "..." : "Subscribe"}
+              {isSubmitting ? "..." : t.subscribe}
             </button>
           </form>
         </div>

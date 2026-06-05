@@ -17,6 +17,12 @@ interface Props {
   // When set, BaseLayout renders hreflang link tags for every locale.
   hreflangPath?: string;
   hideAnnounceBar?: boolean;
+  // <html lang> — defaults to English. Localized pages pass their locale.lang.
+  htmlLang?: string;
+  // Geo announcement-bar messages per shipping tier. Defaulted to English so
+  // existing pages are unchanged; localized pages pass translated strings.
+  announceTier2?: string;
+  announceTier3?: string;
 }
 
 const {
@@ -32,6 +38,9 @@ const {
   jsonLd,
   hreflangPath,
   hideAnnounceBar = false,
+  htmlLang = "en",
+  announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
+  announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
 } = Astro.props;
 
 const socialTitle = ogTitle ?? title;
@@ -61,7 +70,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <script id="consentmo-gcmv2-advanced-mode-integration" is:inline>
       const consentOutOfRegion = { analytics: true, marketing: true, functionality: true, adsDataRedaction: false, urlPassthrough: false };
@@ -171,7 +180,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <!-- Geo-targeted shipping announcement bar.
              Hidden by default; an inline script reads the `attimo_shipping_tier`
              cookie set by middleware.ts and reveals the right message. -->
-        <div id="announce-bar" role="status">
+        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3}>
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
@@ -199,15 +208,17 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             var m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d)/);
             if (!m) return;
             var tier = m[1];
-            var msg = tier === "2"
-              ? "FREE SHIPPING ON 2+ BOTTLES"
-              : tier === "3"
-              ? "FREE SHIPPING ON 3+ BOTTLES"
-              : null;
-            if (!msg) return;
             var bar = document.getElementById("announce-bar");
             var text = document.getElementById("announce-bar-text");
             if (!bar || !text) return;
+            // Messages come from data attributes so they can be localized per
+            // page (BaseLayout `announceTier2`/`announceTier3` props).
+            var msg = tier === "2"
+              ? bar.getAttribute("data-tier2")
+              : tier === "3"
+              ? bar.getAttribute("data-tier3")
+              : null;
+            if (!msg) return;
             text.textContent = msg;
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the

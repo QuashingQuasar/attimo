@@ -3,6 +3,7 @@ import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 const oilDefs = [
   {
@@ -54,7 +55,15 @@ const isLightColor = (hex: string): boolean => {
 };
 
 export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_LOCALE }: YouMightAlsoLikeProps) => {
-  const allOils = oilDefs.map((o) => ({ ...o, price: locale.prices[o.handle] }));
+  const t = getDict(locale);
+  // EN keeps the component's own copy verbatim (no regression); FR pulls the
+  // shared flavour/tagline from the dictionary.
+  const allOils = oilDefs.map((o) => ({
+    ...o,
+    price: locale.prices[o.handle],
+    flavor: locale.lang === "fr" ? t.products.flavour[o.handle] : o.flavor,
+    tagline: locale.lang === "fr" ? t.products.tagline[o.handle] : o.tagline,
+  }));
   const otherOils = allOils.filter((oil) => oil.handle !== currentHandle);
   // Fixed light bg so the section visually separates from BlogSection below.
   const bgColor = "#FFFAEA";
@@ -85,7 +94,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
               letterSpacing: "0.05em"
             }}>
             
-            More Varieties  
+            {t.moreVarieties}
           </h2>
         </div>
 
@@ -134,7 +143,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
                     color: "#1B4229"
                   }}>
                   
-                    500ML
+                    {t.oilCollection.size}
                   </span>
                 </div>
 

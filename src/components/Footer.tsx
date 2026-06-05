@@ -1,12 +1,13 @@
 import attimoLogo from '@/assets/attimo-footer-logo.svg?url';
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
-import { CurrencySelector } from "@/components/CurrencySelector";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface FooterProps {
   locale?: Locale;
 }
 
 export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
+  const t = getDict(locale);
   const shippingHref = localizeHref("/shipping", locale);
   const ambassadorsHref = localizeHref("/ambassadors", locale);
   return <footer className="py-14 md:py-20 lg:py-24 px-6" style={{ backgroundColor: '#1B4229' }}>
@@ -31,13 +32,13 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
         <div className="md:hidden">
           <div className="flex justify-between items-start mb-6">
             <div className="flex flex-col gap-3 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
-              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
-              <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
-              <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
-              <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
-              <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
-              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
+              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.blog}</a>
+              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.ambassadors}</a>
+              <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.privacy}</a>
+              <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.terms}</a>
+              <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.shipping}</a>
+              <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.contact}</a>
+              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.manageOrders}</a>
             </div>
             <a href="https://www.instagram.com/attimo.oil" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3E58C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,8 +50,7 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
           </div>
           <div className="border-t pt-4" style={{ borderColor: '#B3E58C' }}>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
-              <CurrencySelector locale={locale} />
+              <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>{t.footer.rights}</p>
             </div>
           </div>
         </div>
@@ -59,17 +59,16 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
         <div className="hidden md:block border-t pt-6" style={{ borderColor: '#B3E58C' }}>
           <div className="flex justify-between items-center gap-4">
             <div className="flex items-center gap-5">
-              <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>© 2026 ATTIMO. All rights reserved.</p>
-              <CurrencySelector locale={locale} />
+              <p className="text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#B3E58C' }}>{t.footer.rights}</p>
             </div>
             <div className="flex gap-6 text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Blog</a>
-              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Ambassadors</a>
-              <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Privacy Policy</a>
-              <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Terms of Service</a>
-              <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Shipping</a>
-              <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Contact</a>
-              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>Manage Orders & Subscription</a>
+              <a href="/blog" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.blog}</a>
+              <a href={ambassadorsHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.ambassadors}</a>
+              <a href="/privacy" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.privacy}</a>
+              <a href="/terms" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.terms}</a>
+              <a href={shippingHref} className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.shipping}</a>
+              <a href="/contact" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.contact}</a>
+              <a href="https://shop.attimo-oil.com/account" className="hover:underline transition-colors" style={{ color: '#B3E58C' }}>{t.footer.manageOrders}</a>
             </div>
           </div>
         </div>

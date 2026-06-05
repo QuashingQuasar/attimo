@@ -16,7 +16,10 @@ interface CartStore {
   setCartId: (cartId: string) => void;
   setCheckoutUrl: (url: string) => void;
   setLoading: (loading: boolean) => void;
-  createCheckout: () => Promise<void>;
+  // buyerCountryCode pins the Shopify checkout to a market/currency. Callers
+  // pass it for language markets (France → "FR"); omitting it keeps the prior
+  // behaviour for default/dk/se.
+  createCheckout: (buyerCountryCode?: string) => Promise<void>;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -71,13 +74,13 @@ export const useCartStore = create<CartStore>()(
       setCheckoutUrl: (checkoutUrl) => set({ checkoutUrl }),
       setLoading: (isLoading) => set({ isLoading }),
 
-      createCheckout: async () => {
+      createCheckout: async (buyerCountryCode?: string) => {
         const { items, setLoading, setCheckoutUrl } = get();
         if (items.length === 0) return;
 
         setLoading(true);
         try {
-          const checkoutUrl = await createStorefrontCheckout(items);
+          const checkoutUrl = await createStorefrontCheckout(items, { buyerCountryCode });
           setCheckoutUrl(checkoutUrl);
         } catch (error) {
           console.error('Failed to create checkout:', error);

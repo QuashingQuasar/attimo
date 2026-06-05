@@ -1,54 +1,35 @@
 import { useState } from "react";
-
-const tweets = [{
-  id: 1, name: "Olive", handle: "@olvlimits", avatar: "🫒",
-  content: "Polyphenols are a type of antioxidant found in olives.",
-  content2: "They strengthen the body's defenses against cell aging and contribute to long-term metabolic and heart health."
-}, {
-  id: 2, name: "Olive", handle: "@olvlimits", avatar: "🫒",
-  content: "The highest polyphenol counts come from early-harvest olives, picked and pressed within hours.",
-  content2: "Once bottled, levels steadily decline over time."
-}, {
-  id: 3, name: "Olive", handle: "@olvlimits", avatar: "🫒",
-  content: "Commercial oils combine batches from across countries and years to maintain supply.",
-  content2: "This process dilutes the polyphenol content far below fresh-pressed levels."
-}];
-
-const barTooltips: Record<number, {title: string;subtitle: string;description: string;}> = {
-  0: {
-    title: "Average Extra Virgin",
-    subtitle: "~180 mg/kg polyphenols",
-    description: "Most supermarket EVOOs test between 100–250 mg/kg. Blending, age, and industrial processing all reduce polyphenol content."
-  },
-  1: {
-    title: "EU Health Claim",
-    subtitle: "250 mg/kg polyphenols",
-    description: "The European Food Safety Authority (EFSA) allows a health claim for olive oil that contains at least 250 mg/kg of polyphenols."
-  },
-  2: {
-    title: "Blueprint Olive Oil",
-    subtitle: "400 mg/kg polyphenols",
-    description: "Bryan Johnson spends millions optimizing his health for longevity. His Blueprint olive oil, at 400 mg/kg polyphenols, is one of the most recognized high-polyphenol oils on the market."
-  },
-  3: {
-    title: "ATTIMO Olive Oil",
-    subtitle: "400–900 mg/kg polyphenols",
-    description: "Our olive oils range between 400 and 900 mg/kg polyphenols depending on the variety."
-  }
-};
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface PolyphenolComparisonProps {
   productValue?: number;
   productLabel?: string;
+  locale?: Locale;
 }
 
-export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL" }: PolyphenolComparisonProps) => {
+export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL", locale = DEFAULT_LOCALE }: PolyphenolComparisonProps) => {
+  const t = getDict(locale).polyphenol;
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
+  // Name/handle/avatar are locale-independent; copy comes from the dictionary.
+  const tweets = [
+    { id: 1, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[0].content, content2: t.cards[0].content2 },
+    { id: 2, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[1].content, content2: t.cards[1].content2 },
+    { id: 3, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[2].content, content2: t.cards[2].content2 },
+  ];
+
+  const barTooltips: Record<number, {title: string;subtitle: string;description: string;}> = {
+    0: { title: t.tooltips.avgTitle, subtitle: t.tooltips.avgSub, description: t.tooltips.avgDesc },
+    1: { title: t.tooltips.euTitle, subtitle: t.tooltips.euSub, description: t.tooltips.euDesc },
+    2: { title: t.tooltips.blueprintTitle, subtitle: t.tooltips.blueprintSub, description: t.tooltips.blueprintDesc },
+    3: { title: t.tooltips.attimoTitle, subtitle: t.tooltips.attimoSub, description: t.tooltips.attimoDesc },
+  };
+
   const comparisonData = [
-  { name: "Avg. Supermarket EVOO", value: 180, color: "bg-[#A8B88F]" },
-  { name: "EU Health Claim", value: 250, color: "bg-[#8A9B6F]" },
-  { name: "Blueprint Olive Oil", value: 400, color: "bg-[#5C6E45]" },
+  { name: t.barAvg, value: 180, color: "bg-[#A8B88F]" },
+  { name: t.barEu, value: 250, color: "bg-[#8A9B6F]" },
+  { name: t.barBlueprint, value: 400, color: "bg-[#5C6E45]" },
   { name: productLabel, value: productValue, color: "bg-[#1B4229]" }];
 
 
@@ -60,9 +41,9 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto" style={{ zoom: 0.88 }}>
             <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
-              the polyphenol difference
+              {t.heading}
             </h2>
-            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)', maxWidth: '53.2rem' }}>Polyphenols make all the difference for olive oil health benefits and flavour. ATTIMO oils are pressed from olives that are harvested early, when polyphenols are at maximum levels.
+            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)', maxWidth: '53.2rem' }}>{t.intro}
 
             </p>
 

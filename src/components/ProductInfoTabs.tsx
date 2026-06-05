@@ -1,13 +1,17 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Flower2, Sprout, UtensilsCrossed, Truck } from "lucide-react";
 import { ProductContent } from "@/lib/productContent";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface ProductInfoTabsProps {
   content: ProductContent;
+  locale?: Locale;
 }
 
-export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
+export const ProductInfoTabs = ({ content, locale = DEFAULT_LOCALE }: ProductInfoTabsProps) => {
   const { tabs, labReportUrl } = content;
+  const t = getDict(locale).productTabs;
 
   return (
     <div className="w-full">
@@ -16,7 +20,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           <AccordionTrigger className="py-5 hover:no-underline">
             <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Flower2 size={20} className="text-olive-dark" />
-              Flavour Profile
+              {t.flavourProfile}
             </span>
           </AccordionTrigger>
           <AccordionContent>
@@ -41,7 +45,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           <AccordionTrigger className="py-5 hover:no-underline">
             <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Sprout size={20} className="text-olive-dark" />
-              Harvest Details
+              {t.harvestDetails}
             </span>
           </AccordionTrigger>
           <AccordionContent>
@@ -55,7 +59,7 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           <AccordionTrigger className="py-5 hover:no-underline">
             <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <UtensilsCrossed size={20} className="text-olive-dark" />
-              Best Uses
+              {t.bestUses}
             </span>
           </AccordionTrigger>
           <AccordionContent>
@@ -70,14 +74,14 @@ export const ProductInfoTabs = ({ content }: ProductInfoTabsProps) => {
           <AccordionTrigger className="py-5 hover:no-underline">
             <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1.1vw, 1.2rem)' }}>
               <Truck size={20} className="text-olive-dark" />
-              Shipping & Delivery
+              {t.shippingDelivery}
             </span>
           </AccordionTrigger>
           <AccordionContent>
             <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.1vw, 1.125rem)' }}>
-              <p>We ship across Europe. Orders are carefully packed and dispatched the next business day. Delivery typically takes 2–7 business days depending on your location. Most multi-bottle orders qualify for free shipping.</p>
+              <p>{t.shippingBody}</p>
               <p className="mt-3">
-                <a href="/shipping" className="underline hover:no-underline text-olive-dark font-medium">View full shipping rates & delivery times →</a>
+                <a href="/shipping" className="underline hover:no-underline text-olive-dark font-medium">{t.shippingLink}</a>
               </p>
             </div>
           </AccordionContent>

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
@@ -148,7 +148,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
 
   const handleCheckout = async () => {
     try {
-      await createCheckout();
+      // For language markets (France) pin the checkout to that country so it
+      // opens in the right currency; default/dk/se pass undefined (unchanged).
+      await createCheckout(shopifyContextForLocale(locale)?.country);
       const checkoutUrl = useCartStore.getState().checkoutUrl;
       if (checkoutUrl) {
         window.location.href = checkoutUrl;

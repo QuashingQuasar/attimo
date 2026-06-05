@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { fetchVariantQuantityAvailable } from "@/lib/shopify";
+import { DEFAULT_LOCALE, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface QuantitySelectorProps {
   quantity: number;
@@ -16,6 +18,7 @@ interface QuantitySelectorProps {
    * exceeds the available stock. Omit to keep all presets enabled.
    */
   variantId?: string;
+  locale?: Locale;
 }
 
 // Volume discount tiers. Single source of truth for the button label AND the
@@ -34,22 +37,16 @@ export function getVolumeDiscountPercent(qty: number): number {
   return VOLUME_DISCOUNT_PERCENTS[qty] ?? 0;
 }
 
-const BASE_PRESETS = [
-  { qty: 1, label: "1 Bottle" },
-  { qty: 2, label: "2 Bottles" },
-  { qty: 3, label: "3 Bottles" },
-  { qty: 4, label: "4 Bottles" },
-  { qty: 6, label: "6 Bottles" },
-  { qty: 8, label: "8 Bottles" },
-];
+const PRESET_QTYS = [1, 2, 3, 4, 6, 8];
 
-function buildPresets(threshold: number) {
-  return BASE_PRESETS.map((p) => ({
-    ...p,
+function buildPresets(threshold: number, bottleSingular: string, bottlePlural: string) {
+  return PRESET_QTYS.map((qty) => ({
+    qty,
+    label: `${qty} ${qty > 1 ? bottlePlural : bottleSingular}`,
     // Free shipping label is market-driven (per getFreeShippingThreshold).
     // Volume discount badge is rendered separately from VOLUME_DISCOUNT_PERCENTS
     // at render time (see getVolumeDiscountPercent).
-    freeShipping: p.qty >= threshold,
+    freeShipping: qty >= threshold,
   }));
 }
 
@@ -61,10 +58,12 @@ export const QuantitySelector = ({
   buttonId,
   freeShippingThreshold = 2,
   variantId,
+  locale = DEFAULT_LOCALE,
 }: QuantitySelectorProps) => {
+  const t = getDict(locale).quantity;
   const totalPrice = quantity * pricePerUnit;
   const threshold = freeShippingThreshold ?? 2;
-  const presets = buildPresets(threshold);
+  const presets = buildPresets(threshold, t.bottleSingular, t.bottlePlural);
 
   // Live stock from Shopify; null = unknown (keep every preset enabled).
   const [available, setAvailable] = useState<number | null>(null);
@@ -75,13 +74,13 @@ export const QuantitySelector = ({
       return;
     }
     let cancelled = false;
-    fetchVariantQuantityAvailable(variantId).then((qty) => {
+    fetchVariantQuantityAvailable(variantId, shopifyContextForLocale(locale)).then((qty) => {
       if (!cancelled) setAvailable(qty);
     });
     return () => {
       cancelled = true;
     };
-  }, [variantId]);
+  }, [variantId, locale]);
 
   return (
     <div className="space-y-3">
@@ -114,9 +113,9 @@ export const QuantitySelector = ({
               onClick={() => onQuantityChange(p.qty)}
               aria-label={
                 disabled
-                  ? `${p.label} — only ${available} in stock`
+                  ? t.onlyInStock.replace("{label}", p.label).replace("{available}", String(available))
                   : discountLabel
-                  ? `${p.label}, ${Math.round(discountPct * 100)}% off`
+                  ? t.percentOff.replace("{label}", p.label).replace("{pct}", String(Math.round(discountPct * 100)))
                   : p.label
               }
               className={`relative rounded-xl border-2 transition-all duration-200 text-center flex flex-col items-center justify-center min-h-[60px] py-3 px-1 ${
@@ -156,7 +155,7 @@ export const QuantitySelector = ({
               </span>
               {p.freeShipping && (
                 <span className={subClass} style={subStyle}>
-                  Free Shipping
+                  {t.freeShipping}
                 </span>
               )}
             </button>
