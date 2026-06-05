@@ -49,6 +49,28 @@ export const fr: Dict = {
     changeRegion: "Changer de devise ou de pays",
   },
 
+  cart: {
+    ariaLabel: "Panier",
+    title: "Panier",
+    emptyDescription: "Votre panier est actuellement vide.",
+    // French uses the singular for 0 and 1, plural from 2.
+    itemsInCart: (n: number) => `${n} article${n >= 2 ? "s" : ""} dans votre panier`,
+    emptyHeading:
+      "On dirait que vous n'avez encore rien ajouté. Commençons.", // REVIEW
+    freeShipping: "Livraison gratuite ✓",
+    freeShippingNudge: (n: number) =>
+      `Ajoutez ${n} bouteille${n >= 2 ? "s" : ""} de plus pour la livraison gratuite`, // REVIEW
+    youMightAlsoLike: "Vous aimerez aussi",
+    add: "+ Ajouter",
+    viewProduct: (name: string) => `Voir ${name}`,
+    subtotal: "Sous-total",
+    shipping: "Livraison",
+    free: "Gratuite",
+    calculatedAtCheckout: "Calculée au paiement",
+    creatingCheckout: "Création du paiement...",
+    checkout: "Payer avec Shopify",
+  },
+
   products: {
     flavour: {
       coratina: "Corsé et Intense", // REVIEW

@@ -12,6 +12,7 @@ import {
 import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
@@ -50,6 +51,7 @@ function localizedLineTotal(item: CartItem, locale: Locale): number {
 
 export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { darkIcon?: boolean; locale?: Locale }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const t = getDict(locale).cart;
   const {
     items,
     isLoading,
@@ -178,7 +180,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
             {image && (
               <Link
                 to={localizeHref(`/product/${slug}`, locale)}
-                aria-label={`View ${name}`}
+                aria-label={t.viewProduct(name)}
                 className="block w-full aspect-square rounded-lg overflow-hidden mb-1.5 transition-opacity hover:opacity-90"
                 style={{ backgroundColor: '#1B4229' }}
               >
@@ -211,7 +213,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 fontFamily: 'UDC Working Man Sans, sans-serif',
               }}
             >
-              + Add
+              {t.add}
             </button>
           </div>
         );
@@ -234,7 +236,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
             e.stopPropagation();
           }}
           className={`${darkIcon ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity relative`}
-          aria-label="Shopping cart"
+          aria-label={t.ariaLabel}
         >
           <ShoppingCart className="h-7 w-7 md:h-8 md:w-8" />
           {totalItems > 0 && (
@@ -264,13 +266,13 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 lineHeight: 1.05,
               }}
             >
-              Shopping Cart
+              {t.title}
             </h1>
           </SheetTitle>
           <SheetDescription className={totalItems === 0 ? "sr-only" : undefined}>
             {totalItems === 0
-              ? "Your shopping cart is currently empty."
-              : `${totalItems} item${totalItems !== 1 ? 's' : ''} in your cart`}
+              ? t.emptyDescription
+              : t.itemsInCart(totalItems)}
           </SheetDescription>
         </SheetHeader>
 
@@ -281,7 +283,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 className="text-sm uppercase mb-3 flex-shrink-0"
                 style={recommendationsHeadingStyle}
               >
-                Looks like you haven&apos;t added anything yet. Let&apos;s get you started.
+                {t.emptyHeading}
               </h3>
               {recommendationsGrid && (
                 <div className="flex-1 overflow-y-auto pr-2 min-h-0">
@@ -302,7 +304,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                       fontFamily: 'Space Grotesk, sans-serif',
                     }}
                   >
-                    Free shipping ✓
+                    {t.freeShipping}
                   </div>
                 ) : (
                   <div
@@ -313,7 +315,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                       fontFamily: 'Space Grotesk, sans-serif',
                     }}
                   >
-                    Add {bottlesNeeded} more bottle{bottlesNeeded > 1 ? 's' : ''} for free shipping
+                    {t.freeShippingNudge(bottlesNeeded)}
                   </div>
                 )}
               </div>
@@ -359,7 +361,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 {recommendationsGrid && (
                   <div className="mt-4 pt-4 border-t border-olive-dark/10">
                     <h3 className="text-sm uppercase mb-3" style={recommendationsHeadingStyle}>
-                      You might also like
+                      {t.youMightAlsoLike}
                     </h3>
                     {recommendationsGrid}
                   </div>
@@ -369,7 +371,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
               {/* Subtotal + Shipping rows — no combined total per spec. */}
               <div className="flex-shrink-0 space-y-1 pt-4 border-t">
                 <div className="flex justify-between items-center">
-                  <span className="text-base" style={{ color: '#1B4229' }}>Subtotal</span>
+                  <span className="text-base" style={{ color: '#1B4229' }}>{t.subtotal}</span>
                   <span className="text-base font-semibold" style={{ color: '#1B4229' }}>
                     {hasVolumeDiscount && (
                       <span className="line-through opacity-60 font-normal mr-2">
@@ -382,12 +384,12 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                   </span>
                 </div>
                 <div className="flex justify-between items-center pb-2">
-                  <span className="text-base" style={{ color: '#1B4229' }}>Shipping</span>
+                  <span className="text-base" style={{ color: '#1B4229' }}>{t.shipping}</span>
                   <span
                     className="text-base font-semibold"
                     style={{ color: qualifiesForFreeShipping ? '#1B4229' : 'rgba(27, 66, 41, 0.7)' }}
                   >
-                    {qualifiesForFreeShipping ? 'Free' : 'Calculated at checkout'}
+                    {qualifiesForFreeShipping ? t.free : t.calculatedAtCheckout}
                   </span>
                 </div>
 
@@ -404,10 +406,10 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                   {isLoading ? (
                     <>
                       <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      Creating Checkout...
+                      {t.creatingCheckout}
                     </>
                   ) : (
-                    'Checkout with Shopify'
+                    t.checkout
                   )}
                 </Button>
               </div>
