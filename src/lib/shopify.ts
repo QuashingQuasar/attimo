@@ -274,8 +274,14 @@ export async function fetchSellingPlans(handle: string, context?: ShopifyContext
   }
 }
 
+// $language is the typed LanguageCode enum. It's nullable (no `!`) on purpose:
+// English markets (default/dk/se) pass null → @inContext(language: null) is
+// identical to no language context (English checkout), preserving their prior
+// behaviour. Country is NOT on @inContext here — for cart operations Shopify
+// ignores the @inContext country/buyer args; country must come from
+// buyerIdentity.countryCode in the input (set in createStorefrontCheckout).
 const CART_CREATE_MUTATION = `
-  mutation cartCreate($input: CartInput!) {
+  mutation cartCreate($input: CartInput!, $language: LanguageCode) @inContext(language: $language) {
     cartCreate(input: $input) {
       cart {
         id
@@ -364,7 +370,7 @@ async function ensureSellingPlanId(item: CartItem): Promise<string | null> {
 
 export async function createStorefrontCheckout(
   items: CartItem[],
-  opts?: { buyerCountryCode?: string },
+  context?: ShopifyContext,
 ): Promise<string> {
   try {
     // Resolve a sellingPlanId for every subscription line. If the cart was
@@ -395,11 +401,29 @@ export async function createStorefrontCheckout(
     // checkout). Only attached when a caller passes a country (France); the
     // default/dk/se markets pass nothing and keep their prior behaviour.
     const input: { lines: typeof lines; buyerIdentity?: { countryCode: string } } = { lines };
-    if (opts?.buyerCountryCode) {
-      input.buyerIdentity = { countryCode: opts.buyerCountryCode };
+    if (context?.country) {
+      input.buyerIdentity = { countryCode: context.country };
     }
 
-    const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, { input });
+    // Checkout LANGUAGE is set solely by @inContext(language:) on cartCreate —
+    // the returned checkoutUrl then loads in that language. null (English
+    // markets) = no language context = English, unchanged. The cart is created
+    // fresh on every "Checkout" click from the storefront's CURRENT locale, so
+    // the checkout language always matches the active locale (no stale-language
+    // edge case to carry over).
+    const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
+      input,
+      language: context?.language ?? null,
+    });
+
+    // Echo the context Shopify actually applied, to confirm e.g. language=FR
+    // was applied and not silently falling back to EN.
+    console.log(
+      '[shopify.createStorefrontCheckout] requested context:',
+      { country: context?.country ?? null, language: context?.language ?? null },
+      '| applied (extensions.context):',
+      cartData?.extensions?.context ?? null,
+    );
 
     if (cartData.data.cartCreate.userErrors.length > 0) {
       console.error('[shopify.createStorefrontCheckout] userErrors from Shopify:', cartData.data.cartCreate.userErrors);
