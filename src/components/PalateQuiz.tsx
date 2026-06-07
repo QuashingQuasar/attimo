@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { getQuizQuestions, calculateResults, type OilResult, type QuizQuestion } from "@/lib/quizData";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -165,6 +165,37 @@ export function PalateQuiz({ locale = DEFAULT_LOCALE }: { locale?: Locale } = {}
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [results, setResults] = useState<OilResult[] | null>(null);
+
+  // Fire a single `quiz_complete` dataLayer event when the result screen first
+  // renders (results goes null → set). Guarded by a ref so it fires once per
+  // completion — never on re-renders, never when stepping back and forth
+  // (results stays null then). Resets when results clears, so a genuine retake
+  // can fire a fresh event. Analytics only — no UX/routing/visual change.
+  const quizCompleteFiredRef = useRef(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return; // SSR/hydration-safe
+    if (!results) {
+      quizCompleteFiredRef.current = false;
+      return;
+    }
+    if (quizCompleteFiredRef.current) return;
+    quizCompleteFiredRef.current = true;
+
+    const top = results[0];
+    const scores = results.reduce<Record<string, number>>((acc, r) => {
+      acc[r.key] = r.percentage;
+      return acc;
+    }, {});
+
+    const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: "quiz_complete",
+      quiz_top_match: top.name,
+      quiz_match_score: top.percentage,
+      quiz_scores: scores, // { coratina, picual, nocellara } → percentage
+    });
+  }, [results]);
 
   const totalQuestions = quizQuestions.length;
   const currentQuestion = quizQuestions[currentStep];
