@@ -122,6 +122,23 @@ const productJsonLd = {
         value: locale.shipping.standard.toFixed(locale.currency.decimals),
         currency: locale.currency.code,
       },
+      // Matches the site's stated promise: orders ship the next business day
+      // (handling 0–1 day) and arrive in 2–7 business days across the EU.
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 1,
+          unitCode: "DAY",
+        },
+        transitTime: {
+          "@type": "QuantitativeValue",
+          minValue: 2,
+          maxValue: 7,
+          unitCode: "DAY",
+        },
+      },
     },
   },
   aggregateRating,
