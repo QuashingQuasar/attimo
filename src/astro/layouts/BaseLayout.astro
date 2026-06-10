@@ -23,9 +23,6 @@ interface Props {
   // existing pages are unchanged; localized pages pass translated strings.
   announceTier2?: string;
   announceTier3?: string;
-  // Second always-shown announce-bar message (restock note), appended after
-  // the tier message with a separator. Localized like the tier messages.
-  announceCoratina?: string;
 }
 
 const {
@@ -44,7 +41,6 @@ const {
   htmlLang = "en",
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
   announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
-  announceCoratina = "Orders including Coratina ship in 5–7 days",
 } = Astro.props;
 
 const socialTitle = ogTitle ?? title;
@@ -184,7 +180,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <!-- Geo-targeted shipping announcement bar.
              Hidden by default; an inline script reads the `attimo_shipping_tier`
              cookie set by middleware.ts and reveals the right message. -->
-        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3} data-coratina={announceCoratina}>
+        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3}>
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
@@ -225,11 +221,6 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               ? bar.getAttribute("data-tier3")
               : null;
             if (!msg) return;
-            // Append the second message (e.g. Coratina restock) after a bullet
-            // separator. Plain text in textContent → inherits the bar's
-            // existing typography/colour exactly; no new styles.
-            var second = bar.getAttribute("data-coratina");
-            if (second) msg = msg + " // " + second;
             text.textContent = msg;
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the

@@ -183,9 +183,6 @@ export const productContentMap: Record<string, ProductContent> = {
     buttonColor: "#B3E58C",
     tileBackground: "#10221B",
     tileAccent: "#B3E58C",
-    // Restock arriving in ~1 week — taking orders now with delayed shipping.
-    // Clear this back to undefined once the next-day fulfilment resumes.
-    shippingNotice: "Ships in 5–7 days",
     originRegion: {
       heading: "From grove to bottle",
       body: "ATTIMO Coratina is directly sourced from a small family grove in Puglia, Italy. The region is the largest producer of olive oil in the country, known for its centuries-old trees and exceptional quality.\n\nThe coastal plains and Mediterranean climate create ideal growing conditions for the Coratina variety. Long, sun-drenched days concentrate the fruit's polyphenols, preserving the bold, peppery character that makes this oil exceptional.",

@@ -103,7 +103,6 @@ export const productContentFrMap: Record<string, ProductContent> = {
     buttonColor: "#B3E58C",
     tileBackground: "#10221B",
     tileAccent: "#B3E58C",
-    shippingNotice: "Expédition sous 5 à 7 jours", // REVIEW
     originRegion: {
       heading: "Du verger à la bouteille", // REVIEW
       body: "ATTIMO Coratina est approvisionnée directement auprès d'un petit verger familial dans les Pouilles, en Italie. La région est le plus grand producteur d'huile d'olive du pays, réputée pour ses arbres centenaires et sa qualité exceptionnelle.\n\nLes plaines côtières et le climat méditerranéen créent des conditions de culture idéales pour la variété Coratina. De longues journées baignées de soleil concentrent les polyphénols du fruit, préservant le caractère corsé et poivré qui rend cette huile exceptionnelle.", // REVIEW
