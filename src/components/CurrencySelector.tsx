@@ -61,6 +61,22 @@ export const CurrencySelector = ({
   const ref = useRef<HTMLDivElement>(null);
   const t = getDict(locale);
 
+  // Hover-to-open (desktop), matching the header Shop dropdown. A short close
+  // delay bridges the 6px gap between the trigger and the menu so it doesn't
+  // flicker shut while the cursor crosses it. Click/tap toggle is kept below
+  // for touch devices and keyboard users (no hover there).
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openOnHover = () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+    setOpen(true);
+  };
+  const scheduleClose = () => {
+    closeTimeout.current = setTimeout(() => setOpen(false), 150);
+  };
+  useEffect(() => () => {
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
+  }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") setPathname(window.location.pathname);
   }, []);
@@ -86,6 +102,8 @@ export const CurrencySelector = ({
       ref={ref}
       className="relative inline-block"
       style={{ fontFamily: "Space Grotesk, sans-serif", lineHeight: 1 }}
+      onMouseEnter={openOnHover}
+      onMouseLeave={scheduleClose}
     >
       <button
         type="button"
