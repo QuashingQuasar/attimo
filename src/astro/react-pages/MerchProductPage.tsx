@@ -100,18 +100,19 @@ function MerchProductInner({
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header forceScrolled locale={DEFAULT_LOCALE} />
 
-      <section className="pt-24 md:pt-0 pb-16 md:pb-24 px-4 md:px-6">
-        {/* Hero: two 50/50 halves, each with its content centred vertically +
-            horizontally in the viewport — image left, buy box right. */}
-        <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 md:min-h-screen md:items-center"
-          style={{ maxWidth: "1200px" }}
-        >
-          {/* LEFT — product image centred in its half, with whitespace */}
-          <div className="flex flex-col items-center gap-5">
+      {/* Hero: the ENTIRE viewport split into two equal halves. Each half is a
+          full-height flex box that centres its content both vertically and
+          horizontally — product image on the left, buy box on the right.
+          Flexbox (not grid) so the centring actually takes: an earlier grid
+          version used `items-center`, which only centres within a content-sized
+          row and left the block pinned to the top. */}
+      <section className="flex flex-col md:flex-row">
+        {/* LEFT half — product image dead-centre, with whitespace around it */}
+        <div className="md:w-1/2 md:min-h-screen flex items-center justify-center px-6 pt-28 pb-10 md:py-24">
+          <div className="flex flex-col items-center gap-5 w-full" style={{ maxWidth: "440px" }}>
             <div
               className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ maxWidth: "480px", backgroundColor: "#FFFFFF" }}
+              style={{ backgroundColor: "#FFFFFF" }}
             >
               {mainImageUrl && (
                 <img
@@ -123,7 +124,7 @@ function MerchProductInner({
               )}
             </div>
             {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1" style={{ maxWidth: "480px" }}>
+              <div className="flex gap-2 overflow-x-auto pb-1 max-w-full">
                 {images.map((im, i) => (
                   <button
                     key={im.url}
@@ -147,9 +148,11 @@ function MerchProductInner({
               </div>
             )}
           </div>
+        </div>
 
-          {/* RIGHT — buy box, vertically centred in its half */}
-          <div className="flex flex-col justify-center">
+        {/* RIGHT half — buy box (incl. description), centred as a block */}
+        <div className="md:w-1/2 md:min-h-screen flex items-center justify-center px-6 pb-16 md:py-24">
+          <div className="flex flex-col w-full" style={{ maxWidth: "440px" }}>
             <h1
               className="mb-2"
               style={{
@@ -248,42 +251,69 @@ function MerchProductInner({
             >
               Printed on demand and shipped separately from oil orders.
             </p>
+
+            {/* Description — part of the right-hand buy box. Printful's copy is
+                one long " • "-delimited run; split it into a lead sentence + a
+                compact spec list so it reads like the reference's bullets and
+                stays short enough to keep the column centred. */}
+            {node.description && (() => {
+              const [lead, ...specs] = node.description.split(" • ");
+              return (
+                <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
+                  <p
+                    className="uppercase mb-3"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      color: "#1B4229",
+                      letterSpacing: "0.1em",
+                      fontSize: "0.75rem",
+                      opacity: 0.7,
+                    }}
+                  >
+                    Description
+                  </p>
+                  <p
+                    className="mb-3"
+                    style={{
+                      fontFamily: "Space Grotesk, sans-serif",
+                      color: "#1B4229",
+                      opacity: 0.85,
+                      lineHeight: 1.6,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    {lead}
+                  </p>
+                  {specs.length > 0 && (
+                    <ul className="flex flex-col gap-1">
+                      {specs.map((s, i) => (
+                        <li
+                          key={i}
+                          className="flex gap-2"
+                          style={{
+                            fontFamily: "Space Grotesk, sans-serif",
+                            color: "#1B4229",
+                            opacity: 0.7,
+                            lineHeight: 1.45,
+                            fontSize: "0.8rem",
+                          }}
+                        >
+                          <span aria-hidden style={{ opacity: 0.5 }}>·</span>
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </div>
+      </section>
 
-        {/* Description — underneath the centred hero so it never unbalances the
-            two halves. */}
-        {node.description && (
-          <div className="mx-auto pt-4 md:pt-8" style={{ maxWidth: "720px" }}>
-            <p
-              className="uppercase mb-3"
-              style={{
-                fontFamily: "UDC Working Man Sans, sans-serif",
-                color: "#1B4229",
-                letterSpacing: "0.1em",
-                fontSize: "0.85rem",
-                opacity: 0.7,
-              }}
-            >
-              Description
-            </p>
-            <p
-              className="whitespace-pre-line"
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#1B4229",
-                opacity: 0.8,
-                lineHeight: 1.7,
-                fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
-              }}
-            >
-              {node.description}
-            </p>
-          </div>
-        )}
-
-        {related.length > 0 && (
-          <div className="mx-auto mt-20 md:mt-28" style={{ maxWidth: "1200px" }}>
+      {related.length > 0 && (
+        <section className="px-4 md:px-6 pb-16 md:pb-24">
+          <div className="mx-auto" style={{ maxWidth: "1200px" }}>
             <h2
               className="text-center mb-8"
               style={{ fontFamily: "Beverly Drive, serif", color: "#1B4229", fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}
@@ -325,8 +355,8 @@ function MerchProductInner({
               })}
             </div>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       <Footer locale={DEFAULT_LOCALE} />
       <Sonner />
