@@ -19,28 +19,28 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header forceScrolled locale={DEFAULT_LOCALE} />
 
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-4 md:px-6">
+      <section className="pt-32 md:pt-40 pb-20 md:pb-28 px-5 md:px-8">
         <div className="mx-auto" style={{ maxWidth: "1200px" }}>
-          <div className="text-center mb-12 md:mb-16">
+          {/* Store header — left-aligned, like the reference. */}
+          <div className="mb-12 md:mb-16">
             <h1
-              className="mb-4"
+              className="mb-3"
               style={{
                 fontFamily: "Beverly Drive, serif",
                 color: "#1B4229",
-                fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
                 letterSpacing: "0.04em",
               }}
             >
               Merch
             </h1>
             <p
-              className="mx-auto"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 color: "#1B4229",
-                opacity: 0.6,
-                fontSize: "clamp(1.1rem, 1.6vw, 1.4rem)",
-                maxWidth: "560px",
+                opacity: 0.55,
+                fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
+                maxWidth: "520px",
                 lineHeight: 1.6,
               }}
             >
@@ -49,14 +49,11 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
           </div>
 
           {products.length === 0 ? (
-            <p
-              className="text-center"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6 }}
-            >
+            <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6 }}>
               Nothing here yet — check back soon.
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-10 md:gap-y-16">
               {products.map((p) => {
                 const node = p.node;
                 const img = node.images?.edges?.[0]?.node;
@@ -64,61 +61,42 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                 const soldOut = !node.variants.edges.some((v) => v.node.availableForSale);
                 return (
                   <Link key={node.id} to={`/merch/${node.handle}`} className="group flex flex-col">
-                    <div
-                      className="relative rounded-2xl overflow-hidden aspect-[4/5] mb-5"
-                      style={{ backgroundColor: "#1B4229" }}
-                    >
+                    {/* Image — large, contained, transparent background so cream
+                        mockups blend into the page (matches the PDP). */}
+                    <div className="aspect-square overflow-hidden mb-4 flex items-center justify-center">
                       {img && (
                         <img
                           src={img.url}
                           alt={img.altText ?? node.title}
-                          className="w-full h-full object-cover relative z-[2] transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.04]"
                         />
                       )}
-                      {soldOut && (
-                        <div className="absolute bottom-0 right-0 z-10 px-4 pb-4">
-                          <span
-                            style={{
-                              fontFamily: "UDC Working Man Sans, sans-serif",
-                              letterSpacing: "0.1em",
-                              color: "#CDDB2D",
-                              backgroundColor: "#1B4229",
-                              textTransform: "uppercase",
-                              padding: "4px 10px",
-                              borderRadius: 6,
-                              fontSize: "0.8rem",
-                            }}
-                          >
-                            Sold Out
-                          </span>
-                        </div>
-                      )}
                     </div>
-                    <div className="flex flex-col items-center text-center px-2">
-                      <h3
-                        className="mb-1.5"
+                    {/* Title + price — left-aligned, small and quiet. */}
+                    <h3
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        color: "#1B4229",
+                        fontSize: "1.05rem",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {node.title}
+                    </h3>
+                    {price && (
+                      <p
+                        className="mt-0.5"
                         style={{
-                          fontFamily: "Beverly Drive, serif",
+                          fontFamily: "Space Grotesk, sans-serif",
                           color: "#1B4229",
-                          fontSize: "clamp(1.5rem, 2.2vw, 2rem)",
-                          letterSpacing: "0.03em",
+                          opacity: 0.5,
+                          fontSize: "0.95rem",
                         }}
                       >
-                        {node.title}
-                      </h3>
-                      {price && (
-                        <p
-                          style={{
-                            fontFamily: "UDC Working Man Sans, sans-serif",
-                            color: "#1B4229",
-                            fontSize: "clamp(1.1rem, 1.4vw, 1.3rem)",
-                            letterSpacing: "0.03em",
-                          }}
-                        >
-                          {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
-                        </p>
-                      )}
-                    </div>
+                        {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
+                        {soldOut && <span className="ml-2">· Sold out</span>}
+                      </p>
+                    )}
                   </Link>
                 );
               })}
