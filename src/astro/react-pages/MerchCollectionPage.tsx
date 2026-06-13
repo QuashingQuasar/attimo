@@ -10,6 +10,30 @@ const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } },
 });
 
+// Flat swatch colours for the apparel colour options. Keyed by the lowercased
+// Shopify/Printful colour name; unknown names fall back to a neutral so the
+// swatch is still visible.
+const COLOR_SWATCH: Record<string, string> = {
+  "dark chocolate": "#3a2b25",
+  "forest green": "#264430",
+  maroon: "#5c2230",
+  black: "#1b1b1b",
+  white: "#f4f1e8",
+  navy: "#1f2a44",
+  "navy blue": "#1f2a44",
+  "sport grey": "#b6b6b6",
+  "heather grey": "#b6b6b6",
+  red: "#a52a2a",
+  royal: "#2f4aa0",
+  "royal blue": "#2f4aa0",
+  "light blue": "#86bbe3",
+  sand: "#d8c9a8",
+  natural: "#e4dcc7",
+  olive: "#5b5a36",
+  "military green": "#4b4f3a",
+};
+const swatchHex = (name: string) => COLOR_SWATCH[name.trim().toLowerCase()] ?? "#c9c2b0";
+
 // /merch collection listing. English-only (default locale). Mirrors the oil
 // product-card visual from OilProductWidgets but is fed from the Shopify
 // "Merch" collection (build-time fetch). Merch is EUR with cents, so prices
@@ -60,6 +84,8 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                 const images = node.images?.edges?.map((e) => e.node) ?? [];
                 const price = node.priceRange?.minVariantPrice;
                 const soldOut = !variants.some((v) => v.availableForSale);
+                const colors =
+                  node.options?.find((o) => /colou?r/i.test(o.name))?.values ?? [];
 
                 // Hover reveals the OTHER SIDE of the same garment (e.g. the
                 // back). Each variant's `.image` is that colour's FRONT mockup,
@@ -98,29 +124,75 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                         />
                       )}
                     </div>
-                    {/* Title + price — left-aligned, small and quiet. */}
-                    <h3
-                      style={{
-                        fontFamily: "Space Grotesk, sans-serif",
-                        color: "#1B4229",
-                        fontSize: "1.05rem",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {node.title}
-                    </h3>
-                    {price && (
+                    {/* Title (left) and price (right) on one row. */}
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3
+                        style={{
+                          fontFamily: "Space Grotesk, sans-serif",
+                          color: "#1B4229",
+                          fontSize: "1.05rem",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {node.title}
+                      </h3>
+                      {price && (
+                        <p
+                          className="flex-shrink-0"
+                          style={{
+                            fontFamily: "Space Grotesk, sans-serif",
+                            color: "#1B4229",
+                            opacity: 0.5,
+                            fontSize: "0.95rem",
+                          }}
+                        >
+                          {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
+                        </p>
+                      )}
+                    </div>
+                    {/* Available colours under the title (when the product has
+                        colour variants). */}
+                    {colors.length > 0 && (
+                      <div className="flex items-center gap-1.5 mt-2">
+                        {colors.slice(0, 6).map((c) => (
+                          <span
+                            key={c}
+                            title={c}
+                            aria-label={c}
+                            className="inline-block rounded-[3px]"
+                            style={{
+                              width: 22,
+                              height: 12,
+                              backgroundColor: swatchHex(c),
+                              border: "1px solid rgba(27,66,41,0.15)",
+                            }}
+                          />
+                        ))}
+                        {colors.length > 6 && (
+                          <span
+                            style={{
+                              fontFamily: "Space Grotesk, sans-serif",
+                              color: "#1B4229",
+                              opacity: 0.5,
+                              fontSize: "0.8rem",
+                            }}
+                          >
+                            +{colors.length - 6}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {soldOut && (
                       <p
-                        className="mt-0.5"
+                        className="mt-1.5"
                         style={{
                           fontFamily: "Space Grotesk, sans-serif",
                           color: "#1B4229",
                           opacity: 0.5,
-                          fontSize: "0.95rem",
+                          fontSize: "0.85rem",
                         }}
                       >
-                        {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
-                        {soldOut && <span className="ml-2">· Sold out</span>}
+                        Sold out
                       </p>
                     )}
                   </Link>
