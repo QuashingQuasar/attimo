@@ -61,23 +61,18 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                 const price = node.priceRange?.minVariantPrice;
                 const soldOut = !variants.some((v) => v.availableForSale);
 
-                // Hover swaps to a DIFFERENT colour variant's image when the
-                // product has one; falls back to the second gallery image; else
-                // just the zoom. (cross-fade handled in CSS below)
-                const defaultImg = images[0];
-                const colorOf = (v?: (typeof variants)[number]) =>
-                  v?.selectedOptions?.find((o) => /colou?r/i.test(o.name))?.value;
-                const baseColor = colorOf(variants[0]);
-                const altVariant = variants.find(
-                  (v) =>
-                    v.image?.url &&
-                    colorOf(v) &&
-                    colorOf(v) !== baseColor &&
-                    v.image.url !== defaultImg?.url,
+                // Hover reveals the OTHER SIDE of the same garment (e.g. the
+                // back). Each variant's `.image` is that colour's FRONT mockup,
+                // so the first gallery image that isn't one of those (and isn't
+                // the default) is the back / alternate angle of the same item.
+                const defaultImg = images[0] ?? variants[0]?.image;
+                const variantFronts = new Set(
+                  variants.map((v) => v.image?.url).filter(Boolean) as string[],
                 );
                 const hoverImg =
-                  altVariant?.image ??
-                  (images[1]?.url && images[1].url !== defaultImg?.url ? images[1] : null);
+                  images.find(
+                    (im) => im.url !== defaultImg?.url && !variantFronts.has(im.url),
+                  ) ?? null;
 
                 return (
                   <Link key={node.id} to={`/merch/${node.handle}`} className="group flex flex-col">
