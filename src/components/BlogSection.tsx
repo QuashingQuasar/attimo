@@ -41,7 +41,8 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE }: BlogSecti
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString(locale.lang === "fr" ? "fr-FR" : "en-US", { month: "short", year: "numeric" });
+    const dateLocale = locale.lang === "fr" ? "fr-FR" : locale.lang === "de" ? "de-DE" : "en-US";
+    return d.toLocaleDateString(dateLocale, { month: "short", year: "numeric" });
   };
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {

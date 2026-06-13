@@ -4,8 +4,9 @@ export type Locale = {
   countryName: string;
   // Content language for this market. Drives which translation dictionary is
   // served (see src/lib/i18n/translations) and the <html lang> attribute.
-  // Existing currency-only markets (default, dk, se) stay "en"; France is "fr".
-  lang: "en" | "fr";
+  // Existing currency-only markets (default, dk, se) stay "en"; France is "fr",
+  // Germany is "de".
+  lang: "en" | "fr" | "de";
   // BCP-47 value emitted in the hreflang alternate link. Single source of
   // truth so getHreflangs stays a pure lookup. English-currency variants use
   // "en" / "en-DK" / "en-SE"; the French-language market uses "fr".
@@ -13,7 +14,7 @@ export type Locale = {
   // Shopify Storefront @inContext language code (LanguageCode enum). Most
   // markets present English; France presents French. Country comes from
   // `country` above.
-  shopifyLanguage: "EN" | "FR";
+  shopifyLanguage: "EN" | "FR" | "DE";
   // Label shown in the footer locale switcher next to the flag. Defaults to
   // the currency code (EUR/DKK/SEK). France shares EUR with the default market,
   // so it overrides this to a country code ("FRA") to stay distinguishable.
@@ -37,7 +38,7 @@ export type Locale = {
   // ISO-style code for the flat SVG flag shown in the locale selector
   // (country-flag-icons). The default market shows the EU flag, not Belgium's,
   // so this is tracked separately from `country`.
-  flagCode: "EU" | "DK" | "SE" | "FR";
+  flagCode: "EU" | "DK" | "SE" | "FR" | "DE";
 };
 
 export const DEFAULT_LOCALE: Locale = {
@@ -153,6 +154,38 @@ export const LOCALES: Locale[] = [
     },
     flag: "🇫🇷",
     flagCode: "FR",
+  },
+  {
+    // Germany — a LANGUAGE market mirroring France. Germany uses EUR, so
+    // currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; only the
+    // content language (German) differs. hreflang "de" (language-targeted),
+    // Shopify @inContext + checkout buyer country is DE/EUR.
+    slug: "de",
+    country: "DE",
+    countryName: "Deutschland",
+    lang: "de",
+    hreflang: "de",
+    shopifyLanguage: "DE",
+    // Shares EUR with the default + French markets — show a country code so
+    // the three EUR entries stay distinguishable in the switcher.
+    selectorLabel: "DEU",
+    currency: {
+      code: "EUR",
+      symbol: "€",
+      symbolPosition: "before",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 24,
+      nocellara: 23,
+      picual: 22,
+    },
+    shipping: {
+      standard: 5.95,
+      freeThreshold: 50,
+    },
+    flag: "🇩🇪",
+    flagCode: "DE",
   },
 ];
 

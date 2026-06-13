@@ -8,9 +8,12 @@
 import type { Locale } from "./config";
 import { en } from "./translations/en";
 import { fr } from "./translations/fr";
+import { de } from "./translations/de";
 
 export type Dict = typeof en;
 
 export function getDict(locale: Pick<Locale, "lang">): Dict {
-  return locale.lang === "fr" ? fr : en;
+  if (locale.lang === "fr") return fr;
+  if (locale.lang === "de") return de;
+  return en;
 }

@@ -1,5 +1,6 @@
 import type { Locale } from "@/lib/i18n/config";
-import { quizQuestionsFr, oilSummariesFr } from "@/lib/quizData.fr";
+import { quizQuestionsFr, oilSummariesFr, type QuizTextQuestion } from "@/lib/quizData.fr";
+import { quizQuestionsDe, oilSummariesDe } from "@/lib/quizData.de";
 
 export interface QuizOption {
   label: string;
@@ -176,18 +177,22 @@ const maximumPossibleScores: OilScores = quizQuestions.reduce(
 // ids and option order are taken from the canonical English `quizQuestions`;
 // for French the visible text is overlaid from quizData.fr (by id + index).
 export function getQuizQuestions(locale?: Pick<Locale, "lang">): QuizQuestion[] {
-  if (locale?.lang !== "fr") return quizQuestions;
+  const overlay: Record<string, QuizTextQuestion> | null =
+    locale?.lang === "fr" ? quizQuestionsFr
+    : locale?.lang === "de" ? quizQuestionsDe
+    : null;
+  if (!overlay) return quizQuestions;
   return quizQuestions.map((q) => {
-    const fr = quizQuestionsFr[q.id];
-    if (!fr) return q;
+    const o = overlay[q.id];
+    if (!o) return q;
     return {
       ...q,
-      category: fr.category,
-      question: fr.question,
+      category: o.category,
+      question: o.question,
       options: q.options.map((opt, i) => ({
         ...opt,
-        label: fr.options[i]?.label ?? opt.label,
-        description: fr.options[i]?.description ?? opt.description,
+        label: o.options[i]?.label ?? opt.label,
+        description: o.options[i]?.description ?? opt.description,
       })),
     };
   });
@@ -197,7 +202,10 @@ export function calculateResults(
   answers: Record<string, number>,
   locale?: Pick<Locale, "lang">,
 ): OilResult[] {
-  const summaries = locale?.lang === "fr" ? oilSummariesFr : oilSummaries;
+  const summaries =
+    locale?.lang === "fr" ? oilSummariesFr
+    : locale?.lang === "de" ? oilSummariesDe
+    : oilSummaries;
   const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
 
   for (const [questionId, answerIdx] of Object.entries(answers)) {

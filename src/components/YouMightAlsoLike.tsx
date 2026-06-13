@@ -61,8 +61,8 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
   const allOils = oilDefs.map((o) => ({
     ...o,
     price: locale.prices[o.handle],
-    flavor: locale.lang === "fr" ? t.products.flavour[o.handle] : o.flavor,
-    tagline: locale.lang === "fr" ? t.products.tagline[o.handle] : o.tagline,
+    flavor: locale.lang !== "en" ? t.products.flavour[o.handle] : o.flavor,
+    tagline: locale.lang !== "en" ? t.products.tagline[o.handle] : o.tagline,
   }));
   const otherOils = allOils.filter((oil) => oil.handle !== currentHandle);
   // Fixed light bg so the section visually separates from BlogSection below.

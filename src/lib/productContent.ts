@@ -1,5 +1,6 @@
 // Product-specific content configuration keyed by Shopify handle
 import { productContentFrMap } from "./productContent.fr";
+import { productContentDeMap } from "./productContent.de";
 
 export interface ProductContent {
   // Hero section
@@ -427,16 +428,19 @@ export function urlSlugForShopifyHandle(
   return SHOPIFY_HANDLE_TO_URL_SLUG[shopifyHandle] ?? null;
 }
 
-// Default to nocellara if handle not found. When a locale with lang "fr" is
-// passed, the French copy map (productContent.fr.ts) is used, falling back to
-// the English entry per-product if a French entry is somehow missing. All
-// other locales (default/dk/se, lang "en") use the English map unchanged.
+// Default to nocellara if handle not found. When a locale with lang "fr"/"de"
+// is passed, the matching copy map (productContent.fr.ts / .de.ts) is used,
+// falling back to the English entry per-product if a translated entry is
+// somehow missing. All other locales (default/dk/se, lang "en") use the
+// English map unchanged.
 export function getProductContent(
   handle: string | undefined,
-  locale?: { lang: "en" | "fr" },
+  locale?: { lang: "en" | "fr" | "de" },
 ): ProductContent {
   const map =
-    locale?.lang === "fr" ? productContentFrMap : productContentMap;
+    locale?.lang === "fr" ? productContentFrMap
+    : locale?.lang === "de" ? productContentDeMap
+    : productContentMap;
   if (!handle) return map["nocellara"] || productContentMap["nocellara"];
 
   const contentKey = handleToShopifyHandle[handle] || handle;
