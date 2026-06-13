@@ -156,9 +156,12 @@ function MerchProductInner({
           )}
         </div>
 
-        {/* RIGHT half — buy box (incl. description), centred as a block */}
-        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] flex items-center justify-center px-6 pb-16 md:py-10">
-          <div className="flex flex-col w-full" style={{ maxWidth: "440px" }}>
+        {/* RIGHT half — buy box (incl. description), centred as a block. The
+            content fills most of the half (wide buy box / add-to-cart button,
+            like the reference) with symmetric side padding, capped so it never
+            gets absurdly wide on ultra-wide screens. */}
+        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] flex items-center justify-center px-6 pb-16 md:px-14 md:py-10">
+          <div className="flex flex-col w-full" style={{ maxWidth: "880px" }}>
             <h1
               className="mb-2"
               style={{
