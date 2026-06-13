@@ -100,17 +100,18 @@ function MerchProductInner({
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header forceScrolled locale={DEFAULT_LOCALE} />
 
-      <section className="pt-28 md:pt-36 pb-16 md:pb-24 px-4 md:px-6">
+      <section className="pt-24 md:pt-0 pb-16 md:pb-24 px-4 md:px-6">
+        {/* Hero: two 50/50 halves, each with its content centred vertically +
+            horizontally in the viewport — image left, buy box right. */}
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 md:items-center"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 md:min-h-screen md:items-center"
           style={{ maxWidth: "1200px" }}
         >
-          {/* Gallery — image centered in the column with whitespace, slim
-              thumbnail strip below. */}
+          {/* LEFT — product image centred in its half, with whitespace */}
           <div className="flex flex-col items-center gap-5">
             <div
               className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ maxWidth: "460px", backgroundColor: "#FFFFFF" }}
+              style={{ maxWidth: "480px", backgroundColor: "#FFFFFF" }}
             >
               {mainImageUrl && (
                 <img
@@ -122,7 +123,7 @@ function MerchProductInner({
               )}
             </div>
             {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1" style={{ maxWidth: "460px" }}>
+              <div className="flex gap-2 overflow-x-auto pb-1" style={{ maxWidth: "480px" }}>
                 {images.map((im, i) => (
                   <button
                     key={im.url}
@@ -147,8 +148,8 @@ function MerchProductInner({
             )}
           </div>
 
-          {/* Details */}
-          <div className="flex flex-col">
+          {/* RIGHT — buy box, vertically centred in its half */}
+          <div className="flex flex-col justify-center">
             <h1
               className="mb-2"
               style={{
@@ -247,37 +248,39 @@ function MerchProductInner({
             >
               Printed on demand and shipped separately from oil orders.
             </p>
-
-            {node.description && (
-              <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
-                <p
-                  className="uppercase mb-3"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    color: "#1B4229",
-                    letterSpacing: "0.1em",
-                    fontSize: "0.85rem",
-                    opacity: 0.7,
-                  }}
-                >
-                  Description
-                </p>
-                <p
-                  className="whitespace-pre-line"
-                  style={{
-                    fontFamily: "Space Grotesk, sans-serif",
-                    color: "#1B4229",
-                    opacity: 0.8,
-                    lineHeight: 1.7,
-                    fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
-                  }}
-                >
-                  {node.description}
-                </p>
-              </div>
-            )}
           </div>
         </div>
+
+        {/* Description — underneath the centred hero so it never unbalances the
+            two halves. */}
+        {node.description && (
+          <div className="mx-auto pt-4 md:pt-8" style={{ maxWidth: "720px" }}>
+            <p
+              className="uppercase mb-3"
+              style={{
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                color: "#1B4229",
+                letterSpacing: "0.1em",
+                fontSize: "0.85rem",
+                opacity: 0.7,
+              }}
+            >
+              Description
+            </p>
+            <p
+              className="whitespace-pre-line"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                color: "#1B4229",
+                opacity: 0.8,
+                lineHeight: 1.7,
+                fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
+              }}
+            >
+              {node.description}
+            </p>
+          </div>
+        )}
 
         {related.length > 0 && (
           <div className="mx-auto mt-20 md:mt-28" style={{ maxWidth: "1200px" }}>
