@@ -102,37 +102,45 @@ function MerchProductInner({
 
       <section className="pt-28 md:pt-36 pb-16 md:pb-24 px-4 md:px-6">
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 md:items-center"
           style={{ maxWidth: "1200px" }}
         >
-          {/* Gallery */}
-          <div className="flex flex-col gap-4">
-            <div className="rounded-2xl overflow-hidden aspect-square" style={{ backgroundColor: "#1B4229" }}>
+          {/* Gallery — image centered in the column with whitespace, slim
+              thumbnail strip below. */}
+          <div className="flex flex-col items-center gap-5">
+            <div
+              className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
+              style={{ maxWidth: "460px", backgroundColor: "#FFFFFF" }}
+            >
               {mainImageUrl && (
                 <img
                   src={mainImageUrl}
                   alt={node.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
+                  style={{ padding: "6%" }}
                 />
               )}
             </div>
             {images.length > 1 && (
-              <div className="flex gap-3 flex-wrap">
+              <div className="flex gap-2 overflow-x-auto pb-1" style={{ maxWidth: "460px" }}>
                 {images.map((im, i) => (
                   <button
                     key={im.url}
                     type="button"
                     onClick={() => setManualImageUrl(im.url)}
                     aria-label={`View image ${i + 1}`}
-                    className="rounded-lg overflow-hidden"
+                    className="rounded-lg overflow-hidden flex-shrink-0"
                     style={{
-                      width: 64,
-                      height: 64,
-                      border: im.url === mainImageUrl ? "2px solid #1B4229" : "2px solid transparent",
-                      backgroundColor: "#1B4229",
+                      width: 52,
+                      height: 52,
+                      border:
+                        im.url === mainImageUrl
+                          ? "2px solid #1B4229"
+                          : "2px solid rgba(27, 66, 41, 0.15)",
+                      backgroundColor: "#FFFFFF",
                     }}
                   >
-                    <img src={im.url} alt="" className="w-full h-full object-cover" />
+                    <img src={im.url} alt="" className="w-full h-full object-contain" style={{ padding: "3px" }} />
                   </button>
                 ))}
               </div>
