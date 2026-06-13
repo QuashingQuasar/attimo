@@ -164,20 +164,7 @@ function MerchProductInner({
               {formatPrice(unitPrice, DEFAULT_LOCALE, 2)}
             </p>
 
-            {node.description && (
-              <p
-                className="mb-7 whitespace-pre-line"
-                style={{
-                  fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229",
-                  opacity: 0.8,
-                  lineHeight: 1.7,
-                  fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
-                }}
-              >
-                {node.description}
-              </p>
-            )}
+            <div className="mb-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }} />
 
             {realOptions.length > 0 && (
               <div className="mb-6">
@@ -252,6 +239,35 @@ function MerchProductInner({
             >
               Printed on demand and shipped separately from oil orders.
             </p>
+
+            {node.description && (
+              <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
+                <p
+                  className="uppercase mb-3"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    color: "#1B4229",
+                    letterSpacing: "0.1em",
+                    fontSize: "0.85rem",
+                    opacity: 0.7,
+                  }}
+                >
+                  Description
+                </p>
+                <p
+                  className="whitespace-pre-line"
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    color: "#1B4229",
+                    opacity: 0.8,
+                    lineHeight: 1.7,
+                    fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
+                  }}
+                >
+                  {node.description}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
