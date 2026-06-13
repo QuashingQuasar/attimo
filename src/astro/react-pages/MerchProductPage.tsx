@@ -45,7 +45,9 @@ function MerchProductInner({
     Object.fromEntries((firstAvailable?.selectedOptions ?? []).map((o) => [o.name, o.value])),
   );
   const [quantity, setQuantity] = useState(1);
-  const [imgIndex, setImgIndex] = useState(0);
+  // A thumbnail the user explicitly clicked; overrides the variant image until
+  // the variant changes.
+  const [manualImageUrl, setManualImageUrl] = useState<string | null>(null);
   const addItem = useCartStore((s) => s.addItem);
 
   // The variant whose options exactly match the current selection.
@@ -56,15 +58,17 @@ function MerchProductInner({
         v.selectedOptions.every((o) => selectedOptions[o.name] === o.value),
     ) ?? null;
 
-  // When the selected variant has its own image (e.g. a per-colour hoodie
-  // mockup), bring it into view in the gallery.
+  // Reset a manual thumbnail pick when the variant changes, so the newly
+  // chosen colour's image takes over.
   useEffect(() => {
-    const url = selected?.image?.url;
-    if (!url) return;
-    const idx = images.findIndex((im) => im.url === url);
-    if (idx >= 0) setImgIndex(idx);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setManualImageUrl(null);
   }, [selected?.id]);
+
+  // Main gallery image, DERIVED each render (not via an effect, so a colour
+  // change updates it immediately): a manual thumbnail pick wins; else the
+  // selected variant's own image (per-colour mockup); else the first image.
+  const mainImageUrl =
+    manualImageUrl ?? selected?.image?.url ?? images[0]?.url ?? "";
 
   const unitPrice = selected
     ? parseFloat(selected.price.amount)
@@ -104,10 +108,10 @@ function MerchProductInner({
           {/* Gallery */}
           <div className="flex flex-col gap-4">
             <div className="rounded-2xl overflow-hidden aspect-square" style={{ backgroundColor: "#1B4229" }}>
-              {images[imgIndex] && (
+              {mainImageUrl && (
                 <img
-                  src={images[imgIndex].url}
-                  alt={images[imgIndex].altText ?? node.title}
+                  src={mainImageUrl}
+                  alt={node.title}
                   className="w-full h-full object-cover"
                 />
               )}
@@ -118,13 +122,13 @@ function MerchProductInner({
                   <button
                     key={im.url}
                     type="button"
-                    onClick={() => setImgIndex(i)}
+                    onClick={() => setManualImageUrl(im.url)}
                     aria-label={`View image ${i + 1}`}
                     className="rounded-lg overflow-hidden"
                     style={{
                       width: 64,
                       height: 64,
-                      border: i === imgIndex ? "2px solid #1B4229" : "2px solid transparent",
+                      border: im.url === mainImageUrl ? "2px solid #1B4229" : "2px solid transparent",
                       backgroundColor: "#1B4229",
                     }}
                   >
