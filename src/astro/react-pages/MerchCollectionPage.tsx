@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -33,6 +34,162 @@ const COLOR_SWATCH: Record<string, string> = {
   "military green": "#4b4f3a",
 };
 const swatchHex = (name: string) => COLOR_SWATCH[name.trim().toLowerCase()] ?? "#c9c2b0";
+
+// A single collection card. Stateful so hovering a colour swatch swaps the card
+// image to that colour's front mockup, while hovering the image itself reveals
+// the garment's other side (back). Both get a very slight zoom.
+function MerchCard({ product }: { product: ShopifyProduct }) {
+  const node = product.node;
+  const variants = node.variants.edges.map((e) => e.node);
+  const images = node.images?.edges?.map((e) => e.node) ?? [];
+  const price = node.priceRange?.minVariantPrice;
+  const soldOut = !variants.some((v) => v.availableForSale);
+  const colors = node.options?.find((o) => /colou?r/i.test(o.name))?.values ?? [];
+
+  const colorOf = (v: (typeof variants)[number]) =>
+    v.selectedOptions?.find((o) => /colou?r/i.test(o.name))?.value;
+
+  // Front mockup per colour (first variant of that colour that carries an image).
+  const frontByColor: Record<string, string> = {};
+  for (const v of variants) {
+    const c = colorOf(v);
+    if (c && v.image?.url && !(c in frontByColor)) frontByColor[c] = v.image.url;
+  }
+
+  const defaultImg = images[0] ?? variants[0]?.image;
+  const variantFronts = new Set(variants.map((v) => v.image?.url).filter(Boolean) as string[]);
+  // Back / alternate-angle image of the default item (not any colour's front).
+  const backImg =
+    images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ?? null;
+
+  const [cardHovered, setCardHovered] = useState(false);
+  const [swatchColor, setSwatchColor] = useState<string | null>(null);
+
+  // Overlay (top layer) image: a hovered swatch wins (that colour's front),
+  // otherwise hovering the card shows the back.
+  const overlaySrc = swatchColor
+    ? frontByColor[swatchColor] ?? defaultImg?.url ?? null
+    : cardHovered
+      ? backImg
+      : null;
+  const showOverlay = overlaySrc != null;
+  const zoom = cardHovered || swatchColor != null;
+  // Keep the last overlay src mounted during fade-out so it cross-fades cleanly.
+  const lastOverlay = useRef<string | null>(null);
+  if (overlaySrc) lastOverlay.current = overlaySrc;
+  const overlayDisplay = overlaySrc ?? lastOverlay.current;
+
+  return (
+    <Link
+      to={`/merch/${node.handle}`}
+      className="flex flex-col"
+      onMouseEnter={() => setCardHovered(true)}
+      onMouseLeave={() => {
+        setCardHovered(false);
+        setSwatchColor(null);
+      }}
+    >
+      {/* Image — large, contained, transparent background so cream mockups
+          blend into the page (matches the PDP). */}
+      <div className="relative aspect-square overflow-hidden mb-4">
+        {defaultImg && (
+          <img
+            src={defaultImg.url}
+            alt={defaultImg.altText ?? node.title}
+            className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 ease-out"
+            style={{ transform: zoom ? "scale(1.03)" : "scale(1)" }}
+          />
+        )}
+        {overlayDisplay && (
+          <img
+            src={overlayDisplay}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-out"
+            style={{ opacity: showOverlay ? 1 : 0, transform: zoom ? "scale(1.03)" : "scale(1)" }}
+          />
+        )}
+      </div>
+
+      {/* Title (left) and price (right) on one row. */}
+      <div className="flex items-baseline justify-between gap-3">
+        <h3
+          style={{
+            fontFamily: "Space Grotesk, sans-serif",
+            color: "#1B4229",
+            fontSize: "1.05rem",
+            fontWeight: 500,
+          }}
+        >
+          {node.title}
+        </h3>
+        {price && (
+          <p
+            className="flex-shrink-0"
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              color: "#1B4229",
+              opacity: 0.5,
+              fontSize: "0.95rem",
+            }}
+          >
+            {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
+          </p>
+        )}
+      </div>
+
+      {/* Available colours under the title. Hovering one previews that colour
+          in the image above. */}
+      {colors.length > 0 && (
+        <div className="flex items-center gap-1.5 mt-2">
+          {colors.slice(0, 6).map((c) => (
+            <span
+              key={c}
+              title={c}
+              aria-label={c}
+              onMouseEnter={() => setSwatchColor(c)}
+              onMouseLeave={() => setSwatchColor(null)}
+              className="inline-block rounded-[3px] transition-transform duration-150"
+              style={{
+                width: 22,
+                height: 12,
+                backgroundColor: swatchHex(c),
+                border:
+                  swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.15)",
+                transform: swatchColor === c ? "scale(1.12)" : "scale(1)",
+              }}
+            />
+          ))}
+          {colors.length > 6 && (
+            <span
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                color: "#1B4229",
+                opacity: 0.5,
+                fontSize: "0.8rem",
+              }}
+            >
+              +{colors.length - 6}
+            </span>
+          )}
+        </div>
+      )}
+      {soldOut && (
+        <p
+          className="mt-1.5"
+          style={{
+            fontFamily: "Space Grotesk, sans-serif",
+            color: "#1B4229",
+            opacity: 0.5,
+            fontSize: "0.85rem",
+          }}
+        >
+          Sold out
+        </p>
+      )}
+    </Link>
+  );
+}
 
 // /merch collection listing. English-only (default locale). Mirrors the oil
 // product-card visual from OilProductWidgets but is fed from the Shopify
@@ -78,126 +235,9 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
             </p>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-10 md:gap-y-16">
-              {products.map((p) => {
-                const node = p.node;
-                const variants = node.variants.edges.map((e) => e.node);
-                const images = node.images?.edges?.map((e) => e.node) ?? [];
-                const price = node.priceRange?.minVariantPrice;
-                const soldOut = !variants.some((v) => v.availableForSale);
-                const colors =
-                  node.options?.find((o) => /colou?r/i.test(o.name))?.values ?? [];
-
-                // Hover reveals the OTHER SIDE of the same garment (e.g. the
-                // back). Each variant's `.image` is that colour's FRONT mockup,
-                // so the first gallery image that isn't one of those (and isn't
-                // the default) is the back / alternate angle of the same item.
-                const defaultImg = images[0] ?? variants[0]?.image;
-                const variantFronts = new Set(
-                  variants.map((v) => v.image?.url).filter(Boolean) as string[],
-                );
-                const hoverImg =
-                  images.find(
-                    (im) => im.url !== defaultImg?.url && !variantFronts.has(im.url),
-                  ) ?? null;
-
-                return (
-                  <Link key={node.id} to={`/merch/${node.handle}`} className="group flex flex-col">
-                    {/* Image — large, contained, transparent background so cream
-                        mockups blend into the page (matches the PDP). On hover:
-                        a very slight zoom + cross-fade to an alternate colour. */}
-                    <div className="relative aspect-square overflow-hidden mb-4">
-                      {defaultImg && (
-                        <img
-                          src={defaultImg.url}
-                          alt={defaultImg.altText ?? node.title}
-                          className={`absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-[1.03] ${
-                            hoverImg ? "group-hover:opacity-0" : ""
-                          }`}
-                        />
-                      )}
-                      {hoverImg && (
-                        <img
-                          src={hoverImg.url}
-                          alt=""
-                          aria-hidden
-                          className="absolute inset-0 w-full h-full object-contain opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
-                        />
-                      )}
-                    </div>
-                    {/* Title (left) and price (right) on one row. */}
-                    <div className="flex items-baseline justify-between gap-3">
-                      <h3
-                        style={{
-                          fontFamily: "Space Grotesk, sans-serif",
-                          color: "#1B4229",
-                          fontSize: "1.05rem",
-                          fontWeight: 500,
-                        }}
-                      >
-                        {node.title}
-                      </h3>
-                      {price && (
-                        <p
-                          className="flex-shrink-0"
-                          style={{
-                            fontFamily: "Space Grotesk, sans-serif",
-                            color: "#1B4229",
-                            opacity: 0.5,
-                            fontSize: "0.95rem",
-                          }}
-                        >
-                          {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
-                        </p>
-                      )}
-                    </div>
-                    {/* Available colours under the title (when the product has
-                        colour variants). */}
-                    {colors.length > 0 && (
-                      <div className="flex items-center gap-1.5 mt-2">
-                        {colors.slice(0, 6).map((c) => (
-                          <span
-                            key={c}
-                            title={c}
-                            aria-label={c}
-                            className="inline-block rounded-[3px]"
-                            style={{
-                              width: 22,
-                              height: 12,
-                              backgroundColor: swatchHex(c),
-                              border: "1px solid rgba(27,66,41,0.15)",
-                            }}
-                          />
-                        ))}
-                        {colors.length > 6 && (
-                          <span
-                            style={{
-                              fontFamily: "Space Grotesk, sans-serif",
-                              color: "#1B4229",
-                              opacity: 0.5,
-                              fontSize: "0.8rem",
-                            }}
-                          >
-                            +{colors.length - 6}
-                          </span>
-                        )}
-                      </div>
-                    )}
-                    {soldOut && (
-                      <p
-                        className="mt-1.5"
-                        style={{
-                          fontFamily: "Space Grotesk, sans-serif",
-                          color: "#1B4229",
-                          opacity: 0.5,
-                          fontSize: "0.85rem",
-                        }}
-                      >
-                        Sold out
-                      </p>
-                    )}
-                  </Link>
-                );
-              })}
+              {products.map((p) => (
+                <MerchCard key={p.node.id} product={p} />
+              ))}
             </div>
           )}
         </div>
