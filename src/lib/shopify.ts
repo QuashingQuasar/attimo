@@ -53,6 +53,9 @@ export interface ShopifyProduct {
             name: string;
             value: string;
           }>;
+          // Variant-specific image (e.g. the hoodie's per-colour mockup).
+          // Null when the variant has no dedicated image.
+          image?: { url: string; altText: string | null } | null;
         };
       }>;
     };
@@ -126,7 +129,7 @@ const PRODUCTS_QUERY = `
               currencyCode
             }
           }
-          images(first: 5) {
+          images(first: 30) {
             edges {
               node {
                 url
@@ -134,7 +137,7 @@ const PRODUCTS_QUERY = `
               }
             }
           }
-          variants(first: 10) {
+          variants(first: 100) {
             edges {
               node {
                 id
@@ -147,6 +150,10 @@ const PRODUCTS_QUERY = `
                 selectedOptions {
                   name
                   value
+                }
+                image {
+                  url
+                  altText
                 }
               }
             }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Minus, Plus } from "lucide-react";
@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
-import { SizeSelector } from "@/components/SizeSelector";
+import { VariantSelector } from "@/components/VariantSelector";
 import { Link } from "@/lib/router-stub";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
@@ -33,12 +33,39 @@ function MerchProductInner({
   const images = node.images?.edges?.map((e) => e.node) ?? [];
   const firstAvailable = variants.find((v) => v.availableForSale) ?? variants[0];
 
-  const [selectedId, setSelectedId] = useState<string | null>(firstAvailable?.id ?? null);
+  // Drop Shopify's synthetic "Title / Default Title" option (products with no
+  // real variants) so single-variant merch shows no picker.
+  const realOptions = node.options.filter(
+    (o) => !(o.values.length === 1 && o.values[0] === "Default Title"),
+  );
+
+  // Selected option values, e.g. { Color: "Maroon", Size: "L" }. Initialized
+  // from the first available variant.
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>(() =>
+    Object.fromEntries((firstAvailable?.selectedOptions ?? []).map((o) => [o.name, o.value])),
+  );
   const [quantity, setQuantity] = useState(1);
   const [imgIndex, setImgIndex] = useState(0);
   const addItem = useCartStore((s) => s.addItem);
 
-  const selected = variants.find((v) => v.id === selectedId) ?? null;
+  // The variant whose options exactly match the current selection.
+  const selected =
+    variants.find(
+      (v) =>
+        v.selectedOptions.length === Object.keys(selectedOptions).length &&
+        v.selectedOptions.every((o) => selectedOptions[o.name] === o.value),
+    ) ?? null;
+
+  // When the selected variant has its own image (e.g. a per-colour hoodie
+  // mockup), bring it into view in the gallery.
+  useEffect(() => {
+    const url = selected?.image?.url;
+    if (!url) return;
+    const idx = images.findIndex((im) => im.url === url);
+    if (idx >= 0) setImgIndex(idx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected?.id]);
+
   const unitPrice = selected
     ? parseFloat(selected.price.amount)
     : parseFloat(node.priceRange.minVariantPrice.amount);
@@ -148,9 +175,14 @@ function MerchProductInner({
               </p>
             )}
 
-            {variants.length > 0 && (
+            {realOptions.length > 0 && (
               <div className="mb-6">
-                <SizeSelector variants={variants} selectedId={selectedId} onSelect={setSelectedId} />
+                <VariantSelector
+                  options={realOptions}
+                  variants={variants}
+                  selected={selectedOptions}
+                  onChange={setSelectedOptions}
+                />
               </div>
             )}
 
