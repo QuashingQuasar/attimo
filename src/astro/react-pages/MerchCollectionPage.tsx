@@ -62,18 +62,20 @@ function MerchCard({ product }: { product: ShopifyProduct }) {
   const backImg =
     images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ?? null;
 
-  const [cardHovered, setCardHovered] = useState(false);
+  const [imageHovered, setImageHovered] = useState(false);
   const [swatchColor, setSwatchColor] = useState<string | null>(null);
 
-  // Overlay (top layer) image: a hovered swatch wins (that colour's front),
-  // otherwise hovering the card shows the back.
+  // Overlay (top layer) image: a hovered swatch wins (that colour's front);
+  // otherwise hovering the IMAGE (not the swatch row) shows the back. Scoping
+  // the back-reveal to the image means moving between swatches never flashes
+  // the back view.
   const overlaySrc = swatchColor
     ? frontByColor[swatchColor] ?? defaultImg?.url ?? null
-    : cardHovered
+    : imageHovered
       ? backImg
       : null;
   const showOverlay = overlaySrc != null;
-  const zoom = cardHovered || swatchColor != null;
+  const zoom = imageHovered || swatchColor != null;
   // Keep the last overlay src mounted during fade-out so it cross-fades cleanly.
   const lastOverlay = useRef<string | null>(null);
   if (overlaySrc) lastOverlay.current = overlaySrc;
@@ -83,15 +85,19 @@ function MerchCard({ product }: { product: ShopifyProduct }) {
     <Link
       to={`/merch/${node.handle}`}
       className="flex flex-col"
-      onMouseEnter={() => setCardHovered(true)}
       onMouseLeave={() => {
-        setCardHovered(false);
+        setImageHovered(false);
         setSwatchColor(null);
       }}
     >
       {/* Image — large, contained, transparent background so cream mockups
-          blend into the page (matches the PDP). */}
-      <div className="relative aspect-square overflow-hidden mb-4">
+          blend into the page (matches the PDP). The back-reveal is scoped to
+          this element only. */}
+      <div
+        className="relative aspect-square overflow-hidden mb-4"
+        onMouseEnter={() => setImageHovered(true)}
+        onMouseLeave={() => setImageHovered(false)}
+      >
         {defaultImg && (
           <img
             src={defaultImg.url}
