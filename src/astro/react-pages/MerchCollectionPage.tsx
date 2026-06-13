@@ -56,19 +56,50 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-10 md:gap-y-16">
               {products.map((p) => {
                 const node = p.node;
-                const img = node.images?.edges?.[0]?.node;
+                const variants = node.variants.edges.map((e) => e.node);
+                const images = node.images?.edges?.map((e) => e.node) ?? [];
                 const price = node.priceRange?.minVariantPrice;
-                const soldOut = !node.variants.edges.some((v) => v.node.availableForSale);
+                const soldOut = !variants.some((v) => v.availableForSale);
+
+                // Hover swaps to a DIFFERENT colour variant's image when the
+                // product has one; falls back to the second gallery image; else
+                // just the zoom. (cross-fade handled in CSS below)
+                const defaultImg = images[0];
+                const colorOf = (v?: (typeof variants)[number]) =>
+                  v?.selectedOptions?.find((o) => /colou?r/i.test(o.name))?.value;
+                const baseColor = colorOf(variants[0]);
+                const altVariant = variants.find(
+                  (v) =>
+                    v.image?.url &&
+                    colorOf(v) &&
+                    colorOf(v) !== baseColor &&
+                    v.image.url !== defaultImg?.url,
+                );
+                const hoverImg =
+                  altVariant?.image ??
+                  (images[1]?.url && images[1].url !== defaultImg?.url ? images[1] : null);
+
                 return (
                   <Link key={node.id} to={`/merch/${node.handle}`} className="group flex flex-col">
                     {/* Image — large, contained, transparent background so cream
-                        mockups blend into the page (matches the PDP). */}
-                    <div className="aspect-square overflow-hidden mb-4 flex items-center justify-center">
-                      {img && (
+                        mockups blend into the page (matches the PDP). On hover:
+                        a very slight zoom + cross-fade to an alternate colour. */}
+                    <div className="relative aspect-square overflow-hidden mb-4">
+                      {defaultImg && (
                         <img
-                          src={img.url}
-                          alt={img.altText ?? node.title}
-                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.04]"
+                          src={defaultImg.url}
+                          alt={defaultImg.altText ?? node.title}
+                          className={`absolute inset-0 w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-[1.03] ${
+                            hoverImg ? "group-hover:opacity-0" : ""
+                          }`}
+                        />
+                      )}
+                      {hoverImg && (
+                        <img
+                          src={hoverImg.url}
+                          alt=""
+                          aria-hidden
+                          className="absolute inset-0 w-full h-full object-contain opacity-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:scale-[1.03]"
                         />
                       )}
                     </div>
