@@ -106,9 +106,13 @@ function MerchProductInner({
           Flexbox (not grid) so the centring actually takes: an earlier grid
           version used `items-center`, which only centres within a content-sized
           row and left the block pinned to the top. */}
-      <section className="flex flex-col md:flex-row">
+      {/* md:pt-[92px] + each half's min-h of (100vh - 131px) centres the content
+          in the viewport AREA BELOW the fixed announce-bar + header stack
+          (131px tall), not the full viewport — otherwise the header eats the top
+          and everything rides high. */}
+      <section className="flex flex-col md:flex-row md:pt-[92px]">
         {/* LEFT half — product image dead-centre, with whitespace around it */}
-        <div className="md:w-1/2 md:min-h-screen flex items-center justify-center px-6 pt-28 pb-10 md:py-24">
+        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] flex items-center justify-center px-6 pt-28 pb-10 md:py-10">
           <div className="flex flex-col items-center gap-5 w-full" style={{ maxWidth: "440px" }}>
             <div
               className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
@@ -151,7 +155,7 @@ function MerchProductInner({
         </div>
 
         {/* RIGHT half — buy box (incl. description), centred as a block */}
-        <div className="md:w-1/2 md:min-h-screen flex items-center justify-center px-6 pb-16 md:py-24">
+        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] flex items-center justify-center px-6 pb-16 md:py-10">
           <div className="flex flex-col w-full" style={{ maxWidth: "440px" }}>
             <h1
               className="mb-2"
