@@ -112,46 +112,48 @@ function MerchProductInner({
           and everything rides high. */}
       <section className="flex flex-col md:flex-row md:pt-[92px]">
         {/* LEFT half — product image dead-centre, with whitespace around it */}
-        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] flex items-center justify-center px-6 pt-28 pb-10 md:py-10">
-          <div className="flex flex-col items-center gap-5 w-full" style={{ maxWidth: "440px" }}>
-            <div
-              className="w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center"
-              style={{ backgroundColor: "#FFFFFF" }}
-            >
-              {mainImageUrl && (
-                <img
-                  src={mainImageUrl}
-                  alt={node.title}
-                  className="w-full h-full object-contain"
-                  style={{ padding: "6%" }}
-                />
-              )}
-            </div>
-            {images.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1 max-w-full">
-                {images.map((im, i) => (
-                  <button
-                    key={im.url}
-                    type="button"
-                    onClick={() => setManualImageUrl(im.url)}
-                    aria-label={`View image ${i + 1}`}
-                    className="rounded-lg overflow-hidden flex-shrink-0"
-                    style={{
-                      width: 52,
-                      height: 52,
-                      border:
-                        im.url === mainImageUrl
-                          ? "2px solid #1B4229"
-                          : "2px solid rgba(27, 66, 41, 0.15)",
-                      backgroundColor: "#FFFFFF",
-                    }}
-                  >
-                    <img src={im.url} alt="" className="w-full h-full object-contain" style={{ padding: "3px" }} />
-                  </button>
-                ))}
-              </div>
+        <div className="md:w-1/2 md:min-h-[calc(100vh-131px)] relative flex flex-col items-center justify-center px-6 pt-28 pb-10 md:py-10">
+          {/* Product image — centred and large. Background is transparent (the
+              cream section shows through) so cream-background mockups blend
+              seamlessly into the page, like the reference. */}
+          <div
+            className="w-full aspect-square flex items-center justify-center"
+            style={{ maxWidth: "620px" }}
+          >
+            {mainImageUrl && (
+              <img
+                src={mainImageUrl}
+                alt={node.title}
+                className="w-full h-full object-contain"
+              />
             )}
           </div>
+          {/* Thumbnails — tucked into the bottom-left of the section on desktop
+              (out of flow, so they don't pull the image off-centre); stacked
+              below the image on mobile. */}
+          {images.length > 1 && (
+            <div className="flex gap-2 overflow-x-auto pb-1 mt-5 max-w-full md:mt-0 md:absolute md:bottom-10 md:left-6 md:max-w-[calc(100%-3rem)]">
+              {images.map((im, i) => (
+                <button
+                  key={im.url}
+                  type="button"
+                  onClick={() => setManualImageUrl(im.url)}
+                  aria-label={`View image ${i + 1}`}
+                  className="rounded-lg overflow-hidden flex-shrink-0"
+                  style={{
+                    width: 52,
+                    height: 52,
+                    border:
+                      im.url === mainImageUrl
+                        ? "2px solid #1B4229"
+                        : "2px solid rgba(27, 66, 41, 0.15)",
+                  }}
+                >
+                  <img src={im.url} alt="" className="w-full h-full object-contain" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* RIGHT half — buy box (incl. description), centred as a block */}
