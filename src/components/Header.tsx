@@ -89,6 +89,9 @@ export const Header = ({
             <Link to={localizeHref("/quiz", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
               {t.nav.quiz}
             </Link>
+            <Link to="/merch" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              {t.nav.merch}
+            </Link>
             <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
             <CurrencySelector
               locale={locale}

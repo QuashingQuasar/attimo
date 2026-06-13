@@ -21,6 +21,10 @@ export interface ShopifyProduct {
     title: string;
     description: string;
     handle: string;
+    // Shopify product type. Oils are "Olive Oil"; merch is "Merch". Used to
+    // exclude merch from the oils' volume discount + free-shipping bottle count
+    // and to flag mixed (separate-shipment) carts.
+    productType: string;
     priceRange: {
       minVariantPrice: {
         amount: string;
@@ -115,6 +119,7 @@ const PRODUCTS_QUERY = `
           title
           description
           handle
+          productType
           priceRange {
             minVariantPrice {
               amount
@@ -214,6 +219,19 @@ export async function fetchProducts(limit = 10, query?: string, context?: Shopif
     language: context?.language ?? null,
   });
   return data?.data?.products?.edges || [];
+}
+
+// Merch products. We filter by `product_type:Merch` rather than the "Merch"
+// collection: the store defines merch by productType, and (unlike the product)
+// the collection isn't published to this headless Storefront channel. This
+// also means future merch auto-appears with no extra collection step. Returns
+// full product nodes (incl. variants/options/images) for both the /merch
+// listing and the /merch/[handle] PDP.
+export async function fetchMerchProducts(
+  limit = 50,
+  context?: ShopifyContext,
+): Promise<ShopifyProduct[]> {
+  return fetchProducts(limit, "product_type:Merch", context);
 }
 
 const VARIANT_INVENTORY_QUERY = `

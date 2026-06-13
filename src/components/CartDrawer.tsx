@@ -32,20 +32,29 @@ const PRODUCT_DISPLAY_NAMES: Record<string, string> = {
 
 const PRODUCT_ORDER = ["coratina", "picual", "nocellara"];
 
+// Oil vs merch. Oils carry the locale price table + volume discount + count
+// toward free shipping; merch (Printful, productType "Merch") does none of
+// that and uses its raw Shopify variant price.
+function isOilItem(item: CartItem): boolean {
+  return item.product?.node?.productType === "Olive Oil";
+}
+
 function localizedUnitPrice(item: CartItem, locale: Locale): number {
   const slug = urlSlugForShopifyHandle(item.product?.node?.handle);
+  // Merch (and anything without a locale price slug) uses the Shopify variant
+  // price stored on the cart line.
   if (!slug) return parseFloat(item.price.amount);
   const base = locale.prices[slug];
   const isSubscription = !!(item.isSubscription || item.sellingPlanId);
   return isSubscription ? base * SUBSCRIPTION_RATIO : base;
 }
 
-// Per-line total with volume discount applied. Subscriptions keep their own
-// pricing — the volume discount does not stack on top of Subscribe & Save.
+// Per-line total with volume discount applied. The discount applies to OILS
+// only (never merch) and never stacks on top of a subscription.
 function localizedLineTotal(item: CartItem, locale: Locale): number {
   const baseTotal = localizedUnitPrice(item, locale) * item.quantity;
   const isSubscription = !!(item.isSubscription || item.sellingPlanId);
-  if (isSubscription) return baseTotal;
+  if (isSubscription || !isOilItem(item)) return baseTotal;
   return baseTotal * (1 - getVolumeDiscountPercent(item.quantity));
 }
 
@@ -90,6 +99,14 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   console.log('[CartDrawer] Rendering, items:', items.length, 'isOpen:', isOpen);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  // Free shipping is an OILS-only promise (we ship oils; merch ships separately
+  // via Printful), so only oil bottles count toward the threshold/nudge.
+  const oilBottleCount = items.reduce(
+    (sum, item) => sum + (isOilItem(item) ? item.quantity : 0),
+    0
+  );
+  const hasOil = items.some(isOilItem);
+  const hasMerch = items.some((item) => item.product?.node?.productType === "Merch");
   const subtotalBeforeDiscount = items.reduce(
     (sum, item) => sum + localizedUnitPrice(item, locale) * item.quantity,
     0
@@ -99,6 +116,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
     0
   );
   const hasVolumeDiscount = subtotalBeforeDiscount > subtotal + 0.005;
+  // Oils are whole-euro/kr (0 decimals); merch has cents (e.g. €36.50). Show 2
+  // decimals whenever cents matter — a discount is active or merch is present.
+  const moneyDecimals = hasVolumeDiscount || hasMerch ? 2 : undefined;
 
   // Prefer the tier set by middleware (read from cookie) — it's the same
   // source as the announce-bar's "FREE SHIPPING ON N+ BOTTLES" message and
@@ -111,8 +131,8 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
     }
     return getFreeShippingThreshold(countryCode);
   }, [countryCode]);
-  const qualifiesForFreeShipping = totalItems >= freeShippingThreshold;
-  const bottlesNeeded = Math.max(0, freeShippingThreshold - totalItems);
+  const qualifiesForFreeShipping = oilBottleCount >= freeShippingThreshold;
+  const bottlesNeeded = Math.max(0, freeShippingThreshold - oilBottleCount);
 
   const recommendations = useMemo(() => {
     if (!products) return [];
@@ -296,32 +316,36 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
             </div>
           ) : (
             <>
-              {/* Free-shipping nudge — same threshold/geo logic as the PDP. */}
-              <div className="flex-shrink-0 mb-3">
-                {qualifiesForFreeShipping ? (
-                  <div
-                    className="px-3 py-2 rounded-md text-sm font-semibold text-center"
-                    style={{
-                      backgroundColor: 'rgba(205, 219, 45, 0.25)',
-                      color: '#1B4229',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                    }}
-                  >
-                    {t.freeShipping}
-                  </div>
-                ) : (
-                  <div
-                    className="px-3 py-2 rounded-md text-sm text-center"
-                    style={{
-                      backgroundColor: 'rgba(27, 66, 41, 0.06)',
-                      color: '#1B4229',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                    }}
-                  >
-                    {t.freeShippingNudge(bottlesNeeded)}
-                  </div>
-                )}
-              </div>
+              {/* Free-shipping nudge — oils only (we ship oils; merch ships
+                  separately via Printful, so it never affects this). Hidden for
+                  merch-only carts. */}
+              {oilBottleCount > 0 && (
+                <div className="flex-shrink-0 mb-3">
+                  {qualifiesForFreeShipping ? (
+                    <div
+                      className="px-3 py-2 rounded-md text-sm font-semibold text-center"
+                      style={{
+                        backgroundColor: 'rgba(205, 219, 45, 0.25)',
+                        color: '#1B4229',
+                        fontFamily: 'Space Grotesk, sans-serif',
+                      }}
+                    >
+                      {t.freeShipping}
+                    </div>
+                  ) : (
+                    <div
+                      className="px-3 py-2 rounded-md text-sm text-center"
+                      style={{
+                        backgroundColor: 'rgba(27, 66, 41, 0.06)',
+                        color: '#1B4229',
+                        fontFamily: 'Space Grotesk, sans-serif',
+                      }}
+                    >
+                      {t.freeShippingNudge(bottlesNeeded)}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Items + recommendations scroll together. */}
               <div className="flex-1 overflow-y-auto pr-2 min-h-0">
@@ -339,8 +363,16 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                       </div>
                       <div className="flex-1 min-w-0 flex flex-col gap-1.5">
                         <h4 className="font-medium text-sm leading-tight">{item.product.node.title}</h4>
+                        {!isOilItem(item) && item.variantTitle && item.variantTitle !== "Default Title" && (
+                          <span
+                            className="text-xs uppercase"
+                            style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#1B4229', opacity: 0.7, letterSpacing: '0.08em' }}
+                          >
+                            {item.variantTitle}
+                          </span>
+                        )}
                         <p className="font-semibold text-sm">
-                          {formatPrice(localizedUnitPrice(item, locale), locale)}
+                          {formatPrice(localizedUnitPrice(item, locale), locale, isOilItem(item) ? undefined : 2)}
                         </p>
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
@@ -371,6 +403,22 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                 )}
               </div>
 
+              {/* Mixed cart: oils (shipped by us) + merch (shipped by Printful)
+                  arrive separately. Flag it so the split delivery isn't a
+                  surprise. */}
+              {hasOil && hasMerch && (
+                <div
+                  className="flex-shrink-0 mb-3 px-3 py-2 rounded-md text-xs text-center"
+                  style={{
+                    backgroundColor: 'rgba(27, 66, 41, 0.06)',
+                    color: '#1B4229',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                  }}
+                >
+                  {t.separateShipments}
+                </div>
+              )}
+
               {/* Subtotal + Shipping rows — no combined total per spec. */}
               <div className="flex-shrink-0 space-y-1 pt-4 border-t">
                 <div className="flex justify-between items-center">
@@ -378,12 +426,12 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                   <span className="text-base font-semibold" style={{ color: '#1B4229' }}>
                     {hasVolumeDiscount && (
                       <span className="line-through opacity-60 font-normal mr-2">
-                        {formatPrice(subtotalBeforeDiscount, locale)}
+                        {formatPrice(subtotalBeforeDiscount, locale, moneyDecimals)}
                       </span>
                     )}
-                    {/* Use 2 decimals when discounted so the UI matches the
-                        amount Shopify actually charges (e.g. €149.60, not €150). */}
-                    {formatPrice(subtotal, locale, hasVolumeDiscount ? 2 : undefined)}
+                    {/* 2 decimals when a discount is active or merch is in the
+                        cart, so the UI matches what Shopify actually charges. */}
+                    {formatPrice(subtotal, locale, moneyDecimals)}
                   </span>
                 </div>
                 <div className="flex justify-between items-center pb-2">
