@@ -165,10 +165,11 @@ function MerchProductInner({
             <h1
               className="mb-2"
               style={{
-                fontFamily: "Beverly Drive, serif",
+                fontFamily: "UDC Working Man Sans, sans-serif",
                 color: "#1B4229",
-                fontSize: "clamp(2rem, 3.5vw, 3.2rem)",
-                letterSpacing: "0.03em",
+                fontSize: "clamp(1.9rem, 3.2vw, 2.9rem)",
+                letterSpacing: "0.04em",
+                textTransform: "uppercase",
               }}
             >
               {node.title}
