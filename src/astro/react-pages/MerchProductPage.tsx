@@ -118,7 +118,7 @@ function MerchProductInner({
               seamlessly into the page, like the reference. */}
           <div
             className="w-full aspect-square flex items-center justify-center"
-            style={{ maxWidth: "620px" }}
+            style={{ maxWidth: "750px" }}
           >
             {mainImageUrl && (
               <img
