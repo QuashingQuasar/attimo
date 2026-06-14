@@ -40,8 +40,8 @@ const swatchHex = (name: string) => COLOR_SWATCH[name.trim().toLowerCase()] ?? "
 // common variants (t-shirt, beanie…) still bucket correctly. A category's
 // filter button only appears when at least one product carries its tag.
 const GARMENT_CATEGORIES: Array<{ key: string; label: string; match: (t: string) => boolean }> = [
-  { key: "hoodie", label: "Hoodies", match: (t) => /hoodie|sweatshirt|crewneck/i.test(t) },
   { key: "tee", label: "Tees", match: (t) => /\btee\b|t-?shirt/i.test(t) },
+  { key: "hoodie", label: "Hoodies", match: (t) => /hoodie|sweatshirt|crewneck/i.test(t) },
   { key: "cap", label: "Caps", match: (t) => /\bcap\b|\bhat\b|beanie/i.test(t) },
 ];
 // The category keys a product belongs to, based on its tags.
@@ -237,64 +237,47 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
 
       <section className="pt-32 md:pt-40 pb-20 md:pb-28 px-5 md:px-8">
         <div className="mx-auto" style={{ maxWidth: "1200px" }}>
-          {/* Store header — left-aligned, like the reference. */}
-          <div className="mb-12 md:mb-16">
+          {/* Store header — title + inline category filters on one baseline. */}
+          <div className="flex flex-wrap items-baseline gap-x-7 gap-y-3 mb-10 md:mb-14">
             <h1
-              className="mb-3"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
                 color: "#1B4229",
-                fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
+                fontSize: "clamp(2rem, 4vw, 3rem)",
                 letterSpacing: "0.04em",
                 textTransform: "uppercase",
               }}
             >
-              Merch
+              Extra Virgin Merch
             </h1>
-            <p
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#1B4229",
-                opacity: 0.55,
-                fontSize: "clamp(1rem, 1.4vw, 1.2rem)",
-                maxWidth: "520px",
-                lineHeight: 1.6,
-              }}
-            >
-              Goods for people who take their olive oil seriously.
-            </p>
+            {showFilters && (
+              <div className="flex items-baseline gap-4 md:gap-5">
+                {[{ key: null as string | null, label: "All" }, ...presentCats].map((cat) => {
+                  const active = activeCat === cat.key;
+                  return (
+                    <button
+                      key={cat.key ?? "all"}
+                      type="button"
+                      onClick={() => setActiveCat(cat.key)}
+                      className={`transition-opacity ${
+                        active ? "opacity-100" : "opacity-50 hover:opacity-80"
+                      }`}
+                      style={{
+                        fontFamily: "Space Grotesk, sans-serif",
+                        color: "#1B4229",
+                        fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)",
+                        fontWeight: active ? 600 : 400,
+                        borderBottom: active ? "2px solid #1B4229" : "2px solid transparent",
+                        paddingBottom: 2,
+                      }}
+                    >
+                      {cat.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
-
-          {/* Category filter — only when there are ≥2 tagged categories. */}
-          {showFilters && (
-            <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
-              {[{ key: null as string | null, label: "All" }, ...presentCats].map((cat) => {
-                const active = activeCat === cat.key;
-                return (
-                  <button
-                    key={cat.key ?? "all"}
-                    type="button"
-                    onClick={() => setActiveCat(cat.key)}
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      fontSize: "0.8rem",
-                      padding: "7px 16px",
-                      borderRadius: 999,
-                      border: "1px solid #1B4229",
-                      backgroundColor: active ? "#1B4229" : "transparent",
-                      color: active ? "#FFFAEA" : "#1B4229",
-                      opacity: active ? 1 : 0.75,
-                      transition: "all 150ms ease",
-                    }}
-                  >
-                    {cat.label}
-                  </button>
-                );
-              })}
-            </div>
-          )}
 
           {products.length === 0 ? (
             <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6 }}>
