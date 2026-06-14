@@ -25,6 +25,9 @@ export interface ShopifyProduct {
     // exclude merch from the oils' volume discount + free-shipping bottle count
     // and to flag mixed (separate-shipment) carts.
     productType: string;
+    // Lowercased product tags. Merch uses a garment tag (hoodie / tee / cap)
+    // for the collection-page category filter.
+    tags?: string[];
     priceRange: {
       minVariantPrice: {
         amount: string;
@@ -123,6 +126,7 @@ const PRODUCTS_QUERY = `
           description
           handle
           productType
+          tags
           priceRange {
             minVariantPrice {
               amount

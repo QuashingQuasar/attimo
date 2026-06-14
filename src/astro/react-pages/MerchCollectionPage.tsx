@@ -35,6 +35,21 @@ const COLOR_SWATCH: Record<string, string> = {
 };
 const swatchHex = (name: string) => COLOR_SWATCH[name.trim().toLowerCase()] ?? "#c9c2b0";
 
+// Garment categories for the collection filter, driven by product TAGS in
+// Shopify (tag a product `hoodie`, `tee`, or `cap`). `match` is lenient so
+// common variants (t-shirt, beanie…) still bucket correctly. A category's
+// filter button only appears when at least one product carries its tag.
+const GARMENT_CATEGORIES: Array<{ key: string; label: string; match: (t: string) => boolean }> = [
+  { key: "hoodie", label: "Hoodies", match: (t) => /hoodie|sweatshirt|crewneck/i.test(t) },
+  { key: "tee", label: "Tees", match: (t) => /\btee\b|t-?shirt/i.test(t) },
+  { key: "cap", label: "Caps", match: (t) => /\bcap\b|\bhat\b|beanie/i.test(t) },
+];
+// The category keys a product belongs to, based on its tags.
+const categoriesOf = (p: ShopifyProduct) => {
+  const tags = p.node.tags ?? [];
+  return GARMENT_CATEGORIES.filter((c) => tags.some((t) => c.match(t))).map((c) => c.key);
+};
+
 // A single collection card. Stateful so hovering a colour swatch swaps the card
 // image to that colour's front mockup, while hovering the image itself reveals
 // the garment's other side (back). Both get a very slight zoom.
@@ -202,6 +217,20 @@ function MerchCard({ product }: { product: ShopifyProduct }) {
 // "Merch" collection (build-time fetch). Merch is EUR with cents, so prices
 // render with 2 decimals.
 function MerchGrid({ products }: { products: ShopifyProduct[] }) {
+  const [activeCat, setActiveCat] = useState<string | null>(null);
+
+  // Only surface filter buttons for categories that actually have products
+  // (so "Caps" appears the moment a cap is tagged). Hide the bar entirely
+  // unless there are at least two categories to choose between.
+  const presentCats = GARMENT_CATEGORIES.filter((c) =>
+    products.some((p) => categoriesOf(p).includes(c.key)),
+  );
+  const showFilters = presentCats.length >= 2;
+  const visibleProducts =
+    showFilters && activeCat
+      ? products.filter((p) => categoriesOf(p).includes(activeCat))
+      : products;
+
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header forceScrolled locale={DEFAULT_LOCALE} />
@@ -213,10 +242,11 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
             <h1
               className="mb-3"
               style={{
-                fontFamily: "Beverly Drive, serif",
+                fontFamily: "UDC Working Man Sans, sans-serif",
                 color: "#1B4229",
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontSize: "clamp(2.25rem, 4.5vw, 3.5rem)",
                 letterSpacing: "0.04em",
+                textTransform: "uppercase",
               }}
             >
               Merch
@@ -235,13 +265,44 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
             </p>
           </div>
 
+          {/* Category filter — only when there are ≥2 tagged categories. */}
+          {showFilters && (
+            <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
+              {[{ key: null as string | null, label: "All" }, ...presentCats].map((cat) => {
+                const active = activeCat === cat.key;
+                return (
+                  <button
+                    key={cat.key ?? "all"}
+                    type="button"
+                    onClick={() => setActiveCat(cat.key)}
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      fontSize: "0.8rem",
+                      padding: "7px 16px",
+                      borderRadius: 999,
+                      border: "1px solid #1B4229",
+                      backgroundColor: active ? "#1B4229" : "transparent",
+                      color: active ? "#FFFAEA" : "#1B4229",
+                      opacity: active ? 1 : 0.75,
+                      transition: "all 150ms ease",
+                    }}
+                  >
+                    {cat.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           {products.length === 0 ? (
             <p style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6 }}>
               Nothing here yet — check back soon.
             </p>
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-10 md:gap-y-16">
-              {products.map((p) => (
+              {visibleProducts.map((p) => (
                 <MerchCard key={p.node.id} product={p} />
               ))}
             </div>
