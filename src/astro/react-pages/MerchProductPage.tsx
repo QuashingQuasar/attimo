@@ -58,11 +58,17 @@ function MerchProductInner({
         v.selectedOptions.every((o) => selectedOptions[o.name] === o.value),
     ) ?? null;
 
-  // Reset a manual thumbnail pick when the variant changes, so the newly
-  // chosen colour's image takes over.
+  // The currently selected colour (if the product has a colour option).
+  const selectedColor = Object.entries(selectedOptions).find(([k]) =>
+    /colou?r/i.test(k),
+  )?.[1];
+
+  // Reset a manual thumbnail pick only when the COLOUR changes, so the newly
+  // chosen colour's image takes over. Changing only the SIZE keeps whatever
+  // image the shopper has selected.
   useEffect(() => {
     setManualImageUrl(null);
-  }, [selected?.id]);
+  }, [selectedColor]);
 
   // Main gallery image, DERIVED each render (not via an effect, so a colour
   // change updates it immediately): a manual thumbnail pick wins; else the
