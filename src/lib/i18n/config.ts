@@ -70,6 +70,71 @@ export const DEFAULT_LOCALE: Locale = {
 export const LOCALES: Locale[] = [
   DEFAULT_LOCALE,
   {
+    // Germany — a LANGUAGE market mirroring France. Germany uses EUR, so
+    // currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; only the
+    // content language (German) differs. hreflang "de" (language-targeted),
+    // Shopify @inContext + checkout buyer country is DE/EUR.
+    slug: "de",
+    country: "DE",
+    countryName: "Deutschland",
+    lang: "de",
+    hreflang: "de",
+    shopifyLanguage: "DE",
+    // Shares EUR with the default + French markets — show a country code so
+    // the three EUR entries stay distinguishable in the switcher.
+    selectorLabel: "DEU",
+    currency: {
+      code: "EUR",
+      symbol: "€",
+      symbolPosition: "before",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 24,
+      nocellara: 23,
+      picual: 22,
+    },
+    shipping: {
+      standard: 5.95,
+      freeThreshold: 50,
+    },
+    flag: "🇩🇪",
+    flagCode: "DE",
+  },
+  {
+    // France — the first LANGUAGE market (not a currency market). France uses
+    // EUR, so currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; the
+    // only thing that differs is the content language (French). hreflang is
+    // "fr" (language-targeted, serves all French speakers) while Shopify
+    // @inContext + checkout buyer country is FR/EUR.
+    slug: "fr",
+    country: "FR",
+    countryName: "France",
+    lang: "fr",
+    hreflang: "fr",
+    shopifyLanguage: "FR",
+    // Same currency (EUR) as the default market — show the country code so the
+    // EUR entries are distinguishable in the switcher.
+    selectorLabel: "FRA",
+    currency: {
+      code: "EUR",
+      symbol: "€",
+      symbolPosition: "before",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 24,
+      nocellara: 23,
+      picual: 22,
+    },
+    shipping: {
+      standard: 5.95,
+      freeThreshold: 50,
+    },
+    flag: "🇫🇷",
+    flagCode: "FR",
+  },
+  {
     slug: "dk",
     country: "DK",
     countryName: "Danmark",
@@ -121,71 +186,6 @@ export const LOCALES: Locale[] = [
     },
     flag: "🇸🇪",
     flagCode: "SE",
-  },
-  {
-    // France — the first LANGUAGE market (not a currency market). France uses
-    // EUR, so currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; the
-    // only thing that differs is the content language (French). hreflang is
-    // "fr" (language-targeted, serves all French speakers) while Shopify
-    // @inContext + checkout buyer country is FR/EUR.
-    slug: "fr",
-    country: "FR",
-    countryName: "France",
-    lang: "fr",
-    hreflang: "fr",
-    shopifyLanguage: "FR",
-    // Same currency (EUR) as the default market — show the country code so the
-    // two EUR entries are distinguishable in the switcher.
-    selectorLabel: "FRA",
-    currency: {
-      code: "EUR",
-      symbol: "€",
-      symbolPosition: "before",
-      decimals: 0,
-    },
-    prices: {
-      coratina: 24,
-      nocellara: 23,
-      picual: 22,
-    },
-    shipping: {
-      standard: 5.95,
-      freeThreshold: 50,
-    },
-    flag: "🇫🇷",
-    flagCode: "FR",
-  },
-  {
-    // Germany — a LANGUAGE market mirroring France. Germany uses EUR, so
-    // currency/prices/shipping are IDENTICAL to DEFAULT_LOCALE; only the
-    // content language (German) differs. hreflang "de" (language-targeted),
-    // Shopify @inContext + checkout buyer country is DE/EUR.
-    slug: "de",
-    country: "DE",
-    countryName: "Deutschland",
-    lang: "de",
-    hreflang: "de",
-    shopifyLanguage: "DE",
-    // Shares EUR with the default + French markets — show a country code so
-    // the three EUR entries stay distinguishable in the switcher.
-    selectorLabel: "DEU",
-    currency: {
-      code: "EUR",
-      symbol: "€",
-      symbolPosition: "before",
-      decimals: 0,
-    },
-    prices: {
-      coratina: 24,
-      nocellara: 23,
-      picual: 22,
-    },
-    shipping: {
-      standard: 5.95,
-      freeThreshold: 50,
-    },
-    flag: "🇩🇪",
-    flagCode: "DE",
   },
 ];
 
