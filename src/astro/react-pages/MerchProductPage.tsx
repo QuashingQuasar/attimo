@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/VariantSelector";
-import { Link } from "@/lib/router-stub";
+import { MerchCard } from "@/components/MerchCard";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -328,47 +328,18 @@ function MerchProductInner({
       </section>
 
       {related.length > 0 && (
-        <section className="px-4 md:px-6 pb-16 md:pb-24">
+        <section className="px-5 md:px-8 pb-16 md:pb-24">
           <div className="mx-auto" style={{ maxWidth: "1200px" }}>
             <h2
-              className="text-center mb-8"
+              className="text-center mb-10 md:mb-12"
               style={{ fontFamily: "Beverly Drive, serif", color: "#1B4229", fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}
             >
               More merch
             </h2>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
-              {related.map((p) => {
-                const n = p.node;
-                const im = n.images?.edges?.[0]?.node;
-                const pr = n.priceRange?.minVariantPrice;
-                return (
-                  <Link key={n.id} to={`/merch/${n.handle}`} className="group flex flex-col">
-                    <div className="rounded-2xl overflow-hidden aspect-[4/5] mb-4" style={{ backgroundColor: "#1B4229" }}>
-                      {im && (
-                        <img
-                          src={im.url}
-                          alt={im.altText ?? n.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      )}
-                    </div>
-                    <h3
-                      className="text-center"
-                      style={{ fontFamily: "Beverly Drive, serif", color: "#1B4229", fontSize: "clamp(1.3rem, 2vw, 1.7rem)" }}
-                    >
-                      {n.title}
-                    </h3>
-                    {pr && (
-                      <p
-                        className="text-center"
-                        style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#1B4229", fontSize: "1rem" }}
-                      >
-                        {formatPrice(parseFloat(pr.amount), DEFAULT_LOCALE, 2)}
-                      </p>
-                    )}
-                  </Link>
-                );
-              })}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-10 md:gap-y-16">
+              {related.map((p) => (
+                <MerchCard key={p.node.id} product={p} />
+              ))}
             </div>
           </div>
         </section>
