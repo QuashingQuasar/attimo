@@ -116,7 +116,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           style={{
             fontFamily: "UDC Working Man Sans, sans-serif",
             color: "#1B4229",
-            fontSize: "clamp(1.4rem, 1.8vw, 1.75rem)",
+            fontSize: "clamp(1.25rem, 1.6vw, 1.5rem)",
             letterSpacing: "0.03em",
             textTransform: "uppercase",
             lineHeight: 1.1,
