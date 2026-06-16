@@ -116,9 +116,10 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           style={{
             fontFamily: "UDC Working Man Sans, sans-serif",
             color: "#1B4229",
-            fontSize: "0.95rem",
+            fontSize: "clamp(1.4rem, 1.8vw, 1.75rem)",
             letterSpacing: "0.03em",
             textTransform: "uppercase",
+            lineHeight: 1.1,
           }}
         >
           {node.title}
@@ -129,8 +130,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
-              opacity: 0.5,
-              fontSize: "0.95rem",
+              opacity: 0.7,
+              fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
             }}
           >
             {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
@@ -165,8 +166,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
                 color: "#1B4229",
-                opacity: 0.5,
-                fontSize: "0.8rem",
+                opacity: 0.6,
+                fontSize: "0.95rem",
               }}
             >
               +{colors.length - 6}
@@ -180,8 +181,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             color: "#1B4229",
-            opacity: 0.5,
-            fontSize: "0.85rem",
+            opacity: 0.6,
+            fontSize: "0.95rem",
           }}
         >
           Sold out
