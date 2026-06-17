@@ -115,8 +115,10 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         )}
       </div>
 
-      {/* Title (left) and price (right) on one row. */}
-      <div className="flex items-baseline justify-between gap-3">
+      {/* Title (left) + colour swatches (right) on one row; price below. The
+          swatches sit where the price used to be. Hovering one previews that
+          colour in the image above. */}
+      <div className="flex items-center justify-between gap-3">
         <h3
           style={{
             fontFamily: "UDC Working Man Sans, sans-serif",
@@ -129,56 +131,54 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         >
           {node.title}
         </h3>
-        {price && (
-          <p
-            className="flex-shrink-0"
-            style={{
-              fontFamily: "Space Grotesk, sans-serif",
-              color: "#1B4229",
-              opacity: 0.7,
-              fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
-            }}
-          >
-            {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
-          </p>
+        {colors.length > 0 && (
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            {colors.slice(0, 6).map((c) => (
+              <span
+                key={c}
+                title={c}
+                aria-label={c}
+                onMouseEnter={() => setSwatchColor(c)}
+                onMouseLeave={() => setSwatchColor(null)}
+                className="inline-block rounded-[3px] transition-transform duration-150"
+                style={{
+                  width: 22,
+                  height: 12,
+                  backgroundColor: swatchHex(c),
+                  border:
+                    swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.15)",
+                  transform: swatchColor === c ? "scale(1.12)" : "scale(1)",
+                }}
+              />
+            ))}
+            {colors.length > 6 && (
+              <span
+                style={{
+                  fontFamily: "Space Grotesk, sans-serif",
+                  color: "#1B4229",
+                  opacity: 0.6,
+                  fontSize: "0.95rem",
+                }}
+              >
+                +{colors.length - 6}
+              </span>
+            )}
+          </div>
         )}
       </div>
 
-      {/* Available colours under the title. Hovering one previews that colour
-          in the image above. */}
-      {colors.length > 0 && (
-        <div className="flex items-center gap-1.5 mt-2">
-          {colors.slice(0, 6).map((c) => (
-            <span
-              key={c}
-              title={c}
-              aria-label={c}
-              onMouseEnter={() => setSwatchColor(c)}
-              onMouseLeave={() => setSwatchColor(null)}
-              className="inline-block rounded-[3px] transition-transform duration-150"
-              style={{
-                width: 22,
-                height: 12,
-                backgroundColor: swatchHex(c),
-                border:
-                  swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.15)",
-                transform: swatchColor === c ? "scale(1.12)" : "scale(1)",
-              }}
-            />
-          ))}
-          {colors.length > 6 && (
-            <span
-              style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                color: "#1B4229",
-                opacity: 0.6,
-                fontSize: "0.95rem",
-              }}
-            >
-              +{colors.length - 6}
-            </span>
-          )}
-        </div>
+      {price && (
+        <p
+          className="mt-1.5"
+          style={{
+            fontFamily: "Space Grotesk, sans-serif",
+            color: "#1B4229",
+            opacity: 0.7,
+            fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
+          }}
+        >
+          {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
+        </p>
       )}
       {soldOut && (
         <p
