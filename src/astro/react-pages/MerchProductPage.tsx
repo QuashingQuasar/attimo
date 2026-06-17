@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { Minus, Plus } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/VariantSelector";
 import { MerchCard } from "@/components/MerchCard";
 import { SizeGuide } from "@/components/SizeGuide";
@@ -215,9 +213,9 @@ function MerchProductInner({
               </div>
             )}
 
-            <div className="flex items-center gap-3 mb-6">
-              <span
-                className="uppercase"
+            <div className="mb-6">
+              <p
+                className="uppercase mb-2"
                 style={{
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   color: "#1B4229",
@@ -226,30 +224,55 @@ function MerchProductInner({
                   opacity: 0.7,
                 }}
               >
-                Qty
-              </span>
+                Quantity
+              </p>
               <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8"
+                <button
+                  type="button"
                   aria-label="Decrease quantity"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                  className="px-4 py-2 rounded-lg border transition-all duration-200"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    letterSpacing: "0.05em",
+                    fontSize: "0.95rem",
+                    borderColor: "#1B4229",
+                    backgroundColor: "transparent",
+                    color: "#1B4229",
+                    cursor: "pointer",
+                  }}
                 >
-                  <Minus className="h-3 w-3" />
-                </Button>
-                <span className="w-8 text-center" style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}>
+                  −
+                </button>
+                <span
+                  className="text-center"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    color: "#1B4229",
+                    letterSpacing: "0.05em",
+                    fontSize: "0.95rem",
+                    minWidth: "2rem",
+                  }}
+                >
                   {quantity}
                 </span>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-8 w-8"
+                <button
+                  type="button"
                   aria-label="Increase quantity"
                   onClick={() => setQuantity((q) => q + 1)}
+                  className="px-4 py-2 rounded-lg border transition-all duration-200"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    letterSpacing: "0.05em",
+                    fontSize: "0.95rem",
+                    borderColor: "#1B4229",
+                    backgroundColor: "transparent",
+                    color: "#1B4229",
+                    cursor: "pointer",
+                  }}
                 >
-                  <Plus className="h-3 w-3" />
-                </Button>
+                  +
+                </button>
               </div>
             </div>
 
