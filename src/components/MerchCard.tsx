@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+import { frontImageForColor } from "@/lib/merchImages";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 // Flat swatch colours for the apparel colour options. Keyed by the lowercased
@@ -43,11 +44,15 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
   const colorOf = (v: (typeof variants)[number]) =>
     v.selectedOptions?.find((o) => /colou?r/i.test(o.name))?.value;
 
-  // Front mockup per colour (first variant of that colour that carries an image).
+  // Front mockup per colour, resolved from the gallery filenames (robust to
+  // scrambled per-variant image assignments) with the variant image as fallback.
+  const imageUrls = images.map((im) => im.url);
   const frontByColor: Record<string, string> = {};
-  for (const v of variants) {
-    const c = colorOf(v);
-    if (c && v.image?.url && !(c in frontByColor)) frontByColor[c] = v.image.url;
+  for (const color of colors) {
+    const variantFront =
+      variants.find((v) => colorOf(v) === color && v.image?.url)?.image?.url ?? null;
+    const img = frontImageForColor(color, imageUrls, variantFront);
+    if (img) frontByColor[color] = img;
   }
 
   const defaultImg = images[0] ?? variants[0]?.image;

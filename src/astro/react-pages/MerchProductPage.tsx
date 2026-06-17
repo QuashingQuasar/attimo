@@ -10,6 +10,7 @@ import { VariantSelector } from "@/components/VariantSelector";
 import { MerchCard } from "@/components/MerchCard";
 import { SizeGuide } from "@/components/SizeGuide";
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
+import { frontImageForColor } from "@/lib/merchImages";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -72,11 +73,17 @@ function MerchProductInner({
     setManualImageUrl(null);
   }, [selectedColor]);
 
+  // Front mockup for the selected colour, resolved from the gallery filenames
+  // (robust to scrambled per-variant image assignments).
+  const colorFront = selectedColor
+    ? frontImageForColor(selectedColor, images.map((im) => im.url), selected?.image?.url)
+    : null;
+
   // Main gallery image, DERIVED each render (not via an effect, so a colour
   // change updates it immediately): a manual thumbnail pick wins; else the
-  // selected variant's own image (per-colour mockup); else the first image.
+  // selected colour's front mockup; else the variant image; else the first.
   const mainImageUrl =
-    manualImageUrl ?? selected?.image?.url ?? images[0]?.url ?? "";
+    manualImageUrl ?? colorFront ?? selected?.image?.url ?? images[0]?.url ?? "";
 
   const unitPrice = selected
     ? parseFloat(selected.price.amount)
