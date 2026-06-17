@@ -39,10 +39,20 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
     products.some((p) => categoriesOf(p).includes(c.key)),
   );
   const showFilters = presentCats.length >= 2;
+
+  // Display order: group by garment category in GARMENT_CATEGORIES order
+  // (tees, then hoodies, then caps), untagged last. Stable sort preserves each
+  // group's existing relative order.
+  const rankOf = (p: ShopifyProduct) => {
+    const idxs = categoriesOf(p).map((c) => GARMENT_CATEGORIES.findIndex((g) => g.key === c));
+    return idxs.length ? Math.min(...idxs) : GARMENT_CATEGORIES.length;
+  };
+  const ordered = [...products].sort((a, b) => rankOf(a) - rankOf(b));
+
   const visibleProducts =
     showFilters && activeCat
-      ? products.filter((p) => categoriesOf(p).includes(activeCat))
-      : products;
+      ? ordered.filter((p) => categoriesOf(p).includes(activeCat))
+      : ordered;
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
