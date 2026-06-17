@@ -8,6 +8,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/VariantSelector";
 import { MerchCard } from "@/components/MerchCard";
+import { SizeGuide } from "@/components/SizeGuide";
+import { SIZE_GUIDES } from "@/lib/sizeGuides";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -323,6 +325,9 @@ function MerchProductInner({
                 </div>
               );
             })()}
+
+            {/* Collapsible size guide (only products with a guide defined). */}
+            {SIZE_GUIDES[node.handle] && <SizeGuide rows={SIZE_GUIDES[node.handle]} />}
           </div>
         </div>
       </section>
