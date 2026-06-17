@@ -63,14 +63,14 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
 
   const [imageHovered, setImageHovered] = useState(false);
   const [swatchColor, setSwatchColor] = useState<string | null>(null);
+  const [overSwatches, setOverSwatches] = useState(false);
 
   // Overlay (top layer) image: a hovered swatch wins (that colour's front);
-  // otherwise hovering the IMAGE (not the swatch row) shows the back. Scoping
-  // the back-reveal to the image means moving between swatches never flashes
-  // the back view.
+  // otherwise hovering the image shows the back — but NOT while the cursor is
+  // over the swatch cluster, so moving between swatches never flashes the back.
   const overlaySrc = swatchColor
     ? frontByColor[swatchColor] ?? defaultImg?.url ?? null
-    : imageHovered
+    : imageHovered && !overSwatches
       ? backImg
       : null;
   const showOverlay = overlaySrc != null;
@@ -113,26 +113,16 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             style={{ opacity: showOverlay ? 1 : 0, transform: zoom ? "scale(1.03)" : "scale(1)" }}
           />
         )}
-      </div>
 
-      {/* Title (left) + colour swatches (right) on one row; price below. The
-          swatches sit where the price used to be. Hovering one previews that
-          colour in the image above. */}
-      <div className="flex items-center justify-between gap-3">
-        <h3
-          style={{
-            fontFamily: "UDC Working Man Sans, sans-serif",
-            color: "#1B4229",
-            fontSize: "clamp(1.25rem, 1.6vw, 1.5rem)",
-            letterSpacing: "0.03em",
-            textTransform: "uppercase",
-            lineHeight: 1.1,
-          }}
-        >
-          {node.title}
-        </h3>
+        {/* Colour swatches overlaid in the top-right corner. Hovering one
+            previews that colour; while over the cluster the back-reveal is
+            suppressed so moving between swatches doesn't flash the back. */}
         {colors.length > 0 && (
-          <div className="flex items-center gap-1.5 flex-shrink-0">
+          <div
+            className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5"
+            onMouseEnter={() => setOverSwatches(true)}
+            onMouseLeave={() => setOverSwatches(false)}
+          >
             {colors.slice(0, 6).map((c) => (
               <span
                 key={c}
@@ -142,12 +132,13 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
                 onMouseLeave={() => setSwatchColor(null)}
                 className="inline-block rounded-[3px] transition-transform duration-150"
                 style={{
-                  width: 22,
-                  height: 12,
+                  width: 20,
+                  height: 11,
                   backgroundColor: swatchHex(c),
                   border:
-                    swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.15)",
-                  transform: swatchColor === c ? "scale(1.12)" : "scale(1)",
+                    swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.25)",
+                  boxShadow: "0 1px 3px rgba(27,66,41,0.18)",
+                  transform: swatchColor === c ? "scale(1.15)" : "scale(1)",
                 }}
               />
             ))}
@@ -156,8 +147,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
                   color: "#1B4229",
-                  opacity: 0.6,
-                  fontSize: "0.95rem",
+                  opacity: 0.7,
+                  fontSize: "0.8rem",
                 }}
               >
                 +{colors.length - 6}
@@ -166,6 +157,20 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           </div>
         )}
       </div>
+
+      {/* Title; price below. Colour swatches overlay the image corner. */}
+      <h3
+        style={{
+          fontFamily: "UDC Working Man Sans, sans-serif",
+          color: "#1B4229",
+          fontSize: "clamp(1.25rem, 1.6vw, 1.5rem)",
+          letterSpacing: "0.03em",
+          textTransform: "uppercase",
+          lineHeight: 1.1,
+        }}
+      >
+        {node.title}
+      </h3>
 
       {price && (
         <p
