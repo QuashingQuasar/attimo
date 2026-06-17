@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import type { SizeRow } from "@/lib/sizeGuides";
+import type { SizeGuide as SizeGuideData } from "@/lib/sizeGuides";
 
 // Collapsible size guide shown under the PDP description. Collapsed by default;
-// the header toggles a flat-measurement table (Size / Length / Width).
-export function SizeGuide({ rows }: { rows: SizeRow[] }) {
+// the header toggles a flat-measurement table. Columns are data-driven so
+// different garments (tee vs hoodie) can show different measurements.
+export function SizeGuide({ guide }: { guide: SizeGuideData }) {
   const [open, setOpen] = useState(false);
-  if (!rows?.length) return null;
+  if (!guide?.rows?.length) return null;
+
+  const headers = ["Size", ...guide.columns.map((c) => `${c} (${guide.unit})`)];
 
   const labelStyle: React.CSSProperties = {
     fontFamily: "UDC Working Man Sans, sans-serif",
@@ -52,7 +55,7 @@ export function SizeGuide({ rows }: { rows: SizeRow[] }) {
         >
           <thead>
             <tr>
-              {["Size", "Length (cm)", "Width (cm)"].map((h) => (
+              {headers.map((h) => (
                 <th
                   key={h}
                   className="text-left py-2"
@@ -72,7 +75,7 @@ export function SizeGuide({ rows }: { rows: SizeRow[] }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => (
+            {guide.rows.map((r) => (
               <tr key={r.size}>
                 <td
                   className="py-2.5"
@@ -84,26 +87,19 @@ export function SizeGuide({ rows }: { rows: SizeRow[] }) {
                 >
                   {r.size}
                 </td>
-                <td
-                  className="py-2.5"
-                  style={{
-                    fontSize: "0.95rem",
-                    opacity: 0.8,
-                    borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
-                  }}
-                >
-                  {r.length}
-                </td>
-                <td
-                  className="py-2.5"
-                  style={{
-                    fontSize: "0.95rem",
-                    opacity: 0.8,
-                    borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
-                  }}
-                >
-                  {r.width}
-                </td>
+                {r.values.map((v, i) => (
+                  <td
+                    key={i}
+                    className="py-2.5"
+                    style={{
+                      fontSize: "0.95rem",
+                      opacity: 0.8,
+                      borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
+                    }}
+                  >
+                    {v}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>

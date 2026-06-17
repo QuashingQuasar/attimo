@@ -1,14 +1,44 @@
-// Per-product size guides, keyed by Shopify product handle. Measurements are
-// flat garment dimensions in centimetres. Add a tee guide here once finalised.
-export type SizeRow = { size: string; length: string; width: string };
+// Per-product size guides, keyed by Shopify product handle. Each guide defines
+// its own measurement columns (so tees and hoodies can differ) and flat
+// garment measurements. `unit` is appended to every measurement column header.
+export type SizeGuideRow = { size: string; values: string[] };
+export type SizeGuide = {
+  unit: string; // e.g. "cm" — appended to each column header
+  columns: string[]; // measurement columns, aligned with each row's `values`
+  rows: SizeGuideRow[];
+};
 
-export const SIZE_GUIDES: Record<string, SizeRow[]> = {
-  "attimo-vintage-hoodie": [
-    { size: "S", length: "68.6", width: "50.8" },
-    { size: "M", length: "71.1", width: "55.9" },
-    { size: "L", length: "73.7", width: "61" },
-    { size: "XL", length: "76.2", width: "66" },
-    { size: "2XL", length: "78.7", width: "71.1" },
-    { size: "3XL", length: "81.3", width: "76.2" },
+const HOODIE_GUIDE: SizeGuide = {
+  unit: "cm",
+  columns: ["Length", "Width"],
+  rows: [
+    { size: "S", values: ["68.6", "50.8"] },
+    { size: "M", values: ["71.1", "55.9"] },
+    { size: "L", values: ["73.7", "61"] },
+    { size: "XL", values: ["76.2", "66"] },
+    { size: "2XL", values: ["78.7", "71.1"] },
+    { size: "3XL", values: ["81.3", "76.2"] },
   ],
+};
+
+const TEE_GUIDE: SizeGuide = {
+  unit: "cm",
+  columns: ["Length", "Chest", "Sleeve length"],
+  rows: [
+    { size: "S", values: ["70.5", "99", "23"] },
+    { size: "M", values: ["74", "109.2", "24"] },
+    { size: "L", values: ["77.5", "119.4", "24"] },
+    { size: "XL", values: ["81", "129.5", "26"] },
+    { size: "2XL", values: ["84.5", "139.7", "27"] },
+    { size: "3XL", values: ["86.5", "149.9", "28"] },
+  ],
+};
+
+export const SIZE_GUIDES: Record<string, SizeGuide> = {
+  "attimo-vintage-hoodie": HOODIE_GUIDE,
+  // All current tees share the same blank-product measurements.
+  "oversized-faded-t-shirt": TEE_GUIDE, // ATTIMO Olive Tee
+  "attimo-oversized-bone-tee": TEE_GUIDE,
+  "oversized-faded-t-shirt-1": TEE_GUIDE, // ATTIMO Faded Black Tee
+  "oversized-faded-t-shirt-2": TEE_GUIDE, // ATTIMO Sand Tee
 };

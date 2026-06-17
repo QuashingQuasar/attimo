@@ -327,7 +327,7 @@ function MerchProductInner({
             })()}
 
             {/* Collapsible size guide (only products with a guide defined). */}
-            {SIZE_GUIDES[node.handle] && <SizeGuide rows={SIZE_GUIDES[node.handle]} />}
+            {SIZE_GUIDES[node.handle] && <SizeGuide guide={SIZE_GUIDES[node.handle]} />}
           </div>
         </div>
       </section>
