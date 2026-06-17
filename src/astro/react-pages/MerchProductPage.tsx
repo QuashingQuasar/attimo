@@ -310,7 +310,7 @@ function MerchProductInner({
               if (!raw) return null;
               const { lead, specs } = parseMerchDescription(raw);
               return (
-                <Collapsible label="Description">
+                <Collapsible label="Description" defaultOpen>
                   <p
                     className="mb-3"
                     style={{
