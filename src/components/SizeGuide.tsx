@@ -1,110 +1,75 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Collapsible } from "@/components/Collapsible";
 import type { SizeGuide as SizeGuideData } from "@/lib/sizeGuides";
 
-// Collapsible size guide shown under the PDP description. Collapsed by default;
-// the header toggles a flat-measurement table. Columns are data-driven so
-// different garments (tee vs hoodie) can show different measurements.
+// Collapsible size guide shown under the PDP description. Columns are
+// data-driven so different garments (tee vs hoodie) can show different
+// measurements.
 export function SizeGuide({ guide }: { guide: SizeGuideData }) {
-  const [open, setOpen] = useState(false);
   if (!guide?.rows?.length) return null;
 
   const headers = ["Size", ...guide.columns.map((c) => `${c} (${guide.unit})`)];
 
-  const labelStyle: React.CSSProperties = {
-    fontFamily: "UDC Working Man Sans, sans-serif",
-    color: "#1B4229",
-    letterSpacing: "0.1em",
-    fontSize: "0.85rem",
-    opacity: 0.7,
-  };
-
   return (
-    <div className="mt-6 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        className="w-full flex items-center justify-between"
+    <Collapsible label="Sizing">
+      <table
+        className="w-full"
+        style={{
+          borderCollapse: "collapse",
+          fontFamily: "Space Grotesk, sans-serif",
+          color: "#1B4229",
+        }}
       >
-        <span className="uppercase" style={labelStyle}>
-          Sizing
-        </span>
-        <ChevronDown
-          size={18}
-          className="transition-transform duration-300 ease-out"
-          style={{
-            color: "#1B4229",
-            opacity: 0.6,
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
-          }}
-        />
-      </button>
-
-      <div
-        className="overflow-hidden transition-all duration-300 ease-out"
-        style={{ maxHeight: open ? 480 : 0, opacity: open ? 1 : 0 }}
-      >
-        <table
-          className="w-full mt-4"
-          style={{
-            borderCollapse: "collapse",
-            fontFamily: "Space Grotesk, sans-serif",
-            color: "#1B4229",
-          }}
-        >
-          <thead>
-            <tr>
-              {headers.map((h) => (
-                <th
-                  key={h}
-                  className="text-left py-2"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    fontSize: "0.72rem",
-                    fontWeight: 400,
-                    opacity: 0.6,
-                    borderBottom: "1px solid rgba(27, 66, 41, 0.2)",
-                  }}
-                >
-                  {h}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {guide.rows.map((r) => (
-              <tr key={r.size}>
+        <thead>
+          <tr>
+            {headers.map((h) => (
+              <th
+                key={h}
+                className="text-left py-2"
+                style={{
+                  fontFamily: "UDC Working Man Sans, sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  fontSize: "0.72rem",
+                  fontWeight: 400,
+                  opacity: 0.6,
+                  borderBottom: "1px solid rgba(27, 66, 41, 0.2)",
+                }}
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {guide.rows.map((r) => (
+            <tr key={r.size}>
+              <td
+                className="py-2.5"
+                style={{
+                  fontWeight: 600,
+                  fontSize: "0.95rem",
+                  borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
+                }}
+              >
+                {r.size}
+              </td>
+              {r.values.map((v, i) => (
                 <td
+                  key={i}
                   className="py-2.5"
                   style={{
-                    fontWeight: 600,
                     fontSize: "0.95rem",
+                    opacity: 0.8,
                     borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
                   }}
                 >
-                  {r.size}
+                  {v}
                 </td>
-                {r.values.map((v, i) => (
-                  <td
-                    key={i}
-                    className="py-2.5"
-                    style={{
-                      fontSize: "0.95rem",
-                      opacity: 0.8,
-                      borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
-                    }}
-                  >
-                    {v}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Collapsible>
   );
 }

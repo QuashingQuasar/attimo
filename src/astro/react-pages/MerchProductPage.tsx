@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { VariantSelector } from "@/components/VariantSelector";
 import { MerchCard } from "@/components/MerchCard";
+import { Collapsible } from "@/components/Collapsible";
 import { SizeGuide } from "@/components/SizeGuide";
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
 import { MERCH_DESCRIPTIONS, parseMerchDescription } from "@/lib/merchContent";
@@ -309,19 +310,7 @@ function MerchProductInner({
               if (!raw) return null;
               const { lead, specs } = parseMerchDescription(raw);
               return (
-                <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
-                  <p
-                    className="uppercase mb-3"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      color: "#1B4229",
-                      letterSpacing: "0.1em",
-                      fontSize: "0.75rem",
-                      opacity: 0.7,
-                    }}
-                  >
-                    Description
-                  </p>
+                <Collapsible label="Description">
                   <p
                     className="mb-3"
                     style={{
@@ -354,7 +343,7 @@ function MerchProductInner({
                       ))}
                     </ul>
                   )}
-                </div>
+                </Collapsible>
               );
             })()}
 
