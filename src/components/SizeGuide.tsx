@@ -28,7 +28,7 @@ export function SizeGuide({ guide }: { guide: SizeGuideData }) {
         className="w-full flex items-center justify-between"
       >
         <span className="uppercase" style={labelStyle}>
-          Size guide
+          Sizing
         </span>
         <ChevronDown
           size={18}

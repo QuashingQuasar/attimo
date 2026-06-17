@@ -10,6 +10,7 @@ import { VariantSelector } from "@/components/VariantSelector";
 import { MerchCard } from "@/components/MerchCard";
 import { SizeGuide } from "@/components/SizeGuide";
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
+import { MERCH_DESCRIPTIONS, parseMerchDescription } from "@/lib/merchContent";
 import { frontImageForColor } from "@/lib/merchImages";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
@@ -277,12 +278,13 @@ function MerchProductInner({
               Printed on demand and shipped separately from oil orders.
             </p>
 
-            {/* Description — part of the right-hand buy box. Printful's copy is
-                one long " • "-delimited run; split it into a lead sentence + a
-                compact spec list so it reads like the reference's bullets and
-                stays short enough to keep the column centred. */}
-            {node.description && (() => {
-              const [lead, ...specs] = node.description.split(" • ");
+            {/* Description — branded override (MERCH_DESCRIPTIONS) when defined,
+                else Shopify's copy. Rendered as a lead sentence + compact spec
+                list so it reads like the reference's bullets. */}
+            {(() => {
+              const raw = MERCH_DESCRIPTIONS[node.handle] ?? node.description;
+              if (!raw) return null;
+              const { lead, specs } = parseMerchDescription(raw);
               return (
                 <div className="mt-8 pt-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }}>
                   <p
