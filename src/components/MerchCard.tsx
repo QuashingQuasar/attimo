@@ -10,8 +10,10 @@ import type { ShopifyProduct } from "@/lib/shopify";
 export const COLOR_SWATCH: Record<string, string> = {
   "dark chocolate": "#3a2b25",
   "forest green": "#264430",
+  forest: "#264430",
   maroon: "#5c2230",
   black: "#1b1b1b",
+  "vintage black": "#2e2c2a",
   white: "#f4f1e8",
   navy: "#1f2a44",
   "navy blue": "#1f2a44",
