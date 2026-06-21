@@ -26,6 +26,9 @@ export const MERCH_DISPLAY_ORDER = [
   "unisex-hoodie-2", // ATTIMO Classic Hoodie — Chiaro
   "unisex-oversized-hoodie", // ATTIMO Relax Hoodie
   "oversized-heavyweight-hoodie", // ATTIMO Coratina Hoodie
+  "attimo-dad-cap", // ATTIMO Dad Cap
+  "dad-hat-2", // Coratina Dad Cap (before Nocellara)
+  "dad-hat-1", // Nocellara Dad Cap
 ];
 
 // Format a merch price: drop the decimals for whole amounts (€45.00 -> €45) but
