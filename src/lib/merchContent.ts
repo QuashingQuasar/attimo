@@ -24,10 +24,12 @@ export const MERCH_DESCRIPTIONS: Record<string, string> = {
 // Split a description into a lead paragraph + spec bullets. Handles three
 // shapes: Shopify rich-text HTML (<p> lead + <ul><li> specs), our own
 // newline-separated copy, and Printful's single " • "-delimited run.
-export function parseMerchDescription(desc: string): { lead: string; specs: string[] } {
-  // HTML (Shopify descriptionHtml): <li> items are the specs; everything
-  // outside the list is the lead.
-  if (/<\w+[^>]*>/.test(desc)) {
+export function parseMerchDescription(input: string): { lead: string; specs: string[] } {
+  let text = input;
+  // HTML (Shopify descriptionHtml). If it has a <ul>/<ol>, the <li> items are
+  // the specs and everything outside the list is the lead. Otherwise reduce it
+  // to plain text and let the " • "/newline parsing below handle it.
+  if (/<\w+[^>]*>/.test(text)) {
     const strip = (s: string) =>
       s
         .replace(/<[^>]+>/g, " ")
@@ -37,17 +39,20 @@ export function parseMerchDescription(desc: string): { lead: string; specs: stri
         .replace(/&gt;/g, ">")
         .replace(/\s+/g, " ")
         .trim();
-    const specs = [...desc.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)]
+    const liItems = [...text.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)]
       .map((m) => strip(m[1]))
       .filter(Boolean);
-    const lead = strip(desc.replace(/<ul[\s\S]*?<\/ul>/gi, "").replace(/<ol[\s\S]*?<\/ol>/gi, ""));
-    return { lead, specs };
+    if (liItems.length) {
+      const lead = strip(text.replace(/<ul[\s\S]*?<\/ul>/gi, "").replace(/<ol[\s\S]*?<\/ol>/gi, ""));
+      return { lead, specs: liItems };
+    }
+    text = strip(text);
   }
-  if (desc.includes(" • ")) {
-    const [lead, ...rest] = desc.split(" • ");
+  if (text.includes(" • ")) {
+    const [lead, ...rest] = text.split(" • ");
     return { lead: lead.trim(), specs: rest.map((s) => s.trim()).filter(Boolean) };
   }
-  const lines = desc.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   const [lead = "", ...specs] = lines;
   return { lead, specs };
 }
