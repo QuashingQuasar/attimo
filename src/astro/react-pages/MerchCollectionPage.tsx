@@ -20,10 +20,12 @@ const GARMENT_CATEGORIES: Array<{ key: string; label: string; match: (t: string)
   { key: "hoodie", label: "Hoodies", match: (t) => /hoodie|sweatshirt|crewneck/i.test(t) },
   { key: "cap", label: "Caps", match: (t) => /\bcap\b|\bhat\b|beanie/i.test(t) },
 ];
-// The category keys a product belongs to, based on its tags.
+// The category keys a product belongs to, matched against its tags AND its
+// title (so an untagged "… Hoodie" still buckets correctly without needing a
+// tag on every product).
 const categoriesOf = (p: ShopifyProduct) => {
-  const tags = p.node.tags ?? [];
-  return GARMENT_CATEGORIES.filter((c) => tags.some((t) => c.match(t))).map((c) => c.key);
+  const haystack = [...(p.node.tags ?? []), p.node.title];
+  return GARMENT_CATEGORIES.filter((c) => haystack.some((t) => c.match(t))).map((c) => c.key);
 };
 
 // Manual display order (by handle) applied WITHIN a category. Products not
