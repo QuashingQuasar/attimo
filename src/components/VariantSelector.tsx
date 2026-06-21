@@ -1,3 +1,4 @@
+import { colorLabel } from "@/lib/merchContent";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 type Variant = ShopifyProduct["node"]["variants"]["edges"][number]["node"];
@@ -84,7 +85,7 @@ export function VariantSelector({ options, variants, selected, onChange }: Props
                     textDecoration: available ? "none" : "line-through",
                   }}
                 >
-                  {value}
+                  {colorLabel(value)}
                 </button>
               );
             })}

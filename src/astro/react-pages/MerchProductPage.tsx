@@ -10,7 +10,7 @@ import { MerchCard } from "@/components/MerchCard";
 import { Collapsible } from "@/components/Collapsible";
 import { SizeGuide } from "@/components/SizeGuide";
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
-import { MERCH_DESCRIPTIONS, parseMerchDescription } from "@/lib/merchContent";
+import { MERCH_DEFAULT_COLOR, MERCH_DESCRIPTIONS, parseMerchDescription } from "@/lib/merchContent";
 import { frontImageForColor } from "@/lib/merchImages";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
@@ -35,7 +35,19 @@ function MerchProductInner({
   const node = product.node;
   const variants = node.variants.edges.map((e) => e.node);
   const images = node.images?.edges?.map((e) => e.node) ?? [];
-  const firstAvailable = variants.find((v) => v.availableForSale) ?? variants[0];
+  // Pre-select the per-product default colour (e.g. Vintage Black / Maroon) when
+  // defined; otherwise the first available variant.
+  const defaultColorName = MERCH_DEFAULT_COLOR[node.handle];
+  const firstAvailable =
+    (defaultColorName
+      ? variants.find(
+          (v) =>
+            v.availableForSale &&
+            v.selectedOptions.some((o) => /colou?r/i.test(o.name) && o.value === defaultColorName),
+        )
+      : null) ??
+    variants.find((v) => v.availableForSale) ??
+    variants[0];
 
   // Drop Shopify's synthetic "Title / Default Title" option (products with no
   // real variants) so single-variant merch shows no picker.

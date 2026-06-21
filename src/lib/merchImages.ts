@@ -28,6 +28,28 @@ export function frontImageForColor(
   return fallback ?? null;
 }
 
+// An image for a colour, optionally preferring a side (front/back). Falls back
+// to the colour's front, then its first image. Used to override the default
+// gallery image (e.g. show the Vintage Black hoodie first).
+export function imageForColor(
+  color: string,
+  imageUrls: string[],
+  opts?: { side?: "front" | "back" },
+): string | null {
+  for (const token of colorTokens(color)) {
+    const matches = imageUrls.filter((u) => u.toLowerCase().includes(token));
+    if (matches.length) {
+      if (opts?.side) {
+        const sideRe = opts.side === "back" ? /back/i : /front/i;
+        const m = matches.find((u) => sideRe.test(u));
+        if (m) return m;
+      }
+      return matches.find((u) => /front/i.test(u)) ?? matches[0];
+    }
+  }
+  return null;
+}
+
 // The "other side" of a given image: the SAME colour's opposite side
 // (front↔back). Used for the collection-card hover so it reveals the garment's
 // other side without ever jumping to a different colour. Falls back to any

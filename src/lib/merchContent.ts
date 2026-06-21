@@ -14,6 +14,21 @@ Wide neck ribbing
 Tear-away label
 Blank product sourced from China`;
 
+// Default colour to show (by product handle) — overrides the gallery's first
+// image. Value is the Shopify colour option value.
+export const MERCH_DEFAULT_COLOR: Record<string, string> = {
+  "oversized-heavyweight-hoodie": "Vintage Black", // ATTIMO Coratina Hoodie
+  "attimo-vintage-hoodie": "Maroon", // ATTIMO Classic Hoodie — Scuro (shown as Burgundy)
+};
+
+// Frontend-only colour display renames (keyed by lowercased Shopify value). The
+// underlying Shopify/Printful value is unchanged, so checkout + sync are safe.
+const COLOR_LABELS: Record<string, string> = {
+  maroon: "Burgundy",
+};
+export const colorLabel = (value: string) =>
+  COLOR_LABELS[value.trim().toLowerCase()] ?? value;
+
 export const MERCH_DESCRIPTIONS: Record<string, string> = {
   "oversized-faded-t-shirt": TEE_DESCRIPTION, // ATTIMO Olive Tee
   "attimo-oversized-bone-tee": TEE_DESCRIPTION,

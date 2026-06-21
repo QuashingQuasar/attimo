@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { frontImageForColor, otherSideImage } from "@/lib/merchImages";
+import { frontImageForColor, imageForColor, otherSideImage } from "@/lib/merchImages";
+import { MERCH_DEFAULT_COLOR, colorLabel } from "@/lib/merchContent";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 // Flat swatch colours for the apparel colour options. Keyed by the lowercased
@@ -60,7 +61,18 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
     if (img) frontByColor[color] = img;
   }
 
-  const defaultImg = images[0] ?? variants[0]?.image;
+  // Default image: a per-product colour override (e.g. show Vintage Black /
+  // Maroon first), matched to the same side (front/back) as the gallery's first
+  // image; otherwise the gallery's first image.
+  const firstUrl = images[0]?.url ?? variants[0]?.image?.url ?? "";
+  const defaultColorName = MERCH_DEFAULT_COLOR[node.handle];
+  const defaultUrl =
+    (defaultColorName
+      ? imageForColor(defaultColorName, imageUrls, {
+          side: /back/i.test(firstUrl) ? "back" : "front",
+        })
+      : null) ?? firstUrl;
+  const defaultAlt = images.find((im) => im.url === defaultUrl)?.altText ?? node.title;
   const variantFronts = new Set(variants.map((v) => v.image?.url).filter(Boolean) as string[]);
   const isCap = /\bcap\b|\bhat\b|beanie/i.test([node.title, ...(node.tags ?? [])].join(" "));
   // Hover reveal:
@@ -68,9 +80,9 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
   //    (keep the default image — never flip to the cap's back);
   //  - everything else: the SAME colour's other side (front↔back).
   const backImg = isCap
-    ? (colors.map((c) => frontByColor[c]).find((url) => url && url !== defaultImg?.url) ?? null)
-    : otherSideImage(defaultImg?.url ?? "", imageUrls, colors) ??
-      images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ??
+    ? (colors.map((c) => frontByColor[c]).find((url) => url && url !== defaultUrl) ?? null)
+    : otherSideImage(defaultUrl ?? "", imageUrls, colors) ??
+      images.find((im) => im.url !== defaultUrl && !variantFronts.has(im.url))?.url ??
       null;
 
   const [imageHovered, setImageHovered] = useState(false);
@@ -81,7 +93,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
   // otherwise hovering the image shows the back — but NOT while the cursor is
   // over the swatch cluster, so moving between swatches never flashes the back.
   const overlaySrc = swatchColor
-    ? frontByColor[swatchColor] ?? defaultImg?.url ?? null
+    ? frontByColor[swatchColor] ?? defaultUrl ?? null
     : imageHovered && !overSwatches
       ? backImg
       : null;
@@ -108,10 +120,10 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         onMouseEnter={() => setImageHovered(true)}
         onMouseLeave={() => setImageHovered(false)}
       >
-        {defaultImg && (
+        {defaultUrl && (
           <img
-            src={defaultImg.url}
-            alt={defaultImg.altText ?? node.title}
+            src={defaultUrl}
+            alt={defaultAlt}
             className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-out"
             style={{ opacity: showOverlay ? 0 : 1, transform: zoom ? "scale(1.03)" : "scale(1)" }}
           />
@@ -138,8 +150,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             {colors.slice(0, 6).map((c) => (
               <span
                 key={c}
-                title={c}
-                aria-label={c}
+                title={colorLabel(c)}
+                aria-label={colorLabel(c)}
                 onMouseEnter={() => setSwatchColor(c)}
                 onMouseLeave={() => setSwatchColor(null)}
                 className="inline-block rounded-[3px] transition-transform duration-150"
