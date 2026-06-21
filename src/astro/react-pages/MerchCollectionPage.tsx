@@ -78,8 +78,9 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
 
       <section className="pt-32 md:pt-40 pb-20 md:pb-28 px-5 md:px-8">
         <div className="mx-auto" style={{ maxWidth: "1200px" }}>
-          {/* Store header — title + inline category filters on one baseline. */}
-          <div className="flex flex-wrap items-baseline gap-x-7 gap-y-3 mb-10 md:mb-14">
+          {/* Store header — title + inline category filters, then subheader. */}
+          <div className="mb-10 md:mb-14">
+            <div className="flex flex-wrap items-baseline gap-x-7 gap-y-3">
             <h1
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
@@ -118,6 +119,21 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                 })}
               </div>
             )}
+            </div>
+            <p
+              className="mt-4"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                color: "#1B4229",
+                opacity: 0.6,
+                fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
+                maxWidth: "640px",
+                lineHeight: 1.6,
+              }}
+            >
+              All products unisex. Fit varies by style, check the size guides for fit and
+              measurements.
+            </p>
           </div>
 
           {products.length === 0 ? (
