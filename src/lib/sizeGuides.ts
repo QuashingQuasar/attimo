@@ -48,7 +48,8 @@ const RELAX_HOODIE_GUIDE: SizeGuide = {
 };
 
 export const SIZE_GUIDES: Record<string, SizeGuide> = {
-  "attimo-vintage-hoodie": HOODIE_GUIDE,
+  "attimo-vintage-hoodie": HOODIE_GUIDE, // ATTIMO Classic Hoodie — Scuro
+  "unisex-hoodie-2": HOODIE_GUIDE, // ATTIMO Classic Hoodie — Chiaro
   "unisex-oversized-hoodie": RELAX_HOODIE_GUIDE, // ATTIMO Relax Hoodie
   // All current tees share the same blank-product measurements.
   "oversized-faded-t-shirt": TEE_GUIDE, // ATTIMO Olive Tee
