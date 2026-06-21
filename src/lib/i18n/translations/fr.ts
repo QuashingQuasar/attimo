@@ -16,6 +16,7 @@ export const fr: Dict = {
     shop: "Boutique",
     blog: "Blog",
     quiz: "Quiz",
+    merch: "Merch",
   },
 
   announce: {
@@ -73,6 +74,8 @@ export const fr: Dict = {
     calculatedAtCheckout: "Calculée au paiement",
     creatingCheckout: "Création du paiement...",
     checkout: "Payer avec Shopify",
+    separateShipments:
+      "Les huiles et le merch sont expédiés séparément ; votre commande peut donc arriver en plusieurs livraisons.", // REVIEW
   },
 
   quiz: {

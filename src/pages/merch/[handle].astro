@@ -1,0 +1,61 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import MerchProductPage from "@astro/react-pages/MerchProductPage";
+import { fetchMerchProducts, type ShopifyProduct } from "@/lib/shopify";
+
+// Enumerate /merch/[handle] pages from all productType:"Merch" products at
+// build time — new merch appears automatically on each deploy. Empty/failed
+// fetch ⇒ no merch PDPs (graceful).
+export async function getStaticPaths() {
+  const products: ShopifyProduct[] = await fetchMerchProducts().catch(() => []);
+  return products.map((product) => ({
+    params: { handle: product.node.handle },
+    props: {
+      product,
+      related: products.filter((p) => p.node.handle !== product.node.handle),
+    },
+  }));
+}
+
+const { product, related } = Astro.props as {
+  product: ShopifyProduct;
+  related: ShopifyProduct[];
+};
+
+const node = product.node;
+const canonicalUrl = `https://attimo-oil.com/merch/${node.handle}`;
+const image = node.images?.edges?.[0]?.node?.url;
+const price = node.priceRange?.minVariantPrice;
+const inStock = node.variants.edges.some((v) => v.node.availableForSale);
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: node.title,
+  description: node.description,
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: node.images?.edges?.map((e) => e.node.url) ?? [],
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: price ? parseFloat(price.amount).toFixed(2) : undefined,
+    priceCurrency: price?.currencyCode,
+    availability: inStock
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+};
+---
+
+<BaseLayout
+  title={`${node.title} | ATTIMO`}
+  description={node.description || `${node.title} — ATTIMO merch.`}
+  canonical={canonicalUrl}
+  ogImage={image}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+>
+  <MerchProductPage product={product} related={related} client:load />
+</BaseLayout>
