@@ -1,3 +1,11 @@
+import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+
+// Format a merch price: drop the decimals for whole amounts (€45.00 -> €45) but
+// keep real cents (€38.50). Merch is the only EUR market with sub-euro prices.
+export function formatMerchPrice(amount: number, locale: Locale = DEFAULT_LOCALE) {
+  return formatPrice(amount, locale, Number.isInteger(amount) ? 0 : 2);
+}
+
 // Branded product copy that overrides the (Printful-default) Shopify
 // description, keyed by product handle. Kept in code so Printful re-syncs can't
 // overwrite it. The renderer treats the first line as the lead paragraph and

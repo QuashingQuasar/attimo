@@ -118,7 +118,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   const hasVolumeDiscount = subtotalBeforeDiscount > subtotal + 0.005;
   // Oils are whole-euro/kr (0 decimals); merch has cents (e.g. €36.50). Show 2
   // decimals whenever cents matter — a discount is active or merch is present.
-  const moneyDecimals = hasVolumeDiscount || hasMerch ? 2 : undefined;
+  // Drop decimals for whole amounts but keep real cents (merch can be €38.50,
+  // discounts can land on cents). Applied per amount, so €45 shows as €45.
+  const autoDecimals = (amount: number) => (Number.isInteger(amount) ? 0 : 2);
 
   // Prefer the tier set by middleware (read from cookie) — it's the same
   // source as the announce-bar's "FREE SHIPPING ON N+ BOTTLES" message and
@@ -372,7 +374,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                           </span>
                         )}
                         <p className="font-semibold text-sm">
-                          {formatPrice(localizedUnitPrice(item, locale), locale, isOilItem(item) ? undefined : 2)}
+                          {formatPrice(localizedUnitPrice(item, locale), locale, autoDecimals(localizedUnitPrice(item, locale)))}
                         </p>
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
@@ -426,12 +428,12 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                   <span className="text-base font-semibold" style={{ color: '#1B4229' }}>
                     {hasVolumeDiscount && (
                       <span className="line-through opacity-60 font-normal mr-2">
-                        {formatPrice(subtotalBeforeDiscount, locale, moneyDecimals)}
+                        {formatPrice(subtotalBeforeDiscount, locale, autoDecimals(subtotalBeforeDiscount))}
                       </span>
                     )}
                     {/* 2 decimals when a discount is active or merch is in the
                         cart, so the UI matches what Shopify actually charges. */}
-                    {formatPrice(subtotal, locale, moneyDecimals)}
+                    {formatPrice(subtotal, locale, autoDecimals(subtotal))}
                   </span>
                 </div>
                 <div className="flex justify-between items-center pb-2">

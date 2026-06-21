@@ -10,10 +10,15 @@ import { MerchCard } from "@/components/MerchCard";
 import { Collapsible } from "@/components/Collapsible";
 import { SizeGuide } from "@/components/SizeGuide";
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
-import { MERCH_DEFAULT_COLOR, MERCH_DESCRIPTIONS, parseMerchDescription } from "@/lib/merchContent";
+import {
+  MERCH_DEFAULT_COLOR,
+  MERCH_DESCRIPTIONS,
+  formatMerchPrice,
+  parseMerchDescription,
+} from "@/lib/merchContent";
 import { frontImageForColor } from "@/lib/merchImages";
 import { useCartStore } from "@/stores/cartStore";
-import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 const queryClient = new QueryClient({
@@ -227,7 +232,7 @@ function MerchProductInner({
                 letterSpacing: "0.03em",
               }}
             >
-              {formatPrice(unitPrice, DEFAULT_LOCALE, 2)}
+              {formatMerchPrice(unitPrice)}
             </p>
 
             <div className="mb-6" style={{ borderTop: "1px solid rgba(27, 66, 41, 0.15)" }} />
@@ -320,7 +325,7 @@ function MerchProductInner({
               }}
             >
               {canAdd
-                ? `ADD TO CART · ${formatPrice(unitPrice * quantity, DEFAULT_LOCALE, 2)}`
+                ? `ADD TO CART · ${formatMerchPrice(unitPrice * quantity)}`
                 : "SOLD OUT"}
             </button>
 

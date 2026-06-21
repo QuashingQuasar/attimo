@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
-import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 import { frontImageForColor, imageForColor, otherSideImage } from "@/lib/merchImages";
-import { MERCH_DEFAULT_COLOR, colorLabel } from "@/lib/merchContent";
+import { MERCH_DEFAULT_COLOR, colorLabel, formatMerchPrice } from "@/lib/merchContent";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 // Flat swatch colours for the apparel colour options. Keyed by the lowercased
@@ -206,7 +205,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
           }}
         >
-          {formatPrice(parseFloat(price.amount), DEFAULT_LOCALE, 2)}
+          {formatMerchPrice(parseFloat(price.amount))}
         </p>
       )}
       {soldOut && (
