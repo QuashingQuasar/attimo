@@ -21,6 +21,7 @@ export const de: Dict = {
     shop: "Shop",
     blog: "Blog",
     quiz: "Quiz",
+    merch: "Merch",
   },
 
   announce: {
@@ -79,6 +80,8 @@ export const de: Dict = {
     calculatedAtCheckout: "Wird an der Kasse berechnet",
     creatingCheckout: "Kasse wird erstellt...",
     checkout: "Mit Shopify bezahlen",
+    separateShipments:
+      "Bestellungen mit Olivenöl und Merch werden separat versendet", // REVIEW
   },
 
   quiz: {

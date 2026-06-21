@@ -1,0 +1,17 @@
+---
+// SANDBOX — featured-oil selector shown inside the real homepage chrome.
+// NOT production, not linked from nav/footer/homepage/sitemap.
+// Uses BaseLayout (real fonts + announce bar) with noIndex so it stays out
+// of search. Delete the whole `src/pages/lab/` folder to remove the experiment.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import FeaturedOilHome from "./_FeaturedOilHome";
+---
+
+<BaseLayout
+  title="Lab — Featured Oil Selector in homepage context (sandbox)"
+  description="Experimental featured-oil selector previewed inside the homepage UI."
+  noIndex={true}
+  bodyStyle="background-color: #FFFAEA;"
+>
+  <FeaturedOilHome client:load />
+</BaseLayout>

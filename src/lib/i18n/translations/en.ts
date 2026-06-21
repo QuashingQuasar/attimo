@@ -16,6 +16,7 @@ export const en = {
     shop: "Shop",
     blog: "Blog",
     quiz: "Quiz",
+    merch: "Merch",
   },
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
@@ -77,6 +78,7 @@ export const en = {
     calculatedAtCheckout: "Calculated at checkout",
     creatingCheckout: "Creating Checkout...",
     checkout: "Checkout with Shopify",
+    separateShipments: "Olive oil and merch orders ship separately",
   },
 
   // Palate quiz UI chrome (PalateQuiz.tsx). The questions/options/result

@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import MerchCollectionPage from "@astro/react-pages/MerchCollectionPage";
+import { fetchMerchProducts } from "@/lib/shopify";
+import { checkMerchHandles } from "@/lib/merchContent";
+
+// Build-time fetch of all productType:"Merch" products. Degrades to an empty
+// grid if Shopify is unreachable at build (won't fail the build).
+const products = await fetchMerchProducts().catch(() => []);
+// Warn in the build log if any merch config references a handle not in Shopify.
+checkMerchHandles(products.map((p) => p.node.handle));
+
+const canonicalUrl = "https://attimo-oil.com/merch";
+
+// Social/link-preview image: a representative merch shot, resolved at build
+// time so it self-updates if image URLs change. Prefer the ATTIMO Olive Tee;
+// fall back to the first product; else BaseLayout's brand default.
+const ogProduct =
+  products.find((p) => p.node.handle === "oversized-faded-t-shirt") ?? products[0];
+const ogRaw = ogProduct?.node.images?.edges?.[0]?.node?.url;
+const ogImage = ogRaw ? `${ogRaw}${ogRaw.includes("?") ? "&" : "?"}width=1200` : undefined;
+---
+
+<BaseLayout
+  title="Merch | ATTIMO Specialty Extra Virgin Olive Oil"
+  description="ATTIMO merch — apparel and goods for people who take their olive oil seriously."
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  bodyStyle="background-color: #FFFAEA;"
+>
+  <MerchCollectionPage products={products} client:load />
+</BaseLayout>
