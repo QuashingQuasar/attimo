@@ -25,6 +25,8 @@ export const COLOR_SWATCH: Record<string, string> = {
   "royal blue": "#2f4aa0",
   "light blue": "#86bbe3",
   sand: "#d8c9a8",
+  khaki: "#c2b487",
+  spruce: "#3a4742",
   natural: "#e4dcc7",
   olive: "#5b5a36",
   "military green": "#4b4f3a",
@@ -106,8 +108,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           <img
             src={defaultImg.url}
             alt={defaultImg.altText ?? node.title}
-            className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 ease-out"
-            style={{ transform: zoom ? "scale(1.03)" : "scale(1)" }}
+            className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-out"
+            style={{ opacity: showOverlay ? 0 : 1, transform: zoom ? "scale(1.03)" : "scale(1)" }}
           />
         )}
         {overlayDisplay && (

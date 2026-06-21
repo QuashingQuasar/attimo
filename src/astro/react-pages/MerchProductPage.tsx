@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { VariantSelector } from "@/components/VariantSelector";
+import { Link } from "@/lib/router-stub";
 import { MerchCard } from "@/components/MerchCard";
 import { Collapsible } from "@/components/Collapsible";
 import { SizeGuide } from "@/components/SizeGuide";
@@ -114,6 +115,22 @@ function MerchProductInner({
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: "#FFFAEA" }}>
       <Header forceScrolled locale={DEFAULT_LOCALE} />
+
+      {/* Back to the collection. */}
+      <Link
+        to="/merch"
+        className="absolute z-40 top-24 md:top-36 left-5 md:left-8 inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
+        style={{
+          fontFamily: "UDC Working Man Sans, sans-serif",
+          color: "#1B4229",
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          fontSize: "0.8rem",
+        }}
+      >
+        <span aria-hidden style={{ fontSize: "1.15rem", lineHeight: 1 }}>←</span>
+        Back
+      </Link>
 
       {/* Hero: the ENTIRE viewport split into two equal halves. Each half is a
           full-height flex box that centres its content both vertically and
