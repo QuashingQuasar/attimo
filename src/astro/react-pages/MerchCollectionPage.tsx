@@ -26,6 +26,16 @@ const categoriesOf = (p: ShopifyProduct) => {
   return GARMENT_CATEGORIES.filter((c) => tags.some((t) => c.match(t))).map((c) => c.key);
 };
 
+// Manual display order (by handle) applied WITHIN a category. Products not
+// listed keep their Shopify order after the listed ones. Used to keep the two
+// Classic Hoodies adjacent.
+const MERCH_DISPLAY_ORDER = [
+  "attimo-vintage-hoodie", // ATTIMO Classic Hoodie — Scuro
+  "unisex-hoodie-2", // ATTIMO Classic Hoodie — Chiaro
+  "unisex-oversized-hoodie", // ATTIMO Relax Hoodie
+  "oversized-heavyweight-hoodie", // ATTIMO Coratina Hoodie
+];
+
 // /merch collection listing. English-only (default locale), fed from the
 // Shopify "Merch" product type (build-time fetch). Cards are the shared
 // MerchCard so the PDP "More merch" section stays identical.
@@ -47,7 +57,13 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
     const idxs = categoriesOf(p).map((c) => GARMENT_CATEGORIES.findIndex((g) => g.key === c));
     return idxs.length ? Math.min(...idxs) : GARMENT_CATEGORIES.length;
   };
-  const ordered = [...products].sort((a, b) => rankOf(a) - rankOf(b));
+  const orderIndex = (p: ShopifyProduct) => {
+    const i = MERCH_DISPLAY_ORDER.indexOf(p.node.handle);
+    return i === -1 ? 999 : i;
+  };
+  const ordered = [...products].sort(
+    (a, b) => rankOf(a) - rankOf(b) || orderIndex(a) - orderIndex(b),
+  );
 
   const visibleProducts =
     showFilters && activeCat
