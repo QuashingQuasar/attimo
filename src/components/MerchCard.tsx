@@ -101,6 +101,44 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
   if (overlaySrc) lastOverlay.current = overlaySrc;
   const overlayDisplay = overlaySrc ?? lastOverlay.current ?? backImg;
 
+  // Colour swatch chips, reused by the desktop image-corner overlay and the
+  // mobile inline-with-price row.
+  const swatchChips =
+    colors.length > 0 ? (
+      <>
+        {colors.slice(0, 6).map((c) => (
+          <span
+            key={c}
+            title={colorLabel(c)}
+            aria-label={colorLabel(c)}
+            onMouseEnter={() => setSwatchColor(c)}
+            onMouseLeave={() => setSwatchColor(null)}
+            className="inline-block rounded-[3px] transition-transform duration-150"
+            style={{
+              width: 20,
+              height: 11,
+              backgroundColor: swatchHex(c),
+              border: swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.25)",
+              boxShadow: "0 1px 3px rgba(27,66,41,0.18)",
+              transform: swatchColor === c ? "scale(1.15)" : "scale(1)",
+            }}
+          />
+        ))}
+        {colors.length > 6 && (
+          <span
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              color: "#1B4229",
+              opacity: 0.7,
+              fontSize: "0.8rem",
+            }}
+          >
+            +{colors.length - 6}
+          </span>
+        )}
+      </>
+    ) : null;
+
   return (
     <Link
       to={`/merch/${node.handle}`}
@@ -139,43 +177,15 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         {/* Colour swatches overlaid in the top-right corner. Hovering one
             previews that colour; while over the cluster the back-reveal is
             suppressed so moving between swatches doesn't flash the back. */}
+        {/* Desktop: swatches overlay the image corner. Hidden on mobile (it
+            overlapped the photo) — mobile shows them inline with the price. */}
         {colors.length > 0 && (
           <div
-            className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5"
+            className="absolute top-2.5 right-2.5 z-10 hidden md:flex items-center gap-1.5"
             onMouseEnter={() => setOverSwatches(true)}
             onMouseLeave={() => setOverSwatches(false)}
           >
-            {colors.slice(0, 6).map((c) => (
-              <span
-                key={c}
-                title={colorLabel(c)}
-                aria-label={colorLabel(c)}
-                onMouseEnter={() => setSwatchColor(c)}
-                onMouseLeave={() => setSwatchColor(null)}
-                className="inline-block rounded-[3px] transition-transform duration-150"
-                style={{
-                  width: 20,
-                  height: 11,
-                  backgroundColor: swatchHex(c),
-                  border:
-                    swatchColor === c ? "1px solid #1B4229" : "1px solid rgba(27,66,41,0.25)",
-                  boxShadow: "0 1px 3px rgba(27,66,41,0.18)",
-                  transform: swatchColor === c ? "scale(1.15)" : "scale(1)",
-                }}
-              />
-            ))}
-            {colors.length > 6 && (
-              <span
-                style={{
-                  fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229",
-                  opacity: 0.7,
-                  fontSize: "0.8rem",
-                }}
-              >
-                +{colors.length - 6}
-              </span>
-            )}
+            {swatchChips}
           </div>
         )}
       </div>
@@ -194,19 +204,25 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         {node.title}
       </h3>
 
-      {price && (
-        <p
-          className="mt-1.5"
-          style={{
-            fontFamily: "Space Grotesk, sans-serif",
-            color: "#1B4229",
-            opacity: 0.7,
-            fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
-          }}
-        >
-          {formatMerchPrice(parseFloat(price.amount))}
-        </p>
-      )}
+      {/* Price; on mobile the swatches sit inline on the same row (the corner
+          overlay is desktop-only). */}
+      <div className="mt-1.5 flex items-center justify-between gap-3">
+        {price && (
+          <p
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              color: "#1B4229",
+              opacity: 0.7,
+              fontSize: "clamp(1.05rem, 1.2vw, 1.2rem)",
+            }}
+          >
+            {formatMerchPrice(parseFloat(price.amount))}
+          </p>
+        )}
+        {colors.length > 0 && (
+          <div className="flex md:hidden items-center gap-1.5 flex-shrink-0">{swatchChips}</div>
+        )}
+      </div>
       {soldOut && (
         <p
           className="mt-1.5"

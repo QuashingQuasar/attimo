@@ -78,8 +78,7 @@ export const en = {
     calculatedAtCheckout: "Calculated at checkout",
     creatingCheckout: "Creating Checkout...",
     checkout: "Checkout with Shopify",
-    separateShipments:
-      "Oils and merch ship separately, so your order may arrive in more than one delivery.",
+    separateShipments: "Olive oil and merch orders ship separately",
   },
 
   // Palate quiz UI chrome (PalateQuiz.tsx). The questions/options/result

@@ -75,7 +75,7 @@ export const fr: Dict = {
     creatingCheckout: "Création du paiement...",
     checkout: "Payer avec Shopify",
     separateShipments:
-      "Les huiles et le merch sont expédiés séparément ; votre commande peut donc arriver en plusieurs livraisons.", // REVIEW
+      "Les commandes d'huile d'olive et de merch sont expédiées séparément", // REVIEW
   },
 
   quiz: {

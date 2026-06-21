@@ -81,7 +81,7 @@ export const de: Dict = {
     creatingCheckout: "Kasse wird erstellt...",
     checkout: "Mit Shopify bezahlen",
     separateShipments:
-      "Öle und Merch werden separat versendet, daher kann Ihre Bestellung in mehreren Lieferungen eintreffen.", // REVIEW
+      "Bestellungen mit Olivenöl und Merch werden separat versendet", // REVIEW
   },
 
   quiz: {
