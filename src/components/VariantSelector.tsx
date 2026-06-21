@@ -16,6 +16,16 @@ function hasAvailableVariant(variants: Variant[], assignment: Record<string, str
   );
 }
 
+// Canonical apparel size order so the picker reads S, M, L, XL, 2XL… even when
+// Shopify returns the option values in a different order (e.g. S last).
+const SIZE_ORDER = ["XXS", "XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL", "6XL"];
+function sizeRank(value: string): number {
+  // Normalise XXL→2XL, XXXL→3XL, … so both notations sort correctly.
+  const s = value.trim().toUpperCase().replace(/^X(X+)L$/, (_, xs) => `${xs.length + 1}XL`);
+  const i = SIZE_ORDER.indexOf(s);
+  return i === -1 ? 999 : i;
+}
+
 interface Props {
   options: Option[];
   variants: Variant[];
@@ -30,7 +40,11 @@ interface Props {
 export function VariantSelector({ options, variants, selected, onChange }: Props) {
   return (
     <div className="flex flex-col gap-5">
-      {options.map((opt) => (
+      {options.map((opt) => {
+        const values = /size/i.test(opt.name)
+          ? [...opt.values].sort((a, b) => sizeRank(a) - sizeRank(b))
+          : opt.values;
+        return (
         <div key={opt.name}>
           <p
             className="uppercase mb-2"
@@ -45,7 +59,7 @@ export function VariantSelector({ options, variants, selected, onChange }: Props
             {opt.name}
           </p>
           <div className="flex flex-wrap gap-2" role="group" aria-label={opt.name}>
-            {opt.values.map((value) => {
+            {values.map((value) => {
               const isSelected = selected[opt.name] === value;
               // Availability of this value, holding the other options at their
               // current selection.
@@ -76,7 +90,8 @@ export function VariantSelector({ options, variants, selected, onChange }: Props
             })}
           </div>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
