@@ -11,6 +11,7 @@ export const COLOR_SWATCH: Record<string, string> = {
   "dark chocolate": "#3a2b25",
   "forest green": "#264430",
   forest: "#264430",
+  "pine green": "#22433a",
   maroon: "#5c2230",
   black: "#1b1b1b",
   "vintage black": "#2e2c2a",
