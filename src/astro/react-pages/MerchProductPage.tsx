@@ -331,7 +331,7 @@ function MerchProductInner({
 
             <p
               className="mt-4 text-center"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6, fontSize: "0.9rem" }}
+              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6, fontSize: "1.05rem" }}
             >
               Printed on demand and shipped separately from olive oil orders.
             </p>

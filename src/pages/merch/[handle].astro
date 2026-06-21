@@ -2,12 +2,18 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import MerchProductPage from "@astro/react-pages/MerchProductPage";
 import { fetchMerchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { stripDroppedPhrases } from "@/lib/merchContent";
 
 // Enumerate /merch/[handle] pages from all productType:"Merch" products at
 // build time — new merch appears automatically on each deploy. Empty/failed
 // fetch ⇒ no merch PDPs (graceful).
 export async function getStaticPaths() {
-  const products: ShopifyProduct[] = await fetchMerchProducts().catch(() => []);
+  // Strip dropped phrases on the shared products array so they're gone
+  // everywhere a product appears (its own page AND the "More merch" related
+  // data on other pages), plus the meta description and JSON-LD.
+  const products: ShopifyProduct[] = stripDroppedPhrases(
+    await fetchMerchProducts().catch(() => []),
+  );
   return products.map((product) => ({
     params: { handle: product.node.handle },
     props: {
@@ -23,6 +29,7 @@ const { product, related } = Astro.props as {
 };
 
 const node = product.node;
+
 const canonicalUrl = `https://attimo-oil.com/merch/${node.handle}`;
 const image = node.images?.edges?.[0]?.node?.url;
 const price = node.priceRange?.minVariantPrice;

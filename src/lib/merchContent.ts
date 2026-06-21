@@ -1,4 +1,22 @@
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import type { ShopifyProduct } from "@/lib/shopify";
+
+// Phrases to drop from merch product copy (description + descriptionHtml),
+// applied to the fetched products so they're gone from the visible PDP
+// description, meta, JSON-LD and serialized props alike.
+const DROPPED_PHRASES: RegExp[] = [
+  /\s*The\s+one\s+you\s+reach\s+for\s+without\s+thinking\.?/g, // Classic Hoodie copy
+];
+export function stripDroppedPhrases(products: ShopifyProduct[]): ShopifyProduct[] {
+  for (const p of products) {
+    for (const re of DROPPED_PHRASES) {
+      if (p.node.description)
+        p.node.description = p.node.description.replace(re, " ").replace(/\s{2,}/g, " ").trim();
+      if (p.node.descriptionHtml) p.node.descriptionHtml = p.node.descriptionHtml.replace(re, " ");
+    }
+  }
+  return products;
+}
 import { SIZE_GUIDES } from "@/lib/sizeGuides";
 
 // Manual display order (by handle) applied WITHIN a category on the collection
