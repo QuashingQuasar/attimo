@@ -94,10 +94,12 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
       : null;
   const showOverlay = overlaySrc != null;
   const zoom = imageHovered || swatchColor != null;
-  // Keep the last overlay src mounted during fade-out so it cross-fades cleanly.
+  // Default the overlay to the back image so it's already in the DOM (preloaded)
+  // before the first hover — avoids a flash while it loads. lastOverlay keeps
+  // the previously shown src mounted.
   const lastOverlay = useRef<string | null>(null);
   if (overlaySrc) lastOverlay.current = overlaySrc;
-  const overlayDisplay = overlaySrc ?? lastOverlay.current;
+  const overlayDisplay = overlaySrc ?? lastOverlay.current ?? backImg;
 
   return (
     <Link
@@ -119,7 +121,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
           <img
             src={defaultUrl}
             alt={defaultAlt}
-            className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-out"
+            className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out"
             style={{ opacity: showOverlay ? 0 : 1, transform: zoom ? "scale(1.03)" : "scale(1)" }}
           />
         )}
@@ -128,7 +130,8 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             src={overlayDisplay}
             alt=""
             aria-hidden
-            className="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-out"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out"
             style={{ opacity: showOverlay ? 1 : 0, transform: zoom ? "scale(1.03)" : "scale(1)" }}
           />
         )}
