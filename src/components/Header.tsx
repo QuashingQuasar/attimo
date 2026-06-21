@@ -44,6 +44,7 @@ export const Header = ({
   // on cream would be unreadable) or (b) the Shop dropdown is open.
   const [shopOpen, setShopOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = getDict(locale);
 
@@ -78,26 +79,51 @@ export const Header = ({
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
-            <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                {t.nav.shop}
+            {/* Desktop nav links — collapsed into the hamburger on mobile. */}
+            <nav className="hidden md:flex items-center gap-3 md:gap-6">
+              <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  {t.nav.shop}
+                </Link>
+              </div>
+              <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {t.nav.blog}
               </Link>
-            </div>
-            <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              {t.nav.blog}
-            </Link>
-            <Link to={localizeHref("/quiz", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              {t.nav.quiz}
-            </Link>
-            <Link to="/merch" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-              {t.nav.merch}
-            </Link>
+              <Link to={localizeHref("/quiz", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {t.nav.quiz}
+              </Link>
+              <Link to="/merch" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {t.nav.merch}
+              </Link>
+            </nav>
             <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
             <CurrencySelector
               locale={locale}
               placement="down"
               triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'}
             />
+            {/* Mobile hamburger — toggles the menu below. */}
+            <button
+              type="button"
+              className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((o) => !o)}
+              style={{ color: darkNav && !solidBackground ? '#1B4229' : '#FFFFFF' }}
+            >
+              {mobileOpen ? (
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                  <line x1="5" y1="5" x2="19" y2="19" />
+                  <line x1="19" y1="5" x2="5" y2="19" />
+                </svg>
+              ) : (
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                  <line x1="3" y1="6.5" x2="21" y2="6.5" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="17.5" x2="21" y2="17.5" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
@@ -133,6 +159,33 @@ export const Header = ({
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Mobile menu — the nav links, opened by the hamburger. */}
+      {mobileOpen && (
+        <div
+          className="md:hidden absolute left-0 right-0 top-full z-50 shadow-2xl"
+          style={{ backgroundColor: '#1B4229' }}
+        >
+          <nav className="flex flex-col px-6 py-1">
+            {[
+              { label: t.nav.shop, to: `${localizeHref("/", locale)}#shop` },
+              { label: t.nav.blog, to: "/blog" },
+              { label: t.nav.quiz, to: localizeHref("/quiz", locale) },
+              { label: t.nav.merch, to: "/merch" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileOpen(false)}
+                className="py-4 text-white text-lg font-medium border-b border-white/10 last:border-0"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </header>
