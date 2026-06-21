@@ -5,6 +5,15 @@
 // colour name in the filename and prefer the "front" shot. Falls back to the
 // provided variant image when nothing matches (e.g. non-Printful uploads).
 
+// Append a width to a Shopify CDN image URL so the CDN serves a resized image
+// instead of the full ~2000px original. No-op for non-Shopify URLs.
+export function sizedImage(url: string | undefined | null, width: number): string {
+  if (!url) return url ?? "";
+  if (!/\/\/cdn\.shopify\.com\//.test(url)) return url;
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}width=${width}`;
+}
+
 // Colour-name tokens to look for in a filename, most specific first.
 function colorTokens(color: string): string[] {
   const c = color.trim().toLowerCase();

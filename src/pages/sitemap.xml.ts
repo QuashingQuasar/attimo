@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { getAllPostMeta } from "@/lib/sanity";
+import { fetchMerchProducts } from "@/lib/shopify";
 import { LOCALES, pathHasLocaleVariants } from "@/lib/i18n/config";
 
 const SITE = "https://attimo-oil.com";
@@ -22,6 +23,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/product/coratina", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/nocellara", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/picual", changefreq: "weekly", priority: "0.9" },
+  { loc: "/merch", changefreq: "weekly", priority: "0.7" },
   { loc: "/blog", changefreq: "weekly", priority: "0.8" },
   { loc: "/quiz", changefreq: "weekly", priority: "0.6" },
   { loc: "/contact", changefreq: "weekly", priority: "0.5" },
@@ -49,6 +51,9 @@ function buildHreflangLinks(unprefixedPath: string): string {
 
 export const GET: APIRoute = async () => {
   const posts = await getAllPostMeta();
+  // Merch PDPs (English-only, no locale variants). Degrades to none if Shopify
+  // is unreachable.
+  const merch = await fetchMerchProducts().catch(() => []);
 
   // Locale-variant URLs (homepage, /product/*, /shipping) are emitted once
   // per locale, each with the full hreflang cluster. Non-variant URLs (blog,
@@ -76,7 +81,14 @@ export const GET: APIRoute = async () => {
     })
     .join("\n");
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${staticEntries}\n${postEntries}\n</urlset>\n`;
+  const merchEntries = merch
+    .map(
+      (p) =>
+        `  <url>\n    <loc>${SITE}/merch/${p.node.handle}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.6</priority>\n  </url>`,
+    )
+    .join("\n");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${staticEntries}\n${postEntries}\n${merchEntries}\n</urlset>\n`;
 
   return new Response(xml, {
     headers: { "Content-Type": "application/xml; charset=utf-8" },

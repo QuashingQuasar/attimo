@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
-import { frontImageForColor, imageForColor, otherSideImage } from "@/lib/merchImages";
+import { frontImageForColor, imageForColor, otherSideImage, sizedImage } from "@/lib/merchImages";
 import { MERCH_DEFAULT_COLOR, colorLabel, formatMerchPrice } from "@/lib/merchContent";
 import type { ShopifyProduct } from "@/lib/shopify";
 
@@ -119,7 +119,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
       >
         {defaultUrl && (
           <img
-            src={defaultUrl}
+            src={sizedImage(defaultUrl, 800)}
             alt={defaultAlt}
             className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out"
             style={{ opacity: showOverlay ? 0 : 1, transform: zoom ? "scale(1.03)" : "scale(1)" }}
@@ -127,7 +127,7 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
         )}
         {overlayDisplay && (
           <img
-            src={overlayDisplay}
+            src={sizedImage(overlayDisplay, 800)}
             alt=""
             aria-hidden
             loading="lazy"

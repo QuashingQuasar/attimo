@@ -1,4 +1,14 @@
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { SIZE_GUIDES } from "@/lib/sizeGuides";
+
+// Manual display order (by handle) applied WITHIN a category on the collection
+// grid. Products not listed keep their Shopify order after the listed ones.
+export const MERCH_DISPLAY_ORDER = [
+  "attimo-vintage-hoodie", // ATTIMO Classic Hoodie — Scuro
+  "unisex-hoodie-2", // ATTIMO Classic Hoodie — Chiaro
+  "unisex-oversized-hoodie", // ATTIMO Relax Hoodie
+  "oversized-heavyweight-hoodie", // ATTIMO Coratina Hoodie
+];
 
 // Format a merch price: drop the decimals for whole amounts (€45.00 -> €45) but
 // keep real cents (€38.50). Merch is the only EUR market with sub-euro prices.
@@ -78,4 +88,24 @@ export function parseMerchDescription(input: string): { lead: string; specs: str
   const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   const [lead = "", ...specs] = lines;
   return { lead, specs };
+}
+
+// Build-time sanity check: warn (in the build log) when any handle referenced
+// by the merch config maps isn't present in the fetched products. Handles are
+// Shopify-generated and change on rename, which would silently drop a size
+// guide / default colour / description / ordering.
+export function checkMerchHandles(productHandles: string[]): void {
+  const known = new Set(productHandles);
+  const groups: Record<string, string[]> = {
+    SIZE_GUIDES: Object.keys(SIZE_GUIDES),
+    MERCH_DEFAULT_COLOR: Object.keys(MERCH_DEFAULT_COLOR),
+    MERCH_DESCRIPTIONS: Object.keys(MERCH_DESCRIPTIONS),
+    MERCH_DISPLAY_ORDER,
+  };
+  for (const [name, handles] of Object.entries(groups)) {
+    const missing = handles.filter((h) => !known.has(h));
+    if (missing.length) {
+      console.warn(`[merch] ${name} references unknown handle(s): ${missing.join(", ")}`);
+    }
+  }
 }

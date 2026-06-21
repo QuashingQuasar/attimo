@@ -16,7 +16,7 @@ import {
   formatMerchPrice,
   parseMerchDescription,
 } from "@/lib/merchContent";
-import { frontImageForColor } from "@/lib/merchImages";
+import { frontImageForColor, sizedImage } from "@/lib/merchImages";
 import { useCartStore } from "@/stores/cartStore";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
@@ -171,7 +171,7 @@ function MerchProductInner({
           >
             {mainImageUrl && (
               <img
-                src={mainImageUrl}
+                src={sizedImage(mainImageUrl, 1500)}
                 alt={node.title}
                 className="w-full h-full object-contain"
               />
@@ -198,7 +198,7 @@ function MerchProductInner({
                         : "2px solid rgba(27, 66, 41, 0.15)",
                   }}
                 >
-                  <img src={im.url} alt="" className="w-full h-full object-contain" />
+                  <img src={sizedImage(im.url, 120)} alt="" className="w-full h-full object-contain" />
                 </button>
               ))}
             </div>

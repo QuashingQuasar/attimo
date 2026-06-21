@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { MerchCard } from "@/components/MerchCard";
+import { MERCH_DISPLAY_ORDER } from "@/lib/merchContent";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import type { ShopifyProduct } from "@/lib/shopify";
 
@@ -28,15 +29,6 @@ const categoriesOf = (p: ShopifyProduct) => {
   return GARMENT_CATEGORIES.filter((c) => haystack.some((t) => c.match(t))).map((c) => c.key);
 };
 
-// Manual display order (by handle) applied WITHIN a category. Products not
-// listed keep their Shopify order after the listed ones. Used to keep the two
-// Classic Hoodies adjacent.
-const MERCH_DISPLAY_ORDER = [
-  "attimo-vintage-hoodie", // ATTIMO Classic Hoodie — Scuro
-  "unisex-hoodie-2", // ATTIMO Classic Hoodie — Chiaro
-  "unisex-oversized-hoodie", // ATTIMO Relax Hoodie
-  "oversized-heavyweight-hoodie", // ATTIMO Coratina Hoodie
-];
 
 // /merch collection listing. English-only (default locale), fed from the
 // Shopify "Merch" product type (build-time fetch). Cards are the shared
