@@ -62,12 +62,16 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
 
   const defaultImg = images[0] ?? variants[0]?.image;
   const variantFronts = new Set(variants.map((v) => v.image?.url).filter(Boolean) as string[]);
-  // Hover reveal = the SAME colour's other side (front↔back). Falls back to the
-  // first gallery image that isn't a colour front when no opposite side exists.
-  const backImg =
-    otherSideImage(defaultImg?.url ?? "", imageUrls, colors) ??
-    images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ??
-    null;
+  const isCap = /\bcap\b|\bhat\b|beanie/i.test([node.title, ...(node.tags ?? [])].join(" "));
+  // Hover reveal:
+  //  - caps: the OTHER colour's front, or nothing for a single-colour cap
+  //    (keep the default image — never flip to the cap's back);
+  //  - everything else: the SAME colour's other side (front↔back).
+  const backImg = isCap
+    ? (colors.map((c) => frontByColor[c]).find((url) => url && url !== defaultImg?.url) ?? null)
+    : otherSideImage(defaultImg?.url ?? "", imageUrls, colors) ??
+      images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ??
+      null;
 
   const [imageHovered, setImageHovered] = useState(false);
   const [swatchColor, setSwatchColor] = useState<string | null>(null);
