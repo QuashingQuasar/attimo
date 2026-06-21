@@ -47,8 +47,22 @@ const RELAX_HOODIE_GUIDE: SizeGuide = {
   ],
 };
 
+const CORATINA_HOODIE_GUIDE: SizeGuide = {
+  unit: "cm",
+  columns: ["Chest", "Length"],
+  rows: [
+    { size: "S", values: ["86.4-94", "71.1"] },
+    { size: "M", values: ["96.5-104.1", "72.4"] },
+    { size: "L", values: ["106.7-114.3", "75"] },
+    { size: "XL", values: ["116.8-124.5", "76.2"] },
+    { size: "2XL", values: ["127-134.6", "77.5"] },
+    { size: "3XL", values: ["137.2-144.8", "78.7"] },
+  ],
+};
+
 export const SIZE_GUIDES: Record<string, SizeGuide> = {
   "attimo-vintage-hoodie": HOODIE_GUIDE, // ATTIMO Classic Hoodie — Scuro
+  "oversized-heavyweight-hoodie": CORATINA_HOODIE_GUIDE, // ATTIMO Coratina Hoodie
   "unisex-hoodie-2": HOODIE_GUIDE, // ATTIMO Classic Hoodie — Chiaro
   "unisex-oversized-hoodie": RELAX_HOODIE_GUIDE, // ATTIMO Relax Hoodie
   // All current tees share the same blank-product measurements.
