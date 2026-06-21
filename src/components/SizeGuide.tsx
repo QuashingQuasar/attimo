@@ -29,7 +29,7 @@ export function SizeGuide({ guide }: { guide: SizeGuideData }) {
                   fontFamily: "UDC Working Man Sans, sans-serif",
                   textTransform: "uppercase",
                   letterSpacing: "0.08em",
-                  fontSize: "0.72rem",
+                  fontSize: "0.95rem",
                   fontWeight: 400,
                   opacity: 0.6,
                   borderBottom: "1px solid rgba(27, 66, 41, 0.2)",
@@ -47,7 +47,7 @@ export function SizeGuide({ guide }: { guide: SizeGuideData }) {
                 className="py-2.5"
                 style={{
                   fontWeight: 600,
-                  fontSize: "0.95rem",
+                  fontSize: "1.25rem",
                   borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
                 }}
               >
@@ -58,7 +58,7 @@ export function SizeGuide({ guide }: { guide: SizeGuideData }) {
                   key={i}
                   className="py-2.5"
                   style={{
-                    fontSize: "0.95rem",
+                    fontSize: "1.25rem",
                     opacity: 0.8,
                     borderBottom: "1px solid rgba(27, 66, 41, 0.08)",
                   }}

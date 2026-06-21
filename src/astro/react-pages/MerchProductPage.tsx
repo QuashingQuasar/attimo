@@ -319,7 +319,7 @@ function MerchProductInner({
                       color: "#1B4229",
                       opacity: 0.85,
                       lineHeight: 1.6,
-                      fontSize: "0.95rem",
+                      fontSize: "1.25rem",
                     }}
                   >
                     {lead}
@@ -335,7 +335,7 @@ function MerchProductInner({
                             color: "#1B4229",
                             opacity: 0.7,
                             lineHeight: 1.45,
-                            fontSize: "0.8rem",
+                            fontSize: "1.05rem",
                           }}
                         >
                           <span aria-hidden style={{ opacity: 0.5 }}>·</span>
