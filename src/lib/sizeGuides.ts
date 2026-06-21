@@ -34,8 +34,22 @@ const TEE_GUIDE: SizeGuide = {
   ],
 };
 
+const RELAX_HOODIE_GUIDE: SizeGuide = {
+  unit: "cm",
+  columns: ["Length", "Width", "Sleeve length"],
+  rows: [
+    { size: "S", values: ["70.5", "96.5-104.1", "57.2"] },
+    { size: "M", values: ["73", "106.7-114.3", "57.2"] },
+    { size: "L", values: ["75.6", "116.8-124.5", "61.6"] },
+    { size: "XL", values: ["78.1", "127-134.6", "61.6"] },
+    { size: "2XL", values: ["80.7", "137.2-144.8", "64.8"] },
+    { size: "3XL", values: ["83.2", "147.3-157.5", "68.6"] },
+  ],
+};
+
 export const SIZE_GUIDES: Record<string, SizeGuide> = {
   "attimo-vintage-hoodie": HOODIE_GUIDE,
+  "unisex-oversized-hoodie": RELAX_HOODIE_GUIDE, // ATTIMO Relax Hoodie
   // All current tees share the same blank-product measurements.
   "oversized-faded-t-shirt": TEE_GUIDE, // ATTIMO Olive Tee
   "attimo-oversized-bone-tee": TEE_GUIDE,
