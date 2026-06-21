@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { frontImageForColor } from "@/lib/merchImages";
+import { frontImageForColor, otherSideImage } from "@/lib/merchImages";
 import type { ShopifyProduct } from "@/lib/shopify";
 
 // Flat swatch colours for the apparel colour options. Keyed by the lowercased
@@ -59,9 +59,12 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
 
   const defaultImg = images[0] ?? variants[0]?.image;
   const variantFronts = new Set(variants.map((v) => v.image?.url).filter(Boolean) as string[]);
-  // Back / alternate-angle image of the default item (not any colour's front).
+  // Hover reveal = the SAME colour's other side (front↔back). Falls back to the
+  // first gallery image that isn't a colour front when no opposite side exists.
   const backImg =
-    images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ?? null;
+    otherSideImage(defaultImg?.url ?? "", imageUrls, colors) ??
+    images.find((im) => im.url !== defaultImg?.url && !variantFronts.has(im.url))?.url ??
+    null;
 
   const [imageHovered, setImageHovered] = useState(false);
   const [swatchColor, setSwatchColor] = useState<string | null>(null);

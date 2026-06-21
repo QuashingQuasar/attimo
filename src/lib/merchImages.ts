@@ -27,3 +27,27 @@ export function frontImageForColor(
   }
   return fallback ?? null;
 }
+
+// The "other side" of a given image: the SAME colour's opposite side
+// (front↔back). Used for the collection-card hover so it reveals the garment's
+// other side without ever jumping to a different colour. Falls back to any
+// opposite-side image when the colour can't be inferred from the filename.
+export function otherSideImage(
+  currentUrl: string,
+  imageUrls: string[],
+  colorValues: string[],
+): string | null {
+  if (!currentUrl) return null;
+  const lc = currentUrl.toLowerCase();
+  const sideRe = /back/.test(lc) ? /front/i : /back/i; // default is back -> want front
+  const color = colorValues.find((c) => colorTokens(c).some((t) => lc.includes(t)));
+  if (color) {
+    for (const token of colorTokens(color)) {
+      const m = imageUrls.find(
+        (u) => u !== currentUrl && u.toLowerCase().includes(token) && sideRe.test(u),
+      );
+      if (m) return m;
+    }
+  }
+  return imageUrls.find((u) => u !== currentUrl && sideRe.test(u)) ?? null;
+}
