@@ -20,6 +20,9 @@ export interface ShopifyProduct {
     id: string;
     title: string;
     description: string;
+    // Rich-text description (keeps <p>/<ul><li> structure that the plain
+    // `description` field strips). Used by merch PDPs to render spec bullets.
+    descriptionHtml?: string;
     handle: string;
     // Shopify product type. Oils are "Olive Oil"; merch is "Merch". Used to
     // exclude merch from the oils' volume discount + free-shipping bottle count
@@ -127,6 +130,7 @@ const PRODUCTS_QUERY = `
           handle
           productType
           tags
+          descriptionHtml
           priceRange {
             minVariantPrice {
               amount

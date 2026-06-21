@@ -21,9 +21,28 @@ export const MERCH_DESCRIPTIONS: Record<string, string> = {
   "oversized-faded-t-shirt-2": TEE_DESCRIPTION, // ATTIMO Sand Tee
 };
 
-// Split a description into a lead paragraph + spec bullets. Handles both our
-// newline-separated copy and Printful's single " • "-delimited run.
+// Split a description into a lead paragraph + spec bullets. Handles three
+// shapes: Shopify rich-text HTML (<p> lead + <ul><li> specs), our own
+// newline-separated copy, and Printful's single " • "-delimited run.
 export function parseMerchDescription(desc: string): { lead: string; specs: string[] } {
+  // HTML (Shopify descriptionHtml): <li> items are the specs; everything
+  // outside the list is the lead.
+  if (/<\w+[^>]*>/.test(desc)) {
+    const strip = (s: string) =>
+      s
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/\s+/g, " ")
+        .trim();
+    const specs = [...desc.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)]
+      .map((m) => strip(m[1]))
+      .filter(Boolean);
+    const lead = strip(desc.replace(/<ul[\s\S]*?<\/ul>/gi, "").replace(/<ol[\s\S]*?<\/ol>/gi, ""));
+    return { lead, specs };
+  }
   if (desc.includes(" • ")) {
     const [lead, ...rest] = desc.split(" • ");
     return { lead: lead.trim(), specs: rest.map((s) => s.trim()).filter(Boolean) };

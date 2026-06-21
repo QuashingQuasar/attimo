@@ -306,7 +306,8 @@ function MerchProductInner({
                 else Shopify's copy. Rendered as a lead sentence + compact spec
                 list so it reads like the reference's bullets. */}
             {(() => {
-              const raw = MERCH_DESCRIPTIONS[node.handle] ?? node.description;
+              const raw =
+                MERCH_DESCRIPTIONS[node.handle] ?? node.descriptionHtml ?? node.description;
               if (!raw) return null;
               const { lead, specs } = parseMerchDescription(raw);
               return (
