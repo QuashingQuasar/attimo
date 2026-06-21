@@ -113,7 +113,14 @@ export function MerchCard({ product }: { product: ShopifyProduct }) {
             aria-label={colorLabel(c)}
             onMouseEnter={() => setSwatchColor(c)}
             onMouseLeave={() => setSwatchColor(null)}
-            className="inline-block rounded-[3px] transition-transform duration-150"
+            onClick={(e) => {
+              // Tap (mobile): preview the colour instead of following the card
+              // link to the product page.
+              e.preventDefault();
+              e.stopPropagation();
+              setSwatchColor(c);
+            }}
+            className="inline-block rounded-[3px] transition-transform duration-150 cursor-pointer"
             style={{
               width: 20,
               height: 11,
