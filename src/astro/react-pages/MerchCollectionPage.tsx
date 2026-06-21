@@ -127,7 +127,6 @@ function MerchGrid({ products }: { products: ShopifyProduct[] }) {
                 color: "#1B4229",
                 opacity: 0.6,
                 fontSize: "clamp(1rem, 1.2vw, 1.15rem)",
-                maxWidth: "640px",
                 lineHeight: 1.6,
               }}
             >
