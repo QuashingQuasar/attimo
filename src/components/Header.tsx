@@ -162,15 +162,38 @@ export const Header = ({
         </div>
       )}
 
-      {/* Mobile menu — the nav links, opened by the hamburger. */}
+      {/* Mobile menu — the three oils (like the desktop Shop dropdown) plus the
+          page links, opened by the hamburger. */}
       {mobileOpen && (
         <div
           className="md:hidden absolute left-0 right-0 top-full z-50 shadow-2xl"
           style={{ backgroundColor: '#1B4229' }}
         >
-          <nav className="flex flex-col px-6 py-1">
+          <nav className="flex flex-col px-6 py-4">
+            {shopProducts.map((product) => (
+              <Link
+                key={product.handle}
+                to={localizeHref(`/product/${product.handle}`, locale)}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3 py-3"
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-11 h-11 rounded-md object-cover flex-shrink-0"
+                  style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}
+                />
+                <span className="flex flex-col">
+                  <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: '1.3rem', letterSpacing: '0.02em' }}>
+                    {product.name}
+                  </span>
+                  <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: '0.7rem', letterSpacing: '0.1em' }}>
+                    {t.products.flavour[product.handle]}
+                  </span>
+                </span>
+              </Link>
+            ))}
             {[
-              { label: t.nav.shop, to: `${localizeHref("/", locale)}#shop` },
               { label: t.nav.blog, to: "/blog" },
               { label: t.nav.quiz, to: localizeHref("/quiz", locale) },
               { label: t.nav.merch, to: "/merch" },
@@ -179,7 +202,7 @@ export const Header = ({
                 key={item.to}
                 to={item.to}
                 onClick={() => setMobileOpen(false)}
-                className="py-4 text-white text-lg font-medium border-b border-white/10 last:border-0"
+                className="py-3 text-white text-lg font-medium"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
                 {item.label}
