@@ -333,7 +333,7 @@ function MerchProductInner({
               className="mt-4 text-center"
               style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.6, fontSize: "0.9rem" }}
             >
-              Printed on demand and shipped separately from oil orders.
+              Printed on demand and shipped separately from olive oil orders.
             </p>
 
             {/* Description — branded override (MERCH_DESCRIPTIONS) when defined,
