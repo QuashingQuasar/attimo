@@ -17,6 +17,7 @@ import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
 import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify";
+import { imageForColor, sizedImage } from "@/lib/merchImages";
 import { detectCountry, getFreeShippingThreshold } from "@/lib/shipping";
 
 // Subscription items are sold at a fixed ~8% discount across all locales
@@ -37,6 +38,25 @@ const PRODUCT_ORDER = ["coratina", "picual", "nocellara"];
 // that and uses its raw Shopify variant price.
 function isOilItem(item: CartItem): boolean {
   return item.product?.node?.productType === "Olive Oil";
+}
+
+// Cart thumbnail for a line item. For merch with a colour option, resolve the
+// image for the SELECTED colour by filename (Printful scrambles per-variant
+// images, so the first gallery image isn't colour-specific), matching the same
+// side — front/back — as the gallery's first image. Falls back to the first
+// image for oils or when the colour can't be matched.
+function lineItemImage(item: CartItem): string | undefined {
+  const urls = item.product?.node?.images?.edges?.map((e) => e.node.url) ?? [];
+  const first = urls[0];
+  const color = isOilItem(item)
+    ? null
+    : item.selectedOptions?.find((o) => /colou?r/i.test(o.name))?.value ?? null;
+  if (color) {
+    const side = /back/i.test(first ?? "") ? "back" : "front";
+    const resolved = imageForColor(color, urls, { side });
+    if (resolved) return resolved;
+  }
+  return first;
 }
 
 function localizedUnitPrice(item: CartItem, locale: Locale): number {
@@ -355,9 +375,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                   {items.map((item) => (
                     <div key={item.variantId} className="flex items-center gap-5 py-3">
                       <div className="w-28 h-28 rounded-lg overflow-hidden flex-shrink-0">
-                        {item.product.node.images?.edges?.[0]?.node && (
+                        {lineItemImage(item) && (
                           <img
-                            src={item.product.node.images.edges[0].node.url}
+                            src={sizedImage(lineItemImage(item), 224)}
                             alt={item.product.node.title}
                             className="w-full h-full object-cover object-center"
                           />
