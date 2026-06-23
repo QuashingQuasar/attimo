@@ -18,6 +18,7 @@ import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
 import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify";
 import { imageForColor, sizedImage } from "@/lib/merchImages";
+import { colorLabel } from "@/lib/merchContent";
 import { detectCountry, getFreeShippingThreshold } from "@/lib/shipping";
 
 // Subscription items are sold at a fixed ~8% discount across all locales
@@ -57,6 +58,23 @@ function lineItemImage(item: CartItem): string | undefined {
     if (resolved) return resolved;
   }
   return first;
+}
+
+// Variant label for the cart, with the frontend colour rename applied (e.g.
+// Maroon -> Burgundy) so it matches the storefront. Built from selectedOptions
+// when present (only colour options are renamed); falls back to relabelling
+// each "/"-separated token of the raw variant title for legacy cart entries.
+function variantLabel(item: CartItem): string {
+  const opts = item.selectedOptions ?? [];
+  if (opts.length) {
+    return opts
+      .map((o) => (/colou?r/i.test(o.name) ? colorLabel(o.value) : o.value))
+      .join(" / ");
+  }
+  return (item.variantTitle ?? "")
+    .split("/")
+    .map((s) => colorLabel(s.trim()))
+    .join(" / ");
 }
 
 function localizedUnitPrice(item: CartItem, locale: Locale): number {
@@ -390,7 +408,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
                             className="text-xs uppercase"
                             style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#1B4229', opacity: 0.7, letterSpacing: '0.08em' }}
                           >
-                            {item.variantTitle}
+                            {variantLabel(item)}
                           </span>
                         )}
                         <p className="font-semibold text-sm">
