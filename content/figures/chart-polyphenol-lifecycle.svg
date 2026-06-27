@@ -1,0 +1,37 @@
+<svg viewBox="0 0 720 400" width="720" height="400" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">Polyphenols fade after pressing</title>
+<desc id="desc">Illustrative trend line. An early-harvest fresh-pressed oil starts around 847 mg/kg and declines over 12 months, staying above the 400 mg/kg high-polyphenol line for roughly ten months. A late-harvest, blended, shelved supermarket oil starts near 200 and stays below the EU 250 line throughout.</desc>
+<rect x="0" y="0" width="720" height="400" fill="#FFFAEA"/>
+<text x="28" y="44" font-family="'Space Grotesk', system-ui, sans-serif" font-size="27" font-weight="700" fill="#1B4229">Polyphenols fade after pressing</text>
+<text x="28" y="68" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" fill="#1B4229" opacity="0.55">Illustrative trend — which is why freshness is the product</text>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif" font-size="13" fill="#1B4229">
+<line x1="452" y1="150" x2="478" y2="150" stroke="#1B4229" stroke-width="3"/>
+<text x="486" y="155">Early harvest, fresh-pressed</text>
+<line x1="452" y1="176" x2="478" y2="176" stroke="#9DAE84" stroke-width="3" stroke-dasharray="5 4"/>
+<text x="486" y="181">Supermarket (late, shelved)</text>
+</g>
+
+<line x1="96" y1="340" x2="680" y2="340" stroke="#1B4229" stroke-width="1" opacity="0.3"/>
+<line x1="96" y1="232" x2="680" y2="232" stroke="#CDDB2D" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="100" y="226" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" font-weight="600" fill="#1B4229" opacity="0.7">high-polyphenol (400)</text>
+<line x1="96" y1="272" x2="680" y2="272" stroke="#1B4229" stroke-width="1.2" stroke-dasharray="2 4" opacity="0.5"/>
+<text x="100" y="266" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" fill="#1B4229" opacity="0.55">EU claim (250)</text>
+
+<polyline points="96,286 242,290 388,294 534,297 680,300" fill="none" stroke="#9DAE84" stroke-width="2.5" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="96,110 242,145 388,188 534,221 680,242" fill="none" stroke="#1B4229" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#1B4229">
+<circle cx="96" cy="110" r="4"/><circle cx="242" cy="145" r="4"/><circle cx="388" cy="188" r="4"/><circle cx="534" cy="221" r="4"/><circle cx="680" cy="242" r="4"/>
+</g>
+<text x="104" y="103" font-family="'Space Grotesk', system-ui, sans-serif" font-size="13" font-weight="700" fill="#1B4229">847</text>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" fill="#1B4229" opacity="0.55" text-anchor="middle">
+<text x="96" y="360">pressed</text>
+<text x="242" y="360">3 mo</text>
+<text x="388" y="360">6 mo</text>
+<text x="534" y="360">9 mo</text>
+<text x="680" y="360">12 mo</text>
+</g>
+
+<text x="28" y="388" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11.5" fill="#1B4229" opacity="0.5">Illustrative trend · start value = Coratina 2025 harvest (847 mg/kg) · buy recent harvest, use within months</text>
+</svg>

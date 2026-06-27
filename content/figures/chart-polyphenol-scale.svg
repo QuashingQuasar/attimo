@@ -1,0 +1,47 @@
+<svg viewBox="0 0 720 440" width="720" height="440" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">The polyphenol scale</title>
+<desc id="desc">Horizontal bar chart of olive oil polyphenol content in mg per kg: average supermarket EVOO 180, EU health claim 250, Blueprint benchmark 400, ATTIMO Nocellara 400, ATTIMO Picual 675, ATTIMO Coratina 847.</desc>
+<rect x="0" y="0" width="720" height="440" fill="#FFFAEA"/>
+<text x="28" y="44" font-family="'Space Grotesk', system-ui, sans-serif" font-size="27" font-weight="700" fill="#1B4229">The polyphenol scale</text>
+<text x="28" y="68" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" fill="#1B4229" opacity="0.55">Total polyphenols, milligrams per kilogram (mg/kg)</text>
+
+<line x1="424" y1="92" x2="424" y2="372" stroke="#1B4229" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+<text x="430" y="106" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" font-weight="600" fill="#1B4229" opacity="0.75">≈ 400+ high-polyphenol</text>
+
+<line x1="220" y1="372" x2="690" y2="372" stroke="#1B4229" stroke-width="1" opacity="0.25"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">
+<text x="220" y="390">0</text>
+<text x="348" y="390">250</text>
+<text x="476" y="390">500</text>
+<text x="603" y="390">750</text>
+<text x="680" y="390">900</text>
+</g>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<rect x="220" y="96" width="92" height="24" rx="4" fill="#9DAE84"/>
+<text x="205" y="113" font-size="14" fill="#1B4229" opacity="0.75" text-anchor="end">Avg. supermarket EVOO</text>
+<text x="320" y="113" font-size="14" font-weight="700" fill="#1B4229" opacity="0.75">180</text>
+
+<rect x="220" y="140" width="128" height="24" rx="4" fill="#9DAE84"/>
+<text x="205" y="157" font-size="14" fill="#1B4229" opacity="0.75" text-anchor="end">EU health claim</text>
+<text x="356" y="157" font-size="14" font-weight="700" fill="#1B4229" opacity="0.75">250</text>
+
+<rect x="220" y="184" width="204" height="24" rx="4" fill="#9DAE84"/>
+<text x="205" y="201" font-size="14" fill="#1B4229" opacity="0.75" text-anchor="end">Blueprint benchmark</text>
+<text x="432" y="201" font-size="14" font-weight="700" fill="#1B4229" opacity="0.75">400</text>
+
+<rect x="220" y="228" width="204" height="24" rx="4" fill="#B3E58C"/>
+<text x="205" y="245" font-size="14" font-weight="600" fill="#1B4229" text-anchor="end">ATTIMO Nocellara</text>
+<text x="432" y="245" font-size="14" font-weight="700" fill="#1B4229">400</text>
+
+<rect x="220" y="272" width="345" height="24" rx="4" fill="#CDDB2D"/>
+<text x="205" y="289" font-size="14" font-weight="600" fill="#1B4229" text-anchor="end">ATTIMO Picual</text>
+<text x="573" y="289" font-size="14" font-weight="700" fill="#1B4229">675</text>
+
+<rect x="220" y="316" width="433" height="24" rx="4" fill="#1B4229"/>
+<text x="205" y="333" font-size="14" font-weight="600" fill="#1B4229" text-anchor="end">ATTIMO Coratina</text>
+<text x="661" y="333" font-size="14" font-weight="700" fill="#1B4229">847</text>
+</g>
+
+<text x="28" y="424" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" fill="#1B4229" opacity="0.5">ATTIMO values: 2025 harvest selection, lab-tested per batch · EU threshold: Reg. (EU) 432/2012</text>
+</svg>

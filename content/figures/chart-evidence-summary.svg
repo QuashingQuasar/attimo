@@ -1,0 +1,31 @@
+<svg viewBox="0 0 720 360" width="720" height="360" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">What the science supports</title>
+<desc id="desc">Three findings: EU-approved protection of blood lipids at 250 mg/kg (Reg. EU 432/2012); oleocanthal inhibits COX-1 and COX-2 like ibuprofen (Nature 2005); 30 percent fewer major cardiovascular events on an olive-oil-rich Mediterranean diet (PREDIMED, NEJM 2018).</desc>
+<rect x="0" y="0" width="720" height="360" fill="#FFFAEA"/>
+<text x="28" y="44" font-family="'Space Grotesk', system-ui, sans-serif" font-size="27" font-weight="700" fill="#1B4229">What the science supports</text>
+<text x="28" y="68" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" fill="#1B4229" opacity="0.55">Three findings, each from a primary source — not a wellness blog</text>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<rect x="28" y="92" width="208" height="218" rx="12" fill="#1B4229"/>
+<text x="46" y="148" font-size="25" font-weight="700" fill="#CDDB2D">EU-approved</text>
+<text x="46" y="186" font-size="14" fill="#FFFAEA">Protects blood lipids</text>
+<text x="46" y="206" font-size="14" fill="#FFFAEA">(LDL) from oxidation</text>
+<text x="46" y="292" font-size="11.5" fill="#B3E58C">Reg. (EU) 432/2012 · ≥250 mg/kg</text>
+
+<rect x="256" y="92" width="208" height="218" rx="12" fill="#1B4229"/>
+<text x="274" y="148" font-size="25" font-weight="700" fill="#CDDB2D">Like ibuprofen</text>
+<text x="274" y="186" font-size="14" fill="#FFFAEA">Oleocanthal inhibits the</text>
+<text x="274" y="206" font-size="14" fill="#FFFAEA">same COX-1 &amp; COX-2</text>
+<text x="274" y="226" font-size="14" fill="#FFFAEA">enzymes</text>
+<text x="274" y="292" font-size="11.5" fill="#B3E58C">Beauchamp et al., Nature (2005)</text>
+
+<rect x="484" y="92" width="208" height="218" rx="12" fill="#1B4229"/>
+<text x="502" y="148" font-size="25" font-weight="700" fill="#CDDB2D">−30%</text>
+<text x="502" y="186" font-size="14" fill="#FFFAEA">Fewer major cardio-</text>
+<text x="502" y="206" font-size="14" fill="#FFFAEA">vascular events on an</text>
+<text x="502" y="226" font-size="14" fill="#FFFAEA">EVOO-rich Med diet</text>
+<text x="502" y="292" font-size="11.5" fill="#B3E58C">PREDIMED · NEJM (2018)</text>
+</g>
+
+<text x="28" y="344" font-family="'Space Grotesk', system-ui, sans-serif" font-size="12" fill="#1B4229" opacity="0.5">Findings on polyphenols and dietary patterns — a food, not a medicine. Not medical advice.</text>
+</svg>

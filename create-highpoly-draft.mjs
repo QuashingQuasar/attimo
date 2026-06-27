@@ -109,12 +109,12 @@ const body = mdToBlocks(md);
 const doc = {
   _id: "drafts." + randomUUID(),
   _type: "post",
-  title: "High-Polyphenol Olive Oil: The Complete Guide",
+  title: "High-Polyphenol Olive Oil: Benefits & How to Choose",
   slug: { _type: "slug", current: "high-polyphenol-olive-oil-guide" },
   publishedAt: "2026-06-27T09:00:00.000Z",
   excerpt:
     "Same fruit, different product. What high-polyphenol olive oil is, how many polyphenols it should have, what the research supports, and how to buy one that's actually been measured.",
-  seoTitle: "High-Polyphenol Olive Oil: The Complete Guide",
+  seoTitle: "High-Polyphenol Olive Oil: Benefits & How to Choose",
   seoDescription:
     "What high-polyphenol olive oil is, how many polyphenols it should have (mg/kg), the compounds that matter, what the research shows, and how to choose one.",
   body,

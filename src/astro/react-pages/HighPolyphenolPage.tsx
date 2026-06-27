@@ -256,7 +256,15 @@ function ScienceSection() {
           ))}
         </div>
 
-        <p className="mt-8 md:mt-10 max-w-3xl leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
+        <p className="mt-8 md:mt-10" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.05rem, 1.3vw, 1.35rem)" }}>
+          Want the full picture?{" "}
+          <a href="/blog/high-polyphenol-olive-oil-guide" className="underline underline-offset-4 hover:opacity-70 transition-opacity" style={{ color: GREEN, fontWeight: 600 }}>
+            Read our complete guide to high-polyphenol olive oil
+          </a>{" "}
+          <span aria-hidden="true">→</span>
+        </p>
+
+        <p className="mt-5 max-w-3xl leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
           ATTIMO is a food, not a medicine. Polyphenol levels are lab-measured per batch; the health context above is
           drawn from the published research linked beside each point. This isn't medical advice, and individual results vary.
         </p>

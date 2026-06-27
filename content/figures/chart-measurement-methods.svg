@@ -1,0 +1,24 @@
+<svg viewBox="0 0 720 340" width="720" height="340" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">Same oil, two rulers</title>
+<desc id="desc">The same oil measured two ways. A broad colorimetric total-polyphenols method reports a higher, fuzzier number. The EU-standard HPLC method counts only specific phenolic compounds and reports 847 mg/kg for ATTIMO Coratina.</desc>
+<rect x="0" y="0" width="720" height="340" fill="#FFFAEA"/>
+<text x="28" y="44" font-family="'Space Grotesk', system-ui, sans-serif" font-size="27" font-weight="700" fill="#1B4229">Same oil, two rulers</text>
+<text x="28" y="68" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" fill="#1B4229" opacity="0.55">Why two "polyphenol" numbers don't always compare</text>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="300" y="124" font-size="14.5" font-weight="600" fill="#1B4229" text-anchor="end">Colorimetric</text>
+<text x="300" y="143" font-size="12.5" fill="#1B4229" opacity="0.6" text-anchor="end">"total polyphenols"</text>
+<rect x="312" y="108" width="372" height="40" rx="4" fill="#9DAE84"/>
+<text x="672" y="133" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">reads higher</text>
+
+<text x="300" y="208" font-size="14.5" font-weight="600" fill="#1B4229" text-anchor="end">HPLC</text>
+<text x="300" y="227" font-size="12.5" fill="#1B4229" opacity="0.6" text-anchor="end">EU method, specific compounds</text>
+<rect x="312" y="192" width="300" height="40" rx="4" fill="#1B4229"/>
+<text x="624" y="217" font-size="15" font-weight="700" fill="#1B4229">847 mg/kg</text>
+</g>
+
+<rect x="28" y="266" width="664" height="46" rx="10" fill="#CDDB2D"/>
+<text x="48" y="294" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" font-weight="600" fill="#1B4229">A bigger "total" isn't a better oil — it's a looser ruler. Always ask which method.</text>
+
+<text x="28" y="332" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11.5" fill="#1B4229" opacity="0.45">Illustrative · ATTIMO reports HPLC values (Coratina, 2025 harvest)</text>
+</svg>
