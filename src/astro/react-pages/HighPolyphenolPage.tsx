@@ -20,6 +20,7 @@ import { HIGH_POLYPHENOL_FAQS } from "@/lib/highPolyphenolContent";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
+import { IT, ES } from "country-flag-icons/react/3x2";
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } } });
 
@@ -50,9 +51,9 @@ const refLink: React.CSSProperties = { color: "inherit", textDecorationLine: "un
 // heights step down with polyphenol content (847 → 675 → 400) to read as a
 // ranking; each links straight to its PDP. Video + dark overlay behind.
 const HERO_BOTTLES = [
-  { handle: "coratina", name: "Coratina", region: "Puglia, IT", polyphenols: 847, image: coratinaBottle, scale: 1.0 },
-  { handle: "picual", name: "Picual", region: "Jaén, ES", polyphenols: 675, image: picualBottle, scale: 0.9 },
-  { handle: "nocellara", name: "Nocellara", region: "Sicily, IT", polyphenols: 400, image: nocellaraBottle, scale: 0.82 },
+  { handle: "coratina", name: "Coratina", city: "Puglia", Flag: IT, polyphenols: 847, image: coratinaBottle, scale: 1.0 },
+  { handle: "picual", name: "Picual", city: "Jaén", Flag: ES, polyphenols: 675, image: picualBottle, scale: 0.9 },
+  { handle: "nocellara", name: "Nocellara", city: "Sicily", Flag: IT, polyphenols: 400, image: nocellaraBottle, scale: 0.82 },
 ];
 
 function Hero() {
@@ -112,8 +113,9 @@ function Hero() {
                 <span className="mt-1" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(0.85rem, 1.2vw, 1.25rem)", letterSpacing: "0.04em" }}>
                   {b.name}
                 </span>
-                <span className="hidden sm:block uppercase" style={{ fontFamily: UDC, color: "rgba(255,250,234,0.6)", fontSize: "clamp(0.6rem, 0.8vw, 0.8rem)", letterSpacing: "0.12em" }}>
-                  {b.region}
+                <span className="hidden sm:inline-flex items-center justify-center gap-1.5 uppercase" style={{ fontFamily: UDC, color: "rgba(255,250,234,0.6)", fontSize: "clamp(0.6rem, 0.8vw, 0.8rem)", letterSpacing: "0.12em" }}>
+                  {b.city}
+                  <b.Flag title={b.city} style={{ width: "1.3em", height: "auto", borderRadius: "1px", display: "inline-block" }} />
                 </span>
               </a>
             ))}
