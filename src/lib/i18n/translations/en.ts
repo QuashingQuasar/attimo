@@ -54,6 +54,10 @@ export const en = {
     manageOrders: "Manage Orders & Subscription",
     rights: "© 2026 ATTIMO. All rights reserved.",
     changeRegion: "Change currency or country",
+    // Column headings for the grouped footer.
+    shop: "Shop",
+    learn: "Learn",
+    company: "Company",
   },
 
   // Cart drawer (CartDrawer.tsx). Pluralized strings are functions so each

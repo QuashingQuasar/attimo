@@ -43,9 +43,36 @@ const oilDefs = [
 
 interface OilProductWidgetsProps {
   locale?: Locale;
+  /** Override the section heading (default: the homepage shop heading). */
+  heading?: string;
+  /** Override the section subtitle. */
+  subtitle?: string;
+  /** Anchor id for the section (default "oil-collection"). */
+  sectionId?: string;
+  /**
+   * When provided, renders a chartreuse polyphenol badge on each card (keyed by
+   * URL handle). Used by the high-polyphenol hub to present the range ranked by
+   * polyphenol content. Undefined on the homepage → no badge, unchanged layout.
+   */
+  polyphenols?: Partial<Record<"coratina" | "picual" | "nocellara", string>>;
+  /** Override the heading font (default Beverly Drive script). */
+  headingFontFamily?: string;
+  /** Show the per-bottle tagline line under the price (default true). */
+  showTagline?: boolean;
+  /** Override the quiz prompt line above the quiz CTA. */
+  quizPrompt?: string;
 }
 
-export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgetsProps = {}) => {
+export const OilProductWidgets = ({
+  locale = DEFAULT_LOCALE,
+  heading,
+  subtitle,
+  sectionId = "oil-collection",
+  polyphenols,
+  headingFontFamily = "Beverly Drive, serif",
+  showTagline = true,
+  quizPrompt,
+}: OilProductWidgetsProps = {}) => {
   const t = getDict(locale);
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
@@ -89,7 +116,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
     };
   });
   return (
-    <section id="oil-collection"
+    <section id={sectionId}
     className="snap-start pt-14 md:pt-20 pb-10 md:pb-14 lg:pb-20 px-4 md:px-6 relative overflow-hidden scroll-mt-0"
     style={{ backgroundColor: "hsl(var(--section-light))" }}>
 
@@ -107,11 +134,11 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
           <h2
             className="mb-4 mx-auto collection-heading-mobile-width"
             style={{
-              fontFamily: "Beverly Drive, serif",
+              fontFamily: headingFontFamily,
               color: "#1B4229",
               fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               letterSpacing: "0.05em"
-            }}>{t.oilCollection.heading}
+            }}>{heading ?? t.oilCollection.heading}
           </h2>
           <p
             className="mx-auto text-center collection-subtitle-mobile-width collection-subtitle-mobile-size"
@@ -122,7 +149,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
               maxWidth: "800px"
-            }}>{t.oilCollection.subtitle}
+            }}>{subtitle ?? t.oilCollection.subtitle}
           </p>
         </div>
 
@@ -215,6 +242,20 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   {t.products.flavour[oil.handle]}
                 </p>
 
+                {polyphenols?.[oil.handle] && (
+                  <p
+                    className="rounded-full px-4 py-1.5 mb-3 whitespace-nowrap"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      backgroundColor: "#1B4229",
+                      color: "#CDDB2D",
+                      fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
+                      letterSpacing: "0.08em",
+                    }}>
+                    {polyphenols[oil.handle]} mg/kg POLYPHENOLS
+                  </p>
+                )}
+
                 <p
                 className="mb-3"
                 style={{
@@ -227,17 +268,19 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
                   {formatPrice(oil.price, locale)}
                 </p>
 
-                <p
-                style={{
-                  fontFamily: "Space Grotesk, sans-serif",
-                  color: "#1B4229",
-                  fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
-                  opacity: 0.5,
-                  lineHeight: 1.6
-                }}>
+                {showTagline && (
+                  <p
+                  style={{
+                    fontFamily: "Space Grotesk, sans-serif",
+                    color: "#1B4229",
+                    fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)",
+                    opacity: 0.5,
+                    lineHeight: 1.6
+                  }}>
 
-                  {t.products.tagline[oil.handle]}
-                </p>
+                    {t.products.tagline[oil.handle]}
+                  </p>
+                )}
 
                 {!oil.isAvailable && (
                   <span
@@ -282,7 +325,7 @@ export const OilProductWidgets = ({ locale = DEFAULT_LOCALE }: OilProductWidgets
               opacity: 0.85
             }}>
 
-            {t.oilCollection.quizPrompt}
+            {quizPrompt ?? t.oilCollection.quizPrompt}
           </p>
           <Link
             to={localizeHref("/quiz", locale)}

@@ -591,6 +591,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   <Lightbulb size={18} />
                   {t.howToReadLabValues}
                 </a>
+                {/* Internal link into the high-polyphenol category hub (English-only
+                    for v1; the localized PDPs link to the same canonical hub). */}
+                <a
+                href="/high-polyphenol-olive-oil"
+                className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
+                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                  <Sparkles size={18} />
+                  Why high polyphenols?
+                </a>
               </div>
 
               {/* Accordion Info */}

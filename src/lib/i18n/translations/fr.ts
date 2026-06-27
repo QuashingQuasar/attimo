@@ -52,6 +52,9 @@ export const fr: Dict = {
     manageOrders: "Gérer commandes & abonnement",
     rights: "© 2026 ATTIMO. Tous droits réservés.",
     changeRegion: "Changer de devise ou de pays",
+    shop: "Boutique", // REVIEW
+    learn: "Découvrir", // REVIEW
+    company: "Entreprise", // REVIEW
   },
 
   cart: {

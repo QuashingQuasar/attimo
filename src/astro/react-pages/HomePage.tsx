@@ -43,7 +43,10 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
       <KleiaWay locale={locale} />
       <OilComparison locale={locale} />
       <Testimonials locale={locale} />
-      <PolyphenolComparison locale={locale} />
+      <PolyphenolComparison
+        locale={locale}
+        relatedLink={{ href: "/high-polyphenol-olive-oil", label: "See the full high-polyphenol range, ranked" }}
+      />
       <FAQ locale={locale} />
       <BlogSection initialPosts={initialPosts} locale={locale} />
       <Footer locale={locale} />

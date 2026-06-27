@@ -6,17 +6,36 @@ interface PolyphenolComparisonProps {
   productValue?: number;
   productLabel?: string;
   locale?: Locale;
+  /** Override the heading (default: dictionary "the polyphenol difference"). */
+  heading?: string;
+  /** Override the intro paragraph (default: dictionary copy). */
+  intro?: string;
+  /**
+   * Replace the three educational cards' copy. Used on the high-polyphenol hub
+   * so its prose isn't byte-identical to the homepage. Defaults to dictionary.
+   */
+  cards?: { content: string; content2: string }[];
+  /** Optional citation/footnote rendered under the cards (e.g. the EU regulation). */
+  citation?: React.ReactNode;
+  /**
+   * Optional contextual link rendered below the comparison cards. Used to point
+   * the homepage at the /high-polyphenol-olive-oil category hub (an internal
+   * ranking link). Omitted everywhere else, including on the hub page itself.
+   */
+  relatedLink?: { href: string; label: string };
 }
 
-export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL", locale = DEFAULT_LOCALE }: PolyphenolComparisonProps) => {
+export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL", locale = DEFAULT_LOCALE, heading, intro, cards, citation, relatedLink }: PolyphenolComparisonProps) => {
   const t = getDict(locale).polyphenol;
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
+  const cardCopy = cards ?? t.cards;
 
-  // Name/handle/avatar are locale-independent; copy comes from the dictionary.
+  // Name/handle/avatar are locale-independent; copy comes from the dictionary
+  // (or the `cards` override on the hub).
   const tweets = [
-    { id: 1, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[0].content, content2: t.cards[0].content2 },
-    { id: 2, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[1].content, content2: t.cards[1].content2 },
-    { id: 3, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: t.cards[2].content, content2: t.cards[2].content2 },
+    { id: 1, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: cardCopy[0].content, content2: cardCopy[0].content2 },
+    { id: 2, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: cardCopy[1].content, content2: cardCopy[1].content2 },
+    { id: 3, name: "Olive", handle: "@olvlimits", avatar: "🫒", content: cardCopy[2].content, content2: cardCopy[2].content2 },
   ];
 
   const barTooltips: Record<number, {title: string;subtitle: string;description: string;}> = {
@@ -41,9 +60,9 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto" style={{ zoom: 0.88 }}>
             <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
-              {t.heading}
+              {heading ?? t.heading}
             </h2>
-            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)', maxWidth: '53.2rem' }}>{t.intro}
+            <p className="text-olive-medium leading-relaxed mb-12" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.2vw, 1.375rem)', maxWidth: '53.2rem' }}>{intro ?? t.intro}
 
             </p>
 
@@ -145,6 +164,23 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                 </div>
               </div>
             </div>
+
+            {citation && (
+              <p className="mt-6 md:mt-8 text-olive-dark/55 leading-relaxed" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.78rem, 0.95vw, 1rem)" }}>
+                {citation}
+              </p>
+            )}
+
+            {relatedLink && (
+              <div className="mt-8 md:mt-10 text-center">
+                <a
+                  href={relatedLink.href}
+                  className="inline-flex items-center gap-2 underline underline-offset-4 decoration-olive-dark/30 hover:decoration-olive-dark transition-colors"
+                  style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#1B4229", fontSize: "clamp(1rem, 1.2vw, 1.3rem)", letterSpacing: "0.03em" }}>
+                  {relatedLink.label} <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

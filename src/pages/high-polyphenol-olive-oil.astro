@@ -1,0 +1,93 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import HighPolyphenolPage from "@astro/react-pages/HighPolyphenolPage";
+import { sanityClient } from "@/lib/sanity";
+import { HIGH_POLYPHENOL_FAQS, HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
+
+const canonical = "https://attimo-oil.com/high-polyphenol-olive-oil";
+const description =
+  "Shop high-polyphenol olive oil, lab-tested at 400–900 mg/kg — three single-variety, polyphenol-rich extra virgin oils ranked by polyphenols. From €22.";
+
+// CollectionPage + ItemList: the three oils, ranked by polyphenol content.
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "High-Polyphenol Olive Oil",
+  url: canonical,
+  description,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: HIGH_POLYPHENOL_PRODUCTS.length,
+    itemListElement: HIGH_POLYPHENOL_PRODUCTS.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        name: p.name,
+        url: p.url,
+        image: p.image,
+        brand: { "@type": "Brand", name: "ATTIMO" },
+        offers: {
+          "@type": "Offer",
+          url: p.url,
+          price: p.priceEUR.toFixed(2),
+          priceCurrency: "EUR",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition",
+        },
+        additionalProperty: {
+          "@type": "PropertyValue",
+          name: "Polyphenols",
+          value: `${p.polyphenols} mg/kg`,
+        },
+      },
+    })),
+  },
+};
+
+// FAQPage: mirrors the on-page polyphenol-first FAQ accordion verbatim.
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HIGH_POLYPHENOL_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+// Curated "read more" feed: highlight polyphenol-specific posts on this hub
+// (not just the latest three). Ordered newest-first; the deep guide leads once
+// it's published. Falls back to nothing extra if a slug isn't live yet.
+const CURATED_POST_SLUGS = [
+  "high-polyphenol-olive-oil-guide",
+  "polyphenols-olive-oil",
+  "bryan-johnson-olive-oil",
+  "olive-oil-shot",
+];
+const curatedPosts = await sanityClient.fetch(
+  `*[_type == "post" && slug.current in $slugs] | order(publishedAt desc)[0..2] {
+    _id, title, slug, publishedAt, excerpt, coverImage
+  }`,
+  { slugs: CURATED_POST_SLUGS }
+);
+---
+
+<BaseLayout
+  title="High-Polyphenol Olive Oil | Lab-Tested 400–900 mg/kg"
+  description={description}
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={[collectionJsonLd, faqJsonLd]}
+>
+  {/*
+    English-only for v1. FR/DE would plug into the existing locale routing the
+    same way the homepage does: add `src/pages/[locale]/high-polyphenol-olive-oil.astro`
+    (mirroring src/pages/[locale]/index.astro — getStaticPaths over LOCALES,
+    pass `locale` to <HighPolyphenolPage>), translate the lead-in copy + FAQ via
+    a getDict-backed dictionary section, set hreflangPath="/high-polyphenol-olive-oil",
+    and add the path to pathHasLocaleVariants() so the sitemap emits the cluster.
+  */}
+  <HighPolyphenolPage initialPosts={curatedPosts} client:load />
+</BaseLayout>

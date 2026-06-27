@@ -4,7 +4,7 @@ import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict, type Dict } from "@/lib/i18n/dictionaries";
 
-interface FaqItem {
+export interface FaqItem {
   question: string;
   answer: string | null;
   answerElement?: ReactNode;
@@ -157,18 +157,28 @@ function getFaqs(handle: string | undefined, t: Dict["faq"]): FaqItem[] {
 interface FAQProps {
   handle?: string;
   locale?: Locale;
+  /**
+   * Override the FAQ list entirely (e.g. the polyphenol-first set on the
+   * /high-polyphenol-olive-oil hub). When omitted, the default per-product /
+   * generic FAQ from the dictionary is used.
+   */
+  items?: FaqItem[];
+  /** Override the section heading (default: dictionary "Frequently Asked Questions"). */
+  heading?: string;
+  /** Override the heading font (default Beverly Drive script). */
+  headingFontFamily?: string;
 }
 
-export const FAQ = ({ handle, locale = DEFAULT_LOCALE }: FAQProps) => {
+export const FAQ = ({ handle, locale = DEFAULT_LOCALE, items, heading, headingFontFamily }: FAQProps) => {
   const t = getDict(locale).faq;
-  const faqs = getFaqs(handle, t);
+  const faqs = items ?? getFaqs(handle, t);
 
   return (
     <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#FFFAEA" }}>
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
-          <h2 className="font-beverly font-bold mb-4 tracking-tight" style={{ color: "#1B4229", fontSize: "clamp(2.2rem, 3.64vw, 4.1rem)" }}>
-            {t.heading}
+          <h2 className={headingFontFamily ? "font-bold mb-4 tracking-tight" : "font-beverly font-bold mb-4 tracking-tight"} style={{ color: "#1B4229", fontSize: "clamp(2.2rem, 3.64vw, 4.1rem)", ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}) }}>
+            {heading ?? t.heading}
           </h2>
         </div>
 

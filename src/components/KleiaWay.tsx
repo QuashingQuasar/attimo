@@ -4,9 +4,13 @@ import { getDict } from "@/lib/i18n/dictionaries";
 
 interface KleiaWayProps {
   locale?: Locale;
+  /** Override the two-line dictionary heading with a single-line heading. */
+  heading?: string;
+  /** Optional intro paragraph under the heading (e.g. reframing the props as causes). */
+  intro?: string;
 }
 
-export const KleiaWay = ({ locale = DEFAULT_LOCALE }: KleiaWayProps = {}) => {
+export const KleiaWay = ({ locale = DEFAULT_LOCALE, heading, intro }: KleiaWayProps = {}) => {
   const t = getDict(locale);
   const icons = ["/icons/mortar.svg", "/icons/olive.svg", "/icons/branch-2.svg", "/icons/basket-2.svg", "/icons/flask.svg"];
   const tiles = t.kleiaWay.tiles.map((tile, i) => ({ ...tile, icon: icons[i] }));
@@ -67,9 +71,13 @@ export const KleiaWay = ({ locale = DEFAULT_LOCALE }: KleiaWayProps = {}) => {
             color: '#1B4229',
             fontSize: 'clamp(2rem, 3.5vw, 3.7rem)'
           }}>
-            {t.kleiaWay.headingLine1}<br />
-            <span className="font-medium italic">{t.kleiaWay.headingLine2}</span>
+            {heading ? heading : <>{t.kleiaWay.headingLine1}<br /><span className="font-medium italic">{t.kleiaWay.headingLine2}</span></>}
           </h2>
+          {intro && (
+            <p className="max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1B4229', opacity: 0.7, fontSize: 'clamp(1.05rem, 1.25vw, 1.3rem)' }}>
+              {intro}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[90vw] lg:max-w-[88vw] xl:max-w-[75vw] mx-auto">

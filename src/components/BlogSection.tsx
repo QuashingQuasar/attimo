@@ -20,9 +20,11 @@ interface SanityPost {
 interface BlogSectionProps {
   initialPosts?: SanityPost[];
   locale?: Locale;
+  /** Override the section heading (default: dictionary "The Olive Press"). */
+  heading?: string;
 }
 
-export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE }: BlogSectionProps = {}) => {
+export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading }: BlogSectionProps = {}) => {
   const t = getDict(locale).blog;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -86,7 +88,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE }: BlogSecti
                 fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
                 color: "#1B4229"
               }}>
-              {t.heading}
+              {heading ?? t.heading}
             </h2>
           </div>
           <Link
