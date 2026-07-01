@@ -168,7 +168,8 @@ function CompoundsSection() {
           <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
             "Polyphenols" is an umbrella term. Three compounds do most of the heavy lifting — and an average supermarket
             oil barely registers any of them. New to lab reports?{" "}
-            <a href="/blog/how-to-read-olive-oil-lab-analysis" style={{ ...refLink, color: AMBER }}>Here's how to read one</a>.
+            <a href="/blog/how-to-read-olive-oil-lab-analysis" style={{ ...refLink, color: AMBER }}>Here's how to read one</a> — or see{" "}
+            <a href="/blog/olive-color-ripeness-polyphenols" style={{ ...refLink, color: AMBER }}>why an olive's colour reveals its polyphenols</a>.
           </p>
         </div>
 

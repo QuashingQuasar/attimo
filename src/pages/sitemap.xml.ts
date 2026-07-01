@@ -5,13 +5,17 @@ import { LOCALES, pathHasLocaleVariants } from "@/lib/i18n/config";
 
 const SITE = "https://attimo-oil.com";
 
-// Slugs published in the standalone blog sitemap (public/sitemap-blog.xml).
-// Excluded here so each URL appears in exactly one sitemap.
+// Slugs published in the standalone blog sitemap (public/sitemap-blog.xml),
+// excluded from the main sitemap.
+//
+// INDEXING EXPERIMENT — Phase 1 (sitemap arm): `polyphenols-olive-oil` and
+// `bryan-johnson-olive-oil` were removed from this set so they now ALSO appear
+// in the main sitemap (postEntries) — testing whether main-sitemap presence
+// moves them from "Discovered – not indexed" to indexed. The other 6 stay here
+// (controls + other arms). Revert if the arm shows no effect after ~3 weeks.
 const BLOG_SITEMAP_SLUGS = new Set([
   "olive-oil-shot",
-  "bryan-johnson-olive-oil",
   "should-you-cook-with-olive-oil",
-  "polyphenols-olive-oil",
   "olive-color-ripeness-polyphenols",
   "unfiltered-olive-oil",
   "squeeze-bottles-olive-oil",
