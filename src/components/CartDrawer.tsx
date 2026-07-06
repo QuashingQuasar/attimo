@@ -17,6 +17,7 @@ import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
 import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify";
+import { CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { imageForColor, sizedImage } from "@/lib/merchImages";
 import { colorLabel } from "@/lib/merchContent";
 import { detectCountry, getFreeShippingThreshold } from "@/lib/shipping";
@@ -39,6 +40,18 @@ const PRODUCT_ORDER = ["coratina", "picual", "nocellara"];
 // that and uses its raw Shopify variant price.
 function isOilItem(item: CartItem): boolean {
   return item.product?.node?.productType === "Olive Oil";
+}
+
+// Bottle-equivalents an oil line contributes toward the free-shipping
+// threshold. A 3L bag-in-box counts as its 6-bottle equivalent so a single
+// box always clears the threshold (free shipping on its own); regular bottles
+// count as their quantity. Non-oil (merch) contributes nothing.
+function oilBottleEquivalents(item: CartItem): number {
+  if (!isOilItem(item)) return 0;
+  if (item.product?.node?.handle === CORATINA_3L_HANDLE) {
+    return CORATINA_3L_BOTTLE_EQUIVALENT * item.quantity;
+  }
+  return item.quantity;
 }
 
 // Cart thumbnail for a line item. For merch with a colour option, resolve the
@@ -140,7 +153,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   // Free shipping is an OILS-only promise (we ship oils; merch ships separately
   // via Printful), so only oil bottles count toward the threshold/nudge.
   const oilBottleCount = items.reduce(
-    (sum, item) => sum + (isOilItem(item) ? item.quantity : 0),
+    (sum, item) => sum + oilBottleEquivalents(item),
     0
   );
   const hasOil = items.some(isOilItem);

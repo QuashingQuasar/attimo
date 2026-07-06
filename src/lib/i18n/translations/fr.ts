@@ -271,8 +271,17 @@ export const fr: Dict = {
   product: {
     loading: "Chargement du produit...",
     notFound: "Produit introuvable",
+    // 3L bag-in-box purchase-option toggle (Coratina PDP).
+    formatLabel: "Format",
+    formatBottleName: "Bouteille",
+    formatBottleVolume: "500 ml",
+    formatBoxName: "Bag-in-Box",
+    formatBoxVolume: "3 L",
+    formatBoxBadge: "MEILLEUR PRIX", // Value badge on the 3L box option card
     newHarvest: "Nouvelle récolte", // REVIEW
     inStock: "En stock",
+    lastBottles: "Dernières bouteilles",
+    lastBoxes: "Derniers cartons",
     soldOut: "Épuisé",
     comingSoon: "Bientôt disponible",
     backSoon: "Bientôt de retour",
@@ -297,6 +306,7 @@ export const fr: Dict = {
     polyTooltipText:
       "Tous les polyphénols ne se valent pas. Nos {value} {unit} sont mesurés selon la méthode HPLC standard de l'UE dans un laboratoire accrédité ISO. De nombreux producteurs déclarent des « polyphénols totaux » selon des méthodes plus larges incluant des composés à l'activité santé moins documentée, produisant des chiffres plus élevés qui ne sont pas directement comparables.", // REVIEW
     toastAdded: "{n} bouteille{plural} ajoutée{plural} au panier",
+    toastAddedBox: "Bag-in-Box 3 L ajouté au panier",
     titleSuffix: "Huile d'olive vierge extra de spécialité", // REVIEW
   },
 

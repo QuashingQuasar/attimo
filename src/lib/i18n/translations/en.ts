@@ -292,8 +292,17 @@ export const en = {
   product: {
     loading: "Loading product...",
     notFound: "Product not found",
+    // 3L bag-in-box purchase-option toggle (Coratina PDP).
+    formatLabel: "Format",
+    formatBottleName: "Bottle",
+    formatBottleVolume: "500 ml",
+    formatBoxName: "Bag-in-Box",
+    formatBoxVolume: "3 L",
+    formatBoxBadge: "BEST VALUE", // Value badge on the 3L box option card
     newHarvest: "New Harvest", // REVIEW
     inStock: "In Stock",
+    lastBottles: "Last Bottles",
+    lastBoxes: "Last Boxes",
     soldOut: "Sold Out",
     comingSoon: "Coming Soon",
     backSoon: "Back Soon",
@@ -321,6 +330,7 @@ export const en = {
       'Not all polyphenols are equal. Our {value} {unit} is measured using the EU-standard HPLC method at an ISO-accredited lab. Many producers report "total polyphenols" using broader methods that include compounds with less documented health activity, producing higher-sounding numbers that aren\'t directly comparable.', // REVIEW
     // Placeholders: {n} {plural}
     toastAdded: "Added {n} bottle{plural} to cart",
+    toastAddedBox: "Added 3L Bag-in-Box to cart",
     titleSuffix: "Specialty Extra Virgin Olive Oil",
   },
 

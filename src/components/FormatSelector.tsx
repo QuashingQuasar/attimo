@@ -1,0 +1,181 @@
+import { Package } from "lucide-react";
+import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+export type ProductFormat = "bottle" | "box";
+
+interface FormatSelectorProps {
+  format: ProductFormat;
+  onFormatChange: (format: ProductFormat) => void;
+  bottlePrice: number;
+  boxPrice: number;
+  bottleImage?: string;
+  boxImage?: string;
+  // When true, the box thumbnail renders a branded placeholder instead of an
+  // <img> (the approved render isn't wired in yet).
+  boxImageIsPlaceholder?: boolean;
+  locale?: Locale;
+}
+
+// Two-option purchase toggle on the Coratina PDP: 500ml bottle vs 3L
+// bag-in-box. Selecting a card is UI over two distinct Shopify products —
+// each adds its own line item via the existing cart path (see ProductPage).
+export const FormatSelector = ({
+  format,
+  onFormatChange,
+  bottlePrice,
+  boxPrice,
+  bottleImage,
+  boxImage,
+  boxImageIsPlaceholder = false,
+  locale = DEFAULT_LOCALE,
+}: FormatSelectorProps) => {
+  const t = getDict(locale).product;
+
+  const cardBase =
+    "relative flex items-center gap-3 rounded-xl border-2 px-3 py-3 text-left transition-all duration-200 w-full";
+  const selectedCls = "border-olive-dark bg-olive-dark/5";
+  const idleCls = "border-olive-dark/20 bg-white/60 hover:border-olive-dark/40";
+
+  const thumbCls =
+    "w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center";
+
+  return (
+    <div className="space-y-2">
+      <p
+        className="uppercase tracking-wider text-olive-medium"
+        style={{
+          fontFamily: "UDC Working Man Sans, sans-serif",
+          fontSize: "clamp(0.72rem, 0.82vw, 0.85rem)",
+          opacity: 0.8,
+        }}
+      >
+        {t.formatLabel}
+      </p>
+
+      <div className="grid grid-cols-2 gap-2">
+        {/* 500ml bottle */}
+        <button
+          type="button"
+          onClick={() => onFormatChange("bottle")}
+          aria-pressed={format === "bottle"}
+          className={`${cardBase} ${format === "bottle" ? selectedCls : idleCls}`}
+        >
+          <div className={thumbCls} style={{ backgroundColor: "#10221B" }}>
+            {bottleImage && (
+              <img
+                src={bottleImage}
+                alt={t.formatBottleName}
+                className="w-full h-full object-cover object-center"
+              />
+            )}
+          </div>
+          <div className="min-w-0">
+            <p
+              className="font-semibold text-olive-dark leading-tight truncate"
+              style={{
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                fontSize: "clamp(0.85rem, 1vw, 1rem)",
+              }}
+            >
+              {t.formatBottleName}
+            </p>
+            <p
+              className="text-olive-medium leading-tight"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+              }}
+            >
+              {t.formatBottleVolume}
+            </p>
+            <p
+              className="text-olive-dark font-bold leading-tight mt-0.5"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)",
+              }}
+            >
+              {formatPrice(bottlePrice, locale)}
+            </p>
+          </div>
+        </button>
+
+        {/* 3L bag-in-box */}
+        <button
+          type="button"
+          onClick={() => onFormatChange("box")}
+          aria-pressed={format === "box"}
+          className={`${cardBase} ${format === "box" ? selectedCls : idleCls}`}
+        >
+          {/* Value badge */}
+          <span
+            aria-hidden="true"
+            className="absolute right-2 top-0 -translate-y-1/2 rounded-full px-2.5 py-1 font-bold uppercase whitespace-nowrap shadow-sm"
+            style={{
+              backgroundColor: "#CDDB2D",
+              color: "#1B4229",
+              fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "clamp(0.5rem, 0.62vw, 0.65rem)",
+              letterSpacing: "0.04em",
+              lineHeight: 1,
+            }}
+          >
+            {t.formatBoxBadge}
+          </span>
+          <div className={thumbCls} style={{ backgroundColor: "#10221B" }}>
+            {boxImage && !boxImageIsPlaceholder ? (
+              <img
+                src={boxImage}
+                alt={t.formatBoxName}
+                className="w-full h-full object-cover object-center"
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center gap-0.5">
+                <Package size={20} className="text-cream/80" />
+                <span
+                  className="text-cream/80 font-bold leading-none"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    fontSize: "0.6rem",
+                  }}
+                >
+                  3L
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="min-w-0">
+            <p
+              className="font-semibold text-olive-dark leading-tight truncate"
+              style={{
+                fontFamily: "UDC Working Man Sans, sans-serif",
+                fontSize: "clamp(0.85rem, 1vw, 1rem)",
+              }}
+            >
+              {t.formatBoxName}
+            </p>
+            <p
+              className="text-olive-medium leading-tight"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+              }}
+            >
+              {t.formatBoxVolume}
+            </p>
+            <p
+              className="text-olive-dark font-bold leading-tight mt-0.5"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)",
+              }}
+            >
+              {formatPrice(boxPrice, locale)}
+            </p>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
+};

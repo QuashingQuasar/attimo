@@ -277,8 +277,17 @@ export const de: Dict = {
   product: {
     loading: "Produkt wird geladen...",
     notFound: "Produkt nicht gefunden",
+    // 3L bag-in-box purchase-option toggle (Coratina PDP).
+    formatLabel: "Format",
+    formatBottleName: "Flasche",
+    formatBottleVolume: "500 ml",
+    formatBoxName: "Bag-in-Box",
+    formatBoxVolume: "3 L",
+    formatBoxBadge: "BESTER PREIS", // Value badge on the 3L box option card
     newHarvest: "Neue Ernte", // REVIEW
     inStock: "Auf Lager",
+    lastBottles: "Letzte Flaschen",
+    lastBoxes: "Letzte Boxen",
     soldOut: "Ausverkauft",
     comingSoon: "Demnächst verfügbar",
     backSoon: "Bald zurück",
@@ -306,6 +315,7 @@ export const de: Dict = {
       "Nicht alle Polyphenole sind gleich. Unsere {value} {unit} werden nach der EU-Standardmethode HPLC in einem ISO-akkreditierten Labor gemessen. Viele Produzenten geben „Gesamtpolyphenole“ nach breiteren Methoden an, die Verbindungen mit weniger belegter gesundheitlicher Wirkung einschließen und so höhere, nicht direkt vergleichbare Werte ergeben.", // REVIEW
     // `{plural}` omitted (German "(n)" form); ProductPage's "s" injection is a no-op.
     toastAdded: "{n} Flasche(n) zum Warenkorb hinzugefügt",
+    toastAddedBox: "3-L-Bag-in-Box zum Warenkorb hinzugefügt",
     titleSuffix: "Natives Olivenöl extra – Spezialität", // REVIEW
   },
 

@@ -15,19 +15,21 @@ import { FAQ } from "@/components/FAQ";
 import { ProductInfoTabs } from "@/components/ProductInfoTabs";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { fetchProducts, fetchSellingPlans, ShopifyProduct, SellingPlan } from "@/lib/shopify";
+import { fetchProducts, fetchSellingPlans, fetchVariantQuantityAvailable, ShopifyProduct, SellingPlan } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { getProductContent, resolveShopifyHandle } from "@/lib/productContent";
 import { QuantitySelector, getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { PurchaseOptions } from "@/components/PurchaseOptions";
+import { FormatSelector, type ProductFormat } from "@/components/FormatSelector";
+import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORATINA_3L_IMAGES, CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 import { FirstOrderPopup } from "@/components/FirstOrderPopup";
-import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 interface BlogPost {
@@ -54,6 +56,16 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const [products, setProducts] = useState<ShopifyProduct[]>(initialProducts ?? []);
   const [loading, setLoading] = useState(initialProducts && initialProducts.length > 0 ? false : true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  // Coratina-only: 500ml bottle vs 3L bag-in-box purchase option.
+  const [format, setFormat] = useState<ProductFormat>("bottle");
+  // Live Shopify stock for the main variant; drives the "Last bottles" badge
+  // when it drops below the low-stock threshold. null = unknown (scope off /
+  // request failed) → keep the plain "In Stock" badge.
+  const [availableQty, setAvailableQty] = useState<number | null>(null);
+  // Same, for the 3L box variant (drives "Last boxes"). Null while the box
+  // product is still a draft / off the Storefront channel — falls back to the
+  // plain "In Stock" badge until it's published.
+  const [boxQty, setBoxQty] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [purchaseType, setPurchaseType] = useState<"one-time" | "subscribe">("one-time");
   const [selectedSellingPlanId, setSelectedSellingPlanId] = useState<string | null>(
@@ -62,8 +74,18 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const [sellingPlans, setSellingPlans] = useState<SellingPlan[]>(initialSellingPlans ?? []);
   const addItem = useCartStore((state) => state.addItem);
   const cartItems = useCartStore((state) => state.items);
+  // 3L box counts as its 6-bottle equivalent so a single box clears the
+  // free-shipping threshold on its own (matches CartDrawer).
   const cartBottleCount = useMemo(
-    () => cartItems.reduce((sum, item) => sum + item.quantity, 0),
+    () =>
+      cartItems.reduce(
+        (sum, item) =>
+          sum +
+          (item.product?.node?.handle === CORATINA_3L_HANDLE
+            ? CORATINA_3L_BOTTLE_EQUIVALENT * item.quantity
+            : item.quantity),
+        0
+      ),
     [cartItems]
   );
   const isMobile = useIsMobile();
@@ -133,6 +155,34 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle, locale);
+  const mainVariantId = product?.node.variants.edges[0]?.node.id;
+
+  // Fetch live stock for the "Last bottles" low-stock badge.
+  useEffect(() => {
+    if (!mainVariantId) {
+      setAvailableQty(null);
+      return;
+    }
+    let cancelled = false;
+    fetchVariantQuantityAvailable(mainVariantId, shopifyContextForLocale(locale)).then((qty) => {
+      if (!cancelled) setAvailableQty(qty);
+    });
+    return () => { cancelled = true; };
+  }, [mainVariantId, locale]);
+
+  // Live stock for the 3L box (Coratina only). Returns null until the box is
+  // published to the Storefront channel; then drives the "Last boxes" badge.
+  useEffect(() => {
+    if (handle !== "coratina") {
+      setBoxQty(null);
+      return;
+    }
+    let cancelled = false;
+    fetchVariantQuantityAvailable(CORATINA_3L_VARIANT_ID, shopifyContextForLocale(locale)).then((qty) => {
+      if (!cancelled) setBoxQty(qty);
+    });
+    return () => { cancelled = true; };
+  }, [handle, locale]);
 
   useEffect(() => {
     if (!content) return;
@@ -191,6 +241,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const SUBSCRIPTION_PRICE = Math.round(ONE_TIME_PRICE * (22 / 24) * 100) / 100;
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
 
+  // 3L bag-in-box option (Coratina PDP only). The box is a separate Shopify
+  // product; selecting it hides the quantity/subscribe controls, locks qty to
+  // 1, and swaps the active price to the box's per-locale price.
+  const showFormatToggle = handle === "coratina";
+  const boxPrice = locale.prices.coratina3L ?? 89;
+  const isBox = showFormatToggle && format === "box";
+  const activeUnitPrice = isBox ? boxPrice : activePrice;
+
   const handleAddToCart = () => {
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({ event: 'add_to_cart_custom' });
@@ -202,10 +260,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       picual: 'Picual',
     };
     const pixelName = nameMap[handle || ''] || handle || '';
-    const totalValue = activePrice * selectedQuantity;
+    const cartQuantity = isBox ? 1 : selectedQuantity;
+    const totalValue = activeUnitPrice * cartQuantity;
     (window as any).fbq?.('track', 'AddToCart', {
-      content_name: pixelName,
-      content_ids: [handle],
+      content_name: isBox ? `${pixelName} 3L` : pixelName,
+      content_ids: [isBox ? 'coratina-3l' : handle],
       content_type: 'product',
       value: totalValue,
       currency: locale.currency.code,
@@ -213,8 +272,29 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     (window as any).fbq?.('track', 'InitiateCheckout', {
       value: totalValue,
       currency: locale.currency.code,
-      num_items: selectedQuantity,
+      num_items: cartQuantity,
     });
+
+    // 3L bag-in-box: add the separate Shopify product's variant. Its handle
+    // isn't a known oil slug, so CartDrawer renders the stored line price
+    // (per-locale boxPrice) directly. One-time only, quantity locked to 1.
+    if (isBox) {
+      addItem({
+        product: buildCoratina3LProduct(
+          locale,
+          `${content.heroTitle} — ${t.formatBoxName}`,
+          CORATINA_3L_IMAGE,
+        ),
+        variantId: CORATINA_3L_VARIANT_ID,
+        variantTitle: "3L",
+        price: { amount: String(boxPrice), currencyCode: locale.currency.code },
+        quantity: 1,
+        selectedOptions: [],
+        isSubscription: false,
+      });
+      toast.success(t.toastAddedBox, { position: "top-center" });
+      return;
+    }
 
     if (!product) return;
     const variant = product.node.variants.edges[0].node;
@@ -257,6 +337,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }
 
   const productImages = product.node.images?.edges || [];
+  // When the 3L box format is selected, the main image + thumbnails switch to
+  // the box renders (packshot + lifestyle) instead of the bottle gallery.
+  const boxImages = CORATINA_3L_IMAGES.map((url) => ({
+    node: { url, altText: "ATTIMO Coratina 3L bag-in-box" },
+  }));
+  const activeImages = isBox ? boxImages : productImages;
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
   const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
@@ -323,15 +409,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             <div className="lg:sticky lg:top-0 lg:self-start">
               <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
                 <img
-                src={productImages[selectedImageIndex]?.node?.url || productImages[0]?.node?.url}
-                alt={productImages[selectedImageIndex]?.node?.altText || product.node.title}
+                src={activeImages[selectedImageIndex]?.node?.url || activeImages[0]?.node?.url}
+                alt={activeImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover object-center" />
-              
+
 
                 {/* Overlay Thumbnails — bottom-right inside image */}
-                {productImages.length > 1 &&
+                {activeImages.length > 1 &&
               <div className="absolute bottom-6 right-6 lg:right-1/2 lg:translate-x-1/2 flex gap-2">
-                    {productImages.map((img, i) =>
+                    {activeImages.map((img, i) =>
                 <button
                   key={i}
                   onClick={() => setSelectedImageIndex(i)}
@@ -360,8 +446,18 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   </span>
                   {(() => {
                   // Mirrors the isInStock computation above.
-                  const inStock = product.node.variants.edges.some((v) => v.node.availableForSale);
-                  const badgeText = inStock ? t.inStock : (oosCopy?.badge ?? t.soldOut);
+                  // The box is a separate product/variant; when selected the
+                  // badge reflects box stock ("Last boxes") instead of the
+                  // bottle's ("Last bottles").
+                  const inStock = isBox
+                    ? true
+                    : product.node.variants.edges.some((v) => v.node.availableForSale);
+                  const activeQty = isBox ? boxQty : availableQty;
+                  // Low-stock: live Shopify quantity under 10.
+                  const lowStock = inStock && activeQty !== null && activeQty < 10;
+                  const badgeText = inStock
+                    ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : t.inStock)
+                    : (oosCopy?.badge ?? t.soldOut);
                   const badgeColor = inStock
                     ? 'text-olive-dark'
                     : (oosCopy?.badgeClass ?? 'text-red-600');
@@ -377,7 +473,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline tablet-volume-size" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(0.91rem, 1.72vw, 1.84rem)', fontStyle: 'italic', fontWeight: 400 }}>
-                    {content.tabs.details.volume}
+                    {isBox ? "3L" : content.tabs.details.volume}
                   </span>
                 </h1>
               </div>
@@ -418,25 +514,40 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   />
                 ) : (
                   <>
-                    <QuantitySelector
-                      quantity={selectedQuantity}
-                      onQuantityChange={setSelectedQuantity}
-                      pricePerUnit={activePrice}
-                      onAddToCart={handleAddToCart}
-                      buttonColor={content.buttonColor}
-                      freeShippingThreshold={freeShippingThreshold}
-                      variantId={product.node.variants.edges[0]?.node.id}
-                      locale={locale} />
+                    {showFormatToggle && (
+                      <FormatSelector
+                        format={format}
+                        onFormatChange={(f) => { setFormat(f); setSelectedImageIndex(0); }}
+                        bottlePrice={ONE_TIME_PRICE}
+                        boxPrice={boxPrice}
+                        bottleImage={productImages[0]?.node?.url}
+                        boxImage={CORATINA_3L_IMAGE}
+                        locale={locale} />
+                    )}
 
-                    <PurchaseOptions
-                      sellingPlans={sellingPlans}
-                      oneTimePrice={ONE_TIME_PRICE}
-                      subscriptionPrice={SUBSCRIPTION_PRICE}
-                      purchaseType={purchaseType}
-                      onPurchaseTypeChange={setPurchaseType}
-                      selectedSellingPlanId={selectedSellingPlanId}
-                      onSellingPlanChange={setSelectedSellingPlanId}
-                      locale={locale} />
+                    {!isBox && (
+                      <>
+                        <QuantitySelector
+                          quantity={selectedQuantity}
+                          onQuantityChange={setSelectedQuantity}
+                          pricePerUnit={activePrice}
+                          onAddToCart={handleAddToCart}
+                          buttonColor={content.buttonColor}
+                          freeShippingThreshold={freeShippingThreshold}
+                          variantId={product.node.variants.edges[0]?.node.id}
+                          locale={locale} />
+
+                        <PurchaseOptions
+                          sellingPlans={sellingPlans}
+                          oneTimePrice={ONE_TIME_PRICE}
+                          subscriptionPrice={SUBSCRIPTION_PRICE}
+                          purchaseType={purchaseType}
+                          onPurchaseTypeChange={setPurchaseType}
+                          selectedSellingPlanId={selectedSellingPlanId}
+                          onSellingPlanChange={setSelectedSellingPlanId}
+                          locale={locale} />
+                      </>
+                    )}
 
                     <Button
                       onClick={handleAddToCart}
@@ -452,17 +563,20 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           // Volume discount only applies to one-time orders.
                           // Subscriptions already have their own discounted
                           // per-bottle price baked in (SUBSCRIPTION_PRICE).
-                          const volumeDiscount = purchaseType === "subscribe"
+                          // The box is one-time, qty 1, no volume discount.
+                          const volumeDiscount = isBox || purchaseType === "subscribe"
                             ? 0
                             : getVolumeDiscountPercent(selectedQuantity);
-                          const baseTotal = selectedQuantity * activePrice;
+                          const qty = isBox ? 1 : selectedQuantity;
+                          const unit = isBox ? boxPrice : activePrice;
+                          const baseTotal = qty * unit;
                           const finalTotal = baseTotal * (1 - volumeDiscount);
-                          const originalOneTimeTotal = selectedQuantity * ONE_TIME_PRICE;
+                          const originalOneTimeTotal = isBox ? boxPrice : selectedQuantity * ONE_TIME_PRICE;
                           // Show strikethrough when subscribing (vs one-time
                           // total) OR when a volume discount is in effect
-                          // (vs un-discounted one-time total).
+                          // (vs un-discounted one-time total). Never for the box.
                           const showStrikethrough =
-                            purchaseType === "subscribe" || volumeDiscount > 0;
+                            !isBox && (purchaseType === "subscribe" || volumeDiscount > 0);
                           // When a volume discount is in effect, display two
                           // decimals so the UI matches what Shopify will
                           // charge to the cent. Subscription path keeps the
@@ -480,6 +594,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                             </span>
                           );
                         })()}
+                        {/* Bottle-count free-shipping nudge is bottle-only copy;
+                            hide it for the box (a €89 box shouldn't read "add 2
+                            bottles for free shipping"). */}
+                        {!isBox && (
                         <span className="font-normal text-xs">{(() => {
                           if (cartBottleCount >= freeShippingThreshold) return t.freeShipCheck;
                           const needed = freeShippingThreshold - cartBottleCount;
@@ -491,6 +609,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           const more = cartBottleCount === 0 ? "" : t.moreWord;
                           return t.addForFreeShip.replace("{n}", String(needed)).replace("{more}", more).replace("{plural}", plural);
                         })()}</span>
+                        )}
                       </span>
                     </Button>
 

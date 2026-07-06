@@ -29,6 +29,11 @@ export type Locale = {
     coratina: number;
     nocellara: number;
     picual: number;
+    // 3L bag-in-box (separate Shopify product referenced from the Coratina
+    // PDP). Optional so nothing outside the Coratina page depends on it;
+    // populated for every locale below. EUR markets share €89; DK/SE mirror
+    // the fixed Shopify Markets price-list overrides (700 DKK / 1000 SEK).
+    coratina3L?: number;
   };
   shipping: {
     standard: number;
@@ -58,6 +63,7 @@ export const DEFAULT_LOCALE: Locale = {
     coratina: 24,
     nocellara: 23,
     picual: 22,
+    coratina3L: 89,
   },
   shipping: {
     standard: 5.95,
@@ -93,6 +99,7 @@ export const LOCALES: Locale[] = [
       coratina: 24,
       nocellara: 23,
       picual: 22,
+      coratina3L: 89,
     },
     shipping: {
       standard: 5.95,
@@ -126,6 +133,7 @@ export const LOCALES: Locale[] = [
       coratina: 24,
       nocellara: 23,
       picual: 22,
+      coratina3L: 89,
     },
     shipping: {
       standard: 5.95,
@@ -151,6 +159,8 @@ export const LOCALES: Locale[] = [
       coratina: 190,
       nocellara: 180,
       picual: 170,
+      // Fixed Shopify Markets override on the Denmark price list (700 DKK).
+      coratina3L: 700,
     },
     shipping: {
       standard: 90,
@@ -176,6 +186,8 @@ export const LOCALES: Locale[] = [
       coratina: 270,
       nocellara: 260,
       picual: 250,
+      // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
+      coratina3L: 1000,
     },
     // Shipping numbers approximate the DK pattern (Postnord-tier rates,
     // free-from at ≈€50 equivalent). Adjust once you have firm SEK quotes
