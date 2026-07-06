@@ -284,6 +284,8 @@ export const de: Dict = {
     formatBoxName: "Bag-in-Box",
     formatBoxVolume: "3 L",
     formatBoxBadge: "BESTER PREIS", // Value badge on the 3L box option card
+    // {n} = serving count, {price} = per-serving cost (locale currency)
+    formatServings: "{n} Portionen ({price} pro Portion)",
     newHarvest: "Neue Ernte", // REVIEW
     inStock: "Auf Lager",
     lastBottles: "Letzte Flaschen",
@@ -300,10 +302,10 @@ export const de: Dict = {
     attrFlavour: "Geschmack",
     harvestDate: "Oktober 2025",
     addToCart: "IN DEN WARENKORB", // REVIEW
-    freeShipCheck: "(GRATIS VERSAND ✓)",
+    freeShipCheck: "GRATIS VERSAND ✓",
     // `{plural}` is omitted on purpose (ProductPage would inject "s"); German
     // uses the "(N)" form. `{more}` → moreWord ("WEITERE ") when cart non-empty.
-    addForFreeShip: "(FÜGE {n} {more}FLASCHE(N) FÜR GRATIS VERSAND HINZU)",
+    addForFreeShip: "FÜGE {n} {more}FLASCHE(N) FÜR GRATIS VERSAND HINZU",
     moreWord: "WEITERE ",
     trustLab: "Im unabhängigen Labor auf Qualität geprüft", // REVIEW
     shipsTomorrow: "Heute bestellt, morgen verschickt", // REVIEW

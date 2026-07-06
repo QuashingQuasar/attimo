@@ -7,6 +7,7 @@ import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, typ
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
+import { CORATINA_3L_IMAGE } from "@/lib/coratina3L";
 
 const oilDefs = [
   {
@@ -77,6 +78,11 @@ export const OilProductWidgets = ({
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
   const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  // Coratina is also sold as a 3L bag-in-box. The card carries a small size
+  // selector; picking 3L updates the shown price and deep-links into the PDP
+  // with the box format preselected (?format=box).
+  const [coratinaSize, setCoratinaSize] = useState<"bottle" | "box">("bottle");
+  const coratinaBoxPrice = locale.prices.coratina3L ?? 89;
 
   useEffect(() => {
     let cancelled = false;
@@ -157,7 +163,11 @@ export const OilProductWidgets = ({
           {oils.map((oil) =>
           <Link
             key={oil.handle}
-            to={localizeHref(`/product/${oil.handle}`, locale)}
+            to={
+              oil.handle === "coratina" && coratinaSize === "box"
+                ? `${localizeHref("/product/coratina", locale)}?format=box`
+                : localizeHref(`/product/${oil.handle}`, locale)
+            }
             className="group flex flex-col">
 
               <div
@@ -190,15 +200,30 @@ export const OilProductWidgets = ({
                     letterSpacing: "0.1em",
                     color: "#1B4229"
                   }}>
-                    {t.oilCollection.size}
+                    {oil.handle === "coratina" && coratinaSize === "box"
+                      ? t.product.formatBoxVolume
+                      : t.oilCollection.size}
                   </span>
                 </div>
 
 
-                <img
-                src={oil.image}
-                alt={`${oil.name} olive oil bottle`}
-                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]" />
+                {(() => {
+                  const showBox = oil.handle === "coratina" && coratinaSize === "box";
+                  return (
+                    <img
+                      src={showBox ? CORATINA_3L_IMAGE : oil.image}
+                      alt={showBox ? `${oil.name} 3L bag-in-box` : `${oil.name} olive oil bottle`}
+                      // Both fill the tile with object-cover; the box gets a
+                      // lighter zoom than the bottle so the whole box stays in
+                      // frame while still reading large.
+                      className={`w-full h-full object-cover relative z-[2] transition-transform duration-700 ${
+                        showBox
+                          ? "scale-[1.15] group-hover:scale-[1.18]"
+                          : "scale-[1.25] group-hover:scale-[1.28]"
+                      }`}
+                    />
+                  );
+                })()}
 
                 {!oil.isAvailable && (
                   <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
@@ -256,6 +281,43 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
+                {oil.handle === "coratina" && (
+                  <div className="flex gap-2 mb-3" role="group" aria-label={t.oilCollection.size}>
+                    {(["bottle", "box"] as const).map((size) => {
+                      const active = coratinaSize === size;
+                      const label =
+                        size === "box"
+                          ? t.product.formatBoxVolume
+                          : t.product.formatBottleVolume;
+                      return (
+                        <button
+                          key={size}
+                          type="button"
+                          aria-pressed={active}
+                          onClick={(e) => {
+                            // Card is a Link — keep the chip from navigating.
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setCoratinaSize(size);
+                          }}
+                          className="rounded-full transition-all duration-200"
+                          style={{
+                            fontFamily: "UDC Working Man Sans, sans-serif",
+                            fontSize: "clamp(1.0rem, 1.25vw, 1.25rem)",
+                            letterSpacing: "0.08em",
+                            padding: "0.35rem 1.1rem",
+                            border: "2px solid #1B4229",
+                            backgroundColor: active ? "#1B4229" : "transparent",
+                            color: active ? "#CDDB2D" : "#1B4229",
+                          }}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
                 <p
                 className="mb-3"
                 style={{
@@ -265,7 +327,12 @@ export const OilProductWidgets = ({
                   letterSpacing: "0.03em"
                 }}>
 
-                  {formatPrice(oil.price, locale)}
+                  {formatPrice(
+                    oil.handle === "coratina" && coratinaSize === "box"
+                      ? coratinaBoxPrice
+                      : oil.price,
+                    locale,
+                  )}
                 </p>
 
                 {showTagline && (

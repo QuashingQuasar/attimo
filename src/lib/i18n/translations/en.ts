@@ -299,6 +299,8 @@ export const en = {
     formatBoxName: "Bag-in-Box",
     formatBoxVolume: "3 L",
     formatBoxBadge: "BEST VALUE", // Value badge on the 3L box option card
+    // {n} = serving count, {price} = per-serving cost (locale currency)
+    formatServings: "{n} servings ({price} per serving)",
     newHarvest: "New Harvest", // REVIEW
     inStock: "In Stock",
     lastBottles: "Last Bottles",
@@ -315,9 +317,9 @@ export const en = {
     attrFlavour: "Flavour",
     harvestDate: "October 2025",
     addToCart: "ADD TO CART", // REVIEW
-    freeShipCheck: "(FREE SHIPPING ✓)",
+    freeShipCheck: "FREE SHIPPING ✓",
     // Placeholders: {n} count, {more} optional "more" token, {plural} S/empty.
-    addForFreeShip: "(ADD {n} {more}BOTTLE{plural} FOR FREE SHIPPING)",
+    addForFreeShip: "ADD {n} {more}BOTTLE{plural} FOR FREE SHIPPING",
     moreWord: "MORE ",
     trustLab: "Third party lab-tested quality", // REVIEW
     shipsTomorrow: "Order today, ships tomorrow", // REVIEW

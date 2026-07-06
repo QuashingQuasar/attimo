@@ -4,6 +4,12 @@ import { getDict } from "@/lib/i18n/dictionaries";
 
 export type ProductFormat = "bottle" | "box";
 
+// Servings per format at the standard 1 tbsp (15 ml) serving. 500 ml → 33,
+// 3 L → 200. Drives the "N servings (X per serving)" line on each card.
+const SERVING_ML = 15;
+const BOTTLE_SERVINGS = Math.round(500 / SERVING_ML);
+const BOX_SERVINGS = Math.round(3000 / SERVING_ML);
+
 interface FormatSelectorProps {
   format: ProductFormat;
   onFormatChange: (format: ProductFormat) => void;
@@ -72,13 +78,13 @@ export const FormatSelector = ({
           </div>
           <div className="min-w-0">
             <p
-              className="font-semibold text-olive-dark leading-tight truncate"
+              className="font-semibold text-olive-dark leading-tight"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(0.85rem, 1vw, 1rem)",
               }}
             >
-              {t.formatBottleName}
+              {t.formatBottleName} {t.formatBottleVolume}
             </p>
             <p
               className="text-olive-medium leading-tight"
@@ -87,7 +93,9 @@ export const FormatSelector = ({
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
               }}
             >
-              {t.formatBottleVolume}
+              {t.formatServings
+                .replace("{n}", String(BOTTLE_SERVINGS))
+                .replace("{price}", formatPrice(bottlePrice / BOTTLE_SERVINGS, locale, 2))}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"
@@ -147,13 +155,13 @@ export const FormatSelector = ({
           </div>
           <div className="min-w-0">
             <p
-              className="font-semibold text-olive-dark leading-tight truncate"
+              className="font-semibold text-olive-dark leading-tight"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(0.85rem, 1vw, 1rem)",
               }}
             >
-              {t.formatBoxName}
+              {t.formatBoxName} {t.formatBoxVolume}
             </p>
             <p
               className="text-olive-medium leading-tight"
@@ -162,7 +170,9 @@ export const FormatSelector = ({
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
               }}
             >
-              {t.formatBoxVolume}
+              {t.formatServings
+                .replace("{n}", String(BOX_SERVINGS))
+                .replace("{price}", formatPrice(boxPrice / BOX_SERVINGS, locale, 2))}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"

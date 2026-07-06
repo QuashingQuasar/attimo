@@ -10,7 +10,10 @@ const TIER_3: string[] = ["FI", "GR", "PT", "RO"];
 
 const SUPPORTED_COUNTRIES = [...CORE, ...TIER_1, ...TIER_2, ...TIER_3];
 
-const DEFAULT_THRESHOLD = 3;
+// Fallback when geo is unknown (no middleware cookie AND ipapi lookup failed).
+// Default to the core-market threshold (2) — Belgium/Germany/NL are the bulk of
+// traffic — rather than over-stating the requirement at 3.
+const DEFAULT_THRESHOLD = 2;
 
 export function getFreeShippingThreshold(countryCode: string | null): number {
   if (!countryCode) return DEFAULT_THRESHOLD;

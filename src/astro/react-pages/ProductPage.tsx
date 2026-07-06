@@ -184,6 +184,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     return () => { cancelled = true; };
   }, [handle, locale]);
 
+  // Honor a ?format=box deep-link (e.g. from the homepage size selector).
+  // Done in an effect (not the initial state) so SSR and first client render
+  // both start on "bottle" — avoids a hydration mismatch on the hero image.
+  useEffect(() => {
+    if (handle !== "coratina") return;
+    const qs = new URLSearchParams(window.location.search);
+    if (qs.get("format") === "box") setFormat("box");
+  }, [handle]);
+
   useEffect(() => {
     if (!content) return;
     const productName = content.heroTitle?.split(" D'")[0]?.split(" DE ")[0] || handle || '';
@@ -594,12 +603,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                             </span>
                           );
                         })()}
-                        {/* Bottle-count free-shipping nudge is bottle-only copy;
-                            hide it for the box (a €89 box shouldn't read "add 2
-                            bottles for free shipping"). */}
-                        {!isBox && (
                         <span className="font-normal text-xs">{(() => {
-                          if (cartBottleCount >= freeShippingThreshold) return t.freeShipCheck;
+                          // The box always ships free (a single box clears the
+                          // weight-based free-shipping threshold), so show the
+                          // same "FREE SHIPPING ✓" the bottle shows once it
+                          // qualifies — never the "add N bottles" nudge.
+                          if (isBox || cartBottleCount >= freeShippingThreshold) return t.freeShipCheck;
                           const needed = freeShippingThreshold - cartBottleCount;
                           const plural = needed > 1 ? "S" : "";
                           // Empty cart drops "MORE" — "ADD 2 BOTTLES FOR FREE
@@ -609,7 +618,6 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           const more = cartBottleCount === 0 ? "" : t.moreWord;
                           return t.addForFreeShip.replace("{n}", String(needed)).replace("{more}", more).replace("{plural}", plural);
                         })()}</span>
-                        )}
                       </span>
                     </Button>
 

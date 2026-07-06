@@ -278,6 +278,8 @@ export const fr: Dict = {
     formatBoxName: "Bag-in-Box",
     formatBoxVolume: "3 L",
     formatBoxBadge: "MEILLEUR PRIX", // Value badge on the 3L box option card
+    // {n} = serving count, {price} = per-serving cost (locale currency)
+    formatServings: "{n} portions ({price} par portion)",
     newHarvest: "Nouvelle récolte", // REVIEW
     inStock: "En stock",
     lastBottles: "Dernières bouteilles",
@@ -294,8 +296,8 @@ export const fr: Dict = {
     attrFlavour: "Saveur",
     harvestDate: "Octobre 2025",
     addToCart: "AJOUTER AU PANIER", // REVIEW
-    freeShipCheck: "(LIVRAISON GRATUITE ✓)",
-    addForFreeShip: "(AJOUTEZ {n} BOUTEILLE{plural} {more}POUR LA LIVRAISON GRATUITE)",
+    freeShipCheck: "LIVRAISON GRATUITE ✓",
+    addForFreeShip: "AJOUTEZ {n} BOUTEILLE{plural} {more}POUR LA LIVRAISON GRATUITE",
     moreWord: "DE PLUS ",
     trustLab: "Qualité testée en laboratoire indépendant", // REVIEW
     shipsTomorrow: "Commandez aujourd'hui, expédié demain", // REVIEW
