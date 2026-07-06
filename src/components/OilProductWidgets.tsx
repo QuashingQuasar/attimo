@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, typ
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
-import { CORATINA_3L_IMAGE } from "@/lib/coratina3L";
+import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE } from "@/lib/coratina3L";
 
 const oilDefs = [
   {
@@ -83,6 +83,8 @@ export const OilProductWidgets = ({
   // with the box format preselected (?format=box).
   const [coratinaSize, setCoratinaSize] = useState<"bottle" | "box">("bottle");
   const coratinaBoxPrice = locale.prices.coratina3L ?? 89;
+  // Once the visitor picks a size on the card, stop auto-switching it.
+  const coratinaSizeTouched = useRef(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -106,6 +108,19 @@ export const OilProductWidgets = ({
     };
   }, []);
 
+  // When the Coratina bottle is sold out but the 3L box is in stock, default
+  // the card to the box (unless the visitor already picked a size).
+  useEffect(() => {
+    if (coratinaSizeTouched.current) return;
+    const bottleAvail = availability[resolveShopifyHandle("coratina")];
+    const boxAvail = availability[CORATINA_3L_HANDLE];
+    if (bottleAvail === false && boxAvail !== false) {
+      setCoratinaSize("box");
+    }
+  }, [availability]);
+
+  const coratinaBoxAvailable = availability[CORATINA_3L_HANDLE] ?? true;
+
   const oils = oilDefs.map((o) => {
     const shopifyHandle = resolveShopifyHandle(o.handle);
     // Default to true so a fetch failure leaves cards looking normal.
@@ -114,10 +129,18 @@ export const OilProductWidgets = ({
     // restock). Sourced from productContent.ts so PDP and home card stay in
     // sync — undefined means the product ships normally.
     const shippingNotice = getProductContent(o.handle, locale).shippingNotice;
+    // The Coratina card reflects the SELECTED format's stock — the 3L box is in
+    // stock even when the 500ml bottle is sold out, so the box view hides the
+    // out-of-stock labels.
+    const effectiveAvailable =
+      o.handle === "coratina" && coratinaSize === "box"
+        ? coratinaBoxAvailable
+        : isAvailable;
     return {
       ...o,
       price: locale.prices[o.handle],
       isAvailable,
+      effectiveAvailable,
       shippingNotice,
     };
   });
@@ -225,7 +248,7 @@ export const OilProductWidgets = ({
                   );
                 })()}
 
-                {!oil.isAvailable && (
+                {!oil.effectiveAvailable && (
                   <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
                     <span
                       className="oil-card-label whitespace-nowrap"
@@ -298,6 +321,7 @@ export const OilProductWidgets = ({
                             // Card is a Link — keep the chip from navigating.
                             e.preventDefault();
                             e.stopPropagation();
+                            coratinaSizeTouched.current = true;
                             setCoratinaSize(size);
                           }}
                           className="rounded-full transition-all duration-200"
@@ -349,7 +373,7 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                {!oil.isAvailable && (
+                {!oil.effectiveAvailable && (
                   <span
                     className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
                     style={{
@@ -363,7 +387,7 @@ export const OilProductWidgets = ({
                     {t.oilCollection.soldOut}
                   </span>
                 )}
-                {oil.isAvailable && oil.shippingNotice && (
+                {oil.effectiveAvailable && oil.shippingNotice && (
                   <span
                     className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
                     style={{

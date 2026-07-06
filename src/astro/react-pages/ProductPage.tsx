@@ -355,6 +355,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
   const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
+  // Box availability (Coratina only). boxQty is null when the storefront can't
+  // read inventory — treat unknown as available so we never wrongly hide it.
+  const boxInStock = boxQty === null ? true : boxQty > 0;
+  // Whether the CURRENTLY selected format is buyable. Bottle out of stock but
+  // box selected → box is buyable; box selected only exists for Coratina.
+  const selectionInStock = isBox ? boxInStock : isInStock;
 
   // Per-product out-of-stock copy. Anything not listed falls back to the
   // generic "Sold Out" / default NotifyMeForm copy below.
@@ -514,8 +520,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               )}
               </div>
 
-              {isInStock ? (
-                countrySupported === false && countryName && countryCode ? (
+              {countrySupported === false && countryName && countryCode ? (
                   <UnsupportedCountryNotice
                     countryName={countryName}
                     countryCode={countryCode}
@@ -523,6 +528,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   />
                 ) : (
                   <>
+                    {/* Format toggle renders even when the bottle is sold out,
+                        so the in-stock 3L box stays reachable. */}
                     {showFormatToggle && (
                       <FormatSelector
                         format={format}
@@ -531,9 +538,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         boxPrice={boxPrice}
                         bottleImage={productImages[0]?.node?.url}
                         boxImage={CORATINA_3L_IMAGE}
+                        bottleInStock={isInStock}
+                        boxInStock={boxInStock}
                         locale={locale} />
                     )}
 
+                    {selectionInStock ? (
+                      <>
                     {!isBox && (
                       <>
                         <QuantitySelector
@@ -631,19 +642,20 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         {content.shippingNotice ?? t.shipsTomorrow}
                       </p>
                     </div>
+                      </>
+                    ) : (
+                      <NotifyMeForm
+                        productName={content.heroTitle}
+                        backgroundColor={content.tileBackground}
+                        buttonBackgroundColor={content.buttonColor}
+                        heading={oosCopy?.formHeading}
+                        subtitle={oosCopy?.formSubtitle}
+                        restockProductKey={content.polyphenolLabel}
+                        locale={locale}
+                      />
+                    )}
                   </>
-                )
-              ) : (
-                <NotifyMeForm
-                  productName={content.heroTitle}
-                  backgroundColor={content.tileBackground}
-                  buttonBackgroundColor={content.buttonColor}
-                  heading={oosCopy?.formHeading}
-                  subtitle={oosCopy?.formSubtitle}
-                  restockProductKey={content.polyphenolLabel}
-                  locale={locale}
-                />
-              )}
+                )}
 
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">

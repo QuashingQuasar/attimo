@@ -20,6 +20,11 @@ interface FormatSelectorProps {
   // When true, the box thumbnail renders a branded placeholder instead of an
   // <img> (the approved render isn't wired in yet).
   boxImageIsPlaceholder?: boolean;
+  // Stock per format. A sold-out card stays selectable (selecting it surfaces
+  // the notify-me form in ProductPage) but is dimmed and shows a "Sold out"
+  // label instead of the servings line.
+  bottleInStock?: boolean;
+  boxInStock?: boolean;
   locale?: Locale;
 }
 
@@ -34,6 +39,8 @@ export const FormatSelector = ({
   bottleImage,
   boxImage,
   boxImageIsPlaceholder = false,
+  bottleInStock = true,
+  boxInStock = true,
   locale = DEFAULT_LOCALE,
 }: FormatSelectorProps) => {
   const t = getDict(locale).product;
@@ -67,7 +74,7 @@ export const FormatSelector = ({
           aria-pressed={format === "bottle"}
           className={`${cardBase} ${format === "bottle" ? selectedCls : idleCls}`}
         >
-          <div className={thumbCls} style={{ backgroundColor: "#10221B" }}>
+          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: bottleInStock ? 1 : 0.5 }}>
             {bottleImage && (
               <img
                 src={bottleImage}
@@ -87,15 +94,18 @@ export const FormatSelector = ({
               {t.formatBottleName} {t.formatBottleVolume}
             </p>
             <p
-              className="text-olive-medium leading-tight"
+              className={`leading-tight ${bottleInStock ? "text-olive-medium" : "text-olive-dark font-semibold uppercase"}`}
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: bottleInStock ? "Space Grotesk, sans-serif" : "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+                letterSpacing: bottleInStock ? undefined : "0.08em",
               }}
             >
-              {t.formatServings
-                .replace("{n}", String(BOTTLE_SERVINGS))
-                .replace("{price}", formatPrice(bottlePrice / BOTTLE_SERVINGS, locale, 2))}
+              {bottleInStock
+                ? t.formatServings
+                    .replace("{n}", String(BOTTLE_SERVINGS))
+                    .replace("{price}", formatPrice(bottlePrice / BOTTLE_SERVINGS, locale, 2))
+                : t.soldOut}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"
@@ -131,7 +141,7 @@ export const FormatSelector = ({
           >
             {t.formatBoxBadge}
           </span>
-          <div className={thumbCls} style={{ backgroundColor: "#10221B" }}>
+          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: boxInStock ? 1 : 0.5 }}>
             {boxImage && !boxImageIsPlaceholder ? (
               <img
                 src={boxImage}
@@ -164,15 +174,18 @@ export const FormatSelector = ({
               {t.formatBoxName} {t.formatBoxVolume}
             </p>
             <p
-              className="text-olive-medium leading-tight"
+              className={`leading-tight ${boxInStock ? "text-olive-medium" : "text-olive-dark font-semibold uppercase"}`}
               style={{
-                fontFamily: "Space Grotesk, sans-serif",
+                fontFamily: boxInStock ? "Space Grotesk, sans-serif" : "UDC Working Man Sans, sans-serif",
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+                letterSpacing: boxInStock ? undefined : "0.08em",
               }}
             >
-              {t.formatServings
-                .replace("{n}", String(BOX_SERVINGS))
-                .replace("{price}", formatPrice(boxPrice / BOX_SERVINGS, locale, 2))}
+              {boxInStock
+                ? t.formatServings
+                    .replace("{n}", String(BOX_SERVINGS))
+                    .replace("{price}", formatPrice(boxPrice / BOX_SERVINGS, locale, 2))
+                : t.soldOut}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"
