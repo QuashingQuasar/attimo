@@ -53,6 +53,25 @@ export const FormatSelector = ({
   const thumbCls =
     "w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center";
 
+  // Corner badge, same shape/position as the "BEST VALUE" pill. kind "value"
+  // is chartreuse; "soldout" is dark green so it reads as unavailable.
+  const badge = (label: string, kind: "value" | "soldout") => (
+    <span
+      aria-hidden="true"
+      className="absolute right-2 top-0 -translate-y-1/2 rounded-full px-2.5 py-1 font-bold uppercase whitespace-nowrap shadow-sm"
+      style={{
+        backgroundColor: kind === "value" ? "#CDDB2D" : "#1B4229",
+        color: kind === "value" ? "#1B4229" : "#FFFAEA",
+        fontFamily: "Space Grotesk, sans-serif",
+        fontSize: "clamp(0.5rem, 0.62vw, 0.65rem)",
+        letterSpacing: "0.04em",
+        lineHeight: 1,
+      }}
+    >
+      {label}
+    </span>
+  );
+
   return (
     <div className="space-y-2">
       <p
@@ -74,7 +93,8 @@ export const FormatSelector = ({
           aria-pressed={format === "bottle"}
           className={`${cardBase} ${format === "bottle" ? selectedCls : idleCls}`}
         >
-          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: bottleInStock ? 1 : 0.5 }}>
+          {!bottleInStock && badge(t.soldOut, "soldout")}
+          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: bottleInStock ? 1 : 0.4 }}>
             {bottleImage && (
               <img
                 src={bottleImage}
@@ -83,7 +103,7 @@ export const FormatSelector = ({
               />
             )}
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0" style={{ opacity: bottleInStock ? 1 : 0.5 }}>
             <p
               className="font-semibold text-olive-dark leading-tight"
               style={{
@@ -94,18 +114,15 @@ export const FormatSelector = ({
               {t.formatBottleName} {t.formatBottleVolume}
             </p>
             <p
-              className={`leading-tight ${bottleInStock ? "text-olive-medium" : "text-olive-dark font-semibold uppercase"}`}
+              className="text-olive-medium leading-tight"
               style={{
-                fontFamily: bottleInStock ? "Space Grotesk, sans-serif" : "UDC Working Man Sans, sans-serif",
+                fontFamily: "Space Grotesk, sans-serif",
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
-                letterSpacing: bottleInStock ? undefined : "0.08em",
               }}
             >
-              {bottleInStock
-                ? t.formatServings
-                    .replace("{n}", String(BOTTLE_SERVINGS))
-                    .replace("{price}", formatPrice(bottlePrice / BOTTLE_SERVINGS, locale, 2))
-                : t.soldOut}
+              {t.formatServings
+                .replace("{n}", String(BOTTLE_SERVINGS))
+                .replace("{price}", formatPrice(bottlePrice / BOTTLE_SERVINGS, locale, 2))}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"
@@ -126,22 +143,8 @@ export const FormatSelector = ({
           aria-pressed={format === "box"}
           className={`${cardBase} ${format === "box" ? selectedCls : idleCls}`}
         >
-          {/* Value badge */}
-          <span
-            aria-hidden="true"
-            className="absolute right-2 top-0 -translate-y-1/2 rounded-full px-2.5 py-1 font-bold uppercase whitespace-nowrap shadow-sm"
-            style={{
-              backgroundColor: "#CDDB2D",
-              color: "#1B4229",
-              fontFamily: "Space Grotesk, sans-serif",
-              fontSize: "clamp(0.5rem, 0.62vw, 0.65rem)",
-              letterSpacing: "0.04em",
-              lineHeight: 1,
-            }}
-          >
-            {t.formatBoxBadge}
-          </span>
-          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: boxInStock ? 1 : 0.5 }}>
+          {boxInStock ? badge(t.formatBoxBadge, "value") : badge(t.soldOut, "soldout")}
+          <div className={thumbCls} style={{ backgroundColor: "#10221B", opacity: boxInStock ? 1 : 0.4 }}>
             {boxImage && !boxImageIsPlaceholder ? (
               <img
                 src={boxImage}
@@ -163,7 +166,7 @@ export const FormatSelector = ({
               </div>
             )}
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0" style={{ opacity: boxInStock ? 1 : 0.5 }}>
             <p
               className="font-semibold text-olive-dark leading-tight"
               style={{
@@ -174,18 +177,15 @@ export const FormatSelector = ({
               {t.formatBoxName} {t.formatBoxVolume}
             </p>
             <p
-              className={`leading-tight ${boxInStock ? "text-olive-medium" : "text-olive-dark font-semibold uppercase"}`}
+              className="text-olive-medium leading-tight"
               style={{
-                fontFamily: boxInStock ? "Space Grotesk, sans-serif" : "UDC Working Man Sans, sans-serif",
+                fontFamily: "Space Grotesk, sans-serif",
                 fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
-                letterSpacing: boxInStock ? undefined : "0.08em",
               }}
             >
-              {boxInStock
-                ? t.formatServings
-                    .replace("{n}", String(BOX_SERVINGS))
-                    .replace("{price}", formatPrice(boxPrice / BOX_SERVINGS, locale, 2))
-                : t.soldOut}
+              {t.formatServings
+                .replace("{n}", String(BOX_SERVINGS))
+                .replace("{price}", formatPrice(boxPrice / BOX_SERVINGS, locale, 2))}
             </p>
             <p
               className="text-olive-dark font-bold leading-tight mt-0.5"
