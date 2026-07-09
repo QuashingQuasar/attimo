@@ -28,6 +28,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/product/nocellara", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/picual", changefreq: "weekly", priority: "0.9" },
   { loc: "/high-polyphenol-olive-oil", changefreq: "weekly", priority: "0.9" },
+  { loc: "/early-harvest-olive-oil", changefreq: "weekly", priority: "0.9" },
   { loc: "/merch", changefreq: "weekly", priority: "0.7" },
   { loc: "/blog", changefreq: "weekly", priority: "0.8" },
   { loc: "/quiz", changefreq: "weekly", priority: "0.6" },

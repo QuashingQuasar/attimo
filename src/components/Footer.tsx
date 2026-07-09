@@ -39,7 +39,10 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
     { label: "Picual", href: localizeHref("/product/picual", locale) },
     { label: "Nocellara", href: localizeHref("/product/nocellara", locale) },
     ...(locale.lang === "en"
-      ? [{ label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" }]
+      ? [
+          { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },
+          { label: "Early Harvest Olive Oil", href: "/early-harvest-olive-oil" },
+        ]
       : []),
     { label: t.nav.merch, href: "/merch" },
   ];
