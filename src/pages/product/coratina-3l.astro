@@ -1,0 +1,98 @@
+---
+// Dedicated landing page for the Coratina 3L bag-in-box. Renders the SAME
+// Coratina product page (format toggle intact, bottle still shown as the other
+// option) but with the box preselected AND its own box-specific structured
+// data. This exists so Merchant Center / Google crawls the box's real price &
+// availability here instead of inheriting the 500ml bottle's schema from
+// /product/coratina (?format=box is a query param on static HTML, so it can't
+// carry its own schema). Canonical points to itself; noindex so it doesn't
+// compete with the bottle PDP in organic.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
+import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
+import { resolveShopifyHandle } from "@/lib/productContent";
+import { CORATINA_3L_HANDLE } from "@/lib/coratina3L";
+import { sanityClient } from "@/lib/sanity";
+import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+
+const locale = DEFAULT_LOCALE;
+const bottleShopifyHandle = resolveShopifyHandle("coratina");
+
+// Clean white packshot hosted on the Shopify CDN — same asset used as the
+// feeds' image_link; ideal for og / JSON-LD.
+const WHITE_IMAGE =
+  "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/coratina-bagbox-3l-white.png?v=1783508603";
+
+const [allProducts, boxProducts, sellingPlans, blogPosts] = await Promise.all([
+  fetchProducts(50).catch(() => []),
+  fetchProducts(1, `handle:${CORATINA_3L_HANDLE}`).catch(() => []),
+  fetchSellingPlans(bottleShopifyHandle).catch(() => []),
+  sanityClient
+    .fetch(
+      `*[_type == "post"] | order(publishedAt desc)[0..2] { _id, title, slug, publishedAt, excerpt, coverImage }`
+    )
+    .catch(() => []),
+]);
+
+const initialProducts = [...allProducts, ...boxProducts].filter(
+  (p, i, arr) => arr.findIndex((x) => x.node.id === p.node.id) === i
+);
+
+const boxProduct =
+  boxProducts[0] ?? allProducts.find((p) => p.node.handle === CORATINA_3L_HANDLE);
+const boxInStock =
+  boxProduct?.node.variants.edges.some((v) => v.node.availableForSale) ?? true;
+
+const priceAmount = locale.prices.coratina3L ?? 89;
+const priceLabel = formatPrice(priceAmount, locale);
+
+const title = "Coratina 3L Bag-in-Box | High-Polyphenol Early Harvest Olive Oil";
+const description = `The 3L bag-in-box of our Coratina — 847mg/kg polyphenols, single-variety, early harvest. 200 servings, best value per litre. Also available as a 500ml bottle. ${priceLabel}.`;
+const canonicalUrl = "https://attimo-oil.com/product/coratina-3l";
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: "ATTIMO Coratina Extra Virgin Olive Oil 3L Bag-in-Box",
+  description,
+  sku: "CORATINA-3000",
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: WHITE_IMAGE,
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: priceAmount.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
+    availability: boxInStock
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+  aggregateRating,
+  review: reviews,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage={WHITE_IMAGE}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+  noIndex={true}
+>
+  <script is:inline define:vars={{ handle: "coratina" }}>
+    if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };
+  </script>
+  <ProductPageWrapper
+    handle="coratina"
+    initialProducts={initialProducts}
+    initialSellingPlans={sellingPlans}
+    initialBlogPosts={blogPosts}
+    initialFormat="box"
+    client:load
+  />
+</BaseLayout>

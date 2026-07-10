@@ -47,17 +47,20 @@ interface ProductPageProps {
   initialSellingPlans?: SellingPlan[];
   initialBlogPosts?: BlogPost[];
   locale?: Locale;
+  initialFormat?: ProductFormat;
 }
 
-const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE }: ProductPageProps = {}) => {
+const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
   const t = getDict(locale).product;
   const [products, setProducts] = useState<ShopifyProduct[]>(initialProducts ?? []);
   const [loading, setLoading] = useState(initialProducts && initialProducts.length > 0 ? false : true);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  // Coratina-only: 500ml bottle vs 3L bag-in-box purchase option.
-  const [format, setFormat] = useState<ProductFormat>("bottle");
+  // Coratina-only: 500ml bottle vs 3L bag-in-box purchase option. initialFormat
+  // (from the dedicated /coratina-3l landing page) preselects the box on both
+  // server and client render, so there's no hydration mismatch on the hero.
+  const [format, setFormat] = useState<ProductFormat>(initialFormat ?? "bottle");
   // Live Shopify stock for the main variant; drives the "Last bottles" badge
   // when it drops below the low-stock threshold. null = unknown (scope off /
   // request failed) → keep the plain "In Stock" badge.

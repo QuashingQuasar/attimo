@@ -1,0 +1,107 @@
+---
+// Localized (dk/se/fr/de) dedicated landing page for the Coratina 3L
+// bag-in-box. Same idea as /product/coratina-3l but per-locale price/currency
+// and link, so each market's feed can point at a page whose structured data
+// matches the box (not the 500ml bottle). See the default-locale file for the
+// full rationale. Canonical → self, noindex.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
+import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
+import { resolveShopifyHandle } from "@/lib/productContent";
+import { CORATINA_3L_HANDLE } from "@/lib/coratina3L";
+import { sanityClient } from "@/lib/sanity";
+import { LOCALES, shopifyContextForLocale, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.slug !== "").map((locale) => ({
+    params: { locale: locale.slug },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const dict = getDict(locale);
+const bottleShopifyHandle = resolveShopifyHandle("coratina");
+const shopCtx = shopifyContextForLocale(locale);
+
+const WHITE_IMAGE =
+  "https://cdn.shopify.com/s/files/1/0949/7867/0975/files/coratina-bagbox-3l-white.png?v=1783508603";
+
+const [allProducts, boxProducts, sellingPlans, blogPosts] = await Promise.all([
+  fetchProducts(50, undefined, shopCtx).catch(() => []),
+  fetchProducts(1, `handle:${CORATINA_3L_HANDLE}`, shopCtx).catch(() => []),
+  fetchSellingPlans(bottleShopifyHandle, shopCtx).catch(() => []),
+  sanityClient
+    .fetch(
+      `*[_type == "post"] | order(publishedAt desc)[0..2] { _id, title, slug, publishedAt, excerpt, coverImage }`
+    )
+    .catch(() => []),
+]);
+
+const initialProducts = [...allProducts, ...boxProducts].filter(
+  (p, i, arr) => arr.findIndex((x) => x.node.id === p.node.id) === i
+);
+
+const boxProduct =
+  boxProducts[0] ?? allProducts.find((p) => p.node.handle === CORATINA_3L_HANDLE);
+const boxInStock =
+  boxProduct?.node.variants.edges.some((v) => v.node.availableForSale) ?? true;
+
+const priceAmount = locale.prices.coratina3L ?? 89;
+const priceLabel = formatPrice(priceAmount, locale);
+
+const title = "Coratina 3L Bag-in-Box | High-Polyphenol Early Harvest Olive Oil";
+const description = `The 3L bag-in-box of our Coratina — 847mg/kg polyphenols, single-variety, early harvest. 200 servings, best value per litre. Also available as a 500ml bottle. ${priceLabel}.`;
+const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/coratina-3l`;
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: "ATTIMO Coratina Extra Virgin Olive Oil 3L Bag-in-Box",
+  description,
+  sku: "CORATINA-3000",
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: WHITE_IMAGE,
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: priceAmount.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
+    availability: boxInStock
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+  aggregateRating,
+  review: reviews,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage={WHITE_IMAGE}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+  noIndex={true}
+  htmlLang={locale.lang}
+  announceTier2={dict.announce.freeShipping2}
+  announceTier3={dict.announce.freeShipping3}
+>
+  <script is:inline define:vars={{ handle: "coratina" }}>
+    if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };
+  </script>
+  <ProductPageWrapper
+    handle="coratina"
+    initialProducts={initialProducts}
+    initialSellingPlans={sellingPlans}
+    initialBlogPosts={blogPosts}
+    locale={locale}
+    initialFormat="box"
+    client:load
+  />
+</BaseLayout>
