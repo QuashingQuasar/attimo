@@ -10,13 +10,13 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { OilComparison } from "@/components/OilComparison";
 import { KleiaWay } from "@/components/KleiaWay";
 import { Testimonials } from "@/components/Testimonials";
-import { FAQ, type FaqItem } from "@/components/FAQ";
+import { FAQ } from "@/components/FAQ";
 import { BlogSection } from "@/components/BlogSection";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { DEFAULT_LOCALE } from "@/lib/i18n/config";
-import { HIGH_POLYPHENOL_FAQS } from "@/lib/highPolyphenolContent";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -38,13 +38,8 @@ const CREAM = "#FFFAEA";
 const ACCENT = "#CDDB2D";
 const LIME = "#B3E58C";
 const AMBER = "#ECA948"; // Nocellara's warm accent
-const DEEP_GREEN = "#10221B"; // the deeper green tint from Coratina's page
 const UDC = "UDC Working Man Sans, sans-serif";
 const SG = "Space Grotesk, sans-serif";
-
-const faqItems: FaqItem[] = HIGH_POLYPHENOL_FAQS.map((f) => ({ question: f.question, answer: f.answer }));
-
-const refLink: React.CSSProperties = { color: "inherit", textDecorationLine: "underline", textUnderlineOffset: "3px" };
 
 // ── 1. HERO — headline + the three transparent bottles as a ranked lineup, so
 // the product is in view immediately (no separate hero/product split). Bottle
@@ -56,7 +51,7 @@ const HERO_BOTTLES = [
   { handle: "nocellara", name: "Nocellara", city: "Sicily", Flag: IT, polyphenols: 400, image: nocellaraBottle, scale: 0.82 },
 ];
 
-function Hero() {
+function Hero({ hero }: { hero: HubContent["hero"] }) {
   return (
     <section className="relative flex flex-col overflow-hidden" style={{ backgroundColor: GREEN }}>
       <AutoplayVideo
@@ -70,14 +65,15 @@ function Hero() {
         {/* Headline — wide enough that "Olive Oil" never orphans on desktop */}
         <div className="max-w-6xl mx-auto text-center">
           <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
-            Category · Extra Virgin Olive Oil
+            {hero.eyebrow}
           </p>
           <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
-            High-Polyphenol Olive Oil
+            {hero.h1}
           </h1>
           <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45, maxWidth: "44rem" }}>
-            Single-variety, early-harvest extra virgin oil, ranked by what matters most: a{" "}
-            <span style={{ color: ACCENT, fontWeight: 600 }}>polyphenol-rich</span> profile you can taste — and verify in the lab.
+            {hero.subPre}
+            <span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>
+            {hero.subPost}
           </p>
         </div>
 
@@ -87,7 +83,7 @@ function Hero() {
             href="#the-range"
             className="inline-flex items-center gap-2 px-9 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 shadow-xl"
             style={{ fontFamily: UDC, backgroundColor: ACCENT, color: GREEN, fontSize: "clamp(1rem, 1.3vw, 1.3rem)", letterSpacing: "0.05em" }}>
-            Shop the range →
+            {hero.cta}
           </a>
         </div>
 
@@ -99,11 +95,11 @@ function Hero() {
                 key={b.handle}
                 href={`/product/${b.handle}`}
                 className="group flex flex-col items-center justify-end text-center"
-                aria-label={`${b.name} — ${b.polyphenols} mg/kg polyphenols`}
+                aria-label={`${b.name} — ${b.polyphenols} mg/kg`}
               >
                 <img
                   src={b.image}
-                  alt={`${b.name} high-polyphenol olive oil bottle`}
+                  alt={`${b.name} — ${hero.h1}`}
                   className="w-auto object-contain transition-transform duration-300 group-hover:-translate-y-1.5"
                   style={{ height: `clamp(${118 * b.scale}px, ${30 * b.scale}vh, ${300 * b.scale}px)`, filter: "drop-shadow(0 16px 26px rgba(0,0,0,0.4))" }}
                 />
@@ -130,69 +126,42 @@ function Hero() {
 // ── 5. THE COMPOUNDS THAT MATTER — a purpose-built explainer of the three
 // polyphenols that actually do the work (not a Coratina lab dump). Coratina's
 // measured values appear only as proof, clearly labelled.
-const COMPOUNDS = [
-  {
-    name: "Oleocanthal",
-    icon: "/icons/mortar.svg",
-    does: "A natural anti-inflammatory whose effect has been compared to ibuprofen — and the source of the peppery catch at the back of your throat.",
-    proof: "471 mg/kg",
-    sub: "in our Coratina · typical EVOO <10",
-  },
-  {
-    name: "Oleacein",
-    icon: "/icons/olive.svg",
-    does: "A powerful antioxidant studied for blood-pressure regulation and cardiovascular protection.",
-    proof: "336 mg/kg",
-    sub: "in our Coratina · typical EVOO <40",
-  },
-  {
-    name: "Hydroxytyrosol",
-    icon: "/icons/flask.svg",
-    does: "One of the most-studied olive antioxidants — and the exact compound the EU writes its olive-oil health claim around.",
-    proof: "EU health-claim basis",
-    sub: "≥250 mg/kg of hydroxytyrosol & derivatives",
-  },
-];
-
-function CompoundsSection() {
+function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            What's Inside
+            {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2rem, 3.5vw, 3.7rem)", lineHeight: 1.0 }}>
-            The compounds that matter
+            {c.heading}
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            "Polyphenols" is an umbrella term. Three compounds do most of the heavy lifting — and an average supermarket
-            oil barely registers any of them. New to lab reports?{" "}
-            <a href="/blog/how-to-read-olive-oil-lab-analysis" style={{ ...refLink, color: AMBER }}>Here's how to read one</a> — or see{" "}
-            <a href="/blog/olive-color-ripeness-polyphenols" style={{ ...refLink, color: AMBER }}>why an olive's colour reveals its polyphenols</a>.
+            {c.leadIn}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {COMPOUNDS.map((c) => (
-            <div key={c.name} className="rounded-2xl p-7 flex flex-col" style={{ backgroundColor: GREEN }}>
+          {c.items.map((item) => (
+            <div key={item.name} className="rounded-2xl p-7 flex flex-col" style={{ backgroundColor: GREEN }}>
               <div
                 className="w-12 h-12 mb-5"
                 style={{
                   backgroundColor: AMBER,
-                  WebkitMaskImage: `url(${c.icon})`, WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center",
-                  maskImage: `url(${c.icon})`, maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center",
+                  WebkitMaskImage: `url(${item.icon})`, WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center",
+                  maskImage: `url(${item.icon})`, maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center",
                 }}
               />
               <h3 className="mb-3" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.4rem, 1.9vw, 1.9rem)" }}>
-                {c.name}
+                {item.name}
               </h3>
               <p className="mb-6 leading-relaxed flex-grow" style={{ fontFamily: SG, color: "rgba(255,250,234,0.8)", fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)" }}>
-                {c.does}
+                {item.does}
               </p>
               <div className="rounded-xl px-4 py-3" style={{ backgroundColor: "rgba(236,169,72,0.14)" }}>
-                <div style={{ fontFamily: UDC, color: AMBER, fontSize: "clamp(1.3rem, 1.7vw, 1.7rem)" }}>{c.proof}</div>
-                <div style={{ fontFamily: SG, color: "rgba(255,250,234,0.6)", fontSize: "clamp(0.78rem, 0.9vw, 0.92rem)" }}>{c.sub}</div>
+                <div style={{ fontFamily: UDC, color: AMBER, fontSize: "clamp(1.3rem, 1.7vw, 1.7rem)" }}>{item.proof}</div>
+                <div style={{ fontFamily: SG, color: "rgba(255,250,234,0.6)", fontSize: "clamp(0.78rem, 0.9vw, 0.92rem)" }}>{item.sub}</div>
               </div>
             </div>
           ))}
@@ -205,46 +174,24 @@ function CompoundsSection() {
 // ── 5b. WHAT THE SCIENCE SAYS — sourced benefits (YMYL: every claim links a
 // primary source, and a plain disclaimer keeps it honest). Answers the
 // informational half of the query without turning the page into an article.
-const EVIDENCE = [
-  {
-    claim: "It protects your cholesterol from oxidising",
-    body: "Olive-oil polyphenols help protect blood lipids (LDL) from oxidative damage — the one olive-oil health benefit the EU has formally approved, granted only to oils with at least 5 mg of hydroxytyrosol per 20 g (≈250 mg/kg).",
-    source: "EU Reg. 432/2012 (EFSA)",
-    href: "https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2012:136:0001:0040:en:PDF",
-  },
-  {
-    claim: "It's anti-inflammatory, like a micro-dose of ibuprofen",
-    body: "Oleocanthal — the compound behind the peppery throat-sting — was shown to inhibit the same COX-1 and COX-2 enzymes as ibuprofen. About 50 g of a high-oleocanthal oil delivers roughly a tenth of an ibuprofen dose: not a painkiller, but a daily anti-inflammatory drip.",
-    source: "Beauchamp et al., Nature (2005)",
-    href: "https://www.nature.com/articles/437045a",
-  },
-  {
-    claim: "It anchors the most-proven heart-healthy diet",
-    body: "In the PREDIMED trial, a Mediterranean diet rich in extra virgin olive oil (~50 ml/day) was associated with about 30% fewer major cardiovascular events in high-risk adults than a low-fat diet.",
-    source: "Estruch et al., NEJM (2018 republication)",
-    href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389",
-  },
-];
-
-function ScienceSection() {
+function ScienceSection({ c }: { c: HubContent["science"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            What The Science Says
+            {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.05 }}>
-            Why high polyphenols are worth chasing
+            {c.heading}
           </h2>
           <p className="leading-relaxed max-w-3xl" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            The reason a polyphenol-rich olive oil is worth the premium isn't taste alone. Three findings, each from a
-            primary source — not a wellness blog.
+            {c.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {EVIDENCE.map((e) => (
+          {c.evidence.map((e) => (
             <div key={e.claim} className="rounded-2xl p-7 flex flex-col" style={{ backgroundColor: GREEN }}>
               <h3 className="mb-3" style={{ fontFamily: UDC, color: LIME, fontSize: "clamp(1.25rem, 1.6vw, 1.6rem)", lineHeight: 1.1 }}>
                 {e.claim}
@@ -259,17 +206,14 @@ function ScienceSection() {
           ))}
         </div>
 
-        <p className="mt-8 md:mt-10" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.05rem, 1.3vw, 1.35rem)" }}>
-          Want the full picture?{" "}
-          <a href="/blog/high-polyphenol-olive-oil-guide" className="underline underline-offset-4 hover:opacity-70 transition-opacity" style={{ color: GREEN, fontWeight: 600 }}>
-            Read our complete guide to high-polyphenol olive oil
-          </a>{" "}
-          <span aria-hidden="true">→</span>
-        </p>
+        {c.guideLink && (
+          <p className="mt-8 md:mt-10" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.05rem, 1.3vw, 1.35rem)" }}>
+            {c.guideLink}
+          </p>
+        )}
 
         <p className="mt-5 max-w-3xl leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
-          ATTIMO is a food, not a medicine. Polyphenol levels are lab-measured per batch; the health context above is
-          drawn from the published research linked beside each point. This isn't medical advice, and individual results vary.
+          {c.disclaimer}
         </p>
       </div>
     </section>
@@ -283,17 +227,16 @@ const LAB_REPORTS = [
   { variety: "Nocellara", href: "/lab/Nocellara2025.pdf" },
 ];
 
-function LabReceipts() {
+function LabReceipts({ c }: { c: HubContent["labReceipts"] }) {
   return (
     <section className="py-14 md:py-20" style={{ backgroundColor: ACCENT }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-4 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3.2vw, 3.2rem)", lineHeight: 1.05 }}>
-            Don't take our word for it
+            {c.heading}
           </h2>
           <p className="mb-9 mx-auto leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.8)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", maxWidth: "40rem" }}>
-            Every batch is sent to an independent lab. Here are the full reports behind the numbers on this page —
-            download and check them yourself.
+            {c.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {LAB_REPORTS.map((r) => (
@@ -304,7 +247,7 @@ function LabReceipts() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg font-semibold transition-transform duration-300 hover:scale-105"
                 style={{ fontFamily: UDC, backgroundColor: GREEN, color: CREAM, fontSize: "clamp(1rem, 1.2vw, 1.2rem)", letterSpacing: "0.03em" }}>
-                <Beaker size={18} /> {r.variety} lab report
+                <Beaker size={18} /> {r.variety}
               </a>
             ))}
           </div>
@@ -314,119 +257,68 @@ function LabReceipts() {
   );
 }
 
-function HighPolyphenolInner({ initialPosts }: { initialPosts?: InitialPost[] }) {
+function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialPost[]; locale: Locale }) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const locale = DEFAULT_LOCALE;
+  const content = HUB_CONTENT[locale.lang];
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
 
       {/* 1 — HERO */}
-      <Hero />
+      <Hero hero={content.hero} />
 
       {/* 2 — THE RANGE, RANKED BY POLYPHENOLS */}
       <OilProductWidgets
         locale={locale}
         sectionId="the-range"
         headingFontFamily={UDC}
-        heading="Shop Fresh Harvest"
-        subtitle="All three are genuinely high-polyphenol — the difference is flavour and intensity. Pick by taste, or take the quiz to find your match."
+        heading={content.range.heading}
+        subtitle={content.range.subtitle}
         polyphenols={{ coratina: "847", picual: "675", nocellara: "400" }}
         showTagline={false}
-        quizPrompt="Not sure which one to pick?"
+        quizPrompt={content.range.quizPrompt}
       />
 
       {/* 3 — HOW MANY POLYPHENOLS SHOULD OLIVE OIL HAVE? (the threshold scale) */}
       <PolyphenolComparison
         locale={locale}
-        heading="How many polyphenols should olive oil have?"
-        intro="There's no legal minimum — but there are milestones. Below is where a typical supermarket bottle lands, where the EU draws its health-claim line, where the well-known Blueprint oil sits, and where ATTIMO's range falls."
-        cards={[
-          {
-            content: "Polyphenols are the antioxidants behind olive oil's health reputation.",
-            content2: "They're also what makes a fresh oil taste bitter and peppery — flavour and benefit come from the same place.",
-          },
-          {
-            content: "Levels peak in early-harvest olives and start falling the moment the oil is bottled.",
-            content2: "Heat, light, age and blending all pull the number down — which is why most bottles never reach a high-polyphenol level.",
-          },
-          {
-            content: "Above 250 mg/kg, the EU lets a producer make a documented health claim.",
-            content2: "ATTIMO's oils run 400–900 mg/kg, so every bottle clears that bar with room to spare.",
-          },
-        ]}
-        citation={
-          <>
-            EU health-claim threshold of 250 mg/kg derives from the requirement of 5 mg hydroxytyrosol and derivatives per
-            20 g of oil under{" "}
-            <a href="https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2012:136:0001:0040:en:PDF" target="_blank" rel="noopener noreferrer" style={refLink}>
-              Commission Regulation (EU) No&nbsp;432/2012
-            </a>
-            . The 400 mg/kg mark is the{" "}
-            <a href="/blog/bryan-johnson-olive-oil" style={refLink}>Blueprint benchmark popularised by Bryan Johnson</a>. More in our{" "}
-            <a href="/blog/polyphenols-olive-oil" style={refLink}>polyphenols explainer</a>.
-          </>
-        }
+        heading={content.scale.heading}
+        intro={content.scale.intro}
+        cards={content.scale.cards}
+        citation={content.scale.citation}
       />
 
       {/* 4 — WHY MOST OLIVE OIL ISN'T HIGH-POLYPHENOL (the problem) */}
       <IndustryProblem
         locale={locale}
-        heading="Why high-polyphenol extra virgin olive oil is hard to find"
-        intro="The words “extra virgin” say nothing about polyphenols — and often aren't even accurate. Here's the gap, and the three reasons supermarket oil lands so low."
-        args={[
-          {
-            title: "Blended for shelf life, not polyphenols",
-            text: "Industrial oil is blended across countries and harvests for a cheap, neutral, consistent taste. Blending and scale dilute the fresh-pressed polyphenols that make oil bitter, peppery and healthy.",
-          },
-          {
-            title: "Picked late, pressed slow",
-            text: "Polyphenols peak in young, green olives. Mass producers harvest late for higher yield and press hours or days later — by which point much of the polyphenol content is already gone.",
-          },
-          {
-            title: "Old before you open it",
-            text: "Polyphenols fade with time, light and heat. A bottle that has spent a year in transit and on a shelf has far less than the day it was pressed, even if it once qualified as high-polyphenol.",
-          },
-        ]}
-        footnote={
-          <p>
-            On the figures: the ~80% failure rate reflects widely-cited independent testing of supermarket “extra
-            virgin” oils; the most rigorous public study, the{" "}
-            <a href="https://www.ucdavis.edu/news/most-imported-olive-oils-don%E2%80%99t-match-%E2%80%98extra-virgin%E2%80%99-claims-study-finds" target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>
-              UC&nbsp;Davis Olive Center (2010–11)
-            </a>
-            , found 69% of sampled imported oils failed international extra-virgin standards. “Low in polyphenols” is
-            measured against the EU health-claim threshold of 250 mg/kg (
-            <a href="https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2012:136:0001:0040:en:PDF" target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>
-              Reg.&nbsp;(EU)&nbsp;432/2012
-            </a>
-            ).
-          </p>
-        }
+        heading={content.problem.heading}
+        intro={content.problem.intro}
+        args={content.problem.args}
+        footnote={content.problem.footnote}
       />
 
       {/* 5 — THE COMPOUNDS THAT MATTER */}
-      <CompoundsSection />
+      <CompoundsSection c={content.compounds} />
 
       {/* 5b — WHAT THE SCIENCE SAYS (sourced benefits, informational intent) */}
-      <ScienceSection />
+      <ScienceSection c={content.science} />
 
       {/* 6 — LAB-TESTED PROOF: comparison table + the actual reports */}
       <OilComparison locale={locale} />
-      <LabReceipts />
+      <LabReceipts c={content.labReceipts} />
 
       {/* 7 — HIGH-POLYPHENOL BY DESIGN (the causes) */}
       <KleiaWay
         locale={locale}
-        heading="Why our polyphenols stay high"
-        intro="High numbers aren't luck. They come from a few deliberate choices — early harvest, single variety, pressed and bottled fresh — the same choices industrial oil skips to scale."
+        heading={content.kleia.heading}
+        intro={content.kleia.intro}
       />
 
       {/* 8 — Reviews → FAQ → blog feed + newsletter → footer */}
       <Testimonials locale={locale} />
-      <FAQ locale={locale} items={faqItems} heading="High-polyphenol olive oil FAQ" headingFontFamily={UDC} />
-      <BlogSection initialPosts={initialPosts} locale={locale} heading="Keep reading polyphenols" />
+      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} />
+      <BlogSection initialPosts={initialPosts} locale={locale} heading={content.blogHeading} />
       <Footer locale={locale} />
 
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
@@ -435,10 +327,10 @@ function HighPolyphenolInner({ initialPosts }: { initialPosts?: InitialPost[] })
   );
 }
 
-export default function HighPolyphenolPage({ initialPosts }: { initialPosts?: InitialPost[] }) {
+export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE }: { initialPosts?: InitialPost[]; locale?: Locale }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <HighPolyphenolInner initialPosts={initialPosts} />
+      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} />
     </QueryClientProvider>
   );
 }

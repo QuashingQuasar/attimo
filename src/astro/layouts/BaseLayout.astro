@@ -16,6 +16,11 @@ interface Props {
   // Path *without* locale prefix, e.g. "/", "/product/coratina", "/shipping".
   // When set, BaseLayout renders hreflang link tags for every locale.
   hreflangPath?: string;
+  // Explicit hreflang cluster, for pages whose locale variants live at
+  // *translated* slugs (e.g. the polyphenol hub: /de/polyphenolreiches-olivenoel)
+  // where the uniform-prefix getHreflangs() can't reconstruct the URLs. Takes
+  // precedence over hreflangPath when provided.
+  hreflangs?: HreflangEntry[];
   hideAnnounceBar?: boolean;
   // <html lang> — defaults to English. Localized pages pass their locale.lang.
   htmlLang?: string;
@@ -37,6 +42,7 @@ const {
   bodyStyle = "background-color: #FAF9F6;",
   jsonLd,
   hreflangPath,
+  hreflangs: hreflangsProp,
   hideAnnounceBar = false,
   htmlLang = "en",
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
@@ -49,7 +55,7 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, "https://attimo-oi
 
 const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
-const hreflangs: HreflangEntry[] = hreflangPath ? getHreflangs(hreflangPath) : [];
+const hreflangs: HreflangEntry[] = hreflangsProp ?? (hreflangPath ? getHreflangs(hreflangPath) : []);
 
 // Organization schema, emitted on every page so search engines can connect
 // the brand across the site. Page-level `jsonLd` (Product, WebSite, etc.)

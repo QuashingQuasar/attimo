@@ -2,18 +2,24 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import HighPolyphenolPage from "@astro/react-pages/HighPolyphenolPage";
 import { sanityClient } from "@/lib/sanity";
-import { HIGH_POLYPHENOL_FAQS, HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
-import { HUB_HREFLANGS } from "@/lib/highPolyphenolHubContent";
+import { HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
+import { HUB_CONTENT, HUB_HREFLANGS, HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const canonical = "https://attimo-oil.com/high-polyphenol-olive-oil";
-const description =
-  "Shop high-polyphenol olive oil, lab-tested at 400–900 mg/kg — three single-variety, polyphenol-rich extra virgin oils ranked by polyphenols. From €22.";
+// French-language variant of the high-polyphenol hub. Same page component;
+// content comes from HUB_CONTENT.fr. Translated slug so it ranks the French
+// keyword cluster (huile d'olive riche en polyphénols / … polyphénols).
+const locale = SLUG_TO_LOCALE["fr"];
+const content = HUB_CONTENT.fr;
+const t = getDict(locale);
+const canonical = `https://attimo-oil.com${HUB_SLUGS.fr}`;
+const description = content.meta.description;
 
-// CollectionPage + ItemList: the three oils, ranked by polyphenol content.
 const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "High-Polyphenol Olive Oil",
+  name: content.hero.h1,
   url: canonical,
   description,
   mainEntity: {
@@ -47,20 +53,16 @@ const collectionJsonLd = {
   },
 };
 
-// FAQPage: mirrors the on-page polyphenol-first FAQ accordion verbatim.
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: HIGH_POLYPHENOL_FAQS.map((f) => ({
+  mainEntity: content.faq.items.map((f) => ({
     "@type": "Question",
     name: f.question,
     acceptedAnswer: { "@type": "Answer", text: f.answer },
   })),
 };
 
-// Curated "read more" feed: highlight polyphenol-specific posts on this hub
-// (not just the latest three). Ordered newest-first; the deep guide leads once
-// it's published. Falls back to nothing extra if a slug isn't live yet.
 const CURATED_POST_SLUGS = [
   "high-polyphenol-olive-oil-guide",
   "polyphenols-olive-oil",
@@ -76,19 +78,15 @@ const curatedPosts = await sanityClient.fetch(
 ---
 
 <BaseLayout
-  title="High-Polyphenol Olive Oil | Lab-Tested 400–900 mg/kg"
+  title={content.meta.title}
   description={description}
   canonical={canonical}
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={[collectionJsonLd, faqJsonLd]}
   hreflangs={HUB_HREFLANGS}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
 >
-  {/*
-    English (default) hub. Localised variants live at TRANSLATED slugs, each its
-    own route passing the right `locale` to <HighPolyphenolPage> (content comes
-    from HUB_CONTENT[locale.lang]): DE → /de/polyphenolreiches-olivenoel,
-    FR → /fr/huile-olive-riche-polyphenols. The hreflang cluster is shared via
-    HUB_HREFLANGS so all three cross-reference each other.
-  */}
-  <HighPolyphenolPage initialPosts={curatedPosts} client:load />
+  <HighPolyphenolPage initialPosts={curatedPosts} locale={locale} client:load />
 </BaseLayout>

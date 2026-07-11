@@ -305,7 +305,22 @@ export const OilProductWidgets = ({
                 )}
 
                 {oil.handle === "coratina" && (
-                  <div className="flex gap-2 mb-3" role="group" aria-label={t.oilCollection.size}>
+                  // Segmented toggle (bottle vs 3L box). Styled deliberately
+                  // UNLIKE the polyphenol badge above it: a bordered track with
+                  // both options visible, and the selected segment uses the
+                  // inverted chartreuse-fill/green-text (the action colour) so a
+                  // control never reads as the green-fill info badge.
+                  <div
+                    className="inline-flex items-center mb-3"
+                    role="group"
+                    aria-label={t.oilCollection.size}
+                    style={{
+                      border: "1.5px solid rgba(27,66,41,0.3)",
+                      borderRadius: "9999px",
+                      padding: "3px",
+                      gap: "3px",
+                    }}
+                  >
                     {(["bottle", "box"] as const).map((size) => {
                       const active = coratinaSize === size;
                       const label =
@@ -327,12 +342,12 @@ export const OilProductWidgets = ({
                           className="rounded-full transition-all duration-200"
                           style={{
                             fontFamily: "UDC Working Man Sans, sans-serif",
-                            fontSize: "clamp(1.0rem, 1.25vw, 1.25rem)",
+                            fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)",
                             letterSpacing: "0.08em",
-                            padding: "0.35rem 1.1rem",
-                            border: "2px solid #1B4229",
-                            backgroundColor: active ? "#1B4229" : "transparent",
-                            color: active ? "#CDDB2D" : "#1B4229",
+                            padding: "0.3rem 1.0rem",
+                            border: "none",
+                            backgroundColor: active ? "#CDDB2D" : "transparent",
+                            color: active ? "#1B4229" : "rgba(27,66,41,0.55)",
                           }}
                         >
                           {label}

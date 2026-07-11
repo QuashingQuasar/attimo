@@ -31,19 +31,26 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   const linkClass = "hover:underline transition-colors";
   const linkStyle: React.CSSProperties = { fontFamily: "Space Grotesk, sans-serif", color: "#B3E58C", fontSize: "0.875rem" };
 
-  // Grouped link columns. The /high-polyphenol-olive-oil hub is English-only for
-  // now, so it's shown only on EN markets; add localized variants here when the
-  // FR/DE hub pages exist.
+  // Grouped link columns. The polyphenol hub exists at translated slugs per
+  // language (EN + DE live); the early-harvest hub is still English-only. Show
+  // each market the hub links that exist in its language. Add FR here when the
+  // French hub ships.
+  const hubLinks =
+    locale.lang === "de"
+      ? [{ label: "Polyphenolreiches Olivenöl", href: "/de/polyphenolreiches-olivenoel" }]
+      : locale.lang === "fr"
+        ? [{ label: "Huile d'Olive Riche en Polyphénols", href: "/fr/huile-olive-riche-polyphenols" }]
+        : locale.lang === "en"
+          ? [
+              { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },
+              { label: "Early Harvest Olive Oil", href: "/early-harvest-olive-oil" },
+            ]
+          : [];
   const shopLinks = [
     { label: "Coratina", href: localizeHref("/product/coratina", locale) },
     { label: "Picual", href: localizeHref("/product/picual", locale) },
     { label: "Nocellara", href: localizeHref("/product/nocellara", locale) },
-    ...(locale.lang === "en"
-      ? [
-          { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },
-          { label: "Early Harvest Olive Oil", href: "/early-harvest-olive-oil" },
-        ]
-      : []),
+    ...hubLinks,
     { label: t.nav.merch, href: "/merch" },
   ];
   const learnLinks = [
