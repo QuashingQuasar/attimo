@@ -1,6 +1,8 @@
 import type { Locale } from "@/lib/i18n/config";
 import { quizQuestionsFr, oilSummariesFr, type QuizTextQuestion } from "@/lib/quizData.fr";
 import { quizQuestionsDe, oilSummariesDe } from "@/lib/quizData.de";
+import { quizQuestionsSv, oilSummariesSv } from "@/lib/quizData.sv";
+import { quizQuestionsDa, oilSummariesDa } from "@/lib/quizData.da";
 
 export interface QuizOption {
   label: string;
@@ -180,6 +182,8 @@ export function getQuizQuestions(locale?: Pick<Locale, "lang">): QuizQuestion[] 
   const overlay: Record<string, QuizTextQuestion> | null =
     locale?.lang === "fr" ? quizQuestionsFr
     : locale?.lang === "de" ? quizQuestionsDe
+    : locale?.lang === "sv" ? quizQuestionsSv
+    : locale?.lang === "da" ? quizQuestionsDa
     : null;
   if (!overlay) return quizQuestions;
   return quizQuestions.map((q) => {
@@ -205,6 +209,8 @@ export function calculateResults(
   const summaries =
     locale?.lang === "fr" ? oilSummariesFr
     : locale?.lang === "de" ? oilSummariesDe
+    : locale?.lang === "sv" ? oilSummariesSv
+    : locale?.lang === "da" ? oilSummariesDa
     : oilSummaries;
   const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
 

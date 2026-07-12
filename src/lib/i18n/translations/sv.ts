@@ -407,6 +407,19 @@ export const sv: Dict = {
 
   moreVarieties: "Fler sorter",
 
+  firstOrderPopup: {
+    heading: "10% rabatt på din första beställning",
+    subtitle: "Vi mejlar din rabattkod.",
+    emailPlaceholder: "Din e-postadress",
+    consent: "Jag godkänner att få mejl från ATTIMO",
+    submitting: "Skickar…",
+    submit: "Hämta min kod",
+    successApply: "Använd din kod i kassan för 10% rabatt",
+    successInbox: "Du hittar den också i din inkorg",
+    closeAria: "Stäng",
+    copyAria: "Kopiera kod",
+  },
+
   shippingPage: {
     title: "Frakt | ATTIMO Extra jungfruolja i specialklass",
     heading: "Fraktinformation",

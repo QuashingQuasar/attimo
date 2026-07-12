@@ -13,12 +13,12 @@ export const productContentDaMap: Record<string, ProductContent> = {
     benefits: [
       "100 % Coratina-oliven, tidligt høstet og koldpresset inden for få timer",
       "Testet af uafhængigt laboratorium for kvalitet og renhed",
-      "Direkte fra en lille familielund i Puglia, Italy",
+      "Direkte fra en lille familielund i Puglia, Italien",
     ],
     benefitTooltip:
       "Polyfenoler er naturlige forbindelser i olivenolie, som giver de fordele, du har hørt om – antiinflammatoriske egenskaber, støtte til hjertesundheden og antioxidant beskyttelse.",
     labReportUrl: "/lab/Coratina2025.pdf",
-    sourceLine: "Direkte fra en lille familielund i Puglia, Italy",
+    sourceLine: "Direkte fra en lille familielund i Puglia, Italien",
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
@@ -29,7 +29,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Puglia, Italy",
+        origin: "Puglia, Italien",
         olive: "Coratina",
         flavor: "Kraftig & Intens",
         store: "beskyt mod lys og varme",
@@ -52,7 +52,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
         "Coratina er en kompromisløs oliven, polyfenolernes dronning. Den presser en intens, bitter olie med rigtigt greb – den slags kendere tager skefuldvis som en daglig longevity-dosis.",
       quickRef: [
         { label: "SORT", value: "100% Coratina" },
-        { label: "OPRINDELSE", value: "Puglia, Italy" },
+        { label: "OPRINDELSE", value: "Puglia, Italien" },
         { label: "SMAG", value: "Kraftig & Intens" },
         { label: "ANVENDELSE", value: "dryppes over friske retter" },
         { label: "OPBEVARING", value: "beskyt mod lys og varme" },
@@ -105,7 +105,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
     tileAccent: "#B3E58C",
     originRegion: {
       heading: "Fra lund til flaske",
-      body: "ATTIMO Coratina kommer direkte fra en lille familielund i Puglia, Italy. Regionen er landets største producent af olivenolie, kendt for sine århundredgamle træer og enestående kvalitet.\n\nKystsletterne og det middelhavsklima skaber ideelle vækstbetingelser for Coratina-sorten. Lange, solfyldte dage koncentrerer frugtens polyfenoler og bevarer den kraftige, peberagtige karakter, der gør denne olie enestående.",
+      body: "ATTIMO Coratina kommer direkte fra en lille familielund i Puglia, Italien. Regionen er landets største producent af olivenolie, kendt for sine århundredgamle træer og enestående kvalitet.\n\nKystsletterne og det middelhavsklima skaber ideelle vækstbetingelser for Coratina-sorten. Lange, solfyldte dage koncentrerer frugtens polyfenoler og bevarer den kraftige, peberagtige karakter, der gør denne olie enestående.",
       markerLon: 16.8,
       markerLat: 41.1,
       markerLabel: "Puglia",
@@ -119,12 +119,12 @@ export const productContentDaMap: Record<string, ProductContent> = {
     benefits: [
       "100 % Nocellara-oliven, tidligt høstet og koldpresset inden for få timer",
       "Testet af uafhængigt laboratorium for kvalitet og renhed",
-      "Direkte fra en lille familielund i Italy",
+      "Direkte fra en lille familielund i Italien",
     ],
     benefitTooltip:
       "Polyfenoler er naturlige forbindelser i olivenolie, som giver de sundhedsmæssige fordele, du har hørt om: antiinflammatoriske egenskaber, støtte til hjertesundheden og antioxidant beskyttelse.",
     labReportUrl: "/lab/Nocellara2025.pdf",
-    sourceLine: "Direkte fra en lille familielund i Italy",
+    sourceLine: "Direkte fra en lille familielund i Italien",
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
@@ -135,7 +135,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Sicily, Italy",
+        origin: "Sicilien, Italien",
         olive: "Nocellara",
         flavor: "Mild & Frugtig",
         store: "beskyt mod lys og varme",
@@ -158,7 +158,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
         "Nocellara di Belice er en generøs siciliansk oliven, en af Italiens mest ansete sorter. Den presser en mild olie med frugtige noter og en fløjlsblød tekstur, som er let at holde af og bruge hver dag.",
       quickRef: [
         { label: "SORT", value: "100% Nocellara" },
-        { label: "OPRINDELSE", value: "Sicily, Italy" },
+        { label: "OPRINDELSE", value: "Sicilien, Italien" },
         { label: "SMAG", value: "Mild & Frugtig" },
         { label: "ANVENDELSE", value: "dryppes over friske retter" },
         { label: "OPBEVARING", value: "beskyt mod lys og varme" },
@@ -215,12 +215,12 @@ export const productContentDaMap: Record<string, ProductContent> = {
     benefits: [
       "100 % Picual-oliven, tidligt høstet og koldpresset inden for få timer",
       "Testet af uafhængigt laboratorium for kvalitet og renhed",
-      "Direkte fra en lille familielund i Andalusien, Spain",
+      "Direkte fra en lille familielund i Andalusien, Spanien",
     ],
     benefitTooltip:
       "Polyfenoler er naturlige forbindelser i olivenolie, som giver de sundhedsmæssige fordele, du har hørt om – antiinflammatoriske egenskaber, støtte til hjertesundheden og antioxidant beskyttelse.",
     labReportUrl: "/lab/Picual2025.pdf",
-    sourceLine: "Direkte fra en lille familielund i Andalusien, Spain",
+    sourceLine: "Direkte fra en lille familielund i Andalusien, Spanien",
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
@@ -231,7 +231,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Jaén, Spain",
+        origin: "Jaén, Spanien",
         olive: "Picual",
         flavor: "Grøn & Græsagtig",
         store: "beskyt mod lys og varme",
@@ -254,7 +254,7 @@ export const productContentDaMap: Record<string, ProductContent> = {
         "Picual er Spaniens mest udtryksfulde og mest plantede oliven. Den presser en livlig olie med et frisk grønt bid. En allrounder i køkkenet, med karakter nok til at forblive interessant.",
       quickRef: [
         { label: "SORT", value: "100% Picual" },
-        { label: "OPRINDELSE", value: "Jaén, Spain" },
+        { label: "OPRINDELSE", value: "Jaén, Spanien" },
         { label: "SMAG", value: "Grøn & Græsagtig" },
         { label: "ANVENDELSE", value: "dryppes over friske retter" },
         { label: "OPBEVARING", value: "beskyt mod lys og varme" },

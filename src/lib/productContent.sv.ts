@@ -2,7 +2,7 @@
 // review). Mirrors the structure of productContentMap in productContent.ts
 // EXACTLY (same keys, same numeric values, units, lab figures, icon paths,
 // colours, coordinates). Only the human-readable strings are translated. Proper
-// names (Coratina, Picual, Nocellara), origin tags ("Puglia, Italy" etc.) and
+// names (Coratina, Picual, Nocellara), origin tags ("Puglia, Italien" etc.) and
 // all numbers are kept verbatim. All persuasion copy here is // REVIEW.
 import type { ProductContent } from "./productContent";
 
@@ -29,7 +29,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Puglia, Italy",
+        origin: "Puglia, Italien",
         olive: "Coratina",
         flavor: "Kraftig & Intensiv", // REVIEW
         store: "skydda mot ljus och värme", // REVIEW
@@ -52,7 +52,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
         "Coratina är en kompromisslös oliv, polyfenolernas drottning. Den pressar en intensiv, bitter olja med verkligt grepp – sorten som entusiaster tar skedvis som en daglig longevity-dos.", // REVIEW
       quickRef: [
         { label: "SORT", value: "100% Coratina" },
-        { label: "URSPRUNG", value: "Puglia, Italy" },
+        { label: "URSPRUNG", value: "Puglia, Italien" },
         { label: "SMAK", value: "Kraftig & Intensiv" }, // REVIEW
         { label: "ANVÄNDNING", value: "ringla över färsk mat" }, // REVIEW
         { label: "FÖRVARING", value: "skydda mot ljus och värme" }, // REVIEW
@@ -135,7 +135,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Sicily, Italy",
+        origin: "Sicilien, Italien",
         olive: "Nocellara",
         flavor: "Mjuk & Fruktig", // REVIEW
         store: "skydda mot ljus och värme", // REVIEW
@@ -158,7 +158,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
         "Nocellara di Belice är en generös siciliansk oliv, en av Italiens mest uppskattade sorter. Den pressar en mjuk olja med fruktiga toner och en sammetslen textur, lätt att tycka om och använda varje dag.", // REVIEW
       quickRef: [
         { label: "SORT", value: "100% Nocellara" },
-        { label: "URSPRUNG", value: "Sicily, Italy" },
+        { label: "URSPRUNG", value: "Sicilien, Italien" },
         { label: "SMAK", value: "Mjuk & Fruktig" }, // REVIEW
         { label: "ANVÄNDNING", value: "ringla över färsk mat" }, // REVIEW
         { label: "FÖRVARING", value: "skydda mot ljus och värme" }, // REVIEW
@@ -231,7 +231,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
     ],
     tabs: {
       details: {
-        origin: "Jaén, Spain",
+        origin: "Jaén, Spanien",
         olive: "Picual",
         flavor: "Grön & Gräsig", // REVIEW
         store: "skydda mot ljus och värme", // REVIEW
@@ -254,7 +254,7 @@ export const productContentSvMap: Record<string, ProductContent> = {
         "Picual är Spaniens mest uttrycksfulla och mest odlade oliv. Den pressar en livfull olja med en frisk grön ton. En allroundare i köket, med tillräckligt med karaktär för att förbli intressant.", // REVIEW
       quickRef: [
         { label: "SORT", value: "100% Picual" },
-        { label: "URSPRUNG", value: "Jaén, Spain" },
+        { label: "URSPRUNG", value: "Jaén, Spanien" },
         { label: "SMAK", value: "Grön & Gräsig" }, // REVIEW
         { label: "ANVÄNDNING", value: "ringla över färsk mat" }, // REVIEW
         { label: "FÖRVARING", value: "skydda mot ljus och värme" }, // REVIEW

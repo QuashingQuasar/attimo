@@ -407,6 +407,19 @@ export const da: Dict = {
 
   moreVarieties: "Flere sorter",
 
+  firstOrderPopup: {
+    heading: "10% rabat på din første ordre",
+    subtitle: "Vi sender din rabatkode på e-mail.",
+    emailPlaceholder: "Din e-mailadresse",
+    consent: "Jeg accepterer at modtage e-mails fra ATTIMO",
+    submitting: "Sender…",
+    submit: "Hent min kode",
+    successApply: "Brug din kode i kassen for 10% rabat",
+    successInbox: "Du finder den også i din indbakke",
+    closeAria: "Luk",
+    copyAria: "Kopiér kode",
+  },
+
   shippingPage: {
     title: "Fragt | ATTIMO Ekstra jomfru olivenolie i særklasse",
     heading: "Fragtinformation",

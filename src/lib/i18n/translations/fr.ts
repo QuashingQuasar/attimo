@@ -410,6 +410,19 @@ export const fr: Dict = {
 
   moreVarieties: "Autres variétés", // REVIEW
 
+  firstOrderPopup: {
+    heading: "10 % de réduction sur votre première commande",
+    subtitle: "Nous vous envoyons votre code par e-mail.",
+    emailPlaceholder: "Votre adresse e-mail",
+    consent: "J'accepte de recevoir des e-mails d'ATTIMO",
+    submitting: "Envoi…",
+    submit: "Obtenir mon code",
+    successApply: "Appliquez votre code au paiement pour 10 % de réduction",
+    successInbox: "Vous le trouverez aussi dans votre boîte mail",
+    closeAria: "Fermer",
+    copyAria: "Copier le code",
+  },
+
   shippingPage: {
     title: "Livraison | ATTIMO Huile d'olive vierge extra de spécialité",
     heading: "Informations de livraison",

@@ -451,6 +451,20 @@ export const en = {
   moreVarieties: "More Varieties", // REVIEW
 
   // /shipping page.
+  // First-order discount popup (FirstOrderPopup.tsx, shown on product pages).
+  firstOrderPopup: {
+    heading: "Get 10% off your first order",
+    subtitle: "We'll email your discount code.",
+    emailPlaceholder: "Your email address",
+    consent: "I agree to get emails from ATTIMO",
+    submitting: "Submitting…",
+    submit: "Get my code",
+    successApply: "Apply your code at checkout for 10% off",
+    successInbox: "You can also find it in your inbox",
+    closeAria: "Close",
+    copyAria: "Copy code",
+  },
+
   shippingPage: {
     title: "Shipping | ATTIMO Specialty Extra Virgin Olive Oil",
     heading: "Shipping Information",

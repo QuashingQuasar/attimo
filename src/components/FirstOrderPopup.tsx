@@ -2,11 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { X, Copy, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useCartStore } from "@/stores/cartStore";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 const SESSION_KEY_DISMISSED = "attimo_popup_dismissed";
 const DISCOUNT_CODE = "FIRSTPRESS";
 
-export const FirstOrderPopup = () => {
+export const FirstOrderPopup = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) => {
+  const t = getDict(locale).firstOrderPopup;
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -84,7 +87,7 @@ export const FirstOrderPopup = () => {
         <button
           onClick={handleClose}
           className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
-          aria-label="Close"
+          aria-label={t.closeAria}
         >
           <X size={20} />
         </button>
@@ -99,7 +102,7 @@ export const FirstOrderPopup = () => {
                 lineHeight: 1.2,
               }}
             >
-              Get 10% off your first order
+              {t.heading}
             </h2>
             <p
               className="mb-6"
@@ -109,14 +112,14 @@ export const FirstOrderPopup = () => {
                 color: "hsl(45, 25%, 80%)",
               }}
             >
-              We'll email your discount code.
+              {t.subtitle}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="email"
                 required
-                placeholder="Your email address"
+                placeholder={t.emailPlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-lg px-4 py-3 text-olive-dark placeholder:text-olive-medium/50 focus:outline-none focus:ring-2 focus:ring-gold-rich"
@@ -141,7 +144,7 @@ export const FirstOrderPopup = () => {
                     lineHeight: 1.4,
                   }}
                 >
-                  I agree to get emails from ATTIMO
+                  {t.consent}
                 </span>
               </label>
 
@@ -156,7 +159,7 @@ export const FirstOrderPopup = () => {
                   color: "#1B4229",
                 }}
               >
-                {submitting ? "Submitting…" : "Get my code"}
+                {submitting ? t.submitting : t.submit}
               </button>
             </form>
           </>
@@ -170,7 +173,7 @@ export const FirstOrderPopup = () => {
                 color: "hsl(45, 25%, 80%)",
               }}
             >
-              Apply your code at checkout for 10% off
+              {t.successApply}
             </p>
             <div className="flex items-center justify-center gap-3 mb-4">
               <span
@@ -189,7 +192,7 @@ export const FirstOrderPopup = () => {
                   backgroundColor: "rgba(27, 66, 41, 0.6)",
                   color: copied ? "#CDDB2D" : "hsl(45, 25%, 80%)",
                 }}
-                aria-label="Copy code"
+                aria-label={t.copyAria}
               >
                 {copied ? <Check size={16} /> : <Copy size={16} />}
               </button>
@@ -201,7 +204,7 @@ export const FirstOrderPopup = () => {
                 color: "hsl(45, 25%, 65%)",
               }}
             >
-              You can also find it in your inbox
+              {t.successInbox}
             </p>
           </div>
         )}

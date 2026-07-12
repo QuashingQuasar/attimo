@@ -778,7 +778,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <BlogSection initialPosts={initialBlogPosts} locale={locale} />
 
       <Footer locale={locale} />
-      <FirstOrderPopup />
+      <FirstOrderPopup locale={locale} />
     </div>);
 
 };

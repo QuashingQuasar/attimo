@@ -419,6 +419,19 @@ export const de: Dict = {
 
   moreVarieties: "Weitere Sorten", // REVIEW
 
+  firstOrderPopup: {
+    heading: "10% Rabatt auf deine erste Bestellung",
+    subtitle: "Wir mailen dir deinen Rabattcode.",
+    emailPlaceholder: "Deine E-Mail-Adresse",
+    consent: "Ich möchte E-Mails von ATTIMO erhalten",
+    submitting: "Wird gesendet…",
+    submit: "Code sichern",
+    successApply: "Löse deinen Code an der Kasse für 10% Rabatt ein",
+    successInbox: "Du findest ihn auch in deinem Posteingang",
+    closeAria: "Schließen",
+    copyAria: "Code kopieren",
+  },
+
   shippingPage: {
     title: "Versand | ATTIMO Natives Olivenöl extra – Spezialität",
     heading: "Versandinformationen",
