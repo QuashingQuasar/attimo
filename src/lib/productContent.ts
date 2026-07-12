@@ -1,6 +1,8 @@
 // Product-specific content configuration keyed by Shopify handle
 import { productContentFrMap } from "./productContent.fr";
 import { productContentDeMap } from "./productContent.de";
+import { productContentSvMap } from "./productContent.sv";
+import { productContentDaMap } from "./productContent.da";
 
 export interface ProductContent {
   // Hero section
@@ -428,12 +430,10 @@ export function urlSlugForShopifyHandle(
   return SHOPIFY_HANDLE_TO_URL_SLUG[shopifyHandle] ?? null;
 }
 
-// Default to nocellara if handle not found. When a locale with lang "fr"/"de"
-// is passed, the matching copy map (productContent.fr.ts / .de.ts) is used,
-// falling back to the English entry per-product if a translated entry is
-// somehow missing. Swedish (lang "sv") has no PDP copy map yet (Phase 2), so it
-// falls back to the English map — the storefront chrome is Swedish (sv.ts) but
-// the PDP long-form copy stays English until productContent.sv.ts lands.
+// Default to nocellara if handle not found. Each language market (fr/de/sv/da)
+// has its own PDP copy map (productContent.{fr,de,sv,da}.ts); the English map is
+// the fallback for the default market and for any per-product entry a translated
+// map is somehow missing.
 export function getProductContent(
   handle: string | undefined,
   locale?: { lang: "en" | "fr" | "de" | "sv" | "da" },
@@ -441,6 +441,8 @@ export function getProductContent(
   const map =
     locale?.lang === "fr" ? productContentFrMap
     : locale?.lang === "de" ? productContentDeMap
+    : locale?.lang === "sv" ? productContentSvMap
+    : locale?.lang === "da" ? productContentDaMap
     : productContentMap;
   if (!handle) return map["nocellara"] || productContentMap["nocellara"];
 
