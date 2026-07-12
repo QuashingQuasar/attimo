@@ -4,9 +4,9 @@ export type Locale = {
   countryName: string;
   // Content language for this market. Drives which translation dictionary is
   // served (see src/lib/i18n/translations) and the <html lang> attribute.
-  // Existing currency-only markets (default, dk, se) stay "en"; France is "fr",
-  // Germany is "de".
-  lang: "en" | "fr" | "de";
+  // The default (EUR) market stays "en"; France "fr", Germany "de", Sweden
+  // "sv", Denmark "da".
+  lang: "en" | "fr" | "de" | "sv" | "da";
   // BCP-47 value emitted in the hreflang alternate link. Single source of
   // truth so getHreflangs stays a pure lookup. English-currency variants use
   // "en" / "en-DK" / "en-SE"; the French-language market uses "fr".
@@ -14,7 +14,7 @@ export type Locale = {
   // Shopify Storefront @inContext language code (LanguageCode enum). Most
   // markets present English; France presents French. Country comes from
   // `country` above.
-  shopifyLanguage: "EN" | "FR" | "DE";
+  shopifyLanguage: "EN" | "FR" | "DE" | "SV" | "DA";
   // Label shown in the footer locale switcher next to the flag. Defaults to
   // the currency code (EUR/DKK/SEK). France shares EUR with the default market,
   // so it overrides this to a country code ("FRA") to stay distinguishable.
@@ -143,12 +143,16 @@ export const LOCALES: Locale[] = [
     flagCode: "FR",
   },
   {
+    // Denmark — a LANGUAGE market (Danish), like Sweden, with its own currency
+    // (DKK). lang "da" serves da.ts; hreflang "da" (language-targeted); Shopify
+    // @inContext presents DA. Requires "Danish" published in Shopify for DA
+    // checkout.
     slug: "dk",
     country: "DK",
     countryName: "Danmark",
-    lang: "en",
-    hreflang: "en-DK",
-    shopifyLanguage: "EN",
+    lang: "da",
+    hreflang: "da",
+    shopifyLanguage: "DA",
     currency: {
       code: "DKK",
       symbol: "kr",
@@ -170,12 +174,16 @@ export const LOCALES: Locale[] = [
     flagCode: "DK",
   },
   {
+    // Sweden — a LANGUAGE market (Swedish), like France/Germany, but with its
+    // own currency (SEK). lang "sv" serves sv.ts; hreflang "sv" is
+    // language-targeted (all Swedish speakers); Shopify @inContext presents SV.
+    // Requires "Swedish" to be a published language in Shopify for SV checkout.
     slug: "se",
     country: "SE",
     countryName: "Sverige",
-    lang: "en",
-    hreflang: "en-SE",
-    shopifyLanguage: "EN",
+    lang: "sv",
+    hreflang: "sv",
+    shopifyLanguage: "SV",
     currency: {
       code: "SEK",
       symbol: "kr",

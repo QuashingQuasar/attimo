@@ -431,11 +431,12 @@ export function urlSlugForShopifyHandle(
 // Default to nocellara if handle not found. When a locale with lang "fr"/"de"
 // is passed, the matching copy map (productContent.fr.ts / .de.ts) is used,
 // falling back to the English entry per-product if a translated entry is
-// somehow missing. All other locales (default/dk/se, lang "en") use the
-// English map unchanged.
+// somehow missing. Swedish (lang "sv") has no PDP copy map yet (Phase 2), so it
+// falls back to the English map — the storefront chrome is Swedish (sv.ts) but
+// the PDP long-form copy stays English until productContent.sv.ts lands.
 export function getProductContent(
   handle: string | undefined,
-  locale?: { lang: "en" | "fr" | "de" },
+  locale?: { lang: "en" | "fr" | "de" | "sv" | "da" },
 ): ProductContent {
   const map =
     locale?.lang === "fr" ? productContentFrMap

@@ -43,7 +43,12 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading }: 
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    const dateLocale = locale.lang === "fr" ? "fr-FR" : locale.lang === "de" ? "de-DE" : "en-US";
+    const dateLocale =
+      locale.lang === "fr" ? "fr-FR"
+      : locale.lang === "de" ? "de-DE"
+      : locale.lang === "sv" ? "sv-SE"
+      : locale.lang === "da" ? "da-DK"
+      : "en-US";
     return d.toLocaleDateString(dateLocale, { month: "short", year: "numeric" });
   };
 

@@ -9,11 +9,15 @@ import type { Locale } from "./config";
 import { en } from "./translations/en";
 import { fr } from "./translations/fr";
 import { de } from "./translations/de";
+import { sv } from "./translations/sv";
+import { da } from "./translations/da";
 
 export type Dict = typeof en;
 
 export function getDict(locale: Pick<Locale, "lang">): Dict {
   if (locale.lang === "fr") return fr;
   if (locale.lang === "de") return de;
+  if (locale.lang === "sv") return sv;
+  if (locale.lang === "da") return da;
   return en;
 }
