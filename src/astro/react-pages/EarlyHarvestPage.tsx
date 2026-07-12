@@ -131,7 +131,7 @@ function RipenessSpectrum() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-10 md:mb-12">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-12">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             The Timing
           </p>
@@ -145,7 +145,7 @@ function RipenessSpectrum() {
           </p>
         </div>
 
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto">
           <div className="flex justify-between mb-2" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(0.72rem, 0.95vw, 0.95rem)", letterSpacing: "0.06em" }}>
             <span style={{ color: "#3B6D11" }}>← more flavour · more polyphenols · less oil</span>
             <span className="opacity-60 text-right">more oil · milder · less polyphenol →</span>
@@ -163,7 +163,7 @@ function RipenessSpectrum() {
               </div>
             ))}
           </div>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2" style={{ backgroundColor: GREEN }}>
+          <div className="mt-6 w-fit mx-auto flex items-center gap-2 rounded-full px-4 py-2" style={{ backgroundColor: GREEN }}>
             <span style={{ fontFamily: UDC, color: ACCENT, fontSize: "clamp(0.8rem, 1vw, 1rem)", letterSpacing: "0.06em" }}>↑ ATTIMO picks here — green &amp; early</span>
           </div>
         </div>
@@ -184,7 +184,7 @@ function TasteSection() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-10 md:mb-14">
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             The Taste
           </p>
@@ -199,7 +199,7 @@ function TasteSection() {
           </p>
         </div>
 
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto">
           <div className="relative h-1.5 rounded-full" style={{ backgroundColor: "rgba(27,66,41,0.25)" }}>
             {TASTE_OILS.map((o) => (
               <div key={o.name} className="absolute -translate-x-1/2" style={{ left: `${o.pos}%`, top: "-7px" }}>
@@ -229,7 +229,7 @@ function FreshnessSection() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: DEEP_GREEN }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mx-auto text-center">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             The Catch
           </p>
@@ -396,7 +396,7 @@ function EarlyHarvestInner({ initialPosts }: { initialPosts?: InitialPost[] }) {
       {/* 10 — Reviews → FAQ → blog feed → footer */}
       <Testimonials locale={locale} />
       <FAQ locale={locale} items={faqItems} heading="Early harvest olive oil FAQ" headingFontFamily={UDC} />
-      <BlogSection initialPosts={initialPosts} locale={locale} heading="From the grove" />
+      <BlogSection initialPosts={initialPosts} locale={locale} heading="Read more early harvest olive oil" />
       <Footer locale={locale} />
 
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />

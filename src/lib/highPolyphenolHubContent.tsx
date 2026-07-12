@@ -357,7 +357,207 @@ const fr: HubContent = {
   blogHeading: "En savoir plus sur les polyphénols",
 };
 
-export const HUB_CONTENT: Record<"en" | "de" | "fr", HubContent> = { en, de, fr };
+// ───────────────────────────── SVENSKA (REVIEW) ─────────────────────────────
+const sv: HubContent = {
+  meta: {
+    title: "Polyfenolrik Olivolja | Labbtestad 400–900 mg/kg",
+    description:
+      "Köp polyfenolrik olivolja, labbtestad till 400–900 mg/kg — tre sortrena, polyfenolrika extra jungfruoljor rangordnade efter polyfenolhalt. Från 250 kr.",
+  },
+  hero: {
+    eyebrow: "Kategori · Extra Jungfruolivolja",
+    h1: "Polyfenolrik Olivolja",
+    subPre: "Sortren, tidigt skördad extra jungfruolja — rangordnad efter det som betyder mest: en ",
+    subAccent: "polyfenolrik",
+    subPost: " profil du kan smaka — och verifiera i labbet.",
+    cta: "Se sortimentet →",
+  },
+  range: {
+    heading: "Köp färsk skörd",
+    subtitle:
+      "Alla tre är verkligt polyfenolrika — skillnaden är smak och intensitet. Välj efter smak, eller gör testet för att hitta din match.",
+    quizPrompt: "Osäker på vilken du ska välja?",
+  },
+  scale: {
+    heading: "Hur mycket polyfenoler bör olivolja innehålla?",
+    intro:
+      "Det finns inget lagstadgat minimum — men det finns riktmärken. Nedan ser du var en typisk snabbköpsflaska hamnar, var EU drar sin gräns för hälsopåstående, var den kända Blueprint-oljan ligger, och var ATTIMOs sortiment faller.",
+    cards: [
+      { content: "Polyfenoler är antioxidanterna bakom olivoljans hälsorykte.", content2: "De är också det som gör en färsk olja bitter och pepprig — smak och nytta kommer från samma källa." },
+      { content: "Halten är högst i tidigt skördade oliver och börjar sjunka i samma stund oljan tappas.", content2: "Värme, ljus, ålder och blandning drar alla ner siffran — därför når de flesta flaskor aldrig en hög nivå." },
+      { content: "Över 250 mg/kg tillåter EU ett dokumenterat hälsopåstående.", content2: "ATTIMOs oljor ligger på 400–900 mg/kg — varje flaska klarar gränsen med god marginal." },
+    ],
+    citation: (
+      <>
+        EU:s gräns för hälsopåstående på 250 mg/kg härrör från kravet på 5 mg hydroxityrosol och derivat per 20 g olja enligt{" "}
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={refLink}>Förordning (EU) nr&nbsp;432/2012</a>. Riktmärket 400 mg/kg är Blueprint-nivån som Bryan Johnson gjort känd.
+      </>
+    ),
+  },
+  problem: {
+    heading: "Varför polyfenolrik extra jungfruolja är så svår att hitta",
+    intro: "Orden ”extra jungfru” säger ingenting om polyfenoler — och stämmer ofta inte ens. Här är gapet, och de tre skälen till att snabbköpsolja hamnar så lågt.",
+    args: [
+      { title: "Blandad för hållbarhet, inte polyfenoler", text: "Industriolja blandas över länder och skördar för en billig, neutral och jämn smak. Blandning och skala späder ut just de färskpressade polyfenoler som gör olja bitter, pepprig och nyttig." },
+      { title: "Sent plockad, långsamt pressad", text: "Polyfenoler är högst i unga, gröna oliver. Storproducenter skördar sent för högre utbyte och pressar timmar eller dagar senare — då är en stor del redan borta." },
+      { title: "Gammal innan du öppnar den", text: "Polyfenoler bleknar med tid, ljus och värme. En flaska efter ett år i transport och på hyllan har långt mindre än pressdagen — även om den en gång var polyfenolrik." },
+    ],
+    footnote: (
+      <p>
+        Om siffrorna: felfrekvensen på ~80 % speglar mycket citerade oberoende tester av snabbköpens ”extra jungfru”-oljor; den mest rigorösa offentliga studien, det{" "}
+        <a href={UC_DAVIS} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>UC&nbsp;Davis Olive Center (2010–11)</a>, fann att 69 % av de importerade proverna underkändes. ”Låg på polyfenoler” mäts mot EU:s gräns på 250 mg/kg (
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>Förord.&nbsp;(EU)&nbsp;432/2012</a>).
+      </p>
+    ),
+  },
+  compounds: {
+    eyebrow: "Vad som finns i",
+    heading: "Ämnena som gör skillnad",
+    leadIn: (
+      <>
+        ”Polyfenoler” är ett samlingsbegrepp. Tre ämnen gör det mesta av jobbet — och en genomsnittlig snabbköpsolja innehåller knappt något av dem. Siffrorna nedan kommer från vår Coratina.
+      </>
+    ),
+    items: [
+      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk förening vars effekt jämförts med ibuprofen — och källan till det peppriga kittlandet längst bak i halsen.", proof: "471 mg/kg", sub: "i vår Coratina · typisk EVOO <10" },
+      { name: "Oleacein", icon: ICON.olive, does: "En kraftfull antioxidant studerad för blodtrycksreglering och skydd av hjärt-kärlsystemet.", proof: "336 mg/kg", sub: "i vår Coratina · typisk EVOO <40" },
+      { name: "Hydroxityrosol", icon: ICON.flask, does: "En av de mest studerade antioxidanterna i oliv — och exakt den förening EU formulerar sitt hälsopåstående kring.", proof: "grund för EU:s hälsopåstående", sub: "≥250 mg/kg hydroxityrosol & derivat" },
+    ],
+  },
+  science: {
+    eyebrow: "Vad forskningen säger",
+    heading: "Varför höga polyfenoler lönar sig",
+    intro: "Att en polyfenolrik olivolja är värd sitt pris handlar inte bara om smak. Tre fynd, vart och ett från en primärkälla — inte en hälsoblogg.",
+    evidence: [
+      { claim: "Den skyddar ditt kolesterol från oxidation", body: "Olivoljans polyfenoler hjälper till att skydda blodfetter (LDL) mot oxidativ skada — den enda olivoljenytta EU formellt godkänt, endast för oljor med minst 5 mg hydroxityrosol per 20 g (≈250 mg/kg).", source: "Förord. (EU) 432/2012 (EFSA)", href: EUR_LEX },
+      { claim: "Den är antiinflammatorisk, som en mikrodos ibuprofen", body: "Oleocanthal — ämnet bakom det peppriga halssticket — visade sig hämma samma COX-1- och COX-2-enzymer som ibuprofen. Cirka 50 g av en oleocanthalrik olja ger ungefär en tiondel av en ibuprofendos.", source: "Beauchamp et al., Nature (2005)", href: "https://www.nature.com/articles/437045a" },
+      { claim: "Den är kärnan i den bäst belagda hjärtvänliga kosten", body: "I PREDIMED-studien kopplades en medelhavskost rik på extra jungfruolja (~50 ml/dag) till omkring 30 % färre allvarliga hjärt-kärlhändelser hos högriskvuxna än en fettsnål kost.", source: "Estruch et al., NEJM (2018)", href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389" },
+    ],
+    disclaimer: "ATTIMO är ett livsmedel, inte ett läkemedel. Polyfenolhalter mäts i labb per parti; hälsokontexten ovan bygger på den publicerade forskning som länkas vid varje punkt. Detta är ingen medicinsk rådgivning, och individuella resultat varierar.",
+  },
+  labReceipts: {
+    heading: "Ta inte bara vårt ord för det",
+    intro: "Varje parti skickas till ett oberoende labb. Här är de fullständiga rapporterna bakom siffrorna på den här sidan — ladda ner och kontrollera själv.",
+  },
+  kleia: {
+    heading: "Varför våra polyfenoler håller sig höga",
+    intro: "Höga siffror är ingen tur. De kommer från några medvetna val — tidig skörd, sortren, pressad och tappad färsk — precis det som industriolja hoppar över för att kunna skala.",
+  },
+  faq: {
+    heading: "FAQ om polyfenolrik olivolja",
+    items: [
+      { question: "Vad är polyfenolrik olivolja?", answer: "Polyfenolrik olivolja är extra jungfruolja med en ovanligt hög koncentration av polyfenoler — olivens naturliga antioxidanter. Det finns ingen enhetlig laglig gräns, men oljor över EU:s hälsopåståendenivå (250 mg/kg) anses generellt polyfenolrika. ATTIMOs sortiment ligger på 400–900 mg/kg." },
+      { question: "Hur mycket polyfenoler bör olivolja innehålla?", answer: "En typisk snabbköpsolja ligger runt 100–300 mg/kg. EU tillåter ett hälsopåstående från 250 mg/kg. Oljor som räknas som polyfenolrika börjar runt 400 mg/kg. ATTIMO-oljor är labbtestade till 400–900 mg/kg beroende på sort." },
+      { question: "Vilken olivolja har mest polyfenoler?", answer: "I vårt sortiment är Coratina d'Italia högst med 847 mg/kg, följd av Picual de España med 675 mg/kg och Nocellara d'Italia med 400 mg/kg. Coratina är av naturen en av världens mest polyfenolrika olivsorter." },
+      { question: "Påverkar polyfenoler smaken?", answer: "Ja, direkt. Polyfenoler står för skärpan, beskan och den gröna pikanten i färsk olivolja — det peppriga sticket i halsen kommer till stor del från oleocanthal." },
+      { question: "Hur bevaras höga polyfenoler?", answer: "Tidig skörd, sortren pressning inom några timmar efter plockning, och färsk tappning av den senaste skörden. Polyfenoler bryts ner av värme, ljus, syre och tid — därför kallpressar vi och skickar strax efter skörd." },
+      { question: "Är polyfenolrik olivolja ekologisk?", answer: "Vår Coratina är ekologiskt certifierad. För de övriga satsar vi på skonsam odling, tidig skörd och labbtestad kvalitet, och håller varje olja till samma standard." },
+    ],
+  },
+  blogHeading: "Läs mer om polyfenoler",
+};
+
+// ───────────────────────────── DANSK (REVIEW) ─────────────────────────────
+const da: HubContent = {
+  meta: {
+    title: "Polyfenolrig Olivenolie | Labtestet 400–900 mg/kg",
+    description:
+      "Køb polyfenolrig olivenolie, labtestet til 400–900 mg/kg — tre enkeltsorts, polyfenolrige ekstra jomfruolier rangeret efter polyfenolindhold. Fra 170 kr.",
+  },
+  hero: {
+    eyebrow: "Kategori · Ekstra Jomfru Olivenolie",
+    h1: "Polyfenolrig Olivenolie",
+    subPre: "Enkeltsorts, tidligt høstet ekstra jomfruolie — rangeret efter det, der betyder mest: en ",
+    subAccent: "polyfenolrig",
+    subPost: " profil, du kan smage — og verificere i laboratoriet.",
+    cta: "Se sortimentet →",
+  },
+  range: {
+    heading: "Køb frisk høst",
+    subtitle:
+      "Alle tre er ægte polyfenolrige — forskellen er smag og intensitet. Vælg efter smag, eller tag testen for at finde dit match.",
+    quizPrompt: "Usikker på, hvilken du skal vælge?",
+  },
+  scale: {
+    heading: "Hvor meget polyfenol bør olivenolie indeholde?",
+    intro:
+      "Der er intet lovpligtigt minimum — men der er pejlemærker. Nedenfor ser du, hvor en typisk supermarkedsflaske lander, hvor EU trækker sin grænse for sundhedsanprisning, hvor den kendte Blueprint-olie ligger, og hvor ATTIMOs sortiment falder.",
+    cards: [
+      { content: "Polyfenoler er antioxidanterne bag olivenoliens sundhedsry.", content2: "De er også det, der gør en frisk olie bitter og peberagtig — smag og gavn kommer fra samme kilde." },
+      { content: "Indholdet er højest i tidligt høstede oliven og begynder at falde i samme øjeblik, olien tappes.", content2: "Varme, lys, alder og blanding trækker alle tallet ned — derfor når de fleste flasker aldrig et højt niveau." },
+      { content: "Over 250 mg/kg tillader EU en dokumenteret sundhedsanprisning.", content2: "ATTIMOs olier ligger på 400–900 mg/kg — hver flaske klarer grænsen med god margin." },
+    ],
+    citation: (
+      <>
+        EU's grænse for sundhedsanprisning på 250 mg/kg stammer fra kravet om 5 mg hydroxytyrosol og derivater pr. 20 g olie i henhold til{" "}
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={refLink}>Forordning (EU) nr.&nbsp;432/2012</a>. Pejlemærket 400 mg/kg er Blueprint-niveauet, som Bryan Johnson har gjort kendt.
+      </>
+    ),
+  },
+  problem: {
+    heading: "Hvorfor polyfenolrig ekstra jomfruolie er så svær at finde",
+    intro: "Ordene ”ekstra jomfru” siger intet om polyfenoler — og passer ofte ikke engang. Her er gabet, og de tre grunde til, at supermarkedsolie lander så lavt.",
+    args: [
+      { title: "Blandet for holdbarhed, ikke polyfenoler", text: "Industriolie blandes på tværs af lande og høster for en billig, neutral og ensartet smag. Blanding og skala udvander netop de friskpressede polyfenoler, der gør olie bitter, peberagtig og sund." },
+      { title: "Plukket sent, presset langsomt", text: "Polyfenoler er højest i unge, grønne oliven. Storproducenter høster sent for højere udbytte og presser timer eller dage senere — dér er en stor del allerede væk." },
+      { title: "Gammel, før du åbner den", text: "Polyfenoler falmer med tid, lys og varme. En flaske efter et år i transport og på hylden har langt mindre end pressedagen — selv hvis den engang var polyfenolrig." },
+    ],
+    footnote: (
+      <p>
+        Om tallene: fejlraten på ~80 % afspejler ofte citerede uafhængige test af supermarkedernes ”ekstra jomfru”-olier; den mest rigorøse offentlige undersøgelse, det{" "}
+        <a href={UC_DAVIS} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>UC&nbsp;Davis Olive Center (2010–11)</a>, fandt, at 69 % af de importerede prøver blev underkendt. ”Lav på polyfenoler” måles mod EU's grænse på 250 mg/kg (
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>Forord.&nbsp;(EU)&nbsp;432/2012</a>).
+      </p>
+    ),
+  },
+  compounds: {
+    eyebrow: "Hvad der er i",
+    heading: "Stofferne, der gør forskellen",
+    leadIn: (
+      <>
+        ”Polyfenoler” er et samlebegreb. Tre stoffer gør det meste af arbejdet — og en gennemsnitlig supermarkedsolie indeholder næsten intet af dem. Tallene nedenfor kommer fra vores Coratina.
+      </>
+    ),
+    items: [
+      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk forbindelse, hvis effekt er sammenlignet med ibuprofen — og kilden til det peberagtige kildren bagest i halsen.", proof: "471 mg/kg", sub: "i vores Coratina · typisk EVOO <10" },
+      { name: "Oleacein", icon: ICON.olive, does: "En kraftfuld antioxidant undersøgt for blodtryksregulering og beskyttelse af hjerte-kar-systemet.", proof: "336 mg/kg", sub: "i vores Coratina · typisk EVOO <40" },
+      { name: "Hydroxytyrosol", icon: ICON.flask, does: "En af de mest studerede antioxidanter i oliven — og præcis den forbindelse, EU formulerer sin sundhedsanprisning omkring.", proof: "grundlag for EU's anprisning", sub: "≥250 mg/kg hydroxytyrosol & derivater" },
+    ],
+  },
+  science: {
+    eyebrow: "Hvad videnskaben siger",
+    heading: "Hvorfor høje polyfenoler betaler sig",
+    intro: "At en polyfenolrig olivenolie er prisen værd, handler ikke kun om smag. Tre fund, hvert fra en primærkilde — ikke en wellnessblog.",
+    evidence: [
+      { claim: "Den beskytter dit kolesterol mod oxidation", body: "Olivenoliens polyfenoler hjælper med at beskytte blodfedt (LDL) mod oxidativ skade — den eneste olivenoliegavn, EU formelt har godkendt, kun for olier med mindst 5 mg hydroxytyrosol pr. 20 g (≈250 mg/kg).", source: "Forord. (EU) 432/2012 (EFSA)", href: EUR_LEX },
+      { claim: "Den er antiinflammatorisk, som en mikrodosis ibuprofen", body: "Oleocanthal — stoffet bag det peberagtige halsstik — viste sig at hæmme de samme COX-1- og COX-2-enzymer som ibuprofen. Omkring 50 g af en oleocanthalrig olie giver cirka en tiendedel af en ibuprofendosis.", source: "Beauchamp et al., Nature (2005)", href: "https://www.nature.com/articles/437045a" },
+      { claim: "Den er kernen i den bedst dokumenterede hjertevenlige kost", body: "I PREDIMED-forsøget blev en middelhavskost rig på ekstra jomfruolie (~50 ml/dag) forbundet med omkring 30 % færre alvorlige hjerte-kar-hændelser hos højrisikovoksne end en fedtfattig kost.", source: "Estruch et al., NEJM (2018)", href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389" },
+    ],
+    disclaimer: "ATTIMO er en fødevare, ikke et lægemiddel. Polyfenolniveauer måles i laboratorium pr. parti; sundhedskonteksten ovenfor bygger på den publicerede forskning, der linkes ved hvert punkt. Dette er ikke medicinsk rådgivning, og individuelle resultater varierer.",
+  },
+  labReceipts: {
+    heading: "Tag ikke bare vores ord for det",
+    intro: "Hvert parti sendes til et uafhængigt laboratorium. Her er de fulde rapporter bag tallene på denne side — download og tjek dem selv.",
+  },
+  kleia: {
+    heading: "Hvorfor vores polyfenoler forbliver høje",
+    intro: "Høje tal er ikke held. De kommer fra nogle få bevidste valg — tidlig høst, enkeltsorts, presset og tappet frisk — netop det, industriolie springer over for at kunne skalere.",
+  },
+  faq: {
+    heading: "FAQ om polyfenolrig olivenolie",
+    items: [
+      { question: "Hvad er polyfenolrig olivenolie?", answer: "Polyfenolrig olivenolie er ekstra jomfruolie med en usædvanlig høj koncentration af polyfenoler — olivens naturlige antioxidanter. Der findes ingen enkelt lovlig grænse, men olier over EU's sundhedsanprisningsniveau (250 mg/kg) betragtes generelt som polyfenolrige. ATTIMOs sortiment ligger på 400–900 mg/kg." },
+      { question: "Hvor meget polyfenol bør olivenolie indeholde?", answer: "En typisk supermarkedsolie ligger omkring 100–300 mg/kg. EU tillader en sundhedsanprisning fra 250 mg/kg. Olier, der regnes som polyfenolrige, starter omkring 400 mg/kg. ATTIMO-olier er labtestet til 400–900 mg/kg afhængigt af sorten." },
+      { question: "Hvilken olivenolie har flest polyfenoler?", answer: "I vores sortiment er Coratina d'Italia højest med 847 mg/kg, efterfulgt af Picual de España med 675 mg/kg og Nocellara d'Italia med 400 mg/kg. Coratina er af natur en af verdens mest polyfenolrige olivensorter." },
+      { question: "Påvirker polyfenoler smagen?", answer: "Ja, direkte. Polyfenoler står for skarpheden, bitterheden og den grønne pikanthed i frisk olivenolie — det peberagtige stik i halsen kommer i høj grad fra oleocanthal." },
+      { question: "Hvordan bevares høje polyfenoler?", answer: "Tidlig høst, enkeltsorts presning inden for få timer efter plukning, og frisk tapning af den seneste høst. Polyfenoler nedbrydes af varme, lys, ilt og tid — derfor koldpresser vi og sender kort efter høst." },
+      { question: "Er polyfenolrig olivenolie økologisk?", answer: "Vores Coratina er økologisk certificeret. For de øvrige satser vi på skånsom dyrkning, tidlig høst og labtestet kvalitet og holder hver olie til samme standard." },
+    ],
+  },
+  blogHeading: "Læs mere om polyfenoler",
+};
+
+export const HUB_CONTENT: Record<"en" | "de" | "fr" | "sv" | "da", HubContent> = { en, de, fr, sv, da };
 
 // Canonical paths for each localised hub. Slugs are TRANSLATED (not just
 // prefixed) so each ranks its native keyword. Shared by the routes + the
@@ -367,6 +567,8 @@ export const HUB_SLUGS = {
   en: "/high-polyphenol-olive-oil",
   de: "/de/polyphenolreiches-olivenoel",
   fr: "/fr/huile-olive-riche-polyphenols",
+  sv: "/se/polyfenolrik-olivolja",
+  da: "/dk/polyfenolrig-olivenolie",
 } as const;
 
 // hreflang cluster shared by every localised hub page. Only list a locale once
@@ -375,5 +577,7 @@ export const HUB_HREFLANGS = [
   { hreflang: "en", href: HUB_ORIGIN + HUB_SLUGS.en },
   { hreflang: "de", href: HUB_ORIGIN + HUB_SLUGS.de },
   { hreflang: "fr", href: HUB_ORIGIN + HUB_SLUGS.fr },
+  { hreflang: "sv", href: HUB_ORIGIN + HUB_SLUGS.sv },
+  { hreflang: "da", href: HUB_ORIGIN + HUB_SLUGS.da },
   { hreflang: "x-default", href: HUB_ORIGIN + HUB_SLUGS.en },
 ];

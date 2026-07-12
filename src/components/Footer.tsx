@@ -40,6 +40,10 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
       ? [{ label: "Polyphenolreiches Olivenöl", href: "/de/polyphenolreiches-olivenoel" }]
       : locale.lang === "fr"
         ? [{ label: "Huile d'Olive Riche en Polyphénols", href: "/fr/huile-olive-riche-polyphenols" }]
+        : locale.lang === "sv"
+        ? [{ label: "Polyfenolrik Olivolja", href: "/se/polyfenolrik-olivolja" }]
+        : locale.lang === "da"
+        ? [{ label: "Polyfenolrig Olivenolie", href: "/dk/polyfenolrig-olivenolie" }]
         : locale.lang === "en"
           ? [
               { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },

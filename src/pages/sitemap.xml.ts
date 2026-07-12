@@ -33,6 +33,8 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   // each page's <head> via HUB_HREFLANGS).
   { loc: "/de/polyphenolreiches-olivenoel", changefreq: "weekly", priority: "0.9" },
   { loc: "/fr/huile-olive-riche-polyphenols", changefreq: "weekly", priority: "0.9" },
+  { loc: "/se/polyfenolrik-olivolja", changefreq: "weekly", priority: "0.9" },
+  { loc: "/dk/polyfenolrig-olivenolie", changefreq: "weekly", priority: "0.9" },
   { loc: "/early-harvest-olive-oil", changefreq: "weekly", priority: "0.9" },
   { loc: "/merch", changefreq: "weekly", priority: "0.7" },
   { loc: "/blog", changefreq: "weekly", priority: "0.8" },
