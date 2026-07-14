@@ -6,6 +6,7 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
+import { OilComparison } from "@/components/OilComparison";
 import { KleiaWay } from "@/components/KleiaWay";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ, type FaqItem } from "@/components/FAQ";
@@ -131,12 +132,12 @@ function RipenessSpectrum() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-12">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             The Timing
           </p>
-          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(2rem, 3.5vw, 3.7rem)", lineHeight: 1.0 }}>
-            What "early harvest" actually means
+          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
+            What "early harvest" means
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: GREEN, opacity: 0.75, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
             An olive changes as it ripens — green, then purple, then black — and so does the oil it makes. Pick early,
@@ -163,8 +164,16 @@ function RipenessSpectrum() {
               </div>
             ))}
           </div>
-          <div className="mt-6 w-fit mx-auto flex items-center gap-2 rounded-full px-4 py-2" style={{ backgroundColor: GREEN }}>
-            <span style={{ fontFamily: UDC, color: ACCENT, fontSize: "clamp(0.8rem, 1vw, 1rem)", letterSpacing: "0.06em" }}>↑ ATTIMO picks here — green &amp; early</span>
+          {/* Marker sits under the GREEN third (left) — an annotation pointing at
+              the bar, not a button. We pick green/early, never the turning phase. */}
+          <div className="mt-3 grid grid-cols-3">
+            <div className="flex flex-col items-start leading-tight">
+              <span aria-hidden="true" style={{ fontFamily: UDC, color: GREEN, fontSize: "1.35rem", lineHeight: 1 }}>↑</span>
+              <span className="uppercase" style={{ fontFamily: UDC, color: GREEN, fontWeight: 700, fontSize: "clamp(0.72rem, 0.9vw, 0.92rem)", letterSpacing: "0.08em" }}>
+                ATTIMO picks here
+              </span>
+              <span style={{ fontFamily: SG, color: GREEN, opacity: 0.6, fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)" }}>green &amp; early</span>
+            </div>
           </div>
         </div>
       </div>
@@ -174,21 +183,23 @@ function RipenessSpectrum() {
 
 // ── 5. WHAT EARLY HARVEST TASTES LIKE — the sensory heart. Three oils placed
 // on a gentle→bold intensity track.
+// pos values are the centres of the three equal-width label columns below
+// (grid-cols-3 → 1/6, 1/2, 5/6) so each dot sits exactly above its label.
 const TASTE_OILS = [
-  { name: "Nocellara", note: "Gentle & fruity", pos: 22 },
-  { name: "Picual", note: "Green & grassy", pos: 55 },
-  { name: "Coratina", note: "Bold & punchy", pos: 84 },
+  { name: "Nocellara", note: "Gentle & fruity", pos: 16.667 },
+  { name: "Picual", note: "Green & grassy", pos: 50 },
+  { name: "Coratina", note: "Bold & punchy", pos: 83.333 },
 ];
 
 function TasteSection() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             The Taste
           </p>
-          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(2rem, 3.5vw, 3.7rem)", lineHeight: 1.0 }}>
+          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
             What early harvest tastes like
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
@@ -210,9 +221,9 @@ function TasteSection() {
           <div className="flex justify-between mt-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, fontSize: "clamp(0.72rem, 0.9vw, 0.9rem)", letterSpacing: "0.08em" }}>
             <span>GENTLE</span><span>BOLD</span>
           </div>
-          <div className="grid grid-cols-3 gap-4 mt-6">
+          <div className="grid grid-cols-3 mt-6">
             {TASTE_OILS.map((o) => (
-              <div key={o.name} className="text-center">
+              <div key={o.name} className="text-center px-2">
                 <div style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.1rem, 1.6vw, 1.6rem)" }}>{o.name}</div>
                 <div className="uppercase" style={{ fontFamily: UDC, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.68rem, 0.85vw, 0.85rem)", letterSpacing: "0.08em" }}>{o.note}</div>
               </div>
@@ -224,29 +235,124 @@ function TasteSection() {
   );
 }
 
-// ── 6. FRESHNESS — the "always the latest harvest" angle.
+// ── 6. FRESHNESS — the "always the latest harvest" angle, paired with a
+// freshness-decay chart so the section carries a visual, not just text.
 function FreshnessSection() {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: DEEP_GREEN }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            The Catch
+        <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center max-w-5xl mx-auto">
+          {/* Copy */}
+          <div>
+            <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
+              The Catch
+            </p>
+            <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
+              It only works fresh
+            </h2>
+            <p className="leading-relaxed mb-6" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.2vw, 1.25rem)" }}>
+              Everything early harvest gives you — the green intensity, the aroma, the polyphenols — starts fading the day
+              the oil is bottled. A great early-harvest oil that's sat in transit and on a shelf for a year has quietly
+              become an ordinary one. Freshness isn't a nice-to-have here; it's the whole product.
+            </p>
+            <p className="leading-relaxed" style={{ fontFamily: SG, color: CREAM, fontSize: "clamp(1.05rem, 1.3vw, 1.35rem)", fontWeight: 500 }}>
+              So we do the one thing that keeps it honest: <span style={{ color: AMBER }}>we only ever sell the latest
+              harvest.</span> When this year's is gone, we wait for the next — rather than shipping you last year's oil
+              dressed up as fresh.
+            </p>
+          </div>
+
+          {/* Freshness-decay chart */}
+          <div className="rounded-2xl p-6 md:p-7" style={{ backgroundColor: "rgba(255,250,234,0.04)", border: "1px solid rgba(255,250,234,0.12)" }}>
+            <p className="uppercase mb-4" style={{ fontFamily: UDC, color: "rgba(255,250,234,0.7)", letterSpacing: "0.14em", fontSize: "clamp(0.68rem, 0.85vw, 0.82rem)" }}>
+              Polyphenols fade after pressing
+            </p>
+            <svg viewBox="0 0 420 220" className="w-full h-auto" role="img" aria-label="Chart: an oil's polyphenol content is highest when just pressed and falls over time, dropping below the EU health-claim level and continuing to decline across a year on the shelf.">
+              <defs>
+                <linearGradient id="ehdecay" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#B3E58C" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#B3E58C" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183 L400,198 L30,198 Z" fill="url(#ehdecay)" />
+              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183" fill="none" stroke="#B3E58C" strokeWidth="3" strokeLinecap="round" />
+              <line x1="30" y1="150" x2="400" y2="150" stroke="#FFFAEA" strokeOpacity="0.4" strokeWidth="1.5" strokeDasharray="5 5" />
+              <text x="34" y="144" fill="#FFFAEA" fillOpacity="0.7" fontFamily={SG} fontSize="11">EU health-claim level</text>
+              <circle cx="30" cy="42" r="5" fill="#CDDB2D" />
+              <text x="42" y="35" fill="#CDDB2D" fontFamily={UDC} fontSize="12">Fresh — just pressed</text>
+              <text x="398" y="176" fill="#FFFAEA" fillOpacity="0.55" fontFamily={SG} fontSize="11" textAnchor="end">…ordinary oil</text>
+              <text x="30" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11">Pressed</text>
+              <text x="400" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11" textAnchor="end">~1 year on the shelf</text>
+            </svg>
+            <p className="mt-4" style={{ fontFamily: SG, color: "rgba(255,250,234,0.5)", fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)", lineHeight: 1.5 }}>
+              Illustrative. Decline steepens with light and heat; we ship at the left of this curve.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── 6b. THE EVIDENCE — early-harvest-specific, peer-reviewed sources (distinct
+// from the high-polyphenol hub's EFSA/Nature/PREDIMED trio). Peak → trade-off →
+// perishable, mapping to the page's ripeness / economics / freshness spine.
+const EVIDENCE = [
+  {
+    claim: "Polyphenols peak in green olives — then fall as the fruit ripens",
+    body: "Phenolic content is highest in young, green fruit and drops steadily through ripening as oleuropein, the parent compound, breaks down. Studies across Spanish, Iranian and Italian cultivars all find early-picked oils carry markedly more total polyphenols than the same trees harvested weeks later.",
+    source: "Fruit maturity & polyphenols — Food Sci. & Nutrition (2023)",
+    href: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10494621/",
+  },
+  {
+    claim: "Less oil, more of what matters — the trade-off that sets the price",
+    body: "Riper olives hold more oil but fewer bioactives; the two move in opposite directions. Early harvest deliberately takes the low-yield, high-polyphenol side of that curve — roughly half the oil per kilo of fruit — which is exactly why it costs more per bottle.",
+    source: "Oil accumulation vs. bioactive retention — Foods, MDPI (2026)",
+    href: "https://doi.org/10.3390/foods15040726",
+  },
+  {
+    claim: "It's perishable — freshness is the whole product",
+    body: "Even a great early-harvest oil doesn't keep. Under light, extra virgin olive oil can fall below the EU's health-claim polyphenol level within about three months; even stored dark it loses a large share of its phenolics over a year, with the steepest drop in the first months after pressing.",
+    source: "Phenolic loss in storage — Food Chemistry (2021)",
+    href: "https://www.sciencedirect.com/science/article/abs/pii/S0308814620315922",
+  },
+];
+
+function EarlyHarvestScience() {
+  return (
+    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
+      <div className="container mx-auto px-6">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
+          <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
+            The Evidence
           </p>
-          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2rem, 3.5vw, 3.7rem)", lineHeight: 1.0 }}>
-            It only works fresh
+          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
+            What the research shows
           </h2>
-          <p className="leading-relaxed mb-6" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            Everything early harvest gives you — the green intensity, the aroma, the polyphenols — starts fading the day
-            the oil is bottled. A great early-harvest oil that's sat in transit and on a shelf for a year has quietly
-            become an ordinary one. Freshness isn't a nice-to-have here; it's the whole product.
-          </p>
-          <p className="leading-relaxed" style={{ fontFamily: SG, color: CREAM, fontSize: "clamp(1.1rem, 1.4vw, 1.45rem)", fontWeight: 500 }}>
-            So we do the one thing that keeps it honest: <span style={{ color: AMBER }}>we only ever sell the latest
-            harvest.</span> When this year's is gone, we wait for the next — rather than shipping you last year's oil
-            dressed up as fresh.
+          <p className="leading-relaxed" style={{ fontFamily: SG, color: GREEN, opacity: 0.75, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
+            Early harvest isn't a marketing story — it's measurable. Three findings, each from peer-reviewed olive science.
           </p>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+          {EVIDENCE.map((e) => (
+            <div key={e.claim} className="rounded-2xl p-7 flex flex-col text-left" style={{ backgroundColor: GREEN }}>
+              <h3 className="mb-3" style={{ fontFamily: UDC, color: LIME, fontSize: "clamp(1.25rem, 1.6vw, 1.6rem)", lineHeight: 1.1 }}>
+                {e.claim}
+              </h3>
+              <p className="mb-5 leading-relaxed flex-grow" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)" }}>
+                {e.body}
+              </p>
+              <a href={e.href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:opacity-80 transition-opacity" style={{ fontFamily: UDC, color: ACCENT, fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.04em" }}>
+                {e.source} ↗
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 md:mt-10 max-w-3xl mx-auto text-center leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
+          Findings are drawn from the peer-reviewed studies linked beside each point; ATTIMO's own per-batch lab numbers are below. Context, not medical advice.
+        </p>
       </div>
     </section>
   );
@@ -374,29 +480,35 @@ function EarlyHarvestInner({ initialPosts }: { initialPosts?: InitialPost[] }) {
         }
       />
 
-      {/* 5 — WHAT IT TASTES LIKE */}
+      {/* HOW EARLY HARVEST COMPARES (us vs supermarket) */}
+      <OilComparison locale={locale} />
+
+      {/* WHAT IT TASTES LIKE */}
       <TasteSection />
 
-      {/* 6 — FRESHNESS */}
-      <FreshnessSection />
-
-      {/* 7 — HEALTH TIE-IN → high-polyphenol hub */}
-      <HealthTieIn />
-
-      {/* 8 — PROOF */}
-      <FreshnessProof />
-
-      {/* 9 — HOW WE HARVEST (process) */}
+      {/* HOW WE HARVEST — moved up: an image grid that breaks the text-heavy run */}
       <KleiaWay
         locale={locale}
         heading="How we harvest"
         intro="Picked green in October, from a single variety, and cold-pressed within hours — then bottled fresh and shipped while it's still this year's oil."
       />
 
+      {/* THE EVIDENCE (sourced, early-harvest-specific) */}
+      <EarlyHarvestScience />
+
+      {/* FRESHNESS (copy + freshness-decay chart) */}
+      <FreshnessSection />
+
+      {/* PROOF — lab reports */}
+      <FreshnessProof />
+
+      {/* HEALTH TIE-IN → high-polyphenol hub (cross-sell band before reviews) */}
+      <HealthTieIn />
+
       {/* 10 — Reviews → FAQ → blog feed → footer */}
       <Testimonials locale={locale} />
       <FAQ locale={locale} items={faqItems} heading="Early harvest olive oil FAQ" headingFontFamily={UDC} />
-      <BlogSection initialPosts={initialPosts} locale={locale} heading="Read more early harvest olive oil" />
+      <BlogSection initialPosts={initialPosts} locale={locale} heading="Read more early harvest olive oil" headingFontSize="clamp(1.9rem, 3.2vw, 3.4rem)" />
       <Footer locale={locale} />
 
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />

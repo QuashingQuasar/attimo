@@ -22,9 +22,12 @@ interface BlogSectionProps {
   locale?: Locale;
   /** Override the section heading (default: dictionary "The Olive Press"). */
   heading?: string;
+  /** Override the heading font-size (for long custom headings that would
+   *  otherwise wrap the big cursive default to two lines). */
+  headingFontSize?: string;
 }
 
-export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading }: BlogSectionProps = {}) => {
+export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, headingFontSize }: BlogSectionProps = {}) => {
   const t = getDict(locale).blog;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -90,7 +93,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading }: 
               className="tracking-tight leading-[0.95]"
               style={{
                 fontFamily: "Beverly Drive, cursive",
-                fontSize: "clamp(2.7rem, 5.4vw, 6.3rem)",
+                fontSize: headingFontSize ?? "clamp(2.7rem, 5.4vw, 6.3rem)",
                 color: "#1B4229"
               }}>
               {heading ?? t.heading}
