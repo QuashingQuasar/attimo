@@ -37,13 +37,25 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   // French hub ships.
   const hubLinks =
     locale.lang === "de"
-      ? [{ label: "Polyphenolreiches Olivenöl", href: "/de/polyphenolreiches-olivenoel" }]
+      ? [
+          { label: "Polyphenolreiches Olivenöl", href: "/de/polyphenolreiches-olivenoel" },
+          { label: "Frühe Ernte Olivenöl", href: "/de/fruehe-ernte-olivenoel" },
+        ]
       : locale.lang === "fr"
-        ? [{ label: "Huile d'Olive Riche en Polyphénols", href: "/fr/huile-olive-riche-polyphenols" }]
+        ? [
+            { label: "Huile d'Olive Riche en Polyphénols", href: "/fr/huile-olive-riche-polyphenols" },
+            { label: "Huile d'Olive Récolte Précoce", href: "/fr/huile-olive-recolte-precoce" },
+          ]
         : locale.lang === "sv"
-        ? [{ label: "Polyfenolrik Olivolja", href: "/se/polyfenolrik-olivolja" }]
+        ? [
+            { label: "Polyfenolrik Olivolja", href: "/se/polyfenolrik-olivolja" },
+            { label: "Tidig Skörd Olivolja", href: "/se/tidig-skord-olivolja" },
+          ]
         : locale.lang === "da"
-        ? [{ label: "Polyfenolrig Olivenolie", href: "/dk/polyfenolrig-olivenolie" }]
+        ? [
+            { label: "Polyfenolrig Olivenolie", href: "/dk/polyfenolrig-olivenolie" },
+            { label: "Tidlig Høst Olivenolie", href: "/dk/tidlig-hoest-olivenolie" },
+          ]
         : locale.lang === "en"
           ? [
               { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },

@@ -9,13 +9,14 @@ import { IndustryProblem } from "@/components/IndustryProblem";
 import { OilComparison } from "@/components/OilComparison";
 import { KleiaWay } from "@/components/KleiaWay";
 import { Testimonials } from "@/components/Testimonials";
-import { FAQ, type FaqItem } from "@/components/FAQ";
+import { FAQ } from "@/components/FAQ";
 import { BlogSection } from "@/components/BlogSection";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { DEFAULT_LOCALE } from "@/lib/i18n/config";
-import { EARLY_HARVEST_FAQS } from "@/lib/earlyHarvestContent";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { EH_CONTENT, type EHContent } from "@/lib/earlyHarvestHubContent";
+import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -41,18 +42,15 @@ const DEEP_GREEN = "#10221B";
 const UDC = "UDC Working Man Sans, sans-serif";
 const SG = "Space Grotesk, sans-serif";
 
-const faqItems: FaqItem[] = EARLY_HARVEST_FAQS.map((f) => ({ question: f.question, answer: f.answer }));
-const refLink: React.CSSProperties = { color: "inherit", textDecorationLine: "underline", textUnderlineOffset: "3px" };
-
-// ── 1. HERO — the three transparent bottles as a lineup (not a ranking here —
-// the angle is the harvest, not a number). Each framed by its flavour + origin.
+// ── 1. HERO — the three transparent bottles as a lineup (angle is the harvest,
+// not a number). Flavour labels come from localised content.
 const HERO_BOTTLES = [
-  { handle: "coratina", name: "Coratina", city: "Puglia", Flag: IT, flavour: "Bold & punchy", image: coratinaBottle, scale: 1.0 },
-  { handle: "picual", name: "Picual", city: "Jaén", Flag: ES, flavour: "Green & grassy", image: picualBottle, scale: 0.97 },
-  { handle: "nocellara", name: "Nocellara", city: "Sicily", Flag: IT, flavour: "Gentle & fruity", image: nocellaraBottle, scale: 0.97 },
+  { handle: "coratina" as const, name: "Coratina", city: "Puglia", Flag: IT, image: coratinaBottle, scale: 1.0 },
+  { handle: "picual" as const, name: "Picual", city: "Jaén", Flag: ES, image: picualBottle, scale: 0.97 },
+  { handle: "nocellara" as const, name: "Nocellara", city: "Sicily", Flag: IT, image: nocellaraBottle, scale: 0.97 },
 ];
 
-function Hero() {
+function Hero({ hero, flavours }: { hero: EHContent["hero"]; flavours: EHContent["bottleFlavours"] }) {
   return (
     <section className="relative flex flex-col overflow-hidden" style={{ backgroundColor: GREEN }}>
       <AutoplayVideo
@@ -65,14 +63,13 @@ function Hero() {
       <div className="relative z-10 container mx-auto px-6 pt-24 md:pt-28 pb-8">
         <div className="max-w-6xl mx-auto text-center">
           <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
-            Category · Extra Virgin Olive Oil
+            {hero.eyebrow}
           </p>
           <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
-            Early Harvest Olive Oil
+            {hero.h1}
           </h1>
           <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45, maxWidth: "45rem" }}>
-            Olives picked <span style={{ color: ACCENT, fontWeight: 600 }}>green and young</span>, pressed within hours — the
-            freshest, most intense, most alive olive oil there is. Single-variety, this year's harvest.
+            {hero.subPre}<span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>{hero.subPost}
           </p>
         </div>
 
@@ -81,7 +78,7 @@ function Hero() {
             href="#the-range"
             className="inline-flex items-center gap-2 px-9 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 shadow-xl"
             style={{ fontFamily: UDC, backgroundColor: ACCENT, color: GREEN, fontSize: "clamp(1rem, 1.3vw, 1.3rem)", letterSpacing: "0.05em" }}>
-            Shop this year's harvest →
+            {hero.cta}
           </a>
         </div>
 
@@ -92,7 +89,7 @@ function Hero() {
                 key={b.handle}
                 href={`/product/${b.handle}`}
                 className="group flex flex-col items-center justify-end text-center"
-                aria-label={`${b.name} — ${b.flavour}`}
+                aria-label={`${b.name} — ${flavours[b.handle]}`}
               >
                 <img
                   src={b.image}
@@ -104,7 +101,7 @@ function Hero() {
                   {b.name}
                 </span>
                 <span className="mt-1.5 uppercase" style={{ fontFamily: UDC, color: ACCENT, fontSize: "clamp(0.62rem, 0.85vw, 0.85rem)", letterSpacing: "0.1em" }}>
-                  {b.flavour}
+                  {flavours[b.handle]}
                 </span>
                 <span className="hidden sm:inline-flex items-center justify-center gap-1.5 uppercase mt-1" style={{ fontFamily: UDC, color: "rgba(255,250,234,0.55)", fontSize: "clamp(0.58rem, 0.78vw, 0.78rem)", letterSpacing: "0.12em" }}>
                   {b.city}
@@ -120,59 +117,52 @@ function Hero() {
   );
 }
 
-// ── 3. WHAT "EARLY HARVEST" MEANS — the ripeness/timing spectrum. Signature
-// visual: green (early) → purple → black (late); early = intense, fresh, less
-// oil; late = mild, more oil.
-function RipenessSpectrum() {
-  const stages = [
-    { c: "#6E8B3D", label: "Green", when: "early October" },
-    { c: "#7B5A6B", label: "Turning", when: "late October" },
-    { c: "#2A2530", label: "Black", when: "November+" },
-  ];
+// ── 3. WHAT "EARLY HARVEST" MEANS — the ripeness/timing spectrum. Colours are
+// fixed data; labels/copy come from content.
+const STAGE_COLORS = ["#6E8B3D", "#7B5A6B", "#2A2530"];
+
+function RipenessSpectrum({ c }: { c: EHContent["ripeness"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            The Timing
+            {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
-            What "early harvest" means
+            {c.heading}
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: GREEN, opacity: 0.75, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            An olive changes as it ripens — green, then purple, then black — and so does the oil it makes. Pick early,
-            while it's green, and you get less oil but far more of everything that matters: flavour, aroma and polyphenols.
-            Wait, and you get more oil but a milder, flatter one. Early harvest is the choice to pick at the green peak.
+            {c.intro}
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-between mb-2" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(0.72rem, 0.95vw, 0.95rem)", letterSpacing: "0.06em" }}>
-            <span style={{ color: "#3B6D11" }}>← more flavour · more polyphenols · less oil</span>
-            <span className="opacity-60 text-right">more oil · milder · less polyphenol →</span>
+            <span style={{ color: "#3B6D11" }}>{c.scaleLeft}</span>
+            <span className="opacity-60 text-right">{c.scaleRight}</span>
           </div>
           <div className="flex rounded-xl overflow-hidden h-14 md:h-16">
-            {stages.map((s) => (
-              <div key={s.label} className="flex-1" style={{ backgroundColor: s.c }} />
+            {c.stages.map((s, i) => (
+              <div key={s.label} className="flex-1" style={{ backgroundColor: STAGE_COLORS[i] }} />
             ))}
           </div>
           <div className="grid grid-cols-3 mt-3">
-            {stages.map((s, i) => (
+            {c.stages.map((s, i) => (
               <div key={s.label} className={i === 0 ? "text-left" : i === 1 ? "text-center" : "text-right"}>
                 <div style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(0.95rem, 1.3vw, 1.3rem)" }}>{s.label}</div>
                 <div style={{ fontFamily: SG, color: GREEN, opacity: 0.55, fontSize: "clamp(0.78rem, 0.95vw, 0.95rem)" }}>{s.when}</div>
               </div>
             ))}
           </div>
-          {/* Marker sits under the GREEN third (left) — an annotation pointing at
-              the bar, not a button. We pick green/early, never the turning phase. */}
+          {/* Marker under the GREEN third (left) — annotation, not a button. */}
           <div className="mt-3 grid grid-cols-3">
             <div className="flex flex-col items-start leading-tight">
               <span aria-hidden="true" style={{ fontFamily: UDC, color: GREEN, fontSize: "1.35rem", lineHeight: 1 }}>↑</span>
               <span className="uppercase" style={{ fontFamily: UDC, color: GREEN, fontWeight: 700, fontSize: "clamp(0.72rem, 0.9vw, 0.92rem)", letterSpacing: "0.08em" }}>
-                ATTIMO picks here
+                {c.markerLabel}
               </span>
-              <span style={{ fontFamily: SG, color: GREEN, opacity: 0.6, fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)" }}>green &amp; early</span>
+              <span style={{ fontFamily: SG, color: GREEN, opacity: 0.6, fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)" }}>{c.markerSub}</span>
             </div>
           </div>
         </div>
@@ -181,51 +171,46 @@ function RipenessSpectrum() {
   );
 }
 
-// ── 5. WHAT EARLY HARVEST TASTES LIKE — the sensory heart. Three oils placed
-// on a gentle→bold intensity track.
-// pos values are the centres of the three equal-width label columns below
-// (grid-cols-3 → 1/6, 1/2, 5/6) so each dot sits exactly above its label.
+// ── 5. WHAT EARLY HARVEST TASTES LIKE — gentle→bold intensity track. pos values
+// are the centres of the three equal-width label columns (1/6, 1/2, 5/6).
 const TASTE_OILS = [
-  { name: "Nocellara", note: "Gentle & fruity", pos: 16.667 },
-  { name: "Picual", note: "Green & grassy", pos: 50 },
-  { name: "Coratina", note: "Bold & punchy", pos: 83.333 },
+  { handle: "nocellara" as const, name: "Nocellara", pos: 16.667 },
+  { handle: "picual" as const, name: "Picual", pos: 50 },
+  { handle: "coratina" as const, name: "Coratina", pos: 83.333 },
 ];
 
-function TasteSection() {
+function TasteSection({ c }: { c: EHContent["taste"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            The Taste
+            {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
-            What early harvest tastes like
+            {c.heading}
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            Green, grassy and aromatic, with a bitterness on the tongue and a peppery catch at the back of the throat —
-            sometimes enough to make you cough. That kick isn't a flaw; it's the taste of a fresh, just-pressed oil,
-            straight from green fruit. In its first weeks, unfiltered, it's what Italians call <em>olio nuovo</em>. Our
-            three vary in intensity, but all share that living, green freshness.
+            {c.introPre}<em>{c.introEm}</em>{c.introPost}
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="relative h-1.5 rounded-full" style={{ backgroundColor: "rgba(27,66,41,0.25)" }}>
             {TASTE_OILS.map((o) => (
-              <div key={o.name} className="absolute -translate-x-1/2" style={{ left: `${o.pos}%`, top: "-7px" }}>
+              <div key={o.handle} className="absolute -translate-x-1/2" style={{ left: `${o.pos}%`, top: "-7px" }}>
                 <div className="w-4 h-4 rounded-full" style={{ backgroundColor: GREEN }} />
               </div>
             ))}
           </div>
           <div className="flex justify-between mt-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, fontSize: "clamp(0.72rem, 0.9vw, 0.9rem)", letterSpacing: "0.08em" }}>
-            <span>GENTLE</span><span>BOLD</span>
+            <span>{c.gentle}</span><span>{c.bold}</span>
           </div>
           <div className="grid grid-cols-3 mt-6">
             {TASTE_OILS.map((o) => (
-              <div key={o.name} className="text-center px-2">
+              <div key={o.handle} className="text-center px-2">
                 <div style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.1rem, 1.6vw, 1.6rem)" }}>{o.name}</div>
-                <div className="uppercase" style={{ fontFamily: UDC, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.68rem, 0.85vw, 0.85rem)", letterSpacing: "0.08em" }}>{o.note}</div>
+                <div className="uppercase" style={{ fontFamily: UDC, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.68rem, 0.85vw, 0.85rem)", letterSpacing: "0.08em" }}>{c.notes[o.handle]}</div>
               </div>
             ))}
           </div>
@@ -235,39 +220,32 @@ function TasteSection() {
   );
 }
 
-// ── 6. FRESHNESS — the "always the latest harvest" angle, paired with a
-// freshness-decay chart so the section carries a visual, not just text.
-function FreshnessSection() {
+// ── 6. FRESHNESS — copy + freshness-decay chart.
+function FreshnessSection({ c }: { c: EHContent["freshness"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: DEEP_GREEN }}>
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center max-w-5xl mx-auto">
-          {/* Copy */}
           <div>
             <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-              The Catch
+              {c.eyebrow}
             </p>
             <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
-              It only works fresh
+              {c.heading}
             </h2>
             <p className="leading-relaxed mb-6" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.2vw, 1.25rem)" }}>
-              Everything early harvest gives you — the green intensity, the aroma, the polyphenols — starts fading the day
-              the oil is bottled. A great early-harvest oil that's sat in transit and on a shelf for a year has quietly
-              become an ordinary one. Freshness isn't a nice-to-have here; it's the whole product.
+              {c.body1}
             </p>
             <p className="leading-relaxed" style={{ fontFamily: SG, color: CREAM, fontSize: "clamp(1.05rem, 1.3vw, 1.35rem)", fontWeight: 500 }}>
-              So we do the one thing that keeps it honest: <span style={{ color: AMBER }}>we only ever sell the latest
-              harvest.</span> When this year's is gone, we wait for the next — rather than shipping you last year's oil
-              dressed up as fresh.
+              {c.body2Pre}<span style={{ color: AMBER }}>{c.body2Accent}</span>{c.body2Post}
             </p>
           </div>
 
-          {/* Freshness-decay chart */}
           <div className="rounded-2xl p-6 md:p-7" style={{ backgroundColor: "rgba(255,250,234,0.04)", border: "1px solid rgba(255,250,234,0.12)" }}>
             <p className="uppercase mb-4" style={{ fontFamily: UDC, color: "rgba(255,250,234,0.7)", letterSpacing: "0.14em", fontSize: "clamp(0.68rem, 0.85vw, 0.82rem)" }}>
-              Polyphenols fade after pressing
+              {c.chart.title}
             </p>
-            <svg viewBox="0 0 420 220" className="w-full h-auto" role="img" aria-label="Chart: an oil's polyphenol content is highest when just pressed and falls over time, dropping below the EU health-claim level and continuing to decline across a year on the shelf.">
+            <svg viewBox="0 0 420 220" className="w-full h-auto" role="img" aria-label={c.chart.title}>
               <defs>
                 <linearGradient id="ehdecay" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#B3E58C" stopOpacity="0.35" />
@@ -277,15 +255,15 @@ function FreshnessSection() {
               <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183 L400,198 L30,198 Z" fill="url(#ehdecay)" />
               <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183" fill="none" stroke="#B3E58C" strokeWidth="3" strokeLinecap="round" />
               <line x1="30" y1="150" x2="400" y2="150" stroke="#FFFAEA" strokeOpacity="0.4" strokeWidth="1.5" strokeDasharray="5 5" />
-              <text x="34" y="144" fill="#FFFAEA" fillOpacity="0.7" fontFamily={SG} fontSize="11">EU health-claim level</text>
+              <text x="34" y="144" fill="#FFFAEA" fillOpacity="0.7" fontFamily={SG} fontSize="11">{c.chart.euLine}</text>
               <circle cx="30" cy="42" r="5" fill="#CDDB2D" />
-              <text x="42" y="35" fill="#CDDB2D" fontFamily={UDC} fontSize="12">Fresh — just pressed</text>
-              <text x="398" y="176" fill="#FFFAEA" fillOpacity="0.55" fontFamily={SG} fontSize="11" textAnchor="end">…ordinary oil</text>
-              <text x="30" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11">Pressed</text>
-              <text x="400" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11" textAnchor="end">~1 year on the shelf</text>
+              <text x="42" y="35" fill="#CDDB2D" fontFamily={UDC} fontSize="12">{c.chart.fresh}</text>
+              <text x="398" y="176" fill="#FFFAEA" fillOpacity="0.55" fontFamily={SG} fontSize="11" textAnchor="end">{c.chart.ordinary}</text>
+              <text x="30" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11">{c.chart.pressed}</text>
+              <text x="400" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11" textAnchor="end">{c.chart.oneYear}</text>
             </svg>
             <p className="mt-4" style={{ fontFamily: SG, color: "rgba(255,250,234,0.5)", fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)", lineHeight: 1.5 }}>
-              Illustrative. Decline steepens with light and heat; we ship at the left of this curve.
+              {c.chart.caption}
             </p>
           </div>
         </div>
@@ -294,48 +272,25 @@ function FreshnessSection() {
   );
 }
 
-// ── 6b. THE EVIDENCE — early-harvest-specific, peer-reviewed sources (distinct
-// from the high-polyphenol hub's EFSA/Nature/PREDIMED trio). Peak → trade-off →
-// perishable, mapping to the page's ripeness / economics / freshness spine.
-const EVIDENCE = [
-  {
-    claim: "Polyphenols peak in green olives — then fall as the fruit ripens",
-    body: "Phenolic content is highest in young, green fruit and drops steadily through ripening as oleuropein, the parent compound, breaks down. Studies across Spanish, Iranian and Italian cultivars all find early-picked oils carry markedly more total polyphenols than the same trees harvested weeks later.",
-    source: "Fruit maturity & polyphenols — Food Sci. & Nutrition (2023)",
-    href: "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10494621/",
-  },
-  {
-    claim: "Less oil, more of what matters — the trade-off that sets the price",
-    body: "Riper olives hold more oil but fewer bioactives; the two move in opposite directions. Early harvest deliberately takes the low-yield, high-polyphenol side of that curve — roughly half the oil per kilo of fruit — which is exactly why it costs more per bottle.",
-    source: "Oil accumulation vs. bioactive retention — Foods, MDPI (2026)",
-    href: "https://doi.org/10.3390/foods15040726",
-  },
-  {
-    claim: "It's perishable — freshness is the whole product",
-    body: "Even a great early-harvest oil doesn't keep. Under light, extra virgin olive oil can fall below the EU's health-claim polyphenol level within about three months; even stored dark it loses a large share of its phenolics over a year, with the steepest drop in the first months after pressing.",
-    source: "Phenolic loss in storage — Food Chemistry (2021)",
-    href: "https://www.sciencedirect.com/science/article/abs/pii/S0308814620315922",
-  },
-];
-
-function EarlyHarvestScience() {
+// ── 6b. THE EVIDENCE — early-harvest-specific, peer-reviewed sources.
+function EarlyHarvestScience({ c }: { c: EHContent["evidence"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
-            The Evidence
+            {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.0 }}>
-            What the research shows
+            {c.heading}
           </h2>
           <p className="leading-relaxed" style={{ fontFamily: SG, color: GREEN, opacity: 0.75, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
-            Early harvest isn't a marketing story — it's measurable. Three findings, each from peer-reviewed olive science.
+            {c.intro}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
-          {EVIDENCE.map((e) => (
+          {c.items.map((e) => (
             <div key={e.claim} className="rounded-2xl p-7 flex flex-col text-left" style={{ backgroundColor: GREEN }}>
               <h3 className="mb-3" style={{ fontFamily: UDC, color: LIME, fontSize: "clamp(1.25rem, 1.6vw, 1.6rem)", lineHeight: 1.1 }}>
                 {e.claim}
@@ -351,31 +306,30 @@ function EarlyHarvestScience() {
         </div>
 
         <p className="mt-8 md:mt-10 max-w-3xl mx-auto text-center leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
-          Findings are drawn from the peer-reviewed studies linked beside each point; ATTIMO's own per-batch lab numbers are below. Context, not medical advice.
+          {c.footnote}
         </p>
       </div>
     </section>
   );
 }
 
-// ── 7. HEALTH TIE-IN → the high-polyphenol hub (one tight block, no re-tread).
-function HealthTieIn() {
+// ── 7. HEALTH TIE-IN → the (localised) high-polyphenol hub.
+function HealthTieIn({ c, hubHref }: { c: EHContent["healthTieIn"]; hubHref: string }) {
   return (
     <section className="py-12 md:py-16" style={{ backgroundColor: ACCENT }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-3 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.6rem, 2.6vw, 2.6rem)", lineHeight: 1.1 }}>
-            Picking early is also why it's the healthiest
+            {c.heading}
           </h2>
           <p className="mb-6 mx-auto leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.8)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", maxWidth: "42rem" }}>
-            Polyphenols — the antioxidants behind olive oil's health reputation — peak in green, early-harvested olives.
-            The harvest choice and the health benefit are the same decision.
+            {c.body}
           </p>
           <a
-            href="/high-polyphenol-olive-oil"
+            href={hubHref}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105"
             style={{ fontFamily: UDC, backgroundColor: GREEN, color: CREAM, fontSize: "clamp(1rem, 1.2vw, 1.2rem)", letterSpacing: "0.03em" }}>
-            See our high-polyphenol range →
+            {c.cta}
           </a>
         </div>
       </div>
@@ -390,17 +344,16 @@ const LAB_REPORTS = [
   { variety: "Nocellara", href: "/lab/Nocellara2025.pdf" },
 ];
 
-function FreshnessProof() {
+function FreshnessProof({ c }: { c: EHContent["proof"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="mb-4 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3.2vw, 3.4rem)", lineHeight: 1.05 }}>
-            Freshness you can check
+            {c.heading}
           </h2>
           <p className="mb-9 mx-auto leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.7)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", maxWidth: "42rem" }}>
-            Careful early harvest shows up in the numbers — low acidity (from intact, quickly-pressed fruit) and low
-            peroxides (from minimal oxidation). Every batch is third-party tested; here are the full reports.
+            {c.intro}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {LAB_REPORTS.map((r) => (
@@ -411,7 +364,7 @@ function FreshnessProof() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-lg font-semibold transition-transform duration-300 hover:scale-105"
                 style={{ fontFamily: UDC, backgroundColor: GREEN, color: CREAM, fontSize: "clamp(1rem, 1.2vw, 1.2rem)", letterSpacing: "0.03em" }}>
-                <Beaker size={18} /> {r.variety} lab report
+                <Beaker size={18} /> {r.variety} {c.reportSuffix}
               </a>
             ))}
           </div>
@@ -421,94 +374,55 @@ function FreshnessProof() {
   );
 }
 
-function EarlyHarvestInner({ initialPosts }: { initialPosts?: InitialPost[] }) {
+function EarlyHarvestInner({ initialPosts, locale }: { initialPosts?: InitialPost[]; locale: Locale }) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const locale = DEFAULT_LOCALE;
+  const content = EH_CONTENT[locale.lang];
+  const hubHref = HUB_SLUGS[locale.lang];
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
 
-      {/* 1 — HERO */}
-      <Hero />
+      <Hero hero={content.hero} flavours={content.bottleFlavours} />
 
-      {/* 2 — THE RANGE */}
       <OilProductWidgets
         locale={locale}
         sectionId="the-range"
         headingFontFamily={UDC}
-        heading="This year's harvest"
-        subtitle="Three single-variety oils, all pressed from this season's early, green-picked olives. Pick by taste, or take the quiz to find your match."
-        quizPrompt="Not sure which one to pick?"
+        heading={content.range.heading}
+        subtitle={content.range.subtitle}
+        quizPrompt={content.range.quizPrompt}
       />
 
-      {/* 3 — WHAT EARLY HARVEST MEANS (ripeness spectrum) */}
-      <RipenessSpectrum />
+      <RipenessSpectrum c={content.ripeness} />
 
-      {/* 4 — THE ECONOMICS: why almost no one does it */}
       <IndustryProblem
         locale={locale}
-        heading="Why early-harvest olive oil is rare — and costs more"
-        intro="Early harvest isn't a marketing word; it's an economic sacrifice most producers won't make. Here's the maths, and why the industry picks late instead."
-        stat1={{
-          value: "~½",
-          text: "the oil green, early-harvested olives give versus fully ripe ones — so it takes about twice the fruit to fill a bottle.",
-        }}
-        stat2={{
-          value: "October",
-          text: "the short early window when the fruit is still green and at its peak. The industry waits for yield; we don't.",
-        }}
-        args={[
-          {
-            title: "Green olives give less oil",
-            text: "Ripe black olives are fat with oil; green ones aren't. Early harvest trades yield for quality — roughly half the oil per kilo of fruit, which is exactly why it costs more per bottle.",
-          },
-          {
-            title: "A short, careful window",
-            text: "The green window lasts weeks, and firm early fruit has to be picked and pressed fast to avoid bruising and oxidation. More care, less oil, higher cost — the opposite of how commodity oil is made.",
-          },
-          {
-            title: "Volume wins at scale",
-            text: "Mass producers pick late and mechanically, when olives are heavy with oil, then blend for a cheap, neutral, consistent taste. Early harvest is the deliberate choice not to.",
-          },
-        ]}
-        footnote={
-          <p>
-            On the maths: green, early-picked olives contain less oil than fully ripe ones — roughly half — so it takes
-            about twice the fruit to fill a bottle. That yield gap is the core economics behind early-harvest pricing.
-          </p>
-        }
+        heading={content.problem.heading}
+        intro={content.problem.intro}
+        stat1={content.problem.stat1}
+        stat2={content.problem.stat2}
+        args={content.problem.args}
+        footnote={<p>{content.problem.footnote}</p>}
       />
 
-      {/* HOW EARLY HARVEST COMPARES (us vs supermarket) */}
       <OilComparison locale={locale} />
 
-      {/* WHAT IT TASTES LIKE */}
-      <TasteSection />
+      <TasteSection c={content.taste} />
 
-      {/* HOW WE HARVEST — moved up: an image grid that breaks the text-heavy run */}
-      <KleiaWay
-        locale={locale}
-        heading="How we harvest"
-        intro="Picked green in October, from a single variety, and cold-pressed within hours — then bottled fresh and shipped while it's still this year's oil."
-      />
+      <KleiaWay locale={locale} heading={content.harvest.heading} intro={content.harvest.intro} />
 
-      {/* THE EVIDENCE (sourced, early-harvest-specific) */}
-      <EarlyHarvestScience />
+      <EarlyHarvestScience c={content.evidence} />
 
-      {/* FRESHNESS (copy + freshness-decay chart) */}
-      <FreshnessSection />
+      <FreshnessSection c={content.freshness} />
 
-      {/* PROOF — lab reports */}
-      <FreshnessProof />
+      <FreshnessProof c={content.proof} />
 
-      {/* HEALTH TIE-IN → high-polyphenol hub (cross-sell band before reviews) */}
-      <HealthTieIn />
+      <HealthTieIn c={content.healthTieIn} hubHref={hubHref} />
 
-      {/* 10 — Reviews → FAQ → blog feed → footer */}
       <Testimonials locale={locale} />
-      <FAQ locale={locale} items={faqItems} heading="Early harvest olive oil FAQ" headingFontFamily={UDC} />
-      <BlogSection initialPosts={initialPosts} locale={locale} heading="Read more early harvest olive oil" headingFontSize="clamp(1.9rem, 3.2vw, 3.4rem)" />
+      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} />
+      <BlogSection initialPosts={initialPosts} locale={locale} heading={content.blogHeading} headingFontSize="clamp(1.9rem, 3.2vw, 3.4rem)" />
       <Footer locale={locale} />
 
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
@@ -517,10 +431,10 @@ function EarlyHarvestInner({ initialPosts }: { initialPosts?: InitialPost[] }) {
   );
 }
 
-export default function EarlyHarvestPage({ initialPosts }: { initialPosts?: InitialPost[] }) {
+export default function EarlyHarvestPage({ initialPosts, locale = DEFAULT_LOCALE }: { initialPosts?: InitialPost[]; locale?: Locale }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <EarlyHarvestInner initialPosts={initialPosts} />
+      <EarlyHarvestInner initialPosts={initialPosts} locale={locale} />
     </QueryClientProvider>
   );
 }

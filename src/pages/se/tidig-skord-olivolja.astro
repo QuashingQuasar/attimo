@@ -4,11 +4,13 @@ import EarlyHarvestPage from "@astro/react-pages/EarlyHarvestPage";
 import { sanityClient } from "@/lib/sanity";
 import { HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
 import { EH_CONTENT, EH_HREFLANGS, EH_SLUGS } from "@/lib/earlyHarvestHubContent";
-import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const locale = DEFAULT_LOCALE;
-const content = EH_CONTENT.en;
-const canonical = `https://attimo-oil.com${EH_SLUGS.en}`;
+const locale = SLUG_TO_LOCALE["se"];
+const content = EH_CONTENT.sv;
+const t = getDict(locale);
+const canonical = `https://attimo-oil.com${EH_SLUGS.sv}`;
 const description = content.meta.description;
 
 const collectionJsonLd = {
@@ -73,6 +75,9 @@ const curatedPosts = await sanityClient.fetch(
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={[collectionJsonLd, faqJsonLd]}
   hreflangs={EH_HREFLANGS}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
 >
   <EarlyHarvestPage initialPosts={curatedPosts} locale={locale} client:load />
 </BaseLayout>
