@@ -18,10 +18,12 @@ interface NotifyMeFormProps {
   /** Background color for the submit button. Defaults to the brand chartreuse. */
   buttonBackgroundColor?: string;
   /**
-   * Short identifier for the product this restock signup is for (e.g.
-   * "Coratina", "Picual"). Stored on the Brevo contact under the
-   * `RESTOCK_PRODUCT` attribute so the audience can be segmented when sending
-   * the restock email. Falls back to `productName` when not supplied.
+   * Short identifier for the product this restock signup is for ("Coratina",
+   * "Nocellara", "Picual"). /api/notify maps it to that product's own Brevo
+   * list, so each oil's waiting list stays separate and can be mailed on its
+   * own restock. Must match a key in that route's BREVO_LIST_BY_PRODUCT map —
+   * an unmapped product is rejected rather than filed under another oil.
+   * Falls back to `productName` when not supplied.
    */
   restockProductKey?: string;
 }

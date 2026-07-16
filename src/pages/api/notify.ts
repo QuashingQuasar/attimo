@@ -5,7 +5,20 @@ import type { APIRoute } from "astro";
 export const prerender = false;
 
 const BREVO_ENDPOINT = "https://api.brevo.com/v3/contacts";
-const BREVO_LIST_ID = 6;
+
+// Per-product restock lists in Brevo. Keys are the `polyphenolLabel` values
+// NotifyMeForm posts as `product` — proper names, identical across every locale
+// map, so this also works on /de/, /fr/, /se/ and /dk/.
+//
+// A NEW product needs its own Brevo list AND an entry here. Without one the
+// signup is rejected loudly rather than filed into another product's list —
+// which is exactly the bug this replaces: every restock signup used to go to
+// list 6 ("Coratina Restock") no matter which oil the visitor asked about.
+const BREVO_LIST_BY_PRODUCT: Record<string, number> = {
+  Coratina: 6, // "Coratina Restock"
+  Nocellara: 9, // "Nocellara Restock"
+  Picual: 3, // "Picual Waitlist"
+};
 
 export const POST: APIRoute = async ({ request }) => {
   const apiKey = import.meta.env.BREVO_API_KEY;
@@ -40,6 +53,12 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: "Invalid email" }, { status: 400 });
   }
 
+  const listId = BREVO_LIST_BY_PRODUCT[product];
+  if (!listId) {
+    console.error(`[/api/notify] no Brevo list mapped for product ${JSON.stringify(product)}`);
+    return Response.json({ error: "Unknown product" }, { status: 400 });
+  }
+
   let brevoResp: Response;
   try {
     brevoResp = await fetch(BREVO_ENDPOINT, {
@@ -51,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
       },
       body: JSON.stringify({
         email,
-        listIds: [BREVO_LIST_ID],
+        listIds: [listId],
         updateEnabled: true,
       }),
     });
