@@ -121,28 +121,47 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
   const shopifyHandle = resolveShopifyHandle(handle);
 
+  // Revalidate availability against Shopify on mount.
+  //
+  // `initialProducts` is fetched at BUILD time (these routes are static), so it
+  // is only ever a snapshot of the last deploy. This effect used to bail out
+  // whenever that snapshot existed — which is always — so the PDP showed
+  // deploy-time stock forever: restocked oils stayed "Sold Out" behind a notify
+  // form, and (worse) sold-out oils kept taking add-to-carts until someone
+  // rebuilt. The homepage widget always fetched live, hence the mismatch.
+  //
+  // Keep the build-time data for instant first paint (no spinner, good for SEO)
+  // and correct it in the background. Pass the same locale context the route
+  // used at build so localized PDPs revalidate against their own market.
   useEffect(() => {
-    if (initialProducts && initialProducts.length > 0) return;
+    let cancelled = false;
     const loadProducts = async () => {
       try {
+        const ctx = shopifyContextForLocale(locale);
         const [fetchedProducts, exactHandleProducts] = await Promise.all([
-        fetchProducts(50),
-        shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`) : Promise.resolve([])]
-        );
+          fetchProducts(50, undefined, ctx),
+          shopifyHandle ? fetchProducts(1, `handle:${shopifyHandle}`, ctx) : Promise.resolve([]),
+        ]);
+        if (cancelled) return;
 
         const dedupedProducts = [...fetchedProducts, ...exactHandleProducts].filter(
           (product, index, arr) => arr.findIndex((p) => p.node.id === product.node.id) === index
         );
 
-        setProducts(dedupedProducts);
+        // Never blank a page we already painted: an empty result means Shopify
+        // was unreachable, not that the catalogue is empty.
+        if (dedupedProducts.length > 0) setProducts(dedupedProducts);
       } catch (error) {
         console.error('Error loading products:', error);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
     loadProducts();
-  }, [shopifyHandle, initialProducts]);
+    return () => {
+      cancelled = true;
+    };
+  }, [shopifyHandle, locale]);
 
   // Fetch selling plans separately (requires unauthenticated_read_selling_plans scope)
   useEffect(() => {
