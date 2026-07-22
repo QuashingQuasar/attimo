@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { getAllPostMeta } from "@/lib/sanity";
+import { getAllPostMeta, blogPath } from "@/lib/sanity";
 import { fetchMerchProducts } from "@/lib/shopify";
 import { LOCALES, pathHasLocaleVariants } from "@/lib/i18n/config";
 
@@ -90,11 +90,36 @@ export const GET: APIRoute = async () => {
     });
   }).join("\n");
 
+  // Group posts by translationKey so each entry can emit its hreflang cluster.
+  const clusters = new Map<string, { language: string; slug: string }[]>();
+  for (const p of posts) {
+    if (!p.translationKey) continue;
+    const arr = clusters.get(p.translationKey) ?? [];
+    arr.push({ language: p.language, slug: p.slug });
+    clusters.set(p.translationKey, arr);
+  }
+  const blogHreflangBlock = (p: (typeof posts)[number]): string => {
+    if (!p.translationKey) return "";
+    const cluster = clusters.get(p.translationKey) ?? [];
+    if (cluster.length < 2) return "";
+    const links = cluster.map(
+      (t) => `    <xhtml:link rel="alternate" hreflang="${t.language}" href="${SITE}${blogPath(t.slug, t.language)}" />`
+    );
+    const en = cluster.find((t) => t.language === "en");
+    if (en) {
+      links.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE}${blogPath(en.slug, "en")}" />`);
+    }
+    return "\n" + links.join("\n");
+  };
+
   const postEntries = posts
-    .filter((p) => !BLOG_SITEMAP_SLUGS.has(p.slug))
+    // English posts listed in the standalone blog sitemap are excluded here;
+    // localized posts (de/fr/…) always belong in the main sitemap.
+    .filter((p) => !(p.language === "en" && BLOG_SITEMAP_SLUGS.has(p.slug)))
     .map((p) => {
       const lastmod = (p.updatedAt || p.publishedAt).split("T")[0];
-      return `  <url>\n    <loc>${SITE}/blog/${p.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
+      const loc = `${SITE}${blogPath(p.slug, p.language)}`;
+      return `  <url>\n    <loc>${loc}</loc>${blogHreflangBlock(p)}\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
     })
     .join("\n");
 
