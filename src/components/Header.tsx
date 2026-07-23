@@ -86,7 +86,7 @@ export const Header = ({
                   {t.nav.shop}
                 </Link>
               </div>
-              <Link to="/blog" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <Link to={localizeHref("/blog", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 {t.nav.blog}
               </Link>
               <Link to={localizeHref("/quiz", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -194,7 +194,7 @@ export const Header = ({
               </Link>
             ))}
             {[
-              { label: t.nav.blog, to: "/blog" },
+              { label: t.nav.blog, to: localizeHref("/blog", locale) },
               { label: t.nav.quiz, to: localizeHref("/quiz", locale) },
               { label: t.nav.merch, to: "/merch" },
             ].map((item) => (

@@ -70,7 +70,7 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
     { label: t.nav.merch, href: "/merch" },
   ];
   const learnLinks = [
-    { label: t.footer.blog, href: "/blog" },
+    { label: t.footer.blog, href: localizeHref("/blog", locale) },
     { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
     { label: t.footer.ambassadors, href: ambassadorsHref },
   ];

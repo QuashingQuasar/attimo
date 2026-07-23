@@ -254,6 +254,7 @@ export function pathHasLocaleVariants(unprefixedPath: string): boolean {
       : unprefixedPath;
   return (
     normalized === "/" ||
+    normalized === "/blog" ||
     normalized.startsWith("/product/") ||
     normalized === "/shipping" ||
     normalized === "/quiz"

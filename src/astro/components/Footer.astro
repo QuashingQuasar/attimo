@@ -1,31 +1,63 @@
 ---
-// English footer for Astro-rendered pages (blog). Mirrors the React Footer
-// (src/components/Footer.tsx) column structure so the footer is consistent
-// site-wide and the /high-polyphenol-olive-oil hub is linked everywhere.
+// Locale-aware footer for Astro-rendered pages (blog). Mirrors the React Footer
+// (src/components/Footer.tsx) column structure, labels, and localized hrefs so
+// the footer matches the page's language everywhere.
+import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const { locale = DEFAULT_LOCALE } = Astro.props as { locale?: Locale };
+const t = getDict(locale);
+
+// Polyphenol + early-harvest hubs live at translated slugs per language.
+const hubLinks =
+  locale.lang === "de"
+    ? [
+        { label: "Polyphenolreiches Olivenöl", href: "/de/polyphenolreiches-olivenoel" },
+        { label: "Frühe Ernte Olivenöl", href: "/de/fruehe-ernte-olivenoel" },
+      ]
+    : locale.lang === "fr"
+    ? [
+        { label: "Huile d'Olive Riche en Polyphénols", href: "/fr/huile-olive-riche-polyphenols" },
+        { label: "Huile d'Olive Récolte Précoce", href: "/fr/huile-olive-recolte-precoce" },
+      ]
+    : locale.lang === "sv"
+    ? [
+        { label: "Polyfenolrik Olivolja", href: "/se/polyfenolrik-olivolja" },
+        { label: "Tidig Skörd Olivolja", href: "/se/tidig-skord-olivolja" },
+      ]
+    : locale.lang === "da"
+    ? [
+        { label: "Polyfenolrig Olivenolie", href: "/dk/polyfenolrig-olivenolie" },
+        { label: "Tidlig Høst Olivenolie", href: "/dk/tidlig-hoest-olivenolie" },
+      ]
+    : [
+        { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },
+        { label: "Early Harvest Olive Oil", href: "/early-harvest-olive-oil" },
+      ];
+
 const shop = [
-  { label: "Coratina", href: "/product/coratina" },
-  { label: "Picual", href: "/product/picual" },
-  { label: "Nocellara", href: "/product/nocellara" },
-  { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },
-  { label: "Early Harvest Olive Oil", href: "/early-harvest-olive-oil" },
-  { label: "Merch", href: "/merch" },
+  { label: "Coratina", href: localizeHref("/product/coratina", locale) },
+  { label: "Picual", href: localizeHref("/product/picual", locale) },
+  { label: "Nocellara", href: localizeHref("/product/nocellara", locale) },
+  ...hubLinks,
+  { label: t.nav.merch, href: "/merch" },
 ];
 const learn = [
-  { label: "Blog", href: "/blog" },
-  { label: "Quiz", href: "/quiz" },
-  { label: "Ambassadors", href: "/ambassadors" },
+  { label: t.footer.blog, href: localizeHref("/blog", locale) },
+  { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
+  { label: t.footer.ambassadors, href: localizeHref("/ambassadors", locale) },
 ];
 const company = [
-  { label: "Shipping", href: "/shipping" },
-  { label: "Contact", href: "/contact" },
-  { label: "Manage Orders & Subscription", href: "https://shop.attimo-oil.com/account" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
+  { label: t.footer.shipping, href: localizeHref("/shipping", locale) },
+  { label: t.footer.contact, href: "/contact" },
+  { label: t.footer.manageOrders, href: "https://shop.attimo-oil.com/account" },
+  { label: t.footer.privacy, href: "/privacy" },
+  { label: t.footer.terms, href: "/terms" },
 ];
 const columns = [
-  { heading: "Shop", links: shop },
-  { heading: "Learn", links: learn },
-  { heading: "Company", links: company },
+  { heading: t.footer.shop, links: shop },
+  { heading: t.footer.learn, links: learn },
+  { heading: t.footer.company, links: company },
 ];
 const headingStyle = "font-family: 'UDC Working Man Sans', sans-serif; color: #FFFAEA; letter-spacing: 0.12em; font-size: 0.8rem; text-transform: uppercase;";
 const linkStyle = "font-family: 'Space Grotesk', sans-serif; color: #B3E58C; font-size: 0.875rem;";
@@ -58,7 +90,7 @@ const linkStyle = "font-family: 'Space Grotesk', sans-serif; color: #B3E58C; fon
     </div>
 
     <div class="border-t pt-6" style="border-color: #B3E58C;">
-      <p class="text-sm" style="font-family: 'Space Grotesk', sans-serif; color: #B3E58C;">© 2026 ATTIMO. All rights reserved.</p>
+      <p class="text-sm" style="font-family: 'Space Grotesk', sans-serif; color: #B3E58C;">{t.footer.rights}</p>
     </div>
   </div>
 </footer>
