@@ -35,7 +35,7 @@ const [allProducts, boxProducts, sellingPlans, blogPosts] = await Promise.all([
   fetchSellingPlans(bottleShopifyHandle, shopCtx).catch(() => []),
   sanityClient
     .fetch(
-      `*[_type == "post"] | order(publishedAt desc)[0..2] { _id, title, slug, publishedAt, excerpt, coverImage }`
+      `*[_type == "post" && coalesce(language, "en") == "${locale.lang}"] | order(publishedAt desc)[0..2] { _id, title, slug, publishedAt, excerpt, coverImage }`
     )
     .catch(() => []),
 ]);

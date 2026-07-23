@@ -29,16 +29,19 @@ interface BlogSectionProps {
 
 export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, headingFontSize }: BlogSectionProps = {}) => {
   const t = getDict(locale).blog;
+  // Locale-prefixed blog base (e.g. "/de/blog"); default market stays "/blog".
+  const blogBase = locale.slug ? `/${locale.slug}/blog` : "/blog";
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { data: articles = [], isLoading } = useQuery({
-    queryKey: ["blog-posts-homepage"],
+    queryKey: ["blog-posts-homepage", locale.lang],
     queryFn: () =>
     sanityClient.fetch<SanityPost[]>(
-      `*[_type == "post"] | order(publishedAt desc)[0..2] {
+      `*[_type == "post" && coalesce(language, "en") == $lang] | order(publishedAt desc)[0..2] {
           _id, title, slug, publishedAt, excerpt, coverImage
-        }`
+        }`,
+      { lang: locale.lang }
     ),
     initialData: initialPosts,
     enabled: !initialPosts,
@@ -100,7 +103,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
             </h2>
           </div>
           <Link
-            to="/blog"
+            to={blogBase}
             className="font-working-man text-sm tracking-wide flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
             style={{ color: "#1B4229CC" }}>
             {t.seeMore} <span className="text-base">→</span>
@@ -124,7 +127,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
             {articles.map((article) =>
           <Link
             key={article._id}
-            to={`/blog/${article.slug.current}`}
+            to={`${blogBase}/${article.slug.current}`}
             className="group cursor-pointer block">
 
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B4229" }}>

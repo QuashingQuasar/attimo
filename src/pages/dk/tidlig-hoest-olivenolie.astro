@@ -61,7 +61,7 @@ const CURATED_POST_SLUGS = [
   "how-to-read-olive-oil-lab-analysis",
 ];
 const curatedPosts = await sanityClient.fetch(
-  `*[_type == "post" && slug.current in $slugs] | order(publishedAt desc)[0..2] {
+  `*[_type == "post" && translationKey in $slugs && coalesce(language, "en") == "da"] | order(publishedAt desc)[0..2] {
     _id, title, slug, publishedAt, excerpt, coverImage
   }`,
   { slugs: CURATED_POST_SLUGS }
