@@ -281,6 +281,13 @@ export function getLocaleSwitchHref(currentPath: string, targetLocale: Locale): 
   const onLocalePath = LOCALES.some((l) => l.slug && l.slug === firstSeg);
   let unprefixed = onLocalePath ? "/" + segments.slice(2).join("/") : currentPath;
   if (unprefixed === "") unprefixed = "/";
+  // Blog: the index swaps prefix cleanly; post slugs differ per language and
+  // can't be mapped from the path alone, so posts fall back to the target
+  // locale's blog index. (The selector upgrades a post to its exact translation
+  // via the page's <link rel="alternate" hreflang> tags when present.)
+  if (unprefixed === "/blog" || unprefixed.startsWith("/blog/")) {
+    return targetLocale.slug ? `/${targetLocale.slug}/blog` : "/blog";
+  }
   if (!pathHasLocaleVariants(unprefixed)) return currentPath;
   if (!targetLocale.slug) return unprefixed;
   return unprefixed === "/" ? `/${targetLocale.slug}/` : `/${targetLocale.slug}${unprefixed}`;

@@ -61,6 +61,21 @@ export const CurrencySelector = ({
   const ref = useRef<HTMLDivElement>(null);
   const t = getDict(locale);
 
+  // Target URL for switching to locale `l`. On blog POSTS the slug differs per
+  // language, so prefer the page's <link rel="alternate" hreflang> tag (the
+  // exact translated URL); everything else uses the path-based mapping.
+  const switchHrefFor = (l: Locale) => {
+    if (/\/blog(\/|$)/.test(pathname) && typeof document !== "undefined") {
+      const link = document.querySelector(
+        `link[rel="alternate"][hreflang="${l.hreflang}"]`,
+      ) as HTMLLinkElement | null;
+      if (link?.href) {
+        try { return new URL(link.href).pathname; } catch { /* fall through */ }
+      }
+    }
+    return getLocaleSwitchHref(pathname, l);
+  };
+
   // Hover-to-open (desktop), matching the header Shop dropdown. A short close
   // delay bridges the 6px gap between the trigger and the menu so it doesn't
   // flicker shut while the cursor crosses it. Click/tap toggle is kept below
@@ -164,7 +179,7 @@ export const CurrencySelector = ({
             return (
               <li key={l.slug || "default"} style={{ margin: 0 }}>
                 <a
-                  href={getLocaleSwitchHref(pathname, l)}
+                  href={switchHrefFor(l)}
                   role="menuitem"
                   aria-label={l.countryName}
                   aria-current={isCurrent ? "true" : undefined}
