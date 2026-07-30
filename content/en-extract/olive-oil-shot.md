@@ -1,0 +1,99 @@
+# Why People Are Now Drinking Olive Oil Shots
+
+The olive oil shot is everywhere. TikTok, Instagram, longevity podcasts, biohacker forums. One tablespoon of extra virgin olive oil; sometimes with a squeeze of lemon; taken first thing in the morning on an empty stomach.
+
+It looks like a wellness trend, but the practice has been around the Mediterranean for centuries. What's changed is that the science now explains why it works.
+
+## TL;DR
+
+- The olive oil shot is one tablespoon of EVOO taken raw, usually in the morning on an empty stomach.
+- The health benefits come from [polyphenols](/blog/polyphenols-olive-oil); antioxidants that protect blood lipids from oxidative stress.
+- Heat destroys polyphenols, which is why a raw shot delivers more than cooking with the same oil.
+- Most supermarket oils are too low in polyphenols to make the shot worthwhile.
+- What matters: early harvest, single variety, lab-tested, current crop.
+- Bryan Johnson takes three tablespoons a day as part of his longevity protocol.
+## What is the olive oil shot?
+
+A single tablespoon of high-quality extra virgin olive oil, taken straight. Some people add lemon juice. Some take it before breakfast, others before bed. [Bryan Johnson](https://attimo-oil.com/blog/bryan-johnson-olive-oil), the tech entrepreneur running the most measured longevity protocol in history, takes three tablespoons a day. He considers EVOO one of the highest-impact interventions in his entire Blueprint stack.
+
+## The medicinal compound: polyphenols
+
+Olive oil's health reputation rests largely on one class of molecules: polyphenols. These are naturally occurring plant compounds; antioxidants that protect the olive fruit from oxidation, UV damage, and microbial attack while it's still on the tree.
+
+When you press the fruit into oil, some of those polyphenols carry over. They're what give high-quality olive oil its characteristic bitterness and peppery finish. That throat burn you feel? That's oleocanthal; a polyphenol with anti-inflammatory properties that researchers have compared to ibuprofen.
+
+The European Food Safety Authority (EFSA) has approved a specific health claim for olive oil polyphenols: that they help protect blood lipids from oxidative stress. To qualify, the oil needs to contain at least 250 mg/kg of hydroxytyrosol and its derivatives. Most supermarket oils don't come close.
+
+## Why a shot and not just cooking with it?
+
+You can absolutely cook with olive oil. High-quality EVOO is stable under heat; its smoke point is well above normal cooking temperatures, and its oxidative stability is among the highest of any cooking fat.
+
+But heat degrades the very compounds that make olive oil interesting. Polyphenols break down during cooking. The longer and hotter you cook, the more you lose. An oil that started with 400 mg/kg of polyphenols might retain a fraction of that after 20 minutes in a pan.
+
+A raw shot preserves the full polyphenol profile. No heat, no degradation, no dilution.
+
+That doesn't mean you shouldn't cook with olive oil. It means the best oil deserves to be consumed raw. Use a good everyday oil for the pan. Save the high-polyphenol bottle for finishing and shots.
+
+## Not all olive oil is made equal
+
+Most people get the shot wrong because they grab whichever bottle is in the cupboard.
+
+Most olive oils on supermarket shelves are blends; different varieties, different harvests, sometimes different years mixed together. They're refined for mildness. The polyphenol content is low, sometimes negligible. The oil may technically be "extra virgin" but carry none of the bioactive compounds the research points to.
+
+For a daily olive oil shot to be worth anything beyond calories, the oil needs to meet specific criteria.
+
+**Early harvest.** Polyphenols are highest in unripe, green olives picked at the beginning of the season. As olives ripen from green to purple to black, polyphenol content drops while oil yield rises. Most commercial producers harvest late because it's more economical. Early-harvest oils are scarcer and more expensive; but they carry the compounds you're after.
+
+**Single variety.** Blending obscures origin and quality. A single-variety (monocultivar) oil lets you trace everything back to one grove, one harvest, one pressing. Different varieties have different polyphenol profiles; Coratina runs high, Nocellara sits in the middle, Picual balances intensity with versatility. Knowing the variety tells you what to expect.
+
+**Lab-tested.** Polyphenol content isn't something you can taste with precision. You need a lab analysis. Look for oils that publish their numbers: total polyphenols, oleic acid, peroxides, acidity. If the producer doesn't share these, you're guessing.
+
+**Current harvest.** Olive oil is not wine. It does not improve with age. Polyphenols degrade over time, even in a sealed bottle. You want oil from the most recent harvest; ideally pressed within the last 6 months.
+
+## What happens in your body
+
+The research on daily olive oil consumption; particularly high-polyphenol EVOO; points to several mechanisms.
+
+Polyphenols like hydroxytyrosol and oleocanthal act as antioxidants, reducing oxidative stress on blood lipids. This is the mechanism behind the EFSA-approved health claim.
+
+Oleic acid — the dominant fatty acid in olive oil — supports cardiovascular function. The Mediterranean diet's association with lower heart disease rates is partly attributed to high oleic acid intake from olive oil.
+
+There is emerging evidence around gut health. Polyphenols appear to act as prebiotics, feeding beneficial gut bacteria and supporting microbial diversity. The gut microbiome connection is still being studied, but early findings are consistent: polyphenols do more than neutralise free radicals.
+
+## Timeless wisdom
+
+The olive oil shot is not magic. It won't replace sleep, exercise, or eating well. Taking a tablespoon of low-quality oil every morning will not move the needle.
+
+But if you source the right oil — early harvest, single variety, lab-tested, current crop — and consume it raw, you're delivering one of the most well-studied bioactive food compounds directly into your system. Zero processing, zero degradation.
+
+People around the Mediterranean have been doing this for centuries. They just didn't film it.
+
+## ATTIMO: good to shot
+
+Every ATTIMO oil is single-variety, early harvest, and independently lab-tested. We publish the full chemical analysis; polyphenol count, acidity, peroxides, oleic acid; for every release. No blends, no old stock, no guesswork.
+
+Three varieties, each with a different profile: Coratina for intensity, Nocellara for balance, Picual for versatility. All sourced directly from small family producers across Italy and Spain.
+
+If you're going to take a daily shot, it should be worth taking.
+
+## FAQ
+
+**How much olive oil should you take as a shot?** One tablespoon (about 15 ml) is the standard. Bryan Johnson takes three tablespoons daily, but one is a reasonable starting point. The EFSA health claim requires about 20g of high-polyphenol oil per day.
+
+**When should you take an olive oil shot?** Most people take it first thing in the morning on an empty stomach. There is no strong evidence that timing matters significantly; consistency matters more than timing.
+
+**Can you add lemon to an olive oil shot?** Yes. A squeeze of lemon juice is common and can make it easier to take. The acidity doesn't degrade the polyphenols.
+
+**Does the olive oil shot help with digestion?** There is emerging research suggesting polyphenols act as prebiotics and support gut microbial diversity. The evidence is early but consistent with the broader science on polyphenols.
+
+**What kind of olive oil should you use for a shot?** Early-harvest, single-variety, lab-tested extra virgin olive oil from the current crop. Polyphenol content should be published. Avoid blends, refined oils, or anything without a harvest date.
+
+**Is the olive oil shot just a trend?** The format is new but the practice is old. People across the Mediterranean have consumed raw olive oil daily for centuries. Recent research on polyphenols explains why it works.
+
+## How much do you actually get? (2026 numbers)
+
+The shot is only worth taking if the oil is genuinely high in polyphenols — otherwise it's expensive salad dressing. In real terms, using our lab-tested 2025 harvest:
+
+- One tablespoon (~14 g) of a supermarket oil at ~180 mg/kg delivers under **3 mg** of polyphenols.
+- The same tablespoon of our Coratina at 847 mg/kg delivers roughly **12 mg** — about four times as much.
+If you want to see where different oils land and what the thresholds mean, we broke it down in our [complete guide to high-polyphenol olive oil](/high-polyphenol-olive-oil).

@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Kilde",
+   "Vigtigste polyfenoler",
+   "Typisk kontekst for dagligt indtag"
+  ],
+  [
+   "Rødvin",
+   "Resveratrol, quercetin",
+   "~150 ml pr. portion"
+  ],
+  [
+   "Grøn te",
+   "EGCG, catechiner",
+   "~240 ml pr. kop"
+  ],
+  [
+   "Mørk chokolade",
+   "Flavanoler",
+   "~10-30 g pr. portion"
+  ],
+  [
+   "Ekstra jomfruolivenolie",
+   "Oleocanthal, oleacein, oleuropein, hydroxytyrosol",
+   "2-4 spsk. dagligt, sammen med mad"
+  ]
+ ],
+ [
+  [
+   "Forbindelse",
+   "Klasse",
+   "Primær effekt tilskrevet i forskning",
+   "Koncentration"
+  ],
+  [
+   "Oleuropein",
+   "Secoiridoid",
+   "Forstadie til oleacein og hydroxytyrosol; antioxidant",
+   "Høj i frugten, omdannes under forarbejdning"
+  ],
+  [
+   "Oleacein",
+   "Secoiridoid",
+   "Kraftig antioxidant; antiinflammatorisk; LDL-beskyttelse",
+   "Høj"
+  ],
+  [
+   "Oleocanthal",
+   "Secoiridoid",
+   "COX-hæmning (ibuprofen-lignende); antiinflammatorisk",
+   "Høj"
+  ],
+  [
+   "Ligstrosid-aglykon",
+   "Secoiridoid",
+   "Aktivitet svarende til oleocanthal",
+   "Lavere"
+  ],
+  [
+   "Hydroxytyrosol",
+   "Simpel fenol",
+   "En af de mest potente antioxidanter i kosten; grundlag for EU's sundhedsanprisning",
+   "Moderat; øges efterhånden som oleuropein nedbrydes"
+  ],
+  [
+   "Tyrosol",
+   "Simpel fenol",
+   "Antioxidant",
+   "Moderat; lavere aktivitet end hydroxytyrosol"
+  ],
+  [
+   "Luteolin / Apigenin",
+   "Flavonoid",
+   "Antiinflammatorisk; antioxidant",
+   "Lav"
+  ],
+  [
+   "Pinoresinol / Acetoxypinoresinol",
+   "Lignan",
+   "Hormonel regulering; antioxidant",
+   "Lav"
+  ]
+ ],
+ [
+  [
+   "Metode",
+   "Hvad den måler",
+   "Typisk resultat",
+   "Begrænsninger"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Samlet reducerende kapacitet af alle fenoliske forbindelser",
+   "Højere tal — har tendens til at overvurdere i forhold til HPLC",
+   "Lav specificitet; acceptabel netop for olivenolie, fordi oliematricen har få forstyrrende stoffer"
+  ],
+  [
+   "HPLC (IOC-metode)",
+   "Enkelte fenoliske forbindelser adskilt kromatografisk",
+   "Lavere tal end FC — tæller kun identificerede forbindelser",
+   "Kan ikke skelne mellem alle forbindelsesformer; nogle secoiridoider mangler kommercielle referencestandarder"
+  ],
+  [
+   "EU's metode til sundhedsanprisning (HPLC efter hydrolyse)",
+   "Kun hydroxytyrosol, tyrosol og deres derivater",
+   "Laveste tal — en delmængde af de samlede polyfenoler",
+   "Snævrest afgrænset ved design; måler kun forbindelser, der er juridisk relevante for sundhedsanprisningen"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "Hvad det betyder"
+  ],
+  [
+   "< 100",
+   "Typisk supermarkeds-EVOO — fuldt modne oliven, ofte blandet lager"
+  ],
+  [
+   "100-250",
+   "Kommerciel EVOO i mellemklassen"
+  ],
+  [
+   "250",
+   "EU's tærskel for sundhedsanprisning — minimum for at bære hydroxytyrosol-anprisningen"
+  ],
+  [
+   "250-500",
+   "God kvalitet, olie af én oprindelse fra tidlig til midt i høsten"
+  ],
+  [
+   "500-800",
+   "Høj kvalitet, olie af én sort fra tidlig høst"
+  ],
+  [
+   "> 800",
+   "Enestående — kendetegnende for sorter med højt fenolindhold fra tidlig høst som Coratina eller Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Faktor",
+   "Mekanisme",
+   "Praktisk konsekvens"
+  ],
+  [
+   "Varme under udvinding",
+   "Høje temperaturer under presning øger udbyttet, men nedbryder fenoliske forbindelser",
+   "Kold udvinding under 27 °C er nødvendig for at bevare polyfenoler"
+  ],
+  [
+   "Ilt",
+   "Polyfenoler reagerer med ilt for at beskytte oliens fedtsyrer — og forbruger sig selv i processen",
+   "Hold flasker forseglet; minimér luftkontakt efter åbning"
+  ],
+  [
+   "Lys",
+   "UV- og synligt lys accelererer oxidation",
+   "Mørkt glas eller uigennemsigtig emballage; opbevar væk fra direkte lys"
+  ],
+  [
+   "Tid",
+   "Polyfenolindholdet falder løbende, selv under ideelle forhold",
+   "Prioritér høstdato frem for holdbarhedsdato; indtag inden for 12 måneder efter høst"
+  ],
+  [
+   "Høj tilberedningsvarme",
+   "Direkte termisk nedbrydning af fenoliske forbindelser",
+   "Brug olier fra tidlig høst rå eller ved lav varme"
+  ],
+  [
+   "Dårlig filtrering",
+   "Ufiltrerede olier indeholder olivenpartikler og vand, der accelererer mikrobiel aktivitet",
+   "Korrekt filtrerede olier bevarer polyfenolindholdet mere konsekvent"
+  ]
+ ],
+ [
+  [
+   "Høststadie",
+   "Olivenfarve",
+   "Typisk polyfenolindhold",
+   "Olieudbytte"
+  ],
+  [
+   "Tidlig høst",
+   "Grøn",
+   "500-800+ mg/kg",
+   "Lavt (~8-10 kg frugt pr. liter)"
+  ],
+  [
+   "Midt i høsten",
+   "Grøn-lilla",
+   "250-500 mg/kg",
+   "Middel (~6 kg frugt pr. liter)"
+  ],
+  [
+   "Sen høst",
+   "Lilla-sort",
+   "50-200 mg/kg",
+   "Højt (~4-5 kg frugt pr. liter)"
+  ]
+ ],
+ [
+  [
+   "Sundhedsområde",
+   "Vigtigste forbindelser",
+   "Dokumentationsniveau",
+   "Status"
+  ],
+  [
+   "Kardiovaskulær beskyttelse",
+   "Hydroxytyrosol, oleacein, oleocanthal",
+   "Stærkt",
+   "Understøttet af store RCT'er, herunder PREDIMED"
+  ],
+  [
+   "Reduktion af LDL-oxidation",
+   "Hydroxytyrosol, oleacein",
+   "Stærkt",
+   "Grundlag for EU's godkendte sundhedsanprisning"
+  ],
+  [
+   "Antiinflammatoriske effekter",
+   "Oleocanthal (COX-hæmning)",
+   "Stærkt mekanistisk",
+   "Interventionsstudier igangværende"
+  ],
+  [
+   "Metabolisk sundhed",
+   "Hydroxytyrosol, oleocanthal",
+   "Moderat",
+   "Positive fund i flere studier"
+  ],
+  [
+   "Neurobeskyttelse",
+   "Oleocanthal, hydroxytyrosol",
+   "Lovende",
+   "Celle- og dyrestudier; studier med mennesker begrænsede"
+  ],
+  [
+   "Kræft",
+   "Oleocanthal, oleacein, hydroxytyrosol",
+   "Tidligt stadie",
+   "In vitro og epidemiologisk; klinisk bekræftelse begrænset"
+  ]
+ ]
+]

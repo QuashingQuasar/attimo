@@ -52,6 +52,14 @@ function mdToBlocks(src) {
     const line = lines[i].trim();
     if (!line) { i++; continue; }
     if (!skippedH1 && line.startsWith("# ")) { skippedH1 = true; i++; continue; }
+    // pipe table
+    if (line.startsWith("|") && i + 1 < lines.length && /^\|[\s:|-]+\|$/.test(lines[i + 1].trim())) {
+      const rows = [];
+      const cells = (l) => l.trim().replace(/^\||\|$/g, "").split("|").map((x) => x.trim().replace(/\*\*/g, ""));
+      rows.push(cells(lines[i])); i += 2;
+      while (i < lines.length && lines[i].trim().startsWith("|")) { rows.push(cells(lines[i])); i++; }
+      blocks.push(table(rows)); continue;
+    }
     if (line.startsWith("## ")) { blocks.push(block("h2", line.slice(3).trim())); i++; continue; }
     if (line.startsWith("### ")) { blocks.push(block("h3", line.slice(4).trim())); i++; continue; }
     if (line.startsWith("- ")) { while (i < lines.length && lines[i].trim().startsWith("- ")) { blocks.push(block("normal", lines[i].trim().replace(/^-\s+/, ""), { listItem: "bullet", level: 1 })); i++; } continue; }

@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Quelle",
+   "Wichtige Polyphenole",
+   "Kontext der typischen täglichen Aufnahme"
+  ],
+  [
+   "Rotwein",
+   "Resveratrol, Quercetin",
+   "~150 ml pro Portion"
+  ],
+  [
+   "Grüner Tee",
+   "EGCG, Catechine",
+   "~240 ml pro Tasse"
+  ],
+  [
+   "Dunkle Schokolade",
+   "Flavanole",
+   "~10–30 g pro Portion"
+  ],
+  [
+   "Natives Olivenöl extra",
+   "Oleocanthal, Oleacein, Oleuropein, Hydroxytyrosol",
+   "2–4 EL täglich, zum Essen"
+  ]
+ ],
+ [
+  [
+   "Verbindung",
+   "Klasse",
+   "Primäre Wirkung",
+   "Konzentration"
+  ],
+  [
+   "Oleuropein",
+   "Secoiridoid",
+   "Vorstufe von Oleacein und Hydroxytyrosol; Antioxidans",
+   "Hoch in der Frucht, wandelt sich während der Verarbeitung um"
+  ],
+  [
+   "Oleacein",
+   "Secoiridoid",
+   "Wirksames Antioxidans; entzündungshemmend; LDL-Schutz",
+   "Hoch"
+  ],
+  [
+   "Oleocanthal",
+   "Secoiridoid",
+   "COX-Hemmung (ibuprofenähnlich); entzündungshemmend",
+   "Hoch"
+  ],
+  [
+   "Ligstrosid-Aglykon",
+   "Secoiridoid",
+   "Ähnliche Wirkung wie Oleocanthal",
+   "Niedriger"
+  ],
+  [
+   "Hydroxytyrosol",
+   "Einfaches Phenol",
+   "Eines der wirksamsten Antioxidantien der Ernährung; Grundlage der EU-Gesundheitsangabe",
+   "Mäßig; nimmt zu, während Oleuropein abgebaut wird"
+  ],
+  [
+   "Tyrosol",
+   "Einfaches Phenol",
+   "Antioxidans",
+   "Mäßig; geringere Wirkung als Hydroxytyrosol"
+  ],
+  [
+   "Luteolin / Apigenin",
+   "Flavonoid",
+   "Entzündungshemmend; Antioxidans",
+   "Niedrig"
+  ],
+  [
+   "Pinoresinol / Acetoxypinoresinol",
+   "Lignan",
+   "Hormonelle Regulation; Antioxidans",
+   "Niedrig"
+  ]
+ ],
+ [
+  [
+   "Methode",
+   "Was sie misst",
+   "Typisches Ergebnis",
+   "Grenzen"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Gesamte reduzierende Kapazität aller phenolischen Verbindungen",
+   "Höherer Wert — tendiert dazu, gegenüber HPLC überzuzeichnen",
+   "Geringe Spezifität; für Olivenöl konkret akzeptabel, da die Ölmatrix nur wenige störende Substanzen enthält"
+  ],
+  [
+   "HPLC (IOC-Methode)",
+   "Einzelne phenolische Verbindungen, chromatographisch getrennt",
+   "Niedrigerer Wert als FC — zählt nur identifizierte Verbindungen",
+   "Kann nicht zwischen allen Verbindungsformen unterscheiden; für einige Secoiridoide fehlen kommerzielle Referenzstandards"
+  ],
+  [
+   "Methode der EU-Gesundheitsangabe (HPLC nach Hydrolyse)",
+   "Nur Hydroxytyrosol, Tyrosol und deren Derivate",
+   "Niedrigster Wert — eine Teilmenge der Gesamtpolyphenole",
+   "Von Grund auf engster Umfang; misst nur die für die Gesundheitsangabe rechtlich relevanten Verbindungen"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "Was es bedeutet"
+  ],
+  [
+   "< 100",
+   "Typisches Supermarkt-Olivenöl extra — vollreife Oliven, oft verschnittene Ware"
+  ],
+  [
+   "100–250",
+   "Handelsübliches Olivenöl extra im mittleren Bereich"
+  ],
+  [
+   "250",
+   "Schwellenwert der EU-Gesundheitsangabe — Minimum, um die Hydroxytyrosol-Angabe zu führen"
+  ],
+  [
+   "250–500",
+   "Gute Qualität, sortenreines Öl aus früher bis mittlerer Ernte"
+  ],
+  [
+   "500–800",
+   "Hohe Qualität, sortenreines Öl aus früher Ernte"
+  ],
+  [
+   "> 800",
+   "Außergewöhnlich — charakteristisch für polyphenolreiche Sorten aus früher Ernte wie Coratina oder Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Faktor",
+   "Mechanismus",
+   "Praktische Folge"
+  ],
+  [
+   "Hitze bei der Extraktion",
+   "Hohe Temperaturen beim Pressen steigern die Ausbeute, bauen aber phenolische Verbindungen ab",
+   "Kaltextraktion unter 27 °C ist erforderlich, um Polyphenole zu erhalten"
+  ],
+  [
+   "Sauerstoff",
+   "Polyphenole reagieren mit Sauerstoff, um die Fettsäuren des Öls zu schützen — und verbrauchen sich dabei selbst",
+   "Flaschen verschlossen halten; Luftkontakt nach dem Öffnen minimieren"
+  ],
+  [
+   "Licht",
+   "UV- und sichtbares Licht beschleunigen die Oxidation",
+   "Dunkles Glas oder lichtundurchlässige Verpackung; fern von direktem Licht lagern"
+  ],
+  [
+   "Zeit",
+   "Der Polyphenolgehalt nimmt selbst unter idealen Bedingungen kontinuierlich ab",
+   "Erntedatum über Mindesthaltbarkeitsdatum stellen; innerhalb von 12 Monaten nach der Ernte verbrauchen"
+  ],
+  [
+   "Hohe Kochhitze",
+   "Direkter thermischer Abbau phenolischer Verbindungen",
+   "Öle aus früher Ernte roh oder bei niedriger Hitze verwenden"
+  ],
+  [
+   "Schlechte Filtration",
+   "Ungefilterte Öle enthalten Olivenpartikel und Wasser, die die mikrobielle Aktivität beschleunigen",
+   "Ordentlich gefilterte Öle bewahren den Polyphenolgehalt gleichmäßiger"
+  ]
+ ],
+ [
+  [
+   "Erntestadium",
+   "Olivenfarbe",
+   "Typischer Polyphenolgehalt",
+   "Ölausbeute"
+  ],
+  [
+   "Frühe Ernte",
+   "Grün",
+   "500–800+ mg/kg",
+   "Niedrig (~8–10 kg Früchte pro Liter)"
+  ],
+  [
+   "Mittlere Ernte",
+   "Grün-violett",
+   "250–500 mg/kg",
+   "Mittel (~6 kg Früchte pro Liter)"
+  ],
+  [
+   "Späte Ernte",
+   "Violett-schwarz",
+   "50–200 mg/kg",
+   "Hoch (~4–5 kg Früchte pro Liter)"
+  ]
+ ],
+ [
+  [
+   "Gesundheitsbereich",
+   "Wichtige Verbindungen",
+   "Evidenzniveau",
+   "Status"
+  ],
+  [
+   "Schutz des Herz-Kreislauf-Systems",
+   "Hydroxytyrosol, Oleacein, Oleocanthal",
+   "Stark",
+   "Gestützt durch große RCTs einschließlich PREDIMED"
+  ],
+  [
+   "Verringerung der LDL-Oxidation",
+   "Hydroxytyrosol, Oleacein",
+   "Stark",
+   "Grundlage der von der EU zugelassenen Gesundheitsangabe"
+  ],
+  [
+   "Entzündungshemmende Effekte",
+   "Oleocanthal (COX-Hemmung)",
+   "Mechanistisch stark",
+   "Interventionsstudien laufen"
+  ],
+  [
+   "Stoffwechselgesundheit",
+   "Hydroxytyrosol, Oleocanthal",
+   "Mäßig",
+   "Positive Befunde in mehreren Studien"
+  ],
+  [
+   "Neuroprotektion",
+   "Oleocanthal, Hydroxytyrosol",
+   "Vielversprechend",
+   "Zell- und Tierstudien; Humanstudien begrenzt"
+  ],
+  [
+   "Krebs",
+   "Oleocanthal, Oleacein, Hydroxytyrosol",
+   "Frühes Stadium",
+   "In vitro und epidemiologisch; klinische Bestätigung begrenzt"
+  ]
+ ]
+]

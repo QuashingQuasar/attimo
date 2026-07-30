@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Source",
+   "Key polyphenols",
+   "Typical daily intake context"
+  ],
+  [
+   "Red wine",
+   "Resveratrol, quercetin",
+   "~150ml per serving"
+  ],
+  [
+   "Green tea",
+   "EGCG, catechins",
+   "~240ml per cup"
+  ],
+  [
+   "Dark chocolate",
+   "Flavanols",
+   "~10–30g per serving"
+  ],
+  [
+   "Extra virgin olive oil",
+   "Oleocanthal, oleacein, oleuropein, hydroxytyrosol",
+   "2–4 tbsp daily, with food"
+  ]
+ ],
+ [
+  [
+   "Compound",
+   "Class",
+   "Primary effect",
+   "Concentration"
+  ],
+  [
+   "Oleuropein",
+   "Secoiridoid",
+   "Precursor to oleacein and hydroxytyrosol; antioxidant",
+   "High in fruit, converts during processing"
+  ],
+  [
+   "Oleacein",
+   "Secoiridoid",
+   "Powerful antioxidant; anti-inflammatory; LDL protection",
+   "High"
+  ],
+  [
+   "Oleocanthal",
+   "Secoiridoid",
+   "COX inhibition (ibuprofen-like); anti-inflammatory",
+   "High"
+  ],
+  [
+   "Ligstroside aglycon",
+   "Secoiridoid",
+   "Similar activity to oleocanthal",
+   "Lower"
+  ],
+  [
+   "Hydroxytyrosol",
+   "Simple phenol",
+   "One of the most potent dietary antioxidants; basis of EU health claim",
+   "Moderate; increases as oleuropein degrades"
+  ],
+  [
+   "Tyrosol",
+   "Simple phenol",
+   "Antioxidant",
+   "Moderate; lower activity than hydroxytyrosol"
+  ],
+  [
+   "Luteolin / Apigenin",
+   "Flavonoid",
+   "Anti-inflammatory; antioxidant",
+   "Low"
+  ],
+  [
+   "Pinoresinol / Acetoxypinoresinol",
+   "Lignan",
+   "Hormonal regulation; antioxidant",
+   "Low"
+  ]
+ ],
+ [
+  [
+   "Method",
+   "What it measures",
+   "Typical output",
+   "Limitations"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Total reducing capacity of all phenolic compounds",
+   "Higher number — tends to overstate relative to HPLC",
+   "Low specificity; acceptable for olive oil specifically because the oil matrix has few interfering substances"
+  ],
+  [
+   "HPLC (IOC method)",
+   "Individual phenolic compounds separated chromatographically",
+   "Lower number than FC — counts only identified compounds",
+   "Cannot distinguish between all compound forms; some secoiridoids lack commercial reference standards"
+  ],
+  [
+   "EU health claim method (HPLC after hydrolysis)",
+   "Hydroxytyrosol, tyrosol, and their derivatives only",
+   "Lowest number — a subset of total polyphenols",
+   "Narrowest scope by design; measures only compounds legally relevant to the health claim"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "What it means"
+  ],
+  [
+   "< 100",
+   "Typical supermarket EVOO — fully ripe olives, often blended stock"
+  ],
+  [
+   "100–250",
+   "Mid-range commercial EVOO"
+  ],
+  [
+   "250",
+   "EU health claim threshold — minimum to carry the hydroxytyrosol claim"
+  ],
+  [
+   "250–500",
+   "Good quality, early- to mid-harvest single-origin oil"
+  ],
+  [
+   "500–800",
+   "High quality, early-harvest single-cultivar oil"
+  ],
+  [
+   "> 800",
+   "Exceptional — characteristic of early-harvest high-phenol varieties like Coratina or Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Factor",
+   "Mechanism",
+   "Practical implication"
+  ],
+  [
+   "Heat during extraction",
+   "High temperatures during pressing increase yield but break down phenolic compounds",
+   "Cold extraction below 27°C is required to preserve polyphenols"
+  ],
+  [
+   "Oxygen",
+   "Polyphenols react with oxygen to protect the oil's fatty acids — consuming themselves in the process",
+   "Keep bottles sealed; minimise air exposure after opening"
+  ],
+  [
+   "Light",
+   "UV and visible light accelerate oxidation",
+   "Dark glass or opaque packaging; store away from direct light"
+  ],
+  [
+   "Time",
+   "Polyphenol content declines continuously even under ideal conditions",
+   "Prioritise harvest date over best-before date; consume within 12 months of harvest"
+  ],
+  [
+   "High cooking heat",
+   "Direct thermal degradation of phenolic compounds",
+   "Use early-harvest oils raw or at low heat"
+  ],
+  [
+   "Poor filtration",
+   "Unfiltered oils contain olive particles and water that accelerate microbial activity",
+   "Properly filtered oils retain polyphenol content more consistently"
+  ]
+ ],
+ [
+  [
+   "Harvest stage",
+   "Olive colour",
+   "Typical polyphenol content",
+   "Oil yield"
+  ],
+  [
+   "Early harvest",
+   "Green",
+   "500–800+ mg/kg",
+   "Low (~8–10kg fruit per litre)"
+  ],
+  [
+   "Mid harvest",
+   "Green-purple",
+   "250–500 mg/kg",
+   "Medium (~6kg fruit per litre)"
+  ],
+  [
+   "Late harvest",
+   "Purple-black",
+   "50–200 mg/kg",
+   "High (~4–5kg fruit per litre)"
+  ]
+ ],
+ [
+  [
+   "Health area",
+   "Key compounds",
+   "Evidence level",
+   "Status"
+  ],
+  [
+   "Cardiovascular protection",
+   "Hydroxytyrosol, oleacein, oleocanthal",
+   "Strong",
+   "Supported by large RCTs including PREDIMED"
+  ],
+  [
+   "LDL oxidation reduction",
+   "Hydroxytyrosol, oleacein",
+   "Strong",
+   "Basis of EU authorised health claim"
+  ],
+  [
+   "Anti-inflammatory effects",
+   "Oleocanthal (COX inhibition)",
+   "Strong mechanistically",
+   "Intervention trials ongoing"
+  ],
+  [
+   "Metabolic health",
+   "Hydroxytyrosol, oleocanthal",
+   "Moderate",
+   "Positive findings in multiple studies"
+  ],
+  [
+   "Neuroprotection",
+   "Oleocanthal, hydroxytyrosol",
+   "Promising",
+   "Cell and animal studies; human trials limited"
+  ],
+  [
+   "Cancer",
+   "Oleocanthal, oleacein, hydroxytyrosol",
+   "Early stage",
+   "In vitro and epidemiological; clinical confirmation limited"
+  ]
+ ]
+]

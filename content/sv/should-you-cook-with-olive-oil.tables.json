@@ -1,0 +1,96 @@
+[
+ [
+  [
+   "Olja",
+   "Dominerande fettyp",
+   "Oxidativ stabilitet",
+   "För matlagning"
+  ],
+  [
+   "Extra jungfruolja",
+   "~75 % enkelomättat (oljesyra)",
+   "Hög, förstärkt av polyfenoler",
+   "Utmärkt"
+  ],
+  [
+   "Avokadoolja",
+   "~70 % enkelomättat",
+   "Hög",
+   "Utmärkt"
+  ],
+  [
+   "Smör / Ghee",
+   "~65 % mättat fett",
+   "Hög",
+   "Bra"
+  ],
+  [
+   "Kokosolja",
+   "~90 % mättat fett",
+   "Mycket hög",
+   "Bra, använd med måtta"
+  ],
+  [
+   "Raps- / Canolaolja",
+   "~60 % enkelomättat",
+   "Måttlig",
+   "Godtagbar"
+  ],
+  [
+   "Solrosolja",
+   "~65 % fleromättat",
+   "Låg",
+   "Dålig"
+  ],
+  [
+   "Majsolja",
+   "~55 % fleromättat",
+   "Låg",
+   "Dålig"
+  ],
+  [
+   "Sojaolja",
+   "~60 % fleromättat",
+   "Låg",
+   "Dålig"
+  ],
+  [
+   "Druvkärnolja",
+   "~70 % fleromättat",
+   "Mycket låg",
+   "Dålig"
+  ]
+ ],
+ [
+  [
+   "Värmeintervall",
+   "Exempel på användning",
+   "Vad som händer",
+   "Optimal olja"
+  ],
+  [
+   "Ingen värme, under 40 °C",
+   "Vinägrett, marinader, avslutning över varm mat",
+   "Ingenting bryts ned. Polyfenolerna intakta. Full aromatisk uttrycksfullhet.",
+   "Polyfenolrik extra jungfruolja från tidig skörd"
+  ],
+  [
+   "Mild värme, 40–120 °C",
+   "Fräsa lök, pochera fisk, confit",
+   "En del aromer mildras. Polyfenolerna börjar avta men finns kvar. Fettet förblir stabilt.",
+   "Extra jungfruolja från tidig till mellanskörd"
+  ],
+  [
+   "Måttlig värme, 120–180 °C",
+   "Steka ägg, rosta grönsaker, baka, panera fisk",
+   "De flesta aromer går förlorade. Polyfenolerna sjunker markant. Oljans roll blir främst funktionell.",
+   "Extra jungfruolja från mellan- till sen skörd"
+  ],
+  [
+   "Hög värme, 180–220 °C",
+   "Bränna kött, lätt fritering",
+   "Polyfenolerna i stort sett borta. Oljan uppträder som ett fett.",
+   "Olivolja från sen skörd, utvald för hög halt av oljesyra och stabilitet"
+  ]
+ ]
+]

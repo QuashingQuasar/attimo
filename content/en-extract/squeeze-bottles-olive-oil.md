@@ -1,0 +1,111 @@
+# Squeeze Bottles Are Great For Marketing And Margins. They're Terrible For Olive Oil.
+
+The squeeze bottle changed olive oil marketing. Graza launched in 2022 with a neon plastic squeeze bottle, sold out in a week, and built a $60 million brand by making olive oil look like something that belongs on a TikTok pantry tour rather than a dark shelf in a specialty store. Brightland followed with a Pizza Oil in a squeeze bottle in 2023, then a full Everyday Set in 2025. California Olive Ranch, Iliada, Terra Delyssa, and Delallo all released their own versions. The format became the packaging trend of the decade in olive oil.
+
+The business logic is obvious. Plastic squeeze bottles are cheaper to source than glass. They are lighter, which cuts shipping costs. They don't break in transit, which means fewer losses and fewer customer service tickets. For a DTC brand optimising unit economics and margins, the squeeze bottle is a genuinely smart packaging decision. It contributed directly to Graza's ability to scale quickly and profitably. The format also photographs well, which matters in a market where products sell through social media before they sell through shelves.
+
+The problem is that the squeeze bottle is a good container for marketing and a bad container for olive oil.
+
+## TL;DR
+
+Plastic bottles are permeable to oxygen, which accelerates oxidation and degrades polyphenols. They transmit light, which triggers photooxidation. And they leach chemical compounds — including phthalates and microplastics — into the oil, because olive oil is pure fat and fat-soluble contaminants migrate from plastic into fatty foods at the highest rate of any food category. Squeeze bottles compound all three problems: they are made from softer plastic with more plasticisers, they let air back into the bottle with every squeeze, and they are typically clear. Dark glass is chemically inert, blocks UV light, and does not leach anything into the oil. It is the standard for a reason.
+
+## Problem 1: Oxygen
+
+Olive oil begins degrading the moment it is pressed. [Oxidation](https://attimo-oil.com/blog/should-you-cook-with-olive-oil) is the primary mechanism — oxygen reacts with the oil's fatty acids and bioactive compounds, progressively destroying flavour, aroma, and [polyphenol content](https://attimo-oil.com/blog/polyphenols-olive-oil). This is why freshness matters so much and why everything in a quality-focused supply chain is designed to minimise oxygen exposure: pressing within hours, bottling quickly, sealing tightly.
+
+Plastic is permeable to oxygen. Glass is not.
+
+PET (polyethylene terephthalate) and HDPE (high-density polyethylene) — the two plastics most commonly used for olive oil packaging — allow oxygen to pass through their walls continuously. The rate depends on the thickness of the plastic, the temperature, and the storage duration, but the effect is consistent: olive oil in a plastic bottle is exposed to a constant low-level stream of oxygen that glass would completely block.
+
+Research on EVOO stored in PET has documented shelf life reductions of 30–40% compared to glass under equivalent conditions. The oxidation markers (peroxide value, K270, secondary oxidation products) climb faster, the polyphenol content drops faster, and the sensory quality deteriorates sooner.
+
+For a commodity oil that will be used for cooking within a few weeks, this may not matter much. For a high-polyphenol oil that someone is consuming raw for its health properties, the difference between 400 mg/kg of polyphenols and 250 mg/kg — the gap that plastic-accelerated oxidation can create over a few months — is the difference between an oil that delivers on the EU health claim and one that does not.
+
+Squeeze bottles add a second oxygen problem. Every time you squeeze the bottle and release it, it draws air back in. This creates direct headspace oxidation inside the bottle, repeatedly, with every use. A glass bottle with a pour spout or a screw cap introduces minimal air during pouring. A squeeze bottle introduces air by design.
+
+## Problem 2: Light
+
+Polyphenols, chlorophyll, and carotenoids — the compounds that give olive oil its colour, flavour, and health properties — are photosensitive. UV light triggers photooxidation, a specific degradation pathway where light energy accelerates the breakdown of these compounds.
+
+Dark glass blocks UV light. Clear plastic does not.
+
+Most squeeze bottles and most plastic olive oil containers are transparent or only lightly tinted. This makes sense from a marketing perspective — you can see the product, the colour looks appealing, the bottle photographs well. But it exposes the oil to light damage during every stage of its life: in the warehouse, during shipping, on the retail shelf, on your kitchen counter.
+
+Research has consistently shown that light exposure, even intermittent, significantly accelerates the oxidative degradation of olive oil. The effect compounds with oxygen permeability — light and oxygen together are worse than either alone. Dark glass addresses both: it is impermeable to oxygen and blocks the UV spectrum that causes photooxidation.
+
+Some producers use opaque or dark-tinted plastic, which mitigates the light problem. But it does not address the oxygen permeability or the chemical leaching.
+
+## Problem 3: Chemical migration
+
+This is the problem that most consumers do not think about, and it is potentially the most consequential.
+
+Olive oil is pure fat. There is no water content. This matters because many of the chemical compounds used in plastic manufacturing — plasticisers, stabilisers, catalysts — are lipophilic. They dissolve preferentially into fat. The migration rate of these compounds from plastic into fatty foods is the highest of any food category.
+
+Phthalates are the primary concern. They are added to plastic to make it flexible (this is why squeeze bottles are particularly relevant — they require more plasticiser to achieve their softness). Phthalates are not chemically bonded to the plastic matrix. They migrate out. And they migrate into olive oil at a rate that is accelerated by time, temperature, and the fat content of the food.
+
+Phthalates are classified as endocrine disruptors. They interfere with hormone signalling, particularly reproductive hormones. They are regulated in the EU for food contact materials, but regulation sets upper limits on migration — it does not eliminate it. Every day an olive oil sits in a plastic bottle, phthalates are migrating into it.
+
+Microplastics have been detected in commercially bottled edible oils. A study published in the Journal of Hazardous Materials found between 134,000 and 580,000 microplastic particles per litre in PET-bottled oils, with over 80% of particles smaller than 10 micrometres. The long-term health effects of microplastic ingestion are still being studied, but the precautionary principle applies: if the option exists to eliminate a known source of microplastic exposure, it is worth taking.
+
+Glass is chemically inert. It does not leach compounds into the oil. It does not shed microplastic particles. It does not interact with the oil at all. The oil in a glass bottle is the same oil that went in. This is not true for plastic.
+
+## Why squeeze bottles are the worst case
+
+Squeeze bottles combine all three problems in their most extreme form:
+
+They are made from soft plastic, which requires higher concentrations of plasticisers to achieve the flexible, squeezable texture. More plasticiser means more potential migration. They are typically clear, offering no UV protection. And they introduce air into the bottle with every use, creating repeated cycles of internal oxidation that a pour-from-top glass bottle does not.
+
+The squeeze bottle was designed for convenience and visual appeal. Those are legitimate priorities — Graza's success proves that people want olive oil that is easy to use and looks good in their kitchen. But the container is actively working against the quality of the product inside it. If you care about the polyphenols, the freshness, and the purity of the oil, the squeeze bottle is the worst packaging format available.
+
+## Why we use dark glass
+
+When we were developing Attimo, we looked into plastic packaging seriously. The economics are compelling for a DTC brand. Cheaper to source, lighter to ship, no breakage in transit. Fewer losses, better margins. We understood exactly why Graza made the choice they made.
+
+But when we started researching what actually happens to olive oil inside a plastic bottle, the conclusion came quickly. We produce early-harvest, single-variety oil with high polyphenol content. We press within hours of picking. We test every batch in an independent lab. We publish the results. The entire point of what we do is to deliver an oil that retains the quality it had at pressing for as long as possible.
+
+Putting that oil in a container that accelerates oxidation, lets in UV light, and leaches phthalates into the product would undermine everything upstream. Every decision in our supply chain — early harvest, fast pressing, single variety, lab testing — is designed to protect polyphenol content. The last decision in the chain, the packaging, cannot be the one that gives it away.
+
+Dark glass is more expensive. It is heavier. It breaks occasionally in transit. These are real costs. We accept them because the alternative is an oil that arrives in worse condition than when it left us and continues to degrade faster in the customer's kitchen than it needs to.
+
+It is not a branding choice. It is a quality choice. And it is worth noting that Graza itself introduced glass bottles in 2025. The market is beginning to recognise what the science already said.
+
+## FAQ
+
+**Is all plastic equally bad for olive oil?**
+
+No. PET is better than PVC, and opaque or dark-tinted plastic is better than clear. But all plastic is permeable to oxygen to some degree, and all food-grade plastic has the potential for chemical migration into fatty foods. Glass eliminates both problems entirely.
+
+**What about tin cans?**
+
+Tin (specifically lined steel or aluminium) blocks both light and oxygen effectively. It is a legitimate alternative to dark glass. Some high-quality producers use tin, and it is widely used in the Mediterranean. The main trade-off is that the interior lining can contain compounds that migrate into the oil, though at lower rates than plastic. For the consumer, dark glass and tin are both good choices.
+
+**Does the type of cap matter?**
+
+Yes. A metal screw cap with a pour spout that minimises air entry is better than a wide-mouth opening. Some high-end producers use nitrogen-flushed bottles with anti-drip pourers to further minimise oxygen contact. The cap is part of the protection system.
+
+**How should I store my olive oil at home?**
+
+In a cool, dark place. Away from the stove, away from windows, away from heat sources. The bottle should be kept sealed when not in use. If you decant into a smaller container for daily use, make sure it is also dark glass or ceramic, and use it within a few weeks.
+
+**Is Graza bad olive oil?**
+
+This article is not about Graza's oil quality. Graza uses single-origin Spanish olives (Picual) and has been transparent about their sourcing. The point is that the squeeze bottle format works against the quality of whatever oil is inside it. You can put excellent oil into a bad container. The container does not care what the oil cost.
+
+**Can I transfer my oil from plastic to glass at home?**
+
+Yes, and it is worth doing if you bought oil in plastic. Transfer it to a dark glass bottle, seal it, and store it properly. The migration and oxidation that occurred in the plastic bottle cannot be reversed, but you can prevent further degradation.
+
+## Sources
+
+- Del Nobile et al. (2003). Influence of packaging geometry and material properties on the oxidation kinetic of bottled virgin olive oil. Journal of Food Engineering. [https://www.sciencedirect.com/science/article/abs/pii/S0260877402002764](undefined)
+- Cecchi et al. (2009). Study of the quality of extra virgin olive oil stored in PET bottles with or without an oxygen scavenger. Food Chemistry. https://www.sciencedirect.com/science/article/abs/pii/S0308814609012813
+- Kanavouras & Coutelieris (2019). Alterations of PET material physical properties during storage of olive oil. Food Packaging and Shelf Life. https://www.sciencedirect.com/science/article/abs/pii/S2214289418301893
+- Guo et al. (2023). Detection and quantification of microplastics in commercially bottled edible oil. Journal of Hazardous Materials. https://www.sciencedirect.com/science/article/abs/pii/S2214289423000996
+- Lopes et al. (2023). Identification of colourant-carrier migrants from PET bottles into vegetable oils. Journal of Food Composition and Analysis. https://www.sciencedirect.com/science/article/abs/pii/S0889157523004611
+- Tsochatzis et al. (2023). Analysis of migrant cyclic PET oligomers in olive oil using UHPLC-qTOF-MS. Molecules. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10379823/
+- Di Felice (2008). Oxygen permeation in PET bottles with passive and active walls. Packaging Technology and Science. [https://onlinelibrary.wiley.com/doi/abs/10.1002/pts.820](undefined)
+- Olive Oil Times (2024). U.S. Consumers Embrace Olive Oil in Squeeze Bottles. https://www.oliveoiltimes.com/business/north-america/u-s-consumers-are-embracing-olive-oil-in-squeeze-bottles/135372
+- Modern Retail (2024). To squeeze or not to squeeze. [https://www.modernretail.co/operations/to-squeeze-or-not-to-squeeze-the-olive-oil-world-is-divided-over-plastic-packaging/](undefined)
+- Fast Company (2025). Brightland launches squeeze bottles. https://www.fastcompany.com/91358423/brightland-new-squeeze-bottles-everyday-oil
+- Food Network (2025). Graza's New Glass Olive Oil Bottles. https://www.foodnetwork.com/fn-dish/news/graza-glass-bottle-olive-oil

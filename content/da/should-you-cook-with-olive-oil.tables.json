@@ -1,0 +1,96 @@
+[
+ [
+  [
+   "Olie",
+   "Dominerende fedttype",
+   "Oxidativ stabilitet",
+   "Til madlavning"
+  ],
+  [
+   "Ekstra jomfru-olivenolie",
+   "~75 % MUFA (oliesyre)",
+   "Høj, forstærket af polyfenoler",
+   "Fremragende"
+  ],
+  [
+   "Avocadoolie",
+   "~70 % MUFA",
+   "Høj",
+   "Fremragende"
+  ],
+  [
+   "Smør / Ghee",
+   "~65 % mættet fedt",
+   "Høj",
+   "God"
+  ],
+  [
+   "Kokosolie",
+   "~90 % mættet fedt",
+   "Meget høj",
+   "God, brug med måde"
+  ],
+  [
+   "Raps- / Canolaolie",
+   "~60 % MUFA",
+   "Moderat",
+   "Nogenlunde"
+  ],
+  [
+   "Solsikkeolie",
+   "~65 % PUFA",
+   "Lav",
+   "Dårlig"
+  ],
+  [
+   "Majsolie",
+   "~55 % PUFA",
+   "Lav",
+   "Dårlig"
+  ],
+  [
+   "Sojaolie",
+   "~60 % PUFA",
+   "Lav",
+   "Dårlig"
+  ],
+  [
+   "Druekerneolie",
+   "~70 % PUFA",
+   "Meget lav",
+   "Dårlig"
+  ]
+ ],
+ [
+  [
+   "Varmeinterval",
+   "Eksempler på brug",
+   "Hvad der sker",
+   "Optimal olie"
+  ],
+  [
+   "Ingen varme, under 40 °C",
+   "Vinaigrette, marinader, afsluttende over varm mad",
+   "Intet nedbrydes. Polyfenoler intakte. Fuldt aromatisk udtryk.",
+   "EVOO fra tidlig høst, rig på polyfenoler"
+  ],
+  [
+   "Skånsom varme, 40-120 °C",
+   "Svitsning af løg, pochering af fisk, confit",
+   "Nogle aromastoffer blødgøres. Polyfenolerne begynder at aftage, men er stadig til stede. Fedtet forbliver stabilt.",
+   "EVOO fra tidlig til midt i høsten"
+  ],
+  [
+   "Moderat varme, 120-180 °C",
+   "Spejlæg, ovnbagte grøntsager, bagning, panderet fisk",
+   "De fleste aromastoffer tabt. Polyfenolerne falder betydeligt. Oliens rolle bliver primært funktionel.",
+   "EVOO fra midt i til sen høst"
+  ],
+  [
+   "Høj varme, 180-220 °C",
+   "Bruning af kød, stegning i lidt fedt",
+   "Polyfenolerne stort set væk. Olien opfører sig som et fedt.",
+   "Olivenolie fra sen høst, udvalgt for højt indhold af oliesyre og stabilitet"
+  ]
+ ]
+]

@@ -1,0 +1,96 @@
+[
+ [
+  [
+   "Huile",
+   "Type de graisse dominant",
+   "Stabilité oxydative",
+   "Pour la cuisson"
+  ],
+  [
+   "Huile d'olive extra vierge",
+   "~75 % AGMI (acide oléique)",
+   "Élevée, renforcée par les polyphénols",
+   "Excellente"
+  ],
+  [
+   "Huile d'avocat",
+   "~70 % AGMI",
+   "Élevée",
+   "Excellente"
+  ],
+  [
+   "Beurre / Ghee",
+   "~65 % graisses saturées",
+   "Élevée",
+   "Bonne"
+  ],
+  [
+   "Huile de coco",
+   "~90 % graisses saturées",
+   "Très élevée",
+   "Bonne, à consommer avec modération"
+  ],
+  [
+   "Huile de colza / Canola",
+   "~60 % AGMI",
+   "Modérée",
+   "Correcte"
+  ],
+  [
+   "Huile de tournesol",
+   "~65 % AGPI",
+   "Faible",
+   "Médiocre"
+  ],
+  [
+   "Huile de maïs",
+   "~55 % AGPI",
+   "Faible",
+   "Médiocre"
+  ],
+  [
+   "Huile de soja",
+   "~60 % AGPI",
+   "Faible",
+   "Médiocre"
+  ],
+  [
+   "Huile de pépins de raisin",
+   "~70 % AGPI",
+   "Très faible",
+   "Médiocre"
+  ]
+ ],
+ [
+  [
+   "Plage de chaleur",
+   "Exemples d'usage",
+   "Ce qui se passe",
+   "Huile optimale"
+  ],
+  [
+   "Sans chaleur, en dessous de 40 °C",
+   "Vinaigrette, marinades, finition sur un plat chaud",
+   "Rien ne se dégrade. Polyphénols intacts. Pleine expression aromatique.",
+   "HOEV de récolte précoce, riche en polyphénols"
+  ],
+  [
+   "Chaleur douce, 40–120 °C",
+   "Faire fondre des oignons, pocher du poisson, confit",
+   "Certains arômes s'atténuent. Les polyphénols commencent à décliner mais restent présents. La graisse demeure stable.",
+   "HOEV de récolte précoce à intermédiaire"
+  ],
+  [
+   "Chaleur modérée, 120–180 °C",
+   "Frire des œufs, rôtir des légumes, cuisson au four, poêler du poisson",
+   "La plupart des arômes sont perdus. Les polyphénols chutent nettement. Le rôle de l'huile devient avant tout fonctionnel.",
+   "HOEV de récolte intermédiaire à tardive"
+  ],
+  [
+   "Forte chaleur, 180–220 °C",
+   "Saisir de la viande, friture peu profonde",
+   "Polyphénols en grande partie disparus. L'huile se comporte comme une simple graisse.",
+   "Huile d'olive de récolte tardive, choisie pour sa forte teneur en acide oléique et sa stabilité"
+  ]
+ ]
+]

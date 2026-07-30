@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Source",
+   "Principaux polyphénols",
+   "Contexte d'apport quotidien habituel"
+  ],
+  [
+   "Vin rouge",
+   "Resvératrol, quercétine",
+   "~150 ml par portion"
+  ],
+  [
+   "Thé vert",
+   "EGCG, catéchines",
+   "~240 ml par tasse"
+  ],
+  [
+   "Chocolat noir",
+   "Flavanols",
+   "~10–30 g par portion"
+  ],
+  [
+   "Huile d'olive extra vierge",
+   "Oléocanthal, oléacéine, oleuropéine, hydroxytyrosol",
+   "2–4 c. à soupe par jour, avec les repas"
+  ]
+ ],
+ [
+  [
+   "Composé",
+   "Classe",
+   "Effet principal",
+   "Concentration"
+  ],
+  [
+   "Oleuropéine",
+   "Sécoiridoïde",
+   "Précurseur de l'oléacéine et de l'hydroxytyrosol ; antioxydant",
+   "Élevée dans le fruit, se convertit pendant la transformation"
+  ],
+  [
+   "Oléacéine",
+   "Sécoiridoïde",
+   "Antioxydant puissant ; anti-inflammatoire ; protection des LDL",
+   "Élevée"
+  ],
+  [
+   "Oléocanthal",
+   "Sécoiridoïde",
+   "Inhibition des COX (proche de l'ibuprofène) ; anti-inflammatoire",
+   "Élevée"
+  ],
+  [
+   "Aglycone de ligstroside",
+   "Sécoiridoïde",
+   "Activité similaire à celle de l'oléocanthal",
+   "Plus faible"
+  ],
+  [
+   "Hydroxytyrosol",
+   "Phénol simple",
+   "L'un des antioxydants alimentaires les plus puissants ; base de l'allégation de santé de l'UE",
+   "Modérée ; augmente à mesure que l'oleuropéine se dégrade"
+  ],
+  [
+   "Tyrosol",
+   "Phénol simple",
+   "Antioxydant",
+   "Modérée ; activité plus faible que l'hydroxytyrosol"
+  ],
+  [
+   "Lutéoline / Apigénine",
+   "Flavonoïde",
+   "Anti-inflammatoire ; antioxydant",
+   "Faible"
+  ],
+  [
+   "Pinorésinol / Acétoxypinorésinol",
+   "Lignane",
+   "Régulation hormonale ; antioxydant",
+   "Faible"
+  ]
+ ],
+ [
+  [
+   "Méthode",
+   "Ce qu'elle mesure",
+   "Résultat type",
+   "Limites"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Capacité réductrice totale de tous les composés phénoliques",
+   "Chiffre plus élevé — tend à surestimer par rapport à l'HPLC",
+   "Faible spécificité ; acceptable pour l'huile d'olive en particulier car la matrice de l'huile comporte peu de substances interférentes"
+  ],
+  [
+   "HPLC (méthode COI)",
+   "Composés phénoliques individuels séparés par chromatographie",
+   "Chiffre plus bas que la FC — ne compte que les composés identifiés",
+   "Ne peut pas distinguer toutes les formes de composés ; certains sécoiridoïdes n'ont pas d'étalons de référence commerciaux"
+  ],
+  [
+   "Méthode de l'allégation de santé de l'UE (HPLC après hydrolyse)",
+   "Hydroxytyrosol, tyrosol et leurs dérivés uniquement",
+   "Chiffre le plus bas — un sous-ensemble des polyphénols totaux",
+   "Périmètre le plus restreint par conception ; ne mesure que les composés juridiquement pertinents pour l'allégation de santé"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "Ce que cela signifie"
+  ],
+  [
+   "< 100",
+   "Huile d'olive extra vierge de supermarché typique — olives à pleine maturité, souvent stock d'assemblage"
+  ],
+  [
+   "100–250",
+   "Huile d'olive extra vierge commerciale de milieu de gamme"
+  ],
+  [
+   "250",
+   "Seuil de l'allégation de santé de l'UE — minimum pour porter l'allégation hydroxytyrosol"
+  ],
+  [
+   "250–500",
+   "Huile mono-origine de bonne qualité, de récolte précoce à mi-saison"
+  ],
+  [
+   "500–800",
+   "Huile monovariétale de récolte précoce, de haute qualité"
+  ],
+  [
+   "> 800",
+   "Exceptionnelle — caractéristique des variétés de récolte précoce riches en composés phénoliques comme la Coratina ou la Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Facteur",
+   "Mécanisme",
+   "Implication pratique"
+  ],
+  [
+   "Chaleur lors de l'extraction",
+   "Les températures élevées pendant le pressage augmentent le rendement mais dégradent les composés phénoliques",
+   "Une extraction à froid en dessous de 27 °C est nécessaire pour préserver les polyphénols"
+  ],
+  [
+   "Oxygène",
+   "Les polyphénols réagissent avec l'oxygène pour protéger les acides gras de l'huile — se consommant eux-mêmes au passage",
+   "Gardez les bouteilles fermées ; limitez l'exposition à l'air après ouverture"
+  ],
+  [
+   "Lumière",
+   "La lumière UV et visible accélère l'oxydation",
+   "Verre foncé ou emballage opaque ; conserver à l'abri de la lumière directe"
+  ],
+  [
+   "Temps",
+   "La teneur en polyphénols diminue continuellement, même dans des conditions idéales",
+   "Privilégier la date de récolte à la date de péremption ; consommer dans les 12 mois suivant la récolte"
+  ],
+  [
+   "Forte chaleur de cuisson",
+   "Dégradation thermique directe des composés phénoliques",
+   "Utiliser les huiles de récolte précoce crues ou à basse température"
+  ],
+  [
+   "Filtration insuffisante",
+   "Les huiles non filtrées contiennent des particules d'olive et de l'eau qui accélèrent l'activité microbienne",
+   "Les huiles correctement filtrées conservent leur teneur en polyphénols de façon plus régulière"
+  ]
+ ],
+ [
+  [
+   "Stade de récolte",
+   "Couleur de l'olive",
+   "Teneur en polyphénols typique",
+   "Rendement en huile"
+  ],
+  [
+   "Récolte précoce",
+   "Verte",
+   "500–800+ mg/kg",
+   "Faible (~8–10 kg de fruits par litre)"
+  ],
+  [
+   "Récolte de mi-saison",
+   "Vert-violet",
+   "250–500 mg/kg",
+   "Moyen (~6 kg de fruits par litre)"
+  ],
+  [
+   "Récolte tardive",
+   "Violet-noir",
+   "50–200 mg/kg",
+   "Élevé (~4–5 kg de fruits par litre)"
+  ]
+ ],
+ [
+  [
+   "Domaine de santé",
+   "Composés clés",
+   "Niveau de preuve",
+   "Statut"
+  ],
+  [
+   "Protection cardiovasculaire",
+   "Hydroxytyrosol, oléacéine, oléocanthal",
+   "Solide",
+   "Étayé par de grands essais randomisés, dont PREDIMED"
+  ],
+  [
+   "Réduction de l'oxydation des LDL",
+   "Hydroxytyrosol, oléacéine",
+   "Solide",
+   "Base de l'allégation de santé autorisée par l'UE"
+  ],
+  [
+   "Effets anti-inflammatoires",
+   "Oléocanthal (inhibition des COX)",
+   "Solide au niveau mécanistique",
+   "Essais d'intervention en cours"
+  ],
+  [
+   "Santé métabolique",
+   "Hydroxytyrosol, oléocanthal",
+   "Modéré",
+   "Résultats positifs dans plusieurs études"
+  ],
+  [
+   "Neuroprotection",
+   "Oléocanthal, hydroxytyrosol",
+   "Prometteur",
+   "Études sur cellules et sur animaux ; essais chez l'humain limités"
+  ],
+  [
+   "Cancer",
+   "Oléocanthal, oléacéine, hydroxytyrosol",
+   "Stade précoce",
+   "In vitro et épidémiologique ; confirmation clinique limitée"
+  ]
+ ]
+]

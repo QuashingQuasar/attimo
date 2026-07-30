@@ -1,0 +1,96 @@
+[
+ [
+  [
+   "Oil",
+   "Dominant fat type",
+   "Oxidative stability",
+   "For cooking"
+  ],
+  [
+   "Extra virgin olive oil",
+   "~75% MUFA (oleic acid)",
+   "High, reinforced by polyphenols",
+   "Excellent"
+  ],
+  [
+   "Avocado oil",
+   "~70% MUFA",
+   "High",
+   "Excellent"
+  ],
+  [
+   "Butter / Ghee",
+   "~65% saturated fat",
+   "High",
+   "Good"
+  ],
+  [
+   "Coconut oil",
+   "~90% saturated fat",
+   "Very high",
+   "Good, use in moderation"
+  ],
+  [
+   "Rapeseed / Canola oil",
+   "~60% MUFA",
+   "Moderate",
+   "Fair"
+  ],
+  [
+   "Sunflower oil",
+   "~65% PUFA",
+   "Low",
+   "Poor"
+  ],
+  [
+   "Corn oil",
+   "~55% PUFA",
+   "Low",
+   "Poor"
+  ],
+  [
+   "Soybean oil",
+   "~60% PUFA",
+   "Low",
+   "Poor"
+  ],
+  [
+   "Grapeseed oil",
+   "~70% PUFA",
+   "Very low",
+   "Poor"
+  ]
+ ],
+ [
+  [
+   "Heat range",
+   "Example uses",
+   "What happens",
+   "Optimal oil"
+  ],
+  [
+   "No heat, below 40°C",
+   "Vinaigrette, marinades, finishing over warm food",
+   "Nothing degrades. Polyphenols intact. Full aromatic expression.",
+   "Early-harvest, high-polyphenol EVOO"
+  ],
+  [
+   "Gentle heat, 40–120°C",
+   "Softening onions, poaching fish, confit",
+   "Some aromatics soften. Polyphenols begin to decline but remain present. Fat stays stable.",
+   "Early- to mid-harvest EVOO"
+  ],
+  [
+   "Moderate heat, 120–180°C",
+   "Frying eggs, roasting vegetables, baking, pan-frying fish",
+   "Most aromatics lost. Polyphenols drop significantly. The oil's role becomes primarily functional.",
+   "Mid- to late-harvest EVOO"
+  ],
+  [
+   "High heat, 180–220°C",
+   "Searing meat, shallow-frying",
+   "Polyphenols largely gone. The oil behaves as a fat.",
+   "Late-harvest olive oil, selected for high oleic acid and stability"
+  ]
+ ]
+]

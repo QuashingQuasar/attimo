@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Källa",
+   "Viktiga polyfenoler",
+   "Typiskt dagligt intag"
+  ],
+  [
+   "Rödvin",
+   "Resveratrol, kvercetin",
+   "~150 ml per portion"
+  ],
+  [
+   "Grönt te",
+   "EGCG, katekiner",
+   "~240 ml per kopp"
+  ],
+  [
+   "Mörk choklad",
+   "Flavanoler",
+   "~10–30 g per portion"
+  ],
+  [
+   "Extra jungfruolja",
+   "Oleocanthal, oleacein, oleuropein, hydroxityrosol",
+   "2–4 msk dagligen, med mat"
+  ]
+ ],
+ [
+  [
+   "Förening",
+   "Klass",
+   "Främsta effekt",
+   "Koncentration"
+  ],
+  [
+   "Oleuropein",
+   "Sekoiridoid",
+   "Förstadium till oleacein och hydroxityrosol; antioxidant",
+   "Hög i frukten, omvandlas under bearbetningen"
+  ],
+  [
+   "Oleacein",
+   "Sekoiridoid",
+   "Kraftfull antioxidant; antiinflammatorisk; LDL-skydd",
+   "Hög"
+  ],
+  [
+   "Oleocanthal",
+   "Sekoiridoid",
+   "COX-hämning (ibuprofenliknande); antiinflammatorisk",
+   "Hög"
+  ],
+  [
+   "Ligstrosid-aglykon",
+   "Sekoiridoid",
+   "Liknande aktivitet som oleocanthal",
+   "Lägre"
+  ],
+  [
+   "Hydroxityrosol",
+   "Enkel fenol",
+   "En av de mest potenta antioxidanterna i kosten; grunden för EU:s hälsopåstående",
+   "Måttlig; ökar när oleuropein bryts ner"
+  ],
+  [
+   "Tyrosol",
+   "Enkel fenol",
+   "Antioxidant",
+   "Måttlig; lägre aktivitet än hydroxityrosol"
+  ],
+  [
+   "Luteolin / Apigenin",
+   "Flavonoid",
+   "Antiinflammatorisk; antioxidant",
+   "Låg"
+  ],
+  [
+   "Pinoresinol / Acetoxipinoresinol",
+   "Lignan",
+   "Hormonell reglering; antioxidant",
+   "Låg"
+  ]
+ ],
+ [
+  [
+   "Metod",
+   "Vad den mäter",
+   "Typiskt resultat",
+   "Begränsningar"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Total reducerande förmåga hos alla fenolföreningar",
+   "Högre värde — tenderar att överskatta jämfört med HPLC",
+   "Låg specificitet; godtagbar just för olivolja eftersom oljematrisen har få störande ämnen"
+  ],
+  [
+   "HPLC (IOC-metoden)",
+   "Enskilda fenolföreningar separerade kromatografiskt",
+   "Lägre värde än FC — räknar endast identifierade föreningar",
+   "Kan inte skilja mellan alla föreningsformer; vissa sekoiridoider saknar kommersiella referensstandarder"
+  ],
+  [
+   "EU:s metod för hälsopåstående (HPLC efter hydrolys)",
+   "Endast hydroxityrosol, tyrosol och deras derivat",
+   "Lägst värde — en delmängd av de totala polyfenolerna",
+   "Snävast omfattning avsiktligt; mäter endast de föreningar som är juridiskt relevanta för hälsopåståendet"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "Vad det innebär"
+  ],
+  [
+   "< 100",
+   "Typisk extra jungfruolja från mataffären — fullt mogna oliver, ofta blandat parti"
+  ],
+  [
+   "100–250",
+   "Kommersiell extra jungfruolja i mellanskiktet"
+  ],
+  [
+   "250",
+   "EU:s tröskelvärde för hälsopåstående — minimum för att bära hydroxityrosol-påståendet"
+  ],
+  [
+   "250–500",
+   "Enkelsortsolja av god kvalitet från tidig till medelsen skörd"
+  ],
+  [
+   "500–800",
+   "Enkelsortsolja av hög kvalitet från tidig skörd"
+  ],
+  [
+   "> 800",
+   "Exceptionell — kännetecknande för polyfenolrika sorter från tidig skörd som Coratina eller Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Faktor",
+   "Mekanism",
+   "Praktisk följd"
+  ],
+  [
+   "Värme vid extraktion",
+   "Höga temperaturer vid pressningen ökar utbytet men bryter ner fenolföreningar",
+   "Kall extraktion under 27 °C krävs för att bevara polyfenolerna"
+  ],
+  [
+   "Syre",
+   "Polyfenoler reagerar med syre för att skydda oljans fettsyror — och förbrukas i processen",
+   "Håll flaskorna förslutna; minimera luftexponeringen efter öppning"
+  ],
+  [
+   "Ljus",
+   "UV-ljus och synligt ljus påskyndar oxidationen",
+   "Mörkt glas eller ogenomskinlig förpackning; förvara borta från direkt ljus"
+  ],
+  [
+   "Tid",
+   "Polyfenolhalten sjunker kontinuerligt även under idealiska förhållanden",
+   "Prioritera skördedatum framför bäst-före-datum; konsumera inom 12 månader efter skörd"
+  ],
+  [
+   "Hög tillagningsvärme",
+   "Direkt termisk nedbrytning av fenolföreningar",
+   "Använd oljor från tidig skörd råa eller vid låg värme"
+  ],
+  [
+   "Dålig filtrering",
+   "Ofiltrerade oljor innehåller olivpartiklar och vatten som påskyndar mikrobiell aktivitet",
+   "Ordentligt filtrerade oljor behåller polyfenolhalten mer konsekvent"
+  ]
+ ],
+ [
+  [
+   "Skördestadium",
+   "Olivens färg",
+   "Typisk polyfenolhalt",
+   "Oljeutbyte"
+  ],
+  [
+   "Tidig skörd",
+   "Grön",
+   "500–800+ mg/kg",
+   "Lågt (~8–10 kg frukt per liter)"
+  ],
+  [
+   "Medelskörd",
+   "Grön-lila",
+   "250–500 mg/kg",
+   "Medel (~6 kg frukt per liter)"
+  ],
+  [
+   "Sen skörd",
+   "Lila-svart",
+   "50–200 mg/kg",
+   "Högt (~4–5 kg frukt per liter)"
+  ]
+ ],
+ [
+  [
+   "Hälsoområde",
+   "Viktiga föreningar",
+   "Evidensnivå",
+   "Status"
+  ],
+  [
+   "Skydd av hjärt-kärlsystemet",
+   "Hydroxityrosol, oleacein, oleocanthal",
+   "Stark",
+   "Stöds av stora RCT inklusive PREDIMED"
+  ],
+  [
+   "Minskad LDL-oxidation",
+   "Hydroxityrosol, oleacein",
+   "Stark",
+   "Grunden för EU:s godkända hälsopåstående"
+  ],
+  [
+   "Antiinflammatoriska effekter",
+   "Oleocanthal (COX-hämning)",
+   "Stark mekanistiskt",
+   "Interventionsstudier pågår"
+  ],
+  [
+   "Metabol hälsa",
+   "Hydroxityrosol, oleocanthal",
+   "Måttlig",
+   "Positiva fynd i flera studier"
+  ],
+  [
+   "Neuroprotektion",
+   "Oleocanthal, hydroxityrosol",
+   "Lovande",
+   "Cell- och djurstudier; humanstudier begränsade"
+  ],
+  [
+   "Cancer",
+   "Oleocanthal, oleacein, hydroxityrosol",
+   "Tidigt skede",
+   "In vitro och epidemiologiskt; klinisk bekräftelse begränsad"
+  ]
+ ]
+]
