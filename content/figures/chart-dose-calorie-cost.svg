@@ -1,0 +1,42 @@
+<svg viewBox="0 0 720 380" width="720" height="380" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">Same polyphenol dose, different calorie cost</title>
+<desc id="desc">Horizontal bar chart showing the amount of olive oil needed to deliver the same polyphenol dose at four concentrations, and the calories that costs: supermarket oil at 180 mg per kg needs 28 grams and 245 calories; the EU health claim threshold at 250 mg per kg needs 20 grams and 177 calories; Blueprint at 425 mg per kg needs 12 grams and 104 calories; ATTIMO Coratina at 847 mg per kg needs 6 grams and 52 calories.</desc>
+<rect x="0" y="0" width="720" height="380" fill="#FFFAEA"/>
+<text x="28" y="44" font-family="'Space Grotesk', system-ui, sans-serif" font-size="27" font-weight="700" fill="#1B4229">Same dose, different calorie cost</text>
+<text x="28" y="68" font-family="'Space Grotesk', system-ui, sans-serif" font-size="14" fill="#1B4229" opacity="0.55">Oil needed to deliver an equal polyphenol dose, and the calories it costs</text>
+
+<line x1="250" y1="282" x2="640" y2="282" stroke="#1B4229" stroke-width="1" opacity="0.25"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">
+<text x="250" y="300">0</text>
+<text x="328" y="300">50</text>
+<text x="406" y="300">100</text>
+<text x="484" y="300">150</text>
+<text x="562" y="300">200</text>
+<text x="640" y="300">250</text>
+</g>
+<text x="445" y="322" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">calories per day</text>
+
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<rect x="250" y="100" width="382" height="24" rx="4" fill="#9DAE84"/>
+<text x="235" y="117" font-size="13" fill="#1B4229" opacity="0.75" text-anchor="end">Supermarket oil · 180 mg/kg</text>
+<text x="260" y="117" font-size="13" font-weight="600" fill="#1B4229" opacity="0.6">28 g</text>
+<text x="640" y="117" font-size="13" font-weight="700" fill="#1B4229" opacity="0.75">245 kcal</text>
+
+<rect x="250" y="146" width="276" height="24" rx="4" fill="#9DAE84"/>
+<text x="235" y="163" font-size="13" fill="#1B4229" opacity="0.75" text-anchor="end">EU threshold · 250 mg/kg</text>
+<text x="260" y="163" font-size="13" font-weight="600" fill="#1B4229" opacity="0.6">20 g</text>
+<text x="534" y="163" font-size="13" font-weight="700" fill="#1B4229" opacity="0.75">177 kcal</text>
+
+<rect x="250" y="192" width="162" height="24" rx="4" fill="#9DAE84"/>
+<text x="235" y="209" font-size="13" fill="#1B4229" opacity="0.75" text-anchor="end">Blueprint EVOO · 425 mg/kg</text>
+<text x="260" y="209" font-size="13" font-weight="600" fill="#1B4229" opacity="0.6">12 g</text>
+<text x="420" y="209" font-size="13" font-weight="700" fill="#1B4229" opacity="0.75">104 kcal</text>
+
+<rect x="250" y="238" width="81" height="24" rx="4" fill="#CDDB2D"/>
+<text x="235" y="255" font-size="13" font-weight="600" fill="#1B4229" text-anchor="end">ATTIMO Coratina · 847 mg/kg</text>
+<text x="260" y="255" font-size="13" font-weight="600" fill="#1B4229" opacity="0.7">6 g</text>
+<text x="339" y="255" font-size="13" font-weight="700" fill="#1B4229">52 kcal</text>
+</g>
+
+<text x="28" y="352" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" fill="#1B4229" opacity="0.45">Dose held constant at 5 mg polyphenols — what 20 g of a 250 mg/kg oil delivers, per the EU health claim condition.</text>
+</svg>
