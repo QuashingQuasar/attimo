@@ -108,6 +108,8 @@ The caveats are heavy enough that we would rather state them than leave them to 
 | ~41 g (3 tbsp) | Bryan Johnson's intake | Beyond the range any cohort measured |
 | ~50 g (3½ tbsp) | PREDIMED olive oil arm | Works inside a whole diet; dose never tested |
 
+[[IMAGE1]]
+
 The evidence runs strong from zero to about 20 g a day, then goes silent. Silence is not a warning: no study has found harm at high intake. But an absence of studies at 41 g gets presented as support for 41 g, and it is not that.
 
 ## Can you drink too much olive oil?
@@ -145,7 +147,7 @@ Run that through real oils, holding the polyphenol dose constant:
 
 Same polyphenol dose in every row. Roughly 190 calories a day between top and bottom — about 70,000 calories a year, spent to arrive at the same place.
 
-[[IMAGE1]]
+[[IMAGE2]]
 
 One caveat the number deserves. Comparing polyphenol figures across brands only works when the same method sits behind them. Folin-Ciocalteu, HPLC and NMR return different results from the same oil, and NMR runs materially higher. A bottle claiming 1,200 mg/kg by NMR may be the same oil as one claiming 480 by HPLC. We publish the COI standard biophenol method from an accredited laboratory, and we walk through reading those numbers in [our guide to olive oil lab reports](/blog/how-to-read-olive-oil-lab-analysis).
 
@@ -158,6 +160,8 @@ Less, which is the point of buying it.
 The European condition is built on 20 g of an oil at the 250 mg/kg entry threshold. Concentration scales that down: an oil at 850 mg/kg reaches the same polyphenol dose in roughly a quarter of the volume.
 
 In practice, for an oil in the 400–850 mg/kg range, a tablespoon to a tablespoon and a half a day covers it. Around 120 to 175 calories.
+
+[[IMAGE3]]
 
 The trap is treating a high number as licence to take more. The number means you can take less and arrive at the same place, with room left in the day for food.
 
