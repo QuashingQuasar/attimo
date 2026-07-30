@@ -5,6 +5,7 @@ import Footer from "@astro/components/Footer.astro";
 import ShareButtons from "@astro/components/ShareButtons.astro";
 import NewsletterForm from "@astro/components/NewsletterForm.astro";
 import PortableText from "@astro/components/PortableText.astro";
+import { faqJsonLd } from "@/lib/faq";
 import { getPostsByLang, getPostBySlug, getMorePosts, getBlogHreflangs, urlFor } from "@/lib/sanity";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
@@ -60,6 +61,10 @@ if (post.coverImage) {
   jsonLd.image = ogImage;
 }
 
+// FAQ sections are eligible for rich results; emitted alongside the Article.
+const faqLd = faqJsonLd(post.body);
+const pageJsonLd = faqLd ? [jsonLd, faqLd] : jsonLd;
+
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString("de-DE", { month: "long", year: "numeric" });
 const formatDateShort = (dateStr: string) =>
@@ -74,7 +79,7 @@ const formatDateShort = (dateStr: string) =>
   ogImage={ogImage}
   ogType="article"
   noIndex={!!post.noIndex}
-  jsonLd={jsonLd}
+  jsonLd={pageJsonLd}
   hreflangs={hreflangs}
   htmlLang="de"
   announceTier2={t.announce.freeShipping2}
