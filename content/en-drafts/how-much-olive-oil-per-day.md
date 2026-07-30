@@ -201,6 +201,8 @@ One tablespoon with each of three meals. Which matters, because the most common 
 
 There is no established absorption advantage to drinking olive oil straight. Anyone claiming otherwise should be asked for the study.
 
+[[IMAGE3]]
+
 What a measured spoon gives you is dose reliability. A drizzle is an estimate. If you are treating olive oil as a daily intervention, knowing you took 15 mL has some value, and if you would rather eat it on food you lose nothing.
 
 We wrote about where the format came from in [why people are now drinking olive oil shots](/blog/olive-oil-shot).
@@ -226,6 +228,8 @@ Which is why we only sell the current harvest, publish the analysis for every re
 ## Where ATTIMO fits
 
 Our 2025/26 [Coratina](/product/coratina) measures 847 mg/kg total biophenols, tested by Chemiservice in Monopoli, an ISO/IEC 17025 accredited laboratory, using the COI standard method. Oleocanthal 471 mg/kg, oleacein 336 mg/kg — the compounds the research is built on, broken out individually instead of folded into one total.
+
+[[IMAGE4]]
 
 In practice: the 20 g a day the evidence supports, and that the European health claim is built around, is a tablespoon and a half. Around 175 calories. Single variety, early harvest, current crop, numbers published.
 

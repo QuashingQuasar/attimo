@@ -201,6 +201,8 @@ Bryan tager den heller ikke som shot.
 
 Der er ingen påvist absorptionsfordel ved at drikke olivenolie rent. Enhver, der påstår andet, bør bedes om studiet.
 
+[[IMAGE3]]
+
 Det, en opmålt skefuld giver dig, er pålidelig dosering. En skvæt er et skøn. Behandler du olivenolie som en daglig intervention, har det en vis værdi at vide, at du tog 15 ml, og vil du hellere spise den på mad, mister du intet.
 
 Vi skrev om, hvor formatet kommer fra, i [hvorfor folk nu drikker olivenolie-shots](/dk/blog/olivenolie-shot).
@@ -226,6 +228,8 @@ Derfor sælger vi kun den aktuelle høst, offentliggør analysen for hver eneste
 ## Hvor ATTIMO passer ind
 
 Vores [Coratina](/dk/product/coratina) 2025/26 måler 847 mg/kg samlede biofenoler, testet af Chemiservice i Monopoli, et ISO/IEC 17025-akkrediteret laboratorium, efter COI-standardmetoden. Oleocanthal 471 mg/kg, oleacein 336 mg/kg — de forbindelser, forskningen er bygget på, opgjort hver for sig i stedet for lagt sammen til ét tal.
+
+[[IMAGE4]]
 
 I praksis: de 20 g om dagen, som evidensen understøtter, og som den europæiske sundhedsanprisning er bygget op om, er halvanden spiseskefuld. Omkring 175 kalorier. Sortsren, tidlig høst, aktuel årgang, tal offentliggjort.
 

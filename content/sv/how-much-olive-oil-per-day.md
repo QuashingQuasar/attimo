@@ -201,6 +201,8 @@ En matsked till var och en av tre måltider. Vilket spelar roll, eftersom den va
 
 Det finns ingen fastställd absorptionsfördel med att dricka olivolja rakt. Den som hävdar något annat bör ombes visa studien.
 
+[[IMAGE3]]
+
 Vad en uppmätt sked ger dig är dostillförlitlighet. En skvätt är en uppskattning. Om du behandlar olivolja som en daglig åtgärd har det ett visst värde att veta att du tog 15 ml, och om du hellre äter den på mat förlorar du ingenting.
 
 Vi skrev om var formatet kom ifrån i [varför folk nu dricker olivoljeshots](/se/blog/olivolja-shot).
@@ -226,6 +228,8 @@ Det är därför vi bara säljer den aktuella skörden, publicerar analysen för
 ## Var ATTIMO passar in
 
 Vår [Coratina](/se/product/coratina) 2025/26 mäter 847 mg/kg totala biofenoler, testad av Chemiservice i Monopoli, ett ISO/IEC 17025-ackrediterat laboratorium, med COI:s standardmetod. Oleocanthal 471 mg/kg, oleacein 336 mg/kg — föreningarna forskningen är byggd på, redovisade var för sig i stället för hopvikta i en enda totalsumma.
+
+[[IMAGE4]]
 
 I praktiken: de 20 g om dagen som evidensen stöder, och som det europeiska hälsopåståendet är byggt kring, är en och en halv matsked. Omkring 175 kalorier. Enkelsort, tidig skörd, aktuell skörd, siffror publicerade.
 

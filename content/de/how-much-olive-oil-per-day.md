@@ -201,6 +201,8 @@ Einen Esslöffel zu jeder der drei Mahlzeiten. Was zählt, denn der häufigste E
 
 Es gibt keinen belegten Aufnahmevorteil, wenn man Olivenöl pur trinkt. Wer etwas anderes behauptet, sollte nach der Studie gefragt werden.
 
+[[IMAGE3]]
+
 Was ein abgemessener Löffel liefert, ist Verlässlichkeit der Dosis. Ein Schuss aus der Flasche ist eine Schätzung. Wer Olivenöl als tägliche Intervention behandelt, hat einen gewissen Nutzen davon, 15 ml sicher zu wissen, und wer es lieber auf dem Essen isst, verliert nichts.
 
 Woher das Format kommt, haben wir in [warum jetzt so viele Menschen Olivenöl-Shots trinken](/de/blog/olivenoel-shot) beschrieben.
@@ -226,6 +228,8 @@ Deshalb verkaufen wir ausschließlich die aktuelle Ernte, veröffentlichen die A
 ## Wo ATTIMO steht
 
 Unsere [Coratina](/de/product/coratina) 2025/26 misst 847 mg/kg Gesamtbiophenole, geprüft von Chemiservice in Monopoli, einem nach ISO/IEC 17025 akkreditierten Labor, nach der COI-Standardmethode. Oleocanthal 471 mg/kg, Oleacein 336 mg/kg — die Verbindungen, auf denen die Forschung aufbaut, einzeln ausgewiesen statt in einer Gesamtsumme verpackt.
+
+[[IMAGE4]]
 
 In der Praxis: Die 20 g am Tag, die die Evidenz stützt und um die herum der europäische Health Claim gebaut ist, sind anderthalb Esslöffel. Rund 175 Kalorien. Sortenrein, frühe Ernte, aktueller Jahrgang, Zahlen veröffentlicht.
 

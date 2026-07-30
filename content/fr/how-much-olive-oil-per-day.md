@@ -201,6 +201,8 @@ Une cuillère à soupe à chacun des trois repas. Ce qui compte, parce que l'obj
 
 Aucun avantage d'absorption n'est établi pour l'huile d'olive bue pure. À quiconque prétend le contraire, il faut demander l'étude.
 
+[[IMAGE3]]
+
 Ce qu'une cuillère mesurée vous apporte, c'est la fiabilité de la dose. Un filet d'huile est une estimation. Si vous traitez l'huile d'olive comme une intervention quotidienne, savoir que vous en avez pris 15 ml a une certaine valeur, et si vous préférez la manger sur des aliments, vous ne perdez rien.
 
 Nous avons écrit sur l'origine de ce format dans [pourquoi les gens boivent désormais des shots d'huile d'olive](/fr/blog/shot-huile-olive).
@@ -226,6 +228,8 @@ C'est pourquoi nous ne vendons que la récolte en cours, publions l'analyse de c
 ## Où se situe ATTIMO
 
 Notre [Coratina](/fr/product/coratina) 2025/26 mesure 847 mg/kg de biophénols totaux, analysée par Chemiservice à Monopoli, un laboratoire accrédité ISO/CEI 17025, selon la méthode standard du COI. Oléocanthal 471 mg/kg, oléacéine 336 mg/kg — les composés sur lesquels la recherche est bâtie, détaillés un par un au lieu d'être fondus dans un total unique.
+
+[[IMAGE4]]
 
 En pratique : les 20 g par jour que les données soutiennent, et autour desquels l'allégation de santé européenne est construite, c'est une cuillère à soupe et demie. Environ 175 calories. Monovariétale, récolte précoce, cru en cours, chiffres publiés.
 
