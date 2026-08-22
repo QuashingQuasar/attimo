@@ -3,6 +3,7 @@ import { quizQuestionsFr, oilSummariesFr, type QuizTextQuestion } from "@/lib/qu
 import { quizQuestionsDe, oilSummariesDe } from "@/lib/quizData.de";
 import { quizQuestionsSv, oilSummariesSv } from "@/lib/quizData.sv";
 import { quizQuestionsDa, oilSummariesDa } from "@/lib/quizData.da";
+import { quizQuestionsNl, oilSummariesNl } from "@/lib/quizData.nl";
 
 export interface QuizOption {
   label: string;
@@ -184,6 +185,7 @@ export function getQuizQuestions(locale?: Pick<Locale, "lang">): QuizQuestion[] 
     : locale?.lang === "de" ? quizQuestionsDe
     : locale?.lang === "sv" ? quizQuestionsSv
     : locale?.lang === "da" ? quizQuestionsDa
+    : locale?.lang === "nl" ? quizQuestionsNl
     : null;
   if (!overlay) return quizQuestions;
   return quizQuestions.map((q) => {
@@ -211,6 +213,7 @@ export function calculateResults(
     : locale?.lang === "de" ? oilSummariesDe
     : locale?.lang === "sv" ? oilSummariesSv
     : locale?.lang === "da" ? oilSummariesDa
+    : locale?.lang === "nl" ? oilSummariesNl
     : oilSummaries;
   const totals: OilScores = { coratina: 0, picual: 0, nocellara: 0 };
 

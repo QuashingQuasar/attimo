@@ -3,6 +3,7 @@ import { productContentFrMap } from "./productContent.fr";
 import { productContentDeMap } from "./productContent.de";
 import { productContentSvMap } from "./productContent.sv";
 import { productContentDaMap } from "./productContent.da";
+import { productContentNlMap } from "./productContent.nl";
 
 export interface ProductContent {
   // Hero section
@@ -443,6 +444,7 @@ export function getProductContent(
     : locale?.lang === "de" ? productContentDeMap
     : locale?.lang === "sv" ? productContentSvMap
     : locale?.lang === "da" ? productContentDaMap
+    : locale?.lang === "nl" ? productContentNlMap
     : productContentMap;
   if (!handle) return map["nocellara"] || productContentMap["nocellara"];
 
