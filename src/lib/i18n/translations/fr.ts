@@ -451,12 +451,14 @@ export const fr: Dict = {
     contactHeading: "Des questions sur votre commande ?",
     contactSub: "Nous sommes là pour vous aider. Écrivez-nous à tout moment.", // REVIEW
     freeFromBottles: "{n} bouteilles",
-    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", tier3: "Palier 3" },
+    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
     delivery: {
       core: "2–3 jours ouvrés",
       tier1: "3–5 jours ouvrés",
       tier2: "4–6 jours ouvrés",
       tier3: "5–7 jours ouvrés",
+      tier4: "6–8 jours ouvrés",
+      tier5: "5–8 jours ouvrés",
     },
     countries: {
       Belgium: "Belgique", Germany: "Allemagne", Luxembourg: "Luxembourg", Netherlands: "Pays-Bas",
@@ -464,7 +466,7 @@ export const fr: Dict = {
       France: "France", Hungary: "Hongrie", Liechtenstein: "Liechtenstein", Malta: "Malte", Poland: "Pologne",
       Slovakia: "Slovaquie", Slovenia: "Slovénie", Estonia: "Estonie", Ireland: "Irlande", Italy: "Italie",
       Latvia: "Lettonie", Lithuania: "Lituanie", Spain: "Espagne", Sweden: "Suède", Finland: "Finlande",
-      Greece: "Grèce", Portugal: "Portugal", Romania: "Roumanie",
+      Greece: "Grèce", Portugal: "Portugal", Romania: "Roumanie", Norway: "Norvège", Switzerland: "Suisse",
     },
   },
 

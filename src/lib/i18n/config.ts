@@ -66,7 +66,7 @@ export const DEFAULT_LOCALE: Locale = {
     coratina3L: 89,
   },
   shipping: {
-    standard: 9,
+    standard: 7,
     freeThreshold: 48,
   },
   flag: "🇪🇺",
@@ -102,7 +102,7 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 9,
+      standard: 10,
       freeThreshold: 48,
     },
     flag: "🇩🇪",
@@ -136,7 +136,7 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 12,
+      standard: 15,
       freeThreshold: 48,
     },
     flag: "🇫🇷",
@@ -168,7 +168,7 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 9,
+      standard: 10,
       freeThreshold: 48,
     },
     flag: "🇳🇱",
@@ -199,7 +199,7 @@ export const LOCALES: Locale[] = [
       coratina3L: 700,
     },
     shipping: {
-      standard: 90,
+      standard: 112,
       freeThreshold: 380,
     },
     flag: "🇩🇰",
@@ -229,9 +229,10 @@ export const LOCALES: Locale[] = [
       // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
       coratina3L: 1000,
     },
-    // €12 EU Tier 1 rate ≈135 SEK; free from 2 bottles (2×270 SEK fixed price).
+    // Mid-EU €15 rate ≈168 SEK; free from 2 bottles (2×270 SEK). FX-converted
+    // at checkout unless a fixed SEK shipping override is set in Shopify Markets.
     shipping: {
-      standard: 135,
+      standard: 168,
       freeThreshold: 540,
     },
     flag: "🇸🇪",

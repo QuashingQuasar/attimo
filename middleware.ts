@@ -9,13 +9,16 @@ export const config = {
     "/((?!_astro|_vercel|api|fonts|images|videos|icons|lab|patterns|assets|lovable-uploads|favicon|robots\\.txt|sitemap\\.xml|placeholder\\.svg|navbar-logo\\.svg|klaro-config\\.js|values\\.pdf|.*\\.[^/]+$).*)",
 };
 
+// Cookie digit doubles as the free-shipping bottle threshold (parsed by
+// ProductPage/CartDrawer). Countries in the FedEx band (MT/NO/LI/CH) have no
+// free shipping — they get no cookie, which also keeps the announce bar hidden.
 const TIER_2 = new Set([
-  "BE", "DE", "NL", "LU", "AT", "CZ", "DK", "FR",
-  "BG", "HU", "PL", "SK", "SI", "HR", "SE",
+  "BE", "DE", "NL", "LU", "FR", "AT", "CZ", "DK",
+  "HR", "ES", "FI", "BG", "EE", "SE", "PL", "HU", "SK", "SI",
 ]);
 
 const TIER_3 = new Set([
-  "EE", "IE", "IT", "LV", "LT", "ES", "FI", "GR", "PT", "RO", "MT",
+  "IT", "GR", "LT", "LV", "PT", "RO", "IE",
 ]);
 
 export default function middleware(request: Request) {

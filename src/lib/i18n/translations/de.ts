@@ -460,12 +460,14 @@ export const de: Dict = {
     contactHeading: "Fragen zu Ihrer Bestellung?",
     contactSub: "Wir helfen Ihnen gerne. Schreiben Sie uns jederzeit.", // REVIEW
     freeFromBottles: "{n} Flaschen",
-    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", tier3: "Stufe 3" },
+    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
     delivery: {
       core: "2–3 Werktage",
       tier1: "3–5 Werktage",
       tier2: "4–6 Werktage",
       tier3: "5–7 Werktage",
+      tier4: "6–8 Werktage",
+      tier5: "5–8 Werktage",
     },
     countries: {
       Belgium: "Belgien", Germany: "Deutschland", Luxembourg: "Luxemburg", Netherlands: "Niederlande",
@@ -473,7 +475,7 @@ export const de: Dict = {
       France: "Frankreich", Hungary: "Ungarn", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakei", Slovenia: "Slowenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Lettland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Schweden", Finland: "Finnland",
-      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien",
+      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien", Norway: "Norwegen", Switzerland: "Schweiz",
     },
   },
 

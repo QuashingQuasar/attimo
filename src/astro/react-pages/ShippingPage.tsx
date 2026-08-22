@@ -9,10 +9,12 @@ import { getDict } from "@/lib/i18n/dictionaries";
 // Tier shape is locale-independent (cost numbers, country keys, free-from
 // bottle counts, highlight); names/delivery/country labels come from the dict.
 const TIERS = [
-  { key: "core" as const, countries: ["Belgium", "Germany", "Luxembourg", "Netherlands"], shippingCost: "€9", freeFromN: 2, highlight: true },
-  { key: "tier1" as const, countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "France", "Hungary", "Poland", "Slovakia", "Slovenia", "Sweden"], shippingCost: "€12", freeFromN: 2 },
-  { key: "tier2" as const, countries: ["Estonia", "Ireland", "Italy", "Latvia", "Lithuania", "Spain"], shippingCost: "€19", freeFromN: 3 },
-  { key: "tier3" as const, countries: ["Finland", "Greece", "Malta", "Portugal", "Romania"], shippingCost: "€22", freeFromN: 3 },
+  { key: "core" as const, countries: ["Belgium"], shippingCost: "€7", freeFromN: 2, highlight: true },
+  { key: "tier1" as const, countries: ["Germany", "Luxembourg", "Netherlands"], shippingCost: "€10", freeFromN: 2 },
+  { key: "tier2" as const, countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "Estonia", "Finland", "France", "Hungary", "Poland", "Slovakia", "Slovenia", "Spain", "Sweden"], shippingCost: "€15", freeFromN: 2 },
+  { key: "tier3" as const, countries: ["Greece", "Italy", "Latvia", "Lithuania"], shippingCost: "€20", freeFromN: 3 },
+  { key: "tier4" as const, countries: ["Ireland", "Portugal", "Romania"], shippingCost: "€25", freeFromN: 3 },
+  { key: "tier5" as const, countries: ["Liechtenstein", "Malta", "Norway", "Switzerland"], shippingCost: "€40", freeFromN: 0 },
 ];
 
 interface ShippingPageProps {
@@ -165,16 +167,18 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
                         >
                           {t.standardLabel} {tier.shippingCost}
                         </span>
-                        <span
-                          className="text-sm font-bold px-3 py-1 rounded-full"
-                          style={{
-                            fontFamily: "Space Grotesk, sans-serif",
-                            backgroundColor: "#CDDB2D",
-                            color: "#1B4229",
-                          }}
-                        >
-                          {t.freeFromLabel} {tier.freeFrom}
-                        </span>
+                        {tier.freeFromN > 0 && (
+                          <span
+                            className="text-sm font-bold px-3 py-1 rounded-full"
+                            style={{
+                              fontFamily: "Space Grotesk, sans-serif",
+                              backgroundColor: "#CDDB2D",
+                              color: "#1B4229",
+                            }}
+                          >
+                            {t.freeFromLabel} {tier.freeFrom}
+                          </span>
+                        )}
                       </div>
                     </div>
 

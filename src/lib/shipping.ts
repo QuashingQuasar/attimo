@@ -1,27 +1,29 @@
-// Country-based free shipping threshold tiers
-const CORE: string[] = ["BE", "DE", "LU", "NL"];
-const TIER_1: string[] = [
-  "AT", "BG", "HR", "CZ", "DK", "FR", "HU", "PL", "SK", "SI", "SE",
+// Country-based free shipping threshold tiers (mirrors Shopify zones, 2026-08).
+// Free from 2 bottles for zones charging €7–15; from 3 for €20–25 zones; the
+// FedEx band (€40 flat) has no free shipping at all.
+const THRESHOLD_2: string[] = [
+  "BE", "DE", "LU", "NL",
+  "FR", "AT", "CZ", "DK", "HR", "ES", "FI", "BG", "EE", "SE", "PL", "HU", "SK", "SI",
 ];
-const TIER_2: string[] = [
-  "EE", "IE", "IT", "LV", "LT", "ES",
-];
-const TIER_3: string[] = ["FI", "GR", "PT", "RO", "MT"];
+const THRESHOLD_3: string[] = ["IT", "GR", "LT", "LV", "PT", "RO", "IE"];
+const NO_FREE: string[] = ["MT", "NO", "LI", "CH"];
 
-const SUPPORTED_COUNTRIES = [...CORE, ...TIER_1, ...TIER_2, ...TIER_3];
+const SUPPORTED_COUNTRIES = [...THRESHOLD_2, ...THRESHOLD_3, ...NO_FREE];
 
 // Fallback when geo is unknown (no middleware cookie AND ipapi lookup failed).
 // Default to the core-market threshold (2) — Belgium/Germany/NL are the bulk of
 // traffic — rather than over-stating the requirement at 3.
 const DEFAULT_THRESHOLD = 2;
 
+// Sentinel above any orderable quantity: "free shipping" UI never triggers.
+const NEVER = 99;
+
 export function getFreeShippingThreshold(countryCode: string | null): number {
   if (!countryCode) return DEFAULT_THRESHOLD;
   const code = countryCode.toUpperCase();
-  if (CORE.includes(code)) return 2;
-  if (TIER_1.includes(code)) return 2;
-  if (TIER_2.includes(code)) return 3;
-  if (TIER_3.includes(code)) return 4;
+  if (THRESHOLD_2.includes(code)) return 2;
+  if (THRESHOLD_3.includes(code)) return 3;
+  if (NO_FREE.includes(code)) return NEVER;
   return DEFAULT_THRESHOLD;
 }
 

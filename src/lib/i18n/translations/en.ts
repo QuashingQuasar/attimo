@@ -494,12 +494,14 @@ export const en = {
     contactSub: "We're here to help. Reach out anytime.", // REVIEW
     // Free-shipping threshold cell, e.g. "2 bottles". Placeholder {n}.
     freeFromBottles: "{n} bottles",
-    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", tier3: "Tier 3" },
+    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
     delivery: {
       core: "2–3 business days",
       tier1: "3–5 business days",
       tier2: "4–6 business days",
       tier3: "5–7 business days",
+      tier4: "6–8 business days",
+      tier5: "5–8 business days",
     },
     // EU country names shown as chips per tier.
     countries: {
@@ -508,7 +510,7 @@ export const en = {
       France: "France", Hungary: "Hungary", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Poland",
       Slovakia: "Slovakia", Slovenia: "Slovenia", Estonia: "Estonia", Ireland: "Ireland", Italy: "Italy",
       Latvia: "Latvia", Lithuania: "Lithuania", Spain: "Spain", Sweden: "Sweden", Finland: "Finland",
-      Greece: "Greece", Portugal: "Portugal", Romania: "Romania",
+      Greece: "Greece", Portugal: "Portugal", Romania: "Romania", Norway: "Norway", Switzerland: "Switzerland",
     },
   },
 

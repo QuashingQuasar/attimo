@@ -448,12 +448,14 @@ export const sv: Dict = {
     contactHeading: "Frågor om din beställning?",
     contactSub: "Vi hjälper gärna till. Hör av dig när som helst.",
     freeFromBottles: "{n} flaskor",
-    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", tier3: "Nivå 3" },
+    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", tier3: "Nivå 3", tier4: "Nivå 4", tier5: "Nivå 5" },
     delivery: {
       core: "2–3 arbetsdagar",
       tier1: "3–5 arbetsdagar",
       tier2: "4–6 arbetsdagar",
       tier3: "5–7 arbetsdagar",
+      tier4: "6–8 arbetsdagar",
+      tier5: "5–8 arbetsdagar",
     },
     countries: {
       Belgium: "Belgien", Germany: "Tyskland", Luxembourg: "Luxemburg", Netherlands: "Nederländerna",
@@ -461,7 +463,7 @@ export const sv: Dict = {
       France: "Frankrike", Hungary: "Ungern", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slovakien", Slovenia: "Slovenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Lettland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Sverige", Finland: "Finland",
-      Greece: "Grekland", Portugal: "Portugal", Romania: "Rumänien",
+      Greece: "Grekland", Portugal: "Portugal", Romania: "Rumänien", Norway: "Norge", Switzerland: "Schweiz",
     },
   },
 

@@ -455,12 +455,14 @@ export const nl: Dict = {
     contactHeading: "Vragen over je bestelling?",
     contactSub: "We helpen je graag. Neem gerust contact op.", // REVIEW
     freeFromBottles: "{n} flessen",
-    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", tier3: "Zone 3" },
+    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
     delivery: {
       core: "2–3 werkdagen",
       tier1: "3–5 werkdagen",
       tier2: "4–6 werkdagen",
       tier3: "5–7 werkdagen",
+      tier4: "6–8 werkdagen",
+      tier5: "5–8 werkdagen",
     },
     countries: {
       Belgium: "België", Germany: "Duitsland", Luxembourg: "Luxemburg", Netherlands: "Nederland",
@@ -468,7 +470,7 @@ export const nl: Dict = {
       France: "Frankrijk", Hungary: "Hongarije", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakije", Slovenia: "Slovenië", Estonia: "Estland", Ireland: "Ierland", Italy: "Italië",
       Latvia: "Letland", Lithuania: "Litouwen", Spain: "Spanje", Sweden: "Zweden", Finland: "Finland",
-      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië",
+      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië", Norway: "Noorwegen", Switzerland: "Zwitserland",
     },
   },
 
