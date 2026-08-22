@@ -396,7 +396,7 @@ export const en = {
       wholesaleMid: " or write directly to ",
       wholesalePost: " and we'll take it from there.", // REVIEW
       // Q: shipping — text (numbers stay), then link, then a period.
-      shippingText: "We ship across the European Union, from Belgium and the Netherlands to Finland and Portugal. Shipping starts at €7 for core countries and goes up to €22 for more remote destinations — but most orders qualify for free shipping when you order 2–4 bottles depending on your location. Orders placed today ship tomorrow, and delivery takes 2–7 business days depending on where you are.", // REVIEW
+      shippingText: "We ship across the European Union, from Belgium and the Netherlands to Finland and Portugal. Shipping starts at €7 for core countries and goes up to €40 for more remote destinations — but most orders qualify for free shipping when you order 2–3 bottles depending on your location. Orders placed today ship tomorrow, and delivery takes 2–7 business days depending on where you are.", // REVIEW
       shippingLink: "View full shipping details",
     },
   },

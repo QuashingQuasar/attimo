@@ -16,15 +16,36 @@ const SUPPORTED_COUNTRIES = [...THRESHOLD_2, ...THRESHOLD_3, ...NO_FREE];
 const DEFAULT_THRESHOLD = 2;
 
 // Sentinel above any orderable quantity: "free shipping" UI never triggers.
-const NEVER = 99;
+// Exported so components can distinguish "free available at N bottles" from
+// "no free shipping in this market" (FedEx band) instead of rendering an
+// absurd "add 97 bottles" nudge.
+export const NO_FREE_SHIPPING = 99;
 
 export function getFreeShippingThreshold(countryCode: string | null): number {
   if (!countryCode) return DEFAULT_THRESHOLD;
   const code = countryCode.toUpperCase();
   if (THRESHOLD_2.includes(code)) return 2;
   if (THRESHOLD_3.includes(code)) return 3;
-  if (NO_FREE.includes(code)) return NEVER;
+  if (NO_FREE.includes(code)) return NO_FREE_SHIPPING;
   return DEFAULT_THRESHOLD;
+}
+
+// Read the free-shipping bottle threshold from the middleware-set cookie.
+// Client-only (returns null on the server and when the cookie is absent). The
+// cookie digit is the threshold itself (2 or 3); see middleware.ts. Reading it
+// in a useEffect — not a render-time useMemo — is what makes the value
+// reliable: the cookie is guaranteed present after mount.
+export function readShippingTierCookie(): number | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d+)/);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+// True when this market offers free shipping at some reachable bottle count.
+// Guards the "add N bottles for free shipping" nudge and the free-shipping
+// badge, both of which are meaningless for the FedEx band (MT/NO/LI/CH).
+export function freeShippingAvailable(threshold: number): boolean {
+  return threshold > 0 && threshold < NO_FREE_SHIPPING;
 }
 
 export function isCountrySupported(countryCode: string | null): boolean | null {

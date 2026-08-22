@@ -361,7 +361,7 @@ export const sv: Dict = {
       wholesaleContactLink: "kontaktformulär",
       wholesaleMid: " eller skriv direkt till ",
       wholesalePost: " så tar vi det därifrån.",
-      shippingText: "Vi skickar över hela EU, från Belgien och Nederländerna till Finland och Portugal. Frakten börjar på 7 € för kärnländer och går upp till 22 € för mer avlägsna destinationer – men de flesta beställningar kvalificerar för fri frakt när du beställer 2–4 flaskor beroende på var du bor. Beställningar idag skickas imorgon, och leverans tar 2–7 arbetsdagar beroende på var du är.",
+      shippingText: "Vi skickar över hela EU, från Belgien och Nederländerna till Finland och Portugal. Frakten börjar på 7 € för kärnländer och går upp till 40 € för mer avlägsna destinationer – men de flesta beställningar kvalificerar för fri frakt när du beställer 2–3 flaskor beroende på var du bor. Beställningar idag skickas imorgon, och leverans tar 2–7 arbetsdagar beroende på var du är.",
       shippingLink: "Se fullständiga fraktdetaljer",
     },
   },

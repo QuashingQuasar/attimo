@@ -21,6 +21,12 @@ const TIER_3 = new Set([
   "IT", "GR", "LT", "LV", "PT", "RO", "IE",
 ]);
 
+// FedEx band (MT/NO/LI/CH): €40 flat, no free shipping at any quantity. Given an
+// explicit "99" cookie so the front-end reliably suppresses the free-shipping
+// nudge/badge without depending on client-side geo detection. 99 = the
+// NO_FREE_SHIPPING sentinel in src/lib/shipping.ts.
+const TIER_NONE = new Set(["MT", "NO", "LI", "CH"]);
+
 export default function middleware(request: Request) {
   const country = request.headers.get("x-vercel-ip-country") ?? "";
   const url = new URL(request.url);
@@ -50,6 +56,7 @@ export default function middleware(request: Request) {
   let tier = "";
   if (TIER_2.has(country)) tier = "2";
   else if (TIER_3.has(country)) tier = "3";
+  else if (TIER_NONE.has(country)) tier = "99";
 
   // Cookie is readable by client JS (no HttpOnly) so the inline script
   // in BaseLayout can pick the right message. 1-day TTL is plenty —

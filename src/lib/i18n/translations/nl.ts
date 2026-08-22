@@ -368,7 +368,7 @@ export const nl: Dict = {
       wholesaleContactLink: "contactformulier",
       wholesaleMid: " of schrijf rechtstreeks naar ",
       wholesalePost: " en wij regelen de rest.", // REVIEW
-      shippingText: "We verzenden door de hele Europese Unie, van België en Nederland tot Finland en Portugal. Verzending begint bij €7 voor de kernlanden en loopt op tot €22 voor verder gelegen bestemmingen — maar de meeste bestellingen komen in aanmerking voor gratis verzending vanaf 2–4 flessen, afhankelijk van je locatie. Vandaag besteld is morgen verzonden, en de levering duurt 2–7 werkdagen, afhankelijk van waar je woont.", // REVIEW
+      shippingText: "We verzenden door de hele Europese Unie, van België en Nederland tot Finland en Portugal. Verzending begint bij €7 voor de kernlanden en loopt op tot €40 voor verder gelegen bestemmingen — maar de meeste bestellingen komen in aanmerking voor gratis verzending vanaf 2–3 flessen, afhankelijk van je locatie. Vandaag besteld is morgen verzonden, en de levering duurt 2–7 werkdagen, afhankelijk van waar je woont.", // REVIEW
       shippingLink: "Bekijk alle verzenddetails",
     },
   },

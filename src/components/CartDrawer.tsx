@@ -20,7 +20,7 @@ import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify
 import { CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { imageForColor, sizedImage } from "@/lib/merchImages";
 import { colorLabel } from "@/lib/merchContent";
-import { detectCountry, getFreeShippingThreshold } from "@/lib/shipping";
+import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie } from "@/lib/shipping";
 
 // Subscription items are sold at a fixed ~8% discount across all locales
 // (€22 vs €24 in the EUR config). Apply the same ratio to the displayed
@@ -177,12 +177,15 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   // source as the announce-bar's "FREE SHIPPING ON N+ BOTTLES" message and
   // is set instantly on first paint from Vercel's edge geo. Fall back to the
   // ipapi.co detection only when the cookie is missing.
-  const freeShippingThreshold = useMemo(() => {
-    if (typeof document !== "undefined") {
-      const m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d+)/);
-      if (m) return parseInt(m[1], 10);
-    }
-    return getFreeShippingThreshold(countryCode);
+  // Read in a useEffect (not a render-time useMemo) so the middleware cookie is
+  // reliably seen after mount; a render-time read raced hydration and could
+  // fall back to the default-2 threshold in threshold-3 markets.
+  const [freeShippingThreshold, setFreeShippingThreshold] = useState<number>(
+    () => getFreeShippingThreshold(null),
+  );
+  useEffect(() => {
+    const cookieTier = readShippingTierCookie();
+    setFreeShippingThreshold(cookieTier ?? getFreeShippingThreshold(countryCode));
   }, [countryCode]);
   const qualifiesForFreeShipping = oilBottleCount >= freeShippingThreshold;
   const bottlesNeeded = Math.max(0, freeShippingThreshold - oilBottleCount);
@@ -371,8 +374,9 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
             <>
               {/* Free-shipping nudge — oils only (we ship oils; merch ships
                   separately via Printful, so it never affects this). Hidden for
-                  merch-only carts. */}
-              {oilBottleCount > 0 && (
+                  merch-only carts, and for markets with no free shipping at all
+                  (FedEx band), where a "add N bottles" nudge is meaningless. */}
+              {oilBottleCount > 0 && freeShippingAvailable(freeShippingThreshold) && (
                 <div className="flex-shrink-0 mb-3">
                   {qualifiesForFreeShipping ? (
                     <div

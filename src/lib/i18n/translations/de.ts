@@ -373,7 +373,7 @@ export const de: Dict = {
       wholesaleContactLink: "Kontaktformular",
       wholesaleMid: " oder schreiben Sie direkt an ",
       wholesalePost: " und wir kümmern uns um den Rest.", // REVIEW
-      shippingText: "Wir liefern in die gesamte Europäische Union, von Belgien und den Niederlanden bis Finnland und Portugal. Der Versand beginnt bei 7 € für die Kernländer und reicht bis 22 € für weiter entfernte Ziele – doch die meisten Bestellungen erhalten Gratisversand ab 2 bis 4 Flaschen, je nach Standort. Heute aufgegebene Bestellungen werden morgen verschickt, und die Lieferung dauert 2 bis 7 Werktage, je nach Region.", // REVIEW
+      shippingText: "Wir liefern in die gesamte Europäische Union, von Belgien und den Niederlanden bis Finnland und Portugal. Der Versand beginnt bei 7 € für die Kernländer und reicht bis 40 € für weiter entfernte Ziele – doch die meisten Bestellungen erhalten Gratisversand ab 2 bis 3 Flaschen, je nach Standort. Heute aufgegebene Bestellungen werden morgen verschickt, und die Lieferung dauert 2 bis 7 Werktage, je nach Region.", // REVIEW
       shippingLink: "Alle Lieferdetails ansehen",
     },
   },

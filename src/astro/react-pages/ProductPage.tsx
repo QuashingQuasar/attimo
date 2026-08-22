@@ -26,7 +26,7 @@ import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORA
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
-import { detectCountry, getFreeShippingThreshold, isCountrySupported, GeoResult } from "@/lib/shipping";
+import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { DEFAULT_LOCALE, formatPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
@@ -96,12 +96,16 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const [countryName, setCountryName] = useState<string | null>(null);
   // Prefer the tier set by middleware (read from cookie) — single source of
   // truth shared with the announce bar. Fall back to ipapi-based detection.
-  const freeShippingThreshold = useMemo(() => {
-    if (typeof document !== "undefined") {
-      const m = document.cookie.match(/(?:^|;\s*)attimo_shipping_tier=(\d+)/);
-      if (m) return parseInt(m[1], 10);
-    }
-    return getFreeShippingThreshold(countryCode);
+  // Read in a useEffect (not a render-time useMemo): the cookie is reliably
+  // present after mount, whereas a render-time read raced hydration and could
+  // silently fall back to the default-2 threshold even in threshold-3 markets.
+  // Initialised to the SSR value (default threshold) so hydration matches.
+  const [freeShippingThreshold, setFreeShippingThreshold] = useState<number>(
+    () => getFreeShippingThreshold(null),
+  );
+  useEffect(() => {
+    const cookieTier = readShippingTierCookie();
+    setFreeShippingThreshold(cookieTier ?? getFreeShippingThreshold(countryCode));
   }, [countryCode]);
   const countrySupported = useMemo(() => isCountrySupported(countryCode), [countryCode]);
 
@@ -637,8 +641,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           );
                         })()}
                         <span className="font-normal text-xs">{(() => {
-                          // The box always ships free (a single box clears the
-                          // weight-based free-shipping threshold), so show the
+                          // Markets with no free shipping (FedEx band: MT/NO/LI/
+                          // CH) never show a free-shipping line or nudge — not
+                          // even for the box, which is €40 there, not free.
+                          if (!freeShippingAvailable(freeShippingThreshold)) return "";
+                          // The box always ships free in free-shipping markets (a
+                          // single box clears the weight threshold), so show the
                           // same "FREE SHIPPING ✓" the bottle shows once it
                           // qualifies — never the "add N bottles" nudge.
                           if (isBox || cartBottleCount >= freeShippingThreshold) return t.freeShipCheck;
