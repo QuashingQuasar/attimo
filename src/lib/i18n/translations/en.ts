@@ -510,7 +510,7 @@ export const en = {
       France: "France", Hungary: "Hungary", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Poland",
       Slovakia: "Slovakia", Slovenia: "Slovenia", Estonia: "Estonia", Ireland: "Ireland", Italy: "Italy",
       Latvia: "Latvia", Lithuania: "Lithuania", Spain: "Spain", Sweden: "Sweden", Finland: "Finland",
-      Greece: "Greece", Portugal: "Portugal", Romania: "Romania", Norway: "Norway", Switzerland: "Switzerland",
+      Greece: "Greece", Portugal: "Portugal", Romania: "Romania", Cyprus: "Cyprus", Norway: "Norway", Switzerland: "Switzerland",
     },
   },
 

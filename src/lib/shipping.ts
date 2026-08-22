@@ -5,7 +5,7 @@ const THRESHOLD_2: string[] = [
   "BE", "DE", "LU", "NL",
   "FR", "AT", "CZ", "DK", "HR", "ES", "FI", "BG", "EE", "SE", "PL", "HU", "SK", "SI",
 ];
-const THRESHOLD_3: string[] = ["IT", "GR", "LT", "LV", "PT", "RO", "IE"];
+const THRESHOLD_3: string[] = ["IT", "GR", "LT", "LV", "PT", "RO", "IE", "CY"];
 const NO_FREE: string[] = ["MT", "NO", "LI", "CH"];
 
 const SUPPORTED_COUNTRIES = [...THRESHOLD_2, ...THRESHOLD_3, ...NO_FREE];

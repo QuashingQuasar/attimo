@@ -470,7 +470,7 @@ export const nl: Dict = {
       France: "Frankrijk", Hungary: "Hongarije", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakije", Slovenia: "Slovenië", Estonia: "Estland", Ireland: "Ierland", Italy: "Italië",
       Latvia: "Letland", Lithuania: "Litouwen", Spain: "Spanje", Sweden: "Zweden", Finland: "Finland",
-      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië", Norway: "Noorwegen", Switzerland: "Zwitserland",
+      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië", Cyprus: "Cyprus", Norway: "Noorwegen", Switzerland: "Zwitserland",
     },
   },
 

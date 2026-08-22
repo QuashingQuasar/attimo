@@ -475,7 +475,7 @@ export const de: Dict = {
       France: "Frankreich", Hungary: "Ungarn", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakei", Slovenia: "Slowenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Lettland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Schweden", Finland: "Finnland",
-      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien", Norway: "Norwegen", Switzerland: "Schweiz",
+      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien", Cyprus: "Zypern", Norway: "Norwegen", Switzerland: "Schweiz",
     },
   },
 

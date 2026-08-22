@@ -18,7 +18,7 @@ const TIER_2 = new Set([
 ]);
 
 const TIER_3 = new Set([
-  "IT", "GR", "LT", "LV", "PT", "RO", "IE",
+  "IT", "GR", "LT", "LV", "PT", "RO", "IE", "CY",
 ]);
 
 // FedEx band (MT/NO/LI/CH): €40 flat, no free shipping at any quantity. Given an
