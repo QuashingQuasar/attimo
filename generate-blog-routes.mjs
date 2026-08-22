@@ -7,6 +7,11 @@ const slugTpl = readFileSync(`${SRC}/[slug].astro`, "utf8");
 const idxTpl = readFileSync(`${SRC}/index.astro`, "utf8");
 
 const LANGS = [
+  { lang: "nl", slug: "nl", bcp: "nl-NL", suffix: "ATTIMO Specialiteits-Olijfolie",
+    desc: "Verhalen, wetenschap en herkomst achter polyfenolrijke extra vierge olijfolie.",
+    empty: "Nog geen artikelen — kom snel terug.", noImage: "Geen afbeelding",
+    back: "Terug naar alle artikelen", keepReading: "Lees verder", morePosts: "Meer artikelen",
+    readMore: "Lees meer", newsletter: "Ontvang ATTIMO-verhalen, kennis en updates in je inbox" },
   { lang: "fr", slug: "fr", bcp: "fr-FR", suffix: "ATTIMO Huile d'Olive de Spécialité",
     desc: "Histoires, science et origine derrière l'huile d'olive extra vierge riche en polyphénols.",
     empty: "Pas encore d'articles — revenez bientôt.", noImage: "Pas d'image",

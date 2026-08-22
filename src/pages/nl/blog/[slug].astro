@@ -1,0 +1,218 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import ShareButtons from "@astro/components/ShareButtons.astro";
+import NewsletterForm from "@astro/components/NewsletterForm.astro";
+import PortableText from "@astro/components/PortableText.astro";
+import { faqJsonLd } from "@/lib/faq";
+import { getPostsByLang, getPostBySlug, getMorePosts, getBlogHreflangs, urlFor } from "@/lib/sanity";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const LANG = "nl";
+const locale = SLUG_TO_LOCALE["nl"];
+const t = getDict(locale);
+
+export async function getStaticPaths() {
+  const posts = await getPostsByLang("nl");
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+    props: { slug: post.slug.current },
+  }));
+}
+
+const { slug } = Astro.props as { slug: string };
+const post = await getPostBySlug(slug, LANG);
+if (!post) {
+  return Astro.redirect("/nl/blog");
+}
+
+const morePosts = await getMorePosts(slug, LANG);
+const hreflangs = await getBlogHreflangs(post.translationKey);
+
+const canonicalUrl = `https://attimo-oil.com/nl/blog/${slug}`;
+const baseSocialTitle = post.seoTitle || post.title;
+const pageTitle = `${baseSocialTitle} | ATTIMO Specialiteits-Olijfolie`;
+const pageDescription = post.seoDescription || post.excerpt || "";
+const ogImage = post.coverImage
+  ? urlFor(post.coverImage).width(1200).auto("format").url()
+  : "https://attimo-oil.com/images/attimo_og.png";
+
+const jsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org/",
+  "@type": "Article",
+  headline: post.seoTitle || post.title,
+  description: pageDescription,
+  datePublished: post.publishedAt,
+  dateModified: post._updatedAt || post.publishedAt,
+  inLanguage: "nl",
+  author: { "@type": "Person", name: "Attimo", url: "https://attimo-oil.com" },
+  publisher: {
+    "@type": "Organization",
+    name: "ATTIMO Specialty Olive Oil",
+    url: "https://attimo-oil.com",
+    logo: "https://attimo-oil.com/logo.png",
+  },
+  url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
+};
+if (post.coverImage) {
+  jsonLd.image = ogImage;
+}
+
+// FAQ sections are eligible for rich results; emitted alongside the Article.
+const faqLd = faqJsonLd(post.body);
+const pageJsonLd = faqLd ? [jsonLd, faqLd] : jsonLd;
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("nl-NL", { month: "long", year: "numeric" });
+const formatDateShort = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString("nl-NL", { month: "short", year: "numeric" });
+---
+
+<BaseLayout
+  title={pageTitle}
+  ogTitle={baseSocialTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  ogType="article"
+  noIndex={!!post.noIndex}
+  jsonLd={pageJsonLd}
+  hreflangs={hreflangs}
+  htmlLang="nl"
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <div class="min-h-screen flex flex-col" style="background-color: #FAF9F6;">
+    <Header client:load forceScrolled locale={locale} />
+
+    <main class="flex-1 pt-28 pb-20 px-6 md:px-12 lg:px-20">
+      <div class="max-w-3xl mx-auto">
+        <a
+          href="/nl/blog"
+          class="inline-flex items-center gap-2 mb-10 text-sm hover:gap-3 transition-all duration-300"
+          style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422999;"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Terug naar alle artikelen
+        </a>
+
+        <article itemscope itemtype="https://schema.org/Article" class="post-content">
+          <span
+            class="text-sm tracking-wide"
+            style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;"
+          >
+            {formatDate(post.publishedAt)}
+          </span>
+
+          <h1
+            itemprop="headline"
+            class="mt-3 mb-8 tracking-tight leading-[1.05]"
+            style="font-family: 'UDC Working Man Sans', sans-serif; font-size: clamp(2rem, 3.5vw, 3.5rem); color: #1B4229;"
+          >
+            {post.title}
+          </h1>
+
+          <ShareButtons title={post.title} url={canonicalUrl} />
+
+          {post.coverImage && (
+            <div class="rounded-xl mb-12">
+              <img
+                src={urlFor(post.coverImage).width(1200).auto("format").url()}
+                alt={post.title}
+                class="w-full h-auto rounded-xl"
+              />
+            </div>
+          )}
+
+          <div
+            itemprop="articleBody"
+            class="prose prose-lg mx-auto entry-content post-body"
+            style="font-family: 'Space Grotesk', sans-serif; color: #1a1a1a; font-size: 20px; line-height: 1.8; max-width: 720px;"
+          >
+            {post.body && <PortableText value={post.body} />}
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <section class="py-14 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20" style="background-color: #B3E58C;">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+          <h2
+            class="tracking-tight leading-[0.95]"
+            style="font-family: 'Beverly Drive', cursive; font-size: clamp(2.7rem, 5.4vw, 6.3rem); color: #1B4229;"
+          >
+            Lees verder
+          </h2>
+          <a
+            href="/nl/blog"
+            class="text-sm tracking-wide flex items-center gap-1.5 transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
+            style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229CC;"
+          >
+            Meer artikelen <span class="text-base">→</span>
+          </a>
+        </div>
+
+        {morePosts.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {morePosts.map((article) => (
+              <a href={`/nl/blog/${article.slug.current}`} class="group cursor-pointer block">
+                <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style="background-color: #1B4229;">
+                  {article.coverImage ? (
+                    <img
+                      src={urlFor(article.coverImage).width(800).height(600).url()}
+                      alt={article.title}
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center" style="background-color: #1B422920;">
+                      <span style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 14px; color: #1B422966;">Geen afbeelding</span>
+                    </div>
+                  )}
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3 text-xs tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422999;">
+                    <span>{formatDateShort(article.publishedAt)}</span>
+                  </div>
+                  <h3 class="text-lg md:text-xl leading-snug transition-colors duration-300" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229;">
+                    {article.title}
+                  </h3>
+                  {article.excerpt && (
+                    <p class="text-sm leading-relaxed line-clamp-2" style="font-family: 'Space Grotesk', sans-serif; color: #1B4229CC;">
+                      {article.excerpt}
+                    </p>
+                  )}
+                  <span class="inline-flex items-center gap-1 text-sm group-hover:gap-2 transition-all duration-300" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229;">
+                    Lees meer
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+
+        <div class="mt-16 pt-12 pb-0 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6" style="border-top: 1px solid #1B422930;">
+          <p
+            class="text-xl md:text-2xl leading-snug max-w-2xl font-semibold"
+            style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229CC;"
+          >
+            Ontvang ATTIMO-verhalen, kennis en updates in je inbox
+          </p>
+          <NewsletterForm />
+        </div>
+      </div>
+    </section>
+
+    <Footer locale={locale} />
+  </div>
+</BaseLayout>

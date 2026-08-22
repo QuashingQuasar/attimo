@@ -436,7 +436,7 @@ export function urlSlugForShopifyHandle(
 // map is somehow missing.
 export function getProductContent(
   handle: string | undefined,
-  locale?: { lang: "en" | "fr" | "de" | "sv" | "da" },
+  locale?: { lang: "en" | "fr" | "de" | "sv" | "da" | "nl" },
 ): ProductContent {
   const map =
     locale?.lang === "fr" ? productContentFrMap

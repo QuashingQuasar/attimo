@@ -101,7 +101,7 @@ const doc = {
 const styles = body.reduce((a, b) => { const k = b._type === "table" ? "table" : b._type === "image" ? "image" : b._type === "tweet" ? "tweet" : (b.listItem ? `li:${b.listItem}` : b.style); a[k] = (a[k] || 0) + 1; return a; }, {});
 const leftover = body.filter((b) => b._type === "block" && /\[\[(TABLE|IMAGE|TWEET)\d+\]\]/.test(b.children?.[0]?.text || "")).length;
 const links = body.filter((b) => b._type === "block").flatMap((b) => (b.markDefs || []).map((d) => d.href));
-const prefix = { fr: "fr", sv: "se", da: "dk", de: "de" }[LANG];
+const prefix = { fr: "fr", sv: "se", da: "dk", de: "de", nl: "nl" }[LANG];
 const badLinks = links.filter((h) => /^\/blog\//.test(h) || (h.startsWith("/") && !h.startsWith(`/${prefix}/`) && h !== "/"));
 console.log(`[${LANG}/${DE_SLUG}] blocks:${body.length} styles:${JSON.stringify(styles)} tablesSpliced:${tIdx}/${tablesData.length} imagesSpliced:${imgIdx}/${imagesData.length} tweetsSpliced:${twIdx}/${tweetsData.length} leftover:${leftover}`);
 console.log(`  title:${(meta.title||"").length} seoTitle:${(meta.seoTitle||"").length} seoDesc:${(meta.seoDescription||"").length} links:${links.length} cover:${!!meta.coverRef}`);

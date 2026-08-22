@@ -14,7 +14,7 @@ type Block = { _type: string; style?: string; children?: Span[] };
 export type FaqEntry = { q: string; a: string };
 
 const FAQ_HEADING =
-  /^(faq\b|frequently asked|häufig|questions fréquentes|vanliga frågor|ofte stillede|preguntas)/i;
+  /^(faq\b|frequently asked|häufig|questions fréquentes|vanliga frågor|ofte stillede|veelgestelde|preguntas)/i;
 
 const txt = (b: Block) => (b.children || []).map((s) => s.text).join("").trim();
 

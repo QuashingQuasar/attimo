@@ -11,6 +11,7 @@ import { fr } from "./translations/fr";
 import { de } from "./translations/de";
 import { sv } from "./translations/sv";
 import { da } from "./translations/da";
+import { nl } from "./translations/nl";
 
 export type Dict = typeof en;
 
@@ -19,5 +20,6 @@ export function getDict(locale: Pick<Locale, "lang">): Dict {
   if (locale.lang === "de") return de;
   if (locale.lang === "sv") return sv;
   if (locale.lang === "da") return da;
+  if (locale.lang === "nl") return nl;
   return en;
 }

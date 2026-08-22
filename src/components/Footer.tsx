@@ -56,6 +56,11 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
             { label: "Polyfenolrig Olivenolie", href: "/dk/polyfenolrig-olivenolie" },
             { label: "Tidlig Høst Olivenolie", href: "/dk/tidlig-hoest-olivenolie" },
           ]
+        : locale.lang === "nl"
+        ? [
+            { label: "Polyfenolrijke Olijfolie", href: "/nl/polyfenolrijke-olijfolie" },
+            { label: "Vroege Oogst Olijfolie", href: "/nl/vroege-oogst-olijfolie" },
+          ]
         : locale.lang === "en"
           ? [
               { label: "High-Polyphenol Olive Oil", href: "/high-polyphenol-olive-oil" },

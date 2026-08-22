@@ -666,7 +666,131 @@ const da: EHContent = {
   blogHeading: "Læs mere om tidlig høst olivenolie",
 };
 
-export const EH_CONTENT: Record<"en" | "de" | "fr" | "sv" | "da", EHContent> = { en, de, fr, sv, da };
+// ───────────────────────────── NEDERLANDS (REVIEW) ─────────────────────────────
+const nl: EHContent = {
+  meta: {
+    title: "Vroege Oogst Olijfolie | Groen, Vers & Rijk aan Polyfenolen",
+    description:
+      "Koop olijfolie van de vroege oogst — olijven groen en jong geplukt, binnen enkele uren koudgeperst. Eén variëteit, de oogst van dit jaar, rijk aan polyfenolen. Vanaf €22.",
+  },
+  hero: {
+    eyebrow: "Categorie · Extra Vierge Olijfolie",
+    h1: "Vroege Oogst Olijfolie",
+    subPre: "Olijven ",
+    subAccent: "groen en jong geplukt",
+    subPost: ", binnen enkele uren geperst — de verste, meest intense en meest levende olijfolie die er is. Eén variëteit, de oogst van dit jaar.",
+    cta: "Koop de oogst van dit jaar →",
+  },
+  bottleFlavours: { coratina: "Krachtig & Uitgesproken", picual: "Groen & Grasachtig", nocellara: "Zacht & Fruitig" },
+  range: {
+    heading: "De oogst van dit jaar",
+    subtitle:
+      "Drie oliën van één variëteit, allemaal geperst uit de vroege, groen geplukte olijven van dit seizoen. Kies op smaak, of doe de quiz om jouw match te vinden.",
+    quizPrompt: "Twijfel je welke je moet kiezen?",
+  },
+  ripeness: {
+    eyebrow: "De Timing",
+    heading: "Wat “vroege oogst” betekent",
+    intro:
+      "Een olijf verandert terwijl hij rijpt — groen, dan paars, dan zwart — en de olie die hij geeft, verandert mee. Pluk vroeg, terwijl hij nog groen is, en je krijgt minder olie maar veel meer van alles wat telt: smaak, aroma en polyfenolen. Wacht, en je krijgt meer olie, maar een mildere, vlakkere. Vroege oogst is de keuze om op het groene hoogtepunt te plukken.",
+    scaleLeft: "← meer smaak · meer polyfenolen · minder olie",
+    scaleRight: "meer olie · milder · minder polyfenolen →",
+    stages: [
+      { label: "Groen", when: "begin oktober" },
+      { label: "Verkleurend", when: "eind oktober" },
+      { label: "Zwart", when: "november en later" },
+    ],
+    markerLabel: "ATTIMO plukt hier",
+    markerSub: "groen & vroeg",
+  },
+  problem: {
+    heading: "Waarom vroege-oogst-olijfolie zeldzaam is — en meer kost",
+    intro:
+      "Vroege oogst is geen marketingwoord; het is een economisch offer dat de meeste producenten niet brengen. Dit is de rekensom, en waarom de industrie juist laat plukt.",
+    stat1: { value: "~½", text: "van de olie geven groene, vroeg geoogste olijven vergeleken met volrijpe — er is dus ongeveer twee keer zoveel fruit nodig om een fles te vullen." },
+    stat2: { value: "Oktober", text: "het korte, vroege venster waarin het fruit nog groen en op zijn hoogtepunt is. De industrie wacht op rendement; wij niet." },
+    args: [
+      { title: "Groene olijven geven minder olie", text: "Rijpe zwarte olijven zitten vol olie; groene niet. Vroege oogst ruilt rendement in voor kwaliteit — ruwweg de helft van de olie per kilo fruit, en precies daarom kost hij meer per fles." },
+      { title: "Een kort, zorgvuldig venster", text: "Het groene venster duurt weken, en stevig vroeg fruit moet snel geplukt en geperst worden om kneuzing en oxidatie te voorkomen. Meer zorg, minder olie, hogere kosten — het omgekeerde van hoe bulkolie wordt gemaakt." },
+      { title: "Op grote schaal wint volume", text: "Massaproducenten plukken laat en machinaal, wanneer de olijven zwaar van de olie zijn, en blenden daarna voor een goedkope, neutrale, constante smaak. Vroege oogst is de bewuste keuze om dat niet te doen." },
+    ],
+    footnote:
+      "Over de rekensom: groene, vroeg geplukte olijven bevatten minder olie dan volrijpe — ruwweg de helft — dus er is ongeveer twee keer zoveel fruit nodig om een fles te vullen. Dat rendementsgat is de kerneconomie achter de prijs van vroege oogst.",
+  },
+  taste: {
+    eyebrow: "De Smaak",
+    heading: "Hoe vroege oogst smaakt",
+    introPre:
+      "Groen, grasachtig en aromatisch, met een bitterheid op de tong en een peperige prikkel achter in de keel — soms genoeg om van te hoesten. Die kick is geen gebrek; het is de smaak van een verse, net geperste olie, rechtstreeks uit groen fruit. In zijn eerste weken, ongefilterd, is het wat de Italianen ",
+    introEm: "olio nuovo",
+    introPost: " noemen. Onze drie verschillen in intensiteit, maar delen allemaal die levende, groene frisheid.",
+    gentle: "ZACHT",
+    bold: "KRACHTIG",
+    notes: { coratina: "Krachtig & Uitgesproken", picual: "Groen & Grasachtig", nocellara: "Zacht & Fruitig" },
+  },
+  harvest: {
+    heading: "Hoe wij oogsten",
+    intro:
+      "Groen geplukt in oktober, van één enkel variëteit, en binnen enkele uren koudgeperst — daarna vers gebotteld en verzonden zolang het nog de olie van dit jaar is.",
+  },
+  evidence: {
+    eyebrow: "Het Bewijs",
+    heading: "Wat het onderzoek laat zien",
+    intro: "Vroege oogst is geen marketingverhaal — het is meetbaar. Drie bevindingen, elk uit peer-reviewed olijfwetenschap.",
+    items: [
+      { claim: "Polyfenolen pieken in groene olijven — en dalen naarmate het fruit rijpt", body: "Het fenolgehalte is het hoogst in jong, groen fruit en daalt gestaag tijdens het rijpen, terwijl oleuropeïne, de moederverbinding, wordt afgebroken. Studies bij Spaanse, Iraanse en Italiaanse variëteiten vinden allemaal dat vroeg geplukte oliën beduidend meer totale polyfenolen bevatten dan dezelfde bomen die weken later worden geoogst.", source: "Vruchtrijpheid & polyfenolen — Food Sci. & Nutrition (2023)", href: NATURE_HREF },
+      { claim: "Minder olie, meer van wat telt — de afweging die de prijs bepaalt", body: "Rijpere olijven bevatten meer olie maar minder bioactieve stoffen; de twee bewegen in tegengestelde richting. Vroege oogst kiest bewust de kant van de curve met laag rendement en hoge polyfenolen — ruwweg de helft van de olie per kilo fruit — en precies daarom kost hij meer per fles.", source: "Olieopbouw vs. behoud van bioactieve stoffen — Foods, MDPI (2026)", href: FOODS_HREF },
+      { claim: "Hij is bederfelijk — versheid is het hele product", body: "Zelfs een uitstekende vroege-oogst-olie blijft niet goed. Onder licht kan extra vierge olijfolie binnen ongeveer drie maanden onder het EU-polyfenolniveau voor de gezondheidsclaim zakken; zelfs donker bewaard verliest hij in een jaar een groot deel van zijn fenolen, met de steilste daling in de eerste maanden na het persen.", source: "Fenolverlies bij bewaring — Food Chemistry (2021)", href: STORAGE_HREF },
+    ],
+    footnote:
+      "De bevindingen komen uit de peer-reviewed studies die bij elk punt gelinkt zijn; ATTIMO's eigen labcijfers per batch staan hieronder. Context, geen medisch advies.",
+  },
+  freshness: {
+    eyebrow: "Het Addertje",
+    heading: "Het werkt alleen vers",
+    body1:
+      "Alles wat vroege oogst je geeft — de groene intensiteit, het aroma, de polyfenolen — begint te vervagen op de dag dat de olie gebotteld wordt. Een uitstekende vroege-oogst-olie die een jaar onderweg en in het schap heeft gestaan, is stilletjes een gewone geworden. Versheid is hier geen leuke extra; het is het hele product.",
+    body2Pre: "Dus doen we het ene dat het eerlijk houdt: ",
+    body2Accent: "we verkopen altijd alleen de laatste oogst.",
+    body2Post: " Als die van dit jaar op is, wachten we op de volgende — in plaats van je de olie van vorig jaar te sturen, vermomd als vers.",
+    chart: {
+      title: "Polyfenolen vervagen na het persen",
+      fresh: "Vers — net geperst",
+      euLine: "EU-niveau gezondheidsclaim",
+      ordinary: "…gewone olie",
+      pressed: "Geperst",
+      oneYear: "~1 jaar in het schap",
+      caption: "Ter illustratie. De daling versnelt met licht en warmte; wij verzenden aan de linkerkant van deze curve.",
+    },
+  },
+  healthTieIn: {
+    heading: "Vroeg plukken is ook waarom hij het gezondst is",
+    body:
+      "Polyfenolen — de antioxidanten achter de gezonde reputatie van olijfolie — pieken in groene, vroeg geoogste olijven. De oogstkeuze en het gezondheidsvoordeel zijn dezelfde beslissing.",
+    cta: "Bekijk ons polyfenolrijke assortiment →",
+  },
+  proof: {
+    heading: "Versheid die je kunt controleren",
+    intro:
+      "Zorgvuldige vroege oogst zie je terug in de cijfers — lage zuurgraad (van intact, snel geperst fruit) en lage peroxiden (van minimale oxidatie). Elke batch wordt door een onafhankelijke partij getest; dit zijn de volledige rapporten.",
+    reportSuffix: "labrapport",
+  },
+  faq: {
+    heading: "FAQ over vroege oogst olijfolie",
+    items: [
+      { question: "Wat is vroege-oogst-olijfolie?", answer: "Vroege-oogst-olijfolie wordt geperst uit olijven die nog groen en onrijp geplukt worden — meestal in oktober — in plaats van ze te laten rijpen tot paars of zwart. Groene olijven geven minder olie, maar een veel intensere, versere en polyfenolrijkere. Dat is de keuze achter termen als “vroege oogst”, “groene oogst” en “olio nuovo”." },
+      { question: "Wanneer worden olijven voor vroege-oogst-olie geoogst?", answer: "Op het noordelijk halfrond vindt de vroege oogst plaats in oktober, helemaal aan het begin van het seizoen, wanneer het fruit nog groen en stevig is. Late-oogst-olie komt van olijven die tot in november en december aan de boom blijven hangen, als ze gerijpt en donker geworden zijn — dat geeft meer olie, maar een milder en minder polyfenolrijk resultaat." },
+      { question: "Smaakt vroege-oogst-olijfolie anders?", answer: "Duidelijk. Vroege-oogst-olie is groen, grasachtig en aromatisch, met een bitterheid op de tong en een peperige prikkel achter in de keel. Dat pepertje is een teken van versheid en polyfenolen, geen gebrek. Late-oogst-oliën zijn milder en boterachtiger — soepeler, maar vlakker." },
+      { question: "Waarom is vroege-oogst-olijfolie duurder?", answer: "Omdat groene olijven ongeveer de helft van de olie van rijpe olijven geven, is er ruwweg twee keer zoveel fruit nodig om een fles te vullen — geplukt in een kort venster, vaak met de hand. Je betaalt voor lager rendement en hogere kwaliteit. Industriële olie wordt juist laat geplukt om volume te maximaliseren en kosten te drukken." },
+      { question: "Is vroege-oogst-olijfolie gezonder?", answer: "Over het algemeen wel — polyfenolen pieken in groene, vroeg geoogste olijven, en polyfenolen zijn de verbindingen achter de gezonde reputatie van olijfolie. Dat is de directe link tussen de oogstkeuze en het gezondheidsvoordeel. De wetenschap behandelen we uitgebreid op onze pagina over polyfenolrijke olijfolie." },
+      { question: "Hoe vers hoort vroege-oogst-olijfolie te zijn?", answer: "Zo vers mogelijk. Vroege-oogst-oliën pieken direct na het persen en zakken in de maanden daarna, dus je wilt de huidige oogst — geen fles die een jaar onderweg en in het schap heeft doorgebracht. ATTIMO verkoopt om precies die reden altijd alleen de laatste oogst." },
+      { question: "Is vroege oogst hetzelfde als olio nuovo?", answer: "Ze overlappen. Olio nuovo (“nieuwe olie”) is de net geperste, vaak ongefilterde olie die in de weken direct na een vroege oogst wordt genoten — intens groen en peperig. Vroege-oogst-olie is de bredere categorie; olio nuovo is er de verste, jongste uitdrukking van." },
+    ],
+  },
+  blogHeading: "Lees meer over vroege oogst olijfolie",
+};
+
+export const EH_CONTENT: Record<"en" | "de" | "fr" | "sv" | "da" | "nl", EHContent> = { en, de, fr, sv, da, nl };
 
 const EH_ORIGIN = "https://attimo-oil.com";
 export const EH_SLUGS = {
@@ -675,6 +799,7 @@ export const EH_SLUGS = {
   fr: "/fr/huile-olive-recolte-precoce",
   sv: "/se/tidig-skord-olivolja",
   da: "/dk/tidlig-hoest-olivenolie",
+  nl: "/nl/vroege-oogst-olijfolie",
 } as const;
 
 // hreflang cluster shared by every localised early-harvest page. All five ship
@@ -685,5 +810,6 @@ export const EH_HREFLANGS = [
   { hreflang: "fr", href: EH_ORIGIN + EH_SLUGS.fr },
   { hreflang: "sv", href: EH_ORIGIN + EH_SLUGS.sv },
   { hreflang: "da", href: EH_ORIGIN + EH_SLUGS.da },
+  { hreflang: "nl", href: EH_ORIGIN + EH_SLUGS.nl },
   { hreflang: "x-default", href: EH_ORIGIN + EH_SLUGS.en },
 ];

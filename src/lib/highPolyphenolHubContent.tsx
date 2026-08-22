@@ -557,7 +557,107 @@ const da: HubContent = {
   blogHeading: "Læs mere om polyfenoler",
 };
 
-export const HUB_CONTENT: Record<"en" | "de" | "fr" | "sv" | "da", HubContent> = { en, de, fr, sv, da };
+// ───────────────────────────── NEDERLANDS (REVIEW) ─────────────────────────────
+const nl: HubContent = {
+  meta: {
+    title: "Polyfenolrijke Olijfolie | Labgetest 400–900 mg/kg",
+    description:
+      "Koop polyfenolrijke olijfolie, labgetest op 400–900 mg/kg — drie polyfenolrijke extra vierge olijfoliën van één variëteit, gerangschikt op polyfenolgehalte. Vanaf €22.",
+  },
+  hero: {
+    eyebrow: "Categorie · Extra Vierge Olijfolie",
+    h1: "Polyfenolrijke Olijfolie",
+    subPre: "Extra vierge olie van één variëteit, vroeg geoogst — gerangschikt op wat het meest telt: een ",
+    subAccent: "polyfenolrijk",
+    subPost: " profiel dat je proeft — en in het lab kunt verifiëren.",
+    cta: "Bekijk het assortiment →",
+  },
+  range: {
+    heading: "Koop de verse oogst",
+    subtitle:
+      "Alle drie zijn echt polyfenolrijk — het verschil zit in smaak en intensiteit. Kies op smaak, of doe de quiz om jouw match te vinden.",
+    quizPrompt: "Twijfel je welke je moet kiezen?",
+  },
+  scale: {
+    heading: "Hoeveel polyfenolen hoort olijfolie te bevatten?",
+    intro:
+      "Er is geen wettelijk minimum — maar er zijn ijkpunten. Hieronder zie je waar een typische supermarktfles belandt, waar de EU haar grens voor de gezondheidsclaim trekt, waar de bekende Blueprint-olie zit, en waar het assortiment van ATTIMO valt.",
+    cards: [
+      { content: "Polyfenolen zijn de antioxidanten achter de gezonde reputatie van olijfolie.", content2: "Ze maken een verse olie ook bitter en peperig — smaak en voordeel komen uit dezelfde bron." },
+      { content: "Het gehalte piekt in vroeg geoogste olijven en begint te dalen zodra de olie gebotteld is.", content2: "Warmte, licht, ouderdom en blenden drukken het getal allemaal omlaag — daarom halen de meeste flessen nooit een hoog niveau." },
+      { content: "Boven 250 mg/kg staat de EU een gedocumenteerde gezondheidsclaim toe.", content2: "De oliën van ATTIMO zitten op 400–900 mg/kg — elke fles haalt die grens met ruime marge." },
+    ],
+    citation: (
+      <>
+        De EU-grens voor de gezondheidsclaim van 250 mg/kg volgt uit de eis van 5 mg hydroxytyrosol en derivaten per 20 g olie volgens{" "}
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={refLink}>Verordening (EU) nr.&nbsp;432/2012</a>. Het ijkpunt van 400 mg/kg is de Blueprint-norm die Bryan Johnson bekend heeft gemaakt.
+      </>
+    ),
+  },
+  problem: {
+    heading: "Waarom polyfenolrijke extra vierge olijfolie zo moeilijk te vinden is",
+    intro: "De woorden “extra vierge” zeggen niets over polyfenolen — en kloppen vaak niet eens. Dit is het gat, en de drie redenen waarom supermarktolie zo laag uitkomt.",
+    args: [
+      { title: "Geblend voor houdbaarheid, niet voor polyfenolen", text: "Industriële olie wordt geblend over landen en oogsten heen, voor een goedkope, neutrale, constante smaak. Blenden en schaal verdunnen precies de versgeperste polyfenolen die olie bitter, peperig en gezond maken." },
+      { title: "Laat geplukt, traag geperst", text: "Polyfenolen pieken in jonge, groene olijven. Massaproducenten oogsten laat voor meer rendement en persen uren of dagen later — dan is een groot deel al verdwenen." },
+      { title: "Oud voordat je hem opent", text: "Polyfenolen vervagen met tijd, licht en warmte. Een fles die een jaar onderweg en in het schap heeft gestaan, bevat veel minder dan op de persdag — zelfs als die ooit polyfenolrijk was." },
+    ],
+    footnote: (
+      <p>
+        Over de cijfers: het faalpercentage van ~80% weerspiegelt veel geciteerde onafhankelijke tests van “extra vierge” supermarktolie; de meest rigoureuze publieke studie, het{" "}
+        <a href={UC_DAVIS} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>UC&nbsp;Davis Olive Center (2010–11)</a>, zag 69% van de geïmporteerde monsters zakken. “Arm aan polyfenolen” wordt gemeten aan de EU-grens van 250 mg/kg (
+        <a href={EUR_LEX} target="_blank" rel="noopener noreferrer" style={{ ...refLink, color: ACCENT }}>Ver.&nbsp;(EU)&nbsp;432/2012</a>).
+      </p>
+    ),
+  },
+  compounds: {
+    eyebrow: "Wat erin zit",
+    heading: "De stoffen die ertoe doen",
+    leadIn: (
+      <>
+        “Polyfenolen” is een verzamelnaam. Drie verbindingen doen het meeste werk — en een gemiddelde supermarktolie bevat er nauwelijks iets van. De cijfers hieronder komen uit onze Coratina.
+      </>
+    ),
+    items: [
+      { name: "Oleocanthal", icon: ICON.mortar, does: "Een natuurlijke ontstekingsremmer waarvan het effect is vergeleken met ibuprofen — en de bron van de peperige prikkel achter in je keel.", proof: "471 mg/kg", sub: "in onze Coratina · typische EVOO <10" },
+      { name: "Oleaceïne", icon: ICON.olive, does: "Een krachtige antioxidant, onderzocht voor bloeddrukregulatie en bescherming van hart en vaten.", proof: "336 mg/kg", sub: "in onze Coratina · typische EVOO <40" },
+      { name: "Hydroxytyrosol", icon: ICON.flask, does: "Een van de best onderzochte antioxidanten uit de olijf — en precies de verbinding waar de EU haar gezondheidsclaim voor olijfolie omheen schrijft.", proof: "basis van de EU-claim", sub: "≥250 mg/kg hydroxytyrosol & derivaten" },
+    ],
+  },
+  science: {
+    eyebrow: "Wat de wetenschap zegt",
+    heading: "Waarom hoge polyfenolen de moeite waard zijn",
+    intro: "Dat een polyfenolrijke olijfolie haar meerprijs waard is, komt niet alleen door de smaak. Drie bevindingen, elk uit een primaire bron — geen wellnessblog.",
+    evidence: [
+      { claim: "Beschermt je cholesterol tegen oxidatie", body: "Polyfenolen uit olijfolie helpen bloedvetten (LDL) te beschermen tegen oxidatieve schade — het enige gezondheidsvoordeel van olijfolie dat de EU formeel heeft goedgekeurd, uitsluitend voor oliën met minstens 5 mg hydroxytyrosol per 20 g (≈250 mg/kg).", source: "Ver. (EU) 432/2012 (EFSA)", href: EUR_LEX },
+      { claim: "Werkt ontstekingsremmend, als een microdosis ibuprofen", body: "Oleocanthal — de verbinding achter de peperige prikkel in de keel — bleek dezelfde COX-1- en COX-2-enzymen te remmen als ibuprofen. Zo'n 50 g van een oleocanthalrijke olie levert ongeveer een tiende van een dosis ibuprofen.", source: "Beauchamp et al., Nature (2005)", href: "https://www.nature.com/articles/437045a" },
+      { claim: "De hoeksteen van het best onderzochte dieet ter wereld", body: "In de PREDIMED-studie werd een mediterraan dieet rijk aan extra vierge olijfolie (~50 ml/dag) in verband gebracht met ongeveer 30% minder ernstige cardiovasculaire voorvallen bij volwassenen met verhoogd risico, vergeleken met een vetarm dieet.", source: "Estruch et al., NEJM (2018)", href: "https://www.nejm.org/doi/full/10.1056/NEJMoa1800389" },
+    ],
+    disclaimer: "ATTIMO is een levensmiddel, geen medicijn. Polyfenolgehaltes worden per batch in het lab gemeten; de gezondheidscontext hierboven komt uit het gepubliceerde onderzoek dat bij elk punt gelinkt is. Dit is geen medisch advies, en individuele resultaten variëren.",
+  },
+  labReceipts: {
+    heading: "Je hoeft ons niet op ons woord te geloven",
+    intro: "Elke batch gaat naar een onafhankelijk lab. Dit zijn de volledige rapporten achter de cijfers op deze pagina — download ze en controleer het zelf.",
+  },
+  kleia: {
+    heading: "Waarom onze polyfenolen hoog blijven",
+    intro: "Hoge cijfers zijn geen geluk. Ze komen uit een paar bewuste keuzes — vroege oogst, één variëteit, vers geperst en gebotteld — precies de keuzes die industriële olie overslaat om te kunnen schalen.",
+  },
+  faq: {
+    heading: "FAQ over polyfenolrijke olijfolie",
+    items: [
+      { question: "Wat is polyfenolrijke olijfolie?", answer: "Polyfenolrijke olijfolie is extra vierge olijfolie met een ongewoon hoge concentratie polyfenolen — de natuurlijke antioxidanten van de olijf. Er bestaat geen uniforme wettelijke grens, maar oliën boven het EU-niveau voor de gezondheidsclaim (250 mg/kg) gelden doorgaans als polyfenolrijk. Het assortiment van ATTIMO zit op 400–900 mg/kg." },
+      { question: "Hoeveel polyfenolen hoort olijfolie te bevatten?", answer: "Een typische supermarktolie zit rond 100–300 mg/kg. De EU staat een gezondheidsclaim toe vanaf 250 mg/kg. Oliën die als polyfenolrijk gelden, beginnen rond 400 mg/kg. ATTIMO-oliën zijn labgetest op 400–900 mg/kg, afhankelijk van de variëteit." },
+      { question: "Welke olijfolie bevat de meeste polyfenolen?", answer: "In ons assortiment is Coratina d'Italia de hoogste met 847 mg/kg, gevolgd door Picual de España met 675 mg/kg en Nocellara d'Italia met 400 mg/kg. Coratina is van nature een van de meest polyfenolrijke olijfvariëteiten ter wereld." },
+      { question: "Beïnvloeden polyfenolen de smaak?", answer: "Ja, direct. Polyfenolen zijn verantwoordelijk voor de scherpte, de bitterheid en de groene pit van verse olijfolie — de peperige prikkel achter in de keel komt grotendeels van oleocanthal." },
+      { question: "Hoe blijven hoge polyfenolen behouden?", answer: "Vroege oogst, persing van één variëteit binnen enkele uren na het plukken, en vers bottelen van de laatste oogst. Polyfenolen breken af door warmte, licht, zuurstof en tijd — daarom persen we koud en verzenden we kort na de oogst." },
+      { question: "Is polyfenolrijke olijfolie biologisch?", answer: "Onze Coratina is biologisch gecertificeerd. Voor de andere kiezen we voor teelt met weinig ingrijpen, vroege oogst en labgeteste kwaliteit, en houden we elke olie aan dezelfde standaard." },
+    ],
+  },
+  blogHeading: "Lees verder over polyfenolen",
+};
+
+export const HUB_CONTENT: Record<"en" | "de" | "fr" | "sv" | "da" | "nl", HubContent> = { en, de, fr, sv, da, nl };
 
 // Canonical paths for each localised hub. Slugs are TRANSLATED (not just
 // prefixed) so each ranks its native keyword. Shared by the routes + the
@@ -569,6 +669,7 @@ export const HUB_SLUGS = {
   fr: "/fr/huile-olive-riche-polyphenols",
   sv: "/se/polyfenolrik-olivolja",
   da: "/dk/polyfenolrig-olivenolie",
+  nl: "/nl/polyfenolrijke-olijfolie",
 } as const;
 
 // hreflang cluster shared by every localised hub page. Only list a locale once
@@ -579,5 +680,6 @@ export const HUB_HREFLANGS = [
   { hreflang: "fr", href: HUB_ORIGIN + HUB_SLUGS.fr },
   { hreflang: "sv", href: HUB_ORIGIN + HUB_SLUGS.sv },
   { hreflang: "da", href: HUB_ORIGIN + HUB_SLUGS.da },
+  { hreflang: "nl", href: HUB_ORIGIN + HUB_SLUGS.nl },
   { hreflang: "x-default", href: HUB_ORIGIN + HUB_SLUGS.en },
 ];

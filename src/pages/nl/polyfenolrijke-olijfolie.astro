@@ -1,0 +1,94 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import HighPolyphenolPage from "@astro/react-pages/HighPolyphenolPage";
+import { sanityClient } from "@/lib/sanity";
+import { HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
+import { HUB_CONTENT, HUB_HREFLANGS, HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+// Dutch-language variant of the high-polyphenol hub. Same page component;
+// content comes from HUB_CONTENT.nl. Translated slug so it ranks the Dutch
+// keyword cluster (polyfenolrijke olijfolie / olijfolie rijk aan polyfenolen).
+const locale = SLUG_TO_LOCALE["nl"];
+const content = HUB_CONTENT.nl;
+const t = getDict(locale);
+const canonical = `https://attimo-oil.com${HUB_SLUGS.nl}`;
+const description = content.meta.description;
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: content.hero.h1,
+  url: canonical,
+  description,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: HIGH_POLYPHENOL_PRODUCTS.length,
+    itemListElement: HIGH_POLYPHENOL_PRODUCTS.map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        name: p.name,
+        url: p.url,
+        image: p.image,
+        brand: { "@type": "Brand", name: "ATTIMO" },
+        offers: {
+          "@type": "Offer",
+          url: p.url,
+          price: p.priceEUR.toFixed(2),
+          priceCurrency: "EUR",
+          availability: "https://schema.org/InStock",
+          itemCondition: "https://schema.org/NewCondition",
+        },
+        additionalProperty: {
+          "@type": "PropertyValue",
+          name: "Polyphenols",
+          value: `${p.polyphenols} mg/kg`,
+        },
+      },
+    })),
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: content.faq.items.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+// Dutch blog posts may not exist in Sanity yet; an empty result is fine —
+// BlogSection renders its localised "no articles" state instead of the grid.
+const CURATED_POST_SLUGS = [
+  "high-polyphenol-olive-oil-guide",
+  "polyphenols-olive-oil",
+  "bryan-johnson-olive-oil",
+  "olive-oil-shot",
+];
+const curatedPosts = await sanityClient.fetch(
+  `*[_type == "post" && translationKey in $slugs && coalesce(language, "en") == "nl"] | order(publishedAt desc)[0..2] {
+    _id, title, slug, publishedAt, excerpt, coverImage
+  }`,
+  { slugs: CURATED_POST_SLUGS }
+);
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={description}
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={[collectionJsonLd, faqJsonLd]}
+  hreflangs={HUB_HREFLANGS}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <HighPolyphenolPage initialPosts={curatedPosts} locale={locale} client:load />
+</BaseLayout>

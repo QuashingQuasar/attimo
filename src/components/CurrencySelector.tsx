@@ -6,12 +6,12 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
-import { DK, EU, FR, SE, DE } from "country-flag-icons/react/3x2";
+import { DK, EU, FR, SE, DE, NL } from "country-flag-icons/react/3x2";
 
 // Flat SVG flags (country-flag-icons), keyed by Locale.flagCode — replaces the
 // OS emoji flags so the selector renders consistent, neutral flag art across
 // platforms. Named imports are tree-shaken to just these four.
-const FLAG_COMPONENTS = { EU, DK, SE, FR, DE } as const;
+const FLAG_COMPONENTS = { EU, DK, SE, FR, DE, NL } as const;
 
 const FlagIcon = ({
   code,

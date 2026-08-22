@@ -6,7 +6,7 @@ export type Locale = {
   // served (see src/lib/i18n/translations) and the <html lang> attribute.
   // The default (EUR) market stays "en"; France "fr", Germany "de", Sweden
   // "sv", Denmark "da".
-  lang: "en" | "fr" | "de" | "sv" | "da";
+  lang: "en" | "fr" | "de" | "sv" | "da" | "nl";
   // BCP-47 value emitted in the hreflang alternate link. Single source of
   // truth so getHreflangs stays a pure lookup. English-currency variants use
   // "en" / "en-DK" / "en-SE"; the French-language market uses "fr".
@@ -43,7 +43,7 @@ export type Locale = {
   // ISO-style code for the flat SVG flag shown in the locale selector
   // (country-flag-icons). The default market shows the EU flag, not Belgium's,
   // so this is tracked separately from `country`.
-  flagCode: "EU" | "DK" | "SE" | "FR" | "DE";
+  flagCode: "EU" | "DK" | "SE" | "FR" | "DE" | "NL";
 };
 
 export const DEFAULT_LOCALE: Locale = {
@@ -141,6 +141,38 @@ export const LOCALES: Locale[] = [
     },
     flag: "🇫🇷",
     flagCode: "FR",
+  },
+  {
+    slug: "nl",
+    country: "NL",
+    countryName: "Nederland",
+    lang: "nl",
+    hreflang: "nl",
+    // Shopify has no published Dutch storefront language yet — present English
+    // at checkout (same pattern SE/DK used pre-Phase-2). Flip to "NL" once the
+    // language is published in Shopify Markets.
+    shopifyLanguage: "EN",
+    // Same currency (EUR) as the default market — country code keeps the EUR
+    // entries distinguishable in the switcher (same reasoning as FRA).
+    selectorLabel: "NLD",
+    currency: {
+      code: "EUR",
+      symbol: "€",
+      symbolPosition: "before",
+      decimals: 0,
+    },
+    prices: {
+      coratina: 24,
+      nocellara: 23,
+      picual: 22,
+      coratina3L: 89,
+    },
+    shipping: {
+      standard: 5.95,
+      freeThreshold: 50,
+    },
+    flag: "🇳🇱",
+    flagCode: "NL",
   },
   {
     // Denmark — a LANGUAGE market (Danish), like Sweden, with its own currency

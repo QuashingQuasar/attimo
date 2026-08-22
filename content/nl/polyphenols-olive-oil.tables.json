@@ -1,0 +1,248 @@
+[
+ [
+  [
+   "Bron",
+   "Belangrijkste polyfenolen",
+   "Typische dagelijkse inname"
+  ],
+  [
+   "Rode wijn",
+   "Resveratrol, quercetine",
+   "~150 ml per glas"
+  ],
+  [
+   "Groene thee",
+   "EGCG, catechines",
+   "~240 ml per kop"
+  ],
+  [
+   "Pure chocolade",
+   "Flavanolen",
+   "~10–30 g per portie"
+  ],
+  [
+   "Extra vierge olijfolie",
+   "Oleocanthal, oleaceïne, oleuropeïne, hydroxytyrosol",
+   "2–4 el per dag, bij het eten"
+  ]
+ ],
+ [
+  [
+   "Stof",
+   "Klasse",
+   "Voornaamste effect",
+   "Concentratie"
+  ],
+  [
+   "Oleuropeïne",
+   "Secoiridoïde",
+   "Voorloper van oleaceïne en hydroxytyrosol; antioxidant",
+   "Hoog in de vrucht, wordt omgezet tijdens verwerking"
+  ],
+  [
+   "Oleaceïne",
+   "Secoiridoïde",
+   "Krachtige antioxidant; ontstekingsremmend; LDL-bescherming",
+   "Hoog"
+  ],
+  [
+   "Oleocanthal",
+   "Secoiridoïde",
+   "COX-remming (ibuprofenachtig); ontstekingsremmend",
+   "Hoog"
+  ],
+  [
+   "Ligstroside-aglycon",
+   "Secoiridoïde",
+   "Vergelijkbare activiteit met oleocanthal",
+   "Lager"
+  ],
+  [
+   "Hydroxytyrosol",
+   "Eenvoudige fenol",
+   "Een van de krachtigste antioxidanten in voeding; basis van de EU-gezondheidsclaim",
+   "Matig; neemt toe naarmate oleuropeïne afbreekt"
+  ],
+  [
+   "Tyrosol",
+   "Eenvoudige fenol",
+   "Antioxidant",
+   "Matig; lagere activiteit dan hydroxytyrosol"
+  ],
+  [
+   "Luteoline / Apigenine",
+   "Flavonoïde",
+   "Ontstekingsremmend; antioxidant",
+   "Laag"
+  ],
+  [
+   "Pinoresinol / Acetoxypinoresinol",
+   "Lignaan",
+   "Hormonale regulatie; antioxidant",
+   "Laag"
+  ]
+ ],
+ [
+  [
+   "Methode",
+   "Wat ze meet",
+   "Typische uitkomst",
+   "Beperkingen"
+  ],
+  [
+   "Folin-Ciocalteu (FC)",
+   "Totale reducerende capaciteit van alle fenolische verbindingen",
+   "Hoger getal — valt doorgaans hoger uit dan HPLC",
+   "Lage specificiteit; voor olijfolie aanvaardbaar omdat de oliematrix weinig storende stoffen bevat"
+  ],
+  [
+   "HPLC (IOC-methode)",
+   "Individuele fenolische verbindingen, chromatografisch gescheiden",
+   "Lager getal dan FC — telt alleen geïdentificeerde verbindingen",
+   "Kan niet alle stofvormen onderscheiden; voor sommige secoiridoïden ontbreken commerciële referentiestandaarden"
+  ],
+  [
+   "EU-gezondheidsclaimmethode (HPLC na hydrolyse)",
+   "Alleen hydroxytyrosol, tyrosol en hun derivaten",
+   "Laagste getal — een subset van het totaal aan polyfenolen",
+   "Bewust de smalste scope; meet alleen de verbindingen die juridisch relevant zijn voor de claim"
+  ]
+ ],
+ [
+  [
+   "mg/kg",
+   "Wat het betekent"
+  ],
+  [
+   "< 100",
+   "Typische supermarkt-EVOO — volrijpe olijven, vaak gemengde partijen"
+  ],
+  [
+   "100–250",
+   "Commerciële EVOO uit het middensegment"
+  ],
+  [
+   "250",
+   "Drempel voor de EU-gezondheidsclaim — minimum om de hydroxytyrosolclaim te mogen voeren"
+  ],
+  [
+   "250–500",
+   "Goede kwaliteit, vroeg tot midden geoogste single-origin-olie"
+  ],
+  [
+   "500–800",
+   "Hoge kwaliteit, vroeg geoogste single-cultivar-olie"
+  ],
+  [
+   "> 800",
+   "Uitzonderlijk — kenmerkend voor vroeg geoogste fenolrijke variëteiten als Coratina of Koroneiki"
+  ]
+ ],
+ [
+  [
+   "Factor",
+   "Mechanisme",
+   "Praktische implicatie"
+  ],
+  [
+   "Hitte tijdens extractie",
+   "Hoge temperaturen tijdens het persen verhogen het rendement maar breken fenolische verbindingen af",
+   "Koude extractie onder 27°C is nodig om polyfenolen te behouden"
+  ],
+  [
+   "Zuurstof",
+   "Polyfenolen reageren met zuurstof om de vetzuren van de olie te beschermen — en verbruiken zichzelf daarbij",
+   "Houd flessen gesloten; beperk blootstelling aan lucht na opening"
+  ],
+  [
+   "Licht",
+   "Uv-licht en zichtbaar licht versnellen oxidatie",
+   "Donker glas of ondoorzichtige verpakking; bewaar weg van direct licht"
+  ],
+  [
+   "Tijd",
+   "Het polyfenolgehalte daalt continu, zelfs onder ideale omstandigheden",
+   "Laat de oogstdatum zwaarder wegen dan de houdbaarheidsdatum; consumeer binnen 12 maanden na de oogst"
+  ],
+  [
+   "Hoge kookhitte",
+   "Directe thermische afbraak van fenolische verbindingen",
+   "Gebruik vroeg geoogste oliën rauw of op laag vuur"
+  ],
+  [
+   "Gebrekkige filtering",
+   "Ongefilterde oliën bevatten olijfdeeltjes en water die microbiële activiteit versnellen",
+   "Goed gefilterde oliën behouden hun polyfenolgehalte consistenter"
+  ]
+ ],
+ [
+  [
+   "Oogststadium",
+   "Olijfkleur",
+   "Typisch polyfenolgehalte",
+   "Olierendement"
+  ],
+  [
+   "Vroege oogst",
+   "Groen",
+   "500–800+ mg/kg",
+   "Laag (~8–10 kg fruit per liter)"
+  ],
+  [
+   "Middenoogst",
+   "Groen-paars",
+   "250–500 mg/kg",
+   "Gemiddeld (~6 kg fruit per liter)"
+  ],
+  [
+   "Late oogst",
+   "Paars-zwart",
+   "50–200 mg/kg",
+   "Hoog (~4–5 kg fruit per liter)"
+  ]
+ ],
+ [
+  [
+   "Gezondheidsdomein",
+   "Belangrijkste stoffen",
+   "Bewijsniveau",
+   "Status"
+  ],
+  [
+   "Cardiovasculaire bescherming",
+   "Hydroxytyrosol, oleaceïne, oleocanthal",
+   "Sterk",
+   "Ondersteund door grote RCT's, waaronder PREDIMED"
+  ],
+  [
+   "Vermindering van LDL-oxidatie",
+   "Hydroxytyrosol, oleaceïne",
+   "Sterk",
+   "Basis van de toegestane EU-gezondheidsclaim"
+  ],
+  [
+   "Ontstekingsremmende effecten",
+   "Oleocanthal (COX-remming)",
+   "Mechanistisch sterk",
+   "Interventiestudies lopen"
+  ],
+  [
+   "Metabole gezondheid",
+   "Hydroxytyrosol, oleocanthal",
+   "Matig",
+   "Positieve bevindingen in meerdere studies"
+  ],
+  [
+   "Neuroprotectie",
+   "Oleocanthal, hydroxytyrosol",
+   "Veelbelovend",
+   "Cel- en dierstudies; humane studies beperkt"
+  ],
+  [
+   "Kanker",
+   "Oleocanthal, oleaceïne, hydroxytyrosol",
+   "Vroeg stadium",
+   "In vitro en epidemiologisch; klinische bevestiging beperkt"
+  ]
+ ]
+]
