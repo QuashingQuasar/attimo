@@ -1,12 +1,12 @@
 // Country-based free shipping threshold tiers
 const CORE: string[] = ["BE", "DE", "LU", "NL"];
 const TIER_1: string[] = [
-  "AT", "BG", "HR", "CZ", "DK", "FR", "HU", "LI", "MT", "PL", "SK", "SI",
+  "AT", "BG", "HR", "CZ", "DK", "FR", "HU", "PL", "SK", "SI", "SE",
 ];
 const TIER_2: string[] = [
-  "EE", "IE", "IT", "LV", "LT", "ES", "SE",
+  "EE", "IE", "IT", "LV", "LT", "ES",
 ];
-const TIER_3: string[] = ["FI", "GR", "PT", "RO"];
+const TIER_3: string[] = ["FI", "GR", "PT", "RO", "MT"];
 
 const SUPPORTED_COUNTRIES = [...CORE, ...TIER_1, ...TIER_2, ...TIER_3];
 

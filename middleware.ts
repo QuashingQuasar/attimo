@@ -11,11 +11,11 @@ export const config = {
 
 const TIER_2 = new Set([
   "BE", "DE", "NL", "LU", "AT", "CZ", "DK", "FR",
-  "BG", "HU", "MT", "PL", "SK", "SI", "HR", "SE",
+  "BG", "HU", "PL", "SK", "SI", "HR", "SE",
 ]);
 
 const TIER_3 = new Set([
-  "EE", "IE", "IT", "LV", "LT", "ES", "FI", "GR", "PT", "RO",
+  "EE", "IE", "IT", "LV", "LT", "ES", "FI", "GR", "PT", "RO", "MT",
 ]);
 
 export default function middleware(request: Request) {
