@@ -364,7 +364,7 @@ export const fr: Dict = {
       wholesaleContactLink: "formulaire de contact",
       wholesaleMid: " ou écrivez directement à ",
       wholesalePost: " et nous nous occupons du reste.", // REVIEW
-      shippingText: "Nous livrons dans toute l'Union européenne, de la Belgique et des Pays-Bas à la Finlande et au Portugal. La livraison débute à 7 € pour les pays principaux et va jusqu'à 40 € pour les destinations plus éloignées — mais la plupart des commandes bénéficient de la livraison gratuite à partir de 2 à 3 bouteilles selon votre localisation. Les commandes passées aujourd'hui sont expédiées demain, et la livraison prend de 2 à 7 jours ouvrés selon votre région.", // REVIEW
+      shippingText: "Nous livrons dans toute l'Union européenne. La livraison débute à 7 € pour les pays principaux et va jusqu'à 40 € pour les destinations plus éloignées — mais la plupart des commandes bénéficient de la livraison gratuite à partir de 2 à 3 bouteilles selon votre localisation. Les commandes passées aujourd'hui sont expédiées demain, et la livraison prend de 2 à 7 jours ouvrés selon votre région.", // REVIEW
       shippingLink: "Voir tous les détails de livraison",
     },
   },

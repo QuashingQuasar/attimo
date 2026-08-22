@@ -361,7 +361,7 @@ export const da: Dict = {
       wholesaleContactLink: "kontaktformular",
       wholesaleMid: " eller skriv direkte til ",
       wholesalePost: " så tager vi den derfra.",
-      shippingText: "Vi sender i hele EU, fra Belgien og Holland til Finland og Portugal. Fragten starter ved 7 € for kernelande og går op til 40 € for mere fjerne destinationer – men de fleste ordrer kvalificerer til fri fragt, når du bestiller 2–3 flasker afhængigt af, hvor du bor. Ordrer i dag sendes i morgen, og levering tager 2–7 hverdage afhængigt af, hvor du er.",
+      shippingText: "Vi sender i hele EU. Fragten starter ved 7 € for kernelande og går op til 40 € for mere fjerne destinationer – men de fleste ordrer kvalificerer til fri fragt, når du bestiller 2–3 flasker afhængigt af, hvor du bor. Ordrer i dag sendes i morgen, og levering tager 2–7 hverdage afhængigt af, hvor du er.",
       shippingLink: "Se fulde fragtdetaljer",
     },
   },
