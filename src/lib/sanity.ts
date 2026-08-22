@@ -110,6 +110,7 @@ const LANG_TO_PREFIX: Record<string, string> = {
   fr: "fr",
   sv: "se",
   da: "dk",
+  nl: "nl",
 };
 
 // Canonical path for a blog post in a given content language.
