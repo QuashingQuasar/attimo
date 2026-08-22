@@ -241,14 +241,21 @@ export const LOCALES: Locale[] = [
   },
 ];
 
-// Geo-redirect policy (Gilles, 2026-08-22): ATTIMO presents as an
-// international European brand that communicates in English by default.
-// Direct visitors from every market land on the default (EN/EUR) site —
-// the localized locales exist for search capture and are reached via
-// Google, the locale selector, or direct /xx links. France is the single
-// exception and keeps its automatic redirect.
+// Geo-redirect policy (Gilles, 2026-08-22): two rules.
+// 1. CURRENCY RULE (the main rule): visitors whose market uses a non-EUR
+//    currency are redirected to their locale — being priced in your own
+//    currency is why currency markets exist (today: DK → DKK, SE → SEK).
+//    Any future non-EUR market inherits this automatically.
+// 2. LANGUAGE EXCEPTION: France redirects despite using EUR — French
+//    visitors are far less inclined towards English.
+// Everyone else (NL, BE, DE, …) lands on the default EN/EUR site: ATTIMO
+// communicates in English by default as an international European brand,
+// and the language locales exist for search capture (Google, the locale
+// selector, and direct /xx links still reach them).
 export const COUNTRY_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
-  LOCALES.filter((l) => l.country === "FR").map((l) => [l.country, l])
+  LOCALES.filter(
+    (l) => l.slug && (l.currency.code !== "EUR" || l.country === "FR"),
+  ).map((l) => [l.country, l])
 );
 
 export const SLUG_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
