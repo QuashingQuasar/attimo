@@ -241,8 +241,14 @@ export const LOCALES: Locale[] = [
   },
 ];
 
+// Geo-redirect policy (Gilles, 2026-08-22): ATTIMO presents as an
+// international European brand that communicates in English by default.
+// Direct visitors from every market land on the default (EN/EUR) site —
+// the localized locales exist for search capture and are reached via
+// Google, the locale selector, or direct /xx links. France is the single
+// exception and keeps its automatic redirect.
 export const COUNTRY_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
-  LOCALES.map((l) => [l.country, l])
+  LOCALES.filter((l) => l.country === "FR").map((l) => [l.country, l])
 );
 
 export const SLUG_TO_LOCALE: Record<string, Locale> = Object.fromEntries(
