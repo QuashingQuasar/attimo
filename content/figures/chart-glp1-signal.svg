@@ -1,0 +1,46 @@
+<svg viewBox="0 0 720 440" width="720" height="440" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">A fullness signal that never fades</title>
+<desc id="desc">Line chart of one week. Along the baseline, small bumps of the body's own GLP-1 rise at every meal and fade within the hour. Far above them, a single line from one semaglutide injection stays elevated all week. The vertical scale is compressed; the real gap is roughly a thousandfold.</desc>
+<rect x="0" y="0" width="720" height="440" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="27" font-weight="700" fill="#1B4229">A fullness signal that never fades</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">GLP-1 in the blood across one week — three meals a day against one weekly injection</text>
+
+<line x1="56" y1="332" x2="664" y2="332" stroke="#1B4229" stroke-width="1" opacity="0.25"/>
+<line x1="56.0" y1="332" x2="56.0" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="56.0" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">day 0</text>
+<line x1="142.9" y1="332" x2="142.9" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="142.9" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">1</text>
+<line x1="229.7" y1="332" x2="229.7" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="229.7" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">2</text>
+<line x1="316.6" y1="332" x2="316.6" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="316.6" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">3</text>
+<line x1="403.4" y1="332" x2="403.4" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="403.4" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">4</text>
+<line x1="490.3" y1="332" x2="490.3" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="490.3" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">5</text>
+<line x1="577.1" y1="332" x2="577.1" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="577.1" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">6</text>
+<line x1="664.0" y1="332" x2="664.0" y2="337" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="664.0" y="352" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">day 7</text>
+
+<path d="M56,332 L73.1,332 Q78.1,298 83.1,306.0 Q89.1,326.0 95.1,332 L95.7,332 Q100.7,298 105.7,306.0 Q111.7,326.0 117.7,332 L118.3,332 Q123.3,298 128.3,306.0 Q134.3,326.0 140.3,332 L160.0,332 Q165.0,298 170.0,306.0 Q176.0,326.0 182.0,332 L182.5,332 Q187.5,298 192.5,306.0 Q198.5,326.0 204.5,332 L205.1,332 Q210.1,298 215.1,306.0 Q221.1,326.0 227.1,332 L246.8,332 Q251.8,298 256.8,306.0 Q262.8,326.0 268.8,332 L269.4,332 Q274.4,298 279.4,306.0 Q285.4,326.0 291.4,332 L292.0,332 Q297.0,298 302.0,306.0 Q308.0,326.0 314.0,332 L333.7,332 Q338.7,298 343.7,306.0 Q349.7,326.0 355.7,332 L356.3,332 Q361.3,298 366.3,306.0 Q372.3,326.0 378.3,332 L378.8,332 Q383.8,298 388.8,306.0 Q394.8,326.0 400.8,332 L420.5,332 Q425.5,298 430.5,306.0 Q436.5,326.0 442.5,332 L443.1,332 Q448.1,298 453.1,306.0 Q459.1,326.0 465.1,332 L465.7,332 Q470.7,298 475.7,306.0 Q481.7,326.0 487.7,332 L507.4,332 Q512.4,298 517.4,306.0 Q523.4,326.0 529.4,332 L530.0,332 Q535.0,298 540.0,306.0 Q546.0,326.0 552.0,332 L552.6,332 Q557.6,298 562.6,306.0 Q568.6,326.0 574.6,332 L594.3,332 Q599.3,298 604.3,306.0 Q610.3,326.0 616.3,332 L616.8,332 Q621.8,298 626.8,306.0 Q632.8,326.0 638.8,332 L639.4,332 Q644.4,298 649.4,306.0 Q655.4,326.0 661.4,332 L664,332" fill="#CDDB2D" fill-opacity="0.55" stroke="#1B4229" stroke-width="1.4" stroke-opacity="0.8"/>
+<path d="M56,332 C78,242 104,128 148,122 L664,142" fill="none" stroke="#1B4229" stroke-width="3"/>
+
+<line x1="56" y1="328" x2="56" y2="286" stroke="#1B4229" stroke-width="1.4" opacity="0.6" stroke-dasharray="3 3"/>
+<text x="54" y="280" font-size="12" font-weight="600" fill="#1B4229" opacity="0.75">injection</text>
+
+<text x="172" y="108" font-size="14" font-weight="700" fill="#1B4229">Semaglutide (Ozempic) — one injection, elevated all week</text>
+<text x="186" y="286" font-size="14" font-weight="700" fill="#1B4229">Your own GLP-1 — a bump at every meal, gone within the hour</text>
+
+<g opacity="0.7">
+<line x1="684" y1="152" x2="684" y2="308" stroke="#1B4229" stroke-width="1.2"/>
+<line x1="678" y1="152" x2="684" y2="152" stroke="#1B4229" stroke-width="1.2"/>
+<line x1="678" y1="308" x2="684" y2="308" stroke="#1B4229" stroke-width="1.2"/>
+</g>
+<text x="672" y="234" font-size="13" font-weight="700" fill="#1B4229" opacity="0.8" text-anchor="end">≈ 1,000×</text>
+
+<text x="28" y="406" font-size="11" fill="#1B4229" opacity="0.45">Vertical scale compressed to show both signals — the real gap is roughly a thousandfold.</text>
+<text x="28" y="422" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com · sources: STEP 1 trial (NEJM 2021); semaglutide pharmacokinetics</text>
+</g>
+</svg>
