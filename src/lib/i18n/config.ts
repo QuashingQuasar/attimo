@@ -66,8 +66,8 @@ export const DEFAULT_LOCALE: Locale = {
     coratina3L: 89,
   },
   shipping: {
-    standard: 5.95,
-    freeThreshold: 50,
+    standard: 9,
+    freeThreshold: 48,
   },
   flag: "🇪🇺",
   flagCode: "EU",
@@ -102,8 +102,8 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 5.95,
-      freeThreshold: 50,
+      standard: 9,
+      freeThreshold: 48,
     },
     flag: "🇩🇪",
     flagCode: "DE",
@@ -136,8 +136,8 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 5.95,
-      freeThreshold: 50,
+      standard: 12,
+      freeThreshold: 48,
     },
     flag: "🇫🇷",
     flagCode: "FR",
@@ -168,8 +168,8 @@ export const LOCALES: Locale[] = [
       coratina3L: 89,
     },
     shipping: {
-      standard: 5.95,
-      freeThreshold: 50,
+      standard: 9,
+      freeThreshold: 48,
     },
     flag: "🇳🇱",
     flagCode: "NL",
@@ -200,7 +200,7 @@ export const LOCALES: Locale[] = [
     },
     shipping: {
       standard: 90,
-      freeThreshold: 366,
+      freeThreshold: 380,
     },
     flag: "🇩🇰",
     flagCode: "DK",
@@ -229,12 +229,10 @@ export const LOCALES: Locale[] = [
       // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
       coratina3L: 1000,
     },
-    // Shipping numbers approximate the DK pattern (Postnord-tier rates,
-    // free-from at ≈€50 equivalent). Adjust once you have firm SEK quotes
-    // from your carrier.
+    // €12 EU Tier 1 rate ≈135 SEK; free from 2 bottles (2×270 SEK fixed price).
     shipping: {
-      standard: 99,
-      freeThreshold: 550,
+      standard: 135,
+      freeThreshold: 540,
     },
     flag: "🇸🇪",
     flagCode: "SE",

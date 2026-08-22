@@ -12,7 +12,7 @@ const TIERS = [
   { key: "core" as const, countries: ["Belgium", "Germany", "Luxembourg", "Netherlands"], shippingCost: "€9", freeFromN: 2, highlight: true },
   { key: "tier1" as const, countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "France", "Hungary", "Poland", "Slovakia", "Slovenia", "Sweden"], shippingCost: "€12", freeFromN: 2 },
   { key: "tier2" as const, countries: ["Estonia", "Ireland", "Italy", "Latvia", "Lithuania", "Spain"], shippingCost: "€19", freeFromN: 3 },
-  { key: "tier3" as const, countries: ["Finland", "Greece", "Malta", "Portugal", "Romania"], shippingCost: "€22", freeFromN: 4 },
+  { key: "tier3" as const, countries: ["Finland", "Greece", "Malta", "Portugal", "Romania"], shippingCost: "€22", freeFromN: 3 },
 ];
 
 interface ShippingPageProps {
