@@ -79,6 +79,9 @@ export const useCartStore = create<CartStore>()(
         const { items, setLoading, setCheckoutUrl } = get();
         if (items.length === 0) return;
 
+        // Clear any prior checkoutUrl first so a failed attempt can't redirect
+        // the caller to a stale/expired checkout from an earlier click.
+        setCheckoutUrl(null);
         setLoading(true);
         try {
           const checkoutUrl = await createStorefrontCheckout(items, context);

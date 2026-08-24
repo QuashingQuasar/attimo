@@ -93,6 +93,14 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
   // the "Checkout" click left the button spinning indefinitely with no error
   // — customers read it as "the site is broken" and left. 12s is generous;
   // cartCreate normally resolves in well under a second.
+  // Guard AbortSignal.timeout — it exists in all browsers since mid-2022, but on
+  // an older one (iOS 15 etc.) calling it would throw and break EVERY storefront
+  // request (product/inventory fetches included), not just checkout. On those
+  // browsers we simply skip the timeout and keep the prior (no-timeout) behaviour.
+  const timeoutSignal =
+    typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function"
+      ? AbortSignal.timeout(12000)
+      : undefined;
   const response = await fetch(SHOPIFY_STOREFRONT_URL, {
     method: 'POST',
     headers: {
@@ -103,7 +111,7 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
       query,
       variables,
     }),
-    signal: AbortSignal.timeout(12000),
+    signal: timeoutSignal,
   });
 
   if (response.status === 402) {
