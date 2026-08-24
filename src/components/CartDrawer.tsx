@@ -16,7 +16,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
 import { Link } from "@/lib/router-stub";
-import { fetchProducts, type CartItem, type ShopifyProduct } from "@/lib/shopify";
+import { fetchProducts, buildCartPermalink, type CartItem, type ShopifyProduct } from "@/lib/shopify";
 import { CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { imageForColor, sizedImage } from "@/lib/merchImages";
 import { colorLabel } from "@/lib/merchContent";
@@ -225,19 +225,26 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   };
 
   const handleCheckout = async () => {
-    try {
-      // Pass the active locale's full Shopify context: country pins the
-      // checkout market/currency AND language sets the checkout language
-      // (France → French/EUR). default/dk/se resolve to undefined → English
-      // checkout, unchanged. Resolved from the SSR-provided `locale` prop, so
-      // it's correct on first paint without waiting on client state.
-      await createCheckout(shopifyContextForLocale(locale));
-      const checkoutUrl = useCartStore.getState().checkoutUrl;
-      if (checkoutUrl) {
-        window.location.href = checkoutUrl;
-      }
-    } catch (error) {
-      console.error('Checkout failed:', error);
+    // Pass the active locale's full Shopify context: country pins the
+    // checkout market/currency AND language sets the checkout language
+    // (France → French/EUR). default/dk/se resolve to undefined → English
+    // checkout, unchanged. Resolved from the SSR-provided `locale` prop, so
+    // it's correct on first paint without waiting on client state.
+    // createCheckout handles its own errors (toast + resets loading), so a
+    // failure surfaces to the user AND leaves checkoutUrl null below.
+    await createCheckout(shopifyContextForLocale(locale));
+    const checkoutUrl = useCartStore.getState().checkoutUrl;
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+      return;
+    }
+    // Creation failed or timed out (the store already showed an error toast).
+    // Rather than strand the customer, fall back to a direct Shopify cart
+    // permalink so they can still reach checkout. This is exactly the case
+    // that lost us sales: a Storefront hiccup → infinite spinner → giving up.
+    const fallbackUrl = buildCartPermalink(items);
+    if (fallbackUrl) {
+      window.location.href = fallbackUrl;
     }
   };
 

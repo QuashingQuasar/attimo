@@ -87,6 +87,12 @@ export interface SellingPlan {
 }
 
 export async function storefrontApiRequest(query: string, variables: any = {}) {
+  // Hard timeout so a stalled request (spotty mobile network, an ad-blocker
+  // holding the connection to the Shopify subdomain, a Shopify edge hiccup)
+  // rejects instead of hanging forever. Without this, a stalled cartCreate on
+  // the "Checkout" click left the button spinning indefinitely with no error
+  // — customers read it as "the site is broken" and left. 12s is generous;
+  // cartCreate normally resolves in well under a second.
   const response = await fetch(SHOPIFY_STOREFRONT_URL, {
     method: 'POST',
     headers: {
@@ -97,6 +103,7 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
       query,
       variables,
     }),
+    signal: AbortSignal.timeout(12000),
   });
 
   if (response.status === 402) {
@@ -399,6 +406,32 @@ async function ensureSellingPlanId(item: CartItem): Promise<string | null> {
     allValidIds: validIds,
   });
   return fresh;
+}
+
+// The customer-facing store domain (where /cart permalinks and /checkouts
+// live). Distinct from SHOPIFY_STORE_PERMANENT_DOMAIN, which is the *.myshopify
+// host used only for the Storefront API.
+const SHOPIFY_CHECKOUT_DOMAIN = 'shop.attimo-oil.com';
+
+/**
+ * Build a direct Shopify cart permalink from the current cart, as a fallback
+ * for when the Storefront `cartCreate` fails or times out — so a hiccup in our
+ * own checkout-creation never strands the customer on an infinite spinner.
+ * Returns null when the cart can't be expressed as a permalink (any
+ * subscription line: permalinks can't carry selling plans). Shopify infers
+ * market/currency from the buyer's geo on the permalink, same as a normal cart.
+ */
+export function buildCartPermalink(items: CartItem[]): string | null {
+  if (items.length === 0) return null;
+  if (items.some((i) => i.isSubscription || i.sellingPlanId)) return null;
+  const parts = items
+    .map((i) => {
+      const numericId = i.variantId.split('/').pop();
+      return numericId ? `${numericId}:${i.quantity}` : null;
+    })
+    .filter(Boolean);
+  if (parts.length === 0) return null;
+  return `https://${SHOPIFY_CHECKOUT_DOMAIN}/cart/${parts.join(',')}`;
 }
 
 export async function createStorefrontCheckout(
