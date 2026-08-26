@@ -22,8 +22,8 @@ const shopProducts = [
 // Bundles shown under the three singles in the Shop dropdown. Images are the
 // PDP hero shots in public/.
 const shopBundles = [
-  { name: "Full Collection", handle: "trio", image: "/trio-collection.png", sub: "3 × 500 ml" },
-  { name: "Italian Duo", handle: "duo", image: "/duo-collection.png", sub: "2 × 500 ml" },
+  { name: "Harvest '25 Full Collection", handle: "trio", image: "/trio-collection.png", sub: "3 × 500 ml" },
+  { name: "Harvest '25 Italian Duo", handle: "duo", image: "/duo-collection.png", sub: "2 × 500 ml" },
 ];
 
 interface HeaderProps {
@@ -167,8 +167,8 @@ export const Header = ({
             </div>
 
             {/* Bundles — vertical cards matching the single-unit cards above */}
-            <div className="mt-5 md:mt-6 pt-5 md:pt-6" style={{ borderTop: '1px solid rgba(255,250,234,0.14)' }}>
-              <p className="uppercase mb-4 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.5)', fontSize: '0.8rem', letterSpacing: '0.14em' }}>
+            <div className="mt-7 md:mt-8">
+              <p className="uppercase mb-4 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.65)', fontSize: '1.1rem', letterSpacing: '0.14em' }}>
                 Bundles
               </p>
               {/* 2 cards at single-card width (w-2/3, grid-cols-2), left-aligned
