@@ -26,7 +26,7 @@ export const TRIO_HANDLE = "attimo-the-full-collection-trio";
 // asset the /lab sandbox used). Swap for the real styled trio photograph when
 // it's ready: drop it at public/trio-collection.png (keep the name) and it
 // flows into the hero + cart line automatically.
-export const TRIO_IMAGE = "/trio-collection.png";
+export const TRIO_IMAGE = "/trio-collection.webp";
 
 // What's in the box, in the order the bottles read left-to-right in the hero.
 // Colours are the per-oil accent dots used across the comparison + in-the-box

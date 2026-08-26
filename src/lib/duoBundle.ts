@@ -16,7 +16,7 @@ export const DUO_VARIANT_ID = "gid://shopify/ProductVariant/58273031389567";
 export const DUO_HANDLE = "attimo-coratina-nocellara-duo";
 
 // Real styled duo shot (Coratina + Nocellara).
-export const DUO_IMAGE = "/duo-collection.png";
+export const DUO_IMAGE = "/duo-collection.webp";
 
 // Reuse the single source of oil data; the duo is Coratina + Nocellara.
 export const DUO_CONTENTS = TRIO_CONTENTS.filter(
