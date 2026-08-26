@@ -19,6 +19,13 @@ const shopProducts = [
   { name: "Nocellara d'Italia", handle: "nocellara" as const, image: nocellaraImage },
 ];
 
+// Bundles shown under the three singles in the Shop dropdown. Images are the
+// PDP hero shots in public/.
+const shopBundles = [
+  { name: "Full Collection", handle: "trio", image: "/trio-collection.png", sub: "3 × 500 ml" },
+  { name: "Italian Duo", handle: "duo", image: "/duo-collection.png", sub: "2 × 500 ml" },
+];
+
 interface HeaderProps {
   /**
    * Legacy hook for the waitlist CTA — currently a no-op everywhere it's
@@ -157,6 +164,30 @@ export const Header = ({
                   </div>
                 </Link>
               ))}
+            </div>
+
+            {/* Bundles — under the three singles */}
+            <div className="mt-6 md:mt-8 pt-5 md:pt-7" style={{ borderTop: '1px solid rgba(255,250,234,0.14)' }}>
+              <p className="uppercase mb-4 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.5)', fontSize: '0.8rem', letterSpacing: '0.14em' }}>
+                Bundles
+              </p>
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-8">
+                {shopBundles.map((b) => (
+                  <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex items-center gap-4 md:gap-5 group">
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                      <img src={b.image} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
+                    </div>
+                    <div className="flex flex-col gap-0.5">
+                      <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(1.4rem, 2vw, 2rem)', letterSpacing: '0.03em' }}>
+                        {b.name}
+                      </span>
+                      <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.9rem, 1vw, 1.25rem)', letterSpacing: '0.1em' }}>
+                        {b.sub}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

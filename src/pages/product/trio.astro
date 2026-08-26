@@ -1,0 +1,57 @@
+---
+// Dedicated PDP for the trio bundle ("The Full Collection") — one bottle of
+// each single variety. Built from shared components (see BundleTrioPage), same
+// pattern as the 3L box route. The bundle is a SEPARATE Shopify product
+// (currently DRAFT / off the Storefront channel) referenced by hardcoded
+// variant id in lib/trioBundle.ts, so the page renders and adds to cart before
+// the product is published. noIndex while it's a draft — flip to indexable when
+// the offer goes live.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import BundleTrioPageWrapper from "@astro/react-pages/BundleTrioPageWrapper";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
+import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+import { TRIO_IMAGE, trioSinglesTotal } from "@/lib/trioBundle";
+
+const locale = DEFAULT_LOCALE;
+const price = locale.prices.trio ?? 60;
+const singlesTotal = trioSinglesTotal(locale);
+const priceLabel = formatPrice(price, locale);
+
+const title = "The Full Collection | Trio of Single-Variety Olive Oils";
+const description = `One bottle of each single-variety olive oil — Coratina, Picual and Nocellara. The whole range of a single harvest, lab-tested and early-harvest. 3 × 500ml — ${priceLabel} (save vs ${formatPrice(singlesTotal, locale)} apart).`;
+const canonicalUrl = "https://attimo-oil.com/product/trio";
+const ogImage = "https://attimo-oil.com/trio-collection.png";
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: "ATTIMO The Full Collection — Trio of Single-Variety Olive Oils",
+  description,
+  sku: "ATTIMO-TRIO-3x500",
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: ogImage,
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: price.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+  aggregateRating,
+  review: reviews,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+  noIndex={true}
+>
+  <BundleTrioPageWrapper client:load />
+</BaseLayout>

@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
+import { BundleWidgets } from "@/components/BundleWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
@@ -38,7 +39,7 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <OilProductWidgets locale={locale} />
+      <OilProductWidgets locale={locale} belowGrid={<BundleWidgets locale={locale} />} />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
       <OilComparison locale={locale} />

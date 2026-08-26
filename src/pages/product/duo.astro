@@ -1,0 +1,55 @@
+---
+// Dedicated PDP for the duo bundle (Coratina + Nocellara), built from the
+// shared BundleProductPage. Same pattern as the trio route. The duo is a
+// separate Shopify product (DRAFT / off Storefront) referenced by hardcoded
+// variant id in lib/duoBundle.ts, so the page renders and adds to cart before
+// the product is published. noIndex while it's a draft.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import BundleDuoPageWrapper from "@astro/react-pages/BundleDuoPageWrapper";
+import { aggregateRating, reviews } from "@/lib/reviewSchema";
+import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+import { DUO_IMAGE, duoSinglesTotal } from "@/lib/duoBundle";
+
+const locale = DEFAULT_LOCALE;
+const price = locale.prices.duo ?? 42;
+const singlesTotal = duoSinglesTotal(locale);
+const priceLabel = formatPrice(price, locale);
+
+const title = "Early Harvest '25 Italian Duo | Coratina + Nocellara Olive Oil";
+const description = `Two single-variety olive oils from our '25 harvest: Coratina and Nocellara. Early-harvest, lab-tested, 2 × 500ml, ${priceLabel}.`;
+const canonicalUrl = "https://attimo-oil.com/product/duo";
+const ogImage = "https://attimo-oil.com/duo-collection.png";
+
+const productJsonLd = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  name: "ATTIMO Coratina + Nocellara Duo",
+  description,
+  sku: "ATTIMO-DUO-2x500",
+  brand: { "@type": "Brand", name: "Attimo" },
+  image: ogImage,
+  offers: {
+    "@type": "Offer",
+    url: canonicalUrl,
+    price: price.toFixed(locale.currency.decimals),
+    priceCurrency: locale.currency.code,
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+  },
+  aggregateRating,
+  review: reviews,
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl}
+  ogImage={ogImage}
+  ogType="product"
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={productJsonLd}
+  noIndex={true}
+>
+  <BundleDuoPageWrapper client:load />
+</BaseLayout>

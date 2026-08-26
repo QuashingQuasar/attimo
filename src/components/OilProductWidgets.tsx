@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
@@ -62,6 +62,9 @@ interface OilProductWidgetsProps {
   showTagline?: boolean;
   /** Override the quiz prompt line above the quiz CTA. */
   quizPrompt?: string;
+  /** Optional content rendered between the oil grid and the quiz CTA (homepage
+   * uses this for the bundles row). */
+  belowGrid?: ReactNode;
 }
 
 export const OilProductWidgets = ({
@@ -73,6 +76,7 @@ export const OilProductWidgets = ({
   headingFontFamily = "Beverly Drive, serif",
   showTagline = true,
   quizPrompt,
+  belowGrid,
 }: OilProductWidgetsProps = {}) => {
   const t = getDict(locale);
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
@@ -420,6 +424,8 @@ export const OilProductWidgets = ({
             </Link>
           )}
         </div>
+
+        {belowGrid}
 
         <div className="text-center mt-20 md:mt-28">
           <p

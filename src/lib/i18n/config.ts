@@ -34,6 +34,15 @@ export type Locale = {
     // populated for every locale below. EUR markets share €89; DK/SE mirror
     // the fixed Shopify Markets price-list overrides (700 DKK / 1000 SEK).
     coratina3L?: number;
+    // Trio bundle ("The Full Collection") — separate Shopify product, one of
+    // each single variety. EUR markets €60 (vs €69 apart, save €9). DK/SE must
+    // mirror fixed Shopify Markets price-list overrides (470 DKK / 720 SEK) —
+    // set those on the trio product before publishing, or FX will mismatch.
+    trio?: number;
+    // Duo bundle (Coratina + Nocellara) — separate Shopify product. EUR €42 (vs
+    // €47 apart, save €5). DK/SE mirror fixed Shopify Markets overrides
+    // (330 DKK / 500 SEK) — fixed Shopify overrides set 2026-08-26.
+    duo?: number;
   };
   shipping: {
     standard: number;
@@ -64,6 +73,8 @@ export const DEFAULT_LOCALE: Locale = {
     nocellara: 23,
     picual: 22,
     coratina3L: 89,
+    trio: 60,
+    duo: 42,
   },
   shipping: {
     standard: 7,
@@ -100,6 +111,8 @@ export const LOCALES: Locale[] = [
       nocellara: 23,
       picual: 22,
       coratina3L: 89,
+      trio: 60,
+      duo: 42,
     },
     shipping: {
       standard: 10,
@@ -134,6 +147,8 @@ export const LOCALES: Locale[] = [
       nocellara: 23,
       picual: 22,
       coratina3L: 89,
+      trio: 60,
+      duo: 42,
     },
     shipping: {
       standard: 15,
@@ -166,6 +181,8 @@ export const LOCALES: Locale[] = [
       nocellara: 23,
       picual: 22,
       coratina3L: 89,
+      trio: 60,
+      duo: 42,
     },
     shipping: {
       standard: 10,
@@ -197,6 +214,10 @@ export const LOCALES: Locale[] = [
       picual: 170,
       // Fixed Shopify Markets override on the Denmark price list (700 DKK).
       coratina3L: 700,
+      // Trio: must match a fixed Denmark price-list override on the trio
+      // product (470 DKK) before publishing — otherwise FX will mismatch.
+      trio: 470,
+      duo: 330,
     },
     shipping: {
       standard: 112,
@@ -223,11 +244,15 @@ export const LOCALES: Locale[] = [
       decimals: 0,
     },
     prices: {
-      coratina: 270,
-      nocellara: 260,
-      picual: 250,
+      coratina: 290,
+      nocellara: 280,
+      picual: 270,
       // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
       coratina3L: 1000,
+      // Trio: must match a fixed Sweden price-list override on the trio
+      // product (720 SEK) — fixed Shopify override set 2026-08-26.
+      trio: 720,
+      duo: 500,
     },
     // Mid-EU €15 rate ≈168 SEK; free from 2 bottles (2×270 SEK). FX-converted
     // at checkout unless a fixed SEK shipping override is set in Shopify Markets.
