@@ -84,7 +84,7 @@ export const BundleWidgets = ({
                     ? b.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
                     : b.title}
                 </h3>
-                <p className="uppercase mb-3 flex items-center justify-center gap-x-3 gap-y-1 flex-wrap" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#1B4229", fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)", letterSpacing: "0.15em", opacity: 0.7 }}>
+                <p className="uppercase mb-3 flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-1.5 md:gap-x-3 md:gap-y-1" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#1B4229", fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)", letterSpacing: "0.15em", opacity: 0.7 }}>
                   {b.contents.map((v) => (
                     <span key={v.handle} className="inline-flex items-center gap-1.5">
                       {v.name.split(" ")[0]}
