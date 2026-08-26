@@ -137,7 +137,7 @@ export const Header = ({
 
       {shopOpen && (
         <div
-          className="absolute left-0 right-0 top-full z-50 shadow-2xl overflow-hidden"
+          className="absolute left-0 right-0 top-full z-50 shadow-2xl overflow-y-auto overflow-x-hidden"
           style={{
             backgroundColor: '#1B4229',
             opacity: dropdownVisible ? 1 : 0,
@@ -166,18 +166,18 @@ export const Header = ({
               ))}
             </div>
 
-            {/* Bundles — under the three singles */}
-            <div className="mt-6 md:mt-8 pt-5 md:pt-7" style={{ borderTop: '1px solid rgba(255,250,234,0.14)' }}>
-              <p className="uppercase mb-4 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.5)', fontSize: '0.8rem', letterSpacing: '0.14em' }}>
+            {/* Bundles — vertical cards matching the single-unit cards above */}
+            <div className="mt-8 md:mt-10 pt-6 md:pt-8" style={{ borderTop: '1px solid rgba(255,250,234,0.14)' }}>
+              <p className="uppercase mb-6 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.5)', fontSize: '0.8rem', letterSpacing: '0.14em' }}>
                 Bundles
               </p>
-              <div className="flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-8">
+              <div className="flex flex-col md:grid md:grid-cols-3 gap-8 md:gap-8">
                 {shopBundles.map((b) => (
-                  <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex items-center gap-4 md:gap-5 group">
-                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                  <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
+                    <div className="w-28 h-28 md:w-full md:aspect-[3/4] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
                       <img src={b.image} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
                     </div>
-                    <div className="flex flex-col gap-0.5">
+                    <div className="flex flex-col md:items-center gap-0.5 md:gap-1">
                       <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(1.4rem, 2vw, 2rem)', letterSpacing: '0.03em' }}>
                         {b.name}
                       </span>
