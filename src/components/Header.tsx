@@ -171,22 +171,27 @@ export const Header = ({
               <p className="uppercase mb-6 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.5)', fontSize: '0.8rem', letterSpacing: '0.14em' }}>
                 Bundles
               </p>
-              <div className="flex flex-col md:grid md:grid-cols-3 gap-8 md:gap-8">
-                {shopBundles.map((b) => (
-                  <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
-                    <div className="w-28 h-28 md:w-full md:aspect-[3/4] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
-                      <img src={b.image} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
-                    </div>
-                    <div className="flex flex-col md:items-center gap-0.5 md:gap-1">
-                      <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(1.4rem, 2vw, 2rem)', letterSpacing: '0.03em' }}>
-                        {b.name}
-                      </span>
-                      <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.9rem, 1vw, 1.25rem)', letterSpacing: '0.1em' }}>
-                        {b.sub}
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+              {/* Same scale(0.9) as the singles grid so card sizes match; the
+                  2-card grid is capped at 2/3 width + centred so each card is
+                  the same width as a single and the pair sits centred, not left. */}
+              <div style={{ transform: 'scale(0.9)', transformOrigin: 'top center' }}>
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-8 md:w-2/3 md:mx-auto">
+                  {shopBundles.map((b) => (
+                    <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
+                      <div className="w-28 h-28 md:w-full md:aspect-[3/4] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
+                        <img src={b.image} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
+                      </div>
+                      <div className="flex flex-col md:items-center gap-0.5 md:gap-1">
+                        <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(1.4rem, 2vw, 2rem)', letterSpacing: '0.03em' }}>
+                          {b.name}
+                        </span>
+                        <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.9rem, 1vw, 1.25rem)', letterSpacing: '0.1em' }}>
+                          {b.sub}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
