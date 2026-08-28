@@ -114,5 +114,73 @@ export const DUO_CONFIG: BundleConfig = {
       toastName: "Coratina + Nocellara-duoen er lagt i kurven",
       imageAlt: "ATTIMO Coratina og Nocellara enkeltsorts-olivenolier",
     },
+    de: {
+      title: "Frühe Ernte '25 Italienisches Duo",
+      cardTitleLines: ["Frühe Ernte '25", "Italienisches Duo"],
+      subtitle: "Apulien trifft Sizilien",
+      description:
+        "Das italienische Paar unserer '25er-Ernte. Zwei sortenreine Öle mit gegensätzlichem Charakter: kräftig und mild.",
+      originHeadline:
+        "Zwei sortenreine Öle aus einer frühen Ernte, kaltgepresst, laborgeprüft und niemals verschnitten. Der gleiche Standard in jeder Flasche.",
+      singleVarietyText:
+        "Zwei Sorten, zwei Flaschen, niemals ein Verschnitt. Jedes Öl ist 100 % eine Sorte, für sich gepresst.",
+      whatsInside:
+        "Zwei 500-ml-Flaschen: Coratina d'Italia und Nocellara d'Italia. Ein Liter Öl insgesamt, beide aus derselben frühen Ernte.",
+      bestUses:
+        "Coratina zum Verfeinern und für den Morgenlöffel, Nocellara für den täglichen Tisch. Zwei Öle, die beide Enden der Bandbreite abdecken.",
+      toastName: "Coratina + Nocellara Duo in den Warenkorb gelegt",
+      imageAlt: "Sortenreine ATTIMO-Olivenöle Coratina und Nocellara",
+    },
+    fr: {
+      title: "Récolte précoce '25 Duo italien",
+      cardTitleLines: ["Récolte précoce '25", "Duo italien"],
+      subtitle: "Les Pouilles rencontrent la Sicile",
+      description:
+        "Le duo italien de notre récolte '25. Deux mono-variétés aux caractères opposés : puissante et douce.",
+      originHeadline:
+        "Deux mono-variétés d'une même récolte précoce, pressées à froid, testées en laboratoire et jamais assemblées. La même exigence dans chaque bouteille.",
+      singleVarietyText:
+        "Deux variétés, deux bouteilles, jamais d'assemblage. Chaque huile est 100 % mono-variété, pressée à part.",
+      whatsInside:
+        "Deux bouteilles de 500 ml : Coratina d'Italia et Nocellara d'Italia. Un litre d'huile en tout, toutes deux de la même récolte précoce.",
+      bestUses:
+        "La Coratina pour la finition et la cuillère du matin, la Nocellara pour la table de tous les jours. Deux huiles qui couvrent les deux extrêmes de la gamme.",
+      toastName: "Duo Coratina + Nocellara ajouté au panier",
+      imageAlt: "Huiles d'olive mono-variétés ATTIMO Coratina et Nocellara",
+    },
+    nl: {
+      title: "Vroege oogst '25 Italiaanse duo",
+      cardTitleLines: ["Vroege oogst '25", "Italiaanse duo"],
+      subtitle: "Puglia ontmoet Sicilië",
+      description:
+        "Het Italiaanse paar uit onze '25-oogst. Twee enkelvoudige variëteiten met tegengestelde karakters: krachtig en zacht.",
+      originHeadline:
+        "Twee enkele variëteiten uit één vroege oogst, koudgeperst, labgetest en nooit gemengd. Dezelfde standaard in elke fles.",
+      singleVarietyText:
+        "Twee variëteiten, twee flessen, nooit een melange. Elke olie is 100% één variëteit, apart geperst.",
+      whatsInside:
+        "Twee flessen van 500 ml: Coratina d'Italia en Nocellara d'Italia. Eén liter olie in totaal, beide uit dezelfde vroege oogst.",
+      bestUses:
+        "Coratina om af te maken en voor de ochtendlepel, Nocellara voor de dagelijkse tafel. Twee oliën die beide uiteinden van het spectrum dekken.",
+      toastName: "Coratina + Nocellara duo toegevoegd aan je winkelmandje",
+      imageAlt: "Enkelvoudige ATTIMO-olijfoliën Coratina en Nocellara",
+    },
+    sv: {
+      title: "Tidig skörd '25 Italiensk duo",
+      cardTitleLines: ["Tidig skörd '25", "Italiensk duo"],
+      subtitle: "Puglia möter Sicilien",
+      description:
+        "Det italienska paret från vår '25-skörd. Två ensorter med motsatta karaktärer: kraftig och mild.",
+      originHeadline:
+        "Två ensorter från en tidig skörd, kallpressade, labbtestade och aldrig blandade. Samma standard i varje flaska.",
+      singleVarietyText:
+        "Två sorter, två flaskor, aldrig en blandning. Varje olja är 100 % en sort, pressad för sig.",
+      whatsInside:
+        "Två flaskor på 500 ml: Coratina d'Italia och Nocellara d'Italia. En liter olja totalt, båda från samma tidiga skörd.",
+      bestUses:
+        "Coratina för finish och morgonskeden, Nocellara för det dagliga bordet. Två oljor som täcker båda ändarna av skalan.",
+      toastName: "Coratina + Nocellara-duon tillagd i varukorgen",
+      imageAlt: "Ensorts ATTIMO-olivoljor Coratina och Nocellara",
+    },
   },
 };

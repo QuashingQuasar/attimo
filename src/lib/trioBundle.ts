@@ -156,5 +156,73 @@ export const TRIO_CONFIG: BundleConfig = {
       toastName: "Hele samlingen er lagt i kurven",
       imageAlt: "De tre ATTIMO enkeltsorts-olivenolier: Coratina, Picual og Nocellara",
     },
+    de: {
+      title: "Frühe Ernte '25 Gesamtkollektion",
+      cardTitleLines: ["Frühe Ernte '25", "Gesamtkollektion"],
+      subtitle: "\"Ich nehme alle drei, bitte\"",
+      description:
+        "Die komplette Auswahl unserer '25er-Ernte. Drei sortenreine Öle voller Geschmack und Charakter: kräftig, grasig und mild.",
+      originHeadline:
+        "Drei sortenreine Öle aus einer frühen Ernte, kaltgepresst, laborgeprüft und niemals verschnitten. Der gleiche Standard in jeder Flasche.",
+      singleVarietyText:
+        "Drei Sorten, drei Flaschen, niemals ein Verschnitt. Jedes Öl ist 100 % eine Sorte, für sich gepresst.",
+      whatsInside:
+        "Drei 500-ml-Flaschen: je eine Coratina d'Italia, Picual de España und Nocellara d'Italia. Anderthalb Liter Öl insgesamt, jeder Tropfen aus derselben frühen Ernte.",
+      bestUses:
+        "Coratina zum Verfeinern und für den Morgenlöffel, Picual zum alltäglichen Kochen, Nocellara für den Tisch. Mit den dreien sind Sie von der Pfanne bis zum Teller abgedeckt.",
+      toastName: "Gesamtkollektion in den Warenkorb gelegt",
+      imageAlt: "Die drei sortenreinen ATTIMO-Olivenöle: Coratina, Picual und Nocellara",
+    },
+    fr: {
+      title: "Récolte précoce '25 Collection complète",
+      cardTitleLines: ["Récolte précoce '25", "Collection complète"],
+      subtitle: "« Je prends les trois, merci »",
+      description:
+        "Toute la sélection de notre récolte '25. Trois mono-variétés pleines de goût et de caractère : puissante, herbacée et douce.",
+      originHeadline:
+        "Trois mono-variétés d'une même récolte précoce, pressées à froid, testées en laboratoire et jamais assemblées. La même exigence dans chaque bouteille.",
+      singleVarietyText:
+        "Trois variétés, trois bouteilles, jamais d'assemblage. Chaque huile est 100 % mono-variété, pressée à part.",
+      whatsInside:
+        "Trois bouteilles de 500 ml : une de chaque — Coratina d'Italia, Picual de España et Nocellara d'Italia. Un litre et demi d'huile en tout, chaque goutte de la même récolte précoce.",
+      bestUses:
+        "La Coratina pour la finition et la cuillère du matin, la Picual pour la cuisine de tous les jours, la Nocellara pour la table. À elles trois, vous êtes couvert de la poêle à l'assiette.",
+      toastName: "Collection complète ajoutée au panier",
+      imageAlt: "Les trois huiles d'olive mono-variétés ATTIMO : Coratina, Picual et Nocellara",
+    },
+    nl: {
+      title: "Vroege oogst '25 Volledige collectie",
+      cardTitleLines: ["Vroege oogst '25", "Volledige collectie"],
+      subtitle: "\"Ik neem alle drie, alsjeblieft\"",
+      description:
+        "De volledige selectie uit onze '25-oogst. Drie enkelvoudige variëteiten vol smaak en karakter: krachtig, grazig en zacht.",
+      originHeadline:
+        "Drie enkele variëteiten uit één vroege oogst, koudgeperst, labgetest en nooit gemengd. Dezelfde standaard in elke fles.",
+      singleVarietyText:
+        "Drie variëteiten, drie flessen, nooit een melange. Elke olie is 100% één variëteit, apart geperst.",
+      whatsInside:
+        "Drie flessen van 500 ml: één van elk — Coratina d'Italia, Picual de España en Nocellara d'Italia. Anderhalve liter olie in totaal, elke druppel uit dezelfde vroege oogst.",
+      bestUses:
+        "Coratina om af te maken en voor de ochtendlepel, Picual voor het dagelijkse koken, Nocellara voor de tafel. Met z'n drieën ben je gedekt van pan tot bord.",
+      toastName: "Volledige collectie toegevoegd aan je winkelmandje",
+      imageAlt: "De drie enkelvoudige ATTIMO-olijfoliën: Coratina, Picual en Nocellara",
+    },
+    sv: {
+      title: "Tidig skörd '25 Hela kollektionen",
+      cardTitleLines: ["Tidig skörd '25", "Hela kollektionen"],
+      subtitle: "\"Jag tar alla tre, tack\"",
+      description:
+        "Hela urvalet från vår '25-skörd. Tre ensorter fyllda med smak och personlighet: kraftig, grön och mild.",
+      originHeadline:
+        "Tre ensorter från en tidig skörd, kallpressade, labbtestade och aldrig blandade. Samma standard i varje flaska.",
+      singleVarietyText:
+        "Tre sorter, tre flaskor, aldrig en blandning. Varje olja är 100 % en sort, pressad för sig.",
+      whatsInside:
+        "Tre flaskor på 500 ml: en av varje — Coratina d'Italia, Picual de España och Nocellara d'Italia. Halvannan liter olja totalt, varje droppe från samma tidiga skörd.",
+      bestUses:
+        "Coratina för finish och morgonskeden, Picual för vardagsmaten, Nocellara för bordet. Med de tre är du täckt från panna till tallrik.",
+      toastName: "Hela kollektionen tillagd i varukorgen",
+      imageAlt: "De tre ensorts ATTIMO-olivoljorna: Coratina, Picual och Nocellara",
+    },
   },
 };

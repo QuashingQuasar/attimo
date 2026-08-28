@@ -8,6 +8,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import BundleDuoPageWrapper from "@astro/react-pages/BundleDuoPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { LOCALES, formatPrice, type Locale } from "@/lib/i18n/config";
+import { DUO_CONFIG } from "@/lib/duoBundle";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 export function getStaticPaths() {
@@ -22,8 +23,9 @@ const dict = getDict(locale);
 const price = locale.prices.duo ?? 42;
 const priceLabel = formatPrice(price, locale);
 
-const title = "Early Harvest '25 Italian Duo | Coratina + Nocellara Olive Oil";
-const description = `Two single-variety olive oils from our '25 harvest: Coratina and Nocellara. Early-harvest, lab-tested, 2 × 500ml, ${priceLabel}.`;
+const framing = DUO_CONFIG.framing[locale.lang] ?? DUO_CONFIG.framing.en;
+const title = `${framing.title} | ${dict.product.titleSuffix}`;
+const description = `${framing.description} ${priceLabel}.`;
 const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/duo`;
 const ogImage = "https://attimo-oil.com/duo-collection.png";
 
