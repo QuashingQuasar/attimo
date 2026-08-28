@@ -379,6 +379,26 @@ export const fr: Dict = {
     shippingLink: "Voir tous les tarifs et délais de livraison →",
   },
 
+  // Machine-translated, needs native review before broad launch.
+  bundle: {
+    inTheBox: "Dans le coffret",
+    save: "Économisez",
+    polyphenols: "polyphénols",
+    whatsInside: "Contenu",
+    harvestPara:
+      "Chaque bouteille provient de la dernière récolte, pressée début octobre et vendue fraîche. Nous ne vendons que la saison en cours. Une fois épuisée, elle disparaît jusqu'à l'an prochain.",
+    shippingPara:
+      "Livraison offerte dès deux bouteilles : ce coffret est donc toujours livré gratuitement. Commandez aujourd'hui, expédié demain.",
+    shippingLink: "Livraison et expédition",
+    feat: {
+      earlyHarvest: { title: "Récolte précoce", desc: "Cueillies tôt, lorsque les olives sont les plus riches en polyphénols qui portent à la fois le goût et les bienfaits." },
+      singleVariety: { title: "Mono-variété" },
+      coldPressed: { title: "Pressée à froid", desc: "Pressée quelques heures après la récolte à basse température, pour préserver chaque goutte de goût et de nutriments." },
+      labTested: { title: "Testée en laboratoire", desc: "Chaque lot est testé de façon indépendante sur les marqueurs qui comptent : polyphénols, acidité, fraîcheur. Vérifiez la qualité vous-même." },
+      alwaysFresh: { title: "Toujours fraîche", desc: "De l'huile d'olive uniquement de la dernière récolte, car contrairement au vin, elle ne se bonifie pas avec l'âge." },
+    },
+  },
+
   purchase: {
     oneTime: "Achat unique",
     perBottle: " / bouteille",

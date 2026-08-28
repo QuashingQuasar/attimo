@@ -17,6 +17,8 @@ import { useCartStore } from "@/stores/cartStore";
 import type { BundleConfig } from "@/lib/bundleTypes";
 import { toast } from "sonner";
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict, type Dict } from "@/lib/i18n/dictionaries";
+import { getProductContent } from "@/lib/productContent";
 import {
   detectCountry,
   getFreeShippingThreshold,
@@ -33,15 +35,17 @@ const BOTTLE_IMG: Record<string, string> = {
   nocellara: nocellaraBottle,
 };
 
-// Brand-value tiles for the reused ProductOriginStory grid. Four are constant
-// across every bundle; the Single Variety copy varies (two vs three cultivars).
-function brandValueFeatures(singleVarietyText: string) {
+// Brand-value tiles for the reused ProductOriginStory grid. Titles + copy come
+// from the localized `bundle` dict; the Single Variety copy is bundle-specific
+// (two vs three cultivars) so it's passed in from the config framing.
+function brandValueFeatures(t: Dict, singleVarietyText: string) {
+  const b = t.bundle.feat;
   return [
-    { title: "Early Harvest", description: "Picked early, when the olives are highest in the polyphenols that drive both flavour and health benefits.", icon: "/icons/basket-2.svg" },
-    { title: "Single Variety", description: singleVarietyText, icon: "/icons/branch-2.svg" },
-    { title: "Cold Pressed", description: "Pressed within hours of harvest at low temperatures, to keep every drop of flavour and nutrition intact.", icon: "/icons/olive.svg" },
-    { title: "Lab-Tested", description: "Every batch independently tested on the markers that matter: polyphenols, acidity, freshness. Verify the quality for yourself.", icon: "/icons/flask.svg" },
-    { title: "Always Fresh", description: "Olive oil only from the latest harvest, because unlike wine it doesn't get better with age.", icon: "/icons/amphora-2.svg" },
+    { title: b.earlyHarvest.title, description: b.earlyHarvest.desc, icon: "/icons/basket-2.svg" },
+    { title: b.singleVariety.title, description: singleVarietyText, icon: "/icons/branch-2.svg" },
+    { title: b.coldPressed.title, description: b.coldPressed.desc, icon: "/icons/olive.svg" },
+    { title: b.labTested.title, description: b.labTested.desc, icon: "/icons/flask.svg" },
+    { title: b.alwaysFresh.title, description: b.alwaysFresh.desc, icon: "/icons/amphora-2.svg" },
   ];
 }
 
@@ -52,6 +56,23 @@ interface Props {
 
 export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Props) {
   const addItem = useCartStore((s) => s.addItem);
+  const t = getDict(locale);
+  // Per-locale bundle framing (title, taglines, descriptions); falls back to en.
+  const f = cfg.framing[locale.lang] ?? cfg.framing.en;
+
+  // Per-oil rows: reuse the already-localized single-variety content (flavour,
+  // tasting note, origin, volume). Name + colours + polyphenol value stay from
+  // the config (proper nouns / design / numbers).
+  const contents = cfg.contents.map((v) => {
+    const pc = getProductContent(v.handle, locale);
+    return {
+      ...v,
+      flavour: pc.tabs.details.flavor,
+      desc: pc.originStory.features[0].description,
+      origin: pc.tabs.details.origin,
+      volume: pc.tabs.details.volume,
+    };
+  });
 
   const singlesTotal = cfg.singlesTotal(locale);
   const price = (locale.prices[cfg.priceKey] as number) ?? cfg.singlesTotal(locale);
@@ -87,14 +108,14 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
       selectedOptions: [],
       isSubscription: false,
     });
-    toast.success(cfg.toastName, { position: "top-center" });
+    toast.success(f.toastName, { position: "top-center" });
   };
 
   const shipsFree = freeShippingAvailable(freeShippingThreshold);
   const originStory = {
-    headline: cfg.originHeadline,
+    headline: f.originHeadline,
     quickRef: [] as Array<{ label: string; value: string }>,
-    features: brandValueFeatures(cfg.singleVarietyText),
+    features: brandValueFeatures(t, f.singleVarietyText),
   };
 
   return (
@@ -106,7 +127,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
         <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-0 items-start">
           <div className="lg:sticky lg:top-0 lg:self-start">
             <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
-              <img src={cfg.image} alt={cfg.imageAlt} className="w-full h-full object-cover object-center" />
+              <img src={cfg.image} alt={f.imageAlt} className="w-full h-full object-cover object-center" />
             </div>
           </div>
 
@@ -124,9 +145,9 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                 className="text-olive-dark leading-[1.1]"
                 style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontSize: "clamp(1.67rem, 3.23vw, 3.23rem)", fontWeight: 400 }}
               >
-                {cfg.cardTitleLines
-                  ? cfg.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
-                  : cfg.title}
+                {f.cardTitleLines
+                  ? f.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
+                  : f.title}
               </h1>
             </div>
 
@@ -134,23 +155,23 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
               className="text-olive-medium !-mt-0.5 md:!-mt-1"
               style={{ fontFamily: "Beverly Drive, cursive", fontWeight: "bold", fontSize: "clamp(0.91rem, 2.11vw, 2.11rem)", textDecoration: "underline", textDecorationStyle: "dashed", textDecorationColor: "rgba(78, 91, 43, 0.4)", textUnderlineOffset: "8px" }}
             >
-              {cfg.subtitle}
+              {f.subtitle}
             </p>
 
             <p
               className="text-olive-medium leading-relaxed"
               style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)", maxWidth: "38.93rem" }}
             >
-              {cfg.description}
+              {f.description}
             </p>
 
             {/* In the box */}
             <div className="rounded-xl p-5" style={{ backgroundColor: "rgba(27, 66, 41, 0.05)" }}>
               <p className="text-olive-dark uppercase tracking-widest mb-4" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.72rem, 0.85vw, 0.85rem)", fontWeight: 600 }}>
-                In the box
+                {t.bundle.inTheBox}
               </p>
               <ul className="divide-y" style={{ borderColor: "rgba(27, 66, 41, 0.1)" }}>
-                {cfg.contents.map((v) => (
+                {contents.map((v) => (
                   <li key={v.handle} className="flex gap-5 py-5 first:pt-0 last:pb-0 items-center" style={{ borderColor: "rgba(27, 66, 41, 0.1)" }}>
                     <img src={BOTTLE_IMG[v.handle]} alt={v.name} className="w-28 md:w-32 h-32 md:h-36 flex-shrink-0 object-contain self-center" />
                     <div>
@@ -162,7 +183,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                         {v.desc}
                       </p>
                       <p className="text-olive-medium mt-1.5" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.78rem, 0.9vw, 0.88rem)" }}>
-                        {v.volume} · {v.origin} · {v.polyphenols} polyphenols
+                        {v.volume} · {v.origin} · {v.polyphenols} {t.bundle.polyphenols}
                       </p>
                     </div>
                   </li>
@@ -180,7 +201,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
               </span>
               {saving > 0 && (
                 <span className="font-bold uppercase tracking-wide rounded-md px-2.5 py-1" style={{ backgroundColor: "#1B4229", color: "#FFFAEA", fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.7rem, 0.8vw, 0.8rem)" }}>
-                  Save {formatPrice(saving, locale)}
+                  {t.bundle.save} {formatPrice(saving, locale)}
                 </span>
               )}
             </div>
@@ -191,19 +212,19 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
               style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: ACCENT, fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem" }}
             >
               <span className="flex flex-col items-center gap-0.5">
-                <span className="text-lg">Add to cart · {formatPrice(price, locale)}</span>
-                {shipsFree && <span className="font-normal text-xs">FREE SHIPPING ✓</span>}
+                <span className="text-lg">{t.product.addToCart} · {formatPrice(price, locale)}</span>
+                {shipsFree && <span className="font-normal text-xs">{t.product.freeShipCheck}</span>}
               </span>
             </button>
 
             <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
               <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
                 <ShieldCheck size={20} strokeWidth={1.5} />
-                Third-party lab-tested
+                {t.product.trustLab}
               </p>
               <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
                 <Truck size={20} strokeWidth={1.5} />
-                Order today, ships tomorrow
+                {t.product.shipsTomorrow}
               </p>
             </div>
 
@@ -214,12 +235,12 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                   <AccordionTrigger className="py-5 hover:no-underline">
                     <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.95rem, 1.1vw, 1.2rem)" }}>
                       <PackageOpen size={20} className="text-olive-dark" />
-                      What's inside
+                      {t.bundle.whatsInside}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.1vw, 1.125rem)" }}>
-                      <p>{cfg.whatsInside}</p>
+                      <p>{f.whatsInside}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -228,12 +249,12 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                   <AccordionTrigger className="py-5 hover:no-underline">
                     <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.95rem, 1.1vw, 1.2rem)" }}>
                       <Sprout size={20} className="text-olive-dark" />
-                      Harvest details
+                      {t.productTabs.harvestDetails}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.1vw, 1.125rem)" }}>
-                      <p>Every bottle is from the latest harvest, pressed early in October and sold fresh. We only ever ship the current season. Once it runs out, it's gone until next year.</p>
+                      <p>{t.bundle.harvestPara}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -242,12 +263,12 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                   <AccordionTrigger className="py-5 hover:no-underline">
                     <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.95rem, 1.1vw, 1.2rem)" }}>
                       <UtensilsCrossed size={20} className="text-olive-dark" />
-                      Best uses
+                      {t.productTabs.bestUses}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.1vw, 1.125rem)" }}>
-                      <p>{cfg.bestUses}</p>
+                      <p>{f.bestUses}</p>
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -256,14 +277,14 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                   <AccordionTrigger className="py-5 hover:no-underline">
                     <span className="flex items-center gap-3 text-olive-dark font-semibold uppercase tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.95rem, 1.1vw, 1.2rem)" }}>
                       <Truck size={20} className="text-olive-dark" />
-                      Shipping & delivery
+                      {t.productTabs.shippingDelivery}
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="text-olive-medium leading-relaxed pt-1 pb-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.1vw, 1.125rem)" }}>
-                      <p>Free shipping from two bottles, so this bundle always ships free. Order today and it's on its way tomorrow.</p>
+                      <p>{t.bundle.shippingPara}</p>
                       <p className="mt-3">
-                        <a href="/shipping" className="underline hover:no-underline text-olive-dark font-medium">Shipping &amp; delivery details</a>
+                        <a href="/shipping" className="underline hover:no-underline text-olive-dark font-medium">{t.bundle.shippingLink}</a>
                       </p>
                     </div>
                   </AccordionContent>
@@ -280,7 +301,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
       {/* Structure: origin-story grid → testimonials → ATTIMO vs others → FAQ. */}
       <Testimonials headingColor={ACCENT} locale={locale} />
       <OilComparison polyphenolDisplay={cfg.polyphenolDisplay} locale={locale} />
-      <FAQ locale={locale} heading="Frequently asked" />
+      <FAQ locale={locale} heading={t.faq.heading} />
       <YouMightAlsoLike currentHandle={cfg.ymalHandle} accentColor={ACCENT} locale={locale} />
 
       <Footer locale={locale} />

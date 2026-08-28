@@ -388,6 +388,26 @@ export const de: Dict = {
     shippingLink: "Alle Versandkosten und Lieferzeiten ansehen →",
   },
 
+  // Machine-translated, needs native review before broad launch.
+  bundle: {
+    inTheBox: "In der Box",
+    save: "Spare",
+    polyphenols: "Polyphenole",
+    whatsInside: "Inhalt",
+    harvestPara:
+      "Jede Flasche stammt aus der neuesten Ernte, früh im Oktober gepresst und frisch verkauft. Wir verkaufen ausschließlich die aktuelle Saison. Ist sie ausverkauft, ist sie bis nächstes Jahr weg.",
+    shippingPara:
+      "Kostenloser Versand ab zwei Flaschen, dieses Set wird also immer versandkostenfrei geliefert. Heute bestellen, morgen unterwegs.",
+    shippingLink: "Versand & Lieferung",
+    feat: {
+      earlyHarvest: { title: "Frühe Ernte", desc: "Früh geerntet, wenn die Oliven am reichsten an Polyphenolen sind, die Geschmack und Gesundheit fördern." },
+      singleVariety: { title: "Sortenrein" },
+      coldPressed: { title: "Kaltgepresst", desc: "Innerhalb weniger Stunden nach der Ernte bei niedriger Temperatur gepresst, um jeden Tropfen Geschmack und Nährstoffe zu bewahren." },
+      labTested: { title: "Laborgeprüft", desc: "Jede Charge wird unabhängig auf die entscheidenden Marker geprüft: Polyphenole, Säure, Frische. Überzeugen Sie sich selbst." },
+      alwaysFresh: { title: "Immer frisch", desc: "Olivenöl nur aus der neuesten Ernte, denn anders als Wein wird es mit dem Alter nicht besser." },
+    },
+  },
+
   purchase: {
     oneTime: "Einmaliger Kauf",
     perBottle: " / Flasche",

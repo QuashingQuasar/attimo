@@ -414,6 +414,28 @@ export const en = {
     shippingLink: "View full shipping rates & delivery times →",
   },
 
+  // Bundle PDPs (trio + duo). Chrome shared across both bundles; the
+  // bundle-specific framing (title, taglines, descriptions) lives per-locale in
+  // the bundle configs (trioBundle.ts / duoBundle.ts).
+  bundle: {
+    inTheBox: "In the box",
+    save: "Save",
+    polyphenols: "polyphenols",
+    whatsInside: "What's inside",
+    harvestPara:
+      "Every bottle is from the latest harvest, pressed early in October and sold fresh. We only ever ship the current season. Once it runs out, it's gone until next year.",
+    shippingPara:
+      "Free shipping from two bottles, so this bundle always ships free. Order today and it's on its way tomorrow.",
+    shippingLink: "Shipping & delivery details",
+    feat: {
+      earlyHarvest: { title: "Early Harvest", desc: "Picked early, when the olives are highest in the polyphenols that drive both flavour and health benefits." },
+      singleVariety: { title: "Single Variety" },
+      coldPressed: { title: "Cold Pressed", desc: "Pressed within hours of harvest at low temperatures, to keep every drop of flavour and nutrition intact." },
+      labTested: { title: "Lab-Tested", desc: "Every batch independently tested on the markers that matter: polyphenols, acidity, freshness. Verify the quality for yourself." },
+      alwaysFresh: { title: "Always Fresh", desc: "Olive oil only from the latest harvest, because unlike wine it doesn't get better with age." },
+    },
+  },
+
   // PurchaseOptions (one-time vs subscribe).
   purchase: {
     oneTime: "One-time purchase",

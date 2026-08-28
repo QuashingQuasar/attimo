@@ -383,6 +383,26 @@ export const nl: Dict = {
     shippingLink: "Bekijk alle verzendtarieven & levertijden →",
   },
 
+  // Machine-translated, needs native review before broad launch.
+  bundle: {
+    inTheBox: "In de doos",
+    save: "Bespaar",
+    polyphenols: "polyfenolen",
+    whatsInside: "Inhoud",
+    harvestPara:
+      "Elke fles komt uit de nieuwste oogst, begin oktober geperst en vers verkocht. We verkopen alleen het huidige seizoen. Is het op, dan is het weg tot volgend jaar.",
+    shippingPara:
+      "Gratis verzending vanaf twee flessen, dus dit pakket wordt altijd gratis verzonden. Vandaag besteld, morgen onderweg.",
+    shippingLink: "Verzending en levering",
+    feat: {
+      earlyHarvest: { title: "Vroege oogst", desc: "Vroeg geplukt, wanneer de olijven het rijkst zijn aan de polyfenolen die zowel smaak als gezondheid bepalen." },
+      singleVariety: { title: "Eén variëteit" },
+      coldPressed: { title: "Koudgeperst", desc: "Binnen enkele uren na de oogst op lage temperatuur geperst, om elke druppel smaak en voeding te behouden." },
+      labTested: { title: "Labgetest", desc: "Elke batch onafhankelijk getest op de markers die ertoe doen: polyfenolen, zuurgraad, versheid. Controleer de kwaliteit zelf." },
+      alwaysFresh: { title: "Altijd vers", desc: "Olijfolie alleen uit de nieuwste oogst, want anders dan wijn wordt ze niet beter met de jaren." },
+    },
+  },
+
   purchase: {
     oneTime: "Eenmalige aankoop",
     perBottle: " / fles",

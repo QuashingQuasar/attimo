@@ -68,29 +68,51 @@ export function buildDuoProduct(
 export const DUO_CONFIG: BundleConfig = {
   contents: DUO_CONTENTS,
   image: DUO_IMAGE,
-  imageAlt: "ATTIMO Coratina and Nocellara single-variety olive oils",
   variantId: DUO_VARIANT_ID,
   variantTitle: "Duo",
   buildProduct: buildDuoProduct,
   singlesTotal: duoSinglesTotal,
   priceKey: "duo",
   badge: "2 × 500 ml",
-  title: "Early Harvest '25 Italian Duo",
-  cardTitleLines: ["Early Harvest '25", "Italian Duo"],
-  subtitle: "Puglia meets Sicily",
-  description:
-    "The Italian pair from our '25 harvest season. Two single varieties with opposite characters: bold and gentle.",
-  originHeadline:
-    "Two single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
-  singleVarietyText:
-    "Two cultivars, two bottles, never a blend. Each oil is 100% one variety, pressed on its own.",
-  whatsInside:
-    "Two 500ml bottles: Coratina d'Italia and Nocellara d'Italia. A litre of oil in all, both from the same early harvest.",
-  bestUses:
-    "Coratina for finishing and the morning spoon, Nocellara for the everyday table. Two oils covering both ends of the range.",
   ogName: "Coratina + Nocellara Duo",
   contentId: "duo",
   ymalHandle: "duo",
   polyphenolDisplay: "400–847 mg/kg",
-  toastName: "Added the Coratina + Nocellara Duo to your cart",
+  framing: {
+    en: {
+      title: "Early Harvest '25 Italian Duo",
+      cardTitleLines: ["Early Harvest '25", "Italian Duo"],
+      subtitle: "Puglia meets Sicily",
+      description:
+        "The Italian pair from our '25 harvest season. Two single varieties with opposite characters: bold and gentle.",
+      originHeadline:
+        "Two single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
+      singleVarietyText:
+        "Two cultivars, two bottles, never a blend. Each oil is 100% one variety, pressed on its own.",
+      whatsInside:
+        "Two 500ml bottles: Coratina d'Italia and Nocellara d'Italia. A litre of oil in all, both from the same early harvest.",
+      bestUses:
+        "Coratina for finishing and the morning spoon, Nocellara for the everyday table. Two oils covering both ends of the range.",
+      toastName: "Added the Coratina + Nocellara Duo to your cart",
+      imageAlt: "ATTIMO Coratina and Nocellara single-variety olive oils",
+    },
+    // Danish — for Gilles's review. Tagline (subtitle) especially: shape freely.
+    da: {
+      title: "Tidlig høst '25 – Italiensk duo",
+      cardTitleLines: ["Tidlig høst '25", "Italiensk duo"],
+      subtitle: "Puglia møder Sicilien",
+      description:
+        "Det italienske par fra vores '25-høst. To enkeltsorter med modsatte karakterer: kraftig og mild.",
+      originHeadline:
+        "To enkeltsorter fra én tidlig høst, koldpresset, labtestet og aldrig blandet. Samme standard i hver flaske.",
+      singleVarietyText:
+        "To sorter, to flasker, aldrig en blanding. Hver olie er 100 % én sort, presset for sig.",
+      whatsInside:
+        "To 500 ml-flasker: Coratina d'Italia og Nocellara d'Italia. En liter olie i alt, begge fra samme tidlige høst.",
+      bestUses:
+        "Coratina til det sidste pift og morgenskeen, Nocellara til det daglige bord. To olier, der dækker begge ender af skalaen.",
+      toastName: "Coratina + Nocellara-duoen er lagt i kurven",
+      imageAlt: "ATTIMO Coratina og Nocellara enkeltsorts-olivenolier",
+    },
+  },
 };

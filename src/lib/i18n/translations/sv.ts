@@ -376,6 +376,26 @@ export const sv: Dict = {
     shippingLink: "Se fullständiga fraktpriser & leveranstider →",
   },
 
+  // Machine-translated, needs native review before broad launch.
+  bundle: {
+    inTheBox: "I lådan",
+    save: "Spara",
+    polyphenols: "polyfenoler",
+    whatsInside: "Innehåll",
+    harvestPara:
+      "Varje flaska är från den senaste skörden, pressad tidigt i oktober och såld färsk. Vi säljer bara den aktuella säsongen. När den är slut är den borta till nästa år.",
+    shippingPara:
+      "Fri frakt från två flaskor, så det här paketet skickas alltid gratis. Beställ idag, på väg imorgon.",
+    shippingLink: "Frakt och leverans",
+    feat: {
+      earlyHarvest: { title: "Tidig skörd", desc: "Plockade tidigt, när oliverna är som rikast på de polyfenoler som driver både smak och hälsa." },
+      singleVariety: { title: "En sort" },
+      coldPressed: { title: "Kallpressad", desc: "Pressad inom några timmar efter skörd vid låg temperatur, för att bevara varje droppe smak och näring." },
+      labTested: { title: "Labbtestad", desc: "Varje batch testas oberoende på de markörer som betyder något: polyfenoler, syra, färskhet. Se kvaliteten själv." },
+      alwaysFresh: { title: "Alltid färsk", desc: "Olivolja endast från den senaste skörden, för till skillnad från vin blir den inte bättre med åldern." },
+    },
+  },
+
   purchase: {
     oneTime: "Engångsköp",
     perBottle: " / flaska",

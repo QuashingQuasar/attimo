@@ -376,6 +376,25 @@ export const da: Dict = {
     shippingLink: "Se fulde fragtpriser & leveringstider →",
   },
 
+  bundle: {
+    inTheBox: "I æsken",
+    save: "Spar",
+    polyphenols: "polyfenoler",
+    whatsInside: "Indhold",
+    harvestPara:
+      "Hver flaske er fra den seneste høst, presset tidligt i oktober og solgt frisk. Vi sælger kun den aktuelle sæson. Når den er udsolgt, er den væk indtil næste år.",
+    shippingPara:
+      "Gratis fragt fra to flasker, så dette sæt altid sendes gratis. Bestil i dag, og det er på vej i morgen.",
+    shippingLink: "Fragt og levering",
+    feat: {
+      earlyHarvest: { title: "Tidlig høst", desc: "Plukket tidligt, når olivenerne er rigest på de polyfenoler, der driver både smag og sundhed." },
+      singleVariety: { title: "Enkelt sort" },
+      coldPressed: { title: "Koldpresset", desc: "Presset inden for få timer efter høst ved lav temperatur for at bevare hver dråbe smag og næring." },
+      labTested: { title: "Labtestet", desc: "Hver batch testes uafhængigt på de markører, der betyder noget: polyfenoler, syre og friskhed. Se kvaliteten selv." },
+      alwaysFresh: { title: "Altid frisk", desc: "Olivenolie kun fra den seneste høst, for i modsætning til vin bliver den ikke bedre med alderen." },
+    },
+  },
+
   purchase: {
     oneTime: "Engangskøb",
     perBottle: " / flaske",

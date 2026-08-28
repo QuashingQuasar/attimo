@@ -1,5 +1,6 @@
 import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 import { TRIO_CONFIG } from "@/lib/trioBundle";
 import { DUO_CONFIG } from "@/lib/duoBundle";
 import type { BundleConfig } from "@/lib/bundleTypes";
@@ -23,6 +24,7 @@ export const BundleWidgets = ({
   heading = "Bundles",
   subtitle = "The more the merrier.",
 }: BundleWidgetsProps = {}) => {
+  const t = getDict(locale);
   const bundles: BundleConfig[] = [TRIO_CONFIG, DUO_CONFIG];
 
   return (
@@ -47,12 +49,13 @@ export const BundleWidgets = ({
           const price = (locale.prices[b.priceKey] as number) ?? b.singlesTotal(locale);
           const singles = b.singlesTotal(locale);
           const saving = singles - price;
+          const f = b.framing[locale.lang] ?? b.framing.en;
           return (
             <Link key={b.contentId} to={localizeHref(`/product/${b.contentId}`, locale)} className="group flex flex-col">
               <div className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-7" style={{ backgroundColor: "#1B4229" }}>
                 <img
                   src={b.image}
-                  alt={b.imageAlt}
+                  alt={f.imageAlt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                 />
 
@@ -72,7 +75,7 @@ export const BundleWidgets = ({
                       className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5"
                       style={{ fontFamily: "UDC Working Man Sans, sans-serif", letterSpacing: "0.1em", color: "#1B4229", backgroundColor: "#CDDB2D", textTransform: "uppercase" }}
                     >
-                      Save {formatPrice(saving, locale)}
+                      {t.bundle.save} {formatPrice(saving, locale)}
                     </span>
                   </div>
                 )}
@@ -80,9 +83,9 @@ export const BundleWidgets = ({
 
               <div className="flex flex-col items-center text-center px-2">
                 <h3 className="mb-1.5" style={{ fontFamily: "Beverly Drive, serif", color: "#1B4229", fontSize: "clamp(1.8rem, 2.7vw, 2.7rem)", letterSpacing: "0.04em", lineHeight: 1.32 }}>
-                  {b.cardTitleLines
-                    ? b.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
-                    : b.title}
+                  {f.cardTitleLines
+                    ? f.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
+                    : f.title}
                 </h3>
                 <p className="uppercase mb-3 flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-1.5 md:gap-x-3 md:gap-y-1" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#1B4229", fontSize: "clamp(1.18rem, 1.46vw, 1.46rem)", letterSpacing: "0.15em", opacity: 0.7 }}>
                   {b.contents.map((v) => (

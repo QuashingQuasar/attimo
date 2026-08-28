@@ -110,29 +110,51 @@ export function buildTrioProduct(
 export const TRIO_CONFIG: BundleConfig = {
   contents: TRIO_CONTENTS,
   image: TRIO_IMAGE,
-  imageAlt: "The three ATTIMO single-variety olive oils: Coratina, Picual and Nocellara",
   variantId: TRIO_VARIANT_ID,
   variantTitle: "Trio",
   buildProduct: buildTrioProduct,
   singlesTotal: trioSinglesTotal,
   priceKey: "trio",
   badge: "3 × 500 ml",
-  title: "Early Harvest '25 Full Collection",
-  cardTitleLines: ["Early Harvest '25", "Full Collection"],
-  subtitle: "\"I'll have all three, please\"",
-  description:
-    "The full selection of our '25 harvest season. Three single varieties packed with flavour and personality: bold, grassy and gentle.",
-  originHeadline:
-    "Three single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
-  singleVarietyText:
-    "Three cultivars, three bottles, never a blend. Each oil is 100% one variety, pressed on its own.",
-  whatsInside:
-    "Three 500ml bottles: one each of Coratina d'Italia, Picual de España and Nocellara d'Italia. A litre and a half of oil in all, every drop from the same early harvest.",
-  bestUses:
-    "Coratina for finishing and the morning spoon, Picual for everyday cooking, Nocellara for the table. Between the three you're covered from the pan to the plate.",
   ogName: "The Full Collection (Trio)",
   contentId: "trio",
   ymalHandle: "trio",
   polyphenolDisplay: "400–847 mg/kg",
-  toastName: "Added The Full Collection to your cart",
+  framing: {
+    en: {
+      title: "Early Harvest '25 Full Collection",
+      cardTitleLines: ["Early Harvest '25", "Full Collection"],
+      subtitle: "\"I'll have all three, please\"",
+      description:
+        "The full selection of our '25 harvest season. Three single varieties packed with flavour and personality: bold, grassy and gentle.",
+      originHeadline:
+        "Three single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
+      singleVarietyText:
+        "Three cultivars, three bottles, never a blend. Each oil is 100% one variety, pressed on its own.",
+      whatsInside:
+        "Three 500ml bottles: one each of Coratina d'Italia, Picual de España and Nocellara d'Italia. A litre and a half of oil in all, every drop from the same early harvest.",
+      bestUses:
+        "Coratina for finishing and the morning spoon, Picual for everyday cooking, Nocellara for the table. Between the three you're covered from the pan to the plate.",
+      toastName: "Added The Full Collection to your cart",
+      imageAlt: "The three ATTIMO single-variety olive oils: Coratina, Picual and Nocellara",
+    },
+    // Danish — for Gilles's review. Tagline (subtitle) especially: shape freely.
+    da: {
+      title: "Tidlig høst '25 – Hele samlingen",
+      cardTitleLines: ["Tidlig høst '25", "Hele samlingen"],
+      subtitle: "\"Jeg tager alle tre, tak\"",
+      description:
+        "Hele udvalget fra vores '25-høst. Tre enkeltsorter fyldt med smag og personlighed: kraftig, grøn og mild.",
+      originHeadline:
+        "Tre enkeltsorter fra én tidlig høst, koldpresset, labtestet og aldrig blandet. Samme standard i hver flaske.",
+      singleVarietyText:
+        "Tre sorter, tre flasker, aldrig en blanding. Hver olie er 100 % én sort, presset for sig.",
+      whatsInside:
+        "Tre 500 ml-flasker: én af hver – Coratina d'Italia, Picual de España og Nocellara d'Italia. Halvanden liter olie i alt, hver dråbe fra samme tidlige høst.",
+      bestUses:
+        "Coratina til det sidste pift og morgenskeen, Picual til hverdagens madlavning, Nocellara til bordet. Med de tre er du dækket fra pande til tallerken.",
+      toastName: "Hele samlingen er lagt i kurven",
+      imageAlt: "De tre ATTIMO enkeltsorts-olivenolier: Coratina, Picual og Nocellara",
+    },
+  },
 };
