@@ -1,23 +1,30 @@
 ---
-// Dedicated PDP for the duo bundle (Coratina + Nocellara), built from the
-// shared BundleProductPage. Same pattern as the trio route. The duo is a
-// separate Shopify product (DRAFT / off Storefront) referenced by hardcoded
-// variant id in lib/duoBundle.ts, so the page renders and adds to cart before
-// the product is published. noIndex while it's a draft.
+// Localized (dk/se/fr/de/nl) PDP for the duo bundle (Coratina + Nocellara).
+// Same page as /product/duo but per-locale price/currency/language, so the
+// shop menu's localized bundle link resolves instead of 404ing. Mirrors
+// [locale]/product/coratina-3l.astro and the single-variety [locale] PDPs:
+// canonical -> self, hreflang cluster via /product/duo.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import BundleDuoPageWrapper from "@astro/react-pages/BundleDuoPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
-import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { DUO_IMAGE, duoSinglesTotal } from "@/lib/duoBundle";
+import { LOCALES, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const locale = DEFAULT_LOCALE;
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.slug !== "").map((locale) => ({
+    params: { locale: locale.slug },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const dict = getDict(locale);
 const price = locale.prices.duo ?? 42;
-const singlesTotal = duoSinglesTotal(locale);
 const priceLabel = formatPrice(price, locale);
 
 const title = "Early Harvest '25 Italian Duo | Coratina + Nocellara Olive Oil";
 const description = `Two single-variety olive oils from our '25 harvest: Coratina and Nocellara. Early-harvest, lab-tested, 2 × 500ml, ${priceLabel}.`;
-const canonicalUrl = "https://attimo-oil.com/product/duo";
+const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/duo`;
 const ogImage = "https://attimo-oil.com/duo-collection.png";
 
 const productJsonLd = {
@@ -50,7 +57,10 @@ const productJsonLd = {
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
   noIndex={false}
+  htmlLang={locale.lang}
   hreflangPath="/product/duo"
+  announceTier2={dict.announce.freeShipping2}
+  announceTier3={dict.announce.freeShipping3}
 >
-  <BundleDuoPageWrapper client:load />
+  <BundleDuoPageWrapper locale={locale} client:load />
 </BaseLayout>

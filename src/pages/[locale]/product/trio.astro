@@ -1,25 +1,32 @@
 ---
-// Dedicated PDP for the trio bundle ("The Full Collection") — one bottle of
-// each single variety. Built from shared components (see BundleTrioPage), same
-// pattern as the 3L box route. The bundle is a SEPARATE Shopify product
-// (currently DRAFT / off the Storefront channel) referenced by hardcoded
-// variant id in lib/trioBundle.ts, so the page renders and adds to cart before
-// the product is published. noIndex while it's a draft — flip to indexable when
-// the offer goes live.
+// Localized (dk/se/fr/de/nl) PDP for the trio bundle ("The Full Collection").
+// Same page as /product/trio but per-locale price/currency/language, so the
+// shop menu's localized bundle link resolves instead of 404ing. Mirrors
+// [locale]/product/coratina-3l.astro and the single-variety [locale] PDPs:
+// canonical -> self, hreflang cluster via /product/trio.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import BundleTrioPageWrapper from "@astro/react-pages/BundleTrioPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
-import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { TRIO_IMAGE, trioSinglesTotal } from "@/lib/trioBundle";
+import { LOCALES, formatPrice, type Locale } from "@/lib/i18n/config";
+import { trioSinglesTotal } from "@/lib/trioBundle";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const locale = DEFAULT_LOCALE;
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.slug !== "").map((locale) => ({
+    params: { locale: locale.slug },
+    props: { locale },
+  }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const dict = getDict(locale);
 const price = locale.prices.trio ?? 60;
 const singlesTotal = trioSinglesTotal(locale);
 const priceLabel = formatPrice(price, locale);
 
 const title = "The Full Collection | Trio of Single-Variety Olive Oils";
 const description = `One bottle of each single-variety olive oil — Coratina, Picual and Nocellara. The whole range of a single harvest, lab-tested and early-harvest. 3 × 500ml — ${priceLabel} (save vs ${formatPrice(singlesTotal, locale)} apart).`;
-const canonicalUrl = "https://attimo-oil.com/product/trio";
+const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/trio`;
 const ogImage = "https://attimo-oil.com/trio-collection.png";
 
 const productJsonLd = {
@@ -52,7 +59,10 @@ const productJsonLd = {
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
   noIndex={false}
+  htmlLang={locale.lang}
   hreflangPath="/product/trio"
+  announceTier2={dict.announce.freeShipping2}
+  announceTier3={dict.announce.freeShipping3}
 >
-  <BundleTrioPageWrapper client:load />
+  <BundleTrioPageWrapper locale={locale} client:load />
 </BaseLayout>
