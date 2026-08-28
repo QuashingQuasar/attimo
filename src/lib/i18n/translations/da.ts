@@ -108,7 +108,7 @@ export const da: Dict = {
   },
 
   hero: {
-    cta: "Køb ny høst",
+    cta: "Køb 25/26-høsten",
     badges: [
       "LABTESTET",
       "TIDLIG HØST",

@@ -109,7 +109,7 @@ export const fr: Dict = {
   },
 
   hero: {
-    cta: "Découvrir la nouvelle récolte", // REVIEW
+    cta: "Découvrir la récolte 25/26", // REVIEW
     badges: [
       "TESTÉ EN LABORATOIRE", // REVIEW
       "RÉCOLTE PRÉCOCE", // REVIEW

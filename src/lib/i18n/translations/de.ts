@@ -115,7 +115,7 @@ export const de: Dict = {
   },
 
   hero: {
-    cta: "Die neue Ernte entdecken", // REVIEW
+    cta: "Ernte 25/26 entdecken", // REVIEW
     badges: [
       "IM LABOR GETESTET", // REVIEW
       "FRÜHE ERNTE", // REVIEW

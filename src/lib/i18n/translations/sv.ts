@@ -108,7 +108,7 @@ export const sv: Dict = {
   },
 
   hero: {
-    cta: "Handla ny skörd",
+    cta: "Handla 25/26-skörden",
     badges: [
       "LABBTESTAD",
       "TIDIG SKÖRD",

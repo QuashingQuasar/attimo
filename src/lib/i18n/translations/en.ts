@@ -119,7 +119,7 @@ export const en = {
   },
 
   hero: {
-    cta: "Shop New Harvest", // REVIEW
+    cta: "Shop 25/26 Harvest", // REVIEW
     // Rotating ticker badges along the bottom of the hero.
     badges: [
       "LAB-TESTED", // REVIEW

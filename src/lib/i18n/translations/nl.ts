@@ -108,7 +108,7 @@ export const nl: Dict = {
   },
 
   hero: {
-    cta: "Shop de nieuwe oogst", // REVIEW
+    cta: "Shop de 25/26-oogst", // REVIEW
     badges: [
       "LAB-GETEST", // REVIEW
       "VROEGE OOGST", // REVIEW
