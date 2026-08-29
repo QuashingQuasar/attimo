@@ -1,0 +1,50 @@
+<svg viewBox="0 0 720 400" width="720" height="400" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">How "Product of Italy" gets made</title>
+<desc id="desc">Flow diagram. Bulk oil from Spain, Greece and Tunisia converges into a blending tank, then moves to a bottling plant in Italy, where the bottle receives a label reading Product of Italy. The label describes the bottling step, not where the olives grew.</desc>
+<rect x="0" y="0" width="720" height="400" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">How "Product of Italy" gets made</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">The label describes the bottling plant — the olives can come from anywhere</text>
+
+<text x="114" y="96" font-size="12" font-weight="600" fill="#1B4229" opacity="0.75" text-anchor="start">where the olives grew</text>
+<text x="616" y="96" font-size="12" font-weight="600" fill="#1B4229" opacity="0.75" text-anchor="end">what the label says</text>
+<circle cx="130" cy="138" r="7" fill="#9DAE84"/>
+<circle cx="130" cy="138" r="7" fill="none" stroke="#1B4229" stroke-width="1.6"/>
+<text x="114" y="143" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">Spain</text>
+<text x="114" y="159" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="end">bulk oil</text>
+<path d="M140,138 C220,138 246,208 312,208" fill="none" stroke="#1B4229" stroke-width="1.6" opacity="0.65"/>
+<path d="M304,203 L314,208 L304,213 Z" fill="#1B4229" opacity="0.65"/>
+<circle cx="130" cy="208" r="7" fill="#9DAE84"/>
+<circle cx="130" cy="208" r="7" fill="none" stroke="#1B4229" stroke-width="1.6"/>
+<text x="114" y="213" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">Greece</text>
+<text x="114" y="229" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="end">bulk oil</text>
+<path d="M140,208 C220,208 246,208 312,208" fill="none" stroke="#1B4229" stroke-width="1.6" opacity="0.65"/>
+<path d="M304,203 L314,208 L304,213 Z" fill="#1B4229" opacity="0.65"/>
+<circle cx="130" cy="278" r="7" fill="#9DAE84"/>
+<circle cx="130" cy="278" r="7" fill="none" stroke="#1B4229" stroke-width="1.6"/>
+<text x="114" y="283" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">Tunisia</text>
+<text x="114" y="299" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="end">bulk oil</text>
+<path d="M140,278 C220,278 246,208 312,208" fill="none" stroke="#1B4229" stroke-width="1.6" opacity="0.65"/>
+<path d="M304,203 L314,208 L304,213 Z" fill="#1B4229" opacity="0.65"/>
+
+<g stroke="#1B4229" stroke-width="2" fill="#CDDB2D" fill-opacity="0.35">
+<path d="M322,164 L390,164 L390,244 Q356,264 322,244 Z"/>
+<ellipse cx="356" cy="164" rx="34" ry="10" fill="#FFFAEA"/>
+</g>
+<text x="356" y="292" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">Blended in bulk</text>
+<text x="356" y="308" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">varieties, origins, harvests pooled</text>
+<path d="M400,208 L516,208" fill="none" stroke="#1B4229" stroke-width="1.6" opacity="0.65"/>
+<path d="M508,203 L518,208 L508,213 Z" fill="#1B4229" opacity="0.65"/>
+
+<g stroke="#1B4229" stroke-width="2" fill="#CDDB2D" fill-opacity="0.35">
+<path d="M571,130 L581,130 L581,152 Q598,164 598,184 L598,262 Q598,268 592,268 L560,268 Q554,268 554,262 L554,184 Q554,164 571,152 Z"/>
+<rect x="554" y="196" width="44" height="36" fill="#FFFAEA"/>
+</g>
+<text x="576" y="211" font-size="8.5" font-weight="700" fill="#1B4229" text-anchor="middle" letter-spacing="0.5">PRODUCT</text>
+<text x="576" y="223" font-size="8.5" font-weight="700" fill="#1B4229" text-anchor="middle" letter-spacing="0.5">OF ITALY</text>
+<text x="576" y="292" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">Bottled in Italy</text>
+<text x="576" y="308" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">the label describes this step</text>
+<text x="28" y="366" font-size="11" fill="#1B4229" opacity="0.45">Legal, and common. If the olives' origin matters to you, look for a single named country or estate on the label.</text>
+<text x="28" y="382" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>
