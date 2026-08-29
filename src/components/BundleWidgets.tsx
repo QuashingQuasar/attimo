@@ -21,11 +21,13 @@ interface BundleWidgetsProps {
 // placeholder).
 export const BundleWidgets = ({
   locale = DEFAULT_LOCALE,
-  heading = "Bundles",
-  subtitle = "The more the merrier.",
+  heading,
+  subtitle,
 }: BundleWidgetsProps = {}) => {
   const t = getDict(locale);
   const bundles: BundleConfig[] = [TRIO_CONFIG, DUO_CONFIG];
+  const sectionHeading = heading ?? t.bundle.sectionHeading;
+  const sectionSubtitle = subtitle ?? t.bundle.sectionSubtitle;
 
   return (
     <div className="mt-24 md:mt-32">
@@ -34,13 +36,13 @@ export const BundleWidgets = ({
           className="mb-4 mx-auto"
           style={{ fontFamily: "Beverly Drive, serif", color: "#1B4229", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "0.05em" }}
         >
-          {heading}
+          {sectionHeading}
         </h2>
         <p
           className="mx-auto text-center"
           style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.5, fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)", lineHeight: 1.7, maxWidth: "800px" }}
         >
-          {subtitle}
+          {sectionSubtitle}
         </p>
       </div>
 

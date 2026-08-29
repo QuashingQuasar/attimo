@@ -378,6 +378,8 @@ export const sv: Dict = {
 
   // Machine-translated, needs native review before broad launch.
   bundle: {
+    sectionHeading: "Set",
+    sectionSubtitle: "Ju fler, desto bättre.",
     inTheBox: "I lådan",
     save: "Spara",
     polyphenols: "polyfenoler",

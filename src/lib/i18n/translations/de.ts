@@ -390,6 +390,8 @@ export const de: Dict = {
 
   // Machine-translated, needs native review before broad launch.
   bundle: {
+    sectionHeading: "Sets",
+    sectionSubtitle: "Je mehr, desto besser.",
     inTheBox: "In der Box",
     save: "Spare",
     polyphenols: "Polyphenole",

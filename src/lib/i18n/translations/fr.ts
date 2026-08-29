@@ -381,6 +381,8 @@ export const fr: Dict = {
 
   // Machine-translated, needs native review before broad launch.
   bundle: {
+    sectionHeading: "Coffrets", // REVIEW
+    sectionSubtitle: "Plus on est, mieux c'est.", // REVIEW
     inTheBox: "Dans le coffret",
     save: "Économisez",
     polyphenols: "polyphénols",

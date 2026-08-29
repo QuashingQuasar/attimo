@@ -418,6 +418,8 @@ export const en = {
   // bundle-specific framing (title, taglines, descriptions) lives per-locale in
   // the bundle configs (trioBundle.ts / duoBundle.ts).
   bundle: {
+    sectionHeading: "Bundles",
+    sectionSubtitle: "The more the merrier.",
     inTheBox: "In the box",
     save: "Save",
     polyphenols: "polyphenols",

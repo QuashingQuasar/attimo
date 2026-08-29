@@ -385,6 +385,8 @@ export const nl: Dict = {
 
   // Machine-translated, needs native review before broad launch.
   bundle: {
+    sectionHeading: "Sets",
+    sectionSubtitle: "Hoe meer, hoe beter.",
     inTheBox: "In de doos",
     save: "Bespaar",
     polyphenols: "polyfenolen",

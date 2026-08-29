@@ -9,6 +9,8 @@ import { CartDrawer } from "./CartDrawer";
 import { CurrencySelector } from "./CurrencySelector";
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { TRIO_CONFIG } from "@/lib/trioBundle";
+import { DUO_CONFIG } from "@/lib/duoBundle";
 
 // Proper names + origins stay verbatim across locales; the flavour descriptor
 // is pulled from the shared dictionary so it translates once. `image` and
@@ -54,6 +56,13 @@ export const Header = ({
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = getDict(locale);
+
+  // Localized bundle display names, sourced from each bundle's framing so the
+  // dropdown matches the PDP titles across locales.
+  const bundleName: Record<string, string> = {
+    trio: (TRIO_CONFIG.framing[locale.lang] ?? TRIO_CONFIG.framing.en).title,
+    duo: (DUO_CONFIG.framing[locale.lang] ?? DUO_CONFIG.framing.en).title,
+  };
 
   const solidBackground = forceScrolled || shopOpen;
 
@@ -169,7 +178,7 @@ export const Header = ({
             {/* Bundles — vertical cards matching the single-unit cards above */}
             <div className="mt-7 md:mt-8">
               <p className="uppercase mb-4 text-center md:text-left" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: 'rgba(255,250,234,0.65)', fontSize: '1.1rem', letterSpacing: '0.14em' }}>
-                Bundles
+                {t.bundle.sectionHeading}
               </p>
               {/* 2 cards at single-card width (w-2/3, grid-cols-2), left-aligned
                   under the first two singles. Same card markup as the singles. */}
@@ -177,11 +186,11 @@ export const Header = ({
                 {shopBundles.map((b) => (
                   <Link key={b.handle} to={localizeHref(`/product/${b.handle}`, locale)} onClick={() => setShopOpen(false)} className="flex md:flex-col items-center gap-4 md:gap-5 group">
                     <div className="w-28 h-28 md:w-full md:aspect-[6/7] md:h-auto rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0" style={{ backgroundColor: 'rgba(255,250,234,0.06)' }}>
-                      <img src={b.image} alt={b.name} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
+                      <img src={b.image} alt={bundleName[b.handle]} className="w-full h-full object-cover object-center transition-transform duration-500 scale-[1.05] group-hover:scale-[1.08]" />
                     </div>
                     <div className="flex flex-col md:items-center gap-0.5 md:gap-1">
                       <span style={{ fontFamily: 'Beverly Drive, serif', color: '#FFFAEA', fontSize: 'clamp(0.9rem, 1.15vw, 1.1rem)', letterSpacing: '0.03em' }}>
-                        {b.name}
+                        {bundleName[b.handle]}
                       </span>
                       <span className="uppercase" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', color: '#B3E58C', fontSize: 'clamp(0.72rem, 0.85vw, 0.95rem)', letterSpacing: '0.1em' }}>
                         {b.sub}
