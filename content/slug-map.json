@@ -68,5 +68,12 @@
     "sv": "hur-mycket-olivolja-per-dag",
     "da": "hvor-meget-olivenolie-per-dag",
     "nl": "hoeveel-olijfolie-per-dag"
+  },
+  "olive-oil-myths": {
+    "de": "olivenoel-mythen",
+    "fr": "mythes-huile-olive",
+    "sv": "olivolja-myter",
+    "da": "olivenolie-myter",
+    "nl": "olijfolie-mythes"
   }
 }
