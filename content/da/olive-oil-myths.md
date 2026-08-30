@@ -65,8 +65,8 @@ Efter presningen indeholder den tiloversblevne masse af skind, sten og frugtkød
 
 ## Friskhed og opbevaring
 
-**Myte 12: "Olivenolie lagrer som vin."**
-Vin indeholder tanniner og sukkerstoffer, der bliver ved med at arbejde i flasken i årevis. Olivenolie har intet tilbage at arbejde med: den er presset frugtsaft, færdig i det øjeblik, den forlader møllen. Fra den dag tager ilten kun ting fra den — først aromaen, så polyfenolerne.
+**Myte 12: "Olivenolie bliver bedre med tiden."**
+Det gør den ikke. Vin indeholder tanniner og sukkerstoffer, der bliver ved med at arbejde i flasken; olivenolie er presset frugtsaft uden noget tilbage at arbejde med. Den er bedst frisk og bliver kun ringere med alderen.
 
 [[IMAGE6]]
 

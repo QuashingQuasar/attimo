@@ -65,8 +65,8 @@ After the press, the leftover paste of skins, pits and pulp still holds a few pe
 
 ## Freshness and storage
 
-**Myth 12: "Olive oil ages like wine."**
-Wine carries tannins and sugars that keep working in the bottle for years. Olive oil has nothing left to work with: it's pressed fruit juice, finished the moment it leaves the mill. From that day, oxygen only takes things away — the aroma first, then the polyphenols.
+**Myth 12: "Olive oil gets better with time."**
+It doesn't. Wine has tannins and sugars that keep developing in the bottle; olive oil is pressed fruit juice with nothing left to work with. It's best fresh and only declines with age.
 
 [[IMAGE6]]
 

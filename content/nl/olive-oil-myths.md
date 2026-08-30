@@ -65,8 +65,8 @@ Na het persen bevat de overgebleven pasta van schillen, pitten en vruchtvlees no
 
 ## Versheid en bewaren
 
-**Mythe 12: "Olijfolie rijpt zoals wijn."**
-Wijn bevat tannines en suikers die in de fles jarenlang blijven doorwerken. Olijfolie heeft niets meer om mee te werken: ze is geperst vruchtensap, af op het moment dat ze de molen verlaat. Vanaf die dag neemt zuurstof alleen maar weg — eerst het aroma, dan de polyfenolen.
+**Mythe 12: "Olijfolie wordt beter met de tijd."**
+Dat is niet zo. Wijn bevat tannines en suikers die in de fles blijven doorwerken; olijfolie is geperst vruchtensap zonder iets om mee te werken. Vers is ze op haar best, en met de jaren gaat ze er alleen op achteruit.
 
 [[IMAGE6]]
 

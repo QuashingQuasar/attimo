@@ -65,8 +65,8 @@ Nach der Pressung steckt in der übrig gebliebenen Paste aus Schalen, Kernen und
 
 ## Frische und Lagerung
 
-**Mythos 12: „Olivenöl reift wie Wein."**
-Wein trägt Tannine und Zucker, die in der Flasche über Jahre weiterarbeiten. Olivenöl hat nichts mehr, womit es arbeiten könnte: Es ist gepresster Fruchtsaft, fertig in dem Moment, in dem es die Mühle verlässt. Von diesem Tag an nimmt der Sauerstoff nur noch weg – zuerst das Aroma, dann die Polyphenole.
+**Mythos 12: „Olivenöl wird mit der Zeit besser."**
+Das tut es nicht. Wein trägt Tannine und Zucker, die in der Flasche weiterarbeiten; Olivenöl ist gepresster Fruchtsaft und hat nichts, womit es arbeiten könnte. Am besten ist es frisch – mit dem Alter baut es nur ab.
 
 [[IMAGE6]]
 

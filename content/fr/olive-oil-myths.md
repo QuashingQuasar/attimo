@@ -65,8 +65,8 @@ Après le pressage, la pâte restante de peaux, de noyaux et de pulpe contient e
 
 ## Fraîcheur et conservation
 
-**Mythe 12 : « L'huile d'olive se bonifie comme le vin. »**
-Le vin porte des tanins et des sucres qui continuent de travailler en bouteille pendant des années. L'huile d'olive n'a plus rien à travailler : c'est un jus de fruit pressé, achevé à l'instant où il quitte le moulin. À partir de ce jour, l'oxygène ne fait que retirer — les arômes d'abord, puis les polyphénols.
+**Mythe 12 : « L'huile d'olive se bonifie avec le temps. »**
+Ce n'est pas le cas. Le vin porte des tanins et des sucres qui continuent de travailler en bouteille ; l'huile d'olive est un jus de fruit pressé qui n'a plus rien à travailler. Elle est meilleure fraîche et ne fait que décliner avec l'âge.
 
 [[IMAGE6]]
 

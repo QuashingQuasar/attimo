@@ -65,8 +65,8 @@ Efter pressningen håller den kvarvarande massan av skal, kärnor och fruktkött
 
 ## Färskhet och förvaring
 
-**Myt 12: "Olivolja åldras som vin."**
-Vin bär på tanniner och sockerarter som fortsätter arbeta i flaskan i åratal. Olivolja har ingenting kvar att arbeta med: den är pressad fruktjuice, färdig i det ögonblick den lämnar kvarnen. Från den dagen tar syret bara saker ifrån den — aromen först, sedan polyfenolerna.
+**Myt 12: "Olivolja blir bättre med tiden."**
+Det gör den inte. Vin bär på tanniner och sockerarter som fortsätter arbeta i flaskan; olivolja är pressad fruktjuice utan något kvar att arbeta med. Den är som bäst färsk och blir bara sämre med åren.
 
 [[IMAGE6]]
 
