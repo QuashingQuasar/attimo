@@ -119,8 +119,8 @@ Der Trick: Stell die Flasche kalt, und wenn das Öl fest wird, ist es echt. Ob e
 
 [[IMAGE11]]
 
-**Mythos 24: „Das meiste Olivenöl im Regal ist gefälscht."**
-Betrug ist real; jedes Jahr werden Fälle bekannt, und Italien unterhält eine eigene Ermittlungseinheit dafür. Aber „das meiste" übertreibt, zumindest bei echter Panscherei. Das häufige Problem ist legal: Öl, das als nativ extra verkauft wird, obwohl es die Güteklasse irgendwo zwischen Mühle und Regal nicht mehr verdient hat. Du kaufst weit eher altes Öl als gefälschtes.
+**Mythos 24: „Das meiste Olivenöl im Regal ist mit Saatöl gestreckt."**
+Panscherei ist real; jedes Jahr werden Fälle bekannt, und Italien unterhält eine eigene Ermittlungseinheit dafür. Aber „das meiste" übertreibt bei weitem. Das häufige Problem ist legal: Öl, das als nativ extra verkauft wird, obwohl es die Güteklasse irgendwo zwischen Mühle und Regal nicht mehr verdient hat. Du kaufst weit eher altes Öl als gestrecktes.
 
 **Mythos 25: „Man schmeckt, ob es echt ist."**
 Ein geschulter Gaumen erkennt Fehler: Ranzigkeit, Muffigkeit, Gärung. Kein Gaumen erkennt Verdünnung mit raffiniertem Öl oder Saatöl; dafür braucht es ein Labor. Was dein Mund überprüfen kann, ist Frische – die Bitterkeit und das pfeffrige Kratzen hinten im Hals sind die Polyphenole. Für alles andere gibt es den Laborbericht, und wir haben einen [Leitfaden zum Lesen eines solchen](/de/blog/olivenoel-laboranalyse-lesen) geschrieben.

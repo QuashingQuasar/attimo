@@ -119,8 +119,8 @@ Tricket: kyl flaskan, och om oljan stelnar är den äkta. Om en olja stelnar i k
 
 [[IMAGE11]]
 
-**Myt 24: "Det mesta av olivoljan på hyllorna är falsk."**
-Fusk förekommer; fall dyker upp varje år, och Italien har en särskild tillsynsenhet för det. Men "det mesta" är en överdrift, åtminstone vad gäller ren förfalskning. Det vanliga problemet är lagligt: olja som säljs som extra jungfruolja men som slutade förtjäna graden någonstans mellan kvarnen och hyllan. Du köper betydligt oftare gammal olja än förfalskad.
+**Myt 24: "Det mesta av olivoljan på hyllorna är utblandad med fröoljor."**
+Förfalskning förekommer; fall dyker upp varje år, och Italien har en särskild tillsynsenhet för det. Men "det mesta" är en kraftig överdrift. Det vanliga problemet är lagligt: olja som säljs som extra jungfruolja men som slutade förtjäna graden någonstans mellan kvarnen och hyllan. Du köper betydligt oftare gammal olja än utblandad.
 
 **Myt 25: "Man kan smaka om den är äkta."**
 En tränad gom fångar defekter: härsknad, unkenhet, jäsning. Ingen gom upptäcker utspädning med raffinerad olja eller fröolja; det kräver ett laboratorium. Det din mun kan verifiera är färskheten — beskan och den peppriga stickningen längst bak i halsen är polyfenolerna. För allt annat finns labbrapporten, och vi har skrivit en [guide till att läsa en](/se/blog/lasa-olivolja-laboratorieanalys).

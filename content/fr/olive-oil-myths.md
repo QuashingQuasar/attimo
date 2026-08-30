@@ -119,8 +119,8 @@ L'astuce : mettez la bouteille au froid, et si elle se solidifie, l'huile est au
 
 [[IMAGE11]]
 
-**Mythe 24 : « La plupart des huiles d'olive en rayon sont fausses. »**
-La fraude existe ; des affaires émergent chaque année, et l'Italie entretient une unité de répression dédiée. Mais « la plupart » exagère, du moins pour la falsification pure et simple. Le problème courant est légal : de l'huile vendue comme extra vierge qui a cessé de mériter le grade quelque part entre le moulin et le rayon. Vous risquez bien davantage d'acheter de la vieille huile que de l'huile contrefaite.
+**Mythe 24 : « La plupart des huiles d'olive en rayon sont coupées aux huiles de graines. »**
+La falsification existe ; des affaires émergent chaque année, et l'Italie entretient une unité de répression dédiée. Mais « la plupart » exagère largement. Le problème courant est légal : de l'huile vendue comme extra vierge qui a cessé de mériter le grade quelque part entre le moulin et le rayon. Vous risquez bien davantage d'acheter de la vieille huile que de l'huile coupée.
 
 **Mythe 25 : « On peut goûter si elle est authentique. »**
 Un palais entraîné détecte les défauts : rancissement, moisi, fermentation. Aucun palais ne détecte une dilution avec de l'huile raffinée ou de graines ; il faut un laboratoire pour cela. Ce que votre bouche peut vérifier, c'est la fraîcheur — l'amertume et le picotement poivré au fond de la gorge, ce sont les polyphénols. Pour tout le reste, il y a l'analyse de laboratoire, et nous avons écrit un [guide pour en lire une](/fr/blog/lire-analyse-laboratoire-huile-olive).

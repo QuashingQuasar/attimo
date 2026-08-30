@@ -119,8 +119,8 @@ De truc: zet de fles koud, en als ze stolt is de olie echt. Of een olie in de ko
 
 [[IMAGE11]]
 
-**Mythe 24: "De meeste olijfolie in de winkel is vals."**
-Fraude bestaat; er duiken elk jaar zaken op, en Italië heeft er een speciale handhavingseenheid voor. Maar "de meeste" overdrijft het, althans wat regelrechte versnijding betreft. Het gangbare probleem is legaal: olie die als extra vierge wordt verkocht maar ergens tussen de molen en het schap die graad niet meer verdiende. De kans dat je oude olie koopt is veel groter dan dat je namaakolie koopt.
+**Mythe 24: "De meeste olijfolie in de winkel is versneden met zaadolie."**
+Versnijding bestaat; er duiken elk jaar zaken op, en Italië heeft er een speciale handhavingseenheid voor. Maar "de meeste" overdrijft het ruimschoots. Het gangbare probleem is legaal: olie die als extra vierge wordt verkocht maar ergens tussen de molen en het schap die graad niet meer verdiende. De kans dat je oude olie koopt is veel groter dan dat je versneden olie koopt.
 
 **Mythe 25: "Je proeft of ze echt is."**
 Een getraind gehemelte herkent gebreken: ranzigheid, muffigheid, gisting. Geen enkel gehemelte ontdekt versnijding met geraffineerde olie of zaadolie; daar is een laboratorium voor nodig. Wat je mond wél kan verifiëren is versheid — de bitterheid en de peperige prikkel achter in de keel zijn de polyfenolen. Voor al de rest is er het labrapport, en we schreven een [gids om er een te lezen](/nl/blog/olijfolie-laboranalyse-lezen).

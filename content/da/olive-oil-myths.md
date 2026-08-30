@@ -119,8 +119,8 @@ Tricket: sæt flasken på køl, og hvis den størkner, er olien ægte. Om en oli
 
 [[IMAGE11]]
 
-**Myte 24: "Det meste olivenolie på hylderne er falsk."**
-Svindel findes; sager dukker op hvert år, og Italien har en dedikeret kontrolenhed til det. Men "det meste" er en overdrivelse, i hvert fald hvad angår decideret forfalskning. Det almindelige problem er lovligt: olie solgt som ekstra jomfru, der holdt op med at fortjene betegnelsen et sted mellem møllen og hylden. Du køber langt mere sandsynligt gammel olie end forfalsket olie.
+**Myte 24: "Det meste olivenolie på hylderne er blandet op med frøolier."**
+Forfalskning findes; sager dukker op hvert år, og Italien har en dedikeret kontrolenhed til det. Men "det meste" er en stor overdrivelse. Det almindelige problem er lovligt: olie solgt som ekstra jomfru, der holdt op med at fortjene betegnelsen et sted mellem møllen og hylden. Du køber langt mere sandsynligt gammel olie end opblandet olie.
 
 **Myte 25: "Du kan smage, om den er ægte."**
 En trænet gane fanger fejl: harskhed, muggenhed, gæring. Ingen gane opdager fortynding med raffineret olie eller frøolie; det kræver et laboratorium. Det, din mund kan verificere, er friskheden — bitterheden og den peberagtige svie bagerst i halsen er polyfenolerne. Til alt andet findes laboratorierapporten, og vi har skrevet en [guide til at læse en](/dk/blog/laese-olivenolie-laboratorieanalyse).

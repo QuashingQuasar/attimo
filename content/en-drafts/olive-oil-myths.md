@@ -119,8 +119,8 @@ The trick: chill the bottle, and if it turns solid the oil is genuine. Whether a
 
 [[IMAGE11]]
 
-**Myth 24: "Most olive oil on shelves is fake."**
-Fraud is real; cases surface every year, and Italy runs a dedicated enforcement unit for it. But "most" overstates it, at least for outright adulteration. The common problem is legal: oil sold as extra virgin that stopped deserving the grade somewhere between the mill and the shelf. You're far more likely to buy old oil than counterfeit oil.
+**Myth 24: "Most olive oil on shelves is blended with seed oils."**
+Adulteration is real; cases surface every year, and Italy runs a dedicated enforcement unit for it. But "most" overstates it by a wide margin. The common problem is legal: oil sold as extra virgin that stopped deserving the grade somewhere between the mill and the shelf. You're far more likely to buy old oil than cut oil.
 
 **Myth 25: "You can taste whether it's real."**
 A trained palate catches defects: rancidity, mustiness, fermentation. No palate detects dilution with refined or seed oil; that takes a laboratory. What your mouth can verify is freshness — the bitterness and the peppery sting at the back of the throat are the polyphenols. For everything else there's the lab report, and we've written a [guide to reading one](https://attimo-oil.com/blog/how-to-read-olive-oil-lab-analysis).
