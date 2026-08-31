@@ -241,6 +241,42 @@ const SELLING_PLANS_QUERY = `
   }
 `;
 
+// ── Manual "sold out" override ──────────────────────────────────────────────
+// Handles here are forced to render sold out across the site (PDP notify-me
+// state + sold-out card badges) WITHOUT touching Shopify inventory. This is the
+// only safe way to take the Coratina *single* off sale while keeping its stock:
+// the trio/duo bundles draw down the SAME Coratina variant, so zeroing real
+// stock in Shopify would break the bundles too. Applied inside fetchProducts so
+// it holds on both the build-time snapshot AND the client-side revalidation
+// (both call this function). Delete the handle to restore normal availability.
+//
+// 2026-08-31: Coratina single off sale — steer standalone demand into bundles
+// and protect shared stock while away. Revert on return.
+const FORCE_SOLD_OUT_HANDLES = new Set<string>([
+  "attimo-extra-virgin-olive-oil-coratina-500ml",
+]);
+
+function applySoldOutOverride(products: ShopifyProduct[]): ShopifyProduct[] {
+  if (FORCE_SOLD_OUT_HANDLES.size === 0) return products;
+  return products.map((p) =>
+    FORCE_SOLD_OUT_HANDLES.has(p.node.handle)
+      ? {
+          ...p,
+          node: {
+            ...p.node,
+            variants: {
+              ...p.node.variants,
+              edges: p.node.variants.edges.map((e) => ({
+                ...e,
+                node: { ...e.node, availableForSale: false },
+              })),
+            },
+          },
+        }
+      : p,
+  );
+}
+
 export async function fetchProducts(limit = 10, query?: string, context?: ShopifyContext): Promise<ShopifyProduct[]> {
   const data = await storefrontApiRequest(PRODUCTS_QUERY, {
     first: limit,
@@ -248,7 +284,7 @@ export async function fetchProducts(limit = 10, query?: string, context?: Shopif
     country: context?.country ?? null,
     language: context?.language ?? null,
   });
-  return data?.data?.products?.edges || [];
+  return applySoldOutOverride(data?.data?.products?.edges || []);
 }
 
 // Merch products. We filter by `product_type:Merch` rather than the "Merch"
