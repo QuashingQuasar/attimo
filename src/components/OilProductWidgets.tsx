@@ -264,21 +264,6 @@ export const OilProductWidgets = ({
                     />
                   );
                 })()}
-
-                {!oil.effectiveAvailable && (
-                  <div className="absolute bottom-0 right-0 z-10 px-3 pb-3 md:px-4 md:pb-4 lg:px-5 lg:pb-5">
-                    <span
-                      className="oil-card-label whitespace-nowrap"
-                      style={{
-                        fontFamily: "UDC Working Man Sans, sans-serif",
-                        letterSpacing: "0.1em",
-                        color: "#1B4229",
-                      }}
-                    >
-                      {t.oilCollection.backSoon}
-                    </span>
-                  </div>
-                )}
               </div>
 
               <div className="flex flex-col items-center text-center px-2">
