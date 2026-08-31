@@ -5,7 +5,7 @@ import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
 import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
-import { fetchProducts } from "@/lib/shopify";
+import { fetchProducts, fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
 import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE } from "@/lib/coratina3L";
 
@@ -92,8 +92,17 @@ export const OilProductWidgets = ({
 
   useEffect(() => {
     let cancelled = false;
-    fetchProducts(10, undefined, shopifyContextForLocale(locale))
-      .then((products) => {
+    const ctx = shopifyContextForLocale(locale);
+    Promise.all([
+      fetchProducts(10, undefined, ctx),
+      // The 3L box is NOT in the first 10 products (merch crowds the bulk list),
+      // so its availability would stay unknown and the card would treat the box
+      // as in stock even when it's sold out. Fetch it by EXACT handle — the
+      // `products(query:"handle:…")` filter is unreliable and can return a
+      // different product, so this uses the exact `product(handle:)` lookup.
+      fetchProductAvailabilityByHandle(CORATINA_3L_HANDLE, ctx),
+    ])
+      .then(([products, boxAvailable]) => {
         if (cancelled) return;
         const map: Record<string, boolean> = {};
         for (const p of products) {
@@ -101,6 +110,10 @@ export const OilProductWidgets = ({
             (v) => v.node.availableForSale,
           );
           map[p.node.handle] = inStock;
+        }
+        // null = box lookup failed; leave it unset so it defaults to available.
+        if (boxAvailable !== null) {
+          map[CORATINA_3L_HANDLE] = boxAvailable;
         }
         setAvailability(map);
       })

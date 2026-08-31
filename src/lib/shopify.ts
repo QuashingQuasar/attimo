@@ -287,6 +287,45 @@ export async function fetchProducts(limit = 10, query?: string, context?: Shopif
   return applySoldOutOverride(data?.data?.products?.edges || []);
 }
 
+// Exact single-product availability by handle. The `products(query:"handle:…")`
+// full-text filter is UNRELIABLE — it can silently return a different product
+// (e.g. querying the 3L box handle returned nocellara), so anything that must
+// key off a specific handle has to use the exact `product(handle:)` lookup.
+// Returns true/false for real availability, or null when the product can't be
+// found / Shopify is unreachable (caller decides the fallback). Honours the
+// manual sold-out override so this stays consistent with fetchProducts.
+const PRODUCT_AVAILABILITY_QUERY = `
+  query ProductAvailability($handle: String!, $country: CountryCode, $language: LanguageCode) @inContext(country: $country, language: $language) {
+    product(handle: $handle) {
+      handle
+      variants(first: 20) {
+        edges {
+          node {
+            availableForSale
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function fetchProductAvailabilityByHandle(
+  handle: string,
+  context?: ShopifyContext,
+): Promise<boolean | null> {
+  const data = await storefrontApiRequest(PRODUCT_AVAILABILITY_QUERY, {
+    handle,
+    country: context?.country ?? null,
+    language: context?.language ?? null,
+  });
+  const product = data?.data?.product;
+  if (!product) return null;
+  if (FORCE_SOLD_OUT_HANDLES.has(product.handle)) return false;
+  return product.variants.edges.some(
+    (v: { node: { availableForSale: boolean } }) => v.node.availableForSale,
+  );
+}
+
 // Merch products. We filter by `product_type:Merch` rather than the "Merch"
 // collection: the store defines merch by productType, and (unlike the product)
 // the collection isn't published to this headless Storefront channel. This
