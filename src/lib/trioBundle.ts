@@ -120,6 +120,10 @@ export const TRIO_CONFIG: BundleConfig = {
   contentId: "trio",
   ymalHandle: "trio",
   polyphenolDisplay: "400–847 mg/kg",
+  // 2026-09-05: taken off sale on the site — the 2 remaining Picual are reserved
+  // for a pending UK custom/draft order that must keep real stock. Revert by
+  // removing this flag. See FORCE_SOLD_OUT_HANDLES note in shopify.ts.
+  soldOut: true,
   framing: {
     en: {
       title: "Early Harvest '25 Full Collection",

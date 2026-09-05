@@ -43,7 +43,9 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: "https://schema.org/InStock",
+    availability: TRIO_CONFIG.soldOut
+      ? "https://schema.org/OutOfStock"
+      : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,

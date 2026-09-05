@@ -10,7 +10,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import BundleTrioPageWrapper from "@astro/react-pages/BundleTrioPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { TRIO_IMAGE, trioSinglesTotal } from "@/lib/trioBundle";
+import { TRIO_IMAGE, trioSinglesTotal, TRIO_CONFIG } from "@/lib/trioBundle";
 
 const locale = DEFAULT_LOCALE;
 const price = locale.prices.trio ?? 60;
@@ -35,7 +35,9 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: "https://schema.org/InStock",
+    availability: TRIO_CONFIG.soldOut
+      ? "https://schema.org/OutOfStock"
+      : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,

@@ -206,16 +206,26 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
               )}
             </div>
 
-            <button
-              onClick={handleAddToCart}
-              className="w-full text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center"
-              style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: ACCENT, fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem" }}
-            >
-              <span className="flex flex-col items-center gap-0.5">
-                <span className="text-lg">{t.product.addToCart} · {formatPrice(price, locale)}</span>
-                {shipsFree && <span className="font-normal text-xs">{t.product.freeShipCheck}</span>}
-              </span>
-            </button>
+            {cfg.soldOut ? (
+              <div
+                className="w-full text-center px-4 md:px-6 py-3 font-bold uppercase tracking-wide"
+                style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: "#1B4229", color: "#CDDB2D", fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem" }}
+                aria-disabled="true"
+              >
+                {t.oilCollection.soldOut}
+              </div>
+            ) : (
+              <button
+                onClick={handleAddToCart}
+                className="w-full text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center"
+                style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: ACCENT, fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem" }}
+              >
+                <span className="flex flex-col items-center gap-0.5">
+                  <span className="text-lg">{t.product.addToCart} · {formatPrice(price, locale)}</span>
+                  {shipsFree && <span className="font-normal text-xs">{t.product.freeShipCheck}</span>}
+                </span>
+              </button>
+            )}
 
             <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
               <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>

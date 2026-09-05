@@ -54,4 +54,11 @@ export interface BundleConfig {
   // Per-locale framing. `en` is required (the fallback); other locales are
   // filled in as they're translated + native-reviewed.
   framing: { en: BundleFraming } & Partial<Record<Lang, BundleFraming>>;
+  // Manual "sold out" flag. Bundles derive their real availability from
+  // component stock in Shopify, but sometimes we need to take a bundle off sale
+  // on the site WITHOUT touching that stock (e.g. component units reserved for a
+  // pending custom/draft order that must stay purchasable in Shopify). When true,
+  // the PDP shows a disabled "Temporarily Sold Out" state instead of add-to-cart
+  // and the homepage card shows the same badge. Real stock is untouched.
+  soldOut?: boolean;
 }

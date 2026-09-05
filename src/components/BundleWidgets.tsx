@@ -101,6 +101,14 @@ export const BundleWidgets = ({
                   <span>{formatPrice(price, locale)}</span>
                   <span className="line-through" style={{ opacity: 0.4, fontSize: "0.8em" }}>{formatPrice(singles, locale)}</span>
                 </p>
+                {b.soldOut && (
+                  <span
+                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
+                    style={{ fontFamily: "UDC Working Man Sans, sans-serif", letterSpacing: "0.1em", color: "#CDDB2D", backgroundColor: "#1B4229", textTransform: "uppercase" }}
+                  >
+                    {t.oilCollection.soldOut}
+                  </span>
+                )}
               </div>
             </Link>
           );
