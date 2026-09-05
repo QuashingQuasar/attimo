@@ -380,6 +380,7 @@ export const sv: Dict = {
   bundle: {
     sectionHeading: "Set",
     sectionSubtitle: "Ju fler, desto bättre.",
+    stillAvailable: "Finns fortfarande",
     inTheBox: "I lådan",
     save: "Spara",
     polyphenols: "polyfenoler",

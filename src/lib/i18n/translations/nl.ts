@@ -387,6 +387,7 @@ export const nl: Dict = {
   bundle: {
     sectionHeading: "Sets",
     sectionSubtitle: "Hoe meer, hoe beter.",
+    stillAvailable: "Nog verkrijgbaar",
     inTheBox: "In de doos",
     save: "Bespaar",
     polyphenols: "polyfenolen",

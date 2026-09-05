@@ -383,6 +383,7 @@ export const fr: Dict = {
   bundle: {
     sectionHeading: "Coffrets", // REVIEW
     sectionSubtitle: "Plus on est, mieux c'est.", // REVIEW
+    stillAvailable: "Encore disponible", // REVIEW
     inTheBox: "Dans le coffret",
     save: "Économisez",
     polyphenols: "polyphénols",

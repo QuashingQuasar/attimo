@@ -392,6 +392,7 @@ export const de: Dict = {
   bundle: {
     sectionHeading: "Sets",
     sectionSubtitle: "Je mehr, desto besser.",
+    stillAvailable: "Noch verfügbar",
     inTheBox: "In der Box",
     save: "Spare",
     polyphenols: "Polyphenole",

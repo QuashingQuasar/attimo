@@ -16,7 +16,9 @@ import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { useCartStore } from "@/stores/cartStore";
 import type { BundleConfig } from "@/lib/bundleTypes";
 import { toast } from "sonner";
-import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { TRIO_CONFIG } from "@/lib/trioBundle";
+import { DUO_CONFIG } from "@/lib/duoBundle";
 import { getDict, type Dict } from "@/lib/i18n/dictionaries";
 import { getProductContent } from "@/lib/productContent";
 import {
@@ -27,6 +29,13 @@ import {
 } from "@/lib/shipping";
 
 const ACCENT = "#CDDB2D";
+
+// Origin flag per oil handle (matches the homepage bundle cards).
+const FLAG: Record<string, string> = {
+  coratina: "🇮🇹",
+  picual: "🇪🇸",
+  nocellara: "🇮🇹",
+};
 
 // Transparent bottle cut-outs (the site's own assets), keyed by oil handle.
 const BOTTLE_IMG: Record<string, string> = {
@@ -207,12 +216,44 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
             </div>
 
             {cfg.soldOut ? (
-              <div
-                className="w-full text-center px-4 md:px-6 py-3 font-bold uppercase tracking-wide"
-                style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: "#1B4229", color: "#CDDB2D", fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem" }}
-                aria-disabled="true"
-              >
-                {t.oilCollection.soldOut}
+              <div className="space-y-3">
+                <div
+                  className="w-full text-center px-4 md:px-6 py-3 font-bold uppercase tracking-wide"
+                  style={{ fontFamily: "UDC Working Man Sans, sans-serif", backgroundColor: "rgba(27,66,41,0.06)", color: "rgba(27,66,41,0.45)", fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)", borderRadius: "0.75rem", border: "1.5px solid rgba(27,66,41,0.15)" }}
+                  aria-disabled="true"
+                >
+                  {t.oilCollection.soldOut}
+                </div>
+                {(() => {
+                  // When a bundle is off sale, point to the other bundle if it's
+                  // still available (trio ↔ duo).
+                  const alt = cfg.contentId === "trio" ? DUO_CONFIG : TRIO_CONFIG;
+                  if (alt.soldOut) return null;
+                  const af = alt.framing[locale.lang] ?? alt.framing.en;
+                  const altName = af.cardTitleLines?.[1] ?? af.title;
+                  const altContents = alt.contents
+                    .map((v) => v.name.split(" ")[0])
+                    .join(" + ");
+                  // One flag when every oil shares an origin (the duo is all
+                  // Italian); otherwise omit it rather than show a mixed set.
+                  const flags = [...new Set(alt.contents.map((v) => FLAG[v.handle]).filter(Boolean))];
+                  const altFlag = flags.length === 1 ? flags[0] : "";
+                  const altPhrase = [altName, altFlag, altContents].filter(Boolean).join(" ");
+                  return (
+                    <p
+                      className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-0.5 text-olive-dark"
+                      style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}
+                    >
+                      <span>{t.bundle.stillAvailable}:</span>
+                      <a
+                        href={localizeHref(`/product/${alt.contentId}`, locale)}
+                        className="font-semibold underline underline-offset-4 hover:opacity-70 transition-opacity"
+                      >
+                        {altPhrase} →
+                      </a>
+                    </p>
+                  );
+                })()}
               </div>
             ) : (
               <button
@@ -232,10 +273,12 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                 <ShieldCheck size={20} strokeWidth={1.5} />
                 {t.product.trustLab}
               </p>
-              <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
-                <Truck size={20} strokeWidth={1.5} />
-                {t.product.shipsTomorrow}
-              </p>
+              {!cfg.soldOut && (
+                <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
+                  <Truck size={20} strokeWidth={1.5} />
+                  {t.product.shipsTomorrow}
+                </p>
+              )}
             </div>
 
             {/* Accordion — reuses the single-PDP tab styling (ui/accordion). */}

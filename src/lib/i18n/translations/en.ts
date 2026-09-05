@@ -420,6 +420,7 @@ export const en = {
   bundle: {
     sectionHeading: "Bundles",
     sectionSubtitle: "The more the merrier.",
+    stillAvailable: "Still available",
     inTheBox: "In the box",
     save: "Save",
     polyphenols: "polyphenols",

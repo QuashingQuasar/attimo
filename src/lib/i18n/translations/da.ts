@@ -379,6 +379,7 @@ export const da: Dict = {
   bundle: {
     sectionHeading: "Sæt",
     sectionSubtitle: "Jo flere, jo bedre.",
+    stillAvailable: "Stadig på lager",
     inTheBox: "I æsken",
     save: "Spar",
     polyphenols: "polyfenoler",
