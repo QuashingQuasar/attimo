@@ -252,8 +252,10 @@ const SELLING_PLANS_QUERY = `
 //
 // 2026-08-31: Coratina single off sale — steer standalone demand into bundles
 // and protect shared stock while away. Revert on return.
+// 2026-09-05: Picual single also off sale (same rationale — trio component).
 const FORCE_SOLD_OUT_HANDLES = new Set<string>([
   "attimo-extra-virgin-olive-oil-coratina-500ml",
+  "attimo-extra-virgin-olive-oil-picual-500ml",
 ]);
 
 function applySoldOutOverride(products: ShopifyProduct[]): ShopifyProduct[] {
