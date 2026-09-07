@@ -6,7 +6,7 @@ Hier sind achtundzwanzig der häufigsten Mythen, gruppiert nach ihrem Ursprung �
 
 ## Kurz gefasst
 
-- Farbe, „kalt gepresst", Preis und schöne Flaschen sagen nichts über die Qualität. Geschmack und Erntedatum schon.
+- Farbe, „kalt gepresst", Preis und schöne Flaschen sind unzuverlässige Hinweise auf Qualität. Geschmack und Erntedatum sind die verlässlichen.
 - „Nativ extra" ist eine gesetzliche Untergrenze, und die Spanne darüber ist enorm: Ein Öl mit 80 mg/kg Polyphenolen und eines mit 800 erfüllen beide die Norm.
 - „Product of Italy" bedeutet oft nur: in Italien abgefüllt, aus Oliven von irgendwoher.
 - Olivenöl ist Fruchtsaft. Es verliert vom Tag der Pressung an Aroma und Polyphenole, ein fernes Mindesthaltbarkeitsdatum sagt also nichts – es zählt ab der Abfüllung, die Jahre nach der Ernte liegen kann.
@@ -19,7 +19,7 @@ Hier sind achtundzwanzig der häufigsten Mythen, gruppiert nach ihrem Ursprung �
 ## Nach dem Aussehen urteilen
 
 **Mythos 1: „Je grüner das Öl, desto höher die Qualität."**
-Ein tiefgrünes Öl wirkt hochwertig und ein blassgoldenes billig, also fühlt sich Farbe wie ein Qualitätssignal an. Sie stammt aber von der Olivensorte, vom Reifegrad der Früchte und davon, ob das Öl gefiltert wurde – und nichts davon sagt etwas über die Qualität. Dasselbe gilt für die umgekehrte Behauptung, Gold bedeute raffiniert. Professionelle Verkoster urteilen aus blauen Gläsern, gerade damit die Farbe sie nicht beeinflussen kann. Verlass dich auf den Geschmack und das Erntedatum; der Farbton sagt nichts. Was die Farbe dir tatsächlich verrät, [haben wir hier aufgeschlüsselt](/de/blog/olivenfarbe-reife-polyphenole).
+Ein tiefgrünes Öl wirkt hochwertig und ein blassgoldenes billig, also fühlt sich Farbe wie ein Qualitätssignal an. Und es steckt Wahrheit darin: Grüneres Öl kann auf jüngere Oliven hindeuten, und jüngere Oliven geben Öl mit mehr Polyphenolen und mehr Geschmack. Aber die Farbe variiert stark je nach Sorte und lässt sich leicht fälschen: Eine früh geerntete Arbequina presst golden, eine Coratina tiefgrün, und ein paar mitvermahlene Blätter machen jedes Öl grüner. Deshalb verkosten Profis aus blauen Gläsern: Das getönte Glas verbirgt die Farbe des Öls, damit sie ihr Urteil nicht verzerren kann. Verlass dich auf den Geschmack und das Erntedatum. Was die Farbe dir tatsächlich verrät, [haben wir hier aufgeschlüsselt](/de/blog/olivenfarbe-reife-polyphenole).
 
 [[IMAGE1]]
 

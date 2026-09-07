@@ -6,7 +6,7 @@ Hier zijn de achtentwintig meest voorkomende, gegroepeerd naar waar ze vandaan k
 
 ## TL;DR
 
-- Kleur, "koudgeperst", prijs en mooie flessen zeggen niets over kwaliteit. Smaak en oogstdatum wel.
+- Kleur, "koudgeperst", prijs en mooie flessen zijn onbetrouwbare signalen voor kwaliteit. Smaak en oogstdatum zijn de betrouwbare.
 - "Extra vierge" is een wettelijke ondergrens, en de bandbreedte erboven is enorm: een olie met 80 mg/kg polyfenolen en een met 800 voldoen allebei.
 - "Product van Italië" betekent vaak: gebotteld in Italië, met olijven van waar dan ook.
 - Olijfolie is vruchtensap. Ze begint aroma en polyfenolen te verliezen op de dag dat ze geperst wordt, dus een verre houdbaarheidsdatum zegt niets — die wordt geteld vanaf het bottelen, en dat kan jaren na de oogst gebeuren.
@@ -19,7 +19,7 @@ Hier zijn de achtentwintig meest voorkomende, gegroepeerd naar waar ze vandaan k
 ## Oordelen op het oog
 
 **Mythe 1: "Hoe groener de olie, hoe hoger de kwaliteit."**
-Een diepgroene olie oogt hoogwaardig en een bleekgouden goedkoop, dus kleur voelt als een kwaliteitssignaal. Ze komt van de olijfvariëteit, de rijpheid van het fruit en of de olie gefilterd is, en niets daarvan zegt iets over kwaliteit. Hetzelfde geldt voor de omgekeerde bewering, dat goud op geraffineerd wijst. Professionele proevers beoordelen uit blauwe glazen, juist zodat de kleur hen niet kan beïnvloeden. Ga af op de smaak en op de oogstdatum; de tint vertelt je niets. Wat kleur wél vertelt, [hebben we hier uitgelegd](/nl/blog/olijfkleur-rijpheid-polyfenolen).
+Een diepgroene olie oogt hoogwaardig en een bleekgouden goedkoop, dus kleur voelt als een kwaliteitssignaal. En er zit waarheid in: groenere olie kan wijzen op jongere olijven, en jongere olijven geven olie met meer polyfenolen en meer smaak. Maar kleur verschilt sterk per variëteit en is makkelijk te vervalsen: een vroeg geoogste Arbequina perst goudkleurig, een Coratina diepgroen, en een paar extra blaadjes in de molen maken elke olie groener. Daarom proeven professionele proevers uit blauwe glazen: het getinte glas verbergt de kleur van de olie, zodat die hun oordeel niet kan beïnvloeden. Ga af op de smaak en op de oogstdatum. Wat kleur wél vertelt, [hebben we hier uitgelegd](/nl/blog/olijfkleur-rijpheid-polyfenolen).
 
 [[IMAGE1]]
 

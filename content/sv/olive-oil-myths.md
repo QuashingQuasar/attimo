@@ -6,7 +6,7 @@ Här är tjugoåtta av de vanligaste, grupperade efter var de kommer ifrån, och
 
 ## TL;DR
 
-- Färg, "kallpressad", pris och vackra flaskor säger ingenting om kvaliteten. Det gör smaken och skördedatumet.
+- Färg, "kallpressad", pris och vackra flaskor är opålitliga ledtrådar till kvalitet. Smaken och skördedatumet är de pålitliga.
 - "Extra jungfruolja" är ett lagligt golv, och spannet ovanför är enormt: en olja med 80 mg/kg polyfenoler och en med 800 klarar båda kraven.
 - "Product of Italy" betyder ofta buteljerad i Italien, av oliver odlade var som helst.
 - Olivolja är fruktjuice. Den börjar förlora arom och polyfenoler samma dag den pressas, så ett avlägset bäst före-datum betyder ingenting — det räknas från buteljeringen, som kan ske flera år efter skörden.
@@ -19,7 +19,7 @@ Här är tjugoåtta av de vanligaste, grupperade efter var de kommer ifrån, och
 ## Att döma efter utseendet
 
 **Myt 1: "Ju grönare olja, desto högre kvalitet."**
-En djupgrön olja ser exklusiv ut och en blekt gyllene ser billig ut, så färgen känns som en kvalitetssignal. Den kommer från olivsorten, hur mogen frukten var och om oljan filtrerades, och inget av det följer kvaliteten. Detsamma gäller det omvända påståendet, att gyllene betyder raffinerad. Professionella provsmakare bedömer ur blå glas just för att färgen inte ska kunna påverka dem. Gå på smaken och skördedatumet; nyansen säger ingenting. Vad färgen faktiskt säger [har vi rett ut här](/se/blog/olivfarg-mognad-polyfenoler).
+En djupgrön olja ser exklusiv ut och en blekt gyllene ser billig ut, så färgen känns som en kvalitetssignal. Och det ligger sanning i det: grönare olja kan tyda på yngre oliver, och yngre oliver ger olja med mer polyfenoler och mer smak. Men färgen varierar kraftigt mellan sorter och är lätt att fejka: en tidigt skördad Arbequina pressar gyllene, en Coratina djupgrön, och några extra blad i kvarnen gör vilken olja som helst grönare. Därför bedömer professionella provsmakare ur blå glas: det tonade glaset döljer oljans färg, så att den inte kan snedvrida omdömet. Gå på smaken och skördedatumet. Vad färgen faktiskt säger [har vi rett ut här](/se/blog/olivfarg-mognad-polyfenoler).
 
 [[IMAGE1]]
 

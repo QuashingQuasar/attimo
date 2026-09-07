@@ -6,7 +6,7 @@ En voici vingt-huit parmi les plus répandus, regroupés selon leur origine, ave
 
 ## L'essentiel
 
-- La couleur, la « pression à froid », le prix et les jolies bouteilles ne disent rien de la qualité. Le goût et la date de récolte, si.
+- La couleur, la « pression à froid », le prix et les jolies bouteilles sont des repères peu fiables. Le goût et la date de récolte sont les bons.
 - « Extra vierge » est un plancher légal, et la plage au-dessus est énorme : une huile à 80 mg/kg de polyphénols et une autre à 800 y ont droit toutes les deux.
 - « Produit d'Italie » signifie souvent embouteillée en Italie, à partir d'olives cultivées n'importe où.
 - L'huile d'olive est un jus de fruit. Elle commence à perdre ses arômes et ses polyphénols dès le jour du pressage, si bien qu'une date limite lointaine ne veut rien dire — elle est comptée à partir de l'embouteillage, qui peut avoir lieu des années après la récolte.
@@ -19,7 +19,7 @@ En voici vingt-huit parmi les plus répandus, regroupés selon leur origine, ave
 ## Juger sur l'apparence
 
 **Mythe 1 : « Plus l'huile est verte, plus la qualité est élevée. »**
-Une huile d'un vert profond fait haut de gamme et une huile doré pâle fait bon marché, si bien que la couleur passe pour un signal de qualité. Elle vient de la variété d'olive, de la maturité du fruit et du fait que l'huile ait été filtrée ou non, et rien de tout cela ne reflète la qualité. Il en va de même pour l'affirmation inverse, selon laquelle le doré signifierait raffiné. Les dégustateurs professionnels jugent dans des verres bleus précisément pour que la couleur ne puisse pas les influencer. Fiez-vous au goût et à la date de récolte ; la teinte ne vous dit rien. Ce que la couleur révèle vraiment, [nous l'avons détaillé ici](/fr/blog/couleur-olive-maturite-polyphenols).
+Une huile d'un vert profond fait haut de gamme et une huile doré pâle fait bon marché, si bien que la couleur passe pour un signal de qualité. Et il y a du vrai : une huile plus verte peut indiquer des olives plus jeunes, et les olives plus jeunes donnent une huile plus riche en polyphénols et en goût. Mais la couleur varie fortement selon le cultivar et se falsifie facilement : une Arbequina de récolte précoce presse doré, une Coratina vert profond, et quelques feuilles broyées avec les olives verdissent n'importe quelle huile. C'est pourquoi les dégustateurs professionnels utilisent des verres bleus : la teinte du verre masque la couleur de l'huile, pour qu'elle ne puisse pas biaiser leur jugement. Fiez-vous au goût et à la date de récolte. Ce que la couleur révèle vraiment, [nous l'avons détaillé ici](/fr/blog/couleur-olive-maturite-polyphenols).
 
 [[IMAGE1]]
 

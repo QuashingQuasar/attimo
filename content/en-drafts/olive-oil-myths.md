@@ -6,7 +6,7 @@ Here are twenty-eight of the most common, grouped by where they come from, and w
 
 ## TL;DR
 
-- Colour, "cold pressed", price and pretty bottles tell you nothing about quality. Taste and harvest date do.
+- Colour, "cold pressed", price and pretty bottles are unreliable guides to quality. Taste and harvest date are the ones to trust.
 - "Extra virgin" is a legal floor, and the range above it is enormous: an oil with 80 mg/kg of polyphenols and one with 800 both qualify.
 - "Product of Italy" often means bottled in Italy, from olives grown anywhere.
 - Olive oil is fruit juice. It starts losing aroma and polyphenols the day it's pressed, so a distant best-before date means nothing — it's counted from bottling, which can happen years after the harvest.
@@ -19,7 +19,7 @@ Here are twenty-eight of the most common, grouped by where they come from, and w
 ## Judging by looks
 
 **Myth 1: "The greener the oil, the higher the quality."**
-A deep green oil looks premium and a pale golden one looks cheap, so colour feels like a quality signal. It comes from the olive variety, how ripe the fruit was, and whether the oil was filtered, and none of that tracks quality. The same goes for the reverse claim, that golden means refined. Professional tasters judge from blue glasses precisely so the colour can't sway them. Go by taste and by the harvest date; the shade tells you nothing. What colour does tell you, [we've unpacked here](https://attimo-oil.com/blog/olive-color-ripeness-polyphenols).
+A deep green oil looks premium and a pale golden one looks cheap, so colour feels like a quality signal. And there's truth in it: greener oil can indicate younger olives, and younger olives give oil with more polyphenols and flavour. But colour varies widely per cultivar and is easily faked: an early-harvest Arbequina presses gold, a Coratina deep green, and milling a few extra leaves makes any oil greener. That's why professional tasters use blue glasses: the tint hides the oil's colour, so it can't bias their judgment. Go by taste and by the harvest date. What colour does tell you, [we've unpacked here](https://attimo-oil.com/blog/olive-color-ripeness-polyphenols).
 
 [[IMAGE1]]
 

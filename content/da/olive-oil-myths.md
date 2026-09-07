@@ -6,7 +6,7 @@ Her er otteogtyve af de mest almindelige, grupperet efter hvor de kommer fra, og
 
 ## Kort fortalt
 
-- Farve, "koldpresset", pris og smukke flasker fortæller dig intet om kvaliteten. Det gør smagen og høstdatoen.
+- Farve, "koldpresset", pris og smukke flasker er upålidelige pejlemærker for kvalitet. Smagen og høstdatoen er de pålidelige.
 - "Ekstra jomfru" er et lovmæssigt minimum, og spændet over det er enormt: en olie med 80 mg/kg polyfenoler og en med 800 opfylder begge kravene.
 - "Product of Italy" betyder ofte tappet i Italien, af oliven dyrket hvor som helst.
 - Olivenolie er frugtsaft. Den begynder at miste aroma og polyfenoler den dag, den presses, så en fjern holdbarhedsdato betyder ingenting — den regnes fra tapningen, som kan ske år efter høsten.
@@ -19,7 +19,7 @@ Her er otteogtyve af de mest almindelige, grupperet efter hvor de kommer fra, og
 ## At dømme efter udseendet
 
 **Myte 1: "Jo grønnere olien er, desto højere kvalitet."**
-En dyb grøn olie ser eksklusiv ud, og en bleg gylden ser billig ud, så farven føles som et kvalitetssignal. Den kommer fra olivensorten, hvor modne frugterne var, og om olien blev filtreret — og intet af det følger kvaliteten. Det samme gælder den omvendte påstand, at gylden betyder raffineret. Professionelle smagere bedømmer olie i blå glas, netop så farven ikke kan påvirke dem. Gå efter smagen og høstdatoen; nuancen fortæller dig ingenting. Hvad farven derimod fortæller dig, [har vi gennemgået her](/dk/blog/olivenfarve-modenhed-polyfenoler).
+En dyb grøn olie ser eksklusiv ud, og en bleg gylden ser billig ud, så farven føles som et kvalitetssignal. Og der er sandhed i det: grønnere olie kan tyde på yngre oliven, og yngre oliven giver olie med flere polyfenoler og mere smag. Men farven varierer kraftigt fra sort til sort og er nem at snyde med: en tidligt høstet Arbequina presser gylden, en Coratina dybgrøn, og et par ekstra blade i møllen gør enhver olie grønnere. Derfor bedømmer professionelle smagere i blå glas: det tonede glas skjuler oliens farve, så den ikke kan påvirke deres dom. Gå efter smagen og høstdatoen. Hvad farven derimod fortæller dig, [har vi gennemgået her](/dk/blog/olivenfarve-modenhed-polyfenoler).
 
 [[IMAGE1]]
 
