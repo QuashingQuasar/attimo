@@ -68,7 +68,7 @@ export function trioSinglesTotal(locale: Locale = DEFAULT_LOCALE): number {
  */
 export function buildTrioProduct(
   locale: Locale = DEFAULT_LOCALE,
-  title = "ATTIMO The Full Collection — Trio",
+  title = "ATTIMO 25/26 Early Harvest Terzetto",
   imageUrl: string = TRIO_IMAGE,
 ): ShopifyProduct {
   const price = {
@@ -92,7 +92,7 @@ export function buildTrioProduct(
           {
             node: {
               id: TRIO_VARIANT_ID,
-              title: "Trio",
+              title: "Terzetto",
               price,
               availableForSale: true,
               selectedOptions: [],
@@ -101,7 +101,7 @@ export function buildTrioProduct(
           },
         ],
       },
-      options: [{ name: "Title", values: ["Trio"] }],
+      options: [{ name: "Title", values: ["Terzetto"] }],
     },
   };
 }
@@ -111,12 +111,12 @@ export const TRIO_CONFIG: BundleConfig = {
   contents: TRIO_CONTENTS,
   image: TRIO_IMAGE,
   variantId: TRIO_VARIANT_ID,
-  variantTitle: "Trio",
+  variantTitle: "Terzetto",
   buildProduct: buildTrioProduct,
   singlesTotal: trioSinglesTotal,
   priceKey: "trio",
   badge: "3 × 500 ml",
-  ogName: "The Full Collection (Trio)",
+  ogName: "Terzetto",
   contentId: "trio",
   handle: TRIO_HANDLE,
   ymalHandle: "trio",
@@ -126,9 +126,9 @@ export const TRIO_CONFIG: BundleConfig = {
   // soldOut: true only to force it off sale while real stock still exists.
   framing: {
     en: {
-      title: "Early Harvest 25/26 Full Collection",
-      cardTitleLines: ["Early Harvest 25/26", "Full Collection"],
-      subtitle: "\"I'll have all three, please\"",
+      title: "25/26 Early Harvest Terzetto",
+      cardTitleLines: ["25/26 Early Harvest", "Terzetto"],
+      subtitle: "Three groves, one harvest",
       description:
         "The full selection of our 25/26 harvest season. Three single varieties packed with flavour and personality: bold, grassy and gentle.",
       originHeadline:
@@ -139,14 +139,14 @@ export const TRIO_CONFIG: BundleConfig = {
         "Three 500ml bottles: one each of Coratina d'Italia, Picual de España and Nocellara d'Italia. A litre and a half of oil in all, every drop from the same early harvest.",
       bestUses:
         "Coratina for finishing and the morning spoon, Picual for everyday cooking, Nocellara for the table. Between the three you're covered from the pan to the plate.",
-      toastName: "Added The Full Collection to your cart",
+      toastName: "Added the Terzetto to your cart",
       imageAlt: "The three ATTIMO single-variety olive oils: Coratina, Picual and Nocellara",
     },
     // Danish — for Gilles's review. Tagline (subtitle) especially: shape freely.
     da: {
-      title: "Tidlig høst 25/26 – Hele samlingen",
-      cardTitleLines: ["Tidlig høst 25/26", "Hele samlingen"],
-      subtitle: "\"Jeg tager alle tre, tak\"",
+      title: "25/26 Tidlig høst Terzetto",
+      cardTitleLines: ["25/26 Tidlig høst", "Terzetto"],
+      subtitle: "Tre lunde, én høst",
       description:
         "Hele udvalget fra vores 25/26-høst. Tre enkeltsorter fyldt med smag og personlighed: kraftig, grøn og mild.",
       originHeadline:
@@ -157,13 +157,13 @@ export const TRIO_CONFIG: BundleConfig = {
         "Tre 500 ml-flasker: én af hver – Coratina d'Italia, Picual de España og Nocellara d'Italia. Halvanden liter olie i alt, hver dråbe fra samme tidlige høst.",
       bestUses:
         "Coratina til det sidste pift og morgenskeen, Picual til hverdagens madlavning, Nocellara til bordet. Med de tre er du dækket fra pande til tallerken.",
-      toastName: "Hele samlingen er lagt i kurven",
+      toastName: "Terzetto er lagt i kurven",
       imageAlt: "De tre ATTIMO enkeltsorts-olivenolier: Coratina, Picual og Nocellara",
     },
     de: {
-      title: "Frühe Ernte 25/26 Gesamtkollektion",
-      cardTitleLines: ["Frühe Ernte 25/26", "Gesamtkollektion"],
-      subtitle: "\"Ich nehme alle drei, bitte\"",
+      title: "25/26 Frühe Ernte Terzetto",
+      cardTitleLines: ["25/26 Frühe Ernte", "Terzetto"],
+      subtitle: "Drei Haine, eine Ernte",
       description:
         "Die komplette Auswahl unserer 25/26er-Ernte. Drei sortenreine Öle voller Geschmack und Charakter: kräftig, grasig und mild.",
       originHeadline:
@@ -174,13 +174,13 @@ export const TRIO_CONFIG: BundleConfig = {
         "Drei 500-ml-Flaschen: je eine Coratina d'Italia, Picual de España und Nocellara d'Italia. Anderthalb Liter Öl insgesamt, jeder Tropfen aus derselben frühen Ernte.",
       bestUses:
         "Coratina zum Verfeinern und für den Morgenlöffel, Picual zum alltäglichen Kochen, Nocellara für den Tisch. Mit den dreien sind Sie von der Pfanne bis zum Teller abgedeckt.",
-      toastName: "Gesamtkollektion in den Warenkorb gelegt",
+      toastName: "Terzetto in den Warenkorb gelegt",
       imageAlt: "Die drei sortenreinen ATTIMO-Olivenöle: Coratina, Picual und Nocellara",
     },
     fr: {
-      title: "Récolte précoce 25/26 Collection complète",
-      cardTitleLines: ["Récolte précoce 25/26", "Collection complète"],
-      subtitle: "« Je prends les trois, merci »",
+      title: "25/26 Récolte précoce Terzetto",
+      cardTitleLines: ["25/26 Récolte précoce", "Terzetto"],
+      subtitle: "Trois vergers, une récolte",
       description:
         "Toute la sélection de notre récolte 25/26. Trois mono-variétés pleines de goût et de caractère : puissante, herbacée et douce.",
       originHeadline:
@@ -191,13 +191,13 @@ export const TRIO_CONFIG: BundleConfig = {
         "Trois bouteilles de 500 ml : une de chaque — Coratina d'Italia, Picual de España et Nocellara d'Italia. Un litre et demi d'huile en tout, chaque goutte de la même récolte précoce.",
       bestUses:
         "La Coratina pour la finition et la cuillère du matin, la Picual pour la cuisine de tous les jours, la Nocellara pour la table. À elles trois, vous êtes couvert de la poêle à l'assiette.",
-      toastName: "Collection complète ajoutée au panier",
+      toastName: "Terzetto ajouté au panier",
       imageAlt: "Les trois huiles d'olive mono-variétés ATTIMO : Coratina, Picual et Nocellara",
     },
     nl: {
-      title: "Vroege oogst 25/26 Volledige collectie",
-      cardTitleLines: ["Vroege oogst 25/26", "Volledige collectie"],
-      subtitle: "\"Ik neem alle drie, alsjeblieft\"",
+      title: "25/26 Vroege oogst Terzetto",
+      cardTitleLines: ["25/26 Vroege oogst", "Terzetto"],
+      subtitle: "Drie gaarden, één oogst",
       description:
         "De volledige selectie uit onze 25/26-oogst. Drie enkelvoudige variëteiten vol smaak en karakter: krachtig, grazig en zacht.",
       originHeadline:
@@ -208,13 +208,13 @@ export const TRIO_CONFIG: BundleConfig = {
         "Drie flessen van 500 ml: één van elk — Coratina d'Italia, Picual de España en Nocellara d'Italia. Anderhalve liter olie in totaal, elke druppel uit dezelfde vroege oogst.",
       bestUses:
         "Coratina om af te maken en voor de ochtendlepel, Picual voor het dagelijkse koken, Nocellara voor de tafel. Met z'n drieën ben je gedekt van pan tot bord.",
-      toastName: "Volledige collectie toegevoegd aan je winkelmandje",
+      toastName: "Terzetto toegevoegd aan je winkelmandje",
       imageAlt: "De drie enkelvoudige ATTIMO-olijfoliën: Coratina, Picual en Nocellara",
     },
     sv: {
-      title: "Tidig skörd 25/26 Hela kollektionen",
-      cardTitleLines: ["Tidig skörd 25/26", "Hela kollektionen"],
-      subtitle: "\"Jag tar alla tre, tack\"",
+      title: "25/26 Tidig skörd Terzetto",
+      cardTitleLines: ["25/26 Tidig skörd", "Terzetto"],
+      subtitle: "Tre lundar, en skörd",
       description:
         "Hela urvalet från vår 25/26-skörd. Tre ensorter fyllda med smak och personlighet: kraftig, grön och mild.",
       originHeadline:
@@ -225,7 +225,7 @@ export const TRIO_CONFIG: BundleConfig = {
         "Tre flaskor på 500 ml: en av varje — Coratina d'Italia, Picual de España och Nocellara d'Italia. Halvannan liter olja totalt, varje droppe från samma tidiga skörd.",
       bestUses:
         "Coratina för finish och morgonskeden, Picual för vardagsmaten, Nocellara för bordet. Med de tre är du täckt från panna till tallrik.",
-      toastName: "Hela kollektionen tillagd i varukorgen",
+      toastName: "Terzetto tillagd i varukorgen",
       imageAlt: "De tre ensorts ATTIMO-olivoljorna: Coratina, Picual och Nocellara",
     },
   },

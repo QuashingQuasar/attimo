@@ -25,7 +25,7 @@ const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle
 const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle)) ?? true;
 const soldOut = Boolean(TRIO_CONFIG.soldOut) || !trioAvailable;
 
-const title = "Early Harvest 25/26 Full Collection | Trio of Single-Variety Olive Oils";
+const title = "25/26 Early Harvest Terzetto | Trio of Single-Variety Olive Oils";
 const description = `One bottle of each single-variety olive oil — Coratina, Picual and Nocellara. The whole range of a single harvest, lab-tested and early-harvest. 3 × 500ml — ${priceLabel} (save vs ${formatPrice(singlesTotal, locale)} apart).`;
 const canonicalUrl = "https://attimo-oil.com/product/trio";
 const ogImage = "https://attimo-oil.com/trio-collection.png";
@@ -33,7 +33,7 @@ const ogImage = "https://attimo-oil.com/trio-collection.png";
 const productJsonLd = {
   "@context": "https://schema.org/",
   "@type": "Product",
-  name: "ATTIMO The Full Collection — Trio of Single-Variety Olive Oils",
+  name: "ATTIMO 25/26 Early Harvest Terzetto — Trio of Single-Variety Olive Oils",
   description,
   sku: "ATTIMO-TRIO-3x500",
   brand: { "@type": "Brand", name: "Attimo" },

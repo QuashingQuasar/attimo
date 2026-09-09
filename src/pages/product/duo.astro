@@ -23,7 +23,7 @@ const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle))
 const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle)) ?? true;
 const soldOut = Boolean(DUO_CONFIG.soldOut) || !duoAvailable;
 
-const title = "Early Harvest 25/26 Italian Duo | Coratina + Nocellara Olive Oil";
+const title = "25/26 Early Harvest Duetto | Coratina + Nocellara Olive Oil";
 const description = `Two single-variety olive oils from our 25/26 harvest: Coratina and Nocellara. Early-harvest, lab-tested, 2 × 500ml, ${priceLabel}.`;
 const canonicalUrl = "https://attimo-oil.com/product/duo";
 const ogImage = "https://attimo-oil.com/duo-collection.png";
@@ -31,7 +31,7 @@ const ogImage = "https://attimo-oil.com/duo-collection.png";
 const productJsonLd = {
   "@context": "https://schema.org/",
   "@type": "Product",
-  name: "ATTIMO Coratina + Nocellara Duo",
+  name: "ATTIMO 25/26 Early Harvest Duetto",
   description,
   sku: "ATTIMO-DUO-2x500",
   brand: { "@type": "Brand", name: "Attimo" },

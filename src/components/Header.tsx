@@ -24,8 +24,8 @@ const shopProducts = [
 // Bundles shown under the three singles in the Shop dropdown. Images are the
 // PDP hero shots in public/.
 const shopBundles = [
-  { name: "Harvest 25/26 Full Collection", handle: "trio", image: "/trio-collection.webp", sub: "3 × 500 ml" },
-  { name: "Harvest 25/26 Italian Duo", handle: "duo", image: "/duo-collection.webp", sub: "2 × 500 ml" },
+  { name: "Terzetto", handle: "trio", image: "/trio-collection.webp", sub: "3 × 500 ml" },
+  { name: "Duetto", handle: "duo", image: "/duo-collection.webp", sub: "2 × 500 ml" },
 ];
 
 interface HeaderProps {
