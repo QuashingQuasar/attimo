@@ -9,6 +9,8 @@ import BundleDuoPageWrapper from "@astro/react-pages/BundleDuoPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { LOCALES, formatPrice, type Locale } from "@/lib/i18n/config";
 import { DUO_CONFIG } from "@/lib/duoBundle";
+import { TRIO_CONFIG } from "@/lib/trioBundle";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 export function getStaticPaths() {
@@ -22,6 +24,11 @@ const { locale } = Astro.props as { locale: Locale };
 const dict = getDict(locale);
 const price = locale.prices.duo ?? 42;
 const priceLabel = formatPrice(price, locale);
+
+// Live availability (build-time; PDP revalidates on mount). Stock is global.
+const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle)) ?? true;
+const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle)) ?? true;
+const soldOut = Boolean(DUO_CONFIG.soldOut) || !duoAvailable;
 
 const framing = DUO_CONFIG.framing[locale.lang] ?? DUO_CONFIG.framing.en;
 const title = `${framing.title} | ${dict.product.titleSuffix}`;
@@ -42,7 +49,9 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: "https://schema.org/InStock",
+    availability: soldOut
+      ? "https://schema.org/OutOfStock"
+      : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,
@@ -64,5 +73,5 @@ const productJsonLd = {
   announceTier2={dict.announce.freeShipping2}
   announceTier3={dict.announce.freeShipping3}
 >
-  <BundleDuoPageWrapper locale={locale} client:load />
+  <BundleDuoPageWrapper locale={locale} client:load initialAvailable={duoAvailable} initialAltAvailable={trioAvailable} />
 </BaseLayout>

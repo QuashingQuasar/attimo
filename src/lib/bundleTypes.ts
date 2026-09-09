@@ -42,6 +42,10 @@ export interface BundleConfig {
   contents: ReadonlyArray<BundleOil>;
   image: string;
   variantId: string;
+  // Real Shopify storefront handle — used to read the bundle's live
+  // availability (a native Shopify bundle reports availableForSale=false once
+  // ANY component is out of stock, which is what drives the sold-out state).
+  handle: string;
   variantTitle: string;
   buildProduct: (locale: Locale) => ShopifyProduct;
   singlesTotal: (locale: Locale) => number;
@@ -54,11 +58,10 @@ export interface BundleConfig {
   // Per-locale framing. `en` is required (the fallback); other locales are
   // filled in as they're translated + native-reviewed.
   framing: { en: BundleFraming } & Partial<Record<Lang, BundleFraming>>;
-  // Manual "sold out" flag. Bundles derive their real availability from
-  // component stock in Shopify, but sometimes we need to take a bundle off sale
-  // on the site WITHOUT touching that stock (e.g. component units reserved for a
-  // pending custom/draft order that must stay purchasable in Shopify). When true,
-  // the PDP shows a disabled "Temporarily Sold Out" state instead of add-to-cart
-  // and the homepage card shows the same badge. Real stock is untouched.
+  // Manual "sold out" OVERRIDE. The bundle already goes sold-out automatically
+  // when its live Shopify availability is false (any component out of stock).
+  // Set this only to force it off sale WITHOUT touching real stock — e.g. when
+  // component units are reserved for a pending custom/draft order that must stay
+  // purchasable in Shopify. Effective sold-out = soldOut || !liveAvailability.
   soldOut?: boolean;
 }

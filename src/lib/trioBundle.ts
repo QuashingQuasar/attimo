@@ -20,7 +20,7 @@ import type { BundleConfig } from "@/lib/bundleTypes";
 // is derived from the scarcest component, and buying it decrements each single.
 export const TRIO_PRODUCT_ID = "gid://shopify/Product/15859719274879";
 export const TRIO_VARIANT_ID = "gid://shopify/ProductVariant/58273035092351";
-export const TRIO_HANDLE = "attimo-the-full-collection-trio";
+export const TRIO_HANDLE = "attimo-early-harvest-25-full-collection";
 
 // Placeholder trio visual — composed from the three bottle cut-outs (the same
 // asset the /lab sandbox used). Swap for the real styled trio photograph when
@@ -118,12 +118,12 @@ export const TRIO_CONFIG: BundleConfig = {
   badge: "3 × 500 ml",
   ogName: "The Full Collection (Trio)",
   contentId: "trio",
+  handle: TRIO_HANDLE,
   ymalHandle: "trio",
   polyphenolDisplay: "400–847 mg/kg",
-  // 2026-09-05: taken off sale on the site — the 2 remaining Picual are reserved
-  // for a pending UK custom/draft order that must keep real stock. Revert by
-  // removing this flag. See FORCE_SOLD_OUT_HANDLES note in shopify.ts.
-  soldOut: true,
+  // No manual soldOut flag: the trio goes sold-out automatically once its live
+  // Shopify availability is false (Picual, a component, is out of stock). Set
+  // soldOut: true only to force it off sale while real stock still exists.
   framing: {
     en: {
       title: "Early Harvest '25 Full Collection",

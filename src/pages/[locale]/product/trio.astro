@@ -9,6 +9,8 @@ import BundleTrioPageWrapper from "@astro/react-pages/BundleTrioPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { LOCALES, formatPrice, type Locale } from "@/lib/i18n/config";
 import { trioSinglesTotal, TRIO_CONFIG } from "@/lib/trioBundle";
+import { DUO_CONFIG } from "@/lib/duoBundle";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 export function getStaticPaths() {
@@ -23,6 +25,12 @@ const dict = getDict(locale);
 const price = locale.prices.trio ?? 60;
 const singlesTotal = trioSinglesTotal(locale);
 const priceLabel = formatPrice(price, locale);
+
+// Live availability (build-time; PDP revalidates on mount). Stock is global, so
+// no market context is needed for availableForSale.
+const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle)) ?? true;
+const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle)) ?? true;
+const soldOut = Boolean(TRIO_CONFIG.soldOut) || !trioAvailable;
 
 const framing = TRIO_CONFIG.framing[locale.lang] ?? TRIO_CONFIG.framing.en;
 const title = `${framing.title} | ${dict.product.titleSuffix}`;
@@ -43,7 +51,7 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: TRIO_CONFIG.soldOut
+    availability: soldOut
       ? "https://schema.org/OutOfStock"
       : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
@@ -67,5 +75,5 @@ const productJsonLd = {
   announceTier2={dict.announce.freeShipping2}
   announceTier3={dict.announce.freeShipping3}
 >
-  <BundleTrioPageWrapper locale={locale} client:load />
+  <BundleTrioPageWrapper locale={locale} client:load initialAvailable={trioAvailable} initialAltAvailable={duoAvailable} />
 </BaseLayout>

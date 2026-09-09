@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "@/lib/router-stub";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { TRIO_CONFIG } from "@/lib/trioBundle";
 import { DUO_CONFIG } from "@/lib/duoBundle";
 import type { BundleConfig } from "@/lib/bundleTypes";
@@ -29,6 +31,30 @@ export const BundleWidgets = ({
   const sectionHeading = heading ?? t.bundle.sectionHeading;
   const sectionSubtitle = subtitle ?? t.bundle.sectionSubtitle;
 
+  // Live availability per bundle handle. A native Shopify bundle reads as
+  // unavailable once any component is out of stock, so the card badges itself
+  // sold-out automatically. undefined = not loaded yet (treat as available).
+  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    let cancelled = false;
+    const ctx = shopifyContextForLocale(locale);
+    Promise.all(
+      bundles.map((b) =>
+        fetchProductAvailabilityByHandle(b.handle, ctx).then((a) => [b.handle, a] as const),
+      ),
+    )
+      .then((entries) => {
+        if (cancelled) return;
+        const map: Record<string, boolean> = {};
+        for (const [handle, a] of entries) if (a !== null) map[handle] = a;
+        setAvailability(map);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className="mt-24 md:mt-32">
       <div className="text-center mb-14 md:mb-16">
@@ -52,6 +78,7 @@ export const BundleWidgets = ({
           const singles = b.singlesTotal(locale);
           const saving = singles - price;
           const f = b.framing[locale.lang] ?? b.framing.en;
+          const soldOut = b.soldOut || availability[b.handle] === false;
           return (
             <Link key={b.contentId} to={localizeHref(`/product/${b.contentId}`, locale)} className="group flex flex-col">
               <div className="relative rounded-2xl overflow-hidden aspect-[3/4] mb-7" style={{ backgroundColor: "#1B4229" }}>
@@ -101,7 +128,7 @@ export const BundleWidgets = ({
                   <span>{formatPrice(price, locale)}</span>
                   <span className="line-through" style={{ opacity: 0.4, fontSize: "0.8em" }}>{formatPrice(singles, locale)}</span>
                 </p>
-                {b.soldOut && (
+                {soldOut && (
                   <span
                     className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
                     style={{ fontFamily: "UDC Working Man Sans, sans-serif", letterSpacing: "0.1em", color: "#CDDB2D", backgroundColor: "#1B4229", textTransform: "uppercase" }}

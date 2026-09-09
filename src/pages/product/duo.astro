@@ -8,12 +8,20 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import BundleDuoPageWrapper from "@astro/react-pages/BundleDuoPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
-import { DUO_IMAGE, duoSinglesTotal } from "@/lib/duoBundle";
+import { DUO_IMAGE, duoSinglesTotal, DUO_CONFIG } from "@/lib/duoBundle";
+import { TRIO_CONFIG } from "@/lib/trioBundle";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 
 const locale = DEFAULT_LOCALE;
 const price = locale.prices.duo ?? 42;
 const singlesTotal = duoSinglesTotal(locale);
 const priceLabel = formatPrice(price, locale);
+
+// Live availability (build-time snapshot; the PDP revalidates on mount). A
+// native Shopify bundle is unavailable once any component is out of stock.
+const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle)) ?? true;
+const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle)) ?? true;
+const soldOut = Boolean(DUO_CONFIG.soldOut) || !duoAvailable;
 
 const title = "Early Harvest '25 Italian Duo | Coratina + Nocellara Olive Oil";
 const description = `Two single-variety olive oils from our '25 harvest: Coratina and Nocellara. Early-harvest, lab-tested, 2 × 500ml, ${priceLabel}.`;
@@ -33,7 +41,9 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: "https://schema.org/InStock",
+    availability: soldOut
+      ? "https://schema.org/OutOfStock"
+      : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
   },
   aggregateRating,
@@ -52,5 +62,5 @@ const productJsonLd = {
   noIndex={false}
   hreflangPath="/product/duo"
 >
-  <BundleDuoPageWrapper client:load />
+  <BundleDuoPageWrapper client:load initialAvailable={duoAvailable} initialAltAvailable={trioAvailable} />
 </BaseLayout>

@@ -10,12 +10,23 @@ const queryClient = new QueryClient({
 
 interface Props {
   locale?: Locale;
+  initialAvailable?: boolean;
+  initialAltAvailable?: boolean;
 }
 
-export default function BundleTrioPageWrapper({ locale }: Props) {
+export default function BundleTrioPageWrapper({
+  locale,
+  initialAvailable,
+  initialAltAvailable,
+}: Props) {
   return (
     <QueryClientProvider client={queryClient}>
-      <BundleProductPage cfg={TRIO_CONFIG} locale={locale} />
+      <BundleProductPage
+        cfg={TRIO_CONFIG}
+        locale={locale}
+        initialAvailable={initialAvailable}
+        initialAltAvailable={initialAltAvailable}
+      />
       <Sonner />
     </QueryClientProvider>
   );

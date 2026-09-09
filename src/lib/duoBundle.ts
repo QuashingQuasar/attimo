@@ -13,7 +13,7 @@ import { TRIO_CONTENTS } from "@/lib/trioBundle";
 // from the scarcest component; buying it decrements each single.
 export const DUO_PRODUCT_ID = "gid://shopify/Product/15859718127999";
 export const DUO_VARIANT_ID = "gid://shopify/ProductVariant/58273031389567";
-export const DUO_HANDLE = "attimo-coratina-nocellara-duo";
+export const DUO_HANDLE = "attimo-early-harvest-25-italian-duo";
 
 // Real styled duo shot (Coratina + Nocellara).
 export const DUO_IMAGE = "/duo-collection.webp";
@@ -76,6 +76,7 @@ export const DUO_CONFIG: BundleConfig = {
   badge: "2 × 500 ml",
   ogName: "Coratina + Nocellara Duo",
   contentId: "duo",
+  handle: DUO_HANDLE,
   ymalHandle: "duo",
   polyphenolDisplay: "400–847 mg/kg",
   framing: {

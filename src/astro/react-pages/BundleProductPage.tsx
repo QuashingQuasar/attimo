@@ -16,7 +16,8 @@ import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { useCartStore } from "@/stores/cartStore";
 import type { BundleConfig } from "@/lib/bundleTypes";
 import { toast } from "sonner";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { TRIO_CONFIG } from "@/lib/trioBundle";
 import { DUO_CONFIG } from "@/lib/duoBundle";
 import { getDict, type Dict } from "@/lib/i18n/dictionaries";
@@ -61,13 +62,53 @@ function brandValueFeatures(t: Dict, singleVarietyText: string) {
 interface Props {
   cfg: BundleConfig;
   locale?: Locale;
+  // Live availability of this bundle + the alternate bundle, fetched at build
+  // time so the first paint and JSON-LD are correct. Revalidated on mount.
+  initialAvailable?: boolean;
+  initialAltAvailable?: boolean;
 }
 
-export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Props) {
+export default function BundleProductPage({
+  cfg,
+  locale = DEFAULT_LOCALE,
+  initialAvailable = true,
+  initialAltAvailable = true,
+}: Props) {
   const addItem = useCartStore((s) => s.addItem);
   const t = getDict(locale);
   // Per-locale bundle framing (title, taglines, descriptions); falls back to en.
   const f = cfg.framing[locale.lang] ?? cfg.framing.en;
+
+  // The other bundle (trio ↔ duo), used for the sold-out cross-suggestion.
+  const altBundle = cfg.contentId === "trio" ? DUO_CONFIG : TRIO_CONFIG;
+
+  // Live availability. A native Shopify bundle reports availableForSale=false
+  // as soon as any component is out of stock, so this drives the sold-out state
+  // automatically. `cfg.soldOut` is a manual override on top of it. Seeded from
+  // the build-time snapshot, then revalidated against Shopify on mount so a
+  // restock/sell-out corrects without a rebuild (mirrors the single PDP).
+  const [available, setAvailable] = useState(initialAvailable);
+  const [altAvailable, setAltAvailable] = useState(initialAltAvailable);
+  useEffect(() => {
+    let cancelled = false;
+    const ctx = shopifyContextForLocale(locale);
+    Promise.all([
+      fetchProductAvailabilityByHandle(cfg.handle, ctx),
+      fetchProductAvailabilityByHandle(altBundle.handle, ctx),
+    ])
+      .then(([self, alt]) => {
+        if (cancelled) return;
+        if (self !== null) setAvailable(self);
+        if (alt !== null) setAltAvailable(alt);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [cfg.handle, altBundle.handle, locale]);
+
+  const soldOut = cfg.soldOut || !available;
+  const altSoldOut = altBundle.soldOut || !altAvailable;
 
   // Per-oil rows: reuse the already-localized single-variety content (flavour,
   // tasting note, origin, volume). Name + colours + polyphenol value stay from
@@ -215,7 +256,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
               )}
             </div>
 
-            {cfg.soldOut ? (
+            {soldOut ? (
               <div className="space-y-3">
                 <div
                   className="w-full text-center px-4 md:px-6 py-3 font-bold uppercase tracking-wide"
@@ -227,8 +268,8 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                 {(() => {
                   // When a bundle is off sale, point to the other bundle if it's
                   // still available (trio ↔ duo).
-                  const alt = cfg.contentId === "trio" ? DUO_CONFIG : TRIO_CONFIG;
-                  if (alt.soldOut) return null;
+                  const alt = altBundle;
+                  if (altSoldOut) return null;
                   const af = alt.framing[locale.lang] ?? alt.framing.en;
                   const altName = af.cardTitleLines?.[1] ?? af.title;
                   const altContents = alt.contents
@@ -273,7 +314,7 @@ export default function BundleProductPage({ cfg, locale = DEFAULT_LOCALE }: Prop
                 <ShieldCheck size={20} strokeWidth={1.5} />
                 {t.product.trustLab}
               </p>
-              {!cfg.soldOut && (
+              {!soldOut && (
                 <p className="text-olive-medium flex items-center gap-2" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
                   <Truck size={20} strokeWidth={1.5} />
                   {t.product.shipsTomorrow}

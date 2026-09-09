@@ -11,11 +11,19 @@ import BundleTrioPageWrapper from "@astro/react-pages/BundleTrioPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
 import { TRIO_IMAGE, trioSinglesTotal, TRIO_CONFIG } from "@/lib/trioBundle";
+import { DUO_CONFIG } from "@/lib/duoBundle";
+import { fetchProductAvailabilityByHandle } from "@/lib/shopify";
 
 const locale = DEFAULT_LOCALE;
 const price = locale.prices.trio ?? 60;
 const singlesTotal = trioSinglesTotal(locale);
 const priceLabel = formatPrice(price, locale);
+
+// Live availability (build-time snapshot; the PDP revalidates on mount). A
+// native Shopify bundle is unavailable once any component is out of stock.
+const trioAvailable = (await fetchProductAvailabilityByHandle(TRIO_CONFIG.handle)) ?? true;
+const duoAvailable = (await fetchProductAvailabilityByHandle(DUO_CONFIG.handle)) ?? true;
+const soldOut = Boolean(TRIO_CONFIG.soldOut) || !trioAvailable;
 
 const title = "Early Harvest '25 Full Collection | Trio of Single-Variety Olive Oils";
 const description = `One bottle of each single-variety olive oil — Coratina, Picual and Nocellara. The whole range of a single harvest, lab-tested and early-harvest. 3 × 500ml — ${priceLabel} (save vs ${formatPrice(singlesTotal, locale)} apart).`;
@@ -35,7 +43,7 @@ const productJsonLd = {
     url: canonicalUrl,
     price: price.toFixed(locale.currency.decimals),
     priceCurrency: locale.currency.code,
-    availability: TRIO_CONFIG.soldOut
+    availability: soldOut
       ? "https://schema.org/OutOfStock"
       : "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
@@ -56,5 +64,5 @@ const productJsonLd = {
   noIndex={false}
   hreflangPath="/product/trio"
 >
-  <BundleTrioPageWrapper client:load />
+  <BundleTrioPageWrapper client:load initialAvailable={trioAvailable} initialAltAvailable={duoAvailable} />
 </BaseLayout>
