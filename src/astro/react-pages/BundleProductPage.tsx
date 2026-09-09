@@ -195,9 +195,10 @@ export default function BundleProductPage({
                 className="text-olive-dark leading-[1.1]"
                 style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontSize: "clamp(1.67rem, 3.23vw, 3.23rem)", fontWeight: 400 }}
               >
-                {f.cardTitleLines
-                  ? f.cardTitleLines.map((line, i) => <span key={i} className="block">{line}</span>)
-                  : f.title}
+                {/* Single line; wraps naturally only when the viewport forces
+                    it. The two-line split (cardTitleLines) is for the narrow
+                    homepage card, not the PDP hero. */}
+                {f.title}
               </h1>
             </div>
 
