@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { fetchProducts } from "@/lib/shopify";
+import { resolveShopifyHandle } from "@/lib/productContent";
 
 const oilDefs = [
   {
@@ -65,6 +68,28 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
     tagline: locale.lang !== "en" ? t.products.tagline[o.handle] : o.tagline,
   }));
   const otherOils = allOils.filter((oil) => oil.handle !== currentHandle);
+
+  // Live availability per Shopify handle, same source as the homepage cards
+  // (fetchProducts, so the FORCE_SOLD_OUT override is included). A sold-out oil
+  // must NOT look purchasable here — it just links through to its own PDP.
+  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  useEffect(() => {
+    let cancelled = false;
+    fetchProducts(10, undefined, shopifyContextForLocale(locale))
+      .then((products) => {
+        if (cancelled) return;
+        const map: Record<string, boolean> = {};
+        for (const p of products) {
+          map[p.node.handle] = p.node.variants.edges.some((v) => v.node.availableForSale);
+        }
+        setAvailability(map);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Fixed light bg so the section visually separates from BlogSection below.
   const bgColor = "#FFFAEA";
   const textColor = "#1B4229";
@@ -105,7 +130,9 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
           "lg:grid-cols-3"}`
           }>
           
-          {otherOils.map((oil) =>
+          {otherOils.map((oil) => {
+          const soldOut = availability[resolveShopifyHandle(oil.handle)] === false;
+          return (
           <Link
             key={oil.handle}
             to={localizeHref(`/product/${oil.handle}`, locale)}
@@ -203,9 +230,25 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
                 
                   {oil.tagline}
                 </p>
+
+                {soldOut && (
+                  <span
+                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#CDDB2D",
+                      backgroundColor: "#1B4229",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {t.oilCollection.soldOut}
+                  </span>
+                )}
               </div>
             </Link>
-          )}
+          );
+          })}
         </div>
       </div>
     </section>);

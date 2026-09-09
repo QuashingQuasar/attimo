@@ -277,14 +277,25 @@ function applySoldOutOverride(products: ShopifyProduct[]): ShopifyProduct[] {
   );
 }
 
-export async function fetchProducts(limit = 10, query?: string, context?: ShopifyContext): Promise<ShopifyProduct[]> {
+export async function fetchProducts(
+  limit = 10,
+  query?: string,
+  context?: ShopifyContext,
+  // `skipSoldOutOverride` returns the REAL Shopify availability, ignoring the
+  // manual FORCE_SOLD_OUT_HANDLES merchandising override. Used by the cart
+  // upsell: a forced-off-sale oil (e.g. Coratina) still has stock and can be
+  // bought as a cart add-on, so it should stay offerable there even though its
+  // own PDP/homepage card reads sold-out.
+  opts?: { skipSoldOutOverride?: boolean },
+): Promise<ShopifyProduct[]> {
   const data = await storefrontApiRequest(PRODUCTS_QUERY, {
     first: limit,
     query,
     country: context?.country ?? null,
     language: context?.language ?? null,
   });
-  return applySoldOutOverride(data?.data?.products?.edges || []);
+  const edges = data?.data?.products?.edges || [];
+  return opts?.skipSoldOutOverride ? edges : applySoldOutOverride(edges);
 }
 
 // Exact single-product availability by handle. The `products(query:"handle:…")`

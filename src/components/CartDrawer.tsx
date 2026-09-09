@@ -142,7 +142,10 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   // recommendations section. Cached for the rest of the session.
   useEffect(() => {
     if (!isOpen || products !== null) return;
-    fetchProducts(50)
+    // Real stock, not the merchandising override: a forced-off-sale oil that
+    // still has stock (e.g. Coratina) can be added as a cart add-on. Only a
+    // genuinely out-of-stock oil would fail at checkout and must be excluded.
+    fetchProducts(50, undefined, undefined, { skipSoldOutOverride: true })
       .then((p) => setProducts(p))
       .catch(() => setProducts([]));
   }, [isOpen, products]);
