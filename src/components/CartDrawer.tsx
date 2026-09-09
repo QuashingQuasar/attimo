@@ -198,7 +198,12 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
     return products
       .filter((p) => {
         const slug = urlSlugForShopifyHandle(p.node.handle);
-        return slug !== null && !inCartHandles.has(p.node.handle);
+        if (slug === null || inCartHandles.has(p.node.handle)) return false;
+        // Never surface a sold-out product as a one-click add — it would only
+        // fail at checkout. availableForSale here reflects both real Shopify
+        // stock and the manual FORCE_SOLD_OUT override (fetchProducts applies
+        // it), so a forced or genuinely out-of-stock oil drops out.
+        return p.node.variants?.edges?.some((v) => v.node.availableForSale) ?? false;
       })
       .sort((a, b) => {
         const aSlug = urlSlugForShopifyHandle(a.node.handle) || "";
