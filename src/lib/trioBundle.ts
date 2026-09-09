@@ -126,11 +126,11 @@ export const TRIO_CONFIG: BundleConfig = {
   // soldOut: true only to force it off sale while real stock still exists.
   framing: {
     en: {
-      title: "Early Harvest '25 Full Collection",
-      cardTitleLines: ["Early Harvest '25", "Full Collection"],
+      title: "Early Harvest 25/26 Full Collection",
+      cardTitleLines: ["Early Harvest 25/26", "Full Collection"],
       subtitle: "\"I'll have all three, please\"",
       description:
-        "The full selection of our '25 harvest season. Three single varieties packed with flavour and personality: bold, grassy and gentle.",
+        "The full selection of our 25/26 harvest season. Three single varieties packed with flavour and personality: bold, grassy and gentle.",
       originHeadline:
         "Three single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
       singleVarietyText:
@@ -144,11 +144,11 @@ export const TRIO_CONFIG: BundleConfig = {
     },
     // Danish — for Gilles's review. Tagline (subtitle) especially: shape freely.
     da: {
-      title: "Tidlig høst '25 – Hele samlingen",
-      cardTitleLines: ["Tidlig høst '25", "Hele samlingen"],
+      title: "Tidlig høst 25/26 – Hele samlingen",
+      cardTitleLines: ["Tidlig høst 25/26", "Hele samlingen"],
       subtitle: "\"Jeg tager alle tre, tak\"",
       description:
-        "Hele udvalget fra vores '25-høst. Tre enkeltsorter fyldt med smag og personlighed: kraftig, grøn og mild.",
+        "Hele udvalget fra vores 25/26-høst. Tre enkeltsorter fyldt med smag og personlighed: kraftig, grøn og mild.",
       originHeadline:
         "Tre enkeltsorter fra én tidlig høst, koldpresset, labtestet og aldrig blandet. Samme standard i hver flaske.",
       singleVarietyText:
@@ -161,11 +161,11 @@ export const TRIO_CONFIG: BundleConfig = {
       imageAlt: "De tre ATTIMO enkeltsorts-olivenolier: Coratina, Picual og Nocellara",
     },
     de: {
-      title: "Frühe Ernte '25 Gesamtkollektion",
-      cardTitleLines: ["Frühe Ernte '25", "Gesamtkollektion"],
+      title: "Frühe Ernte 25/26 Gesamtkollektion",
+      cardTitleLines: ["Frühe Ernte 25/26", "Gesamtkollektion"],
       subtitle: "\"Ich nehme alle drei, bitte\"",
       description:
-        "Die komplette Auswahl unserer '25er-Ernte. Drei sortenreine Öle voller Geschmack und Charakter: kräftig, grasig und mild.",
+        "Die komplette Auswahl unserer 25/26er-Ernte. Drei sortenreine Öle voller Geschmack und Charakter: kräftig, grasig und mild.",
       originHeadline:
         "Drei sortenreine Öle aus einer frühen Ernte, kaltgepresst, laborgeprüft und niemals verschnitten. Der gleiche Standard in jeder Flasche.",
       singleVarietyText:
@@ -178,11 +178,11 @@ export const TRIO_CONFIG: BundleConfig = {
       imageAlt: "Die drei sortenreinen ATTIMO-Olivenöle: Coratina, Picual und Nocellara",
     },
     fr: {
-      title: "Récolte précoce '25 Collection complète",
-      cardTitleLines: ["Récolte précoce '25", "Collection complète"],
+      title: "Récolte précoce 25/26 Collection complète",
+      cardTitleLines: ["Récolte précoce 25/26", "Collection complète"],
       subtitle: "« Je prends les trois, merci »",
       description:
-        "Toute la sélection de notre récolte '25. Trois mono-variétés pleines de goût et de caractère : puissante, herbacée et douce.",
+        "Toute la sélection de notre récolte 25/26. Trois mono-variétés pleines de goût et de caractère : puissante, herbacée et douce.",
       originHeadline:
         "Trois mono-variétés d'une même récolte précoce, pressées à froid, testées en laboratoire et jamais assemblées. La même exigence dans chaque bouteille.",
       singleVarietyText:
@@ -195,11 +195,11 @@ export const TRIO_CONFIG: BundleConfig = {
       imageAlt: "Les trois huiles d'olive mono-variétés ATTIMO : Coratina, Picual et Nocellara",
     },
     nl: {
-      title: "Vroege oogst '25 Volledige collectie",
-      cardTitleLines: ["Vroege oogst '25", "Volledige collectie"],
+      title: "Vroege oogst 25/26 Volledige collectie",
+      cardTitleLines: ["Vroege oogst 25/26", "Volledige collectie"],
       subtitle: "\"Ik neem alle drie, alsjeblieft\"",
       description:
-        "De volledige selectie uit onze '25-oogst. Drie enkelvoudige variëteiten vol smaak en karakter: krachtig, grazig en zacht.",
+        "De volledige selectie uit onze 25/26-oogst. Drie enkelvoudige variëteiten vol smaak en karakter: krachtig, grazig en zacht.",
       originHeadline:
         "Drie enkele variëteiten uit één vroege oogst, koudgeperst, labgetest en nooit gemengd. Dezelfde standaard in elke fles.",
       singleVarietyText:
@@ -212,11 +212,11 @@ export const TRIO_CONFIG: BundleConfig = {
       imageAlt: "De drie enkelvoudige ATTIMO-olijfoliën: Coratina, Picual en Nocellara",
     },
     sv: {
-      title: "Tidig skörd '25 Hela kollektionen",
-      cardTitleLines: ["Tidig skörd '25", "Hela kollektionen"],
+      title: "Tidig skörd 25/26 Hela kollektionen",
+      cardTitleLines: ["Tidig skörd 25/26", "Hela kollektionen"],
       subtitle: "\"Jag tar alla tre, tack\"",
       description:
-        "Hela urvalet från vår '25-skörd. Tre ensorter fyllda med smak och personlighet: kraftig, grön och mild.",
+        "Hela urvalet från vår 25/26-skörd. Tre ensorter fyllda med smak och personlighet: kraftig, grön och mild.",
       originHeadline:
         "Tre ensorter från en tidig skörd, kallpressade, labbtestade och aldrig blandade. Samma standard i varje flaska.",
       singleVarietyText:

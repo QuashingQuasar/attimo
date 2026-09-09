@@ -81,11 +81,11 @@ export const DUO_CONFIG: BundleConfig = {
   polyphenolDisplay: "400–847 mg/kg",
   framing: {
     en: {
-      title: "Early Harvest '25 Italian Duo",
-      cardTitleLines: ["Early Harvest '25", "Italian Duo"],
+      title: "Early Harvest 25/26 Italian Duo",
+      cardTitleLines: ["Early Harvest 25/26", "Italian Duo"],
       subtitle: "Puglia meets Sicily",
       description:
-        "The Italian pair from our '25 harvest season. Two single varieties with opposite characters: bold and gentle.",
+        "The Italian pair from our 25/26 harvest season. Two single varieties with opposite characters: bold and gentle.",
       originHeadline:
         "Two single varieties from one early harvest, pressed cold, lab-tested and never blended. The same standard in every bottle.",
       singleVarietyText:
@@ -99,11 +99,11 @@ export const DUO_CONFIG: BundleConfig = {
     },
     // Danish — for Gilles's review. Tagline (subtitle) especially: shape freely.
     da: {
-      title: "Tidlig høst '25 – Italiensk duo",
-      cardTitleLines: ["Tidlig høst '25", "Italiensk duo"],
+      title: "Tidlig høst 25/26 – Italiensk duo",
+      cardTitleLines: ["Tidlig høst 25/26", "Italiensk duo"],
       subtitle: "Puglia møder Sicilien",
       description:
-        "Det italienske par fra vores '25-høst. To enkeltsorter med modsatte karakterer: kraftig og mild.",
+        "Det italienske par fra vores 25/26-høst. To enkeltsorter med modsatte karakterer: kraftig og mild.",
       originHeadline:
         "To enkeltsorter fra én tidlig høst, koldpresset, labtestet og aldrig blandet. Samme standard i hver flaske.",
       singleVarietyText:
@@ -116,11 +116,11 @@ export const DUO_CONFIG: BundleConfig = {
       imageAlt: "ATTIMO Coratina og Nocellara enkeltsorts-olivenolier",
     },
     de: {
-      title: "Frühe Ernte '25 Italienisches Duo",
-      cardTitleLines: ["Frühe Ernte '25", "Italienisches Duo"],
+      title: "Frühe Ernte 25/26 Italienisches Duo",
+      cardTitleLines: ["Frühe Ernte 25/26", "Italienisches Duo"],
       subtitle: "Apulien trifft Sizilien",
       description:
-        "Das italienische Paar unserer '25er-Ernte. Zwei sortenreine Öle mit gegensätzlichem Charakter: kräftig und mild.",
+        "Das italienische Paar unserer 25/26er-Ernte. Zwei sortenreine Öle mit gegensätzlichem Charakter: kräftig und mild.",
       originHeadline:
         "Zwei sortenreine Öle aus einer frühen Ernte, kaltgepresst, laborgeprüft und niemals verschnitten. Der gleiche Standard in jeder Flasche.",
       singleVarietyText:
@@ -133,11 +133,11 @@ export const DUO_CONFIG: BundleConfig = {
       imageAlt: "Sortenreine ATTIMO-Olivenöle Coratina und Nocellara",
     },
     fr: {
-      title: "Récolte précoce '25 Duo italien",
-      cardTitleLines: ["Récolte précoce '25", "Duo italien"],
+      title: "Récolte précoce 25/26 Duo italien",
+      cardTitleLines: ["Récolte précoce 25/26", "Duo italien"],
       subtitle: "Les Pouilles rencontrent la Sicile",
       description:
-        "Le duo italien de notre récolte '25. Deux mono-variétés aux caractères opposés : puissante et douce.",
+        "Le duo italien de notre récolte 25/26. Deux mono-variétés aux caractères opposés : puissante et douce.",
       originHeadline:
         "Deux mono-variétés d'une même récolte précoce, pressées à froid, testées en laboratoire et jamais assemblées. La même exigence dans chaque bouteille.",
       singleVarietyText:
@@ -150,11 +150,11 @@ export const DUO_CONFIG: BundleConfig = {
       imageAlt: "Huiles d'olive mono-variétés ATTIMO Coratina et Nocellara",
     },
     nl: {
-      title: "Vroege oogst '25 Italiaanse duo",
-      cardTitleLines: ["Vroege oogst '25", "Italiaanse duo"],
+      title: "Vroege oogst 25/26 Italiaanse duo",
+      cardTitleLines: ["Vroege oogst 25/26", "Italiaanse duo"],
       subtitle: "Puglia ontmoet Sicilië",
       description:
-        "Het Italiaanse paar uit onze '25-oogst. Twee enkelvoudige variëteiten met tegengestelde karakters: krachtig en zacht.",
+        "Het Italiaanse paar uit onze 25/26-oogst. Twee enkelvoudige variëteiten met tegengestelde karakters: krachtig en zacht.",
       originHeadline:
         "Twee enkele variëteiten uit één vroege oogst, koudgeperst, labgetest en nooit gemengd. Dezelfde standaard in elke fles.",
       singleVarietyText:
@@ -167,11 +167,11 @@ export const DUO_CONFIG: BundleConfig = {
       imageAlt: "Enkelvoudige ATTIMO-olijfoliën Coratina en Nocellara",
     },
     sv: {
-      title: "Tidig skörd '25 Italiensk duo",
-      cardTitleLines: ["Tidig skörd '25", "Italiensk duo"],
+      title: "Tidig skörd 25/26 Italiensk duo",
+      cardTitleLines: ["Tidig skörd 25/26", "Italiensk duo"],
       subtitle: "Puglia möter Sicilien",
       description:
-        "Det italienska paret från vår '25-skörd. Två ensorter med motsatta karaktärer: kraftig och mild.",
+        "Det italienska paret från vår 25/26-skörd. Två ensorter med motsatta karaktärer: kraftig och mild.",
       originHeadline:
         "Två ensorter från en tidig skörd, kallpressade, labbtestade och aldrig blandade. Samma standard i varje flaska.",
       singleVarietyText:
