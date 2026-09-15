@@ -459,7 +459,7 @@ export const de: Dict = {
     title: "Versand | ATTIMO Natives Olivenöl extra – Spezialität",
     heading: "Versandinformationen",
     intro:
-      "Wir liefern in die gesamte Europäische Union. Je mehr Sie bestellen, desto weniger zahlen Sie für den Versand – oder gar nichts.", // REVIEW
+      "Wir liefern in die gesamte Europäische Union und ins Vereinigte Königreich. Je mehr Sie bestellen, desto weniger zahlen Sie für den Versand – oder gar nichts.", // REVIEW
     factShipsTomorrow: "Heute bestellt, morgen verschickt", // REVIEW
     factFreeMulti: "Gratisversand bei Mehrflaschen-Bestellungen", // REVIEW
     factPacked: "Sorgfältig verpackt für eine sichere Lieferung", // REVIEW
@@ -473,7 +473,7 @@ export const de: Dict = {
     processingP1:
       "Bestellungen, die vor Tagesende aufgegeben werden, werden am nächsten Werktag verpackt und versandt. Sie erhalten per E-Mail einen Tracking-Link, sobald Ihre Bestellung unser Haus verlässt.", // REVIEW
     processingP2:
-      "Die Lieferzeiten hängen von Ihrem Standort ab. Die meisten Kernländer (Belgien, Deutschland, Luxemburg, Niederlande) erhalten ihre Bestellung in 2 bis 3 Werktagen. Für andere EU-Ziele rechnen Sie mit 3 bis 7 Werktagen, je nach Versanddienst und Ziel.", // REVIEW
+      "Die Lieferzeiten hängen von Ihrem Standort ab. Die meisten Kernländer (Belgien, Deutschland, Luxemburg, Niederlande) erhalten ihre Bestellung in 2 bis 3 Werktagen. Für andere EU-Ziele rechnen Sie mit 3 bis 7 Werktagen, je nach Versanddienst und Ziel. Bestellungen ins Vereinigte Königreich kommen in der Regel innerhalb von 6–8 Werktagen an; Olivenöl ist bei der Einfuhr ins Vereinigte Königreich von Zöllen und Mehrwertsteuer befreit, es fallen also keine zusätzlichen Kosten bei der Zustellung an.", // REVIEW
     returnsHeading: "Rückgabe & Schäden",
     returnsP1:
       "Da Olivenöl ein Lebensmittel ist, ist es vom standardmäßigen 14-tägigen EU-Widerrufsrecht gemäß der Verbraucherrechte-Richtlinie ausgenommen. Wir nehmen keine geöffneten oder unbeschädigten Produkte zurück.", // REVIEW
@@ -483,11 +483,12 @@ export const de: Dict = {
     contactHeading: "Fragen zu Ihrer Bestellung?",
     contactSub: "Wir helfen Ihnen gerne. Schreiben Sie uns jederzeit.", // REVIEW
     freeFromBottles: "{n} Flaschen",
-    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
+    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", uk: "UK", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
     delivery: {
       core: "2–3 Werktage",
       tier1: "3–5 Werktage",
       tier2: "4–6 Werktage",
+      uk: "6–8 Werktage",
       tier3: "5–7 Werktage",
       tier4: "6–8 Werktage",
       tier5: "5–8 Werktage",
@@ -498,7 +499,7 @@ export const de: Dict = {
       France: "Frankreich", Hungary: "Ungarn", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakei", Slovenia: "Slowenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Lettland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Schweden", Finland: "Finnland",
-      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien", Cyprus: "Zypern", Norway: "Norwegen", Switzerland: "Schweiz",
+      Greece: "Griechenland", Portugal: "Portugal", Romania: "Rumänien", Cyprus: "Zypern", Norway: "Norwegen", Switzerland: "Schweiz", UnitedKingdom: "Vereinigtes Königreich",
     },
   },
 

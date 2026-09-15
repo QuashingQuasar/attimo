@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-3">Who we are</h2>
               <p className="leading-relaxed opacity-80">
-                ATTIMO is a brand operated by Ablaze Growth Studio CV, located at Gelijkheidstraat 5, 2018 Antwerp, Belgium (VAT: BE0732.647.334). We sell premium olive oil online to customers across the European Union. When you interact with our website or place an order, we collect certain personal data. This policy explains what we collect, why, and what your rights are.
+                ATTIMO is a brand operated by Ablaze Growth Studio CV, located at Gelijkheidstraat 5, 2018 Antwerp, Belgium (VAT: BE0732.647.334). We sell premium olive oil online to customers across the European Union and the United Kingdom. When you interact with our website or place an order, we collect certain personal data. This policy explains what we collect, why, and what your rights are.
               </p>
             </section>
 

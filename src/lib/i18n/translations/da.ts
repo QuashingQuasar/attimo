@@ -446,7 +446,7 @@ export const da: Dict = {
     title: "Fragt | ATTIMO Ekstra jomfru olivenolie i særklasse",
     heading: "Fragtinformation",
     intro:
-      "Vi sender i hele EU. Jo mere du bestiller, desto mindre betaler du for fragt – eller intet overhovedet.",
+      "Vi sender i hele EU og til Storbritannien. Jo mere du bestiller, desto mindre betaler du for fragt – eller intet overhovedet.",
     factShipsTomorrow: "Bestil i dag, sendes i morgen",
     factFreeMulti: "Fri fragt på ordrer med flere flasker",
     factPacked: "Omhyggeligt pakket til sikker levering",
@@ -460,7 +460,7 @@ export const da: Dict = {
     processingP1:
       "Ordrer afgivet inden dagens slutning pakkes og sendes næste hverdag. Du modtager et sporingslink via e-mail, så snart din ordre forlader vores lager.",
     processingP2:
-      "Leveringstider afhænger af, hvor du bor. De fleste kernelande (Belgien, Tyskland, Luxembourg, Holland) modtager deres ordre inden for 2–3 hverdage. For andre EU-destinationer, forvent 3–7 hverdage afhængigt af transportør og destination.",
+      "Leveringstider afhænger af, hvor du bor. De fleste kernelande (Belgien, Tyskland, Luxembourg, Holland) modtager deres ordre inden for 2–3 hverdage. For andre EU-destinationer, forvent 3–7 hverdage afhængigt af transportør og destination. Ordrer til Storbritannien ankommer typisk inden for 6–8 hverdage; olivenolie er fritaget for importtold og moms i Storbritannien, så der opkræves ikke ekstra gebyrer ved levering.",
     returnsHeading: "Returnering & skader",
     returnsP1:
       "Da olivenolie er en fødevare, er den undtaget fra den almindelige 14-dages fortrydelsesret i henhold til EU's forbrugerrettighedsdirektiv. Vi tager ikke imod returneringer på åbnede eller ubeskadigede produkter.",
@@ -470,11 +470,12 @@ export const da: Dict = {
     contactHeading: "Spørgsmål om din ordre?",
     contactSub: "Vi er her for at hjælpe. Kontakt os når som helst.",
     freeFromBottles: "{n} flasker",
-    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
+    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", uk: "UK", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
     delivery: {
       core: "2–3 hverdage",
       tier1: "3–5 hverdage",
       tier2: "4–6 hverdage",
+      uk: "6–8 hverdage",
       tier3: "5–7 hverdage",
       tier4: "6–8 hverdage",
       tier5: "5–8 hverdage",
@@ -485,7 +486,7 @@ export const da: Dict = {
       France: "Frankrig", Hungary: "Ungarn", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slovakiet", Slovenia: "Slovenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Letland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Sverige", Finland: "Finland",
-      Greece: "Grækenland", Portugal: "Portugal", Romania: "Rumænien", Cyprus: "Cypern", Norway: "Norge", Switzerland: "Schweiz",
+      Greece: "Grækenland", Portugal: "Portugal", Romania: "Rumænien", Cyprus: "Cypern", Norway: "Norge", Switzerland: "Schweiz", UnitedKingdom: "Storbritannien",
     },
   },
 

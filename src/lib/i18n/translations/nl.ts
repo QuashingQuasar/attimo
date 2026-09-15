@@ -454,7 +454,7 @@ export const nl: Dict = {
     title: "Verzending | ATTIMO Specialty extra vierge olijfolie",
     heading: "Verzendinformatie",
     intro:
-      "We verzenden door de hele Europese Unie. Hoe meer je bestelt, hoe minder je betaalt voor verzending — of helemaal niets.", // REVIEW
+      "We verzenden door de hele Europese Unie en naar het Verenigd Koninkrijk. Hoe meer je bestelt, hoe minder je betaalt voor verzending — of helemaal niets.", // REVIEW
     factShipsTomorrow: "Vandaag besteld, morgen verzonden", // REVIEW
     factFreeMulti: "Gratis verzending bij bestellingen van meerdere flessen", // REVIEW
     factPacked: "Zorgvuldig verpakt voor een veilige levering", // REVIEW
@@ -468,7 +468,7 @@ export const nl: Dict = {
     processingP1:
       "Bestellingen die voor het einde van de dag worden geplaatst, worden de volgende werkdag ingepakt en verzonden. Je ontvangt per e-mail een track & trace-link zodra je bestelling ons pand verlaat.", // REVIEW
     processingP2:
-      "Levertijden hangen af van je locatie. De meeste kernlanden (België, Duitsland, Luxemburg, Nederland) ontvangen hun bestelling binnen 2–3 werkdagen. Voor andere EU-bestemmingen reken je op 3–7 werkdagen, afhankelijk van vervoerder en bestemming.", // REVIEW
+      "Levertijden hangen af van je locatie. De meeste kernlanden (België, Duitsland, Luxemburg, Nederland) ontvangen hun bestelling binnen 2–3 werkdagen. Voor andere EU-bestemmingen reken je op 3–7 werkdagen, afhankelijk van vervoerder en bestemming. Bestellingen naar het Verenigd Koninkrijk komen doorgaans binnen 6–8 werkdagen aan; olijfolie is bij invoer in het VK vrijgesteld van invoerrechten en btw, dus je betaalt niets extra bij levering.", // REVIEW
     returnsHeading: "Retouren & schade",
     returnsP1:
       "Omdat olijfolie een levensmiddel is, valt ze buiten het standaard Europese herroepingsrecht van 14 dagen uit de Richtlijn consumentenrechten. We accepteren geen retouren van geopende of onbeschadigde producten.", // REVIEW
@@ -478,11 +478,12 @@ export const nl: Dict = {
     contactHeading: "Vragen over je bestelling?",
     contactSub: "We helpen je graag. Neem gerust contact op.", // REVIEW
     freeFromBottles: "{n} flessen",
-    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
+    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", uk: "UK", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
     delivery: {
       core: "2–3 werkdagen",
       tier1: "3–5 werkdagen",
       tier2: "4–6 werkdagen",
+      uk: "6–8 werkdagen",
       tier3: "5–7 werkdagen",
       tier4: "6–8 werkdagen",
       tier5: "5–8 werkdagen",
@@ -493,7 +494,7 @@ export const nl: Dict = {
       France: "Frankrijk", Hungary: "Hongarije", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slowakije", Slovenia: "Slovenië", Estonia: "Estland", Ireland: "Ierland", Italy: "Italië",
       Latvia: "Letland", Lithuania: "Litouwen", Spain: "Spanje", Sweden: "Zweden", Finland: "Finland",
-      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië", Cyprus: "Cyprus", Norway: "Noorwegen", Switzerland: "Zwitserland",
+      Greece: "Griekenland", Portugal: "Portugal", Romania: "Roemenië", Cyprus: "Cyprus", Norway: "Noorwegen", Switzerland: "Zwitserland", UnitedKingdom: "Verenigd Koninkrijk",
     },
   },
 

@@ -450,7 +450,7 @@ export const fr: Dict = {
     title: "Livraison | ATTIMO Huile d'olive vierge extra de spécialité",
     heading: "Informations de livraison",
     intro:
-      "Nous livrons dans toute l'Union européenne. Plus vous commandez, moins vous payez la livraison — voire pas du tout.", // REVIEW
+      "Nous livrons dans toute l'Union européenne et au Royaume-Uni. Plus vous commandez, moins vous payez la livraison — voire pas du tout.", // REVIEW
     factShipsTomorrow: "Commandez aujourd'hui, expédié demain", // REVIEW
     factFreeMulti: "Livraison gratuite sur les commandes de plusieurs bouteilles", // REVIEW
     factPacked: "Soigneusement emballé pour une livraison en toute sécurité", // REVIEW
@@ -464,7 +464,7 @@ export const fr: Dict = {
     processingP1:
       "Les commandes passées avant la fin de la journée sont emballées et expédiées le jour ouvré suivant. Vous recevrez un lien de suivi par e-mail dès que votre commande quitte nos locaux.", // REVIEW
     processingP2:
-      "Les délais de livraison dépendent de votre localisation. La plupart des pays principaux (Belgique, Allemagne, Luxembourg, Pays-Bas) reçoivent leur commande sous 2 à 3 jours ouvrés. Pour les autres destinations de l'UE, comptez de 3 à 7 jours ouvrés selon le transporteur et la destination.", // REVIEW
+      "Les délais de livraison dépendent de votre localisation. La plupart des pays principaux (Belgique, Allemagne, Luxembourg, Pays-Bas) reçoivent leur commande sous 2 à 3 jours ouvrés. Pour les autres destinations de l'UE, comptez de 3 à 7 jours ouvrés selon le transporteur et la destination. Les commandes vers le Royaume-Uni arrivent généralement sous 6 à 8 jours ouvrés ; l'huile d'olive entre au Royaume-Uni sans droits de douane ni TVA, aucun frais supplémentaire n'est donc facturé à la livraison.", // REVIEW
     returnsHeading: "Retours & dommages",
     returnsP1:
       "Comme l'huile d'olive est un produit alimentaire, elle est exemptée du droit de rétractation standard de 14 jours de l'UE prévu par la directive sur les droits des consommateurs. Nous n'acceptons pas les retours de produits ouverts ou non endommagés.", // REVIEW
@@ -474,11 +474,12 @@ export const fr: Dict = {
     contactHeading: "Des questions sur votre commande ?",
     contactSub: "Nous sommes là pour vous aider. Écrivez-nous à tout moment.", // REVIEW
     freeFromBottles: "{n} bouteilles",
-    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
+    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", uk: "UK", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
     delivery: {
       core: "2–3 jours ouvrés",
       tier1: "3–5 jours ouvrés",
       tier2: "4–6 jours ouvrés",
+      uk: "6–8 jours ouvrés",
       tier3: "5–7 jours ouvrés",
       tier4: "6–8 jours ouvrés",
       tier5: "5–8 jours ouvrés",
@@ -489,7 +490,7 @@ export const fr: Dict = {
       France: "France", Hungary: "Hongrie", Liechtenstein: "Liechtenstein", Malta: "Malte", Poland: "Pologne",
       Slovakia: "Slovaquie", Slovenia: "Slovénie", Estonia: "Estonie", Ireland: "Irlande", Italy: "Italie",
       Latvia: "Lettonie", Lithuania: "Lituanie", Spain: "Espagne", Sweden: "Suède", Finland: "Finlande",
-      Greece: "Grèce", Portugal: "Portugal", Romania: "Roumanie", Cyprus: "Chypre", Norway: "Norvège", Switzerland: "Suisse",
+      Greece: "Grèce", Portugal: "Portugal", Romania: "Roumanie", Cyprus: "Chypre", Norway: "Norvège", Switzerland: "Suisse", UnitedKingdom: "Royaume-Uni",
     },
   },
 

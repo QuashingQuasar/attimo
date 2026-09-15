@@ -46,11 +46,12 @@ const TermsOfService = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-3">Shipping</h2>
               <p className="leading-relaxed opacity-80 mb-3">
-                We currently ship to Belgium and throughout the European Union. Estimated delivery times are:
+                We currently ship to Belgium, throughout the European Union, and to the United Kingdom. Estimated delivery times are:
               </p>
               <ul className="list-disc pl-6 space-y-2 opacity-80">
                 <li><strong>Belgium</strong> — 2–4 business days</li>
                 <li><strong>EU countries</strong> — 5–10 business days</li>
+                <li><strong>United Kingdom</strong> — 6–8 business days</li>
               </ul>
               <p className="leading-relaxed opacity-80 mt-3">
                 Delivery times are estimates and may vary depending on your location and carrier availability. Shipping costs, if applicable, are shown at checkout before you complete your purchase. Risk of loss passes to you upon delivery.

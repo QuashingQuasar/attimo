@@ -494,7 +494,7 @@ export const en = {
     title: "Shipping | ATTIMO Specialty Extra Virgin Olive Oil",
     heading: "Shipping Information",
     intro:
-      "We ship across the European Union. The more you order, the less you pay for shipping — or nothing at all.", // REVIEW
+      "We ship across the European Union and the United Kingdom. The more you order, the less you pay for shipping — or nothing at all.", // REVIEW
     factShipsTomorrow: "Order today, ships tomorrow", // REVIEW
     factFreeMulti: "Free shipping on multi-bottle orders", // REVIEW
     factPacked: "Carefully packed for safe delivery", // REVIEW
@@ -508,7 +508,7 @@ export const en = {
     processingP1:
       "Orders placed before the end of the day are packed and shipped the following business day. You'll receive a tracking link by email as soon as your order leaves our facility.", // REVIEW
     processingP2:
-      "Delivery times depend on your location. Most Core countries (Belgium, Germany, Luxembourg, Netherlands) receive their order within 2–3 business days. For other EU destinations, expect 3–7 business days depending on the carrier and destination.", // REVIEW
+      "Delivery times depend on your location. Most Core countries (Belgium, Germany, Luxembourg, Netherlands) receive their order within 2–3 business days. For other EU destinations, expect 3–7 business days depending on the carrier and destination. Orders to the United Kingdom typically arrive within 6–8 business days; olive oil enters the UK free of import duties and VAT, so nothing extra is charged on delivery.", // REVIEW
     returnsHeading: "Returns & damages",
     returnsP1:
       "Because olive oil is a food product, it is exempt from the standard EU 14-day right of withdrawal under the Consumer Rights Directive. We do not accept returns on opened or undamaged products.", // REVIEW
@@ -519,11 +519,12 @@ export const en = {
     contactSub: "We're here to help. Reach out anytime.", // REVIEW
     // Free-shipping threshold cell, e.g. "2 bottles". Placeholder {n}.
     freeFromBottles: "{n} bottles",
-    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
+    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", uk: "UK", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
     delivery: {
       core: "2–3 business days",
       tier1: "3–5 business days",
       tier2: "4–6 business days",
+      uk: "6–8 business days",
       tier3: "5–7 business days",
       tier4: "6–8 business days",
       tier5: "5–8 business days",
@@ -535,7 +536,7 @@ export const en = {
       France: "France", Hungary: "Hungary", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Poland",
       Slovakia: "Slovakia", Slovenia: "Slovenia", Estonia: "Estonia", Ireland: "Ireland", Italy: "Italy",
       Latvia: "Latvia", Lithuania: "Lithuania", Spain: "Spain", Sweden: "Sweden", Finland: "Finland",
-      Greece: "Greece", Portugal: "Portugal", Romania: "Romania", Cyprus: "Cyprus", Norway: "Norway", Switzerland: "Switzerland",
+      Greece: "Greece", Portugal: "Portugal", Romania: "Romania", Cyprus: "Cyprus", Norway: "Norway", Switzerland: "Switzerland", UnitedKingdom: "United Kingdom",
     },
   },
 

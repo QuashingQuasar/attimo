@@ -447,7 +447,7 @@ export const sv: Dict = {
     title: "Frakt | ATTIMO Extra jungfruolja i specialklass",
     heading: "Fraktinformation",
     intro:
-      "Vi skickar över hela EU. Ju mer du beställer, desto mindre betalar du för frakt – eller inget alls.",
+      "Vi skickar över hela EU och till Storbritannien. Ju mer du beställer, desto mindre betalar du för frakt – eller inget alls.",
     factShipsTomorrow: "Beställ idag, skickas imorgon",
     factFreeMulti: "Fri frakt på beställningar med flera flaskor",
     factPacked: "Noggrant packad för säker leverans",
@@ -461,7 +461,7 @@ export const sv: Dict = {
     processingP1:
       "Beställningar som läggs före dagens slut packas och skickas nästa arbetsdag. Du får en spårningslänk via e-post så snart din beställning lämnar vårt lager.",
     processingP2:
-      "Leveranstider beror på var du bor. De flesta kärnländer (Belgien, Tyskland, Luxemburg, Nederländerna) får sin beställning inom 2–3 arbetsdagar. För andra EU-destinationer, räkna med 3–7 arbetsdagar beroende på transportör och destination.",
+      "Leveranstider beror på var du bor. De flesta kärnländer (Belgien, Tyskland, Luxemburg, Nederländerna) får sin beställning inom 2–3 arbetsdagar. För andra EU-destinationer, räkna med 3–7 arbetsdagar beroende på transportör och destination. Beställningar till Storbritannien kommer vanligtvis fram inom 6–8 arbetsdagar; olivolja är befriad från importtullar och moms i Storbritannien, så inga extra avgifter tillkommer vid leverans.",
     returnsHeading: "Returer & skador",
     returnsP1:
       "Eftersom olivolja är en livsmedelsprodukt är den undantagen från den vanliga 14-dagars ångerrätten enligt EU:s konsumenträttighetsdirektiv. Vi tar inte emot returer på öppnade eller oskadade produkter.",
@@ -471,11 +471,12 @@ export const sv: Dict = {
     contactHeading: "Frågor om din beställning?",
     contactSub: "Vi hjälper gärna till. Hör av dig när som helst.",
     freeFromBottles: "{n} flaskor",
-    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", tier3: "Nivå 3", tier4: "Nivå 4", tier5: "Nivå 5" },
+    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", uk: "UK", tier3: "Nivå 3", tier4: "Nivå 4", tier5: "Nivå 5" },
     delivery: {
       core: "2–3 arbetsdagar",
       tier1: "3–5 arbetsdagar",
       tier2: "4–6 arbetsdagar",
+      uk: "6–8 arbetsdagar",
       tier3: "5–7 arbetsdagar",
       tier4: "6–8 arbetsdagar",
       tier5: "5–8 arbetsdagar",
@@ -486,7 +487,7 @@ export const sv: Dict = {
       France: "Frankrike", Hungary: "Ungern", Liechtenstein: "Liechtenstein", Malta: "Malta", Poland: "Polen",
       Slovakia: "Slovakien", Slovenia: "Slovenien", Estonia: "Estland", Ireland: "Irland", Italy: "Italien",
       Latvia: "Lettland", Lithuania: "Litauen", Spain: "Spanien", Sweden: "Sverige", Finland: "Finland",
-      Greece: "Grekland", Portugal: "Portugal", Romania: "Rumänien", Cyprus: "Cypern", Norway: "Norge", Switzerland: "Schweiz",
+      Greece: "Grekland", Portugal: "Portugal", Romania: "Rumänien", Cyprus: "Cypern", Norway: "Norge", Switzerland: "Schweiz", UnitedKingdom: "Storbritannien",
     },
   },
 
