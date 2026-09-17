@@ -310,7 +310,7 @@ export const en = {
     backSoon: "Back Soon",
     newBatchHeading: "New Batch on the Way", // REVIEW
     newBatchSubtitle:
-      "We'll send you an email when Coratina d'Italia is available again (estimated 1–2 weeks).", // REVIEW
+      "We'll send you an email when Coratina d'Italia is available again.", // REVIEW
     attrVariety: "Variety",
     attrOrigin: "Origin",
     attrHarvest: "Harvest",

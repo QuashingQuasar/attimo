@@ -288,7 +288,7 @@ export const nl: Dict = {
     backSoon: "Binnenkort terug",
     newBatchHeading: "Nieuwe partij onderweg", // REVIEW
     newBatchSubtitle:
-      "We sturen je een e-mail zodra Coratina d'Italia weer beschikbaar is (naar schatting 1–2 weken).", // REVIEW
+      "We sturen je een e-mail zodra Coratina d'Italia weer beschikbaar is.", // REVIEW
     attrVariety: "Variëteit",
     attrOrigin: "Herkomst",
     attrHarvest: "Oogst",

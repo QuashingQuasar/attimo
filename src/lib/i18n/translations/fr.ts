@@ -289,7 +289,7 @@ export const fr: Dict = {
     backSoon: "Bientôt de retour",
     newBatchHeading: "Nouveau lot en route", // REVIEW
     newBatchSubtitle:
-      "Nous vous enverrons un e-mail dès que la Coratina d'Italia sera de nouveau disponible (estimation 1 à 2 semaines).", // REVIEW
+      "Nous vous enverrons un e-mail dès que la Coratina d'Italia sera de nouveau disponible.", // REVIEW
     attrVariety: "Variété",
     attrOrigin: "Origine",
     attrHarvest: "Récolte",

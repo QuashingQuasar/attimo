@@ -286,7 +286,7 @@ export const da: Dict = {
     backSoon: "Snart igen",
     newBatchHeading: "Nyt parti på vej",
     newBatchSubtitle:
-      "Vi sender dig en e-mail, når Coratina d'Italia er tilgængelig igen (anslået 1–2 uger).",
+      "Vi sender dig en e-mail, når Coratina d'Italia er tilgængelig igen.",
     attrVariety: "Sort",
     attrOrigin: "Oprindelse",
     attrHarvest: "Høst",
