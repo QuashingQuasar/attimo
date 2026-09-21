@@ -349,6 +349,8 @@ export const de: Dict = {
       tasteTemplate: "Wie schmeckt das ATTIMO {variety}?",
       tasteNoHandle: "Wie schmeckt es?",
       polyphenols: "Was sind Polyphenole und warum sind sie wichtig?",
+      methodUsed: "Mit welcher Methode messt ihr die Polyphenole?",
+      higherNumbers: "Warum zeigen manche Olivenöle deutlich höhere Polyphenolwerte?",
       fresh: "Wie frisch ist das Olivenöl?",
       lab: "Kann ich die Laborergebnisse sehen?",
       use: "Wie verwende ich dieses Olivenöl?",
@@ -365,6 +367,11 @@ export const de: Dict = {
       organic: "Unsere Coratina ist bio-zertifiziert. Bei unseren anderen Ölen ist die Bio-Zertifizierung nicht unser Hauptkriterium – uns ist wichtig, wie die Oliven angebaut und verarbeitet werden, mit Fokus auf eine eingriffsarme Landwirtschaft, frühe Ernte und Qualität über allem. Zertifiziert oder nicht, wir legen an jedes Öl dieselben hohen Maßstäbe an.", // REVIEW
       polyphenolsText: "Polyphenole sind natürliche Verbindungen im Olivenöl, die die Vorteile liefern, von denen Sie gehört haben – entzündungshemmende Eigenschaften, Unterstützung der Herzgesundheit und antioxidativer Schutz. Die meisten handelsüblichen Öle haben aufgrund von Verarbeitung und Verschnitt niedrige Polyphenolwerte. ATTIMO-Öle sind reich daran, weil sie frisch, unverschnitten und aus hochwertigen Quellen stammen.", // REVIEW
       polyphenolsLink: "Mehr über Polyphenole erfahren",
+      // Q: which method — text, then a link to the methods page, then a period.
+      methodUsedText: "Mit HPLC, dem offiziellen Verfahren des Internationalen Olivenrats (COI/T.20/Doc. No 29), durchgeführt in einem nach ISO/IEC 17025 akkreditierten Labor. Es trennt das Öl auf und wiegt jede Verbindung einzeln, sodass Oleocanthal und Oleacein als eigene Werte erscheinen, statt in einer Gesamtzahl zu verschwinden.",
+      // Q: why others read higher — same shape.
+      higherNumbersText: "Meist wurden sie anders gemessen. NMR und Folin-Ciocalteu zählen andere Verbindungen in anderen Einheiten, deshalb liegen ihre Gesamtwerte beim selben Öl höher als ein HPLC-Wert. Gesamtwerte aus verschiedenen Verfahren lassen sich nicht vergleichen. Oleocanthal und Oleacein schon, denn ein Molekül wiegt gleich viel, egal welches Gerät es zählt.",
+      methodsLink: "Wie Polyphenole gemessen werden",
       labGeneric: "Absolut. Jede Charge ATTIMO-Öl wird unabhängig von einem Drittlabor geprüft, und die vollständigen Ergebnisse sind auf jeder Produktseite verfügbar. Wir testen Polyphenolgehalt, Säuregrad, Peroxidzahl und vieles mehr. Wir glauben an vollständige Transparenz – Sie sollten jederzeit überprüfen können, welche Qualität Sie auf Ihren Teller bringen.", // REVIEW
       labText: "Ja. Jede Charge wird von einem Drittlabor geprüft, und Sie können die Qualitätsmarker selbst überprüfen. Wir glauben an vollständige Transparenz – Sie sollten genau wissen, was Sie bekommen.", // REVIEW
       labLinkPrefix: "Laborergebnisse ansehen für ",

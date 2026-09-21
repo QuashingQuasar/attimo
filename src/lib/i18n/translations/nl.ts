@@ -343,6 +343,8 @@ export const nl: Dict = {
       tasteTemplate: "Hoe smaakt ATTIMO {variety}?", // {variety} is a proper name, kept verbatim
       tasteNoHandle: "Hoe smaakt het?",
       polyphenols: "Wat zijn polyfenolen en waarom zijn ze belangrijk?",
+      methodUsed: "Welke methode gebruiken jullie om polyfenolen te meten?",
+      higherNumbers: "Waarom tonen sommige olijfoliën veel hogere polyfenolcijfers?",
       fresh: "Hoe vers is de olijfolie?",
       lab: "Kan ik de labresultaten inzien?",
       use: "Hoe gebruik ik deze olijfolie?",
@@ -360,6 +362,11 @@ export const nl: Dict = {
       // Q: polyphenols — text, then a link, then a literal period.
       polyphenolsText: "Polyfenolen zijn natuurlijke stoffen in olijfolie die zorgen voor de gezondheidsvoordelen waar je over hebt gehoord — ontstekingsremmende eigenschappen, ondersteuning van de gezondheid van het hart en bescherming door antioxidanten. De meeste oliën uit de winkel hebben lage polyfenolwaarden door verwerking en menging. ATTIMO-oliën zijn rijk aan polyfenolen omdat ze vers en ongemengd zijn en van kwaliteitsbronnen komen.", // REVIEW
       polyphenolsLink: "Lees meer over polyfenolen",
+      // Q: which method — text, then a link to the methods page, then a period.
+      methodUsedText: "HPLC, de officiële methode van de Internationale Olijfolieraad (COI/T.20/Doc. No 29), uitgevoerd in een ISO/IEC 17025-geaccrediteerd lab. Ze splitst de olie op en weegt elke verbinding apart, zodat oleocanthal en oleaceïne als eigen cijfers verschijnen in plaats van op te gaan in één totaal.",
+      // Q: why others read higher — same shape.
+      higherNumbersText: "Meestal omdat ze anders gemeten zijn. NMR en Folin-Ciocalteu tellen andere verbindingen in andere eenheden, waardoor hun totalen hoger uitvallen dan een HPLC-cijfer op dezelfde olie. Totalen uit verschillende methodes kun je niet vergelijken. Oleocanthal en oleaceïne wel, want een molecuul weegt hetzelfde, welk instrument het ook telt.",
+      methodsLink: "Hoe polyfenolen gemeten worden",
       labGeneric: "Absoluut. Elke partij ATTIMO-olie wordt onafhankelijk getest door een extern laboratorium, en de volledige resultaten staan op elke productpagina. We testen op polyfenolgehalte, zuurgraad, peroxidewaarden en meer. We geloven in volledige transparantie — je moet altijd kunnen controleren wat de kwaliteit is van wat je op je bord legt.", // REVIEW
       labText: "Ja. Elke partij wordt getest door een extern laboratorium, en je kunt de kwaliteitsmarkers zelf controleren. We geloven in volledige transparantie — je hoort precies te weten wat je krijgt.", // REVIEW
       labLinkPrefix: "Bekijk de labresultaten voor ",

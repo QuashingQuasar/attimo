@@ -340,6 +340,8 @@ export const fr: Dict = {
       tasteTemplate: "Quel goût a l'ATTIMO {variety} ?",
       tasteNoHandle: "Quel goût a-t-elle ?",
       polyphenols: "Que sont les polyphénols et pourquoi sont-ils importants ?",
+      methodUsed: "Quelle méthode utilisez-vous pour mesurer les polyphénols ?",
+      higherNumbers: "Pourquoi certaines huiles d'olive affichent-elles des valeurs de polyphénols bien plus élevées ?",
       fresh: "Quelle est la fraîcheur de l'huile d'olive ?",
       lab: "Puis-je voir les résultats de laboratoire ?",
       use: "Comment utiliser cette huile d'olive ?",
@@ -356,6 +358,11 @@ export const fr: Dict = {
       organic: "Notre Coratina est certifiée biologique. Pour nos autres huiles, la certification bio n'est pas notre principal critère — nous accordons une grande importance à la façon dont les olives sont cultivées et transformées, en privilégiant une agriculture à faible intervention, la récolte précoce et la qualité avant tout. Certifiée ou non, nous appliquons à chaque huile les mêmes exigences élevées.", // REVIEW
       polyphenolsText: "Les polyphénols sont des composés naturels de l'huile d'olive qui apportent les bienfaits dont vous avez entendu parler — propriétés anti-inflammatoires, soutien de la santé cardiaque et protection antioxydante. La plupart des huiles du commerce ont de faibles taux de polyphénols à cause de la transformation et de l'assemblage. Les huiles ATTIMO en sont riches car elles sont fraîches, non assemblées et issues de sources de qualité.", // REVIEW
       polyphenolsLink: "En savoir plus sur les polyphénols",
+      // Q: which method — text, then a link to the methods page, then a period.
+      methodUsedText: "La HPLC, la méthode officielle du Conseil oléicole international (COI/T.20/Doc. No 29), réalisée dans un laboratoire accrédité ISO/IEC 17025. Elle sépare l'huile et pèse chaque composé séparément, de sorte que l'oléocanthal et l'oléacéine apparaissent comme des valeurs distinctes au lieu de se fondre dans un total.",
+      // Q: why others read higher — same shape.
+      higherNumbersText: "Le plus souvent parce qu'elles ont été mesurées autrement. La RMN et le Folin-Ciocalteu comptent d'autres composés dans d'autres unités : leurs totaux dépassent donc un total HPLC sur la même huile. Les totaux issus de méthodes différentes ne se comparent pas. L'oléocanthal et l'oléacéine, si : une molécule pèse le même poids quel que soit l'instrument qui la compte.",
+      methodsLink: "Comment les polyphénols sont mesurés",
       labGeneric: "Absolument. Chaque lot d'huile ATTIMO est testé de façon indépendante par un laboratoire tiers, et les résultats complets sont disponibles sur chaque page produit. Nous testons la teneur en polyphénols, l'acidité, l'indice de peroxyde et bien plus. Nous croyons en une transparence totale — vous devez toujours pouvoir vérifier la qualité de ce que vous mettez dans votre assiette.", // REVIEW
       labText: "Oui. Chaque lot est testé par un laboratoire tiers, et vous pouvez vérifier vous-même les marqueurs de qualité. Nous croyons en une transparence totale — vous devez savoir exactement ce que vous obtenez.", // REVIEW
       labLinkPrefix: "Voir les résultats de laboratoire pour ",

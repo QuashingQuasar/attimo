@@ -337,6 +337,8 @@ export const da: Dict = {
       tasteTemplate: "Hvordan smager ATTIMO {variety}?",
       tasteNoHandle: "Hvordan smager den?",
       polyphenols: "Hvad er polyfenoler, og hvorfor er de vigtige?",
+      methodUsed: "Hvilken metode bruger I til at måle polyfenoler?",
+      higherNumbers: "Hvorfor viser nogle olivenolier markant højere polyfenoltal?",
       fresh: "Hvor frisk er olivenolien?",
       lab: "Kan jeg se labresultaterne?",
       use: "Hvordan skal jeg bruge denne olivenolie?",
@@ -353,6 +355,11 @@ export const da: Dict = {
       organic: "Vores Coratina er økologisk certificeret. For vores andre olier er økologisk certificering ikke den primære linse, vi bruger – vi går dybt op i, hvordan olivenerne dyrkes og forarbejdes, og prioriterer lavintensivt landbrug, tidlig høst og kvalitet frem for alt. Certificeret eller ej holder vi hver olie til samme høje standard.",
       polyphenolsText: "Polyfenoler er naturlige stoffer i olivenolie, der giver de sundhedsfordele, du har hørt om – antiinflammatoriske egenskaber, støtte til hjertesundhed og antioxidantbeskyttelse. De fleste butikskøbte olier har lave polyfenolniveauer på grund af forarbejdning og blanding. ATTIMO-olier er rige på polyfenoler, fordi de er friske, ublandede og fra kvalitetskilder.",
       polyphenolsLink: "Læs mere om polyfenoler",
+      // Q: which method — text, then a link to the methods page, then a period.
+      methodUsedText: "HPLC, Det Internationale Olivenråds officielle metode (COI/T.20/Doc. No 29), udført på et ISO/IEC 17025-akkrediteret laboratorium. Den skiller olien ad og vejer hver forbindelse for sig, så oleocanthal og oleacein står som deres egne tal i stedet for at forsvinde i en samlet sum.",
+      // Q: why others read higher — same shape.
+      higherNumbersText: "Som regel fordi de er målt på en anden måde. NMR og Folin-Ciocalteu tæller andre forbindelser i andre enheder, så deres samlede tal lander højere end et HPLC-tal på den samme olie. Samlede tal fra forskellige metoder kan ikke sammenlignes. Det kan oleocanthal og oleacein, for et molekyle vejer det samme, uanset hvilket instrument der tæller det.",
+      methodsLink: "Sådan måles polyfenoler",
       labGeneric: "Absolut. Hvert parti ATTIMO-olie labtestes uafhængigt af tredjepart, og de fulde resultater findes på hver produktside. Vi tester polyfenolindhold, syre, peroxidværdier og mere. Vi tror på fuld gennemsigtighed – du skal altid kunne verificere kvaliteten af det, du kommer på tallerkenen.",
       labText: "Ja. Hvert parti labtestes af tredjepart, og du kan selv verificere kvalitetsmarkørerne. Vi tror på fuld gennemsigtighed – du skal vide præcis, hvad du får.",
       labLinkPrefix: "Se labresultater for ",

@@ -365,6 +365,8 @@ export const en = {
       tasteTemplate: "What does ATTIMO {variety} taste like?", // {variety} is a proper name, kept verbatim
       tasteNoHandle: "What does it taste like?",
       polyphenols: "What are polyphenols and why do they matter?",
+      methodUsed: "Which method do you use to measure polyphenols?",
+      higherNumbers: "Why do some olive oils show much higher polyphenol numbers?",
       fresh: "How fresh is the olive oil?",
       lab: "Can I see the lab results?",
       use: "How should I use this olive oil?",
@@ -382,6 +384,11 @@ export const en = {
       // Q: polyphenols — text, then a link, then a literal period.
       polyphenolsText: "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about—anti-inflammatory properties, heart health support, and antioxidant protection. Most store-bought oils have low polyphenol levels due to processing and blending. ATTIMO oils are high in polyphenols because they're fresh, unblended, and from quality sources.", // REVIEW
       polyphenolsLink: "Learn more about polyphenols",
+      // Q: which method — text, then a link to the methods page, then a period.
+      methodUsedText: "HPLC, the International Olive Council's official method (COI/T.20/Doc. No 29), run at an ISO/IEC 17025 accredited laboratory. It separates the oil and weighs each compound on its own, so oleocanthal and oleacein appear as their own figures instead of disappearing into one total.",
+      // Q: why others read higher — same shape.
+      higherNumbersText: "Usually because they were measured a different way. NMR and Folin-Ciocalteu count a different set of compounds in different units, so their totals land higher than an HPLC total on the very same oil. Totals from different methods cannot be compared. Oleocanthal and oleacein can, because a molecule weighs the same whichever instrument counts it.",
+      methodsLink: "How polyphenols are measured",
       // Q: lab — generic version (no product handle).
       labGeneric: "Absolutely. Every batch of ATTIMO oil is independently lab tested by a third party, and the full results are available on each product page. We test for polyphenol content, acidity, peroxide values and more. We believe in complete transparency — you should always be able to verify the quality of what you're putting on your plate.", // REVIEW
       // Q: lab — product version: text, then link "<labLinkPrefix><variety>".

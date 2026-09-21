@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict, type Dict } from "@/lib/i18n/dictionaries";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 
 export interface FaqItem {
   question: string;
@@ -12,7 +13,7 @@ export interface FaqItem {
 
 type VarietyKey = "coratina" | "nocellara" | "picual";
 
-function getFaqs(handle: string | undefined, t: Dict["faq"]): FaqItem[] {
+function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string): FaqItem[] {
   const h = (handle || "") as VarietyKey | "";
   const isVariety = (k: string): k is VarietyKey =>
     k === "coratina" || k === "nocellara" || k === "picual";
@@ -43,6 +44,40 @@ function getFaqs(handle: string | undefined, t: Dict["faq"]): FaqItem[] {
             style={{ color: "#1B4229" }}
           >
             {t.a.polyphenolsLink}
+          </Link>
+          .
+        </>
+      ),
+    },
+    {
+      question: t.q.methodUsed,
+      answer: null,
+      answerElement: (
+        <>
+          {t.a.methodUsedText}{" "}
+          <Link
+            to={methodsHref}
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            {t.a.methodsLink}
+          </Link>
+          .
+        </>
+      ),
+    },
+    {
+      question: t.q.higherNumbers,
+      answer: null,
+      answerElement: (
+        <>
+          {t.a.higherNumbersText}{" "}
+          <Link
+            to={methodsHref}
+            className="underline hover:no-underline"
+            style={{ color: "#1B4229" }}
+          >
+            {t.a.methodsLink}
           </Link>
           .
         </>
@@ -171,7 +206,9 @@ interface FAQProps {
 
 export const FAQ = ({ handle, locale = DEFAULT_LOCALE, items, heading, headingFontFamily }: FAQProps) => {
   const t = getDict(locale).faq;
-  const faqs = items ?? getFaqs(handle, t);
+  const methodsHref =
+    METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
+  const faqs = items ?? getFaqs(handle, t, methodsHref);
 
   return (
     <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#FFFAEA" }}>
