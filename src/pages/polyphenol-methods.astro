@@ -134,6 +134,7 @@ const faqJsonLd = {
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={[articleJsonLd, faqJsonLd]}
 >
+  <div class="relative min-h-screen">
   <Header client:load />
 
   <main style={`color:${GREEN};`}>
@@ -153,8 +154,8 @@ const faqJsonLd = {
            is transparent here, so without this the bar bleeds straight into the
            photograph and the nav links sit on bare canopy. -->
       <div
-        class="absolute inset-x-0 top-0 h-48 pointer-events-none"
-        style="background:linear-gradient(to bottom, rgba(16,34,27,.92) 0%, rgba(16,34,27,.55) 45%, rgba(16,34,27,0) 100%);"
+        class="absolute inset-x-0 top-0 h-40 pointer-events-none"
+        style="background:linear-gradient(to bottom, rgba(16,34,27,.72) 0%, rgba(16,34,27,.4) 50%, rgba(16,34,27,0) 100%);"
       ></div>
       <div class="relative container mx-auto px-6 max-w-5xl pb-16 pt-36">
         <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>Polyphenol analysis methods explained</p>
@@ -301,7 +302,7 @@ const faqJsonLd = {
         </div>
 
         <div class="mt-8">
-          <p style={`font-family:${SG}; font-size:1rem; line-height:1.7; color:rgba(255,250,234,.8);`}>
+          <p style={`${lead} color:rgba(255,250,234,.8);`}>
             <strong style={`color:${ACCENT};`}>What is the IOC?</strong> The International
             Olive Council is the United Nations-backed body that writes the rules for olive
             oil — the grades, the tasting standards and the laboratory methods. It has
@@ -316,7 +317,7 @@ const faqJsonLd = {
       <div class="container mx-auto max-w-6xl">
         <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Case study: Coratina 2025 harvest</p>
         <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
-          Two Coratinas: phenolically weaker B reads higher than A because of the NMR method
+          Two Coratinas: phenolically weaker oil reads higher because of the NMR method
         </h2>
         <p class="mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>
           HPLC measures each bioactive polyphenol individually. NMR reads them in aggregate.
@@ -328,7 +329,6 @@ const faqJsonLd = {
         <div class="grid md:grid-cols-2 gap-5">
           {[
             {
-              label: "A",
               name: "ATTIMO Coratina 2025",
               badge: "HPLC",
               method: "IOC Doc. No 29",
@@ -340,7 +340,6 @@ const faqJsonLd = {
               mine: true,
             },
             {
-              label: "B",
               name: "Competitor Coratina",
               badge: "NMR",
               method: "No IOC method",
@@ -360,7 +359,7 @@ const faqJsonLd = {
             >
               <div class="flex items-start justify-between gap-3 mb-7">
                 <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; color:${c.mine ? CREAM : GREEN};`}>
-                  <span style={`color:${c.mine ? ACCENT : "rgba(27,66,41,.55)"};`}>{c.label}</span> · {c.name}
+                  {c.name}
                 </h3>
                 <span
                   class="rounded-full px-3 py-1.5 flex-shrink-0"
@@ -759,6 +758,7 @@ const faqJsonLd = {
       </div>
     </section>
   </main>
+  </div>
 
   <Footer />
 </BaseLayout>
