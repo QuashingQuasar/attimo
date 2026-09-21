@@ -44,9 +44,17 @@ const heroShadow = "text-shadow:0 2px 24px rgba(16,34,27,.92), 0 1px 5px rgba(16
 const lead = `font-family:${SG}; font-size:clamp(1.05rem,1.25vw,1.3rem); line-height:1.65;`;
 
 const c = content;
+
+// Thousands separator by market. A comma is a DECIMAL separator in de/nl/da/sv/fr,
+// so printing "1,215 mg/kg" there reads as 1.215 — a thousandfold misread on a
+// page whose whole argument is that a figure means the same thing everywhere.
+const GROUP: Record<string, string> = { en: ",", de: ".", nl: ".", da: ".", sv: "\u202F", fr: "\u202F" };
+const sep = GROUP[c.lang] ?? ",";
+const num = (n: number) =>
+  n >= 1000 ? `${String(n).slice(0, -3)}${sep}${String(n).slice(-3)}` : String(n);
 const rival = [
   { name: c.caseStudy.mineName, badge: "HPLC", method: c.caseStudy.mineMethod, total: "847", oleocanthal: "471", oleacein: "336", sum: "807", source: "Chemiservice, report 2533647", mine: true },
-  { name: c.caseStudy.rivalName, badge: "NMR", method: c.caseStudy.rivalMethod, total: "1,295", oleocanthal: "292", oleacein: "148", sum: "439", source: "World Olive Center, certificate C2526-00283", mine: false },
+  { name: c.caseStudy.rivalName, badge: "NMR", method: c.caseStudy.rivalMethod, total: num(1295), oleocanthal: "292", oleacein: "148", sum: "439", source: "World Olive Center, certificate C2526-00283", mine: false },
 ];
 const doseRows = [
   { name: c.compounds.doseRows.supermarket, grams: "28 g", kcal: 245, fill: "#A8B88F", udc: false },
@@ -100,7 +108,7 @@ const doseRows = [
             <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${CREAM};`}>NMR</h2>
             <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(255,250,234,.7);`}>{c.hero.nmrSub}</p>
             <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:rgba(255,250,234,.72);`}>
-              ~1,215<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+              ~{num(1215)}<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
             </p>
             <p class="mt-1" style={`${eyebrowSm} color:rgba(255,250,234,.6);`}>{c.hero.totalLabel}</p>
           </div>
