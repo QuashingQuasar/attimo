@@ -3,7 +3,7 @@
 // bag-in-box. Same idea as /product/coratina-3l but per-locale price/currency
 // and link, so each market's feed can point at a page whose structured data
 // matches the box (not the 500ml bottle). See the default-locale file for the
-// full rationale. Canonical → self, noindex.
+// full rationale. Canonical → self.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
@@ -87,7 +87,6 @@ const productJsonLd = {
   ogType="product"
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
-  noIndex={true}
   htmlLang={locale.lang}
   announceTier2={dict.announce.freeShipping2}
   announceTier3={dict.announce.freeShipping3}
