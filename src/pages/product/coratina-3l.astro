@@ -5,8 +5,7 @@
 // data. This exists so Merchant Center / Google crawls the box's real price &
 // availability here instead of inheriting the 500ml bottle's schema from
 // /product/coratina (?format=box is a query param on static HTML, so it can't
-// carry its own schema). Canonical points to itself; noindex so it doesn't
-// compete with the bottle PDP in organic.
+// carry its own schema). Canonical points to itself.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
 import { aggregateRating, reviews } from "@/lib/reviewSchema";
@@ -82,7 +81,6 @@ const productJsonLd = {
   ogType="product"
   bodyStyle="background-color: #FFFAEA;"
   jsonLd={productJsonLd}
-  noIndex={true}
 >
   <script is:inline define:vars={{ handle: "coratina" }}>
     if (typeof window !== "undefined") window.__ASTRO_PARAMS__ = { handle };
