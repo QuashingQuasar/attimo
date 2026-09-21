@@ -112,7 +112,7 @@ const articleJsonLd = {
     "@type": "ImageObject",
     url: IMG.grove,
     caption:
-      "One Coratina olive oil on two methods: 847 mg/kg measured by HPLC, and an estimated 1,150 mg/kg by NMR, shown on a single scale.",
+      "One Coratina olive oil on two methods: 847 mg/kg by HPLC and 1,215 mg/kg by NMR.",
   },
 };
 
@@ -160,7 +160,7 @@ const faqJsonLd = {
       <div class="relative container mx-auto px-6 max-w-5xl pb-16 pt-36">
         <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>Polyphenol analysis methods explained</p>
         <h1 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.4vw,3.8rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; ${heroShadow}`}>
-          The same olive oil can have 847 or 1,150 polyphenols, depending on the test
+          The same olive oil can have 847 or 1,215 polyphenols, depending on how it's measured
         </h1>
         <p class="mb-10" style={`${lead} color:rgba(255,250,234,.92); ${heroShadow}`}>
           Different methods result in different polyphenol totals for the exact same oil
@@ -169,35 +169,21 @@ const faqJsonLd = {
 
         <div class="grid md:grid-cols-2 gap-5">
           <div class="rounded-2xl p-7 md:p-8" style={`background-color:${CREAM};`}>
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h2 style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>HPLC</h2>
-              <span style={`${eyebrowSm} color:rgba(27,66,41,.6);`}>Measured</span>
-            </div>
+            <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>HPLC</h2>
             <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(27,66,41,.7);`}>The method we publish</p>
             <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:${GREEN};`}>
               847<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
             </p>
             <p class="mt-1" style={`${eyebrowSm} color:rgba(27,66,41,.6);`}>Total polyphenols</p>
-            <p class="mt-5" style={`font-family:${SG}; font-size:.88rem; line-height:1.6; color:rgba(27,66,41,.65);`}>
-              Chemiservice, Monopoli. Report 2533647, ±181 mg/kg.
-              <a href="/lab/Coratina2025.pdf" class="underline font-medium">Certificate →</a>
-            </p>
           </div>
 
           <div class="rounded-2xl p-7 md:p-8" style="background-color:rgba(255,250,234,.09); border:1px solid rgba(255,250,234,.22);">
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h2 style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${CREAM};`}>NMR</h2>
-              <span style={`${eyebrowSm} color:rgba(255,250,234,.6);`}>Estimated</span>
-            </div>
+            <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${CREAM};`}>NMR</h2>
             <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(255,250,234,.7);`}>The method most rivals publish</p>
             <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:rgba(255,250,234,.72);`}>
-              ~1,150<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+              ~1,215<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
             </p>
             <p class="mt-1" style={`${eyebrowSm} color:rgba(255,250,234,.6);`}>Total polyphenols</p>
-            <p class="mt-5" style={`font-family:${SG}; font-size:.88rem; line-height:1.6; color:rgba(255,250,234,.6);`}>
-              Producers who publish both land 1.2–1.5× above HPLC. We measure ours on the
-              October harvest.
-            </p>
           </div>
         </div>
 
