@@ -42,6 +42,9 @@ const eyebrowSm = `font-family:${UDC}; font-weight:700; font-size:.88rem; letter
 // Hero sits on photography, so its text carries a soft scrim of its own.
 const heroShadow = "text-shadow:0 2px 24px rgba(16,34,27,.92), 0 1px 5px rgba(16,34,27,.8);";
 const lead = `font-family:${SG}; font-size:clamp(1.05rem,1.25vw,1.3rem); line-height:1.65;`;
+// Hero eyebrow runs at 2x the standard eyebrow; tracking eases off because
+// .12em reads as gappy once the type is this large.
+const eyebrowHero = `font-family:${UDC}; font-weight:700; font-size:clamp(1.35rem,2.5vw,2.04rem); letter-spacing:.08em; text-transform:uppercase; line-height:1.2;`;
 
 const c = content;
 
@@ -89,7 +92,7 @@ const doseRows = [
            this section, so centring has to start below it or the block sits
            visibly high against the credibility band underneath. -->
       <div class="relative container mx-auto px-6 max-w-5xl pt-[124px] pb-8">
-        <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>{c.hero.eyebrow}</p>
+        <p class="mb-6" style={`${eyebrowHero} color:${ACCENT}; ${heroShadow}`}>{c.hero.eyebrow}</p>
         <h1 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.4vw,3.8rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; ${heroShadow}`}>
           {c.hero.h1}
         </h1>
