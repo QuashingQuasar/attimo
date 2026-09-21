@@ -30,6 +30,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/product/trio", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/duo", changefreq: "weekly", priority: "0.9" },
   { loc: "/high-polyphenol-olive-oil", changefreq: "weekly", priority: "0.9" },
+  { loc: "/polyphenol-methods", changefreq: "monthly", priority: "0.8" },
   // Localised polyphenol hubs (translated slugs, not prefix variants — so they
   // sit here as standalone entries; the EN↔DE hreflang cluster is emitted in
   // each page's <head> via HUB_HREFLANGS).
