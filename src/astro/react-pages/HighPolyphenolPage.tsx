@@ -317,7 +317,7 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
 
       {/* 8 — Reviews → FAQ → blog feed + newsletter → footer */}
       <Testimonials locale={locale} />
-      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} />
+      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} jsonLd={false} />
       <BlogSection initialPosts={initialPosts} locale={locale} heading={content.blogHeading} />
       <Footer locale={locale} />
 

@@ -421,7 +421,7 @@ function EarlyHarvestInner({ initialPosts, locale }: { initialPosts?: InitialPos
       <HealthTieIn c={content.healthTieIn} hubHref={hubHref} />
 
       <Testimonials locale={locale} />
-      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} />
+      <FAQ locale={locale} items={content.faq.items} heading={content.faq.heading} headingFontFamily={UDC} jsonLd={false} />
       <BlogSection initialPosts={initialPosts} locale={locale} heading={content.blogHeading} headingFontSize="clamp(1.9rem, 3.2vw, 3.4rem)" />
       <Footer locale={locale} />
 

@@ -9,6 +9,12 @@ export interface FaqItem {
   question: string;
   answer: string | null;
   answerElement?: ReactNode;
+  /**
+   * Plain-text answer for the FAQPage JSON-LD. Required whenever the visible
+   * answer is an `answerElement`, because structured data cannot carry JSX and
+   * crawlers never click the accordion open.
+   */
+  jsonText?: string;
 }
 
 type VarietyKey = "coratina" | "nocellara" | "picual";
@@ -35,6 +41,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.polyphenols,
       answer: null,
+      jsonText: t.a.polyphenolsText,
       answerElement: (
         <>
           {t.a.polyphenolsText}{" "}
@@ -52,6 +59,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.methodUsed,
       answer: null,
+      jsonText: t.a.methodUsedText,
       answerElement: (
         <>
           {t.a.methodUsedText}{" "}
@@ -69,6 +77,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.higherNumbers,
       answer: null,
+      jsonText: t.a.higherNumbersText,
       answerElement: (
         <>
           {t.a.higherNumbersText}{" "}
@@ -90,6 +99,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.lab,
       answer: h ? null : t.a.labGeneric,
+      jsonText: h ? `${t.a.labText} ${t.a.labLinkPrefix}${varietyName}.` : t.a.labGeneric,
       answerElement: h ? (() => {
         const labUrls: Record<string, string> = {
           coratina: "/lab/Coratina2025.pdf",
@@ -117,6 +127,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.use,
       answer: null,
+      jsonText: isVariety(h) ? t.use[h] : t.use.generic,
       answerElement: (
         <>
           {isVariety(h) ? t.use[h] : t.use.generic}{" "}
@@ -138,6 +149,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.cancel,
       answer: null,
+      jsonText: `${t.a.cancelPre}hello@attimo-oil.com${t.a.cancelPost}`,
       answerElement: (
         <>
           {t.a.cancelPre}
@@ -155,6 +167,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.wholesale,
       answer: null,
+      jsonText: `${t.a.wholesalePre}${t.a.wholesaleContactLink}${t.a.wholesaleMid}hello@attimo-oil.com${t.a.wholesalePost}`,
       answerElement: (
         <>
           {t.a.wholesalePre}
@@ -172,6 +185,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
     {
       question: t.q.shipping,
       answer: null,
+      jsonText: t.a.shippingText,
       answerElement: (
         <>
           {t.a.shippingText}{" "}
@@ -202,16 +216,48 @@ interface FAQProps {
   heading?: string;
   /** Override the heading font (default Beverly Drive script). */
   headingFontFamily?: string;
+  /**
+   * Emit FAQPage JSON-LD for this list. Default true. Set false where the page
+   * already emits its own FAQPage from the frontmatter (e.g. the methods page),
+   * because two FAQPage blocks on one URL is a structured-data error.
+   */
+  jsonLd?: boolean;
 }
 
-export const FAQ = ({ handle, locale = DEFAULT_LOCALE, items, heading, headingFontFamily }: FAQProps) => {
+export const FAQ = ({ handle, locale = DEFAULT_LOCALE, items, heading, headingFontFamily, jsonLd = true }: FAQProps) => {
   const t = getDict(locale).faq;
   const methodsHref =
     METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
   const faqs = items ?? getFaqs(handle, t, methodsHref);
 
+  // Accordion panels only mount when opened, so without this the answers never
+  // reach a crawler or an AI assistant — only the questions do.
+  const faqJsonLd =
+    jsonLd &&
+    (() => {
+      const entities = faqs
+        .map((f) => ({ q: f.question, a: f.answer ?? f.jsonText }))
+        .filter((x): x is { q: string; a: string } => Boolean(x.q && x.a));
+      if (entities.length < 2) return null;
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: entities.map((x) => ({
+          "@type": "Question",
+          name: x.q,
+          acceptedAnswer: { "@type": "Answer", text: x.a },
+        })),
+      };
+    })();
+
   return (
     <section className="pt-[35px] md:pt-[51px] lg:pt-[62px] pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#FFFAEA" }}>
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-8 md:mb-10">
           <h2 className={headingFontFamily ? "font-bold mb-4 tracking-tight" : "font-beverly font-bold mb-4 tracking-tight"} style={{ color: "#1B4229", fontSize: "clamp(2.2rem, 3.64vw, 4.1rem)", ...(headingFontFamily ? { fontFamily: headingFontFamily } : {}) }}>
