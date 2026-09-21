@@ -58,7 +58,8 @@ export const de: Dict = {
     rights: "© 2026 ATTIMO. Alle Rechte vorbehalten.",
     changeRegion: "Währung oder Land ändern",
     shop: "Shop", // REVIEW
-    learn: "Entdecken", // REVIEW
+    learn: "Entdecken",
+    polyphenolMethods: "Wie Polyphenole gemessen werden", // REVIEW
     company: "Unternehmen", // REVIEW
   },
 
@@ -311,6 +312,7 @@ export const de: Dict = {
     shipsTomorrow: "Heute bestellt, morgen verschickt", // REVIEW
     viewLabResults: "Laborergebnisse ansehen",
     howToReadLabValues: "So lesen Sie eine Olivenöl-Analyse",
+    polyphenolMethods: "Wie Polyphenole gemessen werden",
     waitingResults: "(Warten auf Ergebnisse)",
     polyTooltipAria: "Was bedeutet Bioaktive Polyphenole?",
     polyTooltipText:

@@ -53,7 +53,8 @@ export const fr: Dict = {
     rights: "© 2026 ATTIMO. Tous droits réservés.",
     changeRegion: "Changer de devise ou de pays",
     shop: "Boutique", // REVIEW
-    learn: "Découvrir", // REVIEW
+    learn: "Découvrir",
+    polyphenolMethods: "Comment les polyphénols sont mesurés", // REVIEW
     company: "Entreprise", // REVIEW
   },
 
@@ -303,6 +304,7 @@ export const fr: Dict = {
     shipsTomorrow: "Commandez aujourd'hui, expédié demain", // REVIEW
     viewLabResults: "Voir les résultats de laboratoire",
     howToReadLabValues: "Comment lire une analyse d'huile d'olive",
+    polyphenolMethods: "Comment les polyphénols sont mesurés",
     waitingResults: "(En attente des résultats)",
     polyTooltipAria: "Que signifie Polyphénols bioactifs ?",
     polyTooltipText:

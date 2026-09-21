@@ -1,6 +1,7 @@
 import attimoLogo from '@/assets/attimo-footer-logo.svg?url';
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 
 interface FooterProps {
   locale?: Locale;
@@ -74,8 +75,13 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
     ...hubLinks,
     { label: t.nav.merch, href: "/merch" },
   ];
+  // Translated slug per market, so it is looked up directly rather than
+  // through localizeHref (which only rewrites the locale prefix).
+  const methodsHref =
+    METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
   const learnLinks = [
     { label: t.footer.blog, href: localizeHref("/blog", locale) },
+    { label: t.footer.polyphenolMethods, href: methodsHref },
     { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
     { label: t.footer.ambassadors, href: ambassadorsHref },
   ];

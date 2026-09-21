@@ -370,7 +370,7 @@ const de: MethodsContent = {
     description:
       "Polyphenol-Gesamtwerte aus HPLC, NMR und Folin sind nicht vergleichbar. Oleocanthal plus Oleacein schon. Wie jeder Test zählt und was im Zertifikat steht.",
     headline:
-      "So vergleichen Sie Polyphenolwerte von Olivenöl über HPLC, NMR und Folin-Ciocalteu hinweg",
+      "So vergleichst du Polyphenolwerte von Olivenöl über HPLC, NMR und Folin-Ciocalteu hinweg",
     imageCaption:
       "Ein Coratina-Olivenöl, zwei Methoden: 847 mg/kg per HPLC und 1.215 mg/kg per NMR.",
   },
@@ -453,12 +453,12 @@ const de: MethodsContent = {
     inLabel: "In ATTIMO Coratina 2025",
     sumLabel: "Oleocanthal + Oleacein · ATTIMO Coratina 2025",
     glassesCaption:
-      "Oleocanthal ist die eine Verbindung hier, die Sie ohne Labor finden können: Es ist das Kratzen hinten im Hals bei einem frischen Öl.",
+      "Oleocanthal ist die eine Verbindung hier, die du ohne Labor finden kannst: Es ist das Kratzen hinten im Hals bei einem frischen Öl.",
     glassesAlt:
       "Sechs kobaltblaue Olivenöl-Verkostungsgläser mit Deckel, gefüllt mit grünem Öl, auf einem dunkelgrünen Tisch",
     doseH3:
       "52 Kalorien ATTIMO Coratina 2025 enthalten so viele Polyphenole wie 245 Kalorien Supermarktöl",
-    doseLead: "Ein hochwertigeres Öl liefert Ihnen mehr Polyphenole bei weniger Kalorien.",
+    doseLead: "Ein hochwertigeres Öl liefert dir mehr Polyphenole bei weniger Kalorien.",
     doseAxis: "Ölmenge für 5 mg Polyphenole",
     doseRows: {
       supermarket: "Supermarktöl",
@@ -474,15 +474,15 @@ const de: MethodsContent = {
   whyHplc: {
     eyebrow: "Unsere Wahl",
     h2: "HPLC ist der einzige Test, der zeigt, woraus der Gesamtwert besteht",
-    lead: "Nur wenige der Dutzenden Polyphenole im Olivenöl haben einen nachgewiesenen Mechanismus im Körper. Ein Gesamtwert zählt sie alle gleich, deshalb kann eine große Zahl mit Verbindungen aufgefüllt sein, die Ihnen nichts bringen. HPLC führt sie einzeln auf.",
+    lead: "Nur wenige der Dutzenden Polyphenole im Olivenöl haben einen nachgewiesenen Mechanismus im Körper. Ein Gesamtwert zählt sie alle gleich, deshalb kann eine große Zahl mit Verbindungen aufgefüllt sein, die dir nichts bringen. HPLC führt sie einzeln auf.",
     cards: [
       [
         "Er schlüsselt den Gesamtwert auf",
-        "Doc. No 29 weist jeder gefundenen Verbindung einen Wert zu. Sie sehen, woraus die Zahl besteht, statt darauf zu vertrauen, dass sie aus den richtigen Dingen besteht.",
+        "Doc. No 29 weist jeder gefundenen Verbindung einen Wert zu. Du siehst, woraus die Zahl besteht, statt darauf zu vertrauen, dass sie aus den richtigen Dingen besteht.",
       ],
       [
         "Jeder kann uns zur Wiederholung zwingen",
-        "Es ist das veröffentlichte Protokoll des International Olive Council. Schicken Sie ATTIMO Coratina 2025 an ein anderes akkreditiertes Labor, verlangen Sie dieselbe Methode, und der Wert sollte zurückkommen.",
+        "Es ist das veröffentlichte Protokoll des International Olive Council. Schick ATTIMO Coratina 2025 an ein anderes akkreditiertes Labor, verlang dieselbe Methode, und der Wert sollte zurückkommen.",
       ],
       [
         "Er nennt seine Fehlerspanne",
@@ -494,9 +494,9 @@ const de: MethodsContent = {
     millAlt: "Frisches grünes Olivenöl fließt in der Mühle aus einem Stahlauslauf in einen Behälter",
   },
   checklist: {
-    eyebrow: "Ihre Checkliste",
-    h2: "So prüfen Sie Polyphenol-Angaben bei Olivenöl",
-    lead: "Die meisten Flaschen scheitern schon an der ersten Frage. Ein Produzent, der alle sechs beantworten kann, hat Ihnen etwas Nachprüfbares gegeben.",
+    eyebrow: "Deine Checkliste",
+    h2: "So prüfst du Polyphenol-Angaben bei Olivenöl",
+    lead: "Die meisten Flaschen scheitern schon an der ersten Frage. Ein Produzent, der alle sechs beantworten kann, hat dir etwas Nachprüfbares gegeben.",
     items: [
       ["Welcher Test?", "HPLC, NMR oder Folin. Ohne diese Angabe hat die Zahl keine lesbare Einheit."],
       ["Welches Labor?", "Ein Ergebnis ohne Labor dahinter kann niemand hinterfragen."],
@@ -538,10 +538,10 @@ const de: MethodsContent = {
       {
         question: "Zeigt NMR wirklich höhere Werte als HPLC?",
         answer:
-          "Nicht als Gerät. Wenn beide Techniken dieselbe Verbindung gegen echte Standards quantifizieren, stimmen sie eng überein: Eine Studie von 2021, die Oleocanthal per NMR und per HPLC an denselben Ölen gemessen hat, berichtete 768 gegen 789, 724 gegen 739 und 283 gegen 259 mg/kg. Die Unterschiede zwischen veröffentlichten Gesamtwerten entstehen daraus, was gezählt wird und in welchen Einheiten. Kein Gerät bläht die Ergebnisse auf. Behandeln Sie jede Behauptung, NMR sei von Natur aus großzügig oder HPLC von Natur aus genau, als Marketing.",
+          "Nicht als Gerät. Wenn beide Techniken dieselbe Verbindung gegen echte Standards quantifizieren, stimmen sie eng überein: Eine Studie von 2021, die Oleocanthal per NMR und per HPLC an denselben Ölen gemessen hat, berichtete 768 gegen 789, 724 gegen 739 und 283 gegen 259 mg/kg. Die Unterschiede zwischen veröffentlichten Gesamtwerten entstehen daraus, was gezählt wird und in welchen Einheiten. Kein Gerät bläht die Ergebnisse auf. Behandle jede Behauptung, NMR sei von Natur aus großzügig oder HPLC von Natur aus genau, als Marketing.",
       },
       {
-        question: "Warum liegt Ihr Gesamtwert bei 847, wenn die IOC-Methode bis 800 mg/kg validiert ist?",
+        question: "Warum liegt euer Gesamtwert bei 847, wenn die IOC-Methode bis 800 mg/kg validiert ist?",
         answer:
           "COI/T.20/Doc. No 29 gibt seinen Messbereich mit 30 bis 800 mg/kg an. Unsere 847 liegen damit knapp über dem oberen Ende dieses validierten Bereichs und sind an dieser Grenze als ungefährer Wert zu lesen, ohne den Anspruch auf Präzision. Das Zertifikat nennt außerdem eine erweiterte Messunsicherheit von ±181 mg/kg. Wir weisen lieber selbst darauf hin, als dass es jemand findet. Das ist einer der Gründe, warum wir Oleocanthal und Oleacein getrennt angeben, aus einem eigenen Assay, statt uns auf einen Gesamtwert zu verlassen.",
       },
@@ -553,7 +553,7 @@ const de: MethodsContent = {
       {
         question: "Kann man Polyphenolwerte aus verschiedenen Laboren oder verschiedenen Tests vergleichen?",
         answer:
-          "Gesamtwerte nein, auch unsere nicht gegen die von anderen. Einzelne Verbindungen lassen sich deutlich besser übertragen: Oleocanthal, das ein Labor in absoluter Masse gemessen hat, kann man sinnvoll neben Oleocanthal stellen, das ein anderes Labor in absoluter Masse gemessen hat, denn ein Molekül hat ein Molekulargewicht, egal welches Gerät es zählt. Vergleichen Sie gleichartige Assays oder benannte Verbindungen, und halten Sie jeden methodenübergreifenden Vergleich von Gesamtwerten für bedeutungslos, auch wenn er uns schmeichelt.",
+          "Gesamtwerte nein, auch unsere nicht gegen die von anderen. Einzelne Verbindungen lassen sich deutlich besser übertragen: Oleocanthal, das ein Labor in absoluter Masse gemessen hat, kann man sinnvoll neben Oleocanthal stellen, das ein anderes Labor in absoluter Masse gemessen hat, denn ein Molekül hat ein Molekulargewicht, egal welches Gerät es zählt. Vergleiche gleichartige Assays oder benannte Verbindungen, und halte jeden methodenübergreifenden Vergleich von Gesamtwerten für bedeutungslos, auch wenn er uns schmeichelt.",
       },
       {
         question: "Was sind Oleocanthal und Oleacein?",
@@ -563,7 +563,7 @@ const de: MethodsContent = {
       {
         question: "Wie schnell bauen sich Polyphenole in Olivenöl ab?",
         answer:
-          "Laufend ab der Pressung, und schneller mit Hitze, Licht, Sauerstoff und Zeit. Eine geöffnete Flasche verliert sie schneller als eine verschlossene. Deshalb ist ein Polyphenolwert ohne Erntejahr und Probendatum unvollständig: Er beschreibt das Öl in dem Moment, in dem es getestet wurde, und dieser Moment kann weit hinter der Flasche in Ihrer Küche liegen.",
+          "Laufend ab der Pressung, und schneller mit Hitze, Licht, Sauerstoff und Zeit. Eine geöffnete Flasche verliert sie schneller als eine verschlossene. Deshalb ist ein Polyphenolwert ohne Erntejahr und Probendatum unvollständig: Er beschreibt das Öl in dem Moment, in dem es getestet wurde, und dieser Moment kann weit hinter der Flasche in deiner Küche liegen.",
       },
       {
         question: "Was sollte ein Laborzertifikat für Olivenöl enthalten?",
@@ -606,8 +606,8 @@ const de: MethodsContent = {
     },
   },
   cta: {
-    h2: "Kaufen Sie ein Olivenöl, dessen Werte Sie prüfen können",
-    body: "Jede ATTIMO-Flasche trägt ihre Ernte, ihr Probendatum und ein Zertifikat, das Sie vor der Bestellung öffnen können, mit Oleocanthal und Oleacein in eigenen Zeilen.",
+    h2: "Kauf dir ein Olivenöl, dessen Werte du prüfen kannst",
+    body: "Jede ATTIMO-Flasche trägt ihre Ernte, ihr Probendatum und ein Zertifikat, das du vor der Bestellung öffnen kannst, mit Oleocanthal und Oleacein in eigenen Zeilen.",
     button: "Die Öle und ihre Zertifikate ansehen",
     imageAlt: "Flasche ATTIMO Coratina natives Olivenöl extra",
   },

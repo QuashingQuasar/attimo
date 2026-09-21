@@ -57,6 +57,7 @@ export const en = {
     // Column headings for the grouped footer.
     shop: "Shop",
     learn: "Learn",
+    polyphenolMethods: "How polyphenols are measured",
     company: "Company",
   },
 
@@ -325,6 +326,7 @@ export const en = {
     shipsTomorrow: "Order today, ships tomorrow", // REVIEW
     viewLabResults: "View lab results",
     howToReadLabValues: "How to read olive oil lab values",
+    polyphenolMethods: "How polyphenols are measured",
     waitingResults: "(Waiting for results)",
     polyTooltipAria: "What does Bioactive Polyphenols mean?",
     // Placeholders: {value} {unit}

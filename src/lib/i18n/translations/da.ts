@@ -55,6 +55,7 @@ export const da: Dict = {
     changeRegion: "Skift valuta eller land",
     shop: "Butik",
     learn: "Lær mere",
+    polyphenolMethods: "Sådan måles polyfenoler",
     company: "Virksomhed",
   },
 
@@ -300,6 +301,7 @@ export const da: Dict = {
     shipsTomorrow: "Bestil i dag, sendes i morgen",
     viewLabResults: "Se labresultater",
     howToReadLabValues: "Sådan læser du labværdier for olivenolie",
+    polyphenolMethods: "Sådan måles polyfenoler",
     waitingResults: "(Afventer resultater)",
     polyTooltipAria: "Hvad betyder bioaktive polyfenoler?",
     polyTooltipText:

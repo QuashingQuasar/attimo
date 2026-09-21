@@ -4,11 +4,12 @@ import { useParams } from "@/lib/router-stub";
 import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck, Info, Lightbulb } from "lucide-react";
+import { Droplets, Sparkles, UtensilsCrossed, Sprout, Beaker, Link, ShieldCheck, Truck, Info, Lightbulb, FlaskConical } from "lucide-react";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { ProductOriginRegion } from "@/components/product/ProductOriginRegion";
 import { ProductLabTrust } from "@/components/product/ProductLabTrust";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
@@ -769,6 +770,20 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   <Sparkles size={18} />
                   Why high polyphenols?
                 </a>
+                {/* Explains what the polyphenol figure above actually measures.
+                    Deliberately NOT on Picual: its number came from a different
+                    lab by Folin in caffeic-acid equivalents, so pointing it at a
+                    page arguing that methods are not comparable would advertise
+                    the mismatch rather than resolve it. */}
+                {handle !== 'picual' && (
+                  <a
+                  href={METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en}
+                  className="inline-flex items-center gap-2 text-olive-dark hover:text-olive-medium transition-colors underline underline-offset-4 decoration-olive-dark/30"
+                  style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>
+                    <FlaskConical size={18} />
+                    {t.polyphenolMethods}
+                  </a>
+                )}
               </div>
 
               {/* Accordion Info */}

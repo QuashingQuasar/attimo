@@ -53,7 +53,8 @@ export const nl: Dict = {
     rights: "© 2026 ATTIMO. Alle rechten voorbehouden.",
     changeRegion: "Wijzig valuta of land",
     shop: "Shop", // REVIEW
-    learn: "Ontdek", // REVIEW
+    learn: "Ontdek",
+    polyphenolMethods: "Hoe polyfenolen gemeten worden", // REVIEW
     company: "Bedrijf", // REVIEW
   },
 
@@ -305,6 +306,7 @@ export const nl: Dict = {
     shipsTomorrow: "Vandaag besteld, morgen verzonden", // REVIEW
     viewLabResults: "Bekijk labresultaten",
     howToReadLabValues: "Zo lees je de labwaarden van olijfolie",
+    polyphenolMethods: "Hoe polyfenolen gemeten worden",
     waitingResults: "(In afwachting van resultaten)",
     polyTooltipAria: "Wat betekent Bioactieve polyfenolen?",
     polyTooltipText:

@@ -4,6 +4,7 @@
 // the footer matches the page's language everywhere.
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 
 const { locale = DEFAULT_LOCALE } = Astro.props as { locale?: Locale };
 const t = getDict(locale);
@@ -47,8 +48,14 @@ const shop = [
   ...hubLinks,
   { label: t.nav.merch, href: "/merch" },
 ];
+// The methods page has a translated slug per market, so it is looked up
+// directly rather than through localizeHref (which only rewrites prefixes).
+const methodsHref =
+  METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
+
 const learn = [
   { label: t.footer.blog, href: localizeHref("/blog", locale) },
+  { label: t.footer.polyphenolMethods, href: methodsHref },
   { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
   { label: t.footer.ambassadors, href: localizeHref("/ambassadors", locale) },
 ];
