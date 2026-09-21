@@ -69,7 +69,7 @@ const doseRows = [
 
   <main style={`color:${GREEN};`}>
     <!-- ═══ HERO ═══ -->
-    <section class="relative min-h-[78vh] flex items-end" style={`background-color:${DEEP};`}>
+    <section class="relative min-h-[78vh] flex items-center" style={`background-color:${DEEP};`}>
       <img
         src={IMG.grove}
         alt={c.heroAlt}
@@ -85,7 +85,10 @@ const doseRows = [
         class="absolute inset-x-0 top-0 h-40 pointer-events-none"
         style="background:linear-gradient(to bottom, rgba(16,34,27,.72) 0%, rgba(16,34,27,.4) 50%, rgba(16,34,27,0) 100%);"
       ></div>
-      <div class="relative container mx-auto px-6 max-w-5xl pb-16 pt-36">
+      <!-- pt equals the navbar height: the header is absolutely positioned over
+           this section, so centring has to start below it or the block sits
+           visibly high against the credibility band underneath. -->
+      <div class="relative container mx-auto px-6 max-w-5xl pt-[124px] pb-8">
         <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>{c.hero.eyebrow}</p>
         <h1 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.4vw,3.8rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; ${heroShadow}`}>
           {c.hero.h1}
@@ -360,7 +363,7 @@ const doseRows = [
     <!-- ═══ CHECKLIST ═══ -->
     <section id="checklist" class="py-20 md:py-24 px-6">
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-12">
+        <div class="mb-12">
           <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.checklist.eyebrow}</p>
           <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{c.checklist.h2}</h2>
           <p style={`${lead} color:rgba(27,66,41,.78);`}>{c.checklist.lead}</p>
@@ -395,7 +398,7 @@ const doseRows = [
       <div class="container mx-auto max-w-4xl">
         <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.certificates.eyebrow}</p>
         <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{c.certificates.h2}</h2>
-        <p class="max-w-3xl mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{c.certificates.lead}</p>
+        <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{c.certificates.lead}</p>
 
         <div class="rounded-2xl overflow-hidden" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
           <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1rem;`}>

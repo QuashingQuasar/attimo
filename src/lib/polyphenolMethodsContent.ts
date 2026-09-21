@@ -209,7 +209,7 @@ const en: MethodsContent = {
     doseH3:
       "52 calories of ATTIMO Coratina 25/26 carry the same polyphenols as 245 calories of supermarket oil",
     doseLead: "A higher-quality oil gets you more polyphenols for fewer calories.",
-    doseAxis: "Olive oil needed for 5 mg of polyphenols",
+    doseAxis: "Olive oil calories needed for 5 mg of polyphenols",
     doseRows: {
       supermarket: "Supermarket oil",
       eu: "EU reference oil",
@@ -264,7 +264,7 @@ const en: MethodsContent = {
       "ATTIMO Coratina 25/26 harvest certificate of analysis, annotated to show the test method, laboratory, accreditation, sample date and compound results",
   },
   certificates: {
-    eyebrow: "Our certificates",
+    eyebrow: "We bring the receipts",
     h2: "Every number we publish, with the report it came from",
     lead: "Both oils, analysed by Chemiservice in Monopoli — an ISO/IEC 17025 laboratory recognised by the International Olive Council for advanced testing. Each report opens in full.",
     cols: {
@@ -459,7 +459,7 @@ const de: MethodsContent = {
     doseH3:
       "52 Kalorien ATTIMO Coratina 25/26 enthalten so viele Polyphenole wie 245 Kalorien Supermarktöl",
     doseLead: "Ein hochwertigeres Öl liefert dir mehr Polyphenole bei weniger Kalorien.",
-    doseAxis: "Olivenöl nötig für 5 mg Polyphenole",
+    doseAxis: "Olivenöl-Kalorien für 5 mg Polyphenole",
     doseRows: {
       supermarket: "Supermarktöl",
       eu: "EU-Referenzöl",
@@ -514,7 +514,7 @@ const de: MethodsContent = {
       "Analysezertifikat der ATTIMO Coratina Ernte 2025, mit Anmerkungen zu Testmethode, Labor, Akkreditierung, Probendatum und Ergebnissen der einzelnen Verbindungen",
   },
   certificates: {
-    eyebrow: "Unsere Zertifikate",
+    eyebrow: "Wir liefern die Belege",
     h2: "Jeder Wert, den wir veröffentlichen, mit dem Bericht dazu",
     lead: "Beide Öle, analysiert von Chemiservice in Monopoli, einem nach ISO/IEC 17025 akkreditierten Labor, das vom International Olive Council für erweiterte Analysen anerkannt ist. Jeder Bericht lässt sich vollständig öffnen.",
     cols: {
@@ -709,7 +709,7 @@ const fr: MethodsContent = {
     doseH3:
       "52 calories d'ATTIMO Coratina 25/26 apportent autant de polyphénols que 245 calories d'huile de supermarché",
     doseLead: "Une huile de meilleure qualité vous apporte plus de polyphénols pour moins de calories.",
-    doseAxis: "Huile d'olive nécessaire pour 5 mg de polyphénols",
+    doseAxis: "Calories d'huile d'olive nécessaires pour 5 mg de polyphénols",
     doseRows: {
       supermarket: "Huile de supermarché",
       eu: "Huile de référence UE",
@@ -764,7 +764,7 @@ const fr: MethodsContent = {
       "Certificat d'analyse de la récolte ATTIMO Coratina 25/26, annoté pour montrer la méthode d'analyse, le laboratoire, l'accréditation, la date de prélèvement et les résultats par composé",
   },
   certificates: {
-    eyebrow: "Nos certificats",
+    eyebrow: "Nous avons les preuves",
     h2: "Chaque chiffre que nous publions, avec le rapport dont il provient",
     lead: "Les deux huiles, analysées par Chemiservice à Monopoli — un laboratoire ISO/IEC 17025 reconnu par le Conseil oléicole international pour les analyses avancées. Chaque rapport s'ouvre en entier.",
     cols: {
@@ -962,7 +962,7 @@ const sv: MethodsContent = {
     doseH3:
       "52 kalorier ATTIMO Coratina 25/26 innehåller lika mycket polyfenoler som 245 kalorier snabbköpsolja",
     doseLead: "En olja av högre kvalitet ger dig fler polyfenoler på färre kalorier.",
-    doseAxis: "Olivolja som krävs för 5 mg polyfenoler",
+    doseAxis: "Olivoljekalorier som krävs för 5 mg polyfenoler",
     doseRows: {
       supermarket: "Snabbköpsolja",
       eu: "EU:s referensolja",
@@ -1017,7 +1017,7 @@ const sv: MethodsContent = {
       "Analyscertifikat för ATTIMO Coratina, skörd 2025, kommenterat för att visa testmetod, laboratorium, ackreditering, provtagningsdatum och resultat per ämne",
   },
   certificates: {
-    eyebrow: "Våra certifikat",
+    eyebrow: "Vi visar bevisen",
     h2: "Varje siffra vi publicerar, med rapporten den kommer från",
     lead: "Båda oljorna är analyserade av Chemiservice, Monopoli — ett ISO/IEC 17025-laboratorium som Internationella olivrådet erkänner för avancerad analys. Varje rapport öppnas i sin helhet.",
     cols: {
@@ -1212,7 +1212,7 @@ const da: MethodsContent = {
     doseH3:
       "52 kalorier ATTIMO Coratina 25/26 indeholder lige så mange polyfenoler som 245 kalorier supermarkedsolie",
     doseLead: "En olie af højere kvalitet giver dig flere polyfenoler for færre kalorier.",
-    doseAxis: "Olivenolie der skal til for 5 mg polyfenoler",
+    doseAxis: "Olivenoliekalorier der skal til for 5 mg polyfenoler",
     doseRows: {
       supermarket: "Supermarkedsolie",
       eu: "EU-referenceolie",
@@ -1267,7 +1267,7 @@ const da: MethodsContent = {
       "Analysebevis for ATTIMO Coratina høst 2025, kommenteret så testmetode, laboratorium, akkreditering, prøvedato og stofresultater fremgår",
   },
   certificates: {
-    eyebrow: "Vores analysebeviser",
+    eyebrow: "Vi har papir på det",
     h2: "Hvert tal vi offentliggør, med rapporten det kommer fra",
     lead: "Begge olier er analyseret af Chemiservice i Monopoli — et ISO/IEC 17025-laboratorium, som Det Internationale Olivenråd anerkender til avanceret analyse. Hver rapport kan åbnes i fuld længde.",
     cols: {
@@ -1462,7 +1462,7 @@ const nl: MethodsContent = {
     doseH3:
       "52 calorieën ATTIMO Coratina 25/26 bevatten evenveel polyfenolen als 245 calorieën supermarktolie",
     doseLead: "Een olie van hogere kwaliteit levert je meer polyfenolen voor minder calorieën.",
-    doseAxis: "Olijfolie nodig voor 5 mg polyfenolen",
+    doseAxis: "Olijfoliecalorieën nodig voor 5 mg polyfenolen",
     doseRows: {
       supermarket: "Supermarktolie",
       eu: "EU-referentieolie",
@@ -1517,7 +1517,7 @@ const nl: MethodsContent = {
       "Analysecertificaat van ATTIMO Coratina, oogst 2025, geannoteerd met de testmethode, het lab, de accreditatie, de monsterdatum en de resultaten per verbinding",
   },
   certificates: {
-    eyebrow: "Onze certificaten",
+    eyebrow: "Wij tonen de bewijzen",
     h2: "Elk cijfer dat we publiceren, met het rapport waar het uit komt",
     lead: "Beide oliën zijn geanalyseerd door Chemiservice in Monopoli — een ISO/IEC 17025-lab dat door de International Olive Council erkend is voor geavanceerde analyses. Elk rapport opent volledig.",
     cols: {
