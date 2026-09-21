@@ -97,7 +97,7 @@ const articleJsonLd = {
     "@type": "ImageObject",
     url: IMG.grove,
     caption:
-      "One Coratina olive oil reported by two IOC methods: 847 mg/kg in tyrosol equivalents, and an estimated 1,100 to 1,600 mg/kg once the IOC's own compound response factors are applied.",
+      "One Coratina olive oil on two methods: 847 mg/kg measured by HPLC, and an estimated 1,150 mg/kg by NMR, shown on a single scale.",
   },
 };
 
@@ -154,68 +154,89 @@ const faqJsonLd = {
       </div>
     </section>
 
-    <!-- ═══ S2 · ONE OIL, TWO METHODS ═══ -->
+    <!-- ═══ S2 · HPLC vs NMR, SIDE BY SIDE ═══ -->
     <section class="py-20 md:py-24 px-6">
       <div class="container mx-auto max-w-5xl">
-        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>The same oil, twice</p>
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>The evidence, side by side</p>
         <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
-          One oil, two IOC methods, a difference of hundreds of milligrams
+          The same oil reads one number by HPLC and a bigger one by NMR
         </h2>
         <p class="max-w-3xl mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>
-          Our Coratina, one sample, measured by the IOC's standard method and then
-          recalculated using the IOC's own compound response factors. Nothing about the
-          oil changes between these two figures. Only the counting does.
+          One Coratina, one sample, two methods — with each number labelled for what it
+          is worth. We build our label on the conservative one.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-5">
-          <div class="rounded-2xl p-7 md:p-9" style={`background-color:${GREEN}; color:${CREAM};`}>
-            <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>Measured</p>
-            <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; letter-spacing:-0.01em;`}>
-              IOC Doc. 29 — tyrosol equivalents
-            </h3>
-            <p class="mb-7" style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,7vw,4.5rem); line-height:1; letter-spacing:-0.04em;`}>
-              847<span style="font-size:1.4rem; letter-spacing:0;"> mg/kg</span>
+        <div class="grid md:grid-cols-2 gap-5 mb-5">
+          <div class="rounded-2xl p-7 md:p-9 flex flex-col" style={`background-color:${GREEN}; color:${CREAM};`}>
+            <h3 class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:2rem; letter-spacing:-0.02em;`}>HPLC</h3>
+            <p class="mb-6" style={`${eyebrow} color:${ACCENT};`}>The recognised method</p>
+            <p class="mb-8 flex-1" style={`font-family:${SG}; font-size:1rem; line-height:1.65; color:rgba(255,250,234,.82);`}>
+              Separates the oil's phenols and weighs each compound directly. The only
+              method the International Olive Council recognises for olive oil biophenols
+              (COI/T.20/Doc. 29).
             </p>
-            <div style="background:rgba(255,250,234,.15); height:14px; border-radius:3px;">
-              <div style={`background:${ACCENT}; height:14px; width:${w(847)}%; border-radius:3px;`}></div>
-            </div>
-            <p class="mt-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.65; color:rgba(255,250,234,.8);`}>
-              Every compound counted as though it were tyrosol, a molecule two to three
-              times lighter than the secoiridoids that make up most of the phenolic
-              fraction. Chemiservice, report 2533647, ±181 mg/kg.
+            <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.8rem,6vw,4rem); line-height:1; letter-spacing:-0.04em;`}>
+              847<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+            </p>
+            <p class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.6; color:rgba(255,250,234,.65);`}>
+              Measured. Chemiservice, Monopoli — ISO/IEC 17025, IOC-recognised. Report
+              2533647, ±181 mg/kg.
             </p>
           </div>
 
-          <div class="rounded-2xl p-7 md:p-9" style={`background-color:rgba(27,66,41,.05); border:2px solid ${GREEN};`}>
-            <p class="mb-4" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Calculated, not yet measured</p>
-            <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; letter-spacing:-0.01em; color:${GREEN};`}>
-              IOC Method 2 — real compound mass
-            </h3>
-            <p class="mb-7" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.4rem,5.5vw,3.6rem); line-height:1; letter-spacing:-0.04em; color:${GREEN};`}>
-              ~1,100–1,600<span style="font-size:1.2rem; letter-spacing:0;"> mg/kg</span>
+          <div class="rounded-2xl p-7 md:p-9 flex flex-col" style={`background-color:rgba(27,66,41,.05); border:2px solid rgba(27,66,41,.2);`}>
+            <h3 class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:2rem; letter-spacing:-0.02em; color:${GREEN};`}>NMR</h3>
+            <p class="mb-6" style={`${eyebrow} color:rgba(27,66,41,.55);`}>An estimate, not a measurement</p>
+            <p class="mb-8 flex-1" style={`font-family:${SG}; font-size:1rem; line-height:1.65; color:rgba(27,66,41,.78);`}>
+              Reads one spectrum of the whole oil and infers a total from it. Not
+              recognised by the IOC, and it counts a different set of compounds on a
+              different mass basis — so it reads higher.
             </p>
-            <div style="background:rgba(27,66,41,.1); height:14px; border-radius:3px; position:relative;">
-              <div style={`background:rgba(27,66,41,.3); height:14px; width:${w(1600)}%; border-radius:3px;`}></div>
-              <div style={`background:${GREEN}; height:14px; width:${w(1100)}%; border-radius:3px; position:absolute; top:0; left:0;`}></div>
-            </div>
-            <p class="mt-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.65; color:rgba(27,66,41,.8);`}>
-              The same sample with each compound weighed at its own molecular mass, using
-              the response factors published in the IOC's own method document. An estimate
-              from those factors, not a second test. We will publish the measured figure
-              from the October harvest.
+            <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.8rem,6vw,4rem); line-height:1; letter-spacing:-0.04em; color:rgba(27,66,41,.65);`}>
+              ~1,150<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+            </p>
+            <p class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.6; color:rgba(27,66,41,.6);`}>
+              Estimated, not yet measured. Based on producers publishing both figures
+              for one oil, where NMR lands 1.2–1.5× above HPLC. We measure ours on the
+              October harvest and publish it here.
             </p>
           </div>
         </div>
 
-        <p class="mt-8 max-w-3xl" style={`font-family:${SG}; font-size:.95rem; line-height:1.7; color:rgba(27,66,41,.62);`}>
-          The International Olive Council states the problem in its own 2022 revision:
-          method No 29 "quantifies using tyrosol and therefore may underestimate the true
-          value", while its newer procedure "can be used to determine the real
-          concentration of phenols". Dividing each compound's published response factor by
-          tyrosol's gives the correction the convention implies — oleocanthal ×2.22,
-          oleacein ×1.57, oleuropein aglycone ×1.91 — and a Coratina-shaped profile lands
-          in the range above.
-        </p>
+        <!-- Same oil, same scale -->
+        <div class="rounded-2xl p-7 md:p-9" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
+          <p class="mb-8" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Same oil · same scale</p>
+
+          <div class="mb-7">
+            <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem; color:${GREEN};`}>
+              <span><strong>HPLC</strong> · measured</span><span class="font-bold">847 mg/kg</span>
+            </div>
+            <div style="background:rgba(27,66,41,.1); height:30px; border-radius:4px;">
+              <div style={`background:${GREEN}; height:30px; width:${w(847)}%; border-radius:4px;`}></div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem; color:${GREEN};`}>
+              <span><strong>NMR</strong> · estimated</span><span class="font-bold">~1,150 mg/kg</span>
+            </div>
+            <div style="background:rgba(27,66,41,.1); height:30px; border-radius:4px;">
+              <div
+                style={`height:30px; width:${w(1150)}%; border-radius:4px; background:repeating-linear-gradient(45deg, rgba(27,66,41,.32), rgba(27,66,41,.32) 8px, rgba(27,66,41,.18) 8px, rgba(27,66,41,.18) 16px);`}
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex justify-between" style={`font-family:${SG}; font-size:.78rem; color:rgba(27,66,41,.45); border-top:1px solid rgba(27,66,41,.12); padding-top:10px;`}>
+            <span>0</span><span>850</span><span>1,700 mg/kg</span>
+          </div>
+
+          <p class="mt-7" style={`font-family:${SG}; font-size:.95rem; line-height:1.7; color:rgba(27,66,41,.7);`}>
+            Same oil. Different arithmetic. The striped bar is an estimate and stays
+            striped until it is measured.
+            <a href="/lab/Coratina2025.pdf" class="underline font-medium">See the certificate →</a>
+          </p>
+        </div>
       </div>
     </section>
 
