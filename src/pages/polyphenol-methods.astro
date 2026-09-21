@@ -5,42 +5,64 @@ import Footer from "@astro/components/Footer.astro";
 
 const canonical = "https://attimo-oil.com/polyphenol-methods";
 const description =
-  "Three laboratory methods measure olive oil polyphenols — the IOC chromatographic method, qNMR and Folin-Ciocalteu — and they return three different numbers for the same oil. What each one measures, where each one misleads, and why the total is the wrong headline.";
+  "HPLC vs NMR vs Folin-Ciocalteu: the same olive oil scores differently on each test. What each one measures, why the numbers can't be compared, and the full certificate figures for our oils.";
 
-// Shared scale across both inversion panels so the two charts stay comparable.
-const SCALE_MAX = 1300;
-const pct = (v: number) => ((v / SCALE_MAX) * 100).toFixed(1);
+// Shared scale across both inversion panels so the bars stay comparable.
+const SCALE = 1300;
+const w = (v: number) => ((v / SCALE) * 100).toFixed(1);
 
 const GREEN = "#1B4229";
 const CREAM = "#FFFAEA";
+const ACCENT = "#CDDB2D";
+const SCRIPT = "Beverly Drive, cursive";
+const CAPS = "'UDC Working Man Sans', 'Space Grotesk', sans-serif";
+
+const ANSWER =
+  "HPLC is the only polyphenol test the International Olive Council recognises for olive oil. It separates and measures each compound one at a time, and reports its total in tyrosol equivalents — a strict convention the IOC itself says can understate the true value. Numbers from NMR or Folin-Ciocalteu are counted differently and cannot be compared with it.";
 
 const FAQS = [
   {
-    q: "Why do two labs report different polyphenol numbers for the same olive oil?",
-    a: "Because they run different assays that measure different things and report in different units. The International Olive Council's chromatographic method separates the phenolic fraction and expresses the total as tyrosol equivalents. Quantitative NMR assigns spectral signals and reports absolute mass. Folin-Ciocalteu is a colour-change reaction that estimates total reducing capacity. Published comparisons across 50 oils found that summing individually measured compounds returns totals 1.9 to 3.0 times higher than single-number methods, so the difference is a property of the method rather than of the oil.",
+    q: "What is the best way to test polyphenols in olive oil?",
+    a: "For a number you can compare and check, HPLC. It is the basis of the International Olive Council's official method for biophenols (COI/T.20/Doc. No 29), it separates the phenolic fraction and quantifies compounds one at a time, and it can report oleocanthal and oleacein individually rather than folding them into a total. Its one quirk is the reporting convention: every compound is counted against tyrosol, a lighter molecule, so the headline total runs conservative. The IOC states this in the 2022 revision of its own document — method No 29 \"quantifies using tyrosol and therefore may underestimate the true value\".",
   },
   {
-    q: "Which olive oil polyphenol method is the official one?",
-    a: "The International Olive Council's chromatographic method for biophenols is the recognised reference, published as COI/T.20/Doc. No 29 and reissued in 2022 as Rev.2. Results are expressed as milligrams of tyrosol equivalents per kilogram, and the IOC states in that document that quantifying against tyrosol may underestimate the true value. qNMR and Folin-Ciocalteu are legitimate laboratory techniques but carry no IOC recognition for this parameter.",
+    q: "Why are NMR polyphenol numbers higher than HPLC numbers?",
+    a: "Mostly because of units rather than chemistry. The IOC's HPLC method expresses its total as tyrosol equivalents, counting each compound as though it were a molecule substantially lighter than the aglycones that make up most of the phenolic fraction. NMR reports what it assigns in absolute mass. Two producers publish both figures for the same oil and show the size of the gap: one reports 850 mg/kg by HPLC and 1,046 by NMR, another 995 and 1,473. At the level of individual compounds the two techniques agree closely — a 2021 study measuring oleocanthal by both found results within about ten percent of each other.",
   },
   {
-    q: "Is Folin-Ciocalteu a valid method for olive oil?",
-    a: "For a total, yes. The reagent responds to reducing capacity rather than to phenolics specifically, which is why EFSA considers it unsuitable for foods in general. In 2025 the same panel judged it appropriate for olive oil specifically, because the olive oil matrix lacks significant amounts of the interfering compounds. Its real limitation is scope: it returns one number in gallic or caffeic acid equivalents, names no compound, and a 2026 study across 100 oils found it underestimates real phenolic content.",
+    q: "What is the Folin-Ciocalteu test, and is it accurate for olive oil?",
+    a: "It is a colour-change reaction: the reagent is reduced by phenols and the resulting colour is read on a spectrophotometer, giving one number in gallic or caffeic acid equivalents. It responds to reducing capacity rather than to phenols specifically, so proteins, thiols, ascorbic acid and some metal ions also register — which is why EFSA considers it unsuitable for foods in general. For olive oil the same panel reached a different conclusion in 2025, judging the method appropriate because the olive oil matrix lacks significant amounts of those interfering compounds. Its real limitation is scope: one number, no compounds named. A 2026 study across 100 oils also found it understates real phenolic content rather than inflating it.",
   },
   {
-    q: "Is a higher total polyphenol number always better?",
-    a: "No. A total is a sum across dozens of compounds, and the two most studied for anti-inflammatory activity — oleocanthal and oleacein — can be a small or a large share of it. An oil with a larger headline total can carry less of both than an oil with a smaller one. The breakdown answers what the total cannot.",
+    q: "Can you compare polyphenol numbers from different labs or different tests?",
+    a: "Totals, no. A study across 50 extra virgin oils found that summing individually measured compounds returned totals 1.9 to 3.0 times higher than single-number methods run on the same oils. That is a difference in what is being counted, not in oil quality. Individual compounds travel better: oleocanthal measured in absolute mass by one laboratory can reasonably be set beside oleocanthal measured in absolute mass by another. The rule of thumb is to compare like assays, or compare named compounds, and to treat any cross-method total comparison as meaningless — including one that flatters us.",
   },
   {
-    q: "What should a polyphenol figure state to be meaningful?",
-    a: "The method, the laboratory, the accreditation, the harvest year and the sample date, along with the compound breakdown and a certificate you can open. A number without its method and its date is not a measurement anyone can check.",
+    q: "What does the EU polyphenol health claim actually require?",
+    a: "Regulation (EU) No 432/2012 permits the claim \"Olive oil polyphenols contribute to the protection of blood lipids from oxidative stress\" only for oil containing at least 5 mg of hydroxytyrosol and its derivatives (for example the oleuropein complex and tyrosol) per 20 g of olive oil. Two things are worth noticing. The claim is named for polyphenols in general but conditioned on one compound family. And the regulation specifies no analytical method at all, which leaves the choice of test — and therefore the size of the number — to whoever commissions it.",
+  },
+  {
+    q: "What are oleocanthal and oleacein?",
+    a: "Two phenolic compounds found in olive oil and studied more closely than any others in the fraction. Oleocanthal produces the peppery catch at the back of the throat and was identified after a researcher noticed that fresh olive oil irritated the throat the way liquid ibuprofen does; the resemblance traces to the same enzyme inhibition pathway. Oleacein is its close relative, studied chiefly as an antioxidant with cardiovascular interest. Both are specific molecules with molecular weights and reference standards, which is what makes them more portable between laboratories than a total.",
+  },
+  {
+    q: "How fast do polyphenols degrade in olive oil?",
+    a: "Continuously, from the press onward, and faster with heat, light, oxygen and time. An opened bottle loses them more quickly than a sealed one, and an oil stored warm and bright loses them more quickly than one in a cool dark cupboard. This is why a polyphenol figure without a harvest year and a sample date is incomplete: it describes the oil at the moment it was tested, which may be a long way behind the bottle in your kitchen.",
+  },
+  {
+    q: "What should an olive oil lab certificate include?",
+    a: "The test method and its document reference, the laboratory's name, its accreditation (ISO/IEC 17025 covers testing competence; IOC recognition covers olive oil specifically; ISO 9001 is a management standard and says nothing about the assay), the sample date, and the results with their units. A good certificate also states the measurement uncertainty and the limits of quantification, and reports oleocanthal and oleacein separately rather than only a total.",
+  },
+  {
+    q: "What about LC-MS/MS?",
+    a: "Liquid chromatography coupled to tandem mass spectrometry couples chromatographic separation with mass detection and identifies compounds with the highest specificity of any of these techniques. It appears mainly in research — the 2026 absolute-quantitation work is an example — rather than on commercial certificates, where cost keeps it rare. As a reference technique it is the benchmark the others are judged against.",
   },
 ];
 
 const articleJsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "How Olive Oil Polyphenols Are Measured",
+  headline: "HPLC vs NMR vs Folin-Ciocalteu: how olive oil polyphenols are measured",
   description,
   url: canonical,
   inLanguage: "en",
@@ -51,16 +73,11 @@ const articleJsonLd = {
     url: "https://attimo-oil.com",
     logo: { "@type": "ImageObject", url: "https://attimo-oil.com/assets/navbar-logo.svg" },
   },
-  about: [
-    { "@type": "Thing", name: "Olive oil polyphenols" },
-    { "@type": "Thing", name: "Oleocanthal" },
-    { "@type": "Thing", name: "Oleacein" },
-  ],
   image: {
     "@type": "ImageObject",
-    url: "https://attimo-oil.com/images/attimo_og.png",
+    url: "https://attimo-oil.com/images/coratina-shopping.png",
     caption:
-      "Two early-harvest Coratina oils compared on total polyphenols and on oleocanthal plus oleacein. The oil with the larger total carries less of the two compounds.",
+      "Two Coratina olive oils compared on total polyphenols and on oleocanthal plus oleacein. The oil with the larger total carries less of the two compounds.",
   },
 };
 
@@ -76,7 +93,7 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="How Olive Oil Polyphenols Are Measured | ATTIMO"
+  title="HPLC vs NMR vs Folin: How Olive Oil Polyphenols Are Measured | ATTIMO"
   description={description}
   canonical={canonical}
   bodyStyle="background-color: #FFFAEA;"
@@ -84,687 +101,636 @@ const faqJsonLd = {
 >
   <Header client:load forceScrolled />
 
-  <main style={`font-family: 'Space Grotesk', sans-serif; color: ${GREEN};`}>
-    <!-- ============ HERO ============ -->
-    <section class="pt-32 pb-16 px-6">
+  <main style={`font-family: 'Space Grotesk', sans-serif; color: ${GREEN}; font-size: 18px;`}>
+    <!-- ══════════ S1 · HERO ══════════ -->
+    <section class="pt-32 pb-20 px-6">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div>
+            <p class="text-xs font-bold tracking-widest uppercase mb-6" style={`font-family:${CAPS}; opacity:.55;`}>
+              Polyphenol testing, explained
+            </p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-6">
+              The biggest number isn't the <span style={`font-family:${SCRIPT};`}>best oil.</span>
+            </h1>
+            <p class="text-xl leading-relaxed mb-6" style="opacity:.75;">
+              The same olive oil can score 600 or 1,700 depending on the test. Here's
+              what each test measures, and why we print the strictest one.
+            </p>
+            <p class="text-base leading-relaxed mb-8" style="opacity:.6;">
+              {ANSWER}
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a
+                href="#proof"
+                class="inline-block text-sm font-bold px-7 py-4 rounded-xl"
+                style={`background-color:${GREEN}; color:${CREAM};`}
+              >
+                See the proof
+              </a>
+              <a
+                href="#checklist"
+                class="inline-block text-sm font-bold px-7 py-4 rounded-xl"
+                style={`border:2px solid ${GREEN};`}
+              >
+                How to read a label
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              src="/images/coratina-shopping.png"
+              alt="ATTIMO Coratina extra virgin olive oil bottle"
+              width="720"
+              height="720"
+              class="w-full h-auto rounded-2xl"
+              loading="eager"
+            />
+            <!-- Certificate excerpt, real values from report 2533647 -->
+            <div
+              class="absolute -bottom-4 -left-2 md:left-4 rounded-xl shadow-lg p-4 w-48"
+              style={`background-color:${CREAM}; border:2px solid ${GREEN};`}
+            >
+              <p class="text-[10px] font-bold tracking-widest uppercase mb-2" style={`font-family:${CAPS}; opacity:.5;`}>
+                Report 2533647
+              </p>
+              <dl class="text-xs space-y-1">
+                <div class="flex justify-between"><dt style="opacity:.7;">Total</dt><dd class="font-bold">847 mg/kg</dd></div>
+                <div class="flex justify-between"><dt style="opacity:.7;">Oleocanthal</dt><dd class="font-bold">471</dd></div>
+                <div class="flex justify-between"><dt style="opacity:.7;">Oleacein</dt><dd class="font-bold">336</dd></div>
+                <div class="flex justify-between"><dt style="opacity:.7;">Method</dt><dd class="font-bold">HPLC</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ S2 · THE PROOF ══════════ -->
+    <section id="proof" class="py-20 px-6" style="background-color: rgba(27,66,41,0.05);">
       <div class="container mx-auto max-w-4xl">
-        <p
-          class="text-xs font-bold tracking-widest uppercase mb-6"
-          style="opacity: 0.55;"
-        >
-          Reference — measurement
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          The evidence
         </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-          Three methods measure olive oil polyphenols. They return three
-          different numbers.
-        </h1>
-        <p class="text-lg md:text-xl leading-relaxed" style="opacity: 0.75;">
-          Only one number reaches the bottle, and it arrives without the one
-          piece of information that makes it readable: the assay that produced
-          it. A polyphenol figure with no stated method and no harvest year
-          cannot be compared with any other figure, including ours.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ METHOD TABLE ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-5xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-          What each method measures and what it reports
+        <h2 class="text-3xl md:text-4xl font-bold mb-5">
+          Bigger number. <span style={`font-family:${SCRIPT};`}>Less of what matters.</span>
         </h2>
-
-        <!-- Desktop table -->
-        <div class="hidden md:block overflow-x-auto">
-          <table class="w-full border-collapse text-sm">
-            <thead>
-              <tr>
-                <th class="text-left p-4 font-semibold align-bottom w-1/4"></th>
-                <th
-                  class="text-left p-4 font-bold align-bottom"
-                  style={`background-color: ${GREEN}; color: ${CREAM};`}
-                >
-                  IOC method (chromatographic)
-                </th>
-                <th
-                  class="text-left p-4 font-bold align-bottom"
-                  style="background-color: rgba(27,66,41,0.08);"
-                >
-                  qNMR
-                </th>
-                <th
-                  class="text-left p-4 font-bold align-bottom"
-                  style="background-color: rgba(27,66,41,0.08);"
-                >
-                  Folin-Ciocalteu
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid rgba(27,66,41,0.15);">
-                <td class="p-4 font-semibold align-top">What it does</td>
-                <td class="p-4 align-top">
-                  Separates the phenolic fraction by chromatography and
-                  quantifies compounds individually
-                </td>
-                <td class="p-4 align-top">
-                  Reads the sample's magnetic resonance spectrum and assigns
-                  signals to phenolic structures
-                </td>
-                <td class="p-4 align-top">
-                  A colour-change reaction: phenols reduce a reagent and the
-                  intensity is read against a standard
-                </td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(27,66,41,0.15);">
-                <td class="p-4 font-semibold align-top">What it reports</td>
-                <td class="p-4 align-top">
-                  A compound-by-compound breakdown plus a total expressed as
-                  tyrosol equivalents
-                </td>
-                <td class="p-4 align-top">
-                  A total plus selected named compounds, in absolute mass
-                </td>
-                <td class="p-4 align-top">
-                  One total, as gallic acid or caffeic acid equivalents. No
-                  breakdown
-                </td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(27,66,41,0.15);">
-                <td class="p-4 font-semibold align-top">IOC recognised</td>
-                <td class="p-4 align-top font-semibold">
-                  Yes —
-                  <a
-                    href="https://www.internationaloliveoil.org/wp-content/uploads/2022/06/Doc.-No-29-REV-2_ENK.pdf"
-                    class="underline"
-                    rel="nofollow noopener"
-                    target="_blank">COI/T.20/Doc. No 29/Rev.2</a>
-                </td>
-                <td class="p-4 align-top">No</td>
-                <td class="p-4 align-top">No</td>
-              </tr>
-              <tr style="border-bottom: 1px solid rgba(27,66,41,0.15);">
-                <td class="p-4 font-semibold align-top">Known limitation</td>
-                <td class="p-4 align-top">
-                  Quantifies everything against tyrosol, which the IOC states
-                  "may underestimate the true value"
-                </td>
-                <td class="p-4 align-top">
-                  No IOC recognition for this parameter. Published
-                  same-sample comparisons against HPLC are scarce
-                </td>
-                <td class="p-4 align-top">
-                  One number, no breakdown. Responds to reducing capacity
-                  rather than to phenolics specifically
-                </td>
-              </tr>
-              <tr>
-                <td class="p-4 font-semibold align-top">Published cost</td>
-                <td class="p-4 align-top">
-                  ~€46–90 for a total; ~€130–250 for full compound profiling
-                </td>
-                <td class="p-4 align-top">
-                  ~€110–220 — the priciest published option
-                </td>
-                <td class="p-4 align-top">
-                  ~€30–95 — on some public tariffs identical to an HPLC total
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Mobile cards -->
-        <div class="md:hidden space-y-4">
-          <div
-            class="rounded-2xl p-5"
-            style={`background-color: ${GREEN}; color: ${CREAM};`}
-          >
-            <h3 class="font-bold mb-3">IOC method (chromatographic)</h3>
-            <dl class="space-y-2 text-sm" style="opacity: 0.85;">
-              <div><dt class="inline font-semibold">Does: </dt><dd class="inline">separates the phenolic fraction and quantifies compounds individually.</dd></div>
-              <div><dt class="inline font-semibold">Reports: </dt><dd class="inline">a compound breakdown plus a total as tyrosol equivalents.</dd></div>
-              <div><dt class="inline font-semibold">IOC recognised: </dt><dd class="inline">yes, COI/T.20/Doc. No 29/Rev.2.</dd></div>
-              <div><dt class="inline font-semibold">Limitation: </dt><dd class="inline">quantifies against tyrosol, which the IOC states may underestimate the true value.</dd></div>
-              <div><dt class="inline font-semibold">Cost: </dt><dd class="inline">~€46–90 for a total, ~€130–250 for full profiling.</dd></div>
-            </dl>
-          </div>
-          <div class="rounded-2xl p-5" style="background-color: rgba(27,66,41,0.06);">
-            <h3 class="font-bold mb-3">qNMR</h3>
-            <dl class="space-y-2 text-sm" style="opacity: 0.85;">
-              <div><dt class="inline font-semibold">Does: </dt><dd class="inline">reads the magnetic resonance spectrum and assigns signals to phenolic structures.</dd></div>
-              <div><dt class="inline font-semibold">Reports: </dt><dd class="inline">a total plus selected named compounds, in absolute mass.</dd></div>
-              <div><dt class="inline font-semibold">IOC recognised: </dt><dd class="inline">no.</dd></div>
-              <div><dt class="inline font-semibold">Limitation: </dt><dd class="inline">no IOC recognition for this parameter; published same-sample comparisons are scarce.</dd></div>
-              <div><dt class="inline font-semibold">Cost: </dt><dd class="inline">~€110–220, the priciest published option.</dd></div>
-            </dl>
-          </div>
-          <div class="rounded-2xl p-5" style="background-color: rgba(27,66,41,0.06);">
-            <h3 class="font-bold mb-3">Folin-Ciocalteu</h3>
-            <dl class="space-y-2 text-sm" style="opacity: 0.85;">
-              <div><dt class="inline font-semibold">Does: </dt><dd class="inline">a colour-change reaction read against a standard.</dd></div>
-              <div><dt class="inline font-semibold">Reports: </dt><dd class="inline">one total, as gallic or caffeic acid equivalents. No breakdown.</dd></div>
-              <div><dt class="inline font-semibold">IOC recognised: </dt><dd class="inline">no.</dd></div>
-              <div><dt class="inline font-semibold">Limitation: </dt><dd class="inline">one number, no breakdown; responds to reducing capacity rather than to phenolics specifically.</dd></div>
-              <div><dt class="inline font-semibold">Cost: </dt><dd class="inline">~€30–95, close to an HPLC total.</dd></div>
-            </dl>
-          </div>
-        </div>
-
-        <p class="mt-6 text-sm leading-relaxed" style="opacity: 0.6;">
-          A fourth technique, LC-MS/MS, couples chromatographic separation to
-          mass spectrometry and identifies compounds with the highest
-          specificity of the four. It appears in recent quantitation research
-          rather than on commercial certificates, where its cost keeps it rare.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ FOLIN ============ -->
-    <section class="py-16 px-6" style={`background-color: ${GREEN}; color: ${CREAM};`}>
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-          Folin-Ciocalteu responds to reducing capacity, and returns one number
-          with no breakdown
-        </h2>
-        <div class="space-y-5 leading-relaxed" style="opacity: 0.85;">
-          <p>
-            The Folin-Ciocalteu reagent works by oxidation: it changes colour in
-            proportion to the reducing power of the sample, and that colour is
-            read on a spectrophotometer. Phenolic compounds reduce the reagent,
-            which is why the method tracks them. So do proteins, thiols,
-            ascorbic acid and several metal ions, which is why a
-            <a
-              href="https://pubs.acs.org/doi/10.1021/jf1005935"
-              class="underline"
-              rel="nofollow noopener"
-              target="_blank">2010 study of the reagent's reactivity</a>
-            concluded the assay "should be seen as a measure of total
-            antioxidant capacity rather than phenolic content".
-          </p>
-          <p>
-            That objection is weaker for olive oil than for food in general, and
-            it is worth being exact about why. EFSA held in 2011 that Folin is
-            unsuitable for characterising polyphenols in foods broadly, for the
-            reason above. In
-            <a
-              href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12099302/"
-              class="underline"
-              rel="nofollow noopener"
-              target="_blank">opinions published in 2025</a>
-            the same panel restated that position and then carved olive oil out
-            of it: the olive oil matrix "inherently lacks significant amounts of
-            these interfering compounds, making the Folin–Ciocalteu assay an
-            appropriate and reliable method for quantifying phenolic compounds
-            in olive oil".
-          </p>
-          <p>
-            So the case against a Folin figure on a label is not that the
-            chemistry fails. It is that the method answers one question and
-            stays silent on the rest. It returns a single total in the
-            equivalents of whichever standard the laboratory chose — gallic acid
-            in most protocols, caffeic acid in others — and it names no
-            compound, so nothing in the result distinguishes an oil rich in
-            oleocanthal from one that is not.
-          </p>
-          <p>
-            Worth noting for anyone assuming the cheap method flatters: measured
-            against compound-by-compound quantitation, it runs the other way. A
-            <a
-              href="https://www.mdpi.com/2076-3921/15/4/511"
-              class="underline"
-              rel="nofollow noopener"
-              target="_blank">2026 study across 100 oils</a>
-            found the Folin method underestimates real phenolic content.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ qNMR ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-          The split that matters runs between methods that name compounds and
-          methods that return one number
-        </h2>
-        <div class="space-y-5 leading-relaxed" style="opacity: 0.8;">
-          <p>
-            Grouping the assays by technique is the wrong cut. The useful
-            division is between <strong>specific</strong> methods, which
-            identify and quantify compounds one at a time, and
-            <strong>global</strong> methods, which collapse the phenolic
-            fraction into a single figure. Folin is global. So, in the way it
-            reports its total, is the IOC method.
-          </p>
-          <p>
-            The two families do not converge. Across 50 extra virgin oils, a
-            <a
-              href="https://doi.org/10.1016/j.chroma.2018.11.031"
-              class="underline"
-              rel="nofollow noopener"
-              target="_blank">2019 comparison</a>
-            found that summing individually measured compounds gave totals
-            <strong>1.9 to 3.0 times higher</strong> than the three global
-            methods tested against it. Not a rounding difference. A different
-            order of answer to the same question.
-          </p>
-          <p>
-            The reason sits in the accounting. The IOC method quantifies every
-            compound against tyrosol, a molecule substantially lighter than the
-            aglycones that make up most of the phenolic fraction. The
-            International Olive Council states the consequence itself, in the
-            2022 revision of its own method document: method No 29 "quantifies
-            using tyrosol and therefore may underestimate the true value", and
-            the newer procedure alongside it "can be used to determine the real
-            concentration of phenols to fulfil an EFSA claim as well as the
-            content of individual phenols (e.g., oleocanthal and oleoscein)".
-          </p>
-          <p>
-            Two things follow from a regulator-adjacent body saying that in
-            print. A total on a certificate is a floor rather than a
-            measurement of everything present — including the 847 mg/kg on
-            ours. And the figures that survive the move between laboratories
-            are named compounds in absolute mass, which is the one currency all
-            three methods can be asked to report in.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ THE INVERSION ============ -->
-    <section class="py-20 px-6" style="background-color: rgba(27,66,41,0.05);">
-      <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          A larger total can belong to the oil with less oleocanthal and
-          oleacein
-        </h2>
-        <p class="text-lg leading-relaxed mb-10" style="opacity: 0.8;">
-          Two early-harvest Coratina oils from the 2025 harvest, both with
-          published certificates. One reports a total roughly 50% higher than
-          the other. On the two compounds that carry most of the
-          anti-inflammatory research, the order reverses.
+        <p class="text-lg leading-relaxed mb-10" style="opacity:.75;">
+          Two Coratina oils. One scores higher on total polyphenols. The other has more
+          of the compounds the research actually studies.
         </p>
 
-        <figure class="mb-8">
-          <!-- Panel 1 — totals -->
-          <div
-            class="rounded-2xl p-6 md:p-8 mb-4"
-            style={`background-color: ${CREAM}; border: 2px solid rgba(27,66,41,0.15);`}
-          >
-            <h3 class="text-sm font-bold tracking-widest uppercase mb-6" style="opacity: 0.6;">
-              Total polyphenols, as each laboratory reported it
-            </h3>
-
+        <figure>
+          <div class="rounded-2xl p-6 md:p-8 mb-4" style={`background-color:${CREAM}; border:2px solid rgba(27,66,41,.15);`}>
+            <p class="text-xs font-bold tracking-widest uppercase mb-6" style={`font-family:${CAPS}; opacity:.55;`}>
+              Total polyphenols
+            </p>
             <div class="mb-5">
-              <div class="flex justify-between items-baseline mb-2 text-sm">
-                <span style="opacity: 0.75;">Another Coratina — qNMR</span>
-                <span class="font-bold">1,295 mg/kg</span>
+              <div class="flex justify-between items-baseline mb-2 text-base">
+                <span style="opacity:.75;">Another Coratina — NMR</span><span class="font-bold">1,295 mg/kg</span>
               </div>
-              <div style="background-color: rgba(27,66,41,0.08); height: 28px; border-radius: 4px;">
-                <div
-                  style={`background-color: rgba(27,66,41,0.28); height: 28px; width: ${pct(1295)}%; border-radius: 4px;`}
-                >
-                </div>
+              <div style="background:rgba(27,66,41,.08); height:32px; border-radius:4px;">
+                <div style={`background:rgba(27,66,41,.28); height:32px; width:${w(1295)}%; border-radius:4px;`}></div>
               </div>
             </div>
-
             <div>
-              <div class="flex justify-between items-baseline mb-2 text-sm">
-                <span class="font-semibold">ATTIMO Coratina — IOC method</span>
-                <span class="font-bold">847 mg/kg</span>
+              <div class="flex justify-between items-baseline mb-2 text-base">
+                <span class="font-semibold">ATTIMO Coratina — HPLC</span><span class="font-bold">847 mg/kg</span>
               </div>
-              <div style="background-color: rgba(27,66,41,0.08); height: 28px; border-radius: 4px;">
-                <div
-                  style={`background-color: ${GREEN}; height: 28px; width: ${pct(847)}%; border-radius: 4px;`}
-                >
-                </div>
+              <div style="background:rgba(27,66,41,.08); height:32px; border-radius:4px;">
+                <div style={`background:${GREEN}; height:32px; width:${w(847)}%; border-radius:4px;`}></div>
               </div>
             </div>
           </div>
 
-          <!-- Panel 2 — compounds -->
-          <div
-            class="rounded-2xl p-6 md:p-8"
-            style={`background-color: ${CREAM}; border: 2px solid rgba(27,66,41,0.15);`}
-          >
-            <h3 class="text-sm font-bold tracking-widest uppercase mb-6" style="opacity: 0.6;">
-              Oleocanthal + oleacein, measured directly
-            </h3>
-
+          <div class="rounded-2xl p-6 md:p-8" style={`background-color:${CREAM}; border:2px solid ${GREEN};`}>
+            <p class="text-xs font-bold tracking-widest uppercase mb-6" style={`font-family:${CAPS}; opacity:.55;`}>
+              Oleocanthal + oleacein
+            </p>
             <div class="mb-5">
-              <div class="flex justify-between items-baseline mb-2 text-sm">
-                <span class="font-semibold">ATTIMO Coratina — 471 + 336</span>
-                <span class="font-bold">807 mg/kg</span>
+              <div class="flex justify-between items-baseline mb-2 text-base">
+                <span class="font-semibold">ATTIMO Coratina — 471 + 336</span><span class="font-bold">807 mg/kg</span>
               </div>
-              <div style="background-color: rgba(27,66,41,0.08); height: 28px; border-radius: 4px;">
-                <div
-                  style={`background-color: ${GREEN}; height: 28px; width: ${pct(807)}%; border-radius: 4px;`}
-                >
-                </div>
+              <div style="background:rgba(27,66,41,.08); height:32px; border-radius:4px;">
+                <div style={`background:${GREEN}; height:32px; width:${w(807)}%; border-radius:4px;`}></div>
               </div>
             </div>
-
             <div>
-              <div class="flex justify-between items-baseline mb-2 text-sm">
-                <span style="opacity: 0.75;">Another Coratina — 292 + 148</span>
-                <span class="font-bold">439 mg/kg</span>
+              <div class="flex justify-between items-baseline mb-2 text-base">
+                <span style="opacity:.75;">Another Coratina — 292 + 148</span><span class="font-bold">439 mg/kg</span>
               </div>
-              <div style="background-color: rgba(27,66,41,0.08); height: 28px; border-radius: 4px;">
-                <div
-                  style={`background-color: rgba(27,66,41,0.28); height: 28px; width: ${pct(439)}%; border-radius: 4px;`}
-                >
-                </div>
+              <div style="background:rgba(27,66,41,.08); height:32px; border-radius:4px;">
+                <div style={`background:rgba(27,66,41,.28); height:32px; width:${w(439)}%; border-radius:4px;`}></div>
               </div>
             </div>
           </div>
 
-          <figcaption class="mt-4 text-sm leading-relaxed" style="opacity: 0.6;">
-            Both panels share one scale, 0 to 1,300 mg/kg, so the bars stay
-            comparable between charts. The oil with the larger headline total
-            carries 45% less of the two compounds the health research studies
-            most closely.
+          <figcaption class="mt-5 text-base leading-relaxed" style="opacity:.65;">
+            Both charts share one scale, 0–1,300 mg/kg. ATTIMO Coratina: total 847 mg/kg,
+            oleocanthal 471, oleacein 336 (HPLC, Chemiservice, report 2533647). The other
+            Coratina: total 1,295 mg/kg, oleocanthal 292, oleacein 148 (NMR, World Olive
+            Center certificate C2526-00283). The two totals come from different tests and
+            are not comparable — which is the point of this page.
+            <a href="#certificates" class="underline font-medium">See both certificates</a>.
           </figcaption>
         </figure>
-
-        <div
-          class="rounded-2xl p-6 leading-relaxed text-sm"
-          style="background-color: rgba(27,66,41,0.06);"
-        >
-          <p class="mb-3">
-            <strong>Where these figures come from.</strong> The ATTIMO values
-            are from
-            <a href="/lab/Coratina2025.pdf" class="underline font-medium">
-              report 2533647, Chemiservice
-            </a>
-            (Monopoli, Italy; ISO/IEC 17025; IOC-recognised, Type A), sample
-            analysed 20–24 November 2025. The comparison oil's values are from
-            certificate C2526-00283 issued by the
-            <a
-              href="https://cdn.sanity.io/files/40moq4vz/production/cdea13cb323e6e7e26879443da926e2df1c62b4b.pdf"
-              class="underline font-medium"
-              rel="nofollow noopener"
-              target="_blank"
-            >
-              World Olive Center for Health
-            </a>, analysed at the National and Kapodistrian University of Athens
-            on 10 November 2025, and published by that producer.
-          </p>
-          <p>
-            <strong>The comparison is across methods, and that matters.</strong>
-            The two totals come from different assays and are not directly
-            comparable — which is the argument of this page, applied to its own
-            chart. The compound figures are the fairer of the two comparisons:
-            both laboratories report oleocanthal and oleacein in absolute mass
-            rather than in equivalents. Our compound values come from a
-            dedicated assay (Chemiservice method 13056-CH-1) run alongside the
-            IOC analysis on the same sample.
-          </p>
-        </div>
       </div>
     </section>
 
-    <!-- ============ WHAT THE RESEARCH MEASURES ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-          The EU health claim refers to hydroxytyrosol and its derivatives
-        </h2>
-        <div class="space-y-5 leading-relaxed" style="opacity: 0.8;">
-          <p>
-            The only approved European health claim for olive oil polyphenols
-            appears in
-            <a
-              href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32012R0432"
-              class="underline"
-              rel="nofollow noopener"
-              target="_blank">Regulation (EU) No 432/2012</a>:
-            "Olive oil polyphenols contribute to the protection of blood lipids
-            from oxidative stress." Its condition of use reads: "The claim may
-            be used only for olive oil which contains at least 5 mg of
-            hydroxytyrosol and its derivatives (e.g. oleuropein complex and
-            tyrosol) per 20 g of olive oil."
-          </p>
-          <p>
-            The claim is named for total polyphenols and conditioned on one
-            compound family. A producer can therefore clear a threshold written
-            around hydroxytyrosol derivatives while advertising a total that
-            includes everything else in the fraction.
-          </p>
-          <p>
-            The regulation also specifies no analytical method. The words
-            "method", "HPLC" and "spectrophotometric" appear nowhere in its
-            text, which leaves the choice of assay — and so the size of the
-            number — to whoever commissions the test.
-          </p>
-          <p>
-            Oleocanthal and oleacein sit inside that family and carry most of
-            the anti-inflammatory literature. Oleocanthal was identified through
-            the throat irritation it produces, which turned out to trace to the
-            same enzyme inhibition pathway as ibuprofen. Oleacein is studied
-            chiefly as an antioxidant with cardiovascular interest.
-          </p>
-          <p>
-            Both are specific molecules with molecular weights and reference
-            standards, which is what makes them more portable between
-            laboratories than any total. A total is a sum across dozens of
-            compounds, weighted by whatever convention the method applies.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ LIMITS ============ -->
-    <section class="py-16 px-6" style={`background-color: ${GREEN}; color: ${CREAM};`}>
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-8">
-          What these numbers still cannot tell you
-        </h2>
-        <ul class="space-y-6 leading-relaxed" style="opacity: 0.85;">
-          <li>
-            <strong class="block mb-1">
-              A compound breakdown is not a complete account of what reaches you.
-            </strong>
-            Precursor compounds can convert to hydroxytyrosol and tyrosol after
-            ingestion. No assay run at bottling captures that conversion, so a
-            certificate describes the oil in the bottle rather than the
-            compounds the body ends up with.
-          </li>
-          <li>
-            <strong class="block mb-1">
-              Totals from different assays cannot be compared, ours included.
-            </strong>
-            Our 847 mg/kg is a tyrosol-equivalent figure from the IOC method. It
-            should not be set against a qNMR total or a Folin total, in either
-            direction, and we would make the same objection to anyone placing it
-            favourably beside one.
-          </li>
-          <li>
-            <strong class="block mb-1">
-              Every measurement carries a stated uncertainty.
-            </strong>
-            Our certificate reports 847 mg/kg with an expanded uncertainty of
-            ±181 mg/kg, and 400 mg/kg ±112 for the Nocellara. Roughly a fifth of
-            the headline figure in either direction is the measurement's own
-            margin. Any producer quoting a total to three digits without its
-            uncertainty is reporting more precision than the assay produced.
-          </li>
-          <li>
-            <strong class="block mb-1">
-              The same compounds can appear twice on one certificate.
-            </strong>
-            Our Coratina report lists oleocanthal and oleacein under the IOC
-            analysis as tyrosol equivalents (190 and 151 mg/kg) and again under
-            a dedicated assay in absolute mass (471 and 336 mg/kg). Same sample,
-            same laboratory, same day. The figures we publish are the directly
-            measured ones, and the certificate shows both.
-          </li>
-          <li>
-            <strong class="block mb-1">
-              Phenolic content declines from the press onward.
-            </strong>
-            It falls with heat, light, oxygen and time, in the bottle and faster
-            once opened. A figure without a harvest year and a sample date
-            describes an oil at a moment that may be well behind the one in your
-            kitchen.
-          </li>
-          <li>
-            <strong class="block mb-1">
-              One analysis is a sample, not a guarantee across a batch.
-            </strong>
-            A certificate documents the material submitted to the laboratory.
-            Groves, pressing days and tanks vary, and no single test speaks for
-            every bottle of a harvest.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ CHECKLIST ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-          What to ask for before you trust a polyphenol number
-        </h2>
-        <p class="leading-relaxed mb-8" style="opacity: 0.8;">
-          Seven items. A producer who can supply all seven is making a checkable
-          statement; one who can supply two is making an advertisement.
+    <!-- ══════════ S3 · THREE TESTS ══════════ -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          How polyphenols are measured
         </p>
-        <ol class="space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-5">
+          Same oil. <span style={`font-family:${SCRIPT};`}>Three tests. Three answers.</span>
+        </h2>
+        <p class="text-lg leading-relaxed mb-12" style="opacity:.75;">
+          Each test counts something different, so the numbers can't be compared.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5 mb-12">
           {[
-            ["The method, named.", "IOC chromatographic, qNMR or Folin-Ciocalteu. Without it the figure has no units anyone can interpret."],
-            ["The laboratory, named.", "A result with no laboratory behind it cannot be queried or repeated."],
-            ["Accreditation.", "ISO/IEC 17025 covers testing competence. IOC recognition covers olive oil specifically. ISO 9001 is a management standard and says nothing about the assay."],
-            ["The harvest year.", "Phenolic content is a function of harvest timing and declines from pressing onward."],
-            ["The sample date.", "The gap between pressing and analysis is part of what the number means."],
-            ["The compound breakdown.", "Oleocanthal and oleacein individually, in mg/kg. A total alone hides the distribution."],
-            ["The certificate itself.", "Openable, in full, including the uncertainty and the limits of quantification."],
-          ].map(([title, body], i) => (
-            <li class="flex gap-4">
-              <span
-                class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
-                style={`background-color: ${GREEN}; color: ${CREAM};`}
-              >
-                {i + 1}
-              </span>
-              <span class="leading-relaxed">
-                <strong>{title}</strong>{" "}
-                <span style="opacity: 0.8;">{body}</span>
-              </span>
-            </li>
+            {
+              name: "HPLC",
+              verdict: "Measures",
+              line: "Separates the oil's phenols and weighs each compound on its own.",
+              chips: ["IOC recognised", "Reports each compound", "€€"],
+              hero: true,
+              icon: `<path d="M8 34V14m8 20V8m8 26V20m8 14V11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M4 38h36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>`,
+            },
+            {
+              name: "NMR",
+              verdict: "Infers",
+              line: "Reads one spectrum of the whole oil and assigns the peaks to compounds.",
+              chips: ["Not IOC recognised", "Totals + some compounds", "€€€"],
+              hero: false,
+              icon: `<circle cx="22" cy="22" r="4" stroke="currentColor" stroke-width="2.5"/><ellipse cx="22" cy="22" rx="17" ry="7" stroke="currentColor" stroke-width="2.5"/><ellipse cx="22" cy="22" rx="17" ry="7" stroke="currentColor" stroke-width="2.5" transform="rotate(60 22 22)"/><ellipse cx="22" cy="22" rx="17" ry="7" stroke="currentColor" stroke-width="2.5" transform="rotate(120 22 22)"/>`,
+            },
+            {
+              name: "Folin",
+              verdict: "Approximates",
+              line: "Adds a reagent that changes colour, then reads the colour as one number.",
+              chips: ["Not IOC recognised", "One number, no compounds", "€"],
+              hero: false,
+              icon: `<path d="M17 5h10M19 5v12L9 33a4 4 0 003 7h18a4 4 0 003-7L23 17V5" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M13 27h18" stroke="currentColor" stroke-width="2.5"/>`,
+            },
+          ].map((m) => (
+            <div
+              class="rounded-2xl p-6"
+              style={m.hero
+                ? `background-color:${GREEN}; color:${CREAM};`
+                : `background-color:rgba(27,66,41,.05); border:1px solid rgba(27,66,41,.12);`}
+            >
+              <div class="mb-4" style={m.hero ? `color:${ACCENT};` : "opacity:.65;"}>
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true" set:html={m.icon} />
+              </div>
+              <div class="flex items-baseline gap-2 mb-3 flex-wrap">
+                <h3 class="text-2xl font-bold">{m.name}</h3>
+                <span
+                  class="text-xs font-bold tracking-wider uppercase px-2 py-1 rounded-full"
+                  style={m.hero
+                    ? `background-color:${ACCENT}; color:${GREEN}; font-family:${CAPS};`
+                    : `background-color:rgba(27,66,41,.1); font-family:${CAPS};`}
+                >
+                  {m.verdict}
+                </span>
+              </div>
+              <p class="leading-relaxed mb-5 text-base" style="opacity:.8;">{m.line}</p>
+              <ul class="space-y-2 text-sm">
+                {m.chips.map((c) => (
+                  <li
+                    class="inline-block mr-2 mb-2 px-3 py-1 rounded-full"
+                    style={m.hero ? "background-color:rgba(255,250,234,.15);" : "background-color:rgba(27,66,41,.07);"}
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ OUR OWN NUMBERS ============ -->
-    <section class="py-16 px-6" style="background-color: rgba(27,66,41,0.05);">
-      <div class="container mx-auto max-w-4xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-6">
-          Our own oils against that checklist
-        </h2>
-        <p class="leading-relaxed mb-8" style="opacity: 0.8;">
-          Both oils below were analysed by Chemiservice S.r.l. in Monopoli,
-          Italy — an ISO/IEC 17025 laboratory recognised by the International
-          Olive Council for advanced testing. Totals are IOC-method figures in
-          tyrosol equivalents. Oleocanthal and oleacein are from the dedicated
-          assay, in absolute mass. Full reports are linked.
-        </p>
-
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse text-sm">
-            <thead>
-              <tr style={`background-color: ${GREEN}; color: ${CREAM};`}>
-                <th class="text-left p-3 font-bold">Oil</th>
-                <th class="text-left p-3 font-bold">Harvest</th>
-                <th class="text-left p-3 font-bold">Total (IOC)</th>
-                <th class="text-left p-3 font-bold">Oleocanthal</th>
-                <th class="text-left p-3 font-bold">Oleacein</th>
-                <th class="text-left p-3 font-bold">Acidity</th>
-                <th class="text-left p-3 font-bold">Report</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid rgba(27,66,41,0.15);">
-                <td class="p-3 font-semibold">Coratina</td>
-                <td class="p-3">2025/26</td>
-                <td class="p-3">847 ±181 mg/kg</td>
-                <td class="p-3 font-semibold">471 mg/kg</td>
-                <td class="p-3 font-semibold">336 mg/kg</td>
-                <td class="p-3">0.19%</td>
-                <td class="p-3">
-                  <a href="/lab/Coratina2025.pdf" class="underline font-medium">
-                    2533647
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3 font-semibold">Nocellara</td>
-                <td class="p-3">2025/26</td>
-                <td class="p-3">400 ±112 mg/kg</td>
-                <td class="p-3 font-semibold">137 mg/kg</td>
-                <td class="p-3 font-semibold">209 mg/kg</td>
-                <td class="p-3">0.17%</td>
-                <td class="p-3">
-                  <a href="/lab/Nocellara2025.pdf" class="underline font-medium">
-                    2533283
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
 
-        <p class="mt-6 text-sm leading-relaxed" style="opacity: 0.6;">
-          Sample dates: Coratina received 18 November 2025, analysed 20–24
-          November 2025. Nocellara received 17 November 2025, analysed 18–20
-          November 2025. Neither certificate states a harvest date; the harvest
-          year above comes from us, and the certificates record what the
-          laboratory can attest to.
-        </p>
+        <!-- Real dual-method data: two producers publishing both numbers -->
+        <div class="rounded-2xl p-6 md:p-8" style="background-color:rgba(27,66,41,.05);">
+          <p class="text-xs font-bold tracking-widest uppercase mb-6" style={`font-family:${CAPS}; opacity:.55;`}>
+            One oil, two tests — as published by the producers
+          </p>
+          <div class="grid sm:grid-cols-2 gap-8">
+            {[
+              { who: "A Messinian producer", hplc: 850, nmr: 1046 },
+              { who: "A Peloponnese producer", hplc: 995, nmr: 1473 },
+            ].map((p) => (
+              <div>
+                <p class="text-base font-semibold mb-4">{p.who}</p>
+                <div class="mb-3">
+                  <div class="flex justify-between text-sm mb-1"><span style="opacity:.7;">HPLC</span><span class="font-bold">{p.hplc.toLocaleString()} mg/kg</span></div>
+                  <div style="background:rgba(27,66,41,.08); height:20px; border-radius:3px;">
+                    <div style={`background:${GREEN}; height:20px; width:${w(p.hplc)}%; border-radius:3px;`}></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-1"><span style="opacity:.7;">NMR</span><span class="font-bold">{p.nmr.toLocaleString()} mg/kg</span></div>
+                  <div style="background:rgba(27,66,41,.08); height:20px; border-radius:3px;">
+                    <div style={`background:rgba(27,66,41,.28); height:20px; width:${w(p.nmr)}%; border-radius:3px;`}></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="mt-6 text-base leading-relaxed" style="opacity:.65;">
+            Same oil, same harvest, both numbers published by the producer. The gap is
+            the test, not the oil.
+          </p>
+        </div>
 
-        <p class="mt-6 leading-relaxed" style="opacity: 0.8;">
-          More on reading a certificate line by line is in our guide to
-          <a href="/blog/how-to-read-olive-oil-lab-analysis" class="underline font-medium">
-            olive oil lab reports</a>, and the compounds themselves are covered in
-          <a href="/blog/polyphenols-olive-oil" class="underline font-medium">
-            polyphenols in olive oil</a>.
-        </p>
+        <div class="mt-10 rounded-2xl p-6 md:p-8" style={`background-color:${GREEN}; color:${CREAM};`}>
+          <p class="text-xl md:text-2xl leading-snug font-semibold">
+            Folin is like counting apples by weighing the basket. The leaves and the
+            basket get weighed too.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-8">Questions</h2>
-        <div class="space-y-8">
-          {FAQS.map((f) => (
-            <div>
-              <h3 class="font-bold mb-2 leading-snug">{f.q}</h3>
-              <p class="leading-relaxed" style="opacity: 0.8;">{f.a}</p>
+    <!-- ══════════ S4 · WHY HPLC ══════════ -->
+    <section class="py-20 px-6" style={`background-color:${GREEN}; color:${CREAM};`}>
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.6;`}>
+          Our choice
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">
+          Why we test with <span style={`font-family:${SCRIPT}; color:${ACCENT};`}>HPLC.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {[
+            ["It measures each compound.", "Not an estimate from a spectrum, and not a colour reaction. Every phenol is separated and weighed on its own."],
+            ["It's the official method.", "The International Olive Council recognises it for olive oil biophenols, as COI/T.20/Doc. No 29."],
+            ["It shows what matters.", "Oleocanthal and oleacein reported as their own line items, rather than buried inside one total."],
+            ["It's comparable.", "The same test every harvest, so our numbers can be set against each other year to year."],
+          ].map(([t, b], i) => (
+            <div class="rounded-2xl p-6" style="background-color:rgba(255,250,234,.07);">
+              <span class="text-3xl font-bold block mb-3" style={`color:${ACCENT}; font-family:${CAPS};`}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="text-lg font-bold mb-2">{t}</h3>
+              <p class="leading-relaxed text-base" style="opacity:.8;">{b}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- ============ CTA ============ -->
-    <section class="py-16 px-6">
-      <div class="container mx-auto max-w-3xl text-center">
-        <p class="leading-relaxed mb-6" style="opacity: 0.8;">
-          We publish the method, the laboratory and the full report for every
-          oil we sell.
+    <!-- ══════════ S5 · THE COMPOUNDS ══════════ -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          Beyond the total
         </p>
-        <a
-          href="https://shop.attimo-oil.com"
-          class="inline-block text-sm font-bold px-8 py-4 rounded-xl transition-opacity hover:opacity-90"
-          style={`background-color: #CDDB2D; color: ${GREEN};`}
-        >
-          See the oils
-        </a>
+        <h2 class="text-3xl md:text-4xl font-bold mb-5">
+          The compounds that <span style={`font-family:${SCRIPT};`}>actually matter.</span>
+        </h2>
+        <p class="text-lg leading-relaxed mb-12" style="opacity:.75;">
+          The EU health claim isn't about "polyphenols" in general. It names specific compounds.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5 mb-8">
+          {[
+            {
+              name: "Oleocanthal",
+              what: "The peppery catch at the back of your throat when you taste fresh oil.",
+              why: "Studied for anti-inflammatory activity through the same enzyme pathway as ibuprofen.",
+              value: "471 mg/kg",
+            },
+            {
+              name: "Oleacein",
+              what: "Oleocanthal's close relative, with no comparable taste signature.",
+              why: "Studied chiefly as an antioxidant, with cardiovascular interest.",
+              value: "336 mg/kg",
+            },
+          ].map((c) => (
+            <div class="rounded-2xl p-7" style="background-color:rgba(27,66,41,.05); border:1px solid rgba(27,66,41,.12);">
+              <h3 class="text-2xl font-bold mb-4">{c.name}</h3>
+              <p class="leading-relaxed mb-3 text-base" style="opacity:.8;">{c.what}</p>
+              <p class="leading-relaxed mb-6 text-base" style="opacity:.8;">{c.why}</p>
+              <div class="pt-5" style="border-top:1px solid rgba(27,66,41,.15);">
+                <span class="text-xs font-bold tracking-widest uppercase block mb-1" style={`font-family:${CAPS}; opacity:.5;`}>
+                  In our Coratina
+                </span>
+                <span class="text-3xl font-bold">{c.value}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-base leading-relaxed" style="opacity:.65;">
+          The EU claim covers hydroxytyrosol and its derivatives — for example the
+          oleuropein complex and tyrosol — at 5 mg per 20 g of oil, under
+          <a
+            href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32012R0432"
+            class="underline font-medium" rel="nofollow noopener" target="_blank">
+            Regulation (EU) No 432/2012</a>. These compounds are studied, not proven remedies.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ S6 · HONEST LIMITS ══════════ -->
+    <section class="py-20 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          What we won't claim
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">
+          What no lab can <span style={`font-family:${SCRIPT};`}>tell you yet.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {[
+            {
+              t: "Your body converts some compounds.",
+              b: "Precursors turn into hydroxytyrosol and tyrosol as you digest them. No test at bottling captures that.",
+              icon: `<path d="M22 6v10m0 12v10M6 22h10m12 0h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="22" cy="22" r="6" stroke="currentColor" stroke-width="2.5"/>`,
+            },
+            {
+              t: "Numbers from different tests don't compare.",
+              b: "Including ours against anyone else's. Every result carries a margin too: ours reads 847 ±181 mg/kg.",
+              icon: `<path d="M14 12v20M30 12v20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M8 18l6-6 6 6M24 26l6 6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+            },
+            {
+              t: "Polyphenols fade.",
+              b: "From press to bottle to open bottle, and faster in heat and light. A number without a harvest date is incomplete.",
+              icon: `<circle cx="22" cy="22" r="15" stroke="currentColor" stroke-width="2.5"/><path d="M22 13v9l6 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+            },
+            {
+              t: "One test is one sample.",
+              b: "A certificate describes the oil sent to the lab. Groves, pressing days and tanks vary across a harvest.",
+              icon: `<path d="M10 8h24v28a4 4 0 01-4 4H14a4 4 0 01-4-4V8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 17h10M17 24h10M17 31h6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>`,
+            },
+          ].map((c) => (
+            <div class="rounded-2xl p-6" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.12);`}>
+              <div class="mb-4" style="opacity:.6;">
+                <svg width="40" height="40" viewBox="0 0 44 44" fill="none" aria-hidden="true" set:html={c.icon} />
+              </div>
+              <h3 class="text-lg font-bold mb-2">{c.t}</h3>
+              <p class="leading-relaxed text-base" style="opacity:.8;">{c.b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ S7 · READ A LABEL ══════════ -->
+    <section id="checklist" class="py-20 px-6">
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          Your checklist
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">
+          Read any label in <span style={`font-family:${SCRIPT};`}>ten seconds.</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <ol class="space-y-4">
+            {[
+              ["Which test?", "HPLC, NMR or Folin. Without it the number has no units you can read."],
+              ["Which lab?", "A result with no laboratory behind it can't be queried or repeated."],
+              ["Accredited?", "ISO/IEC 17025 covers testing competence. ISO 9001 doesn't."],
+              ["Which harvest?", "Phenols peak at early harvest and fall from there."],
+              ["When was it sampled?", "The gap between pressing and testing is part of the number."],
+              ["Compounds listed?", "Oleocanthal and oleacein separately, not folded into a total."],
+            ].map(([t, b], i) => (
+              <li class="flex gap-4">
+                <span
+                  class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold"
+                  style={`background-color:${GREEN}; color:${CREAM}; font-family:${CAPS};`}
+                >
+                  {i + 1}
+                </span>
+                <span>
+                  <strong class="block">{t}</strong>
+                  <span class="text-base leading-relaxed" style="opacity:.75;">{b}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+
+          <!-- Annotated certificate excerpt — real rows from report 2533647 -->
+          <figure class="rounded-2xl p-6" style={`background-color:${CREAM}; border:2px solid ${GREEN};`}>
+            <div class="flex justify-between items-start mb-5 pb-4" style="border-bottom:1px solid rgba(27,66,41,.2);">
+              <div>
+                <p class="text-xs font-bold tracking-widest uppercase" style={`font-family:${CAPS}; opacity:.5;`}>Certificate</p>
+                <p class="font-bold text-lg">Report 2533647</p>
+              </div>
+              <span class="text-xs px-2 py-1 rounded-full font-bold" style={`background-color:${ACCENT}; font-family:${CAPS};`}>ISO 17025</span>
+            </div>
+            <dl class="space-y-3 text-sm">
+              {[
+                ["1", "Test", "HPLC — IOC Doc. 29"],
+                ["2", "Lab", "Chemiservice, Monopoli"],
+                ["3", "Accreditation", "ISO/IEC 17025 · IOC Type A"],
+                ["4", "Harvest", "2025/26"],
+                ["5", "Sampled", "18 November 2025"],
+                ["6", "Oleocanthal / oleacein", "471 / 336 mg/kg"],
+              ].map(([n, k, v]) => (
+                <div class="flex items-center gap-3">
+                  <span
+                    class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold"
+                    style={`background-color:${GREEN}; color:${CREAM};`}
+                  >{n}</span>
+                  <dt class="flex-1" style="opacity:.65;">{k}</dt>
+                  <dd class="font-semibold text-right">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <figcaption class="mt-5 pt-4 text-sm" style="border-top:1px solid rgba(27,66,41,.15); opacity:.6;">
+              Our Coratina certificate, against the same six checks.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ S8 · OUR NUMBERS ══════════ -->
+    <section id="certificates" class="py-20 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-5xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          Our certificates
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">
+          Our numbers, <span style={`font-family:${SCRIPT};`}>in full.</span>
+        </h2>
+
+        <div class="overflow-x-auto rounded-2xl" style={`background-color:${CREAM};`}>
+          <table class="w-full border-collapse" style="font-size:16px; min-width:760px;">
+            <thead>
+              <tr style={`background-color:${GREEN}; color:${CREAM};`}>
+                <th class="text-left p-4 font-bold">Oil</th>
+                <th class="text-left p-4 font-bold">Harvest</th>
+                <th class="text-left p-4 font-bold">Test</th>
+                <th class="text-left p-4 font-bold">Lab</th>
+                <th class="text-left p-4 font-bold">Total</th>
+                <th class="text-left p-4 font-bold">Oleocanthal</th>
+                <th class="text-left p-4 font-bold">Oleacein</th>
+                <th class="text-left p-4 font-bold">Hydroxytyrosol</th>
+                <th class="text-left p-4 font-bold">Tyrosol</th>
+                <th class="text-left p-4 font-bold">Report</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+                <td class="p-4 font-semibold">Coratina</td>
+                <td class="p-4">2025/26</td>
+                <td class="p-4">HPLC</td>
+                <td class="p-4">Chemiservice</td>
+                <td class="p-4">847 ±181</td>
+                <td class="p-4 font-semibold">471</td>
+                <td class="p-4 font-semibold">336</td>
+                <td class="p-4">5</td>
+                <td class="p-4">5</td>
+                <td class="p-4"><a href="/lab/Coratina2025.pdf" class="underline font-medium">2533647</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">Nocellara</td>
+                <td class="p-4">2025/26</td>
+                <td class="p-4">HPLC</td>
+                <td class="p-4">Chemiservice</td>
+                <td class="p-4">400 ±112</td>
+                <td class="p-4 font-semibold">137</td>
+                <td class="p-4 font-semibold">209</td>
+                <td class="p-4">&lt;3</td>
+                <td class="p-4">&lt;3</td>
+                <td class="p-4"><a href="/lab/Nocellara2025.pdf" class="underline font-medium">2533283</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-5 text-base leading-relaxed" style="opacity:.6;">
+          All values mg/kg. Totals are IOC-method figures in tyrosol equivalents, with the
+          certificate's stated uncertainty. Coratina sampled 18 November 2025, Nocellara
+          17 November 2025. <!-- TODO: swap PDF links to per-oil certificate pages once built -->
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ S9 · FAQ ══════════ -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto max-w-3xl">
+        <p class="text-xs font-bold tracking-widest uppercase mb-5" style={`font-family:${CAPS}; opacity:.55;`}>
+          In depth
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-10">Questions, answered at length.</h2>
+
+        <div class="space-y-3">
+          {FAQS.map((f) => (
+            <details class="rounded-xl overflow-hidden" style="background-color:rgba(27,66,41,.05);">
+              <summary class="cursor-pointer p-5 font-semibold list-none flex justify-between gap-4 items-start">
+                <span>{f.q}</span>
+                <span style={`color:${GREEN}; opacity:.5;`} aria-hidden="true">+</span>
+              </summary>
+              <div class="px-5 pb-5 leading-relaxed text-base" style="opacity:.8;">{f.a}</div>
+            </details>
+          ))}
+
+          <details class="rounded-xl overflow-hidden" style="background-color:rgba(27,66,41,.05);">
+            <summary class="cursor-pointer p-5 font-semibold list-none flex justify-between gap-4 items-start">
+              <span>Full comparison of the three methods</span>
+              <span style={`color:${GREEN}; opacity:.5;`} aria-hidden="true">+</span>
+            </summary>
+            <div class="px-5 pb-5 overflow-x-auto">
+              <table class="w-full border-collapse" style="font-size:15px; min-width:640px;">
+                <thead>
+                  <tr>
+                    <th class="text-left p-3"></th>
+                    <th class="text-left p-3 font-bold">HPLC (IOC)</th>
+                    <th class="text-left p-3 font-bold">NMR</th>
+                    <th class="text-left p-3 font-bold">Folin-Ciocalteu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+                    <td class="p-3 font-semibold">What it does</td>
+                    <td class="p-3">Separates the phenolic fraction and quantifies compounds one at a time</td>
+                    <td class="p-3">Reads a magnetic resonance spectrum and assigns signals to structures</td>
+                    <td class="p-3">A colour-change reaction read on a spectrophotometer</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+                    <td class="p-3 font-semibold">What it reports</td>
+                    <td class="p-3">Compound-by-compound breakdown plus a total as tyrosol equivalents</td>
+                    <td class="p-3">A total plus selected named compounds, in absolute mass</td>
+                    <td class="p-3">One total, in gallic or caffeic acid equivalents</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+                    <td class="p-3 font-semibold">IOC status</td>
+                    <td class="p-3 font-semibold">Recognised — COI/T.20/Doc. No 29</td>
+                    <td class="p-3">Not recognised</td>
+                    <td class="p-3">Not recognised</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+                    <td class="p-3 font-semibold">Known bias</td>
+                    <td class="p-3">Tyrosol-equivalent totals run low; the IOC says so itself</td>
+                    <td class="p-3">Totals run above IOC totals, largely a units difference</td>
+                    <td class="p-3">Counts non-phenolic reducing compounds; understates real phenolic mass</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-semibold">Published cost</td>
+                    <td class="p-3">~€46–90 a total; ~€130–250 full profiling</td>
+                    <td class="p-3">~€110–220</td>
+                    <td class="p-3">~€30–95</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ S10 · SOURCES ══════════ -->
+    <section class="pb-20 px-6">
+      <div class="container mx-auto max-w-3xl">
+        <details class="rounded-xl overflow-hidden" style="background-color:rgba(27,66,41,.05);">
+          <summary class="cursor-pointer p-5 font-semibold list-none">Sources and full references</summary>
+          <ul class="px-5 pb-5 space-y-3 text-base" style="opacity:.8;">
+            <li>International Olive Council — <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.internationaloliveoil.org/wp-content/uploads/2022/06/Doc.-No-29-REV-2_ENK.pdf">COI/T.20/Doc. No 29/Rev.2 (2022)</a>, determination of biophenols in olive oils by HPLC.</li>
+            <li><a class="underline" rel="nofollow noopener" target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32012R0432">Regulation (EU) No 432/2012</a> — the olive oil polyphenol health claim and its conditions of use.</li>
+            <li>EFSA NDA Panel, 2025 opinions restating the 2011 position on Folin-Ciocalteu and its application to olive oil — <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12099302/">EFSA Journal 2025;23(5):e9470</a>.</li>
+            <li>Olmo-García et al., <a class="underline" rel="nofollow noopener" target="_blank" href="https://doi.org/10.1016/j.chroma.2018.11.031">J. Chromatogr. A 2019;1585:56–69</a> — specific versus global methods across 50 oils.</li>
+            <li>Castillo-Luna &amp; Priego-Capote, <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.mdpi.com/2076-3921/15/4/511">Antioxidants 2026;15(4):511</a> — absolute quantitation for health-claim recognition.</li>
+            <li>Alessandri et al., <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf403104a">J. Agric. Food Chem. 2014;62(4):826–835</a> — HPLC-DAD-MS against Folin-Ciocalteu.</li>
+            <li>Everette et al., <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf1005935">J. Agric. Food Chem. 2010;58(14):8139–8144</a> — what the Folin reagent reacts with.</li>
+            <li>Starec et al., <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796514/">Molecules 2021;26(1):242</a> — oleocanthal by NMR and by HPLC on the same oils.</li>
+            <li>Ricciutelli et al., <a class="underline" rel="nofollow noopener" target="_blank" href="https://doi.org/10.1016/j.chroma.2016.12.020">J. Chromatogr. A 2017;1481:53–63</a> — HPLC-DAD method and health-claim assessment.</li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ══════════ S11 · CTA ══════════ -->
+    <section class="pb-24 px-6">
+      <div class="container mx-auto max-w-3xl">
+        <div class="rounded-2xl p-8 md:p-12 text-center" style={`background-color:${GREEN}; color:${CREAM};`}>
+          <p class="text-xl md:text-2xl leading-snug mb-8">
+            Every oil we sell ships with its test, its lab and its full certificate.
+          </p>
+          <a
+            href="https://shop.attimo-oil.com"
+            class="inline-block text-sm font-bold px-8 py-4 rounded-xl"
+            style={`background-color:${ACCENT}; color:${GREEN}; font-family:${CAPS};`}
+          >
+            See the oils
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <Footer />
 </BaseLayout>
+
+<style>
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] > summary span[aria-hidden] { transform: rotate(45deg); }
+  details > summary span[aria-hidden] { display: inline-block; transition: transform .2s ease; font-size: 22px; line-height: 1; }
+</style>
