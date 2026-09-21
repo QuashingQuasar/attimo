@@ -2,7 +2,7 @@
 
 Reference for Claude Code and any AI-assisted development on attimo-oil.com.
 
-**Rewritten 2026-09-21 by auditing the live site and the component source.** The
+**Rewritten 2026-09-21 by auditing the live site (home, product, both hubs, blog, quiz) and the component source.** The
 previous version was incomplete and caused real mistakes (Space Grotesk in
 headings, two fonts inside one heading, invented FAQ markup). Where this file
 and your instinct disagree, this file wins. Where this file and the live site
@@ -50,6 +50,34 @@ Lead Space Grotesk · clamp(1.05rem, 1.25vw, 1.3rem)
 
 Fallbacks for standalone HTML outside the repo: Beverly Drive → Caveat,
 UDC Working Man Sans → Oswald (both Google Fonts).
+
+### Header writing style — audited across every page
+
+Section headers on this site are **short**: two to six words, almost never a
+full sentence. Live examples, verbatim:
+
+> The "extra virgin" lie · ATTIMO vs Others · Word from the street ·
+> This year's harvest · How we harvest · What early harvest tastes like ·
+> From grove to bottle · Shop Fresh Harvest · Why our polyphenols stay high ·
+> Don't take our word for it · The compounds that matter
+
+Rules that follow, and that AI-written drafts break every time:
+
+1. **No trailing full stop.** Zero headers across the whole site end in one.
+2. **Short.** If the header runs past about six words it is probably a sentence
+   that belongs in the lead paragraph instead.
+3. **State a position, don't tease.** "The 'extra virgin' lie" takes a side.
+   Curiosity-gap headers that withhold the point ("The compounds that actually
+   matter", "What no lab can tell you yet") are wrong for this brand.
+4. **Plain words.** "How we harvest", not "Our harvesting methodology".
+
+### Recurring section patterns
+
+Several blocks repeat across pages and should be reused rather than reinvented:
+`ATTIMO vs Others` (home, product, early-harvest hub), `Word from the street`
+(testimonials), `Frequently Asked Questions`, `From grove to bottle`. Pages are
+long and made of many short sections — the homepage has 10, the early-harvest
+hub 15.
 
 ---
 
@@ -105,7 +133,28 @@ implementation is itself a design-system violation.
 | Footer | `src/astro/components/Footer.astro` | Locale-aware. |
 | Layout + SEO | `src/astro/layouts/BaseLayout.astro` | Handles canonical, hreflang, JSON-LD, announce bar. |
 | Product widgets | `OilProductWidgets.tsx`, `BundleWidgets.tsx` | |
-| Comparison blocks | `PolyphenolComparison.tsx`, `OilComparison.tsx` | |
+| Comparison blocks | `PolyphenolComparison.tsx`, `OilComparison.tsx` | **Both are hard-wired.** `PolyphenolComparison` renders four fixed bars (avg 180 · EU 250 · Blueprint 400 · ATTIMO) with dictionary tooltips; `OilComparison` renders a fixed ATTIMO-vs-supermarket feature table. Neither accepts arbitrary series. For other data, copy the visual language below rather than bending the component. |
+
+### Bar chart language (from `PolyphenolComparison`)
+
+Do not invent a track-and-fill bar. The site's bars are:
+
+```
+Bar        h-16 (h-14 on small), rounded-lg, the label sits INSIDE the bar
+Label      cream text, UDC for ATTIMO's own bar, Space Grotesk for others
+Value      OUTSIDE the bar, to the right, bold, #1B4229
+Ramp       #A8B88F → #8A9B6F → #5C6E45 → #1B4229, ATTIMO always darkest
+```
+
+### Table language (from `OilComparison`)
+
+```
+Header rule   2px dashed #1B4229
+Row rule      1px dashed #1B4229
+Highlight     the ATTIMO column sits on #B3E58C (lime)
+Row labels    UDC Working Man Sans · values Space Grotesk
+Marks         tick = #1A431D circle with a #B3E58C check; cross = #E53935 circle
+```
 
 Closest full-page pattern for a content/authority page:
 `src/astro/react-pages/HighPolyphenolPage.tsx` with

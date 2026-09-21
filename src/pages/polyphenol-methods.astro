@@ -233,24 +233,32 @@ const faqJsonLd = {
         <div class="rounded-2xl p-7 md:p-9" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
           <p class="mb-8" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Same oil · same scale</p>
 
-          <div class="mb-7">
-            <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem; color:${GREEN};`}>
-              <span><strong>HPLC</strong> · measured</span><span class="font-bold">847 mg/kg</span>
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="h-14 md:h-16 rounded-lg flex items-center px-5 md:px-6"
+              style={`background-color:${GREEN}; width:${w(847)}%; min-width:44%;`}
+            >
+              <span style={`font-family:${UDC}; font-size:clamp(.85rem,1.1vw,1.05rem); color:${CREAM}; white-space:nowrap;`}>
+                HPLC · measured
+              </span>
             </div>
-            <div style="background:rgba(27,66,41,.1); height:30px; border-radius:4px;">
-              <div style={`background:${GREEN}; height:30px; width:${w(847)}%; border-radius:4px;`}></div>
-            </div>
+            <span style={`font-family:${SG}; font-weight:700; font-size:clamp(.9rem,1.2vw,1.35rem); color:${GREEN}; white-space:nowrap;`}>
+              847 mg/kg
+            </span>
           </div>
 
-          <div class="mb-8">
-            <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem; color:${GREEN};`}>
-              <span><strong>NMR</strong> · estimated</span><span class="font-bold">~1,150 mg/kg</span>
+          <div class="flex items-center gap-4 mb-8">
+            <div
+              class="h-14 md:h-16 rounded-lg flex items-center px-5 md:px-6"
+              style={`width:${w(1150)}%; min-width:44%; background:repeating-linear-gradient(45deg, #5C6E45, #5C6E45 10px, #6B7D52 10px, #6B7D52 20px);`}
+            >
+              <span style={`font-family:${UDC}; font-size:clamp(.85rem,1.1vw,1.05rem); color:${CREAM}; white-space:nowrap;`}>
+                NMR · estimated
+              </span>
             </div>
-            <div style="background:rgba(27,66,41,.1); height:30px; border-radius:4px;">
-              <div
-                style={`height:30px; width:${w(1150)}%; border-radius:4px; background:repeating-linear-gradient(45deg, rgba(27,66,41,.32), rgba(27,66,41,.32) 8px, rgba(27,66,41,.18) 8px, rgba(27,66,41,.18) 16px);`}
-              ></div>
-            </div>
+            <span style={`font-family:${SG}; font-weight:700; font-size:clamp(.9rem,1.2vw,1.35rem); color:${GREEN}; white-space:nowrap;`}>
+              ~1,150 mg/kg
+            </span>
           </div>
 
           <div class="flex justify-between" style={`font-family:${SG}; font-size:.78rem; color:rgba(27,66,41,.45); border-top:1px solid rgba(27,66,41,.12); padding-top:10px;`}>
@@ -470,45 +478,33 @@ const faqJsonLd = {
           <div class="space-y-5">
             <div class="rounded-2xl p-7" style={`background-color:rgba(27,66,41,.05);`}>
               <p class="mb-6" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Total polyphenols, as published</p>
-              <div class="mb-5">
-                <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem;`}>
-                  <span style="opacity:.75;">Another Coratina — NMR</span>
-                  <span class="font-bold">1,295 mg/kg</span>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="h-14 rounded-lg flex items-center px-5" style={`background-color:#8A9B6F; width:${w(1295)}%; min-width:46%;`}>
+                  <span style={`font-family:${SG}; font-size:.9rem; color:${CREAM}; white-space:nowrap;`}>Another Coratina · NMR</span>
                 </div>
-                <div style="background:rgba(27,66,41,.1); height:26px; border-radius:3px;">
-                  <div style={`background:rgba(27,66,41,.3); height:26px; width:${w(1295)}%; border-radius:3px;`}></div>
-                </div>
+                <span style={`font-family:${SG}; font-weight:700; font-size:1rem; color:${GREEN}; white-space:nowrap;`}>1,295 mg/kg</span>
               </div>
-              <div>
-                <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem;`}>
-                  <span class="font-semibold">ATTIMO Coratina — HPLC</span>
-                  <span class="font-bold">847 mg/kg</span>
+              <div class="flex items-center gap-4">
+                <div class="h-14 rounded-lg flex items-center px-5" style={`background-color:${GREEN}; width:${w(847)}%; min-width:46%;`}>
+                  <span style={`font-family:${UDC}; font-size:.95rem; color:${CREAM}; white-space:nowrap;`}>ATTIMO Coratina · HPLC</span>
                 </div>
-                <div style="background:rgba(27,66,41,.1); height:26px; border-radius:3px;">
-                  <div style={`background:${GREEN}; height:26px; width:${w(847)}%; border-radius:3px;`}></div>
-                </div>
+                <span style={`font-family:${SG}; font-weight:700; font-size:1rem; color:${GREEN}; white-space:nowrap;`}>847 mg/kg</span>
               </div>
             </div>
 
             <div class="rounded-2xl p-7" style={`background-color:${GREEN}; color:${CREAM};`}>
               <p class="mb-6" style={`${eyebrow} color:${ACCENT};`}>Oleocanthal and oleacein, as published</p>
-              <div class="mb-5">
-                <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem;`}>
-                  <span class="font-semibold">ATTIMO Coratina — 471 + 336</span>
-                  <span class="font-bold">807 mg/kg</span>
+              <div class="flex items-center gap-4 mb-4">
+                <div class="h-14 rounded-lg flex items-center px-5" style={`background-color:${ACCENT}; width:${w(807)}%; min-width:46%;`}>
+                  <span style={`font-family:${UDC}; font-size:.95rem; color:${GREEN}; white-space:nowrap;`}>ATTIMO · 471 + 336</span>
                 </div>
-                <div style="background:rgba(255,250,234,.15); height:26px; border-radius:3px;">
-                  <div style={`background:${ACCENT}; height:26px; width:${w(807)}%; border-radius:3px;`}></div>
-                </div>
+                <span style={`font-family:${SG}; font-weight:700; font-size:1rem; color:${CREAM}; white-space:nowrap;`}>807 mg/kg</span>
               </div>
-              <div>
-                <div class="flex justify-between items-baseline mb-2" style={`font-family:${SG}; font-size:.95rem;`}>
-                  <span style="opacity:.8;">Another Coratina — 292 + 148</span>
-                  <span class="font-bold">439 mg/kg</span>
+              <div class="flex items-center gap-4">
+                <div class="h-14 rounded-lg flex items-center px-5" style={`background-color:rgba(255,250,234,.25); width:${w(439)}%; min-width:46%;`}>
+                  <span style={`font-family:${SG}; font-size:.9rem; color:${CREAM}; white-space:nowrap;`}>Another Coratina · 292 + 148</span>
                 </div>
-                <div style="background:rgba(255,250,234,.15); height:26px; border-radius:3px;">
-                  <div style="background:rgba(255,250,234,.45); height:26px; width:33.8%; border-radius:3px;"></div>
-                </div>
+                <span style={`font-family:${SG}; font-weight:700; font-size:1rem; color:${CREAM}; white-space:nowrap;`}>439 mg/kg</span>
               </div>
             </div>
 
@@ -643,7 +639,7 @@ const faqJsonLd = {
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px solid rgba(27,66,41,.15);">
+              <tr style="border-bottom:1px dashed #1B4229;">
                 <td class="p-4 font-semibold">Coratina</td>
                 <td class="p-4">847 ±181</td>
                 <td class="p-4 font-semibold">471</td>
