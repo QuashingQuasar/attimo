@@ -149,6 +149,13 @@ const faqJsonLd = {
         class="absolute inset-0"
         style="background:linear-gradient(to top, rgba(16,34,27,.94) 0%, rgba(16,34,27,.86) 30%, rgba(16,34,27,.66) 58%, rgba(16,34,27,.3) 100%);"
       ></div>
+      <!-- Separate top-down scrim: the announce bar is solid green and the navbar
+           is transparent here, so without this the bar bleeds straight into the
+           photograph and the nav links sit on bare canopy. -->
+      <div
+        class="absolute inset-x-0 top-0 h-48 pointer-events-none"
+        style="background:linear-gradient(to bottom, rgba(16,34,27,.92) 0%, rgba(16,34,27,.55) 45%, rgba(16,34,27,0) 100%);"
+      ></div>
       <div class="relative container mx-auto px-6 max-w-5xl pb-16 pt-36">
         <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>Polyphenol analysis methods explained</p>
         <h1 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.4vw,3.8rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; ${heroShadow}`}>
@@ -309,8 +316,7 @@ const faqJsonLd = {
       <div class="container mx-auto max-w-6xl">
         <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Case study: Coratina 2025 harvest</p>
         <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
-          Between two early-harvest Coratinas, the phenolically weaker one reads higher
-          because of the analysis method
+          Two Coratinas: phenolically weaker B reads higher than A because of the NMR method
         </h2>
         <p class="mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>
           HPLC measures each bioactive polyphenol individually. NMR reads them in aggregate.
@@ -322,6 +328,7 @@ const faqJsonLd = {
         <div class="grid md:grid-cols-2 gap-5">
           {[
             {
+              label: "A",
               name: "ATTIMO Coratina 2025",
               badge: "HPLC",
               method: "IOC Doc. No 29",
@@ -333,6 +340,7 @@ const faqJsonLd = {
               mine: true,
             },
             {
+              label: "B",
               name: "Competitor Coratina",
               badge: "NMR",
               method: "No IOC method",
@@ -352,7 +360,7 @@ const faqJsonLd = {
             >
               <div class="flex items-start justify-between gap-3 mb-7">
                 <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; color:${c.mine ? CREAM : GREEN};`}>
-                  {c.name}
+                  <span style={`color:${c.mine ? ACCENT : "rgba(27,66,41,.55)"};`}>{c.label}</span> · {c.name}
                 </h3>
                 <span
                   class="rounded-full px-3 py-1.5 flex-shrink-0"
@@ -375,7 +383,9 @@ const faqJsonLd = {
                 {[["Oleocanthal", c.oleocanthal], ["Oleacein", c.oleacein]].map(([k, v]) => (
                   <div>
                     <p class="mb-1" style={`font-family:${SG}; font-size:.95rem; color:${c.mine ? "rgba(255,250,234,.6)" : "rgba(27,66,41,.6)"};`}>{k}</p>
-                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; line-height:1; color:${c.mine ? CREAM : GREEN};`}>{v}</p>
+                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; line-height:1; color:${c.mine ? CREAM : GREEN};`}>
+                      {v}<span style="font-size:.85rem; font-weight:400;"> mg/kg</span>
+                    </p>
                   </div>
                 ))}
               </div>
@@ -403,7 +413,8 @@ const faqJsonLd = {
       <div class="container mx-auto max-w-5xl">
         <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>The number to compare</p>
         <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
-          Oleocanthal and oleacein are the only numbers that compare across tests
+          <span style="color:#5C6E45;">Oleocanthal &amp; oleacein</span>:<br />
+          the main numbers to compare across tests
         </h2>
         <p class="mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>
           Polyphenol is a wide, generic family and most of its members carry no real evidence
@@ -554,7 +565,7 @@ const faqJsonLd = {
         <div class="max-w-3xl mb-12">
           <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Your checklist</p>
           <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
-            Run any polyphenol claim through these six questions
+            How to assess olive oil polyphenol claims
           </h2>
           <p style={`${lead} color:rgba(27,66,41,.78);`}>
             Most bottles fail on the first one. A producer who can answer all six has given
@@ -739,8 +750,8 @@ const faqJsonLd = {
             </a>
           </div>
           <img
-            src={IMG.pourGlass}
-            alt="Green olive oil being poured into a tasting glass"
+            src="/images/coratina-shopping.png"
+            alt="ATTIMO Coratina extra virgin olive oil bottle"
             class="w-full h-full object-cover hidden md:block"
             width="1122" height="1402" loading="lazy"
           />
