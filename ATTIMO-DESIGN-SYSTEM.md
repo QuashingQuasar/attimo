@@ -1,51 +1,141 @@
 # Attimo Design System
 
-Reference file for Claude Code and any AI-assisted development on attimo-oil.com.
+Reference for Claude Code and any AI-assisted development on attimo-oil.com.
 
-## Colors
+**Rewritten 2026-09-21 by auditing the live site and the component source.** The
+previous version was incomplete and caused real mistakes (Space Grotesk in
+headings, two fonts inside one heading, invented FAQ markup). Where this file
+and your instinct disagree, this file wins. Where this file and the live site
+disagree, **the live site wins — go read it and update this file.**
+
+---
+
+## 1. The three fonts, and where each one goes
+
+This is the rule that gets broken most. Read it twice.
+
+| Font | Used for | Never used for |
+|---|---|---|
+| **UDC Working Man Sans** | **Every H1 and H2 on the site, without exception.** Also: eyebrow labels, buttons, H3s in content cards, numeric/stat labels. | Body copy, paragraphs. |
+| **Space Grotesk** | Body text, paragraphs, lead-ins, table cells, FAQ answers, UI text. | **Headings. Ever.** |
+| **Beverly Drive** (script) | Whole decorative elements only: product/variety names ("Coratina d'Italia"), the Testimonials heading, the default FAQ heading, the "vs" connector in "ATTIMO *vs* Others", header flourishes. | Emphasising a phrase inside a content heading. |
+
+**Absolute rules:**
+
+1. **Never mix two fonts inside one heading.** A heading is set in one typeface.
+   The single exception that exists on the site is the one-word connector "vs" —
+   do not generalise from it.
+2. **Never set a heading in Space Grotesk.**
+3. **Do not reach for Beverly Drive unless you are copying an existing usage.**
+   If you are unsure whether it belongs, it does not. Default to UDC.
+4. **Headings never end in a full stop.** Live examples: "Why our polyphenols
+   stay high", "Don't take our word for it", "The compounds that matter".
+
+### Measured values from the live site
+
+```
+H1   UDC Working Man Sans · weight 300 · clamp(2rem, 3.5vw, 3.7rem)
+     letter-spacing ≈ -0.025em (tracking-tight) · line-height 1.0–1.05
+H2   UDC Working Man Sans · weight 300 (or 700 for punchier sections)
+     clamp(1.9rem, 3vw, 3.2rem) · letter-spacing ≈ -0.025em · line-height 1.05
+H3   UDC Working Man Sans weight 700 ≈ 14–18px for content cards
+     Beverly Drive ≈ 28px, letter-spacing 0.04em for product names
+Eyebrow / label
+     UDC Working Man Sans · ~11.5px · UPPERCASE · letter-spacing ≈ 0.22em
+     colour: #CDDB2D on dark, #1B4229 at 55% on cream
+Body UDC → no. Space Grotesk · 16–19px · normal letter-spacing
+     colour rgba(27,66,41,0.78) on cream, rgba(255,250,234,0.78) on green
+Lead Space Grotesk · clamp(1.05rem, 1.25vw, 1.3rem)
+```
+
+Fallbacks for standalone HTML outside the repo: Beverly Drive → Caveat,
+UDC Working Man Sans → Oswald (both Google Fonts).
+
+---
+
+## 2. Colours
 
 | Token | Hex | Usage |
 |---|---|---|
-| Background | `#FFFAEA` | Warm cream — page background. NEVER white or dark. |
-| Primary | `#1B4229` | Dark forest green — text, dark sections, navbar, footer |
-| Accent | `#CDDB2D` | Chartreuse — CTAs, highlights, active states |
-| Text on cream | `#1B4229` | Dark green on cream background |
-| Text on dark | `#FFFAEA` | Cream on dark green background |
+| Cream | `#FFFAEA` | Default page background. Never white, never dark. |
+| Cream (alt) | `#FFFCEB` | Occasional second cream for adjacent sections. |
+| Green | `#1B4229` | Primary. Text on cream, dark section backgrounds, navbar, footer. |
+| Deep green | `#10221B` | Near-black green for the darkest sections (hero bands). |
+| Chartreuse | `#CDDB2D` | CTAs, accents, eyebrow text on dark, occasional full section background. |
+| Lime | `#B3E58C` | Soft accent sections and highlight chips. |
+| Amber | `#ECA948` | Nocellara's warm accent. Variety-specific only. |
 
-## Typography
+**Contrast rules — these were violated and produced unreadable output:**
 
-| Font | Usage | Notes |
+- Never put green text on a green background, at any opacity.
+- Never put a chartreuse heading on a cream background (it vanishes).
+- On `#1B4229` sections: headings `#FFFAEA` or `#CDDB2D`, body
+  `rgba(255,250,234,0.78–0.85)`.
+- On cream sections: headings `#1B4229`, body `rgba(27,66,41,0.78)`.
+- Card on cream = white `#FFFFFF` with a `#1B4229` border, or
+  `rgba(27,66,41,0.05)` fill. Card on green = `rgba(255,250,234,0.07)`.
+- Before shipping, check every text/background pair for actual contrast.
+
+---
+
+## 3. Buttons and CTAs
+
+```
+Font       UDC Working Man Sans (not Space Grotesk)
+Radius     8px for rectangular CTAs · 9999px for pill selectors
+Primary    background #CDDB2D · text #1B4229
+Secondary  background #1B4229 · text #FFFAEA
+Ghost      transparent · text rgba(27,66,41,0.55) · used for inactive pills
+Size       15–19px · letter-spacing ≈ 0.05em · generous padding
+```
+
+Chartreuse-on-green or green-on-cream. Never reverse chartreuse text onto cream.
+
+---
+
+## 4. Reuse components, do not invent markup
+
+Before building any block, check whether it already exists. Inventing a parallel
+implementation is itself a design-system violation.
+
+| Need | Use | Notes |
 |---|---|---|
-| Space Grotesk | Body text, paragraphs, UI | Google Font, primary typeface |
-| Beverly Drive | Script headings, emotional/hero text | Self-hosted, decorative script |
-| UDC Working Man Sans | Block caps labels, section tags, small caps | Self-hosted, industrial feel |
+| FAQ | `src/components/FAQ.tsx` | Accepts `items`, `heading`, `headingFontFamily`. Radix accordion, white cards with `#1B4229` border on a cream section, `max-w-4xl`. **Do not hand-roll `<details>`.** |
+| Header | `src/components/Header.tsx` (React, `forceScrolled`) or `src/astro/components/Header.astro` (static) | |
+| Footer | `src/astro/components/Footer.astro` | Locale-aware. |
+| Layout + SEO | `src/astro/layouts/BaseLayout.astro` | Handles canonical, hreflang, JSON-LD, announce bar. |
+| Product widgets | `OilProductWidgets.tsx`, `BundleWidgets.tsx` | |
+| Comparison blocks | `PolyphenolComparison.tsx`, `OilComparison.tsx` | |
 
-**Fallbacks for standalone HTML (outside Astro repo):**
-- Beverly Drive → Caveat (Google Fonts)
-- UDC Working Man Sans → Oswald (Google Fonts)
+Closest full-page pattern for a content/authority page:
+`src/astro/react-pages/HighPolyphenolPage.tsx` with
+`src/lib/highPolyphenolHubContent.tsx`.
 
-## CTAs
+---
 
-- Background: `#CDDB2D` (chartreuse)
-- Text: `#1B4229` (dark green)
-- Always chartreuse on dark green, never reversed
-- Rounded corners, generous padding
+## 5. Layout
 
-## Layout Patterns
+- Section rhythm alternates cream and green; deep green and lime appear for
+  emphasis bands. Each section should read as its own screen.
+- Containers: `container mx-auto px-6`, `max-w-4xl` for text, `max-w-5xl`/`6xl`
+  for grids and tables.
+- Generous vertical padding. Do not crowd.
+- Mobile-first: default, then `md:`, then `lg:`.
+- No transform/scale for sizing; use native sizing.
+- **Tables must fit without horizontal scrolling on desktop.** If a table needs
+  more than ~7 columns, split it, stack it into cards on mobile, or drop columns
+  that do not serve the reader.
 
-- **Section rhythm:** Alternate between cream (`#FFFAEA`) and dark green (`#1B4229`) background sections
-- **Spacing:** Generous padding — don't crowd elements. Every section should comfortably fit within one viewport.
-- **Navbar:** Dark green background, cream text, fixed
-- **Footer:** Dark green background, matches navbar tone
-- **Breakpoints:** Mobile-first — mobile default, `md:` tablet, `lg:` desktop
-- **No transform/scale** — use native sizing or zoom only at section level
+---
 
-## When Building a New Page
+## 6. Checklist before shipping a new page
 
-1. Use warm cream (`#FFFAEA`) as page background — NEVER white or dark
-2. Use the three-font system: Beverly Drive for emotional headings, UDC Working Man Sans for labels/caps, Space Grotesk for everything else
-3. CTAs are always chartreuse with dark green text
-4. Alternate between cream and dark green sections for visual rhythm
-5. Keep it spacious — generous padding, don't crowd elements
-6. Match the navbar and footer exactly (dark green, same structure)
-7. Before proposing any visual changes, reference the live site at attimo-oil.com first
+1. Cream `#FFFAEA` background — never white, never dark.
+2. Every H1/H2 in UDC Working Man Sans, one font per heading, no trailing period.
+3. Body in Space Grotesk, 16px+.
+4. Beverly Drive only where an existing component already uses it.
+5. Every text/background pair contrast-checked; no green-on-green.
+6. Existing components reused rather than re-implemented.
+7. CTAs chartreuse with green text, UDC, 8px radius.
+8. No new colour tokens.
+9. Compare against the live site before calling it done.
