@@ -41,8 +41,10 @@ H2   UDC Working Man Sans · weight 300 (or 700 for punchier sections)
 H3   UDC Working Man Sans weight 700 ≈ 14–18px for content cards
      Beverly Drive ≈ 28px, letter-spacing 0.04em for product names
 Eyebrow / label
-     UDC Working Man Sans · ~11.5px · UPPERCASE · letter-spacing ≈ 0.22em
+     UDC Working Man Sans · weight 700 · 14px · UPPERCASE · letter-spacing ≈ 0.15em
      colour: #CDDB2D on dark, #1B4229 at 55% on cream
+     (Raised from 11.5px/0.22em on 2026-09-21 — Gilles: "way too small, it's
+     fucking unreadable." If an eyebrow is on the page it has to be legible.)
 Body UDC → no. Space Grotesk · 16–19px · normal letter-spacing
      colour rgba(27,66,41,0.78) on cream, rgba(255,250,234,0.78) on green
 Lead Space Grotesk · clamp(1.05rem, 1.25vw, 1.3rem)
@@ -53,8 +55,27 @@ UDC Working Man Sans → Oswald (both Google Fonts).
 
 ### Header writing style — audited across every page
 
-Section headers on this site are **short**: two to six words, almost never a
-full sentence. Live examples, verbatim:
+**Two registers. Pick by page type before you write a single header.**
+
+**1. Brand pages** (home, product, hubs) — short: two to six words, almost never
+a full sentence. This is the register the live examples below are in.
+
+**2. Landing and authority pages** (`/polyphenol-methods` and anything built to
+argue a case) — Gilles's own landing-page workshop governs, and it produces
+**longer, fully descriptive headers**: a value proposition plus a hook that kills
+an objection or lands a number. "Compare two olive oils on polyphenols, even when
+their labels use different tests." Twelve words, and correct. The rules live in
+`~/.claude/projects/-Users-gillesdc/memory/feedback_landing_page_rules.md`,
+extracted from `LandingPages2026.pdf` — **read that file before writing headers
+for this kind of page.**
+
+What both registers share, and what AI drafts break every time: the header states
+the point rather than teasing it. Every header is a step in the argument, so
+someone scanning the page reads the whole case off the headers alone. Curiosity-gap
+headers and abstract noun-pairs ("The biggest number is not the best oil", "A
+bigger total, fewer compounds") are wrong in both registers.
+
+Live brand-page examples, verbatim:
 
 > The "extra virgin" lie · ATTIMO vs Others · Word from the street ·
 > This year's harvest · How we harvest · What early harvest tastes like ·
@@ -64,8 +85,9 @@ full sentence. Live examples, verbatim:
 Rules that follow, and that AI-written drafts break every time:
 
 1. **No trailing full stop.** Zero headers across the whole site end in one.
-2. **Short.** If the header runs past about six words it is probably a sentence
-   that belongs in the lead paragraph instead.
+2. **Short — on brand pages.** If a brand-page header runs past about six words it
+   is probably a sentence that belongs in the lead paragraph instead. This rule
+   does **not** apply to landing/authority pages; see register 2 above.
 3. **State a position, don't tease.** "The 'extra virgin' lie" takes a side.
    Curiosity-gap headers that withhold the point ("The compounds that actually
    matter", "What no lab can tell you yet") are wrong for this brand.
@@ -188,3 +210,6 @@ Closest full-page pattern for a content/authority page:
 7. CTAs chartreuse with green text, UDC, 8px radius.
 8. No new colour tokens.
 9. Compare against the live site before calling it done.
+10. For a landing or authority page, every header re-read against
+    `feedback_landing_page_rules.md` — value prop plus hook, descriptive, and the
+    headers alone carry the argument when scanned.
