@@ -9,11 +9,13 @@ import {
   METHODS_SLUGS,
   METHODS_HREFLANGS,
 } from "@/lib/polyphenolMethodsContent";
+import { getCertificateMap, fillMethodsContent } from "@/lib/certificates";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 const locale = SLUG_TO_LOCALE["se"];
-const content = METHODS_CONTENT.sv;
+const certs = await getCertificateMap();
+const content = fillMethodsContent(METHODS_CONTENT.sv, certs);
 const t = getDict(locale);
 const canonical = `https://attimo-oil.com${METHODS_SLUGS.sv}`;
 
@@ -60,5 +62,5 @@ const faqJsonLd = {
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  <PolyphenolMethodsBody content={content} locale={locale} />
+  <PolyphenolMethodsBody content={content} locale={locale} certs={certs} />
 </BaseLayout>

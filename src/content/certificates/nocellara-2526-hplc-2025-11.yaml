@@ -1,0 +1,99 @@
+# Transcribed from public/lab/Nocellara2025.pdf (Chemiservice advance test
+# report 2533283, 2 pages). Every value as printed; nothing estimated.
+id: nocellara-2526-hplc-2025-11
+oil: nocellara
+product_url: /product/nocellara
+cultivar: Nocellara del Belice
+origin: Sicily, Italy
+organic: null
+producer: null
+commissioned_by: Oilalà Srl, Gualdo Tadino (PG), Italy
+harvest: "25/26"
+
+certificate:
+  lab_name: Chemiservice S.r.l.
+  lab_city: Monopoli
+  lab_country: Italy
+  accreditation_body: null
+  accreditation_number: null
+  iso_17025: true
+  recognitions:
+    - "Operating according to UNI CEI EN ISO/IEC 17025"
+    - "Laboratory recognised by the International Olive Council for the physico-chemical analysis of olive oils and olive-pomace oils, Type A: advanced testing (01/12/2024 – 30/11/2025)"
+    - "Registered in the Regione Puglia list of self-control laboratories, registration no. 10P"
+    - "AOCS Approved Chemist 2025–2026"
+    - "FOSFA International analyst member"
+  report_type: Advance test report (Anticipo del rapporto di prova)
+  report_number: "2533283"
+  lab_reference: null
+  sample_reference: null
+  sample_description: Olio Extra Vergine di Oliva – Nocellara (information supplied by the client)
+  sample_volume_ml: 250
+  sample_date: null
+  sample_received_date: "2025-11-17"
+  tests_started_date: "2025-11-18"
+  tests_completed_date: "2025-11-20"
+  report_date: "2025-11-20"
+  signed_by: null
+  pdf: /lab/Nocellara2025.pdf
+  thumbnail: /lab/thumbs/Nocellara2025.png
+
+method:
+  name: HPLC
+  reference: COI/T.20/Doc. No 29/Rev. 2 2022
+  applies_to: [total, hydroxytyrosol, tyrosol, other]
+secondary_method:
+  name: Internal method 13056-CH-1
+  reference: null
+  technique: null
+  applies_to: [oleocanthal, oleacein]
+
+phenolics:
+  unit: mg/kg
+  total: 400
+  total_uncertainty: 112
+  total_expressed_as: tyrosol
+  total_loq: 30
+  oleocanthal: 137
+  oleacein: 209
+  hydroxytyrosol: "<3"
+  tyrosol: "<3"
+  hydroxytyrosol_and_derivatives: null
+  other:
+    - name: Decarboxymethyl oleuropein aglycone, open dialdehydic form
+      abbreviation: 3,4-DHPEA-EDA
+      value: 145
+      loq: 3
+    - name: Decarboxymethyl ligstroside aglycone, open dialdehydic form
+      abbreviation: p-HPEA-EDA
+      value: 75
+      loq: 3
+    - name: Lignans
+      abbreviation: null
+      value: 46
+      loq: 3
+    - name: Oleuropein aglycone
+      abbreviation: 3,4-DHPEA-EA
+      value: 28
+      loq: 3
+    - name: Ligstroside aglycone
+      abbreviation: p-HPEA-EA
+      value: 6
+      loq: 3
+
+quality:
+  free_acidity: { value: 0.17, uncertainty: 0.02 }
+  peroxide_value: { value: 7.8, uncertainty: 1.3 }
+  k232: { value: 1.59, uncertainty: 0.14 }
+  k268_or_k270: { value: 0.106, uncertainty: 0.006 }
+  k_wavelength: K268
+  delta_k: { value: -0.005, uncertainty: 0.001 }
+  limits_reference_printed: Regolamento delegato (UE) 2022/2104, Allegato I
+
+supersedes: null
+notes: >-
+  The IOC HPLC panel and the internal assay both report oleocanthal and
+  oleacein, under different names and at different levels: p-HPEA-EDA 75 and
+  3,4-DHPEA-EDA 145 mg/kg by COI/T.20/Doc. No 29, against 137 and 209 mg/kg by
+  internal method 13056-CH-1. Both are shown. Hydroxytyrosol and tyrosol were
+  below the 3 mg/kg quantification limit.

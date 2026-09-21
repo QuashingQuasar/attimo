@@ -1,0 +1,67 @@
+---
+// Total phenols (and oleocanthal + oleacein where available) across the
+// certificates of one oil and harvest. Inline SVG, no client JS. The page
+// renders this only when the series holds more than one certificate.
+import { GREEN, SG, UDC, h2, eyebrow, lead } from "@/lib/certificates/ui";
+import { certificatePath, formatDate } from "@/lib/certificates";
+
+interface Point {
+  id: string;
+  date: string;
+  total: number | null;
+  sum: number | null;
+  current: boolean;
+}
+const { points, unit } = Astro.props as { points: Point[]; unit: string };
+
+const W = 720;
+const H = 300;
+const PAD = { l: 56, r: 24, t: 24, b: 48 };
+const values = points.flatMap((p) => [p.total, p.sum]).filter((v): v is number => v !== null);
+const max = Math.max(...values, 1);
+const x = (i: number) => PAD.l + (i * (W - PAD.l - PAD.r)) / Math.max(points.length - 1, 1);
+const y = (v: number) => PAD.t + (H - PAD.t - PAD.b) * (1 - v / max);
+const line = (key: "total" | "sum") =>
+  points
+    .map((p, i) => (p[key] === null ? null : `${x(i).toFixed(1)},${y(p[key] as number).toFixed(1)}`))
+    .filter(Boolean)
+    .join(" ");
+const ticks = [0, 0.25, 0.5, 0.75, 1].map((f) => Math.round(max * f));
+const hasSum = points.some((p) => p.sum !== null);
+---
+
+<section class="py-20 md:py-24 px-6" style="background-color:#FFFAEA;">
+  <div class="container mx-auto max-w-5xl">
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Over time</p>
+    <h2 class="mb-6" style={`${h2} color:${GREEN};`}>The same oil, retested as the season goes on</h2>
+    <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>Polyphenols fade after bottling. This is our own measurement of it.</p>
+
+    <figure>
+      <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" role="img" aria-label={`Total phenols across ${points.length} certificates`}>
+        {ticks.map((t) => (
+          <g>
+            <line x1={PAD.l} x2={W - PAD.r} y1={y(t)} y2={y(t)} stroke="rgba(27,66,41,.15)" stroke-dasharray="4 4" />
+            <text x={PAD.l - 10} y={y(t) + 4} text-anchor="end" font-family={SG} font-size="12" fill="rgba(27,66,41,.6)">{t}</text>
+          </g>
+        ))}
+        {hasSum && <polyline points={line("sum")} fill="none" stroke="#8A9B6F" stroke-width="3" stroke-linejoin="round" />}
+        <polyline points={line("total")} fill="none" stroke={GREEN} stroke-width="3" stroke-linejoin="round" />
+        {points.map((p, i) => (
+          <a href={certificatePath(p.id)}>
+            {p.total !== null && <circle cx={x(i)} cy={y(p.total)} r={p.current ? 8 : 6} fill={p.current ? "#CDDB2D" : GREEN} stroke={GREEN} stroke-width="2" />}
+            {p.sum !== null && <circle cx={x(i)} cy={y(p.sum)} r="5" fill="#8A9B6F" />}
+            <text x={x(i)} y={H - 16} text-anchor="middle" font-family={UDC} font-size="13" fill={GREEN}>{formatDate(p.date)}</text>
+          </a>
+        ))}
+      </svg>
+      <figcaption class="mt-4" style={`font-family:${SG}; font-size:.95rem; line-height:1.7; color:rgba(27,66,41,.65);`}>
+        {points.map((p) => `${formatDate(p.date)}: ${p.total ?? "—"} ${unit} total${p.sum !== null ? `, ${p.sum} oleocanthal + oleacein` : ""}`).join(" · ")}
+      </figcaption>
+    </figure>
+    <div class="mt-4 flex gap-6" style={`font-family:${SG}; font-size:.9rem; color:rgba(27,66,41,.7);`}>
+      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:${GREEN};`}></span>Total phenols</span>
+      {hasSum && <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style="background-color:#8A9B6F;"></span>Oleocanthal + oleacein</span>}
+      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:#CDDB2D; border:2px solid ${GREEN}; box-sizing:border-box;`}></span>This certificate</span>
+    </div>
+  </div>
+</section>

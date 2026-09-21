@@ -1,17 +1,25 @@
 ---
 // Shared body for /polyphenol-methods and its five localised variants.
-// All copy arrives via `content`; numbers, lab names and citations are fixed
-// because they are the same facts in every market.
+// All copy arrives via `content`; every ATTIMO lab figure arrives via `certs`
+// (the certificates collection) so no number lives on this page itself.
+// Rival figures and citations are fixed because they are the same facts in
+// every market.
 import { Header } from "@/components/Header";
 import { FAQ } from "@/components/FAQ";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import type { MethodsContent } from "@/lib/polyphenolMethodsContent";
+import { certificatePath, labLine, type Certificate, type Oil } from "@/lib/certificates";
 
-const { content, locale = DEFAULT_LOCALE } = Astro.props as {
+const { content, locale = DEFAULT_LOCALE, certs } = Astro.props as {
   content: MethodsContent;
   locale?: Locale;
+  certs: Partial<Record<Oil, Certificate>>;
 };
+const cor = certs.coratina;
+const noc = certs.nocellara;
+if (!cor || !noc) throw new Error("Methods page needs the Coratina and Nocellara certificates");
+const str = (v: number | string | null) => (v === null ? "—" : String(v));
 
 const GREEN = "#1B4229";
 const DEEP = "#10221B";
@@ -56,7 +64,7 @@ const sep = GROUP[c.lang] ?? ",";
 const num = (n: number) =>
   n >= 1000 ? `${String(n).slice(0, -3)}${sep}${String(n).slice(-3)}` : String(n);
 const rival = [
-  { name: c.caseStudy.mineName, badge: "HPLC", method: c.caseStudy.mineMethod, total: "847", oleocanthal: "471", oleacein: "336", sum: "807", source: "Chemiservice, report 2533647", mine: true },
+  { name: c.caseStudy.mineName, badge: cor.method.name, method: c.caseStudy.mineMethod, total: str(cor.phenolics.total), oleocanthal: str(cor.phenolics.oleocanthal), oleacein: str(cor.phenolics.oleacein), sum: str(cor.oleocanthal_plus_oleacein), source: `${cor.certificate.lab_name}, report ${cor.certificate.report_number}`, mine: true },
   { name: c.caseStudy.rivalName, badge: "NMR", method: c.caseStudy.rivalMethod, total: num(1295), oleocanthal: "292", oleacein: "148", sum: "439", source: "World Olive Center, certificate C2526-00283", mine: false },
 ];
 const doseRows = [
@@ -105,7 +113,7 @@ const doseRows = [
             <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>HPLC</h2>
             <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(27,66,41,.7);`}>{c.hero.hplcSub}</p>
             <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:${GREEN};`}>
-              847<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+              {str(cor.phenolics.total)}<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
             </p>
             <p class="mt-1" style={`${eyebrowSm} color:rgba(27,66,41,.6);`}>{c.hero.totalLabel}</p>
           </div>
@@ -126,9 +134,9 @@ const doseRows = [
     <section class="py-8 px-6" style={`background-color:${DEEP}; border-top:1px solid rgba(255,250,234,.16);`}>
       <div class="container mx-auto max-w-5xl grid sm:grid-cols-3 gap-6 text-center sm:text-left">
         {[
-          [c.strip.testedBy, "Chemiservice, Monopoli"],
-          [c.strip.accreditation, "ISO/IEC 17025"],
-          [c.strip.method, "IOC COI/T.20/Doc. No 29"],
+          [c.strip.testedBy, [cor.certificate.lab_name.replace(/ S\.r\.l\.$/, ""), cor.certificate.lab_city].filter(Boolean).join(", ")],
+          [c.strip.accreditation, cor.certificate.iso_17025 ? "ISO/IEC 17025" : "—"],
+          [c.strip.method, `IOC ${cor.method.reference?.replace(/\/Rev.*$/, "") ?? cor.method.name}`],
         ].map(([k, v]) => (
           <div>
             <p class="mb-1" style={`${eyebrow} color:${ACCENT};`}>{k}</p>
@@ -264,8 +272,8 @@ const doseRows = [
 
         <div class="grid md:grid-cols-2 gap-5">
           {[
-            { name: c.caseStudy.oleocanthal, body: c.compounds.oleocanthalBody, value: "471" },
-            { name: c.caseStudy.oleacein, body: c.compounds.oleaceinBody, value: "336" },
+            { name: c.caseStudy.oleocanthal, body: c.compounds.oleocanthalBody, value: str(cor.phenolics.oleocanthal) },
+            { name: c.caseStudy.oleacein, body: c.compounds.oleaceinBody, value: str(cor.phenolics.oleacein) },
           ].map((x) => (
             <div class="rounded-2xl p-8" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
               <h3 class="mb-4" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>
@@ -284,7 +292,7 @@ const doseRows = [
 
         <div class="mt-5 rounded-2xl py-8 px-6 text-center" style={`background-color:${GREEN};`}>
           <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.2rem,5vw,3.4rem); line-height:1; letter-spacing:-0.03em; color:${CREAM};`}>
-            471 + 336 = 807<span style="font-size:1.1rem; letter-spacing:0;"> mg/kg</span>
+            {str(cor.phenolics.oleocanthal)} + {str(cor.phenolics.oleacein)} = {str(cor.oleocanthal_plus_oleacein)}<span style="font-size:1.1rem; letter-spacing:0;"> mg/kg</span>
           </p>
           <p class="mt-4" style={`${eyebrowSm} color:${ACCENT};`}>{c.compounds.sumLabel}</p>
         </div>
@@ -390,7 +398,7 @@ const doseRows = [
             class="w-full h-auto rounded-2xl" width="1360" height="840" loading="lazy" />
           <figcaption class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.7; color:rgba(27,66,41,.62);`}>
             {c.checklist.certCaption}{" "}
-            <a href="/lab/Coratina2025.pdf" class="underline font-medium">{c.checklist.certLink}</a>
+            <a href={cor.certificate.pdf} class="underline font-medium">{c.checklist.certLink}</a>
           </figcaption>
         </figure>
       </div>
@@ -413,20 +421,15 @@ const doseRows = [
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom:1px dashed #1B4229;">
-                <td class="p-4 font-semibold">Coratina 25/26</td>
-                <td class="p-4">847 ±181</td>
-                <td class="p-4 font-semibold">471</td>
-                <td class="p-4 font-semibold">336</td>
-                <td class="p-4"><a href="/lab/Coratina2025.pdf" class="underline">2533647</a></td>
-              </tr>
-              <tr>
-                <td class="p-4 font-semibold">Nocellara 25/26</td>
-                <td class="p-4">400 ±112</td>
-                <td class="p-4 font-semibold">137</td>
-                <td class="p-4 font-semibold">209</td>
-                <td class="p-4"><a href="/lab/Nocellara2025.pdf" class="underline">2533283</a></td>
-              </tr>
+              {[cor, noc].map((x, i) => (
+                <tr style={i === 0 ? "border-bottom:1px dashed #1B4229;" : ""}>
+                  <td class="p-4 font-semibold">{x.cultivar.split(" ")[0]} {x.harvest}</td>
+                  <td class="p-4">{str(x.phenolics.total)}{x.phenolics.total_uncertainty !== null && ` ±${x.phenolics.total_uncertainty}`}</td>
+                  <td class="p-4 font-semibold">{str(x.phenolics.oleocanthal)}</td>
+                  <td class="p-4 font-semibold">{str(x.phenolics.oleacein)}</td>
+                  <td class="p-4"><a href={certificatePath(x.id)} class="underline">{x.certificate.report_number}</a></td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

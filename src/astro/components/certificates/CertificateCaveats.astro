@@ -1,0 +1,43 @@
+---
+// Shared on every certificate page: what one lab report can and cannot say.
+import { GREEN, SG, UDC, h2, eyebrow, body, cardOnCream } from "@/lib/certificates/ui";
+
+const { methodName } = Astro.props as { methodName: string };
+
+const items = [
+  {
+    title: "One sample, one date",
+    text: "The laboratory measured the sample it received, on the day it ran the test. It did not measure every bottle.",
+    icon: `<circle cx="22" cy="22" r="14" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="22" cy="22" r="4" fill="currentColor"/>`,
+  },
+  {
+    title: "Polyphenols fall after bottling",
+    text: "Heat, light, oxygen and time all lower them. Read the number against its date, and expect a lower one in the bottle you open later.",
+    icon: `<path d="M6 12c6 0 6 6 12 6s6 8 12 8 6 6 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M34 26l4 6-7 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+  },
+  {
+    title: `This one is ${methodName}`,
+    text: "Totals from different methods count different things in different units. Compare this report only with another run on the same method, or compare named compounds.",
+    icon: `<path d="M8 34h28M14 34V16M22 34V10M30 34V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`,
+  },
+];
+---
+
+<section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+  <div class="container mx-auto max-w-5xl">
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Reading this report</p>
+    <h2 class="mb-10" style={`${h2} color:${GREEN};`}>What this certificate tells you, and what it does not</h2>
+    <div class="grid md:grid-cols-3 gap-5">
+      {items.map((it) => (
+        <div class="p-7" style={cardOnCream}>
+          <svg viewBox="0 0 44 44" width="44" height="44" aria-hidden="true" style={`color:${GREEN};`} set:html={it.icon} />
+          <h3 class="mt-5 mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; color:${GREEN};`}>{it.title}</h3>
+          <p style={`${body} font-size:1rem; color:rgba(27,66,41,.8);`}>{it.text}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(27,66,41,.62);`}>
+      How each method counts, and how to read any certificate: <a href="/polyphenol-methods" class="underline">polyphenol analysis methods explained</a>.
+    </p>
+  </div>
+</section>

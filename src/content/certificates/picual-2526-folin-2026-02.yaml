@@ -1,0 +1,64 @@
+# Transcribed from public/lab/Picual2025.pdf (Laboratorio Tello test report
+# 60206090548 / M1/E, 1 page). Every value as printed; nothing estimated.
+id: picual-2526-folin-2026-02
+oil: picual
+product_url: /product/picual
+cultivar: Picual
+origin: Jaén, Spain
+organic: null
+producer: null
+commissioned_by: Iber Oleum, S.L.U., Jaén, Spain
+harvest: "25/26"
+
+certificate:
+  lab_name: Laboratorio Tello S.L.U. (a Tentamus company)
+  lab_city: Jaén
+  lab_country: Spain
+  accreditation_body: null
+  accreditation_number: null
+  iso_17025: null
+  recognitions:
+    - "Laboratory recognised by the IOC for advanced testing, residues and contaminants, for the current period"
+    - "Laboratory authorised by the Consejería de Agricultura y Pesca, no. A'052-AU"
+    - "ISO 9001 quality system certification (DNV GL)"
+  report_type: Test report (Informe de Ensayo)
+  report_number: 60206090548 / M1/E
+  lab_reference: 1/17.948
+  sample_reference: PACO
+  sample_description: Aceites de Oliva; opaque 100 ml glass bottle, black seal cap (information supplied by the client)
+  sample_volume_ml: 100
+  sample_date: null
+  sample_received_date: "2026-02-05"
+  tests_started_date: null
+  tests_completed_date: "2026-02-05"
+  report_date: "2026-02-06"
+  signed_by: Mª Luisa Cuenca de los Cobos, Head of Laboratory
+  pdf: /lab/Picual2025.pdf
+  thumbnail: /lab/thumbs/Picual2025.png
+
+method:
+  name: Folin-Ciocalteu
+  reference: PNT 1.56 (laboratory standard procedure)
+  applies_to: [total]
+secondary_method: null
+
+phenolics:
+  unit: mg caffeic acid/kg
+  total: 675
+  total_uncertainty: null
+  total_expressed_as: caffeic acid
+  total_loq: null
+  oleocanthal: null
+  oleacein: null
+  hydroxytyrosol: null
+  tyrosol: null
+  hydroxytyrosol_and_derivatives: null
+  other: []
+
+quality: null
+
+supersedes: null
+notes: >-
+  Folin-Ciocalteu returns one reducing-capacity figure in caffeic acid
+  equivalents. It names no individual compounds, and the figure cannot be set
+  beside an HPLC total in tyrosol equivalents.

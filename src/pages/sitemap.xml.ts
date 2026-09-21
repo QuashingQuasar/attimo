@@ -38,6 +38,12 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/se/polyfenol-analysmetoder", changefreq: "monthly", priority: "0.8" },
   { loc: "/dk/polyfenol-analysemetoder", changefreq: "monthly", priority: "0.8" },
   { loc: "/nl/polyfenol-analysemethoden", changefreq: "monthly", priority: "0.8" },
+  // Lab certificate pages (English only; one per certificate in
+  // src/content/certificates).
+  { loc: "/certificates", changefreq: "monthly", priority: "0.7" },
+  { loc: "/certificates/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
+  { loc: "/certificates/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
+  { loc: "/certificates/picual-2526-folin-2026-02", changefreq: "monthly", priority: "0.7" },
   // Localised polyphenol hubs (translated slugs, not prefix variants — so they
   // sit here as standalone entries; the EN↔DE hreflang cluster is emitted in
   // each page's <head> via HUB_HREFLANGS).
