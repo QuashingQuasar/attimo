@@ -1,4 +1,7 @@
 ---
+// DA-language variant of the polyphenol-methods page. Same body
+// component; copy comes from METHODS_CONTENT.da. Translated slug so it ranks
+// the DA keyword cluster.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import PolyphenolMethodsBody from "@astro/components/PolyphenolMethodsBody.astro";
 import {
@@ -6,13 +9,13 @@ import {
   METHODS_SLUGS,
   METHODS_HREFLANGS,
 } from "@/lib/polyphenolMethodsContent";
-import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
-const locale = DEFAULT_LOCALE;
-const content = METHODS_CONTENT.en;
+const locale = SLUG_TO_LOCALE["dk"];
+const content = METHODS_CONTENT.da;
 const t = getDict(locale);
-const canonical = `https://attimo-oil.com${METHODS_SLUGS.en}`;
+const canonical = `https://attimo-oil.com${METHODS_SLUGS.da}`;
 
 const articleJsonLd = {
   "@context": "https://schema.org",

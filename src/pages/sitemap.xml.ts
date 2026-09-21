@@ -31,6 +31,13 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/product/duo", changefreq: "weekly", priority: "0.9" },
   { loc: "/high-polyphenol-olive-oil", changefreq: "weekly", priority: "0.9" },
   { loc: "/polyphenol-methods", changefreq: "monthly", priority: "0.8" },
+  // Localised methods pages (translated slugs, standalone entries like the
+  // hubs; the hreflang cluster is emitted per page via METHODS_HREFLANGS).
+  { loc: "/de/polyphenol-analysemethoden", changefreq: "monthly", priority: "0.8" },
+  { loc: "/fr/methodes-analyse-polyphenols", changefreq: "monthly", priority: "0.8" },
+  { loc: "/se/polyfenol-analysmetoder", changefreq: "monthly", priority: "0.8" },
+  { loc: "/dk/polyfenol-analysemetoder", changefreq: "monthly", priority: "0.8" },
+  { loc: "/nl/polyfenol-analysemethoden", changefreq: "monthly", priority: "0.8" },
   // Localised polyphenol hubs (translated slugs, not prefix variants — so they
   // sit here as standalone entries; the EN↔DE hreflang cluster is emitted in
   // each page's <head> via HUB_HREFLANGS).

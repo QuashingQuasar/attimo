@@ -1,0 +1,514 @@
+---
+// Shared body for /polyphenol-methods and its five localised variants.
+// All copy arrives via `content`; numbers, lab names and citations are fixed
+// because they are the same facts in every market.
+import { Header } from "@/components/Header";
+import { FAQ } from "@/components/FAQ";
+import Footer from "@astro/components/Footer.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import type { MethodsContent } from "@/lib/polyphenolMethodsContent";
+
+const { content, locale = DEFAULT_LOCALE } = Astro.props as {
+  content: MethodsContent;
+  locale?: Locale;
+};
+
+const GREEN = "#1B4229";
+const DEEP = "#10221B";
+const CREAM = "#FFFAEA";
+const ACCENT = "#CDDB2D";
+const UDC = "'UDC Working Man Sans', sans-serif";
+const SG = "'Space Grotesk', sans-serif";
+
+const CDN = "https://cdn.sanity.io/images/25tuybj3/production";
+const IMG = {
+  grove: `${CDN}/3703a62160da6e71ecf754f84fc8eb3120bb1be7-1534x1025.png`,
+  mill: `${CDN}/b31742fe289abdc5b5c67a698ebd86ff50fa5bb0-1536x1024.png`,
+  glasses: `${CDN}/1d8f227df9b980d80d302fea32717033dfeb3324-1535x1024.png`,
+  certAnnotated: `${CDN}/82c522284004dd1a11b0787ad3124feed171e184-1360x840.png`,
+};
+
+// Monoline icons, drawn to match the site's line weight.
+const ICON = [
+  `<path d="M6 10h32M6 22h32M6 34h32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="10" r="3.5" fill="currentColor"/><circle cx="26" cy="22" r="3.5" fill="currentColor"/><circle cx="20" cy="34" r="3.5" fill="currentColor"/>`,
+  `<path d="M4 30c3 0 3-12 6-12s3 8 6 8 3-16 6-16 3 20 6 20 3-9 6-9 3 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
+  `<path d="M17 5h10M19 5v11L10 32a4 4 0 003.5 6h17a4 4 0 003.5-6L25 16V5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/><path d="M14 26h16" stroke="currentColor" stroke-width="2"/>`,
+];
+
+// Heading style: UDC only, single font, no trailing full stop.
+const h2 = `font-family:${UDC}; font-weight:300; font-size:clamp(1.9rem,3vw,3rem); line-height:1.05; letter-spacing:-0.025em;`;
+const eyebrow = `font-family:${UDC}; font-weight:700; font-size:1.02rem; letter-spacing:.12em; text-transform:uppercase;`;
+const eyebrowSm = `font-family:${UDC}; font-weight:700; font-size:.88rem; letter-spacing:.1em; text-transform:uppercase;`;
+// Hero sits on photography, so its text carries a soft scrim of its own.
+const heroShadow = "text-shadow:0 2px 24px rgba(16,34,27,.92), 0 1px 5px rgba(16,34,27,.8);";
+const lead = `font-family:${SG}; font-size:clamp(1.05rem,1.25vw,1.3rem); line-height:1.65;`;
+
+const c = content;
+const rival = [
+  { name: c.caseStudy.mineName, badge: "HPLC", method: c.caseStudy.mineMethod, total: "847", oleocanthal: "471", oleacein: "336", sum: "807", source: "Chemiservice, report 2533647", mine: true },
+  { name: c.caseStudy.rivalName, badge: "NMR", method: c.caseStudy.rivalMethod, total: "1,295", oleocanthal: "292", oleacein: "148", sum: "439", source: "World Olive Center, certificate C2526-00283", mine: false },
+];
+const doseRows = [
+  { name: c.compounds.doseRows.supermarket, grams: "28 g", kcal: 245, fill: "#A8B88F", udc: false },
+  { name: c.compounds.doseRows.eu, grams: "20 g", kcal: 177, fill: "#8A9B6F", udc: false },
+  { name: c.compounds.doseRows.blueprint, grams: "12 g", kcal: 104, fill: "#5C6E45", udc: false },
+  { name: c.compounds.doseRows.attimo, grams: "6 g", kcal: 52, fill: "#1B4229", udc: true },
+];
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    <!-- ═══ HERO ═══ -->
+    <section class="relative min-h-[78vh] flex items-end" style={`background-color:${DEEP};`}>
+      <img
+        src={IMG.grove}
+        alt={c.heroAlt}
+        class="absolute inset-0 w-full h-full object-cover"
+        width="1534" height="1025" loading="eager"
+      />
+      <div
+        class="absolute inset-0"
+        style="background:linear-gradient(to top, rgba(16,34,27,.94) 0%, rgba(16,34,27,.86) 30%, rgba(16,34,27,.66) 58%, rgba(16,34,27,.3) 100%);"
+      ></div>
+      <!-- Top-down scrim so the solid announce bar does not bleed into the photo. -->
+      <div
+        class="absolute inset-x-0 top-0 h-40 pointer-events-none"
+        style="background:linear-gradient(to bottom, rgba(16,34,27,.72) 0%, rgba(16,34,27,.4) 50%, rgba(16,34,27,0) 100%);"
+      ></div>
+      <div class="relative container mx-auto px-6 max-w-5xl pb-16 pt-36">
+        <p class="mb-6" style={`${eyebrow} color:${ACCENT}; ${heroShadow}`}>{c.hero.eyebrow}</p>
+        <h1 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.4vw,3.8rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; ${heroShadow}`}>
+          {c.hero.h1}
+        </h1>
+        <p class="mb-10" style={`${lead} color:rgba(255,250,234,.92); ${heroShadow}`}>
+          {c.hero.lead}
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="rounded-2xl p-7 md:p-8" style={`background-color:${CREAM};`}>
+            <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>HPLC</h2>
+            <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(27,66,41,.7);`}>{c.hero.hplcSub}</p>
+            <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:${GREEN};`}>
+              847<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+            </p>
+            <p class="mt-1" style={`${eyebrowSm} color:rgba(27,66,41,.6);`}>{c.hero.totalLabel}</p>
+          </div>
+
+          <div class="rounded-2xl p-7 md:p-8" style="background-color:rgba(255,250,234,.09); border:1px solid rgba(255,250,234,.22);">
+            <h2 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${CREAM};`}>NMR</h2>
+            <p class="mb-6" style={`font-family:${SG}; font-size:.95rem; color:rgba(255,250,234,.7);`}>{c.hero.nmrSub}</p>
+            <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(3rem,6vw,4.2rem); line-height:1; letter-spacing:-0.04em; color:rgba(255,250,234,.72);`}>
+              ~1,215<span style="font-size:1.3rem; letter-spacing:0;"> mg/kg</span>
+            </p>
+            <p class="mt-1" style={`${eyebrowSm} color:rgba(255,250,234,.6);`}>{c.hero.totalLabel}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ THIRD-PARTY CREDIBILITY STRIP ═══ -->
+    <section class="py-8 px-6" style={`background-color:${DEEP}; border-top:1px solid rgba(255,250,234,.16);`}>
+      <div class="container mx-auto max-w-5xl grid sm:grid-cols-3 gap-6 text-center sm:text-left">
+        {[
+          [c.strip.testedBy, "Chemiservice, Monopoli"],
+          [c.strip.accreditation, "ISO/IEC 17025"],
+          [c.strip.method, "IOC COI/T.20/Doc. No 29"],
+        ].map(([k, v]) => (
+          <div>
+            <p class="mb-1" style={`${eyebrow} color:${ACCENT};`}>{k}</p>
+            <p style={`font-family:${SG}; font-size:1rem; color:rgba(255,250,234,.88);`}>{v}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ THREE TESTS ═══ -->
+    <section class="py-20 md:py-24 px-6" style={`background-color:${GREEN};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.tests.eyebrow}</p>
+        <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{c.tests.h2}</h2>
+        <p class="mb-12" style={`${lead} color:rgba(255,250,234,.8);`}>{c.tests.lead}</p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          {c.tests.cards.map((m, i) => (
+            <div
+              class="rounded-2xl p-7 flex flex-col"
+              style={i === 0
+                ? `background-color:${ACCENT}; color:${GREEN};`
+                : `background-color:rgba(255,250,234,.08); color:${CREAM};`}
+            >
+              <div class="flex items-start justify-between gap-3 mb-5">
+                <div style={i === 0 ? "opacity:.7;" : `color:${ACCENT};`}>
+                  <svg width="40" height="40" viewBox="0 0 44 44" fill="none" aria-hidden="true" set:html={ICON[i]} />
+                </div>
+                <span
+                  class="rounded-full px-3 py-1.5"
+                  style={i === 0
+                    ? `${eyebrowSm} font-size:.78rem; background-color:${GREEN}; color:${ACCENT};`
+                    : `${eyebrowSm} font-size:.78rem; background-color:rgba(255,250,234,.16); color:${CREAM};`}
+                >{m.reading}</span>
+              </div>
+              <h3 class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.6rem; letter-spacing:-0.02em; color:${i === 0 ? GREEN : CREAM};`}>
+                {m.name}
+              </h3>
+              <p class="mb-6" style={`font-family:${SG}; font-size:1.05rem; line-height:1.5; opacity:.85;`}>{m.verdict}</p>
+              <dl class="flex-1" style={`font-family:${SG}; font-size:.95rem; line-height:1.55;`}>
+                {[[c.tests.rows.how, m.how], [c.tests.rows.reports, m.reports], [c.tests.rows.blind, m.blind], [c.tests.rows.ioc, m.ioc]].map(([k, v]) => (
+                  <div class="py-3" style={`border-top:1px solid ${i === 0 ? "rgba(27,66,41,.22)" : "rgba(255,250,234,.18)"};`}>
+                    <dt class="mb-1" style={`${eyebrowSm} opacity:.7;`}>{k}</dt>
+                    <dd>{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8">
+          <p style={`${lead} color:rgba(255,250,234,.8);`}>
+            <strong style={`color:${ACCENT};`}>{c.tests.iocLabel}</strong> {c.tests.iocBody}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CASE STUDY — the three tests in action ═══ -->
+    <section class="py-20 md:py-24 px-6">
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.caseStudy.eyebrow}</p>
+        <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{c.caseStudy.h2}</h2>
+        <p class="mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>{c.caseStudy.lead}</p>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {rival.map((r) => (
+            <div
+              class="rounded-2xl p-7 md:p-8 flex flex-col"
+              style={r.mine
+                ? `background-color:${GREEN}; color:${CREAM};`
+                : `background-color:rgba(27,66,41,.05); color:${GREEN}; border:1px solid rgba(27,66,41,.18);`}
+            >
+              <div class="flex items-start justify-between gap-3 mb-7">
+                <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; color:${r.mine ? CREAM : GREEN};`}>
+                  {r.name}
+                </h3>
+                <span
+                  class="rounded-full px-3 py-1.5 flex-shrink-0"
+                  style={r.mine
+                    ? `${eyebrowSm} font-size:.85rem; background-color:${ACCENT}; color:${GREEN};`
+                    : `${eyebrowSm} font-size:.85rem; background-color:rgba(27,66,41,.14); color:${GREEN};`}
+                >{r.badge}</span>
+              </div>
+              <p class="mb-7" style={`font-family:${SG}; font-size:.88rem; color:${r.mine ? "rgba(255,250,234,.6)" : "rgba(27,66,41,.6)"};`}>{r.method}</p>
+
+              <div class="pb-5 mb-5" style={`border-bottom:1px dashed ${r.mine ? "rgba(255,250,234,.3)" : "rgba(27,66,41,.3)"};`}>
+                <p class="mb-1" style={`font-family:${SG}; font-size:.95rem; color:${r.mine ? "rgba(255,250,234,.6)" : "rgba(27,66,41,.6)"};`}>{c.caseStudy.totalLabel}</p>
+                <p style={`font-family:${UDC}; font-weight:300; font-size:2.6rem; line-height:1; letter-spacing:-0.03em; color:${r.mine ? CREAM : GREEN};`}>
+                  {r.total}<span style="font-size:1rem; letter-spacing:0;"> mg/kg</span>
+                </p>
+                <p class="mt-2" style={`font-family:${SG}; font-size:.88rem; color:${r.mine ? "rgba(255,250,234,.55)" : "rgba(27,66,41,.55)"};`}>{c.caseStudy.notComparable}</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mb-5">
+                {[[c.caseStudy.oleocanthal, r.oleocanthal], [c.caseStudy.oleacein, r.oleacein]].map(([k, v]) => (
+                  <div>
+                    <p class="mb-1" style={`font-family:${SG}; font-size:.95rem; color:${r.mine ? "rgba(255,250,234,.6)" : "rgba(27,66,41,.6)"};`}>{k}</p>
+                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; line-height:1; color:${r.mine ? CREAM : GREEN};`}>
+                      {v}<span style="font-size:.85rem; font-weight:400;"> mg/kg</span>
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                class="rounded-xl p-5 mt-auto"
+                style={r.mine ? `background-color:${ACCENT}; color:${GREEN};` : "background-color:rgba(27,66,41,.08);"}
+              >
+                <p class="mb-1" style={`${eyebrowSm} color:${r.mine ? "rgba(27,66,41,.7)" : "rgba(27,66,41,.6)"};`}>{c.caseStudy.comparable}</p>
+                <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.4rem,4vw,3rem); line-height:1; letter-spacing:-0.03em; color:${GREEN};`}>
+                  {r.sum}<span style="font-size:1rem; letter-spacing:0;"> mg/kg</span>
+                </p>
+              </div>
+
+              <p class="mt-5" style={`font-family:${SG}; font-size:.85rem; line-height:1.6; color:${r.mine ? "rgba(255,250,234,.55)" : "rgba(27,66,41,.55)"};`}>{r.source}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ THE COMPOUNDS ═══ -->
+    <section id="compounds" class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-5xl">
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.compounds.eyebrow}</p>
+        <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
+          <span style="color:#5C6E45;">{c.compounds.h2Lead}</span>:<br />
+          {c.compounds.h2Rest}
+        </h2>
+        <p class="mb-12" style={`${lead} color:rgba(27,66,41,.78);`}>{c.compounds.lead}</p>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {[
+            { name: c.caseStudy.oleocanthal, body: c.compounds.oleocanthalBody, value: "471" },
+            { name: c.caseStudy.oleacein, body: c.compounds.oleaceinBody, value: "336" },
+          ].map((x) => (
+            <div class="rounded-2xl p-8" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
+              <h3 class="mb-4" style={`font-family:${UDC}; font-weight:700; font-size:1.7rem; letter-spacing:-0.02em; color:${GREEN};`}>
+                {x.name}
+              </h3>
+              <p class="mb-8" style={`font-family:${SG}; font-size:1rem; line-height:1.7; color:rgba(27,66,41,.8);`}>{x.body}</p>
+              <div class="pt-6" style="border-top:1px solid rgba(27,66,41,.18);">
+                <p class="mb-1" style={`${eyebrow} color:rgba(27,66,41,.5);`}>{c.compounds.inLabel}</p>
+                <p style={`font-family:${UDC}; font-weight:300; font-size:2.8rem; line-height:1; letter-spacing:-0.03em; color:${GREEN};`}>
+                  {x.value}<span style="font-size:1.1rem; letter-spacing:0;"> mg/kg</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-5 rounded-2xl py-8 px-6 text-center" style={`background-color:${GREEN};`}>
+          <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.2rem,5vw,3.4rem); line-height:1; letter-spacing:-0.03em; color:${CREAM};`}>
+            471 + 336 = 807<span style="font-size:1.1rem; letter-spacing:0;"> mg/kg</span>
+          </p>
+          <p class="mt-4" style={`${eyebrowSm} color:${ACCENT};`}>{c.compounds.sumLabel}</p>
+        </div>
+
+        <figure class="mt-12">
+          <img src={IMG.glasses} alt={c.compounds.glassesAlt}
+               class="w-full h-auto rounded-2xl" width="1535" height="1024" loading="lazy" />
+          <figcaption class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.7; color:rgba(27,66,41,.62);`}>
+            {c.compounds.glassesCaption}
+          </figcaption>
+        </figure>
+
+        <div class="mt-16">
+          <h3 class="mb-5" style={`${h2} font-size:clamp(1.6rem,2.4vw,2.3rem); color:${GREEN};`}>
+            {c.compounds.doseH3}
+          </h3>
+          <p class="mb-10" style={`font-family:${SG}; font-size:1.05rem; line-height:1.75; color:rgba(27,66,41,.75);`}>
+            {c.compounds.doseLead}
+          </p>
+
+          <div class="rounded-2xl p-7 md:p-9" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
+            <p class="mb-8" style={`${eyebrowSm} color:rgba(27,66,41,.6);`}>{c.compounds.doseAxis}</p>
+            {doseRows.map((r) => (
+              <div class="grid grid-cols-[minmax(6.5rem,10rem)_1fr_auto] sm:grid-cols-[13rem_1fr_auto] items-center gap-3 sm:gap-4 mb-3">
+                <span style={`font-family:${r.udc ? UDC : SG}; font-size:.95rem; color:${GREEN}; line-height:1.3;`}>
+                  {r.name}
+                </span>
+                <div
+                  class="h-12 md:h-14 rounded-lg"
+                  style={`background-color:${r.fill}; width:${((r.kcal / 245) * 100).toFixed(1)}%;`}
+                ></div>
+                <span style={`font-family:${SG}; font-size:.95rem; color:${GREEN}; white-space:nowrap;`}>
+                  <strong>{r.kcal} kcal</strong>
+                  <span style="opacity:.6;"> · {r.grams}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p class="mt-8" style={`font-family:${SG}; font-size:.85rem; line-height:1.6; color:rgba(27,66,41,.55);`}>
+          {c.compounds.disclaimerPre}{" "}
+          <a href="https://www.nature.com/articles/437045a" class="underline" rel="nofollow noopener" target="_blank">{c.compounds.disclaimerLink}</a>{c.compounds.disclaimerPost}
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ WHY HPLC ═══ -->
+    <section id="why-hplc" class="py-20 md:py-24 px-6" style={`background-color:${DEEP};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-14">
+          <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.whyHplc.eyebrow}</p>
+          <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{c.whyHplc.h2}</h2>
+          <p style={`${lead} color:rgba(255,250,234,.8);`}>{c.whyHplc.lead}</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 mb-12">
+          {c.whyHplc.cards.map(([t, b], i) => (
+            <div class="rounded-2xl p-7 flex flex-col" style="background-color:rgba(255,250,234,.07);">
+              <span class="mb-5" style={`font-family:${UDC}; font-weight:300; font-size:2.4rem; line-height:1; color:rgba(255,250,234,.4);`}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; letter-spacing:-0.01em; color:${CREAM};`}>{t}</h3>
+              <p style={`font-family:${SG}; font-size:1rem; line-height:1.65; color:rgba(255,250,234,.78);`}>{b}</p>
+            </div>
+          ))}
+        </div>
+
+        <figure>
+          <img src={IMG.mill} alt={c.whyHplc.millAlt}
+            class="w-full h-auto rounded-2xl" width="1536" height="1024" loading="lazy" />
+          <figcaption class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.7; color:rgba(255,250,234,.62);`}>
+            {c.whyHplc.millCaption}
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ CHECKLIST ═══ -->
+    <section id="checklist" class="py-20 md:py-24 px-6">
+      <div class="container mx-auto max-w-6xl">
+        <div class="max-w-3xl mb-12">
+          <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.checklist.eyebrow}</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{c.checklist.h2}</h2>
+          <p style={`${lead} color:rgba(27,66,41,.78);`}>{c.checklist.lead}</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+          {c.checklist.items.map(([t, b], i) => (
+            <div class="rounded-2xl p-6" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
+              <span
+                class="w-9 h-9 rounded-full flex items-center justify-center mb-4"
+                style={`background-color:${GREEN}; color:${CREAM}; font-family:${UDC}; font-size:.95rem;`}
+              >{i + 1}</span>
+              <h3 class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.15rem; color:${GREEN};`}>{t}</h3>
+              <p style={`font-family:${SG}; font-size:1rem; line-height:1.6; color:rgba(27,66,41,.75);`}>{b}</p>
+            </div>
+          ))}
+        </div>
+
+        <figure>
+          <img src={IMG.certAnnotated} alt={c.checklist.certAlt}
+            class="w-full h-auto rounded-2xl" width="1360" height="840" loading="lazy" />
+          <figcaption class="mt-4" style={`font-family:${SG}; font-size:.9rem; line-height:1.7; color:rgba(27,66,41,.62);`}>
+            {c.checklist.certCaption}{" "}
+            <a href="/lab/Coratina2025.pdf" class="underline font-medium">{c.checklist.certLink}</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ═══ OUR CERTIFICATES ═══ -->
+    <section id="certificates" class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-4xl">
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{c.certificates.eyebrow}</p>
+        <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{c.certificates.h2}</h2>
+        <p class="max-w-3xl mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{c.certificates.lead}</p>
+
+        <div class="rounded-2xl overflow-hidden" style={`background-color:${CREAM}; border:1px solid rgba(27,66,41,.18);`}>
+          <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1rem;`}>
+            <thead>
+              <tr style={`background-color:${GREEN}; color:${CREAM};`}>
+                {[c.certificates.cols.oil, c.certificates.cols.total, c.certificates.cols.oleocanthal, c.certificates.cols.oleacein, c.certificates.cols.report].map((th) => (
+                  <th class="text-left p-4" style={`font-family:${UDC}; font-weight:700; font-size:.9rem;`}>{th}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px dashed #1B4229;">
+                <td class="p-4 font-semibold">Coratina</td>
+                <td class="p-4">847 ±181</td>
+                <td class="p-4 font-semibold">471</td>
+                <td class="p-4 font-semibold">336</td>
+                <td class="p-4"><a href="/lab/Coratina2025.pdf" class="underline">2533647</a></td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">Nocellara</td>
+                <td class="p-4">400 ±112</td>
+                <td class="p-4 font-semibold">137</td>
+                <td class="p-4 font-semibold">209</td>
+                <td class="p-4"><a href="/lab/Nocellara2025.pdf" class="underline">2533283</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-5" style={`font-family:${SG}; font-size:.9rem; line-height:1.7; color:rgba(27,66,41,.6);`}>
+          {c.certificates.footnote}
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ (site component) ═══ -->
+    <FAQ client:visible items={c.faq.items} heading={c.faq.heading} headingFontFamily={UDC} />
+
+    <!-- ═══ METHOD TABLE + SOURCES ═══ -->
+    <section class="pb-20 px-6" style="background-color:#FFFAEA;">
+      <div class="container mx-auto max-w-4xl space-y-3">
+        <details class="rounded-2xl overflow-hidden" style={`border:1px solid ${GREEN}; background-color:#fff;`}>
+          <summary class="cursor-pointer px-6 py-5" style={`font-family:${SG}; font-weight:500; font-size:1.05rem; color:${GREEN};`}>
+            {c.details.methodsSummary}
+          </summary>
+          <div class="px-6 pb-6 overflow-x-auto">
+            <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:620px;`}>
+              <thead>
+                <tr>
+                  <th class="text-left p-3"></th>
+                  <th class="text-left p-3" style={`font-family:${UDC}; font-weight:700;`}>HPLC (IOC)</th>
+                  <th class="text-left p-3" style={`font-family:${UDC}; font-weight:700;`}>NMR</th>
+                  <th class="text-left p-3" style={`font-family:${UDC}; font-weight:700;`}>Folin</th>
+                </tr>
+              </thead>
+              <tbody>
+                {([
+                  [c.details.rows.does, c.details.table.does],
+                  [c.details.rows.reports, c.details.table.reports],
+                  [c.details.rows.status, c.details.table.status],
+                  [c.details.rows.limitation, c.details.table.limitation],
+                ] as [string, [string, string, string]][]).map(([label, cells], i) => (
+                  <tr style={i < 3 ? "border-bottom:1px solid rgba(27,66,41,.15);" : ""}>
+                    <td class="p-3 font-semibold">{label}</td>
+                    {cells.map((cell, j) => (
+                      <td class={`p-3${i === 2 && j === 0 ? " font-semibold" : ""}`}>{cell}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details class="rounded-2xl overflow-hidden" style={`border:1px solid ${GREEN}; background-color:#fff;`}>
+          <summary class="cursor-pointer px-6 py-5" style={`font-family:${SG}; font-weight:500; font-size:1.05rem; color:${GREEN};`}>
+            {c.details.sourcesSummary}
+          </summary>
+          <ul class="px-6 pb-6 space-y-3" style={`font-family:${SG}; font-size:.95rem; line-height:1.7; color:rgba(27,66,41,.82);`}>
+            <li>International Olive Council — <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.internationaloliveoil.org/wp-content/uploads/2022/06/Doc.-No-29-REV-2_ENK.pdf">COI/T.20/Doc. No 29/Rev.2 (2022)</a></li>
+            <li><a class="underline" rel="nofollow noopener" target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32012R0432">Regulation (EU) No 432/2012</a></li>
+            <li>EFSA NDA Panel — <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12099302/">EFSA Journal 2025;23(5):e9470</a></li>
+            <li>Olmo-García et al. — <a class="underline" rel="nofollow noopener" target="_blank" href="https://doi.org/10.1016/j.chroma.2018.11.031">J. Chromatogr. A 2019;1585:56–69</a></li>
+            <li>Castillo-Luna &amp; Priego-Capote — <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.mdpi.com/2076-3921/15/4/511">Antioxidants 2026;15(4):511</a></li>
+            <li>Starec et al. — <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796514/">Molecules 2021;26(1):242</a></li>
+            <li>Everette et al. — <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf1005935">J. Agric. Food Chem. 2010;58(14):8139–8144</a></li>
+            <li>Beauchamp et al. — <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.nature.com/articles/437045a">Nature 2005;437:45–46</a></li>
+            <li>Karkoula et al. — <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf404421p">J. Agric. Food Chem. 2014;62:600–607</a></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="pb-24 px-6" style="background-color:#FFFAEA;">
+      <div class="container mx-auto max-w-4xl">
+        <div class="rounded-2xl overflow-hidden grid md:grid-cols-[1fr_280px] items-center" style={`background-color:${GREEN};`}>
+          <div class="p-10 md:p-14">
+            <h2 class="mb-4" style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.6rem,2.6vw,2.4rem); line-height:1.1; letter-spacing:-0.02em; color:${CREAM};`}>
+              {c.cta.h2}
+            </h2>
+            <p class="mb-8 max-w-lg" style={`font-family:${SG}; font-size:1.05rem; line-height:1.7; color:rgba(255,250,234,.8);`}>
+              {c.cta.body}
+            </p>
+            <a
+              href="https://shop.attimo-oil.com"
+              class="inline-block px-9 py-4 rounded-lg"
+              style={`background-color:${ACCENT}; color:${GREEN}; font-family:${UDC}; font-size:1rem; letter-spacing:.05em;`}
+            >
+              {c.cta.button}
+            </a>
+          </div>
+          <img
+            src="/images/coratina-shopping.png"
+            alt={c.cta.imageAlt}
+            class="w-full h-full object-cover hidden md:block"
+            width="1122" height="1402" loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<Footer locale={locale} />
