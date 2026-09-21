@@ -178,10 +178,10 @@ const en: MethodsContent = {
       "The International Olive Council is the United Nations-backed body that writes the rules for olive oil — the grades, the tasting standards and the laboratory methods. It has published an official procedure for measuring polyphenols. Only HPLC follows it.",
   },
   caseStudy: {
-    eyebrow: "Case study: Coratina 2025 harvest",
+    eyebrow: "Case study: Coratina 25/26 harvest",
     h2: "Two Coratinas: phenolically weaker oil reads higher because of the NMR method",
     lead: "HPLC measures each bioactive polyphenol individually. NMR reads them in aggregate. That difference alone hands the weaker oil the higher headline number, while it carries less of the two phenols with the strongest evidence behind them: oleocanthal and oleacein.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Competitor Coratina",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "No IOC method",
@@ -195,26 +195,26 @@ const en: MethodsContent = {
     eyebrow: "The number to compare",
     h2Lead: "Oleocanthal & oleacein",
     h2Rest: "the main numbers to compare across tests",
-    lead: "Polyphenol is a wide, generic family and most of its members carry no real evidence behind them. Two do. Both are single molecules, so every laboratory reports them in the same milligrams and their sum survives a change of method.",
+    lead: "Polyphenols are a wide family and most types don't carry strong evidence behind them. Oleocanthal and oleacein do. Both are single molecules, so every laboratory reports them in the same milligrams and their sum survives a change of method.",
     oleocanthalBody:
       "The peppery catch at the back of your throat in a fresh oil. It blocks the COX-1 and COX-2 enzymes the same way ibuprofen does, at about a tenth of the strength by weight.",
     oleaceinBody:
       "One of the most powerful antioxidants found in any food, with its own cardiovascular evidence behind it. Most oils carry very little, so it separates them sharply.",
-    inLabel: "In ATTIMO Coratina 2025",
-    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 2025",
+    inLabel: "In ATTIMO Coratina 25/26",
+    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 25/26",
     glassesCaption:
       "Oleocanthal is the one compound here you can find without a laboratory: it is the cough at the back of the throat in a fresh oil.",
     glassesAlt:
       "Six cobalt blue olive oil tasting glasses with lids, filled with green oil, on a dark green table",
     doseH3:
-      "52 calories of ATTIMO Coratina 2025 carry the same polyphenols as 245 calories of supermarket oil",
+      "52 calories of ATTIMO Coratina 25/26 carry the same polyphenols as 245 calories of supermarket oil",
     doseLead: "A higher-quality oil gets you more polyphenols for fewer calories.",
-    doseAxis: "Oil needed for 5 mg of polyphenols",
+    doseAxis: "Olive oil needed for 5 mg of polyphenols",
     doseRows: {
       supermarket: "Supermarket oil",
       eu: "EU reference oil",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "The oleocanthal mechanism was",
     disclaimerLink: "first reported in Nature in 2005",
@@ -232,7 +232,7 @@ const en: MethodsContent = {
       ],
       [
         "Anyone can make us repeat it",
-        "It is the International Olive Council's published protocol. Send ATTIMO Coratina 2025 to another accredited lab, ask for the same method, and the number should come back.",
+        "It is the International Olive Council's published protocol. Send ATTIMO Coratina 25/26 to another accredited lab, ask for the same method, and the number should come back.",
       ],
       [
         "It prints its margin of error",
@@ -261,7 +261,7 @@ const en: MethodsContent = {
     certCaption: "Our own certificate, annotated against the six questions.",
     certLink: "Open the full report →",
     certAlt:
-      "ATTIMO Coratina 2025 harvest certificate of analysis, annotated to show the test method, laboratory, accreditation, sample date and compound results",
+      "ATTIMO Coratina 25/26 harvest certificate of analysis, annotated to show the test method, laboratory, accreditation, sample date and compound results",
   },
   certificates: {
     eyebrow: "Our certificates",
@@ -359,7 +359,7 @@ const en: MethodsContent = {
     h2: "Buy an olive oil whose numbers you can check",
     body: "Every ATTIMO bottle carries its harvest, its sample date and a certificate you can open before you order — oleocanthal and oleacein on their own lines.",
     button: "See the oils and their certificates",
-    imageAlt: "ATTIMO Coratina extra virgin olive oil bottle",
+    imageAlt: "ATTIMO Coratina bottle on a wooden crate in a sunlit olive grove, beside freshly picked olives",
   },
 };
 
@@ -431,7 +431,7 @@ const de: MethodsContent = {
     eyebrow: "Fallstudie: Coratina, Ernte 2025",
     h2: "Zwei Coratina: Das phenolisch schwächere Öl zeigt wegen der NMR-Methode den höheren Wert",
     lead: "HPLC misst jedes bioaktive Polyphenol einzeln. NMR erfasst sie gebündelt. Allein dieser Unterschied verschafft dem schwächeren Öl die höhere Schlagzeile, obwohl es weniger von den beiden Phenolen enthält, für die die Evidenz am stärksten ist: Oleocanthal und Oleacein.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Coratina eines Wettbewerbers",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "Keine IOC-Methode",
@@ -445,26 +445,26 @@ const de: MethodsContent = {
     eyebrow: "Der Wert für den Vergleich",
     h2Lead: "Oleocanthal & Oleacein",
     h2Rest: "die wichtigsten Werte für den Vergleich über Tests hinweg",
-    lead: "Polyphenol ist eine breite, allgemeine Familie, und für die meisten ihrer Mitglieder gibt es keine belastbare Evidenz. Für zwei gibt es sie. Beide sind einzelne Moleküle, deshalb gibt jedes Labor sie in denselben Milligramm an und ihre Summe übersteht einen Methodenwechsel.",
+    lead: "Polyphenole sind eine weite Familie, und die meisten Arten haben keine starke Evidenz hinter sich. Oleocanthal und Oleacein schon. Beide sind einzelne Moleküle, deshalb gibt jedes Labor sie in denselben Milligramm an und ihre Summe übersteht einen Methodenwechsel.",
     oleocanthalBody:
       "Das pfeffrige Kratzen hinten im Hals bei einem frischen Öl. Es hemmt die Enzyme COX-1 und COX-2 auf dieselbe Weise wie Ibuprofen, bei etwa einem Zehntel der Stärke pro Gewicht.",
     oleaceinBody:
       "Eines der stärksten Antioxidantien, die in einem Lebensmittel vorkommen, mit eigener kardiovaskulärer Evidenz. Die meisten Öle enthalten sehr wenig davon, deshalb trennt es sie deutlich voneinander.",
-    inLabel: "In ATTIMO Coratina 2025",
-    sumLabel: "Oleocanthal + Oleacein · ATTIMO Coratina 2025",
+    inLabel: "In ATTIMO Coratina 25/26",
+    sumLabel: "Oleocanthal + Oleacein · ATTIMO Coratina 25/26",
     glassesCaption:
       "Oleocanthal ist die eine Verbindung hier, die du ohne Labor finden kannst: Es ist das Kratzen hinten im Hals bei einem frischen Öl.",
     glassesAlt:
       "Sechs kobaltblaue Olivenöl-Verkostungsgläser mit Deckel, gefüllt mit grünem Öl, auf einem dunkelgrünen Tisch",
     doseH3:
-      "52 Kalorien ATTIMO Coratina 2025 enthalten so viele Polyphenole wie 245 Kalorien Supermarktöl",
+      "52 Kalorien ATTIMO Coratina 25/26 enthalten so viele Polyphenole wie 245 Kalorien Supermarktöl",
     doseLead: "Ein hochwertigeres Öl liefert dir mehr Polyphenole bei weniger Kalorien.",
-    doseAxis: "Ölmenge für 5 mg Polyphenole",
+    doseAxis: "Olivenöl nötig für 5 mg Polyphenole",
     doseRows: {
       supermarket: "Supermarktöl",
       eu: "EU-Referenzöl",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "Der Oleocanthal-Mechanismus wurde",
     disclaimerLink: "2005 erstmals in Nature beschrieben",
@@ -482,7 +482,7 @@ const de: MethodsContent = {
       ],
       [
         "Jeder kann uns zur Wiederholung zwingen",
-        "Es ist das veröffentlichte Protokoll des International Olive Council. Schick ATTIMO Coratina 2025 an ein anderes akkreditiertes Labor, verlang dieselbe Methode, und der Wert sollte zurückkommen.",
+        "Es ist das veröffentlichte Protokoll des International Olive Council. Schick ATTIMO Coratina 25/26 an ein anderes akkreditiertes Labor, verlang dieselbe Methode, und der Wert sollte zurückkommen.",
       ],
       [
         "Er nennt seine Fehlerspanne",
@@ -609,7 +609,7 @@ const de: MethodsContent = {
     h2: "Kauf dir ein Olivenöl, dessen Werte du prüfen kannst",
     body: "Jede ATTIMO-Flasche trägt ihre Ernte, ihr Probendatum und ein Zertifikat, das du vor der Bestellung öffnen kannst, mit Oleocanthal und Oleacein in eigenen Zeilen.",
     button: "Die Öle und ihre Zertifikate ansehen",
-    imageAlt: "Flasche ATTIMO Coratina natives Olivenöl extra",
+    imageAlt: "ATTIMO-Coratina-Flasche auf einer Holzkiste in einem sonnigen Olivenhain, neben frisch gepflückten Oliven",
   },
 };
 
@@ -681,7 +681,7 @@ const fr: MethodsContent = {
     eyebrow: "Étude de cas : Coratina, récolte 2025",
     h2: "Deux Coratina : l'huile la plus pauvre en phénols affiche le chiffre le plus élevé à cause de la méthode NMR",
     lead: "Le HPLC mesure chaque polyphénol bioactif individuellement. La RMN (NMR) les lit en bloc. Cette seule différence donne le chiffre d'affichage le plus élevé à l'huile la plus faible, alors qu'elle contient moins des deux phénols les mieux documentés : l'oléocanthal et l'oléacéine.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Coratina concurrente",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "Aucune méthode COI",
@@ -695,26 +695,26 @@ const fr: MethodsContent = {
     eyebrow: "Le chiffre à comparer",
     h2Lead: "Oléocanthal & oléacéine",
     h2Rest: "les principaux chiffres à comparer d'un test à l'autre",
-    lead: "« Polyphénol » est une famille large et générique, et la plupart de ses membres ne reposent sur aucune preuve solide. Deux font exception. Ce sont des molécules uniques : chaque laboratoire les rapporte dans les mêmes milligrammes, et leur somme survit à un changement de méthode.",
+    lead: "Les polyphénols forment une famille très large et la plupart des types ne reposent sur aucune preuve solide. L'oléocanthal et l'oléacéine, si. Ce sont des molécules uniques : chaque laboratoire les rapporte dans les mêmes milligrammes, et leur somme survit à un changement de méthode.",
     oleocanthalBody:
       "Le picotement poivré au fond de la gorge dans une huile fraîche. Il bloque les enzymes COX-1 et COX-2 de la même façon que l'ibuprofène, à environ un dixième de la puissance à poids égal.",
     oleaceinBody:
       "L'un des antioxydants les plus puissants identifiés dans un aliment, avec ses propres données cardiovasculaires derrière lui. La plupart des huiles en contiennent très peu, ce qui les sépare nettement.",
-    inLabel: "Dans l'ATTIMO Coratina 2025",
-    sumLabel: "Oléocanthal + oléacéine · ATTIMO Coratina 2025",
+    inLabel: "Dans l'ATTIMO Coratina 25/26",
+    sumLabel: "Oléocanthal + oléacéine · ATTIMO Coratina 25/26",
     glassesCaption:
       "L'oléocanthal est le seul composé ici que vous pouvez repérer sans laboratoire : c'est la toux au fond de la gorge dans une huile fraîche.",
     glassesAlt:
       "Six verres de dégustation d'huile d'olive bleu cobalt avec couvercles, remplis d'huile verte, sur une table vert foncé",
     doseH3:
-      "52 calories d'ATTIMO Coratina 2025 apportent autant de polyphénols que 245 calories d'huile de supermarché",
+      "52 calories d'ATTIMO Coratina 25/26 apportent autant de polyphénols que 245 calories d'huile de supermarché",
     doseLead: "Une huile de meilleure qualité vous apporte plus de polyphénols pour moins de calories.",
-    doseAxis: "Huile nécessaire pour 5 mg de polyphénols",
+    doseAxis: "Huile d'olive nécessaire pour 5 mg de polyphénols",
     doseRows: {
       supermarket: "Huile de supermarché",
       eu: "Huile de référence UE",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "Le mécanisme de l'oléocanthal a été",
     disclaimerLink: "décrit pour la première fois dans Nature en 2005",
@@ -732,7 +732,7 @@ const fr: MethodsContent = {
       ],
       [
         "N'importe qui peut nous le faire refaire",
-        "C'est le protocole publié du Conseil oléicole international. Envoyez l'ATTIMO Coratina 2025 à un autre laboratoire accrédité, demandez la même méthode, et le chiffre devrait revenir.",
+        "C'est le protocole publié du Conseil oléicole international. Envoyez l'ATTIMO Coratina 25/26 à un autre laboratoire accrédité, demandez la même méthode, et le chiffre devrait revenir.",
       ],
       [
         "Il imprime sa marge d'erreur",
@@ -761,7 +761,7 @@ const fr: MethodsContent = {
     certCaption: "Notre propre certificat, annoté selon les six questions.",
     certLink: "Ouvrir le rapport complet →",
     certAlt:
-      "Certificat d'analyse de la récolte ATTIMO Coratina 2025, annoté pour montrer la méthode d'analyse, le laboratoire, l'accréditation, la date de prélèvement et les résultats par composé",
+      "Certificat d'analyse de la récolte ATTIMO Coratina 25/26, annoté pour montrer la méthode d'analyse, le laboratoire, l'accréditation, la date de prélèvement et les résultats par composé",
   },
   certificates: {
     eyebrow: "Nos certificats",
@@ -862,7 +862,7 @@ const fr: MethodsContent = {
     h2: "Achetez une huile d'olive dont vous pouvez vérifier les chiffres",
     body: "Chaque bouteille ATTIMO porte sa récolte, sa date de prélèvement et un certificat que vous pouvez ouvrir avant de commander — l'oléocanthal et l'oléacéine sur leurs propres lignes.",
     button: "Voir les huiles et leurs certificats",
-    imageAlt: "Bouteille d'huile d'olive vierge extra ATTIMO Coratina",
+    imageAlt: "Bouteille d'ATTIMO Coratina sur une caisse en bois dans une oliveraie ensoleillée, à côté d'olives fraîchement cueillies",
   },
 };
 
@@ -934,7 +934,7 @@ const sv: MethodsContent = {
     eyebrow: "Fallstudie: Coratina, skörd 2025",
     h2: "Två Coratina: den fenoliskt svagare oljan får högre siffra på grund av NMR-metoden",
     lead: "HPLC mäter varje bioaktiv polyfenol för sig. NMR läser dem samlat. Den skillnaden ensam ger den svagare oljan den högre rubriksiffran, samtidigt som den innehåller mindre av de två fenoler som har starkast belägg bakom sig: oleocanthal och oleacein.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Konkurrentens Coratina",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "Ingen IOC-metod",
@@ -948,26 +948,26 @@ const sv: MethodsContent = {
     eyebrow: "Siffran att jämföra",
     h2Lead: "Oleocanthal & oleacein",
     h2Rest: "de viktigaste siffrorna att jämföra mellan tester",
-    lead: "Polyfenol är en bred, generisk familj och de flesta av dess medlemmar har inga verkliga belägg bakom sig. Två har det. Båda är enskilda molekyler, så varje laboratorium rapporterar dem i samma milligram och deras summa överlever ett metodbyte.",
+    lead: "Polyfenoler är en bred familj och de flesta typer har inga starka belägg bakom sig. Oleocanthal och oleacein har det. Båda är enskilda molekyler, så varje laboratorium rapporterar dem i samma milligram och deras summa överlever ett metodbyte.",
     oleocanthalBody:
       "Det peppriga sticket längst bak i halsen i en färsk olja. Den blockerar enzymerna COX-1 och COX-2 på samma sätt som ibuprofen, med ungefär en tiondel av styrkan per vikt.",
     oleaceinBody:
       "En av de kraftfullaste antioxidanterna som hittats i något livsmedel, med egna belägg för hjärt-kärlhälsa bakom sig. De flesta oljor innehåller mycket lite, så den skiljer dem skarpt åt.",
-    inLabel: "I ATTIMO Coratina 2025",
-    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 2025",
+    inLabel: "I ATTIMO Coratina 25/26",
+    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 25/26",
     glassesCaption:
       "Oleocanthal är det enda ämnet här som du kan hitta utan laboratorium: det är hostkänslan längst bak i halsen i en färsk olja.",
     glassesAlt:
       "Sex koboltblå provsmakningsglas för olivolja med lock, fyllda med grön olja, på ett mörkgrönt bord",
     doseH3:
-      "52 kalorier ATTIMO Coratina 2025 innehåller lika mycket polyfenoler som 245 kalorier snabbköpsolja",
+      "52 kalorier ATTIMO Coratina 25/26 innehåller lika mycket polyfenoler som 245 kalorier snabbköpsolja",
     doseLead: "En olja av högre kvalitet ger dig fler polyfenoler på färre kalorier.",
-    doseAxis: "Olja som krävs för 5 mg polyfenoler",
+    doseAxis: "Olivolja som krävs för 5 mg polyfenoler",
     doseRows: {
       supermarket: "Snabbköpsolja",
       eu: "EU:s referensolja",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "Oleocanthals mekanism",
     disclaimerLink: "rapporterades först i Nature 2005",
@@ -985,7 +985,7 @@ const sv: MethodsContent = {
       ],
       [
         "Vem som helst kan få oss att göra om det",
-        "Det är Internationella olivrådets publicerade protokoll. Skicka ATTIMO Coratina 2025 till ett annat ackrediterat laboratorium, be om samma metod, och siffran bör komma tillbaka.",
+        "Det är Internationella olivrådets publicerade protokoll. Skicka ATTIMO Coratina 25/26 till ett annat ackrediterat laboratorium, be om samma metod, och siffran bör komma tillbaka.",
       ],
       [
         "Den trycker sin felmarginal",
@@ -1112,7 +1112,7 @@ const sv: MethodsContent = {
     h2: "Köp en olivolja vars siffror du kan kontrollera",
     body: "Varje ATTIMO-flaska bär sin skörd, sitt provtagningsdatum och ett certifikat du kan öppna innan du beställer — oleocanthal och oleacein på egna rader.",
     button: "Se oljorna och deras certifikat",
-    imageAlt: "Flaska ATTIMO Coratina extra jungfruolivolja",
+    imageAlt: "ATTIMO Coratina-flaska på en trälåda i en solig olivlund, bredvid nyplockade oliver",
   },
 };
 
@@ -1184,7 +1184,7 @@ const da: MethodsContent = {
     eyebrow: "Case: Coratina, høst 2025",
     h2: "To Coratinaer: den fenolisk svagere olie får det højeste tal på grund af NMR-metoden",
     lead: "HPLC måler hvert bioaktivt polyfenol enkeltvis. NMR aflæser dem samlet. Den forskel alene giver den svagere olie det højeste overskriftstal, samtidig med at den indeholder mindre af de to fenoler med den stærkeste dokumentation bag sig: oleocanthal og oleacein.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Konkurrentens Coratina",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "Ingen IOC-metode",
@@ -1198,26 +1198,26 @@ const da: MethodsContent = {
     eyebrow: "Tallet, du skal sammenligne",
     h2Lead: "Oleocanthal & oleacein",
     h2Rest: "de vigtigste tal at sammenligne på tværs af test",
-    lead: "Polyfenol er en bred, generisk familie, og de fleste af dens medlemmer har ingen reel dokumentation bag sig. To har. Begge er enkeltmolekyler, så hvert laboratorium rapporterer dem i de samme milligram, og deres sum overlever et metodeskift.",
+    lead: "Polyfenoler er en bred familie, og de fleste typer har ikke stærk evidens bag sig. Det har oleocanthal og oleacein. Begge er enkeltmolekyler, så hvert laboratorium rapporterer dem i de samme milligram, og deres sum overlever et metodeskift.",
     oleocanthalBody:
       "Det peberagtige stik bagest i halsen i en frisk olie. Det hæmmer COX-1- og COX-2-enzymerne på samme måde som ibuprofen, med omkring en tiendedel af styrken pr. vægt.",
     oleaceinBody:
       "En af de kraftigste antioxidanter, man kender fra fødevarer, med sin egen dokumentation for hjerte-kar-effekt. De fleste olier indeholder meget lidt af den, så den skiller dem skarpt ad.",
-    inLabel: "I ATTIMO Coratina 2025",
-    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 2025",
+    inLabel: "I ATTIMO Coratina 25/26",
+    sumLabel: "Oleocanthal + oleacein · ATTIMO Coratina 25/26",
     glassesCaption:
       "Oleocanthal er det eneste stof her, du kan finde uden et laboratorium: det er hosten bagest i halsen i en frisk olie.",
     glassesAlt:
       "Seks koboltblå smageglas med låg til olivenolie, fyldt med grøn olie, på et mørkegrønt bord",
     doseH3:
-      "52 kalorier ATTIMO Coratina 2025 indeholder lige så mange polyfenoler som 245 kalorier supermarkedsolie",
+      "52 kalorier ATTIMO Coratina 25/26 indeholder lige så mange polyfenoler som 245 kalorier supermarkedsolie",
     doseLead: "En olie af højere kvalitet giver dig flere polyfenoler for færre kalorier.",
-    doseAxis: "Olie nødvendig for 5 mg polyfenoler",
+    doseAxis: "Olivenolie der skal til for 5 mg polyfenoler",
     doseRows: {
       supermarket: "Supermarkedsolie",
       eu: "EU-referenceolie",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "Oleocanthal-mekanismen blev",
     disclaimerLink: "første gang beskrevet i Nature i 2005",
@@ -1235,7 +1235,7 @@ const da: MethodsContent = {
       ],
       [
         "Alle kan få os til at gentage den",
-        "Det er Det Internationale Olivenråds offentliggjorte protokol. Send ATTIMO Coratina 2025 til et andet akkrediteret laboratorium, bed om den samme metode, og tallet bør komme tilbage.",
+        "Det er Det Internationale Olivenråds offentliggjorte protokol. Send ATTIMO Coratina 25/26 til et andet akkrediteret laboratorium, bed om den samme metode, og tallet bør komme tilbage.",
       ],
       [
         "Den trykker sin egen måleusikkerhed",
@@ -1362,7 +1362,7 @@ const da: MethodsContent = {
     h2: "Køb en olivenolie, hvis tal du kan kontrollere",
     body: "Hver ATTIMO-flaske bærer sin høst, sin prøvedato og et analysebevis, du kan åbne, før du bestiller — oleocanthal og oleacein på hver sin linje.",
     button: "Se olierne og deres analysebeviser",
-    imageAlt: "Flaske med ATTIMO Coratina ekstra jomfru olivenolie",
+    imageAlt: "ATTIMO Coratina-flaske på en trækasse i en solbeskinnet olivenlund ved siden af nyplukkede oliven",
   },
 };
 
@@ -1434,7 +1434,7 @@ const nl: MethodsContent = {
     eyebrow: "Casus: Coratina, oogst 2025",
     h2: "Twee Coratina's: de fenolisch zwakkere olie scoort hoger door de NMR-methode",
     lead: "HPLC meet elke bioactieve polyfenol afzonderlijk. NMR leest ze gebundeld. Alleen dat verschil geeft de zwakkere olie het hoogste getal op het etiket, terwijl die minder bevat van de twee fenolen met de sterkste onderbouwing: oleocanthal en oleaceïne.",
-    mineName: "ATTIMO Coratina 2025",
+    mineName: "ATTIMO Coratina 25/26",
     rivalName: "Coratina van een concurrent",
     mineMethod: "IOC Doc. No 29",
     rivalMethod: "Geen IOC-methode",
@@ -1448,26 +1448,26 @@ const nl: MethodsContent = {
     eyebrow: "Het cijfer om te vergelijken",
     h2Lead: "Oleocanthal & oleaceïne",
     h2Rest: "de belangrijkste cijfers om over tests heen te vergelijken",
-    lead: "Polyfenol is een brede verzamelnaam, en voor de meeste leden van die familie bestaat geen echt bewijs. Voor twee wel. Beide zijn één molecuul, dus elk lab rapporteert ze in dezelfde milligrammen en hun som blijft overeind bij een wissel van methode.",
+    lead: "Polyfenolen zijn een brede familie en de meeste types hebben geen sterk bewijs achter zich. Oleocanthal en oleaceïne wel. Beide zijn één molecuul, dus elk lab rapporteert ze in dezelfde milligrammen en hun som blijft overeind bij een wissel van methode.",
     oleocanthalBody:
       "De peperige prikkel achter in je keel bij een verse olie. Het remt de COX-1- en COX-2-enzymen op dezelfde manier als ibuprofen, op ongeveer een tiende van de sterkte per gewicht.",
     oleaceinBody:
       "Een van de krachtigste antioxidanten die in voeding zijn gevonden, met eigen cardiovasculair onderzoek erachter. De meeste oliën bevatten er heel weinig van, dus het onderscheidt ze scherp.",
-    inLabel: "In ATTIMO Coratina 2025",
-    sumLabel: "Oleocanthal + oleaceïne · ATTIMO Coratina 2025",
+    inLabel: "In ATTIMO Coratina 25/26",
+    sumLabel: "Oleocanthal + oleaceïne · ATTIMO Coratina 25/26",
     glassesCaption:
       "Oleocanthal is de enige stof hier die je zonder lab kunt vinden: het is het kuchje achter in je keel bij een verse olie.",
     glassesAlt:
       "Zes kobaltblauwe olijfolie-proefglazen met deksel, gevuld met groene olie, op een donkergroene tafel",
     doseH3:
-      "52 calorieën ATTIMO Coratina 2025 bevatten evenveel polyfenolen als 245 calorieën supermarktolie",
+      "52 calorieën ATTIMO Coratina 25/26 bevatten evenveel polyfenolen als 245 calorieën supermarktolie",
     doseLead: "Een olie van hogere kwaliteit levert je meer polyfenolen voor minder calorieën.",
-    doseAxis: "Olie nodig voor 5 mg polyfenolen",
+    doseAxis: "Olijfolie nodig voor 5 mg polyfenolen",
     doseRows: {
       supermarket: "Supermarktolie",
       eu: "EU-referentieolie",
       blueprint: "Blueprint",
-      attimo: "ATTIMO Coratina 2025",
+      attimo: "ATTIMO Coratina 25/26",
     },
     disclaimerPre: "Het mechanisme van oleocanthal werd",
     disclaimerLink: "in 2005 voor het eerst beschreven in Nature",
@@ -1485,7 +1485,7 @@ const nl: MethodsContent = {
       ],
       [
         "Iedereen kan ons het laten overdoen",
-        "Het is het gepubliceerde protocol van de International Olive Council. Stuur ATTIMO Coratina 2025 naar een ander geaccrediteerd lab, vraag om dezelfde methode, en het getal hoort terug te komen.",
+        "Het is het gepubliceerde protocol van de International Olive Council. Stuur ATTIMO Coratina 25/26 naar een ander geaccrediteerd lab, vraag om dezelfde methode, en het getal hoort terug te komen.",
       ],
       [
         "Het drukt zijn foutmarge af",
@@ -1612,7 +1612,7 @@ const nl: MethodsContent = {
     h2: "Koop een olijfolie waarvan je de cijfers kunt controleren",
     body: "Elke fles van ATTIMO draagt zijn oogst, zijn monsterdatum en een certificaat dat je kunt openen voordat je bestelt — met oleocanthal en oleaceïne op hun eigen regel.",
     button: "Bekijk de oliën en hun certificaten",
-    imageAlt: "Fles ATTIMO Coratina extra vierge olijfolie",
+    imageAlt: "Fles ATTIMO Coratina op een houten kist in een zonnige olijfgaard, naast pas geplukte olijven",
   },
 };
 
