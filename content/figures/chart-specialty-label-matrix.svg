@@ -1,0 +1,70 @@
+<svg viewBox="0 0 720 450" width="720" height="450" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t3 d3">
+<title id="t3">What each word on the bottle commits the producer to</title>
+<desc id="d3">Matrix of six label words against five dimensions: variety, early harvest, freshness, origin, evidence. Premium, organic and cold-pressed commit to none of the five. PDO/DOP commits to origin and partly to variety. Award-winning commits partly to evidence: one sample on one day. Specialty commits to all five, in checkable form, all season.</desc>
+<rect width="720" height="450" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">What each word on the bottle commits the producer to</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">A filled mark means the word guarantees that dimension in checkable form; a half mark means partly</text>
+<text x="386.0" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">VARIETY</text>
+<text x="454.0" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">HARVEST</text>
+<text x="522.0" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">FRESHNESS</text>
+<text x="590.0" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">ORIGIN</text>
+<text x="658.0" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">EVIDENCE</text>
+<text x="28" y="102" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7">THE WORD, AND WHAT IT DOES COVER</text>
+
+<line x1="28" y1="161" x2="692" y2="161" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+<text x="28" y="137" font-size="14" font-weight="700" fill="#1B4229">Premium</text>
+<text x="28" y="153" font-size="11" fill="#1B4229" opacity="0.6">a price and a shelf position</text>
+<circle cx="386" cy="136" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="454" cy="136" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="522" cy="136" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="590" cy="136" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="658" cy="136" r="2" fill="#1B4229" opacity="0.25"/>
+
+<line x1="28" y1="209" x2="692" y2="209" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+<text x="28" y="185" font-size="14" font-weight="700" fill="#1B4229">Organic</text>
+<text x="28" y="201" font-size="11" fill="#1B4229" opacity="0.6">what is sprayed on the trees</text>
+<circle cx="386" cy="184" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="454" cy="184" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="522" cy="184" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="590" cy="184" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="658" cy="184" r="2" fill="#1B4229" opacity="0.25"/>
+
+<line x1="28" y1="257" x2="692" y2="257" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+<text x="28" y="233" font-size="14" font-weight="700" fill="#1B4229">PDO / DOP</text>
+<text x="28" y="249" font-size="11" fill="#1B4229" opacity="0.6">a region and a method; cultivars often listed</text>
+<circle cx="386" cy="232" r="9" fill="none" stroke="#1B4229" stroke-width="1.6"/><path d="M386,223 A9,9 0 0 1 386,241 Z" fill="#1B4229" opacity="0.55"/>
+<circle cx="454" cy="232" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="522" cy="232" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="590" cy="232" r="9" fill="#1B4229"/><path d="M585.5,232 L588.5,235.2 L594.8,228.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="658" cy="232" r="2" fill="#1B4229" opacity="0.25"/>
+
+<line x1="28" y1="305" x2="692" y2="305" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+<text x="28" y="281" font-size="14" font-weight="700" fill="#1B4229">“Cold-pressed”</text>
+<text x="28" y="297" font-size="11" fill="#1B4229" opacity="0.6">true of every extra virgin oil by definition</text>
+<circle cx="386" cy="280" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="454" cy="280" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="522" cy="280" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="590" cy="280" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="658" cy="280" r="2" fill="#1B4229" opacity="0.25"/>
+
+<line x1="28" y1="353" x2="692" y2="353" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.3"/>
+<text x="28" y="329" font-size="14" font-weight="700" fill="#1B4229">Award-winning</text>
+<text x="28" y="345" font-size="11" fill="#1B4229" opacity="0.6">one sample, one day, one panel</text>
+<circle cx="386" cy="328" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="454" cy="328" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="522" cy="328" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="590" cy="328" r="2" fill="#1B4229" opacity="0.25"/>
+<circle cx="658" cy="328" r="9" fill="none" stroke="#1B4229" stroke-width="1.6"/><path d="M658,319 A9,9 0 0 1 658,337 Z" fill="#1B4229" opacity="0.55"/>
+<rect x="20" y="354" width="672" height="48" fill="#B3E58C" opacity="0.3"/>
+<line x1="28" y1="401" x2="692" y2="401" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0"/>
+<text x="28" y="377" font-size="14" font-weight="700" fill="#1B4229">Specialty</text>
+<text x="28" y="393" font-size="11" fill="#1B4229" opacity="0.6">all five, checkable, all season</text>
+<circle cx="386" cy="376" r="9" fill="#1B4229"/><path d="M381.5,376 L384.5,379.2 L390.8,372.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="454" cy="376" r="9" fill="#1B4229"/><path d="M449.5,376 L452.5,379.2 L458.8,372.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="522" cy="376" r="9" fill="#1B4229"/><path d="M517.5,376 L520.5,379.2 L526.8,372.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="590" cy="376" r="9" fill="#1B4229"/><path d="M585.5,376 L588.5,379.2 L594.8,372.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="658" cy="376" r="9" fill="#1B4229"/><path d="M653.5,376 L656.5,379.2 L662.8,372.4" fill="none" stroke="#B3E58C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28" y="432" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>

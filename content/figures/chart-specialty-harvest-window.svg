@@ -1,0 +1,42 @@
+<svg viewBox="0 0 720 440" width="720" height="440" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t2 d2">
+<title id="t2">Polyphenols fall as the olive ripens; oil yield rises</title>
+<desc id="d2">Schematic chart across October to December. One line, polyphenols, starts high while the olive is green and falls steadily as it turns and blackens. A second line, oil yield per tree, starts low and rises to almost double. A shaded band over early October marks the early-harvest window, where polyphenols are near their peak and yield is lowest. A producer paid by the litre picks late; a specialty producer picks in the band.</desc>
+<rect width="720" height="440" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">Polyphenols fall as the olive ripens; oil yield rises</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">Same tree, three weeks apart, two different products. Schematic shapes, not measured values</text>
+
+<!-- early-harvest window -->
+<rect x="81.8" y="94" width="165.2" height="236" fill="#CDDB2D" opacity="0.28"/>
+<text x="164.4" y="112" font-size="11" font-weight="700" letter-spacing="2" fill="#1B4229" text-anchor="middle">EARLY HARVEST</text>
+
+<!-- axes -->
+<line x1="70" y1="330" x2="660" y2="330" stroke="#1B4229" stroke-width="1.2" opacity="0.5"/>
+<text x="117.2" y="350" font-size="12" fill="#1B4229" opacity="0.7" text-anchor="middle">October</text>
+<text x="365.0" y="350" font-size="12" fill="#1B4229" opacity="0.7" text-anchor="middle">November</text>
+<text x="612.8" y="350" font-size="12" fill="#1B4229" opacity="0.7" text-anchor="middle">December</text>
+
+<!-- ripeness strip -->
+<rect x="70.0" y="362" width="200.6" height="8" fill="#8FBF5A"/>
+<text x="170.3" y="386" font-size="11" fill="#1B4229" opacity="0.6" text-anchor="middle">green olive</text>
+<rect x="270.6" y="362" width="194.7" height="8" fill="#7A5C8C"/>
+<text x="368.0" y="386" font-size="11" fill="#1B4229" opacity="0.6" text-anchor="middle">turning olive</text>
+<rect x="465.3" y="362" width="194.7" height="8" fill="#2B2431"/>
+<text x="562.6" y="386" font-size="11" fill="#1B4229" opacity="0.6" text-anchor="middle">black olive</text>
+
+<!-- curves -->
+<path d="M70.0,262.8 C84.8,260.7 129.0,255.4 158.5,250.2 C188.0,244.9 217.5,238.3 247.0,231.3 C276.5,224.3 306.0,216.3 335.5,208.2 C365.0,200.1 394.5,190.7 424.0,183.0 C453.5,175.3 483.0,167.9 512.5,162.0 C542.0,156.1 576.4,150.8 601.0,147.3 C625.6,143.8 650.2,142.1 660.0,141.0" fill="none" stroke="#9DAE84" stroke-width="3"/>
+<path d="M70.0,130.5 C84.8,132.3 129.0,135.1 158.5,141.0 C188.0,146.9 217.5,155.7 247.0,166.2 C276.5,176.7 306.0,191.4 335.5,204.0 C365.0,216.6 394.5,231.3 424.0,241.8 C453.5,252.3 483.0,260.0 512.5,267.0 C542.0,274.0 576.4,279.9 601.0,283.8 C625.6,287.7 650.2,289.1 660.0,290.1" fill="none" stroke="#1B4229" stroke-width="3.5"/>
+<circle cx="158.5" cy="141.0" r="6" fill="#CDDB2D" stroke="#1B4229" stroke-width="2"/>
+<circle cx="601.0" cy="147.3" r="5" fill="#9DAE84" stroke="#1B4229" stroke-width="1.5"/>
+
+<!-- line labels -->
+<text x="270.6" y="152.2" font-size="13" font-weight="700" fill="#1B4229">Polyphenols</text>
+<text x="270.6" y="168.2" font-size="11" fill="#1B4229" opacity="0.65">bitterness, pungency, the health case</text>
+<text x="435.8" y="213.0" font-size="13" font-weight="700" fill="#1B4229" opacity="0.8">Oil yield per tree</text>
+<text x="435.8" y="229.0" font-size="11" fill="#1B4229" opacity="0.65">what a producer paid by the litre is paid for</text>
+
+<text x="28" y="406" font-size="11" fill="#1B4229" opacity="0.45">Early: less oil, dense with polyphenols, bitter and structured. Late: more oil, mild, chemically quiet. Neither is a defect.</text>
+<text x="28" y="422" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>
