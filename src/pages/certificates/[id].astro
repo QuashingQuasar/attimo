@@ -1,0 +1,393 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import CertificateCaveats from "@astro/components/certificates/CertificateCaveats.astro";
+import SeriesChart from "@astro/components/certificates/SeriesChart.astro";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+import {
+  getCertificates,
+  certificatePath,
+  certificateJsonPath,
+  certificatesIndexPath,
+  certificateDate,
+  formatDate,
+  formatValue,
+  labLine,
+  labShort,
+  oilTitle,
+  qualityRows,
+  summarySentence,
+  COMPOUND_NOTES,
+  METHOD_NOTES,
+  RENDER_PRODUCER,
+  SITE,
+  type Certificate,
+} from "@/lib/certificates";
+import { LIMIT_SOURCES } from "@/lib/certificates/evooLimits";
+import { GREEN, CREAM, ACCENT, LIME, UDC, SG, h1, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
+
+export async function getStaticPaths() {
+  const certs = await getCertificates();
+  return certs.map((c) => ({ params: { id: c.id }, props: { cert: c } }));
+}
+
+const { cert: c } = Astro.props as { cert: Certificate };
+const all = await getCertificates();
+const locale = DEFAULT_LOCALE;
+const t = getDict(locale);
+
+const title = oilTitle(c);
+const canonical = `${SITE}${certificatePath(c.id)}`;
+const sentence = summarySentence(c);
+const p = c.phenolics;
+const numeric = (v: number | string | null) => (typeof v === "number" ? v : null);
+
+// ── §5.1 big-number strip ─────────────────────────────────────────────
+const labBadge = c.certificate.iso_17025
+  ? "ISO/IEC 17025"
+  : c.certificate.recognitions.some((r) => /International Olive Council|IOC/.test(r))
+    ? "IOC-recognised"
+    : "Accreditation not stated";
+const tiles = [
+  p.total !== null && {
+    value: String(p.total),
+    unit: p.unit,
+    label: `Total phenols${p.total_uncertainty !== null ? ` · ±${p.total_uncertainty}` : ""}`,
+  },
+  c.oleocanthal_plus_oleacein !== null && {
+    value: String(c.oleocanthal_plus_oleacein),
+    unit: p.unit,
+    label: "Oleocanthal + oleacein",
+  },
+  { value: c.method.name, unit: "", label: `Method${c.method.reference ? ` · ${c.method.reference}` : ""}` },
+  { value: labBadge, unit: "", label: `Laboratory · ${labShort(c)}` },
+].filter(Boolean) as { value: string; unit: string; label: string }[];
+
+// ── §5.3 compound rows, grouped by the assay that produced them ────────
+interface Row { key: string; name: string; sub: string | null; value: number | string | null; loq: number | null; note: string }
+const primaryRows: Row[] = [
+  p.total !== null && {
+    key: "total", name: "Total phenols", sub: p.total_expressed_as ? `as ${p.total_expressed_as}` : null,
+    value: p.total, loq: p.total_loq, note: COMPOUND_NOTES.total,
+  },
+  ...(["hydroxytyrosol", "tyrosol", "oleocanthal", "oleacein"] as const)
+    .filter((k) => c.method.applies_to.includes(k) && p[k] !== null)
+    .map((k) => ({ key: k, name: k[0].toUpperCase() + k.slice(1), sub: k === "hydroxytyrosol" ? "3,4-DHPEA" : k === "tyrosol" ? "p-HPEA" : null, value: p[k], loq: null, note: COMPOUND_NOTES[k] })),
+  ...p.other.map((o) => ({ key: o.abbreviation ?? o.name, name: o.name, sub: o.abbreviation, value: o.value, loq: o.loq, note: COMPOUND_NOTES[o.abbreviation ?? o.name] ?? "" })),
+].filter(Boolean) as Row[];
+const secondaryRows: Row[] = c.secondary_method
+  ? (["oleocanthal", "oleacein"] as const)
+      .filter((k) => c.secondary_method!.applies_to.includes(k) && p[k] !== null)
+      .map((k) => ({ key: k, name: k[0].toUpperCase() + k.slice(1), sub: null, value: p[k], loq: null, note: COMPOUND_NOTES[k] }))
+  : [];
+const scale = p.total ?? Math.max(...[...primaryRows, ...secondaryRows].map((r) => numeric(r.value) ?? 0), 1);
+const pct = (v: number | string | null) => { const n = numeric(v); return n === null ? 0 : Math.max((n / scale) * 100, 0.6); };
+const groups = [
+  { title: `${c.method.name}${c.method.reference ? ` · ${c.method.reference}` : ""}`, rows: primaryRows },
+  ...(c.secondary_method && secondaryRows.length ? [{ title: `${c.secondary_method.name}${c.secondary_method.technique ? ` · ${c.secondary_method.technique}` : ""}`, rows: secondaryRows }] : []),
+];
+
+// ── §5.4 timeline ─────────────────────────────────────────────────────
+const timeline = [
+  ["Sample drawn", c.certificate.sample_date],
+  ["Received by the lab", c.certificate.sample_received_date],
+  ["Tests began", c.certificate.tests_started_date],
+  ["Tests completed", c.certificate.tests_completed_date],
+  ["Report issued", c.certificate.report_date],
+].filter((x): x is [string, string] => Boolean(x[1]));
+
+// ── §5.5 quality ──────────────────────────────────────────────────────
+const quality = qualityRows(c);
+const allWithin = quality.length > 0 && quality.every((q) => q.within);
+
+// ── §5.6 series ───────────────────────────────────────────────────────
+const seriesPoints = c.series
+  .map((id) => all.find((x) => x.id === id)!)
+  .map((x) => ({ id: x.id, date: certificateDate(x), total: x.phenolics.total, sum: x.oleocanthal_plus_oleacein, current: x.id === c.id }));
+
+// ── §7 JSON-LD ────────────────────────────────────────────────────────
+const prop = (name: string, value: number | string, unitText: string | null, technique: string) => ({
+  "@type": "PropertyValue", name, value, ...(unitText ? { unitText } : {}), measurementTechnique: technique,
+});
+const primaryTechnique = `${c.method.name}${c.method.reference ? ` (${c.method.reference})` : ""}`;
+const secondaryTechnique = c.secondary_method ? `${c.secondary_method.name}` : primaryTechnique;
+const additionalProperty = [
+  ...primaryRows.filter((r) => r.value !== null).map((r) => prop(r.key === "total" ? `Total phenols${p.total_expressed_as ? ` (${p.total_expressed_as} equivalents)` : ""}` : `${r.name}${r.sub ? ` (${r.sub})` : ""}`, r.value!, p.unit, primaryTechnique)),
+  ...secondaryRows.filter((r) => r.value !== null).map((r) => prop(r.name, r.value!, p.unit, secondaryTechnique)),
+  ...quality.map((q) => prop(q.label, q.value, q.unit, "IOC/EU official method as stated on the report")),
+];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: title,
+    brand: { "@type": "Brand", name: "ATTIMO" },
+    url: `${SITE}${c.product_url}`,
+    category: "Extra virgin olive oil",
+    description: sentence,
+    additionalProperty,
+    subjectOf: {
+      "@type": "DigitalDocument",
+      name: `${c.certificate.report_type ?? "Test report"} ${c.certificate.report_number}`,
+      url: `${SITE}${c.certificate.pdf}`,
+      encodingFormat: "application/pdf",
+      dateCreated: c.certificate.report_date,
+      publisher: { "@type": "Organization", name: c.certificate.lab_name, address: [c.certificate.lab_city, c.certificate.lab_country].filter(Boolean).join(", ") },
+      sha256: c.pdf_sha256,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Certificates", item: `${SITE}${certificatesIndexPath}` },
+      { "@type": "ListItem", position: 2, name: title, item: canonical },
+    ],
+  },
+];
+
+const metaTitle = `${title} lab certificate: ${p.total !== null ? `${p.total} ${p.unit} polyphenols by ${c.method.name}` : `${c.method.name} report`} | ATTIMO`;
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={sentence}
+  canonical={canonical}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  htmlLang="en"
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <div class="relative min-h-screen">
+    <Header client:load locale={locale} />
+
+    <main style={`color:${GREEN};`}>
+      <!-- ═══ §5.1 HEADER ═══ -->
+      <section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:124px;`}>
+        <div class="container mx-auto max-w-5xl pt-10">
+          <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>Lab certificate · Harvest {c.harvest}</p>
+          <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{title.replace(` ${c.harvest}`, "")}, harvest {c.harvest}</h1>
+          <!-- §5.2 the sentence a snippet quotes -->
+          <p class="mb-10 max-w-4xl" style={`${lead} color:rgba(255,250,234,.88);`}>{sentence}</p>
+
+          <div class="grid sm:grid-cols-2 gap-4 mb-10 cert-tiles" style={`--tiles:${tiles.length};`}>
+            {tiles.map((tile, i) => (
+              <div class="rounded-2xl p-6" style={i === 0 ? `background-color:${CREAM};` : "background-color:rgba(255,250,234,.09); border:1px solid rgba(255,250,234,.22);"}>
+                <p style={`${stat} color:${i === 0 ? GREEN : CREAM}; font-size:${tile.unit ? "clamp(2.4rem,4.5vw,3.4rem)" : "clamp(1.5rem,2.4vw,2rem)"};`}>
+                  {tile.value}{tile.unit && <span style="font-size:1rem; letter-spacing:0;"> {tile.unit}</span>}
+                </p>
+                <p class="mt-2" style={`${eyebrowSm} color:${i === 0 ? "rgba(27,66,41,.65)" : "rgba(255,250,234,.65)"}; font-size:.8rem;`}>{tile.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <a href={c.certificate.pdf} target="_blank" rel="noopener" style={`${btn} background-color:transparent; color:${CREAM}; border:1px solid rgba(255,250,234,.5);`}>Download the original PDF</a>
+            <a href={c.product_url} style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>Buy this oil</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ §5.3 WHAT'S IN IT ═══ -->
+      <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+        <div class="container mx-auto max-w-5xl">
+          <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>What's in it</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
+            {primaryRows.length > 1 || secondaryRows.length ? `Every compound the laboratory found, in ${p.unit}` : "One total, and no compounds named"}
+          </h2>
+          <p class="mb-10 max-w-3xl" style={`${lead} color:rgba(27,66,41,.78);`}>
+            {secondaryRows.length
+              ? "Bars are drawn against the total. The report carries two assays, so oleocanthal and oleacein appear under both, at the level each one found."
+              : p.other.length
+                ? "Bars are drawn against the total."
+                : "One number, on one method. This test names no individual compounds."}
+          </p>
+
+          {groups.map((g) => (
+            <div class="mb-8 rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+              <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+                <caption class="text-left p-4" style={`${eyebrowSm} color:${CREAM}; background-color:${GREEN}; caption-side:top;`}>{g.title}</caption>
+                <thead class="sr-only"><tr><th>Compound</th><th>Result</th></tr></thead>
+                <tbody>
+                  {g.rows.map((r, i) => (
+                    <tr style={i < g.rows.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+                      <td class="p-4 md:p-5 align-top" style="width:44%;">
+                        <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>
+                          {["oleocanthal", "oleacein", "hydroxytyrosol", "tyrosol"].includes(r.key)
+                            ? <a href="/polyphenol-methods#compounds" class="underline decoration-1 underline-offset-4">{r.name}</a>
+                            : r.name}
+                          {r.sub && <span style={`font-family:${SG}; font-weight:400; color:rgba(27,66,41,.6);`}> · {r.sub}</span>}
+                        </p>
+                        {r.note && <p class="mt-1" style={`${small} font-size:.9rem; color:rgba(27,66,41,.65);`}>{r.note}</p>}
+                      </td>
+                      <td class="p-4 md:p-5 align-middle">
+                        <div class="flex items-center gap-4">
+                          <svg class="flex-1 h-8" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                            <rect x="0" y="0" width={pct(r.value)} height="10" rx="1.2" fill={r.key === "total" ? GREEN : r.key === "oleocanthal" || r.key === "oleacein" ? "#5C6E45" : "#8A9B6F"} />
+                          </svg>
+                          <span class="whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; font-size:1.15rem; color:${GREEN}; min-width:5.5rem; text-align:right;`}>
+                            {formatValue(r.value)}{r.key === "total" && p.total_uncertainty !== null && <span style={`font-family:${SG}; font-weight:400; font-size:.9rem; color:rgba(27,66,41,.6);`}> ±{p.total_uncertainty}</span>}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+          {c.notes && <p class="max-w-3xl" style={`${small} color:rgba(27,66,41,.65);`}>{c.notes}</p>}
+        </div>
+      </section>
+
+      <!-- ═══ §5.4 HOW IT WAS TESTED ═══ -->
+      <section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+        <div class="container mx-auto max-w-5xl">
+          <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>How it was tested</p>
+          <h2 class="mb-10" style={`${h2} color:${GREEN};`}>{c.method.name} at {labShort(c)}, {c.certificate.lab_city ?? c.certificate.lab_country}</h2>
+
+          <div class="grid md:grid-cols-2 gap-5 mb-10">
+            <div class="p-7" style={cardOnCream}>
+              <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>Method</p>
+              <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; color:${GREEN};`}>{c.method.name}</h3>
+              {c.method.reference && <p class="mb-3" style={`${small} color:rgba(27,66,41,.7);`}>{c.method.reference}</p>}
+              <p class="mb-4" style={`${body} font-size:1rem; color:rgba(27,66,41,.82);`}>{METHOD_NOTES[c.method.name]}.</p>
+              {c.secondary_method && (
+                <p class="mb-4" style={`${body} font-size:1rem; color:rgba(27,66,41,.82);`}>
+                  Oleocanthal and oleacein come from a second assay on the same report, {c.secondary_method.name.toLowerCase()}{c.secondary_method.technique ? ` (${c.secondary_method.technique})` : ""}.
+                </p>
+              )}
+              <a href="/polyphenol-methods" class="underline" style={`${small} color:${GREEN};`}>How HPLC, NMR and Folin-Ciocalteu differ →</a>
+            </div>
+
+            <div class="p-7" style={cardOnCream}>
+              <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>Laboratory</p>
+              <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; color:${GREEN};`}>{c.certificate.lab_name}</h3>
+              <p class="mb-4" style={`${small} color:rgba(27,66,41,.7);`}>{[c.certificate.lab_city, c.certificate.lab_country].filter(Boolean).join(", ")}</p>
+              <dl style={`${small} color:rgba(27,66,41,.85);`} class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
+                <dt style={`font-family:${UDC}; font-weight:700;`}>ISO/IEC 17025</dt>
+                <dd>{c.certificate.iso_17025 === null ? "Not stated on the report" : c.certificate.iso_17025 ? "Yes, as stated on the report" : "No"}</dd>
+                {c.certificate.accreditation_body && (<><dt style={`font-family:${UDC}; font-weight:700;`}>Accreditation</dt><dd>{c.certificate.accreditation_body}{c.certificate.accreditation_number ? ` · ${c.certificate.accreditation_number}` : ""}</dd></>)}
+                <dt style={`font-family:${UDC}; font-weight:700;`}>Report</dt>
+                <dd>{c.certificate.report_number}{c.certificate.report_type ? ` · ${c.certificate.report_type}` : ""}</dd>
+                {c.certificate.signed_by && (<><dt style={`font-family:${UDC}; font-weight:700;`}>Signed</dt><dd>{c.certificate.signed_by}</dd></>)}
+                {RENDER_PRODUCER && c.commissioned_by && (<><dt style={`font-family:${UDC}; font-weight:700;`}>Commissioned by</dt><dd>{c.commissioned_by}</dd></>)}
+              </dl>
+              {c.certificate.recognitions.length > 0 && (
+                <ul class="mt-4 pl-4 list-disc" style={`${small} font-size:.9rem; color:rgba(27,66,41,.7);`}>
+                  {c.certificate.recognitions.map((r) => <li>{r}</li>)}
+                </ul>
+              )}
+            </div>
+          </div>
+
+          <!-- timeline -->
+          <ol class="grid gap-4" style={`grid-template-columns:repeat(${timeline.length}, minmax(0,1fr));`}>
+            {timeline.map(([label, date], i) => (
+              <li class="relative pt-5">
+                <span class="absolute left-0 top-0 h-[2px] w-full" style={`background-color:${i === 0 ? GREEN : "rgba(27,66,41,.25)"};`}></span>
+                <span class="absolute left-0 top-[-5px] w-3 h-3 rounded-full" style={`background-color:${GREEN};`}></span>
+                <p style={`${eyebrowSm} font-size:.75rem; color:rgba(27,66,41,.6);`}>{label}</p>
+                <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{formatDate(date)}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <!-- ═══ §5.5 QUALITY PARAMETERS (only if printed) ═══ -->
+      {quality.length > 0 && (
+        <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+          <div class="container mx-auto max-w-5xl">
+            <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Quality parameters</p>
+            <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
+              {allWithin ? `Inside the extra virgin limit on all ${quality.length} parameters` : "Quality parameters as printed on the report"}
+            </h2>
+            <p class="mb-10 max-w-3xl" style={`${lead} color:rgba(27,66,41,.78);`}>
+              The same five figures every extra virgin oil in the EU has to meet, with the legal limit beside each one.
+            </p>
+            <div class="rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+              <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+                <thead>
+                  <tr style={`border-bottom:2px dashed ${GREEN};`}>
+                    {["Parameter", "Result", "Limit (EU and IOC)"].map((th) => (
+                      <th class="text-left p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; font-size:.9rem; letter-spacing:.06em; text-transform:uppercase; color:${GREEN};`}>{th}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {quality.map((q, i) => (
+                    <tr style={i < quality.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+                      <td class="p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{q.label}{q.unit && <span style={`font-family:${SG}; font-weight:400; color:rgba(27,66,41,.6);`}> · {q.unit}</span>}</td>
+                      <td class="p-4 md:p-5" style={`color:${GREEN};`}>
+                        <span class="inline-block px-3 py-1 rounded-full" style={`background-color:${q.within ? LIME : "#F6D2D0"}; font-weight:600;`}>{q.value.toFixed(q.key === "k268_or_k270" || q.key === "delta_k" ? 3 : q.decimals)}</span>
+                        {q.uncertainty !== null && <span style="color:rgba(27,66,41,.6);"> ±{q.uncertainty}</span>}
+                      </td>
+                      <td class="p-4 md:p-5" style="color:rgba(27,66,41,.8);">≤ {q.max.toFixed(q.decimals)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-5 max-w-4xl" style={`${small} font-size:.9rem; color:rgba(27,66,41,.62);`}>
+              Limits read from <a class="underline" href={LIMIT_SOURCES.eu.url} target="_blank" rel="noopener nofollow">{LIMIT_SOURCES.eu.short}, Annex I</a> and <a class="underline" href={LIMIT_SOURCES.ioc.url} target="_blank" rel="noopener nofollow">{LIMIT_SOURCES.ioc.short}, section 4</a>, both checked on {formatDate(LIMIT_SOURCES.eu.verified)}; the two set identical values. ΔK is read as an absolute value, as the report notes. Uncertainties are the laboratory's expanded uncertainty (k = 2).
+            </p>
+          </div>
+        </section>
+      )}
+
+      <!-- ═══ §5.6 OVER TIME (only if a series exists) ═══ -->
+      {seriesPoints.length > 1 && <SeriesChart points={seriesPoints} unit={p.unit} />}
+
+      <!-- ═══ §5.7 SHARED CAVEATS ═══ -->
+      <CertificateCaveats methodName={c.method.name} />
+
+      <!-- ═══ §5.9 EFSA CLAIM (only when the report states the qualifying figure) ═══ -->
+      {c.efsa_claim_eligible === true && (
+        <section class="py-16 px-6" style={`background-color:${LIME};`}>
+          <div class="container mx-auto max-w-4xl">
+            <p class="mb-4" style={`${eyebrow} color:rgba(27,66,41,.6);`}>Authorised health claim</p>
+            <!-- Wording and condition must be checked against Reg. (EU) 432/2012 on EUR-Lex before this block first renders. -->
+            <h2 class="mb-4" style={`${h2} color:${GREEN};`}>Olive oil polyphenols contribute to the protection of blood lipids from oxidative stress</h2>
+            <p style={`${body} color:rgba(27,66,41,.85);`}>
+              This report states {p.hydroxytyrosol_and_derivatives} mg/kg hydroxytyrosol and its derivatives, above the 250 mg/kg (5 mg per 20 g) the claim requires under Commission Regulation (EU) No 432/2012. The beneficial effect is obtained with a daily intake of 20 g of olive oil.
+            </p>
+          </div>
+        </section>
+      )}
+
+      <!-- ═══ §5.8 ORIGINAL DOCUMENT ═══ -->
+      <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+        <div class="container mx-auto max-w-5xl grid md:grid-cols-[260px_1fr] gap-10 items-start">
+          <a href={c.certificate.pdf} target="_blank" rel="noopener" class="block rounded-xl overflow-hidden" style="border:1px solid rgba(27,66,41,.2); box-shadow:0 12px 32px rgba(16,34,27,.12);">
+            <img src={c.certificate.thumbnail} alt={`First page of ${c.certificate.lab_name} report ${c.certificate.report_number}`} width="640" height="905" loading="lazy" class="w-full h-auto" />
+          </a>
+          <div>
+            <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Original document</p>
+            <h2 class="mb-6" style={`${h2} color:${GREEN};`}>The report as the laboratory issued it</h2>
+            <p class="mb-6" style={`${body} color:rgba(27,66,41,.8);`}>
+              Every figure above was transcribed from this PDF. Open it, and check us.
+            </p>
+            <a href={c.certificate.pdf} target="_blank" rel="noopener" style={`${btn} background-color:${GREEN}; color:${CREAM};`}>Open the PDF</a>
+            <p class="mt-8" style={`${small} font-size:.85rem; color:rgba(27,66,41,.6);`}>
+              SHA-256 <span class="break-all" style="font-variant-numeric:tabular-nums;">{c.pdf_sha256}</span><br />
+              The document has not changed since publication if the file's hash matches this one.
+              Machine-readable record: <a class="underline" href={certificateJsonPath(c.id)}>{c.id}.json</a> · <a class="underline" href={certificatesIndexPath}>all certificates</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  @media (min-width: 1024px) {
+    .cert-tiles { grid-template-columns: repeat(var(--tiles), minmax(0, 1fr)); }
+  }
+</style>

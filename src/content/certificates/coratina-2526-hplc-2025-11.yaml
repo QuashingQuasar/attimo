@@ -1,0 +1,100 @@
+# Transcribed from public/lab/Coratina2025.pdf (Chemiservice advance test
+# report 2533647, 16 pages). Every value as printed; nothing estimated.
+id: coratina-2526-hplc-2025-11
+oil: coratina
+product_url: /product/coratina
+cultivar: Coratina
+origin: Puglia, Italy
+organic: true
+producer: null
+commissioned_by: Oilalà Srl, Gualdo Tadino (PG), Italy
+harvest: "25/26"
+
+certificate:
+  lab_name: Chemiservice S.r.l.
+  lab_city: Monopoli
+  lab_country: Italy
+  accreditation_body: null
+  accreditation_number: null
+  iso_17025: true
+  recognitions:
+    - "Operating according to UNI CEI EN ISO/IEC 17025"
+    - "Laboratory recognised by the International Olive Council for the physico-chemical analysis of olive oils and olive-pomace oils, Type A: advanced testing (01/12/2024 – 30/11/2025)"
+    - "Registered in the Regione Puglia list of self-control laboratories, registration no. 10P"
+    - "AOCS Approved Chemist 2025–2026"
+    - "FOSFA International analyst member"
+  report_type: Advance test report (Anticipo del rapporto di prova)
+  report_number: "2533647"
+  lab_reference: null
+  sample_reference: null
+  sample_description: Olio Extra Vergine di Oliva Biologico 100% Italiano – Coratina (information supplied by the client)
+  sample_volume_ml: 500
+  sample_date: null
+  sample_received_date: "2025-11-18"
+  tests_started_date: "2025-11-20"
+  tests_completed_date: "2025-11-24"
+  report_date: "2025-11-25"
+  signed_by: dr. Chim. Arianna Luisi (Ordine dei Chimici Bari A681)
+  pdf: /lab/Coratina2025.pdf
+  thumbnail: /lab/thumbs/Coratina2025.png
+
+method:
+  name: HPLC
+  reference: COI/T.20/Doc. No 29/Rev. 2 2022
+  applies_to: [total, hydroxytyrosol, tyrosol, other]
+secondary_method:
+  name: Internal method 13056-CH-1
+  reference: null
+  technique: null
+  applies_to: [oleocanthal, oleacein]
+
+phenolics:
+  unit: mg/kg
+  total: 847
+  total_uncertainty: 181
+  total_expressed_as: tyrosol
+  total_loq: 30
+  oleocanthal: 471
+  oleacein: 336
+  hydroxytyrosol: 5
+  tyrosol: 5
+  hydroxytyrosol_and_derivatives: null
+  other:
+    - name: Decarboxymethyl oleuropein aglycone, open dialdehydic form
+      abbreviation: 3,4-DHPEA-EDA
+      value: 151
+      loq: 3
+    - name: Decarboxymethyl ligstroside aglycone, open dialdehydic form
+      abbreviation: p-HPEA-EDA
+      value: 190
+      loq: 3
+    - name: Lignans
+      abbreviation: null
+      value: 78
+      loq: 3
+    - name: Oleuropein aglycone
+      abbreviation: 3,4-DHPEA-EA
+      value: 68
+      loq: 3
+    - name: Ligstroside aglycone
+      abbreviation: p-HPEA-EA
+      value: 24
+      loq: 3
+
+quality:
+  free_acidity: { value: 0.19, uncertainty: 0.03 }
+  peroxide_value: { value: 7.2, uncertainty: 1.2 }
+  k232: { value: 1.62, uncertainty: 0.14 }
+  k268_or_k270: { value: 0.150, uncertainty: 0.009 }
+  k_wavelength: K268
+  delta_k: { value: -0.003, uncertainty: 0.001 }
+  limits_reference_printed: Regolamento delegato (UE) 2022/2104, Allegato I
+
+supersedes: null
+notes: >-
+  The IOC HPLC panel and the internal assay both report oleocanthal and
+  oleacein, under different names and at different levels: p-HPEA-EDA 190 and
+  3,4-DHPEA-EDA 151 mg/kg by COI/T.20/Doc. No 29, against 471 and 336 mg/kg by
+  internal method 13056-CH-1. Both are shown. Pages 2 to 16 carry a
+  multi-residue pesticide screen (UNI EN 15662:2018) in which every listed
+  residue is below its 0.010 mg/kg quantification limit.

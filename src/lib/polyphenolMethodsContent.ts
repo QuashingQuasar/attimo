@@ -122,12 +122,12 @@ const en: MethodsContent = {
     headline:
       "How to compare olive oil polyphenol numbers across HPLC, NMR and Folin-Ciocalteu",
     imageCaption:
-      "One Coratina olive oil on two methods: 847 mg/kg by HPLC and 1,215 mg/kg by NMR.",
+      "One Coratina olive oil on two methods: {{coratina.total}} mg/kg by HPLC and 1,215 mg/kg by NMR.",
   },
   heroAlt: "Olive grove at dawn in warm morning mist",
   hero: {
     eyebrow: "Polyphenol analysis methods explained",
-    h1: "The same olive oil can have 847 or 1,215 polyphenols, depending on how it's measured",
+    h1: "The same olive oil can have {{coratina.total}} or 1,215 polyphenols, depending on how it's measured",
     lead: "Different methods result in different polyphenol totals for the exact same oil sample.",
     hplcSub: "The method we publish",
     nmrSub: "The method most rivals publish",
@@ -236,11 +236,11 @@ const en: MethodsContent = {
       ],
       [
         "It prints its margin of error",
-        "Our certificate reads 847 ±181 mg/kg, and names the range the method is validated across. A number with no margin is a number nobody has checked.",
+        "Our certificate reads {{coratina.total}} ±{{coratina.total_u}} mg/kg, and names the range the method is validated across. A number with no margin is a number nobody has checked.",
       ],
     ],
     millCaption:
-      "The sample that produced report 2533647 was drawn at the mill in November, within days of pressing.",
+      "The sample that produced report {{coratina.report}} was drawn at the mill in November, within days of pressing.",
     millAlt: "Fresh green olive oil flowing from a steel spout into a vat at the mill",
   },
   checklist: {
@@ -275,7 +275,7 @@ const en: MethodsContent = {
       report: "Report",
     },
     footnote:
-      "All values mg/kg, 2025/26 harvest, HPLC by IOC Doc. 29 with oleocanthal and oleacein from a dedicated assay. Coratina sampled 18 November 2025, Nocellara 17 November 2025. Doc. 29 states a measuring range of 30–800 mg/kg, so our 847 sits just above it and should be read as approximate at that boundary.",
+      "All values mg/kg, 2025/26 harvest, HPLC by IOC Doc. 29 with oleocanthal and oleacein from a dedicated assay. Coratina sampled 18 November 2025, Nocellara 17 November 2025. Doc. 29 states a measuring range of 30–800 mg/kg, so our {{coratina.total}} sits just above it and should be read as approximate at that boundary.",
   },
   faq: {
     heading: "Questions about polyphenol testing",
@@ -291,9 +291,9 @@ const en: MethodsContent = {
           "Not as an instrument. When both techniques quantify the same compound against real standards they agree closely: a 2021 study measuring oleocanthal by NMR and by HPLC on the same oils reported 768 against 789, 724 against 739, and 283 against 259 mg/kg. The differences you see between published totals come from what is being counted and in what units, not from one machine inflating results. Treat any claim that NMR is inherently generous, or that HPLC is inherently accurate, as marketing.",
       },
       {
-        question: "Why is your total 847 when the IOC method is validated to 800 mg/kg?",
+        question: "Why is your total {{coratina.total}} when the IOC method is validated to 800 mg/kg?",
         answer:
-          "COI/T.20/Doc. No 29 states its range of measurement as 30 to 800 mg/kg, so our 847 sits just above the top of that validated range and should be read as an approximate figure at the boundary rather than a precise one. The certificate also states an expanded uncertainty of ±181 mg/kg. We would rather point this out ourselves than have it found. It is one of the reasons we report oleocanthal and oleacein separately, from a dedicated assay, instead of relying on a total.",
+          "COI/T.20/Doc. No 29 states its range of measurement as 30 to 800 mg/kg, so our {{coratina.total}} sits just above the top of that validated range and should be read as an approximate figure at the boundary rather than a precise one. The certificate also states an expanded uncertainty of ±{{coratina.total_u}} mg/kg. We would rather point this out ourselves than have it found. It is one of the reasons we report oleocanthal and oleacein separately, from a dedicated assay, instead of relying on a total.",
       },
       {
         question: "What is the Folin-Ciocalteu test, and is it accurate for olive oil?",
@@ -372,12 +372,12 @@ const de: MethodsContent = {
     headline:
       "So vergleichst du Polyphenolwerte von Olivenöl über HPLC, NMR und Folin-Ciocalteu hinweg",
     imageCaption:
-      "Ein Coratina-Olivenöl, zwei Methoden: 847 mg/kg per HPLC und 1.215 mg/kg per NMR.",
+      "Ein Coratina-Olivenöl, zwei Methoden: {{coratina.total}} mg/kg per HPLC und 1.215 mg/kg per NMR.",
   },
   heroAlt: "Olivenhain im Morgengrauen in warmem Frühnebel",
   hero: {
     eyebrow: "Polyphenol-Analysemethoden erklärt",
-    h1: "Dasselbe Olivenöl kann 847 oder 1.215 Polyphenole haben, je nachdem, wie gemessen wird",
+    h1: "Dasselbe Olivenöl kann {{coratina.total}} oder 1.215 Polyphenole haben, je nachdem, wie gemessen wird",
     lead: "Verschiedene Methoden ergeben für genau dieselbe Ölprobe verschiedene Polyphenol-Gesamtwerte.",
     hplcSub: "Die Methode, die wir veröffentlichen",
     nmrSub: "Die Methode, die die meisten Wettbewerber veröffentlichen",
@@ -486,11 +486,11 @@ const de: MethodsContent = {
       ],
       [
         "Er nennt seine Fehlerspanne",
-        "Unser Zertifikat weist 847 ±181 mg/kg aus und nennt den Bereich, für den die Methode validiert ist. Eine Zahl ohne Spanne ist eine Zahl, die niemand geprüft hat.",
+        "Unser Zertifikat weist {{coratina.total}} ±{{coratina.total_u}} mg/kg aus und nennt den Bereich, für den die Methode validiert ist. Eine Zahl ohne Spanne ist eine Zahl, die niemand geprüft hat.",
       ],
     ],
     millCaption:
-      "Die Probe, aus der Bericht 2533647 entstand, wurde im November in der Mühle gezogen, wenige Tage nach der Pressung.",
+      "Die Probe, aus der Bericht {{coratina.report}} entstand, wurde im November in der Mühle gezogen, wenige Tage nach der Pressung.",
     millAlt: "Frisches grünes Olivenöl fließt in der Mühle aus einem Stahlauslauf in einen Behälter",
   },
   checklist: {
@@ -525,7 +525,7 @@ const de: MethodsContent = {
       report: "Bericht",
     },
     footnote:
-      "Alle Werte in mg/kg, Ernte 2025/26, HPLC nach IOC Doc. 29, Oleocanthal und Oleacein aus einem eigenen Assay. Coratina beprobt am 18. November 2025, Nocellara am 17. November 2025. Doc. 29 gibt einen Messbereich von 30–800 mg/kg an, unsere 847 liegen also knapp darüber und sind an dieser Grenze als ungefährer Wert zu lesen.",
+      "Alle Werte in mg/kg, Ernte 2025/26, HPLC nach IOC Doc. 29, Oleocanthal und Oleacein aus einem eigenen Assay. Coratina beprobt am 18. November 2025, Nocellara am 17. November 2025. Doc. 29 gibt einen Messbereich von 30–800 mg/kg an, unsere {{coratina.total}} liegen also knapp darüber und sind an dieser Grenze als ungefährer Wert zu lesen.",
   },
   faq: {
     heading: "Fragen zur Polyphenol-Analytik",
@@ -541,9 +541,9 @@ const de: MethodsContent = {
           "Nicht als Gerät. Wenn beide Techniken dieselbe Verbindung gegen echte Standards quantifizieren, stimmen sie eng überein: Eine Studie von 2021, die Oleocanthal per NMR und per HPLC an denselben Ölen gemessen hat, berichtete 768 gegen 789, 724 gegen 739 und 283 gegen 259 mg/kg. Die Unterschiede zwischen veröffentlichten Gesamtwerten entstehen daraus, was gezählt wird und in welchen Einheiten. Kein Gerät bläht die Ergebnisse auf. Behandle jede Behauptung, NMR sei von Natur aus großzügig oder HPLC von Natur aus genau, als Marketing.",
       },
       {
-        question: "Warum liegt euer Gesamtwert bei 847, wenn die IOC-Methode bis 800 mg/kg validiert ist?",
+        question: "Warum liegt euer Gesamtwert bei {{coratina.total}}, wenn die IOC-Methode bis 800 mg/kg validiert ist?",
         answer:
-          "COI/T.20/Doc. No 29 gibt seinen Messbereich mit 30 bis 800 mg/kg an. Unsere 847 liegen damit knapp über dem oberen Ende dieses validierten Bereichs und sind an dieser Grenze als ungefährer Wert zu lesen, ohne den Anspruch auf Präzision. Das Zertifikat nennt außerdem eine erweiterte Messunsicherheit von ±181 mg/kg. Wir weisen lieber selbst darauf hin, als dass es jemand findet. Das ist einer der Gründe, warum wir Oleocanthal und Oleacein getrennt angeben, aus einem eigenen Assay, statt uns auf einen Gesamtwert zu verlassen.",
+          "COI/T.20/Doc. No 29 gibt seinen Messbereich mit 30 bis 800 mg/kg an. Unsere {{coratina.total}} liegen damit knapp über dem oberen Ende dieses validierten Bereichs und sind an dieser Grenze als ungefährer Wert zu lesen, ohne den Anspruch auf Präzision. Das Zertifikat nennt außerdem eine erweiterte Messunsicherheit von ±{{coratina.total_u}} mg/kg. Wir weisen lieber selbst darauf hin, als dass es jemand findet. Das ist einer der Gründe, warum wir Oleocanthal und Oleacein getrennt angeben, aus einem eigenen Assay, statt uns auf einen Gesamtwert zu verlassen.",
       },
       {
         question: "Was ist der Folin-Ciocalteu-Test, und ist er für Olivenöl genau?",
@@ -622,12 +622,12 @@ const fr: MethodsContent = {
     headline:
       "Comparer les chiffres de polyphénols d'une huile d'olive entre HPLC, NMR et Folin-Ciocalteu",
     imageCaption:
-      "Une même huile d'olive Coratina sur deux méthodes : 847 mg/kg en HPLC et 1 215 mg/kg en NMR.",
+      "Une même huile d'olive Coratina sur deux méthodes : {{coratina.total}} mg/kg en HPLC et 1 215 mg/kg en NMR.",
   },
   heroAlt: "Oliveraie à l'aube dans une brume matinale chaude",
   hero: {
     eyebrow: "Les méthodes d'analyse des polyphénols expliquées",
-    h1: "La même huile d'olive peut afficher 847 ou 1 215 polyphénols, selon la méthode de mesure",
+    h1: "La même huile d'olive peut afficher {{coratina.total}} ou 1 215 polyphénols, selon la méthode de mesure",
     lead: "Des méthodes différentes donnent des totaux de polyphénols différents pour exactement le même échantillon d'huile.",
     hplcSub: "La méthode que nous publions",
     nmrSub: "La méthode que publient la plupart de nos concurrents",
@@ -736,11 +736,11 @@ const fr: MethodsContent = {
       ],
       [
         "Il imprime sa marge d'erreur",
-        "Notre certificat indique 847 ±181 mg/kg et nomme la plage sur laquelle la méthode est validée. Un chiffre sans marge est un chiffre que personne n'a vérifié.",
+        "Notre certificat indique {{coratina.total}} ±{{coratina.total_u}} mg/kg et nomme la plage sur laquelle la méthode est validée. Un chiffre sans marge est un chiffre que personne n'a vérifié.",
       ],
     ],
     millCaption:
-      "L'échantillon à l'origine du rapport 2533647 a été prélevé au moulin en novembre, quelques jours après le pressage.",
+      "L'échantillon à l'origine du rapport {{coratina.report}} a été prélevé au moulin en novembre, quelques jours après le pressage.",
     millAlt: "Huile d'olive verte fraîche coulant d'un bec en acier dans une cuve au moulin",
   },
   checklist: {
@@ -775,7 +775,7 @@ const fr: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Toutes les valeurs en mg/kg, récolte 2025/26, HPLC selon IOC Doc. 29, avec l'oléocanthal et l'oléacéine issus d'un dosage dédié. Coratina prélevée le 18 novembre 2025, Nocellara le 17 novembre 2025. Le Doc. 29 indique une plage de mesure de 30–800 mg/kg : notre 847 se situe juste au-dessus et doit être lu comme approximatif à cette limite.",
+      "Toutes les valeurs en mg/kg, récolte 2025/26, HPLC selon IOC Doc. 29, avec l'oléocanthal et l'oléacéine issus d'un dosage dédié. Coratina prélevée le 18 novembre 2025, Nocellara le 17 novembre 2025. Le Doc. 29 indique une plage de mesure de 30–800 mg/kg : notre {{coratina.total}} se situe juste au-dessus et doit être lu comme approximatif à cette limite.",
   },
   faq: {
     heading: "Questions sur l'analyse des polyphénols",
@@ -793,9 +793,9 @@ const fr: MethodsContent = {
       },
       {
         question:
-          "Pourquoi votre total est-il de 847 alors que la méthode du COI est validée jusqu'à 800 mg/kg ?",
+          "Pourquoi votre total est-il de {{coratina.total}} alors que la méthode du COI est validée jusqu'à 800 mg/kg ?",
         answer:
-          "Le COI/T.20/Doc. No 29 annonce une plage de mesure de 30 à 800 mg/kg. Notre 847 se situe donc juste au-dessus du haut de cette plage validée et doit être lu comme un chiffre approximatif à la limite plutôt que comme un chiffre précis. Le certificat indique par ailleurs une incertitude élargie de ±181 mg/kg. Nous préférons le signaler nous-mêmes plutôt que de laisser quelqu'un le découvrir. C'est l'une des raisons pour lesquelles nous rapportons l'oléocanthal et l'oléacéine séparément, à partir d'un dosage dédié, au lieu de nous appuyer sur un total.",
+          "Le COI/T.20/Doc. No 29 annonce une plage de mesure de 30 à 800 mg/kg. Notre {{coratina.total}} se situe donc juste au-dessus du haut de cette plage validée et doit être lu comme un chiffre approximatif à la limite plutôt que comme un chiffre précis. Le certificat indique par ailleurs une incertitude élargie de ±{{coratina.total_u}} mg/kg. Nous préférons le signaler nous-mêmes plutôt que de laisser quelqu'un le découvrir. C'est l'une des raisons pour lesquelles nous rapportons l'oléocanthal et l'oléacéine séparément, à partir d'un dosage dédié, au lieu de nous appuyer sur un total.",
       },
       {
         question: "Qu'est-ce que le test Folin-Ciocalteu, et est-il fiable pour l'huile d'olive ?",
@@ -875,12 +875,12 @@ const sv: MethodsContent = {
     headline:
       "Så jämför du polyfenolsiffror i olivolja mellan HPLC, NMR och Folin-Ciocalteu",
     imageCaption:
-      "En och samma Coratina-olivolja på två metoder: 847 mg/kg med HPLC och 1 215 mg/kg med NMR.",
+      "En och samma Coratina-olivolja på två metoder: {{coratina.total}} mg/kg med HPLC och 1 215 mg/kg med NMR.",
   },
   heroAlt: "Olivlund i gryningen i varm morgondimma",
   hero: {
     eyebrow: "Analysmetoder för polyfenoler, förklarade",
-    h1: "Samma olivolja kan ha 847 eller 1 215 polyfenoler, beroende på hur den mäts",
+    h1: "Samma olivolja kan ha {{coratina.total}} eller 1 215 polyfenoler, beroende på hur den mäts",
     lead: "Olika metoder ger olika totalsiffror för exakt samma oljeprov.",
     hplcSub: "Metoden vi publicerar",
     nmrSub: "Metoden de flesta konkurrenter publicerar",
@@ -989,11 +989,11 @@ const sv: MethodsContent = {
       ],
       [
         "Den trycker sin felmarginal",
-        "Vårt certifikat visar 847 ±181 mg/kg och namnger det intervall som metoden är validerad över. En siffra utan felmarginal är en siffra ingen har kontrollerat.",
+        "Vårt certifikat visar {{coratina.total}} ±{{coratina.total_u}} mg/kg och namnger det intervall som metoden är validerad över. En siffra utan felmarginal är en siffra ingen har kontrollerat.",
       ],
     ],
     millCaption:
-      "Provet som gav rapport 2533647 togs vid kvarnen i november, inom några dagar efter pressningen.",
+      "Provet som gav rapport {{coratina.report}} togs vid kvarnen i november, inom några dagar efter pressningen.",
     millAlt: "Färsk grön olivolja som rinner från en stålpip ner i ett kar i oljekvarnen",
   },
   checklist: {
@@ -1028,7 +1028,7 @@ const sv: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alla värden i mg/kg, skörd 2025/26, HPLC enligt IOC Doc. 29 med oleocanthal och oleacein från en särskild analys. Coratina provtagen 18 november 2025, Nocellara 17 november 2025. Doc. 29 anger ett mätområde på 30–800 mg/kg, så våra 847 ligger strax över det och bör läsas som ungefärligt vid den gränsen.",
+      "Alla värden i mg/kg, skörd 2025/26, HPLC enligt IOC Doc. 29 med oleocanthal och oleacein från en särskild analys. Coratina provtagen 18 november 2025, Nocellara 17 november 2025. Doc. 29 anger ett mätområde på 30–800 mg/kg, så våra {{coratina.total}} ligger strax över det och bör läsas som ungefärligt vid den gränsen.",
   },
   faq: {
     heading: "Frågor om polyfenolanalys",
@@ -1044,9 +1044,9 @@ const sv: MethodsContent = {
           "Inte som instrument. När båda teknikerna kvantifierar samma ämne mot verkliga standarder stämmer de väl överens: en studie från 2021 som mätte oleocanthal med NMR och med HPLC på samma oljor rapporterade 768 mot 789, 724 mot 739 och 283 mot 259 mg/kg. Skillnaderna du ser mellan publicerade totalsiffror kommer från vad som räknas och i vilka enheter. Ingen maskin blåser upp resultaten. Behandla varje påstående om att NMR är generös av naturen, eller att HPLC är exakt av naturen, som marknadsföring.",
       },
       {
-        question: "Varför är er totalsiffra 847 när IOC-metoden är validerad upp till 800 mg/kg?",
+        question: "Varför är er totalsiffra {{coratina.total}} när IOC-metoden är validerad upp till 800 mg/kg?",
         answer:
-          "COI/T.20/Doc. No 29 anger sitt mätområde som 30 till 800 mg/kg, så våra 847 ligger strax över toppen av det validerade området och bör läsas som en ungefärlig siffra vid gränsen snarare än en exakt. Certifikatet anger också en utvidgad mätosäkerhet på ±181 mg/kg. Vi påpekar det hellre själva än låter någon annan hitta det. Det är ett av skälen till att vi rapporterar oleocanthal och oleacein separat, från en särskild analys, i stället för att luta oss mot en totalsiffra.",
+          "COI/T.20/Doc. No 29 anger sitt mätområde som 30 till 800 mg/kg, så våra {{coratina.total}} ligger strax över toppen av det validerade området och bör läsas som en ungefärlig siffra vid gränsen snarare än en exakt. Certifikatet anger också en utvidgad mätosäkerhet på ±{{coratina.total_u}} mg/kg. Vi påpekar det hellre själva än låter någon annan hitta det. Det är ett av skälen till att vi rapporterar oleocanthal och oleacein separat, från en särskild analys, i stället för att luta oss mot en totalsiffra.",
       },
       {
         question: "Vad är Folin-Ciocalteu-testet, och håller det för olivolja?",
@@ -1125,12 +1125,12 @@ const da: MethodsContent = {
     headline:
       "Sådan sammenligner du polyfenoltal i olivenolie på tværs af HPLC, NMR og Folin-Ciocalteu",
     imageCaption:
-      "Én Coratina-olivenolie målt med to metoder: 847 mg/kg med HPLC og 1.215 mg/kg med NMR.",
+      "Én Coratina-olivenolie målt med to metoder: {{coratina.total}} mg/kg med HPLC og 1.215 mg/kg med NMR.",
   },
   heroAlt: "Olivenlund ved daggry i varm morgendis",
   hero: {
     eyebrow: "Metoderne til polyfenolanalyse forklaret",
-    h1: "Den samme olivenolie kan have 847 eller 1.215 polyfenoler, alt efter hvordan den måles",
+    h1: "Den samme olivenolie kan have {{coratina.total}} eller 1.215 polyfenoler, alt efter hvordan den måles",
     lead: "Forskellige metoder giver forskellige samlede polyfenoltal for præcis den samme olieprøve.",
     hplcSub: "Metoden, vi offentliggør",
     nmrSub: "Metoden, de fleste konkurrenter offentliggør",
@@ -1239,11 +1239,11 @@ const da: MethodsContent = {
       ],
       [
         "Den trykker sin egen måleusikkerhed",
-        "Vores analysebevis viser 847 ±181 mg/kg og angiver det interval, metoden er valideret inden for. Et tal uden usikkerhed er et tal, ingen har kontrolleret.",
+        "Vores analysebevis viser {{coratina.total}} ±{{coratina.total_u}} mg/kg og angiver det interval, metoden er valideret inden for. Et tal uden usikkerhed er et tal, ingen har kontrolleret.",
       ],
     ],
     millCaption:
-      "Prøven bag rapport 2533647 blev udtaget på møllen i november, få dage efter presningen.",
+      "Prøven bag rapport {{coratina.report}} blev udtaget på møllen i november, få dage efter presningen.",
     millAlt: "Frisk grøn olivenolie, der løber fra en stålhane ned i et kar på møllen",
   },
   checklist: {
@@ -1278,7 +1278,7 @@ const da: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alle værdier i mg/kg, høst 2025/26, HPLC efter IOC Doc. 29 med oleocanthal og oleacein fra en dedikeret analyse. Coratina udtaget 18. november 2025, Nocellara 17. november 2025. Doc. 29 angiver et måleområde på 30–800 mg/kg, så vores 847 ligger lige over det og bør læses som omtrentligt ved den grænse.",
+      "Alle værdier i mg/kg, høst 2025/26, HPLC efter IOC Doc. 29 med oleocanthal og oleacein fra en dedikeret analyse. Coratina udtaget 18. november 2025, Nocellara 17. november 2025. Doc. 29 angiver et måleområde på 30–800 mg/kg, så vores {{coratina.total}} ligger lige over det og bør læses som omtrentligt ved den grænse.",
   },
   faq: {
     heading: "Spørgsmål om polyfenoltest",
@@ -1294,9 +1294,9 @@ const da: MethodsContent = {
           "Ikke som instrument. Når begge teknikker kvantificerer det samme stof op mod ægte standarder, stemmer de tæt overens: en undersøgelse fra 2021, der målte oleocanthal med både NMR og HPLC på de samme olier, rapporterede 768 mod 789, 724 mod 739 og 283 mod 259 mg/kg. Forskellene mellem offentliggjorte samlede tal skyldes, hvad der tælles med, og i hvilke enheder. Ingen af maskinerne puster resultaterne op. Betragt enhver påstand om, at NMR i sig selv er gavmild, eller at HPLC i sig selv er præcis, som markedsføring.",
       },
       {
-        question: "Hvorfor er jeres samlede tal 847, når IOC-metoden er valideret til 800 mg/kg?",
+        question: "Hvorfor er jeres samlede tal {{coratina.total}}, når IOC-metoden er valideret til 800 mg/kg?",
         answer:
-          "COI/T.20/Doc. No 29 angiver sit måleområde som 30 til 800 mg/kg, så vores 847 ligger lige over toppen af det validerede område og bør læses som et omtrentligt tal ved grænsen frem for et præcist. Analysebeviset angiver også en udvidet måleusikkerhed på ±181 mg/kg. Vi gør hellere selv opmærksom på det, end at andre finder det. Det er en af grundene til, at vi rapporterer oleocanthal og oleacein hver for sig, fra en dedikeret analyse, i stedet for at læne os op ad et samlet tal.",
+          "COI/T.20/Doc. No 29 angiver sit måleområde som 30 til 800 mg/kg, så vores {{coratina.total}} ligger lige over toppen af det validerede område og bør læses som et omtrentligt tal ved grænsen frem for et præcist. Analysebeviset angiver også en udvidet måleusikkerhed på ±{{coratina.total_u}} mg/kg. Vi gør hellere selv opmærksom på det, end at andre finder det. Det er en af grundene til, at vi rapporterer oleocanthal og oleacein hver for sig, fra en dedikeret analyse, i stedet for at læne os op ad et samlet tal.",
       },
       {
         question: "Hvad er Folin-Ciocalteu-testen, og er den præcis for olivenolie?",
@@ -1375,12 +1375,12 @@ const nl: MethodsContent = {
     headline:
       "Polyfenolcijfers van olijfolie vergelijken tussen HPLC, NMR en Folin-Ciocalteu",
     imageCaption:
-      "Eén Coratina-olijfolie op twee methoden: 847 mg/kg met HPLC en 1.215 mg/kg met NMR.",
+      "Eén Coratina-olijfolie op twee methoden: {{coratina.total}} mg/kg met HPLC en 1.215 mg/kg met NMR.",
   },
   heroAlt: "Olijfgaard bij dageraad in warme ochtendnevel",
   hero: {
     eyebrow: "Analysemethoden voor polyfenolen uitgelegd",
-    h1: "Dezelfde olijfolie kan 847 of 1.215 polyfenolen bevatten, afhankelijk van hoe er gemeten wordt",
+    h1: "Dezelfde olijfolie kan {{coratina.total}} of 1.215 polyfenolen bevatten, afhankelijk van hoe er gemeten wordt",
     lead: "Verschillende methoden leveren verschillende polyfenoltotalen op voor exact hetzelfde oliemonster.",
     hplcSub: "De methode die wij publiceren",
     nmrSub: "De methode die de meeste concurrenten publiceren",
@@ -1489,11 +1489,11 @@ const nl: MethodsContent = {
       ],
       [
         "Het drukt zijn foutmarge af",
-        "Ons certificaat vermeldt 847 ±181 mg/kg, en noemt het bereik waarvoor de methode gevalideerd is. Een getal zonder marge is een getal dat niemand heeft gecontroleerd.",
+        "Ons certificaat vermeldt {{coratina.total}} ±{{coratina.total_u}} mg/kg, en noemt het bereik waarvoor de methode gevalideerd is. Een getal zonder marge is een getal dat niemand heeft gecontroleerd.",
       ],
     ],
     millCaption:
-      "Het monster dat rapport 2533647 opleverde, werd in november in de oliemolen genomen, binnen enkele dagen na het persen.",
+      "Het monster dat rapport {{coratina.report}} opleverde, werd in november in de oliemolen genomen, binnen enkele dagen na het persen.",
     millAlt: "Verse groene olijfolie die uit een stalen tuit in een vat stroomt in de oliemolen",
   },
   checklist: {
@@ -1528,7 +1528,7 @@ const nl: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alle waarden in mg/kg, oogst 2025/26, HPLC volgens IOC Doc. 29 met oleocanthal en oleaceïne uit een aparte bepaling. Coratina bemonsterd op 18 november 2025, Nocellara op 17 november 2025. Doc. 29 geeft een meetbereik van 30–800 mg/kg op, dus onze 847 ligt daar net boven en moet op die grens als benaderend gelezen worden.",
+      "Alle waarden in mg/kg, oogst 2025/26, HPLC volgens IOC Doc. 29 met oleocanthal en oleaceïne uit een aparte bepaling. Coratina bemonsterd op 18 november 2025, Nocellara op 17 november 2025. Doc. 29 geeft een meetbereik van 30–800 mg/kg op, dus onze {{coratina.total}} ligt daar net boven en moet op die grens als benaderend gelezen worden.",
   },
   faq: {
     heading: "Vragen over polyfenolanalyse",
@@ -1544,9 +1544,9 @@ const nl: MethodsContent = {
           "Als instrument niet. Wanneer beide technieken dezelfde verbinding kwantificeren tegen echte standaarden, komen ze dicht bij elkaar: een studie uit 2021 die oleocanthal met NMR en met HPLC op dezelfde oliën mat, rapporteerde 768 tegenover 789, 724 tegenover 739, en 283 tegenover 259 mg/kg. De verschillen die je tussen gepubliceerde totalen ziet, komen voort uit wat er geteld wordt en in welke eenheden. Geen enkele machine blaast hier resultaten op. Behandel elke bewering dat NMR van nature gul is, of dat HPLC van nature accuraat is, als marketing.",
       },
       {
-        question: "Waarom is jullie totaal 847 terwijl de IOC-methode tot 800 mg/kg gevalideerd is?",
+        question: "Waarom is jullie totaal {{coratina.total}} terwijl de IOC-methode tot 800 mg/kg gevalideerd is?",
         answer:
-          "COI/T.20/Doc. No 29 geeft zijn meetbereik op als 30 tot 800 mg/kg, dus onze 847 ligt net boven de bovengrens van dat gevalideerde bereik en moet op die grens als een benaderend cijfer gelezen worden in plaats van als een precies cijfer. Het certificaat vermeldt daarnaast een uitgebreide meetonzekerheid van ±181 mg/kg. We wijzen daar liever zelf op dan dat iemand anders het vindt. Het is een van de redenen waarom we oleocanthal en oleaceïne apart rapporteren, uit een aparte bepaling, in plaats van op een totaal te steunen.",
+          "COI/T.20/Doc. No 29 geeft zijn meetbereik op als 30 tot 800 mg/kg, dus onze {{coratina.total}} ligt net boven de bovengrens van dat gevalideerde bereik en moet op die grens als een benaderend cijfer gelezen worden in plaats van als een precies cijfer. Het certificaat vermeldt daarnaast een uitgebreide meetonzekerheid van ±{{coratina.total_u}} mg/kg. We wijzen daar liever zelf op dan dat iemand anders het vindt. Het is een van de redenen waarom we oleocanthal en oleaceïne apart rapporteren, uit een aparte bepaling, in plaats van op een totaal te steunen.",
       },
       {
         question: "Wat is de Folin-Ciocalteu-test, en is die accuraat voor olijfolie?",
