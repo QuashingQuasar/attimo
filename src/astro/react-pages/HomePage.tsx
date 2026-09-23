@@ -37,21 +37,26 @@ interface InnerProps {
 
 function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: InnerProps) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  // Polyphenol badge under each card's flavour line, from the certificates
+  // collection (via labNumbers) so the homepage carries no number of its own.
+  const polyBadges = labNumbers?.length
+    ? Object.fromEntries(labNumbers.filter((o) => o.total !== null).map((o) => [o.key, String(o.total)]))
+    : undefined;
 
   return (
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <OilProductWidgets locale={locale} belowGrid={<BundleWidgets locale={locale} />} />
+      <OilProductWidgets locale={locale} polyphenols={polyBadges} belowGrid={<BundleWidgets locale={locale} />} />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
-      {labNumbers && labNumbers.length > 0 && <HomeLabNumbers oils={labNumbers} locale={locale} />}
       <OilComparison locale={locale} />
       <Testimonials locale={locale} />
       <PolyphenolComparison
         locale={locale}
         relatedLink={{ href: "/high-polyphenol-olive-oil", label: "See the full high-polyphenol range, ranked" }}
       />
+      {labNumbers && labNumbers.length > 0 && <HomeLabNumbers oils={labNumbers} locale={locale} />}
       <FAQ locale={locale} />
       <BlogSection initialPosts={initialPosts} locale={locale} />
       <Footer locale={locale} />
