@@ -269,6 +269,10 @@ export const OilProductWidgets = ({
                           ? "scale-[1.15] group-hover:scale-[1.18]"
                           : "scale-[1.25] group-hover:scale-[1.28]"
                       }`}
+                      // Sold out: desaturate and fade the bottle so the card
+                      // reads as unavailable before the pill does. Label stays
+                      // legible; nothing else on the card changes.
+                      style={oil.effectiveAvailable ? undefined : { filter: "saturate(0.35) brightness(1.04)", opacity: 0.6 }}
                     />
                   );
                 })()}
