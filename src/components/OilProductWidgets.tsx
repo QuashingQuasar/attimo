@@ -241,17 +241,67 @@ export const OilProductWidgets = ({
                   }}>
                     {oil.flag} {oil.origin.toUpperCase()}
                   </span>
-                  <span
-                  className="oil-card-annotation whitespace-nowrap"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    letterSpacing: "0.1em",
-                    color: "#1B4229"
-                  }}>
-                    {oil.handle === "coratina" && coratinaSize === "box"
-                      ? t.product.formatBoxVolume
-                      : t.oilCollection.size}
-                  </span>
+                  {oil.handle === "coratina" ? (
+                    // Segmented toggle (bottle vs 3L box) sits where the other
+                    // cards print their volume: a bordered track on a translucent
+                    // cream tab so it reads on the photo, selected segment in the
+                    // chartreuse action colour.
+                    <div
+                      className="inline-flex items-center"
+                      role="group"
+                      aria-label={t.oilCollection.size}
+                      style={{
+                        border: "1.5px solid rgba(27,66,41,0.3)",
+                        borderRadius: "9999px",
+                        padding: "2px",
+                        gap: "2px",
+                        backgroundColor: "rgba(255,250,234,0.82)",
+                      }}
+                    >
+                      {(["bottle", "box"] as const).map((size) => {
+                        const active = coratinaSize === size;
+                        const label =
+                          size === "box"
+                            ? t.product.formatBoxVolume
+                            : t.product.formatBottleVolume;
+                        return (
+                          <button
+                            key={size}
+                            type="button"
+                            aria-pressed={active}
+                            onClick={(e) => {
+                              // Card is a Link — keep the chip from navigating.
+                              e.preventDefault();
+                              e.stopPropagation();
+                              coratinaSizeTouched.current = true;
+                              setCoratinaSize(size);
+                            }}
+                            className="oil-card-annotation rounded-full transition-all duration-200 whitespace-nowrap"
+                            style={{
+                              fontFamily: "UDC Working Man Sans, sans-serif",
+                              letterSpacing: "0.1em",
+                              padding: "0.15rem 0.7rem",
+                              border: "none",
+                              backgroundColor: active ? "#CDDB2D" : "transparent",
+                              color: active ? "#1B4229" : "rgba(27,66,41,0.55)",
+                            }}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <span
+                    className="oil-card-annotation whitespace-nowrap"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#1B4229"
+                    }}>
+                      {t.oilCollection.size}
+                    </span>
+                  )}
                 </div>
 
 
@@ -343,59 +393,6 @@ export const OilProductWidgets = ({
                     }}>
                     {polyphenols[oil.handle]} mg/kg POLYPHENOLS
                   </p>
-                )}
-
-                {oil.handle === "coratina" && (
-                  // Segmented toggle (bottle vs 3L box). Styled deliberately
-                  // UNLIKE the polyphenol badge above it: a bordered track with
-                  // both options visible, and the selected segment uses the
-                  // inverted chartreuse-fill/green-text (the action colour) so a
-                  // control never reads as the green-fill info badge.
-                  <div
-                    className="inline-flex items-center mb-3"
-                    role="group"
-                    aria-label={t.oilCollection.size}
-                    style={{
-                      border: "1.5px solid rgba(27,66,41,0.3)",
-                      borderRadius: "9999px",
-                      padding: "3px",
-                      gap: "3px",
-                    }}
-                  >
-                    {(["bottle", "box"] as const).map((size) => {
-                      const active = coratinaSize === size;
-                      const label =
-                        size === "box"
-                          ? t.product.formatBoxVolume
-                          : t.product.formatBottleVolume;
-                      return (
-                        <button
-                          key={size}
-                          type="button"
-                          aria-pressed={active}
-                          onClick={(e) => {
-                            // Card is a Link — keep the chip from navigating.
-                            e.preventDefault();
-                            e.stopPropagation();
-                            coratinaSizeTouched.current = true;
-                            setCoratinaSize(size);
-                          }}
-                          className="rounded-full transition-all duration-200"
-                          style={{
-                            fontFamily: "UDC Working Man Sans, sans-serif",
-                            fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)",
-                            letterSpacing: "0.08em",
-                            padding: "0.3rem 1.0rem",
-                            border: "none",
-                            backgroundColor: active ? "#CDDB2D" : "transparent",
-                            color: active ? "#1B4229" : "rgba(27,66,41,0.55)",
-                          }}
-                        >
-                          {label}
-                        </button>
-                      );
-                    })}
-                  </div>
                 )}
 
                 <p
