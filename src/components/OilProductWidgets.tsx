@@ -301,12 +301,12 @@ export const OilProductWidgets = ({
                 </p>
 
                 {polyphenols?.[oil.handle] && polyphenolStyle === "line" && (
-                  <p className="mb-3 whitespace-nowrap" style={{ color: "#1B4229" }}>
-                    <span style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
-                      {polyphenols[oil.handle]}
+                  <p className="mb-3 whitespace-nowrap" style={{ color: "#1B4229", lineHeight: 1.15 }}>
+                    <span className="block" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
+                      {polyphenols[oil.handle]} mg/kg
                     </span>
-                    <span style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.85rem, 1vw, 1rem)", opacity: 0.65, marginLeft: "0.35em" }}>
-                      mg/kg polyphenols
+                    <span className="block" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.85rem, 1vw, 1rem)", opacity: 0.65 }}>
+                      polyphenols
                     </span>
                   </p>
                 )}
