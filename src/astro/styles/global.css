@@ -59,6 +59,22 @@
   }
 }
 
+/* Corner annotations on the homepage oil cards (origin, volume): one step
+   larger than the shared card label so they read at a glance on the photo. */
+.oil-card-annotation {
+  font-size: 15px;
+}
+@media (min-width: 768px) {
+  .oil-card-annotation {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1024px) {
+  .oil-card-annotation {
+    font-size: clamp(1rem, 1.3vw, 1.3rem);
+  }
+}
+
 @font-face {
   font-family: 'UDC Working Man Sans Light';
   src: url('/fonts/UDC_Working_Man_Sans_Light.otf') format('opentype');

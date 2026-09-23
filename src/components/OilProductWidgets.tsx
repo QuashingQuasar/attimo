@@ -233,7 +233,7 @@ export const OilProductWidgets = ({
 
                 <div className="absolute top-0 left-0 right-0 z-10 px-3 pt-3 md:px-4 md:pt-4 lg:px-5 lg:pt-5 flex justify-between items-start">
                   <span
-                  className="oil-card-label whitespace-nowrap"
+                  className="oil-card-annotation whitespace-nowrap"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     letterSpacing: "0.1em",
@@ -242,7 +242,7 @@ export const OilProductWidgets = ({
                     {oil.flag} {oil.origin.toUpperCase()}
                   </span>
                   <span
-                  className="oil-card-label whitespace-nowrap"
+                  className="oil-card-annotation whitespace-nowrap"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     letterSpacing: "0.1em",
