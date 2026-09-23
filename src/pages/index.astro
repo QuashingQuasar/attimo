@@ -2,6 +2,7 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import HomePage from "@astro/react-pages/HomePage";
 import { sanityClient } from "@/lib/sanity";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 
 const websiteJsonLd = {
   "@context": "https://schema.org",
@@ -16,7 +17,8 @@ const homepagePosts = await sanityClient.fetch(
   `*[_type == "post" && coalesce(language, "en") == "en"] | order(publishedAt desc)[0..2] {
     _id, title, slug, publishedAt, excerpt, coverImage
   }`
-);
+); 
+const labNumbers = await getHomeLabNumbers();
 ---
 
 <BaseLayout
@@ -27,5 +29,5 @@ const homepagePosts = await sanityClient.fetch(
   jsonLd={websiteJsonLd}
   hreflangPath="/"
 >
-  <HomePage initialPosts={homepagePosts} client:load />
+  <HomePage initialPosts={homepagePosts} labNumbers={labNumbers} client:load />
 </BaseLayout>

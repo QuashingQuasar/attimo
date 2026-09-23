@@ -6,6 +6,8 @@ import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { BundleWidgets } from "@/components/BundleWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
+import { HomeLabNumbers } from "@/components/HomeLabNumbers";
+import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import { PolyphenolComparison } from "@/components/PolyphenolComparison";
 import { OilComparison } from "@/components/OilComparison";
 import { Testimonials } from "@/components/Testimonials";
@@ -29,10 +31,11 @@ interface InitialPost {
 
 interface InnerProps {
   initialPosts?: InitialPost[];
+  labNumbers?: HomeLabOil[];
   locale?: Locale;
 }
 
-function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
+function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: InnerProps) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   return (
@@ -42,6 +45,7 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
       <OilProductWidgets locale={locale} belowGrid={<BundleWidgets locale={locale} />} />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
+      {labNumbers && labNumbers.length > 0 && <HomeLabNumbers oils={labNumbers} locale={locale} />}
       <OilComparison locale={locale} />
       <Testimonials locale={locale} />
       <PolyphenolComparison
@@ -57,10 +61,10 @@ function HomePageInner({ initialPosts, locale = DEFAULT_LOCALE }: InnerProps) {
   );
 }
 
-export default function HomePage({ initialPosts, locale }: { initialPosts?: InitialPost[]; locale?: Locale }) {
+export default function HomePage({ initialPosts, labNumbers, locale }: { initialPosts?: InitialPost[]; labNumbers?: HomeLabOil[]; locale?: Locale }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <HomePageInner initialPosts={initialPosts} locale={locale} />
+      <HomePageInner initialPosts={initialPosts} labNumbers={labNumbers} locale={locale} />
     </QueryClientProvider>
   );
 }
