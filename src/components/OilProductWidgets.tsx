@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
@@ -7,7 +7,10 @@ import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, typ
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts, fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
-import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE } from "@/lib/coratina3L";
+import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE, CORATINA_3L_VARIANT_ID, buildCoratina3LProduct } from "@/lib/coratina3L";
+import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
+import type { ShopifyProduct } from "@/lib/shopify";
 
 const oilDefs = [
   {
@@ -90,6 +93,10 @@ export const OilProductWidgets = ({
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
   const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  // The same fetch keeps the product nodes, keyed by handle, so the card's
+  // ADD TO CART can hand the cart the real variant without a PDP visit.
+  const [productsByHandle, setProductsByHandle] = useState<Record<string, ShopifyProduct>>({});
+  const addItem = useCartStore((state) => state.addItem);
   // Coratina is also sold as a 3L bag-in-box. The card carries a small size
   // selector; picking 3L updates the shown price and deep-links into the PDP
   // with the box format preselected (?format=box).
@@ -113,12 +120,15 @@ export const OilProductWidgets = ({
       .then(([products, boxAvailable]) => {
         if (cancelled) return;
         const map: Record<string, boolean> = {};
+        const byHandle: Record<string, ShopifyProduct> = {};
         for (const p of products) {
           const inStock = p.node.variants.edges.some(
             (v) => v.node.availableForSale,
           );
           map[p.node.handle] = inStock;
+          byHandle[p.node.handle] = p;
         }
+        setProductsByHandle(byHandle);
         // null = box lookup failed; leave it unset so it defaults to available.
         if (boxAvailable !== null) {
           map[CORATINA_3L_HANDLE] = boxAvailable;
@@ -305,22 +315,6 @@ export const OilProductWidgets = ({
                 </div>
 
 
-                {/* Sold out: pill overlays the faded image, bottom-left, above the bottle layer. */}
-                {!oil.effectiveAvailable && (
-                  <span
-                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 absolute bottom-3 left-3 md:bottom-4 md:left-4 lg:bottom-5 lg:left-5 z-10"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      letterSpacing: "0.1em",
-                      color: "#CDDB2D",
-                      backgroundColor: "#1B4229",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {t.oilCollection.soldOut}
-                  </span>
-                )}
-
                 {(() => {
                   const showBox = oil.handle === "coratina" && coratinaSize === "box";
                   return (
@@ -371,7 +365,7 @@ export const OilProductWidgets = ({
                 </p>
 
                 {polyphenols?.[oil.handle] && polyphenolStyle === "line" && (
-                  <p className="mb-3 whitespace-nowrap" style={{ color: "#1B4229", lineHeight: 1.15 }}>
+                  <p className="mb-4 whitespace-nowrap" style={{ color: "#1B4229", lineHeight: 1.15 }}>
                     <span className="block" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
                       {polyphenols[oil.handle]} mg/kg
                     </span>
@@ -395,34 +389,77 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                {/* Price lives inside the card's call to action. The card is
-                    already a Link to the PDP, so this is a styled span, not a
-                    nested anchor. Sold out: same shape, outlined and muted. */}
-                <span
-                  className="inline-flex items-center gap-3 mb-3 whitespace-nowrap transition-opacity group-hover:opacity-90"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    fontSize: "clamp(1.1rem, 1.45vw, 1.45rem)",
-                    letterSpacing: "0.05em",
-                    borderRadius: "8px",
-                    padding: "0.55rem 1.4rem",
-                    backgroundColor: oil.effectiveAvailable ? "#CDDB2D" : "transparent",
-                    color: oil.effectiveAvailable ? "#1B4229" : "rgba(27,66,41,0.6)",
-                    border: oil.effectiveAvailable ? "1.5px solid #CDDB2D" : "1.5px solid rgba(27,66,41,0.35)",
-                  }}
-                >
-                  <span style={{ fontWeight: 700 }}>{t.nav.shop.toUpperCase()}</span>
-                  <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
-                  <span>
-                    {formatPrice(
-                      oil.handle === "coratina" && coratinaSize === "box"
-                        ? coratinaBoxPrice
-                        : oil.price,
-                      locale,
-                    )}
-                  </span>
-                </span>
-
+                {/* The card's call to action carries the price and does what it
+                    says: adds the bottle (or box) to the cart from the card, or,
+                    when sold out, takes the visitor to the PDP's notify form. The
+                    card itself is a Link, so the click is stopped from
+                    navigating. */}
+                {(() => {
+                  const isBox = oil.handle === "coratina" && coratinaSize === "box";
+                  const price = isBox ? coratinaBoxPrice : oil.price;
+                  const available = oil.effectiveAvailable;
+                  const pdpHref = localizeHref(`/product/${oil.handle}`, locale);
+                  const onClick = (e: MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!available) {
+                      window.location.href = `${pdpHref}${isBox ? "?format=box" : ""}#notify`;
+                      return;
+                    }
+                    if (isBox) {
+                      addItem({
+                        product: buildCoratina3LProduct(locale, `${oil.name} ${oil.nameDetail} — ${t.product.formatBoxName}`, CORATINA_3L_IMAGE),
+                        variantId: CORATINA_3L_VARIANT_ID,
+                        variantTitle: "3L",
+                        price: { amount: String(price), currencyCode: locale.currency.code },
+                        quantity: 1,
+                        selectedOptions: [],
+                        isSubscription: false,
+                      });
+                      toast.success(t.product.toastAddedBox, { position: "top-center" });
+                      return;
+                    }
+                    const product = productsByHandle[resolveShopifyHandle(oil.handle)];
+                    if (!product) {
+                      // Products not loaded yet: fall through to the PDP.
+                      window.location.href = pdpHref;
+                      return;
+                    }
+                    const variant = product.node.variants.edges[0].node;
+                    addItem({
+                      product,
+                      variantId: variant.id,
+                      variantTitle: variant.title,
+                      price: { amount: String(price), currencyCode: locale.currency.code },
+                      quantity: 1,
+                      selectedOptions: variant.selectedOptions || [],
+                      isSubscription: false,
+                    });
+                    toast.success(t.product.toastAdded.replace("{n}", "1").replace(/\{plural\}/g, ""), { position: "top-center" });
+                  };
+                  return (
+                    <button
+                      type="button"
+                      onClick={onClick}
+                      className="inline-flex items-center gap-3 mb-3 whitespace-nowrap transition-opacity hover:opacity-90"
+                      style={{
+                        fontFamily: "UDC Working Man Sans, sans-serif",
+                        fontSize: "clamp(1.1rem, 1.45vw, 1.45rem)",
+                        letterSpacing: "0.05em",
+                        borderRadius: "8px",
+                        padding: "0.55rem 1.4rem",
+                        border: "none",
+                        cursor: "pointer",
+                        backgroundColor: available ? "#CDDB2D" : "#1B4229",
+                        color: available ? "#1B4229" : "#FFFAEA",
+                      }}
+                    >
+                      <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : t.notify.notifyMe).toUpperCase()}</span>
+                      <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
+                      <span>{formatPrice(price, locale)}</span>
+                    </button>
+                  );
+                })()}
                 {showTagline && (
                   <p
                   style={{
