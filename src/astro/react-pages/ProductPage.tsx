@@ -675,6 +675,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     </div>
                       </>
                     ) : (
+                      <div id="notify" className="scroll-mt-32">
                       <NotifyMeForm
                         productName={content.heroTitle}
                         backgroundColor={content.tileBackground}
@@ -684,6 +685,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         restockProductKey={content.polyphenolLabel}
                         locale={locale}
                       />
+                      </div>
                     )}
                   </>
                 )}

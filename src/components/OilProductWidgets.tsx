@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
@@ -7,7 +7,10 @@ import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, typ
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts, fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
-import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE } from "@/lib/coratina3L";
+import { CORATINA_3L_IMAGE, CORATINA_3L_HANDLE, CORATINA_3L_VARIANT_ID, buildCoratina3LProduct } from "@/lib/coratina3L";
+import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
+import type { ShopifyProduct } from "@/lib/shopify";
 
 const oilDefs = [
   {
@@ -56,6 +59,13 @@ interface OilProductWidgetsProps {
    * polyphenol content. Undefined on the homepage → no badge, unchanged layout.
    */
   polyphenols?: Partial<Record<"coratina" | "picual" | "nocellara", string>>;
+  /**
+   * How the polyphenol figure renders. "badge" (default) is the chartreuse
+   * pill the hub uses; "line" is a quiet fact line under the flavour
+   * descriptor — number in UDC, unit and word in Space Grotesk — so it never
+   * reads as a status badge next to the sold-out pill.
+   */
+  polyphenolStyle?: "badge" | "line";
   /** Override the heading font (default Beverly Drive script). */
   headingFontFamily?: string;
   /** Show the per-bottle tagline line under the price (default true). */
@@ -73,6 +83,7 @@ export const OilProductWidgets = ({
   subtitle,
   sectionId = "oil-collection",
   polyphenols,
+  polyphenolStyle = "badge",
   headingFontFamily = "Beverly Drive, serif",
   showTagline = true,
   quizPrompt,
@@ -82,6 +93,10 @@ export const OilProductWidgets = ({
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
   const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  // The same fetch keeps the product nodes, keyed by handle, so the card's
+  // ADD TO CART can hand the cart the real variant without a PDP visit.
+  const [productsByHandle, setProductsByHandle] = useState<Record<string, ShopifyProduct>>({});
+  const addItem = useCartStore((state) => state.addItem);
   // Coratina is also sold as a 3L bag-in-box. The card carries a small size
   // selector; picking 3L updates the shown price and deep-links into the PDP
   // with the box format preselected (?format=box).
@@ -105,12 +120,15 @@ export const OilProductWidgets = ({
       .then(([products, boxAvailable]) => {
         if (cancelled) return;
         const map: Record<string, boolean> = {};
+        const byHandle: Record<string, ShopifyProduct> = {};
         for (const p of products) {
           const inStock = p.node.variants.edges.some(
             (v) => v.node.availableForSale,
           );
           map[p.node.handle] = inStock;
+          byHandle[p.node.handle] = p;
         }
+        setProductsByHandle(byHandle);
         // null = box lookup failed; leave it unset so it defaults to available.
         if (boxAvailable !== null) {
           map[CORATINA_3L_HANDLE] = boxAvailable;
@@ -225,7 +243,7 @@ export const OilProductWidgets = ({
 
                 <div className="absolute top-0 left-0 right-0 z-10 px-3 pt-3 md:px-4 md:pt-4 lg:px-5 lg:pt-5 flex justify-between items-start">
                   <span
-                  className="oil-card-label whitespace-nowrap"
+                  className="oil-card-annotation whitespace-nowrap"
                   style={{
                     fontFamily: "UDC Working Man Sans, sans-serif",
                     letterSpacing: "0.1em",
@@ -233,17 +251,67 @@ export const OilProductWidgets = ({
                   }}>
                     {oil.flag} {oil.origin.toUpperCase()}
                   </span>
-                  <span
-                  className="oil-card-label whitespace-nowrap"
-                  style={{
-                    fontFamily: "UDC Working Man Sans, sans-serif",
-                    letterSpacing: "0.1em",
-                    color: "#1B4229"
-                  }}>
-                    {oil.handle === "coratina" && coratinaSize === "box"
-                      ? t.product.formatBoxVolume
-                      : t.oilCollection.size}
-                  </span>
+                  {oil.handle === "coratina" ? (
+                    // Segmented toggle (bottle vs 3L box) sits where the other
+                    // cards print their volume: a bordered track on a translucent
+                    // cream tab so it reads on the photo, selected segment in the
+                    // chartreuse action colour.
+                    <div
+                      className="inline-flex items-center"
+                      role="group"
+                      aria-label={t.oilCollection.size}
+                      style={{
+                        border: "1.5px solid rgba(27,66,41,0.3)",
+                        borderRadius: "9999px",
+                        padding: "2px",
+                        gap: "2px",
+                        backgroundColor: "rgba(255,250,234,0.82)",
+                      }}
+                    >
+                      {(["bottle", "box"] as const).map((size) => {
+                        const active = coratinaSize === size;
+                        const label =
+                          size === "box"
+                            ? t.product.formatBoxVolume
+                            : t.product.formatBottleVolume;
+                        return (
+                          <button
+                            key={size}
+                            type="button"
+                            aria-pressed={active}
+                            onClick={(e) => {
+                              // Card is a Link — keep the chip from navigating.
+                              e.preventDefault();
+                              e.stopPropagation();
+                              coratinaSizeTouched.current = true;
+                              setCoratinaSize(size);
+                            }}
+                            className="oil-card-annotation rounded-full transition-all duration-200 whitespace-nowrap"
+                            style={{
+                              fontFamily: "UDC Working Man Sans, sans-serif",
+                              letterSpacing: "0.1em",
+                              padding: "0.15rem 0.7rem",
+                              border: "none",
+                              backgroundColor: active ? "#CDDB2D" : "transparent",
+                              color: active ? "#1B4229" : "rgba(27,66,41,0.55)",
+                            }}
+                          >
+                            {label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <span
+                    className="oil-card-annotation whitespace-nowrap"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#1B4229"
+                    }}>
+                      {t.oilCollection.size}
+                    </span>
+                  )}
                 </div>
 
 
@@ -261,6 +329,10 @@ export const OilProductWidgets = ({
                           ? "scale-[1.15] group-hover:scale-[1.18]"
                           : "scale-[1.25] group-hover:scale-[1.28]"
                       }`}
+                      // Sold out: desaturate and fade the bottle so the card
+                      // reads as unavailable before the pill does. Label stays
+                      // legible; nothing else on the card changes.
+                      style={oil.effectiveAvailable ? undefined : { filter: "saturate(0.35) brightness(1.04)", opacity: 0.6 }}
                     />
                   );
                 })()}
@@ -292,7 +364,18 @@ export const OilProductWidgets = ({
                   {t.products.flavour[oil.handle]}
                 </p>
 
-                {polyphenols?.[oil.handle] && (
+                {polyphenols?.[oil.handle] && polyphenolStyle === "line" && (
+                  <p className="mb-4 whitespace-nowrap" style={{ color: "#1B4229", lineHeight: 1.15 }}>
+                    <span className="block" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
+                      {polyphenols[oil.handle]} mg/kg
+                    </span>
+                    <span className="block" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.1em", opacity: 0.65 }}>
+                      POLYPHENOLS
+                    </span>
+                  </p>
+                )}
+
+                {polyphenols?.[oil.handle] && polyphenolStyle === "badge" && (
                   <p
                     className="rounded-full px-4 py-1.5 mb-3 whitespace-nowrap"
                     style={{
@@ -306,76 +389,77 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                {oil.handle === "coratina" && (
-                  // Segmented toggle (bottle vs 3L box). Styled deliberately
-                  // UNLIKE the polyphenol badge above it: a bordered track with
-                  // both options visible, and the selected segment uses the
-                  // inverted chartreuse-fill/green-text (the action colour) so a
-                  // control never reads as the green-fill info badge.
-                  <div
-                    className="inline-flex items-center mb-3"
-                    role="group"
-                    aria-label={t.oilCollection.size}
-                    style={{
-                      border: "1.5px solid rgba(27,66,41,0.3)",
-                      borderRadius: "9999px",
-                      padding: "3px",
-                      gap: "3px",
-                    }}
-                  >
-                    {(["bottle", "box"] as const).map((size) => {
-                      const active = coratinaSize === size;
-                      const label =
-                        size === "box"
-                          ? t.product.formatBoxVolume
-                          : t.product.formatBottleVolume;
-                      return (
-                        <button
-                          key={size}
-                          type="button"
-                          aria-pressed={active}
-                          onClick={(e) => {
-                            // Card is a Link — keep the chip from navigating.
-                            e.preventDefault();
-                            e.stopPropagation();
-                            coratinaSizeTouched.current = true;
-                            setCoratinaSize(size);
-                          }}
-                          className="rounded-full transition-all duration-200"
-                          style={{
-                            fontFamily: "UDC Working Man Sans, sans-serif",
-                            fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)",
-                            letterSpacing: "0.08em",
-                            padding: "0.3rem 1.0rem",
-                            border: "none",
-                            backgroundColor: active ? "#CDDB2D" : "transparent",
-                            color: active ? "#1B4229" : "rgba(27,66,41,0.55)",
-                          }}
-                        >
-                          {label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                <p
-                className="mb-3"
-                style={{
-                  fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
-                  fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
-                  letterSpacing: "0.03em"
-                }}>
-
-                  {formatPrice(
-                    oil.handle === "coratina" && coratinaSize === "box"
-                      ? coratinaBoxPrice
-                      : oil.price,
-                    locale,
-                  )}
-                </p>
-
+                {/* The card's call to action carries the price and does what it
+                    says: adds the bottle (or box) to the cart from the card, or,
+                    when sold out, takes the visitor to the PDP's notify form. The
+                    card itself is a Link, so the click is stopped from
+                    navigating. */}
+                {(() => {
+                  const isBox = oil.handle === "coratina" && coratinaSize === "box";
+                  const price = isBox ? coratinaBoxPrice : oil.price;
+                  const available = oil.effectiveAvailable;
+                  const pdpHref = localizeHref(`/product/${oil.handle}`, locale);
+                  const onClick = (e: MouseEvent) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (!available) {
+                      window.location.href = `${pdpHref}${isBox ? "?format=box" : ""}#notify`;
+                      return;
+                    }
+                    if (isBox) {
+                      addItem({
+                        product: buildCoratina3LProduct(locale, `${oil.name} ${oil.nameDetail} — ${t.product.formatBoxName}`, CORATINA_3L_IMAGE),
+                        variantId: CORATINA_3L_VARIANT_ID,
+                        variantTitle: "3L",
+                        price: { amount: String(price), currencyCode: locale.currency.code },
+                        quantity: 1,
+                        selectedOptions: [],
+                        isSubscription: false,
+                      });
+                      toast.success(t.product.toastAddedBox, { position: "top-center" });
+                      return;
+                    }
+                    const product = productsByHandle[resolveShopifyHandle(oil.handle)];
+                    if (!product) {
+                      // Products not loaded yet: fall through to the PDP.
+                      window.location.href = pdpHref;
+                      return;
+                    }
+                    const variant = product.node.variants.edges[0].node;
+                    addItem({
+                      product,
+                      variantId: variant.id,
+                      variantTitle: variant.title,
+                      price: { amount: String(price), currencyCode: locale.currency.code },
+                      quantity: 1,
+                      selectedOptions: variant.selectedOptions || [],
+                      isSubscription: false,
+                    });
+                    toast.success(t.product.toastAdded.replace("{n}", "1").replace(/\{plural\}/g, ""), { position: "top-center" });
+                  };
+                  return (
+                    <button
+                      type="button"
+                      onClick={onClick}
+                      className="inline-flex items-center gap-3 mb-3 whitespace-nowrap transition-opacity hover:opacity-90"
+                      style={{
+                        fontFamily: "UDC Working Man Sans, sans-serif",
+                        fontSize: "clamp(1.1rem, 1.45vw, 1.45rem)",
+                        letterSpacing: "0.05em",
+                        borderRadius: "8px",
+                        padding: "0.55rem 1.4rem",
+                        border: "none",
+                        cursor: "pointer",
+                        backgroundColor: available ? "#CDDB2D" : "#1B4229",
+                        color: available ? "#1B4229" : "#FFFAEA",
+                      }}
+                    >
+                      <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : t.notify.notifyMe).toUpperCase()}</span>
+                      <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
+                      <span>{formatPrice(price, locale)}</span>
+                    </button>
+                  );
+                })()}
                 {showTagline && (
                   <p
                   style={{
@@ -390,20 +474,6 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                {!oil.effectiveAvailable && (
-                  <span
-                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      letterSpacing: "0.1em",
-                      color: "#CDDB2D",
-                      backgroundColor: "#1B4229",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {t.oilCollection.soldOut}
-                  </span>
-                )}
                 {oil.effectiveAvailable && oil.shippingNotice && (
                   <span
                     className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
