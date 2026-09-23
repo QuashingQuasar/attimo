@@ -255,6 +255,22 @@ export const OilProductWidgets = ({
                 </div>
 
 
+                {/* Sold out: pill overlays the faded image, bottom-left, above the bottle layer. */}
+                {!oil.effectiveAvailable && (
+                  <span
+                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 absolute bottom-3 left-3 md:bottom-4 md:left-4 lg:bottom-5 lg:left-5 z-10"
+                    style={{
+                      fontFamily: "UDC Working Man Sans, sans-serif",
+                      letterSpacing: "0.1em",
+                      color: "#CDDB2D",
+                      backgroundColor: "#1B4229",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {t.oilCollection.soldOut}
+                  </span>
+                )}
+
                 {(() => {
                   const showBox = oil.handle === "coratina" && coratinaSize === "box";
                   return (
@@ -413,20 +429,6 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                {!oil.effectiveAvailable && (
-                  <span
-                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      letterSpacing: "0.1em",
-                      color: "#CDDB2D",
-                      backgroundColor: "#1B4229",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {t.oilCollection.soldOut}
-                  </span>
-                )}
                 {oil.effectiveAvailable && oil.shippingNotice && (
                   <span
                     className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
