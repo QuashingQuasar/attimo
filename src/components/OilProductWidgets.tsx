@@ -395,22 +395,33 @@ export const OilProductWidgets = ({
                   </p>
                 )}
 
-                <p
-                className="mb-3"
-                style={{
-                  fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: "#1B4229",
-                  fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
-                  letterSpacing: "0.03em"
-                }}>
-
-                  {formatPrice(
-                    oil.handle === "coratina" && coratinaSize === "box"
-                      ? coratinaBoxPrice
-                      : oil.price,
-                    locale,
-                  )}
-                </p>
+                {/* Price lives inside the card's call to action. The card is
+                    already a Link to the PDP, so this is a styled span, not a
+                    nested anchor. Sold out: same shape, outlined and muted. */}
+                <span
+                  className="inline-flex items-center gap-3 mb-3 whitespace-nowrap transition-opacity group-hover:opacity-90"
+                  style={{
+                    fontFamily: "UDC Working Man Sans, sans-serif",
+                    fontSize: "clamp(1.1rem, 1.45vw, 1.45rem)",
+                    letterSpacing: "0.05em",
+                    borderRadius: "8px",
+                    padding: "0.55rem 1.4rem",
+                    backgroundColor: oil.effectiveAvailable ? "#CDDB2D" : "transparent",
+                    color: oil.effectiveAvailable ? "#1B4229" : "rgba(27,66,41,0.6)",
+                    border: oil.effectiveAvailable ? "1.5px solid #CDDB2D" : "1.5px solid rgba(27,66,41,0.35)",
+                  }}
+                >
+                  <span style={{ fontWeight: 700 }}>{t.nav.shop.toUpperCase()}</span>
+                  <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
+                  <span>
+                    {formatPrice(
+                      oil.handle === "coratina" && coratinaSize === "box"
+                        ? coratinaBoxPrice
+                        : oil.price,
+                      locale,
+                    )}
+                  </span>
+                </span>
 
                 {showTagline && (
                   <p
