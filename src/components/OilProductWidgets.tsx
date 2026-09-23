@@ -305,8 +305,8 @@ export const OilProductWidgets = ({
                     <span className="block" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
                       {polyphenols[oil.handle]} mg/kg
                     </span>
-                    <span className="block" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.85rem, 1vw, 1rem)", opacity: 0.65 }}>
-                      polyphenols
+                    <span className="block" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.1em", opacity: 0.65 }}>
+                      POLYPHENOLS
                     </span>
                   </p>
                 )}
