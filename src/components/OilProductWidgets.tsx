@@ -56,6 +56,13 @@ interface OilProductWidgetsProps {
    * polyphenol content. Undefined on the homepage → no badge, unchanged layout.
    */
   polyphenols?: Partial<Record<"coratina" | "picual" | "nocellara", string>>;
+  /**
+   * How the polyphenol figure renders. "badge" (default) is the chartreuse
+   * pill the hub uses; "line" is a quiet fact line under the flavour
+   * descriptor — number in UDC, unit and word in Space Grotesk — so it never
+   * reads as a status badge next to the sold-out pill.
+   */
+  polyphenolStyle?: "badge" | "line";
   /** Override the heading font (default Beverly Drive script). */
   headingFontFamily?: string;
   /** Show the per-bottle tagline line under the price (default true). */
@@ -73,6 +80,7 @@ export const OilProductWidgets = ({
   subtitle,
   sectionId = "oil-collection",
   polyphenols,
+  polyphenolStyle = "badge",
   headingFontFamily = "Beverly Drive, serif",
   showTagline = true,
   quizPrompt,
@@ -292,7 +300,18 @@ export const OilProductWidgets = ({
                   {t.products.flavour[oil.handle]}
                 </p>
 
-                {polyphenols?.[oil.handle] && (
+                {polyphenols?.[oil.handle] && polyphenolStyle === "line" && (
+                  <p className="mb-3 whitespace-nowrap" style={{ color: "#1B4229" }}>
+                    <span style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
+                      {polyphenols[oil.handle]}
+                    </span>
+                    <span style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.85rem, 1vw, 1rem)", opacity: 0.65, marginLeft: "0.35em" }}>
+                      mg/kg polyphenols
+                    </span>
+                  </p>
+                )}
+
+                {polyphenols?.[oil.handle] && polyphenolStyle === "badge" && (
                   <p
                     className="rounded-full px-4 py-1.5 mb-3 whitespace-nowrap"
                     style={{

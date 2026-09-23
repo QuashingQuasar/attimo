@@ -47,7 +47,7 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <OilProductWidgets locale={locale} polyphenols={polyBadges} belowGrid={<BundleWidgets locale={locale} />} />
+      <OilProductWidgets locale={locale} polyphenols={polyBadges} polyphenolStyle="line" belowGrid={<BundleWidgets locale={locale} />} />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
       <OilComparison locale={locale} />
