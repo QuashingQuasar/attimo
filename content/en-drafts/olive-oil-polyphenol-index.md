@@ -4,6 +4,8 @@ Almost no olive oil producer tells you how many polyphenols are in the bottle. T
 
 Full disclosure: we make olive oil ourselves, and our Coratina is in the index. The ranking method and inclusion rules are public and checkable, and every entry links to its source.
 
+This post is the 2025/26 harvest edition, written up once. The living version is the [Olive Oil Polyphenol Index](/polyphenol-index) page, rebuilt for 2026/27 as soon as the new analyses are published and updated whenever a producer publishes or submits one. When the numbers below and the page disagree, the page is current.
+
 ## TL;DR
 
 - Polyphenols are the compounds behind olive oil's bitterness, pungency and most of its researched health effects. Typical supermarket oil carries 100–250 mg/kg; the top oils here carry ten times that.
@@ -222,7 +224,7 @@ No published number does not mean a poor oil. It means an unverifiable one. The 
 
 ## Submit an oil
 
-If you produce an oil that qualifies — polyphenol figures for the current or previous harvest, published on your own site — or you found a brand we missed, send the link and the analysis to **hello@attimo-oil.com**. Entries are verified against the published source and added at the next update. Any accredited lab or university programme qualifies, whichever method it uses; publishing oleocanthal and oleacein places an oil in the ranked index.
+If you produce an oil that qualifies — polyphenol figures for the current or previous harvest, published on your own site — or you found a brand we missed, send the link and the analysis to **hello@attimo-oil.com**, or use the submission block on the [index page](/polyphenol-index). Entries are verified against the published source and added at the next update. Any accredited lab or university programme qualifies, whichever method it uses; publishing oleocanthal and oleacein places an oil in the ranked index.
 
 ## FAQ
 

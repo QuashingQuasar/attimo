@@ -12,7 +12,7 @@ const locale = DEFAULT_LOCALE;
 const t = getDict(locale);
 const { ranked, unranked, all } = await getIndexEntries();
 const canonical = `${SITE}${INDEX_PATH}`;
-const title = `The Olive Oil Polyphenol Index ${INDEX_EDITION}: every brand that publishes its numbers`;
+const title = "The Olive Oil Polyphenol Index: every brand that publishes its numbers, ranked";
 const description = `${all.length} olive oil producers publish polyphenol figures for their current oil. Ranked by documented oleocanthal + oleacein, every number linked to the producer's own page or lab report.`;
 const cover = "https://cdn.sanity.io/images/25tuybj3/production/3c74c939657a3112cfc7f7c35cc6d7bde550603f-1448x1086.jpg";
 
@@ -20,7 +20,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `The Olive Oil Polyphenol Index ${INDEX_EDITION}`,
+    name: `The Olive Oil Polyphenol Index, ${INDEX_EDITION}`,
     description: "Olive oils ranked by producer-published oleocanthal + oleacein (mg/kg).",
     url: canonical,
     itemListOrder: "https://schema.org/ItemListOrderDescending",

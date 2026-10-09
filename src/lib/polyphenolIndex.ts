@@ -20,7 +20,9 @@ export interface IndexEntry extends IndexEntryData {
 export const INDEX_PATH = "/polyphenol-index";
 export const INDEX_JSON_PATH = "/polyphenol-index.json";
 export const INDEX_VERIFIED = "September 2026";
-export const INDEX_EDITION = "2026/27";
+export const INDEX_EDITION = "2025/26 harvest";
+export const INDEX_NEXT = "2026/27";
+export const INDEX_UPDATE_NOTE = `Every figure here describes the 2025/26 harvest. The index is rebuilt for ${INDEX_NEXT} as soon as the new analyses are published, and updated whenever a producer publishes or submits one.`;
 
 export const num = (n: number) =>
   n >= 1000 ? `${String(n).slice(0, -3)},${String(n).slice(-3)}` : String(n);
