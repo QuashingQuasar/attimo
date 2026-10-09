@@ -66,9 +66,20 @@ const pairMax = 1473;
           <a href="#ranking" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>See the ranking</a>
           <a href="#submit" style={`${btn} background-color:rgba(255,250,234,.1); color:${CREAM}; border:1px solid rgba(255,250,234,.45); backdrop-filter:blur(6px);`}>Submit an oil</a>
         </div>
-        <p class="mx-auto max-w-2xl" style={`font-family:${SG}; font-size:.95rem; line-height:1.6; color:rgba(255,250,234,.78); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>
-          {INDEX_UPDATE_NOTE}
-        </p>
+        <!-- Living-index status chip: dot, label, note, last update. Wraps to a stacked chip on phones. -->
+        <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full px-5 py-3" style="background-color:rgba(16,34,27,.55); border:1px solid rgba(255,250,234,.28); backdrop-filter:blur(8px);">
+          <span class="inline-flex items-center gap-2.5">
+            <span class="relative inline-flex w-2.5 h-2.5">
+              <span class="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={`background-color:${ACCENT}; animation-duration:2.4s;`}></span>
+              <span class="relative inline-flex w-2.5 h-2.5 rounded-full" style={`background-color:${ACCENT};`}></span>
+            </span>
+            <span style={`${eyebrowSm} font-size:.78rem; color:${ACCENT};`}>Living index</span>
+          </span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.9);`}>{INDEX_UPDATE_NOTE}</span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.7);`}>Last update {INDEX_VERIFIED}</span>
+        </div>
       </div>
     </section>
 
@@ -79,7 +90,7 @@ const pairMax = 1473;
           ["Producers listed", `${all.length}, from ${countries} countries`],
           ["Ranked by", "oleocanthal + oleacein, mg/kg"],
           ["Every figure", "copied from the producer's own page or certificate"],
-          ["Edition", `${INDEX_EDITION}, verified ${INDEX_VERIFIED} · next: ${INDEX_NEXT}`],
+          ["Edition", `${INDEX_EDITION} · ${INDEX_NEXT} follows the new pressings`],
         ].map(([k, v]) => (
           <div>
             <p class="mb-1" style={`${eyebrowSm} color:${ACCENT};`}>{k}</p>
