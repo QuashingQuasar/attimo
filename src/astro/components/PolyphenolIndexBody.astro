@@ -89,7 +89,7 @@ const pairMax = 1473;
     <!-- ═══ HOW THE RANKING WORKS ═══ -->
     <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-12">
+        <div class="mb-12">
           <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>How the ranking works</p>
           <h2 class="mb-6" style={`${h2} color:${GREEN};`}>Ranked by two named compounds, never by the total</h2>
           <p style={`${lead} color:${onCream(0.8)};`}>
@@ -141,7 +141,7 @@ const pairMax = 1473;
     <!-- ═══ THE RANKED INDEX ═══ -->
     <section id="ranking" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN};`}>
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-12">
+        <div class="mb-12">
           <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>The index</p>
           <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{ranked.length} oils with documented oleocanthal and oleacein</h2>
           <p style={`${lead} color:${onGreen(0.8)};`}>
@@ -199,7 +199,7 @@ const pairMax = 1473;
     <!-- ═══ STATED TOTALS ONLY ═══ -->
     <section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-10">
+        <div class="mb-10">
           <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>Stated totals only</p>
           <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{unranked.length} producers publish a total and no compounds</h2>
           <p style={`${lead} color:${onCream(0.78)};`}>
@@ -230,8 +230,10 @@ const pairMax = 1473;
     <!-- ═══ AT A GLANCE TABLE ═══ -->
     <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
-        <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>At a glance</p>
-        <h2 class="mb-10" style={`${h2} color:${GREEN};`}>The whole index on one table</h2>
+        <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10">
+          <h2 style={`${h2} color:${GREEN};`}>Full index</h2>
+          <p style={`${eyebrowSm} color:${onCream(0.55)};`}>Last updated {INDEX_VERIFIED}</p>
+        </div>
         <div class="rounded-2xl overflow-x-auto" style={`background-color:#fff; border:1px solid rgba(27,66,41,.18);`}>
           <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:820px;`}>
             <thead>
@@ -266,7 +268,7 @@ const pairMax = 1473;
     <!-- ═══ WHY TOTALS DIFFER ═══ -->
     <section class="py-20 md:py-24 px-6" style={`background-color:${DEEP};`}>
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-12">
+        <div class="mb-12">
           <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>Why the totals differ</p>
           <h2 class="mb-6" style={`${h2} color:${CREAM};`}>Total polyphenols is at least three measurements</h2>
           <p style={`${lead} color:${onGreen(0.8)};`}>Each method counts a different set of compounds in different units. The gap has structural causes, not sloppy labs, and no fixed conversion exists because it depends on each oil's profile. This index converts nobody's number.</p>
@@ -320,7 +322,7 @@ const pairMax = 1473;
     <!-- ═══ WHO PUBLISHES ═══ -->
     <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
-        <div class="max-w-3xl mb-12">
+        <div class="mb-12">
           <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>Why almost nobody publishes</p>
           <h2 class="mb-6" style={`${h2} color:${GREEN};`}>Publishing is itself the signal</h2>
           <p style={`${lead} color:${onCream(0.8)};`}>
