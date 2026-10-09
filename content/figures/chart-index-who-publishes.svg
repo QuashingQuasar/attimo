@@ -1,6 +1,6 @@
 <svg viewBox="0 0 720 680" width="720" height="680" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t3 d3">
 <title id="t3">Who publishes what</title>
-<desc id="d3">Matrix of fifteen brands against four columns: total published, oleocanthal published, oleacein published, lab report viewable. The eight ranked brands publish oleocanthal and oleacein with a viewable report (Laconiko publishes oleocanthal only). Seven further brands state a total only; of those, Oro del Desierto and Blueprint make the report viewable, the rest do not.</desc>
+<desc id="d3">Matrix of fifteen brands against four columns: total published, oleocanthal published, oleacein published, lab report viewable. The eight ranked brands publish oleocanthal and oleacein with a viewable report. Seven further brands state a total only; of those, Oro del Desierto and Blueprint make the report viewable, the rest do not.</desc>
 <rect width="720" height="680" fill="#FFFAEA"/>
 <g font-family="'Space Grotesk', system-ui, sans-serif">
 <text x="28" y="44" font-size="25" font-weight="700" fill="#1B4229">Who publishes what</text>
@@ -15,7 +15,7 @@
 
 <line x1="28" y1="166" x2="692" y2="166" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
 <text x="28" y="154" font-size="12.5"  fill="#1B4229">Laconiko — ZOI</text>
-<circle cx="375" cy="150" r="8" fill="#1B4229"/><path d="M371.0,150 L373.7,152.8 L379.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="150" r="8" fill="#1B4229"/><path d="M461.0,150 L463.7,152.8 L469.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="150" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="150" r="8" fill="#1B4229"/><path d="M641.0,150 L643.7,152.8 L649.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="375" cy="150" r="8" fill="#1B4229"/><path d="M371.0,150 L373.7,152.8 L379.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="150" r="8" fill="#1B4229"/><path d="M461.0,150 L463.7,152.8 L469.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="150" r="8" fill="#1B4229"/><path d="M551.0,150 L553.7,152.8 L559.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="150" r="8" fill="#1B4229"/><path d="M641.0,150 L643.7,152.8 L649.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 
 
 <line x1="28" y1="197" x2="692" y2="197" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>

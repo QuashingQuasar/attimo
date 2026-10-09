@@ -1,33 +1,30 @@
-<svg viewBox="0 0 720 400" width="720" height="400" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t2 d2">
-<title id="t2">One oil, two certificates: the totals land 23% apart</title>
-<desc id="d2">Paired bars for Olivea's 2025 Olympia oil, analysed by NMR and by HPLC. Total polyphenols 1,046 by NMR against 850 by HPLC; oleocanthal 244 against 143; oleacein 175 against 185. Same bottle, two laboratories, two sets of numbers.</desc>
-<rect width="720" height="400" fill="#FFFAEA"/>
+<svg viewBox="0 0 720 420" width="720" height="420" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t2 d2">
+<title id="t2">Same oil, two methods: the totals land 20% and 48% apart</title>
+<desc id="d2">Paired bars for two oils each analysed by NMR and by HPLC. Olivea Ultra High Phenolic: 1,046 by NMR against 874 by HPLC, 20% apart. PJ Kabos Phenolic Shot: 1,473 by NMR against 995 by HPLC, 48% apart. Same bottle, two laboratories, two sets of numbers.</desc>
+<rect width="720" height="420" fill="#FFFAEA"/>
 <g font-family="'Space Grotesk', system-ui, sans-serif">
-<text x="28" y="44" font-size="25" font-weight="700" fill="#1B4229">One oil, two certificates: the totals land 23% apart</text>
-<text x="28" y="68" font-size="13" fill="#1B4229" opacity="0.6">Olivea's 2025 Olympia oil, analysed by the University of Athens (NMR) and by an IOC-method laboratory (HPLC).</text>
-<text x="28" y="86" font-size="13" fill="#1B4229" opacity="0.6">Olivea publishes both. Most brands publish one, and the reader never learns which currency it is in.</text>
-<text x="156" y="144" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Total polyphenols</text>
-<rect x="170" y="120" width="399.4" height="20" rx="3" fill="#9DAE84" fill-opacity="0.8"/>
-<text x="577.4" y="134" font-size="12" font-weight="700" fill="#1B4229">1,046</text>
-<text x="619.4" y="134" font-size="10" fill="#1B4229" opacity="0.5">NMR</text>
-<rect x="170" y="146" width="324.5" height="20" rx="3" fill="#1B4229"/>
-<text x="502.5" y="160" font-size="12" font-weight="700" fill="#1B4229">850</text>
-<text x="534.5" y="160" font-size="10" fill="#1B4229" opacity="0.5">HPLC</text>
-<text x="156" y="220" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Oleocanthal</text>
-<rect x="170" y="196" width="93.2" height="20" rx="3" fill="#9DAE84" fill-opacity="0.8"/>
-<text x="271.2" y="210" font-size="12" font-weight="700" fill="#1B4229">244</text>
-<text x="303.2" y="210" font-size="10" fill="#1B4229" opacity="0.5">NMR</text>
-<rect x="170" y="222" width="54.6" height="20" rx="3" fill="#1B4229"/>
-<text x="232.6" y="236" font-size="12" font-weight="700" fill="#1B4229">143</text>
-<text x="264.6" y="236" font-size="10" fill="#1B4229" opacity="0.5">HPLC</text>
-<text x="156" y="296" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Oleacein</text>
-<rect x="170" y="272" width="66.8" height="20" rx="3" fill="#9DAE84" fill-opacity="0.8"/>
-<text x="244.8" y="286" font-size="12" font-weight="700" fill="#1B4229">175</text>
-<text x="276.8" y="286" font-size="10" fill="#1B4229" opacity="0.5">NMR</text>
-<rect x="170" y="298" width="70.6" height="20" rx="3" fill="#1B4229"/>
-<text x="248.6" y="312" font-size="12" font-weight="700" fill="#1B4229">185</text>
-<text x="280.6" y="312" font-size="10" fill="#1B4229" opacity="0.5">HPLC</text>
-<text x="28" y="366" font-size="11" fill="#1B4229" opacity="0.45">mg/kg. Source: Olivea's published lab results page, both certificates, 2025 harvest.</text>
-<text x="28" y="382" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+<text x="28" y="44" font-size="25" font-weight="700" fill="#1B4229">Same oil, two methods: the totals land 20% and 48% apart</text>
+<text x="28" y="68" font-size="13" fill="#1B4229" opacity="0.6">The only two brands in the index that publish the same harvest under both method families.</text>
+<text x="28" y="86" font-size="13" fill="#1B4229" opacity="0.6">Most brands publish one figure, and the reader never learns which currency it is in.</text>
+<text x="166" y="140" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">Olivea</text>
+<text x="166" y="156" font-size="10.5" fill="#1B4229" opacity="0.55" text-anchor="end">Ultra High Phenolic · Olympia</text>
+<rect x="180" y="124" width="278.9" height="20" rx="3" fill="#9DAE84" fill-opacity="0.8"/>
+<text x="466.9" y="138" font-size="12" font-weight="700" fill="#1B4229">1,046</text>
+<text x="508.9" y="138" font-size="10" fill="#1B4229" opacity="0.5">NMR</text>
+<rect x="180" y="150" width="233.1" height="20" rx="3" fill="#1B4229"/>
+<text x="421.1" y="164" font-size="12" font-weight="700" fill="#1B4229">874</text>
+<text x="455.1" y="164" font-size="10" fill="#1B4229" opacity="0.5">HPLC</text>
+<text x="180" y="190" font-size="11" fill="#1B4229" opacity="0.55">same oil, same harvest — totals 20% apart</text>
+<text x="166" y="260" font-size="14" font-weight="700" fill="#1B4229" text-anchor="end">PJ Kabos</text>
+<text x="166" y="276" font-size="10.5" fill="#1B4229" opacity="0.55" text-anchor="end">Phenolic Shot · Koroneiki</text>
+<rect x="180" y="244" width="392.8" height="20" rx="3" fill="#9DAE84" fill-opacity="0.8"/>
+<text x="580.8" y="258" font-size="12" font-weight="700" fill="#1B4229">1,473</text>
+<text x="622.8" y="258" font-size="10" fill="#1B4229" opacity="0.5">NMR</text>
+<rect x="180" y="270" width="265.3" height="20" rx="3" fill="#1B4229"/>
+<text x="453.3" y="284" font-size="12" font-weight="700" fill="#1B4229">995</text>
+<text x="487.3" y="284" font-size="10" fill="#1B4229" opacity="0.5">HPLC</text>
+<text x="180" y="310" font-size="11" fill="#1B4229" opacity="0.55">same oil, same harvest — totals 48% apart</text>
+<text x="28" y="386" font-size="11" fill="#1B4229" opacity="0.45">mg/kg, 2025/26 harvest. Sources: Olivea's published certificates; PJ Kabos's product page (figures stated, no certificate).</text>
+<text x="28" y="402" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
 </g>
 </svg>

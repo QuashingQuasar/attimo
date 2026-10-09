@@ -11,7 +11,7 @@ const fmt = (n) => n.toLocaleString("en-GB");
 // ── 1. Cover: the ranking ───────────────────────────────────────────────
 {
   const rows = [
-    { b: "Laconiko", o: "ZOI", v: 1000, label: "1,000+", note: "oleocanthal only", total: 1397, m: "NMR" },
+    { b: "Laconiko", o: "ZOI", v: 1196, total: 1397, m: "NMR" },
     { b: "The Governor", o: "Limited Edition", v: 875, total: 1316, m: "NMR" },
     { b: "ATTIMO", o: "Coratina", v: 807, total: 847, m: "HPLC", hero: true },
     { b: "Kyoord", o: "High Phenolic", v: 657, total: 1007, m: "NMR" },
@@ -21,7 +21,7 @@ const fmt = (n) => n.toLocaleString("en-GB");
     { b: "Sakellaropoulos", o: "Fyllikon", v: 390, total: 1825, m: "NMR" },
   ];
   const W = 720, H = 480, nameX = 196, barX = 206, barMax = 300, totX = 692, top = 124, rowH = 38;
-  const bx = (v) => barX + (v / 1000) * barMax;
+  const bx = (v) => barX + (v / 1200) * barMax;
   const body = rows.map((r, i) => {
     const y = top + i * rowH;
     return `<text x="${nameX}" y="${y + 13}" font-size="13" ${r.hero ? 'font-weight="700"' : ''} fill="${GREEN}" text-anchor="end">${esc(r.b)}</text>
@@ -33,7 +33,7 @@ ${r.note ? `<text x="${(bx(r.v) + 8).toFixed(1)}" y="${y + 30}" font-size="10" f
   }).join("\n");
   out("chart-index-ranking.svg", `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t1 d1">
 <title id="t1">Eight olive oils that publish oleocanthal and oleacein, ranked</title>
-<desc id="d1">Horizontal bar chart. Bars show oleocanthal plus oleacein in mg/kg: Laconiko ZOI 1,000 or more (oleocanthal only), The Governor 875, ATTIMO Coratina 807, Kyoord 657, Pamako 634, OlvLimits Green Machine 439, Olivea 419, Sakellaropoulos Fyllikon 390. Each brand's headline total and its method appear in grey at the right; the totals come from different methods and do not follow the bar order.</desc>
+<desc id="d1">Horizontal bar chart. Bars show oleocanthal plus oleacein in mg/kg: Laconiko ZOI 1,196, The Governor 875, ATTIMO Coratina 807, Kyoord 657, Pamako 634, OlvLimits Green Machine 439, Olivea 419, Sakellaropoulos Fyllikon 390. Each brand's headline total and its method appear in grey at the right; the totals come from different methods and do not follow the bar order.</desc>
 <rect width="${W}" height="${H}" fill="${CREAM}"/>
 <g ${FONT}>
 <text x="28" y="44" font-size="25" font-weight="700" fill="${GREEN}">Eight oils that publish oleocanthal and oleacein, ranked</text>
@@ -47,36 +47,37 @@ ${body}
 </svg>`);
 }
 
-// ── 2. One oil, two certificates ────────────────────────────────────────
+// ── 2. Two oils, two methods each ─────────────────────────────────────
 {
-  const W = 720, H = 400;
+  const W = 720, H = 420;
   const groups = [
-    { k: "Total polyphenols", nmr: 1046, hplc: 850 },
-    { k: "Oleocanthal", nmr: 244, hplc: 143 },
-    { k: "Oleacein", nmr: 175, hplc: 185 },
+    { k: "Olivea", sub: "Ultra High Phenolic · Olympia", nmr: 1046, hplc: 874, gap: "20% apart" },
+    { k: "PJ Kabos", sub: "Phenolic Shot · Koroneiki", nmr: 1473, hplc: 995, gap: "48% apart" },
   ];
-  const x0 = 170, span = 420, top = 120, gH = 76, max = 1100;
+  const x0 = 180, span = 400, top = 124, gH = 120, max = 1500;
   const w = (v) => (v / max) * span;
   const body = groups.map((g, i) => {
     const y = top + i * gH;
-    return `<text x="${x0 - 14}" y="${y + 24}" font-size="13" font-weight="700" fill="${GREEN}" text-anchor="end">${g.k}</text>
+    return `<text x="${x0 - 14}" y="${y + 16}" font-size="14" font-weight="700" fill="${GREEN}" text-anchor="end">${g.k}</text>
+<text x="${x0 - 14}" y="${y + 32}" font-size="10.5" fill="${GREEN}" opacity="0.55" text-anchor="end">${g.sub}</text>
 <rect x="${x0}" y="${y}" width="${w(g.nmr).toFixed(1)}" height="20" rx="3" fill="${SAGE}" fill-opacity="0.8"/>
 <text x="${(x0 + w(g.nmr) + 8).toFixed(1)}" y="${y + 14}" font-size="12" font-weight="700" fill="${GREEN}">${fmt(g.nmr)}</text>
-<text x="${(x0 + w(g.nmr) + 8 + (g.nmr >= 1000 ? 42 : 32)).toFixed(1)}" y="${y + 14}" font-size="10" fill="${GREEN}" opacity="0.5">NMR</text>
+<text x="${(x0 + w(g.nmr) + 50).toFixed(1)}" y="${y + 14}" font-size="10" fill="${GREEN}" opacity="0.5">NMR</text>
 <rect x="${x0}" y="${y + 26}" width="${w(g.hplc).toFixed(1)}" height="20" rx="3" fill="${GREEN}"/>
 <text x="${(x0 + w(g.hplc) + 8).toFixed(1)}" y="${y + 40}" font-size="12" font-weight="700" fill="${GREEN}">${fmt(g.hplc)}</text>
-<text x="${(x0 + w(g.hplc) + 8 + (g.hplc >= 1000 ? 42 : 32)).toFixed(1)}" y="${y + 40}" font-size="10" fill="${GREEN}" opacity="0.5">HPLC</text>`;
+<text x="${(x0 + w(g.hplc) + 42).toFixed(1)}" y="${y + 40}" font-size="10" fill="${GREEN}" opacity="0.5">HPLC</text>
+<text x="${x0}" y="${y + 66}" font-size="11" fill="${GREEN}" opacity="0.55">same oil, same harvest — totals ${g.gap}</text>`;
   }).join("\n");
   out("chart-index-one-oil-two-methods.svg", `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t2 d2">
-<title id="t2">One oil, two certificates: the totals land 23% apart</title>
-<desc id="d2">Paired bars for Olivea's 2025 Olympia oil, analysed by NMR and by HPLC. Total polyphenols 1,046 by NMR against 850 by HPLC; oleocanthal 244 against 143; oleacein 175 against 185. Same bottle, two laboratories, two sets of numbers.</desc>
+<title id="t2">Same oil, two methods: the totals land 20% and 48% apart</title>
+<desc id="d2">Paired bars for two oils each analysed by NMR and by HPLC. Olivea Ultra High Phenolic: 1,046 by NMR against 874 by HPLC, 20% apart. PJ Kabos Phenolic Shot: 1,473 by NMR against 995 by HPLC, 48% apart. Same bottle, two laboratories, two sets of numbers.</desc>
 <rect width="${W}" height="${H}" fill="${CREAM}"/>
 <g ${FONT}>
-<text x="28" y="44" font-size="25" font-weight="700" fill="${GREEN}">One oil, two certificates: the totals land 23% apart</text>
-<text x="28" y="68" font-size="13" fill="${GREEN}" opacity="0.6">Olivea's 2025 Olympia oil, analysed by the University of Athens (NMR) and by an IOC-method laboratory (HPLC).</text>
-<text x="28" y="86" font-size="13" fill="${GREEN}" opacity="0.6">Olivea publishes both. Most brands publish one, and the reader never learns which currency it is in.</text>
+<text x="28" y="44" font-size="25" font-weight="700" fill="${GREEN}">Same oil, two methods: the totals land 20% and 48% apart</text>
+<text x="28" y="68" font-size="13" fill="${GREEN}" opacity="0.6">The only two brands in the index that publish the same harvest under both method families.</text>
+<text x="28" y="86" font-size="13" fill="${GREEN}" opacity="0.6">Most brands publish one figure, and the reader never learns which currency it is in.</text>
 ${body}
-<text x="28" y="${H - 34}" font-size="11" fill="${GREEN}" opacity="0.45">mg/kg. Source: Olivea's published lab results page, both certificates, 2025 harvest.</text>
+<text x="28" y="${H - 34}" font-size="11" fill="${GREEN}" opacity="0.45">mg/kg, 2025/26 harvest. Sources: Olivea's published certificates; PJ Kabos's product page (figures stated, no certificate).</text>
 <text x="28" y="${H - 18}" font-size="11" fill="${GREEN}" opacity="0.45">attimo-oil.com</text>
 </g>
 </svg>`);
@@ -86,7 +87,7 @@ ${body}
 {
   const cols = ["Total", "Oleocanthal", "Oleacein", "Report viewable"];
   const rows = [
-    ["Laconiko — ZOI", 1, 1, 0, 1], ["The Governor — Limited", 1, 1, 1, 1], ["ATTIMO — Coratina", 1, 1, 1, 1, true],
+    ["Laconiko — ZOI", 1, 1, 1, 1], ["The Governor — Limited", 1, 1, 1, 1], ["ATTIMO — Coratina", 1, 1, 1, 1, true],
     ["Kyoord — High Phenolic", 1, 1, 1, 1], ["Pamako — Monovarietal", 1, 1, 1, 1], ["OlvLimits — Green Machine", 1, 1, 1, 1],
     ["Olivea — Ultra High Phenolic", 1, 1, 1, 1], ["Sakellaropoulos — Fyllikon", 1, 1, 1, 1],
     ["PJ Kabos — Phenolic Shot", 1, 0, 0, 0], ["Olio Intini", 1, 0, 0, 0], ["Oro del Desierto — Picual", 1, 0, 0, 1],
@@ -108,7 +109,7 @@ ${cols.map((_, c) => mark(r[c + 1], cx(c).toFixed(1), y)).join("")}`;
   // the divider row needs breathing room: shift stated-totals rows down
   const svg = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t3 d3">
 <title id="t3">Who publishes what</title>
-<desc id="d3">Matrix of fifteen brands against four columns: total published, oleocanthal published, oleacein published, lab report viewable. The eight ranked brands publish oleocanthal and oleacein with a viewable report (Laconiko publishes oleocanthal only). Seven further brands state a total only; of those, Oro del Desierto and Blueprint make the report viewable, the rest do not.</desc>
+<desc id="d3">Matrix of fifteen brands against four columns: total published, oleocanthal published, oleacein published, lab report viewable. The eight ranked brands publish oleocanthal and oleacein with a viewable report. Seven further brands state a total only; of those, Oro del Desierto and Blueprint make the report viewable, the rest do not.</desc>
 <rect width="${W}" height="${H}" fill="${CREAM}"/>
 <g ${FONT}>
 <text x="28" y="44" font-size="25" font-weight="700" fill="${GREEN}">Who publishes what</text>

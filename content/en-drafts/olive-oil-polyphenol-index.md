@@ -8,7 +8,7 @@ Full disclosure: we make olive oil ourselves, and our Coratina is in the index. 
 
 - Polyphenols are the compounds behind olive oil's bitterness, pungency and most of its researched health effects. Typical supermarket oil carries 100–250 mg/kg; the top oils here carry ten times that.
 - Fifteen producers worldwide publish polyphenol figures for their current oil, from Greece, Italy, Spain, the Netherlands, Morocco, Germany and the US. This page lists all of them.
-- Totals from different lab methods are different currencies — the same oil tests at 850 on one method and 1,046 on another — so this index does not rank by total.
+- Totals from different lab methods are different currencies — the same oil tests at 874 on one method and 1,046 on another — so this index does not rank by total.
 - The ranking uses the two documented compounds instead: oleocanthal + oleacein, the "D1 index" printed on University of Athens certificates and used by the high-phenolic world's own awards.
 - Oils whose producers publish no compound values appear in a second, unranked list. A stated total alone cannot place an oil.
 - The index is alive: producers who publish their analysis can submit it at the bottom of this page.
@@ -29,7 +29,7 @@ Everything below was verified on the producers' own pages in September 2026.
 
 ## How the ranking works
 
-Ranking oils by their total polyphenol figure would be the natural thing to do, and it would be wrong. The totals come from different lab methods that count different compound sets in different units: in the published cases where the same oil was analysed by both families, the NMR total came out 23% and 48% above the chromatography total. Two brands below prove it on their own bottles.
+Ranking oils by their total polyphenol figure would be the natural thing to do, and it would be wrong. The totals come from different lab methods that count different compound sets in different units: in the published cases where the same oil was analysed by both families, the NMR total came out 20% and 48% above the chromatography total. Two brands below prove it on their own bottles.
 
 So the ranked index uses the measure the high-phenolic field itself uses: **oleocanthal + oleacein**, the two most-researched compounds in olive oil, printed as the "D1 index" on every University of Athens certificate and used by the Aristoleo Awards to grade high-phenolic oils. Single named molecules hold up across labs in a way totals never can: in peer-reviewed testing on the same oils, oleocanthal measured by NMR and by calibrated HPLC agreed within ±10% (Molecules, 2021). The methods disagree about what a "total" is; they largely agree about a named molecule.
 
@@ -39,20 +39,20 @@ The consequence: an oil can only be ranked if its producer publishes the compoun
 
 ## The index, ranked by documented compounds
 
-**1. Laconiko — ZOI (Kalamon, Greece) — oleocanthal 1,000+ mg/kg · total 1,397 (NMR)**
+**1. Laconiko — ZOI (Kalamon, Greece) — oleocanthal + oleacein 1,196 mg/kg · total 1,397 (NMR)**
 
-- Oleocanthal: 1,000+ mg/kg · Oleacein: not published
+- Oleocanthal: 1,000 mg/kg · Oleacein: 195 mg/kg
 - Lab report: viewable — [COA PDF](https://cdn.shopify.com/s/files/1/0395/9799/8236/files/2026_Laconiko_Zoi_Analysis_NMR_and_Quality_Certificate.pdf)
-- Harvest: 2025/26 · Price: $59.95 / 375ml (≈ $80 per 500ml) — currently sold out
+- Harvest: September 2025 (2025/26) · Price: $59.95 / 375ml (≈ $80 per 500ml) — currently sold out
 
-The most striking compound figure in this index: oleocanthal at roughly seven times the average oil, documented, and enough for first place before oleacein is even counted. Greek-grown, US-sold, and regularly sold out.
+The most striking compound figure in this index: oleocanthal at roughly seven times the average oil, documented, and enough for first place on its own. Greek-grown, US-sold, and regularly sold out.
 
 **2. The Governor — Limited Edition (Corfu) — oleocanthal + oleacein 875 mg/kg · total 1,316 (NMR)**
 
 - Oleocanthal: 577 mg/kg · Oleacein: 298 mg/kg
 - Also in range: Premium at 771 combined (476 + 295), total 1,174
 - Lab report: viewable — [COA download on the Premium product page](https://thegovernorevoo.co.uk/products/the-governor-premium-unfiltered-extra-virgin-olive-oil)
-- Harvest: 2024/25 (Limited) · 2025/26 (Premium) · Price: £49.95 (Limited) / £39.95 (Premium) per 500ml
+- Harvest: October 2025 (2025/26), both grades · Price: £49.95 (Limited) / £39.95 (Premium) per 500ml — both on backorder at the time of writing
 
 Corfiot Lianolia with the strongest fully documented compound pair in the index, in both grades.
 
@@ -88,13 +88,13 @@ The largest total in the index — and the clearest demonstration of why this pa
 
 A Dutch brand bottling early-harvest Puglian Coratina: a four-figure total with the two headline compounds at roughly a third of it.
 
-**7. Olivea — Ultra High Phenolic (Olympia variety, Messinia) — oleocanthal + oleacein 419 mg/kg · total 1,046 (NMR) / 850 (COI)**
+**7. Olivea — Ultra High Phenolic (Olympia variety, Messinia) — oleocanthal + oleacein 419 mg/kg · total 1,046 (NMR) / 874 (HPLC)**
 
-- Oleocanthal: 244 (NMR) / 143 (COI) mg/kg · Oleacein: 175 (NMR) / 185 (COI) mg/kg
-- Lab report: viewable — both certificates on a dedicated [lab results page](https://www.myolivea.com/blogs/news/olivea-lab-results-25)
+- Oleocanthal: 244 mg/kg · Oleacein: 175 mg/kg (NMR certificate); the HPLC certificate reports the total only
+- Lab report: viewable — the NMR certificate (World Olive Center, C2526-00538) is shown and the HPLC certificate (Multichrom, P-127805) linked on a dedicated [lab results page](https://www.myolivea.com/blogs/news/olivea-lab-results-25)
 - Harvest: October 2025 · Price: $45 / 500ml
 
-The most instructive entry on the page: the same oil, analysed by both method families, both documents shown. The totals land 23% apart, and even oleocanthal reads 143 on one certificate and 244 on the other. If you read one entry to understand why cross-method comparison needs care, read this one.
+The most instructive entry on the page: the same oil, analysed by both method families, both documents published. The totals land 20% apart — 874 in tyrosol equivalents by the IOC method, 1,046 by NMR. If you read one entry to understand why cross-method comparison needs care, read this one.
 
 [[IMAGE4]]
 
@@ -186,7 +186,7 @@ Ranked entries first (by documented oleocanthal + oleacein), then the stated-tot
 
 The gap has structural causes, not sloppy labs. NMR counts the full weight of the large aglycon molecules and captures compounds that degrade or convert inside a chromatography column — the University of Athens group has shown chromatography can create derivative artifacts on-column (J. Agric. Food Chem., 2014). The COI method, in the other direction, expresses its total in tyrosol equivalents: it counts the small core of each molecule, a units convention that reads low by construction. Even within a single COI certificate, the sum of the individually identified compounds can sit well below the stated total. And Folin correlates only loosely with compound-resolved totals — a 2026 study across a hundred top-rated oils found the two disagree on whether an oil clears the EU claim threshold in a third of cases (Antioxidants, 2026).
 
-The gap is also measurable, because two brands above publish the same oil under both families: Olivea reads 850 by COI and 1,046 by NMR; PJ Kabos reads 995 and 1,473. Same oil, both numbers legitimate, 23% and 48% apart — and because the gap depends on each oil's phenolic profile, no fixed conversion factor exists. This index converts nobody's number. A projected figure a producer never published has no place in a list built on published figures.
+The gap is also measurable, because two brands above publish the same oil under both families: Olivea reads 874 by HPLC and 1,046 by NMR; PJ Kabos reads 995 and 1,473. Same oil, both numbers legitimate, 23% and 48% apart — and because the gap depends on each oil's phenolic profile, no fixed conversion factor exists. This index converts nobody's number. A projected figure a producer never published has no place in a list built on published figures.
 
 The compounds behave differently. In peer-reviewed testing on the same oils, oleocanthal by NMR and by calibrated HPLC agreed within ±10% (Molecules, 2021): the disagreement between methods lives in the definition of "total", not in the measurement of a named molecule. That is the scientific basis for ranking on compounds. One asymmetry remains — COI certificates state compound lines in their conservative units too, which is why Olivea's oleocanthal reads 143 on the COI certificate and 244 on the NMR one. Chromatography rows in the ranking are understated by that asymmetry, never flattered.
 
@@ -228,7 +228,7 @@ If you produce an oil that qualifies — polyphenol figures for the current or p
 
 **Which olive oil has the highest polyphenol content?**
 
-No single answer is possible across lab methods, which is why this index ranks by documented compounds instead: Laconiko ZOI leads with 1,000+ mg/kg oleocanthal, followed by The Governor Limited (875 combined oleocanthal + oleacein) and ATTIMO Coratina (807). The largest published totals are Pamako's 2,000 and Sakellaropoulos Fyllikon's 1,825, both NMR figures. Higher totals exist in award registries — up to 3,400 mg/kg — but their producers publish nothing themselves.
+No single answer is possible across lab methods, which is why this index ranks by documented compounds instead: Laconiko ZOI leads with 1,196 mg/kg oleocanthal + oleacein (1,000 of it oleocanthal), followed by The Governor Limited (875 combined oleocanthal + oleacein) and ATTIMO Coratina (807). The largest published totals are Pamako's 2,000 and Sakellaropoulos Fyllikon's 1,825, both NMR figures. Higher totals exist in award registries — up to 3,400 mg/kg — but their producers publish nothing themselves.
 
 **What counts as a high polyphenol content?**
 
