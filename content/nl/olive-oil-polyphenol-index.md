@@ -31,9 +31,11 @@ Alles hieronder is in september 2026 geverifieerd op de eigen pagina's van de pr
 
 ## Hoe de rangschikking werkt
 
-Oliën rangschikken op hun totale polyfenolcijfer zou het voor de hand liggende zijn, en het zou fout zijn. De totalen komen uit verschillende labmethoden die verschillende sets stoffen in verschillende eenheden tellen: in de gepubliceerde gevallen waarin dezelfde olie met beide families werd geanalyseerd, kwam het NMR-totaal 20% en 48% boven het chromatografietotaal uit. Twee merken hieronder bewijzen het op hun eigen flessen.
+Oliën rangschikken op hun totale polyfenolcijfer zou het voor de hand liggende zijn, maar het zou misleidend zijn.
 
-Daarom gebruikt de gerangschikte index de maat die het high-phenolic-veld zelf gebruikt: **oleocanthal + oleaceïne**, de twee meest onderzochte stoffen in olijfolie, als "D1-index" gedrukt op elk certificaat van de Universiteit van Athene en door de Aristoleo Awards gebruikt om high-phenolic oliën te beoordelen. Afzonderlijke, benoemde moleculen houden stand tussen laboratoria op een manier die totalen nooit kunnen: in peer-reviewed tests op dezelfde oliën kwamen oleocanthal gemeten met NMR en met gekalibreerde HPLC binnen ±10% overeen (Molecules, 2021). De methoden zijn het oneens over wat een "totaal" is; over een benoemd molecuul zijn ze het grotendeels eens.
+De totalen komen uit verschillende labmethoden die verschillende sets stoffen in verschillende eenheden tellen: in de gepubliceerde gevallen waarin dezelfde olie met beide families werd geanalyseerd, kwam het NMR-totaal 20% en 48% boven het chromatografietotaal uit. Twee merken hieronder bewijzen het op hun eigen flessen.
+
+Daarom gebruikt de gerangschikte index de maat die het high-phenolic-veld zelf het liefst gebruikt: **oleocanthal + oleaceïne**, de twee meest onderzochte stoffen in olijfolie, als "D1-index" gedrukt op elk certificaat van de Universiteit van Athene en door de Aristoleo Awards gebruikt om high-phenolic oliën te beoordelen. Anders dan totale polyfenolcijfers houden deze twee afzonderlijk benoemde moleculen stand tussen laboratoria: in peer-reviewed tests op dezelfde oliën kwamen oleocanthal gemeten met NMR en met gekalibreerde HPLC binnen ±10% overeen (Molecules, 2021). De methoden zijn het oneens over wat een "totaal" is; over een benoemd molecuul zijn ze het grotendeels eens.
 
 Het gevolg: een olie kan alleen gerangschikt worden als de producent de waarden per stof publiceert. Producenten die een totaal opgeven en verder niets, staan in de ongerangschikte lijst onder de index, hoe groot dat totaal ook is. Een claim die je niet kunt verifiëren, kan niet boven een claim staan die je wél kunt verifiëren.
 

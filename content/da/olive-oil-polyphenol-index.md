@@ -31,9 +31,11 @@ Alt nedenfor blev verificeret på producenternes egne sider i september 2026.
 
 ## Sådan fungerer rangeringen
 
-At rangere olier efter deres samlede polyfenoltal ville være det naturlige at gøre, og det ville være forkert. Totalerne kommer fra forskellige laboratoriemetoder, der tæller forskellige sæt af forbindelser i forskellige enheder: i de offentliggjorte tilfælde, hvor den samme olie blev analyseret med begge familier, lå NMR-totalen 20 % og 48 % over kromatografi-totalen. To mærker nedenfor beviser det på deres egne flasker.
+At rangere olier efter deres samlede polyfenoltal ville være det naturlige at gøre, men det ville være misvisende.
 
-Så det rangerede indeks bruger det mål, som det højfenoliske felt selv bruger: **oleocanthal + oleacein**, de to mest undersøgte forbindelser i olivenolie, trykt som "D1-indeks" på hvert certifikat fra Athens Universitet og brugt af Aristoleo Awards til at bedømme højfenoliske olier. Enkelte navngivne molekyler holder på tværs af laboratorier på en måde, som totaler aldrig kan: i fagfællebedømte test på de samme olier stemte oleocanthal målt med NMR og med kalibreret HPLC overens inden for ±10 % (Molecules, 2021). Metoderne er uenige om, hvad en "total" er; de er stort set enige om et navngivet molekyle.
+Totalerne kommer fra forskellige laboratoriemetoder, der tæller forskellige sæt af forbindelser i forskellige enheder: i de offentliggjorte tilfælde, hvor den samme olie blev analyseret med begge familier, lå NMR-totalen 20 % og 48 % over kromatografi-totalen. To mærker nedenfor beviser det på deres egne flasker.
+
+Det rangerede indeks bruger derfor det mål, som det højfenoliske felt selv foretrækker at bruge: **oleocanthal + oleacein**, de to mest undersøgte forbindelser i olivenolie, trykt som "D1-indeks" på hvert certifikat fra Athens Universitet og brugt af Aristoleo Awards til at bedømme højfenoliske olier. I modsætning til samlede polyfenoltal holder disse to enkelte navngivne molekyler på tværs af laboratorier: i fagfællebedømte test på de samme olier stemte oleocanthal målt med NMR og med kalibreret HPLC overens inden for ±10 % (Molecules, 2021). Metoderne er uenige om, hvad en "total" er; de er stort set enige om et navngivet molekyle.
 
 Konsekvensen: en olie kan kun rangeres, hvis producenten offentliggør værdierne for forbindelserne. Producenter, der opgiver en total og intet andet, står på den urangerede liste under indekset, uanset totalens størrelse. En påstand, man ikke kan verificere, kan ikke overgå en, man kan.
 

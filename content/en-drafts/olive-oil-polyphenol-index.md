@@ -31,9 +31,11 @@ Everything below was verified on the producers' own pages in September 2026.
 
 ## How the ranking works
 
-Ranking oils by their total polyphenol figure would be the natural thing to do, and it would be wrong. The totals come from different lab methods that count different compound sets in different units: in the published cases where the same oil was analysed by both families, the NMR total came out 20% and 48% above the chromatography total. Two brands below prove it on their own bottles.
+Ranking oils by their total polyphenol figure would be the natural thing to do, but it would be misleading.
 
-So the ranked index uses the measure the high-phenolic field itself uses: **oleocanthal + oleacein**, the two most-researched compounds in olive oil, printed as the "D1 index" on every University of Athens certificate and used by the Aristoleo Awards to grade high-phenolic oils. Single named molecules hold up across labs in a way totals never can: in peer-reviewed testing on the same oils, oleocanthal measured by NMR and by calibrated HPLC agreed within ±10% (Molecules, 2021). The methods disagree about what a "total" is; they largely agree about a named molecule.
+The totals come from different lab methods that count different compound sets in different units: in the published cases where the same oil was analysed by both families, the NMR total came out 20% and 48% above the chromatography total. Two brands below prove it on their own bottles.
+
+The ranked index therefore uses the measure the high-phenolic field itself prefers to use: **oleocanthal + oleacein**, the two most-researched compounds in olive oil, printed as the "D1 index" on every University of Athens certificate and used by the Aristoleo Awards to grade high-phenolic oils. Unlike total polyphenol counts, these two single named molecules hold up across labs: in peer-reviewed testing on the same oils, oleocanthal measured by NMR and by calibrated HPLC agreed within ±10% (Molecules, 2021). The methods disagree about what a "total" is; they largely agree about a named molecule.
 
 The consequence: an oil can only be ranked if its producer publishes the compound values. Producers who state a total and nothing else appear in the unranked list below the index, whatever the size of the total. A claim you can't verify can't outrank one you can.
 

@@ -31,9 +31,11 @@ Allt nedan verifierades på producenternas egna sidor i september 2026.
 
 ## Så fungerar rankningen
 
-Att ranka oljor efter deras totala polyfenolvärde vore det naturliga, och det vore fel. Totalvärdena kommer från olika laboratoriemetoder som räknar olika uppsättningar föreningar i olika enheter: i de publicerade fall där samma olja analyserats av båda metodfamiljerna låg NMR-totalen 20 % respektive 48 % över kromatografitotalen. Två varumärken nedan bevisar det på sina egna flaskor.
+Att ranka oljor efter deras totala polyfenolvärde vore det naturliga, men det vore missvisande.
 
-Det rankade indexet använder därför det mått som det högfenoliska fältet självt använder: **oleocanthal + oleacein**, de två mest studerade föreningarna i olivolja, tryckta som ”D1-index” på varje certifikat från Atens universitet och använda av Aristoleo Awards för att gradera högfenoliska oljor. Enskilda namngivna molekyler håller mellan laboratorier på ett sätt som totalvärden aldrig gör: i referentgranskade tester på samma oljor stämde oleocanthal mätt med NMR och med kalibrerad HPLC överens inom ±10 % (Molecules, 2021). Metoderna är oense om vad ett ”totalvärde” är; de är i stort sett överens om en namngiven molekyl.
+Totalvärdena kommer från olika laboratoriemetoder som räknar olika uppsättningar föreningar i olika enheter: i de publicerade fall där samma olja analyserats av båda metodfamiljerna låg NMR-totalen 20 % respektive 48 % över kromatografitotalen. Två varumärken nedan bevisar det på sina egna flaskor.
+
+Det rankade indexet använder därför det mått som det högfenoliska fältet självt föredrar att använda: **oleocanthal + oleacein**, de två mest studerade föreningarna i olivolja, tryckta som ”D1-index” på varje certifikat från Atens universitet och använda av Aristoleo Awards för att gradera högfenoliska oljor. Till skillnad från totala polyfenolvärden håller dessa två enskilda namngivna molekyler mellan laboratorier: i referentgranskade tester på samma oljor stämde oleocanthal mätt med NMR och med kalibrerad HPLC överens inom ±10 % (Molecules, 2021). Metoderna är oense om vad ett ”totalvärde” är; de är i stort sett överens om en namngiven molekyl.
 
 Konsekvensen: en olja kan bara rankas om producenten publicerar föreningsvärdena. Producenter som anger ett totalvärde och inget annat hamnar i den orankade listan under indexet, oavsett hur stort totalvärdet är. Ett påstående som inte går att verifiera kan inte rankas över ett som går.
 
