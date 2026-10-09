@@ -89,5 +89,12 @@
   "sv": "specialolivolja",
   "da": "specialolivenolie",
   "nl": "specialty-olijfolie"
+ },
+ "olive-oil-polyphenol-index": {
+  "de": "olivenoel-polyphenol-index",
+  "fr": "index-polyphenols-huile-olive",
+  "sv": "olivolja-polyfenolindex",
+  "da": "olivenolie-polyfenolindeks",
+  "nl": "olijfolie-polyfenolindex"
  }
 }

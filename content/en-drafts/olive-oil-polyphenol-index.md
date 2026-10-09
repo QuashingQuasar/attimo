@@ -1,4 +1,4 @@
-# The Olive Oil Polyphenol Index: Every Brand That Publishes Its Polyphenol Numbers (2026/27)
+# The Olive Oil Polyphenol Index: Every Brand That Publishes Its Polyphenol Numbers (2025/26 Harvest)
 
 Almost no olive oil producer tells you how many polyphenols are in the bottle. This page lists every brand we found that does: the published figures, the compounds behind them, the analysis method, and whether the lab report is open for anyone to check.
 
@@ -9,7 +9,7 @@ This post is the 2025/26 harvest edition, written up once. The living version is
 ## TL;DR
 
 - Polyphenols are the compounds behind olive oil's bitterness, pungency and most of its researched health effects. Typical supermarket oil carries 100–250 mg/kg; the top oils here carry ten times that.
-- Fifteen producers worldwide publish polyphenol figures for their current oil, from Greece, Italy, Spain, the Netherlands, Morocco, Germany and the US. This page lists all of them.
+- We found fifteen producers worldwide that publish polyphenol figures for their current oil, from Greece, Italy, Spain, the Netherlands, Morocco, Germany and the US. This post lists them all.
 - Totals from different lab methods are different currencies — the same oil tests at 874 on one method and 1,046 on another — so this index does not rank by total.
 - The ranking uses the two documented compounds instead: oleocanthal + oleacein, the "D1 index" printed on University of Athens certificates and used by the high-phenolic world's own awards.
 - Oils whose producers publish no compound values appear in a second, unranked list. A stated total alone cannot place an oil.
@@ -188,7 +188,7 @@ Ranked entries first (by documented oleocanthal + oleacein), then the stated-tot
 
 The gap has structural causes, not sloppy labs. NMR counts the full weight of the large aglycon molecules and captures compounds that degrade or convert inside a chromatography column — the University of Athens group has shown chromatography can create derivative artifacts on-column (J. Agric. Food Chem., 2014). The COI method, in the other direction, expresses its total in tyrosol equivalents: it counts the small core of each molecule, a units convention that reads low by construction. Even within a single COI certificate, the sum of the individually identified compounds can sit well below the stated total. And Folin correlates only loosely with compound-resolved totals — a 2026 study across a hundred top-rated oils found the two disagree on whether an oil clears the EU claim threshold in a third of cases (Antioxidants, 2026).
 
-The gap is also measurable, because two brands above publish the same oil under both families: Olivea reads 874 by HPLC and 1,046 by NMR; PJ Kabos reads 995 and 1,473. Same oil, both numbers legitimate, 23% and 48% apart — and because the gap depends on each oil's phenolic profile, no fixed conversion factor exists. This index converts nobody's number. A projected figure a producer never published has no place in a list built on published figures.
+The gap is also measurable, because two brands above publish the same oil under both families: Olivea reads 874 by HPLC and 1,046 by NMR; PJ Kabos reads 995 and 1,473. Same oil, both numbers legitimate, 20% and 48% apart — and because the gap depends on each oil's phenolic profile, no fixed conversion factor exists. This index converts nobody's number. A projected figure a producer never published has no place in a list built on published figures.
 
 The compounds behave differently. In peer-reviewed testing on the same oils, oleocanthal by NMR and by calibrated HPLC agreed within ±10% (Molecules, 2021): the disagreement between methods lives in the definition of "total", not in the measurement of a named molecule. That is the scientific basis for ranking on compounds. One asymmetry remains — COI certificates state compound lines in their conservative units too, which is why Olivea's oleocanthal reads 143 on the COI certificate and 244 on the NMR one. Chromatography rows in the ranking are understated by that asymmetry, never flattered.
 
@@ -238,7 +238,7 @@ The EU's approved health claim requires 5 mg of hydroxytyrosol and derivatives p
 
 **Why do two labs give the same oil different numbers?**
 
-They count different things in different units. NMR sums the full weight of a long list of phenolic compounds; the COI method expresses its total in tyrosol equivalents, which reads low by construction; Folin-Ciocalteu estimates total phenolic activity chemically. Two brands in this index publish the same oil under two methods, 23% and 48% apart. Individual compounds are the exception: measured on the same oils, oleocanthal by NMR and by calibrated HPLC agrees within about 10%.
+They count different things in different units. NMR sums the full weight of a long list of phenolic compounds; the COI method expresses its total in tyrosol equivalents, which reads low by construction; Folin-Ciocalteu estimates total phenolic activity chemically. Two brands in this index publish the same oil under two methods, 20% and 48% apart. Individual compounds are the exception: measured on the same oils, oleocanthal by NMR and by calibrated HPLC agrees within about 10%.
 
 **What are oleocanthal and oleacein?**
 
