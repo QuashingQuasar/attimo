@@ -118,4 +118,45 @@ const certificates = defineCollection({
   }),
 });
 
-export const collections = { certificates };
+// One file per producer in the Polyphenol Index. Figures are copied verbatim
+// from the producer's own page or certificate; ATTIMO's entry carries no
+// figures and is filled from the certificates collection at build time.
+const polyphenolIndex = defineCollection({
+  loader: glob({ pattern: "*.yaml", base: "./src/content/polyphenol-index" }),
+  schema: z.object({
+    id: z.string(),
+    brand: z.string(),
+    oil: z.string(),
+    variety: z.string().nullable(),
+    origin: z.string(),
+    country: z.string(),
+    harvest: z.string(),
+    harvest_note: z.string().nullable(),
+    method: z.enum(["NMR", "HPLC", "COI", "Folin-Ciocalteu", "not stated"]),
+    lab: z.string().nullable(),
+    total: z.number().nullable(),
+    total_secondary: z
+      .object({ value: z.number(), method: z.string(), note: z.string().nullable().default(null) })
+      .nullable(),
+    oleocanthal: z.number().nullable(),
+    oleacein: z.number().nullable(),
+    // The D1 figure as printed on the certificate, when the lab sums the
+    // unrounded compound values and the printed sum differs from the sum of
+    // the printed (rounded) compounds. Null means: use the sum.
+    compounds_printed: z.number().nullable().default(null),
+    report: z.object({
+      status: z.enum(["viewable", "none"]),
+      url: z.string(),
+      label: z.string(),
+    }),
+    source_url: z.string(),
+    price: z.string().nullable(),
+    availability: z.string().nullable(),
+    note: z.string(),
+    also: z.string().nullable(),
+    attimo_certificate: z.string().nullable(),
+    verified: z.string(),
+  }),
+});
+
+export const collections = { certificates, polyphenolIndex };

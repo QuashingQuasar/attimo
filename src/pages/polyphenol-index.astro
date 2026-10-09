@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import PolyphenolIndexBody from "@astro/components/PolyphenolIndexBody.astro";
+import { getIndexEntries, INDEX_PATH, INDEX_JSON_PATH, INDEX_EDITION } from "@/lib/polyphenolIndex";
+import { faqItems } from "@/lib/polyphenolIndexContent";
+import { SITE } from "@/lib/certificates";
+import { CREAM } from "@/lib/certificates/ui";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const locale = DEFAULT_LOCALE;
+const t = getDict(locale);
+const { ranked, unranked, all } = await getIndexEntries();
+const canonical = `${SITE}${INDEX_PATH}`;
+const title = `The Olive Oil Polyphenol Index ${INDEX_EDITION}: every brand that publishes its numbers`;
+const description = `${all.length} olive oil producers publish polyphenol figures for their current oil. Ranked by documented oleocanthal + oleacein, every number linked to the producer's own page or lab report.`;
+const cover = "https://cdn.sanity.io/images/25tuybj3/production/3c74c939657a3112cfc7f7c35cc6d7bde550603f-1448x1086.jpg";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `The Olive Oil Polyphenol Index ${INDEX_EDITION}`,
+    description: "Olive oils ranked by producer-published oleocanthal + oleacein (mg/kg).",
+    url: canonical,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: ranked.length,
+    itemListElement: ranked.map((e) => ({
+      "@type": "ListItem",
+      position: e.rank,
+      name: `${e.brand} ${e.oil}`,
+      url: e.source_url,
+      description: `${e.compounds} mg/kg oleocanthal + oleacein, total ${e.total} mg/kg (${e.method}), harvest ${e.harvest}`,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "The Olive Oil Polyphenol Index",
+    description,
+    url: canonical,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    creator: { "@type": "Organization", name: "ATTIMO", url: SITE },
+    distribution: [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${SITE}${INDEX_JSON_PATH}` }],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={cover}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  htmlLang="en"
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <PolyphenolIndexBody ranked={ranked} unranked={unranked} locale={locale} />
+</BaseLayout>

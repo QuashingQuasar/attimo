@@ -1,0 +1,25 @@
+id: blueprint-snake-oil
+brand: Blueprint
+oil: Snake Oil
+variety: null
+origin: not stated
+country: United States
+harvest: "2025"
+harvest_note: 2025 analysis
+method: HPLC
+lab: null
+total: 425
+total_secondary: null
+oleocanthal: null
+oleacein: null
+report:
+  status: viewable
+  url: https://blueprint.bryanjohnson.com
+  label: HPLC COA linked from the product page
+source_url: https://blueprint.bryanjohnson.com
+price: "$39 / 750ml (≈ $26 per 500ml)"
+availability: null
+note: A modest figure, published with a proper certificate. The document is real; the number is the number.
+also: null
+attimo_certificate: null
+verified: "2026-09"

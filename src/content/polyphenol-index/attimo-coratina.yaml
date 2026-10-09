@@ -1,0 +1,27 @@
+id: attimo-coratina
+brand: ATTIMO
+oil: Coratina
+variety: Coratina
+origin: Puglia, Italy
+country: Italy
+harvest: "2025/26"
+harvest_note: October 2025
+# Every number on this entry is read from the certificate record at build
+# time; nothing is typed here.
+method: HPLC
+lab: null
+total: null
+total_secondary: null
+oleocanthal: null
+oleacein: null
+report:
+  status: viewable
+  url: /certificates/coratina-2526-hplc-2025-11
+  label: Certificate page, ISO/IEC 17025 lab
+source_url: https://attimo-oil.com/product/coratina
+price: "€24 / 500ml"
+availability: null
+note: Our own oil, held to the same format as everyone else's. These values come from the chromatography family, which in the one published same-oil comparison on this page read oleocanthal well below NMR. This row is measured by the conservative method.
+also: null
+attimo_certificate: coratina-2526-hplc-2025-11
+verified: "2026-09"
