@@ -40,6 +40,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/nl/polyfenol-analysemethoden", changefreq: "monthly", priority: "0.8" },
   // Lab certificate pages (English only; one per certificate in
   // src/content/certificates).
+  { loc: "/polyphenol-index", changefreq: "monthly", priority: "0.8" },
   { loc: "/certificates", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },

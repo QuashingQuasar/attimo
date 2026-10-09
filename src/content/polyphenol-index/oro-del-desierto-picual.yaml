@@ -1,0 +1,25 @@
+id: oro-del-desierto-picual
+brand: Oro del Desierto
+oil: Picual
+variety: Picual
+origin: Almería, Spain
+country: Spain
+harvest: "2025/26"
+harvest_note: null
+method: Folin-Ciocalteu
+lab: null
+total: 844
+total_secondary: null
+oleocanthal: null
+oleacein: null
+report:
+  status: viewable
+  url: https://blog.orodeldesierto.com/evolucion-polifenoles-aove-oro-del-desierto
+  label: Analyses for all five varieties, three campaigns kept online
+source_url: https://www.orodeldesierto.com
+price: "€14.50 / 500ml"
+availability: null
+note: The most systematic publisher outside the ranked index. The whole range (Picual 844 down to Lechín 507), every campaign, with the method's limitations stated by the producer itself. Folin measures no individual compounds, so a compound ranking is off the table by construction.
+also: null
+attimo_certificate: null
+verified: "2026-09"

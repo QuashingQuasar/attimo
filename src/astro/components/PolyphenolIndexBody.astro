@@ -1,0 +1,436 @@
+---
+// Body of /polyphenol-index. Every figure arrives through `ranked` and
+// `unranked` (the polyphenol-index collection, with ATTIMO's row filled from
+// the certificates collection). Charts and the matrix are built from the same
+// data, so nothing on the page is a picture of a number.
+import { Header } from "@/components/Header";
+import { FAQ } from "@/components/FAQ";
+import Footer from "@astro/components/Footer.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { GREEN, DEEP, CREAM, ACCENT, UDC, SG, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream, cardOnGreen } from "@/lib/certificates/ui";
+import { num, INDEX_VERIFIED, INDEX_EDITION, INDEX_NEXT, INDEX_UPDATE_NOTE, type IndexEntry } from "@/lib/polyphenolIndex";
+import { faqItems } from "@/lib/polyphenolIndexContent";
+
+const { ranked, unranked, locale = DEFAULT_LOCALE } = Astro.props as {
+  ranked: IndexEntry[];
+  unranked: IndexEntry[];
+  locale?: Locale;
+};
+
+const all = [...ranked, ...unranked];
+const countries = new Set(all.map((e) => e.country)).size;
+const maxCompounds = Math.max(...ranked.map((e) => e.compounds ?? 0));
+const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
+const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
+const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? "method not stated" : e.method);
+const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
+const ext = (e: IndexEntry) => (isMine(e) ? {} : { rel: "nofollow noopener", target: "_blank" });
+const submitHref =
+  "mailto:hello@attimo-oil.com?subject=" +
+  encodeURIComponent("Polyphenol Index submission") +
+  "&body=" +
+  encodeURIComponent("Brand and oil:\nHarvest:\nLink to the published figures (producer's own site):\nLink to the lab report, if public:\n");
+
+// Three method cards, condensed from /polyphenol-methods.
+const METHODS = [
+  { name: "HPLC and the COI method", reading: "Reads lowest", what: "Separates the oil into its compounds and measures each one on the way out. The official IOC method for biophenols, run by most accredited food labs.", total: "Total in tyrosol equivalents, which counts the small core of each molecule and reads low by construction.", who: "ATTIMO, Blueprint, Olivea's second certificate" },
+  { name: "NMR", reading: "Reads higher", what: "Reads the magnetic signature of the sample and sums a long list of phenolic compounds, including heavy derivative molecules other methods partly miss.", total: "Total counts the full weight of every listed compound, so it lands structurally higher on the same oil.", who: "World Olive Center and University of Athens certificates: most of the ranked index" },
+  { name: "Folin-Ciocalteu", reading: "Own scale", what: "A colour reaction. A reagent turns blue in proportion to total phenolic activity, and the oil is never separated into compounds.", total: "Total in caffeic acid equivalents. Names no compound, so it cannot place an oil in the ranked index.", who: "Oro del Desierto, ATTIMO Picual" },
+];
+const PAIRS = [
+  { brand: "Olivea", oil: "Ultra High Phenolic", nmr: 1046, hplc: 874, gap: "20% apart" },
+  { brand: "PJ Kabos", oil: "Phenolic Shot", nmr: 1473, hplc: 995, gap: "48% apart" },
+];
+const pairMax = 1473;
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    <!-- ═══ HERO: video, overlay, text ═══ -->
+    <section class="relative flex items-center overflow-hidden" style={`background-color:${DEEP}; min-height:min(88vh, 760px);`}>
+      <video autoplay muted loop playsinline preload="auto" poster="/images/polyphenol-index-poster.jpg" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" style="pointer-events:none;">
+        <source src="/videos/kleia-way-video.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(13,30,20,.78) 0%, rgba(13,30,20,.58) 45%, rgba(13,30,20,.82) 100%);"></div>
+      <div class="relative container mx-auto px-6 pt-[124px] pb-16 text-center">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>The Olive Oil Polyphenol Index · {INDEX_EDITION}</p>
+        <h1 class="mx-auto mb-6 max-w-4xl" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2rem,4vw,3.4rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; text-shadow:0 2px 24px rgba(16,34,27,.9);`}>
+          Every olive oil brand that publishes its polyphenol numbers, ranked
+        </h1>
+        <p class="mx-auto mb-9 max-w-2xl" style={`${lead} color:rgba(255,250,234,.92); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>
+          The producers we found that publish a polyphenol figure for their current oil, ranked by the two documented compounds. Every number links to the producer's own page or lab report.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <a href="#ranking" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>See the ranking</a>
+          <a href="#submit" style={`${btn} background-color:rgba(255,250,234,.1); color:${CREAM}; border:1px solid rgba(255,250,234,.45); backdrop-filter:blur(6px);`}>Submit an oil</a>
+        </div>
+        <!-- Living-index status chip: dot, label, note, last update. Wraps to a stacked chip on phones. -->
+        <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full px-5 py-3" style="background-color:rgba(16,34,27,.55); border:1px solid rgba(255,250,234,.28); backdrop-filter:blur(8px);">
+          <span class="inline-flex items-center gap-2.5">
+            <span class="relative inline-flex w-2.5 h-2.5">
+              <span class="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={`background-color:${ACCENT}; animation-duration:2.4s;`}></span>
+              <span class="relative inline-flex w-2.5 h-2.5 rounded-full" style={`background-color:${ACCENT};`}></span>
+            </span>
+            <span style={`${eyebrowSm} font-size:.78rem; color:${ACCENT};`}>Living index</span>
+          </span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.9);`}>{INDEX_UPDATE_NOTE}</span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.7);`}>Last update {INDEX_VERIFIED}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STRIP ═══ -->
+    <section class="py-8 px-6" style={`background-color:${DEEP}; border-top:1px solid rgba(255,250,234,.16);`}>
+      <div class="container mx-auto max-w-6xl grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          ["Producers listed", `${all.length}, from ${countries} countries`],
+          ["Ranked by", "oleocanthal + oleacein, mg/kg"],
+          ["Every figure", "copied from the producer's own page or certificate"],
+          ["Edition", `${INDEX_EDITION} · ${INDEX_NEXT} follows the new pressings`],
+        ].map(([k, v]) => (
+          <div>
+            <p class="mb-1" style={`${eyebrowSm} color:${ACCENT};`}>{k}</p>
+            <p style={`font-family:${SG}; font-size:1rem; color:rgba(255,250,234,.88);`}>{v}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ HOW THE RANKING WORKS ═══ -->
+    <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12">
+          <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>How the ranking works</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>Ranked by two named compounds, never by the total</h2>
+          <p style={`${lead} color:${onCream(0.8)};`}>
+            Totals from different lab methods are different currencies: the same oil tests at 874 on one method and 1,046 on another. A named molecule is the exception. Measured on the same oils, oleocanthal agrees across methods within about 10%. So the index ranks on oleocanthal + oleacein, the D1 figure printed on University of Athens certificates, and an oil can only be ranked when its producer publishes both.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.25fr] gap-6 lg:gap-8 items-stretch">
+          <div class="grid grid-cols-1 gap-3 content-start">
+            <p style={`${eyebrowSm} color:${onCream(0.55)};`}>Three rules decide who is in</p>
+            {[
+              ["Published by the producer", "On the producer's own site. Retailer listings and award registries don't count."],
+              ["Current or previous harvest", "Polyphenols decline as oil ages. A 2022 figure describes an oil that no longer exists."],
+              ["Any accredited method", "The method is printed next to every number. Oils with a total and no compounds are listed, unranked."],
+            ].map(([t, b], i) => (
+              <div class="flex gap-4 p-5" style={cardOnCream}>
+                <span class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0" style={`background-color:${GREEN}; color:${CREAM}; font-family:${UDC}; font-size:.95rem;`}>{i + 1}</span>
+                <div>
+                  <p class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.1rem; color:${GREEN};`}>{t}</p>
+                  <p style={`${small} color:${onCream(0.8)};`}>{b}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="rounded-2xl p-7 md:p-9" style={`background-color:${GREEN}; color:${CREAM};`}>
+            <p class="mb-1" style={`${eyebrowSm} color:${ACCENT};`}>The ranked index</p>
+            <p class="mb-7" style={`font-family:${UDC}; font-weight:700; font-size:1.35rem; letter-spacing:-0.01em;`}>Oleocanthal + oleacein, mg/kg, as published</p>
+            <div class="grid gap-3">
+              {ranked.map((e) => (
+                <div class="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[9rem_1fr] items-center gap-3">
+                  <div class="min-w-0">
+                    <p class="truncate" style={`font-family:${UDC}; font-weight:700; font-size:.95rem; color:${isMine(e) ? ACCENT : CREAM};`}>{e.brand}</p>
+                    <p class="truncate" style={`font-family:${SG}; font-size:.78rem; color:${onGreen(0.6)};`}>{e.oil}</p>
+                  </div>
+                  <div class="grid grid-cols-[1fr_7.5rem] items-center gap-3 min-w-0">
+                    <div class="min-w-0"><div class="h-9 rounded-md" style={`width:${(((e.compounds ?? 0) / maxCompounds) * 100).toFixed(1)}%; background-color:${isMine(e) ? ACCENT : "rgba(255,250,234,.82)"};`}></div></div>
+                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; line-height:1.1;`}>{num(e.compounds!)}<span style={`display:block; font-family:${SG}; font-weight:400; font-size:.72rem; color:${onGreen(0.6)};`}>total {num(e.total!)} {e.method}</span></p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p class="mt-7" style={`${small} font-size:.88rem; color:${onGreen(0.65)};`}>Grey: each brand's own headline total and method. The bars and the totals do not sort the same way, which is the point.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ THE RANKED INDEX ═══ -->
+    <section id="ranking" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12">
+          <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>The index</p>
+          <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{ranked.length} oils with documented oleocanthal and oleacein</h2>
+          <p style={`${lead} color:${onGreen(0.8)};`}>
+            Each card carries the producer's compound values, the headline total in the producer's own method, and the document behind them. We make olive oil ourselves and our Coratina is here, held to the same format and the same rules as everyone else.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {ranked.map((e) => (
+            <article class="rounded-2xl p-7 md:p-8 flex flex-col min-w-0" style={`background-color:${CREAM}; color:${GREEN};`}>
+              <div class="flex items-start justify-between gap-4 mb-6">
+                <div class="flex items-baseline gap-4 min-w-0">
+                  <span style={`font-family:${UDC}; font-weight:300; font-size:2.6rem; line-height:1; letter-spacing:-0.03em; color:${onCream(0.35)};`}>{String(e.rank).padStart(2, "0")}</span>
+                  <div class="min-w-0">
+                    <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; line-height:1.1; color:${GREEN}; overflow-wrap:anywhere;`}>{e.brand} <span style="font-weight:300;">{e.oil}</span></h3>
+                    <p class="mt-1" style={`font-family:${SG}; font-size:.95rem; color:${onCream(0.65)};`}>{[e.variety, e.origin].filter(Boolean).join(" · ")}</p>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end gap-2 flex-shrink-0">
+                  <span class="rounded-full px-3 py-1.5" style={`${eyebrowSm} font-size:.75rem; background-color:${GREEN}; color:${CREAM};`}>{methodLabel(e)}</span>
+                  {isMine(e) && <span class="rounded-full px-3 py-1.5" style={`${eyebrowSm} font-size:.75rem; background-color:${ACCENT}; color:${GREEN};`}>our oil</span>}
+                </div>
+              </div>
+
+              <div class="rounded-xl p-5 mb-6" style={`background-color:${GREEN}; color:${CREAM};`}>
+                <p class="mb-1" style={`${eyebrowSm} color:${onGreen(0.65)};`}>Oleocanthal + oleacein</p>
+                <p style={`${stat} font-size:clamp(2.4rem,4vw,3rem); color:${ACCENT};`}>{num(e.compounds!)}<span style={`font-size:1rem; letter-spacing:0; color:${onGreen(0.8)};`}> mg/kg</span></p>
+                <p class="mt-2" style={`font-family:${SG}; font-size:.95rem; color:${onGreen(0.8)};`}>{num(e.oleocanthal!)} oleocanthal · {num(e.oleacein!)} oleacein</p>
+              </div>
+
+              <dl class="grid grid-cols-2 gap-x-5 mb-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.45;`}>
+                {([
+                  [`Total, ${methodLabel(e)}`, e.total === null ? "—" : `${num(e.total)} mg/kg`, e.total_secondary ? `${num(e.total_secondary.value)} by ${e.total_secondary.method}` : null, true],
+                  ["Harvest", e.harvest, e.harvest_note, true],
+                  ["Price", e.price ?? "not listed", e.availability, false],
+                  ["Lab report", null, e.report.label, false],
+                ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc]) => (
+                  <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
+                    <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{k}</dt>
+                    <dd>
+                      {v !== null ? <span style={udc ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{v}</span> : <a href={e.reportHref} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...ext(e)}>{e.report.status === "viewable" ? "Viewable" : "None published"}</a>}
+                      {sub && <span style={`display:block; font-size:.85rem; color:${onCream(0.7)};`}>{sub}</span>}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              <p class="mt-auto" style={`${small} color:${onCream(0.8)};`}>{e.note}{e.also && <span style="display:block; margin-top:.4rem;">Also in range · {e.also}</span>}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STATED TOTALS ONLY ═══ -->
+    <section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-10">
+          <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>Stated totals only</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{unranked.length} producers publish a total and no compounds</h2>
+          <p style={`${lead} color:${onCream(0.78)};`}>
+            They cannot be placed on the index. Listed by stated figure, which is a list and not a ranking: these totals come from four different methods, and three of them from no stated method at all.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-3">
+          {unranked.map((e) => (
+            <article class="grid grid-cols-1 md:grid-cols-[minmax(0,1.3fr)_auto_minmax(0,2fr)] gap-4 md:gap-8 items-start p-6" style={cardOnCream}>
+              <div>
+                <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; letter-spacing:-0.01em; color:${GREEN};`}>{e.brand} <span style="font-weight:300;">{e.oil}</span></h3>
+                <p class="mt-1" style={`font-family:${SG}; font-size:.9rem; color:${onCream(0.65)};`}>{[e.variety, e.origin].filter(Boolean).join(" · ")} · harvest {e.harvest}</p>
+                <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; color:${onCream(0.75)};`}>
+                  <a href={e.reportHref} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? "Lab report viewable" : "No lab report"}</a> · {e.price ?? "price not listed"}{e.availability && ` · ${e.availability}`}
+                </p>
+              </div>
+              <div class="md:text-right md:min-w-[9rem]">
+                <p style={`${stat} font-size:2rem; color:${GREEN};`}>{e.total === null ? "—" : num(e.total)}<span style="font-size:.85rem; letter-spacing:0;"> mg/kg</span></p>
+                <p class="mt-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.6)};`}>{methodLabel(e)}{e.total_secondary && ` · ${num(e.total_secondary.value)} ${e.total_secondary.method}`}</p>
+              </div>
+              <p style={`${small} color:${onCream(0.8)};`}>{e.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ AT A GLANCE TABLE ═══ -->
+    <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10">
+          <h2 style={`${h2} color:${GREEN};`}>Full index</h2>
+          <p style={`${eyebrowSm} color:${onCream(0.55)};`}>Last updated {INDEX_VERIFIED}</p>
+        </div>
+        <div class="rounded-2xl overflow-x-auto" style={`background-color:#fff; border:1px solid rgba(27,66,41,.18);`}>
+          <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:820px;`}>
+            <thead>
+              <tr style={`background-color:${GREEN}; color:${CREAM};`}>
+                {["#", "Brand · oil", "Oleocanthal + oleacein", "Total", "Method", "Harvest", "Lab report", "Price"].map((th) => (
+                  <th class="text-left p-4" style={`font-family:${UDC}; font-weight:700; font-size:.85rem; white-space:nowrap;`}>{th}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {all.map((e, i) => (
+                <tr style={`border-top:1px solid rgba(27,66,41,.12); ${e.rank === null && i === ranked.length ? "border-top:2px dashed #1B4229;" : ""} ${isMine(e) ? "background-color:rgba(205,219,45,.18);" : ""}`}>
+                  <td class="p-4" style={`font-family:${UDC}; color:${onCream(0.6)};`}>{e.rank ?? "—"}</td>
+                  <td class="p-4 font-semibold"><a href={e.source_url} class="underline underline-offset-4 decoration-[rgba(27,66,41,.35)]" {...ext(e)}>{e.brand}</a> · {e.oil}</td>
+                  <td class="p-4 font-semibold">{e.compounds === null ? <span style="opacity:.5;">not published</span> : num(e.compounds)}</td>
+                  <td class="p-4">{e.total === null ? "—" : num(e.total)}{e.total_secondary && <span style="opacity:.7;"> / {num(e.total_secondary.value)}</span>}</td>
+                  <td class="p-4" style="white-space:nowrap;">{e.method}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
+                  <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
+                  <td class="p-4"><a href={e.reportHref} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? "viewable" : "none"}</a></td>
+                  <td class="p-4" style="min-width:12rem;">{e.price ?? "not listed"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-5" style={`${small} font-size:.9rem; color:${onCream(0.6)};`}>
+          Figures verified on the producers' own pages in {INDEX_VERIFIED}. Machine-readable copy at <a href="/polyphenol-index.json" class="underline">/polyphenol-index.json</a>, CC BY 4.0.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ WHY TOTALS DIFFER ═══ -->
+    <section class="py-20 md:py-24 px-6" style={`background-color:${DEEP};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12">
+          <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>Why the totals differ</p>
+          <h2 class="mb-6" style={`${h2} color:${CREAM};`}>Total polyphenols is at least three measurements</h2>
+          <p style={`${lead} color:${onGreen(0.8)};`}>Each method counts a different set of compounds in different units. The gap has structural causes, not sloppy labs, and no fixed conversion exists because it depends on each oil's profile. This index converts nobody's number.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+          {METHODS.map((m, i) => (
+            <div class="rounded-2xl p-7 flex flex-col" style={i === 0 ? `background-color:${ACCENT}; color:${GREEN};` : `${cardOnGreen} color:${CREAM};`}>
+              <div class="flex items-start justify-between gap-3 mb-5">
+                <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.4rem; letter-spacing:-0.02em; line-height:1.1; color:${i === 0 ? GREEN : CREAM};`}>{m.name}</h3>
+                <span class="rounded-full px-3 py-1.5 flex-shrink-0" style={i === 0 ? `${eyebrowSm} font-size:.72rem; background-color:${GREEN}; color:${ACCENT};` : `${eyebrowSm} font-size:.72rem; background-color:rgba(255,250,234,.16); color:${CREAM};`}>{m.reading}</span>
+              </div>
+              <dl class="flex-1" style={`font-family:${SG}; font-size:.95rem; line-height:1.55;`}>
+                {[["How it works", m.what], ["What the total means", m.total], ["In this index", m.who]].map(([k, v]) => (
+                  <div class="py-3" style={`border-top:1px solid ${i === 0 ? "rgba(27,66,41,.22)" : "rgba(255,250,234,.18)"};`}>
+                    <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; opacity:.7;`}>{k}</dt>
+                    <dd>{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+        </div>
+
+        <div class="rounded-2xl p-7 md:p-9 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 items-center" style={`background-color:${CREAM}; color:${GREEN};`}>
+          <div>
+            <p class="mb-2" style={`${eyebrowSm} color:${onCream(0.55)};`}>Same oil, two methods</p>
+            <h3 class="mb-4" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; line-height:1.1;`}>Two brands publish the same harvest under both families</h3>
+            <p class="mb-5" style={`${body} font-size:1.02rem; color:${onCream(0.8)};`}>Both numbers legitimate, both from the same bottle. Chromatography rows in the ranking are understated by the same asymmetry, never flattered: Olivea's oleocanthal reads 143 on its COI certificate and 244 on its NMR one.</p>
+            <a href="/polyphenol-methods" style={`${btn} background-color:${GREEN}; color:${CREAM};`}>How polyphenols are measured</a>
+          </div>
+          <div class="grid gap-6">
+            {PAIRS.map((p) => (
+              <div>
+                <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.05rem;`}>{p.brand} <span style={`font-weight:300; color:${onCream(0.65)};`}>{p.oil}</span> <span style={`font-family:${SG}; font-weight:400; font-size:.85rem; color:${onCream(0.6)};`}>· {p.gap}</span></p>
+                {[["NMR", p.nmr, "rgba(27,66,41,.45)"], ["HPLC", p.hplc, GREEN]].map(([m, v, fill]) => (
+                  <div class="grid grid-cols-[3.5rem_1fr_auto] items-center gap-3 mb-2">
+                    <span style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.6)};`}>{m}</span>
+                    <div class="h-8 rounded-md" style={`width:${((Number(v) / pairMax) * 100).toFixed(1)}%; background-color:${fill};`}></div>
+                    <span style={`font-family:${UDC}; font-weight:700; font-size:1rem; white-space:nowrap;`}>{num(Number(v))}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+            <p style={`${small} font-size:.85rem; color:${onCream(0.6)};`}>mg/kg, 2025/26 harvest. Olivea: two published certificates. PJ Kabos: figures stated in product copy, no certificate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHO PUBLISHES ═══ -->
+    <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12">
+          <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>Why almost nobody publishes</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>Publishing is itself the signal</h2>
+          <p style={`${lead} color:${onCream(0.8)};`}>
+            Polyphenol content is the closest thing olive oil has to a measurable quality signal. It predicts bitterness and pungency, decides whether an oil qualifies for the EU's only approved olive oil health claim, and declines with age. Most producers publish nothing, and the reason is structural: late-harvest, high-yield production, the economics behind nearly every supermarket bottle, gives oil low in polyphenols. The brands on this page measured, and were willing to show the result.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-8 items-start">
+          <div class="rounded-2xl overflow-hidden" style={cardOnCream}>
+            <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.9rem;`}>
+              <thead>
+                <tr style={`background-color:${GREEN}; color:${CREAM};`}>
+                  {["Who publishes what", "Total", "Oleocanthal", "Oleacein", "Report"].map((th, i) => (
+                    <th class={`p-3 ${i === 0 ? "text-left" : "text-center"}`} style={`font-family:${UDC}; font-weight:700; font-size:.8rem; ${i === 0 ? "" : "width:5.5rem;"}`}>{th}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {all.map((e, i) => (
+                  <tr style={`border-top:1px solid rgba(27,66,41,.12); ${e.rank === null && i === ranked.length ? "border-top:2px dashed #1B4229;" : ""} ${isMine(e) ? "background-color:rgba(205,219,45,.18);" : ""}`}>
+                    <td class="p-3"><span class="font-semibold">{e.brand}</span> <span style={`color:${onCream(0.6)};`}>· {e.oil}</span></td>
+                    {[e.total !== null, e.oleocanthal !== null, e.oleacein !== null, e.report.status === "viewable"].map((yes) => (
+                      <td class="p-3 text-center">
+                        {yes ? (
+                          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-label="yes" class="inline-block"><path d="M4 10.5l4 4 8-9" stroke={GREEN} stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                        ) : (
+                          <span aria-label="no" style={`color:${onCream(0.3)};`}>—</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4">
+            <div class="p-6" style={`background-color:${GREEN}; color:${CREAM}; border-radius:1rem;`}>
+              <p class="mb-2" style={`${eyebrowSm} color:${ACCENT};`}>Numbers that exist, published by someone else</p>
+              <p style={`${small} color:${onGreen(0.85)};`}>
+                Sparta Medicinal Olive Oil, 3,400 mg/kg per the World Olive Center's 2026 awards. Omfakion Plus, 2,006 to 2,101 with oleocanthal up to 1,534, per retailer listings. Evolia, around 2,012 per its Aristoleo award. PhenOLIV, 2,011, retailer listing only. Physis of Crete Korona, 1,477 NMR on a Polish retailer's page. None appears on the producer's own site, so none is in the index until that changes. Tricarico publishes full scans for its Coratina, from 2022, and is retired on the freshness rule.
+              </p>
+            </div>
+            <div class="p-6" style={cardOnCream}>
+              <p class="mb-2" style={`${eyebrowSm} color:${onCream(0.55)};`}>The brands that publish nothing</p>
+              <p style={`${small} color:${onCream(0.85)};`}>
+                As of {INDEX_VERIFIED}: De Carlo, whose product page praises "the high value of polyphenols" without stating one, Guglielmi, Castillo de Canena, Biolea, Filippo Berio and Frantoio Muraglia publish no number for any oil. Terra Creta's traceability tool returns acidity, peroxides and UV absorbance for your exact bottle, and no polyphenols.
+              </p>
+            </div>
+            <div class="p-6" style={cardOnCream}>
+              <p style={`${body} font-size:1.05rem; color:${GREEN};`}>No published number does not mean a poor oil. It means an unverifiable one. The producers above operate mills, commission analyses and see these figures every season. Leaving them unpublished is a choice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SUBMIT ═══ -->
+    <section id="submit" class="pb-6 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="rounded-2xl p-10 md:p-14 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center" style={`background-color:${GREEN};`}>
+          <div>
+            <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>Submit an oil</p>
+            <h2 class="mb-4" style={`${h2} font-size:clamp(1.6rem,2.6vw,2.4rem); color:${CREAM};`}>Produce an oil that qualifies, or found one we missed?</h2>
+            <p class="max-w-2xl" style={`${body} font-size:1.05rem; color:${onGreen(0.8)};`}>
+              Send the link to the published figures and the analysis. Entries are verified against the published source and added at the next update. Any accredited lab or university programme qualifies, whichever method it uses. Publishing oleocanthal and oleacein places an oil in the ranked index.
+            </p>
+          </div>
+          <a href={submitHref} style={`${btn} background-color:${ACCENT}; color:${GREEN}; white-space:nowrap;`}>Email the index</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <FAQ client:visible items={faqItems} heading="Questions about the index" headingFontFamily={UDC} jsonLd={false} />
+
+    <!-- ═══ SOURCES ═══ -->
+    <section class="pb-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-4xl">
+        <details class="rounded-2xl overflow-hidden" style={`border:1px solid ${GREEN}; background-color:#fff;`}>
+          <summary class="cursor-pointer px-6 py-5" style={`font-family:${SG}; font-weight:500; font-size:1.05rem; color:${GREEN};`}>Method and sources</summary>
+          <div class="px-6 pb-6" style={`${small} color:${onCream(0.82)};`}>
+            <p class="mb-4">Every figure is copied from the producer's own page or certificate, as published, in {INDEX_VERIFIED}. Nothing is converted between methods. ATTIMO's row is read from its <a href="/certificates/coratina-2526-hplc-2025-11" class="underline">certificate record</a> at build time. Submissions: hello@attimo-oil.com.</p>
+            <ul class="space-y-2">
+              <li>Starec et al., oleocanthal and oleacein by NMR and calibrated HPLC on the same oils. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796514/">Molecules 2021;26(1):242</a></li>
+              <li>Karkoula et al., on-column artefacts in chromatography of olive oil phenols. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf404421p">J. Agric. Food Chem. 2014;62:600–607</a></li>
+              <li>Castillo-Luna and Priego-Capote, Folin against compound-resolved totals across a hundred oils. <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.mdpi.com/2076-3921/15/4/511">Antioxidants 2026;15(4):511</a></li>
+              <li>International Olive Council, <a class="underline" rel="nofollow noopener" target="_blank" href="https://www.internationaloliveoil.org/wp-content/uploads/2022/06/Doc.-No-29-REV-2_ENK.pdf">COI/T.20/Doc. No 29/Rev.2</a>; <a class="underline" rel="nofollow noopener" target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32012R0432">Regulation (EU) No 432/2012</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</div>

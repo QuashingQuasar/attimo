@@ -1,0 +1,28 @@
+id: pj-kabos-phenolic-shot
+brand: PJ Kabos
+oil: Phenolic Shot
+variety: Koroneiki
+origin: Peloponnese, Greece
+country: Greece
+harvest: "2025/26"
+harvest_note: null
+method: NMR
+lab: null
+total: 1473
+total_secondary:
+  value: 995
+  method: HPLC
+  note: stated in product copy
+oleocanthal: null
+oleacein: null
+report:
+  status: none
+  url: https://www.pjkabos.gr/products/family-reserve-organic-phenolic-shot-extra-virgin-olive-oil-16-9floz-bottle
+  label: Figures and methods named in product copy only
+source_url: https://www.pjkabos.gr
+price: "€59.83 / 500ml"
+availability: sold out
+note: The other dual-method publisher, 48% apart on the same oil, with no document and no compounds behind either figure.
+also: null
+attimo_certificate: null
+verified: "2026-09"

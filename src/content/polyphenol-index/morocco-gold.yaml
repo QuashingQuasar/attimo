@@ -1,0 +1,25 @@
+id: morocco-gold
+brand: Morocco Gold
+oil: Extra Virgin
+variety: Picholine Marocaine
+origin: Morocco
+country: Morocco
+harvest: not stated
+harvest_note: null
+method: not stated
+lab: ONSSA, Campden BRI named; method not
+total: 606
+total_secondary: null
+oleocanthal: null
+oleacein: null
+report:
+  status: none
+  url: https://morocco-gold.com/shop/morocco-gold-extra-virgin-olive-oil/
+  label: Shop page says 606 "highest to date"; the analysis page shows a recent harvest at 278
+source_url: https://morocco-gold.com
+price: "$44.40 / 500ml"
+availability: null
+note: Testing labs are named, the method is not. Both figures are theirs; we list both.
+also: null
+attimo_certificate: null
+verified: "2026-09"

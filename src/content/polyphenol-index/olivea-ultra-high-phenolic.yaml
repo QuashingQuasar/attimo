@@ -1,0 +1,28 @@
+id: olivea-ultra-high-phenolic
+brand: Olivea
+oil: Ultra High Phenolic
+variety: Olympia
+origin: Messinia, Greece
+country: Greece
+harvest: "2025/26"
+harvest_note: October 2025
+method: NMR
+lab: World Olive Center, C2526-00538
+total: 1046
+total_secondary:
+  value: 874
+  method: HPLC
+  note: Multichrom, P-127805, total only
+oleocanthal: 244
+oleacein: 175
+report:
+  status: viewable
+  url: https://www.myolivea.com/blogs/news/olivea-lab-results-25
+  label: Both certificates on a dedicated lab results page
+source_url: https://www.myolivea.com
+price: "$45 / 500ml"
+availability: null
+note: The most instructive entry on the page. The same oil, analysed by both method families, both documents published. The totals land 20% apart. If you read one entry to understand why cross-method comparison needs care, read this one.
+also: null
+attimo_certificate: null
+verified: "2026-09"
