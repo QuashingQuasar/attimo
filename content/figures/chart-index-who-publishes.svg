@@ -1,0 +1,91 @@
+<svg viewBox="0 0 720 680" width="720" height="680" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t3 d3">
+<title id="t3">Who publishes what</title>
+<desc id="d3">Matrix of fifteen brands against four columns: total published, oleocanthal published, oleacein published, lab report viewable. The eight ranked brands publish oleocanthal and oleacein with a viewable report (Laconiko publishes oleocanthal only). Seven further brands state a total only; of those, Oro del Desierto and Blueprint make the report viewable, the rest do not.</desc>
+<rect width="720" height="680" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="25" font-weight="700" fill="#1B4229">Who publishes what</text>
+<text x="28" y="68" font-size="13" fill="#1B4229" opacity="0.6">A brand enters the ranked index when it publishes oleocanthal and oleacein. A viewable report is what</text>
+<text x="28" y="86" font-size="13" fill="#1B4229" opacity="0.6">makes any figure checkable; a number in product copy is a claim.</text>
+<text x="375.0" y="120" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">TOTAL</text>
+<text x="465.0" y="120" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">OLEOCANTHAL</text>
+<text x="555.0" y="120" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">OLEACEIN</text>
+<text x="645.0" y="120" font-size="9.5" font-weight="700" letter-spacing="1" fill="#1B4229" opacity="0.7" text-anchor="middle">REPORT VIEWABLE</text>
+<text x="28" y="120" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#1B4229" opacity="0.5">RANKED INDEX</text>
+
+
+<line x1="28" y1="166" x2="692" y2="166" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="154" font-size="12.5"  fill="#1B4229">Laconiko — ZOI</text>
+<circle cx="375" cy="150" r="8" fill="#1B4229"/><path d="M371.0,150 L373.7,152.8 L379.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="150" r="8" fill="#1B4229"/><path d="M461.0,150 L463.7,152.8 L469.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="150" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="150" r="8" fill="#1B4229"/><path d="M641.0,150 L643.7,152.8 L649.3,146.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="197" x2="692" y2="197" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="185" font-size="12.5"  fill="#1B4229">The Governor — Limited</text>
+<circle cx="375" cy="181" r="8" fill="#1B4229"/><path d="M371.0,181 L373.7,183.8 L379.3,177.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="181" r="8" fill="#1B4229"/><path d="M461.0,181 L463.7,183.8 L469.3,177.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="181" r="8" fill="#1B4229"/><path d="M551.0,181 L553.7,183.8 L559.3,177.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="181" r="8" fill="#1B4229"/><path d="M641.0,181 L643.7,183.8 L649.3,177.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+<rect x="20" y="198" width="672" height="29" fill="#B3E58C" opacity="0.3"/>
+<line x1="28" y1="228" x2="692" y2="228" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="216" font-size="12.5" font-weight="700" fill="#1B4229">ATTIMO — Coratina</text>
+<circle cx="375" cy="212" r="8" fill="#1B4229"/><path d="M371.0,212 L373.7,214.8 L379.3,208.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="212" r="8" fill="#1B4229"/><path d="M461.0,212 L463.7,214.8 L469.3,208.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="212" r="8" fill="#1B4229"/><path d="M551.0,212 L553.7,214.8 L559.3,208.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="212" r="8" fill="#1B4229"/><path d="M641.0,212 L643.7,214.8 L649.3,208.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="259" x2="692" y2="259" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="247" font-size="12.5"  fill="#1B4229">Kyoord — High Phenolic</text>
+<circle cx="375" cy="243" r="8" fill="#1B4229"/><path d="M371.0,243 L373.7,245.8 L379.3,239.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="243" r="8" fill="#1B4229"/><path d="M461.0,243 L463.7,245.8 L469.3,239.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="243" r="8" fill="#1B4229"/><path d="M551.0,243 L553.7,245.8 L559.3,239.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="243" r="8" fill="#1B4229"/><path d="M641.0,243 L643.7,245.8 L649.3,239.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="290" x2="692" y2="290" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="278" font-size="12.5"  fill="#1B4229">Pamako — Monovarietal</text>
+<circle cx="375" cy="274" r="8" fill="#1B4229"/><path d="M371.0,274 L373.7,276.8 L379.3,270.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="274" r="8" fill="#1B4229"/><path d="M461.0,274 L463.7,276.8 L469.3,270.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="274" r="8" fill="#1B4229"/><path d="M551.0,274 L553.7,276.8 L559.3,270.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="274" r="8" fill="#1B4229"/><path d="M641.0,274 L643.7,276.8 L649.3,270.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="321" x2="692" y2="321" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="309" font-size="12.5"  fill="#1B4229">OlvLimits — Green Machine</text>
+<circle cx="375" cy="305" r="8" fill="#1B4229"/><path d="M371.0,305 L373.7,307.8 L379.3,301.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="305" r="8" fill="#1B4229"/><path d="M461.0,305 L463.7,307.8 L469.3,301.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="305" r="8" fill="#1B4229"/><path d="M551.0,305 L553.7,307.8 L559.3,301.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="305" r="8" fill="#1B4229"/><path d="M641.0,305 L643.7,307.8 L649.3,301.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="352" x2="692" y2="352" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="340" font-size="12.5"  fill="#1B4229">Olivea — Ultra High Phenolic</text>
+<circle cx="375" cy="336" r="8" fill="#1B4229"/><path d="M371.0,336 L373.7,338.8 L379.3,332.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="336" r="8" fill="#1B4229"/><path d="M461.0,336 L463.7,338.8 L469.3,332.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="336" r="8" fill="#1B4229"/><path d="M551.0,336 L553.7,338.8 L559.3,332.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="336" r="8" fill="#1B4229"/><path d="M641.0,336 L643.7,338.8 L649.3,332.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="383" x2="692" y2="383" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="371" font-size="12.5"  fill="#1B4229">Sakellaropoulos — Fyllikon</text>
+<circle cx="375" cy="367" r="8" fill="#1B4229"/><path d="M371.0,367 L373.7,369.8 L379.3,363.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="367" r="8" fill="#1B4229"/><path d="M461.0,367 L463.7,369.8 L469.3,363.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="555" cy="367" r="8" fill="#1B4229"/><path d="M551.0,367 L553.7,369.8 L559.3,363.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="645" cy="367" r="8" fill="#1B4229"/><path d="M641.0,367 L643.7,369.8 L649.3,363.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28" y="404" font-size="9.5" font-weight="700" letter-spacing="1.5" fill="#1B4229" opacity="0.5">STATED TOTALS ONLY</text>
+
+<line x1="28" y1="436" x2="692" y2="436" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="424" font-size="12.5"  fill="#1B4229">PJ Kabos — Phenolic Shot</text>
+<circle cx="375" cy="420" r="8" fill="#1B4229"/><path d="M371.0,420 L373.7,422.8 L379.3,416.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="420" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="420" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="420" r="2" fill="#1B4229" opacity="0.25"/>
+
+
+<line x1="28" y1="467" x2="692" y2="467" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="455" font-size="12.5"  fill="#1B4229">Olio Intini</text>
+<circle cx="375" cy="451" r="8" fill="#1B4229"/><path d="M371.0,451 L373.7,453.8 L379.3,447.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="451" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="451" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="451" r="2" fill="#1B4229" opacity="0.25"/>
+
+
+<line x1="28" y1="498" x2="692" y2="498" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="486" font-size="12.5"  fill="#1B4229">Oro del Desierto — Picual</text>
+<circle cx="375" cy="482" r="8" fill="#1B4229"/><path d="M371.0,482 L373.7,484.8 L379.3,478.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="482" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="482" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="482" r="8" fill="#1B4229"/><path d="M641.0,482 L643.7,484.8 L649.3,478.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+<line x1="28" y1="529" x2="692" y2="529" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="517" font-size="12.5"  fill="#1B4229">Oleum Crete</text>
+<circle cx="375" cy="513" r="8" fill="#1B4229"/><path d="M371.0,513 L373.7,515.8 L379.3,509.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="513" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="513" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="513" r="2" fill="#1B4229" opacity="0.25"/>
+
+
+<line x1="28" y1="560" x2="692" y2="560" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="548" font-size="12.5"  fill="#1B4229">Morocco Gold</text>
+<circle cx="375" cy="544" r="8" fill="#1B4229"/><path d="M371.0,544 L373.7,546.8 L379.3,540.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="544" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="544" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="544" r="2" fill="#1B4229" opacity="0.25"/>
+
+
+<line x1="28" y1="591" x2="692" y2="591" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0.25"/>
+<text x="28" y="579" font-size="12.5"  fill="#1B4229">Rapunzel — Polyphenolia</text>
+<circle cx="375" cy="575" r="8" fill="#1B4229"/><path d="M371.0,575 L373.7,577.8 L379.3,571.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="575" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="575" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="575" r="2" fill="#1B4229" opacity="0.25"/>
+
+
+<line x1="28" y1="622" x2="692" y2="622" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 4" opacity="0"/>
+<text x="28" y="610" font-size="12.5"  fill="#1B4229">Blueprint — Snake Oil</text>
+<circle cx="375" cy="606" r="8" fill="#1B4229"/><path d="M371.0,606 L373.7,608.8 L379.3,602.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="465" cy="606" r="2" fill="#1B4229" opacity="0.25"/><circle cx="555" cy="606" r="2" fill="#1B4229" opacity="0.25"/><circle cx="645" cy="606" r="8" fill="#1B4229"/><path d="M641.0,606 L643.7,608.8 L649.3,602.8" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="28" y="662" font-size="11" fill="#1B4229" opacity="0.45">Checked against each brand's own pages, September 2026 · attimo-oil.com</text>
+</g>
+</svg>

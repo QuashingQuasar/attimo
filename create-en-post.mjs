@@ -74,6 +74,8 @@ body = body.map((b) => {
   if (mw) { const u = tweetsData[Number(mw[1]) - 1]; if (u) { tw++; return tweet(u); } }
   const mi = /^\[\[IMAGE(\d+)\]\]$/.exec(txt);
   if (mi) { const g = imagesData[Number(mi[1]) - 1]; if (g?.ref) { im++; return image(g); } }
+  const mt = /^\[\[TABLE(\d+)\]\]$/.exec(txt);
+  if (mt) { const rows = tablesData[Number(mt[1]) - 1]; if (rows?.length) return table(rows); }
   return b;
 });
 
