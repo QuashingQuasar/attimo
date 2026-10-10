@@ -15,7 +15,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 const locale = SLUG_TO_LOCALE["se"];
 const content = HUB_CONTENT.sv;
 const t = getDict(locale);
-const indexData = await getHubIndexData();
+const indexData = await getHubIndexData("sv");
 const labNumbers = await getHomeLabNumbers();
 const canonical = `https://attimo-oil.com${HUB_SLUGS.sv}`;
 const description = content.meta.description;
