@@ -71,7 +71,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
           <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
             {hero.h1}
           </h1>
-          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45, maxWidth: "44rem" }}>
+          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45 }}>
             {hero.subPre}
             <span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>
             {hero.subPost}
