@@ -60,7 +60,7 @@ function Hero({ hero, flavours }: { hero: EHContent["hero"]; flavours: EHContent
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,0.72), rgba(13,30,20,0.5) 38%, rgba(13,30,20,0.8))" }} />
 
-      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-64 lg:pt-80 xl:pt-[22rem] pb-14 md:pb-20">
+      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-44 pb-14 md:pb-20">
         <div className="max-w-6xl mx-auto text-center">
           <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.85rem, 1.15vw, 1.2rem)" }}>
             {hero.eyebrow}
@@ -384,6 +384,7 @@ function EarlyHarvestInner({ initialPosts, locale }: { initialPosts?: InitialPos
       <Header
         onWaitlistClick={() => setIsWaitlistOpen(true)}
         locale={locale}
+        pageNavLayout="leading"
         pageNav={[
           { label: content.nav.shop, href: "#the-range" },
           { label: content.nav.meaning, href: "#meaning" },

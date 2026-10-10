@@ -45,6 +45,14 @@ interface HeaderProps {
    * links (Shop, Blog, Quiz, Merch). Logo, cart and region switcher stay.
    */
   pageNav?: { label: string; href: string }[];
+  /**
+   * How a landing page lays the bar out: "centered" puts the emblem in the
+   * middle with the anchors either side; "leading" keeps the wordmark at the
+   * left with every anchor right-aligned, like the site bar.
+   */
+  pageNavLayout?: "centered" | "leading";
+  /** Site bar with the emblem centred: site links left, cart and region at the right. */
+  siteNavLayout?: "default" | "centered";
 }
 export const Header = ({
   onWaitlistClick: _onWaitlistClick,
@@ -53,6 +61,8 @@ export const Header = ({
   darkNav = false,
   locale = DEFAULT_LOCALE,
   pageNav,
+  pageNavLayout = "leading",
+  siteNavLayout = "default",
 }: HeaderProps) => {
   // Header is no longer sticky. Background is transparent by default so the
   // hero shows through; solid only when (a) the consuming page passes
@@ -86,116 +96,100 @@ export const Header = ({
     }, 150);
   };
 
+  const ink = darkNav && !solidBackground ? 'text-olive-dark' : 'text-white';
+  const inkHex = darkNav && !solidBackground ? '#1B4229' : '#FFFFFF';
+  const linkCls = `${ink} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`;
+  const linkStyle = { fontFamily: 'Space Grotesk, sans-serif' } as const;
+  const centred = pageNav ? pageNavLayout === "centered" : siteNavLayout === "centered";
+
+  // The pieces every layout is built from.
+  const wordmark = (
+    <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
+      <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto max-w-none" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+    </Link>
+  );
+  const emblem = (
+    <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
+      <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-28 xl:h-36 2xl:h-40 w-auto max-w-none -mb-4" />
+      <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
+    </Link>
+  );
+  const siteLinks = (
+    <>
+      <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Link to={`${localizeHref("/", locale)}#shop`} className={linkCls} style={linkStyle}>{t.nav.shop}</Link>
+      </div>
+      <Link to={localizeHref("/blog", locale)} className={linkCls} style={linkStyle}>{t.nav.blog}</Link>
+      <Link to={localizeHref("/quiz", locale)} className={linkCls} style={linkStyle}>{t.nav.quiz}</Link>
+      <Link to="/merch" className={linkCls} style={linkStyle}>{t.nav.merch}</Link>
+    </>
+  );
+  const pageLinks = (items: { label: string; href: string }[]) =>
+    items.map((item) => (
+      <a key={item.href} href={item.href} className={linkCls} style={linkStyle}>{item.label}</a>
+    ));
+  const utilities = (
+    <div className="flex items-center gap-3 md:gap-5">
+      <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
+      <CurrencySelector locale={locale} placement="down" triggerColor={inkHex} />
+      <button
+        type="button"
+        className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((o) => !o)}
+        style={{ color: inkHex }}
+      >
+        {mobileOpen ? (
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></svg>
+        ) : (
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="3" y1="6.5" x2="21" y2="6.5" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17.5" x2="21" y2="17.5" /></svg>
+        )}
+      </button>
+    </div>
+  );
+
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-8 pb-6 md:pt-10 lg:pt-14" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      className={`absolute top-0 left-0 right-0 z-50 ${centred ? "pt-8 pb-6 md:pt-10 lg:pt-14" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
       style={{
         backgroundColor: solidBackground ? '#1B4229' : 'transparent',
         transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
       }}
     >
-      <div className={pageNav ? "w-full px-6 md:px-10 lg:px-16" : "container mx-auto px-6"}>
-        {pageNav ? (
-        /* Landing-page bar: logo centred, the page anchors flanking it, cart
-           and region switcher at the far right. Phones keep the hamburger. */
-        <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
-          <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-8 xl:gap-12 pr-8 lg:pr-12 xl:pr-16">
-            {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
-              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex items-center justify-self-start md:justify-self-center">
-            <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
-              {/* The round emblem, centred; the wordmark stays on phones. */}
-              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-28 xl:h-36 2xl:h-40 w-auto max-w-none -mb-4" />
-              <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
-            </Link>
-          </div>
-          <div className="flex items-center gap-4 pl-8 lg:pl-12 xl:pl-16">
-            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-8 xl:gap-12">
-              {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
-                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                  {item.label}
-                </a>
-              ))}
+      <div className={centred ? "w-full px-6 md:px-10 lg:px-16" : "container mx-auto px-6"}>
+        {centred && pageNav ? (
+          /* Landing page, emblem centred, anchors either side. */
+          <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
+            <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-8 xl:gap-12 pr-8 lg:pr-12 xl:pr-16">
+              {pageLinks(pageNav.slice(0, Math.ceil(pageNav.length / 2)))}
             </nav>
-            <div className="flex items-center gap-3 md:gap-5 ml-auto">
-              <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
-              <CurrencySelector locale={locale} placement="down" triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'} />
-              <button
-                type="button"
-                className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
-                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={mobileOpen}
-                onClick={() => setMobileOpen((o) => !o)}
-                style={{ color: darkNav && !solidBackground ? '#1B4229' : '#FFFFFF' }}
-              >
-                {mobileOpen ? (
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></svg>
-                ) : (
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="3" y1="6.5" x2="21" y2="6.5" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17.5" x2="21" y2="17.5" /></svg>
-                )}
-              </button>
+            <div className="flex items-center justify-self-start md:justify-self-center">{emblem}</div>
+            <div className="flex items-center gap-4 pl-8 lg:pl-12 xl:pl-16">
+              <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-8 xl:gap-12">
+                {pageLinks(pageNav.slice(Math.ceil(pageNav.length / 2)))}
+              </nav>
+              <div className="ml-auto">{utilities}</div>
             </div>
           </div>
-        </div>
+        ) : centred ? (
+          /* Site bar, emblem centred: the site links left, the cart right. */
+          <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
+            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-8 xl:gap-10">{siteLinks}</nav>
+            <div className="flex items-center justify-self-start md:justify-self-center">{emblem}</div>
+            <div className="flex items-center justify-end">{utilities}</div>
+          </div>
         ) : (
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link to={localizeHref("/", locale)}>
-              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
-            </Link>
+          /* Wordmark left, links and utilities right. */
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">{wordmark}</div>
+            <div className="flex items-center gap-3 md:gap-6 ml-auto">
+              <nav className="hidden md:flex items-center gap-3 md:gap-6">
+                {pageNav ? pageLinks(pageNav) : siteLinks}
+              </nav>
+              {utilities}
+            </div>
           </div>
-          <div className="flex items-center gap-3 md:gap-6 ml-auto">
-            {/* Desktop nav links — collapsed into the hamburger on mobile. */}
-            <nav className="hidden md:flex items-center gap-3 md:gap-6">
-              <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                  {t.nav.shop}
-                </Link>
-              </div>
-              <Link to={localizeHref("/blog", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                {t.nav.blog}
-              </Link>
-              <Link to={localizeHref("/quiz", locale)} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                {t.nav.quiz}
-              </Link>
-              <Link to="/merch" className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                {t.nav.merch}
-              </Link>
-            </nav>
-            <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
-            <CurrencySelector
-              locale={locale}
-              placement="down"
-              triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'}
-            />
-            {/* Mobile hamburger — toggles the menu below. */}
-            <button
-              type="button"
-              className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-              onClick={() => setMobileOpen((o) => !o)}
-              style={{ color: darkNav && !solidBackground ? '#1B4229' : '#FFFFFF' }}
-            >
-              {mobileOpen ? (
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                  <line x1="5" y1="5" x2="19" y2="19" />
-                  <line x1="19" y1="5" x2="5" y2="19" />
-                </svg>
-              ) : (
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                  <line x1="3" y1="6.5" x2="21" y2="6.5" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="17.5" x2="21" y2="17.5" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
         )}
       </div>
 
