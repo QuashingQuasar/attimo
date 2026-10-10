@@ -94,6 +94,51 @@ export const Header = ({
       }}
     >
       <div className="container mx-auto px-6">
+        {pageNav ? (
+        /* Landing-page bar: logo centred, the page anchors flanking it, cart
+           and region switcher at the far right. Phones keep the hamburger. */
+        <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
+          <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-7 pr-6 lg:pr-10">
+            {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center justify-self-start md:justify-self-center">
+            <Link to={localizeHref("/", locale)}>
+              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto max-w-none" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+            </Link>
+          </div>
+          <div className="flex items-center gap-3 md:gap-6">
+            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-7 pl-6 lg:pl-10">
+              {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-3 md:gap-6 ml-auto">
+              <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
+              <CurrencySelector locale={locale} placement="down" triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'} />
+              <button
+                type="button"
+                className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
+                onClick={() => setMobileOpen((o) => !o)}
+                style={{ color: darkNav && !solidBackground ? '#1B4229' : '#FFFFFF' }}
+              >
+                {mobileOpen ? (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></svg>
+                ) : (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="3" y1="6.5" x2="21" y2="6.5" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17.5" x2="21" y2="17.5" /></svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+        ) : (
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to={localizeHref("/", locale)}>
@@ -102,15 +147,6 @@ export const Header = ({
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             {/* Desktop nav links — collapsed into the hamburger on mobile. */}
-            {pageNav ? (
-              <nav className="hidden md:flex items-center gap-3 md:gap-6">
-                {pageNav.map((item) => (
-                  <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            ) : (
             <nav className="hidden md:flex items-center gap-3 md:gap-6">
               <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -127,7 +163,6 @@ export const Header = ({
                 {t.nav.merch}
               </Link>
             </nav>
-            )}
             <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
             <CurrencySelector
               locale={locale}
@@ -158,6 +193,7 @@ export const Header = ({
             </button>
           </div>
         </div>
+        )}
       </div>
 
       {shopOpen && (
