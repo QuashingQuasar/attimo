@@ -131,7 +131,7 @@ function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-10 md:mb-14">
+        <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             {c.eyebrow}
           </p>
@@ -179,14 +179,14 @@ function ScienceSection({ c }: { c: HubContent["science"] }) {
   return (
     <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mb-10 md:mb-14">
+        <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.05 }}>
             {c.heading}
           </h2>
-          <p className="leading-relaxed max-w-3xl" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
+          <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
             {c.intro}
           </p>
         </div>
@@ -213,7 +213,7 @@ function ScienceSection({ c }: { c: HubContent["science"] }) {
           </p>
         )}
 
-        <p className="mt-5 max-w-3xl leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
+        <p className="mt-5 leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
           {c.disclaimer}
         </p>
       </div>
