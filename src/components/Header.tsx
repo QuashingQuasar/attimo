@@ -39,6 +39,11 @@ interface HeaderProps {
   forceTransparent?: boolean;
   darkNav?: boolean;
   locale?: Locale;
+  /**
+   * Landing-page mode: anchors that structure THIS page replace the site
+   * links (Shop, Blog, Quiz, Merch). Logo, cart and region switcher stay.
+   */
+  pageNav?: { label: string; href: string }[];
 }
 export const Header = ({
   onWaitlistClick: _onWaitlistClick,
@@ -46,6 +51,7 @@ export const Header = ({
   forceTransparent: _forceTransparent = false,
   darkNav = false,
   locale = DEFAULT_LOCALE,
+  pageNav,
 }: HeaderProps) => {
   // Header is no longer sticky. Background is transparent by default so the
   // hero shows through; solid only when (a) the consuming page passes
@@ -96,6 +102,15 @@ export const Header = ({
           </div>
           <div className="flex items-center gap-3 md:gap-6 ml-auto">
             {/* Desktop nav links — collapsed into the hamburger on mobile. */}
+            {pageNav ? (
+              <nav className="hidden md:flex items-center gap-3 md:gap-6">
+                {pageNav.map((item) => (
+                  <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            ) : (
             <nav className="hidden md:flex items-center gap-3 md:gap-6">
               <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <Link to={`${localizeHref("/", locale)}#shop`} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -112,6 +127,7 @@ export const Header = ({
                 {t.nav.merch}
               </Link>
             </nav>
+            )}
             <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
             <CurrencySelector
               locale={locale}
@@ -212,7 +228,18 @@ export const Header = ({
           style={{ backgroundColor: '#1B4229' }}
         >
           <nav className="flex flex-col px-6 py-4">
-            {shopProducts.map((product) => (
+            {pageNav && pageNav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="py-3 text-white text-lg font-medium"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {item.label}
+              </a>
+            ))}
+            {!pageNav && shopProducts.map((product) => (
               <Link
                 key={product.handle}
                 to={localizeHref(`/product/${product.handle}`, locale)}
@@ -235,7 +262,7 @@ export const Header = ({
                 </span>
               </Link>
             ))}
-            {[
+            {!pageNav && [
               { label: t.nav.blog, to: localizeHref("/blog", locale) },
               { label: t.nav.quiz, to: localizeHref("/quiz", locale) },
               { label: t.nav.merch, to: "/merch" },

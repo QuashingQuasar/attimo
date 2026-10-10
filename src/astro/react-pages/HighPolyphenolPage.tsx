@@ -130,7 +130,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
 // measured values appear only as proof, clearly labelled.
 function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
+    <section id="compounds" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
       <div className="container mx-auto px-6">
         <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
@@ -178,7 +178,7 @@ function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
 // informational half of the query without turning the page into an article.
 function ScienceSection({ c }: { c: HubContent["science"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
+    <section id="science" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
         <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
@@ -267,7 +267,7 @@ function IndexSection({ c, data }: { c: HubContent["index"]; data?: HubIndexData
   const fill = (s: string) =>
     s.replace("{rank}", String(data.attimoRank ?? "—")).replace("{ranked}", String(data.rankedCount)).replace("{total}", String(data.totalCount)).replace("{verified}", data.verified);
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: GREEN }}>
+    <section id="index" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: GREEN }}>
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <p className="mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.12em", textTransform: "uppercase", fontSize: "1.02rem", fontWeight: 700 }}>
@@ -335,7 +335,18 @@ function HighPolyphenolInner({ initialPosts, locale, indexData, labNumbers }: { 
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
+      <Header
+        onWaitlistClick={() => setIsWaitlistOpen(true)}
+        locale={locale}
+        pageNav={[
+          { label: content.nav.shop, href: "#the-range" },
+          { label: content.nav.compounds, href: "#compounds" },
+          { label: content.nav.science, href: "#science" },
+          { label: content.nav.lab, href: "#lab" },
+          { label: content.nav.index, href: "#index" },
+          { label: content.nav.how, href: "#how" },
+        ]}
+      />
 
       {/* 1 — HERO */}
       <Hero hero={content.hero} />
@@ -377,18 +388,22 @@ function HighPolyphenolInner({ initialPosts, locale, indexData, labNumbers }: { 
       <ScienceSection c={content.science} />
 
       {/* 6 — LAB-TESTED PROOF: comparison table + the actual reports */}
-      <OilComparison locale={locale} />
-      <LabReceipts c={content.labReceipts} />
+      <div id="lab">
+        <OilComparison locale={locale} />
+        <LabReceipts c={content.labReceipts} />
+      </div>
 
       {/* 6b — THE POLYPHENOL INDEX: every brand that publishes, and where we sit */}
       <IndexSection c={content.index} data={indexData} />
 
       {/* 7 — HIGH-POLYPHENOL BY DESIGN (the causes) */}
+      <div id="how">
       <KleiaWay
         locale={locale}
         heading={content.kleia.heading}
         intro={content.kleia.intro}
       />
+      </div>
 
       {/* 8 — Reviews → FAQ → blog feed + newsletter → footer */}
       <Testimonials locale={locale} />
