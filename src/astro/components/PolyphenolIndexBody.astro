@@ -13,6 +13,7 @@ import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, type IndexEntry } from "@/lib
 import type { IndexContent } from "@/lib/polyphenolIndexContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
+import { certHrefFor } from "@/lib/certificatesContent";
 
 const { ranked, unranked, content: c, locale = DEFAULT_LOCALE } = Astro.props as {
   ranked: IndexEntry[];
@@ -29,6 +30,7 @@ const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
 const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 const ext = (e: IndexEntry) => (isMine(e) ? {} : { rel: "nofollow noopener", target: "_blank" });
+const reportHref = (e: IndexEntry) => (isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref);
 const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : e.method);
 const note = (e: IndexEntry) => c.entryNotes[e.id] ?? e.note;
 const fill = (s: string, vars: Record<string, string | number>) =>
@@ -206,7 +208,7 @@ const pairMax = 1473;
                   <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
                     <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{k}</dt>
                     <dd>
-                      {v !== null ? <span style={udc ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{v}</span> : <a href={e.reportHref} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...ext(e)}>{e.report.status === "viewable" ? c.index.viewable : c.index.nonePublished}</a>}
+                      {v !== null ? <span style={udc ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{v}</span> : <a href={reportHref(e)} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...ext(e)}>{e.report.status === "viewable" ? c.index.viewable : c.index.nonePublished}</a>}
                       {sub && <span style={`display:block; font-size:.85rem; color:${onCream(0.7)};`}>{sub}</span>}
                     </dd>
                   </div>
@@ -238,7 +240,7 @@ const pairMax = 1473;
                 <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; letter-spacing:-0.01em; color:${GREEN};`}>{e.brand} <span style="font-weight:300;">{e.oil}</span></h3>
                 <p class="mt-1" style={`font-family:${SG}; font-size:.9rem; color:${onCream(0.65)};`}>{[e.variety, e.origin].filter(Boolean).join(" · ")} · {c.unranked.harvest} {e.harvest}</p>
                 <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; color:${onCream(0.75)};`}>
-                  <a href={e.reportHref} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.unranked.labViewable : c.unranked.noLab}</a> · {e.price ?? c.unranked.priceNotListed}{e.availability && ` · ${e.availability}`}
+                  <a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.unranked.labViewable : c.unranked.noLab}</a> · {e.price ?? c.unranked.priceNotListed}{e.availability && ` · ${e.availability}`}
                 </p>
               </div>
               <div class="md:text-right md:min-w-[9rem]">
@@ -277,7 +279,7 @@ const pairMax = 1473;
                   <td class="p-4">{e.total === null ? "—" : num(e.total)}{e.total_secondary && <span style="opacity:.7;"> / {num(e.total_secondary.value)}</span>}</td>
                   <td class="p-4" style="white-space:nowrap;">{e.method}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
                   <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
-                  <td class="p-4"><a href={e.reportHref} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
+                  <td class="p-4"><a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
                   <td class="p-4" style="min-width:12rem;">{e.price ?? c.table.notListed}</td>
                 </tr>
               ))}
@@ -422,7 +424,7 @@ const pairMax = 1473;
         <details class="rounded-2xl overflow-hidden" style={`border:1px solid ${GREEN}; background-color:#fff;`}>
           <summary class="cursor-pointer px-6 py-5" style={`font-family:${SG}; font-weight:500; font-size:1.05rem; color:${GREEN};`}>{c.sources.summary}</summary>
           <div class="px-6 pb-6" style={`${small} color:${onCream(0.82)};`}>
-            <p class="mb-4">{fill(c.sources.introPre, { verified: INDEX_VERIFIED })} <a href="/certificates/coratina-2526-hplc-2025-11" class="underline">{c.sources.introLink}</a>{/^[.,;:]/.test(c.sources.introPost) ? "" : " "}{c.sources.introPost}</p>
+            <p class="mb-4">{fill(c.sources.introPre, { verified: INDEX_VERIFIED })} <a href={certHrefFor(c.lang, "coratina-2526-hplc-2025-11")} class="underline">{c.sources.introLink}</a>{/^[.,;:]/.test(c.sources.introPost) ? "" : " "}{c.sources.introPost}</p>
             <ul class="space-y-2">
               <li>Starec et al. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796514/">Molecules 2021;26(1):242</a></li>
               <li>Karkoula et al. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf404421p">J. Agric. Food Chem. 2014;62:600–607</a></li>

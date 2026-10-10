@@ -456,6 +456,24 @@ export const fr: Dict = {
     copyAria: "Copier le code",
   },
 
+  contactPage: {
+    title: "Contact | ATTIMO Huile d'olive vierge extra",
+    description: "Contactez ATTIMO. Questions sur notre huile d'olive vierge extra, la livraison ou la vente en gros, nous sommes là pour vous aider.",
+    heading: "Nous contacter",
+    intro: "Une question, une idée, une collaboration en tête, ou simplement envie de parler d'huile d'olive ? Écrivez-nous.",
+    thanks: "Merci !",
+    thanksBody: "Nous vous répondons très vite.",
+    name: "Nom",
+    namePlaceholder: "Votre nom",
+    email: "E-mail",
+    emailPlaceholder: "votre@email.com",
+    message: "Message",
+    messagePlaceholder: "Qu'avez-vous en tête ?",
+    send: "ENVOYER LE MESSAGE",
+    sending: "ENVOI...",
+    error: "Une erreur est survenue. Veuillez réessayer.",
+  },
+
   shippingPage: {
     title: "Où nous livrons : huile d'olive livrée en France et en Europe | ATTIMO",
     heading: "Où nous livrons",

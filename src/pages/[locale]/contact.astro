@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import ContactPageWrapper from "@astro/react-pages/ContactPageWrapper";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.slug !== "").map((locale) => ({ params: { locale: locale.slug }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const t = getDict(locale);
+const canonical = `https://attimo-oil.com/${locale.slug}/contact`;
+---
+
+<BaseLayout
+  title={t.contactPage.title}
+  description={t.contactPage.description}
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/contact"
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <ContactPageWrapper locale={locale} client:load />
+</BaseLayout>

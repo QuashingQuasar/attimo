@@ -452,6 +452,24 @@ export const da: Dict = {
     copyAria: "Kopiér kode",
   },
 
+  contactPage: {
+    title: "Kontakt | ATTIMO Ekstra jomfru olivenolie",
+    description: "Kontakt ATTIMO. Spørgsmål om vores ekstra jomfru olivenolie, fragt eller engros, vi hjælper gerne.",
+    heading: "Kontakt os",
+    intro: "Et spørgsmål, en idé, et samarbejde i tankerne, eller bare lyst til at snakke olivenolie? Vi hører gerne fra dig.",
+    thanks: "Tak!",
+    thanksBody: "Vi vender tilbage snart.",
+    name: "Navn",
+    namePlaceholder: "Dit navn",
+    email: "E-mail",
+    emailPlaceholder: "din@email.com",
+    message: "Besked",
+    messagePlaceholder: "Hvad har du på hjerte?",
+    send: "SEND BESKED",
+    sending: "SENDER...",
+    error: "Noget gik galt. Prøv igen.",
+  },
+
   shippingPage: {
     title: "Her leverer vi: olivenolie leveret i Danmark og Europa | ATTIMO",
     heading: "Her leverer vi",

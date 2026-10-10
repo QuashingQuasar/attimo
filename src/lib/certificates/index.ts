@@ -229,3 +229,63 @@ export const METHOD_NOTES: Record<CertificateData["method"]["name"], string> = {
   "Folin-Ciocalteu": "A colour reaction that returns one reducing-capacity figure; no compounds named",
   "LC-MS/MS": "Identifies each compound by mass; the research benchmark, rare on commercial reports",
 };
+
+
+// ── Localised variants ──────────────────────────────────────────────────
+// The English helpers above feed the JSON exports; the page bodies use these
+// with a CertContent record so every string comes from the locale file.
+import type { CertContent } from "../certificatesContent/en";
+
+export const formatDateFor = (iso: string | null | undefined, dateLocale: string) =>
+  iso
+    ? new Date(`${iso}T00:00:00Z`).toLocaleDateString(dateLocale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+    : null;
+
+const fillS = (s: string, vars: Record<string, string | number | null | undefined>) =>
+  Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(v === null || v === undefined ? "" : String(v)), s);
+
+/** The "expressed as" reference compound in the page's language. */
+export const expressedAsFor = (x: string | null, lang: string): string | null => {
+  if (!x) return x;
+  const m: Record<string, Record<string, string>> = {
+    "caffeic acid": { de: "Kaffeesäure", fr: "acide caféique", sv: "kaffesyra", da: "kaffesyre", nl: "koffiezuur" },
+    tyrosol: { de: "Tyrosol", fr: "tyrosol", sv: "tyrosol", da: "tyrosol", nl: "tyrosol" },
+  };
+  return m[x]?.[lang] ?? x;
+};
+
+export function summarySentenceFor(c: Certificate, t: CertContent): string {
+  const p = c.phenolics;
+  const d = (iso: string | null) => formatDateFor(iso, t.dateLocale);
+  const when = c.certificate.sample_date
+    ? fillS(t.summary.drawn, { d: d(c.certificate.sample_date) })
+    : c.certificate.sample_received_date
+      ? fillS(t.summary.received, { d: d(c.certificate.sample_received_date) })
+      : fillS(t.summary.reported, { d: d(c.certificate.report_date) });
+  const head = fillS(t.summary.head, { title: oilTitle(c), method: c.method.name, lab: labLine(c), when });
+  if (p.total === null) return `${head}.`;
+  const basis = p.total_expressed_as ? fillS(t.summary.basis, { x: expressedAsFor(p.total_expressed_as, t.lang) }) : "";
+  const u = p.total_uncertainty !== null ? ` ±${p.total_uncertainty}` : "";
+  const parts: string[] = [];
+  const o = asNumber(p.oleocanthal);
+  const a = asNumber(p.oleacein);
+  if (o !== null) parts.push(fillS(t.summary.oleocanthal, { v: o }));
+  if (a !== null) parts.push(fillS(t.summary.oleacein, { v: a }));
+  const including = parts.length ? fillS(t.summary.including, { parts: parts.join(t.summary.and) }) : "";
+  return head + fillS(t.summary.tail, { total: p.total, u, unit: p.unit, basis, including });
+}
+
+export function qualityRowsFor(c: CertificateData, t: CertContent) {
+  const q = c.quality;
+  if (!q) return [];
+  return EVOO_LIMITS.flatMap((lim) => {
+    const m = q[lim.key as QualityKey];
+    if (!m) return [];
+    const compared = lim.key === "delta_k" ? Math.abs(m.value) : m.value;
+    const label =
+      lim.key === "k268_or_k270"
+        ? fillS(t.qualityLabels.k268, { k: q.k_wavelength ?? "K268" })
+        : (t.qualityLabels as Record<string, string>)[lim.key] ?? lim.label;
+    return [{ ...lim, label, value: m.value, uncertainty: m.uncertainty, within: compared <= lim.max }];
+  });
+}

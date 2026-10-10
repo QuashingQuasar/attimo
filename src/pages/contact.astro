@@ -1,13 +1,17 @@
 ---
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ContactPageWrapper from "@astro/react-pages/ContactPageWrapper";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+const t = getDict(DEFAULT_LOCALE).contactPage;
 ---
 
 <BaseLayout
-  title="Contact | ATTIMO Specialty Extra Virgin Olive Oil"
-  description="Get in touch with ATTIMO. Questions about our extra virgin olive oil, shipping, or wholesale — we're happy to help."
+  title={t.title}
+  description={t.description}
   canonical="https://attimo-oil.com/contact"
   bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/contact"
 >
   <ContactPageWrapper client:load />
 </BaseLayout>

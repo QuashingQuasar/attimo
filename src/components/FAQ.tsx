@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
-import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict, type Dict } from "@/lib/i18n/dictionaries";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 
@@ -19,7 +19,7 @@ export interface FaqItem {
 
 type VarietyKey = "coratina" | "nocellara" | "picual";
 
-function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string): FaqItem[] {
+function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string, contactHref: string): FaqItem[] {
   const h = (handle || "") as VarietyKey | "";
   const isVariety = (k: string): k is VarietyKey =>
     k === "coratina" || k === "nocellara" || k === "picual";
@@ -171,7 +171,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
       answerElement: (
         <>
           {t.a.wholesalePre}
-          <Link to="/contact" className="underline hover:no-underline" style={{ color: "#1B4229" }}>
+          <Link to={contactHref} className="underline hover:no-underline" style={{ color: "#1B4229" }}>
             {t.a.wholesaleContactLink}
           </Link>
           {t.a.wholesaleMid}
@@ -228,7 +228,7 @@ export const FAQ = ({ handle, locale = DEFAULT_LOCALE, items, heading, headingFo
   const t = getDict(locale).faq;
   const methodsHref =
     METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
-  const faqs = items ?? getFaqs(handle, t, methodsHref);
+  const faqs = items ?? getFaqs(handle, t, methodsHref, localizeHref("/contact", locale));
 
   // Accordion panels only mount when opened, so without this the answers never
   // reach a crawler or an AI assistant — only the questions do.

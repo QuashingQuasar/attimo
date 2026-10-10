@@ -1,0 +1,89 @@
+---
+// Body of /certificates and its localised variants. Every string comes from
+// `content`; every figure from the collection.
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { certificateDate, formatDateFor, expressedAsFor, oilTitle, labLine, OIL_ORDER, OIL_NAMES, type Certificate } from "@/lib/certificates";
+import { certHrefFor, fillT, type CertContent } from "@/lib/certificatesContent";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
+import { GREEN, CREAM, ACCENT, UDC, SG, h1, eyebrow, eyebrowSm, lead, body, small, stat, cardOnCream } from "@/lib/certificates/ui";
+
+const { certs, content: t, locale = DEFAULT_LOCALE } = Astro.props as { certs: Certificate[]; content: CertContent; locale?: Locale };
+const d = (iso: string | null | undefined) => formatDateFor(iso, t.dateLocale);
+const methodsHref = METHODS_SLUGS[t.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
+
+const byOil = OIL_ORDER.map((oil) => {
+  const mine = certs.filter((c) => c.oil === oil);
+  const harvests = [...new Set(mine.map((c) => c.harvest))];
+  return { oil, name: OIL_NAMES[oil], harvests: harvests.map((h) => ({ harvest: h, certs: mine.filter((c) => c.harvest === h) })) };
+}).filter((o) => o.harvests.length);
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    <section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:124px;`}>
+      <div class="container mx-auto max-w-5xl pt-10">
+        <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{t.index.eyebrow}</p>
+        <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{t.index.h1}</h1>
+        <p style={`${lead} color:rgba(255,250,234,.88);`}>{t.index.lead}</p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-5xl">
+        {byOil.map((o) => (
+          <div class="mb-14">
+            <h2 class="mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.8rem,2.8vw,2.6rem); letter-spacing:-0.025em; color:${GREEN};`}>{o.name}</h2>
+            {o.harvests.map((h) => (
+              <div class="mb-6">
+                <p class="mb-4" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>{fillT(t.index.harvest, { h: h.harvest })}</p>
+                <div class="grid md:grid-cols-2 gap-5">
+                  {h.certs.map((c) => (
+                    <a href={certHrefFor(t.lang, c.id)} class="block p-7 transition-shadow hover:shadow-lg" style={cardOnCream}>
+                      <div class="flex items-baseline justify-between gap-4 mb-4">
+                        <p style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; color:${GREEN};`}>{oilTitle(c)}</p>
+                        <span class="px-3 py-1 rounded-full" style={`${eyebrowSm} font-size:.72rem; background-color:${GREEN}; color:${CREAM};`}>{c.method.name}</span>
+                      </div>
+                      <div class="grid grid-cols-2 gap-4 mb-5">
+                        <div>
+                          <p style={`${stat} font-size:2.4rem; color:${GREEN};`}>{c.phenolics.total ?? "—"}<span style="font-size:.9rem; letter-spacing:0;"> mg/kg</span></p>
+                          <p class="mt-1" style={`${eyebrowSm} font-size:.72rem; color:rgba(27,66,41,.6);`}>{t.index.totalPhenols}{c.phenolics.total_expressed_as ? ` · ${t.index.asPrefix} ${expressedAsFor(c.phenolics.total_expressed_as, t.lang)}` : ""}</p>
+                        </div>
+                        {c.oleocanthal_plus_oleacein !== null ? (
+                          <div>
+                            <p style={`${stat} font-size:2.4rem; color:${GREEN};`}>{c.oleocanthal_plus_oleacein}<span style="font-size:.9rem; letter-spacing:0;"> mg/kg</span></p>
+                            <p class="mt-1" style={`${eyebrowSm} font-size:.72rem; color:rgba(27,66,41,.6);`}>{t.index.sum}</p>
+                          </div>
+                        ) : (
+                          <div>
+                            <p style={`font-family:${SG}; font-size:.95rem; line-height:1.5; color:rgba(27,66,41,.65);`}>{t.index.noCompounds}</p>
+                          </div>
+                        )}
+                      </div>
+                      <p style={`${small} color:rgba(27,66,41,.7);`}>
+                        {labLine(c)} · {c.certificate.sample_date ? fillT(t.index.sampled, { d: d(c.certificate.sample_date) }) : fillT(t.index.received, { d: d(certificateDate(c)) })}
+                      </p>
+                      <p class="mt-3 underline" style={`${small} color:${GREEN};`}>{t.index.read}</p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+
+        <div class="rounded-2xl p-8 md:p-10" style="background-color:rgba(27,66,41,.05);">
+          <p class="mb-3" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>{t.index.howEyebrow}</p>
+          <p class="mb-4" style={`${body} color:rgba(27,66,41,.82);`}>{t.index.howBody}</p>
+          <a href={methodsHref} class="underline" style={`font-family:${SG}; font-size:1.05rem; color:${GREEN};`}>{t.index.methodsLink}</a>
+          <p class="mt-6" style={`${small} font-size:.85rem; color:rgba(27,66,41,.6);`}>{t.index.machine} <a class="underline" href="/certificates/index.json">index.json</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</div>

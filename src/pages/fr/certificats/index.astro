@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import CertificatesIndexBody from "@astro/components/certificates/CertificatesIndexBody.astro";
+import { buildCertificatesIndexPage } from "@/lib/certificatesPage";
+import { certIndexHreflangs } from "@/lib/certificatesContent";
+import { CREAM } from "@/lib/certificates/ui";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const locale = SLUG_TO_LOCALE["fr"];
+const t = getDict(locale);
+const { t: content, certs, canonical, jsonLd } = await buildCertificatesIndexPage("fr");
+---
+
+<BaseLayout
+  title={content.index.metaTitle}
+  description={content.index.metaDescription}
+  canonical={canonical}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  hreflangs={certIndexHreflangs()}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <CertificatesIndexBody certs={certs} content={content} locale={locale} />
+</BaseLayout>

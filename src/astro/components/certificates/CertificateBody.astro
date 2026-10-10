@@ -1,0 +1,273 @@
+---
+// Body of /certificates/{id} and its localised variants.
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import CertificateCaveats from "@astro/components/certificates/CertificateCaveats.astro";
+import SeriesChart from "@astro/components/certificates/SeriesChart.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { certificateJsonPath, certificateDate, formatDateFor, expressedAsFor, formatValue, labShort, oilTitle, RENDER_PRODUCER, type Certificate } from "@/lib/certificates";
+import { LIMIT_SOURCES } from "@/lib/certificates/evooLimits";
+import { certIndexHrefFor, fillT, type CertContent } from "@/lib/certificatesContent";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
+import { GREEN, CREAM, ACCENT, LIME, UDC, SG, h1, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
+
+const { cert: c, all, content: t, sentence, quality, locale = DEFAULT_LOCALE } = Astro.props as {
+  cert: Certificate; all: Certificate[]; content: CertContent; sentence: string;
+  quality: ReturnType<typeof import("@/lib/certificates").qualityRowsFor>; locale?: Locale;
+};
+const d = (iso: string | null | undefined) => formatDateFor(iso, t.dateLocale);
+const methodsHref = METHODS_SLUGS[t.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
+const title = oilTitle(c);
+const p = c.phenolics;
+const numeric = (v: number | string | null) => (typeof v === "number" ? v : null);
+
+const labBadge = c.certificate.iso_17025
+  ? t.detail.labBadge.iso
+  : c.certificate.recognitions.some((r) => /International Olive Council|IOC/.test(r))
+    ? t.detail.labBadge.ioc
+    : t.detail.labBadge.none;
+const tiles = [
+  p.total !== null && { value: String(p.total), unit: p.unit, label: `${t.detail.tiles.total}${p.total_uncertainty !== null ? ` · ±${p.total_uncertainty}` : ""}` },
+  c.oleocanthal_plus_oleacein !== null && { value: String(c.oleocanthal_plus_oleacein), unit: p.unit, label: t.detail.tiles.sum },
+  { value: c.method.name, unit: "", label: `${t.detail.tiles.method}${c.method.reference ? ` · ${c.method.reference}` : ""}` },
+  { value: labBadge, unit: "", label: `${t.detail.tiles.lab} · ${labShort(c)}` },
+].filter(Boolean) as { value: string; unit: string; label: string }[];
+
+interface Row { key: string; name: string; sub: string | null; value: number | string | null; loq: number | null; note: string }
+const primaryRows: Row[] = [
+  p.total !== null && { key: "total", name: t.detail.tiles.total, sub: p.total_expressed_as ? `${t.detail.whatsIn.asPrefix} ${expressedAsFor(p.total_expressed_as, t.lang)}` : null, value: p.total, loq: p.total_loq, note: t.compoundNotes.total },
+  ...(["hydroxytyrosol", "tyrosol", "oleocanthal", "oleacein"] as const)
+    .filter((k) => c.method.applies_to.includes(k) && p[k] !== null)
+    .map((k) => ({ key: k, name: k[0].toUpperCase() + k.slice(1), sub: k === "hydroxytyrosol" ? "3,4-DHPEA" : k === "tyrosol" ? "p-HPEA" : null, value: p[k], loq: null, note: t.compoundNotes[k] })),
+  ...p.other.map((o) => ({ key: o.abbreviation ?? o.name, name: o.name, sub: o.abbreviation, value: o.value, loq: o.loq, note: t.compoundNotes[o.abbreviation ?? o.name] ?? "" })),
+].filter(Boolean) as Row[];
+const secondaryRows: Row[] = c.secondary_method
+  ? (["oleocanthal", "oleacein"] as const)
+      .filter((k) => c.secondary_method!.applies_to.includes(k) && p[k] !== null)
+      .map((k) => ({ key: k, name: k[0].toUpperCase() + k.slice(1), sub: null, value: p[k], loq: null, note: t.compoundNotes[k] }))
+  : [];
+const scale = p.total ?? Math.max(...[...primaryRows, ...secondaryRows].map((r) => numeric(r.value) ?? 0), 1);
+const pct = (v: number | string | null) => { const n = numeric(v); return n === null ? 0 : Math.max((n / scale) * 100, 0.6); };
+const groups = [
+  { title: `${c.method.name}${c.method.reference ? ` · ${c.method.reference}` : ""}`, rows: primaryRows },
+  ...(c.secondary_method && secondaryRows.length ? [{ title: `${c.secondary_method.name}${c.secondary_method.technique ? ` · ${c.secondary_method.technique}` : ""}`, rows: secondaryRows }] : []),
+];
+const timeline = [
+  [t.detail.timeline.drawn, c.certificate.sample_date],
+  [t.detail.timeline.received, c.certificate.sample_received_date],
+  [t.detail.timeline.began, c.certificate.tests_started_date],
+  [t.detail.timeline.completed, c.certificate.tests_completed_date],
+  [t.detail.timeline.issued, c.certificate.report_date],
+].filter((x): x is [string, string] => Boolean(x[1]));
+const allWithin = quality.length > 0 && quality.every((q) => q.within);
+const seriesPoints = c.series
+  .map((id) => all.find((x) => x.id === id)!)
+  .map((x) => ({ id: x.id, date: certificateDate(x), total: x.phenolics.total, sum: x.oleocanthal_plus_oleacein, current: x.id === c.id }));
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    <section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:124px;`}>
+      <div class="container mx-auto max-w-5xl pt-10">
+        <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{fillT(t.detail.eyebrow, { h: c.harvest })}</p>
+        <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{fillT(t.detail.h1, { name: title.replace(` ${c.harvest}`, ""), h: c.harvest })}</h1>
+        <p class="mb-10" style={`${lead} color:rgba(255,250,234,.88);`}>{sentence}</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-10 cert-tiles" style={`--tiles:${tiles.length};`}>
+          {tiles.map((tile, i) => (
+            <div class="rounded-2xl p-6" style={i === 0 ? `background-color:${CREAM};` : "background-color:rgba(255,250,234,.09); border:1px solid rgba(255,250,234,.22);"}>
+              <p style={`${stat} color:${i === 0 ? GREEN : CREAM}; font-size:${tile.unit ? "clamp(2.4rem,4.5vw,3.4rem)" : "clamp(1.5rem,2.4vw,2rem)"};`}>
+                {tile.value}{tile.unit && <span style="font-size:1rem; letter-spacing:0;"> {tile.unit}</span>}
+              </p>
+              <p class="mt-2" style={`${eyebrowSm} color:${i === 0 ? "rgba(27,66,41,.65)" : "rgba(255,250,234,.65)"}; font-size:.8rem;`}>{tile.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href={c.certificate.pdf} target="_blank" rel="noopener" style={`${btn} background-color:transparent; color:${CREAM}; border:1px solid rgba(255,250,234,.5);`}>{t.detail.pdf}</a>
+          <a href={locale.slug ? `/${locale.slug}${c.product_url}` : c.product_url} style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{t.detail.buy}</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-5xl">
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.whatsIn.eyebrow}</p>
+        <h2 class="mb-6" style={`${h2} color:${GREEN};`}>
+          {primaryRows.length > 1 || secondaryRows.length ? fillT(t.detail.whatsIn.h2Many, { unit: p.unit }) : t.detail.whatsIn.h2One}
+        </h2>
+        <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>
+          {secondaryRows.length ? t.detail.whatsIn.leadTwo : p.other.length ? t.detail.whatsIn.leadBars : t.detail.whatsIn.leadOne}
+        </p>
+
+        {groups.map((g) => (
+          <div class="mb-8 rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+            <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+              <caption class="text-left p-4" style={`${eyebrowSm} color:${CREAM}; background-color:${GREEN}; caption-side:top;`}>{g.title}</caption>
+              <thead class="sr-only"><tr><th>{t.detail.whatsIn.colCompound}</th><th>{t.detail.whatsIn.colResult}</th></tr></thead>
+              <tbody>
+                {g.rows.map((r, i) => (
+                  <tr style={i < g.rows.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+                    <td class="p-4 md:p-5 align-top" style="width:44%;">
+                      <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>
+                        {["oleocanthal", "oleacein", "hydroxytyrosol", "tyrosol"].includes(r.key)
+                          ? <a href={`${methodsHref}#compounds`} class="underline decoration-1 underline-offset-4">{r.name}</a>
+                          : r.name}
+                        {r.sub && <span style={`font-family:${SG}; font-weight:400; color:rgba(27,66,41,.6);`}> · {r.sub}</span>}
+                      </p>
+                      {r.note && <p class="mt-1" style={`${small} font-size:.9rem; color:rgba(27,66,41,.65);`}>{r.note}</p>}
+                    </td>
+                    <td class="p-4 md:p-5 align-middle">
+                      <div class="flex items-center gap-4">
+                        <svg class="flex-1 h-8" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                          <rect x="0" y="0" width={pct(r.value)} height="10" rx="1.2" fill={r.key === "total" ? GREEN : r.key === "oleocanthal" || r.key === "oleacein" ? "#5C6E45" : "#8A9B6F"} />
+                        </svg>
+                        <span class="whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; font-size:1.15rem; color:${GREEN}; min-width:5.5rem; text-align:right;`}>
+                          {formatValue(r.value)}{r.key === "total" && p.total_uncertainty !== null && <span style={`font-family:${SG}; font-weight:400; font-size:.9rem; color:rgba(27,66,41,.6);`}> ±{p.total_uncertainty}</span>}
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+        {c.notes && t.lang === "en" && <p style={`${small} color:rgba(27,66,41,.65);`}>{c.notes}</p>}
+      </div>
+    </section>
+
+    <section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+      <div class="container mx-auto max-w-5xl">
+        <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.tested.eyebrow}</p>
+        <h2 class="mb-10" style={`${h2} color:${GREEN};`}>{fillT(t.detail.tested.h2, { method: c.method.name, lab: labShort(c), place: c.certificate.lab_city ?? c.certificate.lab_country })}</h2>
+
+        <div class="grid md:grid-cols-2 gap-5 mb-10">
+          <div class="p-7" style={cardOnCream}>
+            <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>{t.detail.tested.method}</p>
+            <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; color:${GREEN};`}>{c.method.name}</h3>
+            {c.method.reference && <p class="mb-3" style={`${small} color:rgba(27,66,41,.7);`}>{c.method.reference}</p>}
+            <p class="mb-4" style={`${body} font-size:1rem; color:rgba(27,66,41,.82);`}>{t.methodNotes[c.method.name]}.</p>
+            {c.secondary_method && (
+              <p class="mb-4" style={`${body} font-size:1rem; color:rgba(27,66,41,.82);`}>
+                {fillT(t.detail.tested.secondary, { name: c.secondary_method.name.toLowerCase(), tech: c.secondary_method.technique ? ` (${c.secondary_method.technique})` : "" })}
+              </p>
+            )}
+            <a href={methodsHref} class="underline" style={`${small} color:${GREEN};`}>{t.detail.tested.methodsLink}</a>
+          </div>
+
+          <div class="p-7" style={cardOnCream}>
+            <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>{t.detail.tested.laboratory}</p>
+            <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; color:${GREEN};`}>{c.certificate.lab_name}</h3>
+            <p class="mb-4" style={`${small} color:rgba(27,66,41,.7);`}>{[c.certificate.lab_city, c.certificate.lab_country].filter(Boolean).join(", ")}</p>
+            <dl style={`${small} color:rgba(27,66,41,.85);`} class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
+              <dt style={`font-family:${UDC}; font-weight:700;`}>{t.detail.tested.iso}</dt>
+              <dd>{c.certificate.iso_17025 === null ? t.detail.tested.isoNotStated : c.certificate.iso_17025 ? t.detail.tested.isoYes : t.detail.tested.isoNo}</dd>
+              {c.certificate.accreditation_body && (<><dt style={`font-family:${UDC}; font-weight:700;`}>{t.detail.tested.accreditation}</dt><dd>{c.certificate.accreditation_body}{c.certificate.accreditation_number ? ` · ${c.certificate.accreditation_number}` : ""}</dd></>)}
+              <dt style={`font-family:${UDC}; font-weight:700;`}>{t.detail.tested.report}</dt>
+              <dd>{c.certificate.report_number}{c.certificate.report_type ? ` · ${c.certificate.report_type}` : ""}</dd>
+              {c.certificate.signed_by && (<><dt style={`font-family:${UDC}; font-weight:700;`}>{t.detail.tested.signed}</dt><dd>{c.certificate.signed_by}</dd></>)}
+              {RENDER_PRODUCER && c.commissioned_by && (<><dt style={`font-family:${UDC}; font-weight:700;`}>{t.detail.tested.commissioned}</dt><dd>{c.commissioned_by}</dd></>)}
+            </dl>
+            {c.certificate.recognitions.length > 0 && (
+              <ul class="mt-4 pl-4 list-disc" style={`${small} font-size:.9rem; color:rgba(27,66,41,.7);`}>
+                {c.certificate.recognitions.map((r) => <li>{r}</li>)}
+              </ul>
+            )}
+          </div>
+        </div>
+
+        <ol class="grid gap-4" style={`grid-template-columns:repeat(${timeline.length}, minmax(0,1fr));`}>
+          {timeline.map(([label, date], i) => (
+            <li class="relative pt-5">
+              <span class="absolute left-0 top-0 h-[2px] w-full" style={`background-color:${i === 0 ? GREEN : "rgba(27,66,41,.25)"};`}></span>
+              <span class="absolute left-0 top-[-5px] w-3 h-3 rounded-full" style={`background-color:${GREEN};`}></span>
+              <p style={`${eyebrowSm} font-size:.75rem; color:rgba(27,66,41,.6);`}>{label}</p>
+              <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{d(date)}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    {quality.length > 0 && (
+      <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+        <div class="container mx-auto max-w-5xl">
+          <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.quality.eyebrow}</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{allWithin ? fillT(t.detail.quality.h2Within, { n: quality.length }) : t.detail.quality.h2Printed}</h2>
+          <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{t.detail.quality.lead}</p>
+          <div class="rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+            <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+              <thead>
+                <tr style={`border-bottom:2px dashed ${GREEN};`}>
+                  {t.detail.quality.cols.map((th) => (
+                    <th class="text-left p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; font-size:.9rem; letter-spacing:.06em; text-transform:uppercase; color:${GREEN};`}>{th}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {quality.map((q, i) => (
+                  <tr style={i < quality.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+                    <td class="p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{q.label}{q.unit && <span style={`font-family:${SG}; font-weight:400; color:rgba(27,66,41,.6);`}> · {q.unit}</span>}</td>
+                    <td class="p-4 md:p-5" style={`color:${GREEN};`}>
+                      <span class="inline-block px-3 py-1 rounded-full" style={`background-color:${q.within ? LIME : "#F6D2D0"}; font-weight:600;`}>{q.value.toFixed(q.key === "k268_or_k270" || q.key === "delta_k" ? 3 : q.decimals)}</span>
+                      {q.uncertainty !== null && <span style="color:rgba(27,66,41,.6);"> ±{q.uncertainty}</span>}
+                    </td>
+                    <td class="p-4 md:p-5" style="color:rgba(27,66,41,.8);">≤ {q.max.toFixed(q.decimals)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-5" style={`${small} font-size:.9rem; color:rgba(27,66,41,.62);`}>
+            {t.detail.quality.limitsPre} <a class="underline" href={LIMIT_SOURCES.eu.url} target="_blank" rel="noopener nofollow">{LIMIT_SOURCES.eu.short}, {t.detail.quality.annex}</a> {t.detail.quality.and} <a class="underline" href={LIMIT_SOURCES.ioc.url} target="_blank" rel="noopener nofollow">{LIMIT_SOURCES.ioc.short}, {t.detail.quality.section}</a>{fillT(t.detail.quality.limitsPost, { d: d(LIMIT_SOURCES.eu.verified) })}
+          </p>
+        </div>
+      </section>
+    )}
+
+    {seriesPoints.length > 1 && <SeriesChart points={seriesPoints} unit={p.unit} content={t} />}
+
+    <CertificateCaveats methodName={c.method.name} content={t} />
+
+    {c.efsa_claim_eligible === true && (
+      <section class="py-16 px-6" style={`background-color:${LIME};`}>
+        <div class="container mx-auto max-w-4xl">
+          <p class="mb-4" style={`${eyebrow} color:rgba(27,66,41,.6);`}>{t.detail.efsa.eyebrow}</p>
+          <h2 class="mb-4" style={`${h2} color:${GREEN};`}>{t.detail.efsa.h2}</h2>
+          <p style={`${body} color:rgba(27,66,41,.85);`}>{fillT(t.detail.efsa.body, { v: p.hydroxytyrosol_and_derivatives })}</p>
+        </div>
+      </section>
+    )}
+
+    <section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-5xl grid md:grid-cols-[260px_1fr] gap-10 items-start">
+        <a href={c.certificate.pdf} target="_blank" rel="noopener" class="block rounded-xl overflow-hidden" style="border:1px solid rgba(27,66,41,.2); box-shadow:0 12px 32px rgba(16,34,27,.12);">
+          <img src={c.certificate.thumbnail} alt={fillT(t.detail.original.thumbAlt, { lab: c.certificate.lab_name, no: c.certificate.report_number })} width="640" height="905" loading="lazy" class="w-full h-auto" />
+        </a>
+        <div>
+          <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.original.eyebrow}</p>
+          <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{t.detail.original.h2}</h2>
+          <p class="mb-6" style={`${body} color:rgba(27,66,41,.8);`}>{t.detail.original.body}</p>
+          <a href={c.certificate.pdf} target="_blank" rel="noopener" style={`${btn} background-color:${GREEN}; color:${CREAM};`}>{t.detail.original.open}</a>
+          <p class="mt-8" style={`${small} font-size:.85rem; color:rgba(27,66,41,.6);`}>
+            SHA-256 <span class="break-all" style="font-variant-numeric:tabular-nums;">{c.pdf_sha256}</span><br />
+            {t.detail.original.hashNote}
+            {" "}{t.detail.original.machine} <a class="underline" href={certificateJsonPath(c.id)}>{c.id}.json</a> · <a class="underline" href={certIndexHrefFor(t.lang)}>{t.detail.original.all}</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</div>
+
+<style>
+  @media (min-width: 1024px) {
+    .cert-tiles { grid-template-columns: repeat(var(--tiles), minmax(0, 1fr)); }
+  }
+</style>

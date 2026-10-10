@@ -63,10 +63,10 @@ const learn = [
 ];
 const company = [
   { label: t.footer.shipping, href: localizeHref("/shipping", locale) },
-  { label: t.footer.contact, href: "/contact" },
+  { label: t.footer.contact, href: localizeHref("/contact", locale) },
   { label: t.footer.manageOrders, href: "https://shop.attimo-oil.com/account" },
-  { label: t.footer.privacy, href: "/privacy" },
-  { label: t.footer.terms, href: "/terms" },
+  { label: t.footer.privacy, href: localizeHref("/privacy", locale) },
+  { label: t.footer.terms, href: localizeHref("/terms", locale) },
 ];
 const columns = [
   { heading: t.footer.shop, links: shop },
