@@ -244,6 +244,16 @@ export const formatDateFor = (iso: string | null | undefined, dateLocale: string
 const fillS = (s: string, vars: Record<string, string | number | null | undefined>) =>
   Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(v === null || v === undefined ? "" : String(v)), s);
 
+/** The "expressed as" reference compound in the page's language. */
+export const expressedAsFor = (x: string | null, lang: string): string | null => {
+  if (!x) return x;
+  const m: Record<string, Record<string, string>> = {
+    "caffeic acid": { de: "Kaffeesäure", fr: "acide caféique", sv: "kaffesyra", da: "kaffesyre", nl: "koffiezuur" },
+    tyrosol: { de: "Tyrosol", fr: "tyrosol", sv: "tyrosol", da: "tyrosol", nl: "tyrosol" },
+  };
+  return m[x]?.[lang] ?? x;
+};
+
 export function summarySentenceFor(c: Certificate, t: CertContent): string {
   const p = c.phenolics;
   const d = (iso: string | null) => formatDateFor(iso, t.dateLocale);
@@ -254,7 +264,7 @@ export function summarySentenceFor(c: Certificate, t: CertContent): string {
       : fillS(t.summary.reported, { d: d(c.certificate.report_date) });
   const head = fillS(t.summary.head, { title: oilTitle(c), method: c.method.name, lab: labLine(c), when });
   if (p.total === null) return `${head}.`;
-  const basis = p.total_expressed_as ? fillS(t.summary.basis, { x: p.total_expressed_as }) : "";
+  const basis = p.total_expressed_as ? fillS(t.summary.basis, { x: expressedAsFor(p.total_expressed_as, t.lang) }) : "";
   const u = p.total_uncertainty !== null ? ` ±${p.total_uncertainty}` : "";
   const parts: string[] = [];
   const o = asNumber(p.oleocanthal);

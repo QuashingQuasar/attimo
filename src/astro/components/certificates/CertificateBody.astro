@@ -5,7 +5,7 @@ import Footer from "@astro/components/Footer.astro";
 import CertificateCaveats from "@astro/components/certificates/CertificateCaveats.astro";
 import SeriesChart from "@astro/components/certificates/SeriesChart.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
-import { certificateJsonPath, certificateDate, formatDateFor, formatValue, labShort, oilTitle, RENDER_PRODUCER, type Certificate } from "@/lib/certificates";
+import { certificateJsonPath, certificateDate, formatDateFor, expressedAsFor, formatValue, labShort, oilTitle, RENDER_PRODUCER, type Certificate } from "@/lib/certificates";
 import { LIMIT_SOURCES } from "@/lib/certificates/evooLimits";
 import { certIndexHrefFor, fillT, type CertContent } from "@/lib/certificatesContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -35,7 +35,7 @@ const tiles = [
 
 interface Row { key: string; name: string; sub: string | null; value: number | string | null; loq: number | null; note: string }
 const primaryRows: Row[] = [
-  p.total !== null && { key: "total", name: t.detail.tiles.total, sub: p.total_expressed_as ? `${t.detail.whatsIn.asPrefix} ${p.total_expressed_as}` : null, value: p.total, loq: p.total_loq, note: t.compoundNotes.total },
+  p.total !== null && { key: "total", name: t.detail.tiles.total, sub: p.total_expressed_as ? `${t.detail.whatsIn.asPrefix} ${expressedAsFor(p.total_expressed_as, t.lang)}` : null, value: p.total, loq: p.total_loq, note: t.compoundNotes.total },
   ...(["hydroxytyrosol", "tyrosol", "oleocanthal", "oleacein"] as const)
     .filter((k) => c.method.applies_to.includes(k) && p[k] !== null)
     .map((k) => ({ key: k, name: k[0].toUpperCase() + k.slice(1), sub: k === "hydroxytyrosol" ? "3,4-DHPEA" : k === "tyrosol" ? "p-HPEA" : null, value: p[k], loq: null, note: t.compoundNotes[k] })),

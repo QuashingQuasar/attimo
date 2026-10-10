@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import LegalPage from "@astro/react-pages/LegalPage";
+import { TERMS } from "@/lib/legalContent";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+
+export function getStaticPaths() {
+  return LOCALES.filter((l) => l.slug !== "").map((locale) => ({ params: { locale: locale.slug }, props: { locale } }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+const doc = TERMS[locale.lang] ?? TERMS.en;
+---
+
+<BaseLayout
+  title={doc.metaTitle}
+  description={doc.metaDescription}
+  canonical={`https://attimo-oil.com/${locale.slug}/terms`}
+  bodyStyle="background-color: #FFFAEA;"
+  hreflangPath="/terms"
+  htmlLang={locale.lang}
+  hideAnnounceBar
+>
+  <LegalPage doc={doc} locale={locale} client:load />
+</BaseLayout>

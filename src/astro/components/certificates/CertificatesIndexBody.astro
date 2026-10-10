@@ -4,7 +4,7 @@
 import { Header } from "@/components/Header";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
-import { certificateDate, formatDateFor, oilTitle, labLine, OIL_ORDER, OIL_NAMES, type Certificate } from "@/lib/certificates";
+import { certificateDate, formatDateFor, expressedAsFor, oilTitle, labLine, OIL_ORDER, OIL_NAMES, type Certificate } from "@/lib/certificates";
 import { certHrefFor, fillT, type CertContent } from "@/lib/certificatesContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { GREEN, CREAM, ACCENT, UDC, SG, h1, eyebrow, eyebrowSm, lead, body, small, stat, cardOnCream } from "@/lib/certificates/ui";
@@ -50,7 +50,7 @@ const byOil = OIL_ORDER.map((oil) => {
                       <div class="grid grid-cols-2 gap-4 mb-5">
                         <div>
                           <p style={`${stat} font-size:2.4rem; color:${GREEN};`}>{c.phenolics.total ?? "—"}<span style="font-size:.9rem; letter-spacing:0;"> mg/kg</span></p>
-                          <p class="mt-1" style={`${eyebrowSm} font-size:.72rem; color:rgba(27,66,41,.6);`}>{t.index.totalPhenols}{c.phenolics.total_expressed_as ? ` · ${t.index.asPrefix} ${c.phenolics.total_expressed_as}` : ""}</p>
+                          <p class="mt-1" style={`${eyebrowSm} font-size:.72rem; color:rgba(27,66,41,.6);`}>{t.index.totalPhenols}{c.phenolics.total_expressed_as ? ` · ${t.index.asPrefix} ${expressedAsFor(c.phenolics.total_expressed_as, t.lang)}` : ""}</p>
                         </div>
                         {c.oleocanthal_plus_oleacein !== null ? (
                           <div>
