@@ -3,7 +3,8 @@
 // certificates of one oil and harvest. Inline SVG, no client JS. The page
 // renders this only when the series holds more than one certificate.
 import { GREEN, SG, UDC, h2, eyebrow, lead } from "@/lib/certificates/ui";
-import { certificatePath, formatDate } from "@/lib/certificates";
+import { formatDateFor } from "@/lib/certificates";
+import { certHrefFor, fillT, type CertContent } from "@/lib/certificatesContent";
 
 interface Point {
   id: string;
@@ -12,7 +13,9 @@ interface Point {
   sum: number | null;
   current: boolean;
 }
-const { points, unit } = Astro.props as { points: Point[]; unit: string };
+const { points, unit, content: t } = Astro.props as { points: Point[]; unit: string; content: CertContent };
+const formatDate = (iso: string) => formatDateFor(iso, t.dateLocale);
+const certificatePath = (id: string) => certHrefFor(t.lang, id);
 
 const W = 720;
 const H = 300;
@@ -32,12 +35,12 @@ const hasSum = points.some((p) => p.sum !== null);
 
 <section class="py-20 md:py-24 px-6" style="background-color:#FFFAEA;">
   <div class="container mx-auto max-w-5xl">
-    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>Over time</p>
-    <h2 class="mb-6" style={`${h2} color:${GREEN};`}>The same oil, retested as the season goes on</h2>
-    <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>Polyphenols fade after bottling. This is our own measurement of it.</p>
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.series.eyebrow}</p>
+    <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{t.detail.series.h2}</h2>
+    <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{t.detail.series.lead}</p>
 
     <figure>
-      <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" role="img" aria-label={`Total phenols across ${points.length} certificates`}>
+      <svg viewBox={`0 0 ${W} ${H}`} class="w-full h-auto" role="img" aria-label={fillT(t.detail.series.aria, { n: points.length })}>
         {ticks.map((t) => (
           <g>
             <line x1={PAD.l} x2={W - PAD.r} y1={y(t)} y2={y(t)} stroke="rgba(27,66,41,.15)" stroke-dasharray="4 4" />
@@ -55,13 +58,13 @@ const hasSum = points.some((p) => p.sum !== null);
         ))}
       </svg>
       <figcaption class="mt-4" style={`font-family:${SG}; font-size:.95rem; line-height:1.7; color:rgba(27,66,41,.65);`}>
-        {points.map((p) => `${formatDate(p.date)}: ${p.total ?? "—"} ${unit} total${p.sum !== null ? `, ${p.sum} oleocanthal + oleacein` : ""}`).join(" · ")}
+        {points.map((p) => `${formatDate(p.date)}: ${p.total ?? "—"} ${unit} ${t.detail.series.total}${p.sum !== null ? `, ${p.sum} ${t.detail.series.sum}` : ""}`).join(" · ")}
       </figcaption>
     </figure>
     <div class="mt-4 flex gap-6" style={`font-family:${SG}; font-size:.9rem; color:rgba(27,66,41,.7);`}>
-      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:${GREEN};`}></span>Total phenols</span>
-      {hasSum && <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style="background-color:#8A9B6F;"></span>Oleocanthal + oleacein</span>}
-      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:#CDDB2D; border:2px solid ${GREEN}; box-sizing:border-box;`}></span>This certificate</span>
+      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:${GREEN};`}></span>{t.detail.series.legendTotal}</span>
+      {hasSum && <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style="background-color:#8A9B6F;"></span>{t.detail.series.legendSum}</span>}
+      <span><span class="inline-block w-3 h-3 rounded-full align-middle mr-2" style={`background-color:#CDDB2D; border:2px solid ${GREEN}; box-sizing:border-box;`}></span>{t.detail.series.legendThis}</span>
     </div>
   </div>
 </section>

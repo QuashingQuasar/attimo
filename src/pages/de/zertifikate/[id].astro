@@ -1,0 +1,34 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import CertificateBody from "@astro/components/certificates/CertificateBody.astro";
+import { getCertificates, type Certificate } from "@/lib/certificates";
+import { buildCertificatePage } from "@/lib/certificatesPage";
+import { certHreflangs } from "@/lib/certificatesContent";
+import { CREAM } from "@/lib/certificates/ui";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+export async function getStaticPaths() {
+  const certs = await getCertificates();
+  return certs.map((c) => ({ params: { id: c.id }, props: { cert: c } }));
+}
+
+const { cert } = Astro.props as { cert: Certificate };
+const locale = SLUG_TO_LOCALE["de"];
+const t = getDict(locale);
+const { t: content, all, canonical, sentence, quality, jsonLd, metaTitle } = await buildCertificatePage(cert, "de");
+---
+
+<BaseLayout
+  title={metaTitle}
+  description={sentence}
+  canonical={canonical}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  hreflangs={certHreflangs(cert.id)}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <CertificateBody cert={cert} all={all} content={content} sentence={sentence} quality={quality} locale={locale} />
+</BaseLayout>
