@@ -47,6 +47,8 @@ export interface EHContent {
   healthTieIn: { heading: string; body: string; cta: string };
   proof: { heading: string; intro: string; reportSuffix: string };
   faq: { heading: string; items: { question: string; answer: string }[] };
+  /** In-page anchors for the landing-page header, in page order. */
+  nav: { shop: string; meaning: string; taste: string; harvest: string; evidence: string; freshness: string };
   blogHeading: string;
 }
 
@@ -167,6 +169,7 @@ const en: EHContent = {
     heading: "Early harvest olive oil FAQ",
     items: EARLY_HARVEST_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
   },
+  nav: { shop: "Shop", meaning: "What it means", taste: "The taste", harvest: "How we harvest", evidence: "The evidence", freshness: "Freshness" },
   blogHeading: "Read more early harvest olive oil",
 };
 
@@ -291,6 +294,7 @@ const de: EHContent = {
       { question: "Ist frühe Ernte dasselbe wie olio nuovo?", answer: "Sie überschneiden sich. Olio nuovo („neues Öl“) ist das gerade gepresste, oft unfiltrierte Öl, das in den Wochen direkt nach einer frühen Ernte genossen wird — intensiv grün und pfeffrig. Frühe-Ernte-Öl ist die breitere Kategorie; olio nuovo ist ihr frischester, jüngster Ausdruck." },
     ],
   },
+  nav: { shop: "Shop", meaning: "Was es bedeutet", taste: "Der Geschmack", harvest: "Wie wir ernten", evidence: "Die Belege", freshness: "Frische" },
   blogHeading: "Mehr über Frühe-Ernte-Olivenöl lesen",
 };
 
@@ -415,6 +419,7 @@ const fr: EHContent = {
       { question: "La récolte précoce, est-ce la même chose que l'olio nuovo ?", answer: "Les deux se recoupent. L'olio nuovo (« huile nouvelle ») est l'huile tout juste pressée, souvent non filtrée, que l'on savoure dans les semaines qui suivent une récolte précoce — intensément verte et poivrée. L'huile de récolte précoce est la catégorie plus large ; l'olio nuovo en est l'expression la plus fraîche et la plus jeune." },
     ],
   },
+  nav: { shop: "Boutique", meaning: "Ce que ça veut dire", taste: "Le goût", harvest: "Notre récolte", evidence: "Les preuves", freshness: "Fraîcheur" },
   blogHeading: "En savoir plus sur l'huile d'olive de récolte précoce",
 };
 
@@ -539,6 +544,7 @@ const sv: EHContent = {
       { question: "Är tidig skörd samma sak som olio nuovo?", answer: "De överlappar. Olio nuovo ('ny olja') är den nypressade, ofta ofiltrerade olja som njuts under veckorna direkt efter en tidig skörd — intensivt grön och pepprig. Olja av tidig skörd är den bredare kategorin; olio nuovo är dess färskaste, yngsta uttryck." },
     ],
   },
+  nav: { shop: "Butik", meaning: "Vad det betyder", taste: "Smaken", harvest: "Så skördar vi", evidence: "Beläggen", freshness: "Färskhet" },
   blogHeading: "Läs mer om tidig skörd-olivolja",
 };
 
@@ -663,6 +669,7 @@ const da: EHContent = {
       { question: "Er tidlig høst det samme som olio nuovo?", answer: "De overlapper. Olio nuovo (”ny olie”) er den nypressede, ofte ufiltrerede olie, der nydes i ugerne lige efter en tidlig høst — intenst grøn og peberagtig. Tidlig høst-olie er den bredere kategori; olio nuovo er dens friskeste og yngste udtryk." },
     ],
   },
+  nav: { shop: "Shop", meaning: "Hvad det betyder", taste: "Smagen", harvest: "Sådan høster vi", evidence: "Beviserne", freshness: "Friskhed" },
   blogHeading: "Læs mere om tidlig høst olivenolie",
 };
 
@@ -787,6 +794,7 @@ const nl: EHContent = {
       { question: "Is vroege oogst hetzelfde als olio nuovo?", answer: "Ze overlappen. Olio nuovo (“nieuwe olie”) is de net geperste, vaak ongefilterde olie die in de weken direct na een vroege oogst wordt genoten — intens groen en peperig. Vroege-oogst-olie is de bredere categorie; olio nuovo is er de verste, jongste uitdrukking van." },
     ],
   },
+  nav: { shop: "Shop", meaning: "Wat het betekent", taste: "De smaak", harvest: "Hoe wij oogsten", evidence: "Het bewijs", freshness: "Versheid" },
   blogHeading: "Lees meer over vroege oogst olijfolie",
 };
 

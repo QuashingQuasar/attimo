@@ -60,20 +60,20 @@ function Hero({ hero, flavours }: { hero: EHContent["hero"]; flavours: EHContent
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,0.72), rgba(13,30,20,0.5) 38%, rgba(13,30,20,0.8))" }} />
 
-      <div className="relative z-10 container mx-auto px-6 pt-24 md:pt-28 pb-8">
+      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-64 lg:pt-80 xl:pt-[22rem] pb-14 md:pb-20">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
+          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.85rem, 1.15vw, 1.2rem)" }}>
             {hero.eyebrow}
           </p>
-          <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
+          <h1 className="mb-6 md:mb-8 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
             {hero.h1}
           </h1>
-          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45, maxWidth: "45rem" }}>
+          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1.15rem, 1.75vw, 1.75rem)", lineHeight: 1.45 }}>
             {hero.subPre}<span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>{hero.subPost}
           </p>
         </div>
 
-        <div className="mt-7 md:mt-8 flex justify-center">
+        <div className="mt-10 md:mt-12 flex justify-center">
           <a
             href="#the-range"
             className="inline-flex items-center gap-2 px-9 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 shadow-xl"
@@ -82,7 +82,7 @@ function Hero({ hero, flavours }: { hero: EHContent["hero"]; flavours: EHContent
           </a>
         </div>
 
-        <div className="mt-9 md:mt-12">
+        <div className="mt-14 md:mt-20">
           <div className="w-full max-w-3xl mx-auto grid grid-cols-3 gap-2 sm:gap-6 md:gap-10 items-end">
             {HERO_BOTTLES.map((b) => (
               <a
@@ -123,7 +123,7 @@ const STAGE_COLORS = ["#6E8B3D", "#7B5A6B", "#2A2530"];
 
 function RipenessSpectrum({ c }: { c: EHContent["ripeness"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
+    <section id="meaning" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
@@ -181,7 +181,7 @@ const TASTE_OILS = [
 
 function TasteSection({ c }: { c: EHContent["taste"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
+    <section id="taste" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
@@ -223,7 +223,7 @@ function TasteSection({ c }: { c: EHContent["taste"] }) {
 // ── 6. FRESHNESS — copy + freshness-decay chart.
 function FreshnessSection({ c }: { c: EHContent["freshness"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: DEEP_GREEN }}>
+    <section id="freshness" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: DEEP_GREEN }}>
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center max-w-5xl mx-auto">
           <div>
@@ -275,7 +275,7 @@ function FreshnessSection({ c }: { c: EHContent["freshness"] }) {
 // ── 6b. THE EVIDENCE — early-harvest-specific, peer-reviewed sources.
 function EarlyHarvestScience({ c }: { c: EHContent["evidence"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
+    <section id="evidence" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: CREAM }}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.6, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
@@ -381,7 +381,18 @@ function EarlyHarvestInner({ initialPosts, locale }: { initialPosts?: InitialPos
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
+      <Header
+        onWaitlistClick={() => setIsWaitlistOpen(true)}
+        locale={locale}
+        pageNav={[
+          { label: content.nav.shop, href: "#the-range" },
+          { label: content.nav.meaning, href: "#meaning" },
+          { label: content.nav.taste, href: "#taste" },
+          { label: content.nav.harvest, href: "#harvest" },
+          { label: content.nav.evidence, href: "#evidence" },
+          { label: content.nav.freshness, href: "#freshness" },
+        ]}
+      />
 
       <Hero hero={content.hero} flavours={content.bottleFlavours} />
 
@@ -410,7 +421,9 @@ function EarlyHarvestInner({ initialPosts, locale }: { initialPosts?: InitialPos
 
       <TasteSection c={content.taste} />
 
-      <KleiaWay locale={locale} heading={content.harvest.heading} intro={content.harvest.intro} />
+      <div id="harvest">
+        <KleiaWay locale={locale} heading={content.harvest.heading} intro={content.harvest.intro} />
+      </div>
 
       <EarlyHarvestScience c={content.evidence} />
 
