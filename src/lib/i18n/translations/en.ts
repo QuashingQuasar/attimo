@@ -58,6 +58,7 @@ export const en = {
     shop: "Shop",
     learn: "Learn",
     polyphenolMethods: "How polyphenols are measured",
+    polyphenolIndex: "Polyphenol Index",
     company: "Company",
   },
 
@@ -538,13 +539,12 @@ export const en = {
       { q: "Are there customs charges or import VAT?", a: "Within the EU, none. Olive oil enters the United Kingdom free of import duty and VAT, so nothing is charged on delivery. Orders to Norway, Switzerland and Liechtenstein may be subject to local import VAT on delivery." },
     ],
     freeFromBottles: "{n} bottles",
-    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", uk: "UK", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
+    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
     delivery: {
       core: "2–3 business days",
       tier1: "3–5 business days",
       tier2: "4–6 business days",
-      uk: "6–8 business days",
-      tier3: "5–7 business days",
+      tier3: "5–8 business days",
       tier4: "6–8 business days",
       tier5: "5–8 business days",
     },

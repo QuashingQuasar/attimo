@@ -96,6 +96,8 @@ export type MethodsContent = {
     lead: string;
     cols: { oil: string; total: string; oleocanthal: string; oleacein: string; report: string };
     footnote: string;
+    indexPre: string;
+    indexLink: string;
   };
   faq: { heading: string; items: { question: string; answer: string }[] };
   details: {
@@ -276,6 +278,8 @@ const en: MethodsContent = {
     },
     footnote:
       "All values mg/kg, 2025/26 harvest, HPLC by IOC Doc. 29 with oleocanthal and oleacein from a dedicated assay. Coratina sampled 18 November 2025, Nocellara 17 November 2025. Doc. 29 states a measuring range of 30–800 mg/kg, so our {{coratina.total}} sits just above it and should be read as approximate at that boundary.",
+    indexPre: "Every brand that publishes its numbers, ranked by the same two compounds:",
+    indexLink: "the Olive Oil Polyphenol Index",
   },
   faq: {
     heading: "Questions about polyphenol testing",
@@ -526,6 +530,8 @@ const de: MethodsContent = {
     },
     footnote:
       "Alle Werte in mg/kg, Ernte 2025/26, HPLC nach IOC Doc. 29, Oleocanthal und Oleacein aus einem eigenen Assay. Coratina beprobt am 18. November 2025, Nocellara am 17. November 2025. Doc. 29 gibt einen Messbereich von 30–800 mg/kg an, unsere {{coratina.total}} liegen also knapp darüber und sind an dieser Grenze als ungefährer Wert zu lesen.",
+    indexPre: "Alle Marken, die ihre Werte veröffentlichen, nach denselben zwei Verbindungen geordnet:",
+    indexLink: "der Olivenöl-Polyphenol-Index",
   },
   faq: {
     heading: "Fragen zur Polyphenol-Analytik",
@@ -776,6 +782,8 @@ const fr: MethodsContent = {
     },
     footnote:
       "Toutes les valeurs en mg/kg, récolte 2025/26, HPLC selon IOC Doc. 29, avec l'oléocanthal et l'oléacéine issus d'un dosage dédié. Coratina prélevée le 18 novembre 2025, Nocellara le 17 novembre 2025. Le Doc. 29 indique une plage de mesure de 30–800 mg/kg : notre {{coratina.total}} se situe juste au-dessus et doit être lu comme approximatif à cette limite.",
+    indexPre: "Toutes les marques qui publient leurs chiffres, classées selon les deux mêmes composés :",
+    indexLink: "l'index des polyphénols de l'huile d'olive",
   },
   faq: {
     heading: "Questions sur l'analyse des polyphénols",
@@ -1029,6 +1037,8 @@ const sv: MethodsContent = {
     },
     footnote:
       "Alla värden i mg/kg, skörd 2025/26, HPLC enligt IOC Doc. 29 med oleocanthal och oleacein från en särskild analys. Coratina provtagen 18 november 2025, Nocellara 17 november 2025. Doc. 29 anger ett mätområde på 30–800 mg/kg, så våra {{coratina.total}} ligger strax över det och bör läsas som ungefärligt vid den gränsen.",
+    indexPre: "Alla varumärken som publicerar sina värden, rankade efter samma två föreningar:",
+    indexLink: "polyfenolindexet för olivolja",
   },
   faq: {
     heading: "Frågor om polyfenolanalys",
@@ -1279,6 +1289,8 @@ const da: MethodsContent = {
     },
     footnote:
       "Alle værdier i mg/kg, høst 2025/26, HPLC efter IOC Doc. 29 med oleocanthal og oleacein fra en dedikeret analyse. Coratina udtaget 18. november 2025, Nocellara 17. november 2025. Doc. 29 angiver et måleområde på 30–800 mg/kg, så vores {{coratina.total}} ligger lige over det og bør læses som omtrentligt ved den grænse.",
+    indexPre: "Alle mærker, der offentliggør deres tal, rangeret efter de samme to forbindelser:",
+    indexLink: "polyfenolindekset for olivenolie",
   },
   faq: {
     heading: "Spørgsmål om polyfenoltest",
@@ -1529,6 +1541,8 @@ const nl: MethodsContent = {
     },
     footnote:
       "Alle waarden in mg/kg, oogst 2025/26, HPLC volgens IOC Doc. 29 met oleocanthal en oleaceïne uit een aparte bepaling. Coratina bemonsterd op 18 november 2025, Nocellara op 17 november 2025. Doc. 29 geeft een meetbereik van 30–800 mg/kg op, dus onze {{coratina.total}} ligt daar net boven en moet op die grens als benaderend gelezen worden.",
+    indexPre: "Alle merken die hun cijfers publiceren, gerangschikt op dezelfde twee stoffen:",
+    indexLink: "de olijfolie-polyfenolindex",
   },
   faq: {
     heading: "Vragen over polyfenolanalyse",

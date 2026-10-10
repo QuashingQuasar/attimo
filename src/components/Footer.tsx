@@ -82,6 +82,8 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   const learnLinks = [
     { label: t.footer.blog, href: localizeHref("/blog", locale) },
     { label: t.footer.polyphenolMethods, href: methodsHref },
+    // English-only page; every locale links the same URL.
+    { label: t.footer.polyphenolIndex, href: "/polyphenol-index" },
     { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
     { label: t.footer.ambassadors, href: ambassadorsHref },
   ];

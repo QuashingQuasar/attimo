@@ -3,7 +3,7 @@
 import { formatPrice, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
-export type TierKey = "core" | "tier1" | "tier2" | "uk" | "tier3" | "tier4" | "tier5";
+export type TierKey = "core" | "tier1" | "tier2" | "tier3" | "tier4" | "tier5";
 
 export interface Tier {
   key: TierKey;
@@ -20,8 +20,7 @@ export const TIERS: Tier[] = [
   { key: "core", countries: ["Belgium"], shippingCost: "€7", costEur: 7, freeFromN: 2, days: [2, 3], highlight: true },
   { key: "tier1", countries: ["Germany", "Luxembourg", "Netherlands"], shippingCost: "€10", costEur: 10, freeFromN: 2, days: [3, 5] },
   { key: "tier2", countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "Estonia", "Finland", "France", "Hungary", "Poland", "Slovakia", "Slovenia", "Spain", "Sweden"], shippingCost: "€15", costEur: 15, freeFromN: 2, days: [4, 6] },
-  { key: "uk", countries: ["UnitedKingdom"], shippingCost: "€18", costEur: 18, freeFromN: 3, days: [6, 8] },
-  { key: "tier3", countries: ["Greece", "Italy", "Latvia", "Lithuania"], shippingCost: "€20", costEur: 20, freeFromN: 3, days: [5, 7] },
+  { key: "tier3", countries: ["Greece", "Italy", "Latvia", "Lithuania", "UnitedKingdom"], shippingCost: "€20", costEur: 20, freeFromN: 3, days: [5, 8] },
   { key: "tier4", countries: ["Cyprus", "Ireland", "Portugal", "Romania"], shippingCost: "€25", costEur: 25, freeFromN: 3, days: [6, 8] },
   { key: "tier5", countries: ["Liechtenstein", "Malta", "Norway", "Switzerland"], shippingCost: "€40", costEur: 40, freeFromN: 0, days: [5, 8] },
 ];

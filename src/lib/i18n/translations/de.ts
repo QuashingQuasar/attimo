@@ -60,6 +60,7 @@ export const de: Dict = {
     shop: "Shop", // REVIEW
     learn: "Entdecken",
     polyphenolMethods: "Wie Polyphenole gemessen werden", // REVIEW
+    polyphenolIndex: "Polyphenol-Index",
     company: "Unternehmen", // REVIEW
   },
 
@@ -502,13 +503,12 @@ export const de: Dict = {
       { q: "Fallen Zoll oder Einfuhrsteuern an?", a: "Innerhalb der EU nicht. Der Preis an der Kasse ist der Endpreis." },
     ],
     freeFromBottles: "{n} Flaschen",
-    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", uk: "UK", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
+    tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
     delivery: {
       core: "2–3 Werktage",
       tier1: "3–5 Werktage",
       tier2: "4–6 Werktage",
-      uk: "6–8 Werktage",
-      tier3: "5–7 Werktage",
+      tier3: "5–8 Werktage",
       tier4: "6–8 Werktage",
       tier5: "5–8 Werktage",
     },

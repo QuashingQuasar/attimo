@@ -56,6 +56,7 @@ export const da: Dict = {
     shop: "Butik",
     learn: "Lær mere",
     polyphenolMethods: "Sådan måles polyfenoler",
+    polyphenolIndex: "Polyfenolindeks",
     company: "Virksomhed",
   },
 
@@ -489,13 +490,12 @@ export const da: Dict = {
       { q: "Er der told eller importmoms?", a: "Inden for EU, nej. Prisen ved kassen er den endelige pris." },
     ],
     freeFromBottles: "{n} flasker",
-    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", uk: "UK", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
+    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
     delivery: {
       core: "2–3 hverdage",
       tier1: "3–5 hverdage",
       tier2: "4–6 hverdage",
-      uk: "6–8 hverdage",
-      tier3: "5–7 hverdage",
+      tier3: "5–8 hverdage",
       tier4: "6–8 hverdage",
       tier5: "5–8 hverdage",
     },

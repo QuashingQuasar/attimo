@@ -55,6 +55,7 @@ export const nl: Dict = {
     shop: "Shop", // REVIEW
     learn: "Ontdek",
     polyphenolMethods: "Hoe polyfenolen gemeten worden", // REVIEW
+    polyphenolIndex: "Polyfenolindex",
     company: "Bedrijf", // REVIEW
   },
 
@@ -497,13 +498,12 @@ export const nl: Dict = {
       { q: "Zijn er douanekosten of invoer-btw?", a: "Binnen de EU niet. De prijs bij het afrekenen is de eindprijs." },
     ],
     freeFromBottles: "{n} flessen",
-    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", uk: "UK", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
+    tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
     delivery: {
       core: "2–3 werkdagen",
       tier1: "3–5 werkdagen",
       tier2: "4–6 werkdagen",
-      uk: "6–8 werkdagen",
-      tier3: "5–7 werkdagen",
+      tier3: "5–8 werkdagen",
       tier4: "6–8 werkdagen",
       tier5: "5–8 werkdagen",
     },

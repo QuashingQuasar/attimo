@@ -55,6 +55,7 @@ export const fr: Dict = {
     shop: "Boutique", // REVIEW
     learn: "Découvrir",
     polyphenolMethods: "Comment les polyphénols sont mesurés", // REVIEW
+    polyphenolIndex: "Index des polyphénols",
     company: "Entreprise", // REVIEW
   },
 
@@ -493,13 +494,12 @@ export const fr: Dict = {
       { q: "Y a-t-il des frais de douane ou une TVA à l'import ?", a: "Au sein de l'UE, aucun. Le prix affiché au paiement est le prix final." },
     ],
     freeFromBottles: "{n} bouteilles",
-    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", uk: "UK", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
+    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
     delivery: {
       core: "2–3 jours ouvrés",
       tier1: "3–5 jours ouvrés",
       tier2: "4–6 jours ouvrés",
-      uk: "6–8 jours ouvrés",
-      tier3: "5–7 jours ouvrés",
+      tier3: "5–8 jours ouvrés",
       tier4: "6–8 jours ouvrés",
       tier5: "5–8 jours ouvrés",
     },
