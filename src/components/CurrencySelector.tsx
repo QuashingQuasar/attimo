@@ -64,8 +64,11 @@ export const CurrencySelector = ({
   // Target URL for switching to locale `l`. On blog POSTS the slug differs per
   // language, so prefer the page's <link rel="alternate" hreflang> tag (the
   // exact translated URL); everything else uses the path-based mapping.
+  // Any page that emits <link rel="alternate" hreflang> (hubs, methods page,
+  // blog posts, every localizable page) names its exact translation there, so
+  // that wins; the path-based mapping is only the fallback.
   const switchHrefFor = (l: Locale) => {
-    if (/\/blog(\/|$)/.test(pathname) && typeof document !== "undefined") {
+    if (typeof document !== "undefined") {
       const link = document.querySelector(
         `link[rel="alternate"][hreflang="${l.hreflang}"]`,
       ) as HTMLLinkElement | null;
