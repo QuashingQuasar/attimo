@@ -460,10 +460,9 @@ export const nl: Dict = {
   },
 
   shippingPage: {
-    title: "Verzending | ATTIMO Specialty extra vierge olijfolie",
-    heading: "Verzendinformatie",
-    intro:
-      "We verzenden door de hele Europese Unie en naar het Verenigd Koninkrijk. Hoe meer je bestelt, hoe minder je betaalt voor verzending — of helemaal niets.", // REVIEW
+    title: "Waar we leveren: olijfolie bezorgd in Nederland en Europa | ATTIMO",
+    heading: "Waar we leveren",
+    intro: "In Nederland, in elk EU-land, het Verenigd Koninkrijk, Noorwegen, Zwitserland en Liechtenstein. Verzendkosten, drempel voor gratis verzending en levertijd voor Nederland staan hieronder; hoe meer flessen je bestelt, hoe minder je betaalt voor verzending, of helemaal niets.",
     factShipsTomorrow: "Vandaag besteld, morgen verzonden", // REVIEW
     factFreeMulti: "Gratis verzending bij bestellingen van meerdere flessen", // REVIEW
     factPacked: "Zorgvuldig verpakt voor een veilige levering", // REVIEW
@@ -486,6 +485,17 @@ export const nl: Dict = {
     damagedPost: " met een foto van de schade. We regelen een vervanging of volledige terugbetaling — zonder gedoe.", // REVIEW
     contactHeading: "Vragen over je bestelling?",
     contactSub: "We helpen je graag. Neem gerust contact op.", // REVIEW
+    countriesHeading: "Alle landen waar we leveren",
+    countriesSub: "Verzendkosten en levertijden per land, van A tot Z.",
+    colCountry: "Land", colRate: "Verzending", colFree: "Gratis vanaf", colDelivery: "Levering",
+    faqHeading: "Vragen over verzending",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Leveren jullie in Nederland?", a: "Ja. Verzending naar Nederland kost {standard}, vanaf {free} is het gratis. Levertijd {delivery}. We leveren ook in alle 27 EU-landen, het Verenigd Koninkrijk, Noorwegen, Zwitserland en Liechtenstein." },
+      { q: "Wat kost verzending?", a: "{standard} naar Nederland, gratis vanaf {free}, dus vanaf twee flessen. Verzendkosten worden bij het afrekenen automatisch berekend op basis van het leverland." },
+      { q: "Hoe lang duurt de levering?", a: "{delivery} naar Nederland. Bestellingen gaan de volgende werkdag de deur uit, met een track-and-tracelink per e-mail." },
+      { q: "Zijn er douanekosten of invoer-btw?", a: "Binnen de EU niet. De prijs bij het afrekenen is de eindprijs." },
+    ],
     freeFromBottles: "{n} flessen",
     tierNames: { core: "Kern", tier1: "Zone 1", tier2: "Zone 2", uk: "UK", tier3: "Zone 3", tier4: "Zone 4", tier5: "Zone 5" },
     delivery: {

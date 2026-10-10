@@ -5,18 +5,11 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 import { Truck, Package, ShieldCheck, Clock } from "lucide-react";
 import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { TIERS, countryRows, shippingFaq } from "@/lib/shippingZones";
 
-// Tier shape is locale-independent (cost numbers, country keys, free-from
-// bottle counts, highlight); names/delivery/country labels come from the dict.
-const TIERS = [
-  { key: "core" as const, countries: ["Belgium"], shippingCost: "€7", freeFromN: 2, highlight: true },
-  { key: "tier1" as const, countries: ["Germany", "Luxembourg", "Netherlands"], shippingCost: "€10", freeFromN: 2 },
-  { key: "tier2" as const, countries: ["Austria", "Bulgaria", "Croatia", "Czechia", "Denmark", "Estonia", "Finland", "France", "Hungary", "Poland", "Slovakia", "Slovenia", "Spain", "Sweden"], shippingCost: "€15", freeFromN: 2 },
-  { key: "uk" as const, countries: ["UnitedKingdom"], shippingCost: "€18", freeFromN: 3 },
-  { key: "tier3" as const, countries: ["Greece", "Italy", "Latvia", "Lithuania"], shippingCost: "€20", freeFromN: 3 },
-  { key: "tier4" as const, countries: ["Cyprus", "Ireland", "Portugal", "Romania"], shippingCost: "€25", freeFromN: 3 },
-  { key: "tier5" as const, countries: ["Liechtenstein", "Malta", "Norway", "Switzerland"], shippingCost: "€40", freeFromN: 0 },
-];
+const UDC = "UDC Working Man Sans, sans-serif";
+const SG = "Space Grotesk, sans-serif";
+
 
 interface ShippingPageProps {
   locale?: Locale;
@@ -36,6 +29,8 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
   }));
 
   const isLocalized = locale.slug !== "";
+  const rows = isLocalized ? [] : countryRows(locale);
+  const faq = shippingFaq(locale);
   const localStandard = formatPrice(locale.shipping.standard, locale);
   const localFreeFrom = formatPrice(locale.shipping.freeThreshold, locale);
 
@@ -48,8 +43,8 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
           {/* Hero */}
           <div className="text-center mb-16">
             <h1
-              className="text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
+              className="mb-4"
+              style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(2.1rem,4.2vw,3.7rem)", lineHeight: 1.02, letterSpacing: "-0.03em", color: "#1B4229" }}
             >
               {t.heading}
             </h1>
@@ -87,8 +82,8 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
           {/* Shipping tiers */}
           <section className="mb-16">
             <h2
-              className="text-2xl md:text-3xl font-semibold mb-8"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
+              className="mb-8"
+              style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(1.9rem,3vw,3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#1B4229" }}
             >
               {t.ratesHeading}
             </h2>
@@ -215,11 +210,63 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
             </p>
           </section>
 
+          {/* Every country, A to Z (English page only; localized pages describe one market) */}
+          {!isLocalized && (
+            <section className="mb-16">
+              <h2
+                className="mb-2"
+                style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(1.9rem,3vw,3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#1B4229" }}
+              >
+                {t.countriesHeading}
+              </h2>
+              <p className="mb-6" style={{ fontFamily: SG, color: "rgba(27,66,41,0.7)" }}>{t.countriesSub}</p>
+              <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: "#fff", border: "1px solid rgba(27,66,41,0.18)" }}>
+                <table className="w-full border-collapse" style={{ fontFamily: SG, fontSize: "0.95rem" }}>
+                  <thead>
+                    <tr style={{ backgroundColor: "#1B4229", color: "#FFFAEA" }}>
+                      {[t.colCountry, t.colRate, t.colFree, t.colDelivery].map((h) => (
+                        <th key={h} className="text-left p-3 md:p-4" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "0.85rem" }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((r) => (
+                      <tr key={r.key} style={{ borderTop: "1px solid rgba(27,66,41,0.12)", color: "#1B4229" }}>
+                        <td className="p-3 md:p-4 font-semibold">{r.label}</td>
+                        <td className="p-3 md:p-4">{r.rate}</td>
+                        <td className="p-3 md:p-4">{r.freeFrom}</td>
+                        <td className="p-3 md:p-4">{r.delivery}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
+
+          {/* FAQ */}
+          <section className="mb-16">
+            <h2
+              className="mb-6"
+              style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(1.9rem,3vw,3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#1B4229" }}
+            >
+              {t.faqHeading}
+            </h2>
+            <div className="space-y-3">
+              {faq.map((f) => (
+                <details key={f.q} className="rounded-2xl overflow-hidden" style={{ border: "1px solid #1B4229", backgroundColor: "#fff" }}>
+                  <summary className="cursor-pointer px-6 py-5" style={{ fontFamily: SG, fontWeight: 500, fontSize: "1.05rem", color: "#1B4229" }}>{f.q}</summary>
+                  <p className="px-6 pb-6" style={{ fontFamily: SG, lineHeight: 1.7, color: "rgba(27,66,41,0.85)" }}>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
           {/* Processing & delivery */}
           <section className="mb-16">
             <h2
-              className="text-2xl md:text-3xl font-semibold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
+              className="mb-4"
+              style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(1.9rem,3vw,3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#1B4229" }}
             >
               {t.processingHeading}
             </h2>
@@ -239,8 +286,8 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
           {/* Returns & damages */}
           <section className="mb-16">
             <h2
-              className="text-2xl md:text-3xl font-semibold mb-4"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
+              className="mb-4"
+              style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(1.9rem,3vw,3rem)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#1B4229" }}
             >
               {t.returnsHeading}
             </h2>
@@ -277,8 +324,8 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
             style={{ backgroundColor: "#1B4229" }}
           >
             <h3
-              className="text-xl font-semibold mb-2"
-              style={{ fontFamily: "Space Grotesk, sans-serif", color: "#FFFAEA" }}
+              className="mb-2"
+              style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.4rem", letterSpacing: "-0.01em", color: "#FFFAEA" }}
             >
               {t.contactHeading}
             </h3>

@@ -3,6 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ShippingPage from "@astro/react-pages/ShippingPage";
 import { LOCALES, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { shippingJsonLd } from "@/lib/shippingZones";
 
 export function getStaticPaths() {
   return LOCALES
@@ -19,7 +20,8 @@ const t = getDict(locale);
 ---
 
 <BaseLayout
-  title={t.meta.shipping.title}
+  title={t.shippingPage.title}
+  jsonLd={shippingJsonLd(locale)}
   description={t.meta.shipping.description}
   canonical={canonical}
   bodyStyle="background-color: #FFFAEA;"

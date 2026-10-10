@@ -465,10 +465,9 @@ export const de: Dict = {
   },
 
   shippingPage: {
-    title: "Versand | ATTIMO Natives Olivenöl extra – Spezialität",
-    heading: "Versandinformationen",
-    intro:
-      "Wir liefern in die gesamte Europäische Union und ins Vereinigte Königreich. Je mehr Sie bestellen, desto weniger zahlen Sie für den Versand – oder gar nichts.", // REVIEW
+    title: "Wohin wir liefern: Olivenöl-Versand nach Deutschland und Europa | ATTIMO",
+    heading: "Wohin wir liefern",
+    intro: "Nach Deutschland, in jedes EU-Land, nach Großbritannien, Norwegen, in die Schweiz und nach Liechtenstein. Versandkosten, Freigrenze und Lieferzeit für Deutschland stehen unten; je mehr Flaschen Sie bestellen, desto weniger zahlen Sie für den Versand, oder gar nichts.",
     factShipsTomorrow: "Heute bestellt, morgen verschickt", // REVIEW
     factFreeMulti: "Gratisversand bei Mehrflaschen-Bestellungen", // REVIEW
     factPacked: "Sorgfältig verpackt für eine sichere Lieferung", // REVIEW
@@ -491,6 +490,17 @@ export const de: Dict = {
     damagedPost: " mit einem Foto des Schadens. Wir veranlassen einen Ersatz oder eine vollständige Erstattung – unkompliziert.", // REVIEW
     contactHeading: "Fragen zu Ihrer Bestellung?",
     contactSub: "Wir helfen Ihnen gerne. Schreiben Sie uns jederzeit.", // REVIEW
+    countriesHeading: "Alle Länder, in die wir liefern",
+    countriesSub: "Versandkosten und Lieferzeiten pro Land, von A bis Z.",
+    colCountry: "Land", colRate: "Versand", colFree: "Kostenlos ab", colDelivery: "Lieferung",
+    faqHeading: "Fragen zum Versand",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Liefern Sie nach Deutschland?", a: "Ja. Versand nach Deutschland kostet {standard}, ab {free} ist er kostenlos. Lieferzeit {delivery}. Außerdem liefern wir in alle 27 EU-Länder, nach Großbritannien, Norwegen, in die Schweiz und nach Liechtenstein." },
+      { q: "Was kostet der Versand?", a: "{standard} nach Deutschland, kostenlos ab {free}, also ab zwei Flaschen. Die Versandkosten werden an der Kasse automatisch nach Lieferland berechnet." },
+      { q: "Wie lange dauert die Lieferung?", a: "{delivery} nach Deutschland. Bestellungen werden am nächsten Werktag verschickt, der Sendungsverfolgungslink kommt per E-Mail." },
+      { q: "Fallen Zoll oder Einfuhrsteuern an?", a: "Innerhalb der EU nicht. Der Preis an der Kasse ist der Endpreis." },
+    ],
     freeFromBottles: "{n} Flaschen",
     tierNames: { core: "Kern", tier1: "Stufe 1", tier2: "Stufe 2", uk: "UK", tier3: "Stufe 3", tier4: "Stufe 4", tier5: "Stufe 5" },
     delivery: {
