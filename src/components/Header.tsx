@@ -101,7 +101,7 @@ export const Header = ({
         <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
           <nav className="hidden md:flex items-center justify-start gap-6 lg:gap-10">
             {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
-              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1vw, 1.1rem)', letterSpacing: '0.12em' }}>
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 {item.label}
               </a>
             ))}
@@ -116,7 +116,7 @@ export const Header = ({
           <div className="flex items-center justify-end gap-6 lg:gap-10">
             <nav className="hidden md:flex items-center gap-6 lg:gap-10">
               {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
-                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1vw, 1.1rem)', letterSpacing: '0.12em' }}>
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   {item.label}
                 </a>
               ))}
