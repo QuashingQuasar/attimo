@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
 import { Link } from "@/lib/router-stub";
 import navbarLogo from "@/assets/navbar-logo-latest.svg?url";
+import emblemLogo from "@/assets/attimo-emblem-white.png?url";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
@@ -106,8 +107,10 @@ export const Header = ({
             ))}
           </nav>
           <div className="flex items-center justify-self-start md:justify-self-center">
-            <Link to={localizeHref("/", locale)}>
-              <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto max-w-none" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+            <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
+              {/* The round emblem, centred; the wordmark stays on phones. */}
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-14 lg:h-16 w-auto max-w-none" />
+              <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
           <div className="flex items-center gap-3 md:gap-6">
