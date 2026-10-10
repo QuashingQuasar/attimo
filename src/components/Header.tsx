@@ -88,20 +88,20 @@ export const Header = ({
 
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-8 pb-6 md:pt-10 lg:pt-12" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-8 pb-6 md:pt-10 lg:pt-14" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
       style={{
         backgroundColor: solidBackground ? '#1B4229' : 'transparent',
         transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
       }}
     >
-      <div className="container mx-auto px-6">
+      <div className={pageNav ? "w-full px-6 md:px-10 lg:px-16" : "container mx-auto px-6"}>
         {pageNav ? (
         /* Landing-page bar: logo centred, the page anchors flanking it, cart
            and region switcher at the far right. Phones keep the hamburger. */
         <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
           <nav className="hidden md:flex items-center justify-start gap-6 lg:gap-10">
             {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
-              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', letterSpacing: '0.1em' }}>
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1vw, 1.1rem)', letterSpacing: '0.12em' }}>
                 {item.label}
               </a>
             ))}
@@ -109,14 +109,14 @@ export const Header = ({
           <div className="flex items-center justify-self-start md:justify-self-center">
             <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
               {/* The round emblem, centred; the wordmark stays on phones. */}
-              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-32 w-auto max-w-none -mb-4" />
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-28 lg:h-36 xl:h-40 w-auto max-w-none -mb-4" />
               <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
           <div className="flex items-center justify-end gap-6 lg:gap-10">
             <nav className="hidden md:flex items-center gap-6 lg:gap-10">
               {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
-                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', letterSpacing: '0.1em' }}>
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.95rem, 1vw, 1.1rem)', letterSpacing: '0.12em' }}>
                   {item.label}
                 </a>
               ))}
