@@ -63,13 +63,13 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,0.7), rgba(13,30,20,0.5) 38%, rgba(13,30,20,0.78))" }} />
 
-      <div className="relative z-10 container mx-auto px-6 pt-24 md:pt-28 pb-8">
+      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-44 lg:pt-52 pb-14 md:pb-20">
         {/* Headline — wide enough that "Olive Oil" never orphans on desktop */}
         <div className="max-w-6xl mx-auto text-center">
           <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
             {hero.eyebrow}
           </p>
-          <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
+          <h1 className="mb-6 md:mb-8 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
             {hero.h1}
           </h1>
           <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45 }}>
@@ -80,7 +80,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
         </div>
 
         {/* CTA */}
-        <div className="mt-7 md:mt-8 flex justify-center">
+        <div className="mt-10 md:mt-12 flex justify-center">
           <a
             href="#the-range"
             className="inline-flex items-center gap-2 px-9 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 shadow-xl"
@@ -90,7 +90,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
         </div>
 
         {/* Ranked bottle lineup */}
-        <div className="mt-9 md:mt-12">
+        <div className="mt-14 md:mt-20">
           <div className="w-full max-w-3xl mx-auto grid grid-cols-3 gap-2 sm:gap-6 md:gap-10 items-end">
             {HERO_BOTTLES.map((b) => (
               <a
