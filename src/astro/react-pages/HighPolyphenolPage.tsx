@@ -17,6 +17,7 @@ import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
+import type { HubIndexData } from "@/lib/polyphenolIndexHub";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -257,7 +258,73 @@ function LabReceipts({ c }: { c: HubContent["labReceipts"] }) {
   );
 }
 
-function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialPost[]; locale: Locale }) {
+// The Polyphenol Index: every brand that publishes, ranked by documented
+// compounds, with ATTIMO's position. Rows arrive serialised from the
+// collection; the page carries no number of its own.
+function IndexSection({ c, data }: { c: HubContent["index"]; data?: HubIndexData }) {
+  if (!data || !data.rows.length) return null;
+  const fill = (s: string) =>
+    s.replace("{rank}", String(data.attimoRank ?? "—")).replace("{ranked}", String(data.rankedCount)).replace("{total}", String(data.totalCount)).replace("{verified}", data.verified);
+  return (
+    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: GREEN }}>
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <p className="mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.12em", textTransform: "uppercase", fontSize: "1.02rem", fontWeight: 700 }}>
+            {c.eyebrow}
+          </p>
+          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.9rem, 3.2vw, 3.2rem)", lineHeight: 1.05, fontWeight: 300, letterSpacing: "-0.025em" }}>
+            {c.heading}
+          </h2>
+          <p className="mb-10 leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", maxWidth: "44rem" }}>
+            {fill(c.intro)}
+          </p>
+
+          <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: CREAM }}>
+            <table className="w-full border-collapse" style={{ fontFamily: SG, fontSize: "0.95rem", color: GREEN }}>
+              <thead>
+                <tr style={{ backgroundColor: "#10221B", color: CREAM }}>
+                  {["#", c.colBrand, c.colCompounds, c.colTotal].map((h, i) => (
+                    <th key={h} className={`p-3 md:p-4 ${i === 0 ? "w-12" : ""} ${i === 3 ? "hidden sm:table-cell" : ""} text-left`} style={{ fontFamily: UDC, fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.04em" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.rows.map((r) => (
+                  <tr key={r.rank} style={{ borderTop: "1px solid rgba(27,66,41,0.12)", backgroundColor: r.mine ? "rgba(205,219,45,0.22)" : undefined }}>
+                    <td className="p-3 md:p-4" style={{ fontFamily: UDC, color: "rgba(27,66,41,0.55)" }}>{String(r.rank).padStart(2, "0")}</td>
+                    <td className="p-3 md:p-4">
+                      <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.02rem" }}>{r.brand}</span>
+                      <span style={{ color: "rgba(27,66,41,0.7)" }}> · {r.oil}</span>
+                      <span className="block" style={{ fontSize: "0.82rem", color: "rgba(27,66,41,0.6)" }}>{r.origin}</span>
+                    </td>
+                    <td className="p-3 md:p-4" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.15rem", whiteSpace: "nowrap" }}>{r.compounds}<span style={{ fontFamily: SG, fontWeight: 400, fontSize: "0.78rem", color: "rgba(27,66,41,0.6)" }}> mg/kg</span></td>
+                    <td className="p-3 md:p-4 hidden sm:table-cell" style={{ whiteSpace: "nowrap", color: "rgba(27,66,41,0.75)" }}>{r.total} · {r.method}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <div>
+              <p style={{ fontFamily: UDC, color: ACCENT, fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.01em" }}>{fill(c.position)}</p>
+              <p className="mt-1" style={{ fontFamily: SG, color: "rgba(255,250,234,0.6)", fontSize: "0.88rem" }}>{fill(c.note)}</p>
+            </div>
+            <a
+              href={data.href}
+              className="inline-flex items-center justify-center px-7 py-4 rounded-lg transition-transform duration-300 hover:scale-105"
+              style={{ fontFamily: UDC, backgroundColor: ACCENT, color: GREEN, fontSize: "clamp(1rem, 1.2vw, 1.2rem)", letterSpacing: "0.03em", fontWeight: 700, whiteSpace: "nowrap" }}>
+              {c.cta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HighPolyphenolInner({ initialPosts, locale, indexData }: { initialPosts?: InitialPost[]; locale: Locale; indexData?: HubIndexData }) {
+
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const content = HUB_CONTENT[locale.lang];
 
@@ -308,6 +375,9 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
       <OilComparison locale={locale} />
       <LabReceipts c={content.labReceipts} />
 
+      {/* 6b — THE POLYPHENOL INDEX: every brand that publishes, and where we sit */}
+      <IndexSection c={content.index} data={indexData} />
+
       {/* 7 — HIGH-POLYPHENOL BY DESIGN (the causes) */}
       <KleiaWay
         locale={locale}
@@ -327,10 +397,10 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
   );
 }
 
-export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE }: { initialPosts?: InitialPost[]; locale?: Locale }) {
+export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE, indexData }: { initialPosts?: InitialPost[]; locale?: Locale; indexData?: HubIndexData }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} />
+      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} indexData={indexData} />
     </QueryClientProvider>
   );
 }

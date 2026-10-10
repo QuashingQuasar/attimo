@@ -43,6 +43,8 @@ export interface HubContent {
     disclaimer: string;
   };
   labReceipts: { heading: string; intro: string };
+  /** The Polyphenol Index section. {rank}, {ranked}, {total}, {verified} are filled at render. */
+  index: { eyebrow: string; heading: string; intro: string; position: string; colBrand: string; colCompounds: string; colTotal: string; cta: string; note: string };
   kleia: { heading: string; intro: string };
   faq: { heading: string; items: { question: string; answer: string }[] };
   blogHeading: string;
@@ -144,6 +146,17 @@ const en: HubContent = {
     heading: "Don't take our word for it",
     intro: "Every batch is sent to an independent lab. Here are the full reports behind the numbers on this page — download and check them yourself.",
   },
+  index: {
+    eyebrow: "The Olive Oil Polyphenol Index",
+    heading: "Every brand that publishes its numbers, ranked",
+    intro: "We went looking for every olive oil producer in the world that publishes a polyphenol figure for its current oil and found {total}. Ranked by the two documented compounds, oleocanthal and oleacein, our Coratina sits at number {rank}.",
+    position: "ATTIMO Coratina, number {rank} of {ranked}",
+    colBrand: "Brand · oil",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Total · method",
+    cta: "See the full index",
+    note: "mg/kg, as published by each producer. Verified {verified}.",
+  },
   kleia: {
     heading: "Why our polyphenols stay high",
     intro: "High numbers aren't luck. They come from a few deliberate choices — early harvest, single variety, pressed and bottled fresh — the same choices industrial oil skips to scale.",
@@ -236,6 +249,17 @@ const de: HubContent = {
   labReceipts: {
     heading: "Vertrau nicht nur unserem Wort",
     intro: "Jede Charge geht an ein unabhängiges Labor. Hier sind die vollständigen Berichte hinter den Zahlen auf dieser Seite — herunterladen und selbst prüfen.",
+  },
+  index: {
+    eyebrow: "Der Olivenöl-Polyphenol-Index",
+    heading: "Alle Marken, die ihre Werte veröffentlichen, in einer Rangfolge",
+    intro: "Wir haben weltweit nach jedem Olivenölproduzenten gesucht, der einen Polyphenolwert für sein aktuelles Öl veröffentlicht, und {total} gefunden. Nach den beiden dokumentierten Verbindungen Oleocanthal und Oleacein geordnet, steht unser Coratina auf Platz {rank}.",
+    position: "ATTIMO Coratina, Platz {rank} von {ranked}",
+    colBrand: "Marke · Öl",
+    colCompounds: "Oleocanthal + Oleacein",
+    colTotal: "Gesamt · Methode",
+    cta: "Zum vollständigen Index",
+    note: "mg/kg, wie vom jeweiligen Hersteller veröffentlicht. Geprüft {verified}.",
   },
   kleia: {
     heading: "Warum unsere Polyphenole hoch bleiben",
@@ -339,6 +363,17 @@ const fr: HubContent = {
     heading: "Ne nous croyez pas sur parole",
     intro: "Chaque lot part dans un laboratoire indépendant. Voici les rapports complets derrière les chiffres de cette page — téléchargez-les et vérifiez vous-même.",
   },
+  index: {
+    eyebrow: "L'index des polyphénols de l'huile d'olive",
+    heading: "Toutes les marques qui publient leurs chiffres, classées",
+    intro: "Nous avons cherché dans le monde entier chaque producteur d'huile d'olive qui publie un chiffre de polyphénols pour son huile de la récolte en cours, et nous en avons trouvé {total}. Classée selon les deux composés documentés, oléocanthal et oléacéine, notre Coratina est numéro {rank}.",
+    position: "ATTIMO Coratina, numéro {rank} sur {ranked}",
+    colBrand: "Marque · huile",
+    colCompounds: "Oléocanthal + oléacéine",
+    colTotal: "Total · méthode",
+    cta: "Voir l'index complet",
+    note: "mg/kg, tels que publiés par chaque producteur. Vérifié {verified}.",
+  },
   kleia: {
     heading: "Pourquoi notre huile reste riche en polyphénols",
     intro: "Des chiffres élevés, ce n'est pas de la chance. Ils viennent de quelques choix délibérés — récolte précoce, monovariétale, pressée et embouteillée fraîche — ceux que l'huile industrielle sacrifie pour produire à grande échelle.",
@@ -438,6 +473,17 @@ const sv: HubContent = {
   labReceipts: {
     heading: "Ta inte bara vårt ord för det",
     intro: "Varje parti skickas till ett oberoende labb. Här är de fullständiga rapporterna bakom siffrorna på den här sidan — ladda ner och kontrollera själv.",
+  },
+  index: {
+    eyebrow: "Polyfenolindexet för olivolja",
+    heading: "Alla varumärken som publicerar sina värden, rankade",
+    intro: "Vi letade efter varje olivoljeproducent i världen som publicerar ett polyfenolvärde för sin aktuella olja och hittade {total}. Rankad efter de två dokumenterade föreningarna oleocanthal och oleacein ligger vår Coratina på plats {rank}.",
+    position: "ATTIMO Coratina, plats {rank} av {ranked}",
+    colBrand: "Varumärke · olja",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Totalt · metod",
+    cta: "Se hela indexet",
+    note: "mg/kg, som publicerat av respektive producent. Verifierat {verified}.",
   },
   kleia: {
     heading: "Varför våra polyfenoler håller sig höga",
@@ -539,6 +585,17 @@ const da: HubContent = {
     heading: "Tag ikke bare vores ord for det",
     intro: "Hvert parti sendes til et uafhængigt laboratorium. Her er de fulde rapporter bag tallene på denne side — download og tjek dem selv.",
   },
+  index: {
+    eyebrow: "Polyfenolindekset for olivenolie",
+    heading: "Alle mærker, der offentliggør deres tal, rangeret",
+    intro: "Vi ledte efter hver eneste olivenolieproducent i verden, der offentliggør et polyfenoltal for sin aktuelle olie, og fandt {total}. Rangeret efter de to dokumenterede forbindelser oleocanthal og oleacein ligger vores Coratina på plads {rank}.",
+    position: "ATTIMO Coratina, nummer {rank} af {ranked}",
+    colBrand: "Mærke · olie",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Total · metode",
+    cta: "Se hele indekset",
+    note: "mg/kg, som offentliggjort af hver producent. Verificeret {verified}.",
+  },
   kleia: {
     heading: "Hvorfor vores polyfenoler forbliver høje",
     intro: "Høje tal er ikke held. De kommer fra nogle få bevidste valg — tidlig høst, enkeltsorts, presset og tappet frisk — netop det, industriolie springer over for at kunne skalere.",
@@ -638,6 +695,17 @@ const nl: HubContent = {
   labReceipts: {
     heading: "Je hoeft ons niet op ons woord te geloven",
     intro: "Elke batch gaat naar een onafhankelijk lab. Dit zijn de volledige rapporten achter de cijfers op deze pagina — download ze en controleer het zelf.",
+  },
+  index: {
+    eyebrow: "De olijfolie-polyfenolindex",
+    heading: "Alle merken die hun cijfers publiceren, gerangschikt",
+    intro: "We zochten wereldwijd naar elke olijfolieproducent die een polyfenolcijfer publiceert voor zijn huidige olie en vonden er {total}. Gerangschikt op de twee gedocumenteerde stoffen, oleocanthal en oleaceïne, staat onze Coratina op nummer {rank}.",
+    position: "ATTIMO Coratina, nummer {rank} van {ranked}",
+    colBrand: "Merk · olie",
+    colCompounds: "Oleocanthal + oleaceïne",
+    colTotal: "Totaal · methode",
+    cta: "Bekijk de volledige index",
+    note: "mg/kg, zoals gepubliceerd door elke producent. Geverifieerd {verified}.",
   },
   kleia: {
     heading: "Waarom onze polyfenolen hoog blijven",
