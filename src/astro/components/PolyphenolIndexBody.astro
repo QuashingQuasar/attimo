@@ -9,7 +9,7 @@ import { FAQ } from "@/components/FAQ";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { GREEN, DEEP, CREAM, ACCENT, UDC, SG, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream, cardOnGreen } from "@/lib/certificates/ui";
-import { INDEX_VERIFIED, INDEX_NEXT, INDEX_JSON_PATH, type IndexEntry } from "@/lib/polyphenolIndex";
+import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, type IndexEntry } from "@/lib/polyphenolIndex";
 import type { IndexContent } from "@/lib/polyphenolIndexContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -22,6 +22,7 @@ const { ranked, unranked, content: c, locale = DEFAULT_LOCALE } = Astro.props as
 };
 
 const all = [...ranked, ...unranked];
+const INDEX_VERIFIED = verifiedFor(c.lang);
 const countries = new Set(all.map((e) => e.country)).size;
 const maxCompounds = Math.max(...ranked.map((e) => e.compounds ?? 0));
 const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
@@ -421,7 +422,7 @@ const pairMax = 1473;
         <details class="rounded-2xl overflow-hidden" style={`border:1px solid ${GREEN}; background-color:#fff;`}>
           <summary class="cursor-pointer px-6 py-5" style={`font-family:${SG}; font-weight:500; font-size:1.05rem; color:${GREEN};`}>{c.sources.summary}</summary>
           <div class="px-6 pb-6" style={`${small} color:${onCream(0.82)};`}>
-            <p class="mb-4">{fill(c.sources.introPre, { verified: INDEX_VERIFIED })} <a href="/certificates/coratina-2526-hplc-2025-11" class="underline">{c.sources.introLink}</a> {c.sources.introPost}</p>
+            <p class="mb-4">{fill(c.sources.introPre, { verified: INDEX_VERIFIED })} <a href="/certificates/coratina-2526-hplc-2025-11" class="underline">{c.sources.introLink}</a>{/^[.,;:]/.test(c.sources.introPost) ? "" : " "}{c.sources.introPost}</p>
             <ul class="space-y-2">
               <li>Starec et al. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7796514/">Molecules 2021;26(1):242</a></li>
               <li>Karkoula et al. <a class="underline" rel="nofollow noopener" target="_blank" href="https://pubs.acs.org/doi/10.1021/jf404421p">J. Agric. Food Chem. 2014;62:600–607</a></li>

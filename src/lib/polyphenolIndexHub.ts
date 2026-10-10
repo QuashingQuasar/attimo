@@ -1,6 +1,6 @@
 // Serialisable slice of the Polyphenol Index for the high-polyphenol hub
 // island: the ranked entries and ATTIMO's position, built server-side.
-import { getIndexEntries, INDEX_VERIFIED, num } from "./polyphenolIndex";
+import { getIndexEntries, verifiedFor, num } from "./polyphenolIndex";
 import { indexHrefFor } from "./polyphenolIndexContent";
 
 export interface HubIndexRow {
@@ -39,7 +39,7 @@ export async function getHubIndexData(lang = "en"): Promise<HubIndexData> {
     attimoRank: mine?.rank ?? null,
     rankedCount: ranked.length,
     totalCount: all.length,
-    verified: INDEX_VERIFIED,
+    verified: verifiedFor(lang),
     href: indexHrefFor(lang),
   };
 }

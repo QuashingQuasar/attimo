@@ -20,6 +20,9 @@ export interface IndexEntry extends IndexEntryData {
 export const INDEX_PATH = "/polyphenol-index";
 export const INDEX_JSON_PATH = "/polyphenol-index.json";
 export const INDEX_VERIFIED = "September 2026";
+/** The verification month in the page's language. */
+export const verifiedFor = (lang: string) =>
+  ({ en: "September 2026", de: "September 2026", fr: "septembre 2026", sv: "september 2026", da: "september 2026", nl: "september 2026" } as Record<string, string>)[lang] ?? INDEX_VERIFIED;
 export const INDEX_EDITION = "2025/26 harvest";
 export const INDEX_NEXT = "2026/27";
 export const INDEX_UPDATE_NOTE = "Updated regularly as new results and harvests come in";
