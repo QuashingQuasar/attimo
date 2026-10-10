@@ -99,9 +99,9 @@ export const Header = ({
         /* Landing-page bar: logo centred, the page anchors flanking it, cart
            and region switcher at the far right. Phones keep the hamburger. */
         <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
-          <nav className="hidden md:flex items-center justify-start gap-6 lg:gap-10">
+          <nav className="hidden md:flex items-center justify-start gap-4 lg:gap-6 xl:gap-10 pr-6">
             {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
-              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 {item.label}
               </a>
             ))}
@@ -109,14 +109,14 @@ export const Header = ({
           <div className="flex items-center justify-self-start md:justify-self-center">
             <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
               {/* The round emblem, centred; the wordmark stays on phones. */}
-              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-28 lg:h-36 xl:h-40 w-auto max-w-none -mb-4" />
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-28 xl:h-36 2xl:h-40 w-auto max-w-none -mb-4" />
               <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
-          <div className="flex items-center justify-end gap-6 lg:gap-10">
-            <nav className="hidden md:flex items-center gap-6 lg:gap-10">
+          <div className="flex items-center justify-end gap-4 lg:gap-6 xl:gap-10 pl-6">
+            <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10">
               {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
-                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   {item.label}
                 </a>
               ))}
