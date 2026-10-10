@@ -68,7 +68,7 @@ const en: HubContent = {
     h1: "High-Polyphenol Olive Oil",
     subPre: "Single-variety, early-harvest extra virgin oil, ranked by what matters most: a ",
     subAccent: "polyphenol-rich",
-    subPost: " profile you can taste — and verify in the lab.",
+    subPost: " profile you can taste and verify yourself with transparent lab results.",
     cta: "Shop the range →",
   },
   range: {
@@ -181,9 +181,9 @@ const de: HubContent = {
   hero: {
     eyebrow: "Kategorie · Natives Olivenöl Extra",
     h1: "Polyphenolreiches Olivenöl",
-    subPre: "Sortenrein, früh geerntet und nativ extra — gereiht nach dem, was zählt: einem ",
+    subPre: "Sortenrein, früh geerntet und nativ extra, gereiht nach dem, was zählt: einem ",
     subAccent: "polyphenolreichen",
-    subPost: " Profil, das man schmeckt — und im Labor nachprüfen kann.",
+    subPost: " Profil, das man schmeckt und anhand transparenter Laborergebnisse selbst nachprüfen kann.",
     cta: "Zur Auswahl →",
   },
   range: {
@@ -297,7 +297,7 @@ const fr: HubContent = {
     h1: "Huile d'Olive Riche en Polyphénols",
     subPre: "Huile vierge extra monovariétale, de récolte précoce, classée selon l'essentiel : un profil ",
     subAccent: "riche en polyphénols",
-    subPost: " que l'on goûte — et que l'on vérifie en laboratoire.",
+    subPost: " que l'on goûte et que l'on vérifie soi-même grâce à des résultats de laboratoire transparents.",
     cta: "Voir la gamme →",
   },
   range: {
@@ -407,9 +407,9 @@ const sv: HubContent = {
   hero: {
     eyebrow: "Kategori · Extra Jungfruolivolja",
     h1: "Polyfenolrik Olivolja",
-    subPre: "Sortren, tidigt skördad extra jungfruolja — rangordnad efter det som betyder mest: en ",
+    subPre: "Sortren, tidigt skördad extra jungfruolja, rangordnad efter det som betyder mest: en ",
     subAccent: "polyfenolrik",
-    subPost: " profil du kan smaka — och verifiera i labbet.",
+    subPost: " profil du kan smaka och själv verifiera med transparenta labbresultat.",
     cta: "Se sortimentet →",
   },
   range: {
@@ -519,9 +519,9 @@ const da: HubContent = {
   hero: {
     eyebrow: "Kategori · Ekstra Jomfru Olivenolie",
     h1: "Polyfenolrig Olivenolie",
-    subPre: "Enkeltsorts, tidligt høstet ekstra jomfruolie — rangeret efter det, der betyder mest: en ",
+    subPre: "Enkeltsorts, tidligt høstet ekstra jomfruolie, rangeret efter det, der betyder mest: en ",
     subAccent: "polyfenolrig",
-    subPost: " profil, du kan smage — og verificere i laboratoriet.",
+    subPost: " profil, du kan smage og selv verificere med transparente laboratorieresultater.",
     cta: "Se sortimentet →",
   },
   range: {
@@ -631,9 +631,9 @@ const nl: HubContent = {
   hero: {
     eyebrow: "Categorie · Extra Vierge Olijfolie",
     h1: "Polyfenolrijke Olijfolie",
-    subPre: "Extra vierge olie van één variëteit, vroeg geoogst — gerangschikt op wat het meest telt: een ",
+    subPre: "Extra vierge olie van één variëteit, vroeg geoogst, gerangschikt op wat het meest telt: een ",
     subAccent: "polyfenolrijk",
-    subPost: " profiel dat je proeft — en in het lab kunt verifiëren.",
+    subPost: " profiel dat je proeft en zelf kunt verifiëren met transparante labresultaten.",
     cta: "Bekijk het assortiment →",
   },
   range: {

@@ -66,13 +66,13 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
       <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-64 lg:pt-80 xl:pt-[22rem] pb-14 md:pb-20">
         {/* Headline — wide enough that "Olive Oil" never orphans on desktop */}
         <div className="max-w-6xl mx-auto text-center">
-          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
+          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.85rem, 1.15vw, 1.2rem)" }}>
             {hero.eyebrow}
           </p>
           <h1 className="mb-6 md:mb-8 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
             {hero.h1}
           </h1>
-          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45 }}>
+          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1.15rem, 1.75vw, 1.75rem)", lineHeight: 1.45, maxWidth: "52rem" }}>
             {hero.subPre}
             <span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>
             {hero.subPost}
