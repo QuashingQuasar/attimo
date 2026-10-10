@@ -43,7 +43,11 @@ export interface HubContent {
     disclaimer: string;
   };
   labReceipts: { heading: string; intro: string };
+  /** The Polyphenol Index section. {rank}, {ranked}, {total}, {verified} are filled at render. */
+  index: { eyebrow: string; heading: string; intro: string; position: string; colBrand: string; colCompounds: string; colTotal: string; cta: string; note: string };
   kleia: { heading: string; intro: string };
+  /** In-page anchors for the landing-page header, in page order. */
+  nav: { shop: string; compounds: string; science: string; lab: string; index: string; how: string };
   faq: { heading: string; items: { question: string; answer: string }[] };
   blogHeading: string;
 }
@@ -64,7 +68,7 @@ const en: HubContent = {
     h1: "High-Polyphenol Olive Oil",
     subPre: "Single-variety, early-harvest extra virgin oil, ranked by what matters most: a ",
     subAccent: "polyphenol-rich",
-    subPost: " profile you can taste — and verify in the lab.",
+    subPost: " profile you can taste and verify yourself with transparent lab results.",
     cta: "Shop the range →",
   },
   range: {
@@ -144,10 +148,22 @@ const en: HubContent = {
     heading: "Don't take our word for it",
     intro: "Every batch is sent to an independent lab. Here are the full reports behind the numbers on this page — download and check them yourself.",
   },
+  index: {
+    eyebrow: "The Olive Oil Polyphenol Index",
+    heading: "Every brand that publishes its numbers, ranked",
+    intro: "We went looking for every olive oil producer in the world that publishes a polyphenol figure for its current oil and found {total}. Ranked by the two documented compounds, oleocanthal and oleacein, our Coratina sits at number {rank}.",
+    position: "ATTIMO Coratina, number {rank} of {ranked}",
+    colBrand: "Brand · oil",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Total · method",
+    cta: "See the full index",
+    note: "mg/kg, as published by each producer. Verified {verified}.",
+  },
   kleia: {
     heading: "Why our polyphenols stay high",
     intro: "High numbers aren't luck. They come from a few deliberate choices — early harvest, single variety, pressed and bottled fresh — the same choices industrial oil skips to scale.",
   },
+  nav: { shop: "Shop", compounds: "What's inside", science: "Why it matters", lab: "Lab reports", index: "The index", how: "How we do it" },
   faq: {
     heading: "High-polyphenol olive oil FAQ",
     items: HIGH_POLYPHENOL_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
@@ -165,9 +181,9 @@ const de: HubContent = {
   hero: {
     eyebrow: "Kategorie · Natives Olivenöl Extra",
     h1: "Polyphenolreiches Olivenöl",
-    subPre: "Sortenrein, früh geerntet und nativ extra — gereiht nach dem, was zählt: einem ",
+    subPre: "Sortenrein, früh geerntet und nativ extra, gereiht nach dem, was zählt: einem ",
     subAccent: "polyphenolreichen",
-    subPost: " Profil, das man schmeckt — und im Labor nachprüfen kann.",
+    subPost: " Profil, das man schmeckt und anhand transparenter Laborergebnisse selbst nachprüfen kann.",
     cta: "Zur Auswahl →",
   },
   range: {
@@ -237,10 +253,22 @@ const de: HubContent = {
     heading: "Vertrau nicht nur unserem Wort",
     intro: "Jede Charge geht an ein unabhängiges Labor. Hier sind die vollständigen Berichte hinter den Zahlen auf dieser Seite — herunterladen und selbst prüfen.",
   },
+  index: {
+    eyebrow: "Der Olivenöl-Polyphenol-Index",
+    heading: "Alle Marken, die ihre Werte veröffentlichen, in einer Rangfolge",
+    intro: "Wir haben weltweit nach jedem Olivenölproduzenten gesucht, der einen Polyphenolwert für sein aktuelles Öl veröffentlicht, und {total} gefunden. Nach den beiden dokumentierten Verbindungen Oleocanthal und Oleacein geordnet, steht unser Coratina auf Platz {rank}.",
+    position: "ATTIMO Coratina, Platz {rank} von {ranked}",
+    colBrand: "Marke · Öl",
+    colCompounds: "Oleocanthal + Oleacein",
+    colTotal: "Gesamt · Methode",
+    cta: "Zum vollständigen Index",
+    note: "mg/kg, wie vom jeweiligen Hersteller veröffentlicht. Geprüft {verified}.",
+  },
   kleia: {
     heading: "Warum unsere Polyphenole hoch bleiben",
     intro: "Hohe Werte sind kein Zufall. Sie kommen aus wenigen bewussten Entscheidungen — frühe Ernte, sortenrein, frisch gepresst und abgefüllt — genau das, was Industrieöl fürs Skalieren weglässt.",
   },
+  nav: { shop: "Shop", compounds: "Was drin ist", science: "Warum es zählt", lab: "Laborberichte", index: "Der Index", how: "Wie wir es machen" },
   faq: {
     heading: "FAQ zu polyphenolreichem Olivenöl",
     items: [
@@ -269,7 +297,7 @@ const fr: HubContent = {
     h1: "Huile d'Olive Riche en Polyphénols",
     subPre: "Huile vierge extra monovariétale, de récolte précoce, classée selon l'essentiel : un profil ",
     subAccent: "riche en polyphénols",
-    subPost: " que l'on goûte — et que l'on vérifie en laboratoire.",
+    subPost: " que l'on goûte et que l'on vérifie soi-même grâce à des résultats de laboratoire transparents.",
     cta: "Voir la gamme →",
   },
   range: {
@@ -339,10 +367,22 @@ const fr: HubContent = {
     heading: "Ne nous croyez pas sur parole",
     intro: "Chaque lot part dans un laboratoire indépendant. Voici les rapports complets derrière les chiffres de cette page — téléchargez-les et vérifiez vous-même.",
   },
+  index: {
+    eyebrow: "L'index des polyphénols de l'huile d'olive",
+    heading: "Toutes les marques qui publient leurs chiffres, classées",
+    intro: "Nous avons cherché dans le monde entier chaque producteur d'huile d'olive qui publie un chiffre de polyphénols pour son huile de la récolte en cours, et nous en avons trouvé {total}. Classée selon les deux composés documentés, oléocanthal et oléacéine, notre Coratina est numéro {rank}.",
+    position: "ATTIMO Coratina, numéro {rank} sur {ranked}",
+    colBrand: "Marque · huile",
+    colCompounds: "Oléocanthal + oléacéine",
+    colTotal: "Total · méthode",
+    cta: "Voir l'index complet",
+    note: "mg/kg, tels que publiés par chaque producteur. Vérifié {verified}.",
+  },
   kleia: {
     heading: "Pourquoi notre huile reste riche en polyphénols",
     intro: "Des chiffres élevés, ce n'est pas de la chance. Ils viennent de quelques choix délibérés — récolte précoce, monovariétale, pressée et embouteillée fraîche — ceux que l'huile industrielle sacrifie pour produire à grande échelle.",
   },
+  nav: { shop: "Boutique", compounds: "Ce qu'elle contient", science: "Pourquoi ça compte", lab: "Rapports de labo", index: "L'index", how: "Comment on fait" },
   faq: {
     heading: "FAQ sur l'huile d'olive riche en polyphénols",
     items: [
@@ -367,9 +407,9 @@ const sv: HubContent = {
   hero: {
     eyebrow: "Kategori · Extra Jungfruolivolja",
     h1: "Polyfenolrik Olivolja",
-    subPre: "Sortren, tidigt skördad extra jungfruolja — rangordnad efter det som betyder mest: en ",
+    subPre: "Sortren, tidigt skördad extra jungfruolja, rangordnad efter det som betyder mest: en ",
     subAccent: "polyfenolrik",
-    subPost: " profil du kan smaka — och verifiera i labbet.",
+    subPost: " profil du kan smaka och själv verifiera med transparenta labbresultat.",
     cta: "Se sortimentet →",
   },
   range: {
@@ -439,10 +479,22 @@ const sv: HubContent = {
     heading: "Ta inte bara vårt ord för det",
     intro: "Varje parti skickas till ett oberoende labb. Här är de fullständiga rapporterna bakom siffrorna på den här sidan — ladda ner och kontrollera själv.",
   },
+  index: {
+    eyebrow: "Polyfenolindexet för olivolja",
+    heading: "Alla varumärken som publicerar sina värden, rankade",
+    intro: "Vi letade efter varje olivoljeproducent i världen som publicerar ett polyfenolvärde för sin aktuella olja och hittade {total}. Rankad efter de två dokumenterade föreningarna oleocanthal och oleacein ligger vår Coratina på plats {rank}.",
+    position: "ATTIMO Coratina, plats {rank} av {ranked}",
+    colBrand: "Varumärke · olja",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Totalt · metod",
+    cta: "Se hela indexet",
+    note: "mg/kg, som publicerat av respektive producent. Verifierat {verified}.",
+  },
   kleia: {
     heading: "Varför våra polyfenoler håller sig höga",
     intro: "Höga siffror är ingen tur. De kommer från några medvetna val — tidig skörd, sortren, pressad och tappad färsk — precis det som industriolja hoppar över för att kunna skala.",
   },
+  nav: { shop: "Butik", compounds: "Vad som finns i", science: "Varför det spelar roll", lab: "Labbrapporter", index: "Indexet", how: "Så gör vi" },
   faq: {
     heading: "FAQ om polyfenolrik olivolja",
     items: [
@@ -467,9 +519,9 @@ const da: HubContent = {
   hero: {
     eyebrow: "Kategori · Ekstra Jomfru Olivenolie",
     h1: "Polyfenolrig Olivenolie",
-    subPre: "Enkeltsorts, tidligt høstet ekstra jomfruolie — rangeret efter det, der betyder mest: en ",
+    subPre: "Enkeltsorts, tidligt høstet ekstra jomfruolie, rangeret efter det, der betyder mest: en ",
     subAccent: "polyfenolrig",
-    subPost: " profil, du kan smage — og verificere i laboratoriet.",
+    subPost: " profil, du kan smage og selv verificere med transparente laboratorieresultater.",
     cta: "Se sortimentet →",
   },
   range: {
@@ -539,10 +591,22 @@ const da: HubContent = {
     heading: "Tag ikke bare vores ord for det",
     intro: "Hvert parti sendes til et uafhængigt laboratorium. Her er de fulde rapporter bag tallene på denne side — download og tjek dem selv.",
   },
+  index: {
+    eyebrow: "Polyfenolindekset for olivenolie",
+    heading: "Alle mærker, der offentliggør deres tal, rangeret",
+    intro: "Vi ledte efter hver eneste olivenolieproducent i verden, der offentliggør et polyfenoltal for sin aktuelle olie, og fandt {total}. Rangeret efter de to dokumenterede forbindelser oleocanthal og oleacein ligger vores Coratina på plads {rank}.",
+    position: "ATTIMO Coratina, nummer {rank} af {ranked}",
+    colBrand: "Mærke · olie",
+    colCompounds: "Oleocanthal + oleacein",
+    colTotal: "Total · metode",
+    cta: "Se hele indekset",
+    note: "mg/kg, som offentliggjort af hver producent. Verificeret {verified}.",
+  },
   kleia: {
     heading: "Hvorfor vores polyfenoler forbliver høje",
     intro: "Høje tal er ikke held. De kommer fra nogle få bevidste valg — tidlig høst, enkeltsorts, presset og tappet frisk — netop det, industriolie springer over for at kunne skalere.",
   },
+  nav: { shop: "Shop", compounds: "Hvad der er i", science: "Hvorfor det betyder noget", lab: "Laboratorierapporter", index: "Indekset", how: "Sådan gør vi" },
   faq: {
     heading: "FAQ om polyfenolrig olivenolie",
     items: [
@@ -567,9 +631,9 @@ const nl: HubContent = {
   hero: {
     eyebrow: "Categorie · Extra Vierge Olijfolie",
     h1: "Polyfenolrijke Olijfolie",
-    subPre: "Extra vierge olie van één variëteit, vroeg geoogst — gerangschikt op wat het meest telt: een ",
+    subPre: "Extra vierge olie van één variëteit, vroeg geoogst, gerangschikt op wat het meest telt: een ",
     subAccent: "polyfenolrijk",
-    subPost: " profiel dat je proeft — en in het lab kunt verifiëren.",
+    subPost: " profiel dat je proeft en zelf kunt verifiëren met transparante labresultaten.",
     cta: "Bekijk het assortiment →",
   },
   range: {
@@ -639,10 +703,22 @@ const nl: HubContent = {
     heading: "Je hoeft ons niet op ons woord te geloven",
     intro: "Elke batch gaat naar een onafhankelijk lab. Dit zijn de volledige rapporten achter de cijfers op deze pagina — download ze en controleer het zelf.",
   },
+  index: {
+    eyebrow: "De olijfolie-polyfenolindex",
+    heading: "Alle merken die hun cijfers publiceren, gerangschikt",
+    intro: "We zochten wereldwijd naar elke olijfolieproducent die een polyfenolcijfer publiceert voor zijn huidige olie en vonden er {total}. Gerangschikt op de twee gedocumenteerde stoffen, oleocanthal en oleaceïne, staat onze Coratina op nummer {rank}.",
+    position: "ATTIMO Coratina, nummer {rank} van {ranked}",
+    colBrand: "Merk · olie",
+    colCompounds: "Oleocanthal + oleaceïne",
+    colTotal: "Totaal · methode",
+    cta: "Bekijk de volledige index",
+    note: "mg/kg, zoals gepubliceerd door elke producent. Geverifieerd {verified}.",
+  },
   kleia: {
     heading: "Waarom onze polyfenolen hoog blijven",
     intro: "Hoge cijfers zijn geen geluk. Ze komen uit een paar bewuste keuzes — vroege oogst, één variëteit, vers geperst en gebotteld — precies de keuzes die industriële olie overslaat om te kunnen schalen.",
   },
+  nav: { shop: "Shop", compounds: "Wat erin zit", science: "Waarom het telt", lab: "Labrapporten", index: "De index", how: "Hoe wij het doen" },
   faq: {
     heading: "FAQ over polyfenolrijke olijfolie",
     items: [

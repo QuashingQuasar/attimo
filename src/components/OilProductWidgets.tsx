@@ -65,7 +65,6 @@ interface OilProductWidgetsProps {
    * descriptor — number in UDC, unit and word in Space Grotesk — so it never
    * reads as a status badge next to the sold-out pill.
    */
-  polyphenolStyle?: "badge" | "line";
   /** Override the heading font (default Beverly Drive script). */
   headingFontFamily?: string;
   /** Show the per-bottle tagline line under the price (default true). */
@@ -83,7 +82,6 @@ export const OilProductWidgets = ({
   subtitle,
   sectionId = "oil-collection",
   polyphenols,
-  polyphenolStyle = "badge",
   headingFontFamily = "Beverly Drive, serif",
   showTagline = true,
   quizPrompt,
@@ -364,7 +362,7 @@ export const OilProductWidgets = ({
                   {t.products.flavour[oil.handle]}
                 </p>
 
-                {polyphenols?.[oil.handle] && polyphenolStyle === "line" && (
+                {polyphenols?.[oil.handle] && (
                   <p className="mb-4 whitespace-nowrap" style={{ color: "#1B4229", lineHeight: 1.15 }}>
                     <span className="block" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.15rem, 1.4vw, 1.4rem)", letterSpacing: "0.02em" }}>
                       {polyphenols[oil.handle]} mg/kg
@@ -372,20 +370,6 @@ export const OilProductWidgets = ({
                     <span className="block" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.1em", opacity: 0.65 }}>
                       POLYPHENOLS
                     </span>
-                  </p>
-                )}
-
-                {polyphenols?.[oil.handle] && polyphenolStyle === "badge" && (
-                  <p
-                    className="rounded-full px-4 py-1.5 mb-3 whitespace-nowrap"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      backgroundColor: "#1B4229",
-                      color: "#CDDB2D",
-                      fontSize: "clamp(1.05rem, 1.3vw, 1.3rem)",
-                      letterSpacing: "0.08em",
-                    }}>
-                    {polyphenols[oil.handle]} mg/kg POLYPHENOLS
                   </p>
                 )}
 

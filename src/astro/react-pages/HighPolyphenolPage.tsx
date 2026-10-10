@@ -17,6 +17,8 @@ import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
+import type { HubIndexData } from "@/lib/polyphenolIndexHub";
+import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -61,16 +63,16 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,0.7), rgba(13,30,20,0.5) 38%, rgba(13,30,20,0.78))" }} />
 
-      <div className="relative z-10 container mx-auto px-6 pt-24 md:pt-28 pb-8">
+      <div className="relative z-10 container mx-auto px-6 pt-32 md:pt-64 lg:pt-80 xl:pt-[22rem] pb-14 md:pb-20">
         {/* Headline — wide enough that "Olive Oil" never orphans on desktop */}
         <div className="max-w-6xl mx-auto text-center">
-          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.72rem, 0.95vw, 1rem)" }}>
+          <p className="uppercase mb-3 md:mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.22em", fontSize: "clamp(0.85rem, 1.15vw, 1.2rem)" }}>
             {hero.eyebrow}
           </p>
-          <h1 className="mb-4 md:mb-5 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
+          <h1 className="mb-6 md:mb-8 tracking-tight drop-shadow-lg" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(2.1rem, 5vw, 4.5rem)", lineHeight: 0.98 }}>
             {hero.h1}
           </h1>
-          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1rem, 1.45vw, 1.4rem)", lineHeight: 1.45, maxWidth: "44rem" }}>
+          <p className="mx-auto" style={{ fontFamily: SG, color: "rgba(255,250,234,0.95)", fontSize: "clamp(1.15rem, 1.75vw, 1.75rem)", lineHeight: 1.45 }}>
             {hero.subPre}
             <span style={{ color: ACCENT, fontWeight: 600 }}>{hero.subAccent}</span>
             {hero.subPost}
@@ -78,7 +80,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
         </div>
 
         {/* CTA */}
-        <div className="mt-7 md:mt-8 flex justify-center">
+        <div className="mt-10 md:mt-12 flex justify-center">
           <a
             href="#the-range"
             className="inline-flex items-center gap-2 px-9 py-3.5 rounded-lg font-semibold transition-transform duration-300 hover:scale-105 shadow-xl"
@@ -88,7 +90,7 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
         </div>
 
         {/* Ranked bottle lineup */}
-        <div className="mt-9 md:mt-12">
+        <div className="mt-14 md:mt-20">
           <div className="w-full max-w-3xl mx-auto grid grid-cols-3 gap-2 sm:gap-6 md:gap-10 items-end">
             {HERO_BOTTLES.map((b) => (
               <a
@@ -128,9 +130,9 @@ function Hero({ hero }: { hero: HubContent["hero"] }) {
 // measured values appear only as proof, clearly labelled.
 function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
+    <section id="compounds" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: "#10221B" }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mb-10 md:mb-14">
+        <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: AMBER, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             {c.eyebrow}
           </p>
@@ -176,16 +178,16 @@ function CompoundsSection({ c }: { c: HubContent["compounds"] }) {
 // informational half of the query without turning the page into an article.
 function ScienceSection({ c }: { c: HubContent["science"] }) {
   return (
-    <section className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
+    <section id="science" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: LIME }}>
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mb-10 md:mb-14">
+        <div className="mb-10 md:mb-14">
           <p className="uppercase mb-3" style={{ fontFamily: UDC, color: GREEN, opacity: 0.7, letterSpacing: "0.18em", fontSize: "clamp(0.8rem, 1vw, 1rem)" }}>
             {c.eyebrow}
           </p>
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: GREEN, fontSize: "clamp(1.9rem, 3vw, 3rem)", lineHeight: 1.05 }}>
             {c.heading}
           </h2>
-          <p className="leading-relaxed max-w-3xl" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
+          <p className="leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.78)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
             {c.intro}
           </p>
         </div>
@@ -212,7 +214,7 @@ function ScienceSection({ c }: { c: HubContent["science"] }) {
           </p>
         )}
 
-        <p className="mt-5 max-w-3xl leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
+        <p className="mt-5 leading-relaxed" style={{ fontFamily: SG, color: "rgba(27,66,41,0.6)", fontSize: "clamp(0.8rem, 0.95vw, 1rem)" }}>
           {c.disclaimer}
         </p>
       </div>
@@ -257,13 +259,94 @@ function LabReceipts({ c }: { c: HubContent["labReceipts"] }) {
   );
 }
 
-function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialPost[]; locale: Locale }) {
+// The Polyphenol Index: every brand that publishes, ranked by documented
+// compounds, with ATTIMO's position. Rows arrive serialised from the
+// collection; the page carries no number of its own.
+function IndexSection({ c, data }: { c: HubContent["index"]; data?: HubIndexData }) {
+  if (!data || !data.rows.length) return null;
+  const fill = (s: string) =>
+    s.replace("{rank}", String(data.attimoRank ?? "—")).replace("{ranked}", String(data.rankedCount)).replace("{total}", String(data.totalCount)).replace("{verified}", data.verified);
+  return (
+    <section id="index" className="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24" style={{ backgroundColor: GREEN }}>
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto">
+          <p className="mb-4" style={{ fontFamily: UDC, color: ACCENT, letterSpacing: "0.12em", textTransform: "uppercase", fontSize: "1.02rem", fontWeight: 700 }}>
+            {c.eyebrow}
+          </p>
+          <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.9rem, 3.2vw, 3.2rem)", lineHeight: 1.05, fontWeight: 300, letterSpacing: "-0.025em" }}>
+            {c.heading}
+          </h2>
+          <p className="mb-10 leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
+            {fill(c.intro)}
+          </p>
+
+          <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: CREAM }}>
+            <table className="w-full border-collapse" style={{ fontFamily: SG, fontSize: "0.95rem", color: GREEN }}>
+              <thead>
+                <tr style={{ backgroundColor: "#10221B", color: CREAM }}>
+                  {["#", c.colBrand, c.colCompounds, c.colTotal].map((h, i) => (
+                    <th key={h} className={`p-3 md:p-4 ${i === 0 ? "w-12" : ""} ${i === 3 ? "hidden sm:table-cell" : ""} text-left`} style={{ fontFamily: UDC, fontWeight: 700, fontSize: "0.82rem", letterSpacing: "0.04em" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.rows.map((r) => (
+                  <tr key={r.rank} style={{ borderTop: "1px solid rgba(27,66,41,0.12)", backgroundColor: r.mine ? "rgba(205,219,45,0.22)" : undefined }}>
+                    <td className="p-3 md:p-4" style={{ fontFamily: UDC, color: "rgba(27,66,41,0.55)" }}>{String(r.rank).padStart(2, "0")}</td>
+                    <td className="p-3 md:p-4">
+                      <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.02rem" }}>{r.brand}</span>
+                      <span style={{ color: "rgba(27,66,41,0.7)" }}> · {r.oil}</span>
+                      <span className="block" style={{ fontSize: "0.82rem", color: "rgba(27,66,41,0.6)" }}>{r.origin}</span>
+                    </td>
+                    <td className="p-3 md:p-4" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.15rem", whiteSpace: "nowrap" }}>{r.compounds}<span style={{ fontFamily: SG, fontWeight: 400, fontSize: "0.78rem", color: "rgba(27,66,41,0.6)" }}> mg/kg</span></td>
+                    <td className="p-3 md:p-4 hidden sm:table-cell" style={{ whiteSpace: "nowrap", color: "rgba(27,66,41,0.75)" }}>{r.total} · {r.method}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <div>
+              <p style={{ fontFamily: UDC, color: ACCENT, fontSize: "1.25rem", fontWeight: 700, letterSpacing: "-0.01em" }}>{fill(c.position)}</p>
+              <p className="mt-1" style={{ fontFamily: SG, color: "rgba(255,250,234,0.6)", fontSize: "0.88rem" }}>{fill(c.note)}</p>
+            </div>
+            <a
+              href={data.href}
+              className="inline-flex items-center justify-center px-7 py-4 rounded-lg transition-transform duration-300 hover:scale-105"
+              style={{ fontFamily: UDC, backgroundColor: ACCENT, color: GREEN, fontSize: "clamp(1rem, 1.2vw, 1.2rem)", letterSpacing: "0.03em", fontWeight: 700, whiteSpace: "nowrap" }}>
+              {c.cta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HighPolyphenolInner({ initialPosts, locale, indexData, labNumbers }: { initialPosts?: InitialPost[]; locale: Locale; indexData?: HubIndexData; labNumbers?: HomeLabOil[] }) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const content = HUB_CONTENT[locale.lang];
+  // Per-oil polyphenol line on the product cards, from the certificates
+  // collection (via labNumbers), same as the homepage.
+  const polyBadges = labNumbers?.length
+    ? Object.fromEntries(labNumbers.filter((o) => o.total !== null).map((o) => [o.key, String(o.total)]))
+    : undefined;
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
+      <Header
+        onWaitlistClick={() => setIsWaitlistOpen(true)}
+        locale={locale}
+        pageNav={[
+          { label: content.nav.shop, href: "#the-range" },
+          { label: content.nav.compounds, href: "#compounds" },
+          { label: content.nav.science, href: "#science" },
+          { label: content.nav.lab, href: "#lab" },
+          { label: content.nav.index, href: "#index" },
+          { label: content.nav.how, href: "#how" },
+        ]}
+      />
 
       {/* 1 — HERO */}
       <Hero hero={content.hero} />
@@ -275,7 +358,7 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
         headingFontFamily={UDC}
         heading={content.range.heading}
         subtitle={content.range.subtitle}
-        polyphenols={{ coratina: "847", picual: "675", nocellara: "400" }}
+        polyphenols={polyBadges}
         showTagline={false}
         quizPrompt={content.range.quizPrompt}
       />
@@ -305,15 +388,22 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
       <ScienceSection c={content.science} />
 
       {/* 6 — LAB-TESTED PROOF: comparison table + the actual reports */}
-      <OilComparison locale={locale} />
-      <LabReceipts c={content.labReceipts} />
+      <div id="lab">
+        <OilComparison locale={locale} />
+        <LabReceipts c={content.labReceipts} />
+      </div>
+
+      {/* 6b — THE POLYPHENOL INDEX: every brand that publishes, and where we sit */}
+      <IndexSection c={content.index} data={indexData} />
 
       {/* 7 — HIGH-POLYPHENOL BY DESIGN (the causes) */}
+      <div id="how">
       <KleiaWay
         locale={locale}
         heading={content.kleia.heading}
         intro={content.kleia.intro}
       />
+      </div>
 
       {/* 8 — Reviews → FAQ → blog feed + newsletter → footer */}
       <Testimonials locale={locale} />
@@ -327,10 +417,10 @@ function HighPolyphenolInner({ initialPosts, locale }: { initialPosts?: InitialP
   );
 }
 
-export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE }: { initialPosts?: InitialPost[]; locale?: Locale }) {
+export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE, indexData, labNumbers }: { initialPosts?: InitialPost[]; locale?: Locale; indexData?: HubIndexData; labNumbers?: HomeLabOil[] }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} />
+      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} indexData={indexData} labNumbers={labNumbers} />
     </QueryClientProvider>
   );
 }

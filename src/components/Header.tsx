@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
 import { Link } from "@/lib/router-stub";
 import navbarLogo from "@/assets/navbar-logo-latest.svg?url";
+import emblemLogo from "@/assets/attimo-nav-logo.svg?url";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
@@ -39,6 +40,11 @@ interface HeaderProps {
   forceTransparent?: boolean;
   darkNav?: boolean;
   locale?: Locale;
+  /**
+   * Landing-page mode: anchors that structure THIS page replace the site
+   * links (Shop, Blog, Quiz, Merch). Logo, cart and region switcher stay.
+   */
+  pageNav?: { label: string; href: string }[];
 }
 export const Header = ({
   onWaitlistClick: _onWaitlistClick,
@@ -46,6 +52,7 @@ export const Header = ({
   forceTransparent: _forceTransparent = false,
   darkNav = false,
   locale = DEFAULT_LOCALE,
+  pageNav,
 }: HeaderProps) => {
   // Header is no longer sticky. Background is transparent by default so the
   // hero shows through; solid only when (a) the consuming page passes
@@ -81,13 +88,60 @@ export const Header = ({
 
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 py-6 ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-8 pb-6 md:pt-10 lg:pt-14" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
       style={{
         backgroundColor: solidBackground ? '#1B4229' : 'transparent',
         transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
       }}
     >
-      <div className="container mx-auto px-6">
+      <div className={pageNav ? "w-full px-6 md:px-10 lg:px-16" : "container mx-auto px-6"}>
+        {pageNav ? (
+        /* Landing-page bar: logo centred, the page anchors flanking it, cart
+           and region switcher at the far right. Phones keep the hamburger. */
+        <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
+          <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-8 xl:gap-12 pr-8 lg:pr-12 xl:pr-16">
+            {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center justify-self-start md:justify-self-center">
+            <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
+              {/* The round emblem, centred; the wordmark stays on phones. */}
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-28 xl:h-36 2xl:h-40 w-auto max-w-none -mb-4" />
+              <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
+            </Link>
+          </div>
+          <div className="flex items-center gap-4 pl-8 lg:pl-12 xl:pl-16">
+            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-8 xl:gap-12">
+              {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <div className="flex items-center gap-3 md:gap-5 ml-auto">
+              <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
+              <CurrencySelector locale={locale} placement="down" triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'} />
+              <button
+                type="button"
+                className="md:hidden flex items-center justify-center hover:opacity-80 transition-opacity"
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
+                onClick={() => setMobileOpen((o) => !o)}
+                style={{ color: darkNav && !solidBackground ? '#1B4229' : '#FFFFFF' }}
+              >
+                {mobileOpen ? (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" /></svg>
+                ) : (
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><line x1="3" y1="6.5" x2="21" y2="6.5" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17.5" x2="21" y2="17.5" /></svg>
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+        ) : (
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to={localizeHref("/", locale)}>
@@ -142,6 +196,7 @@ export const Header = ({
             </button>
           </div>
         </div>
+        )}
       </div>
 
       {shopOpen && (
@@ -212,7 +267,18 @@ export const Header = ({
           style={{ backgroundColor: '#1B4229' }}
         >
           <nav className="flex flex-col px-6 py-4">
-            {shopProducts.map((product) => (
+            {pageNav && pageNav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="py-3 text-white text-lg font-medium"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {item.label}
+              </a>
+            ))}
+            {!pageNav && shopProducts.map((product) => (
               <Link
                 key={product.handle}
                 to={localizeHref(`/product/${product.handle}`, locale)}
@@ -235,7 +301,7 @@ export const Header = ({
                 </span>
               </Link>
             ))}
-            {[
+            {!pageNav && [
               { label: t.nav.blog, to: localizeHref("/blog", locale) },
               { label: t.nav.quiz, to: localizeHref("/quiz", locale) },
               { label: t.nav.merch, to: "/merch" },

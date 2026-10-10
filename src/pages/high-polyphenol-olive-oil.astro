@@ -2,9 +2,13 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import HighPolyphenolPage from "@astro/react-pages/HighPolyphenolPage";
 import { sanityClient } from "@/lib/sanity";
+import { getHubIndexData } from "@/lib/polyphenolIndexHub";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { HIGH_POLYPHENOL_FAQS, HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
 import { HUB_HREFLANGS } from "@/lib/highPolyphenolHubContent";
 
+const indexData = await getHubIndexData();
+const labNumbers = await getHomeLabNumbers();
 const canonical = "https://attimo-oil.com/high-polyphenol-olive-oil";
 const description =
   "Shop high-polyphenol olive oil, lab-tested at 400–900 mg/kg — three single-variety, polyphenol-rich extra virgin oils ranked by polyphenols. From €22.";
@@ -90,5 +94,5 @@ const curatedPosts = await sanityClient.fetch(
     FR → /fr/huile-olive-riche-polyphenols. The hreflang cluster is shared via
     HUB_HREFLANGS so all three cross-reference each other.
   */}
-  <HighPolyphenolPage initialPosts={curatedPosts} client:load />
+  <HighPolyphenolPage initialPosts={curatedPosts} indexData={indexData} labNumbers={labNumbers} client:load />
 </BaseLayout>
