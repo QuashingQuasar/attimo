@@ -2,6 +2,7 @@ import attimoLogo from '@/assets/attimo-footer-logo.svg?url';
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
+import { indexHrefFor } from "@/lib/polyphenolIndexContent";
 
 interface FooterProps {
   locale?: Locale;
@@ -82,8 +83,7 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   const learnLinks = [
     { label: t.footer.blog, href: localizeHref("/blog", locale) },
     { label: t.footer.polyphenolMethods, href: methodsHref },
-    // English-only page; every locale links the same URL.
-    { label: t.footer.polyphenolIndex, href: "/polyphenol-index" },
+        { label: t.footer.polyphenolIndex, href: indexHrefFor(locale.lang) },
     { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
     { label: t.footer.ambassadors, href: ambassadorsHref },
   ];

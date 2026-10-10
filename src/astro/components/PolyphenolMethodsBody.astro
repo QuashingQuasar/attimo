@@ -10,6 +10,7 @@ import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import type { MethodsContent } from "@/lib/polyphenolMethodsContent";
 import { certificatePath, labLine, type Certificate, type Oil } from "@/lib/certificates";
+import { indexHrefFor } from "@/lib/polyphenolIndexContent";
 
 const { content, locale = DEFAULT_LOCALE, certs } = Astro.props as {
   content: MethodsContent;
@@ -437,7 +438,7 @@ const doseRows = [
           {c.certificates.footnote}
         </p>
         <p class="mt-4" style={`font-family:${SG}; font-size:1.05rem; line-height:1.7; color:rgba(27,66,41,.85);`}>
-          {c.certificates.indexPre} <a href="/polyphenol-index" class="underline font-medium" style={`color:${GREEN};`}>{c.certificates.indexLink}</a>.
+          {c.certificates.indexPre} <a href={indexHrefFor(c.lang)} class="underline font-medium" style={`color:${GREEN};`}>{c.certificates.indexLink}</a>.
         </p>
       </div>
     </section>

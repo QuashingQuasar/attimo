@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import PolyphenolIndexBody from "@astro/components/PolyphenolIndexBody.astro";
+import { buildIndexPage, INDEX_COVER } from "@/lib/polyphenolIndexPage";
+import { INDEX_HREFLANGS } from "@/lib/polyphenolIndexContent";
+import { CREAM } from "@/lib/certificates/ui";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+// Localised variant of /polyphenol-index; content from INDEX_CONTENT.nl.
+const locale = SLUG_TO_LOCALE["nl"];
+const t = getDict(locale);
+const { content, ranked, unranked, canonical, description, jsonLd } = await buildIndexPage("nl");
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={description}
+  canonical={canonical}
+  ogImage={INDEX_COVER}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  hreflangs={INDEX_HREFLANGS}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <PolyphenolIndexBody ranked={ranked} unranked={unranked} content={content} locale={locale} />
+</BaseLayout>

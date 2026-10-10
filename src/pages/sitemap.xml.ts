@@ -41,6 +41,11 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   // Lab certificate pages (English only; one per certificate in
   // src/content/certificates).
   { loc: "/polyphenol-index", changefreq: "monthly", priority: "0.8" },
+  { loc: "/de/olivenoel-polyphenol-index", changefreq: "monthly", priority: "0.8" },
+  { loc: "/fr/index-polyphenols-huile-olive", changefreq: "monthly", priority: "0.8" },
+  { loc: "/se/olivolja-polyfenolindex", changefreq: "monthly", priority: "0.8" },
+  { loc: "/dk/olivenolie-polyfenolindeks", changefreq: "monthly", priority: "0.8" },
+  { loc: "/nl/olijfolie-polyfenolindex", changefreq: "monthly", priority: "0.8" },
   { loc: "/certificates", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
