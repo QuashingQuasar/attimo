@@ -55,6 +55,7 @@ export const fr: Dict = {
     shop: "Boutique", // REVIEW
     learn: "Découvrir",
     polyphenolMethods: "Comment les polyphénols sont mesurés", // REVIEW
+    polyphenolIndex: "Index des polyphénols",
     company: "Entreprise", // REVIEW
   },
 
@@ -456,10 +457,9 @@ export const fr: Dict = {
   },
 
   shippingPage: {
-    title: "Livraison | ATTIMO Huile d'olive vierge extra de spécialité",
-    heading: "Informations de livraison",
-    intro:
-      "Nous livrons dans toute l'Union européenne et au Royaume-Uni. Plus vous commandez, moins vous payez la livraison — voire pas du tout.", // REVIEW
+    title: "Où nous livrons : huile d'olive livrée en France et en Europe | ATTIMO",
+    heading: "Où nous livrons",
+    intro: "En France, dans tous les pays de l'UE, au Royaume-Uni, en Norvège, en Suisse et au Liechtenstein. Frais de port, seuil de gratuité et délai de livraison pour la France ci-dessous ; plus vous commandez de bouteilles, moins vous payez de port, ou rien du tout.",
     factShipsTomorrow: "Commandez aujourd'hui, expédié demain", // REVIEW
     factFreeMulti: "Livraison gratuite sur les commandes de plusieurs bouteilles", // REVIEW
     factPacked: "Soigneusement emballé pour une livraison en toute sécurité", // REVIEW
@@ -482,14 +482,24 @@ export const fr: Dict = {
     damagedPost: " avec une photo des dommages. Nous organiserons un remplacement ou un remboursement intégral — sans tracas.", // REVIEW
     contactHeading: "Des questions sur votre commande ?",
     contactSub: "Nous sommes là pour vous aider. Écrivez-nous à tout moment.", // REVIEW
+    countriesHeading: "Tous les pays où nous livrons",
+    countriesSub: "Frais de port et délais par pays, de A à Z.",
+    colCountry: "Pays", colRate: "Livraison", colFree: "Offerte dès", colDelivery: "Délai",
+    faqHeading: "Questions sur la livraison",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Livrez-vous en France ?", a: "Oui. La livraison en France coûte {standard}, elle est offerte dès {free}. Délai {delivery}. Nous livrons aussi dans les 27 pays de l'UE, au Royaume-Uni, en Norvège, en Suisse et au Liechtenstein." },
+      { q: "Combien coûte la livraison ?", a: "{standard} pour la France, offerte dès {free}, soit à partir de deux bouteilles. Les frais de port sont calculés automatiquement au paiement selon le pays de livraison." },
+      { q: "Quel est le délai de livraison ?", a: "{delivery} pour la France. Les commandes partent le jour ouvré suivant, avec un lien de suivi envoyé par e-mail." },
+      { q: "Y a-t-il des frais de douane ou une TVA à l'import ?", a: "Au sein de l'UE, aucun. Le prix affiché au paiement est le prix final." },
+    ],
     freeFromBottles: "{n} bouteilles",
-    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", uk: "UK", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
+    tierNames: { core: "Principal", tier1: "Palier 1", tier2: "Palier 2", tier3: "Palier 3", tier4: "Palier 4", tier5: "Palier 5" },
     delivery: {
       core: "2–3 jours ouvrés",
       tier1: "3–5 jours ouvrés",
       tier2: "4–6 jours ouvrés",
-      uk: "6–8 jours ouvrés",
-      tier3: "5–7 jours ouvrés",
+      tier3: "5–8 jours ouvrés",
       tier4: "6–8 jours ouvrés",
       tier5: "5–8 jours ouvrés",
     },

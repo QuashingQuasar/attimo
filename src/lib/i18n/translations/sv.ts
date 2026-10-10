@@ -56,6 +56,7 @@ export const sv: Dict = {
     shop: "Butik",
     learn: "Lär dig mer",
     polyphenolMethods: "Så mäts polyfenoler",
+    polyphenolIndex: "Polyfenolindex",
     company: "Företag",
   },
 
@@ -453,10 +454,9 @@ export const sv: Dict = {
   },
 
   shippingPage: {
-    title: "Frakt | ATTIMO Extra jungfruolja i specialklass",
-    heading: "Fraktinformation",
-    intro:
-      "Vi skickar över hela EU och till Storbritannien. Ju mer du beställer, desto mindre betalar du för frakt – eller inget alls.",
+    title: "Hit levererar vi: olivolja levererad i Sverige och Europa | ATTIMO",
+    heading: "Hit levererar vi",
+    intro: "Till Sverige, alla EU-länder, Storbritannien, Norge, Schweiz och Liechtenstein. Fraktkostnad, gräns för fri frakt och leveranstid för Sverige står nedan; ju fler flaskor du beställer, desto mindre betalar du i frakt, eller ingenting alls.",
     factShipsTomorrow: "Beställ idag, skickas imorgon",
     factFreeMulti: "Fri frakt på beställningar med flera flaskor",
     factPacked: "Noggrant packad för säker leverans",
@@ -479,14 +479,24 @@ export const sv: Dict = {
     damagedPost: " med ett foto på skadan. Vi ordnar en ersättning eller full återbetalning – utan krångel.",
     contactHeading: "Frågor om din beställning?",
     contactSub: "Vi hjälper gärna till. Hör av dig när som helst.",
+    countriesHeading: "Alla länder vi levererar till",
+    countriesSub: "Fraktkostnader och leveranstider per land, från A till Ö.",
+    colCountry: "Land", colRate: "Frakt", colFree: "Fri från", colDelivery: "Leverans",
+    faqHeading: "Frågor om frakt",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Levererar ni till Sverige?", a: "Ja. Frakt till Sverige kostar {standard}, och från {free} är den fri. Leveranstid {delivery}. Vi levererar också till alla 27 EU-länder, Storbritannien, Norge, Schweiz och Liechtenstein." },
+      { q: "Vad kostar frakten?", a: "{standard} till Sverige, fri från {free}, alltså från två flaskor. Frakten beräknas automatiskt i kassan utifrån leveransland." },
+      { q: "Hur lång är leveranstiden?", a: "{delivery} till Sverige. Beställningar skickas nästa vardag med en spårningslänk via e-post." },
+      { q: "Tillkommer tull eller importmoms?", a: "Inom EU, nej. Priset i kassan är slutpriset." },
+    ],
     freeFromBottles: "{n} flaskor",
-    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", uk: "UK", tier3: "Nivå 3", tier4: "Nivå 4", tier5: "Nivå 5" },
+    tierNames: { core: "Kärna", tier1: "Nivå 1", tier2: "Nivå 2", tier3: "Nivå 3", tier4: "Nivå 4", tier5: "Nivå 5" },
     delivery: {
       core: "2–3 arbetsdagar",
       tier1: "3–5 arbetsdagar",
       tier2: "4–6 arbetsdagar",
-      uk: "6–8 arbetsdagar",
-      tier3: "5–7 arbetsdagar",
+      tier3: "5–8 arbetsdagar",
       tier4: "6–8 arbetsdagar",
       tier5: "5–8 arbetsdagar",
     },

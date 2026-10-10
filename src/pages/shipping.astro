@@ -1,11 +1,16 @@
 ---
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ShippingPage from "@astro/react-pages/ShippingPage";
+import { shippingJsonLd } from "@/lib/shippingZones";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+const t = getDict(DEFAULT_LOCALE).shippingPage;
 ---
 
 <BaseLayout
-  title="Shipping | ATTIMO Specialty Extra Virgin Olive Oil"
-  description="ATTIMO shipping rates, free-shipping thresholds, and delivery times across Europe."
+  title={t.title}
+  description="ATTIMO ships to all 27 EU countries, the UK, Norway, Switzerland and Liechtenstein. Rates, free-shipping thresholds and delivery times for every country."
+  jsonLd={shippingJsonLd(DEFAULT_LOCALE)}
   canonical="https://attimo-oil.com/shipping"
   bodyStyle="background-color: #FFFAEA;"
   hreflangPath="/shipping"

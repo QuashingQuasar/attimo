@@ -58,6 +58,7 @@ export const en = {
     shop: "Shop",
     learn: "Learn",
     polyphenolMethods: "How polyphenols are measured",
+    polyphenolIndex: "Polyphenol Index",
     company: "Company",
   },
 
@@ -500,10 +501,9 @@ export const en = {
   },
 
   shippingPage: {
-    title: "Shipping | ATTIMO Specialty Extra Virgin Olive Oil",
-    heading: "Shipping Information",
-    intro:
-      "We ship across the European Union and the United Kingdom. The more you order, the less you pay for shipping — or nothing at all.", // REVIEW
+    title: "Where we ship: olive oil delivery across Europe and the UK | ATTIMO",
+    heading: "Where we ship",
+    intro: "Every EU country, the United Kingdom, Norway, Switzerland and Liechtenstein. Rates, free-shipping thresholds and delivery times for each country are below; the more bottles you order, the less you pay for shipping, or nothing at all.",
     factShipsTomorrow: "Order today, ships tomorrow", // REVIEW
     factFreeMulti: "Free shipping on multi-bottle orders", // REVIEW
     factPacked: "Carefully packed for safe delivery", // REVIEW
@@ -527,14 +527,24 @@ export const en = {
     contactHeading: "Questions about your order?",
     contactSub: "We're here to help. Reach out anytime.", // REVIEW
     // Free-shipping threshold cell, e.g. "2 bottles". Placeholder {n}.
+    countriesHeading: "Every country we ship to",
+    countriesSub: "Rates and delivery times per country, A to Z.",
+    colCountry: "Country", colRate: "Shipping", colFree: "Free from", colDelivery: "Delivery",
+    faqHeading: "Shipping questions",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Do you ship to my country?", a: "We ship to all 27 EU member states, the United Kingdom, Norway, Switzerland and Liechtenstein, 31 countries in all. Each one is listed above with its rate and delivery time." },
+      { q: "How much does shipping cost?", a: "From €7 in Belgium to €40 for Norway, Switzerland, Liechtenstein and Malta. Shipping is free from 2 bottles in Belgium, Germany, Luxembourg, the Netherlands and most of the EU, and from 3 bottles in the United Kingdom, Greece, Italy, Ireland, Portugal, Romania, Cyprus, Latvia and Lithuania." },
+      { q: "How long does delivery take?", a: "2 to 3 business days in Belgium, 3 to 5 in Germany, Luxembourg and the Netherlands, 4 to 8 elsewhere in Europe and 6 to 8 in the United Kingdom. Orders ship the next business day with a tracking link." },
+      { q: "Are there customs charges or import VAT?", a: "Within the EU, none. Olive oil enters the United Kingdom free of import duty and VAT, so nothing is charged on delivery. Orders to Norway, Switzerland and Liechtenstein may be subject to local import VAT on delivery." },
+    ],
     freeFromBottles: "{n} bottles",
-    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", uk: "UK", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
+    tierNames: { core: "Core", tier1: "Tier 1", tier2: "Tier 2", tier3: "Tier 3", tier4: "Tier 4", tier5: "Tier 5" },
     delivery: {
       core: "2–3 business days",
       tier1: "3–5 business days",
       tier2: "4–6 business days",
-      uk: "6–8 business days",
-      tier3: "5–7 business days",
+      tier3: "5–8 business days",
       tier4: "6–8 business days",
       tier5: "5–8 business days",
     },

@@ -56,6 +56,7 @@ export const da: Dict = {
     shop: "Butik",
     learn: "Lær mere",
     polyphenolMethods: "Sådan måles polyfenoler",
+    polyphenolIndex: "Polyfenolindeks",
     company: "Virksomhed",
   },
 
@@ -452,10 +453,9 @@ export const da: Dict = {
   },
 
   shippingPage: {
-    title: "Fragt | ATTIMO Ekstra jomfru olivenolie i særklasse",
-    heading: "Fragtinformation",
-    intro:
-      "Vi sender i hele EU og til Storbritannien. Jo mere du bestiller, desto mindre betaler du for fragt – eller intet overhovedet.",
+    title: "Her leverer vi: olivenolie leveret i Danmark og Europa | ATTIMO",
+    heading: "Her leverer vi",
+    intro: "I Danmark, i alle EU-lande, Storbritannien, Norge, Schweiz og Liechtenstein. Fragtpris, grænse for fri fragt og leveringstid for Danmark står nedenfor; jo flere flasker du bestiller, desto mindre betaler du i fragt, eller slet ingenting.",
     factShipsTomorrow: "Bestil i dag, sendes i morgen",
     factFreeMulti: "Fri fragt på ordrer med flere flasker",
     factPacked: "Omhyggeligt pakket til sikker levering",
@@ -478,14 +478,24 @@ export const da: Dict = {
     damagedPost: " med et foto af skaden. Vi arrangerer en erstatning eller fuld refundering – uden besvær.",
     contactHeading: "Spørgsmål om din ordre?",
     contactSub: "Vi er her for at hjælpe. Kontakt os når som helst.",
+    countriesHeading: "Alle lande, vi leverer til",
+    countriesSub: "Fragtpriser og leveringstider pr. land, fra A til Å.",
+    colCountry: "Land", colRate: "Fragt", colFree: "Gratis fra", colDelivery: "Levering",
+    faqHeading: "Spørgsmål om fragt",
+    // {standard}, {free}, {delivery} are filled from the locale config at render time.
+    faq: [
+      { q: "Leverer I til Danmark?", a: "Ja. Fragt til Danmark koster {standard}, og fra {free} er den gratis. Leveringstid {delivery}. Vi leverer også til alle 27 EU-lande, Storbritannien, Norge, Schweiz og Liechtenstein." },
+      { q: "Hvad koster fragten?", a: "{standard} til Danmark, gratis fra {free}, altså fra to flasker. Fragten beregnes automatisk ved kassen ud fra leveringslandet." },
+      { q: "Hvor lang er leveringstiden?", a: "{delivery} til Danmark. Ordrer sendes næste hverdag med et sporingslink på e-mail." },
+      { q: "Er der told eller importmoms?", a: "Inden for EU, nej. Prisen ved kassen er den endelige pris." },
+    ],
     freeFromBottles: "{n} flasker",
-    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", uk: "UK", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
+    tierNames: { core: "Kerne", tier1: "Niveau 1", tier2: "Niveau 2", tier3: "Niveau 3", tier4: "Niveau 4", tier5: "Niveau 5" },
     delivery: {
       core: "2–3 hverdage",
       tier1: "3–5 hverdage",
       tier2: "4–6 hverdage",
-      uk: "6–8 hverdage",
-      tier3: "5–7 hverdage",
+      tier3: "5–8 hverdage",
       tier4: "6–8 hverdage",
       tier5: "5–8 hverdage",
     },
