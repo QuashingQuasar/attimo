@@ -171,7 +171,7 @@ function getFaqs(handle: string | undefined, t: Dict["faq"], methodsHref: string
       answerElement: (
         <>
           {t.a.wholesalePre}
-          <Link to="/contact" className="underline hover:no-underline" style={{ color: "#1B4229" }}>
+          <Link to={localizeHref("/contact", locale)} className="underline hover:no-underline" style={{ color: "#1B4229" }}>
             {t.a.wholesaleContactLink}
           </Link>
           {t.a.wholesaleMid}

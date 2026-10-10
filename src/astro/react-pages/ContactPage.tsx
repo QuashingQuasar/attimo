@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { toast } from "sonner";
 import { Mail, Send } from "lucide-react";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
-const ContactPage = () => {
+const ContactPage = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) => {
+  const t = getDict(locale).contactPage;
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  useEffect(() => { document.title = 'Contact | ATTIMO Specialty Extra Virgin Olive Oil'; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, []);
+  useEffect(() => { document.title = t.title; return () => { document.title = 'ATTIMO Specialty Extra Virgin Olive Oil'; }; }, [t.title]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -35,7 +38,7 @@ const ContactPage = () => {
       }
       setSubmitted(true);
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      toast.error(t.error);
     } finally {
       setLoading(false);
     }
@@ -43,7 +46,7 @@ const ContactPage = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
-      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled />
+      <Header onWaitlistClick={() => setIsWaitlistOpen(true)} forceScrolled locale={locale} />
 
       <main className="pt-32 pb-20 px-6 flex-1">
         <div className="container mx-auto max-w-2xl">
@@ -52,13 +55,13 @@ const ContactPage = () => {
             className="text-4xl md:text-5xl font-bold mb-4"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
           >
-            Get in Touch
+            {t.heading}
           </h1>
           <p
             className="text-lg md:text-xl leading-relaxed mb-12"
             style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.7 }}
           >
-            Got a question, an idea, a collaboration in mind — or just want to talk olive oil? We love to hear from you.
+            {t.intro}
           </p>
 
           {submitted ? (
@@ -76,13 +79,13 @@ const ContactPage = () => {
                 className="text-2xl font-semibold mb-2"
                 style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
               >
-                Thanks !
+                {t.thanks}
               </h2>
               <p
                 className="leading-relaxed"
                 style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229", opacity: 0.7 }}
               >
-                We'll get back to you soon.
+                {t.thanksBody}
               </p>
             </div>
           ) : (
@@ -93,7 +96,7 @@ const ContactPage = () => {
                   className="block text-sm font-medium mb-2"
                   style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
                 >
-                  Name
+                  {t.name}
                 </label>
                 <input
                   id="name"
@@ -101,7 +104,7 @@ const ContactPage = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Your name"
+                  placeholder={t.namePlaceholder}
                   className="w-full rounded-xl border-2 px-4 py-3 text-sm outline-none transition-colors focus:border-[#1B4229]"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
@@ -118,7 +121,7 @@ const ContactPage = () => {
                   className="block text-sm font-medium mb-2"
                   style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
                 >
-                  Email
+                  {t.email}
                 </label>
                 <input
                   id="email"
@@ -126,7 +129,7 @@ const ContactPage = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your@email.com"
+                  placeholder={t.emailPlaceholder}
                   className="w-full rounded-xl border-2 px-4 py-3 text-sm outline-none transition-colors focus:border-[#1B4229]"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
@@ -143,7 +146,7 @@ const ContactPage = () => {
                   className="block text-sm font-medium mb-2"
                   style={{ fontFamily: "Space Grotesk, sans-serif", color: "#1B4229" }}
                 >
-                  Message
+                  {t.message}
                 </label>
                 <textarea
                   id="message"
@@ -151,7 +154,7 @@ const ContactPage = () => {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="What's on your mind?"
+                  placeholder={t.messagePlaceholder}
                   className="w-full rounded-xl border-2 px-4 py-3 text-sm outline-none transition-colors resize-none focus:border-[#1B4229]"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
@@ -174,7 +177,7 @@ const ContactPage = () => {
                 }}
               >
                 <Send size={18} strokeWidth={1.5} />
-                {loading ? "SENDING..." : "SEND MESSAGE"}
+                {loading ? t.sending : t.send}
               </button>
             </form>
           )}
@@ -210,7 +213,7 @@ const ContactPage = () => {
         </div>
       </main>
 
-      <Footer />
+      <Footer locale={locale} />
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
     </div>
   );

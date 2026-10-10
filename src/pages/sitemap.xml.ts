@@ -40,6 +40,11 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/nl/polyfenol-analysemethoden", changefreq: "monthly", priority: "0.8" },
   // Lab certificate pages (English only; one per certificate in
   // src/content/certificates).
+  { loc: "/de/contact", changefreq: "yearly", priority: "0.4" },
+  { loc: "/fr/contact", changefreq: "yearly", priority: "0.4" },
+  { loc: "/se/contact", changefreq: "yearly", priority: "0.4" },
+  { loc: "/dk/contact", changefreq: "yearly", priority: "0.4" },
+  { loc: "/nl/contact", changefreq: "yearly", priority: "0.4" },
   { loc: "/polyphenol-index", changefreq: "monthly", priority: "0.8" },
   { loc: "/de/olivenoel-polyphenol-index", changefreq: "monthly", priority: "0.8" },
   { loc: "/fr/index-polyphenols-huile-olive", changefreq: "monthly", priority: "0.8" },

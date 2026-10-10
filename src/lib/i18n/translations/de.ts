@@ -465,6 +465,24 @@ export const de: Dict = {
     copyAria: "Code kopieren",
   },
 
+  contactPage: {
+    title: "Kontakt | ATTIMO Natives Olivenöl extra",
+    description: "Kontakt zu ATTIMO. Fragen zu unserem nativen Olivenöl extra, zum Versand oder zum Großhandel, wir helfen gern.",
+    heading: "Kontakt",
+    intro: "Eine Frage, eine Idee, eine Zusammenarbeit im Kopf oder einfach Lust, über Olivenöl zu reden? Wir freuen uns.",
+    thanks: "Danke!",
+    thanksBody: "Wir melden uns bald bei dir.",
+    name: "Name",
+    namePlaceholder: "Dein Name",
+    email: "E-Mail",
+    emailPlaceholder: "deine@email.com",
+    message: "Nachricht",
+    messagePlaceholder: "Was beschäftigt dich?",
+    send: "NACHRICHT SENDEN",
+    sending: "WIRD GESENDET...",
+    error: "Etwas ist schiefgelaufen. Bitte versuch es noch einmal.",
+  },
+
   shippingPage: {
     title: "Wohin wir liefern: Olivenöl-Versand nach Deutschland und Europa | ATTIMO",
     heading: "Wohin wir liefern",

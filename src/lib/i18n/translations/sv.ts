@@ -453,6 +453,24 @@ export const sv: Dict = {
     copyAria: "Kopiera kod",
   },
 
+  contactPage: {
+    title: "Kontakt | ATTIMO Extra jungfruolja",
+    description: "Kontakta ATTIMO. Frågor om vår extra jungfruolja, frakt eller grossist, vi hjälper gärna till.",
+    heading: "Hör av dig",
+    intro: "En fråga, en idé, ett samarbete i tankarna, eller vill du bara prata olivolja? Vi hör gärna från dig.",
+    thanks: "Tack!",
+    thanksBody: "Vi återkommer snart.",
+    name: "Namn",
+    namePlaceholder: "Ditt namn",
+    email: "E-post",
+    emailPlaceholder: "din@epost.com",
+    message: "Meddelande",
+    messagePlaceholder: "Vad har du på hjärtat?",
+    send: "SKICKA MEDDELANDE",
+    sending: "SKICKAR...",
+    error: "Något gick fel. Försök igen.",
+  },
+
   shippingPage: {
     title: "Hit levererar vi: olivolja levererad i Sverige och Europa | ATTIMO",
     heading: "Hit levererar vi",

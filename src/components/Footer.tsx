@@ -89,7 +89,7 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   ];
   const companyLinks = [
     { label: t.footer.shipping, href: shippingHref },
-    { label: t.footer.contact, href: "/contact" },
+    { label: t.footer.contact, href: localizeHref("/contact", locale) },
     { label: t.footer.manageOrders, href: "https://shop.attimo-oil.com/account" },
     { label: t.footer.privacy, href: "/privacy" },
     { label: t.footer.terms, href: "/terms" },

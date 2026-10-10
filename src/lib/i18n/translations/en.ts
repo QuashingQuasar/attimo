@@ -500,6 +500,24 @@ export const en = {
     copyAria: "Copy code",
   },
 
+  contactPage: {
+    title: "Contact | ATTIMO Specialty Extra Virgin Olive Oil",
+    description: "Get in touch with ATTIMO. Questions about our extra virgin olive oil, shipping, or wholesale, we're happy to help.",
+    heading: "Get in touch",
+    intro: "Got a question, an idea, a collaboration in mind, or just want to talk olive oil? We love to hear from you.",
+    thanks: "Thanks!",
+    thanksBody: "We'll get back to you soon.",
+    name: "Name",
+    namePlaceholder: "Your name",
+    email: "Email",
+    emailPlaceholder: "your@email.com",
+    message: "Message",
+    messagePlaceholder: "What's on your mind?",
+    send: "SEND MESSAGE",
+    sending: "SENDING...",
+    error: "Something went wrong. Please try again.",
+  },
+
   shippingPage: {
     title: "Where we ship: olive oil delivery across Europe and the UK | ATTIMO",
     heading: "Where we ship",

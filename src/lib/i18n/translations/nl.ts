@@ -460,6 +460,24 @@ export const nl: Dict = {
     copyAria: "Code kopiëren",
   },
 
+  contactPage: {
+    title: "Contact | ATTIMO Extra vierge olijfolie",
+    description: "Neem contact op met ATTIMO. Vragen over onze extra vierge olijfolie, verzending of groothandel, we helpen je graag.",
+    heading: "Neem contact op",
+    intro: "Een vraag, een idee, een samenwerking in gedachten, of gewoon zin om over olijfolie te praten? We horen graag van je.",
+    thanks: "Bedankt!",
+    thanksBody: "We nemen snel contact met je op.",
+    name: "Naam",
+    namePlaceholder: "Je naam",
+    email: "E-mail",
+    emailPlaceholder: "jouw@email.com",
+    message: "Bericht",
+    messagePlaceholder: "Wat wil je kwijt?",
+    send: "BERICHT VERSTUREN",
+    sending: "VERSTUREN...",
+    error: "Er ging iets mis. Probeer het opnieuw.",
+  },
+
   shippingPage: {
     title: "Waar we leveren: olijfolie bezorgd in Nederland en Europa | ATTIMO",
     heading: "Waar we leveren",
