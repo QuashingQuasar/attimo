@@ -88,7 +88,7 @@ export const Header = ({
 
   return (
     <header
-      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-9 pb-6 md:pt-10" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
+      className={`absolute top-0 left-0 right-0 z-50 ${pageNav ? "pt-8 pb-6 md:pt-10 lg:pt-12" : "py-6"} ${solidBackground ? 'shadow-lg' : 'bg-transparent'}`}
       style={{
         backgroundColor: solidBackground ? '#1B4229' : 'transparent',
         transition: 'box-shadow 0.3s ease, background-color 0.3s ease',
@@ -99,9 +99,9 @@ export const Header = ({
         /* Landing-page bar: logo centred, the page anchors flanking it, cart
            and region switcher at the far right. Phones keep the hamburger. */
         <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
-          <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-7 pr-6 lg:pr-10">
+          <nav className="hidden md:flex items-center justify-start gap-6 lg:gap-10">
             {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
-              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+              <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', letterSpacing: '0.1em' }}>
                 {item.label}
               </a>
             ))}
@@ -109,19 +109,19 @@ export const Header = ({
           <div className="flex items-center justify-self-start md:justify-self-center">
             <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
               {/* The round emblem, centred; the wordmark stays on phones. */}
-              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-20 lg:h-24 w-auto max-w-none -mb-3" />
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-32 w-auto max-w-none -mb-4" />
               <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
-          <div className="flex items-center gap-3 md:gap-6">
-            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-7 pl-6 lg:pl-10">
+          <div className="flex items-center justify-end gap-6 lg:gap-10">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-10">
               {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
-                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base md:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity font-medium whitespace-nowrap uppercase`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '0.95rem', letterSpacing: '0.1em' }}>
                   {item.label}
                 </a>
               ))}
             </nav>
-            <div className="flex items-center gap-3 md:gap-6 ml-auto">
+            <div className="flex items-center gap-3 md:gap-5">
               <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
               <CurrencySelector locale={locale} placement="down" triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'} />
               <button
