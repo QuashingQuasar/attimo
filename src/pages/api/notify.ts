@@ -18,6 +18,9 @@ const BREVO_LIST_BY_PRODUCT: Record<string, number> = {
   Coratina: 6, // "Coratina Restock"
   Nocellara: 9, // "Nocellara Restock"
   Picual: 3, // "Picual Waitlist"
+  // Season list for /harvest-2026. Set BREVO_HARVEST_LIST_ID once the list
+  // exists in Brevo; until then the signup is rejected as unknown.
+  "Harvest 26/27": Number(import.meta.env.BREVO_HARVEST_LIST_ID) || 0,
 };
 
 export const POST: APIRoute = async ({ request }) => {

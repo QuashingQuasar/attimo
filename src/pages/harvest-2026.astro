@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import HarvestBody from "@astro/components/HarvestBody.astro";
+import { HARVEST_CONTENT, HARVEST_SLUGS } from "@/lib/harvestContent";
+import { CREAM } from "@/lib/certificates/ui";
+import { SITE } from "@/lib/certificates";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const locale = DEFAULT_LOCALE;
+const t = getDict(locale);
+const content = HARVEST_CONTENT.en;
+const canonical = `${SITE}${HARVEST_SLUGS.en}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: content.faq.items.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+};
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={content.meta.description}
+  canonical={canonical}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  htmlLang="en"
+  noIndex={true}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <HarvestBody content={content} locale={locale} />
+</BaseLayout>

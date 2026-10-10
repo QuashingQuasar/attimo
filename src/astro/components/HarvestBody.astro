@@ -1,0 +1,247 @@
+---
+// Body of /harvest-2026. Every string arrives through `content`; the status
+// strip, lineup cards and tiles are rendered from its arrays so a step flips
+// with a one-line edit.
+import { Header } from "@/components/Header";
+import { FAQ } from "@/components/FAQ";
+import { Testimonials } from "@/components/Testimonials";
+import HarvestWaitlistForm from "@/components/HarvestWaitlistForm";
+import Footer from "@astro/components/Footer.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { GREEN, DEEP, CREAM, ACCENT, LIME, UDC, SG, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
+import type { HarvestContent } from "@/lib/harvestContent";
+import { certIndexHrefFor } from "@/lib/certificatesContent";
+
+const { content: c, locale = DEFAULT_LOCALE } = Astro.props as { content: HarvestContent; locale?: Locale };
+const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
+const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
+const certsHref = certIndexHrefFor(c.lang);
+const currentIdx = c.status.steps.findIndex((s) => s.state === "current");
+---
+
+<div class="relative min-h-screen">
+  <Header
+    client:load
+    locale={locale}
+    pageNavLayout="leading"
+    pageNav={[
+      { label: c.nav.status, href: "#status" },
+      { label: c.nav.oils, href: "#oils" },
+      { label: c.nav.freshness, href: "#freshness" },
+      { label: c.nav.evidence, href: "#evidence" },
+      { label: c.nav.waitlist, href: "#waitlist" },
+      { label: c.nav.faq, href: "#faq" },
+    ]}
+  />
+
+  <main style={`color:${GREEN};`}>
+    <!-- ═══ HERO ═══ -->
+    <section class="relative flex items-center overflow-hidden" style={`background-color:${DEEP}; min-height:max(115vh, 1000px);`}>
+      <video autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.png" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" style="pointer-events:none;">
+        <source src="/videos/hero-video-new.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(13,30,20,.78) 0%, rgba(13,30,20,.58) 45%, rgba(13,30,20,.82) 100%);"></div>
+      <div class="relative container mx-auto px-6 pt-36 md:pt-44 pb-20 text-center">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.hero.eyebrow} · {c.hero.season}</p>
+        <h1 class="mx-auto mb-6 max-w-5xl" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2rem,4vw,3.4rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; text-shadow:0 2px 24px rgba(16,34,27,.9);`}>
+          {c.hero.h1}
+        </h1>
+        <p class="mx-auto mb-9 max-w-3xl" style={`${lead} color:rgba(255,250,234,.92); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>
+          {c.hero.lead}
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <a href="#waitlist" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.hero.cta}</a>
+          <a href={certsHref} style={`${btn} background-color:rgba(255,250,234,.1); color:${CREAM}; border:1px solid rgba(255,250,234,.45); backdrop-filter:blur(6px);`}>{c.hero.ctaSecondary}</a>
+        </div>
+        <div class="inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full px-5 py-3" style="background-color:rgba(16,34,27,.55); border:1px solid rgba(255,250,234,.28); backdrop-filter:blur(8px);">
+          <span class="inline-flex items-center gap-2.5">
+            <span class="relative inline-flex w-2.5 h-2.5">
+              <span class="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={`background-color:${ACCENT}; animation-duration:2.4s;`}></span>
+              <span class="relative inline-flex w-2.5 h-2.5 rounded-full" style={`background-color:${ACCENT};`}></span>
+            </span>
+            <span style={`${eyebrowSm} font-size:.78rem; color:${ACCENT};`}>{c.hero.chipLabel}</span>
+          </span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.9);`}>{c.hero.chipNote}</span>
+          <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
+          <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.7);`}>{c.hero.chipUpdated}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ STATUS ═══ -->
+    <section id="status" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-wrap items-end justify-between gap-4 mb-12">
+          <div>
+            <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.status.eyebrow}</p>
+            <h2 style={`${h2} color:${GREEN};`}>{c.status.h2}</h2>
+          </div>
+          <p style={`${small} color:${onCream(0.6)};`}>{c.status.updated}</p>
+        </div>
+
+        <ol class="relative grid grid-cols-1 md:grid-cols-5 gap-y-8 md:gap-x-4">
+          <!-- connecting rail (desktop) -->
+          <span aria-hidden="true" class="hidden md:block absolute left-0 right-0" style={`top:9px; height:2px; background-color:${onCream(0.18)};`}></span>
+          <span aria-hidden="true" class="hidden md:block absolute left-0" style={`top:9px; height:2px; background-color:${GREEN}; width:calc(${currentIdx} * 20% + 10%);`}></span>
+          {c.status.steps.map((s, i) => {
+            const done = s.state === "done", cur = s.state === "current";
+            return (
+              <li class="relative md:pr-6 flex md:block gap-5">
+                <span class="relative z-10 flex-shrink-0 inline-flex items-center justify-center w-5 h-5 rounded-full" style={`background-color:${done || cur ? GREEN : CREAM}; border:2px solid ${done || cur ? GREEN : onCream(0.35)};`}>
+                  {cur && <span class="absolute inline-flex w-full h-full rounded-full opacity-50 animate-ping" style={`background-color:${GREEN}; animation-duration:2.4s;`}></span>}
+                  {done && <svg viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke={CREAM} stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>}
+                </span>
+                <div class="md:mt-5">
+                  <p class="mb-1" style={`${eyebrowSm} color:${cur ? GREEN : onCream(0.5)};`}>{String(i + 1).padStart(2, "0")} · {s.when}</p>
+                  <p class="mb-1.5" style={`font-family:${UDC}; font-weight:700; font-size:1.15rem; color:${GREEN};`}>{s.title}</p>
+                  <p style={`${small} color:${onCream(0.78)};`}>{s.line}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
+        <p class="mt-10" style={`${small} color:${onCream(0.6)};`}>{c.status.note}</p>
+      </div>
+    </section>
+
+    <!-- ═══ OILS ═══ -->
+    <section id="oils" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="mb-12">
+          <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.oils.eyebrow}</p>
+          <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{c.oils.h2}</h2>
+          <p style={`${lead} color:${onGreen(0.85)};`}>{c.oils.intro}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {c.oils.cards.map((o) => (
+            <article class="flex flex-col overflow-hidden" style={`background-color:${CREAM}; color:${GREEN}; border-radius:1rem;`}>
+              <div class="relative flex items-end justify-center" style="height:260px; background:linear-gradient(to bottom, rgba(27,66,41,.06), rgba(27,66,41,0));">
+                <img src={o.image} alt={o.name} loading="lazy" class="h-[230px] w-auto object-contain" style={o.imageNote ? "opacity:.35; filter:grayscale(1);" : ""} />
+                {o.tag && <span class="absolute top-4 left-4 rounded-full px-3 py-1" style={`${eyebrowSm} font-size:.72rem; background-color:${o.tag === "New" ? ACCENT : "rgba(27,66,41,.1)"}; color:${GREEN};`}>{o.tag}</span>}
+                {o.imageNote && <span class="absolute inset-x-0 bottom-4 text-center" style={`${eyebrowSm} font-size:.78rem; color:${onCream(0.6)};`}>{o.imageNote}</span>}
+              </div>
+              <div class="p-6 pt-4 flex-1 flex flex-col">
+                <h3 class="mb-4" style={`font-family:${UDC}; font-weight:700; font-size:1.35rem; letter-spacing:-0.01em; color:${GREEN};`}>{o.name}</h3>
+                <dl class="grid gap-2.5" style={`${small} font-size:.95rem;`}>
+                  {[
+                    [c.oils.labels.variety, o.variety],
+                    [c.oils.labels.profile, o.profile],
+                    [c.oils.labels.last, o.last],
+                    [c.oils.labels.thisYear, o.thisYear],
+                    [c.oils.labels.status, o.status],
+                    [c.oils.labels.format, o.format ?? ""],
+                    [c.oils.labels.price, o.price],
+                  ].filter(([, v]) => v).map(([k, v]) => (
+                    <div class="grid grid-cols-[6.5rem_1fr] gap-3 pb-2.5" style={`border-bottom:1px solid ${onCream(0.12)};`}>
+                      <dt style={`${eyebrowSm} font-size:.72rem; padding-top:.15rem; color:${onCream(0.5)};`}>{k}</dt>
+                      <dd style={`color:${onCream(0.9)};`}>{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="mt-8" style={`${small} color:${onGreen(0.75)};`}>{c.oils.reportsPre} <a href={certsHref} class="underline" style={`color:${LIME};`}>{c.oils.reportsLink}</a></p>
+      </div>
+    </section>
+
+    <!-- ═══ FRESHNESS ═══ -->
+    <section id="freshness" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${DEEP}; color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-10">
+          <div>
+            <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.freshness.eyebrow}</p>
+            <h2 class="mb-6" style={`${h2} color:${CREAM};`}>{c.freshness.h2}</h2>
+            <p class="mb-5" style={`${lead} color:${onGreen(0.85)};`}>{c.freshness.body1}</p>
+            <p style={`${lead} color:${CREAM};`}>{c.freshness.body2}</p>
+          </div>
+          <div class="rounded-2xl p-6 md:p-7" style="background-color:rgba(255,250,234,.04); border:1px solid rgba(255,250,234,.12);">
+            <p class="mb-4" style={`${eyebrowSm} color:${onGreen(0.7)};`}>{c.freshness.chart.title}</p>
+            <svg viewBox="0 0 420 230" class="w-full h-auto" role="img" aria-label={c.freshness.chart.title}>
+              <defs>
+                <linearGradient id="hvdecay" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#B3E58C" stop-opacity="0.35" />
+                  <stop offset="100%" stop-color="#B3E58C" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183 L400,198 L30,198 Z" fill="url(#hvdecay)" />
+              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183" fill="none" stroke="#B3E58C" stroke-width="3" stroke-linecap="round" />
+              <line x1="30" y1="150" x2="400" y2="150" stroke="#FFFAEA" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="5 5" />
+              <text x="34" y="144" fill="#FFFAEA" fill-opacity="0.7" font-family="Space Grotesk" font-size="11">{c.freshness.chart.euLine}</text>
+              <!-- 26/27 marker: at the left of the curve -->
+              <circle cx="48" cy="55" r="6" fill="#CDDB2D" />
+              <text x="60" y="52" fill="#CDDB2D" font-family="UDC Working Man Sans" font-size="12">{c.freshness.chart.thisYear}</text>
+              <!-- 25/26 marker: eleven months along -->
+              <circle cx="372" cy="178" r="6" fill="#FFFAEA" fill-opacity="0.85" />
+              <text x="364" y="170" fill="#FFFAEA" fill-opacity="0.85" font-family="UDC Working Man Sans" font-size="12" text-anchor="end">{c.freshness.chart.lastYear}</text>
+              <text x="30" y="222" fill="#FFFAEA" fill-opacity="0.5" font-family="Space Grotesk" font-size="11">{c.freshness.chart.pressed}</text>
+              <text x="400" y="222" fill="#FFFAEA" fill-opacity="0.5" font-family="Space Grotesk" font-size="11" text-anchor="end">{c.freshness.chart.oneYear}</text>
+            </svg>
+            <p class="mt-4" style={`font-family:${SG}; font-size:.85rem; color:${onGreen(0.5)};`}>{c.freshness.chart.caption}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {c.freshness.cards.map((k) => (
+            <div class="p-6" style="background-color:rgba(255,250,234,.06); border:1px solid rgba(255,250,234,.18); border-radius:1rem;">
+              <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.1rem; color:${CREAM};`}>{k.title}</p>
+              <p style={`${small} color:${onGreen(0.78)};`}>{k.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EVIDENCE ═══ -->
+    <section id="evidence" class="pt-20 md:pt-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.evidence.eyebrow}</p>
+        <h2 class="mb-10" style={`${h2} color:${GREEN};`}>{c.evidence.h2}</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          {c.evidence.tiles.map((t) => {
+            const inner = (
+              <>
+                <p class="mb-3" style={`${stat} color:${GREEN};`}>{t.value}</p>
+                <p style={`${small} color:${onCream(0.78)};`}>{t.label}</p>
+              </>
+            );
+            return t.href
+              ? <a href={t.href} class="block p-6 transition-colors hover:bg-[#f6f1dd]" style={cardOnCream}>{inner}</a>
+              : <div class="p-6" style={cardOnCream}>{inner}</div>;
+          })}
+        </div>
+      </div>
+    </section>
+    <Testimonials client:visible locale={locale} />
+
+    <!-- ═══ WAITLIST ═══ -->
+    <section id="waitlist" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <div class="rounded-2xl p-8 md:p-14 grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 items-center" style={`background-color:${GREEN};`}>
+          <div>
+            <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{c.waitlist.eyebrow}</p>
+            <h2 class="mb-5" style={`${h2} font-size:clamp(1.7rem,2.8vw,2.6rem); color:${CREAM};`}>{c.waitlist.h2}</h2>
+            <p style={`${body} font-size:1.05rem; color:${onGreen(0.8)};`}>{c.waitlist.body}</p>
+          </div>
+          <HarvestWaitlistForm client:load {...c.waitlist} />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <div id="faq" class="scroll-mt-24">
+      <FAQ client:visible locale={locale} items={c.faq.items} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
+    </div>
+
+    <!-- ═══ CLOSING ═══ -->
+    <section class="pb-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl text-center">
+        <h2 class="mb-7" style={`${h2} color:${GREEN};`}>{c.closing.h2}</h2>
+        <a href="#waitlist" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.closing.cta}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</div>
