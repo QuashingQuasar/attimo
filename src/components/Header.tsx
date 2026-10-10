@@ -61,7 +61,7 @@ export const Header = ({
   darkNav = false,
   locale = DEFAULT_LOCALE,
   pageNav,
-  pageNavLayout = "centered",
+  pageNavLayout = "leading",
   siteNavLayout = "default",
 }: HeaderProps) => {
   // Header is no longer sticky. Background is transparent by default so the
