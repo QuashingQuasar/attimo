@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
 import { Link } from "@/lib/router-stub";
 import navbarLogo from "@/assets/navbar-logo-latest.svg?url";
-import emblemLogo from "@/assets/attimo-nav-logo-clean.svg?url";
+import emblemLogo from "@/assets/attimo-nav-logo.svg?url";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
