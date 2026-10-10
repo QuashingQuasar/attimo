@@ -324,10 +324,14 @@ function IndexSection({ c, data }: { c: HubContent["index"]; data?: HubIndexData
   );
 }
 
-function HighPolyphenolInner({ initialPosts, locale, indexData }: { initialPosts?: InitialPost[]; locale: Locale; indexData?: HubIndexData }) {
-
+function HighPolyphenolInner({ initialPosts, locale, indexData, labNumbers }: { initialPosts?: InitialPost[]; locale: Locale; indexData?: HubIndexData; labNumbers?: HomeLabOil[] }) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const content = HUB_CONTENT[locale.lang];
+  // Per-oil polyphenol line on the product cards, from the certificates
+  // collection (via labNumbers), same as the homepage.
+  const polyBadges = labNumbers?.length
+    ? Object.fromEntries(labNumbers.filter((o) => o.total !== null).map((o) => [o.key, String(o.total)]))
+    : undefined;
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
