@@ -163,7 +163,7 @@ const en: HubContent = {
     heading: "Why our polyphenols stay high",
     intro: "High numbers aren't luck. They come from a few deliberate choices — early harvest, single variety, pressed and bottled fresh — the same choices industrial oil skips to scale.",
   },
-  nav: { shop: "Shop", compounds: "What's inside", science: "Why it matters", lab: "Lab reports", index: "The index", how: "How we do it" },
+  nav: { shop: "Shop", compounds: "What's inside", science: "Why it matters", lab: "Lab reports", index: "Index", how: "How we do it" },
   faq: {
     heading: "High-polyphenol olive oil FAQ",
     items: HIGH_POLYPHENOL_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
@@ -268,7 +268,7 @@ const de: HubContent = {
     heading: "Warum unsere Polyphenole hoch bleiben",
     intro: "Hohe Werte sind kein Zufall. Sie kommen aus wenigen bewussten Entscheidungen — frühe Ernte, sortenrein, frisch gepresst und abgefüllt — genau das, was Industrieöl fürs Skalieren weglässt.",
   },
-  nav: { shop: "Shop", compounds: "Was drin ist", science: "Warum es zählt", lab: "Laborberichte", index: "Der Index", how: "Wie wir es machen" },
+  nav: { shop: "Shop", compounds: "Was drin ist", science: "Warum es zählt", lab: "Laborberichte", index: "Index", how: "Wie wir es machen" },
   faq: {
     heading: "FAQ zu polyphenolreichem Olivenöl",
     items: [
@@ -382,7 +382,7 @@ const fr: HubContent = {
     heading: "Pourquoi notre huile reste riche en polyphénols",
     intro: "Des chiffres élevés, ce n'est pas de la chance. Ils viennent de quelques choix délibérés — récolte précoce, monovariétale, pressée et embouteillée fraîche — ceux que l'huile industrielle sacrifie pour produire à grande échelle.",
   },
-  nav: { shop: "Boutique", compounds: "Ce qu'elle contient", science: "Pourquoi ça compte", lab: "Rapports de labo", index: "L'index", how: "Comment on fait" },
+  nav: { shop: "Boutique", compounds: "Ce qu'elle contient", science: "Pourquoi ça compte", lab: "Rapports de labo", index: "Index", how: "Comment on fait" },
   faq: {
     heading: "FAQ sur l'huile d'olive riche en polyphénols",
     items: [
@@ -494,7 +494,7 @@ const sv: HubContent = {
     heading: "Varför våra polyfenoler håller sig höga",
     intro: "Höga siffror är ingen tur. De kommer från några medvetna val — tidig skörd, sortren, pressad och tappad färsk — precis det som industriolja hoppar över för att kunna skala.",
   },
-  nav: { shop: "Butik", compounds: "Vad som finns i", science: "Varför det spelar roll", lab: "Labbrapporter", index: "Indexet", how: "Så gör vi" },
+  nav: { shop: "Butik", compounds: "Vad som finns i", science: "Varför det spelar roll", lab: "Labbrapporter", index: "Index", how: "Så gör vi" },
   faq: {
     heading: "FAQ om polyfenolrik olivolja",
     items: [
@@ -606,7 +606,7 @@ const da: HubContent = {
     heading: "Hvorfor vores polyfenoler forbliver høje",
     intro: "Høje tal er ikke held. De kommer fra nogle få bevidste valg — tidlig høst, enkeltsorts, presset og tappet frisk — netop det, industriolie springer over for at kunne skalere.",
   },
-  nav: { shop: "Shop", compounds: "Hvad der er i", science: "Hvorfor det betyder noget", lab: "Laboratorierapporter", index: "Indekset", how: "Sådan gør vi" },
+  nav: { shop: "Shop", compounds: "Hvad der er i", science: "Hvorfor det betyder noget", lab: "Laboratorierapporter", index: "Indeks", how: "Sådan gør vi" },
   faq: {
     heading: "FAQ om polyfenolrig olivenolie",
     items: [
@@ -718,7 +718,7 @@ const nl: HubContent = {
     heading: "Waarom onze polyfenolen hoog blijven",
     intro: "Hoge cijfers zijn geen geluk. Ze komen uit een paar bewuste keuzes — vroege oogst, één variëteit, vers geperst en gebotteld — precies de keuzes die industriële olie overslaat om te kunnen schalen.",
   },
-  nav: { shop: "Shop", compounds: "Wat erin zit", science: "Waarom het telt", lab: "Labrapporten", index: "De index", how: "Hoe wij het doen" },
+  nav: { shop: "Shop", compounds: "Wat erin zit", science: "Waarom het telt", lab: "Labrapporten", index: "Index", how: "Hoe wij het doen" },
   faq: {
     heading: "FAQ over polyfenolrijke olijfolie",
     items: [
