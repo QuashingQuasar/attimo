@@ -3,6 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import HighPolyphenolPage from "@astro/react-pages/HighPolyphenolPage";
 import { sanityClient } from "@/lib/sanity";
 import { getHubIndexData } from "@/lib/polyphenolIndexHub";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
 import { HUB_CONTENT, HUB_HREFLANGS, HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
@@ -15,6 +16,7 @@ const locale = SLUG_TO_LOCALE["dk"];
 const content = HUB_CONTENT.da;
 const t = getDict(locale);
 const indexData = await getHubIndexData();
+const labNumbers = await getHomeLabNumbers();
 const canonical = `https://attimo-oil.com${HUB_SLUGS.da}`;
 const description = content.meta.description;
 
@@ -90,5 +92,5 @@ const curatedPosts = await sanityClient.fetch(
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  <HighPolyphenolPage initialPosts={curatedPosts} locale={locale} indexData={indexData} client:load />
+  <HighPolyphenolPage initialPosts={curatedPosts} locale={locale} indexData={indexData} labNumbers={labNumbers} client:load />
 </BaseLayout>

@@ -18,6 +18,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
 import type { HubIndexData } from "@/lib/polyphenolIndexHub";
+import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -342,7 +343,7 @@ function HighPolyphenolInner({ initialPosts, locale, indexData }: { initialPosts
         headingFontFamily={UDC}
         heading={content.range.heading}
         subtitle={content.range.subtitle}
-        polyphenols={{ coratina: "847", picual: "675", nocellara: "400" }}
+        polyphenols={polyBadges}
         showTagline={false}
         quizPrompt={content.range.quizPrompt}
       />
@@ -397,10 +398,10 @@ function HighPolyphenolInner({ initialPosts, locale, indexData }: { initialPosts
   );
 }
 
-export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE, indexData }: { initialPosts?: InitialPost[]; locale?: Locale; indexData?: HubIndexData }) {
+export default function HighPolyphenolPage({ initialPosts, locale = DEFAULT_LOCALE, indexData, labNumbers }: { initialPosts?: InitialPost[]; locale?: Locale; indexData?: HubIndexData; labNumbers?: HomeLabOil[] }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} indexData={indexData} />
+      <HighPolyphenolInner initialPosts={initialPosts} locale={locale} indexData={indexData} labNumbers={labNumbers} />
     </QueryClientProvider>
   );
 }
