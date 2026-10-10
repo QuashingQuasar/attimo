@@ -275,7 +275,7 @@ function IndexSection({ c, data }: { c: HubContent["index"]; data?: HubIndexData
           <h2 className="mb-5 tracking-tight" style={{ fontFamily: UDC, color: CREAM, fontSize: "clamp(1.9rem, 3.2vw, 3.2rem)", lineHeight: 1.05, fontWeight: 300, letterSpacing: "-0.025em" }}>
             {c.heading}
           </h2>
-          <p className="mb-10 leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", maxWidth: "44rem" }}>
+          <p className="mb-10 leading-relaxed" style={{ fontFamily: SG, color: "rgba(255,250,234,0.82)", fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)" }}>
             {fill(c.intro)}
           </p>
 
