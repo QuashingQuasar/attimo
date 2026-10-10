@@ -99,7 +99,7 @@ export const Header = ({
         /* Landing-page bar: logo centred, the page anchors flanking it, cart
            and region switcher at the far right. Phones keep the hamburger. */
         <div className="grid items-center grid-cols-[auto_1fr] md:grid-cols-[1fr_auto_1fr]">
-          <nav className="hidden md:flex items-center justify-start gap-4 lg:gap-6 xl:gap-10 pr-6">
+          <nav className="hidden md:flex items-center justify-end gap-5 lg:gap-8 xl:gap-12 pr-8 lg:pr-12 xl:pr-16">
             {pageNav.slice(0, Math.ceil(pageNav.length / 2)).map((item) => (
               <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                 {item.label}
@@ -113,15 +113,15 @@ export const Header = ({
               <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
-          <div className="flex items-center justify-end gap-4 lg:gap-6 xl:gap-10 pl-6">
-            <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-10">
+          <div className="flex items-center gap-4 pl-8 lg:pl-12 xl:pl-16">
+            <nav className="hidden md:flex items-center justify-start gap-5 lg:gap-8 xl:gap-12">
               {pageNav.slice(Math.ceil(pageNav.length / 2)).map((item) => (
                 <a key={item.href} href={item.href} className={`${darkNav && !solidBackground ? 'text-olive-dark' : 'text-white'} hover:opacity-80 transition-opacity text-base xl:text-lg font-medium whitespace-nowrap`} style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
                   {item.label}
                 </a>
               ))}
             </nav>
-            <div className="flex items-center gap-3 md:gap-5">
+            <div className="flex items-center gap-3 md:gap-5 ml-auto">
               <CartDrawer darkIcon={darkNav && !solidBackground} locale={locale} />
               <CurrencySelector locale={locale} placement="down" triggerColor={darkNav && !solidBackground ? '#1B4229' : '#FFFFFF'} />
               <button
