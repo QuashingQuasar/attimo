@@ -109,7 +109,7 @@ export const Header = ({
           <div className="flex items-center justify-self-start md:justify-self-center">
             <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
               {/* The round emblem, centred; the wordmark stays on phones. */}
-              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-14 lg:h-16 w-auto max-w-none" />
+              <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-20 lg:h-24 w-auto max-w-none -my-3" />
               <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
             </Link>
           </div>
