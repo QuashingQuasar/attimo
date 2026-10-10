@@ -129,7 +129,7 @@ Ce qui manque se trouve du côté du consommateur, et c'est peu de chose : le mo
 
 ## ATTIMO face à cette définition
 
-ATTIMO est construite sur ces cinq dimensions — un monovariétal nommé dans chaque bouteille, cueilli début octobre, broyé en quelques heures, traçable jusqu'à son oliveraie, avec la date de récolte sur l'étiquette, [l'analyse publiée](/lab/Coratina2025.pdf), et seule la récolte en cours en vente. Nous n'avons inventé aucune de ces pratiques. Nous les avons trouvées éparpillées chez des producteurs que nous admirons, dans les Pouilles, en Sicile et en Andalousie, et nous les avons assemblées en une marque, à dessein.
+ATTIMO est construite sur ces cinq dimensions — un monovariétal nommé dans chaque bouteille, cueilli début octobre, broyé en quelques heures, traçable jusqu'à son oliveraie, avec la date de récolte sur l'étiquette, [l'analyse publiée](/fr/certificats/coratina-2526-hplc-2025-11), et seule la récolte en cours en vente. Nous n'avons inventé aucune de ces pratiques. Nous les avons trouvées éparpillées chez des producteurs que nous admirons, dans les Pouilles, en Sicile et en Andalousie, et nous les avons assemblées en une marque, à dessein.
 
 C'est pourquoi cette définition est écrite comme elle l'est : vérifiable. Tenez-nous-y, et tenez-y quiconque utilise le mot.
 

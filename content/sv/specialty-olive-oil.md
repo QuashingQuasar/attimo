@@ -129,7 +129,7 @@ Det som saknas finns på konsumentsidan, och det är litet: ordet som bär stand
 
 ## ATTIMO mot den här definitionen
 
-ATTIMO är byggd efter dessa fem dimensioner – en namngiven ensort i varje flaska, plockad i början av oktober, malen inom timmar, spårbar till sin lund, med skördedatum på etiketten, [analysen publicerad](/lab/Coratina2025.pdf), och bara den aktuella skörden till salu. Vi uppfann ingen av dessa praktiker. Vi hittade dem utspridda hos producenter vi beundrar, i Apulien och på Sicilien och i Andalusien, och satte ihop dem till ett varumärke med avsikt.
+ATTIMO är byggd efter dessa fem dimensioner – en namngiven ensort i varje flaska, plockad i början av oktober, malen inom timmar, spårbar till sin lund, med skördedatum på etiketten, [analysen publicerad](/se/certifikat/coratina-2526-hplc-2025-11), och bara den aktuella skörden till salu. Vi uppfann ingen av dessa praktiker. Vi hittade dem utspridda hos producenter vi beundrar, i Apulien och på Sicilien och i Andalusien, och satte ihop dem till ett varumärke med avsikt.
 
 Det är därför den här definitionen är skriven som den är: kontrollerbar. Håll oss till den, och håll alla andra som använder ordet till den.
 

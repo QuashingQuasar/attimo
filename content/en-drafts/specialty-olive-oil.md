@@ -129,7 +129,7 @@ What is missing sits on the consumer side, and it is small: the word that carrie
 
 ## ATTIMO against this definition
 
-ATTIMO is built to these five dimensions — a named monocultivar in every bottle, picked in early October, milled within hours, traceable to its grove, with the harvest date on the label, [the analysis published](/lab/Coratina2025.pdf), and only the current harvest on sale. We did not invent any of these practices. We found them scattered across producers we admire, in Puglia and Sicily and Andalusia, and assembled them into a brand on purpose.
+ATTIMO is built to these five dimensions — a named monocultivar in every bottle, picked in early October, milled within hours, traceable to its grove, with the harvest date on the label, [the analysis published](/certificates/coratina-2526-hplc-2025-11), and only the current harvest on sale. We did not invent any of these practices. We found them scattered across producers we admire, in Puglia and Sicily and Andalusia, and assembled them into a brand on purpose.
 
 Which is why this definition is written the way it is: checkable. Hold us to it, and hold anyone else who uses the word to it.
 

@@ -129,7 +129,7 @@ Wat ontbreekt, zit aan de consumentenkant, en het is klein: het woord dat de nor
 
 ## ATTIMO langs deze definitie gelegd
 
-ATTIMO is gebouwd volgens deze vijf dimensies – een genoemde monocultivar in elke fles, begin oktober geplukt, binnen uren gemalen, traceerbaar tot haar gaard, met de oogstdatum op het etiket, [de analyse gepubliceerd](/lab/Coratina2025.pdf), en alleen de huidige oogst in de verkoop. We hebben geen van deze praktijken uitgevonden. We vonden ze verspreid bij producenten die we bewonderen, in Puglia en Sicilië en Andalusië, en hebben ze met opzet tot een merk samengebracht.
+ATTIMO is gebouwd volgens deze vijf dimensies – een genoemde monocultivar in elke fles, begin oktober geplukt, binnen uren gemalen, traceerbaar tot haar gaard, met de oogstdatum op het etiket, [de analyse gepubliceerd](/nl/certificaten/coratina-2526-hplc-2025-11), en alleen de huidige oogst in de verkoop. We hebben geen van deze praktijken uitgevonden. We vonden ze verspreid bij producenten die we bewonderen, in Puglia en Sicilië en Andalusië, en hebben ze met opzet tot een merk samengebracht.
 
 Daarom is deze definitie geschreven zoals ze geschreven is: controleerbaar. Houd ons eraan, en houd iedereen die het woord gebruikt eraan.
 

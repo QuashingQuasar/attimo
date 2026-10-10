@@ -129,7 +129,7 @@ Was fehlt, liegt auf der Seite der Verbraucher, und es ist klein: das Wort, das 
 
 ## ATTIMO an dieser Definition gemessen
 
-ATTIMO ist nach diesen fünf Dimensionen gebaut – ein benannter Monocultivar in jeder Flasche, Anfang Oktober gepflückt, innerhalb von Stunden gemahlen, bis zum Hain rückverfolgbar, mit dem Erntedatum auf dem Etikett, [der Analyse veröffentlicht](/lab/Coratina2025.pdf) und nur der aktuellen Ernte im Verkauf. Wir haben keine dieser Praktiken erfunden. Wir haben sie verstreut bei Produzenten gefunden, die wir bewundern, in Apulien, Sizilien und Andalusien, und sie mit Absicht zu einer Marke zusammengefügt.
+ATTIMO ist nach diesen fünf Dimensionen gebaut – ein benannter Monocultivar in jeder Flasche, Anfang Oktober gepflückt, innerhalb von Stunden gemahlen, bis zum Hain rückverfolgbar, mit dem Erntedatum auf dem Etikett, [der Analyse veröffentlicht](/de/zertifikate/coratina-2526-hplc-2025-11) und nur der aktuellen Ernte im Verkauf. Wir haben keine dieser Praktiken erfunden. Wir haben sie verstreut bei Produzenten gefunden, die wir bewundern, in Apulien, Sizilien und Andalusien, und sie mit Absicht zu einer Marke zusammengefügt.
 
 Deshalb ist diese Definition so geschrieben, wie sie geschrieben ist: überprüfbar. Messen Sie uns daran, und messen Sie jeden daran, der das Wort benutzt.
 

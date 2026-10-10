@@ -129,7 +129,7 @@ Det, der mangler, ligger på forbrugersiden, og det er småt: ordet, der bærer 
 
 ## ATTIMO målt på denne definition
 
-ATTIMO er bygget efter disse fem dimensioner – en navngiven monokultivar i hver flaske, plukket i begyndelsen af oktober, formalet inden for timer, sporbar til sin lund, med høstdatoen på etiketten, [analysen offentliggjort](/lab/Coratina2025.pdf), og kun den aktuelle høst til salg. Vi opfandt ingen af disse praksisser. Vi fandt dem spredt hos producenter, vi beundrer, i Puglia og på Sicilien og i Andalusien, og samlede dem til et brand med vilje.
+ATTIMO er bygget efter disse fem dimensioner – en navngiven monokultivar i hver flaske, plukket i begyndelsen af oktober, formalet inden for timer, sporbar til sin lund, med høstdatoen på etiketten, [analysen offentliggjort](/dk/certifikater/coratina-2526-hplc-2025-11), og kun den aktuelle høst til salg. Vi opfandt ingen af disse praksisser. Vi fandt dem spredt hos producenter, vi beundrer, i Puglia og på Sicilien og i Andalusien, og samlede dem til et brand med vilje.
 
 Derfor er denne definition skrevet, som den er: kontrollerbar. Hold os fast på den, og hold enhver anden, der bruger ordet, fast på den.
 
