@@ -112,9 +112,10 @@ export const nl: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "De oogst 26/27 komt eraan. Hoor het als eerste wanneer hij verzonden wordt.",
+      line: "Verse oogst olijfolie komt eind oktober. Schrijf je in en krijg ze rechtstreeks van de molen.",
       placeholder: "Je e-mailadres",
-      button: "Houd me op de hoogte",
+      button: "Als eerste krijgen",
+      secondary: "Eindeseizoensactie op de oogst 25/26 →",
       success: "Je staat op de lijst. Eerste mail zodra de nieuwe olie geperst is.",
     },
     cta: "Shop de 25/26-oogst", // REVIEW
@@ -129,6 +130,7 @@ export const nl: Dict = {
   },
 
   oilCollection: {
+    endOfSeason: "Eindeseizoensactie",
     heading: "Specialty extra vierge olijfolie", // REVIEW
     subtitle:
       "Olijven van één variëteit, vroeg geoogst en binnen enkele uren koudgeperst voor maximale smaak en gezondheidsvoordelen.", // REVIEW

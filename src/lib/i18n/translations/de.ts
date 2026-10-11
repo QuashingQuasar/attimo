@@ -119,9 +119,10 @@ export const de: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Die Ernte 26/27 kommt. Erfahre es als Erstes, wenn sie verschickt wird.",
+      line: "Frisch geerntetes Olivenöl kommt Ende Oktober. Trag dich ein und bekomm es direkt aus der Mühle.",
       placeholder: "Deine E-Mail-Adresse",
-      button: "Benachrichtigt mich",
+      button: "Als Erster bekommen",
+      secondary: "Saisonschlussverkauf der Ernte 25/26 →",
       success: "Du stehst auf der Liste. Erste Mail, sobald das neue Öl gepresst ist.",
     },
     cta: "Ernte 25/26 entdecken", // REVIEW
@@ -136,6 +137,7 @@ export const de: Dict = {
   },
 
   oilCollection: {
+    endOfSeason: "Saisonschlussverkauf",
     heading: "Natives Olivenöl extra – Spezialität", // REVIEW
     subtitle:
       "Oliven einer einzigen Sorte, früh geerntet und innerhalb von Stunden kalt gepresst – für maximalen Geschmack und gesundheitlichen Nutzen.", // REVIEW

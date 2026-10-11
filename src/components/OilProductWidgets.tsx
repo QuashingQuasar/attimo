@@ -172,6 +172,8 @@ export const OilProductWidgets = ({
     return {
       ...o,
       price: locale.prices[o.handle],
+      // End-of-season sale (front-end price; Shopify must match before merge).
+      salePrice: o.handle === "nocellara" ? locale.prices.nocellaraSale : undefined,
       isAvailable,
       effectiveAvailable,
       shippingNotice,
@@ -337,6 +339,13 @@ export const OilProductWidgets = ({
               </div>
 
               <div className="flex flex-col items-center text-center px-2">
+                {oil.salePrice !== undefined && oil.salePrice < oil.price && (
+                  <span
+                    className="mb-3 inline-block rounded-full px-3.5 py-1.5 uppercase"
+                    style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.12em", backgroundColor: "#1B4229", color: "#CDDB2D" }}>
+                    {t.oilCollection.endOfSeason} · 25/26
+                  </span>
+                )}
                 <h3
                 className="mb-1.5"
                 style={{
@@ -380,7 +389,8 @@ export const OilProductWidgets = ({
                     navigating. */}
                 {(() => {
                   const isBox = oil.handle === "coratina" && coratinaSize === "box";
-                  const price = isBox ? coratinaBoxPrice : oil.price;
+                  const onSale = !isBox && oil.salePrice !== undefined && oil.salePrice < oil.price;
+                  const price = isBox ? coratinaBoxPrice : onSale ? oil.salePrice! : oil.price;
                   const available = oil.effectiveAvailable;
                   const pdpHref = localizeHref(`/product/${oil.handle}`, locale);
                   const onClick = (e: MouseEvent) => {
@@ -440,6 +450,7 @@ export const OilProductWidgets = ({
                     >
                       <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : t.notify.notifyMe).toUpperCase()}</span>
                       <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
+                      {onSale && <s style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(oil.price, locale)}</s>}
                       <span>{formatPrice(price, locale)}</span>
                     </button>
                   );

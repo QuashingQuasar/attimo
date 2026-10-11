@@ -113,9 +113,10 @@ export const fr: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "La récolte 26/27 arrive. Soyez prévenu en premier à l'expédition.",
+      line: "L'huile d'olive de la nouvelle récolte arrive fin octobre. Inscrivez-vous et recevez-la tout droit du moulin.",
       placeholder: "Votre adresse e-mail",
-      button: "Prévenez-moi",
+      button: "La recevoir en premier",
+      secondary: "Fin de saison : la récolte 25/26 en promotion →",
       success: "Vous êtes sur la liste. Premier e-mail dès que la nouvelle huile est pressée.",
     },
     cta: "Découvrir la récolte 25/26", // REVIEW
@@ -130,6 +131,7 @@ export const fr: Dict = {
   },
 
   oilCollection: {
+    endOfSeason: "Fin de saison",
     heading: "Huile d'olive vierge extra de spécialité", // REVIEW
     subtitle:
       "Olives d'une seule variété, récoltées tôt et pressées à froid en quelques heures pour un maximum de saveur et de bienfaits.", // REVIEW

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OliveLeaf } from './OliveLeaf';
@@ -40,8 +39,10 @@ export const Hero = ({
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button
-            onClick={() => {
+            <a
+            href="#oil-collection"
+            onClick={(e) => {
+              e.preventDefault();
               const el = document.getElementById('oil-collection');
               if (el) {
                 const container = el.closest('.overflow-y-scroll') as HTMLElement;
@@ -57,16 +58,18 @@ export const Hero = ({
                 }
               }
             }}
-            className="text-base md:text-lg py-3 px-8 lg:py-3.5 lg:px-9 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm"
+            className="transition-opacity hover:opacity-80"
             style={{
-              fontFamily: 'UDC Working Man Sans, sans-serif',
-              border: '2px solid rgba(255,250,234,0.7)',
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
               color: '#FFFAEA',
-              backgroundColor: 'rgba(16,34,27,0.35)',
-              borderRadius: '8px',
+              textDecoration: 'underline',
+              textUnderlineOffset: '5px',
+              textDecorationColor: 'rgba(255,250,234,0.55)',
+              textShadow: '0 1px 12px rgba(0,0,0,0.55)',
             }}>
-              {t.hero.cta}
-            </Button>
+              {t.hero.harvest.secondary}
+            </a>
           </div>
 
           

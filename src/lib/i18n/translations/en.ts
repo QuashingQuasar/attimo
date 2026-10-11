@@ -123,9 +123,10 @@ export const en = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "The 26/27 harvest is coming. Hear first when it ships.",
+      line: "Fresh harvest olive oil arrives end of October. Sign up and get it straight off the mill.",
       placeholder: "Your email address",
-      button: "Notify me",
+      button: "Get it first",
+      secondary: "End-of-season sale on the 25/26 harvest →",
       success: "You're on the list. First email when the new oil is pressed.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
@@ -141,6 +142,7 @@ export const en = {
   },
 
   oilCollection: {
+    endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:
       "Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.", // REVIEW

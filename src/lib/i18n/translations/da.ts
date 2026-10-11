@@ -112,9 +112,10 @@ export const da: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Høsten 26/27 er på vej. Hør det først, når den sendes.",
+      line: "Frisk olivenolie fra den nye høst kommer sidst i oktober. Skriv dig op og få den direkte fra møllen.",
       placeholder: "Din e-mailadresse",
-      button: "Giv mig besked",
+      button: "Få den først",
+      secondary: "Udsalg på høsten 25/26 →",
       success: "Du er på listen. Første mail, når den nye olie er presset.",
     },
     cta: "Køb 25/26-høsten",
@@ -129,6 +130,7 @@ export const da: Dict = {
   },
 
   oilCollection: {
+    endOfSeason: "Sæsonudsalg",
     heading: "Ekstra jomfru olivenolie i særklasse",
     subtitle:
       "Enkeltsorts oliven høstet tidligt og koldpresset inden for få timer for maksimal smag og sundhedsfordele.",

@@ -112,9 +112,10 @@ export const sv: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Skörden 26/27 är på väg. Få besked först när den skickas.",
+      line: "Nypressad olivolja från årets skörd kommer i slutet av oktober. Anmäl dig och få den direkt från kvarnen.",
       placeholder: "Din e-postadress",
-      button: "Meddela mig",
+      button: "Få den först",
+      secondary: "Säsongsslutsrea på skörden 25/26 →",
       success: "Du står på listan. Första mejlet när den nya oljan är pressad.",
     },
     cta: "Handla 25/26-skörden",
@@ -129,6 +130,7 @@ export const sv: Dict = {
   },
 
   oilCollection: {
+    endOfSeason: "Säsongsslutsrea",
     heading: "Extra jungfruolja i specialklass",
     subtitle:
       "Sortrena oliver skördade tidigt och kallpressade inom några timmar för maximal smak och hälsofördelar.",
