@@ -1,0 +1,192 @@
+---
+// Body of a market buying guide (one country, one language). The table rows
+// come from the Polyphenol Index plus the market's shipping evidence; every
+// string comes from `content`. ATTIMO's row is filled from the shipping tiers
+// and the certificates, never typed in.
+import { Header } from "@/components/Header";
+import { FAQ } from "@/components/FAQ";
+import { OilProductWidgets } from "@/components/OilProductWidgets";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import Footer from "@astro/components/Footer.astro";
+import { formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+import { GREEN, DEEP, CREAM, ACCENT, LIME, UDC, SG, h2, eyebrow, eyebrowSm, lead, small, btn, cardOnCream } from "@/lib/certificates/ui";
+import { localTier } from "@/lib/shippingZones";
+import { INDEX_SLUGS } from "@/lib/polyphenolIndexContent";
+import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
+import { certHrefFor } from "@/lib/certificatesContent";
+import type { IndexEntry } from "@/lib/polyphenolIndex";
+import type { MarketGuideContent, ShipEvidence } from "@/lib/marketGuides";
+
+const { content: c, entries, shipping, locale, heroImage } = Astro.props as {
+  content: MarketGuideContent;
+  entries: IndexEntry[];
+  shipping: Record<string, ShipEvidence>;
+  locale: Locale;
+  heroImage: string;
+};
+const t = getDict(locale);
+const tier = localTier(locale);
+const standard = formatPrice(locale.shipping.standard, locale);
+const freeFrom = tier?.freeFromN ? t.shippingPage.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "";
+const days = tier ? `${tier.days[0]}–${tier.days[1]}` : "";
+const fill = (s: string) => s.split("{standard}").join(standard).split("{freeFrom}").join(freeFrom).split("{days}").join(days);
+const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
+const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
+const indexHref = INDEX_SLUGS[c.lang as keyof typeof INDEX_SLUGS] ?? INDEX_SLUGS.en;
+const methodsHref = METHODS_SLUGS[c.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
+const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
+
+// Row order: ATTIMO first, then producers whose site states shipping here,
+// then the rest; within a group by oleocanthal + oleacein, then by total.
+const shipRank = (e: IndexEntry) => (isMine(e) ? 0 : shipping[e.id]?.ships === "yes" ? 1 : shipping[e.id]?.ships === "no" ? 3 : 2);
+const rows = [...entries].sort((a, b) => shipRank(a) - shipRank(b) || (b.compounds ?? -1) - (a.compounds ?? -1) || (b.total ?? 0) - (a.total ?? 0));
+const checkedDates = [...new Set(Object.values(shipping).map((s) => s.checked))].sort();
+const checked = checkedDates.length ? checkedDates[checkedDates.length - 1] : "";
+const shipsLabel = (ev: ShipEvidence | undefined) => {
+  if (!ev || ev.ships === "not stated") return c.table.notStated;
+  if (ev.ships === "no") return c.table.shipsNo;
+  if (ev.basis === "EU-wide statement") return c.table.viaEu;
+  if (ev.basis === "worldwide statement") return c.table.viaWorld;
+  return c.table.shipsYes;
+};
+const num = (n: number | null) => (n === null ? "" : n >= 1000 ? `${String(n).slice(0, -3)}.${String(n).slice(-3)}` : String(n));
+---
+
+<div class="relative min-h-screen">
+  <Header
+    client:load
+    locale={locale}
+    pageNavLayout="leading"
+    pageNav={[
+      { label: c.nav.criteria, href: "#criteria" },
+      { label: c.nav.table, href: "#table" },
+      { label: c.nav.attimo, href: "#attimo" },
+      { label: c.nav.faq, href: "#faq" },
+    ]}
+  />
+
+  <main style={`color:${GREEN};`}>
+    <!-- HERO -->
+    <section class="relative flex items-center overflow-hidden" style={`background-color:${DEEP}; min-height:max(88vh, 760px);`}>
+      <img src={heroImage} alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(13,30,20,.78) 0%, rgba(13,30,20,.6) 50%, rgba(13,30,20,.85) 100%);"></div>
+      <div class="relative container mx-auto px-6 pt-36 md:pt-44 pb-20 text-center">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.hero.eyebrow}</p>
+        <h1 class="mx-auto mb-6 max-w-5xl" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2rem,3.8vw,3.3rem); line-height:1.04; letter-spacing:-0.03em; color:${CREAM}; text-shadow:0 2px 24px rgba(16,34,27,.9);`}>{c.hero.h1}</h1>
+        <p class="mx-auto mb-9 max-w-3xl" style={`${lead} color:rgba(255,250,234,.92); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>{c.hero.lead}</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="#table" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.hero.cta}</a>
+          <a href="#attimo" style={`${btn} background-color:rgba(255,250,234,.1); color:${CREAM}; border:1px solid rgba(255,250,234,.45); backdrop-filter:blur(6px);`}>{c.hero.ctaSecondary}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRITERIA -->
+    <section id="criteria" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.criteria.eyebrow}</p>
+        <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.criteria.h2}</h2>
+        <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.criteria.intro}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {c.criteria.items.map((it, i) => (
+            <div class="p-6" style={cardOnCream}>
+              <span class="inline-flex w-9 h-9 rounded-full items-center justify-center mb-4" style={`background-color:${GREEN}; color:${CREAM}; font-family:${UDC}; font-size:.95rem;`}>{i + 1}</span>
+              <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.1rem; color:${GREEN};`}>{it.title}</p>
+              <p style={`${small} color:${onCream(0.8)};`}>{it.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section id="table" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.table.eyebrow}</p>
+        <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.table.h2}</h2>
+        <p class="mb-10" style={`${lead} color:${onGreen(0.85)};`}>{c.table.intro}</p>
+        <div class="overflow-x-auto rounded-2xl" style="border:1px solid rgba(255,250,234,.22);">
+          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse; min-width:860px;`}>
+            <thead>
+              <tr style="background-color:rgba(255,250,234,.06);">
+                {[c.table.cols.brand, c.table.cols.figure, c.table.cols.method, c.table.cols.ships, c.table.cols.days, c.table.cols.source].map((h, i) => (
+                  <th class={`px-4 py-3 ${i === 1 ? "text-right" : "text-left"}`} style={`${eyebrowSm} font-size:.72rem; color:${ACCENT}; border-bottom:1px solid rgba(255,250,234,.22);`}>{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((e) => {
+                const mine = isMine(e);
+                const ev = shipping[e.id];
+                const href = mine && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.source_url;
+                return (
+                  <tr style={`border-bottom:1px solid rgba(255,250,234,.12); ${mine ? `background-color:rgba(205,219,45,.1);` : ""}`}>
+                    <td class="px-4 py-3">
+                      <span style={`font-family:${UDC}; font-weight:700; color:${mine ? ACCENT : CREAM};`}>{e.brand}</span>
+                      <span style={`color:${onGreen(0.75)};`}> {e.oil}</span>
+                    </td>
+                    <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; color:${CREAM};`}>
+                      {e.compounds !== null ? <span>{num(e.compounds)}<span style={`font-family:${SG}; font-size:.8rem; color:${onGreen(0.6)};`}> ·  {num(e.total)}</span></span> : <span>{num(e.total)}</span>}
+                    </td>
+                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onGreen(0.8)};`}>{e.method}</td>
+                    <td class="px-4 py-3" style={`color:${mine || ev?.ships === "yes" ? LIME : onGreen(0.55)};`}>
+                      {mine ? c.table.attimoShips : shipsLabel(ev)}
+                      {!mine && ev?.notes && <span class="block mt-0.5" style={`font-size:.82rem; color:${onGreen(0.5)};`}>{ev.notes}</span>}
+                    </td>
+                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onGreen(0.8)};`}>{mine ? days : ev && ev.days !== "not stated" ? ev.days : ""}</td>
+                    <td class="px-4 py-3" style={`color:${onGreen(0.7)};`}>
+                      {mine
+                        ? <a href={href} class="underline">{e.brand}</a>
+                        : ev && ev.source_url
+                          ? <a href={ev.source_url} class="underline" rel="nofollow noopener" target="_blank" title={ev.quote}>{new URL(ev.source_url).hostname.replace(/^www\./, "")}</a>
+                          : <a href={e.source_url} class="underline" rel="nofollow noopener" target="_blank">{new URL(e.source_url).hostname.replace(/^www\./, "")}</a>}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-6" style={`${small} color:${onGreen(0.65)};`}>{c.table.footnote.split("{checked}").join(checked || "—")} <a href={indexHref} class="underline" style={`color:${LIME};`}>{c.table.indexLink}</a> · <a href={methodsHref} class="underline" style={`color:${LIME};`}>HPLC, NMR, Folin</a></p>
+      </div>
+    </section>
+
+    <!-- ATTIMO: the live product cards, shipping line from the tiers -->
+    <div id="attimo" class="scroll-mt-24">
+      <OilProductWidgets client:load locale={locale} heading={c.attimo.h2} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
+    </div>
+    <Sonner client:load />
+
+    {c.stockists && (
+      <section class="py-20 px-6" style={`background-color:${CREAM};`}>
+        <div class="container mx-auto max-w-6xl">
+          <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.stockists.eyebrow}</p>
+          <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.stockists.h2}</h2>
+          <p class="mb-8" style={`${lead} color:${onCream(0.8)};`}>{c.stockists.intro}</p>
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {c.stockists.items.map((s) => (
+              <li class="p-5" style={cardOnCream}>
+                <p style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{s.href ? <a href={s.href} class="underline" rel="noopener" target="_blank">{s.name}</a> : s.name}</p>
+                <p style={`${small} color:${onCream(0.7)};`}>{s.city}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    <div id="faq" class="scroll-mt-24">
+      <FAQ client:visible locale={locale} items={c.faq.items} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
+    </div>
+
+    <section class="pb-24 px-6" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl text-center">
+        <h2 class="mb-7" style={`${h2} color:${GREEN};`}>{c.closing.h2}</h2>
+        <a href="#attimo" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.closing.cta}</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</div>
