@@ -25,7 +25,7 @@ export const de: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA SAISONSCHLUSSVERKAUF",
+    nocellaraSale: "NOCELLARA LAST SEASON SALE",
     freeShipping2: "GRATIS VERSAND AB 2 FLASCHEN",
     freeShipping3: "GRATIS VERSAND AB 3 FLASCHEN",
   },
@@ -123,7 +123,7 @@ export const de: Dict = {
       line: "Frisch geerntetes Olivenöl kommt Ende Oktober. Trag dich ein und bekomm es direkt aus der Mühle.",
       placeholder: "Deine E-Mail-Adresse",
       button: "Als Erster bekommen",
-      secondary: "Saisonschlussverkauf der Ernte 25/26 →",
+      secondary: "Last Season Sale der Ernte 25/26 →",
       success: "Du stehst auf der Liste. Erste Mail, sobald das neue Öl gepresst ist.",
     },
     cta: "Ernte 25/26 entdecken", // REVIEW
@@ -157,8 +157,8 @@ export const de: Dict = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Ernte 25/26",
-    lastHarvestSubtitle: "Die letzten Flaschen der letzten Ernte. Coratina und Picual sind ausverkauft, bis das neue Öl da ist; Nocellara kostet {sale} statt {price}, solange der Vorrat reicht.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "Während du auf die neue Ernte wartest, kosten die letzten Flaschen der 25/26 {sale} statt {price}. Die Monate in der Flasche haben die Bitterkeit der Nocellara gemildert; wer ein mildes Öl mag, erwischt jetzt ihren besten Moment. Coratina und Picual sind ausverkauft, bis das neue Öl da ist.",
     endOfSeason: "Saisonschlussverkauf",
     heading: "Natives Olivenöl extra – Spezialität", // REVIEW
     subtitle:

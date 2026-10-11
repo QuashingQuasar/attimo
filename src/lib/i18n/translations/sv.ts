@@ -21,7 +21,7 @@ export const sv: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA SÄSONGSSLUTSREA",
+    nocellaraSale: "NOCELLARA LAST SEASON SALE",
     freeShipping2: "FRI FRAKT VID 2+ FLASKOR",
     freeShipping3: "FRI FRAKT VID 3+ FLASKOR",
   },
@@ -116,7 +116,7 @@ export const sv: Dict = {
       line: "Nypressad olivolja från årets skörd kommer i slutet av oktober. Anmäl dig och få den direkt från kvarnen.",
       placeholder: "Din e-postadress",
       button: "Få den först",
-      secondary: "Säsongsslutsrea på skörden 25/26 →",
+      secondary: "Last Season Sale på skörden 25/26 →",
       success: "Du står på listan. Första mejlet när den nya oljan är pressad.",
     },
     cta: "Handla 25/26-skörden",
@@ -150,8 +150,8 @@ export const sv: Dict = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Skörd 25/26",
-    lastHarvestSubtitle: "De sista flaskorna från förra skörden. Coratina och Picual är slutsålda tills den nya oljan kommer; Nocellara kostar {sale} i stället för {price} så länge lagret räcker.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "Medan du väntar på den nya skörden kostar de sista flaskorna av 25/26 {sale} i stället för {price}. Månaderna på flaska har mildrat Nocellaras beska; gillar du en mjuk olja är det här dess bästa stund. Coratina och Picual är slutsålda tills den nya oljan kommer.",
     endOfSeason: "Säsongsslutsrea",
     heading: "Extra jungfruolja i specialklass",
     subtitle:

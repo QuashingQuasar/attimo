@@ -21,7 +21,7 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
-    nocellaraSale: "NOCELLARA END-OF-SEASON SALE",
+    nocellaraSale: "NOCELLARA LAST SEASON SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -127,7 +127,7 @@ export const en = {
       line: "Fresh harvest olive oil arrives end of October. Sign up and get it straight off the mill.",
       placeholder: "Your email address",
       button: "Get it first",
-      secondary: "End-of-season sale on the 25/26 harvest →",
+      secondary: "Last Season Sale on the 25/26 harvest →",
       success: "You're on the list. First email when the new oil is pressed.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
@@ -162,8 +162,8 @@ export const en = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Harvest 25/26",
-    lastHarvestSubtitle: "The last bottles of last year's harvest. Coratina and Picual are sold out until the new oil arrives; Nocellara is {sale} instead of {price} while it lasts.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "While you wait for the new harvest, the last bottles of 25/26 are {sale} instead of {price}. Months in the bottle have softened Nocellara's bitterness, so if you like a mellow oil this is its best moment. Coratina and Picual are sold out until the new oil lands.",
     endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:

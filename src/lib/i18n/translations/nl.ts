@@ -20,7 +20,7 @@ export const nl: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA EINDESEIZOENSACTIE",
+    nocellaraSale: "NOCELLARA LAST SEASON SALE",
     freeShipping2: "GRATIS VERZENDING VANAF 2 FLESSEN",
     freeShipping3: "GRATIS VERZENDING VANAF 3 FLESSEN",
   },
@@ -116,7 +116,7 @@ export const nl: Dict = {
       line: "Verse oogst olijfolie komt eind oktober. Schrijf je in en krijg ze rechtstreeks van de molen.",
       placeholder: "Je e-mailadres",
       button: "Als eerste krijgen",
-      secondary: "Eindeseizoensactie op de oogst 25/26 →",
+      secondary: "Last Season Sale op de oogst 25/26 →",
       success: "Je staat op de lijst. Eerste mail zodra de nieuwe olie geperst is.",
     },
     cta: "Shop de 25/26-oogst", // REVIEW
@@ -150,8 +150,8 @@ export const nl: Dict = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Oogst 25/26",
-    lastHarvestSubtitle: "De laatste flessen van de vorige oogst. Coratina en Picual zijn uitverkocht tot de nieuwe olie er is; Nocellara kost {sale} in plaats van {price} zolang de voorraad strekt.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "Terwijl je op de nieuwe oogst wacht, kosten de laatste flessen van 25/26 {sale} in plaats van {price}. Maanden in de fles hebben de bitterheid van Nocellara verzacht; hou je van een milde olie, dan is dit haar beste moment. Coratina en Picual zijn uitverkocht tot de nieuwe olie er is.",
     endOfSeason: "Eindeseizoensactie",
     heading: "Specialty extra vierge olijfolie", // REVIEW
     subtitle:

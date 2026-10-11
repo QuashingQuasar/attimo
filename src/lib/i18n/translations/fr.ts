@@ -20,7 +20,7 @@ export const fr: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA : FIN DE SAISON",
+    nocellaraSale: "NOCELLARA LAST SEASON SALE",
     freeShipping2: "LIVRAISON GRATUITE DÈS 2 BOUTEILLES",
     freeShipping3: "LIVRAISON GRATUITE DÈS 3 BOUTEILLES",
   },
@@ -117,7 +117,7 @@ export const fr: Dict = {
       line: "L'huile d'olive de la nouvelle récolte arrive fin octobre. Inscrivez-vous et recevez-la tout droit du moulin.",
       placeholder: "Votre adresse e-mail",
       button: "La recevoir en premier",
-      secondary: "Fin de saison : la récolte 25/26 en promotion →",
+      secondary: "Last Season Sale sur la récolte 25/26 →",
       success: "Vous êtes sur la liste. Premier e-mail dès que la nouvelle huile est pressée.",
     },
     cta: "Découvrir la récolte 25/26", // REVIEW
@@ -151,8 +151,8 @@ export const fr: Dict = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Récolte 25/26",
-    lastHarvestSubtitle: "Les dernières bouteilles de la récolte passée. Coratina et Picual sont épuisées jusqu'à l'arrivée de la nouvelle huile ; Nocellara est à {sale} au lieu de {price} jusqu'à épuisement.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "En attendant la nouvelle récolte, les dernières bouteilles de 25/26 sont à {sale} au lieu de {price}. Les mois en bouteille ont adouci l'amertume de la Nocellara : si vous aimez une huile ronde, c'est son meilleur moment. Coratina et Picual sont épuisées jusqu'à l'arrivée de la nouvelle huile.",
     endOfSeason: "Fin de saison",
     heading: "Huile d'olive vierge extra de spécialité", // REVIEW
     subtitle:
