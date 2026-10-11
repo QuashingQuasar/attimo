@@ -117,6 +117,13 @@ export const de: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "Die Ernte 26/27 kommt. Erfahre es als Erstes, wenn sie verschickt wird.",
+      placeholder: "Deine E-Mail-Adresse",
+      button: "Benachrichtigt mich",
+      success: "Du stehst auf der Liste. Erste Mail, sobald das neue Öl gepresst ist.",
+    },
     cta: "Ernte 25/26 entdecken", // REVIEW
     badges: [
       "IM LABOR GETESTET", // REVIEW

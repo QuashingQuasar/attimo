@@ -110,6 +110,13 @@ export const nl: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "De oogst 26/27 komt eraan. Hoor het als eerste wanneer hij verzonden wordt.",
+      placeholder: "Je e-mailadres",
+      button: "Houd me op de hoogte",
+      success: "Je staat op de lijst. Eerste mail zodra de nieuwe olie geperst is.",
+    },
     cta: "Shop de 25/26-oogst", // REVIEW
     badges: [
       "LAB-GETEST", // REVIEW

@@ -5,6 +5,7 @@ import { OliveLeaf } from './OliveLeaf';
 import kleiaLogo from '@/assets/attimo-main-logo.svg?url';
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { HarvestSignup } from "@/components/HarvestSignup";
 interface HeroProps {
   onWaitlistClick: () => void;
   locale?: Locale;
@@ -29,9 +30,13 @@ export const Hero = ({
             <img
             src={kleiaLogo}
             alt="ATTIMO olive oil logo"
-            className="object-contain drop-shadow-2xl w-auto max-h-[290px] md:max-h-[358px] lg:max-h-[426px]"
-            style={{ width: 'min(444px, 61.25vw, 43vh)', height: 'auto' }} />
+            className="object-contain drop-shadow-2xl w-auto max-h-[230px] md:max-h-[300px] lg:max-h-[360px]"
+            style={{ width: 'min(380px, 56vw, 36vh)', height: 'auto' }} />
           
+          </div>
+
+          <div className="mb-5 md:mb-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <HarvestSignup locale={locale} />
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
@@ -52,12 +57,12 @@ export const Hero = ({
                 }
               }
             }}
-            className="text-base md:text-lg lg:text-lg py-3.5 px-9 lg:py-4 lg:px-11 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="text-base md:text-lg py-3 px-8 lg:py-3.5 lg:px-9 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm"
             style={{
               fontFamily: 'UDC Working Man Sans, sans-serif',
-              border: '2px solid #CDDB2D',
-              color: '#1B4229',
-              backgroundColor: '#CDDB2D',
+              border: '2px solid rgba(255,250,234,0.7)',
+              color: '#FFFAEA',
+              backgroundColor: 'rgba(16,34,27,0.35)',
               borderRadius: '8px',
             }}>
               {t.hero.cta}

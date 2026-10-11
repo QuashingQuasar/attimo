@@ -121,6 +121,13 @@ export const en = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "The 26/27 harvest is coming. Hear first when it ships.",
+      placeholder: "Your email address",
+      button: "Notify me",
+      success: "You're on the list. First email when the new oil is pressed.",
+    },
     cta: "Shop 25/26 Harvest", // REVIEW
     // Rotating ticker badges along the bottom of the hero.
     badges: [

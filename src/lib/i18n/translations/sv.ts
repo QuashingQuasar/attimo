@@ -110,6 +110,13 @@ export const sv: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "Skörden 26/27 är på väg. Få besked först när den skickas.",
+      placeholder: "Din e-postadress",
+      button: "Meddela mig",
+      success: "Du står på listan. Första mejlet när den nya oljan är pressad.",
+    },
     cta: "Handla 25/26-skörden",
     badges: [
       "LABBTESTAD",
