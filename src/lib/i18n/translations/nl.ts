@@ -20,6 +20,7 @@ export const nl: Dict = {
   },
 
   announce: {
+    nocellaraSale: "NOCELLARA EINDESEIZOENSACTIE",
     freeShipping2: "GRATIS VERZENDING VANAF 2 FLESSEN",
     freeShipping3: "GRATIS VERZENDING VANAF 3 FLESSEN",
   },
@@ -129,7 +130,28 @@ export const nl: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Oogst 26/27 · eind oktober",
+    heading: "De volgende oogst",
+    intro: "Drie verse oliën, in oktober groen geplukt en binnen enkele uren geperst. Twee ken je al, één is nieuw.",
+    formLine: "Schrijf je in en krijg ze rechtstreeks van de molen.",
+    returning: "Terug",
+    new: "Nieuw · bio",
+    oils: { coratina: "Krachtig & peperig. 847 mg/kg polyfenolen bij de vorige oogst.", peranzana: "De zachte van de drie. Neemt de plaats van Nocellara in.", picual: "Groen & grassig. Vroege oogst uit Jaén." },
+    steps: [
+      { label: "Pluk", when: "half oktober" },
+      { label: "Persing", when: "eind oktober" },
+      { label: "Labtest", when: "na de persing" },
+      { label: "Botteling", when: "na het lab" },
+      { label: "Verzending", when: "eerst naar de lijst" },
+    ],
+    note: "De data zijn schattingen van de producenten. Het weer schuift ze op.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Oogst 25/26",
+    lastHarvestSubtitle: "De laatste flessen van de vorige oogst. Coratina en Picual zijn uitverkocht tot de nieuwe olie er is; Nocellara kost {sale} in plaats van {price} zolang de voorraad strekt.",
     endOfSeason: "Eindeseizoensactie",
     heading: "Specialty extra vierge olijfolie", // REVIEW
     subtitle:

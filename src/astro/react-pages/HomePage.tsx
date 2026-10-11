@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
+import { UpcomingHarvest } from "@/components/UpcomingHarvest";
 import { BundleWidgets } from "@/components/BundleWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
@@ -16,7 +17,8 @@ import { FAQ } from "@/components/FAQ";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { Footer } from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, type Locale } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } } });
 
@@ -37,6 +39,13 @@ interface InnerProps {
 
 function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: InnerProps) {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
+  const t = getDict(locale);
+  // Between seasons: the lineup is framed as last year's harvest with the
+  // Nocellara sell-down price spelled out, and the next harvest gets its own
+  // section above it.
+  const lastHarvestSubtitle = t.oilCollection.lastHarvestSubtitle
+    .replace("{sale}", formatPrice(locale.prices.nocellaraSale ?? locale.prices.nocellara, locale))
+    .replace("{price}", formatPrice(locale.prices.nocellara, locale));
   // Polyphenol badge under each card's flavour line, from the certificates
   // collection (via labNumbers) so the homepage carries no number of its own.
   const polyBadges = labNumbers?.length
@@ -47,7 +56,14 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <OilProductWidgets locale={locale} polyphenols={polyBadges} belowGrid={<BundleWidgets locale={locale} />} />
+      <UpcomingHarvest locale={locale} />
+      <OilProductWidgets
+        locale={locale}
+        polyphenols={polyBadges}
+        heading={t.oilCollection.lastHarvestHeading}
+        subtitle={lastHarvestSubtitle}
+        belowGrid={<BundleWidgets locale={locale} />}
+      />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
       <OilComparison locale={locale} />

@@ -28,6 +28,8 @@ interface Props {
   // existing pages are unchanged; localized pages pass translated strings.
   announceTier2?: string;
   announceTier3?: string;
+  // Optional second message appended to the shipping line (e.g. a sale).
+  announceExtra?: string;
 }
 
 const {
@@ -47,6 +49,7 @@ const {
   htmlLang = "en",
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
   announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
+  announceExtra,
 } = Astro.props;
 
 const socialTitle = ogTitle ?? title;
@@ -186,7 +189,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <!-- Geo-targeted shipping announcement bar.
              Hidden by default; an inline script reads the `attimo_shipping_tier`
              cookie set by middleware.ts and reveals the right message. -->
-        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3}>
+        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3} data-extra={announceExtra}>
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
@@ -227,7 +230,8 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               ? bar.getAttribute("data-tier3")
               : null;
             if (!msg) return;
-            text.textContent = msg;
+            var extra = bar.getAttribute("data-extra");
+            text.textContent = extra ? msg + "  \u00b7  " + extra : msg;
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the
             // hero (.hero-full) can subtract it from its 100vh and the

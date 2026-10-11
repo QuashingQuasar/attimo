@@ -25,6 +25,7 @@ export const de: Dict = {
   },
 
   announce: {
+    nocellaraSale: "NOCELLARA SAISONSCHLUSSVERKAUF",
     freeShipping2: "GRATIS VERSAND AB 2 FLASCHEN",
     freeShipping3: "GRATIS VERSAND AB 3 FLASCHEN",
   },
@@ -136,7 +137,28 @@ export const de: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Ernte 26/27 · Ende Oktober",
+    heading: "Die nächste Ernte",
+    intro: "Drei frische Öle, im Oktober grün gepflückt und innerhalb von Stunden gepresst. Zwei kennst du, eines ist neu.",
+    formLine: "Trag dich ein und bekomm es direkt aus der Mühle.",
+    returning: "Wieder da",
+    new: "Neu · bio",
+    oils: { coratina: "Kräftig & pfeffrig. 847 mg/kg Polyphenole in der letzten Ernte.", peranzana: "Das sanfte der drei. Nimmt den Platz von Nocellara ein.", picual: "Grün & grasig. Frühe Ernte aus Jaén." },
+    steps: [
+      { label: "Ernte", when: "Mitte Oktober" },
+      { label: "Pressung", when: "Ende Oktober" },
+      { label: "Laboranalyse", when: "nach der Pressung" },
+      { label: "Abfüllung", when: "nach dem Labor" },
+      { label: "Versand", when: "zuerst an die Liste" },
+    ],
+    note: "Die Termine sind Schätzungen der Produzenten. Das Wetter verschiebt sie.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Ernte 25/26",
+    lastHarvestSubtitle: "Die letzten Flaschen der letzten Ernte. Coratina und Picual sind ausverkauft, bis das neue Öl da ist; Nocellara kostet {sale} statt {price}, solange der Vorrat reicht.",
     endOfSeason: "Saisonschlussverkauf",
     heading: "Natives Olivenöl extra – Spezialität", // REVIEW
     subtitle:

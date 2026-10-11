@@ -21,6 +21,7 @@ export const sv: Dict = {
   },
 
   announce: {
+    nocellaraSale: "NOCELLARA SÄSONGSSLUTSREA",
     freeShipping2: "FRI FRAKT VID 2+ FLASKOR",
     freeShipping3: "FRI FRAKT VID 3+ FLASKOR",
   },
@@ -129,7 +130,28 @@ export const sv: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Skörd 26/27 · slutet av oktober",
+    heading: "Nästa skörd",
+    intro: "Tre färska oljor, plockade gröna i oktober och pressade inom några timmar. Två känner du igen, en är ny.",
+    formLine: "Anmäl dig och få den direkt från kvarnen.",
+    returning: "Tillbaka",
+    new: "Ny · ekologisk",
+    oils: { coratina: "Kraftig & pepprig. 847 mg/kg polyfenoler förra skörden.", peranzana: "Den milda av de tre. Tar Nocellaras plats.", picual: "Grön & gräsig. Tidig skörd från Jaén." },
+    steps: [
+      { label: "Plockning", when: "mitten av oktober" },
+      { label: "Pressning", when: "slutet av oktober" },
+      { label: "Labbtest", when: "efter pressning" },
+      { label: "Buteljering", when: "efter labbet" },
+      { label: "Leverans", when: "först till listan" },
+    ],
+    note: "Datumen är producenternas uppskattningar. Vädret flyttar dem.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Skörd 25/26",
+    lastHarvestSubtitle: "De sista flaskorna från förra skörden. Coratina och Picual är slutsålda tills den nya oljan kommer; Nocellara kostar {sale} i stället för {price} så länge lagret räcker.",
     endOfSeason: "Säsongsslutsrea",
     heading: "Extra jungfruolja i specialklass",
     subtitle:

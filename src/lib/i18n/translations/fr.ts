@@ -20,6 +20,7 @@ export const fr: Dict = {
   },
 
   announce: {
+    nocellaraSale: "NOCELLARA : FIN DE SAISON",
     freeShipping2: "LIVRAISON GRATUITE DÈS 2 BOUTEILLES",
     freeShipping3: "LIVRAISON GRATUITE DÈS 3 BOUTEILLES",
   },
@@ -130,7 +131,28 @@ export const fr: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Récolte 26/27 · fin octobre",
+    heading: "La prochaine récolte",
+    intro: "Trois huiles fraîches, cueillies vertes en octobre et pressées en quelques heures. Deux que vous connaissez, une nouvelle.",
+    formLine: "Inscrivez-vous et recevez-la tout droit du moulin.",
+    returning: "De retour",
+    new: "Nouveau · bio",
+    oils: { coratina: "Puissante et poivrée. 847 mg/kg de polyphénols à la dernière récolte.", peranzana: "La plus douce des trois. Elle prend la place de la Nocellara.", picual: "Verte et herbacée. Récolte précoce de Jaén." },
+    steps: [
+      { label: "Cueillette", when: "mi-octobre" },
+      { label: "Pressage", when: "fin octobre" },
+      { label: "Analyses", when: "après le pressage" },
+      { label: "Mise en bouteille", when: "après le labo" },
+      { label: "Expédition", when: "à la liste d'abord" },
+    ],
+    note: "Les dates sont les estimations des producteurs. La météo les déplace.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Récolte 25/26",
+    lastHarvestSubtitle: "Les dernières bouteilles de la récolte passée. Coratina et Picual sont épuisées jusqu'à l'arrivée de la nouvelle huile ; Nocellara est à {sale} au lieu de {price} jusqu'à épuisement.",
     endOfSeason: "Fin de saison",
     heading: "Huile d'olive vierge extra de spécialité", // REVIEW
     subtitle:

@@ -339,13 +339,6 @@ export const OilProductWidgets = ({
               </div>
 
               <div className="flex flex-col items-center text-center px-2">
-                {oil.salePrice !== undefined && oil.salePrice < oil.price && (
-                  <span
-                    className="mb-3 inline-block rounded-full px-3.5 py-1.5 uppercase"
-                    style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)", letterSpacing: "0.12em", backgroundColor: "#1B4229", color: "#CDDB2D" }}>
-                    {t.oilCollection.endOfSeason} · 25/26
-                  </span>
-                )}
                 <h3
                 className="mb-1.5"
                 style={{

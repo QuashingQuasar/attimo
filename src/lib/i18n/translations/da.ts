@@ -21,6 +21,7 @@ export const da: Dict = {
   },
 
   announce: {
+    nocellaraSale: "NOCELLARA SÆSONUDSALG",
     freeShipping2: "FRI FRAGT VED 2+ FLASKER",
     freeShipping3: "FRI FRAGT VED 3+ FLASKER",
   },
@@ -129,7 +130,28 @@ export const da: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Høst 26/27 · sidst i oktober",
+    heading: "Den næste høst",
+    intro: "Tre friske olier, plukket grønne i oktober og presset inden for få timer. To kender du, én er ny.",
+    formLine: "Skriv dig op og få den direkte fra møllen.",
+    returning: "Tilbage",
+    new: "Ny · økologisk",
+    oils: { coratina: "Kraftig & pebret. 847 mg/kg polyfenoler ved sidste høst.", peranzana: "Den milde af de tre. Tager Nocellaras plads.", picual: "Grøn & græsset. Tidlig høst fra Jaén." },
+    steps: [
+      { label: "Plukning", when: "midt i oktober" },
+      { label: "Presning", when: "sidst i oktober" },
+      { label: "Labtest", when: "efter presning" },
+      { label: "Aftapning", when: "efter laboratoriet" },
+      { label: "Forsendelse", when: "først til listen" },
+    ],
+    note: "Datoerne er producenternes skøn. Vejret flytter dem.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Høst 25/26",
+    lastHarvestSubtitle: "De sidste flasker fra sidste høst. Coratina og Picual er udsolgt, indtil den nye olie kommer; Nocellara koster {sale} i stedet for {price}, så længe lager haves.",
     endOfSeason: "Sæsonudsalg",
     heading: "Ekstra jomfru olivenolie i særklasse",
     subtitle:

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import { getDict } from "@/lib/i18n/dictionaries";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import HomePage from "@astro/react-pages/HomePage";
 import { sanityClient } from "@/lib/sanity";
 import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
@@ -22,6 +24,7 @@ const labNumbers = await getHomeLabNumbers();
 ---
 
 <BaseLayout
+  announceExtra={getDict(DEFAULT_LOCALE).announce.nocellaraSale}
   title="ATTIMO Single-Variety, High-Polyphenol, Early Harvest Olive Oil"
   description="Single-variety, high-polyphenol olive oil. Early harvest, lab-tested for quality. From small family groves to your table. Shop now."
   canonical="https://attimo-oil.com/"

@@ -21,6 +21,7 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
+    nocellaraSale: "NOCELLARA END-OF-SEASON SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -141,7 +142,28 @@ export const en = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Harvest 26/27 · end of October",
+    heading: "The next harvest",
+    intro: "Three fresh oils, picked green in October and pressed within hours. Two you know, one new.",
+    formLine: "Sign up and get it straight off the mill.",
+    returning: "Returning",
+    new: "New · organic",
+    oils: { coratina: "Bold & punchy. 847 mg/kg polyphenols last harvest.", peranzana: "The gentle one of the three. Takes Nocellara's place.", picual: "Green & grassy. Early harvest from Jaén." },
+    steps: [
+      { label: "Picking", when: "mid-October" },
+      { label: "Pressing", when: "end of October" },
+      { label: "Lab tests", when: "after pressing" },
+      { label: "Bottling", when: "after the lab" },
+      { label: "Shipping", when: "to the list first" },
+    ],
+    note: "Dates are the producers' estimates. Weather moves them.",
+  },
+
   oilCollection: {
+    lastHarvestHeading: "Harvest 25/26",
+    lastHarvestSubtitle: "The last bottles of last year's harvest. Coratina and Picual are sold out until the new oil arrives; Nocellara is {sale} instead of {price} while it lasts.",
     endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:
