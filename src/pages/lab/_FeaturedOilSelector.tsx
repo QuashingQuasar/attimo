@@ -295,11 +295,13 @@ const CSS = `
 .fo-section {
   background-color: ${CREAM};
   color: ${GREEN};
+  /* exempt from the global section zoom (global.css) so 100vh is true */
+  zoom: 1 !important;
   /* fill the viewport and centre the content vertically */
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 5rem 1.5rem;
+  padding: 3rem 1.5rem;
   box-sizing: border-box;
   position: relative;
   /* bg + font colour are set inline per active bottle; animate the swap */
@@ -324,8 +326,9 @@ const CSS = `
 .fo-reel {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem; max-width: 420px;
-  /* big breathing room between the reel and the spotlight below */
-  margin: 0 auto clamp(4.5rem, 12vh, 9rem);
+  /* breathing room between the reel and the spotlight below. The bottle's 1.4×
+     scale overflows ~104px upward, so this must clear that PLUS a visible gap. */
+  margin: 0 auto clamp(7.5rem, 16vh, 10rem);
 }
 .fo-reel-item {
   position: relative; border: none; cursor: pointer;
@@ -397,6 +400,10 @@ const CSS = `
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
 }
+/* hidden while the travelling-bottle overlay is mid-flight. The class lives on
+   the stable .fo-section so it survives the spotlight's per-variety remount,
+   preventing a double-bottle flash when the reel is clicked mid-travel. */
+.fo-section.fo-traveling .fo-bottle-frame { opacity: 0; }
 .fo-bottle-frame img {
   width: 100%; height: 100%; object-fit: contain;
   transform: scale(1.4);
@@ -460,5 +467,20 @@ const CSS = `
 
   /* mobile-only divider hidden on desktop */
   .fo-area-divider { display: none; }
+}
+
+/* ── Mobile — shrink the bottle so it doesn't overrun the stacked layout ─── */
+@media (max-width: 767px) {
+  .fo-section { padding: 2.25rem 1.25rem; overflow-x: hidden; }
+  .fo-reel { max-width: 300px; gap: 1rem; margin: 0 auto 5rem; }
+  .fo-reel-item { padding: 0.5rem; }
+  /* larger landed bottle (the travel overlay scales up to it on the way down) */
+  .fo-bottle-frame { max-width: 290px; }
+  .fo-bottle-frame img { transform: scale(1.45); }
+  .fo-bottle-frame:hover img { transform: scale(1.45); }
+  /* reserve room for the bottle's scale-overflow so it clears title & price */
+  .fo-area-bottle { margin: 3.5rem 0; }
+  /* hide the long product description on mobile (keeps polyphenols) */
+  .fo-desc { display: none; }
 }
 `;
