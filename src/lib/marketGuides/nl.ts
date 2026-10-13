@@ -46,7 +46,7 @@ export const nl: MarketGuideContent = {
     introPre: "Alleen oliën met een gepubliceerd polyfenolgetal, in de volgorde van de ",
     introLink: "Polyfenolindex",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "België · ook Nocellara en Picual", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
+    labels: { attimoName: "ATTIMO Coratina", attimoSub: "België · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
   },
   criteria: {
     eyebrow: "Hoe we beoordelen",
@@ -63,9 +63,9 @@ export const nl: MarketGuideContent = {
     eyebrow: "Vergelijking",
     h2: "Alle beschikbare oliën vergeleken",
     intro: "Dezelfde oliën, met de score op de vier criteria hierboven. Twee kolommen voor het polyfenolgetal: de twee hoofdstoffen apart, en het totaal zoals de producent het publiceert.",
-    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", buy: "Kopen in Nederland", days: "Levertijd", score: "Score" },
+    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", buy: "Kopen in Nederland", days: "Levertijd", score: "Score" },
     buy: { webshop: "Webshop, verzendt naar Nederland", webshopEu: "Webshop, verzendt EU-breed", webshopWorld: "Webshop, verzendt internationaal", retailer: "Via winkel", distributor: "Via distributeur", request: "Op aanvraag" },
-    footnote: "mg/kg. Verzendinformatie gelezen op de website van elke verkoper op {checked}; de zin staat achter de bron. Polyfenolgetallen komen uit de Polyfenolindex, waar elk cijfer naar het rapport linkt. Prijzen van andere merken drukken we niet: die veranderen te vaak.",
+    footnote: "mg/kg. Verzendinformatie gelezen op de website van elke verkoper op {checked}; de zin staat achter de bron. Polyfenolgetallen komen uit de Polyfenolindex, waar elk cijfer naar het rapport linkt. Prijzen zijn die van de producent, gelezen in {verified}.",
     links: {
       index: { title: "De Polyfenolindex", text: "Elke olijfolie ter wereld die een polyfenolgetal publiceert, op één pagina, gerangschikt op de twee hoofdstoffen." },
       methods: { title: "Waarom methodes verschillen", text: "HPLC, NMR en Folin-Ciocalteu geven voor dezelfde olie andere getallen. Wat elke methode meet, en wat je met elkaar kunt vergelijken." },
@@ -75,7 +75,7 @@ export const nl: MarketGuideContent = {
     eyebrow: "Per olie",
     h2: "Wat elke olie wel en niet laat zien",
     intro: "Dezelfde vier criteria, nu per olie uitgeschreven. Plus en min komen rechtstreeks uit wat de producent publiceert.",
-    labels: { score: "Score", pros: "Plus", cons: "Min", forWho: "Voor wie", standsOut: "Waarom ze opvalt", buy: "Kopen", price: "Prijs", source: "Bron", priceOnSite: "Prijs op de website van het merk" },
+    labels: { score: "Score", pros: "Plus", cons: "Min", forWho: "Voor wie", standsOut: "Waarom ze opvalt", buy: "Kopen", price: "Prijs", source: "Bron", priceOnSite: "niet vermeld" },
     pros: { report: "Labrapport online in te zien", hplc: "Oleocanthal en oleaceïne apart gerapporteerd", method: "Methode benoemd", origin: "Variëteit en oogst benoemd", shipsNl: "Verzendt naar Nederland, {days}", shipsEu: "Verzendt EU-breed" },
     cons: { nmr: "Totaal gemeten met NMR: telt een lange lijst fenolische stoffen voor hun volle gewicht mee, ook zware afgeleide moleculen, en valt daardoor voor dezelfde olie 20 tot 48% hoger uit dan HPLC. Vergelijk op oleocanthal + oleaceïne.", shipping: "Verzending {cost}", shippingFree: "Verzending {cost}, gratis vanaf {free}", noReport: "Geen rapport te openen", noMethod: "Methode niet vermeld", totalOnly: "Alleen een totaal, geen afzonderlijke stoffen", noDays: "Levertijd naar Nederland niet vermeld", nlNotNamed: "Nederland niet apart genoemd", noOrigin: "Variëteit of oogst niet benoemd" },
     perOil: {

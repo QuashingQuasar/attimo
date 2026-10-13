@@ -29,7 +29,7 @@ export type MarketGuideContent = {
   hero: { eyebrow: string; h1: string; lead: string; cta: string; ctaSecondary: string; updatedLabel: string; checkedLine: string };
   glance: {
     eyebrow: string; h2: string; introPre: string; introLink: string; introPost: string;
-    labels: { attimoName: string; attimoSub: string; method: string; methodLink: string; compounds: string; total: string; buy: string; cost: string; days: string; source: string; notStated: string; attimoAlso: string };
+    labels: { attimoName: string; attimoSub: string; price: string; priceNote: string; method: string; methodLink: string; compounds: string; total: string; buy: string; cost: string; days: string; source: string; notStated: string; attimoAlso: string };
   };
   criteria: {
     eyebrow: string; h2: string; intro: string;
@@ -37,7 +37,7 @@ export type MarketGuideContent = {
   };
   table: {
     eyebrow: string; h2: string; intro: string;
-    cols: { oil: string; compounds: string; total: string; method: string; buy: string; days: string; score: string };
+    cols: { oil: string; compounds: string; total: string; method: string; price: string; buy: string; days: string; score: string };
     buy: { webshop: string; webshopEu: string; webshopWorld: string; retailer: string; distributor: string; request: string };
     footnote: string;
     links: { index: { title: string; text: string }; methods: { title: string; text: string } };
