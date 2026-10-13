@@ -14,7 +14,7 @@ import type { IndexContent } from "@/lib/polyphenolIndexContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { certHrefFor } from "@/lib/certificatesContent";
-import { marketGuideFor } from "@/lib/marketGuides";
+import { marketGuidesFor } from "@/lib/marketGuides";
 
 const { ranked, unranked, content: c, locale = DEFAULT_LOCALE } = Astro.props as {
   ranked: IndexEntry[];
@@ -44,7 +44,7 @@ const num = (n: number) => (n >= 1000 ? `${String(n).slice(0, -3)}${sep}${String
 
 const hubHref = HUB_SLUGS[c.lang as keyof typeof HUB_SLUGS] ?? HUB_SLUGS.en;
 const methodsHref = METHODS_SLUGS[c.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
-const guide = marketGuideFor(c.lang);
+const guides = marketGuidesFor(c.lang);
 const submitHref = `mailto:hello@attimo-oil.com?subject=${encodeURIComponent(c.submit.mailSubject)}&body=${encodeURIComponent(c.submit.mailBody)}`;
 
 const PAIRS = [
@@ -398,13 +398,13 @@ const pairMax = 1473;
             <div class="p-6" style={cardOnCream}>
               <p style={`${body} font-size:1.05rem; color:${GREEN};`}>{c.who.closing}</p>
             </div>
-            {guide && (
+            {guides.map((guide) => (
               <a href={guide.href} class="block p-6 transition-opacity hover:opacity-90" style={`background-color:${ACCENT}; color:${GREEN}; border-radius:1rem;`}>
                 <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.7);`}>{guide.indexLabel}</p>
                 <p class="mb-3" style={`${small} color:${GREEN};`}>{guide.indexBody}</p>
                 <p style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{guide.indexCta}</p>
               </a>
-            )}
+            ))}
           </div>
         </div>
       </div>

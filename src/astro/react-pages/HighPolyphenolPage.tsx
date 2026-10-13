@@ -19,7 +19,7 @@ import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
 import type { HubIndexData } from "@/lib/polyphenolIndexHub";
 import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
-import { marketGuideFor } from "@/lib/marketGuides";
+import { marketGuidesFor } from "@/lib/marketGuides";
 import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
 import picualBottle from "@/assets/bottle-picual-transparent.png?url";
 import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
@@ -263,7 +263,7 @@ function LabReceipts({ c }: { c: HubContent["labReceipts"] }) {
 // The Polyphenol Index: every brand that publishes, ranked by documented
 // compounds, with ATTIMO's position. Rows arrive serialised from the
 // collection; the page carries no number of its own.
-function IndexSection({ c, data, guide }: { c: HubContent["index"]; data?: HubIndexData; guide?: { href: string; hub: string } | null }) {
+function IndexSection({ c, data, guides = [] }: { c: HubContent["index"]; data?: HubIndexData; guides?: { href: string; hub: string }[] }) {
   if (!data || !data.rows.length) return null;
   const fill = (s: string) =>
     s.replace("{rank}", String(data.attimoRank ?? "—")).replace("{ranked}", String(data.rankedCount)).replace("{total}", String(data.totalCount)).replace("{verified}", data.verified);
@@ -319,10 +319,14 @@ function IndexSection({ c, data, guide }: { c: HubContent["index"]; data?: HubIn
               {c.cta}
             </a>
           </div>
-          {guide && (
-            <a href={guide.href} className="inline-block mt-5 underline" style={{ fontFamily: SG, color: "rgba(255,250,234,0.85)", fontSize: "1rem", textUnderlineOffset: 4 }}>
-              {guide.hub}
-            </a>
+          {guides.length > 0 && (
+            <div className="mt-5 flex flex-col gap-2">
+              {guides.map((g) => (
+                <a key={g.href} href={g.href} className="inline-block underline" style={{ fontFamily: SG, color: "rgba(255,250,234,0.85)", fontSize: "1rem", textUnderlineOffset: 4 }}>
+                  {g.hub}
+                </a>
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -401,7 +405,7 @@ function HighPolyphenolInner({ initialPosts, locale, indexData, labNumbers }: { 
       </div>
 
       {/* 6b — THE POLYPHENOL INDEX: every brand that publishes, and where we sit */}
-      <IndexSection c={content.index} data={indexData} guide={marketGuideFor(locale.lang)} />
+      <IndexSection c={content.index} data={indexData} guides={marketGuidesFor(locale.lang)} />
 
       {/* 7 — HIGH-POLYPHENOL BY DESIGN (the causes) */}
       <div id="how">

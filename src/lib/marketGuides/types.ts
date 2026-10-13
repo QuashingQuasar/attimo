@@ -23,6 +23,14 @@ export type MarketGuideContent = {
   lang: string;
   slug: string;
   market: string;
+  /** Country key as used in shippingZones TIERS, e.g. "Netherlands". */
+  country: string;
+  /** Plural unit after a day range, e.g. "werkdagen". */
+  daysUnit: string;
+  /** Other guides a reader of this page may want (neighbouring market or the same market in another language). */
+  siblings?: { href: string; label: string }[];
+  /** hreflang cluster when the same market exists in two languages. */
+  hreflangs?: { hreflang: string; href: string }[];
   updated: string; // human-readable date in the page language
   meta: { title: string; description: string };
   nav: { glance: string; criteria: string; table: string; oils: string; number: string; faq: string };

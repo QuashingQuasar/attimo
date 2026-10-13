@@ -39,6 +39,7 @@ export const ISO: Record<string, string> = {
 
 /** The tier the localized shipping page describes. */
 const LOCAL_TIER: Record<string, TierKey> = { de: "tier1", fr: "tier2", nl: "tier1", dk: "tier2", se: "tier2" };
+export const tierForCountry = (country: string): Tier | null => TIERS.find((t) => t.countries.includes(country)) ?? null;
 export const localTier = (locale: Locale): Tier | null =>
   locale.slug ? TIERS.find((t) => t.key === LOCAL_TIER[locale.slug]) ?? null : null;
 
