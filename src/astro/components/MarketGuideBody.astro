@@ -58,7 +58,7 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
       if (!ev) return 0;
       if (ev.route === "retailer" || ev.route === "distributor") return ev.basis === "lists country" ? (ev.days === "not stated" ? 0.8 : 0.9) : 0.6;
       if (ev.route === "request") return 0.3;
-      if (ev.basis === "lists country") return ev.days === "not stated" ? 0.85 : 1;
+      if (ev.basis === "lists country") return (ev.days === "not stated" ? 0.85 : 1) - (isPaid(ev) ? 0.1 : 0);
       if (ev.basis === "EU-wide statement") return 0.75;
       if (ev.basis === "worldwide statement") return 0.5;
       return 0;
@@ -89,6 +89,7 @@ const buyLabel = (ev: ShipEvidence | undefined) => {
   if (ev.basis === "EU-wide statement") return c.table.buy.webshopEu;
   return c.table.buy.webshopWorld;
 };
+const isPaid = (ev: ShipEvidence) => !!ev.cost && ev.cost !== "not stated" && !/^(gratis|free)$/i.test(ev.cost);
 const prosOf = (e: IndexEntry) => {
   const ev = evidenceFor(e)!; const out: string[] = [];
   if (e.report?.status === "viewable") out.push(c.oils.pros.report);
@@ -105,6 +106,8 @@ const consOf = (e: IndexEntry) => {
   if (!(e.variety && e.harvest)) out.push(c.oils.cons.noOrigin);
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
   if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
+  if (isPaid(ev)) out.push((ev.free_from ? c.oils.cons.shippingFree : c.oils.cons.shipping).replace("{cost}", ev.cost!).replace("{free}", ev.free_from ?? ""));
+  out.push(...(c.oils.perOil[e.id]?.cons ?? []));
   return out;
 };
 const sourceOf = (e: IndexEntry) => {

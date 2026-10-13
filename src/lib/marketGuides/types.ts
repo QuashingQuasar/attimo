@@ -46,8 +46,8 @@ export type MarketGuideContent = {
     eyebrow: string; h2: string; intro: string;
     labels: { score: string; pros: string; cons: string; forWho: string; standsOut: string; buy: string; price: string; source: string; priceOnSite: string };
     pros: { report: string; hplc: string; method: string; origin: string; shipsNl: string; shipsEu: string };
-    cons: { nmr: string; noReport: string; noMethod: string; totalOnly: string; noDays: string; nlNotNamed: string; noOrigin: string };
-    perOil: Record<string, { forWho?: string; standsOut?: string }>;
+    cons: { nmr: string; shipping: string; shippingFree: string; noReport: string; noMethod: string; totalOnly: string; noDays: string; nlNotNamed: string; noOrigin: string };
+    perOil: Record<string, { forWho?: string; standsOut?: string; cons?: string[] }>;
   };
   number: { eyebrow: string; h2: string; intro: string; steps: { title: string; text: string }[]; cta: string };
   avoid: { eyebrow: string; h2: string; items: { title: string; text: string }[] };
