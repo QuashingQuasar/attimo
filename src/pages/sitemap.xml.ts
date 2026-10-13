@@ -61,6 +61,8 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/se/olivolja-polyfenolindex", changefreq: "monthly", priority: "0.8" },
   { loc: "/dk/olivenolie-polyfenolindeks", changefreq: "monthly", priority: "0.8" },
   { loc: "/nl/olijfolie-polyfenolindex", changefreq: "monthly", priority: "0.8" },
+  // Market buying guides, one per country in its own language.
+  { loc: "/nl/polyfenolrijke-olijfolie-kopen-nederland", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
