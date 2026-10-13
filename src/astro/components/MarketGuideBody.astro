@@ -11,7 +11,7 @@ import Footer from "@astro/components/Footer.astro";
 import { formatPrice, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { GREEN, DEEP, CREAM, ACCENT, LIME, UDC, SG, h2, eyebrow, eyebrowSm, lead, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
-import { localTier, daysFor } from "@/lib/shippingZones";
+import { guideShipping } from "@/lib/marketGuides/fill";
 import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import { INDEX_SLUGS, INDEX_CONTENT } from "@/lib/polyphenolIndexContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -23,12 +23,7 @@ const { content: c, entries, shipping, locale, heroImage, labNumbers = [] } = As
   content: MarketGuideContent; entries: IndexEntry[]; shipping: Record<string, ShipEvidence>; locale: Locale; heroImage: string; labNumbers?: HomeLabOil[];
 };
 const t = getDict(locale);
-const tier = localTier(locale);
-const standard = formatPrice(locale.shipping.standard, locale);
-const freeFrom = tier?.freeFromN ? t.shippingPage.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "";
-const dayRange = tier ? daysFor(c.market === "Nederland" ? "Netherlands" : c.market, tier) : null;
-const days = dayRange ? `${dayRange[0]}–${dayRange[1]} ${c.lang === "nl" ? "werkdagen" : "days"}` : "";
-const fill = (s: string) => s.split("{standard}").join(standard).split("{freeFrom}").join(freeFrom).split("{days}").join(days);
+const { tier, standard, freeFrom, days, freeFromWord, fill } = guideShipping(c, locale);
 const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
 const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const indexHref = INDEX_SLUGS[c.lang as keyof typeof INDEX_SLUGS] ?? INDEX_SLUGS.en;
@@ -79,7 +74,7 @@ const attimoAlso = c.glance.labels.attimoAlso.replace("{nocellara}", fmtLab(lab(
 const priceOf = (e: IndexEntry) => (isMine(e) ? `${formatPrice(locale.prices.coratina, locale)} / 500 ml` : e.price && !/^not listed/i.test(e.price) ? e.price : "");
 const verifiedOf = (_e: IndexEntry) => verifiedFor(c.lang);
 const costLine = (ev: ShipEvidence) => {
-  const freeFrom = ev.free_from ? `${c.lang === "nl" ? "gratis vanaf" : "free from"} ${ev.free_from}` : "";
+  const freeFrom = ev.free_from ? `${freeFromWord} ${ev.free_from}` : "";
   if (!ev.cost || ev.cost === "not stated") return freeFrom || c.glance.labels.notStated;
   return freeFrom ? `${ev.cost}, ${freeFrom}` : ev.cost;
 };
@@ -110,7 +105,7 @@ const consOf = (e: IndexEntry) => {
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
   if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
   if (isPaid(ev)) out.push((ev.free_from ? c.oils.cons.shippingFree : c.oils.cons.shipping).replace("{cost}", ev.cost!).replace("{free}", ev.free_from ?? ""));
-  out.push(...(c.oils.perOil[e.id]?.cons ?? []));
+  out.push(...(c.oils.perOil[e.id]?.cons ?? []).map(fill));
   return out;
 };
 const sourceOf = (e: IndexEntry) => {
@@ -152,6 +147,11 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
           <span class="hidden sm:inline w-px h-4" style="background-color:rgba(255,250,234,.3);"></span>
           <span style={`font-family:${SG}; font-size:.92rem; color:rgba(255,250,234,.85);`}>{c.hero.checkedLine}</span>
         </div>
+        {c.siblings && c.siblings.length > 0 && (
+          <p class="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2">
+            {c.siblings.map((s) => <a href={s.href} class="underline" style={`font-family:${SG}; font-size:.95rem; color:rgba(255,250,234,.85); text-underline-offset:4px;`}>{s.label}</a>)}
+          </p>
+        )}
       </div>
     </section>
 
@@ -229,8 +229,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.table.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
         <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.table.intro}</p>
-        <div class="overflow-x-auto rounded-2xl" style={`border:1px solid ${onCream(0.18)}; background-color:#fff;`}>
-          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse; min-width:1100px;`}>
+        <div class="rounded-2xl" style={`border:1px solid ${onCream(0.18)}; background-color:#fff; overflow-x:auto; overflow-y:hidden;`}>
+          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse;`}>
             <thead>
               <tr style={`background-color:rgba(27,66,41,.05);`}>
                 {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.price, c.table.cols.buy, c.glance.labels.cost, c.table.cols.days, c.table.cols.score].map((h, i) => (
@@ -297,7 +297,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                       </div>
                     ); })}
                   </div>
-                  <p style={`${small} color:${onGreen(0.85)};`}><span style={`${eyebrowSm} font-size:.68rem; color:${ACCENT}; margin-right:.5rem;`}>{c.oils.labels.standsOut}</span>{per.standsOut ?? notes[e.id] ?? e.note}</p>
+                  <p style={`${small} color:${onGreen(0.85)};`}><span style={`${eyebrowSm} font-size:.68rem; color:${ACCENT}; margin-right:.5rem;`}>{c.oils.labels.standsOut}</span>{per.standsOut ? fill(per.standsOut) : notes[e.id] ?? e.note}</p>
                 </div>
                 <div>
                   <p class="mb-2" style={`${eyebrowSm} font-size:.7rem; color:${LIME};`}>{c.oils.labels.pros}</p>
@@ -357,25 +357,15 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
       </div>
     </section>
 
-    <!-- ATTIMO cards -->
-    <div id="attimo" class="scroll-mt-24">
-      <OilProductWidgets client:load locale={locale} heading={c.attimo.h2} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
+    <div id="faq" class="scroll-mt-24">
+      <FAQ client:visible locale={locale} items={c.faq.items.map((f) => ({ question: fill(f.question), answer: fill(f.answer) }))} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
+    </div>
+
+    <!-- ATTIMO cards close the page: the live product cards, shipping line from the tiers -->
+    <div id="attimo" class="scroll-mt-24 pb-10">
+      <OilProductWidgets client:load locale={locale} heading={fill(c.attimo.h2)} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
     </div>
     <Sonner client:load />
-
-    <div id="faq" class="scroll-mt-24">
-      <FAQ client:visible locale={locale} items={c.faq.items} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
-    </div>
-
-    <!-- VERDICT -->
-    <section class="pb-24 px-6" style={`background-color:${CREAM};`}>
-      <div class="container mx-auto max-w-4xl text-center">
-        <p class="mb-4" style={`${eyebrow} color:${onCream(0.55)};`}>{c.verdict.eyebrow}</p>
-        <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.verdict.h2}</h2>
-        <p class="mb-8" style={`${lead} color:${onCream(0.8)};`}>{c.verdict.body}</p>
-        <a href="#attimo" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.verdict.cta}</a>
-      </div>
-    </section>
   </main>
 
   <Footer locale={locale} />

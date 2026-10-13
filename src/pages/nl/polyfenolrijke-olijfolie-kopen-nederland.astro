@@ -9,6 +9,7 @@ import { CREAM } from "@/lib/certificates/ui";
 import { SITE } from "@/lib/certificates";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { guideShipping } from "@/lib/marketGuides/fill";
 
 // Market buying guide, Netherlands, in Dutch. One page per market; no
 // translations, so no hreflang cluster beyond itself.
@@ -18,22 +19,24 @@ const { content, shipping } = MARKET_GUIDES.nl;
 const { all } = await getIndexEntries();
 const labNumbers = await getHomeLabNumbers();
 const canonical = `${SITE}${content.slug}`;
+const { fill } = guideShipping(content, locale);
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: content.faq.items.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+    mainEntity: content.faq.items.map((f) => ({ "@type": "Question", name: fill(f.question), acceptedAnswer: { "@type": "Answer", text: fill(f.answer) } })),
   },
 ];
 ---
 
 <BaseLayout
   title={content.meta.title}
-  description={content.meta.description}
+  description={fill(content.meta.description)}
   canonical={canonical}
   ogImage={INDEX_COVER}
   bodyStyle={`background-color: ${CREAM};`}
   jsonLd={jsonLd}
+  hreflangs={content.hreflangs}
   htmlLang="nl"
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}

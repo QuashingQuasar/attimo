@@ -24,11 +24,14 @@ export const nl: MarketGuideContent = {
   lang: "nl",
   slug: "/nl/polyfenolrijke-olijfolie-kopen-nederland",
   market: "Nederland",
+  country: "Netherlands",
+  daysUnit: "werkdagen",
+  siblings: [{ href: "/nl/polyfenolrijke-olijfolie-kopen-belgie", label: "Koop je in België? Naar de Belgische gids →" }],
   updated: "13 oktober 2026",
   meta: {
     title: "Polyfenolrijke olijfolie kopen in Nederland | ATTIMO",
     description:
-      "Koopgids voor polyfenolrijke olijfolie in Nederland. Welke oliën je hier kunt kopen, hoe hoog hun polyfenolgetal is en hoe dat gemeten werd, en wat verzending naar Nederland kost. Bijgewerkt 13 oktober 2026.",
+      "Koopgids voor polyfenolrijke olijfolie in Nederland. Welke oliën je er kunt kopen, hoe hoog hun polyfenolgetal is en hoe dat gemeten werd, en wat verzending naar Nederland kost. Bijgewerkt {updated}.",
   },
   nav: { glance: "Oliën", criteria: "Criteria", table: "Vergelijking", oils: "Per olie", number: "Het getal", faq: "FAQ" },
   hero: {
@@ -79,7 +82,7 @@ export const nl: MarketGuideContent = {
     pros: { report: "Labrapport online in te zien", hplc: "Oleocanthal en oleaceïne apart gerapporteerd", method: "Methode benoemd", origin: "Variëteit en oogst benoemd", shipsNl: "Verzendt naar Nederland, {days}", shipsEu: "Verzendt EU-breed" },
     cons: { nmr: "Totaal gemeten met NMR: telt een lange lijst fenolische stoffen voor hun volle gewicht mee, ook zware afgeleide moleculen, en valt daardoor voor dezelfde olie 20 tot 48% hoger uit dan HPLC. Vergelijk op oleocanthal + oleaceïne.", shipping: "Verzending {cost}", shippingFree: "Verzending {cost}, gratis vanaf {free}", noReport: "Geen rapport te openen", noMethod: "Methode niet vermeld", totalOnly: "Alleen een totaal, geen afzonderlijke stoffen", noDays: "Levertijd naar Nederland niet vermeld", nlNotNamed: "Nederland niet apart genoemd", noOrigin: "Variëteit of oogst niet benoemd" },
     perOil: {
-      "attimo-coratina": { cons: ["Nog geen winkels in Nederland", "Picual nog met Folin-Ciocalteu gemeten, niet met HPLC"], forWho: "Wie olijfolie als dagelijks shotje neemt, of een krachtige, bittere, peperige olie wil om af te werken.", standsOut: "Het rapport, de methode, de variëteit en de oogstdatum staan allemaal online, en de olie is binnen 1 tot 2 werkdagen in Nederland." },
+      "attimo-coratina": { cons: ["Nog geen winkels in {market}", "Picual nog met Folin-Ciocalteu gemeten, niet met HPLC"], forWho: "Wie olijfolie als dagelijks shotje neemt, of een krachtige, bittere, peperige olie wil om af te werken.", standsOut: "Het rapport, de methode, de variëteit en de oogstdatum staan allemaal online, en de olie is binnen {daysText} in {market}." },
       "olvlimits-green-machine": { forWho: "Wie morgen al een fles in huis wil: Nederlands merk, verzending binnen één werkdag." },
       "pj-kabos-phenolic-shot": { forWho: "Wie een Griekse olie met een hoog totaal zoekt en de levertijd niet belangrijk vindt." },
     },
@@ -107,13 +110,13 @@ export const nl: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO in Nederland",
-    h2: "Drie monocultivar-oliën, vroeg geoogst, binnen 1 tot 2 werkdagen in huis",
+    h2: "Drie monocultivar-oliën, vroeg geoogst, binnen {daysText} in huis",
     intro: "Vers van de laatste oogst, met het labrapport online. Verzending naar Nederland {standard}, gratis vanaf {freeFrom}, in {days}.",
   },
   faq: {
     heading: "Veelgestelde vragen",
     items: [
-      { question: "Verzendt ATTIMO naar Nederland?", answer: "Ja. Verzending kost €10 en is gratis vanaf 2 flessen. Bestellingen zijn binnen 1 tot 2 werkdagen in huis." },
+      { question: "Verzendt ATTIMO naar Nederland?", answer: "Ja. Verzending kost {standard} en is gratis vanaf {freeFrom}. Bestellingen zijn binnen {daysText} in huis." },
       { question: "Welke olie in Nederland heeft het hoogste polyfenolgetal?", answer: "Dat hangt af van hoe er gemeten is. De tabel toont elk gepubliceerd getal met de methode erbij, en de twee hoofdstoffen in een eigen kolom. ATTIMO Coratina 25/26 meet 847 mg/kg (HPLC), waarvan 807 mg/kg oleocanthal plus oleaceïne." },
       { question: "Hoe vergelijk ik getallen van verschillende merken?", answer: "Alleen getallen uit dezelfde methode zijn vergelijkbaar. De zuiverste vergelijking is oleocanthal plus oleaceïne, twee stoffen die elk lab apart rapporteert." },
       { question: "Kan ik ATTIMO in een winkel in Nederland kopen?", answer: "Op dit moment via de webshop. Winkels die ATTIMO voeren worden hier vermeld zodra ze er zijn." },
