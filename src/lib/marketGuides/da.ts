@@ -29,8 +29,7 @@ export const da: MarketGuideContent = {
   updated: "13. oktober 2026",
   meta: {
     title: "Køb polyfenolrig olivenolie i Danmark | ATTIMO",
-    description:
-      "Købsguide til polyfenolrig olivenolie i Danmark. Hvilke olier du kan købe i Danmark, hvor højt deres polyfenoltal er og hvordan det blev målt, og hvad forsendelse til Danmark koster. Opdateret {updated}.",
+    description: "Købsguide til polyfenolrig olivenolie i Danmark. Hvilke olier du kan købe i Danmark, hvor højt deres polyfenoltal er og hvordan det blev målt, og hvad forsendelse til Danmark koster. Opdateret {updated}.",
   },
   nav: { glance: "Olier", criteria: "Kriterier", table: "Sammenligning", oils: "Pr. olie", number: "Tallet", faq: "FAQ" },
   hero: {
@@ -48,15 +47,15 @@ export const da: MarketGuideContent = {
     introPre: "Kun olier med et offentliggjort polyfenoltal, i samme rækkefølge som ",
     introLink: "Polyfenolindekset",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgien · også Nocellara og Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Målt med", methodLink: "hvad betyder det?", compounds: "Oleocanthal + oleacein", total: "Polyfenoler i alt", buy: "Køb", cost: "Forsendelse", days: "Leveringstid", source: "Kilde", notStated: "ikke oplyst", attimoAlso: "Også {nocellara} og {picual}" },
+    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgisk mærke · også Nocellara og Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Målt med", methodLink: "hvad betyder det?", compounds: "Oleocanthal + oleacein", total: "Polyfenoler i alt", buy: "Køb", cost: "Forsendelse", days: "Levering", source: "Kilde", notStated: "ikke oplyst", attimoAlso: "Også {nocellara} og {picual}" },
   },
   criteria: {
-    eyebrow: "Sådan vurderer vi",
+    eyebrow: "Hvad du tjekker",
     h2: "Fire ting, du vil se, før du bestiller",
-    intro: "Du ved, hvad olivenolie er, og du vil have en god en. Det her er forskellen på en god olie og en, der bare kaldes det.",
+    intro: "Du ved, hvad olivenolie er, og du vil have en god en. Det her er forskellen på en god olie og en, der bare siger det.",
     items: [
       { key: "origin", title: "En rigtig høstdato", text: "Supermarkedsolie har som regel ingen, fordi den blander olier fra forskellige år. Polyfenoler falder fra den dag, olien presses, så du vil vide, hvor gammel olien er, og hvilken oliven den kommer fra.", weight: 20, icon: "/icons/basket-2.svg" },
-      { key: "report", title: "Et polyfenoltal med rapporten ved siden af", text: "Polyfenoler er de stoffer, der gør en olivenolie sund og skarp. Et tal på etiketten er en påstand; en laboratorierapport, du kan åbne, er et bevis.", weight: 30, icon: "/icons/flask.svg" },
+      { key: "report", title: "Et polyfenoltal med rapporten bag", text: "Polyfenoler er de stoffer, der gør en olivenolie sund og pebret. Et tal på etiketten er en påstand; en laboratorierapport, du kan åbne, er et bevis.", weight: 30, icon: "/icons/flask.svg" },
       { key: "method", title: "Hvordan tallet er målt", text: "Der findes flere måder at måle polyfenoler på, og de giver forskellige tal for den samme olie. Et tal uden metode kan du ikke sammenligne med noget.", weight: 20, icon: "/icons/olive.svg" },
       { key: "delivery", title: "Forsendelse til Danmark", text: "Sender mærket til Danmark, på hvor mange dage, og siger hjemmesiden det selv? Hvis ikke, så regn ikke med det.", weight: 30, icon: "/icons/branch-2.svg" },
     ],
@@ -64,26 +63,26 @@ export const da: MarketGuideContent = {
   table: {
     eyebrow: "Sammenligning",
     h2: "Alle tilgængelige olier sammenlignet",
-    intro: "De samme olier med score på de fire kriterier ovenfor. To kolonner til polyfenoltallet: de to hovedstoffer for sig, og totalen, som producenten offentliggør den.",
-    cols: { oil: "Olie", compounds: "Oleocanthal + oleacein", total: "I alt", method: "Metode", price: "Pris", buy: "Køb i Danmark", days: "Leveringstid", score: "Score" },
-    buy: { webshop: "Webshop, sender til Danmark", webshopEu: "Webshop, sender til hele EU", webshopWorld: "Webshop, sender internationalt", retailer: "Via butik", distributor: "Via distributør", request: "På forespørgsel" },
-    footnote: "mg/kg. Forsendelsesoplysninger læst på hver sælgers hjemmeside den {checked}; sætningen står ved kilden. Polyfenoltal kommer fra Polyfenolindekset, hvor hvert tal linker til rapporten. Priser er producentens, læst i {verified}.",
+    intro: "De samme olier, scoret på de fire kriterier ovenfor. To kolonner til polyfenoltallet: de to hovedstoffer for sig, og totalen, som producenten offentliggør den.",
+    cols: { oil: "Olie", compounds: "Oleocanthal + oleacein", total: "I alt", method: "Metode", price: "Pris", buy: "Sådan køber du i Danmark", days: "Levering", score: "Score" },
+    buy: { webshop: "Webshop, sender til Danmark", webshopEu: "Webshop, sender til hele EU", webshopWorld: "Webshop, sender internationalt", retailer: "Via en butik", distributor: "Via en distributør", request: "På forespørgsel" },
+    footnote: "mg/kg. Forsendelsesoplysninger læst på hver sælgers hjemmeside den {checked}; sætningen ligger bag kildelinket. Polyfenoltal kommer fra Polyfenolindekset, hvor hvert tal linker til sin rapport. Priser er producentens, læst i {verified}.",
     links: {
       index: { title: "Polyfenolindekset", text: "Hver olivenolie i verden, der offentliggør et polyfenoltal, på én side, rangeret efter de to hovedstoffer." },
-      methods: { title: "Hvorfor metoder giver forskellige tal", text: "HPLC, NMR og Folin-Ciocalteu giver forskellige tal for den samme olie. Hvad hver metode måler, og hvad du kan sammenligne med hinanden." },
+      methods: { title: "Hvorfor metoder giver forskellige tal", text: "HPLC, NMR og Folin-Ciocalteu giver forskellige tal for den samme olie. Hvad hver metode måler, og hvad du kan sammenligne." },
     },
   },
   oils: {
     eyebrow: "Pr. olie",
     h2: "Hvad hver olie viser og ikke viser",
-    intro: "De samme fire kriterier, nu skrevet ud for hver olie. Plus og minus kommer direkte fra det, producenten offentliggør.",
+    intro: "De samme fire kriterier, skrevet ud pr. olie. Plus og minus kommer direkte fra det, producenten offentliggør.",
     labels: { score: "Score", pros: "Plus", cons: "Minus", forWho: "Til hvem", standsOut: "Hvorfor den skiller sig ud", buy: "Køb", price: "Pris", source: "Kilde", priceOnSite: "ikke oplyst" },
-    pros: { report: "Laboratorierapport kan ses online", hplc: "Oleocanthal og oleacein rapporteret hver for sig", method: "Metode oplyst", origin: "Sort og høst oplyst", shipsNl: "Sender til Danmark, {days}", shipsEu: "Sender til hele EU" },
-    cons: { nmr: "Total målt med NMR: tæller en lang liste fenoliske stoffer med for deres fulde vægt, også tunge afledte molekyler, og lander derfor 20 til 48 % højere end HPLC for den samme olie. Sammenlign på oleocanthal + oleacein.", shipping: "Forsendelse {cost}", shippingFree: "Forsendelse {cost}, gratis fra {free}", noReport: "Ingen rapport at åbne", noMethod: "Metode ikke oplyst", totalOnly: "Kun en total, ingen enkeltstoffer", noDays: "Leveringstid til Danmark ikke oplyst", nlNotNamed: "Danmark ikke nævnt særskilt", noOrigin: "Sort eller høst ikke oplyst" },
+    pros: { report: "Laboratorierapport online", hplc: "Oleocanthal og oleacein rapporteret hver for sig", method: "Metode oplyst", origin: "Sort og høst oplyst", shipsNl: "Sender til Danmark, {days}", shipsEu: "Sender til hele EU" },
+    cons: { nmr: "Total målt med NMR: tæller en lang liste af fenoliske stoffer med fuld vægt, også tunge afledte molekyler, og lander 20 til 48 % højere end HPLC på den samme olie. Sammenlign på oleocanthal + oleacein.", shipping: "Forsendelse {cost}", shippingFree: "Forsendelse {cost}, gratis fra {free}", noReport: "Ingen rapport at åbne", noMethod: "Metode ikke oplyst", totalOnly: "Kun en total, ingen enkeltstoffer", noDays: "Leveringstid til Danmark ikke oplyst", nlNotNamed: "Danmark ikke nævnt særskilt", noOrigin: "Sort eller høst ikke oplyst" },
     perOil: {
-      "attimo-coratina": { cons: ["Endnu ingen butikker i {market}", "Picual stadig målt med Folin-Ciocalteu, ikke HPLC"], forWho: "Til dig, der tager olivenolie som et dagligt shot, eller vil have en kraftig, bitter og pebret olie til at afslutte retter med.", standsOut: "Rapporten, metoden, sorten og høstdatoen ligger alle online, og olien er i {market} inden for {daysText}." },
+      "attimo-coratina": { cons: ["Endnu ingen butikker i {market}", "Picual stadig målt med Folin-Ciocalteu, ikke HPLC"], forWho: "Til dig, der tager olivenolie som et dagligt shot, eller vil have en kraftig, bitter og pebret olie til at afslutte en ret med.", standsOut: "Rapporten, metoden, sorten og høstdatoen ligger alle online, og olien er i {market} inden for {daysText}." },
       "olvlimits-green-machine": { forWho: "Til dig, der vil have flasken hurtigt: hollandsk mærke, sender til EU på 2 til 6 hverdage" },
-      "pj-kabos-phenolic-shot": { forWho: "Til dig, der søger en græsk olie med en høj total og ikke går op i leveringstiden." },
+      "pj-kabos-phenolic-shot": { forWho: "Til dig, der søger en græsk olie med en høj total og ikke har noget imod en uoplyst leveringstid." },
     },
   },
   number: {
@@ -91,20 +90,20 @@ export const da: MarketGuideContent = {
     h2: "Hvad et polyfenoltal betyder, i tre trin",
     intro: "Hvert mærke i denne guide trykker et tal i milligram pr. kilo. Sådan læser du det.",
     steps: [
-      { title: "Det er ét tal for en hel familie af stoffer", text: "Polyfenoler er dusinvis af forskellige forbindelser. To af dem, oleocanthal og oleacein, er de bedst undersøgte og giver den pebrede kradsen bagerst i halsen." },
+      { title: "Det er ét tal for en hel familie af stoffer", text: "Polyfenoler er dusinvis af forskellige stoffer. To af dem, oleocanthal og oleacein, er de bedst undersøgte og giver den pebrede kradsen bagerst i halsen." },
       { title: "Forskellige metoder giver forskellige tal", text: "Et laboratorium kan tælle hvert stof for sig (HPLC) eller anslå hele familien på én gang (NMR, Folin-Ciocalteu). Den samme olie får så to forskellige totaler. Ingen af dem er forkert; de måler noget forskelligt." },
       { title: "Sammenlign derfor kun det, der kan sammenlignes", text: "To totaler fra samme metode, eller bedre: oleocanthal plus oleacein, for de to stoffer rapporterer hvert laboratorium hver for sig. Derfor har de deres egen kolonne i denne guide." },
     ],
-    cta: "Forklaring pr. metode",
+    cta: "Hver metode forklaret",
   },
   avoid: {
-    eyebrow: "Hvad du lader stå",
-    h2: "Fire signaler til at sætte flasken tilbage",
+    eyebrow: "Hvad du lader stå på hylden",
+    h2: "Fire tegn på, at flasken skal tilbage",
     items: [
       { title: "Ingen høstdato", text: "Kun en holdbarhedsdato betyder, at du ikke ved, hvor gammel olien er." },
       { title: "\"Rig på polyfenoler\" uden et tal", text: "En påstand uden milligram pr. kilo er markedsføring." },
-      { title: "Et tal uden metode eller rapport", text: "Du kan ikke sammenligne det med noget og ikke kontrollere det." },
-      { title: "Kun \"ekstra jomfru\" som kvalitetspåstand", text: "Ekstra jomfru er bare adgangskravet til kategorien. Det siger intet om friskhed eller polyfenoler." },
+      { title: "Et tal uden metode eller rapport", text: "Du kan ikke sammenligne det med noget, og du kan ikke tjekke det." },
+      { title: "\"Ekstra jomfru\" som kvalitetspåstand", text: "Ekstra jomfru er adgangskravet til kategorien. Det siger intet om friskhed eller polyfenoler." },
     ],
   },
   attimo: {
@@ -115,18 +114,18 @@ export const da: MarketGuideContent = {
   faq: {
     heading: "Ofte stillede spørgsmål",
     items: [
-      { question: "Sender ATTIMO til Danmark?", answer: "Ja. Forsendelse koster {standard} og er gratis fra {freeFrom}. Bestillinger er hjemme hos dig inden for {daysText}." },
-      { question: "Hvilken olie i Danmark har det højeste polyfenoltal?", answer: "Det afhænger af, hvordan der er målt. Tabellen viser hvert offentliggjort tal med metoden ved siden af, og de to hovedstoffer i deres egen kolonne. ATTIMO Coratina 25/26 måler 847 mg/kg (HPLC), heraf 807 mg/kg oleocanthal plus oleacein." },
+      { question: "Sender ATTIMO til Danmark?", answer: "Ja. Forsendelse koster {standard} og er gratis fra {freeFrom}. Bestillinger er fremme inden for {daysText}." },
+      { question: "Hvilken olie i Danmark har det højeste polyfenoltal?", answer: "Det afhænger af, hvordan der er målt. Tabellen viser hvert offentliggjort tal med sin metode, og de to hovedstoffer i deres egen kolonne. ATTIMO Coratina 25/26 måler 847 mg/kg (HPLC), heraf 807 mg/kg oleocanthal plus oleacein." },
       { question: "Hvordan sammenligner jeg tal fra forskellige mærker?", answer: "Kun tal fra den samme metode kan sammenlignes. Den reneste sammenligning er oleocanthal plus oleacein, to stoffer som hvert laboratorium rapporterer hver for sig." },
       { question: "Kan jeg købe ATTIMO i en butik i Danmark?", answer: "Lige nu via webshoppen. Butikker i Danmark bliver nævnt her, så snart de findes." },
-      { question: "Hvornår kommer den nye høst?", answer: "Olivenerne plukkes grønne i oktober og presses sidst i oktober. Skriv din e-mailadresse på forsiden, så hører du det først." },
+      { question: "Hvornår kommer den nye høst?", answer: "Olivenerne plukkes grønne i oktober og presses sidst i oktober. Skriv din e-mail på forsiden, så hører du det først." },
       { question: "Hvordan opbevarer jeg en polyfenolrig olivenolie?", answer: "Mørkt, køligt og lukket. Lys, ilt og varme nedbryder polyfenoler. Brug en åbnet flaske inden for et par måneder." },
     ],
   },
   verdict: {
     eyebrow: "Vores råd",
-    h2: "Vælg den olie, hvor du kan tjekke alt",
-    body: "Et højt tal er først noget værd med en rapport, en metode og en høstdato ved siden af, og med et mærke, der selv siger, at det sender til Danmark. I denne guide opfylder ATTIMO Coratina alle fire; OlvLimits og PJ Kabos tre.",
+    h2: "Vælg den olie, du kan tjekke fra ende til anden",
+    body: "Et højt tal er først noget værd med en rapport, en metode og en høstdato bag sig, og med et mærke, der selv siger, at det sender til Danmark. I denne guide opfylder ATTIMO Coratina alle fire; OlvLimits og PJ Kabos opfylder tre.",
     cta: "Se ATTIMO-olierne",
   },
 };

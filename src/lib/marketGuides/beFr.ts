@@ -31,8 +31,7 @@ export const beFr: MarketGuideContent = {
   updated: "13 octobre 2026",
   meta: {
     title: "Acheter de l'huile d'olive riche en polyphénols en Belgique | ATTIMO",
-    description:
-      "Guide d'achat de l'huile d'olive riche en polyphénols en Belgique. Quelles huiles vous pouvez y acheter, quel est leur taux de polyphénols et comment il a été mesuré, et ce que coûte la livraison en Belgique. Mis à jour le {updated}.",
+    description: "Guide d'achat de l'huile d'olive riche en polyphénols en Belgique. Quelles huiles vous pouvez y acheter, quel est leur taux de polyphénols et comment il a été mesuré, et ce que coûte la livraison en Belgique. Mis à jour le {updated}.",
   },
   nav: { glance: "Huiles", criteria: "Critères", table: "Comparatif", oils: "Par huile", number: "Le chiffre", faq: "FAQ" },
   hero: {
@@ -50,29 +49,29 @@ export const beFr: MarketGuideContent = {
     introPre: "Uniquement les huiles avec un taux de polyphénols publié, dans l'ordre de l'",
     introLink: "Index des polyphénols",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de livraison", days: "Délai de livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
+    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
   },
   criteria: {
-    eyebrow: "Comment nous évaluons",
+    eyebrow: "Ce qu'il faut vérifier",
     h2: "Quatre choses à voir avant de commander",
-    intro: "Vous savez ce qu'est l'huile d'olive et vous en voulez une bonne. Voici ce qui sépare une bonne huile d'une huile qui en porte seulement le nom.",
+    intro: "Vous savez ce qu'est l'huile d'olive et vous en voulez une bonne. Voici la différence entre une bonne huile et une huile qui le dit seulement.",
     items: [
       { key: "origin", title: "Une vraie date de récolte", text: "L'huile de supermarché n'en a généralement pas, parce qu'elle mélange des huiles de plusieurs années. Les polyphénols baissent dès le jour du pressage, donc vous voulez savoir quel âge a l'huile et de quelle olive elle vient.", weight: 20, icon: "/icons/basket-2.svg" },
-      { key: "report", title: "Un taux de polyphénols avec le rapport qui va avec", text: "Les polyphénols sont les substances qui rendent une huile d'olive saine et piquante. Un chiffre sur l'étiquette est une affirmation ; un rapport de laboratoire que vous pouvez ouvrir est une preuve.", weight: 30, icon: "/icons/flask.svg" },
-      { key: "method", title: "Comment ce chiffre a été mesuré", text: "Il existe plusieurs façons de mesurer les polyphénols, et elles donnent des chiffres différents pour la même huile. Un chiffre sans méthode ne se compare à rien.", weight: 20, icon: "/icons/olive.svg" },
+      { key: "report", title: "Un taux de polyphénols avec le rapport derrière", text: "Les polyphénols sont les composés qui rendent une huile d'olive saine et poivrée. Un chiffre sur l'étiquette est une affirmation ; un rapport de laboratoire que vous pouvez ouvrir est une preuve.", weight: 30, icon: "/icons/flask.svg" },
+      { key: "method", title: "Comment ce chiffre a été mesuré", text: "Il existe plusieurs façons de mesurer les polyphénols, et elles donnent des chiffres différents pour la même huile. Un chiffre sans sa méthode ne se compare à rien.", weight: 20, icon: "/icons/olive.svg" },
       { key: "delivery", title: "Livraison en Belgique", text: "La marque livre-t-elle en Belgique, en combien de jours, et son site le dit-il lui-même ? Sinon, ne comptez pas dessus.", weight: 30, icon: "/icons/branch-2.svg" },
     ],
   },
   table: {
     eyebrow: "Comparatif",
     h2: "Toutes les huiles disponibles, comparées",
-    intro: "Les mêmes huiles, avec leur score sur les quatre critères ci-dessus. Deux colonnes pour le taux de polyphénols : les deux substances principales à part, et le total tel que le producteur le publie.",
-    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", buy: "Acheter en Belgique", days: "Délai", score: "Score" },
+    intro: "Les mêmes huiles, notées sur les quatre critères ci-dessus. Deux colonnes pour le taux de polyphénols : les deux composés principaux à part, et le total tel que le producteur le publie.",
+    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", buy: "Comment acheter en Belgique", days: "Livraison", score: "Score" },
     buy: { webshop: "Boutique en ligne, livre en Belgique", webshopEu: "Boutique en ligne, livre dans toute l'UE", webshopWorld: "Boutique en ligne, livre à l'international", retailer: "Via un magasin", distributor: "Via un distributeur", request: "Sur demande" },
-    footnote: "mg/kg. Informations de livraison lues sur le site de chaque vendeur le {checked} ; la phrase figure derrière la source. Les taux de polyphénols viennent de l'Index des polyphénols, où chaque chiffre renvoie au rapport. Les prix sont ceux du producteur, relevés en {verified}.",
+    footnote: "mg/kg. Informations de livraison lues sur le site de chaque vendeur le {checked} ; la phrase se trouve derrière le lien source. Les taux de polyphénols viennent de l'Index des polyphénols, où chaque chiffre renvoie à son rapport. Les prix sont ceux du producteur, relevés en {verified}.",
     links: {
-      index: { title: "L'Index des polyphénols", text: "Chaque huile d'olive au monde qui publie un taux de polyphénols, sur une seule page, classée selon les deux substances principales." },
-      methods: { title: "Pourquoi les méthodes diffèrent", text: "HPLC, NMR et Folin-Ciocalteu donnent des chiffres différents pour la même huile. Ce que chaque méthode mesure, et ce que vous pouvez comparer entre elles." },
+      index: { title: "L'Index des polyphénols", text: "Chaque huile d'olive au monde qui publie un taux de polyphénols, sur une seule page, classée selon les deux composés principaux." },
+      methods: { title: "Pourquoi les méthodes diffèrent", text: "HPLC, NMR et Folin-Ciocalteu donnent des chiffres différents pour la même huile. Ce que chaque méthode mesure, et ce que vous pouvez comparer." },
     },
   },
   oils: {
@@ -80,12 +79,12 @@ export const beFr: MarketGuideContent = {
     h2: "Ce que chaque huile montre et ne montre pas",
     intro: "Les mêmes quatre critères, détaillés huile par huile. Les plus et les moins viennent directement de ce que le producteur publie.",
     labels: { score: "Score", pros: "Plus", cons: "Moins", forWho: "Pour qui", standsOut: "Pourquoi elle se distingue", buy: "Acheter", price: "Prix", source: "Source", priceOnSite: "non indiqué" },
-    pros: { report: "Rapport de laboratoire consultable en ligne", hplc: "Oléocanthal et oléacéine rapportés séparément", method: "Méthode indiquée", origin: "Variété et récolte indiquées", shipsNl: "Livre en Belgique, {days}", shipsEu: "Livre dans toute l'UE" },
-    cons: { nmr: "Total mesuré par NMR : compte une longue liste de composés phénoliques pour leur poids entier, y compris des molécules dérivées lourdes, et ressort donc 20 à 48 % plus haut que la HPLC pour la même huile. Comparez sur oléocanthal + oléacéine.", shipping: "Livraison {cost}", shippingFree: "Livraison {cost}, gratuite à partir de {free}", noReport: "Aucun rapport à ouvrir", noMethod: "Méthode non indiquée", totalOnly: "Seulement un total, pas de substances séparées", noDays: "Délai de livraison en Belgique non indiqué", nlNotNamed: "La Belgique n'est pas nommée séparément", noOrigin: "Variété ou récolte non indiquée" },
+    pros: { report: "Rapport de laboratoire en ligne", hplc: "Oléocanthal et oléacéine rapportés séparément", method: "Méthode indiquée", origin: "Variété et récolte indiquées", shipsNl: "Livre en Belgique, {days}", shipsEu: "Livre dans toute l'UE" },
+    cons: { nmr: "Total mesuré par NMR : compte une longue liste de composés phénoliques à leur poids entier, molécules dérivées lourdes comprises, et ressort 20 à 48 % plus haut que la HPLC pour la même huile. Comparez sur oléocanthal + oléacéine.", shipping: "Livraison {cost}", shippingFree: "Livraison {cost}, gratuite à partir de {free}", noReport: "Aucun rapport à ouvrir", noMethod: "Méthode non indiquée", totalOnly: "Seulement un total, sans composés séparés", noDays: "Délai de livraison en Belgique non indiqué", nlNotNamed: "La Belgique n'est pas nommée séparément", noOrigin: "Variété ou récolte non indiquée" },
     perOil: {
       "attimo-coratina": { cons: ["Pas encore de magasins en {market}", "Picual encore mesuré par Folin-Ciocalteu, pas par HPLC"], forWho: "Pour qui prend l'huile d'olive en shot quotidien, ou veut une huile puissante, amère et poivrée pour finir un plat.", standsOut: "Le rapport, la méthode, la variété et la date de récolte sont tous en ligne, et l'huile est en {market} sous {daysText}." },
-      "olvlimits-green-machine": { forWho: "Pour qui veut la bouteille vite : marque néerlandaise, livraison en Belgique en quelques jours ouvrables selon leur page d'expédition." },
-      "pj-kabos-phenolic-shot": { forWho: "Pour qui cherche une huile grecque avec un total élevé et à qui le délai de livraison importe peu." },
+      "olvlimits-green-machine": { forWho: "Pour qui veut la bouteille vite : marque néerlandaise, livraison en Belgique en quelques jours ouvrables selon leur page d'expédition" },
+      "pj-kabos-phenolic-shot": { forWho: "Pour qui cherche une huile grecque avec un total élevé et accepte un délai de livraison non indiqué." },
     },
   },
   number: {
@@ -93,20 +92,20 @@ export const beFr: MarketGuideContent = {
     h2: "Ce que veut dire un taux de polyphénols, en trois étapes",
     intro: "Chaque marque de ce guide imprime un chiffre en milligrammes par kilo. Voici comment le lire.",
     steps: [
-      { title: "C'est un seul chiffre pour toute une famille de substances", text: "Les polyphénols sont des dizaines de composés différents. Deux d'entre eux, l'oléocanthal et l'oléacéine, sont les mieux étudiés et provoquent le picotement poivré au fond de la gorge." },
-      { title: "Des méthodes différentes donnent des chiffres différents", text: "Un laboratoire peut compter chaque substance séparément (HPLC) ou estimer toute la famille en une fois (NMR, Folin-Ciocalteu). La même huile affiche alors deux totaux différents. Aucun des deux n'est faux ; ils mesurent autre chose." },
-      { title: "Ne comparez donc que ce qui est comparable", text: "Deux totaux issus de la même méthode, ou mieux : oléocanthal plus oléacéine, car chaque laboratoire rapporte ces deux substances séparément. C'est pourquoi elles ont leur propre colonne dans ce guide." },
+      { title: "C'est un seul chiffre pour toute une famille de composés", text: "Les polyphénols sont des dizaines de composés différents. Deux d'entre eux, l'oléocanthal et l'oléacéine, sont les mieux étudiés et donnent le picotement poivré au fond de la gorge." },
+      { title: "Des méthodes différentes donnent des chiffres différents", text: "Un laboratoire peut compter chaque composé séparément (HPLC) ou estimer toute la famille en une fois (NMR, Folin-Ciocalteu). La même huile affiche alors deux totaux différents. Aucun des deux n'est faux ; ils mesurent des choses différentes." },
+      { title: "Ne comparez donc que ce qui est comparable", text: "Deux totaux issus de la même méthode, ou mieux : oléocanthal plus oléacéine, parce que chaque laboratoire rapporte ces deux composés séparément. C'est pourquoi ils ont leur propre colonne dans ce guide." },
     ],
-    cta: "Explication par méthode",
+    cta: "Chaque méthode expliquée",
   },
   avoid: {
-    eyebrow: "Ce que vous laissez en rayon",
-    h2: "Quatre signaux pour reposer une bouteille",
+    eyebrow: "Ce qu'il faut laisser en rayon",
+    h2: "Quatre signes pour reposer une bouteille",
     items: [
-      { title: "Pas de date de récolte", text: "Une date limite de consommation seule veut dire que vous ne savez pas quel âge a l'huile." },
+      { title: "Pas de date de récolte", text: "Une date de péremption seule veut dire que vous ne savez pas quel âge a l'huile." },
       { title: "\"Riche en polyphénols\" sans chiffre", text: "Une affirmation sans milligrammes par kilo, c'est du marketing." },
       { title: "Un chiffre sans méthode ni rapport", text: "Vous ne pouvez ni le comparer ni le vérifier." },
-      { title: "Seulement \"extra vierge\" comme argument de qualité", text: "Extra vierge est le niveau d'entrée de la catégorie, pas un label de qualité. Cela ne dit rien sur la fraîcheur ni sur les polyphénols." },
+      { title: "\"Extra vierge\" comme argument de qualité", text: "Extra vierge est le niveau d'entrée de la catégorie. Cela ne dit rien sur la fraîcheur ni sur les polyphénols." },
     ],
   },
   attimo: {
@@ -118,8 +117,8 @@ export const beFr: MarketGuideContent = {
     heading: "Questions fréquentes",
     items: [
       { question: "ATTIMO livre-t-il en Belgique ?", answer: "Oui. La livraison coûte {standard} et est gratuite à partir de {freeFrom}. Les commandes arrivent sous {daysText}." },
-      { question: "Quelle huile a le taux de polyphénols le plus élevé en Belgique ?", answer: "Cela dépend de la méthode de mesure. Le tableau montre chaque chiffre publié avec sa méthode, et les deux substances principales dans leur propre colonne. ATTIMO Coratina 25/26 mesure 847 mg/kg (HPLC), dont 807 mg/kg d'oléocanthal plus oléacéine." },
-      { question: "Comment comparer les chiffres de différentes marques ?", answer: "Seuls les chiffres issus de la même méthode sont comparables. La comparaison la plus propre est oléocanthal plus oléacéine, deux substances que chaque laboratoire rapporte séparément." },
+      { question: "Quelle huile a le taux de polyphénols le plus élevé en Belgique ?", answer: "Cela dépend de la méthode de mesure. Le tableau montre chaque chiffre publié avec sa méthode, et les deux composés principaux dans leur propre colonne. ATTIMO Coratina 25/26 mesure 847 mg/kg (HPLC), dont 807 mg/kg d'oléocanthal plus oléacéine." },
+      { question: "Comment comparer les chiffres de différentes marques ?", answer: "Seuls les chiffres issus de la même méthode sont comparables. La comparaison la plus propre est oléocanthal plus oléacéine, deux composés que chaque laboratoire rapporte séparément." },
       { question: "Puis-je acheter ATTIMO dans un magasin en Belgique ?", answer: "Pour l'instant via la boutique en ligne. Les magasins belges qui proposent ATTIMO seront indiqués ici dès qu'il y en aura." },
       { question: "Quand arrive la nouvelle récolte ?", answer: "Les olives sont cueillies vertes en octobre et pressées fin octobre. Laissez votre adresse e-mail sur la page d'accueil et vous serez prévenu en premier." },
       { question: "Comment conserver une huile d'olive riche en polyphénols ?", answer: "À l'abri de la lumière, au frais et bien fermée. La lumière, l'oxygène et la chaleur dégradent les polyphénols. Utilisez une bouteille ouverte en quelques mois." },
@@ -127,8 +126,8 @@ export const beFr: MarketGuideContent = {
   },
   verdict: {
     eyebrow: "Notre conseil",
-    h2: "Choisissez l'huile dont vous pouvez tout vérifier",
-    body: "Un chiffre élevé ne vaut quelque chose qu'avec un rapport, une méthode et une date de récolte, et avec une marque qui dit qu'elle livre en Belgique. Dans ce guide, ATTIMO Coratina remplit les quatre critères ; OlvLimits et PJ Kabos en remplissent trois.",
+    h2: "Choisissez l'huile que vous pouvez vérifier de bout en bout",
+    body: "Un chiffre élevé ne vaut quelque chose qu'avec un rapport, une méthode et une date de récolte derrière lui, et avec une marque qui dit qu'elle livre en Belgique. Dans ce guide, ATTIMO Coratina remplit les quatre critères ; OlvLimits et PJ Kabos en remplissent trois.",
     cta: "Voir les huiles ATTIMO",
   },
 };
