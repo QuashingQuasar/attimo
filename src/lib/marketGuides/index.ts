@@ -12,9 +12,9 @@ export const MARKET_GUIDES: Record<string, { content: MarketGuideContent; shippi
 export const MARKET_GUIDE_LINKS: Record<string, { href: string; footer: string; hub: string; indexLabel: string; indexBody: string; indexCta: string }> = {
   nl: {
     href: nl.slug,
-    footer: "Koopgids Nederland",
+    footer: "Polyfenolrijke olijfolie in Nederland",
     hub: "Koopgids: polyfenolrijke olijfolie in Nederland, met prijzen en verzendkosten →",
-    indexLabel: "Koopgids Nederland",
+    indexLabel: "Polyfenolrijke olijfolie kopen in Nederland",
     indexBody: "Welke van deze oliën je in Nederland kunt kopen, met prijs, verzendkosten en levertijd per merk.",
     indexCta: "Naar de koopgids →",
   },
