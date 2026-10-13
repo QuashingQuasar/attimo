@@ -192,7 +192,7 @@ export const en: IndexContent = {
     "attimo-coratina": "Our own oil, held to the same format as everyone else's. These values come from the chromatography family, which in the one published same-oil comparison on this page read oleocanthal well below NMR. This row is measured by the conservative method.",
     "kyoord-high-phenolic": "A US brand pressing Corfiot Lianolia, with compound values ahead of oils carrying much larger totals.",
     "pamako-monovarietal": "The largest total in the index, and the clearest demonstration of why this page doesn't rank by totals. The 2,000 rides mostly on other derivative compounds, while the two headline molecules sit mid-field. High-altitude organic Tsounati.",
-    "olvlimits-green-machine": "A Belgian brand bottling early-harvest Puglian Coratina. A four-figure total with the two headline compounds at roughly a third of it.",
+    "olvlimits-green-machine": "A Dutch brand bottling early-harvest Puglian Coratina. A four-figure total with the two headline compounds at roughly a third of it.",
     "olivea-ultra-high-phenolic": "The most instructive entry on the page. The same oil, analysed by both method families, both documents published. The totals land 20% apart. If you read one entry to understand why cross-method comparison needs care, read this one.",
     "sakellaropoulos-fyllikon": "The deepest publication record in olive oil. Certificates for every product, every year, for sixteen years. The second-largest total in the index, built mostly on compounds other than the headline pair.",
     "pj-kabos-phenolic-shot": "The other dual-method publisher, 48% apart on the same oil, with no document and no compounds behind either figure.",

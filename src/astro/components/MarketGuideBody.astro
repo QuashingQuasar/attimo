@@ -101,7 +101,7 @@ const prosOf = (e: IndexEntry) => {
 const consOf = (e: IndexEntry) => {
   const ev = evidenceFor(e)!; const out: string[] = [];
   if (e.report?.status !== "viewable") out.push(c.oils.cons.noReport);
-  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly);
+  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (e.method !== "HPLC") out.push(c.oils.cons.nmr);
   if (!(e.variety && e.harvest)) out.push(c.oils.cons.noOrigin);
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
   if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
@@ -154,7 +154,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
       <div class="container mx-auto max-w-6xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.glance.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.glance.h2}</h2>
-        <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.glance.intro}</p>
+        <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.glance.introPre}<a href={indexHref} class="underline">{c.glance.introLink}</a>{c.glance.introPost}</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {glanceRows.map((e) => {
             const mine = isMine(e); const ev = evidenceFor(e)!; const src = sourceOf(e);
@@ -163,8 +163,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             return (
               <article class="p-6 flex flex-col gap-5" style={mine ? `background-color:${GREEN}; color:${CREAM}; border-radius:1rem;` : cardOnCream}>
                 <div>
-                  <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.3rem; letter-spacing:-0.01em; color:${fg};`}>{mine ? "ATTIMO" : e.brand}</h3>
-                  <p style={`${small} color:${mine ? onGreen(0.75) : onCream(0.65)};`}>{mine ? "Coratina · Nocellara · Picual" : e.oil}{e.country ? ` · ${e.country}` : ""}</p>
+                  <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.3rem; letter-spacing:-0.01em; color:${fg};`}>{mine ? c.glance.labels.attimoName : e.brand}</h3>
+                  <p style={`${small} color:${mine ? onGreen(0.75) : onCream(0.65)};`}>{mine ? c.glance.labels.attimoSub : `${e.oil}${e.country ? ` · ${e.country}` : ""}`}</p>
                 </div>
                 <div class="grid grid-cols-2 gap-4" style={`border-top:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; border-bottom:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; padding:.9rem 0;`}>
                   <div>
@@ -207,14 +207,12 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                 <span class="inline-flex items-center justify-center rounded-full" style={`width:56px; height:56px; background-color:${ACCENT};`}>
                   <span aria-hidden="true" style={`display:block; width:30px; height:30px; background-color:${GREEN}; -webkit-mask:url(${it.icon}) center/contain no-repeat; mask:url(${it.icon}) center/contain no-repeat;`}></span>
                 </span>
-                <span style={`${stat} font-size:1.9rem; color:${ACCENT};`}>{it.weight}%</span>
               </div>
               <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.12rem; color:${CREAM};`}>{it.title}</p>
               <p style={`${small} color:${onGreen(0.78)};`}>{it.text}</p>
             </div>
           ))}
         </div>
-        <p class="mt-6" style={`${small} color:${onGreen(0.6)};`}>{c.criteria.weightNote}</p>
       </div>
     </section>
 

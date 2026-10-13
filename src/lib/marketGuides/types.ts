@@ -28,13 +28,12 @@ export type MarketGuideContent = {
   nav: { glance: string; criteria: string; table: string; oils: string; number: string; faq: string };
   hero: { eyebrow: string; h1: string; lead: string; cta: string; ctaSecondary: string; updatedLabel: string; checkedLine: string };
   glance: {
-    eyebrow: string; h2: string; intro: string;
-    labels: { method: string; methodLink: string; compounds: string; total: string; buy: string; cost: string; days: string; source: string; notStated: string; attimoAlso: string };
+    eyebrow: string; h2: string; introPre: string; introLink: string; introPost: string;
+    labels: { attimoName: string; attimoSub: string; method: string; methodLink: string; compounds: string; total: string; buy: string; cost: string; days: string; source: string; notStated: string; attimoAlso: string };
   };
   criteria: {
     eyebrow: string; h2: string; intro: string;
     items: { key: CriterionKey; title: string; text: string; weight: number; icon: string }[];
-    weightNote: string;
   };
   table: {
     eyebrow: string; h2: string; intro: string;
@@ -47,7 +46,7 @@ export type MarketGuideContent = {
     eyebrow: string; h2: string; intro: string;
     labels: { score: string; pros: string; cons: string; forWho: string; standsOut: string; buy: string; price: string; source: string; priceOnSite: string };
     pros: { report: string; hplc: string; method: string; origin: string; shipsNl: string; shipsEu: string };
-    cons: { noReport: string; noMethod: string; totalOnly: string; noDays: string; nlNotNamed: string; noOrigin: string };
+    cons: { nmr: string; noReport: string; noMethod: string; totalOnly: string; noDays: string; nlNotNamed: string; noOrigin: string };
     perOil: Record<string, { forWho?: string; standsOut?: string }>;
   };
   number: { eyebrow: string; h2: string; intro: string; steps: { title: string; text: string }[]; cta: string };

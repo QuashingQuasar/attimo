@@ -34,7 +34,7 @@ export const nl: MarketGuideContent = {
   hero: {
     eyebrow: "Koopgids · Nederland",
     h1: "Polyfenolrijke olijfolie kopen in Nederland",
-    lead: "Wat je in Nederland kunt kopen, online en in de winkel, en waar je op let voor je bestelt.",
+    lead: "Welke polyfenolrijke olijfoliën je in Nederland kunt kopen, en waar je op let voor je bestelt.",
     cta: "Bekijk de oliën",
     ctaSecondary: "Waar je op let",
     updatedLabel: "Bijgewerkt",
@@ -43,8 +43,10 @@ export const nl: MarketGuideContent = {
   glance: {
     eyebrow: "Wat je kunt kopen",
     h2: "Polyfenolrijke olijfoliën die je in Nederland kunt kopen",
-    intro: "Online of via een winkel. Alleen oliën met een gepubliceerd polyfenolgetal; de volgorde volgt de Polyfenolindex.",
-    labels: { method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
+    introPre: "Alleen oliën met een gepubliceerd polyfenolgetal, in de volgorde van de ",
+    introLink: "Polyfenolindex",
+    introPost: ".",
+    labels: { attimoName: "ATTIMO Coratina", attimoSub: "België · ook Nocellara en Picual", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
   },
   criteria: {
     eyebrow: "Hoe we beoordelen",
@@ -56,7 +58,6 @@ export const nl: MarketGuideContent = {
       { key: "method", title: "Hoe dat getal gemeten is", text: "Er zijn verschillende manieren om polyfenolen te meten, en ze geven voor dezelfde olie verschillende getallen. Een getal zonder methode kun je met niets vergelijken.", weight: 20, icon: "/icons/olive.svg" },
       { key: "delivery", title: "Levering naar Nederland, zwart op wit", text: "Verzendt het merk naar Nederland, in hoeveel dagen, en zegt de website dat zelf? Zo niet, reken er niet op.", weight: 30, icon: "/icons/branch-2.svg" },
     ],
-    weightNote: "Gewichten: oogst en variëteit 20%, rapport 30%, methode 20%, levering 30%. Elke score is uit de feiten in de tabel afgeleid, niet uit smaak.",
   },
   table: {
     eyebrow: "Vergelijking",
@@ -76,10 +77,10 @@ export const nl: MarketGuideContent = {
     intro: "Dezelfde vier criteria, nu per olie uitgeschreven. Plus en min komen rechtstreeks uit wat de producent publiceert.",
     labels: { score: "Score", pros: "Plus", cons: "Min", forWho: "Voor wie", standsOut: "Waarom ze opvalt", buy: "Kopen", price: "Prijs", source: "Bron", priceOnSite: "Prijs op de website van het merk" },
     pros: { report: "Labrapport online in te zien", hplc: "Oleocanthal en oleaceïne apart gerapporteerd", method: "Methode benoemd", origin: "Variëteit en oogst benoemd", shipsNl: "Verzendt naar Nederland, {days}", shipsEu: "Verzendt EU-breed" },
-    cons: { noReport: "Geen rapport te openen", noMethod: "Methode niet vermeld", totalOnly: "Alleen een totaal, geen afzonderlijke stoffen", noDays: "Levertijd naar Nederland niet vermeld", nlNotNamed: "Nederland niet apart genoemd", noOrigin: "Variëteit of oogst niet benoemd" },
+    cons: { nmr: "Gemeten met NMR, dat voor dezelfde olie hoger uitkomt dan HPLC", noReport: "Geen rapport te openen", noMethod: "Methode niet vermeld", totalOnly: "Alleen een totaal, geen afzonderlijke stoffen", noDays: "Levertijd naar Nederland niet vermeld", nlNotNamed: "Nederland niet apart genoemd", noOrigin: "Variëteit of oogst niet benoemd" },
     perOil: {
       "attimo-coratina": { forWho: "Wie olijfolie als dagelijks shotje neemt, of een krachtige, bittere, peperige olie wil om af te werken.", standsOut: "Het rapport, de methode, de variëteit en de oogstdatum staan allemaal online, en de olie is binnen 1 tot 2 werkdagen in Nederland." },
-      "olvlimits-green-machine": { forWho: "Wie morgen al een fles in huis wil: Belgisch merk, verzending binnen één werkdag." },
+      "olvlimits-green-machine": { forWho: "Wie morgen al een fles in huis wil: Nederlands merk, verzending binnen één werkdag." },
       "pj-kabos-phenolic-shot": { forWho: "Wie een Griekse olie met een hoog totaal zoekt en de levertijd niet belangrijk vindt." },
     },
   },
@@ -101,12 +102,12 @@ export const nl: MarketGuideContent = {
       { title: "Geen oogstdatum", text: "Alleen een houdbaarheidsdatum betekent dat je niet weet hoe oud de olie is." },
       { title: "\"Rijk aan polyfenolen\" zonder getal", text: "Een claim zonder milligram per kilo is marketing." },
       { title: "Een getal zonder methode of rapport", text: "Je kunt het met niets vergelijken en niet controleren." },
-      { title: "Een blend van meerdere jaren", text: "De verse olie in de fles wordt verdund door de oude." },
+      { title: "Alleen \"extra vierge\" als kwaliteitsclaim", text: "Extra vierge is de instapeis van de categorie, geen keurmerk. Het zegt niets over versheid of polyfenolen." },
     ],
   },
   attimo: {
     eyebrow: "ATTIMO in Nederland",
-    h2: "Drie oliën van één variëteit, vroeg geoogst, binnen 1 tot 2 werkdagen in huis",
+    h2: "Drie monocultivar-oliën, vroeg geoogst, binnen 1 tot 2 werkdagen in huis",
     intro: "Vers van de laatste oogst, met het labrapport online. Verzending naar Nederland {standard}, gratis vanaf {freeFrom}, in {days}.",
   },
   faq: {
