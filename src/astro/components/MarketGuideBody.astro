@@ -229,8 +229,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.table.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
         <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.table.intro}</p>
-        <div class="overflow-x-auto rounded-2xl" style={`border:1px solid ${onCream(0.18)}; background-color:#fff;`}>
-          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse; min-width:1100px;`}>
+        <div class="rounded-2xl" style={`border:1px solid ${onCream(0.18)}; background-color:#fff; overflow-x:auto; overflow-y:hidden;`}>
+          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse;`}>
             <thead>
               <tr style={`background-color:rgba(27,66,41,.05);`}>
                 {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.price, c.table.cols.buy, c.glance.labels.cost, c.table.cols.days, c.table.cols.score].map((h, i) => (
@@ -357,25 +357,15 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
       </div>
     </section>
 
-    <!-- ATTIMO cards -->
-    <div id="attimo" class="scroll-mt-24">
-      <OilProductWidgets client:load locale={locale} heading={fill(c.attimo.h2)} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
-    </div>
-    <Sonner client:load />
-
     <div id="faq" class="scroll-mt-24">
       <FAQ client:visible locale={locale} items={c.faq.items.map((f) => ({ question: fill(f.question), answer: fill(f.answer) }))} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
     </div>
 
-    <!-- VERDICT -->
-    <section class="pb-24 px-6" style={`background-color:${CREAM};`}>
-      <div class="container mx-auto max-w-4xl text-center">
-        <p class="mb-4" style={`${eyebrow} color:${onCream(0.55)};`}>{c.verdict.eyebrow}</p>
-        <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.verdict.h2}</h2>
-        <p class="mb-8" style={`${lead} color:${onCream(0.8)};`}>{c.verdict.body}</p>
-        <a href="#attimo" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.verdict.cta}</a>
-      </div>
-    </section>
+    <!-- ATTIMO cards close the page: the live product cards, shipping line from the tiers -->
+    <div id="attimo" class="scroll-mt-24 pb-10">
+      <OilProductWidgets client:load locale={locale} heading={fill(c.attimo.h2)} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
+    </div>
+    <Sonner client:load />
   </main>
 
   <Footer locale={locale} />
