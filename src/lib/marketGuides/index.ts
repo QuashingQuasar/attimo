@@ -3,11 +3,12 @@ import { beNl, BE_NL_SHIPPING } from "./beNl";
 import { beFr, BE_FR_SHIPPING } from "./beFr";
 import { de, DE_SHIPPING } from "./de";
 import { da, DA_SHIPPING } from "./da";
+import { en, EN_NL_SHIPPING } from "./en";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "./types";
 
 export type { MarketGuideContent, ShipEvidence, CriterionKey };
 
-export type GuideId = "nl" | "beNl" | "beFr" | "de" | "da";
+export type GuideId = "nl" | "beNl" | "beFr" | "de" | "da" | "en";
 
 export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipping: Record<string, ShipEvidence> }> = {
   nl: { content: nl, shipping: NL_SHIPPING },
@@ -15,6 +16,8 @@ export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipp
   beFr: { content: beFr, shipping: BE_FR_SHIPPING },
   de: { content: de, shipping: DE_SHIPPING },
   da: { content: da, shipping: DA_SHIPPING },
+  // English mother copy, rendered as a noindex prototype on the Netherlands data.
+  en: { content: en, shipping: EN_NL_SHIPPING },
 };
 
 export type GuideLink = { href: string; hub: string; indexLabel: string; indexBody: string; indexCta: string };
