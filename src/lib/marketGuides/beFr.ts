@@ -26,7 +26,7 @@ export const beFr: MarketGuideContent = {
   market: "Belgique",
   country: "Belgium",
   daysUnit: "jours ouvrables",
-  siblings: [{ href: "/nl/polyfenolrijke-olijfolie-kopen-belgie", label: "In het Nederlands →" }],
+  siblings: [{ href: "/nl/polyfenolrijke-olijfolie-kopen-belgie", label: "In het Nederlands →" }, { href: "/fr/huile-olive-riche-polyphenols-acheter-france", label: "Vous achetez en France ? Voir le guide français →" }],
   hreflangs: [{ hreflang: "nl-BE", href: "https://attimo-oil.com/nl/polyfenolrijke-olijfolie-kopen-belgie" }, { hreflang: "fr-BE", href: "https://attimo-oil.com/fr/huile-olive-riche-polyphenols-acheter-belgique" }],
   updated: "13 octobre 2026",
   meta: {

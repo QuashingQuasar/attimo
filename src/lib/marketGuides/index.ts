@@ -5,11 +5,12 @@ import { de, DE_SHIPPING } from "./de";
 import { da, DA_SHIPPING } from "./da";
 import { en, EN_NL_SHIPPING } from "./en";
 import { sv, SV_SHIPPING } from "./sv";
+import { fr, FR_SHIPPING } from "./fr";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "./types";
 
 export type { MarketGuideContent, ShipEvidence, CriterionKey };
 
-export type GuideId = "nl" | "beNl" | "beFr" | "de" | "da" | "sv" | "en";
+export type GuideId = "nl" | "beNl" | "beFr" | "fr" | "de" | "da" | "sv" | "en";
 
 export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipping: Record<string, ShipEvidence> }> = {
   nl: { content: nl, shipping: NL_SHIPPING },
@@ -18,6 +19,7 @@ export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipp
   de: { content: de, shipping: DE_SHIPPING },
   da: { content: da, shipping: DA_SHIPPING },
   sv: { content: sv, shipping: SV_SHIPPING },
+  fr: { content: fr, shipping: FR_SHIPPING },
   // English mother copy, rendered as a noindex prototype on the Netherlands data.
   en: { content: en, shipping: EN_NL_SHIPPING },
 };
@@ -32,6 +34,7 @@ export const MARKET_GUIDE_LINKS: Record<string, GuideLink[]> = {
     { href: beNl.slug, hub: "Koopgids: polyfenolrijke olijfolie in België, met prijzen en verzendkosten →", indexLabel: "Polyfenolrijke olijfolie kopen in België", indexBody: "Welke van deze oliën je in België kunt kopen, met prijs, verzendkosten en levertijd per merk.", indexCta: "Naar de koopgids →" },
   ],
   fr: [
+    { href: fr.slug, hub: "Guide d'achat : huile d'olive riche en polyphénols en France, avec prix et frais de port →", indexLabel: "Acheter de l'huile d'olive riche en polyphénols en France", indexBody: "Lesquelles de ces huiles vous pouvez acheter en France, avec prix, frais de port et délai par marque.", indexCta: "Vers le guide d'achat →" },
     { href: beFr.slug, hub: "Guide d'achat : huile d'olive riche en polyphénols en Belgique, avec prix et frais de port →", indexLabel: "Acheter de l'huile d'olive riche en polyphénols en Belgique", indexBody: "Lesquelles de ces huiles vous pouvez acheter en Belgique, avec prix, frais de port et délai par marque.", indexCta: "Vers le guide d'achat →" },
   ],
   de: [
