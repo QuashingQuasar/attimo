@@ -11,21 +11,23 @@ import Footer from "@astro/components/Footer.astro";
 import { formatPrice, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { GREEN, DEEP, CREAM, ACCENT, LIME, UDC, SG, h2, eyebrow, eyebrowSm, lead, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
-import { localTier } from "@/lib/shippingZones";
+import { localTier, daysFor } from "@/lib/shippingZones";
+import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import { INDEX_SLUGS, INDEX_CONTENT } from "@/lib/polyphenolIndexContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { certHrefFor } from "@/lib/certificatesContent";
 import type { IndexEntry } from "@/lib/polyphenolIndex";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "@/lib/marketGuides";
 
-const { content: c, entries, shipping, locale, heroImage } = Astro.props as {
-  content: MarketGuideContent; entries: IndexEntry[]; shipping: Record<string, ShipEvidence>; locale: Locale; heroImage: string;
+const { content: c, entries, shipping, locale, heroImage, labNumbers = [] } = Astro.props as {
+  content: MarketGuideContent; entries: IndexEntry[]; shipping: Record<string, ShipEvidence>; locale: Locale; heroImage: string; labNumbers?: HomeLabOil[];
 };
 const t = getDict(locale);
 const tier = localTier(locale);
 const standard = formatPrice(locale.shipping.standard, locale);
 const freeFrom = tier?.freeFromN ? t.shippingPage.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "";
-const days = tier ? `${tier.days[0]}–${tier.days[1]} ${c.lang === "nl" ? "werkdagen" : "days"}` : "";
+const dayRange = tier ? daysFor(c.market === "Nederland" ? "Netherlands" : c.market, tier) : null;
+const days = dayRange ? `${dayRange[0]}–${dayRange[1]} ${c.lang === "nl" ? "werkdagen" : "days"}` : "";
 const fill = (s: string) => s.split("{standard}").join(standard).split("{freeFrom}").join(freeFrom).split("{days}").join(days);
 const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
 const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
@@ -36,7 +38,7 @@ const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 const num = (n: number | null) => (n === null ? "" : n >= 1000 ? `${String(n).slice(0, -3)}.${String(n).slice(-3)}` : String(n));
 
 // ATTIMO's own evidence: the shipping tier for this market.
-const mineEvidence: ShipEvidence = { ships: "yes", basis: "lists country", route: "webshop", days, quote: "", source_url: "", checked: c.updated };
+const mineEvidence: ShipEvidence = { ships: "yes", basis: "lists country", route: "webshop", days, cost: standard, free_from: freeFrom, quote: "", source_url: "", checked: c.updated };
 const evidenceFor = (e: IndexEntry): ShipEvidence | undefined => (isMine(e) ? mineEvidence : shipping[e.id]);
 
 // Only oils a buyer here can get.
@@ -50,7 +52,7 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
   const ev = evidenceFor(e);
   switch (key) {
     case "report": return e.report?.status === "viewable" ? 1 : e.total ? 0.4 : 0;
-    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? 1 : 0.8;
+    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (e.method === "HPLC" ? 1 : 0.7) : 0.5;
     case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
     case "delivery":
       if (!ev) return 0;
@@ -64,7 +66,19 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
 };
 const totalScore = (e: IndexEntry) => Math.round(c.criteria.items.reduce((acc, it) => acc + (it.weight / 100) * scoreOf(e, it.key), 0) * 100) / 10;
 const rows = [...buyable].sort((a, b) => totalScore(b) - totalScore(a) || (b.compounds ?? -1) - (a.compounds ?? -1));
-const top = rows.slice(0, 3);
+const glanceRows = [...buyable].sort((a, b) => {
+  if (a.compounds !== null && b.compounds === null) return -1;
+  if (a.compounds === null && b.compounds !== null) return 1;
+  return (b.compounds ?? 0) - (a.compounds ?? 0) || (b.total ?? 0) - (a.total ?? 0);
+});
+const lab = (key: string) => labNumbers.find((o) => o.key === key);
+const fmtLab = (o: HomeLabOil | undefined) => (o && o.total !== null ? `${o.name} (${num(o.total)} mg/kg, ${o.methodLine.split(",")[0]})` : "");
+const attimoAlso = c.glance.labels.attimoAlso.replace("{nocellara}", fmtLab(lab("nocellara"))).replace("{picual}", fmtLab(lab("picual")));
+const costLine = (ev: ShipEvidence) => {
+  const freeFrom = ev.free_from ? `${c.lang === "nl" ? "gratis vanaf" : "free from"} ${ev.free_from}` : "";
+  if (!ev.cost || ev.cost === "not stated") return freeFrom || c.glance.labels.notStated;
+  return freeFrom ? `${ev.cost}, ${freeFrom}` : ev.cost;
+};
 
 const buyLabel = (ev: ShipEvidence | undefined) => {
   if (!ev) return "";
@@ -135,28 +149,44 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
       </div>
     </section>
 
-    <!-- AT A GLANCE -->
+    <!-- WHAT YOU CAN BUY -->
     <section id="glance" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.glance.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.glance.h2}</h2>
         <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.glance.intro}</p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {top.map((e, i) => {
-            const mine = isMine(e); const ev = evidenceFor(e)!; const s = totalScore(e);
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {glanceRows.map((e) => {
+            const mine = isMine(e); const ev = evidenceFor(e)!; const src = sourceOf(e);
+            const fg = mine ? CREAM : GREEN; const mut = mine ? onGreen(0.6) : onCream(0.5); const txt = mine ? onGreen(0.88) : onCream(0.85);
+            const lbl = `${eyebrowSm} font-size:.66rem; color:${mut};`;
             return (
-              <article class="relative p-7 flex flex-col" style={mine ? `background-color:${GREEN}; color:${CREAM}; border-radius:1rem;` : cardOnCream}>
-                <div class="flex items-start justify-between mb-5">
-                  <span style={`${eyebrowSm} color:${mine ? ACCENT : onCream(0.5)};`}>{String(i + 1).padStart(2, "0")}</span>
-                  <span class="text-right">
-                    <span class="block" style={`${stat} font-size:2.4rem; color:${mine ? ACCENT : GREEN};`}>{s.toFixed(1)}</span>
-                    <span style={`${eyebrowSm} font-size:.68rem; color:${mine ? onGreen(0.6) : onCream(0.5)};`}>{c.glance.scoreLabel} / 10</span>
-                  </span>
+              <article class="p-6 flex flex-col gap-5" style={mine ? `background-color:${GREEN}; color:${CREAM}; border-radius:1rem;` : cardOnCream}>
+                <div>
+                  <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.3rem; letter-spacing:-0.01em; color:${fg};`}>{mine ? "ATTIMO" : e.brand}</h3>
+                  <p style={`${small} color:${mine ? onGreen(0.75) : onCream(0.65)};`}>{mine ? "Coratina · Nocellara · Picual" : e.oil}{e.country ? ` · ${e.country}` : ""}</p>
                 </div>
-                <h3 class="mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.35rem; letter-spacing:-0.01em; color:${mine ? CREAM : GREEN};`}>{e.brand} {e.oil}</h3>
-                <p class="mb-4" style={`${small} color:${mine ? onGreen(0.7) : onCream(0.6)};`}>{e.compounds !== null ? `${num(e.compounds)} mg/kg oleocanthal + oleaceïne · ` : ""}{num(e.total)} mg/kg {c.table.cols.total.toLowerCase()} · {e.method}</p>
-                <p class="mb-5 flex-1" style={`${small} color:${mine ? onGreen(0.88) : onCream(0.85)};`}>{c.oils.perOil[e.id]?.standsOut ?? notes[e.id] ?? e.note}</p>
-                <p style={`${small} font-size:.9rem; color:${mine ? LIME : onCream(0.7)};`}><span style={`${eyebrowSm} font-size:.68rem; margin-right:.5rem; color:${mine ? onGreen(0.6) : onCream(0.5)};`}>{c.glance.buyLabel}</span>{buyLabel(ev)}{ev.days !== "not stated" ? `, ${ev.days}` : ""}</p>
+                <div class="grid grid-cols-2 gap-4" style={`border-top:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; border-bottom:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; padding:.9rem 0;`}>
+                  <div>
+                    <p class="mb-1" style={lbl}>{c.glance.labels.compounds}</p>
+                    <p style={`${stat} font-size:1.9rem; color:${mine ? ACCENT : GREEN};`}>{e.compounds !== null ? num(e.compounds) : "–"}</p>
+                  </div>
+                  <div>
+                    <p class="mb-1" style={lbl}>{c.glance.labels.total}</p>
+                    <p style={`${stat} font-size:1.9rem; color:${fg};`}>{num(e.total)}</p>
+                  </div>
+                  <p class="col-span-2" style={`${small} font-size:.9rem; color:${txt};`}>
+                    <span style={lbl}>{c.glance.labels.method} </span>{e.method} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
+                  </p>
+                  {mine && attimoAlso && <p class="col-span-2" style={`${small} font-size:.88rem; color:${onGreen(0.75)};`}>{attimoAlso}</p>}
+                </div>
+                <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-1.5" style={`${small} font-size:.92rem;`}>
+                  <dt style={lbl}>{c.glance.labels.buy}</dt><dd style={`color:${txt};`}>{buyLabel(ev)}</dd>
+                  <dt style={lbl}>{c.glance.labels.cost}</dt><dd style={`color:${txt};`}>{costLine(ev)}</dd>
+                  <dt style={lbl}>{c.glance.labels.days}</dt><dd style={`color:${txt};`}>{ev.days === "not stated" ? c.glance.labels.notStated : ev.days}</dd>
+                  <dt style={lbl}>{c.glance.labels.source}</dt><dd><a href={src.href} class="underline" style={`color:${txt};`} rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"} title={src.quote}>{src.label}</a></dd>
+                </dl>
+                {!mine && ev.notes && <p style={`${small} font-size:.85rem; color:${onCream(0.55)};`}>{ev.notes}</p>}
               </article>
             );
           })}
@@ -195,11 +225,11 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
         <p class="mb-10" style={`${lead} color:${onCream(0.8)};`}>{c.table.intro}</p>
         <div class="overflow-x-auto rounded-2xl" style={`border:1px solid ${onCream(0.18)}; background-color:#fff;`}>
-          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse; min-width:900px;`}>
+          <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse; min-width:1000px;`}>
             <thead>
               <tr style={`background-color:rgba(27,66,41,.05);`}>
-                {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.buy, c.table.cols.days, c.table.cols.score].map((h, i) => (
-                  <th class={`px-4 py-3 ${i === 1 || i === 2 || i === 6 ? "text-right" : "text-left"}`} style={`${eyebrowSm} font-size:.7rem; color:${onCream(0.6)}; border-bottom:1px solid ${onCream(0.18)};`}>{h}</th>
+                {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.buy, c.glance.labels.cost, c.table.cols.days, c.table.cols.score].map((h, i) => (
+                  <th class={`px-4 py-3 ${i === 1 || i === 2 || i === 7 ? "text-right" : "text-left"}`} style={`${eyebrowSm} font-size:.7rem; color:${onCream(0.6)}; border-bottom:1px solid ${onCream(0.18)};`}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -216,6 +246,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                       {buyLabel(ev)}
                       {src.href && <a href={src.href} class="ml-1 underline" style={`color:${onCream(0.55)}; font-size:.85rem;`} rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"} title={src.quote}>{src.label}</a>}
                     </td>
+                    <td class="px-4 py-3" style={`color:${onCream(0.8)};`}>{costLine(ev) === c.glance.labels.notStated ? <span style={`color:${onCream(0.35)};`}>–</span> : costLine(ev)}</td>
                     <td class="px-4 py-3 whitespace-nowrap" style={`color:${onCream(0.8)};`}>{ev.days === "not stated" ? <span style={`color:${onCream(0.35)};`}>–</span> : ev.days}</td>
                     <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{totalScore(e).toFixed(1)}</td>
                   </tr>
@@ -224,7 +255,15 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             </tbody>
           </table>
         </div>
-        <p class="mt-6" style={`${small} color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checked)} <a href={indexHref} class="underline">{c.table.indexLink}</a> · <a href={methodsHref} class="underline">{c.table.methodsLink}</a></p>
+        <p class="mt-6 mb-10" style={`${small} color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checked)}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {[{ href: indexHref, ...c.table.links.index }, { href: methodsHref, ...c.table.links.methods }].map((l) => (
+            <a href={l.href} class="block p-7 transition-colors hover:bg-[#f6f1dd]" style={cardOnCream}>
+              <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; color:${GREEN};`}>{l.title} →</p>
+              <p style={`${small} color:${onCream(0.78)};`}>{l.text}</p>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -295,17 +334,19 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
     <!-- AVOID -->
     <section class="pb-20 md:pb-24 px-6" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
-        <div class="rounded-2xl p-8 md:p-10" style={`background-color:${GREEN}; color:${CREAM};`}>
-          <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{c.avoid.eyebrow}</p>
-          <h2 class="mb-8" style={`${h2} font-size:clamp(1.6rem,2.6vw,2.4rem); color:${CREAM};`}>{c.avoid.h2}</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {c.avoid.items.map((a) => (
-              <div>
-                <p class="mb-1.5" style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${CREAM};`}>{a.title}</p>
-                <p style={`${small} color:${onGreen(0.78)};`}>{a.text}</p>
-              </div>
-            ))}
-          </div>
+        <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.avoid.eyebrow}</p>
+        <h2 class="mb-10" style={`${h2} color:${GREEN};`}>{c.avoid.h2}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {c.avoid.items.map((a) => (
+            <div class="p-6" style={`background-color:${GREEN}; color:${CREAM}; border-radius:1rem;`}>
+              <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true" class="mb-5" style={`color:${ACCENT};`}>
+                <circle cx="22" cy="22" r="16" stroke="currentColor" stroke-width="2.2" fill="none" />
+                <path d="M11 11l22 22" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              </svg>
+              <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.1rem; color:${CREAM};`}>{a.title}</p>
+              <p style={`${small} color:${onGreen(0.78)};`}>{a.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import MarketGuideBody from "@astro/components/MarketGuideBody.astro";
 import { MARKET_GUIDES } from "@/lib/marketGuides";
 import { getIndexEntries } from "@/lib/polyphenolIndex";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { INDEX_COVER } from "@/lib/polyphenolIndexPage";
 import { CREAM } from "@/lib/certificates/ui";
 import { SITE } from "@/lib/certificates";
@@ -15,6 +16,7 @@ const locale = SLUG_TO_LOCALE["nl"];
 const t = getDict(locale);
 const { content, shipping } = MARKET_GUIDES.nl;
 const { all } = await getIndexEntries();
+const labNumbers = await getHomeLabNumbers();
 const canonical = `${SITE}${content.slug}`;
 const jsonLd = [
   {
@@ -36,5 +38,5 @@ const jsonLd = [
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  <MarketGuideBody content={content} entries={all} shipping={shipping} locale={locale} heroImage={INDEX_COVER} />
+  <MarketGuideBody content={content} entries={all} shipping={shipping} locale={locale} heroImage={INDEX_COVER} labNumbers={labNumbers} />
 </BaseLayout>

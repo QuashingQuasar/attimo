@@ -9,6 +9,8 @@ export type ShipEvidence = {
   route?: "webshop" | "retailer" | "distributor" | "request" | "none";
   seller?: string;
   days: string; // printed delivery window, or "not stated"
+  cost?: string; // shipping cost to this market as printed, or "not stated"
+  free_from?: string; // free-shipping threshold as printed
   quote: string;
   source_url: string;
   checked: string; // YYYY-MM-DD
@@ -25,7 +27,10 @@ export type MarketGuideContent = {
   meta: { title: string; description: string };
   nav: { glance: string; criteria: string; table: string; oils: string; number: string; faq: string };
   hero: { eyebrow: string; h1: string; lead: string; cta: string; ctaSecondary: string; updatedLabel: string; checkedLine: string };
-  glance: { eyebrow: string; h2: string; intro: string; scoreLabel: string; buyLabel: string };
+  glance: {
+    eyebrow: string; h2: string; intro: string;
+    labels: { method: string; methodLink: string; compounds: string; total: string; buy: string; cost: string; days: string; source: string; notStated: string; attimoAlso: string };
+  };
   criteria: {
     eyebrow: string; h2: string; intro: string;
     items: { key: CriterionKey; title: string; text: string; weight: number; icon: string }[];
@@ -35,7 +40,8 @@ export type MarketGuideContent = {
     eyebrow: string; h2: string; intro: string;
     cols: { oil: string; compounds: string; total: string; method: string; buy: string; days: string; score: string };
     buy: { webshop: string; webshopEu: string; webshopWorld: string; retailer: string; distributor: string; request: string };
-    footnote: string; indexLink: string; methodsLink: string;
+    footnote: string;
+    links: { index: { title: string; text: string }; methods: { title: string; text: string } };
   };
   oils: {
     eyebrow: string; h2: string; intro: string;

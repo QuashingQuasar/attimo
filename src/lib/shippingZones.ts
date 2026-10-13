@@ -16,6 +16,11 @@ export interface Tier {
   highlight?: boolean;
 }
 
+/** Per-country delivery days where they differ from the tier (Gilles's own
+ * shipping record: parcels to the Netherlands arrive in 1 to 2 days). */
+export const DAYS_BY_COUNTRY: Record<string, [number, number]> = { Netherlands: [1, 2] };
+export const daysFor = (country: string, tier: Tier): [number, number] => DAYS_BY_COUNTRY[country] ?? tier.days;
+
 export const TIERS: Tier[] = [
   { key: "core", countries: ["Belgium"], shippingCost: "€7", costEur: 7, freeFromN: 2, days: [2, 3], highlight: true },
   { key: "tier1", countries: ["Germany", "Luxembourg", "Netherlands"], shippingCost: "€10", costEur: 10, freeFromN: 2, days: [3, 5] },
@@ -37,6 +42,10 @@ const LOCAL_TIER: Record<string, TierKey> = { de: "tier1", fr: "tier2", nl: "tie
 export const localTier = (locale: Locale): Tier | null =>
   locale.slug ? TIERS.find((t) => t.key === LOCAL_TIER[locale.slug]) ?? null : null;
 
+/** Swap the tier's day numbers in a localized delivery string for a country override. */
+const withDays = (s: string, from: [number, number], to: [number, number]) =>
+  from[0] === to[0] && from[1] === to[1] ? s : s.replace(String(from[0]), String(to[0])).replace(String(from[1]), String(to[1]));
+
 /** Every country with its rate, threshold and delivery window, sorted by the locale's label. */
 export function countryRows(locale: Locale) {
   const t = getDict(locale).shippingPage;
@@ -48,7 +57,7 @@ export function countryRows(locale: Locale) {
       label: labels[c] ?? c,
       rate: tier.shippingCost,
       freeFrom: tier.freeFromN ? t.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "—",
-      delivery: t.delivery[tier.key],
+      delivery: withDays(t.delivery[tier.key], tier.days, daysFor(c, tier)),
     })),
   ).sort((a, b) => a.label.localeCompare(b.label, locale.lang));
 }
