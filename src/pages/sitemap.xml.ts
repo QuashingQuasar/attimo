@@ -67,6 +67,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/fr/huile-olive-riche-polyphenols-acheter-belgique", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/polyphenolreiches-olivenoel-kaufen-deutschland", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/polyfenolrig-olivenolie-koeb-i-danmark", changefreq: "monthly", priority: "0.7" },
+  { loc: "/se/kop-polyfenolrik-olivolja-i-sverige", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
