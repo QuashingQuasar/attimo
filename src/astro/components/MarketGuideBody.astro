@@ -54,7 +54,7 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
     case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
     case "delivery":
       if (!ev) return 0;
-      if (ev.route === "retailer" || ev.route === "distributor") return 0.6;
+      if (ev.route === "retailer" || ev.route === "distributor") return ev.basis === "lists country" ? (ev.days === "not stated" ? 0.8 : 0.9) : 0.6;
       if (ev.route === "request") return 0.3;
       if (ev.basis === "lists country") return ev.days === "not stated" ? 0.85 : 1;
       if (ev.basis === "EU-wide statement") return 0.75;
