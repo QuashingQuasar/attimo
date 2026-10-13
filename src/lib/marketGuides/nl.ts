@@ -56,7 +56,7 @@ export const nl: MarketGuideContent = {
       { key: "origin", title: "Een echte oogstdatum", text: "Supermarktolie heeft er meestal geen, omdat ze oliën van verschillende jaren mengt. Polyfenolen dalen vanaf de dag van persen, dus je wilt weten hoe oud de olie is en van welke olijf ze komt.", weight: 20, icon: "/icons/basket-2.svg" },
       { key: "report", title: "Een polyfenolgetal met het rapport erbij", text: "Polyfenolen zijn de stoffen die een olijfolie gezond en pittig maken. Een getal op het etiket is een claim; een labrapport dat je kunt openen is een bewijs.", weight: 30, icon: "/icons/flask.svg" },
       { key: "method", title: "Hoe dat getal gemeten is", text: "Er zijn verschillende manieren om polyfenolen te meten, en ze geven voor dezelfde olie verschillende getallen. Een getal zonder methode kun je met niets vergelijken.", weight: 20, icon: "/icons/olive.svg" },
-      { key: "delivery", title: "Levering naar Nederland, zwart op wit", text: "Verzendt het merk naar Nederland, in hoeveel dagen, en zegt de website dat zelf? Zo niet, reken er niet op.", weight: 30, icon: "/icons/branch-2.svg" },
+      { key: "delivery", title: "Levering naar Nederland", text: "Verzendt het merk naar Nederland, in hoeveel dagen, en zegt de website dat zelf? Zo niet, reken er niet op.", weight: 30, icon: "/icons/branch-2.svg" },
     ],
   },
   table: {
