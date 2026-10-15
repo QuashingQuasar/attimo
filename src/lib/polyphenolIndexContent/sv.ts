@@ -121,7 +121,7 @@ export const sv: IndexContent = {
   methodNotStated: "metod inte angiven",
   entryNotes: {
     "olive-oil-club-picholine": "En nederländsk säljare som publicerar hela certifikatet för en tunisisk Picholine. De två föreningarna ligger på ungefär 40 % av ett fyrsiffrigt totalvärde; en Koroneiki från samma källa visar 142 och 148.",
-    "oleaphen-high-phenolic": "Det högsta dokumenterade föreningsparet i indexet, mätt med masspektrometri på ett universitetslaboratorium, med båda molekylerna utskrivna. Säljs som monodoser om 5 ml i stället för flaskor, och skörden 2025 är slutsåld.",
+    "oleaphen-high-phenolic": "Det högsta dokumenterade föreningsparet i indexet, mätt med masspektrometri på ett universitetslaboratorium, med båda molekylerna utskrivna och utan angiven sort. Säljs som monodoser om 5 ml i stället för flaskor, och skörden 2025 är slutsåld.",
     "deliba-ottobratico": "Ett kalabriskt oljeri som publicerar hela sin rapport enligt EU-metoden, med de två föreningarna utskrivna under sina kemiska namn. Små siffror, fullständig dokumentation.",
     "laconiko-zoi": "Den mest slående föreningssiffran i indexet, oleocanthal på ungefär sju gånger genomsnittsoljan, dokumenterat, och bara Oleaphens masspektrometripar ligger före. Odlad i Grekland, såld i USA och regelbundet slutsåld.",
     "the-governor-limited": "Lianolia från Korfu med det starkaste fullt dokumenterade föreningsparet i indexet, i båda kvaliteterna.",

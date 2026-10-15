@@ -190,7 +190,7 @@ export const en: IndexContent = {
   methodNotStated: "method not stated",
   entryNotes: {
     "olive-oil-club-picholine": "A Dutch seller publishing the full certificate for a Tunisian Picholine. The two compounds sit at roughly 40% of a four-figure total; a Koroneiki from the same source reads 142 and 148.",
-    "oleaphen-high-phenolic": "The highest documented compound pair in this index, measured by mass spectrometry at a university lab, with both molecules printed. Sold as 5 ml monodoses rather than bottles, and the 2025 harvest is sold out.",
+    "oleaphen-high-phenolic": "The highest documented compound pair in this index, measured by mass spectrometry at a university lab, with both molecules printed and the cultivar left unnamed. Sold as 5 ml monodoses rather than bottles, and the 2025 harvest is sold out.",
     "deliba-ottobratico": "A Calabrian mill publishing its full report under the EU method, with the two compounds printed under their chemical names. Small figures, complete documentation.",
     "laconiko-zoi": "The most striking compound figure in this index, oleocanthal at roughly seven times the average oil, documented, and second only to Oleaphen's mass-spectrometry pair. Greek-grown, US-sold, and regularly sold out.",
     "the-governor-limited": "Corfiot Lianolia with the strongest fully documented compound pair in the index, in both grades.",

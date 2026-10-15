@@ -121,7 +121,7 @@ export const da: IndexContent = {
   methodNotStated: "metode ikke opgivet",
   entryNotes: {
     "olive-oil-club-picholine": "En hollandsk sælger, der offentliggør hele certifikatet for en tunesisk Picholine. De to forbindelser ligger på omkring 40 % af en firecifret total; en Koroneiki fra samme kilde viser 142 og 148.",
-    "oleaphen-high-phenolic": "Det højeste dokumenterede forbindelsespar i dette indeks, målt med massespektrometri på et universitetslaboratorium, med begge molekyler trykt. Sælges som monodoser på 5 ml i stedet for flasker, og høsten 2025 er udsolgt.",
+    "oleaphen-high-phenolic": "Det højeste dokumenterede forbindelsespar i dette indeks, målt med massespektrometri på et universitetslaboratorium, med begge molekyler trykt og uden angivet sort. Sælges som monodoser på 5 ml i stedet for flasker, og høsten 2025 er udsolgt.",
     "deliba-ottobratico": "En calabrisk mølle, der offentliggør hele sin rapport efter EU-metoden, med de to forbindelser trykt under deres kemiske navne. Små tal, fuld dokumentation.",
     "laconiko-zoi": "Det mest slående tal for enkeltforbindelser i dette indeks: oleocanthal på omkring syv gange gennemsnitsolien, dokumenteret, og kun Oleaphens massespektrometri-par ligger foran. Græskdyrket, solgt i USA og jævnligt udsolgt.",
     "the-governor-limited": "Korfiotisk Lianolia med det stærkeste fuldt dokumenterede forbindelsespar i indekset, i begge kvaliteter.",

@@ -121,7 +121,7 @@ export const fr: IndexContent = {
   methodNotStated: "méthode non précisée",
   entryNotes: {
     "olive-oil-club-picholine": "Un vendeur néerlandais qui publie le certificat complet d'une Picholine tunisienne. Les deux composés se situent à environ 40 % d'un total à quatre chiffres ; une Koroneiki de la même source affiche 142 et 148.",
-    "oleaphen-high-phenolic": "La paire de composés documentée la plus élevée de cet index, mesurée par spectrométrie de masse dans un laboratoire universitaire, avec les deux molécules imprimées. Vendue en monodoses de 5 ml plutôt qu'en bouteilles, et la récolte 2025 est épuisée.",
+    "oleaphen-high-phenolic": "La paire de composés documentée la plus élevée de cet index, mesurée par spectrométrie de masse dans un laboratoire universitaire, avec les deux molécules imprimées et sans cultivar nommé. Vendue en monodoses de 5 ml plutôt qu'en bouteilles, et la récolte 2025 est épuisée.",
     "deliba-ottobratico": "Un moulin calabrais qui publie son rapport complet selon la méthode UE, avec les deux composés imprimés sous leurs noms chimiques. De petits chiffres, une documentation complète.",
     "laconiko-zoi": "Le chiffre par composé le plus frappant de cet index : un oléocanthal à environ sept fois celui de l'huile moyenne, documenté, et seulement derrière la paire d'Oleaphen mesurée par spectrométrie de masse. Cultivée en Grèce, vendue aux États-Unis, et régulièrement épuisée.",
     "the-governor-limited": "Une Lianolia de Corfou avec la paire de composés entièrement documentée la plus forte de l'index, dans les deux qualités.",

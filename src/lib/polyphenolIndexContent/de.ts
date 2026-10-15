@@ -121,7 +121,7 @@ export const de: IndexContent = {
   methodNotStated: "Methode nicht angegeben",
   entryNotes: {
     "olive-oil-club-picholine": "Ein niederländischer Verkäufer, der das vollständige Zertifikat einer tunesischen Picholine veröffentlicht. Die beiden Verbindungen liegen bei etwa 40 % eines vierstelligen Gesamtwerts; eine Koroneiki aus derselben Quelle weist 142 und 148 aus.",
-    "oleaphen-high-phenolic": "Das höchste dokumentierte Verbindungspaar in diesem Index, per Massenspektrometrie in einem Universitätslabor gemessen, mit beiden Molekülen ausgewiesen. Verkauft als Monodosen zu 5 ml statt in Flaschen, und die Ernte 2025 ist ausverkauft.",
+    "oleaphen-high-phenolic": "Das höchste dokumentierte Verbindungspaar in diesem Index, per Massenspektrometrie in einem Universitätslabor gemessen, mit beiden Molekülen ausgewiesen und ohne genannte Sorte. Verkauft als Monodosen zu 5 ml statt in Flaschen, und die Ernte 2025 ist ausverkauft.",
     "deliba-ottobratico": "Eine kalabrische Mühle, die ihren vollständigen Bericht nach der EU-Methode veröffentlicht, mit den beiden Verbindungen unter ihren chemischen Namen ausgewiesen. Kleine Werte, vollständige Dokumentation.",
     "laconiko-zoi": "Der auffälligste Einzelwert in diesem Index: Oleocanthal bei etwa dem Siebenfachen eines durchschnittlichen Öls, dokumentiert und nur hinter Oleaphens Massenspektrometrie-Paar. In Griechenland angebaut, in den USA verkauft und regelmäßig ausverkauft.",
     "the-governor-limited": "Korfiotische Lianolia mit dem stärksten vollständig dokumentierten Verbindungspaar im Index, in beiden Qualitäten.",

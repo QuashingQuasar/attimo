@@ -121,7 +121,7 @@ export const nl: IndexContent = {
   methodNotStated: "methode niet vermeld",
   entryNotes: {
     "olive-oil-club-picholine": "Een Nederlandse verkoper die het volledige certificaat van een Tunesische Picholine publiceert. De twee hoofdstoffen zitten op ruwweg 40% van een totaal van vier cijfers; een Koroneiki van dezelfde bron leest 142 en 148.",
-    "oleaphen-high-phenolic": "Het hoogste gedocumenteerde stoffenpaar in deze index, gemeten met massaspectrometrie in een universitair laboratorium, met beide moleculen afgedrukt. Verkocht als monodoses van 5 ml in plaats van flessen, en de oogst van 2025 is uitverkocht.",
+    "oleaphen-high-phenolic": "Het hoogste gedocumenteerde stoffenpaar in deze index, gemeten met massaspectrometrie in een universitair laboratorium, met beide moleculen afgedrukt en de variëteit niet benoemd. Verkocht als monodoses van 5 ml in plaats van flessen, en de oogst van 2025 is uitverkocht.",
     "deliba-ottobratico": "Een Calabrische molen die het volledige rapport volgens de EU-methode publiceert, met de twee hoofdstoffen afgedrukt onder hun chemische namen. Kleine cijfers, volledige documentatie.",
     "laconiko-zoi": "Het opvallendste cijfer per stof in deze index: oleocanthal op ruwweg zeven keer de gemiddelde olie, gedocumenteerd, en alleen Oleaphens massaspectrometriepaar gaat eraan vooraf. Gekweekt in Griekenland, verkocht in de VS, en regelmatig uitverkocht.",
     "the-governor-limited": "Lianolia van Korfoe met het sterkste volledig gedocumenteerde stoffenpaar in de index, in beide kwaliteiten.",
