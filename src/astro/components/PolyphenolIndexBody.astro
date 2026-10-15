@@ -9,7 +9,7 @@ import { FAQ } from "@/components/FAQ";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { GREEN, DEEP, CREAM, ACCENT, UDC, SG, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream, cardOnGreen } from "@/lib/certificates/ui";
-import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, type IndexEntry } from "@/lib/polyphenolIndex";
+import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, FX, type IndexEntry } from "@/lib/polyphenolIndex";
 import type { IndexContent } from "@/lib/polyphenolIndexContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -41,6 +41,7 @@ const fill = (s: string, vars: Record<string, string | number>) =>
 // Thousands separator by market: a comma is a DECIMAL separator in de/nl/da/sv/fr.
 const GROUP: Record<string, string> = { en: ",", de: ".", nl: ".", da: ".", sv: " ", fr: " " };
 const sep = GROUP[c.lang] ?? ",";
+const eur = (v: number) => `€${v.toFixed(2).replace(".", c.lang === "en" ? "." : ",")}`;
 const num = (n: number) => (n >= 1000 ? `${String(n).slice(0, -3)}${sep}${String(n).slice(-3)}` : String(n));
 
 const hubHref = HUB_SLUGS[c.lang as keyof typeof HUB_SLUGS] ?? HUB_SLUGS.en;
@@ -206,6 +207,7 @@ const pairMax = 1473;
                   [fill(c.index.total, { method: methodLabel(e) }), e.total === null ? "—" : `${num(e.total)} mg/kg`, e.total_secondary ? fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method }) : null, true],
                   [c.index.harvest, e.harvest, e.harvest_note, true],
                   [c.index.price, e.price ?? c.index.notListed, e.availability, false],
+                  [c.value.cardLabel, e.value_per_100mg === null ? "—" : eur(e.value_per_100mg), null, true],
                   [c.index.labReport, null, e.report.label, false],
                 ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc]) => (
                   <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
@@ -268,7 +270,7 @@ const pairMax = 1473;
           <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:820px;`}>
             <thead>
               <tr style={`background-color:${GREEN}; color:${CREAM};`}>
-                {c.table.cols.map((th) => (
+                {[...c.table.cols, c.value.col].map((th) => (
                   <th class="text-left p-4" style={`font-family:${UDC}; font-weight:700; font-size:.85rem; white-space:nowrap;`}>{th}</th>
                 ))}
               </tr>
@@ -284,13 +286,14 @@ const pairMax = 1473;
                   <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
                   <td class="p-4"><a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
                   <td class="p-4" style="min-width:12rem;">{e.price ?? c.table.notListed}</td>
+                  <td class="p-4 font-semibold" style="white-space:nowrap;">{e.value_per_100mg === null ? <span style="opacity:.5;">—</span> : eur(e.value_per_100mg)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
         <p class="mt-5" style={`${small} font-size:.9rem; color:${onCream(0.6)};`}>
-          {fill(c.table.footnotePre, { verified: INDEX_VERIFIED })} <a href={INDEX_JSON_PATH} class="underline">{INDEX_JSON_PATH}</a>{c.table.footnotePost}
+          {fill(c.table.footnotePre, { verified: INDEX_VERIFIED })} <a href={INDEX_JSON_PATH} class="underline">{INDEX_JSON_PATH}</a>{c.table.footnotePost} {fill(c.value.note, { fx: FX.date })}
         </p>
       </div>
     </section>

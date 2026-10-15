@@ -63,6 +63,7 @@ export const sv: IndexContent = {
     footnotePre: "Siffrorna verifierades på producenternas egna sidor i {verified}. Maskinläsbar kopia på",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Värde: € per 100 mg oleocanthal + oleacein", note: "Värde: priset delat med milligram oleocanthal + oleacein i flaskan (värde × volym × 0,916 kg/l), i euro per 100 mg. Andra valutor omräknade till ECB-kursen {fx}." },
   totals: {
     eyebrow: "Varför totalvärdena skiljer sig",
     h2: "Totala polyfenoler är minst tre mätningar",

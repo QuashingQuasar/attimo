@@ -51,7 +51,7 @@ export const sv: MarketGuideContent = {
     introPre: "Endast oljor med ett publicerat polyfenolvärde, i samma ordning som i ",
     introLink: "Polyfenolindex",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgiskt märke · även Nocellara och Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Mätt med", methodLink: "vad betyder det?", compounds: "Oleocanthal + oleacein", total: "Totala polyfenoler", buy: "Köp", cost: "Frakt", days: "Leverans", source: "Källa", notStated: "ej angivet", attimoAlso: "Även {nocellara} och {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgiskt märke · även Nocellara och Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Mätt med", methodLink: "vad betyder det?", compounds: "Oleocanthal + oleacein", total: "Totala polyfenoler", buy: "Köp", cost: "Frakt", days: "Leverans", source: "Källa", notStated: "ej angivet", attimoAlso: "Även {nocellara} och {picual}" },
   },
   criteria: {
     eyebrow: "Vad du bör kontrollera",
@@ -68,7 +68,7 @@ export const sv: MarketGuideContent = {
     eyebrow: "Jämförelse",
     h2: "Alla tillgängliga oljor jämförda",
     intro: "Samma oljor, poängsatta på de fyra kriterierna ovan. Två kolumner för polyfenolvärdet: de två viktigaste ämnena för sig, och totalen så som producenten publicerar den.",
-    cols: { oil: "Olja", compounds: "Oleocanthal + oleacein", total: "Totalt", method: "Metod", price: "Pris", buy: "Så köper du i Sverige", days: "Leverans", score: "Poäng" },
+    cols: { oil: "Olja", compounds: "Oleocanthal + oleacein", total: "Totalt", method: "Metod", price: "Pris", value: "Värde", buy: "Så köper du i Sverige", days: "Leverans", score: "Poäng" },
     buy: { webshop: "Webbshop, skickar till Sverige", webshopEu: "Webbshop, skickar inom hela EU", webshopWorld: "Webbshop, skickar internationellt", retailer: "Via en butik", distributor: "Via en distributör", request: "På förfrågan" },
     footnote: "mg/kg. Fraktuppgifter lästa på varje säljares webbplats {checked}; meningen finns bakom källänken. Polyfenolvärdena kommer från Polyfenolindex, där varje värde länkar till sin rapport. Priserna är producentens, lästa {verified}.",
     links: {

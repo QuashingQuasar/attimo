@@ -15,6 +15,23 @@ export interface IndexEntry extends IndexEntryData {
   rank: number | null;
   /** Price per 500ml when the producer prints one, used for the table. */
   reportHref: string;
+  /** Printed price converted to euros per 500 ml, null when no price or currency. */
+  price_eur_500ml: number | null;
+  /** Euros per 100 mg of oleocanthal + oleacein in the bottle, null when price or compounds are missing. */
+  value_per_100mg: number | null;
+}
+
+/** ECB reference rates used for the value metric (euros per unit of currency). */
+export const FX = { date: "2026-10-14", EUR: 1, USD: 1 / 1.1195, GBP: 1 / 0.84385 } as const;
+/** Extra virgin olive oil weighs about 0.916 kg per litre. */
+export const OIL_DENSITY = 0.916;
+export function valueOf(d: { price_amount?: number | null; price_currency?: "EUR" | "USD" | "GBP" | null; price_ml?: number | null; compounds: number | null }) {
+  if (d.price_amount === null || d.price_amount === undefined || !d.price_currency || !d.price_ml) return { price_eur_500ml: null, value_per_100mg: null };
+  const eur = d.price_amount * FX[d.price_currency];
+  const price_eur_500ml = Math.round((eur / d.price_ml) * 500 * 100) / 100;
+  if (d.compounds === null) return { price_eur_500ml, value_per_100mg: null };
+  const mgInBottle = d.compounds * (d.price_ml / 1000) * OIL_DENSITY;
+  return { price_eur_500ml, value_per_100mg: Math.round((eur / mgInBottle) * 100 * 100) / 100 };
 }
 
 export const INDEX_PATH = "/polyphenol-index";
@@ -52,7 +69,7 @@ export async function getIndexEntries(): Promise<{ ranked: IndexEntry[]; unranke
     }
     const compounds =
       d.oleocanthal !== null && d.oleacein !== null ? (d.compounds_printed ?? d.oleocanthal + d.oleacein) : null;
-    return { ...d, compounds, ranked: compounds !== null, reportHref: d.report.url };
+    return { ...d, compounds, ranked: compounds !== null, reportHref: d.report.url, ...valueOf({ ...d, compounds }) };
   });
 
   const ranked = entries

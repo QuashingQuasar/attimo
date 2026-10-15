@@ -51,7 +51,7 @@ export const de: MarketGuideContent = {
     introPre: "Nur Öle mit einem veröffentlichten Polyphenolwert, in der Reihenfolge des ",
     introLink: "Polyphenol-Index",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgische Marke · auch Nocellara und Picual", price: "Preis", priceNote: "Preis des Herstellers, {verified}", method: "Gemessen mit", methodLink: "was bedeutet das?", compounds: "Oleocanthal + Oleacein", total: "Polyphenole gesamt", buy: "Kaufen", cost: "Versand", days: "Lieferzeit", source: "Quelle", notStated: "nicht angegeben", attimoAlso: "Auch {nocellara} und {picual}" },
+    labels: { value: "€ je 100 mg Oleocanthal + Oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgische Marke · auch Nocellara und Picual", price: "Preis", priceNote: "Preis des Herstellers, {verified}", method: "Gemessen mit", methodLink: "was bedeutet das?", compounds: "Oleocanthal + Oleacein", total: "Polyphenole gesamt", buy: "Kaufen", cost: "Versand", days: "Lieferzeit", source: "Quelle", notStated: "nicht angegeben", attimoAlso: "Auch {nocellara} und {picual}" },
   },
   criteria: {
     eyebrow: "Was du prüfst",
@@ -68,7 +68,7 @@ export const de: MarketGuideContent = {
     eyebrow: "Vergleich",
     h2: "Alle verfügbaren Öle im Vergleich",
     intro: "Dieselben Öle, bewertet nach den vier Kriterien oben. Zwei Spalten für den Polyphenolwert: die zwei Hauptstoffe für sich, und der Gesamtwert, wie der Hersteller ihn veröffentlicht.",
-    cols: { oil: "Öl", compounds: "Oleocanthal + Oleacein", total: "Gesamt", method: "Methode", price: "Preis", buy: "Kaufen in Deutschland", days: "Lieferzeit", score: "Punkte" },
+    cols: { oil: "Öl", compounds: "Oleocanthal + Oleacein", total: "Gesamt", method: "Methode", price: "Preis", value: "Wert", buy: "Kaufen in Deutschland", days: "Lieferzeit", score: "Punkte" },
     buy: { webshop: "Webshop, versendet nach Deutschland", webshopEu: "Webshop, versendet EU-weit", webshopWorld: "Webshop, versendet international", retailer: "Über einen Händler", distributor: "Über einen Vertriebspartner", request: "Auf Anfrage" },
     footnote: "mg/kg. Versandangaben am {checked} auf der Website jedes Verkäufers gelesen; der Satz steht hinter dem Quellenlink. Polyphenolwerte stammen aus dem Polyphenol-Index, wo jede Zahl auf ihren Bericht verlinkt. Preise sind die des Herstellers, gelesen im {verified}.",
     links: {

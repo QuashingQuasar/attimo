@@ -19,6 +19,9 @@ report:
   label: NMR certificate PDF
 source_url: https://www.oliveoilclub.nl/ouroliveoils/picholene
 price: "€19.50 / 250ml (€29.50 per 500ml)"
+price_amount: 19.5
+price_currency: EUR
+price_ml: 250
 availability: sold out
 note: A Dutch seller publishing the full certificate for a Tunisian Picholine. The two compounds sit at roughly 40% of a four-figure total; a Koroneiki from the same source reads 142 and 148.
 also: null

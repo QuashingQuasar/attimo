@@ -18,6 +18,9 @@ report:
   label: HPLC COA linked from the product page
 source_url: https://blueprint.bryanjohnson.com
 price: "$39 / 750ml (≈ $26 per 500ml)"
+price_amount: 39
+price_currency: USD
+price_ml: 750
 availability: null
 note: A modest figure, published with a proper certificate. The document is real; the number is the number.
 also: null

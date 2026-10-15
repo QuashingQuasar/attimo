@@ -63,6 +63,7 @@ export const fr: IndexContent = {
     footnotePre: "Chiffres vérifiés sur les pages des producteurs eux-mêmes en {verified}. Copie lisible par machine sur",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ pour 100 mg", cardLabel: "Rapport : € pour 100 mg d'oléocanthal + oléacéine", note: "Rapport : le prix divisé par les milligrammes d'oléocanthal + oléacéine dans la bouteille (chiffre × contenance × 0,916 kg/l), en euros pour 100 mg. Autres devises converties au taux BCE du {fx}." },
   totals: {
     eyebrow: "Pourquoi les totaux diffèrent",
     h2: "« Polyphénols totaux », c'est au moins trois mesures",

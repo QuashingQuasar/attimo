@@ -63,6 +63,7 @@ export const nl: IndexContent = {
     footnotePre: "Cijfers geverifieerd op de eigen pagina's van de producenten in {verified}. Machineleesbare kopie op",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Waarde: € per 100 mg oleocanthal + oleaceïne", note: "Waarde: de prijs gedeeld door de milligrammen oleocanthal + oleaceïne in de fles (getal × inhoud × 0,916 kg/l), in euro per 100 mg. Andere valuta omgerekend tegen de ECB-koers van {fx}." },
   totals: {
     eyebrow: "Waarom de totalen verschillen",
     h2: "Totale polyfenolen zijn minstens drie metingen",

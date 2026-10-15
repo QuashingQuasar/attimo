@@ -19,6 +19,9 @@ report:
   label: certificate of analysis PDF
 source_url: https://highphenolic.com/2025-harvest-coa
 price: "not listed on the producer site (UK partner £66 / 150ml of monodoses)"
+price_amount: 66
+price_currency: GBP
+price_ml: 150
 availability: sold out; 2026 harvest goes to the waitlist first
 note: The highest documented compound pair in this index, measured by mass spectrometry at a university lab, with both molecules printed. Sold as 5 ml monodoses rather than bottles, and the 2025 harvest is sold out.
 also: null

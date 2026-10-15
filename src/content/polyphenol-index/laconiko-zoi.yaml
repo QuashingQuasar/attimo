@@ -19,6 +19,9 @@ report:
   label: COA PDF
 source_url: https://laconiko.com
 price: "$59.95 / 375ml (≈ $80 per 500ml)"
+price_amount: 59.95
+price_currency: USD
+price_ml: 375
 availability: sold out
 note: The most striking compound figure in this index, oleocanthal at roughly seven times the average oil, documented, and enough for first place on its own. Greek-grown, US-sold, and regularly sold out.
 also: null

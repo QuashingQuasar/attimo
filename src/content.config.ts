@@ -151,6 +151,10 @@ const polyphenolIndex = defineCollection({
     }),
     source_url: z.string(),
     price: z.string().nullable(),
+    // Structured price for the value metric: amount, currency and the size it buys.
+    price_amount: z.number().nullable().default(null),
+    price_currency: z.enum(["EUR", "USD", "GBP"]).nullable().default(null),
+    price_ml: z.number().nullable().default(null),
     availability: z.string().nullable(),
     note: z.string(),
     also: z.string().nullable(),

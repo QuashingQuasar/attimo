@@ -18,6 +18,9 @@ report:
   label: "\"800+\" runs as a banner claim; PDO, organic and food-safety certificates are viewable"
 source_url: https://oleumcrete.ae
 price: "AED 120–210 across three 500ml oils"
+price_amount: null
+price_currency: null
+price_ml: null
 availability: null
 note: The certificates it does show make the missing one more visible.
 also: null

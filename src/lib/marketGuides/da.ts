@@ -50,7 +50,7 @@ export const da: MarketGuideContent = {
     introPre: "Kun olier med et offentliggjort polyfenoltal, i samme rækkefølge som ",
     introLink: "Polyfenolindekset",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgisk mærke · også Nocellara og Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Målt med", methodLink: "hvad betyder det?", compounds: "Oleocanthal + oleacein", total: "Polyfenoler i alt", buy: "Køb", cost: "Forsendelse", days: "Levering", source: "Kilde", notStated: "ikke oplyst", attimoAlso: "Også {nocellara} og {picual}" },
+    labels: { value: "€ pr. 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgisk mærke · også Nocellara og Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Målt med", methodLink: "hvad betyder det?", compounds: "Oleocanthal + oleacein", total: "Polyfenoler i alt", buy: "Køb", cost: "Forsendelse", days: "Levering", source: "Kilde", notStated: "ikke oplyst", attimoAlso: "Også {nocellara} og {picual}" },
   },
   criteria: {
     eyebrow: "Hvad du tjekker",
@@ -67,7 +67,7 @@ export const da: MarketGuideContent = {
     eyebrow: "Sammenligning",
     h2: "Alle tilgængelige olier sammenlignet",
     intro: "De samme olier, scoret på de fire kriterier ovenfor. To kolonner til polyfenoltallet: de to hovedstoffer for sig, og totalen, som producenten offentliggør den.",
-    cols: { oil: "Olie", compounds: "Oleocanthal + oleacein", total: "I alt", method: "Metode", price: "Pris", buy: "Sådan køber du i Danmark", days: "Levering", score: "Score" },
+    cols: { oil: "Olie", compounds: "Oleocanthal + oleacein", total: "I alt", method: "Metode", price: "Pris", value: "Værdi", buy: "Sådan køber du i Danmark", days: "Levering", score: "Score" },
     buy: { webshop: "Webshop, sender til Danmark", webshopEu: "Webshop, sender til hele EU", webshopWorld: "Webshop, sender internationalt", retailer: "Via en butik", distributor: "Via en distributør", request: "På forespørgsel" },
     footnote: "mg/kg. Forsendelsesoplysninger læst på hver sælgers hjemmeside den {checked}; sætningen ligger bag kildelinket. Polyfenoltal kommer fra Polyfenolindekset, hvor hvert tal linker til sin rapport. Priser er producentens, læst i {verified}.",
     links: {

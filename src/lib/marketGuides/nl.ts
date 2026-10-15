@@ -52,7 +52,7 @@ export const nl: MarketGuideContent = {
     introPre: "Alleen oliën met een gepubliceerd polyfenolgetal, in de volgorde van de ",
     introLink: "Polyfenolindex",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "België · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleaceïne", attimoName: "ATTIMO Coratina", attimoSub: "België · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
   },
   criteria: {
     eyebrow: "Hoe we beoordelen",
@@ -69,7 +69,7 @@ export const nl: MarketGuideContent = {
     eyebrow: "Vergelijking",
     h2: "Alle beschikbare oliën vergeleken",
     intro: "Dezelfde oliën, met de score op de vier criteria hierboven. Twee kolommen voor het polyfenolgetal: de twee hoofdstoffen apart, en het totaal zoals de producent het publiceert.",
-    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", buy: "Kopen in Nederland", days: "Levertijd", score: "Score" },
+    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", value: "Waarde", buy: "Kopen in Nederland", days: "Levertijd", score: "Score" },
     buy: { webshop: "Webshop, verzendt naar Nederland", webshopEu: "Webshop, verzendt EU-breed", webshopWorld: "Webshop, verzendt internationaal", retailer: "Via winkel", distributor: "Via distributeur", request: "Op aanvraag" },
     footnote: "mg/kg. Verzendinformatie gelezen op de website van elke verkoper op {checked}; de zin staat achter de bron. Polyfenolgetallen komen uit de Polyfenolindex, waar elk cijfer naar het rapport linkt. Prijzen zijn die van de producent, gelezen in {verified}.",
     links: {

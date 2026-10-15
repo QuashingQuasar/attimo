@@ -18,6 +18,9 @@ report:
   label: University of Athens COA behind the "Third Party Verified Certificate" button
 source_url: https://kyoord.com
 price: "$49 / 500ml"
+price_amount: 49
+price_currency: USD
+price_ml: 500
 availability: null
 note: A US brand pressing Corfiot Lianolia, with compound values ahead of oils carrying much larger totals.
 also: null

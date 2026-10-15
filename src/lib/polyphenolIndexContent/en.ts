@@ -45,6 +45,7 @@ export type IndexContent = {
     notPublished: string; viewable: string; none: string; notListed: string;
     footnotePre: string; footnotePost: string; // around the JSON link
   };
+  value: { col: string; cardLabel: string; note: string }; // {fx} = ECB rate date
   totals: {
     eyebrow: string; h2: string; lead: string;
     methods: { name: string; reading: string; what: string; total: string; who: string }[];
@@ -131,6 +132,7 @@ export const en: IndexContent = {
     footnotePre: "Figures verified on the producers' own pages in {verified}. Machine-readable copy at",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Value: € per 100 mg oleocanthal + oleacein", note: "Value: the price divided by the milligrams of oleocanthal + oleacein in the bottle (figure × bottle size × 0.916 kg/l), in euros per 100 mg. Other currencies converted at the ECB rate of {fx}." },
   totals: {
     eyebrow: "Why the totals differ",
     h2: "Total polyphenols is at least three measurements",

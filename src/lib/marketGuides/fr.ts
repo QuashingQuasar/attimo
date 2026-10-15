@@ -50,7 +50,7 @@ export const fr: MarketGuideContent = {
     introPre: "Uniquement les huiles avec un taux de polyphénols publié, dans l'ordre de l'",
     introLink: "Index des polyphénols",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
+    labels: { value: "€ pour 100 mg d'oléocanthal + oléacéine", attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
   },
   criteria: {
     eyebrow: "Ce qu'il faut vérifier",
@@ -67,7 +67,7 @@ export const fr: MarketGuideContent = {
     eyebrow: "Comparatif",
     h2: "Toutes les huiles disponibles, comparées",
     intro: "Les mêmes huiles, notées sur les quatre critères ci-dessus. Deux colonnes pour le taux de polyphénols : les deux composés principaux à part, et le total tel que le producteur le publie.",
-    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", buy: "Comment acheter en France", days: "Livraison", score: "Score" },
+    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", value: "Rapport", buy: "Comment acheter en France", days: "Livraison", score: "Score" },
     buy: { webshop: "Boutique en ligne, livre en France", webshopEu: "Boutique en ligne, livre dans toute l'UE", webshopWorld: "Boutique en ligne, livre à l'international", retailer: "Via un magasin", distributor: "Via un distributeur", request: "Sur demande" },
     footnote: "mg/kg. Informations de livraison lues sur le site de chaque vendeur le {checked} ; la phrase se trouve derrière le lien source. Les taux de polyphénols viennent de l'Index des polyphénols, où chaque chiffre renvoie à son rapport. Les prix sont ceux du producteur, relevés en {verified}.",
     links: {

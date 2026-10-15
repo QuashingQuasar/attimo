@@ -18,6 +18,9 @@ report:
   label: COA download on the Premium product page
 source_url: https://thegovernorevoo.co.uk
 price: "£49.95 (Limited) / £39.95 (Premium) per 500ml"
+price_amount: 49.95
+price_currency: GBP
+price_ml: 500
 availability: backorder
 note: Corfiot Lianolia with the strongest fully documented compound pair in the index, in both grades.
 also: "Premium: 771 combined (476 + 295), total 1,174"

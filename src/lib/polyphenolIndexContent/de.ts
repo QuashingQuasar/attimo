@@ -63,6 +63,7 @@ export const de: IndexContent = {
     footnotePre: "Werte im {verified} auf den Seiten der Produzenten selbst überprüft. Maschinenlesbare Kopie unter",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ je 100 mg", cardLabel: "Wert: € je 100 mg Oleocanthal + Oleacein", note: "Wert: der Preis geteilt durch die Milligramm Oleocanthal + Oleacein in der Flasche (Wert × Inhalt × 0,916 kg/l), in Euro je 100 mg. Andere Währungen zum EZB-Kurs vom {fx} umgerechnet." },
   totals: {
     eyebrow: "Warum die Gesamtwerte abweichen",
     h2: "Gesamtpolyphenole sind mindestens drei Messungen",

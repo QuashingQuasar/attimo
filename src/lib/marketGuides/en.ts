@@ -54,7 +54,7 @@ export const en: MarketGuideContent = {
     introPre: "Only oils with a published polyphenol figure, in the order of the ",
     introLink: "Polyphenol Index",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
   },
   criteria: {
     eyebrow: "What to check",
@@ -71,7 +71,7 @@ export const en: MarketGuideContent = {
     eyebrow: "Comparison",
     h2: "All available oils compared",
     intro: "The same oils, scored on the four criteria above. Two columns for the polyphenol figure: the two main compounds on their own, and the total as the producer publishes it.",
-    cols: { oil: "Oil", compounds: "Oleocanthal + oleacein", total: "Total", method: "Method", price: "Price", buy: "How to buy in the Netherlands", days: "Delivery", score: "Score" },
+    cols: { oil: "Oil", compounds: "Oleocanthal + oleacein", total: "Total", method: "Method", price: "Price", value: "Value", buy: "How to buy in the Netherlands", days: "Delivery", score: "Score" },
     buy: { webshop: "Web shop, ships to the Netherlands", webshopEu: "Web shop, ships EU-wide", webshopWorld: "Web shop, ships internationally", retailer: "Through a shop", distributor: "Through a distributor", request: "On request" },
     footnote: "mg/kg. Shipping information read on each seller's website on {checked}; the sentence sits behind the source link. Polyphenol figures come from the Polyphenol Index, where each figure links to its report. Prices are the producer's, read in {verified}.",
     links: {
