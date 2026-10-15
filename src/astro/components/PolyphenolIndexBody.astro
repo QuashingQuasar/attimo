@@ -32,7 +32,8 @@ const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 const ext = (e: IndexEntry) => (isMine(e) ? {} : { rel: "nofollow noopener", target: "_blank" });
 const reportHref = (e: IndexEntry) => (isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref);
-const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : e.method);
+const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
+const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : METHOD_LABEL[e.method] ?? e.method);
 const note = (e: IndexEntry) => c.entryNotes[e.id] ?? e.note;
 const fill = (s: string, vars: Record<string, string | number>) =>
   Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(String(v)), s);
@@ -157,7 +158,7 @@ const pairMax = 1473;
                   </div>
                   <div class="grid grid-cols-[1fr_7.5rem] items-center gap-3 min-w-0">
                     <div class="min-w-0"><div class="h-9 rounded-md" style={`width:${(((e.compounds ?? 0) / maxCompounds) * 100).toFixed(1)}%; background-color:${isMine(e) ? ACCENT : "rgba(255,250,234,.82)"};`}></div></div>
-                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; line-height:1.1;`}>{num(e.compounds!)}<span style={`display:block; font-family:${SG}; font-weight:400; font-size:.72rem; color:${onGreen(0.6)};`}>{c.method.chartTotal} {num(e.total!)} {e.method}</span></p>
+                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; line-height:1.1;`}>{num(e.compounds!)}<span style={`display:block; font-family:${SG}; font-weight:400; font-size:.72rem; color:${onGreen(0.6)};`}>{c.method.chartTotal} {num(e.total!)} {methodLabel(e)}</span></p>
                   </div>
                 </div>
               ))}
@@ -279,7 +280,7 @@ const pairMax = 1473;
                   <td class="p-4 font-semibold"><a href={e.source_url} class="underline underline-offset-4 decoration-[rgba(27,66,41,.35)]" {...ext(e)}>{e.brand}</a> · {e.oil}</td>
                   <td class="p-4 font-semibold">{e.compounds === null ? <span style="opacity:.5;">{c.table.notPublished}</span> : num(e.compounds)}</td>
                   <td class="p-4">{e.total === null ? "—" : num(e.total)}{e.total_secondary && <span style="opacity:.7;"> / {num(e.total_secondary.value)}</span>}</td>
-                  <td class="p-4" style="white-space:nowrap;">{e.method}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
+                  <td class="p-4" style="white-space:nowrap;">{methodLabel(e)}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
                   <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
                   <td class="p-4"><a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
                   <td class="p-4" style="min-width:12rem;">{e.price ?? c.table.notListed}</td>

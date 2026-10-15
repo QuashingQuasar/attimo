@@ -42,6 +42,10 @@ const buyable = entries.filter((e) => {
   return !!ev && (ev.ships === "yes" || (ev.route && ["retailer", "distributor", "request"].includes(ev.route)));
 });
 
+// Methods that count each compound on its own; the NMR caveat applies to the rest.
+const CHROMATOGRAPHY = new Set(["HPLC", "COI", "LC-MS/MS"]);
+const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
+const methodOf = (e: IndexEntry) => METHOD_LABEL[e.method] ?? e.method;
 const isPaid = (ev: ShipEvidence) => !!ev.cost && ev.cost !== "not stated" && !/^(gratis|free)$/i.test(ev.cost);
 
 // Scores per criterion, 0..1, each from a published fact.
@@ -49,7 +53,7 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
   const ev = evidenceFor(e);
   switch (key) {
     case "report": return e.report?.status === "viewable" ? 1 : e.total ? 0.4 : 0;
-    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (e.method === "HPLC" ? 1 : 0.7) : 0.5;
+    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (CHROMATOGRAPHY.has(e.method) ? 1 : 0.7) : 0.5;
     case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
     case "delivery":
       if (!ev) return 0;
@@ -100,7 +104,7 @@ const prosOf = (e: IndexEntry) => {
 const consOf = (e: IndexEntry) => {
   const ev = evidenceFor(e)!; const out: string[] = [];
   if (e.report?.status !== "viewable") out.push(c.oils.cons.noReport);
-  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (e.method !== "HPLC") out.push(c.oils.cons.nmr);
+  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (!CHROMATOGRAPHY.has(e.method)) out.push(c.oils.cons.nmr);
   if (!(e.variety && e.harvest)) out.push(c.oils.cons.noOrigin);
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
   if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
@@ -182,7 +186,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     <p style={`${stat} font-size:1.9rem; color:${fg};`}>{num(e.total)}</p>
                   </div>
                   <p class="col-span-2" style={`${small} font-size:.9rem; color:${txt};`}>
-                    <span style={lbl}>{c.glance.labels.method} </span>{e.method} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
+                    <span style={lbl}>{c.glance.labels.method} </span>{methodOf(e)} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
                   </p>
                   {mine && attimoAlso && <p class="col-span-2" style={`${small} font-size:.88rem; color:${onGreen(0.75)};`}>{attimoAlso}</p>}
                 </div>
@@ -246,7 +250,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     <td class="px-4 py-3"><span style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{e.brand}</span><span style={`color:${onCream(0.7)};`}> {e.oil}</span></td>
                     <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; color:${GREEN};`}>{e.compounds !== null ? num(e.compounds) : <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; color:${onCream(0.8)};`}>{num(e.total)}</td>
-                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onCream(0.8)};`}>{e.method}</td>
+                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onCream(0.8)};`}>{methodOf(e)}</td>
                     <td class="px-4 py-3" style={`color:${GREEN};`}>{priceOf(e) || <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-4 py-3" style={`color:${GREEN};`}>
                       {buyLabel(ev)}

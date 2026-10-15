@@ -1,0 +1,26 @@
+id: oleaphen-high-phenolic
+brand: Oleaphen
+oil: High Phenolic 2025
+variety: null
+origin: not stated
+country: Cyprus
+harvest: "2025/26"
+harvest_note: analysed October 2025
+method: LC-MS/MS
+lab: University of Córdoba, Department of Analytical Chemistry
+total: 2236
+total_secondary: null
+oleocanthal: 1248
+oleacein: 748
+compounds_printed: 1996
+report:
+  status: viewable
+  url: https://www.highphenolic.com/_files/ugd/318c19_911e0984d8084d2e8ede8c927f33ca9b.pdf
+  label: certificate of analysis PDF
+source_url: https://highphenolic.com/2025-harvest-coa
+price: "not listed on the producer site (UK partner £66 / 150ml of monodoses)"
+availability: sold out; 2026 harvest goes to the waitlist first
+note: The highest documented compound pair in this index, measured by mass spectrometry at a university lab, with both molecules printed. Sold as 5 ml monodoses rather than bottles, and the 2025 harvest is sold out.
+also: null
+attimo_certificate: null
+verified: "2026-10"

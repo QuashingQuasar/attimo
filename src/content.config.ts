@@ -132,7 +132,7 @@ const polyphenolIndex = defineCollection({
     country: z.string(),
     harvest: z.string(),
     harvest_note: z.string().nullable(),
-    method: z.enum(["NMR", "HPLC", "COI", "Folin-Ciocalteu", "not stated"]),
+    method: z.enum(["NMR", "HPLC", "COI", "LC-MS/MS", "Folin-Ciocalteu", "not stated"]),
     lab: z.string().nullable(),
     total: z.number().nullable(),
     total_secondary: z
