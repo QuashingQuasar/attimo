@@ -155,6 +155,8 @@ const polyphenolIndex = defineCollection({
     price_amount: z.number().nullable().default(null),
     price_currency: z.enum(["EUR", "USD", "GBP"]).nullable().default(null),
     price_ml: z.number().nullable().default(null),
+    // Where the oil can be bought, from the seller's own stated shipping (EU = ships within Europe).
+    regions: z.array(z.enum(["EU", "UK", "US"])).default([]),
     availability: z.string().nullable(),
     note: z.string(),
     also: z.string().nullable(),

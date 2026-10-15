@@ -21,6 +21,7 @@ price: "$39 / 750ml (≈ $26 per 500ml)"
 price_amount: 39
 price_currency: USD
 price_ml: 750
+regions: [US, EU]
 availability: null
 note: A modest figure, published with a proper certificate. The document is real; the number is the number.
 also: null

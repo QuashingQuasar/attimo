@@ -21,6 +21,7 @@ price: "€24.50 / 500ml"
 price_amount: 24.5
 price_currency: EUR
 price_ml: 500
+regions: []
 availability: null
 note: A respected Puglian mill, and the thinnest four-figure claim on this page. No method, no document, no compounds.
 also: null

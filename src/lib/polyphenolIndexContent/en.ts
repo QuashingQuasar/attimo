@@ -46,6 +46,7 @@ export type IndexContent = {
     footnotePre: string; footnotePost: string; // around the JSON link
   };
   value: { col: string; cardLabel: string; note: string }; // {fx} = ECB rate date
+  explorer: { search: string; origin: string; availability: string; price: string; eu: string; uk: string; us: string; none: string; all: string; bands: string[]; showing: string; reset: string; sortHint: string; available: string; notStated: string };
   totals: {
     eyebrow: string; h2: string; lead: string;
     methods: { name: string; reading: string; what: string; total: string; who: string }[];
@@ -133,6 +134,7 @@ export const en: IndexContent = {
     footnotePost: ", CC BY 4.0.",
   },
   value: { col: "€ per 100 mg", cardLabel: "Value: € per 100 mg oleocanthal + oleacein", note: "Value: the price divided by the milligrams of oleocanthal + oleacein in the bottle (figure × bottle size × 0.916 kg/l), in euros per 100 mg. Other currencies converted at the ECB rate of {fx}." },
+  explorer: { search: "Search brand, oil or country", origin: "Origin", availability: "Available in", price: "Price per 500 ml", eu: "Europe", uk: "United Kingdom", us: "United States", none: "Not stated", all: "All", bands: ["Under €25", "€25 to €50", "Over €50", "Not listed"], showing: "{n} of {total} oils", reset: "Reset", sortHint: "Click a column to sort", available: "Available in", notStated: "not stated" },
   totals: {
     eyebrow: "Why the totals differ",
     h2: "Total polyphenols is at least three measurements",

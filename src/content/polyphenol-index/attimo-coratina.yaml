@@ -23,6 +23,7 @@ price: "€24 / 500ml"
 price_amount: 24
 price_currency: EUR
 price_ml: 500
+regions: [EU, UK]
 availability: null
 note: Our own oil, held to the same format as everyone else's. These values come from the chromatography family, which in the one published same-oil comparison on this page read oleocanthal well below NMR. This row is measured by the conservative method.
 also: null

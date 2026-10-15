@@ -64,6 +64,7 @@ export const de: IndexContent = {
     footnotePost: ", CC BY 4.0.",
   },
   value: { col: "€ je 100 mg", cardLabel: "Wert: € je 100 mg Oleocanthal + Oleacein", note: "Wert: der Preis geteilt durch die Milligramm Oleocanthal + Oleacein in der Flasche (Wert × Inhalt × 0,916 kg/l), in Euro je 100 mg. Andere Währungen zum EZB-Kurs vom {fx} umgerechnet." },
+  explorer: { search: "Marke, Öl oder Land suchen", origin: "Herkunft", availability: "Erhältlich in", price: "Preis je 500 ml", eu: "Europa", uk: "Vereinigtes Königreich", us: "Vereinigte Staaten", none: "Nicht angegeben", all: "Alle", bands: ["Unter 25 €", "25 bis 50 €", "Über 50 €", "Nicht gelistet"], showing: "{n} von {total} Ölen", reset: "Zurücksetzen", sortHint: "Spalte anklicken zum Sortieren", available: "Erhältlich in", notStated: "nicht angegeben" },
   totals: {
     eyebrow: "Warum die Gesamtwerte abweichen",
     h2: "Gesamtpolyphenole sind mindestens drei Messungen",

@@ -64,6 +64,7 @@ export const fr: IndexContent = {
     footnotePost: ", CC BY 4.0.",
   },
   value: { col: "€ pour 100 mg", cardLabel: "Rapport : € pour 100 mg d'oléocanthal + oléacéine", note: "Rapport : le prix divisé par les milligrammes d'oléocanthal + oléacéine dans la bouteille (chiffre × contenance × 0,916 kg/l), en euros pour 100 mg. Autres devises converties au taux BCE du {fx}." },
+  explorer: { search: "Rechercher une marque, une huile ou un pays", origin: "Origine", availability: "Disponible en", price: "Prix pour 500 ml", eu: "Europe", uk: "Royaume-Uni", us: "États-Unis", none: "Non indiqué", all: "Tous", bands: ["Moins de 25 €", "25 à 50 €", "Plus de 50 €", "Non indiqué"], showing: "{n} huiles sur {total}", reset: "Réinitialiser", sortHint: "Cliquez sur une colonne pour trier", available: "Disponible en", notStated: "non indiqué" },
   totals: {
     eyebrow: "Pourquoi les totaux diffèrent",
     h2: "« Polyphénols totaux », c'est au moins trois mesures",

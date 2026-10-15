@@ -22,6 +22,7 @@ price: "$44.99 / 500ml"
 price_amount: 44.99
 price_currency: USD
 price_ml: 500
+regions: [EU, UK, US]
 availability: sold out
 note: A Calabrian mill publishing its full report under the EU method, with the two compounds printed under their chemical names. Small figures, complete documentation.
 also: null

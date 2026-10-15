@@ -64,6 +64,7 @@ export const da: IndexContent = {
     footnotePost: ", CC BY 4.0.",
   },
   value: { col: "€ pr. 100 mg", cardLabel: "Værdi: € pr. 100 mg oleocanthal + oleacein", note: "Værdi: prisen delt med milligram oleocanthal + oleacein i flasken (tal × indhold × 0,916 kg/l), i euro pr. 100 mg. Andre valutaer omregnet til ECB-kursen fra {fx}." },
+  explorer: { search: "Søg mærke, olie eller land", origin: "Oprindelse", availability: "Fås i", price: "Pris pr. 500 ml", eu: "Europa", uk: "Storbritannien", us: "USA", none: "Ikke oplyst", all: "Alle", bands: ["Under 25 €", "25 til 50 €", "Over 50 €", "Ikke oplyst"], showing: "{n} af {total} olier", reset: "Nulstil", sortHint: "Klik på en kolonne for at sortere", available: "Fås i", notStated: "ikke oplyst" },
   totals: {
     eyebrow: "Hvorfor totalerne er forskellige",
     h2: "Totale polyfenoler er mindst tre målinger",

@@ -101,7 +101,10 @@ export function toExport(e: IndexEntry) {
     report: { status: e.report.status, url: e.report.url.startsWith("/") ? `${SITE}${e.report.url}` : e.report.url },
     source_url: e.source_url,
     price: e.price,
+    price_eur_per_500ml: e.price_eur_500ml,
+    eur_per_100mg_oleocanthal_oleacein: e.value_per_100mg,
     availability: e.availability,
+    ships_to: e.regions,
     verified: e.verified,
   };
 }

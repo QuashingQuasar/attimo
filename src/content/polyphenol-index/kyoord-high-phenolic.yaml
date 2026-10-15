@@ -21,6 +21,7 @@ price: "$49 / 500ml"
 price_amount: 49
 price_currency: USD
 price_ml: 500
+regions: [US]
 availability: null
 note: A US brand pressing Corfiot Lianolia, with compound values ahead of oils carrying much larger totals.
 also: null

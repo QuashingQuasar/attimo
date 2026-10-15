@@ -5,6 +5,7 @@
 // through `content`. Charts and the matrix are built from the same data, so
 // nothing on the page is a picture of a number.
 import { Header } from "@/components/Header";
+import PolyphenolIndexExplorer from "@/components/PolyphenolIndexExplorer";
 import { FAQ } from "@/components/FAQ";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
@@ -208,6 +209,7 @@ const pairMax = 1473;
                   [c.index.harvest, e.harvest, e.harvest_note, true],
                   [c.index.price, e.price ?? c.index.notListed, e.availability, false],
                   [c.value.cardLabel, e.value_per_100mg === null ? "—" : eur(e.value_per_100mg), null, true],
+                  [c.explorer.available, e.regions.length ? e.regions.map((r) => ({ EU: c.explorer.eu, UK: c.explorer.uk, US: c.explorer.us })[r]).join(", ") : c.explorer.notStated, null, false],
                   [c.index.labReport, null, e.report.label, false],
                 ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc]) => (
                   <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
@@ -266,32 +268,12 @@ const pairMax = 1473;
           <h2 style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
           <p style={`${eyebrowSm} color:${onCream(0.55)};`}>{fill(c.table.lastUpdated, { verified: INDEX_VERIFIED })}</p>
         </div>
-        <div class="rounded-2xl overflow-x-auto" style={`background-color:#fff; border:1px solid rgba(27,66,41,.18);`}>
-          <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:820px;`}>
-            <thead>
-              <tr style={`background-color:${GREEN}; color:${CREAM};`}>
-                {[...c.table.cols, c.value.col].map((th) => (
-                  <th class="text-left p-4" style={`font-family:${UDC}; font-weight:700; font-size:.85rem; white-space:nowrap;`}>{th}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {all.map((e, i) => (
-                <tr style={`border-top:1px solid rgba(27,66,41,.12); ${e.rank === null && i === ranked.length ? "border-top:2px dashed #1B4229;" : ""} ${isMine(e) ? "background-color:rgba(205,219,45,.18);" : ""}`}>
-                  <td class="p-4" style={`font-family:${UDC}; color:${onCream(0.6)};`}>{e.rank ?? "—"}</td>
-                  <td class="p-4 font-semibold"><a href={e.source_url} class="underline underline-offset-4 decoration-[rgba(27,66,41,.35)]" {...ext(e)}>{e.brand}</a> · {e.oil}</td>
-                  <td class="p-4 font-semibold">{e.compounds === null ? <span style="opacity:.5;">{c.table.notPublished}</span> : num(e.compounds)}</td>
-                  <td class="p-4">{e.total === null ? "—" : num(e.total)}{e.total_secondary && <span style="opacity:.7;"> / {num(e.total_secondary.value)}</span>}</td>
-                  <td class="p-4" style="white-space:nowrap;">{methodLabel(e)}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
-                  <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
-                  <td class="p-4"><a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
-                  <td class="p-4" style="min-width:12rem;">{e.price ?? c.table.notListed}</td>
-                  <td class="p-4 font-semibold" style="white-space:nowrap;">{e.value_per_100mg === null ? <span style="opacity:.5;">—</span> : eur(e.value_per_100mg)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <PolyphenolIndexExplorer
+          client:load
+          lang={c.lang}
+          labels={{ cols: c.table.cols, valueCol: c.value.col, notPublished: c.table.notPublished, viewable: c.table.viewable, none: c.table.none, notListed: c.table.notListed, search: c.explorer.search, origin: c.explorer.origin, availability: c.explorer.availability, price: c.explorer.price, eu: c.explorer.eu, uk: c.explorer.uk, us: c.explorer.us, noneRegion: c.explorer.none, all: c.explorer.all, bands: c.explorer.bands, showing: c.explorer.showing, reset: c.explorer.reset, sortHint: c.explorer.sortHint, available: c.explorer.available }}
+          rows={all.map((e) => ({ id: e.id, rank: e.rank, brand: e.brand, oil: e.oil, country: e.country, variety: e.variety, compounds: e.compounds, total: e.total, method: methodLabel(e), harvest: e.harvest, reportHref: reportHref(e), reportViewable: e.report.status === "viewable", sourceUrl: e.source_url, price: e.price, priceEur500: e.price_eur_500ml, value: e.value_per_100mg, regions: e.regions, mine: isMine(e) }))}
+        />
         <p class="mt-5" style={`${small} font-size:.9rem; color:${onCream(0.6)};`}>
           {fill(c.table.footnotePre, { verified: INDEX_VERIFIED })} <a href={INDEX_JSON_PATH} class="underline">{INDEX_JSON_PATH}</a>{c.table.footnotePost} {fill(c.value.note, { fx: FX.date })}
         </p>

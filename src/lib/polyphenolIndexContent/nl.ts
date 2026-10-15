@@ -64,6 +64,7 @@ export const nl: IndexContent = {
     footnotePost: ", CC BY 4.0.",
   },
   value: { col: "€ per 100 mg", cardLabel: "Waarde: € per 100 mg oleocanthal + oleaceïne", note: "Waarde: de prijs gedeeld door de milligrammen oleocanthal + oleaceïne in de fles (getal × inhoud × 0,916 kg/l), in euro per 100 mg. Andere valuta omgerekend tegen de ECB-koers van {fx}." },
+  explorer: { search: "Zoek op merk, olie of land", origin: "Herkomst", availability: "Verkrijgbaar in", price: "Prijs per 500 ml", eu: "Europa", uk: "Verenigd Koninkrijk", us: "Verenigde Staten", none: "Niet vermeld", all: "Alle", bands: ["Onder €25", "€25 tot €50", "Boven €50", "Niet vermeld"], showing: "{n} van {total} oliën", reset: "Wissen", sortHint: "Klik op een kolom om te sorteren", available: "Verkrijgbaar in", notStated: "niet vermeld" },
   totals: {
     eyebrow: "Waarom de totalen verschillen",
     h2: "Totale polyfenolen zijn minstens drie metingen",

@@ -21,6 +21,7 @@ price: "$44.40 / 500ml"
 price_amount: 44.4
 price_currency: USD
 price_ml: 500
+regions: [EU, UK, US]
 availability: null
 note: Testing labs are named, the method is not. Both figures are theirs; we list both.
 also: null
