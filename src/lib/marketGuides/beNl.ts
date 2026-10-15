@@ -18,6 +18,9 @@ export const BE_NL_SHIPPING: Record<string, ShipEvidence> = {
   "rapunzel-polyphenolia": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "Lieferung ausschließlich innerhalb Deutschlands und nach Österreich", source_url: "https://shop.rapunzel.de/versand-und-zahlungsbedingungen/", checked: "2026-10-13", notes: "Alleen Duitsland en Oostenrijk" },
   "sakellaropoulos-fyllikon": { ships: "not stated", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "", source_url: "https://www.bioarmonia.gr/products", checked: "2026-10-13", notes: "Alleen telefonische bestelling in Griekenland" },
   "the-governor-limited": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "We ship to England, Wales, Scotland, Northern Ireland, Guernsey, Jersey, and the Isle of Man.", source_url: "https://thegovernorevoo.co.uk/pages/shipping-policy", checked: "2026-10-13", notes: "Alleen Verenigd Koninkrijk" },
+  "olive-oil-club-picholine": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", free_from: "€100", quote: "We ship all over Europe - Free delivery above €100", source_url: "https://oliveoilclub.myshopify.com/", checked: "2026-10-15", notes: "Verzendt door heel Europa, gratis vanaf €100; kosten daaronder en levertijd niet vermeld; uitverkocht op 15 oktober 2026" },
+  "deliba-ottobratico": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", quote: "Orders to supported destinations in Europe and the United Kingdom are fulfilled from Italy", source_url: "https://delibaoliveoil.com/policies/shipping-policy", checked: "2026-10-15", notes: "Levert in Europa vanuit Italië; landen, kosten en levertijd pas zichtbaar bij het afrekenen; uitverkocht op 15 oktober 2026" },
+  "oleaphen-high-phenolic": { ships: "not stated", basis: "none", route: "none", days: "not stated", quote: "UK orders go through Oleaphen's UK partner at highphenolic.co.uk.", source_url: "https://www.highphenolic.com/buy-high-phenolic-olive-oil", checked: "2026-10-15", notes: "Geen verzendinformatie op de website; alleen een Britse partner voor het Verenigd Koninkrijk" },
 };
 
 export const beNl: MarketGuideContent = {
@@ -50,7 +53,7 @@ export const beNl: MarketGuideContent = {
     introPre: "Alleen oliën met een gepubliceerd polyfenolgetal, in de volgorde van de ",
     introLink: "Polyfenolindex",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgisch merk · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleaceïne", attimoName: "ATTIMO Coratina", attimoSub: "Belgisch merk · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
   },
   criteria: {
     eyebrow: "Hoe we beoordelen",
@@ -67,7 +70,7 @@ export const beNl: MarketGuideContent = {
     eyebrow: "Vergelijking",
     h2: "Alle beschikbare oliën vergeleken",
     intro: "Dezelfde oliën, met de score op de vier criteria hierboven. Twee kolommen voor het polyfenolgetal: de twee hoofdstoffen apart, en het totaal zoals de producent het publiceert.",
-    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", buy: "Kopen in België", days: "Levertijd", score: "Score" },
+    cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", value: "Waarde", buy: "Kopen in België", days: "Levertijd", score: "Score" },
     buy: { webshop: "Webshop, verzendt naar België", webshopEu: "Webshop, verzendt EU-breed", webshopWorld: "Webshop, verzendt internationaal", retailer: "Via winkel", distributor: "Via distributeur", request: "Op aanvraag" },
     footnote: "mg/kg. Verzendinformatie gelezen op de website van elke verkoper op {checked}; de zin staat achter de bron. Polyfenolgetallen komen uit de Polyfenolindex, waar elk cijfer naar het rapport linkt. Prijzen zijn die van de producent, gelezen in {verified}.",
     links: {

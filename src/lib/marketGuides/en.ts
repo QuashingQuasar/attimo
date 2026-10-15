@@ -21,6 +21,9 @@ export const EN_NL_SHIPPING: Record<string, ShipEvidence> = {
   "rapunzel-polyphenolia": { ships: "no", basis: "none", route: "none", days: "not stated", quote: "Lieferung ausschließlich innerhalb Deutschlands und nach Österreich", source_url: "https://shop.rapunzel.de/versand-und-zahlungsbedingungen/", checked: "2026-10-12", notes: "Germany and Austria only" },
   "sakellaropoulos-fyllikon": { ships: "not stated", basis: "none", route: "none", days: "not stated", quote: "", source_url: "https://www.bioarmonia.gr/products", checked: "2026-10-13", notes: "Telephone orders in Greece only; no route to the Netherlands found" },
   "the-governor-limited": { ships: "no", basis: "none", route: "none", days: "not stated", quote: "We ship to England, Wales, Scotland, Northern Ireland, Guernsey, Jersey, and the Isle of Man.", source_url: "https://thegovernorevoo.co.uk/pages/shipping-policy", checked: "2026-10-12", notes: "United Kingdom only" },
+  "olive-oil-club-picholine": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", free_from: "€100", quote: "We ship all over Europe - Free delivery above €100", source_url: "https://oliveoilclub.myshopify.com/", checked: "2026-10-15", notes: "Ships all over Europe, free above €100; cost below that and delivery time not stated; sold out on 15 October 2026" },
+  "deliba-ottobratico": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", quote: "Orders to supported destinations in Europe and the United Kingdom are fulfilled from Italy", source_url: "https://delibaoliveoil.com/policies/shipping-policy", checked: "2026-10-15", notes: "Delivers to Europe from Italy; countries, cost and delivery time only shown at checkout; sold out on 15 October 2026" },
+  "oleaphen-high-phenolic": { ships: "not stated", basis: "none", route: "none", days: "not stated", quote: "UK orders go through Oleaphen's UK partner at highphenolic.co.uk.", source_url: "https://www.highphenolic.com/buy-high-phenolic-olive-oil", checked: "2026-10-15", notes: "No shipping information on the site; only a UK partner for the United Kingdom" },
 };
 
 export const en: MarketGuideContent = {
@@ -51,7 +54,7 @@ export const en: MarketGuideContent = {
     introPre: "Only oils with a published polyphenol figure, in the order of the ",
     introLink: "Polyphenol Index",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
   },
   criteria: {
     eyebrow: "What to check",
@@ -68,7 +71,7 @@ export const en: MarketGuideContent = {
     eyebrow: "Comparison",
     h2: "All available oils compared",
     intro: "The same oils, scored on the four criteria above. Two columns for the polyphenol figure: the two main compounds on their own, and the total as the producer publishes it.",
-    cols: { oil: "Oil", compounds: "Oleocanthal + oleacein", total: "Total", method: "Method", price: "Price", buy: "How to buy in the Netherlands", days: "Delivery", score: "Score" },
+    cols: { oil: "Oil", compounds: "Oleocanthal + oleacein", total: "Total", method: "Method", price: "Price", value: "Value", buy: "How to buy in the Netherlands", days: "Delivery", score: "Score" },
     buy: { webshop: "Web shop, ships to the Netherlands", webshopEu: "Web shop, ships EU-wide", webshopWorld: "Web shop, ships internationally", retailer: "Through a shop", distributor: "Through a distributor", request: "On request" },
     footnote: "mg/kg. Shipping information read on each seller's website on {checked}; the sentence sits behind the source link. Polyphenol figures come from the Polyphenol Index, where each figure links to its report. Prices are the producer's, read in {verified}.",
     links: {

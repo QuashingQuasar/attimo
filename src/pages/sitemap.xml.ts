@@ -65,6 +65,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/nl/polyfenolrijke-olijfolie-kopen-nederland", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/polyfenolrijke-olijfolie-kopen-belgie", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/huile-olive-riche-polyphenols-acheter-belgique", changefreq: "monthly", priority: "0.7" },
+  { loc: "/fr/huile-olive-riche-polyphenols-acheter-france", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/polyphenolreiches-olivenoel-kaufen-deutschland", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/polyfenolrig-olivenolie-koeb-i-danmark", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/kop-polyfenolrik-olivolja-i-sverige", changefreq: "monthly", priority: "0.7" },

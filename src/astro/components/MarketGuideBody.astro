@@ -42,6 +42,10 @@ const buyable = entries.filter((e) => {
   return !!ev && (ev.ships === "yes" || (ev.route && ["retailer", "distributor", "request"].includes(ev.route)));
 });
 
+// Methods that count each compound on its own; the NMR caveat applies to the rest.
+const CHROMATOGRAPHY = new Set(["HPLC", "COI", "LC-MS/MS"]);
+const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
+const methodOf = (e: IndexEntry) => METHOD_LABEL[e.method] ?? e.method;
 const isPaid = (ev: ShipEvidence) => !!ev.cost && ev.cost !== "not stated" && !/^(gratis|free)$/i.test(ev.cost);
 
 // Scores per criterion, 0..1, each from a published fact.
@@ -49,7 +53,7 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
   const ev = evidenceFor(e);
   switch (key) {
     case "report": return e.report?.status === "viewable" ? 1 : e.total ? 0.4 : 0;
-    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (e.method === "HPLC" ? 1 : 0.7) : 0.5;
+    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (CHROMATOGRAPHY.has(e.method) ? 1 : 0.7) : 0.5;
     case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
     case "delivery":
       if (!ev) return 0;
@@ -71,6 +75,8 @@ const glanceRows = [...buyable].sort((a, b) => {
 const lab = (key: string) => labNumbers.find((o) => o.key === key);
 const fmtLab = (o: HomeLabOil | undefined) => (o && o.total !== null ? `${o.name} (${num(o.total)} mg/kg, ${o.methodLine.split(",")[0]})` : "");
 const attimoAlso = c.glance.labels.attimoAlso.replace("{nocellara}", fmtLab(lab("nocellara"))).replace("{picual}", fmtLab(lab("picual")));
+const eur = (v: number) => `€${v.toFixed(2).replace(".", c.lang === "en" ? "." : ",")}`;
+const valueOf = (e: IndexEntry) => (e.value_per_100mg === null ? "" : eur(e.value_per_100mg));
 const priceOf = (e: IndexEntry) => (isMine(e) ? `${formatPrice(locale.prices.coratina, locale)} / 500 ml` : e.price && !/^not listed/i.test(e.price) ? e.price : "");
 const verifiedOf = (_e: IndexEntry) => verifiedFor(c.lang);
 const costLine = (ev: ShipEvidence) => {
@@ -100,7 +106,7 @@ const prosOf = (e: IndexEntry) => {
 const consOf = (e: IndexEntry) => {
   const ev = evidenceFor(e)!; const out: string[] = [];
   if (e.report?.status !== "viewable") out.push(c.oils.cons.noReport);
-  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (e.method !== "HPLC") out.push(c.oils.cons.nmr);
+  if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (!CHROMATOGRAPHY.has(e.method)) out.push(c.oils.cons.nmr);
   if (!(e.variety && e.harvest)) out.push(c.oils.cons.noOrigin);
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
   if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
@@ -182,12 +188,13 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     <p style={`${stat} font-size:1.9rem; color:${fg};`}>{num(e.total)}</p>
                   </div>
                   <p class="col-span-2" style={`${small} font-size:.9rem; color:${txt};`}>
-                    <span style={lbl}>{c.glance.labels.method} </span>{e.method} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
+                    <span style={lbl}>{c.glance.labels.method} </span>{methodOf(e)} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
                   </p>
                   {mine && attimoAlso && <p class="col-span-2" style={`${small} font-size:.88rem; color:${onGreen(0.75)};`}>{attimoAlso}</p>}
                 </div>
                 <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-1.5" style={`${small} font-size:.92rem;`}>
                   <dt style={lbl}>{c.glance.labels.price}</dt><dd style={`color:${txt};`}>{priceOf(e) ? <span><strong style={`font-family:${UDC}; font-weight:700;`}>{priceOf(e)}</strong>{!mine && <span style={`color:${mut};`}> · {c.glance.labels.priceNote.replace("{verified}", verifiedOf(e))}</span>}</span> : c.glance.labels.notStated}</dd>
+                  {valueOf(e) && <><dt style={lbl}>{c.glance.labels.value.split(":")[0]}</dt><dd style={`color:${txt};`}><strong style={`font-family:${UDC}; font-weight:700;`}>{valueOf(e)}</strong><span style={`color:${mut};`}> {c.glance.labels.value}</span></dd></>}
                   <dt style={lbl}>{c.glance.labels.buy}</dt><dd style={`color:${txt};`}>{buyLabel(ev)}</dd>
                   <dt style={lbl}>{c.glance.labels.cost}</dt><dd style={`color:${txt};`}>{costLine(ev)}</dd>
                   <dt style={lbl}>{c.glance.labels.days}</dt><dd style={`color:${txt};`}>{ev.days === "not stated" ? c.glance.labels.notStated : ev.days}</dd>
@@ -233,8 +240,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
           <table class="w-full" style={`font-family:${SG}; font-size:.98rem; border-collapse:collapse;`}>
             <thead>
               <tr style={`background-color:rgba(27,66,41,.05);`}>
-                {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.price, c.table.cols.buy, c.glance.labels.cost, c.table.cols.days, c.table.cols.score].map((h, i) => (
-                  <th class={`px-4 py-3 ${i === 1 || i === 2 || i === 8 ? "text-right" : "text-left"}`} style={`${eyebrowSm} font-size:.7rem; color:${onCream(0.6)}; border-bottom:1px solid ${onCream(0.18)};`}>{h}</th>
+                {[c.table.cols.oil, c.table.cols.compounds, c.table.cols.total, c.table.cols.method, c.table.cols.price, c.table.cols.value, c.table.cols.buy, c.glance.labels.cost, c.table.cols.days, c.table.cols.score].map((h, i) => (
+                  <th class={`px-4 py-3 ${i === 1 || i === 2 || i === 5 || i === 9 ? "text-right" : "text-left"}`} style={`${eyebrowSm} font-size:.7rem; color:${onCream(0.6)}; border-bottom:1px solid ${onCream(0.18)};`}>{h}</th>
                 ))}
               </tr>
             </thead>
@@ -246,8 +253,9 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     <td class="px-4 py-3"><span style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{e.brand}</span><span style={`color:${onCream(0.7)};`}> {e.oil}</span></td>
                     <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; color:${GREEN};`}>{e.compounds !== null ? num(e.compounds) : <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; color:${onCream(0.8)};`}>{num(e.total)}</td>
-                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onCream(0.8)};`}>{e.method}</td>
+                    <td class="px-4 py-3 whitespace-nowrap" style={`color:${onCream(0.8)};`}>{methodOf(e)}</td>
                     <td class="px-4 py-3" style={`color:${GREEN};`}>{priceOf(e) || <span style={`color:${onCream(0.35)};`}>–</span>}</td>
+                    <td class="px-4 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{valueOf(e) || <span style={`color:${onCream(0.35)}; font-weight:400;`}>–</span>}</td>
                     <td class="px-4 py-3" style={`color:${GREEN};`}>
                       {buyLabel(ev)}
                       {src.href && <a href={src.href} class="ml-1 underline" style={`color:${onCream(0.55)}; font-size:.85rem;`} rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"} title={src.quote}>{src.label}</a>}
@@ -308,7 +316,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                 <div class="grid gap-4 content-start">
                   {per.forWho && <div><p class="mb-1" style={`${eyebrowSm} font-size:.7rem; color:${onGreen(0.6)};`}>{c.oils.labels.forWho}</p><p style={`${small} color:${onGreen(0.88)};`}>{per.forWho}</p></div>}
                   <div><p class="mb-1" style={`${eyebrowSm} font-size:.7rem; color:${onGreen(0.6)};`}>{c.oils.labels.buy}</p><p style={`${small} color:${onGreen(0.88)};`}>{buyLabel(ev)}{ev.days !== "not stated" ? `, ${ev.days}` : ""}</p></div>
-                  <div><p class="mb-1" style={`${eyebrowSm} font-size:.7rem; color:${onGreen(0.6)};`}>{c.oils.labels.price}</p><p style={`${small} color:${onGreen(0.88)};`}>{priceOf(e) || c.oils.labels.priceOnSite}{!mine && priceOf(e) && <span class="block" style={`font-size:.85rem; color:${onGreen(0.55)};`}>{c.glance.labels.priceNote.replace("{verified}", verifiedOf(e))}</span>}</p></div>
+                  <div><p class="mb-1" style={`${eyebrowSm} font-size:.7rem; color:${onGreen(0.6)};`}>{c.oils.labels.price}</p><p style={`${small} color:${onGreen(0.88)};`}>{priceOf(e) || c.oils.labels.priceOnSite}{!mine && priceOf(e) && <span class="block" style={`font-size:.85rem; color:${onGreen(0.55)};`}>{c.glance.labels.priceNote.replace("{verified}", verifiedOf(e))}</span>}{valueOf(e) && <span class="block mt-1" style={`color:${LIME};`}>{valueOf(e)} <span style={`font-size:.85rem; color:${onGreen(0.55)};`}>{c.glance.labels.value}</span></span>}</p></div>
                   <div><p class="mb-1" style={`${eyebrowSm} font-size:.7rem; color:${onGreen(0.6)};`}>{c.oils.labels.source}</p><p style={`${small} color:${onGreen(0.88)};`}><a href={src.href} class="underline" rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"}>{src.label}</a>{src.quote && <span class="block mt-1" style={`font-size:.85rem; color:${onGreen(0.55)};`}>“{src.quote}”</span>}</p></div>
                 </div>
               </article>

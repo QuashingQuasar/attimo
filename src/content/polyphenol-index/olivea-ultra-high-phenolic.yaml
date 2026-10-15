@@ -21,6 +21,10 @@ report:
   label: Both certificates on a dedicated lab results page
 source_url: https://www.myolivea.com
 price: "$45 / 500ml"
+price_amount: 45
+price_currency: USD
+price_ml: 500
+regions: [US]
 availability: null
 note: The most instructive entry on the page. The same oil, analysed by both method families, both documents published. The totals land 20% apart. If you read one entry to understand why cross-method comparison needs care, read this one.
 also: null

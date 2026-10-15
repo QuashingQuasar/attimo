@@ -1,0 +1,30 @@
+id: olive-oil-club-picholine
+brand: Olive Oil Club
+oil: Picholine
+variety: Picholine
+origin: Tunisia, pressed by Adonis Olive Oil; sold from Ede, Netherlands
+country: Netherlands
+harvest: "2025/26"
+harvest_note: analysed March 2026
+method: NMR
+lab: World Olive Center for Health / University of Athens
+total: 1704
+total_secondary: null
+oleocanthal: 346
+oleacein: 336
+compounds_printed: 682
+report:
+  status: viewable
+  url: https://www.oliveoilclub.nl/s/Picholine-2025-2026-polyphenol-lab-analysis.pdf
+  label: NMR certificate PDF
+source_url: https://www.oliveoilclub.nl/ouroliveoils/picholene
+price: "€19.50 / 250ml (€29.50 per 500ml)"
+price_amount: 19.5
+price_currency: EUR
+price_ml: 250
+regions: [EU]
+availability: sold out
+note: A Dutch seller publishing the full certificate for a Tunisian Picholine. The two compounds sit at roughly 40% of a four-figure total; a Koroneiki from the same source reads 142 and 148.
+also: null
+attimo_certificate: null
+verified: "2026-10"

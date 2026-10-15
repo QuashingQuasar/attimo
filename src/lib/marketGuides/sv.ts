@@ -18,6 +18,9 @@ export const SV_SHIPPING: Record<string, ShipEvidence> = {
   "oleum-crete-koroneiki": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "Free delivery on all UAE orders.", source_url: "https://oleumcrete.ae/policies/shipping-policy", checked: "2026-10-13", notes: "Endast Förenade Arabemiraten" },
   "sakellaropoulos-fyllikon": { ships: "not stated", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "", source_url: "https://www.bioarmonia.gr/products", checked: "2026-10-13", notes: "Endast telefonbeställning i Grekland" },
   "the-governor-limited": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "We ship to England, Wales, Scotland, Northern Ireland, Guernsey, Jersey, and the Isle of Man.", source_url: "https://thegovernorevoo.co.uk/pages/shipping-policy", checked: "2026-10-13", notes: "Endast Storbritannien" },
+  "olive-oil-club-picholine": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", free_from: "€100", quote: "We ship all over Europe - Free delivery above €100", source_url: "https://oliveoilclub.myshopify.com/", checked: "2026-10-15", notes: "Skickar till hela Europa, fri frakt från 100 €; kostnad under beloppet och leveranstid anges inte; slutsåld den 15 oktober 2026" },
+  "deliba-ottobratico": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", quote: "Orders to supported destinations in Europe and the United Kingdom are fulfilled from Italy", source_url: "https://delibaoliveoil.com/policies/shipping-policy", checked: "2026-10-15", notes: "Levererar till Europa från Italien; länder, kostnad och leveranstid visas först i kassan; slutsåld den 15 oktober 2026" },
+  "oleaphen-high-phenolic": { ships: "not stated", basis: "none", route: "none", days: "not stated", quote: "UK orders go through Oleaphen's UK partner at highphenolic.co.uk.", source_url: "https://www.highphenolic.com/buy-high-phenolic-olive-oil", checked: "2026-10-15", notes: "Ingen fraktinformation på webbplatsen; bara en brittisk partner för Storbritannien" },
 };
 
 export const sv: MarketGuideContent = {
@@ -48,7 +51,7 @@ export const sv: MarketGuideContent = {
     introPre: "Endast oljor med ett publicerat polyfenolvärde, i samma ordning som i ",
     introLink: "Polyfenolindex",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Belgiskt märke · även Nocellara och Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Mätt med", methodLink: "vad betyder det?", compounds: "Oleocanthal + oleacein", total: "Totala polyfenoler", buy: "Köp", cost: "Frakt", days: "Leverans", source: "Källa", notStated: "ej angivet", attimoAlso: "Även {nocellara} och {picual}" },
+    labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgiskt märke · även Nocellara och Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Mätt med", methodLink: "vad betyder det?", compounds: "Oleocanthal + oleacein", total: "Totala polyfenoler", buy: "Köp", cost: "Frakt", days: "Leverans", source: "Källa", notStated: "ej angivet", attimoAlso: "Även {nocellara} och {picual}" },
   },
   criteria: {
     eyebrow: "Vad du bör kontrollera",
@@ -65,7 +68,7 @@ export const sv: MarketGuideContent = {
     eyebrow: "Jämförelse",
     h2: "Alla tillgängliga oljor jämförda",
     intro: "Samma oljor, poängsatta på de fyra kriterierna ovan. Två kolumner för polyfenolvärdet: de två viktigaste ämnena för sig, och totalen så som producenten publicerar den.",
-    cols: { oil: "Olja", compounds: "Oleocanthal + oleacein", total: "Totalt", method: "Metod", price: "Pris", buy: "Så köper du i Sverige", days: "Leverans", score: "Poäng" },
+    cols: { oil: "Olja", compounds: "Oleocanthal + oleacein", total: "Totalt", method: "Metod", price: "Pris", value: "Värde", buy: "Så köper du i Sverige", days: "Leverans", score: "Poäng" },
     buy: { webshop: "Webbshop, skickar till Sverige", webshopEu: "Webbshop, skickar inom hela EU", webshopWorld: "Webbshop, skickar internationellt", retailer: "Via en butik", distributor: "Via en distributör", request: "På förfrågan" },
     footnote: "mg/kg. Fraktuppgifter lästa på varje säljares webbplats {checked}; meningen finns bakom källänken. Polyfenolvärdena kommer från Polyfenolindex, där varje värde länkar till sin rapport. Priserna är producentens, lästa {verified}.",
     links: {

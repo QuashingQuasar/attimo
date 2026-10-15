@@ -18,6 +18,9 @@ export const BE_FR_SHIPPING: Record<string, ShipEvidence> = {
   "rapunzel-polyphenolia": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "Lieferung ausschließlich innerhalb Deutschlands und nach Österreich", source_url: "https://shop.rapunzel.de/versand-und-zahlungsbedingungen/", checked: "2026-10-13", notes: "Allemagne et Autriche uniquement" },
   "sakellaropoulos-fyllikon": { ships: "not stated", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "", source_url: "https://www.bioarmonia.gr/products", checked: "2026-10-13", notes: "Commande par téléphone en Grèce uniquement" },
   "the-governor-limited": { ships: "no", basis: "none", route: "none", days: "not stated", cost: "not stated", quote: "We ship to England, Wales, Scotland, Northern Ireland, Guernsey, Jersey, and the Isle of Man.", source_url: "https://thegovernorevoo.co.uk/pages/shipping-policy", checked: "2026-10-13", notes: "Royaume-Uni uniquement" },
+  "olive-oil-club-picholine": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", free_from: "€100", quote: "We ship all over Europe - Free delivery above €100", source_url: "https://oliveoilclub.myshopify.com/", checked: "2026-10-15", notes: "Expédie dans toute l'Europe, livraison offerte dès 100 € ; frais en dessous et délai non indiqués ; épuisé au 15 octobre 2026" },
+  "deliba-ottobratico": { ships: "yes", basis: "EU-wide statement", route: "webshop", days: "not stated", cost: "not stated", quote: "Orders to supported destinations in Europe and the United Kingdom are fulfilled from Italy", source_url: "https://delibaoliveoil.com/policies/shipping-policy", checked: "2026-10-15", notes: "Livre en Europe depuis l'Italie ; pays, frais et délai visibles seulement au paiement ; épuisé au 15 octobre 2026" },
+  "oleaphen-high-phenolic": { ships: "not stated", basis: "none", route: "none", days: "not stated", quote: "UK orders go through Oleaphen's UK partner at highphenolic.co.uk.", source_url: "https://www.highphenolic.com/buy-high-phenolic-olive-oil", checked: "2026-10-15", notes: "Aucune information d'expédition sur le site ; seulement un partenaire britannique pour le Royaume-Uni" },
 };
 
 export const beFr: MarketGuideContent = {
@@ -26,7 +29,7 @@ export const beFr: MarketGuideContent = {
   market: "Belgique",
   country: "Belgium",
   daysUnit: "jours ouvrables",
-  siblings: [{ href: "/nl/polyfenolrijke-olijfolie-kopen-belgie", label: "In het Nederlands →" }],
+  siblings: [{ href: "/nl/polyfenolrijke-olijfolie-kopen-belgie", label: "In het Nederlands →" }, { href: "/fr/huile-olive-riche-polyphenols-acheter-france", label: "Vous achetez en France ? Voir le guide français →" }],
   hreflangs: [{ hreflang: "nl-BE", href: "https://attimo-oil.com/nl/polyfenolrijke-olijfolie-kopen-belgie" }, { hreflang: "fr-BE", href: "https://attimo-oil.com/fr/huile-olive-riche-polyphenols-acheter-belgique" }],
   updated: "13 octobre 2026",
   meta: {
@@ -49,7 +52,7 @@ export const beFr: MarketGuideContent = {
     introPre: "Uniquement les huiles avec un taux de polyphénols publié, dans l'ordre de l'",
     introLink: "Index des polyphénols",
     introPost: ".",
-    labels: { attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
+    labels: { value: "€ pour 100 mg d'oléocanthal + oléacéine", attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
   },
   criteria: {
     eyebrow: "Ce qu'il faut vérifier",
@@ -66,7 +69,7 @@ export const beFr: MarketGuideContent = {
     eyebrow: "Comparatif",
     h2: "Toutes les huiles disponibles, comparées",
     intro: "Les mêmes huiles, notées sur les quatre critères ci-dessus. Deux colonnes pour le taux de polyphénols : les deux composés principaux à part, et le total tel que le producteur le publie.",
-    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", buy: "Comment acheter en Belgique", days: "Livraison", score: "Score" },
+    cols: { oil: "Huile", compounds: "Oléocanthal + oléacéine", total: "Total", method: "Méthode", price: "Prix", value: "Rapport", buy: "Comment acheter en Belgique", days: "Livraison", score: "Score" },
     buy: { webshop: "Boutique en ligne, livre en Belgique", webshopEu: "Boutique en ligne, livre dans toute l'UE", webshopWorld: "Boutique en ligne, livre à l'international", retailer: "Via un magasin", distributor: "Via un distributeur", request: "Sur demande" },
     footnote: "mg/kg. Informations de livraison lues sur le site de chaque vendeur le {checked} ; la phrase se trouve derrière le lien source. Les taux de polyphénols viennent de l'Index des polyphénols, où chaque chiffre renvoie à son rapport. Les prix sont ceux du producteur, relevés en {verified}.",
     links: {

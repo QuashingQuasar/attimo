@@ -21,6 +21,10 @@ report:
   label: Figures and methods named in product copy only
 source_url: https://www.pjkabos.gr
 price: "€59.83 / 500ml"
+price_amount: 59.83
+price_currency: EUR
+price_ml: 500
+regions: [EU, UK]
 availability: sold out
 note: The other dual-method publisher, 48% apart on the same oil, with no document and no compounds behind either figure.
 also: null

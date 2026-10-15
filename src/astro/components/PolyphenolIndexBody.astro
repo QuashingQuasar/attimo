@@ -5,11 +5,12 @@
 // through `content`. Charts and the matrix are built from the same data, so
 // nothing on the page is a picture of a number.
 import { Header } from "@/components/Header";
+import PolyphenolIndexExplorer from "@/components/PolyphenolIndexExplorer";
 import { FAQ } from "@/components/FAQ";
 import Footer from "@astro/components/Footer.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { GREEN, DEEP, CREAM, ACCENT, UDC, SG, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream, cardOnGreen } from "@/lib/certificates/ui";
-import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, type IndexEntry } from "@/lib/polyphenolIndex";
+import { verifiedFor, INDEX_NEXT, INDEX_JSON_PATH, FX, type IndexEntry } from "@/lib/polyphenolIndex";
 import type { IndexContent } from "@/lib/polyphenolIndexContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -32,7 +33,8 @@ const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 const ext = (e: IndexEntry) => (isMine(e) ? {} : { rel: "nofollow noopener", target: "_blank" });
 const reportHref = (e: IndexEntry) => (isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref);
-const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : e.method);
+const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
+const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : METHOD_LABEL[e.method] ?? e.method);
 const note = (e: IndexEntry) => c.entryNotes[e.id] ?? e.note;
 const fill = (s: string, vars: Record<string, string | number>) =>
   Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(String(v)), s);
@@ -40,6 +42,7 @@ const fill = (s: string, vars: Record<string, string | number>) =>
 // Thousands separator by market: a comma is a DECIMAL separator in de/nl/da/sv/fr.
 const GROUP: Record<string, string> = { en: ",", de: ".", nl: ".", da: ".", sv: " ", fr: " " };
 const sep = GROUP[c.lang] ?? ",";
+const eur = (v: number) => `€${v.toFixed(2).replace(".", c.lang === "en" ? "." : ",")}`;
 const num = (n: number) => (n >= 1000 ? `${String(n).slice(0, -3)}${sep}${String(n).slice(-3)}` : String(n));
 
 const hubHref = HUB_SLUGS[c.lang as keyof typeof HUB_SLUGS] ?? HUB_SLUGS.en;
@@ -157,7 +160,7 @@ const pairMax = 1473;
                   </div>
                   <div class="grid grid-cols-[1fr_7.5rem] items-center gap-3 min-w-0">
                     <div class="min-w-0"><div class="h-9 rounded-md" style={`width:${(((e.compounds ?? 0) / maxCompounds) * 100).toFixed(1)}%; background-color:${isMine(e) ? ACCENT : "rgba(255,250,234,.82)"};`}></div></div>
-                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; line-height:1.1;`}>{num(e.compounds!)}<span style={`display:block; font-family:${SG}; font-weight:400; font-size:.72rem; color:${onGreen(0.6)};`}>{c.method.chartTotal} {num(e.total!)} {e.method}</span></p>
+                    <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; line-height:1.1;`}>{num(e.compounds!)}<span style={`display:block; font-family:${SG}; font-weight:400; font-size:.72rem; color:${onGreen(0.6)};`}>{c.method.chartTotal} {num(e.total!)} {methodLabel(e)}</span></p>
                   </div>
                 </div>
               ))}
@@ -205,6 +208,8 @@ const pairMax = 1473;
                   [fill(c.index.total, { method: methodLabel(e) }), e.total === null ? "—" : `${num(e.total)} mg/kg`, e.total_secondary ? fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method }) : null, true],
                   [c.index.harvest, e.harvest, e.harvest_note, true],
                   [c.index.price, e.price ?? c.index.notListed, e.availability, false],
+                  [c.value.cardLabel, e.value_per_100mg === null ? "—" : eur(e.value_per_100mg), null, true],
+                  [c.explorer.available, e.regions.length ? e.regions.map((r) => ({ EU: c.explorer.eu, UK: c.explorer.uk, US: c.explorer.us })[r]).join(", ") : c.explorer.notStated, null, false],
                   [c.index.labReport, null, e.report.label, false],
                 ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc]) => (
                   <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
@@ -258,38 +263,19 @@ const pairMax = 1473;
 
     <!-- ═══ FULL INDEX TABLE ═══ -->
     <section id="full-index" class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10">
           <h2 style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
           <p style={`${eyebrowSm} color:${onCream(0.55)};`}>{fill(c.table.lastUpdated, { verified: INDEX_VERIFIED })}</p>
         </div>
-        <div class="rounded-2xl overflow-x-auto" style={`background-color:#fff; border:1px solid rgba(27,66,41,.18);`}>
-          <table class="w-full border-collapse" style={`font-family:${SG}; font-size:.95rem; min-width:820px;`}>
-            <thead>
-              <tr style={`background-color:${GREEN}; color:${CREAM};`}>
-                {c.table.cols.map((th) => (
-                  <th class="text-left p-4" style={`font-family:${UDC}; font-weight:700; font-size:.85rem; white-space:nowrap;`}>{th}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {all.map((e, i) => (
-                <tr style={`border-top:1px solid rgba(27,66,41,.12); ${e.rank === null && i === ranked.length ? "border-top:2px dashed #1B4229;" : ""} ${isMine(e) ? "background-color:rgba(205,219,45,.18);" : ""}`}>
-                  <td class="p-4" style={`font-family:${UDC}; color:${onCream(0.6)};`}>{e.rank ?? "—"}</td>
-                  <td class="p-4 font-semibold"><a href={e.source_url} class="underline underline-offset-4 decoration-[rgba(27,66,41,.35)]" {...ext(e)}>{e.brand}</a> · {e.oil}</td>
-                  <td class="p-4 font-semibold">{e.compounds === null ? <span style="opacity:.5;">{c.table.notPublished}</span> : num(e.compounds)}</td>
-                  <td class="p-4">{e.total === null ? "—" : num(e.total)}{e.total_secondary && <span style="opacity:.7;"> / {num(e.total_secondary.value)}</span>}</td>
-                  <td class="p-4" style="white-space:nowrap;">{e.method}{e.total_secondary && <span style="opacity:.7;"> / {e.total_secondary.method}</span>}</td>
-                  <td class="p-4" style="white-space:nowrap;">{e.harvest}</td>
-                  <td class="p-4"><a href={reportHref(e)} class="underline underline-offset-4" {...ext(e)}>{e.report.status === "viewable" ? c.table.viewable : c.table.none}</a></td>
-                  <td class="p-4" style="min-width:12rem;">{e.price ?? c.table.notListed}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <PolyphenolIndexExplorer
+          client:load
+          lang={c.lang}
+          labels={{ cols: c.table.cols, valueCol: c.value.col, notPublished: c.table.notPublished, viewable: c.table.viewable, none: c.table.none, notListed: c.table.notListed, search: c.explorer.search, origin: c.explorer.origin, availability: c.explorer.availability, price: c.explorer.price, eu: c.explorer.eu, uk: c.explorer.uk, us: c.explorer.us, noneRegion: c.explorer.none, all: c.explorer.all, bands: c.explorer.bands, showing: c.explorer.showing, reset: c.explorer.reset, sortHint: c.explorer.sortHint, available: c.explorer.available }}
+          rows={all.map((e) => ({ id: e.id, rank: e.rank, brand: e.brand, oil: e.oil, country: e.country, variety: e.variety, compounds: e.compounds, total: e.total, method: methodLabel(e), harvest: e.harvest, reportHref: reportHref(e), reportViewable: e.report.status === "viewable", sourceUrl: e.source_url, price: e.price, priceEur500: e.price_eur_500ml, value: e.value_per_100mg, regions: e.regions, mine: isMine(e) }))}
+        />
         <p class="mt-5" style={`${small} font-size:.9rem; color:${onCream(0.6)};`}>
-          {fill(c.table.footnotePre, { verified: INDEX_VERIFIED })} <a href={INDEX_JSON_PATH} class="underline">{INDEX_JSON_PATH}</a>{c.table.footnotePost}
+          {fill(c.table.footnotePre, { verified: INDEX_VERIFIED })} <a href={INDEX_JSON_PATH} class="underline">{INDEX_JSON_PATH}</a>{c.table.footnotePost} {fill(c.value.note, { fx: FX.date })}
         </p>
       </div>
     </section>
