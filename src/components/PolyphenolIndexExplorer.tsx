@@ -31,6 +31,7 @@ export default function PolyphenolIndexExplorer({ rows, labels: L, lang }: { row
 
   const countries = useMemo(() => [...new Set(rows.map((r) => r.country))].sort(), [rows]);
   const regionLabel: Record<string, string> = { EU: L.eu, UK: L.uk, US: L.us };
+  const regionShort: Record<string, string> = { EU: L.eu, UK: "UK", US: "US" };
   const bandOf = (r: ExplorerRow) => (r.priceEur500 === null ? 3 : r.priceEur500 < 25 ? 0 : r.priceEur500 <= 50 ? 1 : 2);
 
   const shown = useMemo(() => {
@@ -64,7 +65,7 @@ export default function PolyphenolIndexExplorer({ rows, labels: L, lang }: { row
     </div>
   );
   const th = (text: string, key?: SortKey, right = false) => (
-    <th key={text} className={`p-4 ${right ? "text-right" : "text-left"}`} style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".85rem", whiteSpace: "nowrap", cursor: key ? "pointer" : "default", userSelect: "none" }}
+    <th key={text} className={`px-3 py-3 align-bottom ${right ? "text-right" : "text-left"}`} style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".8rem", lineHeight: 1.15, cursor: key ? "pointer" : "default", userSelect: "none" }}
       onClick={key ? () => setSort((s) => ({ key, dir: s.key === key ? (s.dir === 1 ? -1 : 1) : -1 })) : undefined}>
       {text}{key && sort.key === key ? (sort.dir === -1 ? " ↓" : " ↑") : ""}
     </th>
@@ -86,25 +87,31 @@ export default function PolyphenolIndexExplorer({ rows, labels: L, lang }: { row
       </div>
 
       <div className="rounded-2xl overflow-x-auto" style={{ backgroundColor: "#fff", border: "1px solid rgba(27,66,41,.18)" }}>
-        <table className="w-full border-collapse" style={{ fontFamily: SG, fontSize: ".95rem", minWidth: 900 }}>
+        <table className="w-full border-collapse" style={{ fontFamily: SG, fontSize: ".92rem" }}>
           <thead>
             <tr style={{ backgroundColor: GREEN, color: CREAM }}>
-              {th(L.cols[0], "rank")}{th(L.cols[1])}{th(L.cols[2], "compounds", true)}{th(L.cols[3], "total", true)}{th(L.cols[4])}{th(L.cols[5])}{th(L.cols[6])}{th(L.available)}{th(L.cols[7], "priceEur500")}{th(L.valueCol, "value", true)}
+              {th(L.cols[0], "rank")}{th(L.cols[1])}{th(L.cols[2], "compounds", true)}{th(L.cols[3], "total", true)}{th(L.cols[4])}{th(L.available)}{th(L.cols[7], "priceEur500", true)}{th(L.valueCol, "value", true)}
             </tr>
           </thead>
           <tbody>
             {shown.map((r) => (
               <tr key={r.id} style={{ borderTop: "1px solid rgba(27,66,41,.12)", backgroundColor: r.mine ? "rgba(205,219,45,.18)" : undefined }}>
-                <td className="p-4" style={{ fontFamily: UDC, color: "rgba(27,66,41,.6)" }}>{r.rank ?? "—"}</td>
-                <td className="p-4 font-semibold"><a href={r.sourceUrl} className="underline underline-offset-4" style={{ textDecorationColor: "rgba(27,66,41,.35)" }} rel={r.mine ? undefined : "nofollow noopener"} target={r.mine ? undefined : "_blank"}>{r.brand}</a> · {r.oil}<span className="block" style={{ fontSize: ".82rem", color: "rgba(27,66,41,.6)", fontWeight: 400 }}>{r.country}</span></td>
-                <td className="p-4 font-semibold text-right">{r.compounds === null ? <span style={{ opacity: .5 }}>{L.notPublished}</span> : fmt(r.compounds, lang)}</td>
-                <td className="p-4 text-right">{r.total === null ? "—" : fmt(r.total, lang)}</td>
-                <td className="p-4" style={{ whiteSpace: "nowrap" }}>{r.method}</td>
-                <td className="p-4" style={{ whiteSpace: "nowrap" }}>{r.harvest}</td>
-                <td className="p-4"><a href={r.reportHref} className="underline underline-offset-4" rel={r.mine ? undefined : "nofollow noopener"} target={r.mine ? undefined : "_blank"}>{r.reportViewable ? L.viewable : L.none}</a></td>
-                <td className="p-4" style={{ whiteSpace: "nowrap" }}>{r.regions.length ? r.regions.map((x) => regionLabel[x]).join(", ") : <span style={{ opacity: .5 }}>{L.noneRegion}</span>}</td>
-                <td className="p-4" style={{ minWidth: "11rem" }}>{r.price ?? L.notListed}{r.priceEur500 !== null && <span className="block" style={{ fontSize: ".82rem", color: "rgba(27,66,41,.6)" }}>{eur(r.priceEur500, lang)} / 500 ml</span>}</td>
-                <td className="p-4 font-semibold text-right" style={{ whiteSpace: "nowrap" }}>{r.value === null ? <span style={{ opacity: .5 }}>—</span> : eur(r.value, lang)}</td>
+                <td className="px-3 py-3" style={{ fontFamily: UDC, color: "rgba(27,66,41,.6)" }}>{r.rank ?? "—"}</td>
+                <td className="px-3 py-3 font-semibold">
+                  <a href={r.sourceUrl} className="underline underline-offset-4" style={{ textDecorationColor: "rgba(27,66,41,.35)" }} rel={r.mine ? undefined : "nofollow noopener"} target={r.mine ? undefined : "_blank"}>{r.brand}</a> · {r.oil}
+                  <span className="block" style={{ fontSize: ".8rem", color: "rgba(27,66,41,.6)", fontWeight: 400 }}>
+                    {r.country} · {r.harvest} · <a href={r.reportHref} className="underline underline-offset-2" rel={r.mine ? undefined : "nofollow noopener"} target={r.mine ? undefined : "_blank"}>{r.reportViewable ? L.viewable : L.none}</a>
+                  </span>
+                </td>
+                <td className="px-3 py-3 font-semibold text-right">{r.compounds === null ? <span style={{ opacity: .5, fontWeight: 400 }}>{L.notPublished}</span> : fmt(r.compounds, lang)}</td>
+                <td className="px-3 py-3 text-right">{r.total === null ? "—" : fmt(r.total, lang)}</td>
+                <td className="px-3 py-3">{r.method}</td>
+                <td className="px-3 py-3">{r.regions.length ? r.regions.map((x) => regionShort[x]).join(", ") : <span style={{ opacity: .5 }}>{L.noneRegion}</span>}</td>
+                <td className="px-3 py-3 text-right" style={{ whiteSpace: "nowrap" }}>
+                  {r.priceEur500 !== null ? <span className="font-semibold">{eur(r.priceEur500, lang)}</span> : <span style={{ opacity: .5 }}>{L.notListed}</span>}
+                  {r.price && <span className="block" style={{ fontSize: ".78rem", color: "rgba(27,66,41,.6)", whiteSpace: "normal", maxWidth: "11rem", marginLeft: "auto" }}>{r.price}</span>}
+                </td>
+                <td className="px-3 py-3 font-semibold text-right" style={{ whiteSpace: "nowrap" }}>{r.value === null ? <span style={{ opacity: .5, fontWeight: 400 }}>—</span> : eur(r.value, lang)}</td>
               </tr>
             ))}
           </tbody>
