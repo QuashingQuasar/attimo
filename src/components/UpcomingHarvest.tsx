@@ -21,7 +21,7 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
   const t = getDict(locale);
   const u = t.upcoming;
   const current = HARVEST_STATUS.currentStep;
-  const updated = new Intl.DateTimeFormat(locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
+  const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const note = u.note.replace("{date}", updated);
   const oils = [
     { key: "coratina", name: "Coratina", detail: "d'Italia", image: coratina, tag: u.returning, line: u.oils.coratina, isNew: false },
