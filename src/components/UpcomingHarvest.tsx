@@ -1,6 +1,7 @@
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { HARVEST_STATUS } from "@/lib/harvestStatus";
 import coratina from "@/assets/bottle-coratina-cutout.png?url";
 import picual from "@/assets/bottle-picual-cutout.png?url";
 import nocellara from "@/assets/bottle-nocellara-cutout.png?url";
@@ -19,6 +20,9 @@ const BEVERLY = "'Beverly Drive', serif";
 export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) => {
   const t = getDict(locale);
   const u = t.upcoming;
+  const current = HARVEST_STATUS.currentStep;
+  const updated = new Intl.DateTimeFormat(locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
+  const note = u.note.replace("{date}", updated);
   const oils = [
     { key: "coratina", name: "Coratina", detail: "d'Italia", image: coratina, tag: u.returning, line: u.oils.coratina, isNew: false },
     { key: "peranzana", name: "Peranzana", detail: "Bio", image: nocellara, tag: u.new, line: u.oils.peranzana, isNew: true },
@@ -50,15 +54,15 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
         <ol className="flex flex-wrap justify-center gap-x-7 gap-y-3 mb-3">
           {u.steps.map((s, i) => (
             <li key={s.label} className="inline-flex items-center gap-2.5">
-              <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ backgroundColor: i === 0 ? ACCENT : "transparent", border: `1.5px solid ${i === 0 ? ACCENT : "rgba(255,250,234,.45)"}` }}>
-                {i === 0 && <span className="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={{ backgroundColor: ACCENT, animationDuration: "2.4s" }} />}
+              <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ backgroundColor: i === current ? ACCENT : i < current ? "rgba(255,250,234,.55)" : "transparent", border: `1.5px solid ${i === current ? ACCENT : i < current ? "rgba(255,250,234,.55)" : "rgba(255,250,234,.45)"}` }}>
+                {i === current && <span className="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={{ backgroundColor: ACCENT, animationDuration: "2.4s" }} />}
               </span>
-              <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".92rem", letterSpacing: ".08em", textTransform: "uppercase", color: i === 0 ? ACCENT : "rgba(255,250,234,.85)" }}>{s.label}</span>
+              <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".92rem", letterSpacing: ".08em", textTransform: "uppercase", color: i === current ? ACCENT : "rgba(255,250,234,.85)" }}>{s.label}</span>
               <span style={{ fontFamily: SG, fontSize: ".95rem", color: "rgba(255,250,234,.6)" }}>{s.when}</span>
             </li>
           ))}
         </ol>
-        <p className="text-center mb-12 md:mb-14" style={{ fontFamily: SG, fontSize: ".9rem", color: "rgba(255,250,234,.5)" }}>{u.note}</p>
+        <p className="text-center mb-12 md:mb-14" style={{ fontFamily: SG, fontSize: ".9rem", color: "rgba(255,250,234,.5)" }}>{note}</p>
 
         <div className="text-center">
           <HarvestSignup locale={locale} line={u.formLine} />

@@ -124,11 +124,11 @@ export const en = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Fresh harvest olive oil arrives end of October. Sign up and get it straight off the mill.",
+      line: "The 26/27 harvest is being pressed in Puglia. Pre-orders open in early November. Sign up to hear first.",
       placeholder: "Your email address",
       button: "Get it first",
       secondary: "Last Season Sale on the 25/26 harvest →",
-      success: "You're on the list. First email when the new oil is pressed.",
+      success: "You're on the list. First email when pre-orders open.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
     // Rotating ticker badges along the bottom of the hero.
@@ -144,21 +144,25 @@ export const en = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Harvest 26/27 · end of October",
+    eyebrow: "Harvest 26/27 · pressing now",
     heading: "The next harvest",
-    intro: "Three fresh oils, picked green in October and pressed within hours. Two you know, one new.",
-    formLine: "Sign up and get it straight off the mill.",
+    intro: "Three oils, picked green and pressed within hours. Two you know, one new. This is where it stands.",
+    formLine: "Sign up and hear first when pre-orders open.",
     returning: "Returning",
     new: "New · organic",
-    oils: { coratina: "Bold & punchy. 847 mg/kg polyphenols last harvest.", peranzana: "The gentle one of the three. Takes Nocellara's place.", picual: "Green & grassy. Early harvest from Jaén." },
+    oils: {
+      coratina: "Bold and peppery. 847 mg/kg polyphenols last season. In 500 ml and, new, a 3 L box.",
+      peranzana: "Gentle and very fruity. Takes Nocellara's place in the range.",
+      picual: "Green and grassy. Early harvest from Spain.",
+    },
     steps: [
-      { label: "Picking", when: "mid-October" },
       { label: "Pressing", when: "end of October" },
-      { label: "Lab tests", when: "after pressing" },
-      { label: "Bottling", when: "after the lab" },
-      { label: "Shipping", when: "to the list first" },
+      { label: "Lab analysis", when: "early November" },
+      { label: "Pre-orders open", when: "early to mid November" },
+      { label: "Bottling", when: "mid-November" },
+      { label: "Shipping", when: "late November" },
     ],
-    note: "Dates are the producers' estimates. Weather moves them.",
+    note: "Dates are estimates. We update this as the oil moves. Last updated {date}.",
   },
 
   oilCollection: {
