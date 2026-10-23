@@ -63,6 +63,8 @@ export const nl: IndexContent = {
     footnotePre: "Cijfers geverifieerd op de eigen pagina's van de producenten in {verified}. Machineleesbare kopie op",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Waarde: € per 100 mg oleocanthal + oleaceïne", note: "Waarde: de prijs gedeeld door de milligrammen oleocanthal + oleaceïne in de fles (getal × inhoud × 0,916 kg/l), in euro per 100 mg. Andere valuta omgerekend tegen de ECB-koers van {fx}." },
+  explorer: { search: "Zoek op merk, olie of land", origin: "Herkomst", availability: "Verkrijgbaar in", price: "Prijs per 500 ml", eu: "Europa", uk: "Verenigd Koninkrijk", us: "Verenigde Staten", none: "Niet vermeld", all: "Alle", bands: ["Onder €25", "€25 tot €50", "Boven €50", "Niet vermeld"], showing: "{n} van {total} oliën", reset: "Wissen", sortHint: "Klik op een kolom om te sorteren", available: "Verkrijgbaar in", notStated: "niet vermeld" },
   totals: {
     eyebrow: "Waarom de totalen verschillen",
     h2: "Totale polyfenolen zijn minstens drie metingen",
@@ -102,7 +104,7 @@ export const nl: IndexContent = {
   faq: {
     heading: "Vragen over de index",
     items: [
-      { question: "Welke olijfolie heeft het hoogste polyfenolgehalte?", answer: "Over labmethoden heen is geen eenduidig antwoord mogelijk, en daarom rangschikt deze index op gedocumenteerde stoffen. Laconiko ZOI leidt met 1.196 mg/kg oleocanthal + oleaceïne (waarvan 1.000 oleocanthal), gevolgd door The Governor Limited (875) en ATTIMO Coratina (807). De grootste gepubliceerde totalen zijn de 2.000 van Pamako en de 1.825 van Sakellaropoulos Fyllikon, beide NMR-cijfers. Hogere totalen bestaan in awardregisters, tot 3.400 mg/kg, maar hun producenten publiceren zelf niets." },
+      { question: "Welke olijfolie heeft het hoogste polyfenolgehalte?", answer: "Over labmethoden heen is geen eenduidig antwoord mogelijk, en daarom rangschikt deze index op gedocumenteerde stoffen. Oleaphen leidt met 1.996 mg/kg oleocanthal + oleaceïne (waarvan 1.248 oleocanthal, gemeten met massaspectrometrie), gevolgd door Laconiko ZOI (1.196), The Governor Limited (875) en ATTIMO Coratina (807). De grootste gepubliceerde totalen zijn de 2.236 van Oleaphen en de 2.000 van Pamako. Hogere totalen bestaan in awardregisters, tot 3.400 mg/kg, maar hun producenten publiceren zelf niets." },
       { question: "Wat geldt als een hoog polyfenolgehalte?", answer: "De goedgekeurde gezondheidsclaim van de EU vereist 5 mg hydroxytyrosol en afgeleiden per 20 g olie, ruwweg 250 mg/kg totale polyfenolen. Gewone supermarktolie zit op 100 tot 250 mg/kg. Alles in deze index haalt de drempel van de claim; de topvermeldingen bevatten ongeveer tien keer zoveel als een supermarktfles." },
       { question: "Waarom geven twee labs dezelfde olie verschillende cijfers?", answer: "Ze tellen verschillende dingen in verschillende eenheden. NMR sommeert het volle gewicht van een lange lijst fenolische stoffen; de COI-methode drukt haar totaal uit in tyrosolequivalenten, wat per constructie laag uitvalt; Folin-Ciocalteu schat de totale fenolische activiteit chemisch. Twee merken in deze index publiceren dezelfde olie onder twee methoden, 20% en 48% uit elkaar. Afzonderlijke stoffen zijn de uitzondering: gemeten op dezelfde oliën komt oleocanthal met NMR en met gekalibreerde HPLC binnen ongeveer 10% overeen." },
       { question: "Wat zijn oleocanthal en oleaceïne?", answer: "De twee meest onderzochte afzonderlijke polyfenolen in olijfolie. Oleocanthal zorgt voor de peperige prikkel achter in de keel, en onderzoek beschrijft ontstekingsremmende activiteit van de stof; oleaceïne is een antioxidant dat wordt onderzocht op een mogelijke beschermende rol voor hart en bloedvaten. Gemiddelde oliën bevatten respectievelijk ruwweg 135 en 105 mg/kg, volgens de UC Davis-studie waarnaar certificaten van de Universiteit van Athene verwijzen." },
@@ -119,7 +121,10 @@ export const nl: IndexContent = {
   },
   methodNotStated: "methode niet vermeld",
   entryNotes: {
-    "laconiko-zoi": "Het opvallendste cijfer per stof in deze index: oleocanthal op ruwweg zeven keer de gemiddelde olie, gedocumenteerd, en op zichzelf al genoeg voor de eerste plaats. Gekweekt in Griekenland, verkocht in de VS, en regelmatig uitverkocht.",
+    "olive-oil-club-picholine": "Een Nederlandse verkoper die het volledige certificaat van een Tunesische Picholine publiceert. De twee hoofdstoffen zitten op ruwweg 40% van een totaal van vier cijfers; een Koroneiki van dezelfde bron leest 142 en 148.",
+    "oleaphen-high-phenolic": "Het hoogste gedocumenteerde stoffenpaar in deze index, gemeten met massaspectrometrie in een universitair laboratorium, met beide moleculen afgedrukt en de variëteit niet benoemd. Verkocht als monodoses van 5 ml in plaats van flessen, en de oogst van 2025 is uitverkocht.",
+    "deliba-ottobratico": "Een Calabrische molen die het volledige rapport volgens de EU-methode publiceert, met de twee hoofdstoffen afgedrukt onder hun chemische namen. Kleine cijfers, volledige documentatie.",
+    "laconiko-zoi": "Het opvallendste cijfer per stof in deze index: oleocanthal op ruwweg zeven keer de gemiddelde olie, gedocumenteerd, en alleen Oleaphens massaspectrometriepaar gaat eraan vooraf. Gekweekt in Griekenland, verkocht in de VS, en regelmatig uitverkocht.",
     "the-governor-limited": "Lianolia van Korfoe met het sterkste volledig gedocumenteerde stoffenpaar in de index, in beide kwaliteiten.",
     "attimo-coratina": "Onze eigen olie, in hetzelfde format als dat van alle anderen. Deze waarden komen uit de chromatografiefamilie, die in de enige gepubliceerde vergelijking op dezelfde olie op deze pagina oleocanthal ruim onder NMR las. Deze rij is gemeten met de conservatieve methode.",
     "kyoord-high-phenolic": "Een Amerikaans merk dat Lianolia van Korfoe perst, met waarden per stof die vóór oliën met veel grotere totalen liggen.",

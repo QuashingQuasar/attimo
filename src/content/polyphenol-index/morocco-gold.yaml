@@ -18,6 +18,10 @@ report:
   label: Shop page says 606 "highest to date"; the analysis page shows a recent harvest at 278
 source_url: https://morocco-gold.com
 price: "$44.40 / 500ml"
+price_amount: 44.4
+price_currency: USD
+price_ml: 500
+regions: [EU, UK, US]
 availability: null
 note: Testing labs are named, the method is not. Both figures are theirs; we list both.
 also: null

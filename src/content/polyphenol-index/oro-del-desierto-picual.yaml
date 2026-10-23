@@ -18,6 +18,10 @@ report:
   label: Analyses for all five varieties, three campaigns kept online
 source_url: https://www.orodeldesierto.com
 price: "€14.50 / 500ml"
+price_amount: 14.5
+price_currency: EUR
+price_ml: 500
+regions: [EU]
 availability: null
 note: The most systematic publisher outside the ranked index. The whole range (Picual 844 down to Lechín 507), every campaign, with the method's limitations stated by the producer itself. Folin measures no individual compounds, so a compound ranking is off the table by construction.
 also: null

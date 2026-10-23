@@ -45,6 +45,8 @@ export type IndexContent = {
     notPublished: string; viewable: string; none: string; notListed: string;
     footnotePre: string; footnotePost: string; // around the JSON link
   };
+  value: { col: string; cardLabel: string; note: string }; // {fx} = ECB rate date
+  explorer: { search: string; origin: string; availability: string; price: string; eu: string; uk: string; us: string; none: string; all: string; bands: string[]; showing: string; reset: string; sortHint: string; available: string; notStated: string };
   totals: {
     eyebrow: string; h2: string; lead: string;
     methods: { name: string; reading: string; what: string; total: string; who: string }[];
@@ -131,6 +133,8 @@ export const en: IndexContent = {
     footnotePre: "Figures verified on the producers' own pages in {verified}. Machine-readable copy at",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Value: € per 100 mg oleocanthal + oleacein", note: "Value: the price divided by the milligrams of oleocanthal + oleacein in the bottle (figure × bottle size × 0.916 kg/l), in euros per 100 mg. Other currencies converted at the ECB rate of {fx}." },
+  explorer: { search: "Search brand, oil or country", origin: "Origin", availability: "Available in", price: "Price per 500 ml", eu: "Europe", uk: "United Kingdom", us: "United States", none: "Not stated", all: "All", bands: ["Under €25", "€25 to €50", "Over €50", "Not listed"], showing: "{n} of {total} oils", reset: "Reset", sortHint: "Click a column to sort", available: "Available in", notStated: "not stated" },
   totals: {
     eyebrow: "Why the totals differ",
     h2: "Total polyphenols is at least three measurements",
@@ -170,7 +174,7 @@ export const en: IndexContent = {
   faq: {
     heading: "Questions about the index",
     items: [
-      { question: "Which olive oil has the highest polyphenol content?", answer: "No single answer is possible across lab methods, which is why this index ranks by documented compounds instead. Laconiko ZOI leads with 1,196 mg/kg oleocanthal + oleacein (1,000 of it oleocanthal), followed by The Governor Limited (875) and ATTIMO Coratina (807). The largest published totals are Pamako's 2,000 and Sakellaropoulos Fyllikon's 1,825, both NMR figures. Higher totals exist in award registries, up to 3,400 mg/kg, but their producers publish nothing themselves." },
+      { question: "Which olive oil has the highest polyphenol content?", answer: "No single answer is possible across lab methods, which is why this index ranks by documented compounds instead. Oleaphen leads with 1,996 mg/kg oleocanthal + oleacein (1,248 of it oleocanthal, by mass spectrometry), followed by Laconiko ZOI (1,196), The Governor Limited (875) and ATTIMO Coratina (807). The largest published totals are Oleaphen's 2,236 and Pamako's 2,000. Higher totals exist in award registries, up to 3,400 mg/kg, but their producers publish nothing themselves." },
       { question: "What counts as a high polyphenol content?", answer: "The EU's approved health claim requires 5 mg of hydroxytyrosol and derivatives per 20 g of oil, roughly 250 mg/kg total polyphenols. Typical supermarket oil sits at 100 to 250 mg/kg. Everything in this index clears the claim threshold; the top entries carry around ten times a supermarket bottle." },
       { question: "Why do two labs give the same oil different numbers?", answer: "They count different things in different units. NMR sums the full weight of a long list of phenolic compounds; the COI method expresses its total in tyrosol equivalents, which reads low by construction; Folin-Ciocalteu estimates total phenolic activity chemically. Two brands in this index publish the same oil under two methods, 20% and 48% apart. Individual compounds are the exception: measured on the same oils, oleocanthal by NMR and by calibrated HPLC agrees within about 10%." },
       { question: "What are oleocanthal and oleacein?", answer: "The two most-researched individual polyphenols in olive oil. Oleocanthal produces the peppery catch at the back of the throat and has documented anti-inflammatory activity; oleacein is an antioxidant studied for cardiovascular protection. Average oils carry roughly 135 and 105 mg/kg respectively, per the UC Davis study referenced on University of Athens certificates." },
@@ -187,7 +191,10 @@ export const en: IndexContent = {
   },
   methodNotStated: "method not stated",
   entryNotes: {
-    "laconiko-zoi": "The most striking compound figure in this index, oleocanthal at roughly seven times the average oil, documented, and enough for first place on its own. Greek-grown, US-sold, and regularly sold out.",
+    "olive-oil-club-picholine": "A Dutch seller publishing the full certificate for a Tunisian Picholine. The two compounds sit at roughly 40% of a four-figure total; a Koroneiki from the same source reads 142 and 148.",
+    "oleaphen-high-phenolic": "The highest documented compound pair in this index, measured by mass spectrometry at a university lab, with both molecules printed and the cultivar left unnamed. Sold as 5 ml monodoses rather than bottles, and the 2025 harvest is sold out.",
+    "deliba-ottobratico": "A Calabrian mill publishing its full report under the EU method, with the two compounds printed under their chemical names. Small figures, complete documentation.",
+    "laconiko-zoi": "The most striking compound figure in this index, oleocanthal at roughly seven times the average oil, documented, and second only to Oleaphen's mass-spectrometry pair. Greek-grown, US-sold, and regularly sold out.",
     "the-governor-limited": "Corfiot Lianolia with the strongest fully documented compound pair in the index, in both grades.",
     "attimo-coratina": "Our own oil, held to the same format as everyone else's. These values come from the chromatography family, which in the one published same-oil comparison on this page read oleocanthal well below NMR. This row is measured by the conservative method.",
     "kyoord-high-phenolic": "A US brand pressing Corfiot Lianolia, with compound values ahead of oils carrying much larger totals.",

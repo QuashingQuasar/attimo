@@ -1,0 +1,45 @@
+---
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import MarketGuideBody from "@astro/components/MarketGuideBody.astro";
+import { MARKET_GUIDES } from "@/lib/marketGuides";
+import { getIndexEntries } from "@/lib/polyphenolIndex";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
+import { INDEX_COVER } from "@/lib/polyphenolIndexPage";
+import { CREAM } from "@/lib/certificates/ui";
+import { SITE } from "@/lib/certificates";
+import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+import { guideShipping } from "@/lib/marketGuides/fill";
+
+// Market buying guide. One page per market and language; Belgium has a Dutch
+// and a French page that reference each other via content.hreflangs.
+const locale = SLUG_TO_LOCALE["se"];
+const t = getDict(locale);
+const { content, shipping } = MARKET_GUIDES.sv;
+const { all } = await getIndexEntries();
+const labNumbers = await getHomeLabNumbers();
+const canonical = `${SITE}${content.slug}`;
+const { fill } = guideShipping(content, locale);
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: content.faq.items.map((f) => ({ "@type": "Question", name: fill(f.question), acceptedAnswer: { "@type": "Answer", text: fill(f.answer) } })),
+  },
+];
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={fill(content.meta.description)}
+  canonical={canonical}
+  ogImage={INDEX_COVER}
+  bodyStyle={`background-color: ${CREAM};`}
+  jsonLd={jsonLd}
+  hreflangs={content.hreflangs}
+  htmlLang="sv"
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <MarketGuideBody content={content} entries={all} shipping={shipping} locale={locale} heroImage={INDEX_COVER} labNumbers={labNumbers} />
+</BaseLayout>

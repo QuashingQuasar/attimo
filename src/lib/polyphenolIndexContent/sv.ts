@@ -63,6 +63,8 @@ export const sv: IndexContent = {
     footnotePre: "Siffrorna verifierades på producenternas egna sidor i {verified}. Maskinläsbar kopia på",
     footnotePost: ", CC BY 4.0.",
   },
+  value: { col: "€ per 100 mg", cardLabel: "Värde: € per 100 mg oleocanthal + oleacein", note: "Värde: priset delat med milligram oleocanthal + oleacein i flaskan (värde × volym × 0,916 kg/l), i euro per 100 mg. Andra valutor omräknade till ECB-kursen {fx}." },
+  explorer: { search: "Sök märke, olja eller land", origin: "Ursprung", availability: "Finns i", price: "Pris per 500 ml", eu: "Europa", uk: "Storbritannien", us: "USA", none: "Anges inte", all: "Alla", bands: ["Under 25 €", "25 till 50 €", "Över 50 €", "Anges inte"], showing: "{n} av {total} oljor", reset: "Rensa", sortHint: "Klicka på en kolumn för att sortera", available: "Finns i", notStated: "anges inte" },
   totals: {
     eyebrow: "Varför totalvärdena skiljer sig",
     h2: "Totala polyfenoler är minst tre mätningar",
@@ -102,7 +104,7 @@ export const sv: IndexContent = {
   faq: {
     heading: "Frågor om indexet",
     items: [
-      { question: "Vilken olivolja har högst polyfenolhalt?", answer: "Inget enskilt svar är möjligt över laboratoriemetoderna, vilket är skälet till att det här indexet i stället rankar efter dokumenterade föreningar. Laconiko ZOI leder med 1 196 mg/kg oleocanthal + oleacein (varav 1 000 oleocanthal), följd av The Governor Limited (875) och ATTIMO Coratina (807). De största publicerade totalvärdena är Pamakos 2 000 och Sakellaropoulos Fyllikons 1 825, båda NMR-siffror. Högre totalvärden finns i tävlingsregister, upp till 3 400 mg/kg, men deras producenter publicerar ingenting själva." },
+      { question: "Vilken olivolja har högst polyfenolhalt?", answer: "Inget enskilt svar är möjligt över laboratoriemetoderna, vilket är skälet till att det här indexet i stället rankar efter dokumenterade föreningar. Oleaphen leder med 1 996 mg/kg oleocanthal + oleacein (varav 1 248 oleocanthal, mätt med masspektrometri), följd av Laconiko ZOI (1 196), The Governor Limited (875) och ATTIMO Coratina (807). De största publicerade totalvärdena är Oleaphens 2 236 och Pamakos 2 000. Högre totalvärden finns i tävlingsregister, upp till 3 400 mg/kg, men deras producenter publicerar ingenting själva." },
       { question: "Vad räknas som hög polyfenolhalt?", answer: "EU:s godkända hälsopåstående kräver 5 mg hydroxityrosol och derivat per 20 g olja, ungefär 250 mg/kg totala polyfenoler. Vanlig mataffärsolja ligger på 100 till 250 mg/kg. Allt i det här indexet klarar påståendets tröskel; topposterna innehåller omkring tio gånger så mycket som en mataffärsflaska." },
       { question: "Varför ger två laboratorier samma olja olika siffror?", answer: "De räknar olika saker i olika enheter. NMR summerar den fulla vikten av en lång lista fenoliska föreningar; COI-metoden uttrycker sitt totalvärde i tyrosolekvivalenter, vilket ger låga värden av konstruktion; Folin-Ciocalteu uppskattar total fenolisk aktivitet kemiskt. Två varumärken i det här indexet publicerar samma olja under två metoder, 20 % respektive 48 % isär. Enskilda föreningar är undantaget: mätt på samma oljor stämmer oleocanthal med NMR och med kalibrerad HPLC överens inom ungefär 10 %." },
       { question: "Vad är oleocanthal och oleacein?", answer: "De två mest studerade enskilda polyfenolerna i olivolja. Oleocanthal ger det pepprika hugget längst bak i halsen och har i studier uppvisat antiinflammatorisk aktivitet; oleacein är en antioxidant som studerats för sin möjliga roll i skyddet av hjärta och kärl. Genomsnittliga oljor innehåller ungefär 135 respektive 105 mg/kg, enligt den UC Davis-studie som Atens universitets certifikat hänvisar till." },
@@ -119,7 +121,10 @@ export const sv: IndexContent = {
   },
   methodNotStated: "metod inte angiven",
   entryNotes: {
-    "laconiko-zoi": "Den mest slående föreningssiffran i indexet, oleocanthal på ungefär sju gånger genomsnittsoljan, dokumenterat, och nog för förstaplatsen på egen hand. Odlad i Grekland, såld i USA och regelbundet slutsåld.",
+    "olive-oil-club-picholine": "En nederländsk säljare som publicerar hela certifikatet för en tunisisk Picholine. De två föreningarna ligger på ungefär 40 % av ett fyrsiffrigt totalvärde; en Koroneiki från samma källa visar 142 och 148.",
+    "oleaphen-high-phenolic": "Det högsta dokumenterade föreningsparet i indexet, mätt med masspektrometri på ett universitetslaboratorium, med båda molekylerna utskrivna och utan angiven sort. Säljs som monodoser om 5 ml i stället för flaskor, och skörden 2025 är slutsåld.",
+    "deliba-ottobratico": "Ett kalabriskt oljeri som publicerar hela sin rapport enligt EU-metoden, med de två föreningarna utskrivna under sina kemiska namn. Små siffror, fullständig dokumentation.",
+    "laconiko-zoi": "Den mest slående föreningssiffran i indexet, oleocanthal på ungefär sju gånger genomsnittsoljan, dokumenterat, och bara Oleaphens masspektrometripar ligger före. Odlad i Grekland, såld i USA och regelbundet slutsåld.",
     "the-governor-limited": "Lianolia från Korfu med det starkaste fullt dokumenterade föreningsparet i indexet, i båda kvaliteterna.",
     "attimo-coratina": "Vår egen olja, hållen till samma format som alla andras. Dessa värden kommer från kromatografifamiljen, som i den enda publicerade jämförelsen på samma olja på den här sidan gav ett oleocanthalvärde klart under NMR. Den här raden är mätt med den försiktiga metoden.",
     "kyoord-high-phenolic": "Ett amerikanskt varumärke som pressar Lianolia från Korfu, med föreningsvärden före oljor med betydligt större totalvärden.",

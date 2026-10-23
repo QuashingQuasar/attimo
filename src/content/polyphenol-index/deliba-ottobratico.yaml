@@ -1,0 +1,30 @@
+id: deliba-ottobratico
+brand: Deliba
+oil: Ottobratico
+variety: Ottobratica
+origin: Molochio, Calabria, Italy
+country: Italy
+harvest: "2025/26"
+harvest_note: October 2025 harvest, report 7 November 2025
+method: COI
+lab: Sintesi Analisi Chimiche e Biologiche, Cittanova
+total: 629
+total_secondary: null
+oleocanthal: 85
+oleacein: 50
+compounds_printed: 135
+report:
+  status: viewable
+  url: https://cdn.shopify.com/s/files/1/0819/9936/4438/files/37823_Novembre_2025_Olio_dichiarato_extra_vergine__Ottobratico.pdf?v=1783794330
+  label: lab report PDF, EU method 2568/91
+source_url: https://delibaoliveoil.com/pages/oleocanthal
+price: "$44.99 / 500ml"
+price_amount: 44.99
+price_currency: USD
+price_ml: 500
+regions: [EU, UK, US]
+availability: sold out
+note: A Calabrian mill publishing its full report under the EU method, with the two compounds printed under their chemical names. Small figures, complete documentation.
+also: null
+attimo_certificate: null
+verified: "2026-10"
