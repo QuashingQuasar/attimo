@@ -1,4 +1,5 @@
 import { toast } from "sonner";
+import { clickAttributes } from "./adClick";
 
 // Shopify Storefront localization context. When set, queries run under
 // @inContext(country, language) so Shopify returns market-appropriate data
@@ -525,7 +526,11 @@ export function buildCartPermalink(items: CartItem[]): string | null {
     })
     .filter(Boolean);
   if (parts.length === 0) return null;
-  return `https://${SHOPIFY_CHECKOUT_DOMAIN}/cart/${parts.join(',')}`;
+  // Carry the ad click attributes on the fallback too (see adClick.ts).
+  const query = clickAttributes()
+    .map((a) => `attributes[${encodeURIComponent(a.key)}]=${encodeURIComponent(a.value)}`)
+    .join('&');
+  return `https://${SHOPIFY_CHECKOUT_DOMAIN}/cart/${parts.join(',')}${query ? `?${query}` : ''}`;
 }
 
 export async function createStorefrontCheckout(
@@ -560,7 +565,13 @@ export async function createStorefrontCheckout(
     // checkoutUrl opens in that country's currency (e.g. FR → French/EUR
     // checkout). Only attached when a caller passes a country (France); the
     // default/dk/se markets pass nothing and keep their prior behaviour.
-    const input: { lines: typeof lines; buyerIdentity?: { countryCode: string } } = { lines };
+    // Hidden ad-click attributes become order attributes, which the Google Ads
+    // purchase upload reads (see adClick.ts).
+    const input: {
+      lines: typeof lines;
+      attributes: { key: string; value: string }[];
+      buyerIdentity?: { countryCode: string };
+    } = { lines, attributes: clickAttributes() };
     if (context?.country) {
       input.buyerIdentity = { countryCode: context.country };
     }

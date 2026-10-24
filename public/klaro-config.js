@@ -70,11 +70,27 @@ var klaroConfig = {
       title: 'Google Tag Manager',
       purposes: ['analytics', 'marketing'],
       onAccept: function() {
+        // Ad click waiting from the landing page becomes a cookie now that
+        // marketing is allowed; middleware.ts re-issues it from the server.
+        try {
+          var pending = sessionStorage.getItem('attimo_click_pending');
+          var current = (document.cookie.match(/(?:^|; )attimo_click=([^;]*)/) || [])[1] || '';
+          var sameClick = current && decodeURIComponent(current).split('|')[1] === decodeURIComponent(pending).split('|')[1];
+          // Already set by the server for this click: leave that longer-lived cookie alone.
+          if (pending && !sameClick) {
+            document.cookie = 'attimo_click=' + pending + '; Path=/; Max-Age=7776000; SameSite=Lax; Secure';
+          }
+          sessionStorage.removeItem('attimo_click_pending');
+        } catch (e) {}
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('consent', 'update', { ad_storage: 'granted', ad_personalization: 'granted', ad_user_data: 'granted', analytics_storage: 'granted', functionality_storage: 'granted', personalization_storage: 'granted' });
       },
       onDecline: function() {
+        try {
+          sessionStorage.removeItem('attimo_click_pending');
+          document.cookie = 'attimo_click=; Path=/; Max-Age=0; SameSite=Lax; Secure';
+        } catch (e) {}
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('consent', 'update', { ad_storage: 'denied', ad_personalization: 'denied', ad_user_data: 'denied', analytics_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied' });

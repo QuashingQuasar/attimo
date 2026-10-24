@@ -78,6 +78,23 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
 <!doctype html>
 <html lang={htmlLang}>
   <head>
+    <script id="attimo-click-capture" is:inline>
+      // Ad click ID from the landing URL waits here until marketing consent;
+      // klaro-config.js then turns it into the attimo_click cookie (see src/lib/adClick.ts).
+      (function () {
+        try {
+          var p = new URLSearchParams(location.search);
+          var keys = ['gclid', 'gbraid', 'wbraid'];
+          for (var i = 0; i < keys.length; i++) {
+            var id = p.get(keys[i]);
+            if (id && /^[\w.-]{8,512}$/.test(id)) {
+              sessionStorage.setItem('attimo_click_pending', encodeURIComponent(keys[i] + '|' + id + '|' + Math.floor(Date.now() / 1000)));
+              return;
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script id="consentmo-gcmv2-advanced-mode-integration" is:inline>
       const consentOutOfRegion = { analytics: true, marketing: true, functionality: true, adsDataRedaction: false, urlPassthrough: false };
       window.dataLayer = window.dataLayer || [];
