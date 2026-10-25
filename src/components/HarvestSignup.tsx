@@ -8,7 +8,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 const UDC = "'UDC Working Man Sans', sans-serif";
 const SG = "'Space Grotesk', sans-serif";
 
-export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line }: { locale?: Locale; line?: string }) => {
+export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button }: { locale?: Locale; line?: string | null; button?: string }) => {
   const t = getDict(locale);
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "busy" | "done" | "error">("idle");
@@ -41,9 +41,11 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line }: { locale?: Loca
 
   return (
     <form onSubmit={submit} className="mx-auto w-full" style={{ maxWidth: 560 }}>
-      <p className="mb-4" style={{ fontFamily: SG, fontSize: "clamp(1.02rem,1.3vw,1.25rem)", color: "#FFFAEA", textShadow: shadow }}>
-        {line ?? t.hero.harvest.line}
-      </p>
+      {line !== null && (
+        <p className="mb-4" style={{ fontFamily: SG, fontSize: "clamp(1.02rem,1.3vw,1.25rem)", color: "#FFFAEA", textShadow: shadow }}>
+          {line ?? t.hero.harvest.line}
+        </p>
+      )}
       <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-2">
         <input
           type="email"
@@ -61,7 +63,7 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line }: { locale?: Loca
           className="rounded-lg px-7 py-3.5 font-semibold transition-all duration-300 hover:scale-[1.03]"
           style={{ fontFamily: UDC, fontSize: "1.05rem", letterSpacing: ".04em", color: "#1B4229", backgroundColor: "#CDDB2D", border: "2px solid #CDDB2D", opacity: state === "busy" ? 0.7 : 1, whiteSpace: "nowrap" }}
         >
-          {t.hero.harvest.button}
+          {button ?? t.hero.harvest.button}
         </button>
       </div>
       {state === "error" && (

@@ -134,13 +134,14 @@ export const fr: Dict = {
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
     eyebrow: "Récolte 26/27 · fin octobre",
-    status: "Harvest 26/27 pressing now", // TRANSLATE
     heading: "La prochaine récolte",
     intro: "Trois huiles fraîches, cueillies vertes en octobre et pressées en quelques heures. Deux que vous connaissez, une nouvelle.",
     formLine: "Inscrivez-vous et recevez-la tout droit du moulin.",
+    button: "Get it fresh from the press", // TRANSLATE
+    polyLabel: "Polyphenols", // TRANSLATE
+    polyPending: "Awaiting lab results", // TRANSLATE
     returning: "De retour",
     new: "Nouveau · bio",
-    organic: "Organic", // TRANSLATE
     origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
     oils: { coratina: "Puissante et poivrée. 847 mg/kg de polyphénols à la dernière récolte.", peranzana: "La plus douce des trois. Elle prend la place de la Nocellara.", picual: "Verte et herbacée. Récolte précoce de Jaén." },
     steps: [

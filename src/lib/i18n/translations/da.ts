@@ -133,13 +133,14 @@ export const da: Dict = {
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
     eyebrow: "Høst 26/27 · sidst i oktober",
-    status: "Harvest 26/27 pressing now", // TRANSLATE
     heading: "Den næste høst",
     intro: "Tre friske olier, plukket grønne i oktober og presset inden for få timer. To kender du, én er ny.",
     formLine: "Skriv dig op og få den direkte fra møllen.",
+    button: "Get it fresh from the press", // TRANSLATE
+    polyLabel: "Polyphenols", // TRANSLATE
+    polyPending: "Awaiting lab results", // TRANSLATE
     returning: "Tilbage",
     new: "Ny · økologisk",
-    organic: "Organic", // TRANSLATE
     origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
     oils: { coratina: "Kraftig & pebret. 847 mg/kg polyfenoler ved sidste høst.", peranzana: "Den milde af de tre. Tager Nocellaras plads.", picual: "Grøn & græsset. Tidlig høst fra Jaén." },
     steps: [

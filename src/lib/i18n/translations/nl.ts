@@ -133,13 +133,14 @@ export const nl: Dict = {
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
     eyebrow: "Oogst 26/27 · eind oktober",
-    status: "Harvest 26/27 pressing now", // TRANSLATE
     heading: "De volgende oogst",
     intro: "Drie verse oliën, in oktober groen geplukt en binnen enkele uren geperst. Twee ken je al, één is nieuw.",
     formLine: "Schrijf je in en krijg ze rechtstreeks van de molen.",
+    button: "Get it fresh from the press", // TRANSLATE
+    polyLabel: "Polyphenols", // TRANSLATE
+    polyPending: "Awaiting lab results", // TRANSLATE
     returning: "Terug",
     new: "Nieuw · bio",
-    organic: "Organic", // TRANSLATE
     origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
     oils: { coratina: "Krachtig & peperig. 847 mg/kg polyfenolen bij de vorige oogst.", peranzana: "De zachte van de drie. Neemt de plaats van Nocellara in.", picual: "Groen & grassig. Vroege oogst uit Jaén." },
     steps: [
