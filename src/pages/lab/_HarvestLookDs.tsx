@@ -267,7 +267,10 @@ export const LookD5b = ({ t }: { t: Theme }) => {
             >
               {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={92} outline={ink} /></div>}
               <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500 sm:self-center" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
-              <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} sm:mt-[clamp(96px,9.3vw,135px)]`} style={{ minWidth: 280 }}>
+              {/* Details column is as tall as the bottle; a 40% spacer puts the
+                  name level with the top of the label. */}
+              <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} sm:self-stretch flex flex-col`} style={{ minWidth: 280 }}>
+                <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 40%" }} />
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
               </div>
               {!on && <p className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center" style={{ fontFamily: BEVERLY, fontSize: "2.2rem", color: ink }}>{o.name}</p>}
@@ -291,8 +294,9 @@ export const LookD6 = ({ t }: { t: Theme }) => {
           return (
             <div key={o.key} className="relative px-6 py-12 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-10 xl:gap-7" style={{ backgroundColor: band }}>
               {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={88} outline={ink} /></div>}
-              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} style={{ height: "clamp(280px, 22vw, 360px)", width: "auto", flexShrink: 0, filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
-              <div className="sm:mt-[clamp(84px,6.6vw,108px)]" style={{ minWidth: 0 }}>
+              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} style={{ height: "clamp(330px, 24vw, 380px)", width: "auto", flexShrink: 0, filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              <div className="sm:self-stretch flex flex-col" style={{ minWidth: 0 }}>
+                <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 38%" }} />
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
               </div>
             </div>
