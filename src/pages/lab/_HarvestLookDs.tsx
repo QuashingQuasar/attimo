@@ -257,8 +257,13 @@ const NewKicker = ({ ink, text }: { ink: string; text: string }) => (
     {text}
   </p>
 );
-const NewPill = ({ ink, text, small }: { ink: string; text: string; small?: boolean }) => (
-  <span className="uppercase align-middle" style={{ display: "inline-block", marginLeft: small ? ".4em" : ".45em", transform: "translateY(-.55em)", fontFamily: UDC, fontWeight: 700, fontSize: small ? ".62rem" : ".72rem", letterSpacing: ".14em", lineHeight: 1, padding: small ? ".35em .6em" : ".4em .7em", borderRadius: 999, backgroundColor: ink, color: CREAM }}>{text}</span>
+// Pill sized to the lowercase letters of the name: Beverly Drive's
+// lowercase runs from the baseline to 0.47em (measured). overflow:hidden puts
+// an inline-block's baseline at its bottom edge, so it sits on the baseline.
+const NewPill = ({ ink, text }: { ink: string; text: string; small?: boolean }) => (
+  <span aria-label={text} style={{ display: "inline-block", verticalAlign: "baseline", overflow: "hidden", height: ".47em", marginLeft: ".22em", borderRadius: 999, backgroundColor: ink }}>
+    <span className="uppercase" style={{ display: "block", fontFamily: UDC, fontWeight: 700, fontSize: ".2em", lineHeight: 2.35, letterSpacing: ".14em", padding: "0 .75em 0 .89em", color: CREAM }}>{text}</span>
+  </span>
 );
 const NewRibbon = ({ ink, text }: { ink: string; text: string }) => (
   <div aria-hidden="true" className="absolute top-0 right-0 overflow-hidden pointer-events-none z-10" style={{ width: 160, height: 160 }}>
@@ -267,7 +272,7 @@ const NewRibbon = ({ ink, text }: { ink: string; text: string }) => (
 );
 const NewScript = ({ ink, text }: { ink: string; text: string }) => (
   <div aria-hidden="true" className="absolute z-10 pointer-events-none" style={{ left: "100%", top: "4%", marginLeft: 6, color: ink }}>
-    <span style={{ fontFamily: BEVERLY, fontSize: "2rem", lineHeight: 1, whiteSpace: "nowrap", display: "block", transform: "rotate(-8deg)" }}>{text}!</span>
+    <span className="uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.35rem", letterSpacing: ".12em", lineHeight: 1, whiteSpace: "nowrap", display: "block", transform: "rotate(-8deg)" }}>{text}</span>
     {/* hand-drawn arrow curling back to the bottle */}
     <svg width="64" height="46" viewBox="0 0 64 46" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, marginLeft: -6 }}>
       <path d="M40 4 C 34 22, 22 32, 6 36" />
@@ -276,11 +281,14 @@ const NewScript = ({ ink, text }: { ink: string; text: string }) => (
   </div>
 );
 
+// One curve for every moving part so panel, bottle and details move together.
+const EASE = "cubic-bezier(.22,1,.36,1)";
+const DUR = ".7s";
 export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) => {
   const { u, oils } = useHarvestSection(DEFAULT_LOCALE);
-  const [i, setI] = useState(1);
+  const [i, setI] = useState(0);
   const timer = useRef<number | undefined>(undefined);
-  const hoverTo = (j: number) => { window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setI(j), 140); };
+  const hoverTo = (j: number) => { window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setI(j), 120); };
   const cancel = () => window.clearTimeout(timer.current);
   const newText = mark === "kicker" ? `${u.new} this harvest` : u.new;
   return (
@@ -300,29 +308,57 @@ export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) =>
               onClick={() => { cancel(); setI(j); }}
               onFocus={() => setI(j)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setI(j); }}
-              className="relative overflow-hidden px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 md:gap-12 md:basis-0 md:[flex-grow:var(--grow)]"
-              style={{ backgroundColor: band, ["--grow" as string]: on ? 2.8 : 1, transition: "flex-grow .45s ease" } as React.CSSProperties}
+              // Wide-screen behaviour lives in CSS (md: classes reading CSS
+              // variables) so it is right from the first paint, before JS.
+              className="relative overflow-hidden px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center md:basis-0 md:[flex-grow:var(--grow)]"
+              style={{
+                backgroundColor: band,
+                ["--grow" as string]: on ? 2.8 : 1,
+                ["--s" as string]: on ? 1 : 0.7,
+                ["--dw" as string]: on ? "340px" : "0px",
+                ["--dm" as string]: on ? "48px" : "0px",
+                ["--do" as string]: on ? 1 : 0,
+                ["--no" as string]: on ? 0 : 1,
+                transition: `flex-grow ${DUR} ${EASE}`,
+              } as React.CSSProperties}
             >
               {isNew && mark === "ribbon" && <NewRibbon ink={ink} text={u.new} />}
-              <div className="relative sm:self-center">
+              <div className="relative sm:self-center shrink-0 md:[transform:scale(var(--s))]" style={{ transformOrigin: "50% 60%", transition: `transform ${DUR} ${EASE}` }}>
                 {isNew && mark === "script" && <NewScript ink={ink} text={u.new} />}
-                <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
-              </div>
-              {/* Details column is as tall as the bottle; a 40% spacer puts the
-                  name level with the top of the label. */}
-              <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} sm:self-stretch flex flex-col`} style={{ minWidth: 280 }}>
-                <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 40%" }} />
-                <Profile
-                  o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row"
-                  kicker={isNew && mark === "kicker" ? <NewKicker ink={ink} text={newText} /> : undefined}
-                  afterName={isNew && mark === "pill" ? <NewPill ink={ink} text={u.new} /> : undefined}
+                <img
+                  src={o.image}
+                  alt={`ATTIMO ${o.name} 26/27`}
+                  style={{
+                    height: "clamp(320px, 31vw, 450px)",
+                    width: "auto",
+                    filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))",
+                  }}
                 />
               </div>
-              {!on && (
-                <div className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center">
+              {/* Details: always mounted. On wide screens the column's width,
+                  margin and opacity animate with the panel; the name starts
+                  level with the top of the label via the 40% spacer. */}
+              <div
+                className="sm:self-stretch flex flex-col overflow-hidden sm:ml-10 md:[max-width:var(--dw)] md:[margin-left:var(--dm)] md:[opacity:var(--do)]"
+                style={{
+                  transition: `max-width ${DUR} ${EASE}, margin-left ${DUR} ${EASE}, opacity ${on ? ".45s" : ".2s"} ease ${on ? ".22s" : "0s"}`,
+                }}
+              >
+                <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 40%" }} />
+                <div style={{ width: 300 }} className="mt-6 sm:mt-0 sm:ml-0">
+                  <Profile
+                    o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row"
+                    kicker={isNew && mark === "kicker" ? <NewKicker ink={ink} text={newText} /> : undefined}
+                    afterName={isNew && mark === "pill" ? <NewPill ink={ink} text={u.new} /> : undefined}
+                  />
+                </div>
+              </div>
+              {/* Closed-panel name, wide screens only; fades rather than mounts. */}
+              {(
+                <div className="hidden md:block absolute bottom-8 left-0 right-0 text-center pointer-events-none md:[opacity:var(--no)]" style={{ transition: `opacity ${on ? ".15s" : ".4s"} ease ${on ? "0s" : ".3s"}` }}>
                   {isNew && mark === "kicker" && <NewKicker ink={ink} text={u.new} />}
                   <p style={{ fontFamily: BEVERLY, fontSize: "2.2rem", lineHeight: 1.1, color: ink }}>
-                    {o.name}{isNew && mark === "pill" && <NewPill ink={ink} text={u.new} small />}
+                    {o.name}{isNew && mark === "pill" && <NewPill ink={ink} text={u.new} />}
                   </p>
                 </div>
               )}
@@ -345,8 +381,8 @@ export const LookD6 = ({ t }: { t: Theme }) => {
           const { band, ink } = BANDS[o.key];
           return (
             <div key={o.key} className="relative px-6 py-12 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-10 xl:gap-7" style={{ backgroundColor: band }}>
-              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={88} outline={ink} /></div>}
-              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} style={{ height: "clamp(330px, 24vw, 380px)", width: "auto", flexShrink: 0, filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              
+              <div className="relative shrink-0">{o.isNew && <NewScript ink={ink} text={u.new} />}<img src={o.image} alt={`ATTIMO ${o.name} 26/27`} style={{ height: "clamp(330px, 24vw, 380px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} /></div>
               <div className="sm:self-stretch flex flex-col" style={{ minWidth: 0 }}>
                 <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 38%" }} />
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
@@ -420,7 +456,7 @@ export const LookD4b = ({ t }: { t: Theme }) => {
                   className="relative flex flex-col items-center h-full justify-end transition-all duration-300"
                   style={{ opacity: on ? 1 : 0.55 }}
                 >
-                  {x.isNew && <div className="absolute z-10 -right-[58px] sm:-right-[88px] -top-[4%] sm:top-[14%] scale-[.6] sm:scale-90"><Sticker text={u.new} outline={ink} /></div>}
+                  {x.isNew && <NewScript ink={ink} text={u.new} />}
                   <img src={x.image} alt="" aria-hidden="true" className="transition-all duration-300" style={{ height: on ? "100%" : "74%", width: "auto", filter: on ? "drop-shadow(0 22px 24px rgba(16,34,27,.28))" : "drop-shadow(0 10px 12px rgba(16,34,27,.15))" }} />
                   <span className="mt-3 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".12em", color: ink, paddingBottom: 2, visibility: on ? "hidden" : "visible" }}>{x.name}</span>
                 </button>
