@@ -8,7 +8,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 const UDC = "'UDC Working Man Sans', sans-serif";
 const SG = "'Space Grotesk', sans-serif";
 
-export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary", stack = false }: { locale?: Locale; line?: React.ReactNode | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary"; stack?: boolean }) => {
+export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary", stack = false, lineSize, maxWidth = 560 }: { locale?: Locale; line?: React.ReactNode | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary"; stack?: boolean; lineSize?: string; maxWidth?: number }) => {
   const light = tone === "light";
   const t = getDict(locale);
   const [email, setEmail] = useState("");
@@ -42,9 +42,9 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "d
   }
 
   return (
-    <form onSubmit={submit} className="mx-auto w-full" style={{ maxWidth: 560 }}>
+    <form onSubmit={submit} className="mx-auto w-full" style={{ maxWidth }}>
       {line !== null && (
-        <p className="mb-4" style={{ fontFamily: SG, fontSize: "clamp(1.02rem,1.3vw,1.25rem)", color: textColour, textShadow: shadow }}>
+        <p className="mb-4" style={{ fontFamily: SG, fontSize: lineSize ?? "clamp(1.02rem,1.3vw,1.25rem)", color: textColour, textShadow: shadow }}>
           {line ?? t.hero.harvest.line}
         </p>
       )}

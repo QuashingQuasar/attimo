@@ -35,15 +35,7 @@ export const Hero = ({
           </div>
 
           <div className="mb-5 md:mb-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <HarvestSignup
-              locale={locale}
-              line={
-                <>
-                  <span className="block" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontWeight: 300, fontSize: "clamp(1.9rem, 3vw, 2.8rem)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>{t.hero.harvest.line}</span>
-                  <span className="block mt-2" style={{ fontSize: "clamp(1.02rem, 1.2vw, 1.15rem)", opacity: 0.9 }}>{t.hero.harvest.sub}</span>
-                </>
-              }
-            />
+            <HarvestSignup locale={locale} lineSize="clamp(1.25rem, 1.75vw, 1.65rem)" maxWidth={660} />
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>

@@ -30,6 +30,9 @@ interface Props {
   announceTier3?: string;
   // Optional message(s) shown before the shipping line (e.g. waitlist, sale).
   announceExtra?: string;
+  // Optional linked messages shown before the shipping line, each pointing at
+  // an anchor on the page (homepage between seasons: waitlist, sale).
+  announceLinks?: { label: string; href: string }[];
 }
 
 const {
@@ -50,6 +53,7 @@ const {
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
   announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
   announceExtra,
+  announceLinks,
 } = Astro.props;
 
 const socialTitle = ogTitle ?? title;
@@ -189,10 +193,17 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <!-- Geo-targeted shipping announcement bar.
              Hidden by default; an inline script reads the `attimo_shipping_tier`
              cookie set by middleware.ts and reveals the right message. -->
-        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3} data-extra={announceExtra}>
+        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3} data-extra={announceExtra} data-links={announceLinks ? JSON.stringify(announceLinks) : undefined}>
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
+          #announce-bar .announce-link {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+          }
+          #announce-bar .announce-link:hover { opacity: .8; }
           #announce-bar {
             display: none;
             position: static;
@@ -231,7 +242,27 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               : null;
             if (!msg) return;
             var extra = bar.getAttribute("data-extra");
-            text.textContent = extra ? extra + "  \u00b7  " + msg : msg;
+            var linksAttr = bar.getAttribute("data-links");
+            var links = [];
+            try { links = linksAttr ? JSON.parse(linksAttr) : []; } catch (e) { links = []; }
+            var sep = "  \u00b7  ";
+            text.textContent = "";
+            links.forEach(function (l) {
+              var a = document.createElement("a");
+              a.href = l.href;
+              a.textContent = l.label;
+              a.className = "announce-link";
+              a.addEventListener("click", function (e) {
+                var el = document.querySelector(l.href);
+                if (!el) return;
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              });
+              text.appendChild(a);
+              text.appendChild(document.createTextNode(sep));
+            });
+            if (extra) text.appendChild(document.createTextNode(extra + sep));
+            text.appendChild(document.createTextNode(msg));
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the
             // hero (.hero-full) can subtract it from its 100vh and the

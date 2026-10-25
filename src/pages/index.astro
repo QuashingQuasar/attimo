@@ -24,7 +24,7 @@ const labNumbers = await getHomeLabNumbers();
 ---
 
 <BaseLayout
-  announceExtra={getDict(DEFAULT_LOCALE).announce.nocellaraSale}
+  announceLinks={[{ label: getDict(DEFAULT_LOCALE).announce.waitlist, href: "#next-harvest" }, { label: getDict(DEFAULT_LOCALE).announce.lastSeasonSale, href: "#oil-collection" }]}
   title="ATTIMO Single-Variety, High-Polyphenol, Early Harvest Olive Oil"
   description="Single-variety, high-polyphenol olive oil. Early harvest, lab-tested for quality. From small family groves to your table. Shop now."
   canonical="https://attimo-oil.com/"

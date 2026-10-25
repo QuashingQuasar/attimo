@@ -21,6 +21,8 @@ export const nl: Dict = {
 
   announce: {
     nocellaraSale: "NOCELLARA LAST SEASON SALE",
+    waitlist: "NEW HARVEST WAITLIST", // TRANSLATE
+    lastSeasonSale: "LAST SEASON SALE", // TRANSLATE
     freeShipping2: "GRATIS VERZENDING VANAF 2 FLESSEN",
     freeShipping3: "GRATIS VERZENDING VANAF 3 FLESSEN",
   },
@@ -114,7 +116,6 @@ export const nl: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Verse oogst olijfolie komt eind oktober. Schrijf je in en krijg ze rechtstreeks van de molen.",
-      sub: "Sign up to hear first", // TRANSLATE
       placeholder: "Je e-mailadres",
       button: "Als eerste krijgen",
       secondary: "Last Season Sale op de oogst 25/26 →",

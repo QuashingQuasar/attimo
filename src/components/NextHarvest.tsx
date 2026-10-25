@@ -166,7 +166,7 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
         <h2 className="mb-5" style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(2.1rem, 3.5vw, 3.6rem)", lineHeight: 1.02, letterSpacing: "-.025em", color: GREEN }}>{u.heading}</h2>
         <p className="mx-auto" style={{ fontFamily: SG, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", lineHeight: 1.6, color: gr(0.78) }}>{u.intro}</p>
         <div className="mt-8">
-          <HarvestSignup locale={locale} line={null} button={u.button} tone="light" />
+          <HarvestSignup locale={locale} line={null} button={u.button} tone="light" maxWidth={620} />
         </div>
       </div>
       <Panels locale={locale} />

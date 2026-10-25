@@ -21,7 +21,9 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
-    nocellaraSale: "NEW HARVEST WAITLIST OPEN  ·  LAST SEASON SALE",
+    nocellaraSale: "NEW HARVEST WAITLIST  ·  LAST SEASON SALE",
+    waitlist: "NEW HARVEST WAITLIST",
+    lastSeasonSale: "LAST SEASON SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -124,12 +126,10 @@ export const en = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      // Hero: a title-like line, then a short sub line above the form.
-      line: "New harvest arriving soon",
-      sub: "Sign up to hear first",
+      line: "New harvest arriving soon. Sign up to hear first.",
       placeholder: "Email",
-      button: "Get it first",
-      secondary: "Last Season Sale on 25/26 →",
+      button: "Get it fresh",
+      secondary: "Last Season Sale",
       success: "You're on the list. First email when pre-orders open.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
@@ -150,7 +150,7 @@ export const en = {
     heading: "Fresh harvest olive oil",
     intro: "Three cultivars, picked green and pressed within hours for maximum flavour and health benefits.",
     formLine: "Sign up and hear first when pre-orders open.",
-    button: "Get it fresh from the press",
+    button: "Get it fresh",
     polyLabel: "Polyphenols",
     polyPending: "Awaiting lab results",
     returning: "Returning",
