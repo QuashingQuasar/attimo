@@ -21,22 +21,35 @@ export const BANDS: Record<HarvestOil["key"], { band: string; ink: string }> = {
   picual: { band: "#D1E4B1", ink: GREEN },
 };
 
-// Scalloped "New" sticker.
-export const Sticker = ({ text, size = 104 }: { text: string; size?: number }) => {
-  const bumps = 18, R = 44, r = 7.5;
-  return (
-    <div className="relative" style={{ width: size, height: size, transform: "rotate(-12deg)" }}>
-      <svg viewBox="-56 -56 112 112" width={size} height={size} aria-hidden="true">
-        <circle r={R} fill={CHARTREUSE} />
-        {Array.from({ length: bumps }, (_, i) => {
-          const a = (i / bumps) * Math.PI * 2;
-          return <circle key={i} cx={Math.cos(a) * R} cy={Math.sin(a) * R} r={r} fill={CHARTREUSE} />;
-        })}
-      </svg>
-      <span className="absolute inset-0 flex items-center justify-center uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: size * 0.012 + "rem", letterSpacing: ".08em", color: GREEN }}>{text}</span>
-    </div>
-  );
+// Scalloped "New" sticker. Filled chartreuse by default; with `outline` it
+// becomes a stamp: transparent, stroked and lettered in that colour.
+const scallopPath = (bumps: number, R: number) => {
+  const pts = Array.from({ length: bumps }, (_, i) => {
+    const a = (i / bumps) * Math.PI * 2 - Math.PI / 2;
+    return [Math.cos(a) * R, Math.sin(a) * R];
+  });
+  const chord = 2 * R * Math.sin(Math.PI / bumps);
+  const r = chord * 0.62;
+  return `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)} ` + pts.map((_, i) => {
+    const n = pts[(i + 1) % bumps];
+    return `A ${r.toFixed(2)} ${r.toFixed(2)} 0 0 1 ${n[0].toFixed(2)} ${n[1].toFixed(2)}`;
+  }).join(" ") + " Z";
 };
+export const Sticker = ({ text, size = 104, outline }: { text: string; size?: number; outline?: string }) => (
+  <div className="relative" style={{ width: size, height: size, transform: "rotate(-12deg)" }}>
+    <svg viewBox="-56 -56 112 112" width={size} height={size} aria-hidden="true">
+      {outline ? (
+        <>
+          <path d={scallopPath(16, 47)} fill="none" stroke={outline} strokeWidth={2.6} strokeLinejoin="round" />
+          <circle r={37} fill="none" stroke={outline} strokeWidth={1.2} strokeDasharray="2.5 3" />
+        </>
+      ) : (
+        <path d={scallopPath(16, 47)} fill={CHARTREUSE} />
+      )}
+    </svg>
+    <span className="absolute inset-0 flex items-center justify-center uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: size * 0.012 + "rem", letterSpacing: ".08em", color: outline ?? GREEN }}>{text}</span>
+  </div>
+);
 
 // Profile block in an oil's ink colour. "md" default, "xl" = md x1.2,
 // "lg" for a single featured oil. align "left" = left from lg, "row" = left
@@ -249,12 +262,12 @@ export const LookD5b = ({ t }: { t: Theme }) => {
               aria-expanded={on}
               onClick={() => setI(j)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setI(j); }}
-              className="relative overflow-hidden cursor-pointer px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-12 md:basis-0 md:[flex-grow:var(--grow)]"
+              className="relative overflow-hidden cursor-pointer px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 md:gap-12 md:basis-0 md:[flex-grow:var(--grow)]"
               style={{ backgroundColor: band, ["--grow" as string]: on ? 2.8 : 1, transition: "flex-grow .45s ease" } as React.CSSProperties}
             >
-              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={92} /></div>}
-              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
-              <div key={o.key} className={on ? "animate-fade-in" : "md:hidden"} style={{ minWidth: 280 }}>
+              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={92} outline={ink} /></div>}
+              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500 sm:self-center" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} sm:mt-[clamp(96px,9.3vw,135px)]`} style={{ minWidth: 280 }}>
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
               </div>
               {!on && <p className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center" style={{ fontFamily: BEVERLY, fontSize: "2.2rem", color: ink }}>{o.name}</p>}
@@ -276,10 +289,10 @@ export const LookD6 = ({ t }: { t: Theme }) => {
         {oils.map((o) => {
           const { band, ink } = BANDS[o.key];
           return (
-            <div key={o.key} className="relative px-6 py-12 md:py-14 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 xl:gap-7" style={{ backgroundColor: band }}>
-              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={88} /></div>}
+            <div key={o.key} className="relative px-6 py-12 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 sm:gap-10 xl:gap-7" style={{ backgroundColor: band }}>
+              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={88} outline={ink} /></div>}
               <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} style={{ height: "clamp(280px, 22vw, 360px)", width: "auto", flexShrink: 0, filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
-              <div style={{ minWidth: 0 }}>
+              <div className="sm:mt-[clamp(84px,6.6vw,108px)]" style={{ minWidth: 0 }}>
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
               </div>
             </div>
@@ -327,3 +340,43 @@ export const LookD2b = ({ t }: { t: Theme }) => {
     </Shell>
   );
 };
+
+// D4b — D4 without the name under the active bottle (the profile below names it).
+export const LookD4b = ({ t }: { t: Theme }) => {
+  const { u, oils } = useHarvestSection(DEFAULT_LOCALE);
+  const [i, setI] = useState(1);
+  const o = oils[i];
+  const { band, ink } = BANDS[o.key];
+  return (
+    <Shell t={t}>
+      <div style={{ backgroundColor: band, transition: "background-color .35s ease" }}>
+        <div className="mx-auto px-4 md:px-6 pt-12 md:pt-16 pb-12 md:pb-16" style={{ maxWidth: 1120 }}>
+          <div role="tablist" aria-label="Oils" className="flex items-end justify-center gap-4 sm:gap-10 md:gap-16 mb-10" style={{ height: "clamp(260px, 32vw, 440px)" }}>
+            {oils.map((x, j) => {
+              const on = j === i;
+              return (
+                <button
+                  key={x.key}
+                  role="tab"
+                  aria-selected={on}
+                  aria-label={x.name}
+                  onClick={() => setI(j)}
+                  className="relative flex flex-col items-center h-full justify-end transition-all duration-300"
+                  style={{ opacity: on ? 1 : 0.55 }}
+                >
+                  {x.isNew && <div className="absolute z-10 -right-[58px] sm:-right-[88px] -top-[4%] sm:top-[14%] scale-[.6] sm:scale-90"><Sticker text={u.new} outline={ink} /></div>}
+                  <img src={x.image} alt="" aria-hidden="true" className="transition-all duration-300" style={{ height: on ? "100%" : "74%", width: "auto", filter: on ? "drop-shadow(0 22px 24px rgba(16,34,27,.28))" : "drop-shadow(0 10px 12px rgba(16,34,27,.15))" }} />
+                  <span className="mt-3 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".12em", color: ink, paddingBottom: 2, visibility: on ? "hidden" : "visible" }}>{x.name}</span>
+                </button>
+              );
+            })}
+          </div>
+          <div key={o.key} className="animate-fade-in">
+            <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="lg" />
+          </div>
+        </div>
+      </div>
+    </Shell>
+  );
+};
+
