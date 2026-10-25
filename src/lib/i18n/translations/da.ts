@@ -138,6 +138,8 @@ export const da: Dict = {
     formLine: "Skriv dig op og få den direkte fra møllen.",
     returning: "Tilbage",
     new: "Ny · økologisk",
+    organic: "Organic", // TRANSLATE
+    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
     oils: { coratina: "Kraftig & pebret. 847 mg/kg polyfenoler ved sidste høst.", peranzana: "Den milde af de tre. Tager Nocellaras plads.", picual: "Grøn & græsset. Tidlig høst fra Jaén." },
     steps: [
       { label: "Plukning", when: "midt i oktober" },

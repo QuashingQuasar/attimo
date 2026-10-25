@@ -138,6 +138,8 @@ export const nl: Dict = {
     formLine: "Schrijf je in en krijg ze rechtstreeks van de molen.",
     returning: "Terug",
     new: "Nieuw · bio",
+    organic: "Organic", // TRANSLATE
+    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
     oils: { coratina: "Krachtig & peperig. 847 mg/kg polyfenolen bij de vorige oogst.", peranzana: "De zachte van de drie. Neemt de plaats van Nocellara in.", picual: "Groen & grassig. Vroege oogst uit Jaén." },
     steps: [
       { label: "Pluk", when: "half oktober" },

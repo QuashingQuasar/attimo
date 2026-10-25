@@ -145,6 +145,8 @@ export const de: Dict = {
     formLine: "Trag dich ein und bekomm es direkt aus der Mühle.",
     returning: "Wieder da",
     new: "Neu · bio",
+    organic: "Organic", // TRANSLATE
+    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
     oils: { coratina: "Kräftig & pfeffrig. 847 mg/kg Polyphenole in der letzten Ernte.", peranzana: "Das sanfte der drei. Nimmt den Platz von Nocellara ein.", picual: "Grün & grasig. Frühe Ernte aus Jaén." },
     steps: [
       { label: "Ernte", when: "Mitte Oktober" },

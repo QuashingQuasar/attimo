@@ -24,9 +24,9 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
   const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const note = u.note.replace("{date}", updated);
   const oils = [
-    { key: "coratina", name: "Coratina", detail: "d'Italia", image: coratina, tag: u.returning, line: u.oils.coratina, isNew: false },
-    { key: "peranzana", name: "Peranzana", detail: "Bio", image: nocellara, tag: u.new, line: u.oils.peranzana, isNew: true },
-    { key: "picual", name: "Picual", detail: "de España", image: picual, tag: u.returning, line: u.oils.picual, isNew: false },
+    { key: "coratina", name: "Coratina", image: coratina, tag: u.returning, origin: u.origins.coratina, organic: true, line: u.oils.coratina, isNew: false },
+    { key: "peranzana", name: "Peranzana", image: nocellara, tag: u.new, origin: u.origins.peranzana, organic: true, line: u.oils.peranzana, isNew: true },
+    { key: "picual", name: "Picual", image: picual, tag: u.returning, origin: u.origins.picual, organic: false, line: u.oils.picual, isNew: false },
   ];
   return (
     <section id="next-harvest" className="snap-start relative overflow-hidden px-4 md:px-6 pt-16 md:pt-24 pb-16 md:pb-24" style={{ backgroundColor: DEEP, color: CREAM }}>
@@ -45,22 +45,37 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
                 <div aria-hidden="true" className="absolute inset-x-0 bottom-0 mx-auto rounded-full" style={{ width: 170, height: 170, background: "radial-gradient(circle, rgba(179,229,140,.22) 0%, rgba(179,229,140,0) 70%)" }} />
                 <img src={o.image} alt="" aria-hidden="true" className="relative" style={{ height: 220, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.16 }} />
               </div>
-              <h3 className="mt-5 mb-2" style={{ fontFamily: BEVERLY, fontSize: "clamp(1.7rem, 2.3vw, 2.3rem)", letterSpacing: ".04em", color: CREAM }}>{o.name} {o.detail}</h3>
+              <h3 className="mt-5 mb-1" style={{ fontFamily: BEVERLY, fontSize: "clamp(1.7rem, 2.3vw, 2.3rem)", letterSpacing: ".04em", color: CREAM }}>{o.name}</h3>
+              <p className="mb-3 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".78rem", letterSpacing: ".12em", color: "rgba(255,250,234,.6)" }}>
+                {o.origin}{o.organic && <><span aria-hidden="true" style={{ margin: "0 .5em", opacity: .5 }}>·</span><span style={{ color: ACCENT }}>{u.organic}</span></>}
+              </p>
               <p style={{ fontFamily: SG, fontSize: "1rem", lineHeight: 1.55, color: "rgba(255,250,234,.78)" }}>{o.line}</p>
             </div>
           ))}
         </div>
 
-        <ol className="flex flex-wrap justify-center gap-x-7 gap-y-3 mb-3">
-          {u.steps.map((s, i) => (
-            <li key={s.label} className="inline-flex items-center gap-2.5">
-              <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ backgroundColor: i === current ? ACCENT : i < current ? "rgba(255,250,234,.55)" : "transparent", border: `1.5px solid ${i === current ? ACCENT : i < current ? "rgba(255,250,234,.55)" : "rgba(255,250,234,.45)"}` }}>
-                {i === current && <span className="absolute inline-flex w-full h-full rounded-full opacity-60 animate-ping" style={{ backgroundColor: ACCENT, animationDuration: "2.4s" }} />}
-              </span>
-              <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".92rem", letterSpacing: ".08em", textTransform: "uppercase", color: i === current ? ACCENT : "rgba(255,250,234,.85)" }}>{s.label}</span>
-              <span style={{ fontFamily: SG, fontSize: ".95rem", color: "rgba(255,250,234,.6)" }}>{s.when}</span>
-            </li>
-          ))}
+        {/* Timeline: a track with one node per step. Done steps are filled,
+            the current one is lit, the rest are outlined. Horizontal from md
+            up, vertical below. */}
+        <ol className="relative mx-auto mb-4 md:mb-6 md:grid" style={{ maxWidth: 1040, gridTemplateColumns: `repeat(${u.steps.length}, minmax(0, 1fr))` }}>
+          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / u.steps.length}%`, right: `${50 / u.steps.length}%`, height: 2, backgroundColor: "rgba(255,250,234,.18)" }} />
+          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / u.steps.length}%`, width: `${(100 - 100 / u.steps.length) * (current / Math.max(u.steps.length - 1, 1))}%`, height: 2, backgroundColor: ACCENT }} />
+          <span aria-hidden="true" className="absolute md:hidden" style={{ left: 5, top: 6, bottom: 6, width: 2, backgroundColor: "rgba(255,250,234,.18)" }} />
+          {u.steps.map((s, i) => {
+            const done = i < current;
+            const now = i === current;
+            return (
+              <li key={s.label} className="relative flex md:flex-col md:items-center md:text-center gap-4 md:gap-3 pb-7 md:pb-0 pl-8 md:pl-0">
+                <span className="absolute md:relative left-0 md:left-auto inline-flex w-3 h-3 rounded-full" style={{ backgroundColor: now ? ACCENT : done ? "rgba(255,250,234,.7)" : DEEP, border: `2px solid ${now ? ACCENT : done ? "rgba(255,250,234,.7)" : "rgba(255,250,234,.45)"}` }}>
+                  {now && <span className="absolute -inset-1 rounded-full opacity-60 animate-ping" style={{ backgroundColor: ACCENT, animationDuration: "2.4s" }} />}
+                </span>
+                <span className="flex flex-col md:items-center">
+                  <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".92rem", letterSpacing: ".08em", textTransform: "uppercase", color: now ? ACCENT : done ? "rgba(255,250,234,.95)" : "rgba(255,250,234,.75)" }}>{s.label}</span>
+                  <span style={{ fontFamily: SG, fontSize: ".95rem", color: "rgba(255,250,234,.6)" }}>{s.when}</span>
+                </span>
+              </li>
+            );
+          })}
         </ol>
         <p className="text-center mb-12 md:mb-14" style={{ fontFamily: SG, fontSize: ".9rem", color: "rgba(255,250,234,.5)" }}>{note}</p>
 

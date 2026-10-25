@@ -138,6 +138,8 @@ export const sv: Dict = {
     formLine: "Anmäl dig och få den direkt från kvarnen.",
     returning: "Tillbaka",
     new: "Ny · ekologisk",
+    organic: "Organic", // TRANSLATE
+    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
     oils: { coratina: "Kraftig & pepprig. 847 mg/kg polyfenoler förra skörden.", peranzana: "Den milda av de tre. Tar Nocellaras plats.", picual: "Grön & gräsig. Tidig skörd från Jaén." },
     steps: [
       { label: "Plockning", when: "mitten av oktober" },

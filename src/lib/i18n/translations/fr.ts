@@ -139,6 +139,8 @@ export const fr: Dict = {
     formLine: "Inscrivez-vous et recevez-la tout droit du moulin.",
     returning: "De retour",
     new: "Nouveau · bio",
+    organic: "Organic", // TRANSLATE
+    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
     oils: { coratina: "Puissante et poivrée. 847 mg/kg de polyphénols à la dernière récolte.", peranzana: "La plus douce des trois. Elle prend la place de la Nocellara.", picual: "Verte et herbacée. Récolte précoce de Jaén." },
     steps: [
       { label: "Cueillette", when: "mi-octobre" },
