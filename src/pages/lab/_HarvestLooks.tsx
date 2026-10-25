@@ -3,7 +3,7 @@ import { C } from "@/components/harvest/useHarvestSection";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { useHarvestSection } from "@/components/harvest/useHarvestSection";
 import { StackedLook, Header, OilCard, Timeline, type Theme } from "./_harvestParts";
-import { HarvestLookD } from "./_HarvestLookD";
+import { LookD2, LookD3, LookD4, LookD5 } from "./_HarvestLookDs";
 
 // SANDBOX — looks of the homepage next-harvest section, stacked for
 // comparison. Same data and copy everywhere; only the design differs.
@@ -105,8 +105,14 @@ export default function HarvestLooks() {
       <StackedLook t={B3} />
       <Label>C2 · lime split, pitch and timeline left, three cards right</Label>
       <LookC2 />
-      <Label>D · Heirloom pattern, one oil at a time on a band in its label colour</Label>
-      <HarvestLookD t={B3} />
+      <Label>D2 · colour band, one oil at a time, bottle-thumbnail picker</Label>
+      <LookD2 t={B3} />
+      <Label>D3 · colour panels, all three side by side</Label>
+      <LookD3 t={B3} />
+      <Label>D4 · one band, all three bottles, band takes the selected oil's colour</Label>
+      <LookD4 t={B3} />
+      <Label>D5 · colour panels, the selected one widens</Label>
+      <LookD5 t={B3} />
     </div>
   );
 }
