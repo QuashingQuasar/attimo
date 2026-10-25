@@ -25,15 +25,20 @@ export type HarvestOil = {
 };
 
 export function useHarvestSection(locale: Locale) {
-  const u = getDict(locale).upcoming;
+  const dict = getDict(locale);
+  const u = dict.upcoming;
+  // Flavour descriptors come from the site-wide products.flavour strings,
+  // already translated for every locale. Peranzana shares Nocellara's
+  // descriptor ("Gentle & Fruity").
+  const flavour = dict.products.flavour;
   const current = HARVEST_STATUS.currentStep;
   const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const note = u.note.replace("{date}", updated);
   const p = HARVEST_STATUS.polyphenols;
   const oils: HarvestOil[] = [
-    { key: "coratina", name: "Coratina", image: coratina, tag: u.returning, isNew: false, origin: u.origins.coratina, Flag: IT, flavour: u.oils.coratina, polyphenols: p.coratina },
-    { key: "peranzana", name: "Peranzana", image: peranzana, tag: u.new, isNew: true, origin: u.origins.peranzana, Flag: IT, flavour: u.oils.peranzana, polyphenols: p.peranzana },
-    { key: "picual", name: "Picual", image: picual, tag: u.returning, isNew: false, origin: u.origins.picual, Flag: ES, flavour: u.oils.picual, polyphenols: p.picual },
+    { key: "coratina", name: "Coratina", image: coratina, tag: u.returning, isNew: false, origin: u.origins.coratina, Flag: IT, flavour: flavour.coratina, polyphenols: p.coratina },
+    { key: "peranzana", name: "Peranzana", image: peranzana, tag: u.new, isNew: true, origin: u.origins.peranzana, Flag: IT, flavour: flavour.nocellara, polyphenols: p.peranzana },
+    { key: "picual", name: "Picual", image: picual, tag: u.returning, isNew: false, origin: u.origins.picual, Flag: ES, flavour: flavour.picual, polyphenols: p.picual },
   ];
   return { u, oils, current, note, steps: u.steps };
 }

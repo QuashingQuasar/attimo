@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
-import { UpcomingHarvest } from "@/components/UpcomingHarvest";
+import { NextHarvest } from "@/components/NextHarvest";
 import { BundleWidgets } from "@/components/BundleWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
@@ -56,7 +56,7 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <UpcomingHarvest locale={locale} />
+      <NextHarvest locale={locale} />
       <OilProductWidgets
         locale={locale}
         polyphenols={polyBadges}
