@@ -50,9 +50,10 @@ export const OilCard = ({ o, t, locale, bottleHeight = 280 }: { o: HarvestOil; t
   return (
     <div className="relative overflow-hidden text-center flex flex-col" style={{ backgroundColor: c.bg, border: `1px solid ${o.isNew && c.borderNew ? c.borderNew : c.border}`, borderRadius: r, boxShadow: c.shadow }}>
       <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".12em", backgroundColor: o.isNew ? c.tagNewBg : c.tagBg, color: o.isNew ? c.tagNewText : c.tagText }}>{o.tag}</span>
-      <div className="relative flex items-end justify-center" style={{ height: bottleHeight + (stage ? 44 : 30), backgroundColor: stage, paddingTop: stage ? 30 : 20 }}>
+      <div className="relative flex items-end justify-center" style={{ height: bottleHeight + (stage ? 92 : 30), backgroundColor: stage, paddingTop: stage ? 40 : 20, paddingBottom: stage ? 36 : 0 }}>
         {c.glow && <div aria-hidden="true" className="absolute left-1/2 -translate-x-1/2 rounded-full" style={{ bottom: 8, width: bottleHeight * 0.8, height: bottleHeight * 0.8, background: `radial-gradient(circle, ${c.glow} 0%, rgba(0,0,0,0) 68%)` }} />}
-        <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="relative" style={{ height: bottleHeight, width: "auto", marginBottom: stage ? -1 : 0, filter: stage ? "drop-shadow(0 10px 12px rgba(16,34,27,.28))" : "drop-shadow(0 18px 22px rgba(0,0,0,.45))" }} />
+        {stage && <div aria-hidden="true" className="absolute left-1/2 -translate-x-1/2" style={{ bottom: 28, width: bottleHeight * 0.5, height: 16, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(16,34,27,.32) 0%, rgba(16,34,27,0) 70%)" }} />}
+        <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="relative" style={{ height: bottleHeight, width: "auto", filter: stage ? "drop-shadow(0 6px 8px rgba(16,34,27,.18))" : "drop-shadow(0 18px 22px rgba(0,0,0,.45))" }} />
       </div>
       <div className="px-6 pt-6 pb-7 flex-1">
         <h3 className="mb-1" style={{ fontFamily: BEVERLY, fontSize: "clamp(1.7rem, 2.3vw, 2.3rem)", letterSpacing: ".04em", color: c.name }}>{o.name}</h3>
