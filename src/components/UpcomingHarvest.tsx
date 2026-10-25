@@ -1,34 +1,15 @@
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
-import { getDict } from "@/lib/i18n/dictionaries";
-import { HARVEST_STATUS } from "@/lib/harvestStatus";
-import { IT, ES } from "country-flag-icons/react/3x2";
-import coratina from "@/assets/bottle-coratina-cutout.png?url";
-import picual from "@/assets/bottle-picual-cutout.png?url";
-import nocellara from "@/assets/bottle-nocellara-cutout.png?url";
+import { useHarvestSection, FONTS, C } from "@/components/harvest/useHarvestSection";
 
-// Homepage pre-launch section for the next harvest, shown between seasons.
-// Three bottles as pale silhouettes (the labels do not exist yet), one line
-// each, the production steps, and the signup. Deep green so it reads as a
-// reveal; sits between the ticker and the cream lineup of last year's oils.
-const DEEP = "#10221B";
-const CREAM = "#FFFAEA";
-const ACCENT = "#CDDB2D";
-const UDC = "'UDC Working Man Sans', sans-serif";
-const SG = "'Space Grotesk', sans-serif";
-const BEVERLY = "'Beverly Drive', serif";
+// Homepage section for the next harvest, shown between seasons (look A: deep
+// green band, one card per oil). Copy, status and lab values come from
+// useHarvestSection; edit src/lib/harvestStatus.ts as the harvest moves.
+const { UDC, SG, BEVERLY } = FONTS;
+const { DEEP, CREAM, CHARTREUSE: ACCENT } = C;
 
 export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) => {
-  const t = getDict(locale);
-  const u = t.upcoming;
-  const current = HARVEST_STATUS.currentStep;
-  const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
-  const note = u.note.replace("{date}", updated);
-  const oils = [
-    { key: "coratina", name: "Coratina", image: coratina, tag: u.returning, origin: u.origins.coratina, Flag: IT, line: u.oils.coratina, isNew: false },
-    { key: "peranzana", name: "Peranzana", image: nocellara, tag: u.new, origin: u.origins.peranzana, Flag: IT, line: u.oils.peranzana, isNew: true },
-    { key: "picual", name: "Picual", image: picual, tag: u.returning, origin: u.origins.picual, Flag: ES, line: u.oils.picual, isNew: false },
-  ];
+  const { u, oils, current, note, steps } = useHarvestSection(locale);
   return (
     <section id="next-harvest" className="snap-start relative overflow-hidden px-4 md:px-6 pt-16 md:pt-24 pb-16 md:pb-24" style={{ backgroundColor: DEEP, color: CREAM }}>
       <div className="relative z-10 mx-auto" style={{ maxWidth: 1200 }}>
@@ -44,20 +25,20 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
           {oils.map((o) => (
             <div key={o.key} className="relative rounded-2xl px-6 pt-8 pb-7 text-center" style={{ backgroundColor: "rgba(255,250,234,.04)", border: `1px solid ${o.isNew ? "rgba(205,219,45,.45)" : "rgba(255,250,234,.14)"}` }}>
-              <span className="absolute top-4 left-4 rounded-full px-3 py-1 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".12em", backgroundColor: o.isNew ? ACCENT : "rgba(255,250,234,.1)", color: o.isNew ? "#1B4229" : "rgba(255,250,234,.8)" }}>{o.tag}</span>
-              <div className="relative mx-auto flex items-end justify-center" style={{ height: 230 }}>
-                <div aria-hidden="true" className="absolute inset-x-0 bottom-0 mx-auto rounded-full" style={{ width: 170, height: 170, background: "radial-gradient(circle, rgba(179,229,140,.22) 0%, rgba(179,229,140,0) 70%)" }} />
-                <img src={o.image} alt="" aria-hidden="true" className="relative" style={{ height: 220, width: "auto", filter: "brightness(0) invert(1)", opacity: 0.16 }} />
+              <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".12em", backgroundColor: o.isNew ? ACCENT : "rgba(255,250,234,.1)", color: o.isNew ? "#1B4229" : "rgba(255,250,234,.8)" }}>{o.tag}</span>
+              <div className="relative mx-auto flex items-end justify-center" style={{ height: 290 }}>
+                <div aria-hidden="true" className="absolute inset-x-0 bottom-2 mx-auto rounded-full" style={{ width: 230, height: 230, background: "radial-gradient(circle, rgba(179,229,140,.20) 0%, rgba(179,229,140,0) 68%)" }} />
+                <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="relative" style={{ height: 280, width: "auto", filter: "drop-shadow(0 18px 22px rgba(0,0,0,.45))" }} />
               </div>
               <h3 className="mt-5 mb-1" style={{ fontFamily: BEVERLY, fontSize: "clamp(1.7rem, 2.3vw, 2.3rem)", letterSpacing: ".04em", color: CREAM }}>{o.name}</h3>
               <p className="mb-3 uppercase inline-flex items-center justify-center gap-2.5" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".78rem", letterSpacing: ".12em", color: "rgba(255,250,234,.6)" }}>
                 <span>{o.origin}</span>
                 <o.Flag aria-hidden="true" style={{ width: 18, height: 12, borderRadius: 2, flexShrink: 0 }} />
               </p>
-              <p style={{ fontFamily: SG, fontSize: "1rem", lineHeight: 1.55, color: "rgba(255,250,234,.78)" }}>{o.line}</p>
+              <p style={{ fontFamily: SG, fontSize: "1rem", lineHeight: 1.55, color: "rgba(255,250,234,.78)" }}>{o.flavour}</p>
               <div className="mt-5 pt-4 mx-auto" style={{ borderTop: "1px solid rgba(255,250,234,.12)", maxWidth: 220 }}>
-                {HARVEST_STATUS.polyphenols[o.key as "coratina"] != null ? (
-                  <p style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.15rem", letterSpacing: ".06em", color: CREAM }}>{HARVEST_STATUS.polyphenols[o.key as "coratina"]} mg/kg</p>
+                {o.polyphenols != null ? (
+                  <p style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.15rem", letterSpacing: ".06em", color: CREAM }}>{o.polyphenols} mg/kg</p>
                 ) : (
                   <p style={{ fontFamily: SG, fontSize: ".95rem", fontStyle: "italic", color: "rgba(255,250,234,.55)" }}>{u.polyPending}</p>
                 )}
@@ -70,11 +51,11 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
         {/* Timeline: a track with one node per step. Done steps are filled,
             the current one is lit, the rest are outlined. Horizontal from md
             up, vertical below. */}
-        <ol className="relative mx-auto mb-4 md:mb-6 md:grid" style={{ maxWidth: 1040, gridTemplateColumns: `repeat(${u.steps.length}, minmax(0, 1fr))` }}>
-          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / u.steps.length}%`, right: `${50 / u.steps.length}%`, height: 2, backgroundColor: "rgba(255,250,234,.18)" }} />
-          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / u.steps.length}%`, width: `${(100 - 100 / u.steps.length) * (current / Math.max(u.steps.length - 1, 1))}%`, height: 2, backgroundColor: ACCENT }} />
+        <ol className="relative mx-auto mb-4 md:mb-6 md:grid" style={{ maxWidth: 1040, gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}>
+          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / steps.length}%`, right: `${50 / steps.length}%`, height: 2, backgroundColor: "rgba(255,250,234,.18)" }} />
+          <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 5, left: `${50 / steps.length}%`, width: `${(100 - 100 / steps.length) * (current / Math.max(steps.length - 1, 1))}%`, height: 2, backgroundColor: ACCENT }} />
           <span aria-hidden="true" className="absolute md:hidden" style={{ left: 5, top: 6, bottom: 6, width: 2, backgroundColor: "rgba(255,250,234,.18)" }} />
-          {u.steps.map((s, i) => {
+          {steps.map((s, i) => {
             const done = i < current;
             const now = i === current;
             return (
@@ -90,9 +71,7 @@ export const UpcomingHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }
             );
           })}
         </ol>
-        <p className="text-center mb-12 md:mb-14" style={{ fontFamily: SG, fontSize: ".9rem", color: "rgba(255,250,234,.5)" }}>{note}</p>
-
-
+        <p className="text-center" style={{ fontFamily: SG, fontSize: ".9rem", color: "rgba(255,250,234,.5)" }}>{note}</p>
       </div>
     </section>
   );

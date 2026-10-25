@@ -155,9 +155,9 @@ export const en = {
     new: "New",
     origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" },
     oils: {
-      coratina: "Bold & punchy",
-      peranzana: "Gentle & fruity",
-      picual: "Green & grassy",
+      coratina: "Bold & Punchy",
+      peranzana: "Gentle & Fruity",
+      picual: "Green & Grassy",
     },
     steps: [
       { label: "Pressing", when: "end of October" },
