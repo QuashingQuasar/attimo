@@ -121,6 +121,7 @@ export const de: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Frisch geerntetes Olivenöl kommt Ende Oktober. Trag dich ein und bekomm es direkt aus der Mühle.",
+      sub: "Sign up to hear first", // TRANSLATE
       placeholder: "Deine E-Mail-Adresse",
       button: "Als Erster bekommen",
       secondary: "Last Season Sale der Ernte 25/26 →",

@@ -114,6 +114,7 @@ export const sv: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Nypressad olivolja från årets skörd kommer i slutet av oktober. Anmäl dig och få den direkt från kvarnen.",
+      sub: "Sign up to hear first", // TRANSLATE
       placeholder: "Din e-postadress",
       button: "Få den först",
       secondary: "Last Season Sale på skörden 25/26 →",

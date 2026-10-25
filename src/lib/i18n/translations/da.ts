@@ -114,6 +114,7 @@ export const da: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Frisk olivenolie fra den nye høst kommer sidst i oktober. Skriv dig op og få den direkte fra møllen.",
+      sub: "Sign up to hear first", // TRANSLATE
       placeholder: "Din e-mailadresse",
       button: "Få den først",
       secondary: "Last Season Sale på høsten 25/26 →",

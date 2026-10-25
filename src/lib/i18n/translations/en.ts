@@ -21,7 +21,7 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
-    nocellaraSale: "NOCELLARA PREVIOUS HARVEST SALE",
+    nocellaraSale: "NEW HARVEST WAITLIST OPEN  ·  LAST SEASON SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -124,10 +124,12 @@ export const en = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "The 26/27 harvest is being pressed in Puglia. Pre-orders open in early November. Sign up to hear first.",
-      placeholder: "Your email address",
+      // Hero: a title-like line, then a short sub line above the form.
+      line: "New harvest arriving soon",
+      sub: "Sign up to hear first",
+      placeholder: "Email",
       button: "Get it first",
-      secondary: "Previous Harvest Sale on 25/26 →",
+      secondary: "Last Season Sale on 25/26 →",
       success: "You're on the list. First email when pre-orders open.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
@@ -144,7 +146,7 @@ export const en = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Harvest 26/27 pressing now",
+    eyebrow: "Harvest 26/27 on the way",
     heading: "Fresh harvest olive oil",
     intro: "Three cultivars, picked green and pressed within hours for maximum flavour and health benefits.",
     formLine: "Sign up and hear first when pre-orders open.",
@@ -160,7 +162,7 @@ export const en = {
       picual: "Green & Grassy",
     },
     steps: [
-      { label: "Pressing", when: "end of October" },
+      { label: "Pressing", when: "mid-October" },
       { label: "Lab analysis", when: "early November" },
       { label: "Pre-orders open", when: "early to mid November" },
       { label: "Bottling", when: "mid-November" },
@@ -171,8 +173,8 @@ export const en = {
 
   oilCollection: {
     lastHarvestEyebrow: "Harvest 25/26",
-    lastHarvestHeading: "Previous Harvest Sale",
-    lastHarvestSubtitle: "While you wait for the new harvest, the last Nocellara of 25/26 is {sale} instead of {price}. Picked early, it keeps its freshness and flavour far longer than a late-harvest oil.",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "Something to pour while you wait for the new harvest. Early-harvest oil is rich in polyphenols, which protect it from oxidation, so it keeps its freshness and flavour long after bottling.",
     endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:

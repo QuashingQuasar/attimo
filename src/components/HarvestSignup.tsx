@@ -8,7 +8,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 const UDC = "'UDC Working Man Sans', sans-serif";
 const SG = "'Space Grotesk', sans-serif";
 
-export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary", stack = false }: { locale?: Locale; line?: string | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary"; stack?: boolean }) => {
+export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary", stack = false }: { locale?: Locale; line?: React.ReactNode | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary"; stack?: boolean }) => {
   const light = tone === "light";
   const t = getDict(locale);
   const [email, setEmail] = useState("");

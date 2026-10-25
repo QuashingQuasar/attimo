@@ -28,7 +28,7 @@ interface Props {
   // existing pages are unchanged; localized pages pass translated strings.
   announceTier2?: string;
   announceTier3?: string;
-  // Optional second message appended to the shipping line (e.g. a sale).
+  // Optional message(s) shown before the shipping line (e.g. waitlist, sale).
   announceExtra?: string;
 }
 
@@ -231,7 +231,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               : null;
             if (!msg) return;
             var extra = bar.getAttribute("data-extra");
-            text.textContent = extra ? msg + "  \u00b7  " + extra : msg;
+            text.textContent = extra ? extra + "  \u00b7  " + msg : msg;
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the
             // hero (.hero-full) can subtract it from its 100vh and the
