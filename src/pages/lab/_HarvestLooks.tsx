@@ -3,7 +3,7 @@ import { C } from "@/components/harvest/useHarvestSection";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { useHarvestSection } from "@/components/harvest/useHarvestSection";
 import { StackedLook, Header, OilCard, Timeline, type Theme } from "./_harvestParts";
-import { LookD2, LookD3, LookD4, LookD5 } from "./_HarvestLookDs";
+import { LookD2, LookD2b, LookD3, LookD4, LookD5, LookD5b, LookD6 } from "./_HarvestLookDs";
 
 // SANDBOX — looks of the homepage next-harvest section, stacked for
 // comparison. Same data and copy everywhere; only the design differs.
@@ -113,6 +113,12 @@ export default function HarvestLooks() {
       <LookD4 t={B3} />
       <Label>D5 · colour panels, the selected one widens</Label>
       <LookD5 t={B3} />
+      <Label>D5b · widening panels, profile 20% bigger beside the bottle</Label>
+      <LookD5b t={B3} />
+      <Label>D6 · static colour panels, details right of each bottle</Label>
+      <LookD6 t={B3} />
+      <Label>D2b · one at a time, thumbnail rail beside the bottle</Label>
+      <LookD2b t={B3} />
     </div>
   );
 }
