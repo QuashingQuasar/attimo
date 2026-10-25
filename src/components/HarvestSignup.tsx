@@ -8,7 +8,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 const UDC = "'UDC Working Man Sans', sans-serif";
 const SG = "'Space Grotesk', sans-serif";
 
-export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary" }: { locale?: Locale; line?: string | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary" }) => {
+export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "dark", buttonVariant = "primary", stack = false }: { locale?: Locale; line?: string | null; button?: string; tone?: "dark" | "light"; buttonVariant?: "primary" | "secondary"; stack?: boolean }) => {
   const light = tone === "light";
   const t = getDict(locale);
   const [email, setEmail] = useState("");
@@ -48,7 +48,7 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "d
           {line ?? t.hero.harvest.line}
         </p>
       )}
-      <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-2">
+      <div className={stack ? "flex flex-col gap-2.5" : "flex flex-col sm:flex-row gap-2.5 sm:gap-2"}>
         <input
           type="email"
           required
