@@ -113,14 +113,18 @@ export default function HarvestLooks() {
       <LookD4 t={B3} />
       <Label>D5 · colour panels, the selected one widens</Label>
       <LookD5 t={B3} />
-      <Label>D5b-1 · opens on hover · "new" as a kicker above the name</Label>
-      <LookD5b t={B3} mark="kicker" />
-      <Label>D5b-2 · opens on hover · "new" as a pill after the name</Label>
-      <LookD5b t={B3} mark="pill" />
-      <Label>D5b-3 · opens on hover · "new" as a corner ribbon</Label>
-      <LookD5b t={B3} mark="ribbon" />
-      <Label>D5b-4 · opens on hover · "new" as a handwritten note with an arrow</Label>
-      <LookD5b t={B3} mark="script" />
+      <Label>D5b-4A · handwritten note · curl (current)</Label>
+      <LookD5b t={B3} mark="script" arrow="curl" />
+      <Label>D5b-4B · handwritten note · loop</Label>
+      <LookD5b t={B3} mark="script" arrow="loop" />
+      <Label>D5b-4C · handwritten note · short jab</Label>
+      <LookD5b t={B3} mark="script" arrow="jab" />
+      <Label>D5b-4D · handwritten note · long swoop to the label</Label>
+      <LookD5b t={B3} mark="script" arrow="swoop" />
+      <Label>D5b-4E · handwritten note · from the left</Label>
+      <LookD5b t={B3} mark="script" arrow="left" />
+      <Label>D5b-4F · handwritten note · underline that hooks into the bottle</Label>
+      <LookD5b t={B3} mark="script" arrow="underline" />
       <Label>D6 · static colour panels, details right of each bottle</Label>
       <LookD6 t={B3} />
       <Label>D2b · one at a time, thumbnail rail beside the bottle</Label>

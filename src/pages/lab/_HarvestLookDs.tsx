@@ -270,16 +270,38 @@ const NewRibbon = ({ ink, text }: { ink: string; text: string }) => (
     <div className="absolute uppercase text-center" style={{ top: 44, right: -50, width: 220, transform: "rotate(45deg)", backgroundColor: ink, color: CREAM, fontFamily: UDC, fontWeight: 700, fontSize: ".95rem", letterSpacing: ".24em", padding: "8px 0 8px .24em" }}>{text}</div>
   </div>
 );
-const NewScript = ({ ink, text }: { ink: string; text: string }) => (
-  <div aria-hidden="true" className="absolute z-10 pointer-events-none" style={{ left: "100%", top: "4%", marginLeft: 6, color: ink }}>
-    <span className="uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.35rem", letterSpacing: ".12em", lineHeight: 1, whiteSpace: "nowrap", display: "block", transform: "rotate(-8deg)" }}>{text}</span>
-    {/* hand-drawn arrow curling back to the bottle */}
-    <svg width="64" height="46" viewBox="0 0 64 46" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, marginLeft: -6 }}>
-      <path d="M40 4 C 34 22, 22 32, 6 36" />
-      <path d="M15 28 Q 8 33 5.5 36.5 Q 10 40 17 42" />
-    </svg>
-  </div>
-);
+// Hand-drawn "new" note pointing at the bottle. Variants differ in the arrow
+// (and, for "left", which side of the bottle the note sits on).
+export type ArrowStyle = "curl" | "loop" | "jab" | "swoop" | "left" | "underline";
+const head = (x: number, y: number, deg: number, len = 10) => {
+  const r = (d: number) => (d * Math.PI) / 180;
+  const a1 = r(deg + 152), a2 = r(deg - 152);
+  return `M ${(x + Math.cos(a1) * len).toFixed(1)} ${(y + Math.sin(a1) * len).toFixed(1)} L ${x} ${y} L ${(x + Math.cos(a2) * len).toFixed(1)} ${(y + Math.sin(a2) * len).toFixed(1)}`;
+};
+const ARROWS: Record<ArrowStyle, { w: number; h: number; d: string; end: [number, number, number]; svgStyle?: React.CSSProperties }> = {
+  curl: { w: 64, h: 46, d: "M40 4 C 34 22, 22 32, 6 36", end: [6, 36, 166], svgStyle: { marginLeft: -6 } },
+  loop: { w: 82, h: 60, d: "M58 2 C 70 20, 56 36, 42 30 C 28 24, 34 6, 48 14 C 64 24, 42 50, 8 54", end: [8, 54, 173], svgStyle: { marginLeft: -6 } },
+  jab: { w: 48, h: 34, d: "M38 4 Q 24 14 8 28", end: [8, 28, 139], svgStyle: { marginLeft: -4 } },
+  swoop: { w: 76, h: 176, d: "M54 4 C 72 62, 58 130, 8 168", end: [8, 168, 142], svgStyle: { marginLeft: -14 } },
+  left: { w: 64, h: 46, d: "M8 4 C 14 22, 30 32, 56 36", end: [56, 36, 9], svgStyle: { marginLeft: "auto" } },
+  underline: { w: 76, h: 44, d: "M72 4 C 52 8, 28 6, 18 12 C 10 17, 8 28, 3 37", end: [3, 37, 117], svgStyle: { marginTop: -2, marginLeft: -8 } },
+};
+const NewScript = ({ ink, text, arrow = "curl" }: { ink: string; text: string; arrow?: ArrowStyle }) => {
+  const A = ARROWS[arrow];
+  const left = arrow === "left";
+  const pos: React.CSSProperties = left
+    ? { right: "100%", top: "22%", marginRight: 8, textAlign: "right" }
+    : { left: "100%", top: arrow === "swoop" ? "-2%" : "4%", marginLeft: 6 };
+  return (
+    <div aria-hidden="true" className="absolute z-10 pointer-events-none flex flex-col" style={{ ...pos, color: ink }}>
+      <span className="uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.35rem", letterSpacing: ".12em", lineHeight: 1, whiteSpace: "nowrap", display: "block", transform: left ? "rotate(8deg)" : "rotate(-8deg)", alignSelf: left ? "flex-end" : "flex-start" }}>{text}</span>
+      <svg width={A.w} height={A.h} viewBox={`0 0 ${A.w} ${A.h}`} fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, ...A.svgStyle }}>
+        <path d={A.d} />
+        <path d={head(...A.end)} />
+      </svg>
+    </div>
+  );
+};
 
 // One curve for every moving part so panel, bottle and details move together.
 const EASE = "cubic-bezier(.22,1,.36,1)";
@@ -293,7 +315,7 @@ const RATIO: Record<HarvestOil["key"], number> = { coratina: 0.3489, peranzana: 
 // transform, so nothing inside re-wraps per frame. The profile is clipped by
 // the narrow panel and faded; the bottle is centred in a closed panel by
 // translating the row so the bottle's centre sits on the panel's centre.
-export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) => {
+export const LookD5b = ({ t, mark = "kicker", arrow = "curl" }: { t: Theme; mark?: NewMark; arrow?: ArrowStyle }) => {
   const { u, oils } = useHarvestSection(DEFAULT_LOCALE);
   const [i, setI] = useState(0);
   const timer = useRef<number | undefined>(undefined);
@@ -346,7 +368,7 @@ export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) =>
                 }}
               >
                 <div className="relative shrink-0">
-                  {isNew && mark === "script" && <NewScript ink={ink} text={u.new} />}
+                  {isNew && mark === "script" && <NewScript ink={ink} text={u.new} arrow={arrow} />}
                   <img
                     src={o.image}
                     alt={`ATTIMO ${o.name} 26/27`}
