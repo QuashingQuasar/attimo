@@ -144,14 +144,15 @@ export const en = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Harvest 26/27 · pressing now",
-    heading: "The next harvest",
-    intro: "Three oils, picked green and pressed within hours. Two you know, one new. This is where it stands.",
+    eyebrow: "Fresh harvest olive oil",
+    status: "Harvest 26/27 pressing now",
+    heading: "Get it fresh off the press",
+    intro: "Three cultivars, picked green and pressed within hours for maximum flavour and health benefits.",
     formLine: "Sign up and hear first when pre-orders open.",
     returning: "Returning",
     new: "New",
     organic: "Organic",
-    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" },
+    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" },
     oils: {
       coratina: "Bold and peppery. 847 mg/kg polyphenols last season. In 500 ml and, new, a 3 L box.",
       peranzana: "Gentle and very fruity. Takes Nocellara's place in the range.",

@@ -133,13 +133,14 @@ export const sv: Dict = {
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
     eyebrow: "Skörd 26/27 · slutet av oktober",
+    status: "Harvest 26/27 pressing now", // TRANSLATE
     heading: "Nästa skörd",
     intro: "Tre färska oljor, plockade gröna i oktober och pressade inom några timmar. Två känner du igen, en är ny.",
     formLine: "Anmäl dig och få den direkt från kvarnen.",
     returning: "Tillbaka",
     new: "Ny · ekologisk",
     organic: "Organic", // TRANSLATE
-    origins: { coratina: "Puglia, Italy", peranzana: "Puglia, Italy", picual: "Andalusia, Spain" }, // TRANSLATE
+    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
     oils: { coratina: "Kraftig & pepprig. 847 mg/kg polyfenoler förra skörden.", peranzana: "Den milda av de tre. Tar Nocellaras plats.", picual: "Grön & gräsig. Tidig skörd från Jaén." },
     steps: [
       { label: "Plockning", when: "mitten av oktober" },
