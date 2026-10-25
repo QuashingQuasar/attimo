@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { NextHarvest } from "@/components/NextHarvest";
-import { BundleWidgets } from "@/components/BundleWidgets";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
 import { HomeLabNumbers } from "@/components/HomeLabNumbers";
@@ -60,9 +59,12 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
       <OilProductWidgets
         locale={locale}
         polyphenols={polyBadges}
+        eyebrow={t.oilCollection.lastHarvestEyebrow}
         heading={t.oilCollection.lastHarvestHeading}
+        headingFontFamily="UDC Working Man Sans, sans-serif"
         subtitle={lastHarvestSubtitle}
-        belowGrid={<BundleWidgets locale={locale} />}
+        wideSubtitle
+        soldOutButton="soldOut"
       />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />

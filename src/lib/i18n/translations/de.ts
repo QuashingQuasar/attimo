@@ -161,6 +161,7 @@ export const de: Dict = {
   },
 
   oilCollection: {
+    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
     lastHarvestHeading: "Last Season Sale",
     lastHarvestSubtitle: "Während du auf die neue Ernte wartest, kosten die letzten Flaschen der 25/26 {sale} statt {price}. Die Monate in der Flasche haben die Bitterkeit der Nocellara gemildert; wer ein mildes Öl mag, erwischt jetzt ihren besten Moment. Coratina und Picual sind ausverkauft, bis das neue Öl da ist.",
     endOfSeason: "Saisonschlussverkauf",

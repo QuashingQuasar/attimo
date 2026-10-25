@@ -154,6 +154,7 @@ export const sv: Dict = {
   },
 
   oilCollection: {
+    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
     lastHarvestHeading: "Last Season Sale",
     lastHarvestSubtitle: "Medan du väntar på den nya skörden kostar de sista flaskorna av 25/26 {sale} i stället för {price}. Månaderna på flaska har mildrat Nocellaras beska; gillar du en mjuk olja är det här dess bästa stund. Coratina och Picual är slutsålda tills den nya oljan kommer.",
     endOfSeason: "Säsongsslutsrea",

@@ -70,25 +70,25 @@ const Timeline = ({ locale }: { locale: Locale }) => {
   return (
     <div>
       <ol className="relative md:grid" style={{ gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))` }}>
-        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 6, left: `${50 / n}%`, right: `${50 / n}%`, height: 2, backgroundColor: gr(0.2) }} />
-        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 6, left: `${50 / n}%`, width: `${(100 - 100 / n) * (current / Math.max(n - 1, 1))}%`, height: 2, backgroundColor: GREEN }} />
-        <span aria-hidden="true" className="absolute md:hidden" style={{ left: 6, top: 8, bottom: 8, width: 2, backgroundColor: gr(0.2) }} />
+        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 7, left: `${50 / n}%`, right: `${50 / n}%`, height: 2, backgroundColor: gr(0.2) }} />
+        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 7, left: `${50 / n}%`, width: `${(100 - 100 / n) * (current / Math.max(n - 1, 1))}%`, height: 2, backgroundColor: GREEN }} />
+        <span aria-hidden="true" className="absolute md:hidden" style={{ left: 7, top: 8, bottom: 8, width: 2, backgroundColor: gr(0.2) }} />
         {steps.map((s, i) => {
           const done = i < current, now = i === current;
           return (
             <li key={s.label} className="relative flex md:flex-col md:items-center md:text-center gap-0.5 md:gap-3 pb-6 md:pb-0 pl-9 md:pl-0">
-              <span className="absolute md:relative left-0 md:left-auto inline-flex rounded-full" style={{ width: 14, height: 14, backgroundColor: now ? C.CHARTREUSE : done ? GREEN : CREAM, border: `2px solid ${now || done ? GREEN : gr(0.45)}` }}>
+              <span className="absolute md:relative left-0 md:left-auto inline-flex rounded-full" style={{ width: 16, height: 16, backgroundColor: now ? C.CHARTREUSE : done ? GREEN : CREAM, border: `2px solid ${now || done ? GREEN : gr(0.45)}` }}>
                 {now && <span className="absolute -inset-1 rounded-full opacity-50 animate-ping" style={{ backgroundColor: GREEN, animationDuration: "2.4s" }} />}
               </span>
               <span className="flex flex-col md:items-center">
-                <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".92rem", letterSpacing: ".08em", textTransform: "uppercase", color: now || done ? GREEN : gr(0.6) }}>{s.label}</span>
-                <span style={{ fontFamily: SG, fontSize: ".95rem", color: gr(0.62) }}>{s.when}</span>
+                <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.01rem", letterSpacing: ".08em", textTransform: "uppercase", color: now || done ? GREEN : gr(0.6) }}>{s.label}</span>
+                <span style={{ fontFamily: SG, fontSize: "1.045rem", color: gr(0.62) }}>{s.when}</span>
               </span>
             </li>
           );
         })}
       </ol>
-      <p className="mt-5 text-center" style={{ fontFamily: SG, fontSize: ".9rem", color: gr(0.62) }}>{note}</p>
+      <p className="mt-6 text-center" style={{ fontFamily: SG, fontSize: ".99rem", color: gr(0.62) }}>{note}</p>
     </div>
   );
 };
@@ -142,7 +142,7 @@ const Panels = ({ locale }: { locale: Locale }) => {
               </div>
               <div
                 className="mt-6 sm:mt-[calc(var(--bh)*0.40)] sm:ml-12 md:[opacity:var(--po)]"
-                style={{ width: 300, transition: `opacity ${on ? ".45s" : ".18s"} ease ${on ? ".25s" : "0s"}` }}
+                style={{ width: 300, transition: `opacity ${on ? ".2s" : ".12s"} ease` }}
               >
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} />
               </div>
@@ -170,7 +170,7 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
         </div>
       </div>
       <Panels locale={locale} />
-      <div className="px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-24 mx-auto" style={{ maxWidth: 1080 }}>
+      <div className="px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-24 mx-auto" style={{ maxWidth: 1190 }}>
         <Timeline locale={locale} />
       </div>
     </section>

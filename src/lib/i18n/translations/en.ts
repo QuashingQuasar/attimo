@@ -21,7 +21,7 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
-    nocellaraSale: "NOCELLARA LAST SEASON SALE",
+    nocellaraSale: "NOCELLARA PREVIOUS HARVEST SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -127,7 +127,7 @@ export const en = {
       line: "The 26/27 harvest is being pressed in Puglia. Pre-orders open in early November. Sign up to hear first.",
       placeholder: "Your email address",
       button: "Get it first",
-      secondary: "Last Season Sale on the 25/26 harvest →",
+      secondary: "Previous Harvest Sale on 25/26 →",
       success: "You're on the list. First email when pre-orders open.",
     },
     cta: "Shop 25/26 Harvest", // REVIEW
@@ -170,8 +170,9 @@ export const en = {
   },
 
   oilCollection: {
-    lastHarvestHeading: "Last Season Sale",
-    lastHarvestSubtitle: "While you wait for the new harvest, the last bottles of 25/26 are {sale} instead of {price}. Months in the bottle have softened Nocellara's bitterness, so if you like a mellow oil this is its best moment. Coratina and Picual are sold out until the new oil lands.",
+    lastHarvestEyebrow: "Harvest 25/26",
+    lastHarvestHeading: "Previous Harvest Sale",
+    lastHarvestSubtitle: "While you wait for the new harvest, the last Nocellara of 25/26 is {sale} instead of {price}. Picked early, it keeps its freshness and flavour far longer than a late-harvest oil.",
     endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:
@@ -342,16 +343,17 @@ export const en = {
     formatBoxBadge: "BEST VALUE", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} servings ({price} per serving)",
-    newHarvest: "New Harvest", // REVIEW
+    newHarvest: "Harvest 25/26", // REVIEW
     inStock: "In Stock",
     lastBottles: "Last Bottles",
     lastBoxes: "Last Boxes",
     soldOut: "Sold Out",
     comingSoon: "Coming Soon",
     backSoon: "Back Soon",
-    newBatchHeading: "New Batch on the Way", // REVIEW
+    newBatchHeading: "New Harvest on the Way", // REVIEW
+    // {name} = variety ("Coratina").
     newBatchSubtitle:
-      "We'll send you an email when Coratina d'Italia is available again.", // REVIEW
+      "We'll send you an email as soon as new harvest {name} is available.", // REVIEW
     attrVariety: "Variety",
     attrOrigin: "Origin",
     attrHarvest: "Harvest",

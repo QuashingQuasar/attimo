@@ -65,8 +65,16 @@ interface OilProductWidgetsProps {
    * descriptor — number in UDC, unit and word in Space Grotesk — so it never
    * reads as a status badge next to the sold-out pill.
    */
-  /** Override the heading font (default Beverly Drive script). */
+  /** Override the heading font (default Beverly Drive script). A UDC font
+   * gets the design-system H2 treatment (weight 300, tight tracking). */
   headingFontFamily?: string;
+  /** Small label above the heading. */
+  eyebrow?: string;
+  /** Let the subtitle run the container width (no 800px cap). */
+  wideSubtitle?: boolean;
+  /** Sold-out cards: "notify" (button sends to the PDP notify form) or
+   * "soldOut" (plain SOLD OUT label; the card still links to the PDP). */
+  soldOutButton?: "notify" | "soldOut";
   /** Show the per-bottle tagline line under the price (default true). */
   showTagline?: boolean;
   /** Override the quiz prompt line above the quiz CTA. */
@@ -86,7 +94,11 @@ export const OilProductWidgets = ({
   showTagline = true,
   quizPrompt,
   belowGrid,
+  eyebrow,
+  wideSubtitle = false,
+  soldOutButton = "notify",
 }: OilProductWidgetsProps = {}) => {
+  const udcHeading = headingFontFamily.includes("UDC");
   const t = getDict(locale);
   // Per-handle Shopify availability. `undefined` = not yet loaded or unknown
   // (treat as available — never accidentally hide an in-stock product).
@@ -195,24 +207,29 @@ export const OilProductWidgets = ({
 
       <div className="relative z-10 mx-auto" style={{ maxWidth: "1400px", zoom: 0.79 }}>
         <div className="text-center mb-14 md:mb-20">
+          {eyebrow && (
+            <p className="mb-4 uppercase" style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.1rem, 1.3vw, 1.3rem)", letterSpacing: ".15em", color: "rgba(27,66,41,.55)" }}>{eyebrow}</p>
+          )}
           <h2
             className="mb-4 mx-auto collection-heading-mobile-width"
             style={{
               fontFamily: headingFontFamily,
               color: "#1B4229",
-              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-              letterSpacing: "0.05em"
+              fontSize: udcHeading ? "clamp(2.6rem, 4.4vw, 4.5rem)" : "clamp(2.2rem, 4.5vw, 4rem)",
+              fontWeight: udcHeading ? 300 : undefined,
+              lineHeight: udcHeading ? 1.02 : undefined,
+              letterSpacing: udcHeading ? "-0.025em" : "0.05em"
             }}>{heading ?? t.oilCollection.heading}
           </h2>
           <p
-            className="mx-auto text-center collection-subtitle-mobile-width collection-subtitle-mobile-size"
+            className={`mx-auto text-center collection-subtitle-mobile-size ${wideSubtitle ? "" : "collection-subtitle-mobile-width"}`}
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               color: "#1B4229",
               opacity: 0.5,
               fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)",
               lineHeight: 1.7,
-              maxWidth: "800px"
+              maxWidth: wideSubtitle ? undefined : "800px"
             }}>{subtitle ?? t.oilCollection.subtitle}
           </p>
         </div>
@@ -386,7 +403,10 @@ export const OilProductWidgets = ({
                   const price = isBox ? coratinaBoxPrice : onSale ? oil.salePrice! : oil.price;
                   const available = oil.effectiveAvailable;
                   const pdpHref = localizeHref(`/product/${oil.handle}`, locale);
+                  const plainSoldOut = !available && soldOutButton === "soldOut";
                   const onClick = (e: MouseEvent) => {
+                    // Plain sold-out label: let the card link take the visitor to the PDP.
+                    if (plainSoldOut) return;
                     e.preventDefault();
                     e.stopPropagation();
                     if (!available) {
@@ -441,10 +461,12 @@ export const OilProductWidgets = ({
                         color: available ? "#1B4229" : "#FFFAEA",
                       }}
                     >
-                      <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : t.notify.notifyMe).toUpperCase()}</span>
-                      <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
-                      {onSale && <s style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(oil.price, locale)}</s>}
-                      <span>{formatPrice(price, locale)}</span>
+                      <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : plainSoldOut ? t.product.soldOut : t.notify.notifyMe).toUpperCase()}</span>
+                      {!plainSoldOut && (<>
+                        <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
+                        {onSale && <s style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(oil.price, locale)}</s>}
+                        <span>{formatPrice(price, locale)}</span>
+                      </>)}
                     </button>
                   );
                 })()}

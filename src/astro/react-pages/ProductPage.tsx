@@ -391,25 +391,22 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
   // Per-product out-of-stock copy. Anything not listed falls back to the
   // generic "Sold Out" / default NotifyMeForm copy below.
-  // - Picual: launching ("Coming Soon")
-  // - Coratina: restocking ("Back Soon" / "New Batch on the Way")
+  // Between seasons (Oct 2026): Coratina and Picual 25/26 are sold out; the
+  // form signs people up for the new harvest of that variety.
+  const newHarvestCopy = (name: string) => ({
+    badge: t.soldOut,
+    badgeClass: "text-olive-dark",
+    formHeading: t.newBatchHeading,
+    formSubtitle: t.newBatchSubtitle.replace("{name}", name),
+  });
   const OOS_COPY: Record<string, {
     badge: string;
     badgeClass: string;
     formHeading?: string;
     formSubtitle?: string;
   }> = {
-    picual: {
-      badge: t.comingSoon,
-      badgeClass: "text-olive-dark",
-      // formHeading / formSubtitle omitted → NotifyMeForm uses its defaults.
-    },
-    coratina: {
-      badge: t.backSoon,
-      badgeClass: "text-olive-dark",
-      formHeading: t.newBatchHeading,
-      formSubtitle: t.newBatchSubtitle,
-    },
+    picual: newHarvestCopy("Picual"),
+    coratina: newHarvestCopy("Coratina"),
   };
   const oosCopy = handle ? OOS_COPY[handle] : undefined;
 
