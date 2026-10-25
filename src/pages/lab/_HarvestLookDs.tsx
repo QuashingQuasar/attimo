@@ -284,20 +284,33 @@ const NewScript = ({ ink, text }: { ink: string; text: string }) => (
 // One curve for every moving part so panel, bottle and details move together.
 const EASE = "cubic-bezier(.22,1,.36,1)";
 const DUR = ".7s";
+// Width/height of each cut-out, so the layout can be computed in CSS.
+const RATIO: Record<HarvestOil["key"], number> = { coratina: 0.3489, peranzana: 0.3611, picual: 0.3611 };
+
+// Smoothness: on wide screens each panel's contents are laid out ONCE at their
+// open size (bottle + profile) and absolutely centred. Opening a panel only
+// changes the panel's width (flex-grow) and moves/scales the contents with a
+// transform, so nothing inside re-wraps per frame. The profile is clipped by
+// the narrow panel and faded; the bottle is centred in a closed panel by
+// translating the row so the bottle's centre sits on the panel's centre.
 export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) => {
   const { u, oils } = useHarvestSection(DEFAULT_LOCALE);
   const [i, setI] = useState(0);
   const timer = useRef<number | undefined>(undefined);
-  const hoverTo = (j: number) => { window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setI(j), 120); };
+  const hoverTo = (j: number) => { window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setI(j), 90); };
   const cancel = () => window.clearTimeout(timer.current);
   const newText = mark === "kicker" ? `${u.new} this harvest` : u.new;
+  const PROFILE_W = 300, GAP = 48;
   return (
     <Shell t={t}>
-      <div className="flex flex-col md:flex-row" style={{ minHeight: 560 }} onMouseLeave={cancel}>
+      <div className="flex flex-col md:flex-row md:h-[clamp(480px,40vw,600px)]" onMouseLeave={cancel}>
         {oils.map((o, j) => {
           const { band, ink } = BANDS[o.key];
           const on = j === i;
           const isNew = o.isNew;
+          // Open: centre the whole row. Closed: centre the bottle, shrink it.
+          const openT = "translate(-50%, -50%)";
+          const closedT = `translate(calc(var(--bw) / -2), -50%) scale(.7)`;
           return (
             <div
               key={o.key}
@@ -308,44 +321,42 @@ export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) =>
               onClick={() => { cancel(); setI(j); }}
               onFocus={() => setI(j)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setI(j); }}
-              // Wide-screen behaviour lives in CSS (md: classes reading CSS
-              // variables) so it is right from the first paint, before JS.
-              className="relative overflow-hidden px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center md:basis-0 md:[flex-grow:var(--grow)]"
+              className="relative overflow-hidden px-6 py-10 md:p-0 md:basis-0 md:[flex-grow:var(--grow)]"
               style={{
                 backgroundColor: band,
                 ["--grow" as string]: on ? 2.8 : 1,
-                ["--s" as string]: on ? 1 : 0.7,
-                ["--dw" as string]: on ? "340px" : "0px",
-                ["--dm" as string]: on ? "48px" : "0px",
-                ["--do" as string]: on ? 1 : 0,
+                ["--bh" as string]: "clamp(320px, 31vw, 450px)",
+                ["--bw" as string]: `calc(var(--bh) * ${RATIO[o.key]})`,
+                ["--t" as string]: on ? openT : closedT,
+                ["--po" as string]: on ? 1 : 0,
                 ["--no" as string]: on ? 0 : 1,
                 transition: `flex-grow ${DUR} ${EASE}`,
               } as React.CSSProperties}
             >
               {isNew && mark === "ribbon" && <NewRibbon ink={ink} text={u.new} />}
-              <div className="relative sm:self-center shrink-0 md:[transform:scale(var(--s))]" style={{ transformOrigin: "50% 60%", transition: `transform ${DUR} ${EASE}` }}>
-                {isNew && mark === "script" && <NewScript ink={ink} text={u.new} />}
-                <img
-                  src={o.image}
-                  alt={`ATTIMO ${o.name} 26/27`}
-                  style={{
-                    height: "clamp(320px, 31vw, 450px)",
-                    width: "auto",
-                    filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))",
-                  }}
-                />
-              </div>
-              {/* Details: always mounted. On wide screens the column's width,
-                  margin and opacity animate with the panel; the name starts
-                  level with the top of the label via the 40% spacer. */}
+
+              {/* Row: bottle + profile. Static flow on small screens; on md+
+                  absolutely placed at the panel centre and moved by transform. */}
               <div
-                className="sm:self-stretch flex flex-col overflow-hidden sm:ml-10 md:[max-width:var(--dw)] md:[margin-left:var(--dm)] md:[opacity:var(--do)]"
+                className="flex flex-col sm:flex-row items-center sm:items-start justify-center md:absolute md:left-1/2 md:top-1/2 md:[transform:var(--t)]"
                 style={{
-                  transition: `max-width ${DUR} ${EASE}, margin-left ${DUR} ${EASE}, opacity ${on ? ".45s" : ".2s"} ease ${on ? ".22s" : "0s"}`,
+                  transformOrigin: "calc(var(--bw) / 2) 55%",
+                  transition: `transform ${DUR} ${EASE}`,
+                  willChange: "transform",
                 }}
               >
-                <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 40%" }} />
-                <div style={{ width: 300 }} className="mt-6 sm:mt-0 sm:ml-0">
+                <div className="relative shrink-0">
+                  {isNew && mark === "script" && <NewScript ink={ink} text={u.new} />}
+                  <img
+                    src={o.image}
+                    alt={`ATTIMO ${o.name} 26/27`}
+                    style={{ height: "var(--bh)", width: "var(--bw)", display: "block", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }}
+                  />
+                </div>
+                <div
+                  className="mt-6 sm:mt-[calc(var(--bh)*0.40)] sm:ml-12 md:[opacity:var(--po)]"
+                  style={{ width: PROFILE_W, marginLeft: undefined, transition: `opacity ${on ? ".45s" : ".18s"} ease ${on ? ".25s" : "0s"}` }}
+                >
                   <Profile
                     o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row"
                     kicker={isNew && mark === "kicker" ? <NewKicker ink={ink} text={newText} /> : undefined}
@@ -353,15 +364,14 @@ export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) =>
                   />
                 </div>
               </div>
-              {/* Closed-panel name, wide screens only; fades rather than mounts. */}
-              {(
-                <div className="hidden md:block absolute bottom-8 left-0 right-0 text-center pointer-events-none md:[opacity:var(--no)]" style={{ transition: `opacity ${on ? ".15s" : ".4s"} ease ${on ? "0s" : ".3s"}` }}>
-                  {isNew && mark === "kicker" && <NewKicker ink={ink} text={u.new} />}
-                  <p style={{ fontFamily: BEVERLY, fontSize: "2.2rem", lineHeight: 1.1, color: ink }}>
-                    {o.name}{isNew && mark === "pill" && <NewPill ink={ink} text={u.new} />}
-                  </p>
-                </div>
-              )}
+
+              {/* Closed-panel name, wide screens only; fades. */}
+              <div className="hidden md:block absolute bottom-8 left-0 right-0 text-center pointer-events-none md:[opacity:var(--no)]" style={{ transition: `opacity ${on ? ".15s" : ".4s"} ease ${on ? "0s" : ".3s"}` }}>
+                {isNew && mark === "kicker" && <NewKicker ink={ink} text={u.new} />}
+                <p style={{ fontFamily: BEVERLY, fontSize: "2.2rem", lineHeight: 1.1, color: ink }}>
+                  {o.name}{isNew && mark === "pill" && <NewPill ink={ink} text={u.new} />}
+                </p>
+              </div>
             </div>
           );
         })}
