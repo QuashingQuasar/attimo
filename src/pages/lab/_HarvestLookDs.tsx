@@ -226,13 +226,14 @@ export const LookD5 = ({ t }: { t: Theme }) => {
               aria-expanded={on}
               onClick={() => setI(j)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setI(j); }}
-              className="relative overflow-hidden cursor-pointer px-6 py-10 md:py-14 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 md:basis-0 md:[flex-grow:var(--grow)]"
+              className="relative overflow-hidden cursor-pointer px-6 py-10 md:py-14 flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-10 md:basis-0 md:[flex-grow:var(--grow)]"
               style={{ backgroundColor: band, ["--grow" as string]: on ? 2.4 : 1, transition: "flex-grow .45s ease" } as React.CSSProperties}
             >
               {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={84} /></div>}
-              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500" style={{ height: on ? "clamp(300px, 30vw, 420px)" : "clamp(260px, 20vw, 300px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500 md:self-center" style={{ height: on ? "clamp(300px, 30vw, 420px)" : "clamp(260px, 20vw, 300px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
               {/* Profile: always on mobile (stacked panels); on md+ only for the open panel */}
-              <div key={o.key} className={on ? "animate-fade-in" : "md:hidden"} style={{ minWidth: 240 }}>
+              <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} md:self-stretch flex flex-col`} style={{ minWidth: 240 }}>
+                <div aria-hidden="true" className="hidden md:block" style={{ flex: "0 0 40%" }} />
                 <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} align="left" />
               </div>
               {!on && <p className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center" style={{ fontFamily: BEVERLY, fontSize: "1.9rem", color: ink }}>{o.name}</p>}
