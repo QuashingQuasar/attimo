@@ -113,8 +113,14 @@ export default function HarvestLooks() {
       <LookD4 t={B3} />
       <Label>D5 · colour panels, the selected one widens</Label>
       <LookD5 t={B3} />
-      <Label>D5b · widening panels, profile 20% bigger beside the bottle</Label>
-      <LookD5b t={B3} />
+      <Label>D5b-1 · opens on hover · "new" as a kicker above the name</Label>
+      <LookD5b t={B3} mark="kicker" />
+      <Label>D5b-2 · opens on hover · "new" as a pill after the name</Label>
+      <LookD5b t={B3} mark="pill" />
+      <Label>D5b-3 · opens on hover · "new" as a corner ribbon</Label>
+      <LookD5b t={B3} mark="ribbon" />
+      <Label>D5b-4 · opens on hover · "new" as a handwritten note with an arrow</Label>
+      <LookD5b t={B3} mark="script" />
       <Label>D6 · static colour panels, details right of each bottle</Label>
       <LookD6 t={B3} />
       <Label>D2b · one at a time, thumbnail rail beside the bottle</Label>

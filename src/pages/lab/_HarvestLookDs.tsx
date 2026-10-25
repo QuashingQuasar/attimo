@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { useHarvestSection, FONTS, C, type HarvestOil } from "@/components/harvest/useHarvestSection";
 import { Header, Timeline, type Theme } from "./_harvestParts";
@@ -60,13 +60,14 @@ const SIZES: Record<Size, { name: string; origin: string; flag: [number, number]
   xl: { name: "clamp(2.4rem, 3.1vw, 3.1rem)", origin: ".96rem", flag: [22, 14], flavour: "1.26rem", poly: "1.45rem", pending: "1.18rem", label: ".84rem", rule: 280, gap: "mb-6" },
   lg: { name: "clamp(3rem, 5vw, 4.8rem)", origin: ".95rem", flag: [22, 15], flavour: "clamp(1.2rem, 1.6vw, 1.45rem)", poly: "1.6rem", pending: "1.1rem", label: ".75rem", rule: 300, gap: "mb-7" },
 };
-const Profile = ({ o, ink, pending, label, size = "md", align = "center" }: { o: HarvestOil; ink: string; pending: string; label: string; size?: Size; align?: "center" | "left" | "row" }) => {
+const Profile = ({ o, ink, pending, label, size = "md", align = "center", kicker, afterName }: { o: HarvestOil; ink: string; pending: string; label: string; size?: Size; align?: "center" | "left" | "row"; kicker?: React.ReactNode; afterName?: React.ReactNode }) => {
   const z = SIZES[size];
   const textAlign = align === "left" ? "text-center lg:text-left" : align === "row" ? "text-center sm:text-left" : "text-center";
   const ruleAlign = align === "left" ? "lg:mx-0" : align === "row" ? "sm:mx-0" : "";
   return (
     <div className={textAlign}>
-      <h3 className="mb-2" style={{ fontFamily: BEVERLY, fontSize: z.name, lineHeight: 1, letterSpacing: ".02em", color: ink }}>{o.name}</h3>
+      {kicker}
+      <h3 className="mb-2" style={{ fontFamily: BEVERLY, fontSize: z.name, lineHeight: 1, letterSpacing: ".02em", color: ink }}>{o.name}{afterName}</h3>
       <p className="mb-3 uppercase inline-flex items-center gap-2.5" style={{ fontFamily: UDC, fontWeight: 700, fontSize: z.origin, letterSpacing: ".14em", color: ink, opacity: 0.75 }}>
         <span>{o.origin}</span>
         <o.Flag aria-hidden="true" style={{ width: z.flag[0], height: z.flag[1], borderRadius: 2, flexShrink: 0 }} />
@@ -245,36 +246,86 @@ export const LookD5 = ({ t }: { t: Theme }) => {
   );
 };
 
-// D5b — D5 with the profile 20% bigger, beside the bottle.
-export const LookD5b = ({ t }: { t: Theme }) => {
+// D5b — widening panels, profile 20% bigger beside the bottle. Opens on
+// hover (with a short intent delay so sweeping across does not flicker), and
+// on click/focus for touch and keyboard. `mark` chooses how "new" is shown.
+export type NewMark = "kicker" | "pill" | "ribbon" | "script";
+
+const NewKicker = ({ ink, text }: { ink: string; text: string }) => (
+  <p className="mb-2 uppercase inline-flex items-center gap-2" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".8rem", letterSpacing: ".2em", color: ink }}>
+    <span aria-hidden="true" style={{ width: 22, height: 2, backgroundColor: ink, display: "inline-block" }} />
+    {text}
+  </p>
+);
+const NewPill = ({ ink, text, small }: { ink: string; text: string; small?: boolean }) => (
+  <span className="uppercase align-middle" style={{ display: "inline-block", marginLeft: small ? ".4em" : ".45em", transform: "translateY(-.55em)", fontFamily: UDC, fontWeight: 700, fontSize: small ? ".62rem" : ".72rem", letterSpacing: ".14em", lineHeight: 1, padding: small ? ".35em .6em" : ".4em .7em", borderRadius: 999, backgroundColor: ink, color: CREAM }}>{text}</span>
+);
+const NewRibbon = ({ ink, text }: { ink: string; text: string }) => (
+  <div aria-hidden="true" className="absolute top-0 right-0 overflow-hidden pointer-events-none z-10" style={{ width: 160, height: 160 }}>
+    <div className="absolute uppercase text-center" style={{ top: 44, right: -50, width: 220, transform: "rotate(45deg)", backgroundColor: ink, color: CREAM, fontFamily: UDC, fontWeight: 700, fontSize: ".95rem", letterSpacing: ".24em", padding: "8px 0 8px .24em" }}>{text}</div>
+  </div>
+);
+const NewScript = ({ ink, text }: { ink: string; text: string }) => (
+  <div aria-hidden="true" className="absolute z-10 pointer-events-none" style={{ left: "100%", top: "4%", marginLeft: 6, color: ink }}>
+    <span style={{ fontFamily: BEVERLY, fontSize: "2rem", lineHeight: 1, whiteSpace: "nowrap", display: "block", transform: "rotate(-8deg)" }}>{text}!</span>
+    {/* hand-drawn arrow curling back to the bottle */}
+    <svg width="64" height="46" viewBox="0 0 64 46" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, marginLeft: -6 }}>
+      <path d="M40 4 C 34 22, 22 32, 6 36" />
+      <path d="M15 28 Q 8 33 5.5 36.5 Q 10 40 17 42" />
+    </svg>
+  </div>
+);
+
+export const LookD5b = ({ t, mark = "kicker" }: { t: Theme; mark?: NewMark }) => {
   const { u, oils } = useHarvestSection(DEFAULT_LOCALE);
   const [i, setI] = useState(1);
+  const timer = useRef<number | undefined>(undefined);
+  const hoverTo = (j: number) => { window.clearTimeout(timer.current); timer.current = window.setTimeout(() => setI(j), 140); };
+  const cancel = () => window.clearTimeout(timer.current);
+  const newText = mark === "kicker" ? `${u.new} this harvest` : u.new;
   return (
     <Shell t={t}>
-      <div className="flex flex-col md:flex-row" style={{ minHeight: 560 }}>
+      <div className="flex flex-col md:flex-row" style={{ minHeight: 560 }} onMouseLeave={cancel}>
         {oils.map((o, j) => {
           const { band, ink } = BANDS[o.key];
           const on = j === i;
+          const isNew = o.isNew;
           return (
             <div
               key={o.key}
               role="button"
               tabIndex={0}
               aria-expanded={on}
-              onClick={() => setI(j)}
+              onMouseEnter={() => hoverTo(j)}
+              onClick={() => { cancel(); setI(j); }}
+              onFocus={() => setI(j)}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") setI(j); }}
-              className="relative overflow-hidden cursor-pointer px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 md:gap-12 md:basis-0 md:[flex-grow:var(--grow)]"
+              className="relative overflow-hidden px-6 py-10 md:py-14 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-6 md:gap-12 md:basis-0 md:[flex-grow:var(--grow)]"
               style={{ backgroundColor: band, ["--grow" as string]: on ? 2.8 : 1, transition: "flex-grow .45s ease" } as React.CSSProperties}
             >
-              {o.isNew && <div className="absolute z-10 right-4 top-4"><Sticker text={u.new} size={92} outline={ink} /></div>}
-              <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500 sm:self-center" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              {isNew && mark === "ribbon" && <NewRibbon ink={ink} text={u.new} />}
+              <div className="relative sm:self-center">
+                {isNew && mark === "script" && <NewScript ink={ink} text={u.new} />}
+                <img src={o.image} alt={`ATTIMO ${o.name} 26/27`} className="transition-all duration-500" style={{ height: on ? "clamp(320px, 31vw, 450px)" : "clamp(260px, 20vw, 310px)", width: "auto", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+              </div>
               {/* Details column is as tall as the bottle; a 40% spacer puts the
                   name level with the top of the label. */}
               <div key={o.key} className={`${on ? "animate-fade-in" : "md:hidden"} sm:self-stretch flex flex-col`} style={{ minWidth: 280 }}>
                 <div aria-hidden="true" className="hidden sm:block" style={{ flex: "0 0 40%" }} />
-                <Profile o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row" />
+                <Profile
+                  o={o} ink={ink} pending={u.polyPending} label={u.polyLabel} size="xl" align="row"
+                  kicker={isNew && mark === "kicker" ? <NewKicker ink={ink} text={newText} /> : undefined}
+                  afterName={isNew && mark === "pill" ? <NewPill ink={ink} text={u.new} /> : undefined}
+                />
               </div>
-              {!on && <p className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center" style={{ fontFamily: BEVERLY, fontSize: "2.2rem", color: ink }}>{o.name}</p>}
+              {!on && (
+                <div className="hidden md:block md:absolute md:bottom-8 md:left-0 md:right-0 text-center">
+                  {isNew && mark === "kicker" && <NewKicker ink={ink} text={u.new} />}
+                  <p style={{ fontFamily: BEVERLY, fontSize: "2.2rem", lineHeight: 1.1, color: ink }}>
+                    {o.name}{isNew && mark === "pill" && <NewPill ink={ink} text={u.new} small />}
+                  </p>
+                </div>
+              )}
             </div>
           );
         })}
