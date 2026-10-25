@@ -44,7 +44,7 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "d
   return (
     <form onSubmit={submit} className="mx-auto w-full" style={{ maxWidth }}>
       {line !== null && (
-        <p className="mb-4" style={{ fontFamily: SG, fontSize: lineSize ?? "clamp(1.02rem,1.3vw,1.25rem)", color: textColour, textShadow: shadow }}>
+        <p className="mb-4" style={{ fontFamily: SG, fontSize: lineSize ?? "clamp(1.02rem,1.3vw,1.25rem)", color: textColour, textShadow: shadow, textWrap: "balance" } as React.CSSProperties}>
           {line ?? t.hero.harvest.line}
         </p>
       )}

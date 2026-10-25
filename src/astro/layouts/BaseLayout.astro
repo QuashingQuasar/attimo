@@ -199,9 +199,15 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <style is:inline>
           #announce-bar .announce-link {
             color: inherit;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            text-decoration-thickness: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .3em;
+          }
+          #announce-bar .announce-link svg {
+            width: .8em;
+            height: .8em;
+            flex-shrink: 0;
           }
           #announce-bar .announce-link:hover { opacity: .8; }
           #announce-bar {
@@ -222,7 +228,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             line-height: 1.2;
           }
           @media (max-width: 480px) {
-            #announce-bar { font-size: 15px; padding: 5px 12px; }
+            #announce-bar { font-size: 13px; letter-spacing: 0.03em; padding: 6px 12px; }
           }
         </style>
         <script is:inline>
@@ -252,6 +258,20 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               a.href = l.href;
               a.textContent = l.label;
               a.className = "announce-link";
+              // Monoline diagonal arrow (link icon).
+              var ns = "http://www.w3.org/2000/svg";
+              var svg = document.createElementNS(ns, "svg");
+              svg.setAttribute("viewBox", "0 0 12 12");
+              svg.setAttribute("aria-hidden", "true");
+              svg.setAttribute("fill", "none");
+              svg.setAttribute("stroke", "currentColor");
+              svg.setAttribute("stroke-width", "1.6");
+              svg.setAttribute("stroke-linecap", "round");
+              svg.setAttribute("stroke-linejoin", "round");
+              var path = document.createElementNS(ns, "path");
+              path.setAttribute("d", "M3 9 L9 3 M4.2 3 H9 V7.8");
+              svg.appendChild(path);
+              a.appendChild(svg);
               a.addEventListener("click", function (e) {
                 var el = document.querySelector(l.href);
                 if (!el) return;
