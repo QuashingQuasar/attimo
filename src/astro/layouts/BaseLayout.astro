@@ -204,6 +204,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             align-items: center;
             gap: .3em;
           }
+          #announce-bar .announce-gap { display: inline-block; width: 1.4em; }
           #announce-bar .announce-link svg {
             width: .8em;
             height: .8em;
@@ -279,7 +280,10 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
               });
               text.appendChild(a);
-              text.appendChild(document.createTextNode(sep));
+              // The arrow marks the end of each link; a gap separates items.
+              var gap = document.createElement("span");
+              gap.className = "announce-gap";
+              text.appendChild(gap);
             });
             if (extra) text.appendChild(document.createTextNode(extra + sep));
             text.appendChild(document.createTextNode(msg));
