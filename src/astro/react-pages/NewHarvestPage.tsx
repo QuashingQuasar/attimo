@@ -138,11 +138,11 @@ function NewHarvestInner({ locale, labNumbers }: { locale: Locale; labNumbers?: 
           </div>
           <Timeline locale={locale} />
           <div className="mt-14 md:mt-16 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-center">
-          {/* Harvest footage: olives and leaves tipped into the bin at the grove. */}
-          <div className="relative overflow-hidden rounded-2xl mx-auto w-full" style={{ aspectRatio: "4 / 5", maxWidth: 520, backgroundColor: DEEP }}>
+          {/* Harvest footage: hands in a crate of just-picked olives (9:16, 720x1280). */}
+          <div className="relative overflow-hidden rounded-2xl mx-auto w-full" style={{ aspectRatio: "9 / 16", maxWidth: 400, backgroundColor: DEEP }}>
             <AutoplayVideo
-              src="/videos/kleia-way-video-2.mp4"
-              poster="/images/hero-poster.png"
+              src="/videos/olives-in-container-harvest.mp4"
+              poster="/images/olives-in-container-harvest-poster.jpg"
               className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
             />
           </div>
