@@ -64,7 +64,7 @@ const NewNote = ({ ink, text }: { ink: string; text: string }) => (
   </div>
 );
 
-const Timeline = ({ locale }: { locale: Locale }) => {
+export const Timeline = ({ locale }: { locale: Locale }) => {
   const { current, steps, note } = useHarvestSection(locale);
   const n = steps.length;
   return (
@@ -93,7 +93,7 @@ const Timeline = ({ locale }: { locale: Locale }) => {
   );
 };
 
-const Panels = ({ locale }: { locale: Locale }) => {
+export const Panels = ({ locale }: { locale: Locale }) => {
   const { u, oils } = useHarvestSection(locale);
   const [i, setI] = useState(0);
   const timer = useRef<number | undefined>(undefined);

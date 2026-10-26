@@ -102,6 +102,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/dk/polyfenolrig-olivenolie", changefreq: "weekly", priority: "0.9" },
   { loc: "/nl/polyfenolrijke-olijfolie", changefreq: "weekly", priority: "0.9" },
   { loc: "/early-harvest-olive-oil", changefreq: "weekly", priority: "0.9" },
+  { loc: "/new-harvest", changefreq: "weekly", priority: "0.9" },
   { loc: "/de/fruehe-ernte-olivenoel", changefreq: "weekly", priority: "0.9" },
   { loc: "/fr/huile-olive-recolte-precoce", changefreq: "weekly", priority: "0.9" },
   { loc: "/se/tidig-skord-olivolja", changefreq: "weekly", priority: "0.9" },
