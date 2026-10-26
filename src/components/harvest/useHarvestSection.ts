@@ -4,10 +4,7 @@ import { HARVEST_STATUS } from "@/lib/harvestStatus";
 import { IT, ES } from "country-flag-icons/react/3x2";
 import coratina from "@/assets/bottle-2627-coratina.png?url";
 import peranzana from "@/assets/bottle-2627-peranzana.png?url";
-// PLACEHOLDER: this render misspells the label ("Picual d'España" instead of
-// "Picual de España"). Replace the file with the corrected render before this
-// branch is merged. The file name carries the warning so it cannot slip by.
-import picual from "@/assets/bottle-2627-picual-PLACEHOLDER-label-misspelt.png?url";
+import picual from "@/assets/bottle-2627-picual.png?url";
 
 // Shared data for every look of the homepage next-harvest section: copy from
 // the dictionary, production status and polyphenols from harvestStatus.ts.
