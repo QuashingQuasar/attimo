@@ -314,7 +314,10 @@ export function formatPrice(
   decimalsOverride?: number,
 ): string {
   const { symbol, symbolPosition, decimals: defaultDecimals } = locale.currency;
-  const decimals = decimalsOverride ?? defaultDecimals;
+  let decimals = decimalsOverride ?? defaultDecimals;
+  // Whole amounts never show ".00" (e.g. €57, not €57.00); cents only when
+  // the amount actually has them.
+  if (decimals > 0 && Number(amount.toFixed(decimals)) % 1 === 0) decimals = 0;
   const formatted = amount.toFixed(decimals);
   return symbolPosition === "before"
     ? `${symbol}${formatted}`
