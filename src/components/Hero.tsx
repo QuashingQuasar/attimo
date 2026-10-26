@@ -69,6 +69,10 @@ export const Hero = ({
               textShadow: '0 1px 12px rgba(0,0,0,0.55)',
             }}>
               {t.hero.harvest.secondary}
+              {/* Monoline diagonal arrow, same as the announce-bar links. */}
+              <svg viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", width: ".75em", height: ".75em", marginLeft: ".35em", verticalAlign: "baseline" }}>
+                <path d="M3 9 L9 3 M4.2 3 H9 V7.8" />
+              </svg>
             </a>
           </div>
 
