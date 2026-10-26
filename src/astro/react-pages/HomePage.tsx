@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { NextHarvest } from "@/components/NextHarvest";
-import { SpecialtyIntro } from "@/components/SpecialtyIntro";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
 import { HomeLabNumbers } from "@/components/HomeLabNumbers";
@@ -56,7 +55,6 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
     <div className="relative min-h-screen" data-build="20260611" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
       <Hero onWaitlistClick={() => setIsWaitlistOpen(true)} locale={locale} />
-      <SpecialtyIntro locale={locale} />
       <NextHarvest locale={locale} />
       <OilProductWidgets
         locale={locale}

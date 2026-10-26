@@ -127,7 +127,7 @@ export const en = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       // Hero header and subheader (between seasons).
-      line: "Fresh harvest high-polyphenol olive oil is almost here",
+      line: "New harvest high-polyphenol olive oil is almost here",
       sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.",
       placeholder: "Email",
       button: "Get it fresh from the press",
