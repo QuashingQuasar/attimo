@@ -349,6 +349,7 @@ export const sv: Dict = {
     formatServings: "{n} portioner ({price} per portion)",
     newHarvest: "Ny skörd",
     inStock: "I lager",
+    onSale: "On Sale", // TRANSLATE
     lastBottles: "Sista flaskorna",
     lastBoxes: "Sista boxarna",
     soldOut: "Slutsåld",

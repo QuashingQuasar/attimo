@@ -29,7 +29,6 @@ import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
-import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { DEFAULT_LOCALE, formatPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
@@ -499,7 +498,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   // Low-stock: live Shopify quantity under 10.
                   const lowStock = inStock && activeQty !== null && activeQty < 10;
                   const badgeText = inStock
-                    ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : t.inStock)
+                    ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : SALE_PRICE !== undefined ? t.onSale : t.inStock)
                     : (oosCopy?.badge ?? t.soldOut);
                   const badgeColor = inStock
                     ? 'text-olive-dark'
@@ -585,6 +584,15 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           variantId={product.node.variants.edges[0]?.node.id}
                           locale={locale} />
 
+                        {SALE_PRICE !== undefined ? (
+                          // On sale (last stock of the season): one-time only,
+                          // no subscription. Show the sale price on its own.
+                          <p className="font-bold text-olive-dark" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.05rem, 1.2vw, 1.25rem)" }}>
+                            <s className="font-normal mr-2" style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(REGULAR_PRICE, locale)}</s>
+                            {formatPrice(SALE_PRICE, locale)}
+                            <span className="font-normal text-olive-medium">{getDict(locale).purchase.perBottle}</span>
+                          </p>
+                        ) : (
                         <PurchaseOptions
                           sellingPlans={sellingPlans}
                           oneTimePrice={ONE_TIME_PRICE}
@@ -595,6 +603,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           selectedSellingPlanId={selectedSellingPlanId}
                           onSellingPlanChange={setSelectedSellingPlanId}
                           locale={locale} />
+                        )}
                       </>
                     )}
 
@@ -824,7 +833,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <BlogSection initialPosts={initialBlogPosts} locale={locale} />
 
       <Footer locale={locale} />
-      <FirstOrderPopup locale={locale} />
+      {/* First-order 10% pop-up switched off (Oct 2026, end-of-season sale). */}
     </div>);
 
 };

@@ -378,6 +378,7 @@ export const en = {
     formatServings: "{n} servings ({price} per serving)",
     newHarvest: "Harvest 25/26", // REVIEW
     inStock: "In Stock",
+    onSale: "On Sale",
     lastBottles: "Last Bottles",
     lastBoxes: "Last Boxes",
     soldOut: "Sold Out",

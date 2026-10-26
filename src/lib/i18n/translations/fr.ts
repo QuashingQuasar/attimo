@@ -352,6 +352,7 @@ export const fr: Dict = {
     formatServings: "{n} portions ({price} par portion)",
     newHarvest: "Nouvelle récolte", // REVIEW
     inStock: "En stock",
+    onSale: "On Sale", // TRANSLATE
     lastBottles: "Dernières bouteilles",
     lastBoxes: "Derniers cartons",
     soldOut: "Épuisé",

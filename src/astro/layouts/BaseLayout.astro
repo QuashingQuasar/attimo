@@ -1,6 +1,7 @@
 ---
 import "@astro/styles/global.css";
-import { getHreflangs, type HreflangEntry } from "@/lib/i18n/config";
+import { getHreflangs, LOCALES, DEFAULT_LOCALE, type HreflangEntry } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface Props {
   title: string;
@@ -53,8 +54,20 @@ const {
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
   announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
   announceExtra,
-  announceLinks,
+  announceLinks: announceLinksProp,
 } = Astro.props;
+
+// Top bar, sitewide (between seasons): "New harvest waitlist" and "Last season
+// sale" link to those homepage sections in the page's own language, ahead of
+// the free-shipping line. A page can still pass its own announceLinks.
+const firstSeg = Astro.url.pathname.split("/")[1] ?? "";
+const barLocale = LOCALES.find((l) => l.slug && l.slug === firstSeg) ?? DEFAULT_LOCALE;
+const barDict = getDict(barLocale);
+const barHome = barLocale.slug ? `/${barLocale.slug}/` : "/";
+const announceLinks = announceLinksProp ?? [
+  { label: barDict.announce.waitlist, href: `${barHome}#next-harvest` },
+  { label: barDict.announce.lastSeasonSale, href: `${barHome}#oil-collection` },
+];
 
 const socialTitle = ogTitle ?? title;
 

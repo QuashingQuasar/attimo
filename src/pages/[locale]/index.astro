@@ -45,7 +45,6 @@ const t = getDict(locale);
   htmlLang={locale.lang}
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
-  announceLinks={[{ label: t.announce.waitlist, href: "#next-harvest" }, { label: t.announce.lastSeasonSale, href: "#oil-collection" }]}
 >
   <HomePage initialPosts={homepagePosts} locale={locale} client:load />
 </BaseLayout>

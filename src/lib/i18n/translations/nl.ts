@@ -351,6 +351,7 @@ export const nl: Dict = {
     formatServings: "{n} porties ({price} per portie)",
     newHarvest: "Nieuwe oogst", // REVIEW
     inStock: "Op voorraad",
+    onSale: "On Sale", // TRANSLATE
     lastBottles: "Laatste flessen",
     lastBoxes: "Laatste dozen",
     soldOut: "Uitverkocht",

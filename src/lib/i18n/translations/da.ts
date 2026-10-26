@@ -349,6 +349,7 @@ export const da: Dict = {
     formatServings: "{n} portioner ({price} pr. portion)",
     newHarvest: "Ny høst",
     inStock: "På lager",
+    onSale: "On Sale", // TRANSLATE
     lastBottles: "Sidste flasker",
     lastBoxes: "Sidste kasser",
     soldOut: "Udsolgt",
