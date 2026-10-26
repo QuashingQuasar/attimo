@@ -24,7 +24,7 @@ export const Hero = ({
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
       
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="w-full max-w-5xl mx-auto text-center">
           <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
             <img
             src={kleiaLogo}
@@ -35,7 +35,7 @@ export const Hero = ({
           </div>
 
           <div className="mb-5 md:mb-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <HarvestSignup locale={locale} lineSize="clamp(1.25rem, 1.75vw, 1.65rem)" maxWidth={660} />
+            <HarvestSignup locale={locale} lineSize="clamp(1.25rem, 1.75vw, 1.65rem)" maxWidth={740} />
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
