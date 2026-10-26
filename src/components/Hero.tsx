@@ -39,7 +39,7 @@ export const Hero = ({
           <h1 className="mx-auto mb-6 animate-fade-in" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontWeight: 300, fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1.0, letterSpacing: "-.02em", color: "#FFFAEA", maxWidth: "13em", textWrap: "balance", textShadow: "0 2px 22px rgba(0,0,0,.35)" } as React.CSSProperties}>
             {keepHyphensWhole(t.hero.harvest.line)}
           </h1>
-          <p className="mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.15s', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: "clamp(1.08rem, 1.35vw, 1.35rem)", lineHeight: 1.5, color: "#FFFAEA", maxWidth: "34em", textWrap: "balance", textShadow: "0 1px 14px rgba(0,0,0,.45)" } as React.CSSProperties}>
+          <p className="mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.15s', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 400, fontSize: "clamp(1.08rem, 1.35vw, 1.35rem)", lineHeight: 1.5, color: "#FFFAEA", maxWidth: "34em", textWrap: "balance", textShadow: "0 1px 14px rgba(0,0,0,.45)" } as React.CSSProperties}>
             {keepHyphensWhole(t.hero.harvest.sub)}
           </p>
 
