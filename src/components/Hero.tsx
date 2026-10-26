@@ -1,10 +1,18 @@
-import { Button } from "@/components/ui/button";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OliveLeaf } from './OliveLeaf';
-import kleiaLogo from '@/assets/attimo-main-logo.svg?url';
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { HarvestSignup } from "@/components/HarvestSignup";
+// Keep hyphenated words ("high-polyphenol", "lab-tested") on one line.
+const keepHyphensWhole = (text: string) =>
+  text.split(" ").map((w, i, all) => (
+    <span key={i}>
+      {w.includes("-") ? <span className="whitespace-nowrap">{w}</span> : w}
+      {i < all.length - 1 ? " " : ""}
+    </span>
+  ));
+
 interface HeroProps {
   onWaitlistClick: () => void;
   locale?: Locale;
@@ -21,22 +29,29 @@ export const Hero = ({
       className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
     
       
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+      {/* Even darkening so the centred header and subheader read over the video. */}
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(10,20,14,.55) 0%, rgba(10,20,14,.38) 55%, rgba(10,20,14,.5) 100%)" }}></div>
       
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
-            <img
-            src={kleiaLogo}
-            alt="ATTIMO olive oil logo"
-            className="object-contain drop-shadow-2xl w-auto max-h-[290px] md:max-h-[358px] lg:max-h-[426px]"
-            style={{ width: 'min(444px, 61.25vw, 43vh)', height: 'auto' }} />
-          
+        <div className="w-full max-w-5xl mx-auto text-center">
+          {/* Hero (lab look 6b): no logo; the video is the product in action.
+              Header = what, subheader = how, then the waitlist form. */}
+          <h1 className="mx-auto mb-6 animate-fade-in" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontWeight: 300, fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1.0, letterSpacing: "-.02em", color: "#FFFAEA", maxWidth: "13em", textWrap: "balance", textShadow: "0 2px 22px rgba(0,0,0,.35)" } as React.CSSProperties}>
+            {keepHyphensWhole(t.hero.harvest.line)}
+          </h1>
+          <p className="mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.15s', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: "clamp(1.08rem, 1.35vw, 1.35rem)", lineHeight: 1.5, color: "#FFFAEA", maxWidth: "34em", textWrap: "balance", textShadow: "0 1px 14px rgba(0,0,0,.45)" } as React.CSSProperties}>
+            {keepHyphensWhole(t.hero.harvest.sub)}
+          </p>
+
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <HarvestSignup locale={locale} line={null} maxWidth={740} />
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <Button
-            onClick={() => {
+            <a
+            href="#oil-collection"
+            onClick={(e) => {
+              e.preventDefault();
               const el = document.getElementById('oil-collection');
               if (el) {
                 const container = el.closest('.overflow-y-scroll') as HTMLElement;
@@ -52,16 +67,22 @@ export const Hero = ({
                 }
               }
             }}
-            className="text-base md:text-lg lg:text-lg py-3.5 px-9 lg:py-4 lg:px-11 hover:scale-105 transition-all duration-300 font-semibold backdrop-blur-sm shadow-2xl"
+            className="transition-opacity hover:opacity-80"
             style={{
-              fontFamily: 'UDC Working Man Sans, sans-serif',
-              border: '2px solid #CDDB2D',
-              color: '#1B4229',
-              backgroundColor: '#CDDB2D',
-              borderRadius: '8px',
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(1rem, 1.2vw, 1.15rem)',
+              color: '#FFFAEA',
+              textDecoration: 'underline',
+              textUnderlineOffset: '5px',
+              textDecorationColor: 'rgba(255,250,234,0.55)',
+              textShadow: '0 1px 12px rgba(0,0,0,0.55)',
             }}>
-              {t.hero.cta}
-            </Button>
+              {t.hero.harvest.secondary}
+              {/* Monoline diagonal arrow, same as the announce-bar links. */}
+              <svg viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" style={{ display: "inline-block", width: ".75em", height: ".75em", marginLeft: ".35em", verticalAlign: "baseline" }}>
+                <path d="M3 9 L9 3 M4.2 3 H9 V7.8" />
+              </svg>
+            </a>
           </div>
 
           

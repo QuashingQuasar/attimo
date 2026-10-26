@@ -18,6 +18,9 @@ const BREVO_LIST_BY_PRODUCT: Record<string, number> = {
   Coratina: 6, // "Coratina Restock"
   Nocellara: 9, // "Nocellara Restock"
   Picual: 3, // "Picual Waitlist"
+  // Homepage new-harvest signup (HarvestSignup). Shares the Coratina list,
+  // where the existing waitlist already sits, so one send reaches everyone.
+  "Harvest 26/27": 6,
 };
 
 export const POST: APIRoute = async ({ request }) => {

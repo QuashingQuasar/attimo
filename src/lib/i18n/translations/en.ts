@@ -21,6 +21,9 @@ export const en = {
 
   // Geo-targeted shipping announcement bar (BaseLayout). Shown by tier.
   announce: {
+    nocellaraSale: "NEW HARVEST WAITLIST  ·  LAST SEASON SALE",
+    waitlist: "NEW HARVEST WAITLIST",
+    lastSeasonSale: "LAST SEASON SALE",
     freeShipping2: "FREE SHIPPING ON 2+ BOTTLES",
     freeShipping3: "FREE SHIPPING ON 3+ BOTTLES",
   },
@@ -121,6 +124,16 @@ export const en = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      // Hero header and subheader (between seasons).
+      line: "New harvest high-polyphenol olive oil is almost here",
+      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.",
+      placeholder: "Email",
+      button: "Get it fresh from the press",
+      secondary: "Last Season Sale",
+      success: "You're on the list. First email when pre-orders open.",
+    },
     cta: "Shop 25/26 Harvest", // REVIEW
     // Rotating ticker badges along the bottom of the hero.
     badges: [
@@ -133,7 +146,67 @@ export const en = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Harvest 26/27 on the way",
+    heading: "Fresh harvest olive oil",
+    intro: "Three cultivars, picked green and pressed within hours for maximum flavour and health benefits.",
+    formLine: "Sign up and hear first when pre-orders open.",
+    button: "Get it fresh",
+    polyLabel: "Polyphenols",
+    polyPending: "Awaiting lab results",
+    returning: "Returning",
+    new: "New",
+    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" },
+    oils: {
+      coratina: "Bold & Punchy",
+      peranzana: "Gentle & Fruity",
+      picual: "Green & Grassy",
+    },
+    steps: [
+      { label: "Pressing", when: "mid-October" },
+      { label: "Lab analysis", when: "early November" },
+      { label: "Pre-orders open", when: "early to mid November" },
+      { label: "Bottling", when: "mid-November" },
+      { label: "Shipping", when: "mid-November" },
+    ],
+    note: "Estimates are updated as the oil moves. Last updated {date}.",
+  },
+
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: {
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
+    lastHarvestEyebrow: "Harvest 25/26",
+    lastHarvestHeading: "Last Season Sale",
+    lastHarvestSubtitle: "Something to pour while you wait for the new harvest. Early-harvest oil is rich in polyphenols, which protect it from oxidation, so it keeps its freshness and flavour long after bottling.",
+    endOfSeason: "End-of-season sale",
     heading: "Specialty Extra Virgin Olive Oil", // REVIEW
     subtitle:
       "Single-variety olives harvested early and cold-pressed within hours for maximum flavour and health benefits.", // REVIEW
@@ -303,16 +376,18 @@ export const en = {
     formatBoxBadge: "BEST VALUE", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} servings ({price} per serving)",
-    newHarvest: "New Harvest", // REVIEW
+    newHarvest: "Harvest 25/26", // REVIEW
     inStock: "In Stock",
+    onSale: "On Sale",
     lastBottles: "Last Bottles",
     lastBoxes: "Last Boxes",
     soldOut: "Sold Out",
     comingSoon: "Coming Soon",
     backSoon: "Back Soon",
-    newBatchHeading: "New Batch on the Way", // REVIEW
+    newBatchHeading: "New Harvest on the Way", // REVIEW
+    // {name} = variety ("Coratina").
     newBatchSubtitle:
-      "We'll send you an email when Coratina d'Italia is available again.", // REVIEW
+      "We'll send you an email as soon as new harvest {name} is available.", // REVIEW
     attrVariety: "Variety",
     attrOrigin: "Origin",
     attrHarvest: "Harvest",

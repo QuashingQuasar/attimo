@@ -21,6 +21,9 @@ export const da: Dict = {
   },
 
   announce: {
+    nocellaraSale: "VENTELISTE NY HØST  ·  UDSALG FRA SIDSTE SÆSON",
+    waitlist: "VENTELISTE NY HØST",
+    lastSeasonSale: "UDSALG FRA SIDSTE SÆSON",
     freeShipping2: "FRI FRAGT VED 2+ FLASKER",
     freeShipping3: "FRI FRAGT VED 3+ FLASKER",
   },
@@ -110,6 +113,15 @@ export const da: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "Polyfenolrig olivenolie fra den nye høst er næsten her",
+      sub: "ATTIMO er olivenolie i særklasse: altid frisk, høstet tidligt og presset inden for få timer for maksimal smag og sundhedsmæssige fordele. Vær den første til at få høsten 26/27.",
+      placeholder: "E-mail",
+      button: "Få den frisk fra pressen",
+      secondary: "Udsalg fra sidste sæson",
+      success: "Du er på listen. Første mail, når forudbestillingen åbner.",
+    },
     cta: "Køb 25/26-høsten",
     badges: [
       "LABTESTET",
@@ -121,7 +133,63 @@ export const da: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Høst 26/27 er på vej",
+    heading: "Olivenolie fra frisk høst",
+    intro: "Tre sorter, plukket grønne og presset inden for få timer for maksimal smag og sundhedsmæssige fordele.",
+    formLine: "Skriv dig op, og hør det først, når forudbestillingen åbner.",
+    button: "Få den frisk",
+    polyLabel: "Polyfenoler",
+    polyPending: "Afventer laboratorieresultater",
+    returning: "Tilbage",
+    new: "Ny",
+    origins: { coratina: "Apulien", peranzana: "Apulien", picual: "Andalusien" },
+    oils: { coratina: "Kraftig & pebret. 847 mg/kg polyfenoler ved sidste høst.", peranzana: "Den milde af de tre. Tager Nocellaras plads.", picual: "Grøn & græsset. Tidlig høst fra Jaén." },
+    steps: [
+      { label: "Presning", when: "midt i oktober" },
+      { label: "Laboratorieanalyse", when: "start november" },
+      { label: "Forudbestilling åbner", when: "start til midt i november" },
+      { label: "Aftapning", when: "midt i november" },
+      { label: "Forsendelse", when: "midt i november" },
+    ],
+    note: "Estimaterne opdateres, efterhånden som olien er på vej. Senest opdateret {date}.",
+  },
+
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: { // TRANSLATE (English placeholder until the translation pass)
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
+    lastHarvestEyebrow: "Høst 25/26",
+    lastHarvestHeading: "Udsalg fra sidste sæson",
+    lastHarvestSubtitle: "Noget at hælde op, mens du venter på den nye høst. Olie fra tidlig høst er rig på polyfenoler, som beskytter den mod oxidation, så den holder sin friskhed og smag længe efter aftapning.",
+    endOfSeason: "Sæsonudsalg",
     heading: "Ekstra jomfru olivenolie i særklasse",
     subtitle:
       "Enkeltsorts oliven høstet tidligt og koldpresset inden for få timer for maksimal smag og sundhedsfordele.",
@@ -279,16 +347,16 @@ export const da: Dict = {
     formatBoxVolume: "3 L",
     formatBoxBadge: "BEDSTE VÆRDI",
     formatServings: "{n} portioner ({price} pr. portion)",
-    newHarvest: "Ny høst",
+    newHarvest: "Høst 25/26",
     inStock: "På lager",
+    onSale: "På tilbud",
     lastBottles: "Sidste flasker",
     lastBoxes: "Sidste kasser",
     soldOut: "Udsolgt",
     comingSoon: "Kommer snart",
     backSoon: "Snart igen",
-    newBatchHeading: "Nyt parti på vej",
-    newBatchSubtitle:
-      "Vi sender dig en e-mail, når Coratina d'Italia er tilgængelig igen.",
+    newBatchHeading: "Ny høst på vej",
+    newBatchSubtitle: "Vi sender dig en e-mail, så snart {name} fra den nye høst er tilgængelig.",
     attrVariety: "Sort",
     attrOrigin: "Oprindelse",
     attrHarvest: "Høst",

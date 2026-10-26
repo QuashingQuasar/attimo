@@ -1,0 +1,15 @@
+---
+// SANDBOX — three looks of the homepage next-harvest section, for review.
+// NOT production, not linked anywhere, noindex. Delete with src/pages/lab/.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import HarvestLooks from "./_HarvestLooks";
+---
+
+<BaseLayout
+  title="Lab — Next harvest section, looks (sandbox)"
+  description="Design treatments of the homepage next-harvest section."
+  noIndex={true}
+  bodyStyle="background-color: #FFFAEA;"
+>
+  <HarvestLooks client:load />
+</BaseLayout>

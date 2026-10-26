@@ -1,6 +1,7 @@
 ---
 import "@astro/styles/global.css";
-import { getHreflangs, type HreflangEntry } from "@/lib/i18n/config";
+import { getHreflangs, LOCALES, DEFAULT_LOCALE, type HreflangEntry } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
 
 interface Props {
   title: string;
@@ -28,6 +29,11 @@ interface Props {
   // existing pages are unchanged; localized pages pass translated strings.
   announceTier2?: string;
   announceTier3?: string;
+  // Optional message(s) shown before the shipping line (e.g. waitlist, sale).
+  announceExtra?: string;
+  // Optional linked messages shown before the shipping line, each pointing at
+  // an anchor on the page (homepage between seasons: waitlist, sale).
+  announceLinks?: { label: string; href: string }[];
 }
 
 const {
@@ -47,7 +53,21 @@ const {
   htmlLang = "en",
   announceTier2 = "FREE SHIPPING ON 2+ BOTTLES",
   announceTier3 = "FREE SHIPPING ON 3+ BOTTLES",
+  announceExtra,
+  announceLinks: announceLinksProp,
 } = Astro.props;
+
+// Top bar, sitewide (between seasons): "New harvest waitlist" and "Last season
+// sale" link to those homepage sections in the page's own language, ahead of
+// the free-shipping line. A page can still pass its own announceLinks.
+const firstSeg = Astro.url.pathname.split("/")[1] ?? "";
+const barLocale = LOCALES.find((l) => l.slug && l.slug === firstSeg) ?? DEFAULT_LOCALE;
+const barDict = getDict(barLocale);
+const barHome = barLocale.slug ? `/${barLocale.slug}/` : "/";
+const announceLinks = announceLinksProp ?? [
+  { label: barDict.announce.waitlist, href: `${barHome}#next-harvest` },
+  { label: barDict.announce.lastSeasonSale, href: `${barHome}#oil-collection` },
+];
 
 const socialTitle = ogTitle ?? title;
 
@@ -203,10 +223,24 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
         <!-- Geo-targeted shipping announcement bar.
              Hidden by default; an inline script reads the `attimo_shipping_tier`
              cookie set by middleware.ts and reveals the right message. -->
-        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3}>
+        <div id="announce-bar" role="status" data-tier2={announceTier2} data-tier3={announceTier3} data-extra={announceExtra} data-links={announceLinks ? JSON.stringify(announceLinks) : undefined}>
           <span id="announce-bar-text"></span>
         </div>
         <style is:inline>
+          #announce-bar .announce-link {
+            color: inherit;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: .3em;
+          }
+          #announce-bar .announce-gap { display: inline-block; width: 1.4em; }
+          #announce-bar .announce-link svg {
+            width: .8em;
+            height: .8em;
+            flex-shrink: 0;
+          }
+          #announce-bar .announce-link:hover { opacity: .8; }
           #announce-bar {
             display: none;
             position: static;
@@ -225,7 +259,7 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
             line-height: 1.2;
           }
           @media (max-width: 480px) {
-            #announce-bar { font-size: 15px; padding: 5px 12px; }
+            #announce-bar { font-size: 13px; letter-spacing: 0.03em; padding: 6px 12px; }
           }
         </style>
         <script is:inline>
@@ -244,7 +278,45 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
               ? bar.getAttribute("data-tier3")
               : null;
             if (!msg) return;
-            text.textContent = msg;
+            var extra = bar.getAttribute("data-extra");
+            var linksAttr = bar.getAttribute("data-links");
+            var links = [];
+            try { links = linksAttr ? JSON.parse(linksAttr) : []; } catch (e) { links = []; }
+            var sep = "  \u00b7  ";
+            text.textContent = "";
+            links.forEach(function (l) {
+              var a = document.createElement("a");
+              a.href = l.href;
+              a.textContent = l.label;
+              a.className = "announce-link";
+              // Monoline diagonal arrow (link icon).
+              var ns = "http://www.w3.org/2000/svg";
+              var svg = document.createElementNS(ns, "svg");
+              svg.setAttribute("viewBox", "0 0 12 12");
+              svg.setAttribute("aria-hidden", "true");
+              svg.setAttribute("fill", "none");
+              svg.setAttribute("stroke", "currentColor");
+              svg.setAttribute("stroke-width", "1.6");
+              svg.setAttribute("stroke-linecap", "round");
+              svg.setAttribute("stroke-linejoin", "round");
+              var path = document.createElementNS(ns, "path");
+              path.setAttribute("d", "M3 9 L9 3 M4.2 3 H9 V7.8");
+              svg.appendChild(path);
+              a.appendChild(svg);
+              a.addEventListener("click", function (e) {
+                var el = document.querySelector(l.href);
+                if (!el) return;
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              });
+              text.appendChild(a);
+              // The arrow marks the end of each link; a gap separates items.
+              var gap = document.createElement("span");
+              gap.className = "announce-gap";
+              text.appendChild(gap);
+            });
+            if (extra) text.appendChild(document.createTextNode(extra + sep));
+            text.appendChild(document.createTextNode(msg));
             bar.style.display = "block";
             // Expose the bar's rendered height as a CSS variable so the
             // hero (.hero-full) can subtract it from its 100vh and the

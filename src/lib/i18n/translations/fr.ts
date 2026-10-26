@@ -20,6 +20,9 @@ export const fr: Dict = {
   },
 
   announce: {
+    nocellaraSale: "LISTE D'ATTENTE NOUVELLE RÉCOLTE  ·  SOLDES DE FIN DE SAISON",
+    waitlist: "LISTE D'ATTENTE NOUVELLE RÉCOLTE",
+    lastSeasonSale: "SOLDES DE FIN DE SAISON",
     freeShipping2: "LIVRAISON GRATUITE DÈS 2 BOUTEILLES",
     freeShipping3: "LIVRAISON GRATUITE DÈS 3 BOUTEILLES",
   },
@@ -111,6 +114,15 @@ export const fr: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "L'huile d'olive riche en polyphénols de la nouvelle récolte est presque là",
+      sub: "ATTIMO, c'est de l'huile d'olive de spécialité : toujours fraîche, récoltée tôt et pressée en quelques heures pour un maximum de saveur et de bienfaits pour la santé. Soyez parmi les premiers à recevoir la récolte 26/27.",
+      placeholder: "E-mail",
+      button: "Recevez-la fraîche du pressoir",
+      secondary: "Soldes de fin de saison",
+      success: "Vous êtes sur la liste. Premier e-mail à l'ouverture des précommandes.",
+    },
     cta: "Découvrir la récolte 25/26", // REVIEW
     badges: [
       "TESTÉ EN LABORATOIRE", // REVIEW
@@ -122,7 +134,63 @@ export const fr: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Récolte 26/27 en route",
+    heading: "Huile d'olive de la nouvelle récolte",
+    intro: "Trois cultivars, cueillis verts et pressés en quelques heures pour un maximum de saveur et de bienfaits pour la santé.",
+    formLine: "Inscrivez-vous et soyez prévenu en premier à l'ouverture des précommandes.",
+    button: "La recevoir fraîche",
+    polyLabel: "Polyphénols",
+    polyPending: "Résultats du labo à venir",
+    returning: "De retour",
+    new: "Nouveau",
+    origins: { coratina: "Pouilles", peranzana: "Pouilles", picual: "Andalousie" },
+    oils: { coratina: "Puissante et poivrée. 847 mg/kg de polyphénols à la dernière récolte.", peranzana: "La plus douce des trois. Elle prend la place de la Nocellara.", picual: "Verte et herbacée. Récolte précoce de Jaén." },
+    steps: [
+      { label: "Pressage", when: "mi-octobre" },
+      { label: "Analyse en labo", when: "début novembre" },
+      { label: "Ouverture des précommandes", when: "début à mi-novembre" },
+      { label: "Mise en bouteille", when: "mi-novembre" },
+      { label: "Expédition", when: "mi-novembre" },
+    ],
+    note: "Les estimations sont mises à jour au fil du parcours de l'huile. Dernière mise à jour : {date}.",
+  },
+
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: { // TRANSLATE (English placeholder until the translation pass)
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
+    lastHarvestEyebrow: "Récolte 25/26",
+    lastHarvestHeading: "Soldes de fin de saison",
+    lastHarvestSubtitle: "De quoi patienter en attendant la nouvelle récolte. L'huile de récolte précoce est riche en polyphénols, qui la protègent de l'oxydation : elle garde sa fraîcheur et sa saveur longtemps après la mise en bouteille.",
+    endOfSeason: "Fin de saison",
     heading: "Huile d'olive vierge extra de spécialité", // REVIEW
     subtitle:
       "Olives d'une seule variété, récoltées tôt et pressées à froid en quelques heures pour un maximum de saveur et de bienfaits.", // REVIEW
@@ -282,16 +350,16 @@ export const fr: Dict = {
     formatBoxBadge: "MEILLEUR PRIX", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} portions ({price} par portion)",
-    newHarvest: "Nouvelle récolte", // REVIEW
+    newHarvest: "Récolte 25/26",
     inStock: "En stock",
+    onSale: "En solde",
     lastBottles: "Dernières bouteilles",
     lastBoxes: "Derniers cartons",
     soldOut: "Épuisé",
     comingSoon: "Bientôt disponible",
     backSoon: "Bientôt de retour",
-    newBatchHeading: "Nouveau lot en route", // REVIEW
-    newBatchSubtitle:
-      "Nous vous enverrons un e-mail dès que la Coratina d'Italia sera de nouveau disponible.", // REVIEW
+    newBatchHeading: "Nouvelle récolte en route",
+    newBatchSubtitle: "Nous vous enverrons un e-mail dès que la {name} de la nouvelle récolte sera disponible.",
     attrVariety: "Variété",
     attrOrigin: "Origine",
     attrHarvest: "Récolte",

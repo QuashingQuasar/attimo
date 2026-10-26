@@ -12,7 +12,6 @@ import { FAQ } from "@/components/FAQ";
 import { OilComparison } from "@/components/OilComparison";
 import { ProductOriginStory } from "@/components/product/ProductOriginStory";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
-import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { useCartStore } from "@/stores/cartStore";
 import type { BundleConfig } from "@/lib/bundleTypes";
 import { toast } from "sonner";
@@ -400,7 +399,7 @@ export default function BundleProductPage({
       <YouMightAlsoLike currentHandle={cfg.ymalHandle} accentColor={ACCENT} locale={locale} />
 
       <Footer locale={locale} />
-      <FirstOrderPopup locale={locale} />
+      {/* First-order 10% pop-up switched off (Oct 2026). */}
     </div>
   );
 }

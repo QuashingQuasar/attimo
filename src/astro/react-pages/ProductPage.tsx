@@ -29,7 +29,6 @@ import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
-import { FirstOrderPopup } from "@/components/FirstOrderPopup";
 import { DEFAULT_LOCALE, formatPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
@@ -242,7 +241,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       content_name: productName,
       content_ids: [handle],
       content_type: 'product',
-      value: locale.prices[slug],
+      value: slug === "nocellara" ? (locale.prices.nocellaraSale ?? locale.prices[slug]) : locale.prices[slug],
       currency: locale.currency.code,
     });
   }, [handle, locale]);
@@ -272,7 +271,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }, [handle]);
 
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
-  const ONE_TIME_PRICE = locale.prices[productSlug];
+  // Nocellara's end-of-season sale (Shopify price set to match, 2026-10-26):
+  // the sale price is the price; the regular one shows struck through.
+  const REGULAR_PRICE = locale.prices[productSlug];
+  const SALE_PRICE = productSlug === "nocellara" ? locale.prices.nocellaraSale : undefined;
+  const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
   // Subscription is a flat ~8% discount applied to the base price.
   const SUBSCRIPTION_PRICE = Math.round(ONE_TIME_PRICE * (22 / 24) * 100) / 100;
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
@@ -391,25 +394,22 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
 
   // Per-product out-of-stock copy. Anything not listed falls back to the
   // generic "Sold Out" / default NotifyMeForm copy below.
-  // - Picual: launching ("Coming Soon")
-  // - Coratina: restocking ("Back Soon" / "New Batch on the Way")
+  // Between seasons (Oct 2026): Coratina and Picual 25/26 are sold out; the
+  // form signs people up for the new harvest of that variety.
+  const newHarvestCopy = (name: string) => ({
+    badge: t.soldOut,
+    badgeClass: "text-olive-dark",
+    formHeading: t.newBatchHeading,
+    formSubtitle: t.newBatchSubtitle.replace("{name}", name),
+  });
   const OOS_COPY: Record<string, {
     badge: string;
     badgeClass: string;
     formHeading?: string;
     formSubtitle?: string;
   }> = {
-    picual: {
-      badge: t.comingSoon,
-      badgeClass: "text-olive-dark",
-      // formHeading / formSubtitle omitted → NotifyMeForm uses its defaults.
-    },
-    coratina: {
-      badge: t.backSoon,
-      badgeClass: "text-olive-dark",
-      formHeading: t.newBatchHeading,
-      formSubtitle: t.newBatchSubtitle,
-    },
+    picual: newHarvestCopy("Picual"),
+    coratina: newHarvestCopy("Coratina"),
   };
   const oosCopy = handle ? OOS_COPY[handle] : undefined;
 
@@ -498,7 +498,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   // Low-stock: live Shopify quantity under 10.
                   const lowStock = inStock && activeQty !== null && activeQty < 10;
                   const badgeText = inStock
-                    ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : t.inStock)
+                    ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : SALE_PRICE !== undefined ? t.onSale : t.inStock)
                     : (oosCopy?.badge ?? t.soldOut);
                   const badgeColor = inStock
                     ? 'text-olive-dark'
@@ -584,15 +584,20 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           variantId={product.node.variants.edges[0]?.node.id}
                           locale={locale} />
 
+                        {/* On sale (last stock of the season): one-time only, no
+                            subscription; the sale shows on the add-to-cart button. */}
+                        {SALE_PRICE === undefined && (
                         <PurchaseOptions
                           sellingPlans={sellingPlans}
                           oneTimePrice={ONE_TIME_PRICE}
+                          oneTimeWasPrice={SALE_PRICE !== undefined ? REGULAR_PRICE : undefined}
                           subscriptionPrice={SUBSCRIPTION_PRICE}
                           purchaseType={purchaseType}
                           onPurchaseTypeChange={setPurchaseType}
                           selectedSellingPlanId={selectedSellingPlanId}
                           onSellingPlanChange={setSelectedSellingPlanId}
                           locale={locale} />
+                        )}
                       </>
                     )}
 
@@ -618,12 +623,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           const unit = isBox ? boxPrice : activePrice;
                           const baseTotal = qty * unit;
                           const finalTotal = baseTotal * (1 - volumeDiscount);
-                          const originalOneTimeTotal = isBox ? boxPrice : selectedQuantity * ONE_TIME_PRICE;
+                          // On sale, the struck-through total is the regular price.
+                          const strikeUnit = SALE_PRICE !== undefined ? REGULAR_PRICE : ONE_TIME_PRICE;
+                          const originalOneTimeTotal = isBox ? boxPrice : selectedQuantity * strikeUnit;
                           // Show strikethrough when subscribing (vs one-time
                           // total) OR when a volume discount is in effect
                           // (vs un-discounted one-time total). Never for the box.
                           const showStrikethrough =
-                            !isBox && (purchaseType === "subscribe" || volumeDiscount > 0);
+                            !isBox && (purchaseType === "subscribe" || volumeDiscount > 0 || SALE_PRICE !== undefined);
                           // When a volume discount is in effect, display two
                           // decimals so the UI matches what Shopify will
                           // charge to the cent. Subscription path keeps the
@@ -822,7 +829,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <BlogSection initialPosts={initialBlogPosts} locale={locale} />
 
       <Footer locale={locale} />
-      <FirstOrderPopup locale={locale} />
+      {/* First-order 10% pop-up switched off (Oct 2026, end-of-season sale). */}
     </div>);
 
 };

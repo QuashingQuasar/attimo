@@ -25,6 +25,9 @@ export const de: Dict = {
   },
 
   announce: {
+    nocellaraSale: "WARTELISTE NEUE ERNTE  ·  SALE DER LETZTEN SAISON",
+    waitlist: "WARTELISTE NEUE ERNTE",
+    lastSeasonSale: "SALE DER LETZTEN SAISON",
     freeShipping2: "GRATIS VERSAND AB 2 FLASCHEN",
     freeShipping3: "GRATIS VERSAND AB 3 FLASCHEN",
   },
@@ -117,6 +120,15 @@ export const de: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "Polyphenolreiches Olivenöl der neuen Ernte ist fast da",
+      sub: "ATTIMO ist Spezialitäten-Olivenöl: immer frisch, früh geerntet und innerhalb weniger Stunden gepresst, für maximalen Geschmack und gesundheitliche Vorteile. Sichere dir die Ernte 26/27 zuerst.",
+      placeholder: "E-Mail",
+      button: "Frisch aus der Presse holen",
+      secondary: "Sale der letzten Saison",
+      success: "Du stehst auf der Liste. Erste Mail, sobald die Vorbestellung öffnet.",
+    },
     cta: "Ernte 25/26 entdecken", // REVIEW
     badges: [
       "IM LABOR GETESTET", // REVIEW
@@ -128,7 +140,63 @@ export const de: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Ernte 26/27 ist unterwegs",
+    heading: "Olivenöl aus frischer Ernte",
+    intro: "Drei Sorten, grün gepflückt und innerhalb weniger Stunden gepresst, für maximalen Geschmack und gesundheitliche Vorteile.",
+    formLine: "Trag dich ein und erfahre zuerst, wann die Vorbestellung öffnet.",
+    button: "Frisch sichern",
+    polyLabel: "Polyphenole",
+    polyPending: "Laborergebnisse folgen",
+    returning: "Zurück",
+    new: "Neu",
+    origins: { coratina: "Apulien", peranzana: "Apulien", picual: "Andalusien" },
+    oils: { coratina: "Kräftig & pfeffrig. 847 mg/kg Polyphenole in der letzten Ernte.", peranzana: "Das sanfte der drei. Nimmt den Platz von Nocellara ein.", picual: "Grün & grasig. Frühe Ernte aus Jaén." },
+    steps: [
+      { label: "Pressen", when: "Mitte Oktober" },
+      { label: "Laboranalyse", when: "Anfang November" },
+      { label: "Vorbestellung öffnet", when: "Anfang bis Mitte November" },
+      { label: "Abfüllung", when: "Mitte November" },
+      { label: "Versand", when: "Mitte November" },
+    ],
+    note: "Die Schätzungen werden aktualisiert, während das Öl unterwegs ist. Zuletzt aktualisiert: {date}.",
+  },
+
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: { // TRANSLATE (English placeholder until the translation pass)
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
+    lastHarvestEyebrow: "Ernte 25/26",
+    lastHarvestHeading: "Sale der letzten Saison",
+    lastHarvestSubtitle: "Etwas zum Genießen, während du auf die neue Ernte wartest. Öl aus früher Ernte ist reich an Polyphenolen, die es vor Oxidation schützen, so bleibt es lange nach der Abfüllung frisch und aromatisch.",
+    endOfSeason: "Saisonschlussverkauf",
     heading: "Natives Olivenöl extra – Spezialität", // REVIEW
     subtitle:
       "Oliven einer einzigen Sorte, früh geerntet und innerhalb von Stunden kalt gepresst – für maximalen Geschmack und gesundheitlichen Nutzen.", // REVIEW
@@ -288,16 +356,16 @@ export const de: Dict = {
     formatBoxBadge: "BESTER PREIS", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} Portionen ({price} pro Portion)",
-    newHarvest: "Neue Ernte", // REVIEW
+    newHarvest: "Ernte 25/26",
     inStock: "Auf Lager",
+    onSale: "Im Angebot",
     lastBottles: "Letzte Flaschen",
     lastBoxes: "Letzte Boxen",
     soldOut: "Ausverkauft",
     comingSoon: "Demnächst verfügbar",
     backSoon: "Bald zurück",
-    newBatchHeading: "Neue Charge unterwegs", // REVIEW
-    newBatchSubtitle:
-      "Wir senden Ihnen eine E-Mail, sobald die Coratina d'Italia wieder verfügbar ist.", // REVIEW
+    newBatchHeading: "Neue Ernte unterwegs",
+    newBatchSubtitle: "Wir schicken dir eine E-Mail, sobald {name} aus der neuen Ernte verfügbar ist.",
     attrVariety: "Sorte",
     attrOrigin: "Herkunft",
     attrHarvest: "Ernte",

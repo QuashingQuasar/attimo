@@ -3,7 +3,7 @@ import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
@@ -63,7 +63,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
   // shared flavour/tagline from the dictionary.
   const allOils = oilDefs.map((o) => ({
     ...o,
-    price: locale.prices[o.handle],
+    price: currentPrice(locale, o.handle),
     flavor: locale.lang !== "en" ? t.products.flavour[o.handle] : o.flavor,
     tagline: locale.lang !== "en" ? t.products.tagline[o.handle] : o.tagline,
   }));

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { urlSlugForShopifyHandle } from "@/lib/productContent";
 import { getVolumeDiscountPercent } from "@/components/QuantitySelector";
@@ -95,7 +95,7 @@ function localizedUnitPrice(item: CartItem, locale: Locale): number {
   // Merch (and anything without a locale price slug) uses the Shopify variant
   // price stored on the cart line.
   if (!slug) return parseFloat(item.price.amount);
-  const base = locale.prices[slug];
+  const base = currentPrice(locale, slug);
   const isSubscription = !!(item.isSubscription || item.sellingPlanId);
   return isSubscription ? base * SUBSCRIPTION_RATIO : base;
 }
@@ -220,7 +220,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
     if (!slug) return;
     const variant = product.node.variants?.edges?.[0]?.node;
     if (!variant) return;
-    const price = locale.prices[slug];
+    const price = currentPrice(locale, slug);
     addItem({
       product,
       variantId: variant.id,
@@ -268,7 +268,7 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
         if (!variant) return null;
         const image = product.node.images?.edges?.[0]?.node?.url;
         const name = PRODUCT_DISPLAY_NAMES[slug] ?? slug;
-        const price = locale.prices[slug];
+        const price = currentPrice(locale, slug);
         return (
           <div key={product.node.id} className="flex flex-col items-center text-center">
             {image && (

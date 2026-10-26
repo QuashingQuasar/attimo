@@ -21,6 +21,9 @@ export const sv: Dict = {
   },
 
   announce: {
+    nocellaraSale: "VÄNTELISTA NY SKÖRD  ·  REA PÅ FÖRRA SÄSONGEN",
+    waitlist: "VÄNTELISTA NY SKÖRD",
+    lastSeasonSale: "REA PÅ FÖRRA SÄSONGEN",
     freeShipping2: "FRI FRAKT VID 2+ FLASKOR",
     freeShipping3: "FRI FRAKT VID 3+ FLASKOR",
   },
@@ -110,6 +113,15 @@ export const sv: Dict = {
   },
 
   hero: {
+    // New-harvest signup shown in the hero between seasons.
+    harvest: {
+      line: "Polyfenolrik olivolja från den nya skörden är snart här",
+      sub: "ATTIMO är specialolivolja: alltid färsk, tidigt skördad och pressad inom några timmar för maximal smak och hälsofördelar. Bli först med att få skörden 26/27.",
+      placeholder: "E-post",
+      button: "Få den färsk från pressen",
+      secondary: "Rea på förra säsongen",
+      success: "Du står på listan. Första mejlet när förbeställningen öppnar.",
+    },
     cta: "Handla 25/26-skörden",
     badges: [
       "LABBTESTAD",
@@ -121,7 +133,63 @@ export const sv: Dict = {
     ],
   },
 
+  // Homepage pre-launch section for the next harvest (between seasons).
+  upcoming: {
+    eyebrow: "Skörd 26/27 är på väg",
+    heading: "Olivolja från färsk skörd",
+    intro: "Tre sorter, plockade gröna och pressade inom några timmar för maximal smak och hälsofördelar.",
+    formLine: "Anmäl dig och få veta först när förbeställningen öppnar.",
+    button: "Få den färsk",
+    polyLabel: "Polyfenoler",
+    polyPending: "Labbresultat väntas",
+    returning: "Tillbaka",
+    new: "Ny",
+    origins: { coratina: "Apulien", peranzana: "Apulien", picual: "Andalusien" },
+    oils: { coratina: "Kraftig & pepprig. 847 mg/kg polyfenoler förra skörden.", peranzana: "Den milda av de tre. Tar Nocellaras plats.", picual: "Grön & gräsig. Tidig skörd från Jaén." },
+    steps: [
+      { label: "Pressning", when: "mitten av oktober" },
+      { label: "Labbanalys", when: "början av november" },
+      { label: "Förbeställning öppnar", when: "början till mitten av november" },
+      { label: "Buteljering", when: "mitten av november" },
+      { label: "Leverans", when: "mitten av november" },
+    ],
+    note: "Uppskattningarna uppdateras allteftersom oljan är på väg. Senast uppdaterad {date}.",
+  },
+
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: { // TRANSLATE (English placeholder until the translation pass)
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
+    lastHarvestEyebrow: "Skörd 25/26",
+    lastHarvestHeading: "Rea på förra säsongen",
+    lastHarvestSubtitle: "Något att hälla upp medan du väntar på den nya skörden. Olja från tidig skörd är rik på polyfenoler, som skyddar den mot oxidation, så den behåller sin friskhet och smak länge efter buteljering.",
+    endOfSeason: "Säsongsslutsrea",
     heading: "Extra jungfruolja i specialklass",
     subtitle:
       "Sortrena oliver skördade tidigt och kallpressade inom några timmar för maximal smak och hälsofördelar.",
@@ -279,16 +347,16 @@ export const sv: Dict = {
     formatBoxVolume: "3 L",
     formatBoxBadge: "BÄST VÄRDE",
     formatServings: "{n} portioner ({price} per portion)",
-    newHarvest: "Ny skörd",
+    newHarvest: "Skörd 25/26",
     inStock: "I lager",
+    onSale: "Rea",
     lastBottles: "Sista flaskorna",
     lastBoxes: "Sista boxarna",
     soldOut: "Slutsåld",
     comingSoon: "Kommer snart",
     backSoon: "Snart åter",
-    newBatchHeading: "Nytt parti på väg",
-    newBatchSubtitle:
-      "Vi mejlar dig när Coratina d'Italia finns tillgänglig igen.",
+    newBatchHeading: "Ny skörd på väg",
+    newBatchSubtitle: "Vi mejlar dig så snart {name} från den nya skörden finns tillgänglig.",
     attrVariety: "Sort",
     attrOrigin: "Ursprung",
     attrHarvest: "Skörd",

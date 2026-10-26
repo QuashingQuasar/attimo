@@ -5,7 +5,7 @@ import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
 import { sanityClient } from "@/lib/sanity";
-import { DEFAULT_LOCALE, formatPrice } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, formatPrice } from "@/lib/i18n/config";
 
 export function getStaticPaths() {
   return [
@@ -43,7 +43,7 @@ interface Meta {
 }
 
 const locale = DEFAULT_LOCALE;
-const priceAmount = locale.prices[handle];
+const priceAmount = currentPrice(locale, handle);
 const priceLabel = formatPrice(priceAmount, locale);
 
 // Real availability comes from Shopify's `availableForSale` on the matching

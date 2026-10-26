@@ -5,7 +5,7 @@ import { aggregateRating, reviews } from "@/lib/reviewSchema";
 import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
 import { resolveShopifyHandle } from "@/lib/productContent";
 import { sanityClient } from "@/lib/sanity";
-import { LOCALES, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { LOCALES, currentPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 type Handle = "coratina" | "nocellara" | "picual";
@@ -94,7 +94,7 @@ const meta = {
   productName: localizedMeta.productName,
 };
 const canonicalUrl = `https://attimo-oil.com/${locale.slug}/product/${handle}`;
-const priceAmount = locale.prices[handle];
+const priceAmount = currentPrice(locale, handle);
 
 const productJsonLd = {
   "@context": "https://schema.org/",

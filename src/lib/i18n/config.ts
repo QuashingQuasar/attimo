@@ -29,6 +29,10 @@ export type Locale = {
     coratina: number;
     nocellara: number;
     picual: number;
+    // End-of-season sale price for Nocellara (25/26 harvest sell-down). When
+    // set, the homepage card and PDP show it with the regular price struck
+    // through. FRONT-END ONLY until the Shopify price is changed to match.
+    nocellaraSale?: number;
     // 3L bag-in-box (separate Shopify product referenced from the Coratina
     // PDP). Optional so nothing outside the Coratina page depends on it;
     // populated for every locale below. EUR markets share €89; DK/SE mirror
@@ -71,6 +75,7 @@ export const DEFAULT_LOCALE: Locale = {
   prices: {
     coratina: 24,
     nocellara: 23,
+    nocellaraSale: 20,
     picual: 22,
     coratina3L: 89,
     trio: 60,
@@ -109,6 +114,7 @@ export const LOCALES: Locale[] = [
     prices: {
       coratina: 24,
       nocellara: 23,
+      nocellaraSale: 20,
       picual: 22,
       coratina3L: 89,
       trio: 60,
@@ -145,6 +151,7 @@ export const LOCALES: Locale[] = [
     prices: {
       coratina: 24,
       nocellara: 23,
+      nocellaraSale: 20,
       picual: 22,
       coratina3L: 89,
       trio: 60,
@@ -179,6 +186,7 @@ export const LOCALES: Locale[] = [
     prices: {
       coratina: 24,
       nocellara: 23,
+      nocellaraSale: 20,
       picual: 22,
       coratina3L: 89,
       trio: 60,
@@ -211,6 +219,7 @@ export const LOCALES: Locale[] = [
     prices: {
       coratina: 190,
       nocellara: 180,
+      nocellaraSale: 155,
       picual: 170,
       // Fixed Shopify Markets override on the Denmark price list (700 DKK).
       coratina3L: 700,
@@ -246,6 +255,7 @@ export const LOCALES: Locale[] = [
     prices: {
       coratina: 290,
       nocellara: 280,
+      nocellaraSale: 245,
       picual: 270,
       // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
       coratina3L: 1000,
@@ -304,7 +314,10 @@ export function formatPrice(
   decimalsOverride?: number,
 ): string {
   const { symbol, symbolPosition, decimals: defaultDecimals } = locale.currency;
-  const decimals = decimalsOverride ?? defaultDecimals;
+  let decimals = decimalsOverride ?? defaultDecimals;
+  // Whole amounts never show ".00" (e.g. €57, not €57.00); cents only when
+  // the amount actually has them.
+  if (decimals > 0 && Number(amount.toFixed(decimals)) % 1 === 0) decimals = 0;
   const formatted = amount.toFixed(decimals);
   return symbolPosition === "before"
     ? `${symbol}${formatted}`
@@ -380,4 +393,13 @@ export function getHreflangs(unprefixedPath: string): HreflangEntry[] {
   });
   entries.push({ hreflang: "x-default", href: `${SITE_ORIGIN}${unprefixedPath}` });
   return entries;
+}
+
+
+// Current selling price per oil: the sale price where one is set (Nocellara's
+// end-of-season sale, Oct 2026; Shopify carries the same price), otherwise
+// the regular price. Use this anywhere a price is shown or sent to the cart.
+export function currentPrice(locale: Locale, slug: "coratina" | "nocellara" | "picual"): number {
+  if (slug === "nocellara" && locale.prices.nocellaraSale !== undefined) return locale.prices.nocellaraSale;
+  return locale.prices[slug];
 }
