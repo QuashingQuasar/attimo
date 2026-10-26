@@ -25,9 +25,9 @@ export const de: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA LAST SEASON SALE",
-    waitlist: "NEW HARVEST WAITLIST", // TRANSLATE
-    lastSeasonSale: "LAST SEASON SALE", // TRANSLATE
+    nocellaraSale: "WARTELISTE NEUE ERNTE  ·  SALE DER LETZTEN SAISON",
+    waitlist: "WARTELISTE NEUE ERNTE",
+    lastSeasonSale: "SALE DER LETZTEN SAISON",
     freeShipping2: "GRATIS VERSAND AB 2 FLASCHEN",
     freeShipping3: "GRATIS VERSAND AB 3 FLASCHEN",
   },
@@ -122,12 +122,12 @@ export const de: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Frisch geerntetes Olivenöl kommt Ende Oktober. Trag dich ein und bekomm es direkt aus der Mühle.",
-      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
-      placeholder: "Deine E-Mail-Adresse",
-      button: "Als Erster bekommen",
-      secondary: "Last Season Sale der Ernte 25/26 →",
-      success: "Du stehst auf der Liste. Erste Mail, sobald das neue Öl gepresst ist.",
+      line: "Polyphenolreiches Olivenöl der neuen Ernte ist fast da",
+      sub: "ATTIMO ist Spezialitäten-Olivenöl: immer frisch, früh geerntet und innerhalb weniger Stunden gepresst, für maximalen Geschmack und gesundheitliche Vorteile. Sichere dir die Ernte 26/27 zuerst.",
+      placeholder: "E-Mail",
+      button: "Frisch aus der Presse holen",
+      secondary: "Sale der letzten Saison",
+      success: "Du stehst auf der Liste. Erste Mail, sobald die Vorbestellung öffnet.",
     },
     cta: "Ernte 25/26 entdecken", // REVIEW
     badges: [
@@ -142,25 +142,25 @@ export const de: Dict = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Ernte 26/27 · Ende Oktober",
-    heading: "Die nächste Ernte",
-    intro: "Drei frische Öle, im Oktober grün gepflückt und innerhalb von Stunden gepresst. Zwei kennst du, eines ist neu.",
-    formLine: "Trag dich ein und bekomm es direkt aus der Mühle.",
-    button: "Get it fresh from the press", // TRANSLATE
-    polyLabel: "Polyphenols", // TRANSLATE
-    polyPending: "Awaiting lab results", // TRANSLATE
-    returning: "Wieder da",
-    new: "Neu · bio",
-    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
+    eyebrow: "Ernte 26/27 ist unterwegs",
+    heading: "Olivenöl aus frischer Ernte",
+    intro: "Drei Sorten, grün gepflückt und innerhalb weniger Stunden gepresst, für maximalen Geschmack und gesundheitliche Vorteile.",
+    formLine: "Trag dich ein und erfahre zuerst, wann die Vorbestellung öffnet.",
+    button: "Frisch sichern",
+    polyLabel: "Polyphenole",
+    polyPending: "Laborergebnisse folgen",
+    returning: "Zurück",
+    new: "Neu",
+    origins: { coratina: "Apulien", peranzana: "Apulien", picual: "Andalusien" },
     oils: { coratina: "Kräftig & pfeffrig. 847 mg/kg Polyphenole in der letzten Ernte.", peranzana: "Das sanfte der drei. Nimmt den Platz von Nocellara ein.", picual: "Grün & grasig. Frühe Ernte aus Jaén." },
     steps: [
-      { label: "Ernte", when: "Mitte Oktober" },
-      { label: "Pressung", when: "Ende Oktober" },
-      { label: "Laboranalyse", when: "nach der Pressung" },
-      { label: "Abfüllung", when: "nach dem Labor" },
-      { label: "Versand", when: "zuerst an die Liste" },
+      { label: "Pressen", when: "Mitte Oktober" },
+      { label: "Laboranalyse", when: "Anfang November" },
+      { label: "Vorbestellung öffnet", when: "Anfang bis Mitte November" },
+      { label: "Abfüllung", when: "Mitte November" },
+      { label: "Versand", when: "Mitte November" },
     ],
-    note: "Die Termine sind Schätzungen der Produzenten. Das Wetter verschiebt sie.",
+    note: "Die Schätzungen werden aktualisiert, während das Öl unterwegs ist. Zuletzt aktualisiert: {date}.",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
@@ -193,9 +193,9 @@ export const de: Dict = {
   },
 
   oilCollection: {
-    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
-    lastHarvestHeading: "Last Season Sale",
-    lastHarvestSubtitle: "Während du auf die neue Ernte wartest, kosten die letzten Flaschen der 25/26 {sale} statt {price}. Die Monate in der Flasche haben die Bitterkeit der Nocellara gemildert; wer ein mildes Öl mag, erwischt jetzt ihren besten Moment. Coratina und Picual sind ausverkauft, bis das neue Öl da ist.",
+    lastHarvestEyebrow: "Ernte 25/26",
+    lastHarvestHeading: "Sale der letzten Saison",
+    lastHarvestSubtitle: "Etwas zum Genießen, während du auf die neue Ernte wartest. Öl aus früher Ernte ist reich an Polyphenolen, die es vor Oxidation schützen, so bleibt es lange nach der Abfüllung frisch und aromatisch.",
     endOfSeason: "Saisonschlussverkauf",
     heading: "Natives Olivenöl extra – Spezialität", // REVIEW
     subtitle:
@@ -356,17 +356,16 @@ export const de: Dict = {
     formatBoxBadge: "BESTER PREIS", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} Portionen ({price} pro Portion)",
-    newHarvest: "Neue Ernte", // REVIEW
+    newHarvest: "Ernte 25/26",
     inStock: "Auf Lager",
-    onSale: "On Sale", // TRANSLATE
+    onSale: "Im Angebot",
     lastBottles: "Letzte Flaschen",
     lastBoxes: "Letzte Boxen",
     soldOut: "Ausverkauft",
     comingSoon: "Demnächst verfügbar",
     backSoon: "Bald zurück",
-    newBatchHeading: "Neue Charge unterwegs", // REVIEW
-    newBatchSubtitle:
-      "Wir senden Ihnen eine E-Mail, sobald die Coratina d'Italia wieder verfügbar ist.", // REVIEW
+    newBatchHeading: "Neue Ernte unterwegs",
+    newBatchSubtitle: "Wir schicken dir eine E-Mail, sobald {name} aus der neuen Ernte verfügbar ist.",
     attrVariety: "Sorte",
     attrOrigin: "Herkunft",
     attrHarvest: "Ernte",

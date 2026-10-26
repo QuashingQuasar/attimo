@@ -20,9 +20,9 @@ export const nl: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA LAST SEASON SALE",
-    waitlist: "NEW HARVEST WAITLIST", // TRANSLATE
-    lastSeasonSale: "LAST SEASON SALE", // TRANSLATE
+    nocellaraSale: "WACHTLIJST NIEUWE OOGST  ·  UITVERKOOP VORIG SEIZOEN",
+    waitlist: "WACHTLIJST NIEUWE OOGST",
+    lastSeasonSale: "UITVERKOOP VORIG SEIZOEN",
     freeShipping2: "GRATIS VERZENDING VANAF 2 FLESSEN",
     freeShipping3: "GRATIS VERZENDING VANAF 3 FLESSEN",
   },
@@ -115,12 +115,12 @@ export const nl: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Verse oogst olijfolie komt eind oktober. Schrijf je in en krijg ze rechtstreeks van de molen.",
-      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
-      placeholder: "Je e-mailadres",
-      button: "Als eerste krijgen",
-      secondary: "Last Season Sale op de oogst 25/26 →",
-      success: "Je staat op de lijst. Eerste mail zodra de nieuwe olie geperst is.",
+      line: "Polyfenolrijke olijfolie van de nieuwe oogst is er bijna",
+      sub: "ATTIMO is specialiteitsolijfolie: altijd vers, vroeg geoogst en binnen enkele uren geperst voor maximale smaak en gezondheidsvoordelen. Wees als eerste bij de oogst 26/27.",
+      placeholder: "E-mail",
+      button: "Haal ze vers van de pers",
+      secondary: "Uitverkoop vorig seizoen",
+      success: "Je staat op de lijst. Eerste mail zodra de voorverkoop opent.",
     },
     cta: "Shop de 25/26-oogst", // REVIEW
     badges: [
@@ -135,25 +135,25 @@ export const nl: Dict = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Oogst 26/27 · eind oktober",
-    heading: "De volgende oogst",
-    intro: "Drie verse oliën, in oktober groen geplukt en binnen enkele uren geperst. Twee ken je al, één is nieuw.",
-    formLine: "Schrijf je in en krijg ze rechtstreeks van de molen.",
-    button: "Get it fresh from the press", // TRANSLATE
-    polyLabel: "Polyphenols", // TRANSLATE
-    polyPending: "Awaiting lab results", // TRANSLATE
+    eyebrow: "Oogst 26/27 is onderweg",
+    heading: "Olijfolie van de verse oogst",
+    intro: "Drie cultivars, groen geplukt en binnen enkele uren geperst voor maximale smaak en gezondheidsvoordelen.",
+    formLine: "Schrijf je in en hoor als eerste wanneer de voorverkoop opent.",
+    button: "Vers binnenhalen",
+    polyLabel: "Polyfenolen",
+    polyPending: "Labresultaten volgen",
     returning: "Terug",
-    new: "Nieuw · bio",
-    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
+    new: "Nieuw",
+    origins: { coratina: "Apulië", peranzana: "Apulië", picual: "Andalusië" },
     oils: { coratina: "Krachtig & peperig. 847 mg/kg polyfenolen bij de vorige oogst.", peranzana: "De zachte van de drie. Neemt de plaats van Nocellara in.", picual: "Groen & grassig. Vroege oogst uit Jaén." },
     steps: [
-      { label: "Pluk", when: "half oktober" },
-      { label: "Persing", when: "eind oktober" },
-      { label: "Labtest", when: "na de persing" },
-      { label: "Botteling", when: "na het lab" },
-      { label: "Verzending", when: "eerst naar de lijst" },
+      { label: "Persen", when: "half oktober" },
+      { label: "Labanalyse", when: "begin november" },
+      { label: "Voorverkoop open", when: "begin tot half november" },
+      { label: "Bottelen", when: "half november" },
+      { label: "Verzending", when: "half november" },
     ],
-    note: "De data zijn schattingen van de producenten. Het weer schuift ze op.",
+    note: "Schattingen worden bijgewerkt naarmate de olie vordert. Laatst bijgewerkt: {date}.",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
@@ -186,9 +186,9 @@ export const nl: Dict = {
   },
 
   oilCollection: {
-    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
-    lastHarvestHeading: "Last Season Sale",
-    lastHarvestSubtitle: "Terwijl je op de nieuwe oogst wacht, kosten de laatste flessen van 25/26 {sale} in plaats van {price}. Maanden in de fles hebben de bitterheid van Nocellara verzacht; hou je van een milde olie, dan is dit haar beste moment. Coratina en Picual zijn uitverkocht tot de nieuwe olie er is.",
+    lastHarvestEyebrow: "Oogst 25/26",
+    lastHarvestHeading: "Uitverkoop vorig seizoen",
+    lastHarvestSubtitle: "Iets om te schenken terwijl je op de nieuwe oogst wacht. Olie van een vroege oogst is rijk aan polyfenolen, die haar beschermen tegen oxidatie, zodat ze lang na het bottelen fris en smaakvol blijft.",
     endOfSeason: "Eindeseizoensactie",
     heading: "Specialty extra vierge olijfolie", // REVIEW
     subtitle:
@@ -349,17 +349,16 @@ export const nl: Dict = {
     formatBoxBadge: "VOORDELIGST", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} porties ({price} per portie)",
-    newHarvest: "Nieuwe oogst", // REVIEW
+    newHarvest: "Oogst 25/26",
     inStock: "Op voorraad",
-    onSale: "On Sale", // TRANSLATE
+    onSale: "In de aanbieding",
     lastBottles: "Laatste flessen",
     lastBoxes: "Laatste dozen",
     soldOut: "Uitverkocht",
     comingSoon: "Binnenkort beschikbaar",
     backSoon: "Binnenkort terug",
-    newBatchHeading: "Nieuwe partij onderweg", // REVIEW
-    newBatchSubtitle:
-      "We sturen je een e-mail zodra Coratina d'Italia weer beschikbaar is.", // REVIEW
+    newBatchHeading: "Nieuwe oogst onderweg",
+    newBatchSubtitle: "We sturen je een e-mail zodra {name} van de nieuwe oogst beschikbaar is.",
     attrVariety: "Variëteit",
     attrOrigin: "Herkomst",
     attrHarvest: "Oogst",

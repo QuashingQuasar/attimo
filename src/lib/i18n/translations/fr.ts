@@ -20,9 +20,9 @@ export const fr: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA LAST SEASON SALE",
-    waitlist: "NEW HARVEST WAITLIST", // TRANSLATE
-    lastSeasonSale: "LAST SEASON SALE", // TRANSLATE
+    nocellaraSale: "LISTE D'ATTENTE NOUVELLE RÉCOLTE  ·  SOLDES DE FIN DE SAISON",
+    waitlist: "LISTE D'ATTENTE NOUVELLE RÉCOLTE",
+    lastSeasonSale: "SOLDES DE FIN DE SAISON",
     freeShipping2: "LIVRAISON GRATUITE DÈS 2 BOUTEILLES",
     freeShipping3: "LIVRAISON GRATUITE DÈS 3 BOUTEILLES",
   },
@@ -116,12 +116,12 @@ export const fr: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "L'huile d'olive de la nouvelle récolte arrive fin octobre. Inscrivez-vous et recevez-la tout droit du moulin.",
-      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
-      placeholder: "Votre adresse e-mail",
-      button: "La recevoir en premier",
-      secondary: "Last Season Sale sur la récolte 25/26 →",
-      success: "Vous êtes sur la liste. Premier e-mail dès que la nouvelle huile est pressée.",
+      line: "L'huile d'olive riche en polyphénols de la nouvelle récolte est presque là",
+      sub: "ATTIMO, c'est de l'huile d'olive de spécialité : toujours fraîche, récoltée tôt et pressée en quelques heures pour un maximum de saveur et de bienfaits pour la santé. Soyez parmi les premiers à recevoir la récolte 26/27.",
+      placeholder: "E-mail",
+      button: "Recevez-la fraîche du pressoir",
+      secondary: "Soldes de fin de saison",
+      success: "Vous êtes sur la liste. Premier e-mail à l'ouverture des précommandes.",
     },
     cta: "Découvrir la récolte 25/26", // REVIEW
     badges: [
@@ -136,25 +136,25 @@ export const fr: Dict = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Récolte 26/27 · fin octobre",
-    heading: "La prochaine récolte",
-    intro: "Trois huiles fraîches, cueillies vertes en octobre et pressées en quelques heures. Deux que vous connaissez, une nouvelle.",
-    formLine: "Inscrivez-vous et recevez-la tout droit du moulin.",
-    button: "Get it fresh from the press", // TRANSLATE
-    polyLabel: "Polyphenols", // TRANSLATE
-    polyPending: "Awaiting lab results", // TRANSLATE
+    eyebrow: "Récolte 26/27 en route",
+    heading: "Huile d'olive de la nouvelle récolte",
+    intro: "Trois cultivars, cueillis verts et pressés en quelques heures pour un maximum de saveur et de bienfaits pour la santé.",
+    formLine: "Inscrivez-vous et soyez prévenu en premier à l'ouverture des précommandes.",
+    button: "La recevoir fraîche",
+    polyLabel: "Polyphénols",
+    polyPending: "Résultats du labo à venir",
     returning: "De retour",
-    new: "Nouveau · bio",
-    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
+    new: "Nouveau",
+    origins: { coratina: "Pouilles", peranzana: "Pouilles", picual: "Andalousie" },
     oils: { coratina: "Puissante et poivrée. 847 mg/kg de polyphénols à la dernière récolte.", peranzana: "La plus douce des trois. Elle prend la place de la Nocellara.", picual: "Verte et herbacée. Récolte précoce de Jaén." },
     steps: [
-      { label: "Cueillette", when: "mi-octobre" },
-      { label: "Pressage", when: "fin octobre" },
-      { label: "Analyses", when: "après le pressage" },
-      { label: "Mise en bouteille", when: "après le labo" },
-      { label: "Expédition", when: "à la liste d'abord" },
+      { label: "Pressage", when: "mi-octobre" },
+      { label: "Analyse en labo", when: "début novembre" },
+      { label: "Ouverture des précommandes", when: "début à mi-novembre" },
+      { label: "Mise en bouteille", when: "mi-novembre" },
+      { label: "Expédition", when: "mi-novembre" },
     ],
-    note: "Les dates sont les estimations des producteurs. La météo les déplace.",
+    note: "Les estimations sont mises à jour au fil du parcours de l'huile. Dernière mise à jour : {date}.",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
@@ -187,9 +187,9 @@ export const fr: Dict = {
   },
 
   oilCollection: {
-    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
-    lastHarvestHeading: "Last Season Sale",
-    lastHarvestSubtitle: "En attendant la nouvelle récolte, les dernières bouteilles de 25/26 sont à {sale} au lieu de {price}. Les mois en bouteille ont adouci l'amertume de la Nocellara : si vous aimez une huile ronde, c'est son meilleur moment. Coratina et Picual sont épuisées jusqu'à l'arrivée de la nouvelle huile.",
+    lastHarvestEyebrow: "Récolte 25/26",
+    lastHarvestHeading: "Soldes de fin de saison",
+    lastHarvestSubtitle: "De quoi patienter en attendant la nouvelle récolte. L'huile de récolte précoce est riche en polyphénols, qui la protègent de l'oxydation : elle garde sa fraîcheur et sa saveur longtemps après la mise en bouteille.",
     endOfSeason: "Fin de saison",
     heading: "Huile d'olive vierge extra de spécialité", // REVIEW
     subtitle:
@@ -350,17 +350,16 @@ export const fr: Dict = {
     formatBoxBadge: "MEILLEUR PRIX", // Value badge on the 3L box option card
     // {n} = serving count, {price} = per-serving cost (locale currency)
     formatServings: "{n} portions ({price} par portion)",
-    newHarvest: "Nouvelle récolte", // REVIEW
+    newHarvest: "Récolte 25/26",
     inStock: "En stock",
-    onSale: "On Sale", // TRANSLATE
+    onSale: "En solde",
     lastBottles: "Dernières bouteilles",
     lastBoxes: "Derniers cartons",
     soldOut: "Épuisé",
     comingSoon: "Bientôt disponible",
     backSoon: "Bientôt de retour",
-    newBatchHeading: "Nouveau lot en route", // REVIEW
-    newBatchSubtitle:
-      "Nous vous enverrons un e-mail dès que la Coratina d'Italia sera de nouveau disponible.", // REVIEW
+    newBatchHeading: "Nouvelle récolte en route",
+    newBatchSubtitle: "Nous vous enverrons un e-mail dès que la {name} de la nouvelle récolte sera disponible.",
     attrVariety: "Variété",
     attrOrigin: "Origine",
     attrHarvest: "Récolte",

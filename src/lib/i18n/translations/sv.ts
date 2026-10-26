@@ -21,9 +21,9 @@ export const sv: Dict = {
   },
 
   announce: {
-    nocellaraSale: "NOCELLARA LAST SEASON SALE",
-    waitlist: "NEW HARVEST WAITLIST", // TRANSLATE
-    lastSeasonSale: "LAST SEASON SALE", // TRANSLATE
+    nocellaraSale: "VÄNTELISTA NY SKÖRD  ·  REA PÅ FÖRRA SÄSONGEN",
+    waitlist: "VÄNTELISTA NY SKÖRD",
+    lastSeasonSale: "REA PÅ FÖRRA SÄSONGEN",
     freeShipping2: "FRI FRAKT VID 2+ FLASKOR",
     freeShipping3: "FRI FRAKT VID 3+ FLASKOR",
   },
@@ -115,12 +115,12 @@ export const sv: Dict = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Nypressad olivolja från årets skörd kommer i slutet av oktober. Anmäl dig och få den direkt från kvarnen.",
-      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
-      placeholder: "Din e-postadress",
-      button: "Få den först",
-      secondary: "Last Season Sale på skörden 25/26 →",
-      success: "Du står på listan. Första mejlet när den nya oljan är pressad.",
+      line: "Polyfenolrik olivolja från den nya skörden är snart här",
+      sub: "ATTIMO är specialolivolja: alltid färsk, tidigt skördad och pressad inom några timmar för maximal smak och hälsofördelar. Bli först med att få skörden 26/27.",
+      placeholder: "E-post",
+      button: "Få den färsk från pressen",
+      secondary: "Rea på förra säsongen",
+      success: "Du står på listan. Första mejlet när förbeställningen öppnar.",
     },
     cta: "Handla 25/26-skörden",
     badges: [
@@ -135,25 +135,25 @@ export const sv: Dict = {
 
   // Homepage pre-launch section for the next harvest (between seasons).
   upcoming: {
-    eyebrow: "Skörd 26/27 · slutet av oktober",
-    heading: "Nästa skörd",
-    intro: "Tre färska oljor, plockade gröna i oktober och pressade inom några timmar. Två känner du igen, en är ny.",
-    formLine: "Anmäl dig och få den direkt från kvarnen.",
-    button: "Get it fresh from the press", // TRANSLATE
-    polyLabel: "Polyphenols", // TRANSLATE
-    polyPending: "Awaiting lab results", // TRANSLATE
+    eyebrow: "Skörd 26/27 är på väg",
+    heading: "Olivolja från färsk skörd",
+    intro: "Tre sorter, plockade gröna och pressade inom några timmar för maximal smak och hälsofördelar.",
+    formLine: "Anmäl dig och få veta först när förbeställningen öppnar.",
+    button: "Få den färsk",
+    polyLabel: "Polyfenoler",
+    polyPending: "Labbresultat väntas",
     returning: "Tillbaka",
-    new: "Ny · ekologisk",
-    origins: { coratina: "Puglia", peranzana: "Puglia", picual: "Andalusia" }, // TRANSLATE
+    new: "Ny",
+    origins: { coratina: "Apulien", peranzana: "Apulien", picual: "Andalusien" },
     oils: { coratina: "Kraftig & pepprig. 847 mg/kg polyfenoler förra skörden.", peranzana: "Den milda av de tre. Tar Nocellaras plats.", picual: "Grön & gräsig. Tidig skörd från Jaén." },
     steps: [
-      { label: "Plockning", when: "mitten av oktober" },
-      { label: "Pressning", when: "slutet av oktober" },
-      { label: "Labbtest", when: "efter pressning" },
-      { label: "Buteljering", when: "efter labbet" },
-      { label: "Leverans", when: "först till listan" },
+      { label: "Pressning", when: "mitten av oktober" },
+      { label: "Labbanalys", when: "början av november" },
+      { label: "Förbeställning öppnar", when: "början till mitten av november" },
+      { label: "Buteljering", when: "mitten av november" },
+      { label: "Leverans", when: "mitten av november" },
     ],
-    note: "Datumen är producenternas uppskattningar. Vädret flyttar dem.",
+    note: "Uppskattningarna uppdateras allteftersom oljan är på väg. Senast uppdaterad {date}.",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
@@ -186,9 +186,9 @@ export const sv: Dict = {
   },
 
   oilCollection: {
-    lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
-    lastHarvestHeading: "Last Season Sale",
-    lastHarvestSubtitle: "Medan du väntar på den nya skörden kostar de sista flaskorna av 25/26 {sale} i stället för {price}. Månaderna på flaska har mildrat Nocellaras beska; gillar du en mjuk olja är det här dess bästa stund. Coratina och Picual är slutsålda tills den nya oljan kommer.",
+    lastHarvestEyebrow: "Skörd 25/26",
+    lastHarvestHeading: "Rea på förra säsongen",
+    lastHarvestSubtitle: "Något att hälla upp medan du väntar på den nya skörden. Olja från tidig skörd är rik på polyfenoler, som skyddar den mot oxidation, så den behåller sin friskhet och smak länge efter buteljering.",
     endOfSeason: "Säsongsslutsrea",
     heading: "Extra jungfruolja i specialklass",
     subtitle:
@@ -347,17 +347,16 @@ export const sv: Dict = {
     formatBoxVolume: "3 L",
     formatBoxBadge: "BÄST VÄRDE",
     formatServings: "{n} portioner ({price} per portion)",
-    newHarvest: "Ny skörd",
+    newHarvest: "Skörd 25/26",
     inStock: "I lager",
-    onSale: "On Sale", // TRANSLATE
+    onSale: "Rea",
     lastBottles: "Sista flaskorna",
     lastBoxes: "Sista boxarna",
     soldOut: "Slutsåld",
     comingSoon: "Kommer snart",
     backSoon: "Snart åter",
-    newBatchHeading: "Nytt parti på väg",
-    newBatchSubtitle:
-      "Vi mejlar dig när Coratina d'Italia finns tillgänglig igen.",
+    newBatchHeading: "Ny skörd på väg",
+    newBatchSubtitle: "Vi mejlar dig så snart {name} från den nya skörden finns tillgänglig.",
     attrVariety: "Sort",
     attrOrigin: "Ursprung",
     attrHarvest: "Skörd",
