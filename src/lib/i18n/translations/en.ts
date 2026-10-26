@@ -170,7 +170,7 @@ export const en = {
       { label: "Bottling", when: "mid-November" },
       { label: "Shipping", when: "mid-November" },
     ],
-    note: "Dates are estimates. We update this as the oil moves. Last updated {date}.",
+    note: "Dates are estimates and get updates as the oil moves. Last updated {date}.",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
