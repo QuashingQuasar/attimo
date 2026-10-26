@@ -128,7 +128,7 @@ export const en = {
     harvest: {
       // Hero header and subheader (between seasons).
       line: "Fresh harvest high-polyphenol olive oil is almost here",
-      sub: "Specialty olive oil: varieties naturally high in polyphenols, harvested early, pressed within hours and lab-tested. Be the first to get the 26/27 harvest.",
+      sub: "Specialty olive oil naturally high in polyphenols, harvested early, pressed within hours and always fresh. Be the first to get the 26/27 harvest.",
       placeholder: "Email",
       button: "Get it fresh from the press",
       secondary: "Last Season Sale",
