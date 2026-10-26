@@ -242,7 +242,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       content_name: productName,
       content_ids: [handle],
       content_type: 'product',
-      value: locale.prices[slug],
+      value: slug === "nocellara" ? (locale.prices.nocellaraSale ?? locale.prices[slug]) : locale.prices[slug],
       currency: locale.currency.code,
     });
   }, [handle, locale]);
@@ -272,7 +272,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }, [handle]);
 
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
-  const ONE_TIME_PRICE = locale.prices[productSlug];
+  // Nocellara's end-of-season sale (Shopify price set to match, 2026-10-26):
+  // the sale price is the price; the regular one shows struck through.
+  const REGULAR_PRICE = locale.prices[productSlug];
+  const SALE_PRICE = productSlug === "nocellara" ? locale.prices.nocellaraSale : undefined;
+  const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
   // Subscription is a flat ~8% discount applied to the base price.
   const SUBSCRIPTION_PRICE = Math.round(ONE_TIME_PRICE * (22 / 24) * 100) / 100;
   const activePrice = purchaseType === "subscribe" ? SUBSCRIPTION_PRICE : ONE_TIME_PRICE;
@@ -584,6 +588,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         <PurchaseOptions
                           sellingPlans={sellingPlans}
                           oneTimePrice={ONE_TIME_PRICE}
+                          oneTimeWasPrice={SALE_PRICE !== undefined ? REGULAR_PRICE : undefined}
                           subscriptionPrice={SUBSCRIPTION_PRICE}
                           purchaseType={purchaseType}
                           onPurchaseTypeChange={setPurchaseType}

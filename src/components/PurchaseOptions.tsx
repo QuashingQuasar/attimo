@@ -6,6 +6,8 @@ import { getDict } from "@/lib/i18n/dictionaries";
 interface PurchaseOptionsProps {
   sellingPlans: SellingPlan[];
   oneTimePrice: number;
+  /** Regular price shown struck through when the one-time price is a sale. */
+  oneTimeWasPrice?: number;
   subscriptionPrice: number;
   purchaseType: "one-time" | "subscribe";
   onPurchaseTypeChange: (type: "one-time" | "subscribe") => void;
@@ -17,6 +19,7 @@ interface PurchaseOptionsProps {
 export const PurchaseOptions = ({
   sellingPlans,
   oneTimePrice,
+  oneTimeWasPrice,
   subscriptionPrice,
   purchaseType,
   onPurchaseTypeChange,
@@ -87,6 +90,9 @@ export const PurchaseOptions = ({
             fontSize: "clamp(0.9rem, 1.05vw, 1.1rem)",
           }}
         >
+          {oneTimeWasPrice !== undefined && oneTimeWasPrice > oneTimePrice && (
+            <s className="font-normal mr-2" style={{ opacity: 0.6, textDecorationThickness: "2px" }}>{formatPrice(oneTimeWasPrice, locale)}</s>
+          )}
           {formatPrice(oneTimePrice, locale)}
           <span className={`font-normal ${purchaseType === "one-time" ? "text-cream/70" : "text-olive-medium"}`}>{t.perBottle}</span>
         </span>

@@ -391,3 +391,12 @@ export function getHreflangs(unprefixedPath: string): HreflangEntry[] {
   entries.push({ hreflang: "x-default", href: `${SITE_ORIGIN}${unprefixedPath}` });
   return entries;
 }
+
+
+// Current selling price per oil: the sale price where one is set (Nocellara's
+// end-of-season sale, Oct 2026; Shopify carries the same price), otherwise
+// the regular price. Use this anywhere a price is shown or sent to the cart.
+export function currentPrice(locale: Locale, slug: "coratina" | "nocellara" | "picual"): number {
+  if (slug === "nocellara" && locale.prices.nocellaraSale !== undefined) return locale.prices.nocellaraSale;
+  return locale.prices[slug];
+}
