@@ -1,6 +1,7 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { nhHrefFor } from "@/lib/newHarvestContent";
 import { useHarvestSection, FONTS, C, type HarvestOil } from "@/components/harvest/useHarvestSection";
 
 // Homepage section for the next harvest (lab look "D5b-4", chosen 2026-10-25).
@@ -172,6 +173,14 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
       {/* Timeline between the form and the panels; the section ends on the panels. */}
       <div className="px-4 md:px-6 pb-12 md:pb-16 mx-auto" style={{ maxWidth: 1190 }}>
         <Timeline locale={locale} />
+        <p className="mt-3 text-center">
+          <a href={nhHrefFor(locale.lang)} className="inline-flex items-center hover:opacity-70 transition-opacity" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".95rem", letterSpacing: ".08em", textTransform: "uppercase", color: GREEN }}>
+            {u.pageLink}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginLeft: ".4em" }}>
+              <path d="M3 9 L9 3" /><path d="M4 3 H9 V8" />
+            </svg>
+          </a>
+        </p>
       </div>
       <Panels locale={locale} />
     </section>

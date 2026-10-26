@@ -154,6 +154,7 @@ export const da: Dict = {
       { label: "Forsendelse", when: "midt i november" },
     ],
     note: "Estimaterne opdateres, efterhånden som olien er på vej. Senest opdateret {date}.",
+    pageLink: "Følg høsten 26/27 trin for trin",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the

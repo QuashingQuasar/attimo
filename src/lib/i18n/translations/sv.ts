@@ -154,6 +154,7 @@ export const sv: Dict = {
       { label: "Leverans", when: "mitten av november" },
     ],
     note: "Uppskattningarna uppdateras allteftersom oljan är på väg. Senast uppdaterad {date}.",
+    pageLink: "Följ skörden 26/27 steg för steg",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the

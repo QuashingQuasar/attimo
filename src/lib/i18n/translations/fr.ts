@@ -155,6 +155,7 @@ export const fr: Dict = {
       { label: "Expédition", when: "mi-novembre" },
     ],
     note: "Les estimations sont mises à jour au fil du parcours de l'huile. Dernière mise à jour : {date}.",
+    pageLink: "Suivez la récolte 26/27 étape par étape",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the

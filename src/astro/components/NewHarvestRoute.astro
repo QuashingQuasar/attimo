@@ -1,0 +1,51 @@
+---
+// Shared body of every /new-harvest route (one thin page per locale).
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import NewHarvestPage from "@astro/react-pages/NewHarvestPage";
+import { NH_CONTENT, NH_HREFLANGS, nhHrefFor } from "@/lib/newHarvestContent";
+import { HARVEST_STATUS } from "@/lib/harvestStatus";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
+import { getDict } from "@/lib/i18n/dictionaries";
+import type { Locale } from "@/lib/i18n/config";
+
+const { locale } = Astro.props as { locale: Locale };
+const t = getDict(locale);
+const content = NH_CONTENT[locale.lang];
+const canonical = `https://attimo-oil.com${nhHrefFor(locale.lang)}`;
+const labNumbers = await getHomeLabNumbers();
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: content.hero.h1,
+  url: canonical,
+  inLanguage: locale.hreflang,
+  description: content.meta.description,
+  dateModified: HARVEST_STATUS.updated,
+  publisher: { "@type": "Organization", name: "ATTIMO", url: "https://attimo-oil.com" },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: content.faq.items.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title={content.meta.title}
+  description={content.meta.description}
+  canonical={canonical}
+  bodyStyle="background-color: #FFFAEA;"
+  jsonLd={[pageJsonLd, faqJsonLd]}
+  hreflangs={NH_HREFLANGS}
+  htmlLang={locale.lang}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <NewHarvestPage locale={locale} labNumbers={labNumbers} client:load />
+</BaseLayout>

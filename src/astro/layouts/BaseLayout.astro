@@ -1,4 +1,5 @@
 ---
+import { nhHrefFor } from "@/lib/newHarvestContent";
 import "@astro/styles/global.css";
 import { getHreflangs, LOCALES, DEFAULT_LOCALE, type HreflangEntry } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
@@ -65,7 +66,7 @@ const barLocale = LOCALES.find((l) => l.slug && l.slug === firstSeg) ?? DEFAULT_
 const barDict = getDict(barLocale);
 const barHome = barLocale.slug ? `/${barLocale.slug}/` : "/";
 const announceLinks = announceLinksProp ?? [
-  { label: barDict.announce.waitlist, href: `${barHome}#next-harvest` },
+  { label: barDict.announce.waitlist, href: nhHrefFor(barLocale.lang) },
   { label: barDict.announce.lastSeasonSale, href: `${barHome}#oil-collection` },
 ];
 
