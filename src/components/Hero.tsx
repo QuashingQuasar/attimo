@@ -34,7 +34,7 @@ export const Hero = ({
           
           </div>
 
-          <div className="mb-5 md:mb-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="mb-7 md:mb-9 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <HarvestSignup locale={locale} lineSize="clamp(1.25rem, 1.75vw, 1.65rem)" maxWidth={740} />
           </div>
 
