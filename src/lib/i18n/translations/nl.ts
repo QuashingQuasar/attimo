@@ -156,6 +156,35 @@ export const nl: Dict = {
     note: "De data zijn schattingen van de producenten. Het weer schuift ze op.",
   },
 
+  // "What is specialty olive oil" band after the homepage hero (from the
+  // June redesign). Three of the four props keep the June copy.
+  specialty: { // TRANSLATE (English placeholder until the translation pass)
+    title: "Specialty olive oil",
+    subtitle: "High-polyphenol olives harvested early and cold-pressed within hours for maximum flavour and health benefits.",
+    props: {
+      fresh: {
+        label: "Always Fresh",
+        body: "Olive oil only from the latest harvest because, unlike wine, it doesn't get better with age.",
+        mobileBody: "Olive oil only ever from the last harvest.",
+      },
+      early: {
+        label: "Early Harvest",
+        body: "Pressed from olives that were picked when they're still green and peaking in polyphenols.",
+        mobileBody: "When olives are highest in healthy polyphenols.",
+      },
+      varieties: {
+        label: "High-Polyphenol Varieties",
+        body: "Cultivars like Coratina that are naturally rich in polyphenols, the compounds behind the bitter, peppery bite.",
+        mobileBody: "Cultivars naturally rich in polyphenols.",
+      },
+      lab: {
+        label: "Lab Tested",
+        body: "We publish lab analyses for every batch so you can verify quality yourself.",
+        mobileBody: "Verifiable lab analysis for every batch.",
+      },
+    },
+  },
+
   oilCollection: {
     lastHarvestEyebrow: "Harvest 25/26", // TRANSLATE
     lastHarvestHeading: "Last Season Sale",
