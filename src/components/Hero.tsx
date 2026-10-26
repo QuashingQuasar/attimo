@@ -1,9 +1,10 @@
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OliveLeaf } from './OliveLeaf';
-import kleiaLogo from '@/assets/attimo-hero-logo.svg?url';
-// TEMPORARY logo comparison: ?logo=530 shows the alternative. Remove once chosen.
+// TEMPORARY logo comparison: default Group 530, ?logo=531 shows Group 531.
+// Remove the switch and the unused file once one is chosen.
 import logo530 from '@/assets/attimo-hero-logo-530.svg?url';
+import logo531 from '@/assets/attimo-hero-logo-531.svg?url';
 import { useEffect, useState } from 'react';
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
@@ -17,9 +18,9 @@ export const Hero = ({
   locale = DEFAULT_LOCALE
 }: HeroProps) => {
   const t = getDict(locale);
-  const [logoSrc, setLogoSrc] = useState(kleiaLogo);
+  const [logoSrc, setLogoSrc] = useState(logo530);
   useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('logo') === '530') setLogoSrc(logo530);
+    if (new URLSearchParams(window.location.search).get('logo') === '531') setLogoSrc(logo531);
   }, []);
   return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full">
       <AutoplayVideo
