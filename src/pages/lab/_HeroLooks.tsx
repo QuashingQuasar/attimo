@@ -39,6 +39,40 @@ const Screen = ({ children, bg, className = "" }: { children: ReactNode; bg: str
   <section className={`relative overflow-hidden flex items-center ${className}`} style={{ backgroundColor: bg, minHeight: "min(92vh, 900px)" }}>{children}</section>
 );
 
+// 6 — Modelled on the OlvLimits layout: the video as the product in action,
+// no logo, a centred header + subheader. Two states of the same hero.
+const HeroVideoFrame = ({ children }: { children: ReactNode }) => (
+  <Screen bg={DEEP}>
+    <AutoplayVideo src="/videos/hero-video-new.mp4" poster="/images/hero-poster.png" className="absolute inset-0 w-full h-full object-cover" />
+    <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(10,20,14,.55) 0%, rgba(10,20,14,.38) 55%, rgba(10,20,14,.5) 100%)" }} />
+    <div className="relative z-10 w-full px-6 py-24 text-center">{children}</div>
+  </Screen>
+);
+const H1_CENTRE: CSSProperties = { fontFamily: UDC, fontWeight: 300, fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1.0, letterSpacing: "-.02em", color: CREAM, maxWidth: "13em", textWrap: "balance", textShadow: "0 2px 22px rgba(0,0,0,.35)" } as CSSProperties;
+const SUB_CENTRE: CSSProperties = { fontFamily: SG, fontWeight: 500, fontSize: "clamp(1.08rem, 1.35vw, 1.35rem)", lineHeight: 1.5, color: CREAM, maxWidth: "34em", textWrap: "balance", textShadow: "0 1px 14px rgba(0,0,0,.45)" } as CSSProperties;
+
+// 6a — standard (in season): header, subheader, one shop button.
+const Hero6a = () => (
+  <HeroVideoFrame>
+    <h1 className="mx-auto mb-6" style={H1_CENTRE}>Specialty olive oil. Picked early, <span className="whitespace-nowrap">lab-tested</span>, always fresh</h1>
+    <p className="mx-auto mb-10" style={SUB_CENTRE}>Single-variety olive oil, pressed within hours of picking. Every harvest is tested by an independent lab, and we only sell the latest one.</p>
+    <a href="#oil-collection" className="inline-flex items-center gap-2 rounded-lg transition-transform hover:scale-[1.03]" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.1rem", letterSpacing: ".05em", textTransform: "uppercase", color: GREEN, backgroundColor: CHARTREUSE, padding: "1rem 1.9rem" }}>
+      Shop fresh olive oil
+      <svg viewBox="0 0 12 12" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: ".8em", height: ".8em" }}><path d="M6 2 V10 M2.5 6.5 L6 10 L9.5 6.5" /></svg>
+    </a>
+  </HeroVideoFrame>
+);
+
+// 6b — between seasons: same frame, the waitlist form in place of the button.
+const Hero6b = () => (
+  <HeroVideoFrame>
+    <h1 className="mx-auto mb-6" style={H1_CENTRE}>Fresh harvest <span className="whitespace-nowrap">high-polyphenol</span> olive oil is almost here</h1>
+    <p className="mx-auto mb-10" style={SUB_CENTRE}>Specialty olive oil: single-variety, picked early, pressed within hours and <span className="whitespace-nowrap">lab-tested</span>. Sign up and get the 26/27 harvest first.</p>
+    <Form tone="dark" />
+    <div className="mt-8"><SaleLink colour={CREAM} /></div>
+  </HeroVideoFrame>
+);
+
 // 1 — Gilles's idea: the line set in Working Man capitals under the mark, so
 // it reads as part of the logo. Video stays.
 const Hero1 = () => (
@@ -279,6 +313,10 @@ const Label = ({ children }: { children: string }) => (
 export default function HeroLooks() {
   return (
     <div>
+      <Label>6a · Standard hero, in season (header + subheader + shop button)</Label>
+      <Hero6a />
+      <Label>6b · Same hero, between seasons (header + subheader + waitlist form)</Label>
+      <Hero6b />
       <Label>1 · The line as part of the logo (video)</Label>
       <Hero1 />
       <Label>1b · The line alone, no logo (video)</Label>
