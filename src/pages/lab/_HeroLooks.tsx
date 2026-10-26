@@ -184,6 +184,76 @@ const Hero5 = () => {
   );
 };
 
+
+// Video versions of 2 and 5: same copy and image, current hero video behind,
+// darker wash on the text side, cream text.
+const VideoBg = () => (
+  <>
+    <AutoplayVideo src="/videos/hero-video-new.mp4" poster="/images/hero-poster.png" className="absolute inset-0 w-full h-full object-cover" />
+    <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(10,20,14,.82) 0%, rgba(10,20,14,.62) 45%, rgba(10,20,14,.38) 100%)" }} />
+  </>
+);
+
+const Hero2v = () => {
+  const { oils } = useHarvestSection(locale);
+  return (
+    <Screen bg={DEEP}>
+      <VideoBg />
+      <div className="relative z-10 w-full mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" style={{ maxWidth: 1240 }}>
+        <div>
+          <p className="mb-5 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.05rem", letterSpacing: ".15em", color: CHARTREUSE }}>Harvest 26/27 on the way</p>
+          <h1 className="mb-6" style={{ ...H1, color: CREAM }}>Specialty olive oil. Picked early, pressed within hours, <span className="whitespace-nowrap">lab-tested</span>.</h1>
+          <p className="mb-9" style={{ ...SUB, color: cr(0.85) }}>Single-variety oils from Puglia and Andalusia, sold one harvest at a time. This year's harvest ships mid-November.</p>
+          <Form tone="dark" left />
+          <div className="mt-7"><SaleLink colour={CREAM} /></div>
+        </div>
+        <div className="relative flex items-end justify-center gap-2 sm:gap-5">
+          <Bottle src={oils[0].image} h="clamp(240px, 30vw, 420px)" style={{ position: "relative", filter: "drop-shadow(0 24px 30px rgba(0,0,0,.55))" }} />
+          <Bottle src={oils[1].image} h="clamp(270px, 34vw, 470px)" style={{ position: "relative", filter: "drop-shadow(0 24px 30px rgba(0,0,0,.55))" }} />
+          <Bottle src={oils[2].image} h="clamp(240px, 30vw, 420px)" style={{ position: "relative", filter: "drop-shadow(0 24px 30px rgba(0,0,0,.55))" }} />
+        </div>
+      </div>
+    </Screen>
+  );
+};
+
+const Hero5v = () => {
+  const { oils } = useHarvestSection(locale);
+  const rows: [string, string][] = [
+    ["Polyphenols (total)", "847 mg/kg"],
+    ["Oleocanthal", "471 mg/kg"],
+    ["Method", "HPLC"],
+    ["Harvest", "October 2025"],
+  ];
+  return (
+    <Screen bg={DEEP}>
+      <VideoBg />
+      <div className="relative z-10 w-full mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center" style={{ maxWidth: 1240 }}>
+        <div>
+          <h1 className="mb-6" style={{ ...H1, color: CREAM }}>Extra virgin olive oil you can check. Every harvest <span className="whitespace-nowrap">lab-tested</span>.</h1>
+          <p className="mb-9" style={{ ...SUB, color: cr(0.85) }}>Every ATTIMO oil has a public lab certificate: polyphenols, oleocanthal and harvest date, measured by an independent lab. This year's results land in early November.</p>
+          <Form tone="dark" left />
+          <div className="mt-7"><SaleLink colour={CREAM} /></div>
+        </div>
+        <div className="relative flex items-center justify-center" style={{ minHeight: 460 }}>
+          <Bottle src={oils[0].image} h="clamp(320px, 36vw, 500px)" style={{ position: "relative", zIndex: 1, transform: "translateX(-62%)", filter: "drop-shadow(0 24px 30px rgba(0,0,0,.55))" }} />
+          <div className="absolute rounded-2xl" style={{ zIndex: 2, right: "0%", top: "50%", transform: "translateY(-38%) rotate(2deg)", width: "min(300px, 70%)", backgroundColor: CREAM, boxShadow: "0 28px 60px rgba(0,0,0,.45)", padding: "22px 22px 18px" }}>
+            <p className="uppercase mb-1" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".72rem", letterSpacing: ".16em", color: gr(0.55) }}>Lab certificate</p>
+            <p className="mb-4" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.25rem", color: GREEN }}>ATTIMO Coratina 25/26</p>
+            {rows.map(([k, v]) => (
+              <div key={k} className="flex justify-between gap-4 py-2" style={{ borderTop: `1px dashed ${GREEN}` }}>
+                <span style={{ fontFamily: SG, fontSize: ".92rem", color: gr(0.7) }}>{k}</span>
+                <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".98rem", color: GREEN }}>{v}</span>
+              </div>
+            ))}
+            <p className="mt-3 inline-flex items-center" style={{ fontFamily: SG, fontSize: ".88rem", color: GREEN, textDecoration: "underline", textUnderlineOffset: 4 }}>View the full certificate<Arrow /></p>
+          </div>
+        </div>
+      </div>
+    </Screen>
+  );
+};
+
 const Label = ({ children }: { children: string }) => (
   <div className="px-6 py-3 text-center uppercase" style={{ fontFamily: UDC, fontWeight: 700, letterSpacing: ".15em", fontSize: ".85rem", backgroundColor: "#FFFFFF", color: GREEN, borderTop: `1px dashed ${GREEN}`, borderBottom: `1px dashed ${GREEN}` }}>
     {children}
@@ -197,12 +267,16 @@ export default function HeroLooks() {
       <Hero1 />
       <Label>2 · Specialty, defined (three bottles)</Label>
       <Hero2 />
+      <Label>2v · Specialty, defined, on the video</Label>
+      <Hero2v />
       <Label>3 · The number as the hook (bars to scale)</Label>
       <Hero3 />
       <Label>4 · The harvest as the hook (live timeline, harvest footage)</Label>
       <Hero4 />
       <Label>5 · Check it yourself (lab certificate)</Label>
       <Hero5 />
+      <Label>5v · Check it yourself, on the video</Label>
+      <Hero5v />
     </div>
   );
 }
