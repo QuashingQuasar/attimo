@@ -116,6 +116,7 @@ export const nl: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Verse oogst olijfolie komt eind oktober. Schrijf je in en krijg ze rechtstreeks van de molen.",
+      sub: "Specialty olive oil: single-variety, picked early, pressed within hours and lab-tested. Sign up and get the 26/27 harvest first.", // TRANSLATE
       placeholder: "Je e-mailadres",
       button: "Als eerste krijgen",
       secondary: "Last Season Sale op de oogst 25/26 →",

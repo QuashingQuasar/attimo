@@ -1,14 +1,18 @@
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OliveLeaf } from './OliveLeaf';
-// TEMPORARY logo comparison: default Group 530, ?logo=531 shows Group 531.
-// Remove the switch and the unused file once one is chosen.
-import logo530 from '@/assets/attimo-hero-logo-530.svg?url';
-import logo531 from '@/assets/attimo-hero-logo-531.svg?url';
-import { useEffect, useState } from 'react';
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { HarvestSignup } from "@/components/HarvestSignup";
+// Keep hyphenated words ("high-polyphenol", "lab-tested") on one line.
+const keepHyphensWhole = (text: string) =>
+  text.split(" ").map((w, i, all) => (
+    <span key={i}>
+      {w.includes("-") ? <span className="whitespace-nowrap">{w}</span> : w}
+      {i < all.length - 1 ? " " : ""}
+    </span>
+  ));
+
 interface HeroProps {
   onWaitlistClick: () => void;
   locale?: Locale;
@@ -18,10 +22,6 @@ export const Hero = ({
   locale = DEFAULT_LOCALE
 }: HeroProps) => {
   const t = getDict(locale);
-  const [logoSrc, setLogoSrc] = useState(logo530);
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('logo') === '531') setLogoSrc(logo531);
-  }, []);
   return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full">
       <AutoplayVideo
       src="/videos/hero-video-new.mp4"
@@ -29,21 +29,22 @@ export const Hero = ({
       className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
     
       
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+      {/* Even darkening so the centred header and subheader read over the video. */}
+      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(10,20,14,.55) 0%, rgba(10,20,14,.38) 55%, rgba(10,20,14,.5) 100%)" }}></div>
       
       <div className="relative z-10 container mx-auto px-6 flex items-center justify-center" style={{ height: 'calc(100vh - var(--announce-bar-h, 0px) - 100px)' }}>
         <div className="w-full max-w-5xl mx-auto text-center">
-          <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
-            <img
-            src={logoSrc}
-            alt="ATTIMO specialty olive oil"
-            className="object-contain drop-shadow-2xl w-auto max-h-[230px] md:max-h-[300px] lg:max-h-[360px]"
-            style={{ width: 'min(380px, 56vw, 36vh)', height: 'auto' }} />
-          
-          </div>
+          {/* Hero (lab look 6b): no logo; the video is the product in action.
+              Header = what, subheader = how, then the waitlist form. */}
+          <h1 className="mx-auto mb-6 animate-fade-in" style={{ fontFamily: "'UDC Working Man Sans', sans-serif", fontWeight: 300, fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 1.0, letterSpacing: "-.02em", color: "#FFFAEA", maxWidth: "13em", textWrap: "balance", textShadow: "0 2px 22px rgba(0,0,0,.35)" } as React.CSSProperties}>
+            {keepHyphensWhole(t.hero.harvest.line)}
+          </h1>
+          <p className="mx-auto mb-10 animate-fade-in" style={{ animationDelay: '0.15s', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 500, fontSize: "clamp(1.08rem, 1.35vw, 1.35rem)", lineHeight: 1.5, color: "#FFFAEA", maxWidth: "34em", textWrap: "balance", textShadow: "0 1px 14px rgba(0,0,0,.45)" } as React.CSSProperties}>
+            {keepHyphensWhole(t.hero.harvest.sub)}
+          </p>
 
-          <div className="mb-7 md:mb-9 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <HarvestSignup locale={locale} lineSize="clamp(1.25rem, 1.75vw, 1.65rem)" maxWidth={740} />
+          <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <HarvestSignup locale={locale} line={null} maxWidth={740} />
           </div>
 
           <div className="flex justify-center mb-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
