@@ -2,6 +2,9 @@ import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { ValuePropMarquee } from "@/components/ValuePropMarquee";
 import { OliveLeaf } from './OliveLeaf';
 import kleiaLogo from '@/assets/attimo-hero-logo.svg?url';
+// TEMPORARY logo comparison: ?logo=530 shows the alternative. Remove once chosen.
+import logo530 from '@/assets/attimo-hero-logo-530.svg?url';
+import { useEffect, useState } from 'react';
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { HarvestSignup } from "@/components/HarvestSignup";
@@ -14,6 +17,10 @@ export const Hero = ({
   locale = DEFAULT_LOCALE
 }: HeroProps) => {
   const t = getDict(locale);
+  const [logoSrc, setLogoSrc] = useState(kleiaLogo);
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('logo') === '530') setLogoSrc(logo530);
+  }, []);
   return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full">
       <AutoplayVideo
       src="/videos/hero-video-new.mp4"
@@ -27,7 +34,7 @@ export const Hero = ({
         <div className="w-full max-w-5xl mx-auto text-center">
           <div className="mb-6 md:mb-8 flex justify-center animate-fade-in">
             <img
-            src={kleiaLogo}
+            src={logoSrc}
             alt="ATTIMO specialty olive oil"
             className="object-contain drop-shadow-2xl w-auto max-h-[230px] md:max-h-[300px] lg:max-h-[360px]"
             style={{ width: 'min(380px, 56vw, 36vh)', height: 'auto' }} />
