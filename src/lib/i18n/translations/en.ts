@@ -126,7 +126,7 @@ export const en = {
   hero: {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
-      line: "Fresh harvest olive oil is coming soon",
+      line: "Fresh harvest high-polyphenol olive oil is almost here",
       placeholder: "Email",
       button: "Get it fresh from the press",
       secondary: "Last Season Sale",
