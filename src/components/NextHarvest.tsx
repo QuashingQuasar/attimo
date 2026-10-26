@@ -129,7 +129,7 @@ const Panels = ({ locale }: { locale: Locale }) => {
             } as CSSProperties}
           >
             <div
-              className="flex flex-col sm:flex-row items-center sm:items-start justify-center md:absolute md:left-1/2 md:top-1/2 md:[transform:var(--t)]"
+              className="flex flex-col sm:flex-row items-center sm:items-start justify-center md:justify-start md:w-max md:absolute md:left-1/2 md:top-1/2 md:[transform:var(--t)]"
               style={{ transformOrigin: "calc(var(--bw) / 2) 55%", transition: `transform ${DUR} ${EASE}`, willChange: "transform" }}
             >
               <div className="relative shrink-0">
