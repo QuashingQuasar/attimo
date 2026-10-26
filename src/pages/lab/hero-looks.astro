@@ -1,0 +1,15 @@
+---
+// SANDBOX — five hero directions for the between-seasons homepage. Not
+// linked anywhere, noindex. Delete with src/pages/lab/.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import HeroLooks from "./_HeroLooks";
+---
+
+<BaseLayout
+  title="Lab — Hero directions (sandbox)"
+  description="Five hero directions for the between-seasons homepage."
+  noIndex={true}
+  bodyStyle="background-color: #FFFAEA;"
+>
+  <HeroLooks client:load />
+</BaseLayout>
