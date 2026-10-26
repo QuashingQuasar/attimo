@@ -12,6 +12,7 @@ import { getDict } from "@/lib/i18n/dictionaries";
 import { HARVEST_STATUS } from "@/lib/harvestStatus";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { NH_CONTENT } from "@/lib/newHarvestContent";
+import { certIndexHrefFor } from "@/lib/certificatesContent";
 import { useHarvestSection, FONTS, C } from "@/components/harvest/useHarvestSection";
 
 // Full page for the next harvest (/new-harvest). The homepage "next harvest"
@@ -54,7 +55,7 @@ function NewHarvestInner({ locale, labNumbers }: { locale: Locale; labNumbers?: 
   const current = HARVEST_STATUS.currentStep;
   const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long", year: "numeric" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const methodsHref = METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
-  const certHref = localizeHref("/certificates", locale);
+  const certHref = certIndexHrefFor(locale.lang);
   const saleHref = "#last-season-sale";
   // "While you wait": the homepage's Last Season Sale block, same props.
   const saleSubtitle = t.oilCollection.lastHarvestSubtitle

@@ -171,6 +171,7 @@ export const en = {
       { label: "Shipping", when: "mid-November" },
     ],
     note: "Estimates are updated as the oil moves. Last updated {date}.",
+    pageLink: "Follow the 26/27 harvest step by step",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the

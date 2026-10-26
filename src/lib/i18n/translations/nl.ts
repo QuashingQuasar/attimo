@@ -154,6 +154,7 @@ export const nl: Dict = {
       { label: "Verzending", when: "half november" },
     ],
     note: "Schattingen worden bijgewerkt naarmate de olie vordert. Laatst bijgewerkt: {date}.",
+    pageLink: "Volg de oogst 26/27 stap voor stap",
   },
 
   // "What is specialty olive oil" band after the homepage hero (from the
