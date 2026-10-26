@@ -24,8 +24,8 @@ export const Hero = ({
   const t = getDict(locale);
   return <section className="relative flex items-center justify-center overflow-hidden snap-start hero-full">
       <AutoplayVideo
-      src="/videos/hero-video-new.mp4"
-      poster="/images/hero-poster.png"
+      src="/videos/olives-in-container-landscape.mp4"
+      poster="/images/olives-in-container-landscape-poster.jpg"
       className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
     
       
