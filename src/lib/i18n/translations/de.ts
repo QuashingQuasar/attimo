@@ -123,7 +123,7 @@ export const de: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Frisch geerntetes Olivenöl kommt Ende Oktober. Trag dich ein und bekomm es direkt aus der Mühle.",
-      sub: "Specialty olive oil naturally high in polyphenols, harvested early, pressed within hours and always fresh. Be the first to get the 26/27 harvest.", // TRANSLATE
+      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
       placeholder: "Deine E-Mail-Adresse",
       button: "Als Erster bekommen",
       secondary: "Last Season Sale der Ernte 25/26 →",

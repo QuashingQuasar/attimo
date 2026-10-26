@@ -116,7 +116,7 @@ export const sv: Dict = {
     // New-harvest signup shown in the hero between seasons.
     harvest: {
       line: "Nypressad olivolja från årets skörd kommer i slutet av oktober. Anmäl dig och få den direkt från kvarnen.",
-      sub: "Specialty olive oil naturally high in polyphenols, harvested early, pressed within hours and always fresh. Be the first to get the 26/27 harvest.", // TRANSLATE
+      sub: "ATTIMO is specialty olive oil: always fresh, harvested early and pressed within hours for maximum flavour and health benefits. Be the first to get the 26/27 harvest.", // TRANSLATE
       placeholder: "Din e-postadress",
       button: "Få den först",
       secondary: "Last Season Sale på skörden 25/26 →",
