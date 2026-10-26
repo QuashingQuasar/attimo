@@ -29,7 +29,7 @@ const SaleLink = ({ colour }: { colour: string }) => (
 );
 const Form = ({ tone, left = false }: { tone: "dark" | "light"; left?: boolean }) => (
   <div className={left ? "[&_form]:!mx-0" : ""}>
-    <HarvestSignup locale={locale} line={null} button="Get it fresh from the press" tone={tone} maxWidth={left ? 460 : 600} stack={left} />
+    <HarvestSignup locale={locale} line={null} button="Get it fresh from the press" tone={tone} maxWidth={left ? 460 : 740} stack={left} />
   </div>
 );
 const Bottle = ({ src, h, style }: { src: string; h: string; style?: CSSProperties }) => (
@@ -48,6 +48,22 @@ const Hero1 = () => (
     <div className="relative z-10 w-full px-6 py-20 text-center">
       <img src={mark531} alt="ATTIMO" className="mx-auto mb-7 drop-shadow-2xl" style={{ width: "min(260px, 46vw, 30vh)", height: "auto" }} />
       <h1 className="mx-auto mb-9 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "clamp(1.6rem, 2.7vw, 2.7rem)", lineHeight: 1.12, letterSpacing: ".06em", color: CREAM, maxWidth: "16em", textWrap: "balance", textShadow: "0 2px 18px rgba(0,0,0,.45)" } as CSSProperties}>
+        Fresh harvest <span className="whitespace-nowrap">high-polyphenol</span> olive oil is almost here
+      </h1>
+      <Form tone="dark" />
+      <div className="mt-8"><SaleLink colour={CREAM} /></div>
+    </div>
+  </Screen>
+);
+
+
+// 1b — option 1 without the mark: the line alone, a size up, over the video.
+const Hero1b = () => (
+  <Screen bg={DEEP}>
+    <AutoplayVideo src="/videos/hero-video-new.mp4" poster="/images/hero-poster.png" className="absolute inset-0 w-full h-full object-cover" />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+    <div className="relative z-10 w-full px-6 py-20 text-center">
+      <h1 className="mx-auto mb-10 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "clamp(2rem, 4vw, 4rem)", lineHeight: 1.08, letterSpacing: ".05em", color: CREAM, maxWidth: "15em", textWrap: "balance", textShadow: "0 2px 18px rgba(0,0,0,.45)" } as CSSProperties}>
         Fresh harvest <span className="whitespace-nowrap">high-polyphenol</span> olive oil is almost here
       </h1>
       <Form tone="dark" />
@@ -265,6 +281,8 @@ export default function HeroLooks() {
     <div>
       <Label>1 · The line as part of the logo (video)</Label>
       <Hero1 />
+      <Label>1b · The line alone, no logo (video)</Label>
+      <Hero1b />
       <Label>2 · Specialty, defined (three bottles)</Label>
       <Hero2 />
       <Label>2v · Specialty, defined, on the video</Label>
