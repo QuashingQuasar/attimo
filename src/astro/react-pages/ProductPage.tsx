@@ -584,15 +584,9 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           variantId={product.node.variants.edges[0]?.node.id}
                           locale={locale} />
 
-                        {SALE_PRICE !== undefined ? (
-                          // On sale (last stock of the season): one-time only,
-                          // no subscription. Show the sale price on its own.
-                          <p className="font-bold text-olive-dark" style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.05rem, 1.2vw, 1.25rem)" }}>
-                            <s className="font-normal mr-2" style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(REGULAR_PRICE, locale)}</s>
-                            {formatPrice(SALE_PRICE, locale)}
-                            <span className="font-normal text-olive-medium">{getDict(locale).purchase.perBottle}</span>
-                          </p>
-                        ) : (
+                        {/* On sale (last stock of the season): one-time only, no
+                            subscription; the sale shows on the add-to-cart button. */}
+                        {SALE_PRICE === undefined && (
                         <PurchaseOptions
                           sellingPlans={sellingPlans}
                           oneTimePrice={ONE_TIME_PRICE}
@@ -629,12 +623,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           const unit = isBox ? boxPrice : activePrice;
                           const baseTotal = qty * unit;
                           const finalTotal = baseTotal * (1 - volumeDiscount);
-                          const originalOneTimeTotal = isBox ? boxPrice : selectedQuantity * ONE_TIME_PRICE;
+                          // On sale, the struck-through total is the regular price.
+                          const strikeUnit = SALE_PRICE !== undefined ? REGULAR_PRICE : ONE_TIME_PRICE;
+                          const originalOneTimeTotal = isBox ? boxPrice : selectedQuantity * strikeUnit;
                           // Show strikethrough when subscribing (vs one-time
                           // total) OR when a volume discount is in effect
                           // (vs un-discounted one-time total). Never for the box.
                           const showStrikethrough =
-                            !isBox && (purchaseType === "subscribe" || volumeDiscount > 0);
+                            !isBox && (purchaseType === "subscribe" || volumeDiscount > 0 || SALE_PRICE !== undefined);
                           // When a volume discount is in effect, display two
                           // decimals so the UI matches what Shopify will
                           // charge to the cent. Subscription path keeps the
