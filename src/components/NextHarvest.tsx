@@ -161,7 +161,7 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
   const { u } = useHarvestSection(locale);
   return (
     <section id="next-harvest" className="snap-start relative" style={{ backgroundColor: CREAM }}>
-      <div className="px-4 md:px-6 pt-16 md:pt-24 pb-12 md:pb-16 mx-auto text-center" style={{ maxWidth: 1200 }}>
+      <div className="px-4 md:px-6 pt-16 md:pt-24 pb-10 md:pb-14 mx-auto text-center" style={{ maxWidth: 1200 }}>
         <p className="mb-4 uppercase" style={{ fontFamily: UDC, fontWeight: 700, fontSize: "clamp(.9rem, 1.05vw, 1.05rem)", letterSpacing: ".15em", color: gr(0.55) }}>{u.eyebrow}</p>
         <h2 className="mb-5" style={{ fontFamily: UDC, fontWeight: 300, fontSize: "clamp(2.1rem, 3.5vw, 3.6rem)", lineHeight: 1.02, letterSpacing: "-.025em", color: GREEN }}>{u.heading}</h2>
         <p className="mx-auto" style={{ fontFamily: SG, fontSize: "clamp(1.05rem, 1.25vw, 1.3rem)", lineHeight: 1.6, color: gr(0.78) }}>{u.intro}</p>
@@ -169,10 +169,11 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
           <HarvestSignup locale={locale} line={null} button={u.button} tone="light" maxWidth={620} />
         </div>
       </div>
-      <Panels locale={locale} />
-      <div className="px-4 md:px-6 pt-12 md:pt-16 pb-16 md:pb-24 mx-auto" style={{ maxWidth: 1190 }}>
+      {/* Timeline between the form and the panels; the section ends on the panels. */}
+      <div className="px-4 md:px-6 pb-12 md:pb-16 mx-auto" style={{ maxWidth: 1190 }}>
         <Timeline locale={locale} />
       </div>
+      <Panels locale={locale} />
     </section>
   );
 };
