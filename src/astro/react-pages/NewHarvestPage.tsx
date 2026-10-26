@@ -1,10 +1,13 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
+import { OilProductWidgets } from "@/components/OilProductWidgets";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { Timeline, Panels } from "@/components/NextHarvest";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
-import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, localizeHref, formatPrice, type Locale } from "@/lib/i18n/config";
+import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { HARVEST_STATUS } from "@/lib/harvestStatus";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
@@ -18,6 +21,8 @@ import { useHarvestSection, FONTS, C } from "@/components/harvest/useHarvestSect
 //
 // Everything that moves (current step, new lab values, last update) lives in
 // harvestStatus.ts, so one edit updates the homepage and this page together.
+
+const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } } });
 
 const { UDC, SG } = FONTS;
 const { CREAM, GREEN, DEEP, CHARTREUSE } = C;
@@ -42,7 +47,7 @@ const Arrow = () => (
   </svg>
 );
 
-export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
+function NewHarvestInner({ locale, labNumbers }: { locale: Locale; labNumbers?: HomeLabOil[] }) {
   const c = NH_CONTENT[locale.lang] ?? NH_CONTENT.en;
   const t = getDict(locale);
   const { oils, steps } = useHarvestSection(locale);
@@ -50,7 +55,31 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
   const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long", year: "numeric" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const methodsHref = METHODS_SLUGS[locale.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
   const certHref = localizeHref("/certificates", locale);
-  const saleHref = `${localizeHref("/", locale)}#oil-collection`;
+  const saleHref = "#last-season-sale";
+  // "While you wait": the homepage's Last Season Sale block, same props.
+  const saleSubtitle = t.oilCollection.lastHarvestSubtitle
+    .replace("{sale}", formatPrice(locale.prices.nocellaraSale ?? locale.prices.nocellara, locale))
+    .replace("{price}", formatPrice(locale.prices.nocellara, locale));
+  const polyBadges = labNumbers?.length
+    ? Object.fromEntries(labNumbers.filter((o) => o.total !== null).map((o) => [o.key, String(o.total)]))
+    : undefined;
+  // FAQ answers with an inline link keep a plain-text copy for the JSON-LD.
+  const faqItems = c.faq.items.map((f) => {
+    if (!f.link || !f.answer.includes(f.link.text)) return { question: f.question, answer: f.answer };
+    const [pre, post] = f.answer.split(f.link.text);
+    return {
+      question: f.question,
+      answer: null,
+      jsonText: f.answer,
+      answerElement: (
+        <>
+          {pre}
+          <a href={localizeHref(f.link.href, locale)} className="underline hover:no-underline" style={{ color: GREEN }}>{f.link.text}</a>
+          {post}
+        </>
+      ),
+    };
+  });
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: CREAM }}>
@@ -105,16 +134,24 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
         <div className="mx-auto" style={{ maxWidth: 1190 }}>
           <div className="text-center mb-12">
             <p className="mb-4" style={{ ...eyebrow, color: gr(0.55) }}>{c.status.eyebrow}</p>
-            <h2 className="mb-5" style={{ ...h2, color: GREEN }}>{c.status.h2}</h2>
-            <p style={{ ...lead, color: gr(0.78) }}>{c.status.lead}</p>
+            <h2 style={{ ...h2, color: GREEN }}>{c.status.h2}</h2>
           </div>
           <Timeline locale={locale} />
-          <ol className="mt-14 md:mt-16" style={{ borderTop: `1px solid ${gr(0.18)}` }}>
+          <div className="mt-14 md:mt-16 grid grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-14 items-center">
+          {/* Harvest footage: olives and leaves tipped into the bin at the grove. */}
+          <div className="relative overflow-hidden rounded-2xl mx-auto w-full" style={{ aspectRatio: "4 / 5", maxWidth: 520, backgroundColor: DEEP }}>
+            <AutoplayVideo
+              src="/videos/kleia-way-video-2.mp4"
+              poster="/images/hero-poster.png"
+              className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+            />
+          </div>
+          <ol style={{ borderTop: `1px solid ${gr(0.18)}` }}>
             {steps.map((s, i) => {
               const state = i < current ? c.status.states.done : i === current ? c.status.states.now : c.status.states.next;
               const now = i === current;
               return (
-                <li key={s.label} className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-2 md:gap-10 py-7" style={{ borderBottom: `1px solid ${gr(0.18)}` }}>
+                <li key={s.label} className="grid grid-cols-1 gap-2 py-6" style={{ borderBottom: `1px solid ${gr(0.18)}` }}>
                   <div>
                     <p className="mb-1 inline-flex items-center gap-3">
                       <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.15rem", letterSpacing: ".08em", textTransform: "uppercase", color: GREEN }}>{s.label}</span>
@@ -127,6 +164,7 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
               );
             })}
           </ol>
+          </div>
         </div>
       </section>
 
@@ -197,13 +235,11 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
                   <stop offset="100%" stopColor="#B3E58C" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183 L400,198 L30,198 Z" fill="url(#nhdecay)" />
-              <path d="M30,42 C90,82 140,112 210,134 C290,158 350,173 400,183" fill="none" stroke="#B3E58C" strokeWidth="3" strokeLinecap="round" />
-              <line x1="30" y1="150" x2="400" y2="150" stroke="#FFFAEA" strokeOpacity="0.4" strokeWidth="1.5" strokeDasharray="5 5" />
-              <text x="34" y="144" fill="#FFFAEA" fillOpacity="0.7" fontFamily={SG} fontSize="11">{c.freshness.chart.euLine}</text>
+              <path d="M30,42 C120,62 230,92 400,124 L400,198 L30,198 Z" fill="url(#nhdecay)" />
+              <path d="M30,42 C120,62 230,92 400,124" fill="none" stroke="#B3E58C" strokeWidth="3" strokeLinecap="round" />
+              <line x1="30" y1="198" x2="400" y2="198" stroke="#FFFAEA" strokeOpacity="0.25" strokeWidth="1" />
               <circle cx="30" cy="42" r="5" fill="#CDDB2D" />
               <text x="42" y="35" fill="#CDDB2D" fontFamily={UDC} fontSize="12">{c.freshness.chart.fresh}</text>
-              <text x="398" y="176" fill="#FFFAEA" fillOpacity="0.55" fontFamily={SG} fontSize="11" textAnchor="end">{c.freshness.chart.ordinary}</text>
               <text x="30" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11">{c.freshness.chart.pressed}</text>
               <text x="400" y="214" fill="#FFFAEA" fillOpacity="0.5" fontFamily={SG} fontSize="11" textAnchor="end">{c.freshness.chart.oneYear}</text>
             </svg>
@@ -212,9 +248,22 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
         </div>
       </section>
 
+      {/* ═══ WHILE YOU WAIT: the homepage's Last Season Sale ═══ */}
+      <OilProductWidgets
+        locale={locale}
+        sectionId="last-season-sale"
+        polyphenols={polyBadges}
+        eyebrow={c.wait.eyebrow}
+        heading={t.oilCollection.lastHarvestHeading}
+        headingFontFamily="UDC Working Man Sans, sans-serif"
+        subtitle={saleSubtitle}
+        wideSubtitle
+        soldOutButton="soldOut"
+      />
+
       {/* ═══ FAQ: JSON-LD is emitted by the Astro page, so off here ═══ */}
       <div id="faq" className="scroll-mt-24">
-        <FAQ locale={locale} items={c.faq.items} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
+        <FAQ locale={locale} items={faqItems} heading={c.faq.heading} headingFontFamily={UDC} jsonLd={false} />
       </div>
 
       {/* ═══ CLOSING SIGNUP ═══ */}
@@ -228,5 +277,13 @@ export default function NewHarvestPage({ locale = DEFAULT_LOCALE }: { locale?: L
 
       <Footer locale={locale} />
     </div>
+  );
+}
+
+export default function NewHarvestPage({ locale = DEFAULT_LOCALE, labNumbers }: { locale?: Locale; labNumbers?: HomeLabOil[] }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <NewHarvestInner locale={locale} labNumbers={labNumbers} />
+    </QueryClientProvider>
   );
 }

@@ -3,6 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import NewHarvestPage from "@astro/react-pages/NewHarvestPage";
 import { NH_CONTENT, NH_SLUGS } from "@/lib/newHarvestContent";
 import { HARVEST_STATUS } from "@/lib/harvestStatus";
+import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
@@ -10,6 +11,7 @@ const locale = DEFAULT_LOCALE;
 const t = getDict(locale);
 const content = NH_CONTENT.en;
 const canonical = `https://attimo-oil.com${NH_SLUGS.en}`;
+const labNumbers = await getHomeLabNumbers();
 
 const pageJsonLd = {
   "@context": "https://schema.org",
@@ -42,5 +44,5 @@ const faqJsonLd = {
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  <NewHarvestPage locale={locale} client:load />
+  <NewHarvestPage locale={locale} labNumbers={labNumbers} client:load />
 </BaseLayout>

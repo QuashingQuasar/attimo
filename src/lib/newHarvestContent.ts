@@ -10,7 +10,7 @@ export type NewHarvestContent = {
   nav: { status: string; oils: string; freshness: string; faq: string };
   hero: { eyebrow: string; h1: string; lead: string; now: string; updated: string };
   status: {
-    eyebrow: string; h2: string; lead: string;
+    eyebrow: string; h2: string;
     states: { done: string; now: string; next: string };
     details: string[]; // one per dict.upcoming.steps entry, same order
   };
@@ -27,9 +27,11 @@ export type NewHarvestContent = {
   };
   freshness: {
     eyebrow: string; h2: string; body1: string; body2: string; saleLink: string;
-    chart: { title: string; fresh: string; euLine: string; ordinary: string; pressed: string; oneYear: string; caption: string };
+    chart: { title: string; fresh: string; pressed: string; oneYear: string; caption: string };
   };
-  faq: { heading: string; items: { question: string; answer: string }[] };
+  wait: { eyebrow: string };
+  // `link.text` must appear verbatim in `answer`; that span becomes the link.
+  faq: { heading: string; items: { question: string; answer: string; link?: { text: string; href: string } }[] };
   closing: { h2: string; lead: string };
 };
 
@@ -51,7 +53,6 @@ const en: NewHarvestContent = {
   status: {
     eyebrow: "Status",
     h2: "Where the 26/27 harvest stands today",
-    lead: "Dates are estimates. This page is updated as the oil moves.",
     states: { done: "Done", now: "Now", next: "Next" },
     details: [
       "The olives are picked while still green and pressed within hours. Green olives give less oil and more polyphenols.",
@@ -83,13 +84,12 @@ const en: NewHarvestContent = {
     chart: {
       title: "Polyphenols fade after pressing",
       fresh: "Just pressed",
-      euLine: "EU health-claim level",
-      ordinary: "ordinary oil",
       pressed: "Pressed",
       oneYear: "one year on the shelf",
-      caption: "Illustrative. The decline steepens with light and heat.",
+      caption: "Illustrative. How fast polyphenols fall depends on the oil and on how it is stored.",
     },
   },
+  wait: { eyebrow: "While you wait" },
   faq: {
     heading: "New harvest FAQ",
     items: [
@@ -106,8 +106,9 @@ const en: NewHarvestContent = {
         answer: "Pre-orders open in early to mid November. Leave your email on this page and you get an email the day they open.",
       },
       {
-        question: "What happened to Nocellara?",
-        answer: "Nocellara was last season's gentle oil. Peranzana takes its place this harvest. The last Nocellara bottles from 25/26 are on sale while stock lasts.",
+        question: "Will there be a new Nocellara for the next harvest?",
+        answer: "No. Peranzana takes Nocellara's place as the gentle, fruity oil of the 26/27 harvest. The last Nocellara bottles from 25/26 are on sale while stock lasts.",
+        link: { text: "The last Nocellara bottles from 25/26", href: "/product/nocellara" },
       },
       {
         question: "Will the polyphenol levels be published?",
