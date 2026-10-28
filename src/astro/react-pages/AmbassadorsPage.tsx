@@ -124,7 +124,7 @@ const AmbassadorsPage = ({ locale = DEFAULT_LOCALE }: AmbassadorsPageProps = {})
             }}
           >
             Get a personal discount code to share ATTIMO with friends, family and followers.
-            Your people get 15% off. You earn 15% on every bottle.
+            Your people get 10% off. You earn 10% on every bottle.
           </p>
         </div>
       </section>
@@ -425,7 +425,7 @@ const DealCard = ({
         letterSpacing: "-3px",
       }}
     >
-      15<span style={{ fontSize: "0.5em", fontWeight: 400, letterSpacing: 0 }}>%</span>
+      10<span style={{ fontSize: "0.5em", fontWeight: 400, letterSpacing: 0 }}>%</span>
     </div>
     <div
       style={{
