@@ -1,5 +1,5 @@
 import type { ShopifyProduct } from "@/lib/shopify";
-import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, type Locale } from "@/lib/i18n/config";
 import type { BundleConfig } from "@/lib/bundleTypes";
 
 // The Trio ("The Full Collection") is a SEPARATE Shopify product bundling one
@@ -53,9 +53,9 @@ export const TRIO_CONTENTS = [
 
 // Sum of the three single-bottle prices in the given locale — used for the
 // strikethrough "was" and the saving. Reads the same locale.prices the rest of
-// the site uses, so it stays correct per market with no extra config.
+// the site uses (sale prices included, so the saving holds during a sale).
 export function trioSinglesTotal(locale: Locale = DEFAULT_LOCALE): number {
-  return locale.prices.coratina + locale.prices.nocellara + locale.prices.picual;
+  return currentPrice(locale, "coratina") + currentPrice(locale, "nocellara") + currentPrice(locale, "picual");
 }
 
 /**

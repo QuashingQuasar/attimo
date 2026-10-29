@@ -3,7 +3,7 @@ import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, formatPrice, localizeHref, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts, fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
@@ -185,7 +185,7 @@ export const OilProductWidgets = ({
       ...o,
       price: locale.prices[o.handle],
       // End-of-season sale (front-end price; Shopify must match before merge).
-      salePrice: o.handle === "nocellara" ? locale.prices.nocellaraSale : undefined,
+      salePrice: salePrice(locale, o.handle),
       isAvailable,
       effectiveAvailable,
       shippingNotice,
