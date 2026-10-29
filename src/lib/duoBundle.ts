@@ -1,5 +1,5 @@
 import type { ShopifyProduct } from "@/lib/shopify";
-import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, type Locale } from "@/lib/i18n/config";
 import type { BundleConfig } from "@/lib/bundleTypes";
 import { TRIO_CONTENTS } from "@/lib/trioBundle";
 
@@ -24,7 +24,7 @@ export const DUO_CONTENTS = TRIO_CONTENTS.filter(
 );
 
 export function duoSinglesTotal(locale: Locale = DEFAULT_LOCALE): number {
-  return locale.prices.coratina + locale.prices.nocellara;
+  return currentPrice(locale, "coratina") + currentPrice(locale, "nocellara");
 }
 
 export function buildDuoProduct(

@@ -252,10 +252,9 @@ const SELLING_PLANS_QUERY = `
 // (both call this function). Delete the handle to restore normal availability.
 //
 // 2026-08-31: Coratina single off sale — steer standalone demand into bundles
-// and protect shared stock while away. Revert on return.
-const FORCE_SOLD_OUT_HANDLES = new Set<string>([
-  "attimo-extra-virgin-olive-oil-coratina-500ml",
-]);
+// and protect shared stock while away. Reverted 2026-10-29: the last 25/26
+// bottles are back on sale, so real stock decides.
+const FORCE_SOLD_OUT_HANDLES = new Set<string>([]);
 
 function applySoldOutOverride(products: ShopifyProduct[]): ShopifyProduct[] {
   if (FORCE_SOLD_OUT_HANDLES.size === 0) return products;

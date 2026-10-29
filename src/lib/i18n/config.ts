@@ -33,6 +33,10 @@ export type Locale = {
     // set, the homepage card and PDP show it with the regular price struck
     // through. FRONT-END ONLY until the Shopify price is changed to match.
     nocellaraSale?: number;
+    // Coratina + Picual 25/26 sell-down (last few bottles, 2026-10-29): same
+    // mechanism as nocellaraSale; Shopify carries the same price + compare-at.
+    coratinaSale?: number;
+    picualSale?: number;
     // 3L bag-in-box (separate Shopify product referenced from the Coratina
     // PDP). Optional so nothing outside the Coratina page depends on it;
     // populated for every locale below. EUR markets share €89; DK/SE mirror
@@ -76,10 +80,13 @@ export const DEFAULT_LOCALE: Locale = {
     coratina: 24,
     nocellara: 23,
     nocellaraSale: 20,
+    coratinaSale: 21,
     picual: 22,
+    picualSale: 19,
     coratina3L: 89,
-    trio: 60,
-    duo: 42,
+    // 25/26 sell-down: bundles carry the singles' sale cut (regular 60 / 42).
+    trio: 51,
+    duo: 36,
   },
   shipping: {
     standard: 7,
@@ -115,10 +122,13 @@ export const LOCALES: Locale[] = [
       coratina: 24,
       nocellara: 23,
       nocellaraSale: 20,
+      coratinaSale: 21,
       picual: 22,
+      picualSale: 19,
       coratina3L: 89,
-      trio: 60,
-      duo: 42,
+      // 25/26 sell-down: bundles carry the singles' sale cut (regular 60 / 42).
+      trio: 51,
+      duo: 36,
     },
     shipping: {
       standard: 10,
@@ -152,10 +162,13 @@ export const LOCALES: Locale[] = [
       coratina: 24,
       nocellara: 23,
       nocellaraSale: 20,
+      coratinaSale: 21,
       picual: 22,
+      picualSale: 19,
       coratina3L: 89,
-      trio: 60,
-      duo: 42,
+      // 25/26 sell-down: bundles carry the singles' sale cut (regular 60 / 42).
+      trio: 51,
+      duo: 36,
     },
     shipping: {
       standard: 15,
@@ -187,10 +200,13 @@ export const LOCALES: Locale[] = [
       coratina: 24,
       nocellara: 23,
       nocellaraSale: 20,
+      coratinaSale: 21,
       picual: 22,
+      picualSale: 19,
       coratina3L: 89,
-      trio: 60,
-      duo: 42,
+      // 25/26 sell-down: bundles carry the singles' sale cut (regular 60 / 42).
+      trio: 51,
+      duo: 36,
     },
     shipping: {
       standard: 10,
@@ -220,13 +236,16 @@ export const LOCALES: Locale[] = [
       coratina: 190,
       nocellara: 180,
       nocellaraSale: 155,
+      coratinaSale: 165,
       picual: 170,
+      picualSale: 145,
       // Fixed Shopify Markets override on the Denmark price list (700 DKK).
       coratina3L: 700,
       // Trio: must match a fixed Denmark price-list override on the trio
       // product (470 DKK) before publishing — otherwise FX will mismatch.
-      trio: 470,
-      duo: 330,
+      // 25/26 sell-down (regular 470 / 330), matching the Denmark overrides.
+      trio: 395,
+      duo: 280,
     },
     shipping: {
       standard: 112,
@@ -256,13 +275,16 @@ export const LOCALES: Locale[] = [
       coratina: 290,
       nocellara: 280,
       nocellaraSale: 245,
+      coratinaSale: 255,
       picual: 270,
+      picualSale: 235,
       // Fixed Shopify Markets override on the Sweden price list (1000 SEK).
       coratina3L: 1000,
       // Trio: must match a fixed Sweden price-list override on the trio
       // product (720 SEK) — fixed Shopify override set 2026-08-26.
-      trio: 720,
-      duo: 500,
+      // 25/26 sell-down (regular 720 / 500), matching the Sweden overrides.
+      trio: 615,
+      duo: 430,
     },
     // Mid-EU €15 rate ≈168 SEK; free from 2 bottles (2×270 SEK). FX-converted
     // at checkout unless a fixed SEK shipping override is set in Shopify Markets.
@@ -396,10 +418,14 @@ export function getHreflangs(unprefixedPath: string): HreflangEntry[] {
 }
 
 
-// Current selling price per oil: the sale price where one is set (Nocellara's
-// end-of-season sale, Oct 2026; Shopify carries the same price), otherwise
+// Sale price per oil where one is set (25/26 end-of-season sell-down, Oct
+// 2026; Shopify carries the same price), otherwise undefined.
+export function salePrice(locale: Locale, slug: "coratina" | "nocellara" | "picual"): number | undefined {
+  return locale.prices[`${slug}Sale` as const];
+}
+
+// Current selling price per oil: the sale price where one is set, otherwise
 // the regular price. Use this anywhere a price is shown or sent to the cart.
 export function currentPrice(locale: Locale, slug: "coratina" | "nocellara" | "picual"): number {
-  if (slug === "nocellara" && locale.prices.nocellaraSale !== undefined) return locale.prices.nocellaraSale;
-  return locale.prices[slug];
+  return salePrice(locale, slug) ?? locale.prices[slug];
 }

@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
+import { BundleWidgets } from "@/components/BundleWidgets";
 import { NextHarvest } from "@/components/NextHarvest";
 import { IndustryProblem } from "@/components/IndustryProblem";
 import { KleiaWay } from "@/components/KleiaWay";
@@ -65,6 +66,7 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
         subtitle={lastHarvestSubtitle}
         wideSubtitle
         soldOutButton="soldOut"
+        belowGrid={<BundleWidgets locale={locale} />}
       />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />

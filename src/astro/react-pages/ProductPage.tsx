@@ -29,7 +29,7 @@ import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
-import { DEFAULT_LOCALE, formatPrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, currentPrice, formatPrice, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
 interface BlogPost {
@@ -241,7 +241,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       content_name: productName,
       content_ids: [handle],
       content_type: 'product',
-      value: slug === "nocellara" ? (locale.prices.nocellaraSale ?? locale.prices[slug]) : locale.prices[slug],
+      value: currentPrice(locale, slug),
       currency: locale.currency.code,
     });
   }, [handle, locale]);
@@ -271,10 +271,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }, [handle]);
 
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
-  // Nocellara's end-of-season sale (Shopify price set to match, 2026-10-26):
-  // the sale price is the price; the regular one shows struck through.
+  // 25/26 end-of-season sale (Shopify price set to match): the sale price is
+  // the price; the regular one shows struck through.
   const REGULAR_PRICE = locale.prices[productSlug];
-  const SALE_PRICE = productSlug === "nocellara" ? locale.prices.nocellaraSale : undefined;
+  const SALE_PRICE = salePrice(locale, productSlug);
   const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
   // Subscription is a flat ~8% discount applied to the base price.
   const SUBSCRIPTION_PRICE = Math.round(ONE_TIME_PRICE * (22 / 24) * 100) / 100;
