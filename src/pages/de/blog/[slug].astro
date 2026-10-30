@@ -111,10 +111,9 @@ const formatDateShort = (dateStr: string) =>
             class="text-sm tracking-wide"
             style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;"
           >
-            {formatDate(post.publishedAt)}
-            {updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt) && (
-              <> · Aktualisiert {formatDate(updatedAt)}</>
-            )}
+            {updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt)
+              ? `Aktualisiert: ${formatDate(updatedAt)}`
+              : formatDate(post.publishedAt)}
           </span>
 
           <h1
