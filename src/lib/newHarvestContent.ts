@@ -40,12 +40,12 @@ const en: NewHarvestContent = {
   meta: {
     title: "New Harvest Olive Oil 26/27: Status and Shipping Date | ATTIMO",
     description:
-      "Where ATTIMO's 26/27 early-harvest olive oil stands today: pressing from mid-October, lab analysis in early November, shipping from mid-November. Coratina, Peranzana and Picual.",
+      "Where ATTIMO's 26/27 early-harvest olive oil stands today: pressing from mid-October, lab analysis in early November, shipping from late November. Coratina, Peranzana and Picual.",
   },
   nav: { status: "Status", oils: "Oils", freshness: "Freshness", faq: "FAQ" },
   hero: {
     eyebrow: "Harvest 26/27",
-    h1: "New harvest olive oil: pressed in October, shipping mid-November",
+    h1: "New harvest olive oil: pressed in October, shipping late November",
     lead: "Three high-polyphenol olive oils, harvested early and pressed within hours. Follow every step from the press to your door, and be the first to get them.",
     now: "Now",
     updated: "Updated {date}",
@@ -79,7 +79,7 @@ const en: NewHarvestContent = {
     eyebrow: "Freshness",
     h2: "Why we wait for the new harvest",
     body1: "Polyphenols start to fall the day an oil is pressed. Light, heat and air speed it up, and nothing stops it.",
-    body2: "So we only sell the latest harvest. What is left of 25/26 is on sale now, and the 26/27 oil ships from mid-November.",
+    body2: "So we only sell the latest harvest. What is left of 25/26 is on sale now, and the 26/27 oil ships from late November.",
     saleLink: "Last Season Sale",
     chart: {
       title: "Polyphenols fade after pressing",
@@ -95,7 +95,7 @@ const en: NewHarvestContent = {
     items: [
       {
         question: "When does the 26/27 harvest ship?",
-        answer: "From mid-November 2026. Pressing started in mid-October, lab analysis follows in early November and pre-orders open in early to mid November. These are estimates, and this page is updated as the oil moves.",
+        answer: "From late November 2026. Pressing started in mid-October, lab analysis follows in early November and pre-orders open in early to mid November. These are estimates, and this page is updated as the oil moves.",
       },
       {
         question: "Which oils are in the 26/27 harvest?",
@@ -136,12 +136,12 @@ const de: NewHarvestContent = {
   meta: {
     title: "Olivenöl aus neuer Ernte 26/27: Status und Versanddatum | ATTIMO",
     description:
-      "Wo das Olivenöl aus früher Ernte 26/27 von ATTIMO heute steht: Pressen ab Mitte Oktober, Laboranalyse Anfang November, Versand ab Mitte November. Coratina, Peranzana und Picual.",
+      "Wo das Olivenöl aus früher Ernte 26/27 von ATTIMO heute steht: Pressen ab Mitte Oktober, Laboranalyse Anfang November, Versand ab Ende November. Coratina, Peranzana und Picual.",
   },
   nav: { status: "Status", oils: "Öle", freshness: "Frische", faq: "FAQ" },
   hero: {
     eyebrow: "Ernte 26/27",
-    h1: "Olivenöl aus neuer Ernte: gepresst im Oktober, Versand ab Mitte November",
+    h1: "Olivenöl aus neuer Ernte: gepresst im Oktober, Versand ab Ende November",
     lead: "Drei Olivenöle mit hohem Polyphenolgehalt, früh geerntet und innerhalb weniger Stunden gepresst. Verfolge jeden Schritt von der Presse bis zu deiner Haustür und hol sie dir zuerst.",
     now: "Jetzt",
     updated: "Aktualisiert am {date}",
@@ -175,7 +175,7 @@ const de: NewHarvestContent = {
     eyebrow: "Frische",
     h2: "Warum wir auf die neue Ernte warten",
     body1: "Polyphenole beginnen an dem Tag zu sinken, an dem ein Öl gepresst wird. Licht, Wärme und Luft beschleunigen das, und nichts hält es auf.",
-    body2: "Deshalb verkaufen wir nur die neueste Ernte. Was von 25/26 übrig ist, gibt es jetzt im Sale, und das Öl der Ernte 26/27 wird ab Mitte November verschickt.",
+    body2: "Deshalb verkaufen wir nur die neueste Ernte. Was von 25/26 übrig ist, gibt es jetzt im Sale, und das Öl der Ernte 26/27 wird ab Ende November verschickt.",
     saleLink: "Sale der letzten Saison",
     chart: {
       title: "Polyphenole sinken nach dem Pressen",
@@ -191,7 +191,7 @@ const de: NewHarvestContent = {
     items: [
       {
         question: "Wann wird die Ernte 26/27 verschickt?",
-        answer: "Ab Mitte November 2026. Gepresst wird seit Mitte Oktober, die Laboranalyse folgt Anfang November und die Vorbestellung öffnet Anfang bis Mitte November. Das sind Schätzungen, und diese Seite wird aktualisiert, während das Öl unterwegs ist.",
+        answer: "Ab Ende November 2026. Gepresst wird seit Mitte Oktober, die Laboranalyse folgt Anfang November und die Vorbestellung öffnet Anfang bis Mitte November. Das sind Schätzungen, und diese Seite wird aktualisiert, während das Öl unterwegs ist.",
       },
       {
         question: "Welche Öle gibt es in der Ernte 26/27?",
@@ -227,12 +227,12 @@ const fr: NewHarvestContent = {
   meta: {
     title: "Huile d'olive de nouvelle récolte 26/27 : statut et date d'expédition | ATTIMO",
     description:
-      "Où en est l'huile d'olive de récolte précoce 26/27 d'ATTIMO : pressage dès la mi-octobre, analyse en laboratoire début novembre, expédition à partir de la mi-novembre. Coratina, Peranzana et Picual.",
+      "Où en est l'huile d'olive de récolte précoce 26/27 d'ATTIMO : pressage dès la mi-octobre, analyse en laboratoire début novembre, expédition à partir de fin novembre. Coratina, Peranzana et Picual.",
   },
   nav: { status: "Statut", oils: "Huiles", freshness: "Fraîcheur", faq: "FAQ" },
   hero: {
     eyebrow: "Récolte 26/27",
-    h1: "Huile d'olive de nouvelle récolte : pressée en octobre, expédiée dès la mi-novembre",
+    h1: "Huile d'olive de nouvelle récolte : pressée en octobre, expédiée dès fin novembre",
     lead: "Trois huiles d'olive riches en polyphénols, récoltées tôt et pressées en quelques heures. Suivez chaque étape, du pressoir à votre porte, et recevez-les en premier.",
     now: "En cours",
     updated: "Mis à jour le {date}",
@@ -266,7 +266,7 @@ const fr: NewHarvestContent = {
     eyebrow: "Fraîcheur",
     h2: "Pourquoi nous attendons la nouvelle récolte",
     body1: "Les polyphénols commencent à baisser le jour où une huile est pressée. La lumière, la chaleur et l'air accélèrent cette baisse, et rien ne l'arrête.",
-    body2: "C'est pourquoi nous ne vendons que la dernière récolte. Ce qui reste de 25/26 est en soldes, et l'huile 26/27 est expédiée à partir de la mi-novembre.",
+    body2: "C'est pourquoi nous ne vendons que la dernière récolte. Ce qui reste de 25/26 est en soldes, et l'huile 26/27 est expédiée à partir de fin novembre.",
     saleLink: "Soldes de fin de saison",
     chart: {
       title: "Les polyphénols baissent après le pressage",
@@ -282,7 +282,7 @@ const fr: NewHarvestContent = {
     items: [
       {
         question: "Quand la récolte 26/27 sera-t-elle expédiée ?",
-        answer: "À partir de la mi-novembre 2026. Le pressage a commencé mi-octobre, l'analyse en laboratoire suit début novembre et les précommandes ouvrent entre début et mi-novembre. Ce sont des estimations, et cette page est mise à jour au fil du parcours de l'huile.",
+        answer: "À partir de fin novembre 2026. Le pressage a commencé mi-octobre, l'analyse en laboratoire suit début novembre et les précommandes ouvrent entre début et mi-novembre. Ce sont des estimations, et cette page est mise à jour au fil du parcours de l'huile.",
       },
       {
         question: "Quelles huiles compte la récolte 26/27 ?",
@@ -318,12 +318,12 @@ const nl: NewHarvestContent = {
   meta: {
     title: "Olijfolie van de nieuwe oogst 26/27: status en verzenddatum | ATTIMO",
     description:
-      "Waar de olijfolie van vroege oogst 26/27 van ATTIMO vandaag staat: persen vanaf half oktober, labanalyse begin november, verzending vanaf half november. Coratina, Peranzana en Picual.",
+      "Waar de olijfolie van vroege oogst 26/27 van ATTIMO vandaag staat: persen vanaf half oktober, labanalyse begin november, verzending vanaf eind november. Coratina, Peranzana en Picual.",
   },
   nav: { status: "Status", oils: "Oliën", freshness: "Versheid", faq: "FAQ" },
   hero: {
     eyebrow: "Oogst 26/27",
-    h1: "Olijfolie van de nieuwe oogst: geperst in oktober, verzonden vanaf half november",
+    h1: "Olijfolie van de nieuwe oogst: geperst in oktober, verzonden vanaf eind november",
     lead: "Drie olijfoliën rijk aan polyfenolen, vroeg geoogst en binnen enkele uren geperst. Volg elke stap van de pers tot aan je deur, en krijg ze als eerste.",
     now: "Nu",
     updated: "Bijgewerkt op {date}",
@@ -357,7 +357,7 @@ const nl: NewHarvestContent = {
     eyebrow: "Versheid",
     h2: "Waarom we op de nieuwe oogst wachten",
     body1: "Polyfenolen beginnen te dalen op de dag dat een olie geperst wordt. Licht, warmte en lucht versnellen dat, en niets houdt het tegen.",
-    body2: "Daarom verkopen we alleen de nieuwste oogst. Wat er over is van 25/26 is nu in de uitverkoop, en de olie van 26/27 wordt verzonden vanaf half november.",
+    body2: "Daarom verkopen we alleen de nieuwste oogst. Wat er over is van 25/26 is nu in de uitverkoop, en de olie van 26/27 wordt verzonden vanaf eind november.",
     saleLink: "Uitverkoop vorig seizoen",
     chart: {
       title: "Polyfenolen dalen na het persen",
@@ -373,7 +373,7 @@ const nl: NewHarvestContent = {
     items: [
       {
         question: "Wanneer wordt de oogst 26/27 verzonden?",
-        answer: "Vanaf half november 2026. Het persen begon half oktober, de labanalyse volgt begin november en de voorverkoop opent begin tot half november. Dit zijn schattingen, en deze pagina wordt bijgewerkt naarmate de olie vordert.",
+        answer: "Vanaf eind november 2026. Het persen begon half oktober, de labanalyse volgt begin november en de voorverkoop opent begin tot half november. Dit zijn schattingen, en deze pagina wordt bijgewerkt naarmate de olie vordert.",
       },
       {
         question: "Welke oliën zitten in de oogst 26/27?",
@@ -409,12 +409,12 @@ const da: NewHarvestContent = {
   meta: {
     title: "Olivenolie fra ny høst 26/27: status og afsendelsesdato | ATTIMO",
     description:
-      "Hvor ATTIMOs olivenolie fra tidlig høst 26/27 står i dag: presning fra midt i oktober, laboratorieanalyse i starten af november, forsendelse fra midt i november. Coratina, Peranzana og Picual.",
+      "Hvor ATTIMOs olivenolie fra tidlig høst 26/27 står i dag: presning fra midt i oktober, laboratorieanalyse i starten af november, forsendelse fra sidst i november. Coratina, Peranzana og Picual.",
   },
   nav: { status: "Status", oils: "Olier", freshness: "Friskhed", faq: "FAQ" },
   hero: {
     eyebrow: "Høst 26/27",
-    h1: "Olivenolie fra ny høst: presset i oktober, afsendes fra midt i november",
+    h1: "Olivenolie fra ny høst: presset i oktober, afsendes fra sidst i november",
     lead: "Tre olivenolier med højt indhold af polyfenoler, høstet tidligt og presset inden for få timer. Følg hvert trin fra pressen til din dør, og få dem først.",
     now: "Nu",
     updated: "Opdateret {date}",
@@ -448,7 +448,7 @@ const da: NewHarvestContent = {
     eyebrow: "Friskhed",
     h2: "Hvorfor vi venter på den nye høst",
     body1: "Polyfenoler begynder at falde den dag, en olie presses. Lys, varme og luft får det til at gå hurtigere, og intet stopper det.",
-    body2: "Derfor sælger vi kun den nyeste høst. Det, der er tilbage af 25/26, er på udsalg nu, og olien fra 26/27 sendes fra midt i november.",
+    body2: "Derfor sælger vi kun den nyeste høst. Det, der er tilbage af 25/26, er på udsalg nu, og olien fra 26/27 sendes fra sidst i november.",
     saleLink: "Udsalg fra sidste sæson",
     chart: {
       title: "Polyfenoler falder efter presning",
@@ -464,7 +464,7 @@ const da: NewHarvestContent = {
     items: [
       {
         question: "Hvornår sendes høsten 26/27?",
-        answer: "Fra midt i november 2026. Presningen begyndte midt i oktober, laboratorieanalysen følger i starten af november, og forudbestillingen åbner i starten til midten af november. Det er estimater, og siden opdateres, efterhånden som olien er på vej.",
+        answer: "Fra sidst i november 2026. Presningen begyndte midt i oktober, laboratorieanalysen følger i starten af november, og forudbestillingen åbner i starten til midten af november. Det er estimater, og siden opdateres, efterhånden som olien er på vej.",
       },
       {
         question: "Hvilke olier er med i høsten 26/27?",
@@ -500,12 +500,12 @@ const sv: NewHarvestContent = {
   meta: {
     title: "Olivolja från ny skörd 26/27: status och leveransdatum | ATTIMO",
     description:
-      "Var ATTIMOs olivolja från tidig skörd 26/27 står i dag: pressning från mitten av oktober, labbanalys i början av november, leverans från mitten av november. Coratina, Peranzana och Picual.",
+      "Var ATTIMOs olivolja från tidig skörd 26/27 står i dag: pressning från mitten av oktober, labbanalys i början av november, leverans från slutet av november. Coratina, Peranzana och Picual.",
   },
   nav: { status: "Status", oils: "Oljor", freshness: "Färskhet", faq: "FAQ" },
   hero: {
     eyebrow: "Skörd 26/27",
-    h1: "Olivolja från ny skörd: pressad i oktober, levereras från mitten av november",
+    h1: "Olivolja från ny skörd: pressad i oktober, levereras från slutet av november",
     lead: "Tre olivoljor med hög halt av polyfenoler, skördade tidigt och pressade inom några timmar. Följ varje steg från pressen till din dörr, och få dem först.",
     now: "Nu",
     updated: "Uppdaterad {date}",
@@ -539,7 +539,7 @@ const sv: NewHarvestContent = {
     eyebrow: "Färskhet",
     h2: "Varför vi väntar på den nya skörden",
     body1: "Polyfenoler börjar minska samma dag som en olja pressas. Ljus, värme och luft gör att det går snabbare, och ingenting stoppar det.",
-    body2: "Därför säljer vi bara den senaste skörden. Det som finns kvar av 25/26 är på rea nu, och oljan från 26/27 skickas från mitten av november.",
+    body2: "Därför säljer vi bara den senaste skörden. Det som finns kvar av 25/26 är på rea nu, och oljan från 26/27 skickas från slutet av november.",
     saleLink: "Rea på förra säsongen",
     chart: {
       title: "Polyfenoler minskar efter pressning",
@@ -555,7 +555,7 @@ const sv: NewHarvestContent = {
     items: [
       {
         question: "När levereras skörden 26/27?",
-        answer: "Från mitten av november 2026. Pressningen började i mitten av oktober, labbanalysen följer i början av november och förbeställningen öppnar i början till mitten av november. Det är uppskattningar, och sidan uppdateras allteftersom oljan är på väg.",
+        answer: "Från slutet av november 2026. Pressningen började i mitten av oktober, labbanalysen följer i början av november och förbeställningen öppnar i början till mitten av november. Det är uppskattningar, och sidan uppdateras allteftersom oljan är på väg.",
       },
       {
         question: "Vilka oljor ingår i skörden 26/27?",

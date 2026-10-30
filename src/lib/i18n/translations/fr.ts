@@ -152,7 +152,7 @@ export const fr: Dict = {
       { label: "Analyse en labo", when: "début novembre" },
       { label: "Ouverture des précommandes", when: "début à mi-novembre" },
       { label: "Mise en bouteille", when: "mi-novembre" },
-      { label: "Expédition", when: "mi-novembre" },
+      { label: "Expédition", when: "fin novembre" },
     ],
     note: "Les estimations sont mises à jour au fil du parcours de l'huile. Dernière mise à jour : {date}.",
     pageLink: "Suivez la récolte 26/27 étape par étape",

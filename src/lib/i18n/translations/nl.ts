@@ -151,7 +151,7 @@ export const nl: Dict = {
       { label: "Labanalyse", when: "begin november" },
       { label: "Voorverkoop open", when: "begin tot half november" },
       { label: "Bottelen", when: "half november" },
-      { label: "Verzending", when: "half november" },
+      { label: "Verzending", when: "eind november" },
     ],
     note: "Schattingen worden bijgewerkt naarmate de olie vordert. Laatst bijgewerkt: {date}.",
     pageLink: "Volg de oogst 26/27 stap voor stap",
