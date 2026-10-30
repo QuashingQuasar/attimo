@@ -112,7 +112,7 @@ const formatDateShort = (dateStr: string) =>
             style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;"
           >
             {updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt)
-              ? `Opdateret i ${formatDate(updatedAt)}`
+              ? `Senest opdateret: ${formatDate(updatedAt)}`
               : formatDate(post.publishedAt)}
           </span>
 
