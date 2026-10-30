@@ -57,8 +57,8 @@ const en: NewHarvestContent = {
     details: [
       "The olives are picked while still green and pressed within hours. Green olives give less oil and more polyphenols.",
       "A sample of each oil goes to an independent lab before bottling. Last season's Coratina was tested by HPLC at an ISO 17025 lab recognised by the International Olive Council.",
-      "Everyone on the list gets an email the day pre-orders open.",
       "Each oil is bottled once its lab result is in.",
+      "Everyone on the list gets an email the day pre-orders open.",
       "Pre-orders ship first.",
     ],
   },
@@ -95,7 +95,7 @@ const en: NewHarvestContent = {
     items: [
       {
         question: "When does the 26/27 harvest ship?",
-        answer: "From late November 2026. Pressing started in mid-October, lab analysis follows in early November and pre-orders open in early to mid November. These are estimates, and this page is updated as the oil moves.",
+        answer: "From late November 2026. Pressing started in mid-October, lab analysis follows in early November and pre-orders open in mid-November. These are estimates, and this page is updated as the oil moves.",
       },
       {
         question: "Which oils are in the 26/27 harvest?",
@@ -103,7 +103,7 @@ const en: NewHarvestContent = {
       },
       {
         question: "Can I pre-order the new harvest?",
-        answer: "Pre-orders open in early to mid November. Leave your email on this page and you get an email the day they open.",
+        answer: "Pre-orders open in mid-November. Leave your email on this page and you get an email the day they open.",
       },
       {
         question: "Will there be a new Nocellara for the next harvest?",
@@ -153,8 +153,8 @@ const de: NewHarvestContent = {
     details: [
       "Die Oliven werden noch grün gepflückt und innerhalb weniger Stunden gepresst. Grüne Oliven geben weniger Öl und mehr Polyphenole.",
       "Eine Probe jedes Öls geht vor der Abfüllung an ein unabhängiges Labor. Die Coratina der letzten Saison wurde per HPLC in einem ISO-17025-Labor getestet, das vom Internationalen Olivenrat anerkannt ist.",
-      "Alle auf der Liste bekommen eine E-Mail, sobald die Vorbestellung öffnet.",
       "Jedes Öl wird abgefüllt, sobald sein Laborergebnis vorliegt.",
+      "Alle auf der Liste bekommen eine E-Mail, sobald die Vorbestellung öffnet.",
       "Vorbestellungen werden zuerst verschickt.",
     ],
   },
@@ -191,7 +191,7 @@ const de: NewHarvestContent = {
     items: [
       {
         question: "Wann wird die Ernte 26/27 verschickt?",
-        answer: "Ab Ende November 2026. Gepresst wird seit Mitte Oktober, die Laboranalyse folgt Anfang November und die Vorbestellung öffnet Anfang bis Mitte November. Das sind Schätzungen, und diese Seite wird aktualisiert, während das Öl unterwegs ist.",
+        answer: "Ab Ende November 2026. Gepresst wird seit Mitte Oktober, die Laboranalyse folgt Anfang November und die Vorbestellung öffnet Mitte November. Das sind Schätzungen, und diese Seite wird aktualisiert, während das Öl unterwegs ist.",
       },
       {
         question: "Welche Öle gibt es in der Ernte 26/27?",
@@ -199,7 +199,7 @@ const de: NewHarvestContent = {
       },
       {
         question: "Kann ich die neue Ernte vorbestellen?",
-        answer: "Die Vorbestellung öffnet Anfang bis Mitte November. Trag deine E-Mail-Adresse auf dieser Seite ein, dann bekommst du am Tag der Öffnung eine E-Mail.",
+        answer: "Die Vorbestellung öffnet Mitte November. Trag deine E-Mail-Adresse auf dieser Seite ein, dann bekommst du am Tag der Öffnung eine E-Mail.",
       },
       {
         question: "Gibt es in der nächsten Ernte eine neue Nocellara?",
@@ -244,8 +244,8 @@ const fr: NewHarvestContent = {
     details: [
       "Les olives sont cueillies encore vertes et pressées en quelques heures. Les olives vertes donnent moins d'huile et plus de polyphénols.",
       "Un échantillon de chaque huile part dans un laboratoire indépendant avant la mise en bouteille. La Coratina de la saison dernière a été analysée par HPLC dans un laboratoire ISO 17025 reconnu par le Conseil oléicole international.",
-      "Toutes les personnes inscrites reçoivent un e-mail le jour de l'ouverture des précommandes.",
       "Chaque huile est mise en bouteille dès que son résultat de laboratoire est disponible.",
+      "Toutes les personnes inscrites reçoivent un e-mail le jour de l'ouverture des précommandes.",
       "Les précommandes sont expédiées en premier.",
     ],
   },
@@ -282,7 +282,7 @@ const fr: NewHarvestContent = {
     items: [
       {
         question: "Quand la récolte 26/27 sera-t-elle expédiée ?",
-        answer: "À partir de fin novembre 2026. Le pressage a commencé mi-octobre, l'analyse en laboratoire suit début novembre et les précommandes ouvrent entre début et mi-novembre. Ce sont des estimations, et cette page est mise à jour au fil du parcours de l'huile.",
+        answer: "À partir de fin novembre 2026. Le pressage a commencé mi-octobre, l'analyse en laboratoire suit début novembre et les précommandes ouvrent à la mi-novembre. Ce sont des estimations, et cette page est mise à jour au fil du parcours de l'huile.",
       },
       {
         question: "Quelles huiles compte la récolte 26/27 ?",
@@ -290,7 +290,7 @@ const fr: NewHarvestContent = {
       },
       {
         question: "Puis-je précommander la nouvelle récolte ?",
-        answer: "Les précommandes ouvrent entre début et mi-novembre. Laissez votre e-mail sur cette page et vous recevrez un e-mail le jour de leur ouverture.",
+        answer: "Les précommandes ouvrent à la mi-novembre. Laissez votre e-mail sur cette page et vous recevrez un e-mail le jour de leur ouverture.",
       },
       {
         question: "Y aura-t-il une nouvelle Nocellara pour la prochaine récolte ?",
@@ -335,8 +335,8 @@ const nl: NewHarvestContent = {
     details: [
       "De olijven worden nog groen geplukt en binnen enkele uren geperst. Groene olijven geven minder olie en meer polyfenolen.",
       "Een monster van elke olie gaat vóór het bottelen naar een onafhankelijk lab. De Coratina van vorig seizoen werd met HPLC getest in een ISO 17025-lab dat erkend is door de Internationale Olijfraad.",
-      "Iedereen op de lijst krijgt een e-mail op de dag dat de voorverkoop opent.",
       "Elke olie wordt gebotteld zodra het labresultaat binnen is.",
+      "Iedereen op de lijst krijgt een e-mail op de dag dat de voorverkoop opent.",
       "Voorverkooporders worden als eerste verzonden.",
     ],
   },
@@ -373,7 +373,7 @@ const nl: NewHarvestContent = {
     items: [
       {
         question: "Wanneer wordt de oogst 26/27 verzonden?",
-        answer: "Vanaf eind november 2026. Het persen begon half oktober, de labanalyse volgt begin november en de voorverkoop opent begin tot half november. Dit zijn schattingen, en deze pagina wordt bijgewerkt naarmate de olie vordert.",
+        answer: "Vanaf eind november 2026. Het persen begon half oktober, de labanalyse volgt begin november en de voorverkoop opent half november. Dit zijn schattingen, en deze pagina wordt bijgewerkt naarmate de olie vordert.",
       },
       {
         question: "Welke oliën zitten in de oogst 26/27?",
@@ -381,7 +381,7 @@ const nl: NewHarvestContent = {
       },
       {
         question: "Kan ik de nieuwe oogst vooraf bestellen?",
-        answer: "De voorverkoop opent begin tot half november. Laat je e-mailadres achter op deze pagina, dan krijg je een e-mail op de dag dat ze opent.",
+        answer: "De voorverkoop opent half november. Laat je e-mailadres achter op deze pagina, dan krijg je een e-mail op de dag dat ze opent.",
       },
       {
         question: "Komt er een nieuwe Nocellara bij de volgende oogst?",
@@ -426,8 +426,8 @@ const da: NewHarvestContent = {
     details: [
       "Oliverne plukkes, mens de stadig er grønne, og presses inden for få timer. Grønne oliven giver mindre olie og flere polyfenoler.",
       "En prøve af hver olie sendes til et uafhængigt laboratorium før aftapning. Sidste sæsons Coratina blev testet med HPLC på et ISO 17025-laboratorium, der er anerkendt af Det Internationale Olivenråd.",
-      "Alle på listen får en e-mail den dag, forudbestillingen åbner.",
       "Hver olie aftappes, når laboratorieresultatet foreligger.",
+      "Alle på listen får en e-mail den dag, forudbestillingen åbner.",
       "Forudbestillinger sendes først.",
     ],
   },
@@ -464,7 +464,7 @@ const da: NewHarvestContent = {
     items: [
       {
         question: "Hvornår sendes høsten 26/27?",
-        answer: "Fra sidst i november 2026. Presningen begyndte midt i oktober, laboratorieanalysen følger i starten af november, og forudbestillingen åbner i starten til midten af november. Det er estimater, og siden opdateres, efterhånden som olien er på vej.",
+        answer: "Fra sidst i november 2026. Presningen begyndte midt i oktober, laboratorieanalysen følger i starten af november, og forudbestillingen åbner midt i november. Det er estimater, og siden opdateres, efterhånden som olien er på vej.",
       },
       {
         question: "Hvilke olier er med i høsten 26/27?",
@@ -472,7 +472,7 @@ const da: NewHarvestContent = {
       },
       {
         question: "Kan jeg forudbestille den nye høst?",
-        answer: "Forudbestillingen åbner i starten til midten af november. Skriv din e-mail på denne side, så får du en e-mail den dag, den åbner.",
+        answer: "Forudbestillingen åbner midt i november. Skriv din e-mail på denne side, så får du en e-mail den dag, den åbner.",
       },
       {
         question: "Kommer der en ny Nocellara i den næste høst?",
@@ -517,8 +517,8 @@ const sv: NewHarvestContent = {
     details: [
       "Oliverna plockas medan de fortfarande är gröna och pressas inom några timmar. Gröna oliver ger mindre olja och mer polyfenoler.",
       "Ett prov av varje olja skickas till ett oberoende labb före buteljering. Förra säsongens Coratina testades med HPLC i ett ISO 17025-labb som är erkänt av Internationella olivrådet.",
-      "Alla på listan får ett mejl samma dag som förbeställningen öppnar.",
       "Varje olja buteljeras när labbresultatet har kommit.",
+      "Alla på listan får ett mejl samma dag som förbeställningen öppnar.",
       "Förbeställningar skickas först.",
     ],
   },
@@ -555,7 +555,7 @@ const sv: NewHarvestContent = {
     items: [
       {
         question: "När levereras skörden 26/27?",
-        answer: "Från slutet av november 2026. Pressningen började i mitten av oktober, labbanalysen följer i början av november och förbeställningen öppnar i början till mitten av november. Det är uppskattningar, och sidan uppdateras allteftersom oljan är på väg.",
+        answer: "Från slutet av november 2026. Pressningen började i mitten av oktober, labbanalysen följer i början av november och förbeställningen öppnar i mitten av november. Det är uppskattningar, och sidan uppdateras allteftersom oljan är på väg.",
       },
       {
         question: "Vilka oljor ingår i skörden 26/27?",
@@ -563,7 +563,7 @@ const sv: NewHarvestContent = {
       },
       {
         question: "Kan jag förbeställa den nya skörden?",
-        answer: "Förbeställningen öppnar i början till mitten av november. Lämna din mejladress på den här sidan så får du ett mejl samma dag som den öppnar.",
+        answer: "Förbeställningen öppnar i mitten av november. Lämna din mejladress på den här sidan så får du ett mejl samma dag som den öppnar.",
       },
       {
         question: "Kommer det en ny Nocellara i nästa skörd?",

@@ -156,8 +156,8 @@ export const de: Dict = {
     steps: [
       { label: "Pressen", when: "Mitte Oktober" },
       { label: "Laboranalyse", when: "Anfang November" },
-      { label: "Vorbestellung öffnet", when: "Anfang bis Mitte November" },
       { label: "Abfüllung", when: "Mitte November" },
+      { label: "Vorbestellung öffnet", when: "Mitte November" },
       { label: "Versand", when: "Ende November" },
     ],
     note: "Die Schätzungen werden aktualisiert, während das Öl unterwegs ist. Zuletzt aktualisiert: {date}.",

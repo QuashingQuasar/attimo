@@ -149,8 +149,8 @@ export const sv: Dict = {
     steps: [
       { label: "Pressning", when: "mitten av oktober" },
       { label: "Labbanalys", when: "början av november" },
-      { label: "Förbeställning öppnar", when: "början till mitten av november" },
       { label: "Buteljering", when: "mitten av november" },
+      { label: "Förbeställning öppnar", when: "mitten av november" },
       { label: "Leverans", when: "slutet av november" },
     ],
     note: "Uppskattningarna uppdateras allteftersom oljan är på väg. Senast uppdaterad {date}.",
