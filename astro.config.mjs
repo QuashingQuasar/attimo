@@ -11,6 +11,18 @@ export default defineConfig({
   site: "https://attimo-oil.com",
   output: "static",
   adapter: vercel(),
+  // Old Shopify storefront product URLs (/products/<shopify-handle>) still get
+  // traffic from ChatGPT and old links. Send them to the matching page here.
+  // The specific oil/bundle entries win over the merch catch-all.
+  redirects: {
+    "/products/attimo-extra-virgin-olive-oil-coratina-500ml": "/product/coratina",
+    "/products/attimo-extra-virgin-olive-oil-coratina-3l": "/product/coratina-3l",
+    "/products/nocellara": "/product/nocellara",
+    "/products/attimo-extra-virgin-olive-oil-picual-500ml": "/product/picual",
+    "/products/attimo-early-harvest-25-italian-duo": "/product/duo",
+    "/products/attimo-early-harvest-25-full-collection": "/product/trio",
+    "/products/[handle]": "/merch/[handle]",
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
