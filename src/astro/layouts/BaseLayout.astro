@@ -99,6 +99,21 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
 <!doctype html>
 <html lang={htmlLang}>
   <head>
+    <script id="attimo-visit-source" is:inline>
+      // Where this visit came from (first external referrer or utm_source, plus
+      // the landing page), kept for the session so a waitlist signup can carry
+      // it to Brevo as hidden contact fields (see src/lib/signupContext.ts).
+      (function () {
+        try {
+          if (sessionStorage.getItem('attimo_visit')) return;
+          var ref = '';
+          try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+          if (ref === location.hostname) ref = '';
+          var utm = new URLSearchParams(location.search).get('utm_source') || '';
+          sessionStorage.setItem('attimo_visit', JSON.stringify({ ref: utm || ref || '(direct)', landing: location.pathname }));
+        } catch (e) {}
+      })();
+    </script>
     <script id="attimo-click-capture" is:inline>
       // Ad click ID from the landing URL waits here until marketing consent;
       // klaro-config.js then turns it into the attimo_click cookie (see src/lib/adClick.ts).

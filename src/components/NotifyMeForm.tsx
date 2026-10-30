@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { signupContext, trackWaitlistSignup } from "@/lib/signupContext";
 
 interface NotifyMeFormProps {
   productName: string;
@@ -57,13 +58,12 @@ export const NotifyMeForm = ({
 
     setSubmitting(true);
     try {
+      const product = restockProductKey ?? productName;
+      const ctx = signupContext();
       const response = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email.trim(),
-          product: restockProductKey ?? productName,
-        }),
+        body: JSON.stringify({ email: email.trim(), product, context: ctx }),
       });
 
       if (!response.ok) {
@@ -77,6 +77,7 @@ export const NotifyMeForm = ({
         throw new Error(detail);
       }
 
+      trackWaitlistSignup(product, ctx);
       setSubmitted(true);
       toast.success(t.success, {
         position: "top-center",
