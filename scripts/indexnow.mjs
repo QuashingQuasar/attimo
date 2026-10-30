@@ -23,8 +23,14 @@ const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith("--") ? [...acc, [a.slice(2), all[i + 1]]] : acc), []),
 );
 
+// Returns false when IndexNow refused a batch, so the caller keeps the old
+// state and the same URLs are retried on the next deploy.
 async function submit(urls) {
-  if (urls.length === 0) return console.log("IndexNow: nothing changed");
+  if (urls.length === 0) {
+    console.log("IndexNow: nothing changed");
+    return true;
+  }
+  let ok = true;
   for (let i = 0; i < urls.length; i += 10000) {
     const urlList = urls.slice(i, i + 10000);
     const r = await fetch("https://api.indexnow.org/indexnow", {
@@ -33,9 +39,13 @@ async function submit(urls) {
       body: JSON.stringify({ host: HOST, key: KEY, keyLocation: `${ORIGIN}/${KEY}.txt`, urlList }),
     });
     console.log(`IndexNow: ${urlList.length} URLs -> HTTP ${r.status}`);
-    if (r.status >= 300) process.exitCode = 1;
+    if (r.status >= 300) {
+      ok = false;
+      process.exitCode = 1;
+    }
   }
   urls.forEach((u) => console.log("  " + u));
+  return ok;
 }
 
 // Visible text only: asset hashes and scripts change on every build and would
@@ -85,8 +95,7 @@ async function main() {
   };
   await Promise.all(Array.from({ length: 8 }, worker));
   console.log(`IndexNow: ${urls.length} sitemap URLs, ${changed.length} changed`);
-  await submit(changed.sort());
-  writeFileSync(statePath, JSON.stringify(next));
+  if (await submit(changed.sort())) writeFileSync(statePath, JSON.stringify(next));
 }
 
 main();
