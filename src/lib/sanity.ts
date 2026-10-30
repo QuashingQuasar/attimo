@@ -38,6 +38,9 @@ export interface BlogPostPreview {
 export interface BlogPost extends BlogPostPreview {
   body: any[];
   _updatedAt?: string;
+  /** Set by hand when a post changes in substance; drives the visible
+   *  "Updated" date, Article dateModified and sitemap lastmod. */
+  contentUpdatedAt?: string;
 }
 
 // English-only posts (default market blog index + /blog/[slug] getStaticPaths).
@@ -68,7 +71,7 @@ export async function getPostBySlug(
 ): Promise<BlogPost | null> {
   return sanityClient.fetch<BlogPost | null>(
     `*[_type == "post" && slug.current == $slug && coalesce(language, "en") == $lang][0] {
-      _id, title, slug, publishedAt, _updatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex,
       "language": coalesce(language, "en"), translationKey
     }`,
     { slug, lang }
@@ -92,7 +95,7 @@ export async function getAllPostMeta(): Promise<
 > {
   return sanityClient.fetch(
     `*[_type == "post" && (noIndex != true)] | order(publishedAt desc) {
-      "slug": slug.current, publishedAt, "updatedAt": _updatedAt,
+      "slug": slug.current, publishedAt, "updatedAt": select(contentUpdatedAt > publishedAt => contentUpdatedAt, publishedAt),
       "language": coalesce(language, "en"), translationKey
     }`
   );

@@ -39,13 +39,17 @@ const ogImage = post.coverImage
   ? urlFor(post.coverImage).width(1200).auto("format").url()
   : "https://attimo-oil.com/images/attimo_og.png";
 
+// Shown and emitted only when set later than publication.
+const updatedAt =
+  post.contentUpdatedAt && post.contentUpdatedAt > post.publishedAt ? post.contentUpdatedAt : undefined;
+
 const jsonLd: Record<string, unknown> = {
   "@context": "https://schema.org/",
   "@type": "Article",
   headline: post.seoTitle || post.title,
   description: pageDescription,
   datePublished: post.publishedAt,
-  dateModified: post._updatedAt || post.publishedAt,
+  dateModified: updatedAt || post.publishedAt,
   inLanguage: "nl",
   author: { "@type": "Person", name: "Attimo", url: "https://attimo-oil.com" },
   publisher: {
@@ -107,7 +111,9 @@ const formatDateShort = (dateStr: string) =>
             class="text-sm tracking-wide"
             style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;"
           >
-            {formatDate(post.publishedAt)}
+            {updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt)
+              ? `Laatst bijgewerkt: ${formatDate(updatedAt)}`
+              : formatDate(post.publishedAt)}
           </span>
 
           <h1
