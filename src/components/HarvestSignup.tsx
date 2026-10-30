@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { signupContext, trackWaitlistSignup } from "@/lib/signupContext";
 
 // Hero signup for the new harvest, shown between seasons. One field, posts to
 // /api/notify under the season product key, which maps to the season's Brevo
@@ -19,11 +20,13 @@ export const HarvestSignup = ({ locale = DEFAULT_LOCALE, line, button, tone = "d
     if (!email.trim() || state === "busy") return;
     setState("busy");
     try {
+      const ctx = signupContext();
       const r = await fetch("/api/notify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), product: "Harvest 26/27" }),
+        body: JSON.stringify({ email: email.trim(), product: "Harvest 26/27", context: ctx }),
       });
+      if (r.ok) trackWaitlistSignup("Harvest 26/27", ctx);
       setState(r.ok ? "done" : "error");
     } catch {
       setState("error");

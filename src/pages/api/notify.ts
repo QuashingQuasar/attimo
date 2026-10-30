@@ -33,7 +33,7 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  let body: { email?: string; product?: string };
+  let body: { email?: string; product?: string; context?: Record<string, unknown> };
   try {
     body = await request.json();
   } catch {
@@ -62,6 +62,18 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: "Unknown product" }, { status: 400 });
   }
 
+  // Hidden signup context from src/lib/signupContext.ts, stored on the contact.
+  // Optional and capped: a missing or odd value never blocks the signup.
+  const ctx = body.context ?? {};
+  const field = (v: unknown) => (typeof v === "string" ? v.slice(0, 200) : "");
+  const attributes: Record<string, string> = {
+    SIGNUP_PAGE: field(ctx.page),
+    LANDING_PAGE: field(ctx.landing),
+    REFERRER: field(ctx.referrer),
+    LOCALE: field(ctx.locale),
+  };
+  for (const k of Object.keys(attributes)) if (!attributes[k]) delete attributes[k];
+
   let brevoResp: Response;
   try {
     brevoResp = await fetch(BREVO_ENDPOINT, {
@@ -74,6 +86,7 @@ export const POST: APIRoute = async ({ request }) => {
       body: JSON.stringify({
         email,
         listIds: [listId],
+        attributes,
         updateEnabled: true,
       }),
     });
