@@ -2,7 +2,7 @@
 // so they recrawl within minutes instead of whenever they next visit.
 //
 // Run by .github/workflows/indexnow.yml after each production deploy. Reads
-// both sitemaps, fetches every page, hashes its visible text and submits only
+// the sitemap, fetches every page, hashes its visible text and submits only
 // the URLs whose text changed since the previous run (hashes kept in the file
 // passed as --state, carried between runs by the Actions cache). The first
 // run, with no state, submits everything once.
@@ -17,7 +17,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 const HOST = "attimo-oil.com";
 const ORIGIN = `https://${HOST}`;
 const KEY = "3517473479105c086c385424898aa901";
-const SITEMAPS = [`${ORIGIN}/sitemap.xml`, `${ORIGIN}/sitemap-blog.xml`];
+const SITEMAPS = [`${ORIGIN}/sitemap.xml`];
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith("--") ? [...acc, [a.slice(2), all[i + 1]]] : acc), []),

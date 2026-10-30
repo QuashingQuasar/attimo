@@ -5,23 +5,6 @@ import { LOCALES, pathHasLocaleVariants } from "@/lib/i18n/config";
 
 const SITE = "https://attimo-oil.com";
 
-// Slugs published in the standalone blog sitemap (public/sitemap-blog.xml),
-// excluded from the main sitemap.
-//
-// INDEXING EXPERIMENT — Phase 1 (sitemap arm): `polyphenols-olive-oil` and
-// `bryan-johnson-olive-oil` were removed from this set so they now ALSO appear
-// in the main sitemap (postEntries) — testing whether main-sitemap presence
-// moves them from "Discovered – not indexed" to indexed. The other 6 stay here
-// (controls + other arms). Revert if the arm shows no effect after ~3 weeks.
-const BLOG_SITEMAP_SLUGS = new Set([
-  "olive-oil-shot",
-  "should-you-cook-with-olive-oil",
-  "olive-color-ripeness-polyphenols",
-  "unfiltered-olive-oil",
-  "squeeze-bottles-olive-oil",
-  "how-to-read-olive-oil-lab-analysis",
-]);
-
 const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },
   { loc: "/product/coratina", changefreq: "weekly", priority: "0.9" },
@@ -186,9 +169,6 @@ export const GET: APIRoute = async () => {
   };
 
   const postEntries = posts
-    // English posts listed in the standalone blog sitemap are excluded here;
-    // localized posts (de/fr/…) always belong in the main sitemap.
-    .filter((p) => !(p.language === "en" && BLOG_SITEMAP_SLUGS.has(p.slug)))
     .map((p) => {
       const lastmod = (p.updatedAt || p.publishedAt).split("T")[0];
       const loc = `${SITE}${blogPath(p.slug, p.language)}`;
