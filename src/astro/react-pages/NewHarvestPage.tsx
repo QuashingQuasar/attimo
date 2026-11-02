@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Header } from "@/components/Header";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
-import { BundleWidgets } from "@/components/BundleWidgets";
 import { AutoplayVideo } from "@/components/AutoplayVideo";
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { Timeline, Panels } from "@/components/NextHarvest";
@@ -261,7 +260,6 @@ function NewHarvestInner({ locale, labNumbers }: { locale: Locale; labNumbers?: 
         subtitle={saleSubtitle}
         wideSubtitle
         soldOutButton="soldOut"
-        belowGrid={<BundleWidgets locale={locale} />}
       />
 
       {/* ═══ FAQ: JSON-LD is emitted by the Astro page, so off here ═══ */}
