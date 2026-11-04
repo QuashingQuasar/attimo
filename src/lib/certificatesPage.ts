@@ -153,8 +153,10 @@ export async function buildOilPage(oil: Oil, lang: CertLang) {
  * per-oil page with an empty tab for the harvest, so a QR code can point at
  * it before the lab results land. Drop the entry once its YAML exists.
  */
-export const PENDING_OILS = [{ slug: "peranzana", name: "Peranzana", harvest: "26/27" }] as const;
-export type PendingOil = (typeof PENDING_OILS)[number];
+export interface PendingOil { slug: string; name: string; harvest: string }
+// Peranzana ({ slug: "peranzana", name: "Peranzana", harvest: "26/27" }) is
+// built but held back until Gilles signs it off.
+export const PENDING_OILS: PendingOil[] = [];
 
 export async function getPendingOils(): Promise<PendingOil[]> {
   const have = new Set<string>((await getCertificates()).map((c) => c.oil));
