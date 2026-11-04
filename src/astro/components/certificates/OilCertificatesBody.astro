@@ -22,7 +22,7 @@ const { tabs, all, content: t, locale = DEFAULT_LOCALE, pending } = Astro.props 
   tabs: Tab[]; all: Certificate[]; content: CertContent; locale?: Locale; pending?: PendingTab;
 };
 const nav = [...(pending ? [pending] : []), ...tabs].map(({ anchor, label }) => ({ anchor, label }));
-const switcher = { nav, label: t.oil.navLabel, latest: t.oil.latest, note: t.oil.note };
+const switcher = { nav, label: t.oil.navLabel, latest: t.oil.latest };
 ---
 
 <div class="relative min-h-screen">
