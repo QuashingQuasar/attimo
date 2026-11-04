@@ -94,6 +94,17 @@ export type CertContent = {
       thumbAlt: string; // "First page of {lab} report {no}"
     };
   };
+  oil: {
+    metaTitle: string; // "ATTIMO {name} lab results by harvest | ATTIMO"
+    metaDescription: string; // has {name}
+    eyebrow: string; // "Lab results"
+    navLabel: string; // accessible name of the harvest tabs
+    tab: string; // "Harvest {h}"
+    latest: string; // badge on the newest harvest
+    note: string; // under the tabs
+    pending: string; // tile label while a harvest has no report yet
+    pendingBody: string; // has {h}
+  };
   summary: {
     drawn: string; // "on a sample drawn on {d}"
     received: string; // "on a sample received on {d}"
@@ -220,6 +231,17 @@ export const en: CertContent = {
       all: "all certificates",
       thumbAlt: "First page of {lab} report {no}",
     },
+  },
+  oil: {
+    metaTitle: "ATTIMO {name} lab results by harvest | ATTIMO",
+    metaDescription: "Independent lab results for ATTIMO {name}, one tab per harvest. The newest harvest opens first.",
+    eyebrow: "Lab results",
+    navLabel: "Harvest year",
+    tab: "Harvest {h}",
+    latest: "Latest",
+    note: "The newest harvest opens first. Choose the harvest year printed on your bottle.",
+    pending: "Waiting for lab results",
+    pendingBody: "The lab results for the {h} harvest are on their way. The values appear here as soon as the report is in.",
   },
   summary: {
     drawn: "on a sample drawn on {d}",

@@ -1,0 +1,74 @@
+---
+// Body of /certificates/{oil}: one panel per harvest, newest first, each with
+// the harvest switcher at the top of its hero. #harvest-2025-2026 in the URL
+// opens that harvest. Without JavaScript every harvest renders in turn.
+// A pending harvest (no report yet) renders the same layout with empty values.
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import CertificateSections from "@astro/components/certificates/CertificateSections.astro";
+import PendingCertificateSections from "@astro/components/certificates/PendingCertificateSections.astro";
+import HarvestTabs from "@astro/components/certificates/HarvestTabs.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import type { Certificate } from "@/lib/certificates";
+import type { CertContent } from "@/lib/certificatesContent";
+import { GREEN } from "@/lib/certificates/ui";
+
+interface Tab {
+  harvest: string; label: string; anchor: string; cert: Certificate; sentence: string;
+  quality: ReturnType<typeof import("@/lib/certificates").qualityRowsFor>;
+}
+interface PendingTab { harvest: string; long: string; label: string; anchor: string; name: string }
+const { tabs, all, content: t, locale = DEFAULT_LOCALE, pending } = Astro.props as {
+  tabs: Tab[]; all: Certificate[]; content: CertContent; locale?: Locale; pending?: PendingTab;
+};
+const nav = [...(pending ? [pending] : []), ...tabs].map(({ anchor, label }) => ({ anchor, label }));
+const switcher = { nav, label: t.oil.navLabel, latest: t.oil.latest, note: t.oil.note };
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    {pending && (
+      <div id={pending.anchor} role="tabpanel" data-harvest-panel={pending.anchor}>
+        <PendingCertificateSections name={pending.name} harvest={pending.harvest} long={pending.long} content={t}>
+          <HarvestTabs slot="nav" {...switcher} active={pending.anchor} />
+        </PendingCertificateSections>
+      </div>
+    )}
+    {tabs.map((tab) => (
+      <div id={tab.anchor} role="tabpanel" data-harvest-panel={tab.anchor}>
+        <CertificateSections cert={tab.cert} all={all} content={t} sentence={tab.sentence} quality={tab.quality} locale={locale}>
+          <HarvestTabs slot="nav" {...switcher} active={tab.anchor} />
+        </CertificateSections>
+      </div>
+    ))}
+  </main>
+
+  <Footer locale={locale} />
+</div>
+
+<style>
+  :global(.js-harvest-tabs) [data-harvest-panel]:not([data-active="true"]) { display: none; }
+</style>
+
+<script>
+  const panels = [...document.querySelectorAll<HTMLElement>("[data-harvest-panel]")];
+  if (panels.length) {
+    document.documentElement.classList.add("js-harvest-tabs");
+    const select = (anchor: string) => {
+      if (!panels.some((p) => p.dataset.harvestPanel === anchor)) anchor = panels[0].dataset.harvestPanel!;
+      panels.forEach((p) => (p.dataset.active = String(p.dataset.harvestPanel === anchor)));
+    };
+    select(location.hash.slice(1));
+    if (location.hash) window.scrollTo(0, 0);
+    document.querySelectorAll<HTMLAnchorElement>("[data-harvest-tab]").forEach((a) =>
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        history.replaceState(null, "", `#${a.dataset.harvestTab}`);
+        select(a.dataset.harvestTab!);
+        window.scrollTo(0, 0);
+      }),
+    );
+  }
+</script>

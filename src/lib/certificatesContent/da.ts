@@ -110,6 +110,17 @@ export const da: CertContent = {
       thumbAlt: "Første side af rapport {no} fra {lab}",
     },
   },
+  oil: {
+    metaTitle: "ATTIMO {name}: laboratorieresultater pr. høst | ATTIMO",
+    metaDescription: "Uafhængige laboratorieresultater for ATTIMO {name}, én fane pr. høst. Den nyeste høst vises først.",
+    eyebrow: "Laboratorieresultater",
+    navLabel: "Høstår",
+    tab: "Høst {h}",
+    latest: "Nyeste",
+    note: "Den nyeste høst vises først. Vælg det høstår, der står på din flaske.",
+    pending: "Venter på laboratorieresultater",
+    pendingBody: "Laboratorieresultaterne for høsten {h} er på vej. Værdierne vises her, så snart rapporten foreligger.",
+  },
   summary: {
     drawn: "på en prøve udtaget den {d}",
     received: "på en prøve modtaget den {d}",

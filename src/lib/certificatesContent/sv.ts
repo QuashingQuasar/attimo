@@ -110,6 +110,17 @@ export const sv: CertContent = {
       thumbAlt: "Första sidan av rapport {no} från {lab}",
     },
   },
+  oil: {
+    metaTitle: "ATTIMO {name}: labbresultat per skörd | ATTIMO",
+    metaDescription: "Oberoende labbresultat för ATTIMO {name}, en flik per skörd. Den senaste skörden visas först.",
+    eyebrow: "Labbresultat",
+    navLabel: "Skördeår",
+    tab: "Skörd {h}",
+    latest: "Senaste",
+    note: "Den senaste skörden visas först. Välj skördeåret som står på din flaska.",
+    pending: "Väntar på labbresultat",
+    pendingBody: "Labbresultaten för skörden {h} är på väg. Värdena visas här så snart rapporten är klar.",
+  },
   summary: {
     drawn: "på ett prov taget den {d}",
     received: "på ett prov mottaget den {d}",

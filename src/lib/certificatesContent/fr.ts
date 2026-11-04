@@ -113,6 +113,17 @@ export const fr: CertContent = {
       thumbAlt: "Première page du rapport {no} de {lab}",
     },
   },
+  oil: {
+    metaTitle: "ATTIMO {name} : résultats de laboratoire par récolte | ATTIMO",
+    metaDescription: "Résultats de laboratoire indépendants pour ATTIMO {name}, un onglet par récolte. La récolte la plus récente s’affiche en premier.",
+    eyebrow: "Résultats de laboratoire",
+    navLabel: "Année de récolte",
+    tab: "Récolte {h}",
+    latest: "La plus récente",
+    note: "La récolte la plus récente s’affiche en premier. Choisissez l’année de récolte indiquée sur votre bouteille.",
+    pending: "En attente des résultats de laboratoire",
+    pendingBody: "Les résultats de laboratoire de la récolte {h} sont en cours. Les valeurs apparaîtront ici dès réception du rapport.",
+  },
   summary: {
     drawn: "sur un échantillon prélevé le {d}",
     received: "sur un échantillon reçu le {d}",
