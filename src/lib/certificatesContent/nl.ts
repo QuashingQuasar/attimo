@@ -117,7 +117,6 @@ export const nl: CertContent = {
     navLabel: "Oogstjaar",
     tab: "Oogst {h}",
     latest: "Nieuwste",
-    note: "De nieuwste oogst staat eerst. Kies het oogstjaar dat op je fles staat.",
     pending: "Wachten op labresultaten",
     pendingBody: "De labresultaten voor de oogst {h} zijn onderweg. De waarden verschijnen hier zodra het rapport binnen is.",
   },

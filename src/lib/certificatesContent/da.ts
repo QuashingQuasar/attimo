@@ -117,7 +117,6 @@ export const da: CertContent = {
     navLabel: "Høstår",
     tab: "Høst {h}",
     latest: "Nyeste",
-    note: "Den nyeste høst vises først. Vælg det høstår, der står på din flaske.",
     pending: "Venter på laboratorieresultater",
     pendingBody: "Laboratorieresultaterne for høsten {h} er på vej. Værdierne vises her, så snart rapporten foreligger.",
   },

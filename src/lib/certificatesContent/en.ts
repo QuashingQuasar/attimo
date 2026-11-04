@@ -101,7 +101,6 @@ export type CertContent = {
     navLabel: string; // accessible name of the harvest tabs
     tab: string; // "Harvest {h}"
     latest: string; // badge on the newest harvest
-    note: string; // under the tabs
     pending: string; // tile label while a harvest has no report yet
     pendingBody: string; // has {h}
   };
@@ -239,7 +238,6 @@ export const en: CertContent = {
     navLabel: "Harvest year",
     tab: "Harvest {h}",
     latest: "Latest",
-    note: "The newest harvest opens first. Choose the harvest year printed on your bottle.",
     pending: "Waiting for lab results",
     pendingBody: "The lab results for the {h} harvest are on their way. The values appear here as soon as the report is in.",
   },
