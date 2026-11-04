@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import CertificateBody from "@astro/components/certificates/CertificateBody.astro";
-import { getCertificates, type Certificate } from "@/lib/certificates";
-import { buildCertificatePage } from "@/lib/certificatesPage";
+import OilCertificatesBody from "@astro/components/certificates/OilCertificatesBody.astro";
+import { getCertificates, type Certificate, type Oil } from "@/lib/certificates";
+import { buildCertificatePage, buildOilPage, getCertificateOils } from "@/lib/certificatesPage";
 import { certHreflangs } from "@/lib/certificatesContent";
 import { CREAM } from "@/lib/certificates/ui";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
@@ -10,25 +11,33 @@ import { getDict } from "@/lib/i18n/dictionaries";
 
 export async function getStaticPaths() {
   const certs = await getCertificates();
-  return certs.map((c) => ({ params: { id: c.id }, props: { cert: c } }));
+  // One page per report, plus one per oil (/certificates/coratina) with a tab per harvest.
+  return [
+    ...certs.map((c) => ({ params: { id: c.id }, props: { cert: c } })),
+    ...(await getCertificateOils()).map(({ oil }) => ({ params: { id: oil }, props: { oil } })),
+  ];
 }
 
-const { cert } = Astro.props as { cert: Certificate };
+const { cert, oil } = Astro.props as { cert?: Certificate; oil?: Oil };
 const locale = SLUG_TO_LOCALE["se"];
 const t = getDict(locale);
-const { t: content, all, canonical, sentence, quality, jsonLd, metaTitle } = await buildCertificatePage(cert, "sv");
+const oilPage = oil ? await buildOilPage(oil, "sv") : null;
+const certPage = cert ? await buildCertificatePage(cert, "sv") : null;
+const page = (oilPage ?? certPage)!;
 ---
 
 <BaseLayout
-  title={metaTitle}
-  description={sentence}
-  canonical={canonical}
+  title={page.metaTitle}
+  description={oilPage ? oilPage.metaDescription : certPage!.sentence}
+  canonical={page.canonical}
   bodyStyle={`background-color: ${CREAM};`}
-  jsonLd={jsonLd}
-  hreflangs={certHreflangs(cert.id)}
+  jsonLd={page.jsonLd}
+  hreflangs={certHreflangs(oil ?? cert!.id)}
   htmlLang={locale.lang}
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  <CertificateBody cert={cert} all={all} content={content} sentence={sentence} quality={quality} locale={locale} />
+  {oilPage
+    ? <OilCertificatesBody tabs={oilPage.tabs} all={oilPage.all} content={oilPage.t} locale={locale} />
+    : <CertificateBody cert={cert!} all={certPage!.all} content={certPage!.t} sentence={certPage!.sentence} quality={certPage!.quality} locale={locale} />}
 </BaseLayout>

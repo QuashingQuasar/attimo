@@ -1,0 +1,90 @@
+---
+// Body of /certificates/{oil}: a tab per harvest above the certificate
+// sections. The newest harvest is selected on load; #harvest-2025-2026 in the
+// URL selects that harvest instead. Without JavaScript every harvest renders.
+import { Header } from "@/components/Header";
+import Footer from "@astro/components/Footer.astro";
+import CertificateSections from "@astro/components/certificates/CertificateSections.astro";
+import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
+import type { Certificate } from "@/lib/certificates";
+import type { CertContent } from "@/lib/certificatesContent";
+import { GREEN, CREAM, ACCENT, SG, eyebrow, eyebrowSm, small } from "@/lib/certificates/ui";
+
+interface Tab {
+  harvest: string; label: string; anchor: string; cert: Certificate; sentence: string;
+  quality: ReturnType<typeof import("@/lib/certificates").qualityRowsFor>;
+}
+const { tabs, all, content: t, locale = DEFAULT_LOCALE } = Astro.props as {
+  tabs: Tab[]; all: Certificate[]; content: CertContent; locale?: Locale;
+};
+---
+
+<div class="relative min-h-screen">
+  <Header client:load locale={locale} />
+
+  <main style={`color:${GREEN};`}>
+    <nav class="px-6" style={`background-color:${GREEN}; padding-top:124px;`} aria-label={t.oil.navLabel}>
+      <div class="container mx-auto max-w-5xl pt-10 pb-2" style="border-bottom:1px solid rgba(255,250,234,.22);">
+        <p class="mb-4" style={`${eyebrow} color:rgba(255,250,234,.6);`}>{t.oil.navLabel}</p>
+        <div class="flex flex-wrap gap-3 mb-4" role="tablist" aria-label={t.oil.navLabel}>
+          {tabs.map((tab, i) => (
+            <a
+              href={`#${tab.anchor}`}
+              role="tab"
+              id={`tab-${tab.anchor}`}
+              aria-controls={tab.anchor}
+              aria-selected={i === 0 ? "true" : "false"}
+              data-harvest-tab={tab.anchor}
+              class="harvest-tab"
+              style={`${eyebrowSm} border-radius:8px; padding:.8rem 1.2rem; display:inline-flex; align-items:center; gap:.6rem;`}
+            >
+              {tab.label}
+              {i === 0 && tabs.length > 1 && <span class="harvest-latest" style={`font-family:${SG}; font-weight:500; font-size:.75rem; letter-spacing:.02em; text-transform:none;`}>{t.oil.latest}</span>}
+            </a>
+          ))}
+        </div>
+        <p class="mb-6" style={`${small} color:rgba(255,250,234,.75);`}>{t.oil.note}</p>
+      </div>
+    </nav>
+
+    {tabs.map((tab, i) => (
+      <div id={tab.anchor} role="tabpanel" aria-labelledby={`tab-${tab.anchor}`} data-harvest-panel={tab.anchor} class={i === 0 ? "" : "harvest-panel-rest"}>
+        <CertificateSections cert={tab.cert} all={all} content={t} sentence={tab.sentence} quality={tab.quality} locale={locale} heroTop={40} />
+      </div>
+    ))}
+  </main>
+
+  <Footer locale={locale} />
+</div>
+
+<style define:vars={{ green: GREEN, cream: CREAM, accent: ACCENT }}>
+  .harvest-tab { color: var(--cream); border: 1px solid rgba(255, 250, 234, .5); background-color: transparent; }
+  .harvest-tab[aria-selected="true"] { background-color: var(--accent); color: var(--green); border-color: var(--accent); }
+  .harvest-tab .harvest-latest { opacity: .8; }
+  /* Hidden only once the script runs, so the page still shows every harvest without it. */
+  :global(.js-harvest-tabs) .harvest-panel-rest { display: none; }
+  :global(.js-harvest-tabs) [data-harvest-panel][data-active="true"] { display: block; }
+  :global(.js-harvest-tabs) [data-harvest-panel]:not([data-active="true"]) { display: none; }
+</style>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLAnchorElement>("[data-harvest-tab]")];
+  const panels = [...document.querySelectorAll<HTMLElement>("[data-harvest-panel]")];
+  if (tabs.length) {
+    document.documentElement.classList.add("js-harvest-tabs");
+    const select = (anchor: string) => {
+      if (!panels.some((p) => p.dataset.harvestPanel === anchor)) anchor = tabs[0].dataset.harvestTab!;
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t.dataset.harvestTab === anchor)));
+      panels.forEach((p) => (p.dataset.active = String(p.dataset.harvestPanel === anchor)));
+    };
+    select(location.hash.slice(1));
+    if (location.hash) window.scrollTo(0, 0);
+    tabs.forEach((t) =>
+      t.addEventListener("click", (e) => {
+        e.preventDefault();
+        history.replaceState(null, "", `#${t.dataset.harvestTab}`);
+        select(t.dataset.harvestTab!);
+      }),
+    );
+  }
+</script>

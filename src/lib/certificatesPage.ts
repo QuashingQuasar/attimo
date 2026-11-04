@@ -1,6 +1,6 @@
 // Page-level data for a certificate page in any language: meta title, the
 // quotable sentence, JSON-LD. The body component renders the rest.
-import { getCertificates, certificateJsonPath, labShort, oilTitle, qualityRowsFor, summarySentenceFor, SITE, type Certificate } from "./certificates";
+import { getCertificates, certificateDate, certificateJsonPath, labShort, oilTitle, qualityRowsFor, summarySentenceFor, OIL_NAMES, OIL_ORDER, SITE, type Certificate, type Oil } from "./certificates";
 import { CERT_CONTENT, CERT_SLUGS, certHrefFor, certIndexHrefFor, fillT, type CertLang } from "./certificatesContent";
 
 export async function buildCertificatePage(c: Certificate, lang: CertLang) {
@@ -95,4 +95,55 @@ export async function buildCertificatesIndexPage(lang: CertLang) {
     },
   ];
   return { t, certs, canonical, jsonLd };
+}
+
+/** "25/26" → "2025/2026", the way the harvest is printed on the bottle. */
+export const harvestLong = (h: string) => {
+  const m = /^(\d{2})\/(\d{2})$/.exec(h);
+  return m ? `20${m[1]}/20${m[2]}` : h;
+};
+/** Anchor for one harvest tab, e.g. "#harvest-2025-2026". */
+export const harvestAnchor = (h: string) => `harvest-${harvestLong(h).replace("/", "-")}`;
+
+/** Oils with at least one certificate get a per-oil page with a tab per harvest. */
+export async function getCertificateOils(): Promise<{ oil: Oil; certs: Certificate[] }[]> {
+  const all = await getCertificates();
+  return OIL_ORDER.map((oil) => ({ oil, certs: all.filter((c) => c.oil === oil) })).filter((x) => x.certs.length > 0);
+}
+
+/**
+ * Page data for /certificates/{oil}: one tab per harvest, newest first. When a
+ * harvest has more than one report, its tab shows the most recent one (the
+ * series chart inside still links the others).
+ */
+export async function buildOilPage(oil: Oil, lang: CertLang) {
+  const t = CERT_CONTENT[lang];
+  const all = await getCertificates();
+  const mine = all.filter((c) => c.oil === oil);
+  const harvests = [...new Set(mine.map((c) => c.harvest))].sort((a, b) => b.localeCompare(a));
+  const tabs = await Promise.all(
+    harvests.map(async (h) => {
+      const cert = mine.filter((c) => c.harvest === h).sort((a, b) => (certificateDate(b) ?? "").localeCompare(certificateDate(a) ?? ""))[0];
+      const page = await buildCertificatePage(cert, lang);
+      return { harvest: h, label: fillT(t.oil.tab, { h: harvestLong(h) }), anchor: harvestAnchor(h), cert, sentence: page.sentence, quality: page.quality, jsonLd: page.jsonLd };
+    }),
+  );
+  const name = `ATTIMO ${OIL_NAMES[oil]}`;
+  const canonical = `${SITE}${certHrefFor(lang, oil)}`;
+  const jsonLd = [
+    tabs[0].jsonLd[0],
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t.breadcrumb, item: `${SITE}${certIndexHrefFor(lang)}` },
+        { "@type": "ListItem", position: 2, name, item: canonical },
+      ],
+    },
+  ];
+  return {
+    t, all, tabs, canonical, jsonLd,
+    metaTitle: fillT(t.oil.metaTitle, { name: OIL_NAMES[oil] }),
+    metaDescription: fillT(t.oil.metaDescription, { name: OIL_NAMES[oil] }),
+  };
 }

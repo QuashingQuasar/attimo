@@ -110,6 +110,15 @@ export const nl: CertContent = {
       thumbAlt: "Eerste pagina van rapport {no} van {lab}",
     },
   },
+  oil: {
+    metaTitle: "ATTIMO {name}: labresultaten per oogst | ATTIMO",
+    metaDescription: "Onafhankelijke labresultaten voor ATTIMO {name}, één tabblad per oogst. De nieuwste oogst staat eerst.",
+    eyebrow: "Labresultaten",
+    navLabel: "Oogstjaar",
+    tab: "Oogst {h}",
+    latest: "Nieuwste",
+    note: "De nieuwste oogst staat eerst. Kies het oogstjaar dat op je fles staat.",
+  },
   summary: {
     drawn: "op een monster dat op {d} is genomen",
     received: "op een monster dat op {d} is ontvangen",
