@@ -10,11 +10,9 @@ import { certIndexHrefFor, fillT, type CertContent } from "@/lib/certificatesCon
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { GREEN, CREAM, ACCENT, LIME, UDC, SG, h1, h2, eyebrow, eyebrowSm, lead, body, small, stat, btn, cardOnCream } from "@/lib/certificates/ui";
 
-const { cert: c, all, content: t, sentence, quality, locale = DEFAULT_LOCALE, heroTop = 124 } = Astro.props as {
+const { cert: c, all, content: t, sentence, quality, locale = DEFAULT_LOCALE } = Astro.props as {
   cert: Certificate; all: Certificate[]; content: CertContent; sentence: string;
   quality: ReturnType<typeof import("@/lib/certificates").qualityRowsFor>; locale?: Locale;
-  /** Top padding of the hero in px; 124 clears the fixed header. */
-  heroTop?: number;
 };
 const d = (iso: string | null | undefined) => formatDateFor(iso, t.dateLocale);
 const methodsHref = METHODS_SLUGS[t.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
@@ -65,8 +63,9 @@ const seriesPoints = c.series
   .map((id) => all.find((x) => x.id === id)!)
   .map((x) => ({ id: x.id, date: certificateDate(x), total: x.phenolics.total, sum: x.oleocanthal_plus_oleacein, current: x.id === c.id }));
 ---
-<section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:${heroTop}px;`}>
+<section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:124px;`}>
   <div class="container mx-auto max-w-5xl pt-10">
+    <slot name="nav" />
     <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{fillT(t.detail.eyebrow, { h: c.harvest })}</p>
     <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{fillT(t.detail.h1, { name: title.replace(` ${c.harvest}`, ""), h: c.harvest })}</h1>
     <p class="mb-10" style={`${lead} color:rgba(255,250,234,.88);`}>{sentence}</p>

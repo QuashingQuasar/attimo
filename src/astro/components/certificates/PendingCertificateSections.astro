@@ -1,0 +1,150 @@
+---
+// The certificate sections for a harvest whose report is not in yet: the same
+// layout as CertificateSections, with every value left empty and marked as
+// waiting for lab results. Nothing here may carry a lab number.
+import { EVOO_LIMITS } from "@/lib/certificates/evooLimits";
+import { fillT, type CertContent } from "@/lib/certificatesContent";
+import { GREEN, CREAM, ACCENT, UDC, SG, h1, h2, eyebrow, eyebrowSm, lead, body, small, stat, cardOnCream } from "@/lib/certificates/ui";
+
+const { name, harvest, long, content: t } = Astro.props as { name: string; harvest: string; long: string; content: CertContent };
+const waiting = t.oil.pending;
+const intro = fillT(t.oil.pendingBody, { h: long });
+const tiles = [
+  { value: "—", unit: "mg/kg", label: t.detail.tiles.total },
+  { value: "—", unit: "mg/kg", label: t.detail.tiles.sum },
+  { value: "—", unit: "", label: t.detail.tiles.method },
+  { value: "—", unit: "", label: t.detail.tiles.lab },
+];
+const compounds = [
+  { name: t.detail.tiles.total, note: t.compoundNotes.total },
+  ...(["oleocanthal", "oleacein", "hydroxytyrosol", "tyrosol"] as const).map((k) => ({ name: k[0].toUpperCase() + k.slice(1), note: t.compoundNotes[k] ?? "" })),
+];
+const timeline = [t.detail.timeline.received, t.detail.timeline.began, t.detail.timeline.completed, t.detail.timeline.issued];
+const qualityLabel = (key: string, fallback: string) =>
+  key === "k268_or_k270" ? fillT(t.qualityLabels.k268, { k: "K268" }) : (t.qualityLabels as Record<string, string>)[key] ?? fallback;
+const muted = `font-family:${SG}; font-size:.9rem; color:rgba(27,66,41,.6);`;
+---
+
+<section class="px-6 pb-14" style={`background-color:${GREEN}; padding-top:124px;`}>
+  <div class="container mx-auto max-w-5xl pt-10">
+    <slot name="nav" />
+    <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{fillT(t.detail.eyebrow, { h: harvest })}</p>
+    <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{fillT(t.detail.h1, { name, h: harvest })}</h1>
+    <p class="mb-10" style={`${lead} color:rgba(255,250,234,.88);`}>{intro}</p>
+
+    <div class="grid sm:grid-cols-2 gap-4 mb-4 pending-tiles">
+      {tiles.map((tile, i) => (
+        <div class="rounded-2xl p-6" style={i === 0 ? `background-color:${CREAM};` : "background-color:rgba(255,250,234,.09); border:1px solid rgba(255,250,234,.22);"}>
+          <p style={`${stat} color:${i === 0 ? "rgba(27,66,41,.35)" : "rgba(255,250,234,.4)"}; font-size:${tile.unit ? "clamp(2.4rem,4.5vw,3.4rem)" : "clamp(1.5rem,2.4vw,2rem)"};`}>
+            {tile.value}{tile.unit && <span style="font-size:1rem; letter-spacing:0;"> {tile.unit}</span>}
+          </p>
+          <p class="mt-2" style={`${eyebrowSm} color:${i === 0 ? "rgba(27,66,41,.65)" : "rgba(255,250,234,.65)"}; font-size:.8rem;`}>{tile.label}</p>
+          <p class="mt-2" style={`font-family:${SG}; font-size:.85rem; color:${i === 0 ? "rgba(27,66,41,.7)" : ACCENT};`}>{waiting}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+  <div class="container mx-auto max-w-5xl">
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.whatsIn.eyebrow}</p>
+    <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{fillT(t.detail.whatsIn.h2Many, { unit: "mg/kg" })}</h2>
+    <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{intro}</p>
+    <div class="rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+      <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+        <caption class="text-left p-4" style={`${eyebrowSm} color:${CREAM}; background-color:${GREEN}; caption-side:top;`}>{waiting}</caption>
+        <thead class="sr-only"><tr><th>{t.detail.whatsIn.colCompound}</th><th>{t.detail.whatsIn.colResult}</th></tr></thead>
+        <tbody>
+          {compounds.map((r, i) => (
+            <tr style={i < compounds.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+              <td class="p-4 md:p-5 align-top" style="width:44%;">
+                <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{r.name}</p>
+                {r.note && <p class="mt-1" style={`${small} font-size:.9rem; color:rgba(27,66,41,.65);`}>{r.note}</p>}
+              </td>
+              <td class="p-4 md:p-5 align-middle">
+                <div class="flex items-center gap-4">
+                  <div class="flex-1 h-8 rounded" style="border:1px dashed rgba(27,66,41,.3);"></div>
+                  <span class="whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; font-size:1.15rem; color:rgba(27,66,41,.4); min-width:5.5rem; text-align:right;`}>—</span>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 px-6" style="background-color:rgba(27,66,41,.05);">
+  <div class="container mx-auto max-w-5xl">
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.tested.eyebrow}</p>
+    <h2 class="mb-10" style={`${h2} color:${GREEN};`}>{waiting}</h2>
+    <div class="grid md:grid-cols-2 gap-5 mb-10">
+      {[t.detail.tested.method, t.detail.tested.laboratory].map((label) => (
+        <div class="p-7" style={cardOnCream}>
+          <p class="mb-2" style={`${eyebrowSm} color:rgba(27,66,41,.55);`}>{label}</p>
+          <h3 class="mb-3" style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; color:rgba(27,66,41,.4);`}>—</h3>
+          <p style={muted}>{waiting}</p>
+        </div>
+      ))}
+    </div>
+    <ol class="grid gap-4" style={`grid-template-columns:repeat(${timeline.length}, minmax(0,1fr));`}>
+      {timeline.map((label) => (
+        <li class="relative pt-5">
+          <span class="absolute left-0 top-0 h-[2px] w-full" style="background-color:rgba(27,66,41,.25);"></span>
+          <span class="absolute left-0 top-[-5px] w-3 h-3 rounded-full" style="border:2px solid rgba(27,66,41,.4); background-color:#FFFAEA;"></span>
+          <p style={`${eyebrowSm} font-size:.75rem; color:rgba(27,66,41,.6);`}>{label}</p>
+          <p style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:rgba(27,66,41,.4);`}>—</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 px-6" style={`background-color:${CREAM};`}>
+  <div class="container mx-auto max-w-5xl">
+    <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.quality.eyebrow}</p>
+    <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{t.detail.quality.h2Printed}</h2>
+    <p class="mb-10" style={`${lead} color:rgba(27,66,41,.78);`}>{t.detail.quality.lead}</p>
+    <div class="rounded-2xl overflow-hidden" style="background-color:#FFFFFF; border:1px solid rgba(27,66,41,.18);">
+      <table class="w-full border-collapse" style={`font-family:${SG}; font-size:1.05rem;`}>
+        <thead>
+          <tr style={`border-bottom:2px dashed ${GREEN};`}>
+            {t.detail.quality.cols.map((th) => (
+              <th class="text-left p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; font-size:.9rem; letter-spacing:.06em; text-transform:uppercase; color:${GREEN};`}>{th}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {EVOO_LIMITS.map((lim, i) => (
+            <tr style={i < EVOO_LIMITS.length - 1 ? "border-bottom:1px dashed #1B4229;" : ""}>
+              <td class="p-4 md:p-5" style={`font-family:${UDC}; font-weight:700; color:${GREEN};`}>{qualityLabel(lim.key, lim.label)}{lim.unit && <span style={`font-family:${SG}; font-weight:400; color:rgba(27,66,41,.6);`}> · {lim.unit}</span>}</td>
+              <td class="p-4 md:p-5" style={muted}>— · {waiting}</td>
+              <td class="p-4 md:p-5" style="color:rgba(27,66,41,.8);">≤ {lim.max.toFixed(lim.decimals)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 md:py-24 px-6" style={`background-color:${CREAM}; border-top:1px solid rgba(27,66,41,.1);`}>
+  <div class="container mx-auto max-w-5xl grid md:grid-cols-[260px_1fr] gap-10 items-start">
+    <div class="rounded-xl flex items-center justify-center p-6 text-center" style="aspect-ratio:640/905; border:1px dashed rgba(27,66,41,.35);">
+      <p style={muted}>{waiting}</p>
+    </div>
+    <div>
+      <p class="mb-5" style={`${eyebrow} color:rgba(27,66,41,.55);`}>{t.detail.original.eyebrow}</p>
+      <h2 class="mb-6" style={`${h2} color:${GREEN};`}>{t.detail.original.h2}</h2>
+      <p style={`${body} color:rgba(27,66,41,.8);`}>{intro}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 1024px) {
+    .pending-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+</style>
