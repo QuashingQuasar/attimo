@@ -3,7 +3,7 @@ import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import CertificateBody from "@astro/components/certificates/CertificateBody.astro";
 import OilCertificatesBody from "@astro/components/certificates/OilCertificatesBody.astro";
 import { getCertificates, type Certificate, type Oil } from "@/lib/certificates";
-import { buildCertificatePage, buildOilPage, getCertificateOils } from "@/lib/certificatesPage";
+import { buildCertificatePage, buildOilPage, buildPendingOilPage, getCertificateOils, getPendingOils, type PendingOil } from "@/lib/certificatesPage";
 import { certHreflangs } from "@/lib/certificatesContent";
 import { CREAM } from "@/lib/certificates/ui";
 import { DEFAULT_LOCALE } from "@/lib/i18n/config";
@@ -15,29 +15,33 @@ export async function getStaticPaths() {
   return [
     ...certs.map((c) => ({ params: { id: c.id }, props: { cert: c } })),
     ...(await getCertificateOils()).map(({ oil }) => ({ params: { id: oil }, props: { oil } })),
+    ...(await getPendingOils()).map((p) => ({ params: { id: p.slug }, props: { pending: p } })),
   ];
 }
 
-const { cert, oil } = Astro.props as { cert?: Certificate; oil?: Oil };
+const { cert, oil, pending } = Astro.props as { cert?: Certificate; oil?: Oil; pending?: PendingOil };
 const locale = DEFAULT_LOCALE;
 const t = getDict(locale);
 const oilPage = oil ? await buildOilPage(oil, "en") : null;
 const certPage = cert ? await buildCertificatePage(cert, "en") : null;
-const page = (oilPage ?? certPage)!;
+const pendingPage = pending ? buildPendingOilPage(pending, "en") : null;
+const page = (oilPage ?? certPage ?? pendingPage)!;
 ---
 
 <BaseLayout
   title={page.metaTitle}
-  description={oilPage ? oilPage.metaDescription : certPage!.sentence}
+  description={certPage ? certPage.sentence : (oilPage ?? pendingPage)!.metaDescription}
   canonical={page.canonical}
   bodyStyle={`background-color: ${CREAM};`}
   jsonLd={page.jsonLd}
-  hreflangs={certHreflangs(oil ?? cert!.id)}
+  hreflangs={certHreflangs(oil ?? pending?.slug ?? cert!.id)}
   htmlLang={locale.lang}
   announceTier2={t.announce.freeShipping2}
   announceTier3={t.announce.freeShipping3}
 >
-  {oilPage
+  {pendingPage
+    ? <OilCertificatesBody tabs={[]} all={[]} content={pendingPage.t} locale={locale} pending={pendingPage.tab} />
+    : oilPage
     ? <OilCertificatesBody tabs={oilPage.tabs} all={oilPage.all} content={oilPage.t} locale={locale} />
     : <CertificateBody cert={cert!} all={certPage!.all} content={certPage!.t} sentence={certPage!.sentence} quality={certPage!.quality} locale={locale} />}
 </BaseLayout>

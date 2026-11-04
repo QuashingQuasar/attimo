@@ -118,6 +118,8 @@ export const sv: CertContent = {
     tab: "Skörd {h}",
     latest: "Senaste",
     note: "Den senaste skörden visas först. Välj skördeåret som står på din flaska.",
+    pending: "Väntar på labbresultat",
+    pendingBody: "Labbresultaten för skörden {h} är på väg. Värdena visas här så snart rapporten är klar.",
   },
   summary: {
     drawn: "på ett prov taget den {d}",

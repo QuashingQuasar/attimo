@@ -118,6 +118,8 @@ export const nl: CertContent = {
     tab: "Oogst {h}",
     latest: "Nieuwste",
     note: "De nieuwste oogst staat eerst. Kies het oogstjaar dat op je fles staat.",
+    pending: "Wachten op labresultaten",
+    pendingBody: "De labresultaten voor de oogst {h} zijn onderweg. De waarden verschijnen hier zodra het rapport binnen is.",
   },
   summary: {
     drawn: "op een monster dat op {d} is genomen",

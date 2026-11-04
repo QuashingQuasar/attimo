@@ -120,6 +120,8 @@ export const de: CertContent = {
     tab: "Ernte {h}",
     latest: "Neueste",
     note: "Die neueste Ernte wird zuerst angezeigt. Wählen Sie das Erntejahr, das auf Ihrer Flasche steht.",
+    pending: "Warten auf Laborergebnisse",
+    pendingBody: "Die Laborergebnisse für die Ernte {h} sind unterwegs. Die Werte erscheinen hier, sobald der Bericht vorliegt.",
   },
   summary: {
     drawn: "an einer am {d} gezogenen Probe",

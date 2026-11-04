@@ -2,21 +2,26 @@
 // Body of /certificates/{oil}: a tab per harvest above the certificate
 // sections. The newest harvest is selected on load; #harvest-2025-2026 in the
 // URL selects that harvest instead. Without JavaScript every harvest renders.
+// A pending harvest (no report yet) gets a tab with empty values.
 import { Header } from "@/components/Header";
 import Footer from "@astro/components/Footer.astro";
 import CertificateSections from "@astro/components/certificates/CertificateSections.astro";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import type { Certificate } from "@/lib/certificates";
 import type { CertContent } from "@/lib/certificatesContent";
-import { GREEN, CREAM, ACCENT, SG, eyebrow, eyebrowSm, small } from "@/lib/certificates/ui";
+import { fillT } from "@/lib/certificatesContent";
+import { GREEN, CREAM, ACCENT, SG, h1, eyebrow, eyebrowSm, lead, small, stat } from "@/lib/certificates/ui";
 
 interface Tab {
   harvest: string; label: string; anchor: string; cert: Certificate; sentence: string;
   quality: ReturnType<typeof import("@/lib/certificates").qualityRowsFor>;
 }
-const { tabs, all, content: t, locale = DEFAULT_LOCALE } = Astro.props as {
-  tabs: Tab[]; all: Certificate[]; content: CertContent; locale?: Locale;
+interface PendingTab { harvest: string; long: string; label: string; anchor: string; name: string }
+const { tabs, all, content: t, locale = DEFAULT_LOCALE, pending } = Astro.props as {
+  tabs: Tab[]; all: Certificate[]; content: CertContent; locale?: Locale; pending?: PendingTab;
 };
+const nav = [...(pending ? [pending] : []), ...tabs];
+const pendingTiles = [t.detail.tiles.total, t.detail.tiles.sum];
 ---
 
 <div class="relative min-h-screen">
@@ -27,7 +32,7 @@ const { tabs, all, content: t, locale = DEFAULT_LOCALE } = Astro.props as {
       <div class="container mx-auto max-w-5xl pt-10 pb-2" style="border-bottom:1px solid rgba(255,250,234,.22);">
         <p class="mb-4" style={`${eyebrow} color:rgba(255,250,234,.6);`}>{t.oil.navLabel}</p>
         <div class="flex flex-wrap gap-3 mb-4" role="tablist" aria-label={t.oil.navLabel}>
-          {tabs.map((tab, i) => (
+          {nav.map((tab, i) => (
             <a
               href={`#${tab.anchor}`}
               role="tab"
@@ -39,7 +44,7 @@ const { tabs, all, content: t, locale = DEFAULT_LOCALE } = Astro.props as {
               style={`${eyebrowSm} border-radius:8px; padding:.8rem 1.2rem; display:inline-flex; align-items:center; gap:.6rem;`}
             >
               {tab.label}
-              {i === 0 && tabs.length > 1 && <span class="harvest-latest" style={`font-family:${SG}; font-weight:500; font-size:.75rem; letter-spacing:.02em; text-transform:none;`}>{t.oil.latest}</span>}
+              {i === 0 && nav.length > 1 && <span class="harvest-latest" style={`font-family:${SG}; font-weight:500; font-size:.75rem; letter-spacing:.02em; text-transform:none;`}>{t.oil.latest}</span>}
             </a>
           ))}
         </div>
@@ -47,8 +52,29 @@ const { tabs, all, content: t, locale = DEFAULT_LOCALE } = Astro.props as {
       </div>
     </nav>
 
+    {pending && (
+      <div id={pending.anchor} role="tabpanel" aria-labelledby={`tab-${pending.anchor}`} data-harvest-panel={pending.anchor}>
+        <section class="px-6 pb-20" style={`background-color:${GREEN}; padding-top:40px;`}>
+          <div class="container mx-auto max-w-5xl pt-10">
+            <p class="mb-4" style={`${eyebrow} color:${ACCENT};`}>{fillT(t.detail.eyebrow, { h: pending.harvest })}</p>
+            <h1 class="mb-5" style={`${h1} color:${CREAM};`}>{fillT(t.detail.h1, { name: pending.name, h: pending.harvest })}</h1>
+            <p class="mb-10" style={`${lead} color:rgba(255,250,234,.88);`}>{fillT(t.oil.pendingBody, { h: pending.long })}</p>
+            <div class="grid sm:grid-cols-2 gap-4">
+              {pendingTiles.map((label) => (
+                <div class="rounded-2xl p-6" style="background-color:rgba(255,250,234,.09); border:1px dashed rgba(255,250,234,.4);">
+                  <p style={`${stat} color:rgba(255,250,234,.5);`}>—<span style="font-size:1rem; letter-spacing:0;"> mg/kg</span></p>
+                  <p class="mt-2" style={`${eyebrowSm} color:rgba(255,250,234,.65); font-size:.8rem;`}>{label}</p>
+                  <p class="mt-3" style={`font-family:${SG}; font-size:.9rem; color:${ACCENT};`}>{t.oil.pending}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+    )}
+
     {tabs.map((tab, i) => (
-      <div id={tab.anchor} role="tabpanel" aria-labelledby={`tab-${tab.anchor}`} data-harvest-panel={tab.anchor} class={i === 0 ? "" : "harvest-panel-rest"}>
+      <div id={tab.anchor} role="tabpanel" aria-labelledby={`tab-${tab.anchor}`} data-harvest-panel={tab.anchor} class={i === 0 && !pending ? "" : "harvest-panel-rest"}>
         <CertificateSections cert={tab.cert} all={all} content={t} sentence={tab.sentence} quality={tab.quality} locale={locale} heroTop={40} />
       </div>
     ))}

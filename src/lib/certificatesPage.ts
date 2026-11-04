@@ -147,3 +147,38 @@ export async function buildOilPage(oil: Oil, lang: CertLang) {
     metaDescription: fillT(t.oil.metaDescription, { name: OIL_NAMES[oil] }),
   };
 }
+
+/**
+ * Oils on sale or about to be, whose first report is not in yet. Each gets a
+ * per-oil page with an empty tab for the harvest, so a QR code can point at
+ * it before the lab results land. Drop the entry once its YAML exists.
+ */
+export const PENDING_OILS = [{ slug: "peranzana", name: "Peranzana", harvest: "26/27" }] as const;
+export type PendingOil = (typeof PENDING_OILS)[number];
+
+export async function getPendingOils(): Promise<PendingOil[]> {
+  const have = new Set<string>((await getCertificates()).map((c) => c.oil));
+  return PENDING_OILS.filter((p) => !have.has(p.slug));
+}
+
+export function buildPendingOilPage(p: PendingOil, lang: CertLang) {
+  const t = CERT_CONTENT[lang];
+  const name = `ATTIMO ${p.name}`;
+  const canonical = `${SITE}${certHrefFor(lang, p.slug)}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: t.breadcrumb, item: `${SITE}${certIndexHrefFor(lang)}` },
+        { "@type": "ListItem", position: 2, name, item: canonical },
+      ],
+    },
+  ];
+  return {
+    t, canonical, jsonLd,
+    tab: { harvest: p.harvest, long: harvestLong(p.harvest), label: fillT(t.oil.tab, { h: harvestLong(p.harvest) }), anchor: harvestAnchor(p.harvest), name },
+    metaTitle: fillT(t.oil.metaTitle, { name: p.name }),
+    metaDescription: fillT(t.oil.pendingBody, { h: harvestLong(p.harvest) }),
+  };
+}
