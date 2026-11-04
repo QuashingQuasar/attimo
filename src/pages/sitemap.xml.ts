@@ -60,6 +60,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/certificates/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/certificates/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/certificates/peranzana", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/zertifikate", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/zertifikate/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/zertifikate/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
@@ -67,6 +68,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/de/zertifikate/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/zertifikate/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/de/zertifikate/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/de/zertifikate/peranzana", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/certificats", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/certificats/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/certificats/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
@@ -74,6 +76,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/fr/certificats/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/certificats/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/certificats/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/fr/certificats/peranzana", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/certifikat", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/certifikat/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/certifikat/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
@@ -81,6 +84,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/se/certifikat/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/certifikat/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/se/certifikat/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/se/certifikat/peranzana", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/certifikater", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/certifikater/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/certifikater/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
@@ -88,6 +92,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/dk/certifikater/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/certifikater/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/dk/certifikater/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/dk/certifikater/peranzana", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/certificaten", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/certificaten/coratina-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/certificaten/nocellara-2526-hplc-2025-11", changefreq: "monthly", priority: "0.7" },
@@ -95,6 +100,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/nl/certificaten/coratina", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/certificaten/nocellara", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/certificaten/picual", changefreq: "monthly", priority: "0.7" },
+  { loc: "/nl/certificaten/peranzana", changefreq: "monthly", priority: "0.7" },
   // Localised polyphenol hubs (translated slugs, not prefix variants — so they
   // sit here as standalone entries; the EN↔DE hreflang cluster is emitted in
   // each page's <head> via HUB_HREFLANGS).
