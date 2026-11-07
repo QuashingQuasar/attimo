@@ -1,0 +1,71 @@
+---
+// Blog index: newest post as a wide featured card, the rest in a three-column grid.
+import { urlFor } from "@/lib/sanity";
+
+interface Props {
+  posts: any[];
+  base: string;
+  dateLocale: string;
+}
+
+const { posts, base, dateLocale } = Astro.props;
+const [featured, ...rest] = posts;
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString(dateLocale, { month: "long", year: "numeric" });
+
+const dateStyle = "font-family: 'UDC Working Man Sans', sans-serif; font-size: 15px; color: #1B422980;";
+const titleFont = "font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229; font-weight: 700;";
+const excerptFont = "font-family: 'Space Grotesk', sans-serif; color: #555;";
+---
+
+{featured && (
+  <a href={`${base}/${featured.slug.current}`} class="group grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center" style="padding-top: 48px;">
+    <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
+      {featured.coverImage && (
+        <img
+          src={urlFor(featured.coverImage).width(1400).auto("format").url()}
+          alt={featured.title}
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
+    </div>
+    <div>
+      <span class="block" style={dateStyle}>{formatDate(featured.publishedAt)}</span>
+      <h2 class="mt-2" style={`${titleFont} font-size: clamp(1.5rem, 2vw, 1.9rem); line-height: 1.1;`}>
+        {featured.title}
+      </h2>
+      {featured.excerpt && (
+        <p class="mt-4 line-clamp-4" style={`${excerptFont} font-size: 17px; line-height: 1.6;`}>
+          {featured.excerpt}
+        </p>
+      )}
+    </div>
+  </a>
+)}
+
+<div class="grid grid-cols-1 md:grid-cols-3" style="gap: 40px 32px; padding-top: 56px; padding-bottom: 80px;">
+  {rest.map((post) => (
+    <a href={`${base}/${post.slug.current}`} class="group block">
+      <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
+        {post.coverImage && (
+          <img
+            src={urlFor(post.coverImage).width(960).auto("format").url()}
+            alt={post.title}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        )}
+      </div>
+      <span class="block" style={`${dateStyle} margin-top: 14px;`}>{formatDate(post.publishedAt)}</span>
+      <h2 class="mt-1" style={`${titleFont} font-size: 21px; line-height: 1.2;`}>
+        {post.title}
+      </h2>
+      {post.excerpt && (
+        <p class="mt-2 line-clamp-3" style={`${excerptFont} font-size: 16px; line-height: 1.6;`}>
+          {post.excerpt}
+        </p>
+      )}
+    </a>
+  ))}
+</div>

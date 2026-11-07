@@ -23,7 +23,7 @@ const components: PortableTextOptions["components"] = {
       if (!value?.asset) return "";
       const src = urlFor(value).width(1200).auto("format").url();
       const alt = value.alt ? escapeHtml(value.alt) : "";
-      return `<div class="my-8 rounded-xl overflow-hidden"><img src="${src}" alt="${alt}" class="w-full h-auto" loading="lazy" /></div>`;
+      return `<div class="pt-wide my-10 rounded-xl overflow-hidden"><img src="${src}" alt="${alt}" class="w-full h-auto" loading="lazy" /></div>`;
     },
     tweet: ({ value }) => {
       if (!value?.url) return "";
@@ -39,7 +39,7 @@ const components: PortableTextOptions["components"] = {
       const headerCells = (header.cells || [])
         .map(
           (c: string) =>
-            `<th class="px-5 py-3 font-semibold tracking-wide uppercase" style="font-size: 13px; letter-spacing: 0.05em;">${escapeHtml(c)}</th>`
+            `<th class="px-5 py-3 font-semibold" style="font-size: 14px;">${escapeHtml(c)}</th>`
         )
         .join("");
       const bodyRows = rows
@@ -54,7 +54,7 @@ const components: PortableTextOptions["components"] = {
           return `<tr style="background-color: ${bg};">${cells}</tr>`;
         })
         .join("");
-      return `<div class="my-8 overflow-x-auto rounded-xl border" style="border-color: #1B422920;">
+      return `<div class="pt-wide my-10 overflow-x-auto rounded-xl border" style="border-color: #1B422920;">
         <table class="w-full border-collapse text-left" style="font-family: 'Space Grotesk', sans-serif; font-size: 16px;">
           <thead><tr style="background-color: #1B4229; color: #fff;">${headerCells}</tr></thead>
           <tbody>${bodyRows}</tbody>
@@ -64,9 +64,9 @@ const components: PortableTextOptions["components"] = {
   },
   block: {
     h1: ({ children }) =>
-      `<h1 class="mt-12 mb-4 uppercase tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 24px; font-weight: 700; color: #1b411c;">${children}</h1>`,
+      `<h1 class="mt-14 mb-4" style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.25; color: #1b411c;">${children}</h1>`,
     h2: ({ children }) =>
-      `<h2 class="mt-12 mb-4 uppercase tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 26px; font-weight: 700; color: #1b411c;">${children}</h2>`,
+      `<h2 class="mt-14 mb-4" style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.25; color: #1b411c;">${children}</h2>`,
     h3: ({ children }) =>
       `<h3 class="mt-8 mb-3" style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 19px; font-weight: 600; color: #1b411c;">${children}</h3>`,
     normal: ({ children }) => `<p class="mb-6">${children}</p>`,
@@ -93,11 +93,32 @@ const components: PortableTextOptions["components"] = {
   },
 };
 
-const html = toHTML(value || [], { components });
+// The TL;DR heading and the bullet list after it sit in one tinted panel. Matches the heading text used in each locale.
+const TLDR = /(<h2[^>]*>(?:TL;DR|Kurz gefasst|Kurz gesagt|En bref|L&#039;essentiel|L'essentiel|In het kort|Kort fortalt|Kort sagt|I korthet|Sammanfattning)<\/h2>\s*<ul[\s\S]*?<\/ul>)/;
+const html = toHTML(value || [], { components }).replace(TLDR, '<div class="pt-tldr">$1</div>');
 const hasTweet = (value || []).some((b: any) => b?._type === "tweet");
 ---
 
 <div set:html={html} />
+
+<style is:global>
+  /* Figures and tables run wider than the 720px text column. */
+  .pt-wide {
+    position: relative;
+    left: 50%;
+    width: min(1040px, calc(100vw - 48px));
+    transform: translateX(-50%);
+  }
+  .pt-tldr {
+    background-color: #f1efe4;
+    border-radius: 12px;
+    padding: 24px 28px 8px;
+    margin: 8px 0 40px;
+  }
+  .pt-tldr h2 {
+    margin-top: 0 !important;
+  }
+</style>
 
 {hasTweet && (
   <script is:inline>
