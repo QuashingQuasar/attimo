@@ -2,7 +2,8 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import { Header } from "@/components/Header";
 import Footer from "@astro/components/Footer.astro";
-import ShareButtons from "@astro/components/ShareButtons.astro";
+import PostHero from "@astro/components/PostHero.astro";
+import PostShare from "@astro/components/PostShare.astro";
 import NewsletterForm from "@astro/components/NewsletterForm.astro";
 import PortableText from "@astro/components/PortableText.astro";
 import { faqJsonLd } from "@/lib/faq";
@@ -92,59 +93,32 @@ const formatDateShort = (dateStr: string) =>
   <div class="min-h-screen flex flex-col" style="background-color: #FAF9F6;">
     <Header client:load forceScrolled locale={locale} />
 
-    <main class="flex-1 pt-28 pb-20 px-6 md:px-12 lg:px-20">
-      <div class="max-w-3xl mx-auto">
-        <a
-          href="/de/blog"
-          class="inline-flex items-center gap-2 mb-10 text-sm hover:gap-3 transition-all duration-300"
-          style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422999;"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          Zurück zu allen Beiträgen
-        </a>
-
-        <article itemscope itemtype="https://schema.org/Article" class="post-content">
-          <span
-            class="text-sm tracking-wide"
-            style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;"
-          >
-            {updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt)
+    <main class="flex-1 pb-20">
+      <article itemscope itemtype="https://schema.org/Article" class="post-content">
+        <PostHero
+          backHref="/de/blog"
+          backLabel="Zurück zu allen Beiträgen"
+          dateLabel={updatedAt && formatDate(updatedAt) !== formatDate(post.publishedAt)
               ? `Zuletzt aktualisiert: ${formatDate(updatedAt)}`
               : formatDate(post.publishedAt)}
-          </span>
+          title={post.title}
+          image={post.coverImage ? urlFor(post.coverImage).width(1200).auto("format").url() : undefined}
+        />
 
-          <h1
-            itemprop="headline"
-            class="mt-3 mb-8 tracking-tight leading-[1.05]"
-            style="font-family: 'UDC Working Man Sans', sans-serif; font-size: clamp(2rem, 3.5vw, 3.5rem); color: #1B4229;"
-          >
-            {post.title}
-          </h1>
+        <div class="px-6 md:px-12 lg:px-20">
+          <div class="mx-auto" style="max-width: 860px;">
+            <PostShare body={post.body} lang="de" title={post.title} url={canonicalUrl} />
 
-          <ShareButtons title={post.title} url={canonicalUrl} />
-
-          {post.coverImage && (
-            <div class="rounded-xl mb-12">
-              <img
-                src={urlFor(post.coverImage).width(1200).auto("format").url()}
-                alt={post.title}
-                class="w-full h-auto rounded-xl"
-              />
+            <div
+              itemprop="articleBody"
+              class="prose prose-lg mx-auto entry-content post-body"
+              style="font-family: 'Space Grotesk', sans-serif; color: #1a1a1a; font-size: 18px; line-height: 1.65; max-width: 860px;"
+            >
+              {post.body && <PortableText value={post.body} />}
             </div>
-          )}
-
-          <div
-            itemprop="articleBody"
-            class="prose prose-lg mx-auto entry-content post-body"
-            style="font-family: 'Space Grotesk', sans-serif; color: #1a1a1a; font-size: 20px; line-height: 1.8; max-width: 720px;"
-          >
-            {post.body && <PortableText value={post.body} />}
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </main>
 
     <section class="py-14 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20" style="background-color: #B3E58C;">

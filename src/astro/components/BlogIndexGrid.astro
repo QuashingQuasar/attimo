@@ -1,0 +1,97 @@
+---
+// Blog index: newest post as a wide tile, the rest as three-column tiles. Each tile is an image over a tinted text panel.
+import { urlFor } from "@/lib/sanity";
+import { BLOG_TINT } from "@/lib/blogTheme";
+
+interface Props {
+  posts: any[];
+  base: string;
+  dateLocale: string;
+}
+
+const { posts, base, dateLocale } = Astro.props;
+const [featured, ...rest] = posts;
+
+const READ_MORE: Record<string, string> = {
+  en: "Read more",
+  de: "Weiterlesen",
+  fr: "Lire la suite",
+  nl: "Lees verder",
+  da: "Læs mere",
+  sv: "Läs mer",
+};
+const readMore = READ_MORE[dateLocale.slice(0, 2)] || READ_MORE.en;
+
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString(dateLocale, { month: "long", year: "numeric" });
+
+const dateStyle = "font-family: 'UDC Working Man Sans', sans-serif; font-size: 15px; color: #1B422980;";
+const titleFont = "font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229; font-weight: 700; text-wrap: balance;";
+const excerptFont = "font-family: 'Space Grotesk', sans-serif; color: rgba(27,66,41,0.78);";
+const button =
+  "inline-flex items-center gap-1.5 rounded-md px-4 py-2 text-sm transition-colors duration-200 group-hover:bg-[#1B4229] group-hover:text-[#FFFAEA]";
+const buttonStyle = "font-family: 'UDC Working Man Sans', sans-serif; background-color: #FFFFFF; color: #1B4229; border: 1px solid #1B422926;";
+---
+
+{featured && (
+  <a
+    href={`${base}/${featured.slug.current}`}
+    class="group grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden"
+    style={`margin-top: 48px; background-color: ${BLOG_TINT};`}
+  >
+    <div class="overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
+      {featured.coverImage && (
+        <img
+          src={urlFor(featured.coverImage).width(1400).auto("format").url()}
+          alt={featured.title}
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
+    </div>
+    <div class="flex flex-col justify-center p-7 md:p-10">
+      <span class="block" style={dateStyle}>{formatDate(featured.publishedAt)}</span>
+      <h2 class="mt-2" style={`${titleFont} font-size: clamp(1.5rem, 2vw, 1.9rem); line-height: 1.1;`}>
+        {featured.title}
+      </h2>
+      {featured.excerpt && (
+        <p class="mt-4 line-clamp-4" style={`${excerptFont} font-size: 17px; line-height: 1.6;`}>
+          {featured.excerpt}
+        </p>
+      )}
+      <span class={`${button} mt-6 self-start`} style={buttonStyle}>{readMore}</span>
+    </div>
+  </a>
+)}
+
+<div class="grid grid-cols-1 md:grid-cols-3" style="gap: 32px; padding-top: 32px; padding-bottom: 80px;">
+  {rest.map((post) => (
+    <a
+      href={`${base}/${post.slug.current}`}
+      class="group flex flex-col rounded-xl overflow-hidden"
+      style={`background-color: ${BLOG_TINT};`}
+    >
+      <div class="overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
+        {post.coverImage && (
+          <img
+            src={urlFor(post.coverImage).width(960).auto("format").url()}
+            alt={post.title}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        )}
+      </div>
+      <div class="flex flex-col flex-1 p-6">
+        <span class="block" style={dateStyle}>{formatDate(post.publishedAt)}</span>
+        <h2 class="mt-1 mb-5" style={`${titleFont} font-size: 21px; line-height: 1.2;`}>
+          {post.title}
+        </h2>
+        {post.excerpt && (
+          <p class="-mt-3 mb-5 line-clamp-3" style={`${excerptFont} font-size: 16px; line-height: 1.6;`}>
+            {post.excerpt}
+          </p>
+        )}
+        <span class={`${button} mt-auto self-start`} style={buttonStyle}>{readMore}</span>
+      </div>
+    </a>
+  ))}
+</div>

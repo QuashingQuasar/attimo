@@ -2,7 +2,8 @@
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import { Header } from "@/components/Header";
 import Footer from "@astro/components/Footer.astro";
-import { getPostsByLang, urlFor } from "@/lib/sanity";
+import BlogIndexGrid from "@astro/components/BlogIndexGrid.astro";
+import { getPostsByLang } from "@/lib/sanity";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 
@@ -10,8 +11,6 @@ const locale = SLUG_TO_LOCALE["dk"];
 const t = getDict(locale);
 const posts = await getPostsByLang("da");
 
-const formatDate = (dateStr: string) =>
-  new Date(dateStr).toLocaleDateString("da-DK", { month: "long", year: "numeric" });
 ---
 
 <BaseLayout
@@ -40,47 +39,7 @@ const formatDate = (dateStr: string) =>
               Ingen indlæg endnu — kom snart tilbage.
             </p>
           ) : (
-            <div
-              class="grid grid-cols-1 md:grid-cols-3"
-              style="gap: 32px; padding-top: 48px; padding-bottom: 80px;"
-            >
-              {posts.map((post) => (
-                <a href={`/dk/blog/${post.slug.current}`} class="group block">
-                  <div class="rounded-xl overflow-hidden" style="aspect-ratio: 16/9; background-color: #1B422910;">
-                    {post.coverImage ? (
-                      <img
-                        src={urlFor(post.coverImage).width(960).auto("format").url()}
-                        alt={post.title}
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div class="w-full h-full flex items-center justify-center">
-                        <span style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 14px; color: #1B422940;">Intet billede</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <span
-                    class="block tracking-wide"
-                    style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 16px; color: #1B422980; margin-top: 12px;"
-                  >
-                    {formatDate(post.publishedAt)}
-                  </span>
-                  <h2
-                    class="uppercase"
-                    style="font-family: 'UDC Working Man Sans', sans-serif; font-size: 26px; color: #1b411c; margin-top: 4px;"
-                  >
-                    {post.title}
-                  </h2>
-                  {post.excerpt && (
-                    <p style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; line-height: 1.8; color: #555; margin-top: 8px;">
-                      {post.excerpt}
-                    </p>
-                  )}
-                </a>
-              ))}
-            </div>
+            <BlogIndexGrid posts={posts} base="/dk/blog" dateLocale="da-DK" />
           )
         }
       </div>
