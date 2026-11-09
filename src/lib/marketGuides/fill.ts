@@ -11,11 +11,13 @@ export function guideShipping(c: MarketGuideContent, locale: Locale) {
   const t = getDict(locale);
   const tier = tierForCountry(c.country);
   // EUR markets print the tier's euro rate; DKK/SEK markets print the locale's fixed local rate.
-  const standard = tier && locale.currency.code === "EUR" ? tier.shippingCost : formatPrice(locale.shipping.standard, locale);
-  const freeFrom = tier?.freeFromN ? t.shippingPage.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "";
+  // A regional guide spans several shipping tiers, so it states its own range.
+  const own = c.attimoShipping;
+  const standard = own ? own.cost : tier && locale.currency.code === "EUR" ? tier.shippingCost : formatPrice(locale.shipping.standard, locale);
+  const freeFrom = own ? own.freeFrom : tier?.freeFromN ? t.shippingPage.freeFromBottles.replace("{n}", String(tier.freeFromN)) : "";
   const dayRange = tier ? daysFor(c.country, tier) : null;
-  const days = dayRange ? `${dayRange[0]}–${dayRange[1]} ${c.daysUnit}` : "";
-  const daysText = dayRange ? `${dayRange[0]} ${TO[c.lang] ?? "to"} ${dayRange[1]} ${c.daysUnit}` : "";
+  const days = own ? own.days : dayRange ? `${dayRange[0]}–${dayRange[1]} ${c.daysUnit}` : "";
+  const daysText = own ? own.daysText : dayRange ? `${dayRange[0]} ${TO[c.lang] ?? "to"} ${dayRange[1]} ${c.daysUnit}` : "";
   const freeFromWord = FREE_FROM[c.lang] ?? "free from";
   const fill = (s: string) =>
     s.split("{standard}").join(standard).split("{freeFrom}").join(freeFrom).split("{days}").join(days)

@@ -25,6 +25,11 @@ export type MarketGuideContent = {
   market: string;
   /** Country key as used in shippingZones TIERS, e.g. "Netherlands". */
   country: string;
+  /** A guide for a region (Europe), not one country. A statement that a seller
+   * ships across the EU then counts in full, and ATTIMO's own shipping comes
+   * from `attimoShipping`, because its rate differs per country. */
+  regional?: boolean;
+  attimoShipping?: { cost: string; freeFrom: string; days: string; daysText: string };
   /** Plural unit after a day range, e.g. "werkdagen". */
   daysUnit: string;
   /** Other guides a reader of this page may want (neighbouring market or the same market in another language). */

@@ -30,10 +30,15 @@ const indexHref = INDEX_SLUGS[c.lang as keyof typeof INDEX_SLUGS] ?? INDEX_SLUGS
 const methodsHref = METHODS_SLUGS[c.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
 const notes = INDEX_CONTENT[c.lang]?.entryNotes ?? {};
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
-const num = (n: number | null) => (n === null ? "" : n >= 1000 ? `${String(n).slice(0, -3)}.${String(n).slice(-3)}` : String(n));
+// Thousands separator: a comma in English, a point elsewhere.
+const SEP = c.lang === "en" ? "," : ".";
+const num = (n: number | null) => (n === null ? "" : n >= 1000 ? `${String(n).slice(0, -3)}${SEP}${String(n).slice(-3)}` : String(n));
 
 // ATTIMO's own evidence: the shipping tier for this market.
-const mineEvidence: ShipEvidence = { ships: "yes", basis: "lists country", route: "webshop", days, cost: standard, free_from: freeFrom, quote: "", source_url: "", checked: c.updated };
+// A regional guide (Europe) counts an EU-wide statement in full; a seller that
+// only reaches some countries scores lower there.
+const regional = !!c.regional;
+const mineEvidence: ShipEvidence = { ships: "yes", basis: regional ? "EU-wide statement" : "lists country", route: "webshop", days, cost: standard, free_from: freeFrom, quote: "", source_url: "", checked: c.updated };
 const evidenceFor = (e: IndexEntry): ShipEvidence | undefined => (isMine(e) ? mineEvidence : shipping[e.id]);
 
 // Only oils a buyer here can get.
@@ -57,8 +62,10 @@ const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
     case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
     case "delivery":
       if (!ev) return 0;
-      if (ev.route === "retailer" || ev.route === "distributor") return ev.basis === "lists country" ? (ev.days === "not stated" ? 0.8 : 0.9) : 0.6;
+      if (ev.route === "retailer" || ev.route === "distributor") return ev.basis === "lists country" || (regional && ev.basis === "EU-wide statement") ? (ev.days === "not stated" ? 0.8 : 0.9) : 0.6;
       if (ev.route === "request") return 0.3;
+      if (regional && ev.basis === "EU-wide statement") return (ev.days === "not stated" ? 0.85 : 1) - (isPaid(ev) ? 0.1 : 0);
+      if (regional && ev.basis === "lists country") return 0.75 - (isPaid(ev) ? 0.1 : 0);
       if (ev.basis === "lists country") return (ev.days === "not stated" ? 0.85 : 1) - (isPaid(ev) ? 0.1 : 0);
       if (ev.basis === "EU-wide statement") return 0.75;
       if (ev.basis === "worldwide statement") return 0.5;
@@ -109,7 +116,7 @@ const consOf = (e: IndexEntry) => {
   if (e.method === "not stated") out.push(c.oils.cons.noMethod); else if (e.compounds === null) out.push(c.oils.cons.totalOnly); else if (!CHROMATOGRAPHY.has(e.method)) out.push(c.oils.cons.nmr);
   if (!(e.variety && e.harvest)) out.push(c.oils.cons.noOrigin);
   if (ev.days === "not stated") out.push(c.oils.cons.noDays);
-  if (ev.basis === "EU-wide statement" || ev.basis === "worldwide statement") out.push(c.oils.cons.nlNotNamed);
+  if (ev.basis === "worldwide statement" || (!regional && ev.basis === "EU-wide statement")) out.push(c.oils.cons.nlNotNamed);
   if (isPaid(ev)) out.push((ev.free_from ? c.oils.cons.shippingFree : c.oils.cons.shipping).replace("{cost}", ev.cost!).replace("{free}", ev.free_from ?? ""));
   out.push(...(c.oils.perOil[e.id]?.cons ?? []).map(fill));
   return out;

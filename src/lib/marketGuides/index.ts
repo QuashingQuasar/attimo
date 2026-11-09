@@ -6,11 +6,12 @@ import { da, DA_SHIPPING } from "./da";
 import { en, EN_NL_SHIPPING } from "./en";
 import { sv, SV_SHIPPING } from "./sv";
 import { fr, FR_SHIPPING } from "./fr";
+import { europe, EUROPE_SHIPPING } from "./europe";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "./types";
 
 export type { MarketGuideContent, ShipEvidence, CriterionKey };
 
-export type GuideId = "nl" | "beNl" | "beFr" | "fr" | "de" | "da" | "sv" | "en";
+export type GuideId = "nl" | "beNl" | "beFr" | "fr" | "de" | "da" | "sv" | "en" | "europe";
 
 export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipping: Record<string, ShipEvidence> }> = {
   nl: { content: nl, shipping: NL_SHIPPING },
@@ -22,6 +23,8 @@ export const MARKET_GUIDES: Record<GuideId, { content: MarketGuideContent; shipp
   fr: { content: fr, shipping: FR_SHIPPING },
   // English mother copy, rendered as a noindex prototype on the Netherlands data.
   en: { content: en, shipping: EN_NL_SHIPPING },
+  // Europe, in English: every oil a buyer in Europe can order.
+  europe: { content: europe, shipping: EUROPE_SHIPPING },
 };
 
 export type GuideLink = { href: string; hub: string; indexLabel: string; indexBody: string; indexCta: string };
@@ -29,6 +32,9 @@ export type GuideLink = { href: string; hub: string; indexLabel: string; indexBo
 /** Where each language's guides are linked from (hub Index section, Index page).
  * A language lists the guides of the countries it serves. */
 export const MARKET_GUIDE_LINKS: Record<string, GuideLink[]> = {
+  en: [
+    { href: europe.slug, hub: "Buying guide: high-polyphenol olive oil in Europe, with prices and shipping costs →", indexLabel: "Buying high-polyphenol olive oil in Europe", indexBody: "Which of these oils you can order in Europe, with price, shipping cost and delivery time per brand.", indexCta: "To the buying guide →" },
+  ],
   nl: [
     { href: nl.slug, hub: "Koopgids: polyfenolrijke olijfolie in Nederland, met prijzen en verzendkosten →", indexLabel: "Polyfenolrijke olijfolie kopen in Nederland", indexBody: "Welke van deze oliën je in Nederland kunt kopen, met prijs, verzendkosten en levertijd per merk.", indexCta: "Naar de koopgids →" },
     { href: beNl.slug, hub: "Koopgids: polyfenolrijke olijfolie in België, met prijzen en verzendkosten →", indexLabel: "Polyfenolrijke olijfolie kopen in België", indexBody: "Welke van deze oliën je in België kunt kopen, met prijs, verzendkosten en levertijd per merk.", indexCta: "Naar de koopgids →" },

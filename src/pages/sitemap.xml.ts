@@ -46,6 +46,7 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/dk/olivenolie-polyfenolindeks", changefreq: "monthly", priority: "0.8" },
   { loc: "/nl/olijfolie-polyfenolindex", changefreq: "monthly", priority: "0.8" },
   // Market buying guides, one per country in its own language.
+  { loc: "/buy-high-polyphenol-olive-oil-europe", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/polyfenolrijke-olijfolie-kopen-nederland", changefreq: "monthly", priority: "0.7" },
   { loc: "/nl/polyfenolrijke-olijfolie-kopen-belgie", changefreq: "monthly", priority: "0.7" },
   { loc: "/fr/huile-olive-riche-polyphenols-acheter-belgique", changefreq: "monthly", priority: "0.7" },
