@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import Footer from "@astro/components/Footer.astro";
 import PostHero from "@astro/components/PostHero.astro";
 import PostShare from "@astro/components/PostShare.astro";
+import PostProgress from "@astro/components/PostProgress.astro";
 import NewsletterForm from "@astro/components/NewsletterForm.astro";
 import PortableText from "@astro/components/PortableText.astro";
 import { faqJsonLd } from "@/lib/faq";
@@ -85,6 +86,7 @@ const formatDateShort = (dateStr: string) =>
 
     <main class="flex-1 pb-20">
       <article itemscope itemtype="https://schema.org/Article" class="post-content">
+        <PostProgress />
         <PostHero
           backHref="/blog"
           backLabel="Back to all posts"
@@ -92,6 +94,10 @@ const formatDateShort = (dateStr: string) =>
               ? `Last updated: ${formatDate(updatedAt)}`
               : formatDate(post.publishedAt)}
           title={post.title}
+          category={post.category}
+          graphic={post.coverFit === "graphic"}
+          aspect={post.coverAspect}
+          lang="en"
           image={post.coverImage ? urlFor(post.coverImage).width(1200).auto("format").url() : undefined}
         />
 

@@ -23,6 +23,11 @@ export interface BlogPostPreview {
   slug: { current: string };
   publishedAt: string;
   excerpt: string;
+  /** Blog index filter: "health" | "quality" | "kitchen". */
+  category?: string;
+  /** "graphic": show the whole cover uncropped in the post hero (screenshots, tweets, charts). */
+  coverFit?: string;
+  coverAspect?: number;
   coverImage: any;
   seoTitle?: string;
   seoDescription?: string;
@@ -47,7 +52,7 @@ export interface BlogPost extends BlogPostPreview {
 export async function getAllPosts(): Promise<BlogPostPreview[]> {
   return sanityClient.fetch<BlogPostPreview[]>(
     `*[_type == "post" && coalesce(language, "en") == "en"] | order(publishedAt desc) {
-      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex, category,
       "language": coalesce(language, "en"), translationKey
     }`
   );
@@ -58,7 +63,7 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
 export async function getPostsByLang(lang: string): Promise<BlogPostPreview[]> {
   return sanityClient.fetch<BlogPostPreview[]>(
     `*[_type == "post" && coalesce(language, "en") == $lang] | order(publishedAt desc) {
-      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex, category,
       "language": coalesce(language, "en"), translationKey
     }`,
     { lang }
@@ -71,7 +76,8 @@ export async function getPostBySlug(
 ): Promise<BlogPost | null> {
   return sanityClient.fetch<BlogPost | null>(
     `*[_type == "post" && slug.current == $slug && coalesce(language, "en") == $lang][0] {
-      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex, category, coverFit,
+      "coverAspect": coverImage.asset->metadata.dimensions.aspectRatio,
       "language": coalesce(language, "en"), translationKey
     }`,
     { slug, lang }

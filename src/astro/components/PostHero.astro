@@ -1,6 +1,6 @@
 ---
 // Post hero: image and title side by side on a tinted band; the image overhangs the band's lower edge.
-import { BLOG_TINT } from "@/lib/blogTheme";
+import { BLOG_TINT, BLOG_CATEGORIES } from "@/lib/blogTheme";
 
 interface Props {
   backHref: string;
@@ -8,9 +8,17 @@ interface Props {
   dateLabel: string;
   title: string;
   image?: string;
+  /** Sanity category key; shown as a tag linking to the filtered index. */
+  category?: string;
+  lang?: string;
+  /** Graphic covers keep their own shape instead of the square crop. */
+  graphic?: boolean;
+  aspect?: number;
 }
 
-const { backHref, backLabel, dateLabel, title, image } = Astro.props;
+const { backHref, backLabel, dateLabel, title, image, category, lang = "en", graphic = false, aspect } = Astro.props;
+const frameStyle = graphic && aspect ? `aspect-ratio: ${aspect};` : "";
+const categoryLabel = category ? (BLOG_CATEGORIES[lang] || BLOG_CATEGORIES.en)[category] : undefined;
 const overhang = image ? "72px" : "0px";
 ---
 
@@ -31,14 +39,24 @@ const overhang = image ? "72px" : "0px";
       {backLabel}
     </a>
 
-    <div class={`grid grid-cols-1 gap-8 items-center ${image ? "md:grid-cols-2 md:gap-14" : "pb-12"}`}>
+    <div class={`grid grid-cols-1 gap-8 ${image ? "md:grid-cols-2 md:gap-14" : "pb-12"}`}>
       {image && (
-        <div class="order-2 md:order-1 rounded-xl overflow-hidden aspect-square">
+        <div class={`order-2 md:order-1 md:self-end rounded-xl overflow-hidden ${frameStyle ? "" : "aspect-square"}`} style={frameStyle}>
           <img src={image} alt={title} class="w-full h-full object-cover" />
         </div>
       )}
-      <div class="order-1 md:order-2">
-        <span class="text-sm tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;">
+      <!-- Title block centres on the tinted part of the band (above the image overhang) and always keeps 40px clear of its edge. -->
+      <div class={`order-1 md:order-2 ${image ? "md:flex md:flex-col md:justify-center md:pb-[112px]" : ""}`}>
+        {categoryLabel && (
+          <a
+            href={`${backHref}?category=${category}`}
+            class="post-cat inline-block self-start mb-5 rounded-md px-3 py-1.5 text-xs transition-colors duration-200"
+            style="font-family: 'UDC Working Man Sans', sans-serif; letter-spacing: 0.04em;"
+          >
+            {categoryLabel}
+          </a>
+        )}
+        <span class="block text-sm tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;">
           {dateLabel}
         </span>
         <h1
@@ -52,3 +70,8 @@ const overhang = image ? "72px" : "0px";
     </div>
   </div>
 </section>
+
+<style>
+  .post-cat { background: #FFFFFF; color: #1B4229; border: 1px solid #1B422940; }
+  .post-cat:hover { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
+</style>

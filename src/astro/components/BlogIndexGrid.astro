@@ -1,7 +1,7 @@
 ---
 // Blog index: newest post as a wide tile, the rest as three-column tiles. Each tile is an image over a tinted text panel.
 import { urlFor } from "@/lib/sanity";
-import { BLOG_TINT } from "@/lib/blogTheme";
+import { BLOG_TINT, BLOG_CATEGORIES, BLOG_CATEGORY_KEYS } from "@/lib/blogTheme";
 
 interface Props {
   posts: any[];
@@ -20,7 +20,14 @@ const READ_MORE: Record<string, string> = {
   da: "Læs mere",
   sv: "Läs mer",
 };
-const readMore = READ_MORE[dateLocale.slice(0, 2)] || READ_MORE.en;
+const lang = dateLocale.slice(0, 2);
+const readMore = READ_MORE[lang] || READ_MORE.en;
+
+const catLabels = BLOG_CATEGORIES[lang] || BLOG_CATEGORIES.en;
+const catKeys = BLOG_CATEGORY_KEYS.filter((k) => posts.some((p) => p.category === k));
+const pill =
+  "rounded-md px-4 py-2 text-sm transition-colors duration-200 border";
+const pillStyle = "font-family: 'UDC Working Man Sans', sans-serif;";
 
 const formatDate = (dateStr: string) =>
   new Date(dateStr).toLocaleDateString(dateLocale, { month: "long", year: "numeric" });
@@ -33,11 +40,22 @@ const button =
 const buttonStyle = "font-family: 'UDC Working Man Sans', sans-serif; background-color: #FFFFFF; color: #1B4229; border: 1px solid #1B422926;";
 ---
 
+{catKeys.length > 0 && (
+  <div class="blog-filter flex flex-wrap gap-2" style="margin-top: 40px;" role="group">
+    {["all", ...catKeys].map((k) => (
+      <button type="button" class={pill} style={pillStyle} data-filter={k} aria-pressed={k === "all" ? "true" : "false"}>
+        {catLabels[k]}
+      </button>
+    ))}
+  </div>
+)}
+
 {featured && (
   <a
     href={`${base}/${featured.slug.current}`}
-    class="group grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden"
-    style={`margin-top: 48px; background-color: ${BLOG_TINT};`}
+    data-cat={featured.category || ""}
+    class="blog-tile group grid grid-cols-1 md:grid-cols-2 rounded-xl overflow-hidden"
+    style={`margin-top: ${catKeys.length ? 24 : 48}px; background-color: ${BLOG_TINT};`}
   >
     <div class="overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
       {featured.coverImage && (
@@ -63,11 +81,12 @@ const buttonStyle = "font-family: 'UDC Working Man Sans', sans-serif; background
   </a>
 )}
 
-<div class="grid grid-cols-1 md:grid-cols-3" style="gap: 32px; padding-top: 32px; padding-bottom: 80px;">
+<div class="blog-grid grid grid-cols-1 md:grid-cols-3" style="gap: 32px; padding-top: 32px; padding-bottom: 80px;">
   {rest.map((post) => (
     <a
       href={`${base}/${post.slug.current}`}
-      class="group flex flex-col rounded-xl overflow-hidden"
+      data-cat={post.category || ""}
+      class="blog-tile group flex flex-col rounded-xl overflow-hidden"
       style={`background-color: ${BLOG_TINT};`}
     >
       <div class="overflow-hidden" style="aspect-ratio: 16/10; background-color: #1B422910;">
@@ -95,3 +114,25 @@ const buttonStyle = "font-family: 'UDC Working Man Sans', sans-serif; background
     </a>
   ))}
 </div>
+
+<style>
+  .blog-filter button { background: #FFFFFF; color: #1B4229; border-color: #1B422926; }
+  .blog-filter button:hover { border-color: #1B4229; }
+  .blog-filter button[aria-pressed="true"] { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
+  .blog-tile[hidden] { display: none; }
+</style>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>(".blog-filter button")];
+  const tiles = [...document.querySelectorAll<HTMLElement>(".blog-tile")];
+  const apply = (cat: string) => {
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.filter === cat)));
+    tiles.forEach((t) => { t.hidden = cat !== "all" && t.dataset.cat !== cat; });
+    const url = new URL(location.href);
+    if (cat === "all") url.searchParams.delete("category"); else url.searchParams.set("category", cat);
+    history.replaceState(null, "", url);
+  };
+  buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.filter || "all")));
+  const initial = new URL(location.href).searchParams.get("category");
+  if (initial && buttons.some((b) => b.dataset.filter === initial)) apply(initial);
+</script>
