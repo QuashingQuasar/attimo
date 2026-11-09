@@ -75,6 +75,8 @@ Wenn Sie also zwei Flaschen im Regal vergleichen, ignorieren Sie das Mindesthalt
 
 Gießen Sie etwas in ein Glas oder auf einen Löffel und riechen Sie daran.
 
+[[IMAGE3]]
+
 - **Frisch:** grün, fruchtig, grasig. Bei einem guten Öl aus früher Ernte ein Kratzen hinten im Hals, wenn Sie schlucken.
 - **Höhepunkt überschritten:** schwach oder neutral. Nicht unangenehm, aber da ist nichts.
 - **Ranzig:** Wachsmalstifte, Kitt, Knete, alte Walnüsse oder alte Chips. Schmierig auf der Zunge, ohne Bitterkeit.

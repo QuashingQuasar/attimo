@@ -1,0 +1,49 @@
+<svg viewBox="0 0 720 580" width="720" height="580" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t d">
+<title id="t">Polyphenols in single-variety olive oils, 2025/26 harvest</title>
+<desc id="d">Bar chart of twelve single-variety oils with published lab results, in mg/kg, from 1,825 for a Koroneiki down to 400 for ATTIMO Nocellara. Each bar is labelled with the test method used. A line marks 250 mg/kg, the level the EU health claim for olive oil polyphenols is built on.</desc>
+<rect width="720" height="580" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">Polyphenols in single-variety oils</text>
+<text x="28" y="72" font-size="14" fill="#1B4229" opacity="0.6">Published lab results, 2025/26 harvest, mg/kg. NMR tends to read higher than HPLC</text>
+<text x="28" y="90" font-size="14" fill="#1B4229" opacity="0.6">on the same oil, so compare numbers within one method.</text>
+<line x1="304.5" y1="142" x2="304.5" y2="510" stroke="#1B4229" stroke-width="1" stroke-dasharray="3 3" opacity="0.35"/>
+<text x="304.5" y="136" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">250, EU health-claim level</text>
+<text x="250" y="165" font-size="13"  fill="#1B4229" text-anchor="end">Koroneiki<tspan font-size="11" opacity="0.55" font-weight="400"> · Sakellaropoulos Fyllikon</tspan></text>
+<rect x="262" y="154" width="310.3" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="580.3" y="165" font-size="12" font-weight="700" fill="#1B4229">1,825<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="195" font-size="13"  fill="#1B4229" text-anchor="end">Koroneiki<tspan font-size="11" opacity="0.55" font-weight="400"> · PJ Kabos Phenolic Shot</tspan></text>
+<rect x="262" y="184" width="250.4" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="520.4" y="195" font-size="12" font-weight="700" fill="#1B4229">1,473<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="225" font-size="13"  fill="#1B4229" text-anchor="end">Kalamon<tspan font-size="11" opacity="0.55" font-weight="400"> · Laconiko ZOI</tspan></text>
+<rect x="262" y="214" width="237.5" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="507.5" y="225" font-size="12" font-weight="700" fill="#1B4229">1,397<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="255" font-size="13"  fill="#1B4229" text-anchor="end">Lianolia<tspan font-size="11" opacity="0.55" font-weight="400"> · The Governor</tspan></text>
+<rect x="262" y="244" width="223.7" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="493.7" y="255" font-size="12" font-weight="700" fill="#1B4229">1,316<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="285" font-size="13"  fill="#1B4229" text-anchor="end">Coratina<tspan font-size="11" opacity="0.55" font-weight="400"> · OlvLimits Green Machine</tspan></text>
+<rect x="262" y="274" width="220.1" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="490.1" y="285" font-size="12" font-weight="700" fill="#1B4229">1,295<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="315" font-size="13"  fill="#1B4229" text-anchor="end">Coratina<tspan font-size="11" opacity="0.55" font-weight="400"> · Olio Intini</tspan></text>
+<rect x="262" y="304" width="187.0" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="457.0" y="315" font-size="12" font-weight="700" fill="#1B4229">1,100<tspan font-weight="400" opacity="0.5"> not stated</tspan></text>
+<text x="250" y="345" font-size="13"  fill="#1B4229" text-anchor="end">Lianolia<tspan font-size="11" opacity="0.55" font-weight="400"> · Kyoord</tspan></text>
+<rect x="262" y="334" width="171.2" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="441.2" y="345" font-size="12" font-weight="700" fill="#1B4229">1,007<tspan font-weight="400" opacity="0.5"> NMR</tspan></text>
+<text x="250" y="375" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Coratina<tspan font-size="11" opacity="0.55" font-weight="400"> · ATTIMO</tspan></text>
+<rect x="262" y="364" width="144.0" height="14" rx="3" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="414.0" y="375" font-size="12" font-weight="700" fill="#1B4229">847<tspan font-weight="400" opacity="0.5"> HPLC</tspan></text>
+<text x="250" y="405" font-size="13"  fill="#1B4229" text-anchor="end">Picual<tspan font-size="11" opacity="0.55" font-weight="400"> · Oro del Desierto</tspan></text>
+<rect x="262" y="394" width="143.5" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="413.5" y="405" font-size="12" font-weight="700" fill="#1B4229">844<tspan font-weight="400" opacity="0.5"> Folin</tspan></text>
+<text x="250" y="435" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Picual<tspan font-size="11" opacity="0.55" font-weight="400"> · ATTIMO</tspan></text>
+<rect x="262" y="424" width="114.8" height="14" rx="3" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="384.8" y="435" font-size="12" font-weight="700" fill="#1B4229">675<tspan font-weight="400" opacity="0.5"> Folin</tspan></text>
+<text x="250" y="465" font-size="13"  fill="#1B4229" text-anchor="end">Ottobratica<tspan font-size="11" opacity="0.55" font-weight="400"> · Deliba</tspan></text>
+<rect x="262" y="454" width="106.9" height="14" rx="3" fill="#9DAE84" fill-opacity="0.75"/>
+<text x="376.9" y="465" font-size="12" font-weight="700" fill="#1B4229">629<tspan font-weight="400" opacity="0.5"> HPLC</tspan></text>
+<text x="250" y="495" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Nocellara<tspan font-size="11" opacity="0.55" font-weight="400"> · ATTIMO</tspan></text>
+<rect x="262" y="484" width="68.0" height="14" rx="3" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="338.0" y="495" font-size="12" font-weight="700" fill="#1B4229">400<tspan font-weight="400" opacity="0.5"> HPLC</tspan></text>
+<text x="28" y="562" font-size="11" fill="#1B4229" opacity="0.45">Source: Olive Oil Polyphenol Index, attimo-oil.com/polyphenol-index</text>
+</g>
+</svg>

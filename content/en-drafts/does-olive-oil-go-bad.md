@@ -75,6 +75,8 @@ So when you compare two bottles on a shelf, ignore the best-before and look for 
 
 Pour a little into a glass or a spoon and smell it.
 
+[[IMAGE3]]
+
 - **Fresh:** green, fruity, grassy. In a good early-harvest oil, a sting at the back of the throat when you swallow.
 - **Past its best:** faint or neutral. Not unpleasant, but nothing there.
 - **Rancid:** crayons, putty, play dough, old walnuts or stale crisps. Greasy on the tongue with no bitterness.

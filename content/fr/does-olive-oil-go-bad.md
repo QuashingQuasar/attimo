@@ -75,6 +75,8 @@ Quand vous comparez deux bouteilles en rayon, ignorez donc la date de durabilit�
 
 Versez-en un peu dans un verre ou une cuillère et sentez-la.
 
+[[IMAGE3]]
+
 - **Fraîche :** verte, fruitée, herbacée. Dans une bonne huile de récolte précoce, un picotement au fond de la gorge quand vous avalez.
 - **A passé son apogée :** faible ou neutre. Pas désagréable, mais il n'y a rien.
 - **Rance :** crayon de cire, mastic, pâte à modeler, vieille noix ou chips rassises. Grasse sur la langue, sans amertume.

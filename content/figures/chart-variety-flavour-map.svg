@@ -1,0 +1,47 @@
+<svg viewBox="0 0 720 620" width="720" height="620" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t d">
+<title id="t">How olive varieties taste</title>
+<desc id="d">Map of fourteen olive varieties. Left to right runs from mild to bitter and peppery; bottom to top runs from ripe fruit flavours to green ones. Coratina, Chetoui and Koroneiki sit top right; Arbequina, Galega and Leccino sit bottom left; Nocellara sits near the centre.</desc>
+<rect width="720" height="620" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">How olive varieties taste</text>
+<text x="28" y="72" font-size="14" fill="#1B4229" opacity="0.6">Bitterness and pepper come from polyphenols, so the further right a variety sits,</text>
+<text x="28" y="90" font-size="14" fill="#1B4229" opacity="0.6">the more polyphenols its oil tends to carry. Positions are approximate, for early-harvest oil.</text>
+<line x1="80" y1="560" x2="680" y2="560" stroke="#1B4229" stroke-width="1" opacity="0.25"/>
+<line x1="80" y1="125" x2="80" y2="560" stroke="#1B4229" stroke-width="1" opacity="0.25"/>
+<line x1="380" y1="125" x2="380" y2="560" stroke="#1B4229" stroke-width="1" opacity="0.07"/>
+<line x1="80" y1="342.5" x2="680" y2="342.5" stroke="#1B4229" stroke-width="1" opacity="0.07"/>
+<text x="80" y="584" font-size="11" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.55">MILD</text>
+<text x="680" y="584" font-size="11" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.55" text-anchor="end">BITTER AND PEPPERY</text>
+<text x="66" y="560" font-size="11" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.55" transform="rotate(-90 66 560)">RIPE FRUIT, ALMOND</text>
+<text x="66" y="125" font-size="11" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.55" text-anchor="end" transform="rotate(-90 66 125)">GRASS, LEAF, ARTICHOKE</text>
+<circle cx="638.0" cy="203.3" r="8" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="626.0" y="207.3" font-size="13" font-weight="700" fill="#1B4229" text-anchor="end">Coratina<tspan font-size="11" opacity="0.5" font-weight="400"> Italy</tspan></text>
+<circle cx="572.0" cy="255.5" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="584.0" y="259.5" font-size="13"  fill="#1B4229" text-anchor="start">Koroneiki<tspan font-size="11" opacity="0.5" font-weight="400"> Greece</tspan></text>
+<circle cx="608.0" cy="159.8" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="596.0" y="163.8" font-size="13"  fill="#1B4229" text-anchor="end">Chetoui<tspan font-size="11" opacity="0.5" font-weight="400"> Tunisia</tspan></text>
+<circle cx="536.0" cy="177.2" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="548.0" y="181.2" font-size="13"  fill="#1B4229" text-anchor="start">Moraiolo<tspan font-size="11" opacity="0.5" font-weight="400"> Italy</tspan></text>
+<circle cx="500.0" cy="307.7" r="8" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="512.0" y="311.7" font-size="13" font-weight="700" fill="#1B4229" text-anchor="start">Picual<tspan font-size="11" opacity="0.5" font-weight="400"> Spain</tspan></text>
+<circle cx="416.0" cy="225.1" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="428.0" y="229.1" font-size="13"  fill="#1B4229" text-anchor="start">Frantoio<tspan font-size="11" opacity="0.5" font-weight="400"> Italy</tspan></text>
+<circle cx="362.0" cy="281.6" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="374.0" y="285.6" font-size="13"  fill="#1B4229" text-anchor="start">Picholine<tspan font-size="11" opacity="0.5" font-weight="400"> France</tspan></text>
+<circle cx="320.0" cy="342.5" r="8" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<text x="332.0" y="346.5" font-size="13" font-weight="700" fill="#1B4229" text-anchor="start">Nocellara<tspan font-size="11" opacity="0.5" font-weight="400"> Italy</tspan></text>
+<circle cx="452.0" cy="429.5" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="464.0" y="433.5" font-size="13"  fill="#1B4229" text-anchor="start">Kalamon<tspan font-size="11" opacity="0.5" font-weight="400"> Greece</tspan></text>
+<circle cx="296.0" cy="416.4" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="308.0" y="420.4" font-size="13"  fill="#1B4229" text-anchor="start">Hojiblanca<tspan font-size="11" opacity="0.5" font-weight="400"> Spain</tspan></text>
+<circle cx="224.0" cy="386.0" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="236.0" y="390.0" font-size="13"  fill="#1B4229" text-anchor="start">Leccino<tspan font-size="11" opacity="0.5" font-weight="400"> Italy</tspan></text>
+<circle cx="170.0" cy="316.4" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="182.0" y="320.4" font-size="13"  fill="#1B4229" text-anchor="start">Manaki<tspan font-size="11" opacity="0.5" font-weight="400"> Greece</tspan></text>
+<circle cx="158.0" cy="490.4" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="170.0" y="494.4" font-size="13"  fill="#1B4229" text-anchor="start">Galega<tspan font-size="11" opacity="0.5" font-weight="400"> Portugal</tspan></text>
+<circle cx="122.0" cy="429.5" r="6" fill="#9DAE84" fill-opacity="0.85"/>
+<text x="134.0" y="433.5" font-size="13"  fill="#1B4229" text-anchor="start">Arbequina<tspan font-size="11" opacity="0.5" font-weight="400"> Spain</tspan></text>
+<text x="28" y="602" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>

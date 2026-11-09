@@ -75,6 +75,8 @@ Vergelijk je dus twee flessen in het schap, negeer dan de houdbaarheidsdatum en 
 
 Schenk een beetje in een glas of op een lepel en ruik eraan.
 
+[[IMAGE3]]
+
 - **Vers:** groen, fruitig, grassig. Bij een goede olie van vroege oogst een prikkel achter in de keel als je doorslikt.
 - **Niet meer op haar best:** zwak of neutraal. Niet onaangenaam, maar er zit niets meer in.
 - **Ranzig:** waskrijt, stopverf, speelklei, oude walnoten of muffe chips. Vettig op de tong, zonder bitterheid.

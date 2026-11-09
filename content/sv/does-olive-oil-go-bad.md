@@ -75,6 +75,8 @@ Så när du jämför två flaskor på en hylla: strunta i bäst före-datumet oc
 
 Häll lite i ett glas eller på en sked och lukta på den.
 
+[[IMAGE3]]
+
 - **Färsk:** grön, fruktig, gräsig. I en bra olja från tidig skörd: en stickning längst bak i halsen när du sväljer.
 - **Har passerat sin bästa tid:** svag eller neutral. Inte obehaglig, men det finns ingenting där.
 - **Härsken:** vaxkritor, kitt, modellera, gamla valnötter eller avslagna chips. Flottig på tungan, utan beska.

@@ -1,0 +1,57 @@
+<svg viewBox="0 0 720 532" width="720" height="532" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t1 d1">
+<title id="t1">Smoke point does not equal stability</title>
+<desc id="d1">Scatter plot of common cooking fats. Horizontal axis: smoke point. Vertical axis: oxidative stability. Extra virgin olive oil sits at a moderate smoke point but high stability. Sunflower, corn, soybean and grapeseed oil combine high smoke points with poor stability, in the lower right of the chart.</desc>
+<rect width="720" height="532" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">Smoke point vs oxidative stability</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">Nine common cooking fats, compared on both measures</text>
+<text x="28" y="92" font-size="12" fill="#1B4229" opacity="0.6"><tspan font-weight="700">Smoke point</tspan>: the temperature past which the oil starts breaking down rapidly, visible as smoke.</text>
+<text x="28" y="108" font-size="12" fill="#1B4229" opacity="0.6"><tspan font-weight="700">Oxidative stability</tspan>: how long the fat resists breaking down under sustained heat.</text>
+
+
+<!-- misleading corner shading -->
+<rect x="366.5" y="276.0" width="297.5" height="126.0" fill="#1B4229" opacity="0.06"/>
+<text x="654.0" y="294.0" font-size="12" font-weight="600" fill="#1B4229" opacity="0.65" text-anchor="end">smoke late, break down early</text>
+
+<line x1="96" y1="402" x2="664" y2="402" stroke="#1B4229" stroke-width="1" opacity="0.3"/>
+<line x1="96" y1="124" x2="96" y2="402" stroke="#1B4229" stroke-width="1" opacity="0.3"/>
+<line x1="177.1" y1="402" x2="177.1" y2="407" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="177.1" y="422" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">175°C</text>
+<line x1="312.4" y1="402" x2="312.4" y2="407" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="312.4" y="422" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">200°C</text>
+<line x1="447.6" y1="402" x2="447.6" y2="407" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="447.6" y="422" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">225°C</text>
+<line x1="582.9" y1="402" x2="582.9" y2="407" stroke="#1B4229" stroke-width="1" opacity="0.35"/>
+<text x="582.9" y="422" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="middle">250°C</text>
+<text x="86" y="376.0" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="end">very low</text>
+<text x="86" y="316.0" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="end">low</text>
+<text x="86" y="256.0" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="end">moderate</text>
+<text x="86" y="196.0" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="end">high</text>
+<text x="86" y="136.0" font-size="11" fill="#1B4229" opacity="0.5" text-anchor="end">very high</text>
+<text x="380.0" y="446" font-size="13" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.85" text-anchor="middle">SMOKE POINT</text>
+<text x="32" y="267.0" font-size="13" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.85" text-anchor="middle" transform="rotate(-90 32 267.0)">OXIDATIVE STABILITY</text>
+
+<circle cx="285.3" cy="156.0" r="9" fill="#CDDB2D" stroke="#1B4229" stroke-width="2.2"/>
+<text x="300.3" y="156.0" font-size="12.5" font-weight="700" fill="#1B4229"  text-anchor="start">Extra virgin olive oil</text><text x="300.3" y="171.0" font-size="11.5" font-weight="600" fill="#1B4229" opacity="0.65" text-anchor="start">smokes earlier, breaks down later</text>
+<circle cx="582.9" cy="192.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="582.9" y="180.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="middle">Avocado oil</text>
+<circle cx="188.0" cy="132.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="177.0" y="136.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="end">Coconut oil</text>
+<circle cx="177.1" cy="192.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="167.1" y="196.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="end">Butter</text>
+<circle cx="339.4" cy="252.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="349.4" y="256.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="start">Rapeseed oil</text>
+<circle cx="398.9" cy="366.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="398.9" y="384.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="middle">Grapeseed oil</text>
+<circle cx="447.6" cy="312.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="437.6" y="316.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="end">Sunflower oil</text>
+<circle cx="485.5" cy="303.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="485.5" y="291.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="middle">Corn oil</text>
+<circle cx="517.9" cy="321.0" r="6" fill="#9DAE84" stroke="#1B4229" stroke-width="1.4"/>
+<text x="527.9" y="329.0" font-size="12.5"  fill="#1B4229" opacity="0.8" text-anchor="start">Soybean oil</text>
+
+<text x="28" y="482" font-size="11" fill="#1B4229" opacity="0.45">Typical published values; smoke points vary with refining and free acidity.</text>
+<text x="28" y="498" font-size="11" fill="#1B4229" opacity="0.45">Stability reflects fat composition and antioxidant content.</text>
+<text x="28" y="514" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>

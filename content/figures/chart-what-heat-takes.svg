@@ -1,0 +1,39 @@
+<svg viewBox="0 0 720 460" width="720" height="460" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t2 d2">
+<title id="t2">What heat takes from olive oil</title>
+<desc id="d2">Chart across four cooking heat ranges, raw to high heat. The fat stays close to fully intact. Polyphenols fall from full at raw to almost gone at high heat. Aromatics fall fastest, mostly gone past gentle heat.</desc>
+<rect width="720" height="460" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="26" font-weight="700" fill="#1B4229">Olive oil's components under cooking heat</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">Fat, polyphenols and aromatics across the four heat ranges</text>
+
+<line x1="76" y1="340" x2="656" y2="340" stroke="#1B4229" stroke-width="1" opacity="0.3"/>
+<text x="34" y="225.0" font-size="13" font-weight="700" letter-spacing="2" fill="#1B4229" opacity="0.85" text-anchor="middle" transform="rotate(-90 34 225.0)">WHAT REMAINS</text>
+
+<text x="148.5" y="362" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">Raw</text>
+<text x="148.5" y="378" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">below 40°C</text>
+<line x1="221.0" y1="104" x2="221.0" y2="340" stroke="#1B4229" stroke-width="1" opacity="0.12"/>
+<text x="293.5" y="362" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">Gentle</text>
+<text x="293.5" y="378" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">40–120°C</text>
+<line x1="366.0" y1="104" x2="366.0" y2="340" stroke="#1B4229" stroke-width="1" opacity="0.12"/>
+<text x="438.5" y="362" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">Moderate</text>
+<text x="438.5" y="378" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">120–180°C</text>
+<line x1="511.0" y1="104" x2="511.0" y2="340" stroke="#1B4229" stroke-width="1" opacity="0.12"/>
+<text x="583.5" y="362" font-size="13" font-weight="700" fill="#1B4229" text-anchor="middle">High</text>
+<text x="583.5" y="378" font-size="11" fill="#1B4229" opacity="0.55" text-anchor="middle">180–220°C</text>
+
+<path d="M148.5,110.0 L293.5,112.3 L438.5,114.6 L583.5,119.2" fill="none" stroke="#1B4229" stroke-width="3" />
+<path d="M148.5,110.0 L293.5,151.4 L438.5,236.5 L583.5,312.4" fill="none" stroke="#CDDB2D" stroke-width="3" />
+<path d="M148.5,110.0 L293.5,213.5 L438.5,305.5 L583.5,330.8" fill="none" stroke="#9DAE84" stroke-width="2.4" stroke-dasharray="6 4"/>
+
+<circle cx="583.5" cy="119.2" r="4.5" fill="#1B4229"/>
+<circle cx="583.5" cy="312.4" r="4.5" fill="#CDDB2D" stroke="#1B4229" stroke-width="1.4"/>
+<circle cx="583.5" cy="330.8" r="4" fill="#9DAE84"/>
+
+<text x="162.5" y="96.0" font-size="13" font-weight="700" fill="#1B4229">The fat (oleic acid) — barely touched</text>
+<text x="305.5" y="173.4" font-size="13" font-weight="700" fill="#1B4229">Polyphenols — the health value</text>
+<text x="287.5" y="235.5" font-size="13" font-weight="700" fill="#1B4229" opacity="0.75">Aromatics — the flavour</text>
+
+<text x="28" y="426" font-size="11" fill="#1B4229" opacity="0.45">Illustrative curves based on published heating studies; exact retention varies with time, temperature and oil.</text>
+<text x="28" y="442" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>

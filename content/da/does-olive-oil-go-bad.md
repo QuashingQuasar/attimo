@@ -75,6 +75,8 @@ Så når du sammenligner to flasker på en hylde, skal du se bort fra holdbarhed
 
 Hæld lidt i et glas eller på en ske, og lugt til den.
 
+[[IMAGE3]]
+
 - **Frisk:** grøn, frugtig, græsagtig. I en god olie fra tidlig høst en svie bagerst i halsen, når du synker.
 - **Over sit bedste:** svag eller neutral. Ikke ubehagelig, men der er ingenting.
 - **Harsk:** voksfarver, kit, modellervoks, gamle valnødder eller slatne chips. Fedtet på tungen uden bitterhed.
