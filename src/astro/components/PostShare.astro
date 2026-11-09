@@ -10,12 +10,12 @@ interface Props {
 const { body, lang, title, url } = Astro.props;
 
 const LABELS = {
-  en: { share: "Share", read: "min read", copy: "Copy link", copied: "Link copied" },
-  de: { share: "Teilen", read: "Min. Lesezeit", copy: "Link kopieren", copied: "Link kopiert" },
-  fr: { share: "Partager", read: "min de lecture", copy: "Copier le lien", copied: "Lien copié" },
-  nl: { share: "Delen", read: "min leestijd", copy: "Link kopiëren", copied: "Link gekopieerd" },
-  da: { share: "Del", read: "min. læsning", copy: "Kopiér link", copied: "Link kopieret" },
-  sv: { share: "Dela", read: "min läsning", copy: "Kopiera länk", copied: "Länk kopierad" },
+  en: { share: "Share", read: "min read", copy: "Copy link", copied: "Link copied", print: "Print" },
+  de: { share: "Teilen", read: "Min. Lesezeit", copy: "Link kopieren", copied: "Link kopiert", print: "Drucken" },
+  fr: { share: "Partager", read: "min de lecture", copy: "Copier le lien", copied: "Lien copié", print: "Imprimer" },
+  nl: { share: "Delen", read: "min leestijd", copy: "Link kopiëren", copied: "Link gekopieerd", print: "Afdrukken" },
+  da: { share: "Del", read: "min. læsning", copy: "Kopiér link", copied: "Link kopieret", print: "Udskriv" },
+  sv: { share: "Dela", read: "min läsning", copy: "Kopiera länk", copied: "Länk kopierad", print: "Skriv ut" },
 };
 const l = LABELS[lang];
 
@@ -36,30 +36,33 @@ const ICONS = {
   whatsapp: `<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />`,
 };
 const links = [
+  { label: "WhatsApp", href: `https://wa.me/?text=${t}%20${u}`, svg: ICONS.whatsapp },
+  { label: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}`, svg: ICONS.facebook },
   { label: "X", href: `https://twitter.com/intent/tweet?url=${u}&text=${t}`, svg: ICONS.x },
   { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`, svg: ICONS.linkedin },
-  { label: "Facebook", href: `https://www.facebook.com/sharer/sharer.php?u=${u}`, svg: ICONS.facebook },
-  { label: "WhatsApp", href: `https://wa.me/?text=${t}%20${u}`, svg: ICONS.whatsapp },
 ];
 const mail = `mailto:?subject=${t}&body=${u}`;
 ---
 
 <div
-  class="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-6 mb-10"
+  class="post-share flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-6 mb-10"
   style="border-bottom: 1px solid #1B422926; font-family: 'UDC Working Man Sans', sans-serif; color: #1B4229;"
 >
   <div class="flex items-center gap-4 sm:gap-5">
     <span class="text-sm font-bold">{l.share}</span>
+    <button type="button" class="post-copy transition-opacity hover:opacity-60 cursor-pointer" aria-label={l.copy} title={l.copy} data-url={url}>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+    </button>
     {links.map((s) => (
-      <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} class="transition-opacity hover:opacity-60">
+      <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} title={s.label} class="transition-opacity hover:opacity-60">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" set:html={s.svg} />
       </a>
     ))}
-    <a href={mail} aria-label="Email" class="transition-opacity hover:opacity-60">
+    <a href={mail} aria-label="Email" title="Email" class="transition-opacity hover:opacity-60">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg>
     </a>
-    <button type="button" class="post-copy transition-opacity hover:opacity-60 cursor-pointer" aria-label={l.copy} title={l.copy} data-url={url}>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+    <button type="button" class="post-print transition-opacity hover:opacity-60 cursor-pointer" aria-label={l.print} title={l.print}>
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 3 18 3 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="7"></rect></svg>
     </button>
     <span class="post-copied text-xs hidden" style="color: #1B422999;">{l.copied}</span>
   </div>
@@ -70,9 +73,22 @@ const mail = `mailto:?subject=${t}&body=${u}`;
   document.querySelectorAll<HTMLButtonElement>(".post-copy").forEach((btn) => {
     btn.addEventListener("click", async () => {
       await navigator.clipboard.writeText(btn.dataset.url || "");
-      const note = btn.nextElementSibling as HTMLElement | null;
+      const note = btn.parentElement?.querySelector<HTMLElement>(".post-copied");
       note?.classList.remove("hidden");
       setTimeout(() => note?.classList.add("hidden"), 2000);
     });
   });
+  document.querySelectorAll<HTMLButtonElement>(".post-print").forEach((btn) => {
+    btn.addEventListener("click", () => window.print());
+  });
 </script>
+
+<style is:global>
+  @media print {
+    header, footer, nav, .post-share, .post-progress, .klaro, .post-cat { display: none !important; }
+    body, .post-content { background: #FFFFFF !important; }
+    .post-body { font-size: 12pt !important; }
+    .post-body a { color: inherit; text-decoration: underline; }
+    img, figure, table { break-inside: avoid; }
+  }
+</style>
