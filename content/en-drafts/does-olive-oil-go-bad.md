@@ -2,6 +2,8 @@
 
 Most kitchens have one: a bottle of olive oil at the back of the cupboard, half full, best-before date still a year away.
 
+[[IMAGE6]]
+
 That oil is probably still safe to use. It is probably also past its best: much of its flavour has faded, and so have many of its polyphenols, the compounds behind olive oil's bitterness and most of its health value.
 
 Olive oil ages in two stages. First it goes past its best: its fresh taste fades, and so do its polyphenols. The oil is flatter, but it is still safe to eat and fine to cook with. Much later it goes bad: the fat itself turns rancid, and the oil smells of crayons or putty. Rancid oil is better thrown away.
@@ -23,6 +25,8 @@ The best-before date marks neither stage. It is counted from the day the oil was
 ## Olive oil goes past its best long before it goes bad
 
 Olive oil ages in two stages: first it goes past its best, then, much later, it turns rancid.
+
+[[IMAGE7]]
 
 Olive oil is pressed fruit juice. Once filtered, it has no living cells, no sugars and almost no water, so bacteria and mould have very little to grow on. That is why it does not spoil in the way milk, bread or fresh juice do. [Unfiltered oil](/blog/unfiltered-olive-oil) is the exception: its bits of fruit can ferment in the bottle.
 

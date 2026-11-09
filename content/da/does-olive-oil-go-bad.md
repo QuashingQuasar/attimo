@@ -2,6 +2,8 @@
 
 De fleste køkkener har en: en flaske olivenolie bagerst i skabet, halvt fuld, med et år endnu til holdbarhedsdatoen.
 
+[[IMAGE6]]
+
 Den olie er sandsynligvis stadig sikker at bruge. Den er sandsynligvis også over sit bedste: meget af smagen er falmet, og det samme er mange af polyfenolerne, de stoffer, der står bag olivenoliens bitterhed og det meste af dens sundhedsværdi.
 
 Olivenolie ældes i to trin. Først er den over sit bedste: den friske smag falmer, og det samme gør polyfenolerne. Olien er fladere, men stadig sikker at spise og fin at lave mad med. Langt senere bliver den dårlig: selve fedtet bliver harsk, og olien lugter af voksfarver eller kit. Harsk olie er bedre at smide ud.
@@ -23,6 +25,8 @@ Holdbarhedsdatoen markerer ingen af de to trin. Den regnes fra den dag, olien bl
 ## Olivenolie er over sit bedste, længe før den bliver dårlig
 
 Olivenolie ældes i to trin: først er den over sit bedste, og så, langt senere, bliver den harsk.
+
+[[IMAGE7]]
 
 Olivenolie er presset frugtsaft. Når den er filtreret, har den ingen levende celler, intet sukker og næsten intet vand, så bakterier og skimmel har meget lidt at vokse på. Derfor fordærves den ikke på samme måde som mælk, brød eller frisk juice. [Ufiltreret olie](/dk/blog/ufiltreret-olivenolie) er undtagelsen: dens frugtpartikler kan gære i flasken.
 

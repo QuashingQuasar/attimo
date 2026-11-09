@@ -2,6 +2,8 @@
 
 De meeste keukens hebben er een: een fles olijfolie achteraan in de kast, halfvol, met een houdbaarheidsdatum die nog een jaar weg is.
 
+[[IMAGE6]]
+
 Die olie is waarschijnlijk nog veilig om te gebruiken. Waarschijnlijk is ze ook niet meer op haar best: veel van haar smaak is vervaagd, en veel van haar polyfenolen ook, de stoffen achter de bitterheid van olijfolie en het grootste deel van haar gezondheidswaarde.
 
 Olijfolie veroudert in twee fasen. Eerst is ze niet meer op haar best: haar frisse smaak vervaagt, en haar polyfenolen ook. De olie is vlakker, maar nog altijd veilig om te eten en prima om mee te koken. Veel later wordt ze slecht: het vet zelf wordt ranzig, en de olie ruikt naar waskrijt of stopverf. Ranzige olie gooi je beter weg.
@@ -23,6 +25,8 @@ De houdbaarheidsdatum markeert geen van beide fasen. Hij wordt geteld vanaf de d
 ## Olijfolie is al lang niet meer op haar best voordat ze slecht wordt
 
 Olijfolie veroudert in twee fasen: eerst is ze niet meer op haar best, daarna, veel later, wordt ze ranzig.
+
+[[IMAGE7]]
 
 Olijfolie is geperst vruchtensap. Eenmaal gefilterd bevat ze geen levende cellen, geen suikers en bijna geen water, dus bacteriën en schimmels vinden er heel weinig om op te groeien. Daarom bederft ze niet zoals melk, brood of vers sap. [Ongefilterde olie](/nl/blog/ongefilterde-olijfolie) is de uitzondering: haar fruitdeeltjes kunnen in de fles gisten.
 

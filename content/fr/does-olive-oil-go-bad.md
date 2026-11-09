@@ -2,6 +2,8 @@
 
 La plupart des cuisines en ont une : une bouteille d'huile d'olive au fond du placard, à moitié pleine, dont la date de durabilité minimale tombe encore dans un an.
 
+[[IMAGE6]]
+
 Cette huile se consomme probablement encore sans risque. Elle a probablement aussi passé son apogée : une grande partie de sa saveur s'est estompée, et nombre de ses polyphénols aussi, les composés à l'origine de l'amertume de l'huile d'olive et de l'essentiel de ses bienfaits pour la santé.
 
 L'huile d'olive vieillit en deux étapes. D'abord, elle passe son apogée : son goût frais s'estompe, et ses polyphénols avec. L'huile est plus plate, mais elle se consomme toujours sans risque et convient très bien à la cuisson. Bien plus tard, elle tourne : la matière grasse elle-même rancit, et l'huile sent le crayon de cire ou le mastic. Mieux vaut jeter une huile rance.
@@ -23,6 +25,8 @@ La date de durabilité minimale ne marque aucune des deux étapes. Elle est comp
 ## L'huile d'olive passe son apogée bien avant de tourner
 
 L'huile d'olive vieillit en deux étapes : d'abord elle passe son apogée, puis, bien plus tard, elle rancit.
+
+[[IMAGE7]]
 
 L'huile d'olive est un jus de fruit pressé. Une fois filtrée, elle ne contient ni cellules vivantes, ni sucres, et presque pas d'eau, si bien que bactéries et moisissures n'ont pratiquement rien pour se développer. C'est pourquoi elle ne se gâte pas comme le lait, le pain ou un jus frais. L'[huile non filtrée](/fr/blog/huile-olive-non-filtree) fait exception : ses particules de fruit peuvent fermenter dans la bouteille.
 

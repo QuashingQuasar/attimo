@@ -2,6 +2,8 @@
 
 De flesta kök har en: en flaska olivolja längst in i skåpet, halvfull, med bäst före-datumet fortfarande ett år bort.
 
+[[IMAGE6]]
+
 Den oljan går troligen fortfarande att använda. Den har troligen också passerat sin bästa tid: mycket av smaken har bleknat, och det har även många av polyfenolerna, ämnena bakom olivoljans beska och det mesta av dess hälsovärde.
 
 Olivolja åldras i två steg. Först passerar den sin bästa tid: den färska smaken bleknar, och det gör polyfenolerna också. Oljan blir plattare, men den är fortfarande säker att äta och fungerar bra i matlagning. Långt senare blir den dålig: själva fettet härsknar, och oljan luktar vaxkritor eller kitt. Härsken olja är bättre att slänga.
@@ -23,6 +25,8 @@ Bäst före-datumet markerar inget av stegen. Det räknas från dagen oljan bute
 ## Olivolja passerar sin bästa tid långt innan den blir dålig
 
 Olivolja åldras i två steg: först passerar den sin bästa tid, sedan, långt senare, härsknar den.
+
+[[IMAGE7]]
 
 Olivolja är pressad fruktjuice. När den väl är filtrerad har den inga levande celler, inga sockerarter och nästan inget vatten, så bakterier och mögel har mycket lite att växa på. Därför blir den inte skämd på det sätt som mjölk, bröd eller färskpressad juice blir. [Ofiltrerad olja](/se/blog/ofiltrerad-olivolja) är undantaget: dess fruktpartiklar kan jäsa i flaskan.
 

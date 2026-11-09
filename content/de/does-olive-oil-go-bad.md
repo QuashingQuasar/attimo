@@ -2,6 +2,8 @@
 
 In den meisten Küchen steht eine: eine Flasche Olivenöl ganz hinten im Schrank, halb voll, das Mindesthaltbarkeitsdatum noch ein Jahr entfernt.
 
+[[IMAGE6]]
+
 Dieses Öl ist wahrscheinlich noch unbedenklich. Wahrscheinlich hat es aber auch seinen Höhepunkt überschritten: Ein Großteil seines Geschmacks ist verblasst, ebenso viele seiner Polyphenole, der Verbindungen hinter der Bitterkeit des Olivenöls und dem größten Teil seines gesundheitlichen Werts.
 
 Olivenöl altert in zwei Stufen. Zuerst überschreitet es seinen Höhepunkt: Sein frischer Geschmack verblasst, und mit ihm die Polyphenole. Das Öl ist flacher, aber noch unbedenklich zu essen und gut zum Kochen. Viel später wird es schlecht: Das Fett selbst wird ranzig, und das Öl riecht nach Wachsmalstiften oder Kitt. Ranziges Öl wirft man besser weg.
@@ -23,6 +25,8 @@ Das Mindesthaltbarkeitsdatum markiert keine der beiden Stufen. Es wird ab dem Ta
 ## Olivenöl überschreitet seinen Höhepunkt lange, bevor es schlecht wird
 
 Olivenöl altert in zwei Stufen: Zuerst überschreitet es seinen Höhepunkt, dann, viel später, wird es ranzig.
+
+[[IMAGE7]]
 
 Olivenöl ist gepresster Fruchtsaft. Gefiltert enthält es keine lebenden Zellen, keinen Zucker und fast kein Wasser, also finden Bakterien und Schimmel kaum etwas, wovon sie wachsen können. Deshalb verdirbt es nicht so, wie Milch, Brot oder frischer Saft verderben. [Ungefiltertes Öl](/de/blog/ungefiltertes-olivenoel) ist die Ausnahme: Seine Fruchtpartikel können in der Flasche gären.
 
