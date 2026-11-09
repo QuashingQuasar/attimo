@@ -11,9 +11,13 @@ interface Props {
   /** Sanity category key; shown as a tag linking to the filtered index. */
   category?: string;
   lang?: string;
+  /** Graphic covers keep their own shape instead of the square crop. */
+  graphic?: boolean;
+  aspect?: number;
 }
 
-const { backHref, backLabel, dateLabel, title, image, category, lang = "en" } = Astro.props;
+const { backHref, backLabel, dateLabel, title, image, category, lang = "en", graphic = false, aspect } = Astro.props;
+const frameStyle = graphic && aspect ? `aspect-ratio: ${aspect};` : "";
 const categoryLabel = category ? (BLOG_CATEGORIES[lang] || BLOG_CATEGORIES.en)[category] : undefined;
 const overhang = image ? "72px" : "0px";
 ---
@@ -37,7 +41,7 @@ const overhang = image ? "72px" : "0px";
 
     <div class={`grid grid-cols-1 gap-8 items-center ${image ? "md:grid-cols-2 md:gap-14" : "pb-12"}`}>
       {image && (
-        <div class="order-2 md:order-1 rounded-xl overflow-hidden aspect-square">
+        <div class={`order-2 md:order-1 rounded-xl overflow-hidden ${frameStyle ? "" : "aspect-square"}`} style={frameStyle}>
           <img src={image} alt={title} class="w-full h-full object-cover" />
         </div>
       )}

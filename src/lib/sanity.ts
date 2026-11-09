@@ -25,6 +25,9 @@ export interface BlogPostPreview {
   excerpt: string;
   /** Blog index filter: "health" | "quality" | "kitchen". */
   category?: string;
+  /** "graphic": show the whole cover uncropped in the post hero (screenshots, tweets, charts). */
+  coverFit?: string;
+  coverAspect?: number;
   coverImage: any;
   seoTitle?: string;
   seoDescription?: string;
@@ -73,7 +76,8 @@ export async function getPostBySlug(
 ): Promise<BlogPost | null> {
   return sanityClient.fetch<BlogPost | null>(
     `*[_type == "post" && slug.current == $slug && coalesce(language, "en") == $lang][0] {
-      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex, category,
+      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex, category, coverFit,
+      "coverAspect": coverImage.asset->metadata.dimensions.aspectRatio,
       "language": coalesce(language, "en"), translationKey
     }`,
     { slug, lang }

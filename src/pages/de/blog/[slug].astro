@@ -105,6 +105,8 @@ const formatDateShort = (dateStr: string) =>
               : formatDate(post.publishedAt)}
           title={post.title}
           category={post.category}
+          graphic={post.coverFit === "graphic"}
+          aspect={post.coverAspect}
           lang="de"
           image={post.coverImage ? urlFor(post.coverImage).width(1200).auto("format").url() : undefined}
         />
