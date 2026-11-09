@@ -100,6 +100,8 @@ Rancid oil is better thrown away. A spoonful will not harm you, but it gives foo
 
 The fridge does not help. Cold doesn't harm the oil directly, but it thickens it into an unpourable sludge, and the in-and-out cycles can draw condensation into the bottle, which does harm it. A dark cupboard achieves the same protection without the drawbacks.
 
+[[IMAGE5]]
+
 ## Why we only sell one harvest at a time
 
 ATTIMO sells the current harvest only. When it runs out, we wait for the next one. The harvest is printed on every bottle, and the lab analysis for each oil is on our [certificate pages](/certificates): polyphenols, oleocanthal and oleacein, tested at an ISO/IEC 17025 accredited laboratory.

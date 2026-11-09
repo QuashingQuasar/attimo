@@ -100,6 +100,8 @@ Mieux vaut jeter une huile rance. Une cuillerée ne vous fera pas de mal, mais e
 
 Le réfrigérateur n'aide pas. Le froid n'abîme pas l'huile en soi, mais il l'épaissit en une masse impossible à verser, et les allers-retours peuvent faire entrer de la condensation dans la bouteille, ce qui, là, l'abîme. Un placard sombre offre la même protection sans les inconvénients.
 
+[[IMAGE5]]
+
 ## Pourquoi nous ne vendons qu'une récolte à la fois
 
 ATTIMO ne vend que la récolte en cours. Quand elle est épuisée, nous attendons la suivante. La récolte est imprimée sur chaque bouteille, et l'analyse de laboratoire de chaque huile figure sur nos [pages de certificats](/fr/certificats) : polyphénols, oléocanthal et oléacéine, analysés par un laboratoire accrédité ISO/IEC 17025.

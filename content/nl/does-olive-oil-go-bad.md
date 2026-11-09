@@ -100,6 +100,8 @@ Ranzige olie gooi je beter weg. Een lepel ervan doet je geen kwaad, maar ze geef
 
 De koelkast helpt niet. Kou schaadt de olie niet rechtstreeks, maar maakt haar dik en onschenkbaar, en het voortdurende erin en eruit kan condens in de fles trekken, en dát schaadt haar wel. Een donkere kast biedt dezelfde bescherming zonder de nadelen.
 
+[[IMAGE5]]
+
 ## Waarom we maar één oogst tegelijk verkopen
 
 ATTIMO verkoopt alleen de huidige oogst. Is die op, dan wachten we op de volgende. De oogst staat op elke fles, en de labanalyse van elke olie vind je op onze [certificaatpagina's](/nl/certificaten): polyfenolen, oleocanthal en oleaceïne, getest in een ISO/IEC 17025-geaccrediteerd laboratorium.

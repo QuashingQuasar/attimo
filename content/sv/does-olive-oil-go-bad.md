@@ -100,6 +100,8 @@ Härsken olja är bättre att slänga. En sked skadar dig inte, men den ger mate
 
 Kylskåpet hjälper inte. Kylan skadar inte oljan direkt, men den tjocknar till en ohällbar sörja, och cyklerna in och ut kan dra in kondens i flaskan, vilket skadar den. Ett mörkt skåp ger samma skydd utan nackdelarna.
 
+[[IMAGE5]]
+
 ## Varför vi bara säljer en skörd i taget
 
 ATTIMO säljer bara den aktuella skörden. När den tar slut väntar vi på nästa. Skörden står tryckt på varje flaska, och labbanalysen för varje olja finns på våra [certifikatsidor](/se/certifikat): polyfenoler, oleocanthal och oleacein, testade vid ett laboratorium ackrediterat enligt ISO/IEC 17025.

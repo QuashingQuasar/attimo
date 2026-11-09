@@ -100,6 +100,8 @@ Harsk olie er bedre at smide ud. En skefuld skader dig ikke, men den giver maden
 
 Køleskabet hjælper ikke. Kulden skader ikke olien direkte, men den tykner den til en grødet masse, der ikke kan hældes op, og turene ind og ud af kulden kan trække kondens ind i flasken, og det skader den. Et mørkt skab giver samme beskyttelse uden ulemperne.
 
+[[IMAGE5]]
+
 ## Hvorfor vi kun sælger én høst ad gangen
 
 ATTIMO sælger kun den aktuelle høst. Når den slipper op, venter vi på den næste. Høsten er trykt på hver flaske, og laboratorieanalysen for hver olie ligger på vores [certifikatsider](/dk/certifikater): polyfenoler, oleocanthal og oleacein, testet på et ISO/IEC 17025-akkrediteret laboratorium.

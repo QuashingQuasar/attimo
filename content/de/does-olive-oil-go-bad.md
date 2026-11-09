@@ -100,6 +100,8 @@ Ranziges Öl wirft man besser weg. Ein Löffel davon schadet Ihnen nicht, aber e
 
 Der Kühlschrank hilft nicht. Kälte schadet dem Öl nicht direkt, aber sie verdickt es zu einem nicht gießbaren Brei, und die Rein-und-raus-Zyklen können Kondenswasser in die Flasche ziehen, das ihm sehr wohl schadet. Ein dunkler Schrank erreicht denselben Schutz ohne die Nachteile.
 
+[[IMAGE5]]
+
 ## Warum wir immer nur eine Ernte verkaufen
 
 ATTIMO verkauft nur die aktuelle Ernte. Ist sie ausverkauft, warten wir auf die nächste. Die Ernte ist auf jeder Flasche aufgedruckt, und die Laboranalyse jedes Öls steht auf unseren [Zertifikatsseiten](/de/zertifikate): Polyphenole, Oleocanthal und Oleacein, geprüft in einem nach ISO/IEC 17025 akkreditierten Labor.
