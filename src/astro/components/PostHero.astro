@@ -1,6 +1,6 @@
 ---
 // Post hero: image and title side by side on a tinted band; the image overhangs the band's lower edge.
-import { BLOG_TINT } from "@/lib/blogTheme";
+import { BLOG_TINT, BLOG_CATEGORIES } from "@/lib/blogTheme";
 
 interface Props {
   backHref: string;
@@ -8,9 +8,13 @@ interface Props {
   dateLabel: string;
   title: string;
   image?: string;
+  /** Sanity category key; shown as a tag linking to the filtered index. */
+  category?: string;
+  lang?: string;
 }
 
-const { backHref, backLabel, dateLabel, title, image } = Astro.props;
+const { backHref, backLabel, dateLabel, title, image, category, lang = "en" } = Astro.props;
+const categoryLabel = category ? (BLOG_CATEGORIES[lang] || BLOG_CATEGORIES.en)[category] : undefined;
 const overhang = image ? "72px" : "0px";
 ---
 
@@ -38,7 +42,16 @@ const overhang = image ? "72px" : "0px";
         </div>
       )}
       <div class="order-1 md:order-2">
-        <span class="text-sm tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;">
+        {categoryLabel && (
+          <a
+            href={`${backHref}?category=${category}`}
+            class="post-cat inline-block mb-5 rounded-md px-3 py-1.5 text-xs transition-colors duration-200"
+            style="font-family: 'UDC Working Man Sans', sans-serif; letter-spacing: 0.04em;"
+          >
+            {categoryLabel}
+          </a>
+        )}
+        <span class="block text-sm tracking-wide" style="font-family: 'UDC Working Man Sans', sans-serif; color: #1B422980;">
           {dateLabel}
         </span>
         <h1
@@ -52,3 +65,8 @@ const overhang = image ? "72px" : "0px";
     </div>
   </div>
 </section>
+
+<style>
+  .post-cat { background: #FFFFFF; color: #1B4229; border: 1px solid #1B422940; }
+  .post-cat:hover { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
+</style>

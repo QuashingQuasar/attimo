@@ -73,7 +73,7 @@ export async function getPostBySlug(
 ): Promise<BlogPost | null> {
   return sanityClient.fetch<BlogPost | null>(
     `*[_type == "post" && slug.current == $slug && coalesce(language, "en") == $lang][0] {
-      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, _updatedAt, contentUpdatedAt, excerpt, coverImage, body, seoTitle, seoDescription, noIndex, category,
       "language": coalesce(language, "en"), translationKey
     }`,
     { slug, lang }

@@ -1,7 +1,7 @@
 ---
 // Blog index: newest post as a wide tile, the rest as three-column tiles. Each tile is an image over a tinted text panel.
 import { urlFor } from "@/lib/sanity";
-import { BLOG_TINT } from "@/lib/blogTheme";
+import { BLOG_TINT, BLOG_CATEGORIES, BLOG_CATEGORY_KEYS } from "@/lib/blogTheme";
 
 interface Props {
   posts: any[];
@@ -23,16 +23,8 @@ const READ_MORE: Record<string, string> = {
 const lang = dateLocale.slice(0, 2);
 const readMore = READ_MORE[lang] || READ_MORE.en;
 
-const CATEGORIES: Record<string, Record<string, string>> = {
-  en: { all: "All", health: "Health", quality: "Quality", kitchen: "Kitchen" },
-  de: { all: "Alle", health: "Gesundheit", quality: "Qualität", kitchen: "Küche" },
-  fr: { all: "Tout", health: "Santé", quality: "Qualité", kitchen: "Cuisine" },
-  nl: { all: "Alles", health: "Gezondheid", quality: "Kwaliteit", kitchen: "Keuken" },
-  da: { all: "Alle", health: "Sundhed", quality: "Kvalitet", kitchen: "Køkken" },
-  sv: { all: "Alla", health: "Hälsa", quality: "Kvalitet", kitchen: "Kök" },
-};
-const catLabels = CATEGORIES[lang] || CATEGORIES.en;
-const catKeys = ["health", "quality", "kitchen"].filter((k) => posts.some((p) => p.category === k));
+const catLabels = BLOG_CATEGORIES[lang] || BLOG_CATEGORIES.en;
+const catKeys = BLOG_CATEGORY_KEYS.filter((k) => posts.some((p) => p.category === k));
 const pill =
   "rounded-md px-4 py-2 text-sm transition-colors duration-200 border";
 const pillStyle = "font-family: 'UDC Working Man Sans', sans-serif;";

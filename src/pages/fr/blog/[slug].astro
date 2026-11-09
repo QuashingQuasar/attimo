@@ -104,6 +104,8 @@ const formatDateShort = (dateStr: string) =>
               ? `Dernière mise à jour : ${formatDate(updatedAt)}`
               : formatDate(post.publishedAt)}
           title={post.title}
+          category={post.category}
+          lang="fr"
           image={post.coverImage ? urlFor(post.coverImage).width(1200).auto("format").url() : undefined}
         />
 
