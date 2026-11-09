@@ -39,17 +39,18 @@ const overhang = image ? "72px" : "0px";
       {backLabel}
     </a>
 
-    <div class={`grid grid-cols-1 gap-8 items-center ${image ? "md:grid-cols-2 md:gap-14" : "pb-12"}`}>
+    <div class={`grid grid-cols-1 gap-8 ${image ? "md:grid-cols-2 md:gap-14" : "pb-12"}`}>
       {image && (
-        <div class={`order-2 md:order-1 rounded-xl overflow-hidden ${frameStyle ? "" : "aspect-square"}`} style={frameStyle}>
+        <div class={`order-2 md:order-1 md:self-end rounded-xl overflow-hidden ${frameStyle ? "" : "aspect-square"}`} style={frameStyle}>
           <img src={image} alt={title} class="w-full h-full object-cover" />
         </div>
       )}
-      <div class="order-1 md:order-2">
+      <!-- Title block centres on the tinted part of the band (above the image overhang) and always keeps 40px clear of its edge. -->
+      <div class={`order-1 md:order-2 ${image ? "md:flex md:flex-col md:justify-center md:pb-[112px]" : ""}`}>
         {categoryLabel && (
           <a
             href={`${backHref}?category=${category}`}
-            class="post-cat inline-block mb-5 rounded-md px-3 py-1.5 text-xs transition-colors duration-200"
+            class="post-cat inline-block self-start mb-5 rounded-md px-3 py-1.5 text-xs transition-colors duration-200"
             style="font-family: 'UDC Working Man Sans', sans-serif; letter-spacing: 0.04em;"
           >
             {categoryLabel}
