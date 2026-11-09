@@ -87,6 +87,8 @@ Die Farbe verrät wenig über das Alter. Das Grün kommt vor allem von der Sorte
 
 Ja. Olivenöl, das seinen Höhepunkt überschritten hat, ist unbedenklich zu essen und gut zum Kochen. Das verlorene Aroma würde in der Pfanne ohnehin größtenteils verfliegen. Der Verlust zeigt sich, wenn Sie es roh verwenden, über Salat oder auf Brot, wo es gerade auf Geschmack und Polyphenole ankommt.
 
+[[IMAGE4]]
+
 Ranziges Öl wirft man besser weg. Ein Löffel davon schadet Ihnen nicht, aber es gibt Speisen einen abgestandenen, wachsigen Geschmack.
 
 ## Wie man Olivenöl lagert

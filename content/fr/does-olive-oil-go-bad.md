@@ -87,6 +87,8 @@ La couleur en dit peu sur l'âge. Le vert vient surtout de la variété et de la
 
 Oui. Une huile d'olive qui a passé son apogée se consomme sans risque et convient très bien à la cuisson. L'arôme qu'elle a perdu s'estomperait de toute façon en grande partie à la poêle. La perte se remarque quand vous l'utilisez crue, sur une salade ou du pain, là où la saveur et les polyphénols sont tout l'intérêt.
 
+[[IMAGE4]]
+
 Mieux vaut jeter une huile rance. Une cuillerée ne vous fera pas de mal, mais elle donne aux aliments un goût de vieux et de cire.
 
 ## Comment conserver l'huile d'olive

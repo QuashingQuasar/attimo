@@ -87,6 +87,8 @@ Farven fortæller ikke meget om alderen. Det grønne kommer mest fra sorten og [
 
 Ja. Olivenolie, der er over sit bedste, er sikker at spise og fin til madlavning. Den aroma, den har mistet, ville for det meste alligevel forsvinde i panden. Tabet viser sig, når du bruger den rå, på en salat eller på brød, hvor smagen og polyfenolerne er pointen.
 
+[[IMAGE4]]
+
 Harsk olie er bedre at smide ud. En skefuld skader dig ikke, men den giver maden en gammel, voksagtig smag.
 
 ## Sådan opbevarer du olivenolie

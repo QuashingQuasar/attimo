@@ -87,6 +87,8 @@ Färgen säger lite om åldern. Det gröna kommer mest från sorten och [olivern
 
 Ja. Olivolja som har passerat sin bästa tid är säker att äta och fungerar bra i matlagning. Aromen den har förlorat skulle ändå mest försvinna i pannan. Förlusten märks när du använder den rå, på en sallad eller på bröd, där smaken och polyfenolerna är själva poängen.
 
+[[IMAGE4]]
+
 Härsken olja är bättre att slänga. En sked skadar dig inte, men den ger maten en unken, vaxartad smak.
 
 ## Hur du förvarar olivolja

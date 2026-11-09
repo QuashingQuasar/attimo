@@ -87,6 +87,8 @@ Colour tells you little about age. The green comes mostly from the variety and t
 
 Yes. Olive oil past its best is safe to eat and fine for cooking. The aroma it has lost would mostly fade in the pan anyway. The loss shows when you use it raw, on a salad or bread, where flavour and polyphenols are the point.
 
+[[IMAGE4]]
+
 Rancid oil is better thrown away. A spoonful will not harm you, but it gives food a stale, waxy taste.
 
 ## How to store olive oil

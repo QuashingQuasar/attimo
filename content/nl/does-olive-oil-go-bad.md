@@ -87,6 +87,8 @@ Kleur zegt weinig over leeftijd. Het groen komt vooral van de variëteit en de [
 
 Ja. Olijfolie die niet meer op haar best is, is veilig om te eten en prima om mee te koken. Het aroma dat ze verloren heeft, zou in de pan toch grotendeels vervagen. Het verlies merk je wanneer je ze rauw gebruikt, op een salade of op brood, waar smaak en polyfenolen net de bedoeling zijn.
 
+[[IMAGE4]]
+
 Ranzige olie gooi je beter weg. Een lepel ervan doet je geen kwaad, maar ze geeft eten een muffe, wasachtige smaak.
 
 ## Zo bewaar je olijfolie
