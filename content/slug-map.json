@@ -96,5 +96,12 @@
   "sv": "olivolja-polyfenolindex",
   "da": "olivenolie-polyfenolindeks",
   "nl": "olijfolie-polyfenolindex"
+ },
+ "does-olive-oil-go-bad": {
+  "de": "wird-olivenoel-schlecht",
+  "fr": "huile-olive-perimee",
+  "sv": "blir-olivolja-dalig",
+  "da": "bliver-olivenolie-daarlig",
+  "nl": "wordt-olijfolie-slecht"
  }
 }

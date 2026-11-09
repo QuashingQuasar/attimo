@@ -1,0 +1,21 @@
+<svg viewBox="0 0 720 400" width="720" height="400" role="img" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ttl desc">
+<title id="ttl">A rich oil loses more polyphenols in a year, and keeps more</title>
+<desc id="desc">Two horizontal bars. An oil tested at 800 mg/kg loses 336 mg/kg in 12 months and keeps 464. An oil tested at 200 mg/kg loses 84 and keeps 116. Both use the 42% average loss measured across 160 extra virgin olive oils stored in the dark at 20 °C.</desc>
+<rect x="0" y="0" width="720" height="400" fill="#FFFAEA"/>
+<g font-family="'Space Grotesk', system-ui, sans-serif">
+<text x="28" y="44" font-size="25" font-weight="700" fill="#1B4229">A rich oil loses more in a year, and keeps more</text>
+<text x="28" y="68" font-size="14" fill="#1B4229" opacity="0.55">Polyphenols in mg/kg after 12 months in the dark at 20 °C, at the average loss of 42%</text>
+<text x="40" y="136" font-size="15" font-weight="700" fill="#1B4229">Oil tested at 800 mg/kg</text>
+<rect x="40" y="150" width="600.0" height="46" rx="4" fill="#9DAE84" fill-opacity="0.28" stroke="#9DAE84" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="40" y="150" width="348.0" height="46" rx="4" fill="#CDDB2D" fill-opacity="0.75"/>
+<text x="52" y="179" font-size="14" font-weight="700" fill="#1B4229">464 left</text>
+<text x="398.0" y="179" font-size="13" fill="#1B4229" opacity="0.7">336 lost</text>
+<text x="40" y="248" font-size="15" font-weight="700" fill="#1B4229">Oil tested at 200 mg/kg</text>
+<rect x="40" y="262" width="150.0" height="46" rx="4" fill="#9DAE84" fill-opacity="0.28" stroke="#9DAE84" stroke-width="1.2" stroke-dasharray="4 3"/>
+<rect x="40" y="262" width="87.0" height="46" rx="4" fill="#CDDB2D" fill-opacity="0.75"/>
+<text x="52" y="291" font-size="14" font-weight="700" fill="#1B4229">116 left</text>
+<text x="137.0" y="291" font-size="13" fill="#1B4229" opacity="0.7">84 lost</text>
+<text x="28" y="366" font-size="11" fill="#1B4229" opacity="0.45">Illustration on the average of 160 oils (Castillo-Luna et al., 2021). Individual oils varied by about 24 points either way.</text>
+<text x="28" y="382" font-size="11" fill="#1B4229" opacity="0.45">attimo-oil.com</text>
+</g>
+</svg>
