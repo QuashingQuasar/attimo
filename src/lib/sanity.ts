@@ -23,6 +23,8 @@ export interface BlogPostPreview {
   slug: { current: string };
   publishedAt: string;
   excerpt: string;
+  /** Blog index filter: "health" | "quality" | "kitchen". */
+  category?: string;
   coverImage: any;
   seoTitle?: string;
   seoDescription?: string;
@@ -47,7 +49,7 @@ export interface BlogPost extends BlogPostPreview {
 export async function getAllPosts(): Promise<BlogPostPreview[]> {
   return sanityClient.fetch<BlogPostPreview[]>(
     `*[_type == "post" && coalesce(language, "en") == "en"] | order(publishedAt desc) {
-      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex, category,
       "language": coalesce(language, "en"), translationKey
     }`
   );
@@ -58,7 +60,7 @@ export async function getAllPosts(): Promise<BlogPostPreview[]> {
 export async function getPostsByLang(lang: string): Promise<BlogPostPreview[]> {
   return sanityClient.fetch<BlogPostPreview[]>(
     `*[_type == "post" && coalesce(language, "en") == $lang] | order(publishedAt desc) {
-      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex,
+      _id, title, slug, publishedAt, excerpt, coverImage, seoTitle, seoDescription, noIndex, category,
       "language": coalesce(language, "en"), translationKey
     }`,
     { lang }
