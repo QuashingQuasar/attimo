@@ -89,15 +89,11 @@ export const Timeline = ({ locale }: { locale: Locale }) => {
           );
         })}
       </ol>
-      {/* Last update as a lit tag (same chartreuse as the current step), the
-          estimates caveat under it. Left-aligned on mobile with the vertical
-          timeline, centred from md. */}
-      <div className="mt-4 md:mt-8 flex flex-col items-start md:items-center gap-2 text-left md:text-center">
-        <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5" style={{ backgroundColor: C.CHARTREUSE, fontFamily: UDC, fontWeight: 700, fontSize: ".9rem", letterSpacing: ".08em", textTransform: "uppercase", lineHeight: 1, color: GREEN }}>
-          <span aria-hidden="true" className="inline-block rounded-full" style={{ width: 7, height: 7, backgroundColor: GREEN }} />
-          {updatedLine}
-        </span>
-        <p style={{ fontFamily: SG, fontSize: ".95rem", lineHeight: 1.5, color: gr(0.62) }}>{estimate}</p>
+      {/* Last update on its own line so it doesn't get lost in the caveat.
+          Left-aligned on mobile with the vertical timeline, centred from md. */}
+      <div className="mt-4 md:mt-8 text-left md:text-center" style={{ fontFamily: SG, fontSize: ".99rem", lineHeight: 1.5 }}>
+        <p style={{ fontWeight: 600, color: GREEN }}>{updatedLine}</p>
+        <p style={{ color: gr(0.62) }}>{estimate}</p>
       </div>
     </div>
   );
