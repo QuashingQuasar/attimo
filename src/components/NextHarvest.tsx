@@ -66,7 +66,7 @@ const NewNote = ({ ink, text }: { ink: string; text: string }) => (
 );
 
 export const Timeline = ({ locale }: { locale: Locale }) => {
-  const { current, steps, note } = useHarvestSection(locale);
+  const { current, steps, estimate, updatedLine } = useHarvestSection(locale);
   const n = steps.length;
   return (
     <div>
@@ -89,7 +89,16 @@ export const Timeline = ({ locale }: { locale: Locale }) => {
           );
         })}
       </ol>
-      <p className="mt-6 text-center" style={{ fontFamily: SG, fontSize: ".99rem", color: gr(0.62) }}>{note}</p>
+      {/* Last update as a lit tag (same chartreuse as the current step), the
+          estimates caveat under it. Left-aligned on mobile with the vertical
+          timeline, centred from md. */}
+      <div className="mt-4 md:mt-8 flex flex-col items-start md:items-center gap-2 text-left md:text-center">
+        <span className="inline-flex items-center gap-2 rounded-full px-3 py-1.5" style={{ backgroundColor: C.CHARTREUSE, fontFamily: UDC, fontWeight: 700, fontSize: ".9rem", letterSpacing: ".08em", textTransform: "uppercase", lineHeight: 1, color: GREEN }}>
+          <span aria-hidden="true" className="inline-block rounded-full" style={{ width: 7, height: 7, backgroundColor: GREEN }} />
+          {updatedLine}
+        </span>
+        <p style={{ fontFamily: SG, fontSize: ".95rem", lineHeight: 1.5, color: gr(0.62) }}>{estimate}</p>
+      </div>
     </div>
   );
 };
@@ -173,7 +182,7 @@ export const NextHarvest = ({ locale = DEFAULT_LOCALE }: { locale?: Locale }) =>
       {/* Timeline between the form and the panels; the section ends on the panels. */}
       <div className="px-4 md:px-6 pb-12 md:pb-16 mx-auto" style={{ maxWidth: 1190 }}>
         <Timeline locale={locale} />
-        <p className="mt-3 text-center">
+        <p className="mt-5 md:mt-3 text-left md:text-center">
           <a href={nhHrefFor(locale.lang)} className="inline-flex items-center hover:opacity-70 transition-opacity" style={{ fontFamily: UDC, fontWeight: 700, fontSize: ".95rem", letterSpacing: ".08em", textTransform: "uppercase", color: GREEN }}>
             {u.pageLink}
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginLeft: ".4em" }}>

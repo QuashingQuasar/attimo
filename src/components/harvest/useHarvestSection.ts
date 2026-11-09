@@ -31,13 +31,18 @@ export function useHarvestSection(locale: Locale) {
   const current = HARVEST_STATUS.currentStep;
   const updated = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long" }).format(new Date(HARVEST_STATUS.updated + "T12:00:00Z"));
   const note = u.note.replace("{date}", updated);
+  // The note is two sentences: the estimates caveat, then "Last updated {date}."
+  // Split so the date line can stand on its own.
+  const parts = u.note.split(/(?<=\.)\s+/);
+  const estimate = parts.filter((x) => !x.includes("{date}")).join(" ");
+  const updatedLine = (parts.find((x) => x.includes("{date}")) ?? "").replace("{date}", updated).replace(/\.$/, "");
   const p = HARVEST_STATUS.polyphenols;
   const oils: HarvestOil[] = [
     { key: "coratina", name: "Coratina", image: coratina, tag: u.returning, isNew: false, origin: u.origins.coratina, Flag: IT, flavour: flavour.coratina, polyphenols: p.coratina },
     { key: "peranzana", name: "Peranzana", image: peranzana, tag: u.new, isNew: true, origin: u.origins.peranzana, Flag: IT, flavour: flavour.nocellara, polyphenols: p.peranzana },
     { key: "picual", name: "Picual", image: picual, tag: u.returning, isNew: false, origin: u.origins.picual, Flag: ES, flavour: flavour.picual, polyphenols: p.picual },
   ];
-  return { u, oils, current, note, steps: u.steps };
+  return { u, oils, current, note, estimate, updatedLine, steps: u.steps };
 }
 
 export const FONTS = {
