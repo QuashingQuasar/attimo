@@ -57,6 +57,10 @@ export type MarketGuideContent = {
     footnote: string;
     /** Shown above the table when the columns can be sorted. */
     sortHint?: string;
+    /** One line explaining the score, shown above the table with the points per check. */
+    scoreNote?: string;
+    /** Footnote as separate bullets; replaces `footnote` when present. */
+    footnotes?: string[];
     links: { index: { title: string; text: string }; methods: { title: string; text: string } };
   };
   oils: {

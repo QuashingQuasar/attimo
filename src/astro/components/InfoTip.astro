@@ -1,58 +1,100 @@
 ---
-// A small "i" button that explains a term. Shows on hover, on keyboard focus
-// and on tap. The bubble is positioned by script so it is never clipped by a
-// scrolling table.
-interface Props { text: string; label: string; tone?: "light" | "dark" }
-const { text, label, tone = "light" } = Astro.props as Props;
+// Explanations on hover, keyboard focus or tap.
+//  - <InfoTip text label /> renders a small "i" button (used only next to the
+//    two polyphenol figures).
+//  - Any element with data-tip="…" shows the same bubble on hover, with no
+//    icon (method pills, scores, column headers).
+// One bubble lives on <body>, so no parent can clip it, offset it or change
+// how its text wraps. It is anchored to the element it explains, with a
+// pointer, above it when there is room and below it otherwise.
+interface Props { text?: string; label?: string; tone?: "light" | "dark" }
+const { text, label = "", tone = "light" } = Astro.props as Props;
 ---
 
-<span class="info-tip" data-tone={tone}>
-  <button type="button" class="info-tip-btn" aria-label={label}>i</button>
-  <span class="info-tip-pop" role="tooltip">{text}</span>
-</span>
+{text && <button type="button" class="info-tip-btn" data-tip={text} data-tone={tone} aria-label={label}>i</button>}
 
-<style>
-  .info-tip { display: inline-flex; vertical-align: middle; margin-left: .35em; }
+<style is:global>
   .info-tip-btn {
-    width: 1.15rem; height: 1.15rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 1.15rem; height: 1.15rem; margin-left: .4em; border-radius: 9999px; vertical-align: middle;
     font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: .7rem; line-height: 1; letter-spacing: 0; text-transform: none;
-    cursor: help; transition: background-color .15s ease, color .15s ease;
+    cursor: help; transition: background-color .15s ease, color .15s ease, border-color .15s ease;
   }
-  .info-tip[data-tone="light"] .info-tip-btn { color: #1B4229; border: 1.5px solid rgba(27,66,41,.45); background: transparent; }
-  .info-tip[data-tone="light"] .info-tip-btn:hover, .info-tip[data-tone="light"] .info-tip-btn:focus-visible { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
-  .info-tip[data-tone="dark"] .info-tip-btn { color: #FFFAEA; border: 1.5px solid rgba(255,250,234,.5); background: transparent; }
-  .info-tip[data-tone="dark"] .info-tip-btn:hover, .info-tip[data-tone="dark"] .info-tip-btn:focus-visible { background: #CDDB2D; color: #1B4229; border-color: #CDDB2D; }
-  .info-tip-pop {
-    position: fixed; z-index: 60; width: max-content; max-width: min(19rem, calc(100vw - 2rem));
-    padding: .75rem .9rem; border-radius: .6rem; background: #10221B; color: #FFFAEA;
-    font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: .86rem; line-height: 1.5; letter-spacing: 0; text-transform: none; text-align: left;
-    box-shadow: 0 10px 30px rgba(16,34,27,.28); pointer-events: none; opacity: 0; visibility: hidden; transition: opacity .12s ease;
+  .info-tip-btn[data-tone="light"] { color: #1B4229; border: 1.5px solid rgba(27,66,41,.45); background: transparent; }
+  .info-tip-btn[data-tone="light"]:hover, .info-tip-btn[data-tone="light"]:focus-visible, .info-tip-btn[data-tone="light"].is-active { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
+  .info-tip-btn[data-tone="dark"] { color: #FFFAEA; border: 1.5px solid rgba(255,250,234,.5); background: transparent; }
+  .info-tip-btn[data-tone="dark"]:hover, .info-tip-btn[data-tone="dark"]:focus-visible, .info-tip-btn[data-tone="dark"].is-active { background: #CDDB2D; color: #1B4229; border-color: #CDDB2D; }
+  [data-tip]:not(.info-tip-btn) { cursor: help; }
+  .tip-text { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: rgba(27,66,41,.4); }
+
+  #oil-tip {
+    position: fixed; z-index: 80; top: 0; left: 0; width: max-content; max-width: min(20rem, calc(100vw - 24px));
+    padding: .8rem 1rem; border-radius: .7rem; background: #10221B; color: #FFFAEA;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: .88rem; line-height: 1.5; letter-spacing: 0;
+    text-transform: none; text-align: left; white-space: normal; overflow-wrap: break-word;
+    box-shadow: 0 12px 32px rgba(16,34,27,.3); pointer-events: none;
+    opacity: 0; transform: translateY(4px); transition: opacity .12s ease, transform .12s ease;
   }
-  .info-tip.is-open .info-tip-pop { opacity: 1; visibility: visible; }
+  #oil-tip.is-open { opacity: 1; transform: translateY(0); }
+  #oil-tip::after {
+    content: ""; position: absolute; left: var(--arrow-x, 50%); width: 12px; height: 12px; background: #10221B;
+    transform: translateX(-50%) rotate(45deg); border-radius: 2px;
+  }
+  #oil-tip[data-side="top"]::after { bottom: -5px; }
+  #oil-tip[data-side="bottom"]::after { top: -5px; }
 </style>
 
 <script>
-  const place = (tip: HTMLElement) => {
-    const btn = tip.querySelector<HTMLElement>(".info-tip-btn")!;
-    const pop = tip.querySelector<HTMLElement>(".info-tip-pop")!;
-    const r = btn.getBoundingClientRect();
-    const w = pop.offsetWidth, h = pop.offsetHeight, m = 12;
-    let left = r.left + r.width / 2 - w / 2;
-    left = Math.max(m, Math.min(left, window.innerWidth - w - m));
-    const above = r.top - h - 8;
-    pop.style.left = `${left}px`;
-    pop.style.top = `${above > m ? above : r.bottom + 8}px`;
+  const bubble = (() => {
+    let el = document.getElementById("oil-tip");
+    if (!el) { el = document.createElement("div"); el.id = "oil-tip"; el.setAttribute("role", "tooltip"); document.body.appendChild(el); }
+    return el;
+  })();
+  let current: HTMLElement | null = null;
+
+  const place = (trigger: HTMLElement) => {
+    const r = trigger.getBoundingClientRect();
+    const w = bubble.offsetWidth, h = bubble.offsetHeight, m = 12, gap = 10;
+    const cx = r.left + r.width / 2;
+    const left = Math.max(m, Math.min(cx - w / 2, window.innerWidth - w - m));
+    const top = r.top - h - gap >= m ? r.top - h - gap : r.bottom + gap;
+    bubble.dataset.side = top < r.top ? "top" : "bottom";
+    bubble.style.left = `${left}px`;
+    bubble.style.top = `${top}px`;
+    bubble.style.setProperty("--arrow-x", `${Math.max(14, Math.min(cx - left, w - 14))}px`);
   };
-  const open = (tip: HTMLElement) => { document.querySelectorAll(".info-tip.is-open").forEach((t) => t !== tip && t.classList.remove("is-open")); tip.classList.add("is-open"); place(tip); };
-  const close = (tip: HTMLElement) => tip.classList.remove("is-open");
-  document.querySelectorAll<HTMLElement>(".info-tip").forEach((tip) => {
-    const btn = tip.querySelector<HTMLElement>(".info-tip-btn")!;
-    tip.addEventListener("mouseenter", () => open(tip));
-    tip.addEventListener("mouseleave", () => close(tip));
-    btn.addEventListener("focus", () => open(tip));
-    btn.addEventListener("blur", () => close(tip));
-    btn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); tip.classList.contains("is-open") ? close(tip) : open(tip); });
-  });
-  document.addEventListener("click", () => document.querySelectorAll(".info-tip.is-open").forEach((t) => t.classList.remove("is-open")));
-  window.addEventListener("scroll", () => document.querySelectorAll(".info-tip.is-open").forEach((t) => t.classList.remove("is-open")), { passive: true });
+  const show = (trigger: HTMLElement) => {
+    const text = trigger.dataset.tip;
+    if (!text) return;
+    current?.classList.remove("is-active");
+    current = trigger;
+    trigger.classList.add("is-active");
+    bubble.textContent = text;
+    bubble.classList.add("is-open");
+    place(trigger);
+  };
+  const hide = () => {
+    current?.classList.remove("is-active");
+    current = null;
+    bubble.classList.remove("is-open");
+  };
+
+  if (!(window as any).__oilTipBound) {
+    (window as any).__oilTipBound = true;
+    const find = (t: EventTarget | null) => (t instanceof Element ? (t.closest("[data-tip]") as HTMLElement | null) : null);
+    document.addEventListener("pointerover", (e) => { if ((e as PointerEvent).pointerType === "touch") return; const t = find(e.target); if (t && t !== current) show(t); });
+    document.addEventListener("pointerout", (e) => { if ((e as PointerEvent).pointerType === "touch") return; const t = find(e.target); if (t && t === current && !t.contains(e.relatedTarget as Node)) hide(); });
+    document.addEventListener("focusin", (e) => { const t = find(e.target); if (t) show(t); });
+    document.addEventListener("focusout", (e) => { const t = find(e.target); if (t && t === current) hide(); });
+    // Tap: the "i" button toggles its bubble; any other tap closes it.
+    document.addEventListener("click", (e) => {
+      const t = find(e.target);
+      if (t && t.classList.contains("info-tip-btn")) { e.preventDefault(); e.stopPropagation(); t === current ? hide() : show(t); return; }
+      // Other explained elements toggle on tap too, unless tapping them does something else (sort, link).
+      if (t && !t.matches("a, button")) { t === current ? hide() : show(t); return; }
+      if (!t) hide();
+    });
+    window.addEventListener("scroll", hide, { passive: true });
+    window.addEventListener("resize", hide);
+  }
 </script>

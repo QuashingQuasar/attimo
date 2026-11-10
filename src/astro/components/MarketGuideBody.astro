@@ -175,28 +175,29 @@ const shipEur = (ev: ShipEvidence): number | null => {
   return sym === "$" ? v * FX.USD : sym === "£" ? v * FX.GBP : sym === "kr" ? null : v;
 };
 const scoreTip = (e: IndexEntry) => tips
-  ? tips.score.replace("{breakdown}", c.criteria.items.map((it) => tips.scoreLine.replace("{name}", tips.checks[it.key]).replace("{got}", dec(Math.round((it.weight / 10) * scoreOf(e, it.key) * 10) / 10).replace(/[.,]00$/, "").replace(/0$/, "")).replace("{max}", String(it.weight / 10))).join(", "))
+  ? tips.score.replace("{breakdown}", c.criteria.items.map((it) => tips.scoreLine.replace("{name}", tips.checks[it.key].toLowerCase()).replace("{got}", dec(Math.round((it.weight / 10) * scoreOf(e, it.key) * 10) / 10).replace(/[.,]00$/, "").replace(/0$/, "")).replace("{max}", String(it.weight / 10))).join(", "))
   : null;
+const chevron = '<svg class="oil-acc-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5 L7 9 L11 5" /></svg>';
 const detailLabel = `font-family:${UDC}; font-weight:700; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:${GREEN};`;
 const checkedHuman = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long", year: "numeric" }).format(new Date(checked + "T12:00:00Z"));
 // Table columns. Widths keep all eight on one screen from 1024 px.
 const COLS = [
-  { key: "oil", label: c.table.cols.oil, num: false, w: "var(--oil-w)", tip: null },
-  { key: "total", label: c.table.cols.total, num: true, w: "11%", tip: tips?.total },
-  { key: "compounds", label: c.table.cols.compounds, num: true, w: "12%", tip: tips?.compounds },
-  { key: "method", label: c.table.cols.method, num: false, w: "10%", tip: null },
-  { key: "price", label: c.table.cols.price, num: true, w: "10%", tip: null },
-  { key: "value", label: c.table.cols.value, num: true, w: "12%", tip: tips?.value },
-  { key: "ship", label: c.glance.labels.cost, num: true, w: "13%", tip: null },
-  { key: "score", label: c.table.cols.score, num: true, w: "8%", tip: null },
+  { key: "oil", label: c.table.cols.oil, num: false, w: "var(--oil-w)", tip: null, icon: false },
+  { key: "total", label: c.table.cols.total, num: true, w: "11%", tip: tips?.total, icon: true },
+  { key: "compounds", label: c.table.cols.compounds, num: true, w: "12%", tip: tips?.compounds, icon: true },
+  { key: "method", label: c.table.cols.method, num: false, w: "10%", tip: null, icon: false },
+  { key: "price", label: c.table.cols.price, num: true, w: "10%", tip: null, icon: false },
+  { key: "value", label: c.table.cols.value, num: true, w: "12%", tip: tips?.value, icon: false },
+  { key: "ship", label: c.glance.labels.cost, num: true, w: "13%", tip: null, icon: false },
+  { key: "score", label: c.table.cols.score, num: true, w: "8%", tip: tips?.scoreHead ?? null, icon: false },
 ];
 const DEFAULT_SORT = "compounds";
 // One oil, two methods: the published pair from the Index.
 const pair = entries.find((e) => e.id === "olivea-ultra-high-phenolic" && e.total_secondary);
 const pairBars = pair ? [
-  { label: (idx.total ?? "Total, {method}").replace("{method}", pair.total_secondary!.method), v: pair.total_secondary!.value, c: "#8A9B6F" },
-  { label: (idx.total ?? "Total, {method}").replace("{method}", pair.method), v: pair.total!, c: "#5C6E45" },
-  { label: c.number.visual?.compounds ?? "", v: pair.compounds!, c: GREEN },
+  { label: (idx.total ?? "Total, {method}").replace("{method}", pair.total_secondary!.method), v: pair.total_secondary!.value, c: "#9DAE84", hi: false },
+  { label: (idx.total ?? "Total, {method}").replace("{method}", pair.method), v: pair.total!, c: "#9DAE84", hi: false },
+  { label: c.number.visual?.compounds ?? "", v: pair.compounds!, c: ACCENT, hi: true },
 ] : [];
 const pairMax = pair ? Math.max(...pairBars.map((b) => b.v)) : 1;
 const bar = (v: number, dark: boolean) => `display:block; height:6px; border-radius:3px; background:${dark ? "rgba(255,250,234,.15)" : "rgba(27,66,41,.12)"}; position:relative; overflow:hidden;`;
@@ -268,50 +269,49 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                   { label: c.glance.labels.compounds, value: e.compounds !== null ? num(e.compounds) : "–", lines: e.compounds !== null ? ["mg/kg", `${num(e.oleocanthal!)} oleocanthal`, `${num(e.oleacein!)} oleacein`] : ["", c.glance.labels.notStated], tip: tips?.compounds },
                 ]}
                 rows={[
-                  { label: c.glance.labels.price, parts: [{ text: p.main }], sub: [p.original, valueOf(e) ? c.glance.labels.value.replace("€", valueOf(e)) : ""].filter(Boolean).join(" · ") || null, subTip: valueOf(e) ? tips?.value : null },
+                  { label: c.glance.labels.price, parts: [{ text: p.main }], sub: p.original || null, extra: valueOf(e) ? { text: c.glance.labels.value.replace("€", valueOf(e)), tip: tips?.value } : null },
                   { label: c.glance.labels.cost, parts: [{ text: shipLine(ev) }, ...(ev.days !== "not stated" ? [{ text: ev.days }] : [])] },
                   { label: c.glance.labels.buy, parts: [{ text: buyLabel(ev) }, ...(src.href ? [{ text: src.label, href: src.href, external: !mine }] : [])] },
                   { label: idx.harvest, parts: [{ text: e.harvest, strong: true }, e.report.status === "viewable" ? { text: idx.labReport, href: isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref, external: !mine } : { text: idx.nonePublished }] },
                 ]}
-                detailsLabel={DETAILS[c.lang] ?? DETAILS.en}
               >
-                <div class="grid gap-6" style={`font-family:${SG};`}>
-                  <div>
-                    <p class="mb-1.5" style={detailLabel}>{c.oils.labels.standsOut}</p>
-                    <p style={`font-size:.95rem; line-height:1.6; color:${onCream(0.85)};`}>{per.standsOut ? fill(per.standsOut) : notes[e.id] ?? e.note}</p>
-                  </div>
+                <div class="oil-acc mt-1" style={`font-family:${SG}; border-top:1px solid ${onCream(0.13)};`}>
+                  <details class="oil-acc-item">
+                    <summary><span>{c.oils.labels.standsOut}</span><Fragment set:html={chevron} /></summary>
+                    <div class="oil-acc-body"><p style={`font-size:.95rem; line-height:1.6; color:${onCream(0.85)};`}>{per.standsOut ? fill(per.standsOut) : notes[e.id] ?? e.note}</p></div>
+                  </details>
                   {per.forWho && (
-                    <div class="rounded-xl px-4 py-3.5" style="background-color:rgba(179,229,140,.38);">
-                      <p class="mb-1" style={detailLabel}>{c.oils.labels.forWho}</p>
-                      <p style={`font-size:.95rem; line-height:1.55; color:${GREEN};`}>{per.forWho}</p>
-                    </div>
+                    <details class="oil-acc-item">
+                      <summary><span>{c.oils.labels.forWho}</span><Fragment set:html={chevron} /></summary>
+                      <div class="oil-acc-body"><p class="rounded-xl px-4 py-3.5" style={`font-size:.95rem; line-height:1.55; color:${GREEN}; background-color:rgba(179,229,140,.38);`}>{per.forWho}</p></div>
+                    </details>
                   )}
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <p class="mb-2.5" style={detailLabel}>{c.oils.labels.pros}</p>
-                      <ul class="grid gap-2.5">{pros.length ? pros.map((x) => (
+                  <details class="oil-acc-item">
+                    <summary><span>{c.oils.labels.pros} · {c.oils.labels.cons}</span><span class="oil-acc-count" style={`color:${onCream(0.55)};`}>+{pros.length} −{cons.length}</span><Fragment set:html={chevron} /></summary>
+                    <div class="oil-acc-body grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <ul class="grid gap-2.5 content-start">{pros.length ? pros.map((x) => (
                         <li class="flex items-start gap-2.5" style={`font-size:.9rem; line-height:1.45; color:${GREEN};`}>
                           <span aria-hidden="true" class="flex-shrink-0 inline-flex items-center justify-center rounded-full mt-px" style="width:18px; height:18px; background-color:#1A431D;"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#B3E58C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.2 L4.2 7.3 L8 2.8" /></svg></span>
                           <span>{x}</span>
                         </li>
                       )) : <li style={`font-size:.9rem; color:${onCream(0.5)};`}>–</li>}</ul>
-                    </div>
-                    <div>
-                      <p class="mb-2.5" style={detailLabel}>{c.oils.labels.cons}</p>
-                      <ul class="grid gap-2.5">{cons.length ? cons.map((x) => (
+                      <ul class="grid gap-2.5 content-start">{cons.length ? cons.map((x) => (
                         <li class="flex items-start gap-2.5" style={`font-size:.9rem; line-height:1.45; color:${onCream(0.85)};`}>
                           <span aria-hidden="true" class="flex-shrink-0 inline-flex items-center justify-center rounded-full mt-px" style="width:18px; height:18px; background-color:#E53935;"><svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round"><path d="M1.5 1.5 L6.5 6.5 M6.5 1.5 L1.5 6.5" /></svg></span>
                           <span>{x}</span>
                         </li>
                       )) : <li style={`font-size:.9rem; color:${onCream(0.5)};`}>–</li>}</ul>
                     </div>
-                  </div>
+                  </details>
                   {(!mine && (ev.notes || src.quote)) && (
-                    <div class="rounded-xl p-4" style={`background-color:#FFFFFF; border:1px solid ${onCream(0.14)};`}>
-                      <p class="mb-2" style={detailLabel}>{c.oils.labels.source}: <a href={src.href} class="underline underline-offset-4" rel="nofollow noopener" target="_blank" style="text-transform:none; letter-spacing:0;">{src.label} ↗</a></p>
-                      {src.quote && <p class="mb-2 pl-3" style={`font-size:.9rem; line-height:1.5; font-style:italic; color:${GREEN}; border-left:3px solid ${ACCENT};`}>“{src.quote}”</p>}
-                      {ev.notes && <p style={`font-size:.86rem; line-height:1.5; color:${onCream(0.72)};`}>{ev.notes}</p>}
-                    </div>
+                    <details class="oil-acc-item">
+                      <summary><span>{c.oils.labels.source}</span><Fragment set:html={chevron} /></summary>
+                      <div class="oil-acc-body">
+                        {src.quote && <p class="mb-2 pl-3" style={`font-size:.92rem; line-height:1.5; font-style:italic; color:${GREEN}; border-left:3px solid ${ACCENT};`}>“{src.quote}”</p>}
+                        {ev.notes && <p class="mb-2" style={`font-size:.88rem; line-height:1.5; color:${onCream(0.75)};`}>{ev.notes}</p>}
+                        <a href={src.href} class="underline underline-offset-4" rel="nofollow noopener" target="_blank" style={`font-size:.88rem; font-weight:600; color:${GREEN};`}>{src.label} ↗</a>
+                      </div>
+                    </details>
                   )}
                 </div>
               </OilCard>
@@ -321,24 +321,21 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
       </div>
     </section>
 
-    <!-- CRITERIA: what to check, and how many points each check carries -->
+    <!-- CRITERIA: what a buyer should look for -->
     <section id="criteria" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
       <div class="container mx-auto max-w-6xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.criteria.eyebrow}</p>
-        <h2 class="mb-5 max-w-4xl" style={`${h2} color:${GREEN};`}>{c.criteria.h2}</h2>
-        <p class="mb-12" style={`${lead} color:${onCream(0.78)};`}>{c.criteria.intro}</p>
+        <h2 class={`max-w-4xl ${c.criteria.intro ? "mb-5" : "mb-12"}`} style={`${h2} color:${GREEN};`}>{c.criteria.h2}</h2>
+        {c.criteria.intro && <p class="mb-12" style={`${lead} color:${onCream(0.78)};`}>{c.criteria.intro}</p>}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {c.criteria.items.map((it) => (
-            <div class="flex gap-5 p-6 md:p-7 rounded-2xl" style={`background-color:#FFFFFF; border:1px solid ${GREEN};`}>
-              <span class="flex-shrink-0 inline-flex items-center justify-center rounded-full" style={`width:56px; height:56px; background-color:${GREEN};`}>
-                <span aria-hidden="true" style={`display:block; width:30px; height:30px; background-color:${ACCENT}; -webkit-mask:url(${it.icon}) center/contain no-repeat; mask:url(${it.icon}) center/contain no-repeat;`}></span>
+            <div class="flex gap-5 md:gap-6 p-6 md:p-8 rounded-2xl" style={`background-color:#FFFFFF; border:1px solid ${GREEN};`}>
+              <span class="flex-shrink-0 inline-flex items-center justify-center rounded-full" style={`width:76px; height:76px; background-color:${ACCENT};`}>
+                <span aria-hidden="true" style={`display:block; width:46px; height:46px; background-color:${GREEN}; -webkit-mask:url(${it.icon}) center/contain no-repeat; mask:url(${it.icon}) center/contain no-repeat;`}></span>
               </span>
               <div class="min-w-0">
-                <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-2">
-                  <p style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; line-height:1.2; color:${GREEN};`}>{it.title}</p>
-                  {c.criteria.points && <span class="rounded-full px-2.5 py-1" style={`${eyebrowSm} font-size:.68rem; line-height:1; background-color:${ACCENT}; color:${GREEN};`}>{c.criteria.points.replace("{n}", String(it.weight / 10))}</span>}
-                </div>
-                <p style={`${small} font-size:.98rem; color:${onCream(0.8)};`}>{it.text}</p>
+                <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; line-height:1.2; color:${GREEN};`}>{it.title}</p>
+                <p style={`${small} font-size:1rem; color:${onCream(0.8)};`}>{it.text}</p>
               </div>
             </div>
           ))}
@@ -352,6 +349,16 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.table.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
         <p class="mb-8" style={`${lead} color:${onCream(0.8)};`}>{c.table.intro}</p>
+        {c.table.scoreNote && (
+          <div class="mb-8 flex flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl px-5 py-4" style={`background-color:${GREEN}; color:${CREAM};`}>
+            <p style={`font-family:${SG}; font-size:.95rem; line-height:1.45; color:${onGreen(0.9)};`}>{c.table.scoreNote}</p>
+            <ul class="flex flex-wrap gap-2">
+              {c.criteria.items.map((it) => (
+                <li class="rounded-full px-3 py-1.5" style={`${eyebrowSm} font-size:.7rem; line-height:1; background-color:rgba(255,250,234,.1); border:1px solid rgba(255,250,234,.25); color:${CREAM};`}>{(tips?.checks[it.key] ?? it.title)} <span style={`color:${ACCENT};`}>{it.weight / 10}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div class="guide-table-wrap rounded-2xl" style={`background-color:#FFFFFF; border:1px solid ${onCream(0.2)};`}>
           <table class="guide-table w-full" data-sortable style={`font-family:${SG}; border-collapse:collapse;`}>
             <thead>
@@ -359,10 +366,10 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                 {COLS.map((col) => (
                   <th scope="col" class={`px-3 py-3 align-bottom ${col.num ? "text-right" : "text-left"} ${col.key === "oil" ? "guide-sticky" : ""}`} style={`border-bottom:2px dashed ${GREEN}; width:${col.w};`} aria-sort={col.key === DEFAULT_SORT ? "descending" : undefined}>
                     <span class={`inline-flex items-end gap-1 ${col.num ? "justify-end" : ""}`}>
-                      <button type="button" class="guide-sort text-left" data-key={col.key} data-num={col.num ? "1" : "0"} style={`${eyebrowSm} font-size:.68rem; line-height:1.3; letter-spacing:.08em; color:${GREEN};`}>
-                        {col.label}<span class="guide-sort-arrow" aria-hidden="true">{col.key === DEFAULT_SORT ? " ↓" : ""}</span>
+                      <button type="button" class="guide-sort text-left" data-key={col.key} data-num={col.num ? "1" : "0"} data-tip={!col.icon && col.tip ? col.tip : undefined} style={`${eyebrowSm} font-size:.68rem; line-height:1.3; letter-spacing:.08em; color:${GREEN};`}>
+                        <span class={!col.icon && col.tip ? "tip-text" : ""}>{col.label}</span><span class="guide-sort-arrow" aria-hidden="true">{col.key === DEFAULT_SORT ? " ↓" : ""}</span>
                       </button>
-                      {col.tip && <InfoTip text={col.tip} label={tl(col.label)} />}
+                      {col.icon && col.tip && <InfoTip text={col.tip} label={tl(col.label)} />}
                     </span>
                   </th>
                 ))}
@@ -384,18 +391,20 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     </td>
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{e.total !== null ? num(e.total) : "–"}</td>
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{e.compounds !== null ? num(e.compounds) : <span style={`color:${onCream(0.35)};`}>–</span>}</td>
-                    <td class="px-3 py-3" style={`font-size:.88rem; color:${onCream(0.85)};`}>{methodOf(e) === "not stated" ? c.glance.labels.notStated : methodOf(e)}</td>
+                    <td class="px-3 py-3" style={`font-size:.88rem; color:${onCream(0.85)};`}><span class={tips?.method[e.method] ? "tip-text" : ""} data-tip={tips?.method[e.method]} tabindex={tips?.method[e.method] ? 0 : undefined}>{methodOf(e) === "not stated" ? c.glance.labels.notStated : methodOf(e)}</span></td>
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-size:.92rem; color:${GREEN};`}>{p.eur !== null ? p.short : <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-size:.92rem; color:${GREEN};`}>{valueOf(e) || <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-3 py-3" style={`font-size:.86rem; line-height:1.35; color:${onCream(0.85)};`}>{mine && c.attimoShipping?.short ? c.attimoShipping.short : shipLine(ev)}</td>
-                    <td class="px-3 py-3 text-right whitespace-nowrap"><span class="inline-flex items-center justify-end"><span style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{totalScore(e).toFixed(1)}</span>{scoreTip(e) && <InfoTip text={scoreTip(e)!} label={tl(c.oils.labels.score)} />}</span></td>
+                    <td class="px-3 py-3 text-right whitespace-nowrap"><span class={scoreTip(e) ? "tip-text" : ""} data-tip={scoreTip(e) || undefined} tabindex={scoreTip(e) ? 0 : undefined} style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{totalScore(e).toFixed(1)}</span></td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
         </div>
-        <p class="mt-5 max-w-4xl" style={`${small} font-size:.88rem; color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</p>
+        {c.table.footnotes
+          ? <ul class="mt-5 grid gap-1.5 max-w-4xl list-disc pl-5" style={`${small} font-size:.88rem; color:${onCream(0.68)};`}>{c.table.footnotes.map((f) => <li>{f.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</li>)}</ul>
+          : <p class="mt-5 max-w-4xl" style={`${small} font-size:.88rem; color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</p>}
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px rounded-2xl overflow-hidden" style={`background-color:rgba(255,250,234,.15);`}>
           {[{ href: indexHref, ...c.table.links.index }, { href: methodsHref, ...c.table.links.methods }].map((l) => (
@@ -412,57 +421,47 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
     </section>
 
     <!-- THE NUMBER: how to read a polyphenol figure, with one oil tested two ways -->
-    <section id="number" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${c.number.visual ? LIME : CREAM};`}>
-      <div class={`container mx-auto max-w-6xl ${c.number.visual ? "grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center" : ""}`}>
-        <div>
-          <p class="mb-5" style={`${eyebrow} color:${onCream(0.6)};`}>{c.number.eyebrow}</p>
-          <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.number.h2}</h2>
-          <p class="mb-8" style={`${lead} color:${onCream(0.85)};`}>{c.number.intro}</p>
-          {c.number.visual
-            ? (
-              <ol class="grid gap-5 mb-8">
-                {c.number.steps.map((st, i) => (
-                  <li class="grid grid-cols-[2.25rem_1fr] gap-4">
-                    <span class="inline-flex w-9 h-9 rounded-full items-center justify-center" style={`background-color:${GREEN}; color:${ACCENT}; font-family:${UDC}; font-weight:700; font-size:.95rem;`}>{i + 1}</span>
-                    <span>
-                      <span class="block mb-1" style={`font-family:${UDC}; font-weight:700; font-size:1.12rem; line-height:1.25; color:${GREEN};`}>{st.title}</span>
-                      <span class="block" style={`${small} font-size:.98rem; color:${onCream(0.85)};`}>{st.text}</span>
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            )
-            : (
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-                {c.number.steps.map((st, i) => (
-                  <div class="p-6" style={cardOnCream}>
-                    <span class="inline-flex w-9 h-9 rounded-full items-center justify-center mb-4" style={`background-color:${GREEN}; color:${CREAM}; font-family:${UDC}; font-size:.95rem;`}>{i + 1}</span>
-                    <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:1.1rem; color:${GREEN};`}>{st.title}</p>
-                    <p style={`${small} color:${onCream(0.8)};`}>{st.text}</p>
+    <section id="number" class="py-20 md:py-28 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.number.eyebrow}</p>
+        <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.number.h2}</h2>
+        <p class="mb-12 max-w-4xl" style={`${lead} color:${onCream(0.8)};`}>{c.number.intro}</p>
+        <div class={c.number.visual && pair ? "grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start" : ""}>
+          <ol class={c.number.visual && pair ? "" : "grid grid-cols-1 md:grid-cols-3 gap-8"}>
+            {c.number.steps.map((st, i) => (
+              <li class={`grid grid-cols-[3.5rem_1fr] gap-4 ${c.number.visual && pair ? "py-6" : ""}`} style={c.number.visual && pair ? `border-top:1px solid ${onCream(0.18)};` : ""}>
+                <span style={`font-family:${UDC}; font-weight:300; font-size:2.6rem; line-height:.9; letter-spacing:-0.03em; color:${onCream(0.3)};`}>{String(i + 1).padStart(2, "0")}</span>
+                <span>
+                  <span class="block mb-1.5" style={`font-family:${UDC}; font-weight:700; font-size:1.2rem; line-height:1.25; color:${GREEN};`}>{st.title}</span>
+                  <span class="block" style={`${small} font-size:1rem; color:${onCream(0.8)};`}>{st.text}</span>
+                </span>
+              </li>
+            ))}
+            <li class={c.number.visual && pair ? "pt-6" : "md:col-span-3"} style={c.number.visual && pair ? `border-top:1px solid ${onCream(0.18)};` : ""}>
+              <a href={methodsHref} class="inline-block" style={`${btn} background-color:${GREEN}; color:${CREAM};`}>{c.number.cta} →</a>
+            </li>
+          </ol>
+          {c.number.visual && pair && (
+            <figure class="rounded-2xl p-7 md:p-9" style={`background-color:${GREEN}; color:${CREAM};`}>
+              <p class="mb-2" style={`font-family:${UDC}; font-weight:700; font-size:clamp(1.35rem,2.2vw,1.7rem); line-height:1.15; color:${CREAM};`}>{c.number.visual.title}</p>
+              <p class="mb-8" style={`font-family:${SG}; font-size:.95rem; color:${onGreen(0.75)};`}>{pair.brand} {pair.oil} · {pair.harvest}</p>
+              <div class="grid gap-6">
+                {pairBars.map((b) => (
+                  <div>
+                    <div class="flex items-baseline justify-between gap-4 mb-2">
+                      <span style={`font-family:${SG}; font-weight:600; font-size:.92rem; color:${onGreen(0.85)};`}>{b.label}</span>
+                      <span style={`font-family:${UDC}; font-weight:700; font-size:1.5rem; line-height:1; color:${b.hi ? ACCENT : CREAM};`}>{num(b.v)} <span style={`font-family:${SG}; font-weight:400; font-size:.8rem; color:${onGreen(0.65)};`}>mg/kg</span></span>
+                    </div>
+                    <div class="rounded-full h-3" style="background-color:rgba(255,250,234,.1);">
+                      <div class="rounded-full h-3" style={`width:${Math.round((b.v / pairMax) * 100)}%; background-color:${b.c};`}></div>
+                    </div>
                   </div>
                 ))}
               </div>
-            )}
-          <a href={methodsHref} class="inline-block" style={`${btn} background-color:${GREEN}; color:${CREAM};`}>{c.number.cta} →</a>
+              <figcaption class="mt-8 pt-5" style={`${small} font-size:.86rem; color:${onGreen(0.65)}; border-top:1px solid rgba(255,250,234,.15);`}>{c.number.visual.caption}</figcaption>
+            </figure>
+          )}
         </div>
-        {c.number.visual && pair && (
-          <figure class="rounded-2xl p-6 md:p-8" style={`background-color:${CREAM};`}>
-            <p class="mb-1" style={`${eyebrowSm} font-size:.78rem; color:${onCream(0.6)};`}>{c.number.visual.title}</p>
-            <p class="mb-7" style={`font-family:${UDC}; font-weight:700; font-size:1.35rem; color:${GREEN};`}>{pair.brand} {pair.oil}</p>
-            <div class="grid gap-4">
-              {pairBars.map((b) => (
-                <div>
-                  <p class="mb-1.5" style={`font-family:${SG}; font-weight:600; font-size:.88rem; color:${onCream(0.8)};`}>{b.label}</p>
-                  <div class="grid grid-cols-[1fr_auto] items-center gap-4">
-                    <div class="rounded-lg h-11" style={`width:${Math.round((b.v / pairMax) * 100)}%; background-color:${b.c};`}></div>
-                    <span style={`font-family:${UDC}; font-weight:700; font-size:1.25rem; color:${GREEN};`}>{num(b.v)}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <figcaption class="mt-6" style={`${small} font-size:.86rem; color:${onCream(0.65)};`}>mg/kg · {c.number.visual.caption}</figcaption>
-          </figure>
-        )}
       </div>
     </section>
 
@@ -504,6 +503,18 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
   .guide-table { table-layout: fixed; min-width: 980px; --oil-w: 24%; }
   .guide-table-wrap { overflow-x: auto; }
   .guide-sort { cursor: pointer; }
+  .oil-acc-item { border-bottom: 1px solid rgba(27,66,41,.13); }
+  .oil-acc-item > summary {
+    display: flex; align-items: center; gap: .75rem; padding: .95rem 0; cursor: pointer; list-style: none; user-select: none;
+    font-family: 'UDC Working Man Sans', sans-serif; font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: #1B4229;
+  }
+  .oil-acc-item > summary::-webkit-details-marker { display: none; }
+  .oil-acc-item > summary > span:first-child { flex: 1; }
+  .oil-acc-item > summary:hover { color: #10221B; }
+  .oil-acc-count { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .8rem; letter-spacing: 0; }
+  .oil-acc-chev { transition: transform .2s ease; flex-shrink: 0; }
+  .oil-acc-item[open] .oil-acc-chev { transform: rotate(180deg); }
+  .oil-acc-body { padding: 0 0 1.1rem; }
   .guide-sort:hover { text-decoration: underline; text-underline-offset: 3px; }
   @media (max-width: 1023px) {
     .guide-table { min-width: 700px; --oil-w: 150px; }

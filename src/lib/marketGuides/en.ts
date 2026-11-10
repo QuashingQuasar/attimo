@@ -59,8 +59,7 @@ export const en: MarketGuideContent = {
   criteria: {
     eyebrow: "What to check",
     h2: "A good high-polyphenol oil shows its harvest date, lab report, test method and delivery",
-    intro: "The same four points make up each oil's score on this page, out of 10.",
-    points: "{n} points",
+    intro: "",
     items: [
       { key: "report", title: "A lab report you can open", text: "Polyphenols are the compounds that make olive oil bitter and peppery, and they are behind most of its researched health effects. A figure on a label is a claim. A lab report with the lab's name on it lets you check it.", weight: 30, icon: "/icons/flask.svg" },
       { key: "delivery", title: "Shipping to your country", text: "Many high-polyphenol brands sell only in the United States. The seller's own website should name your country, or say it ships across the EU, with the cost and delivery time.", weight: 30, icon: "/icons/branch-2.svg" },
@@ -73,6 +72,12 @@ export const en: MarketGuideContent = {
     h2: "Compare the oils on polyphenols, price and shipping",
     intro: "Click a column to sort by it. Click an oil to open its card.",
     sortHint: "Sorted by",
+    scoreNote: "Each oil's score is out of 10, from four checks on what its producer publishes. Points per check:",
+    footnotes: [
+      "Polyphenols in mg/kg, from each producer's lab report.",
+      "Prices are the producer's own, from {verified}. Dollar and pound prices are converted to euros at the European Central Bank rate.",
+      "Shipping costs as listed on the seller's website on {checked}.",
+    ],
     cols: { oil: "Oil", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", method: "Test method", price: "Price per 500 ml", value: "Price per 100 mg oleocanthal + oleacein", buy: "How to buy in the Netherlands", days: "Delivery", score: "Score" },
     buy: { webshop: "Web shop, ships to the Netherlands", webshopEu: "Web shop, ships EU-wide", webshopWorld: "Web shop, ships internationally", retailer: "Through a shop", distributor: "Through a distributor", request: "On request" },
     footnote: "Polyphenols in milligrams per kilo of oil, from each producer's lab report. Prices are the producer's own, from {verified}; dollar and pound prices are converted to euros at the European Central Bank rate. Shipping costs as listed on {checked}.",
@@ -104,7 +109,7 @@ export const en: MarketGuideContent = {
       { title: "Oleocanthal and oleacein compare across methods", text: "Labs measure these two compounds the same way, within about 10%. That makes them the fairest basis for comparing oils tested with different methods." },
     ],
     cta: "How each test method works",
-    visual: { title: "One oil, two methods", caption: "Olivea Ultra High Phenolic, 2025/26 harvest. Both totals and the compound figure come from the producer's published certificates.", compounds: "Oleocanthal + oleacein, NMR" },
+    visual: { title: "Different methods give different polyphenol results", caption: "Both totals and the oleocanthal + oleacein figure come from the producer's two published certificates for the same oil.", compounds: "Oleocanthal + oleacein, NMR" },
   },
   avoid: {
     eyebrow: "What to leave on the shelf",

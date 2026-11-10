@@ -9,6 +9,7 @@ export type OilTips = {
   value: string;
   score: string; // "{breakdown}" = the oil's points per check
   scoreLine: string; // one check in the breakdown: "{name}: {got} of {max}"
+  scoreHead?: string; // the score column header
   checks: { report: string; delivery: string; method: string; origin: string };
   method: Record<string, string>;
 };
@@ -23,9 +24,10 @@ export const OIL_TIPS: Record<string, OilTips> = {
     value:
       "The price of the bottle divided by the milligrams of oleocanthal and oleacein in it. The lower the figure, the more of the two compounds you get for your money.",
     score:
-      "Out of 10, from four checks on what the producer publishes: {breakdown}. The section 'What to check' explains each one.",
+      "Out of 10, from four checks on what the producer publishes: {breakdown}.",
     scoreLine: "{name} {got} of {max}",
-    checks: { report: "lab report", delivery: "delivery", method: "test method", origin: "harvest date and variety" },
+    scoreHead: "Out of 10, from four checks on what the producer publishes: lab report 3 points, delivery 3, test method 2, harvest date and variety 2. Hover over an oil's score to see its points.",
+    checks: { report: "Lab report", delivery: "Delivery", method: "Test method", origin: "Harvest date and variety" },
     method: {
       HPLC: "HPLC separates the oil and measures each compound one by one. It reads lower totals than NMR on the same oil.",
       COI: "The International Olive Council's method, a form of HPLC used by accredited food labs. It reads low totals by design.",
