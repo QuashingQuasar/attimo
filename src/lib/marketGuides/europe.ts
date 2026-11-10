@@ -35,7 +35,7 @@ export const europe: MarketGuideContent = {
   country: "Europe",
   regional: true,
   // ATTIMO's own range across its shipping tiers (see shippingZones.ts).
-  attimoShipping: { cost: "€7 to €40 by country", freeFrom: "2 or 3 bottles in 27 countries", days: "2–8 business days", daysText: "2 to 8 business days" },
+  attimoShipping: { cost: "€7 to €40 by country", freeFrom: "2 or 3 bottles in 27 countries", days: "2–8 business days", daysText: "2 to 8 business days", short: "€7 to €40 by country" },
   siblings: [],
   updated: "9 November 2026",
   meta: {
@@ -46,8 +46,8 @@ export const europe: MarketGuideContent = {
     ...en.hero,
     eyebrow: "Buying guide · Europe",
     h1: "Buying high-polyphenol olive oil in Europe",
-    lead: "Which high-polyphenol olive oils you can order from a European address, and what to check before you order.",
-    checkedLine: "Checked on every seller's own website",
+    lead: "Every high-polyphenol olive oil you can order in Europe, compared on polyphenols, price and delivery.",
+    checkedLine: "Facts taken from each seller's own website",
   },
   glance: {
     ...en.glance,
@@ -55,17 +55,13 @@ export const europe: MarketGuideContent = {
   },
   criteria: {
     ...en.criteria,
-    items: en.criteria.items.map((it) =>
-      it.key === "delivery"
-        ? { ...it, title: "Shipping to your country", text: "Does the brand ship to your country, in how many days, and does its website say so itself? Many of the best-known high-polyphenol brands sell from the United States and do not." }
-        : it,
-    ),
+    items: en.criteria.items,
   },
   table: {
     ...en.table,
     cols: { ...en.table.cols, buy: "How to buy in Europe" },
     buy: { webshop: "Web shop, ships to some European countries", webshopEu: "Web shop, ships EU-wide", webshopWorld: "Web shop, ships internationally", retailer: "Through a shop", distributor: "Through a distributor", request: "On request" },
-    footnote: "mg/kg. Shipping information read on each seller's website or checkout, most recently on {checked}; the sentence sits behind the source link. Polyphenol figures come from the Polyphenol Index, where each figure links to its report. Prices are the producer's, read in {verified}.",
+    footnote: en.table.footnote,
   },
   oils: {
     ...en.oils,

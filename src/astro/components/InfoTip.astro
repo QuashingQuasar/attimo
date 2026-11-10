@@ -1,0 +1,58 @@
+---
+// A small "i" button that explains a term. Shows on hover, on keyboard focus
+// and on tap. The bubble is positioned by script so it is never clipped by a
+// scrolling table.
+interface Props { text: string; label: string; tone?: "light" | "dark" }
+const { text, label, tone = "light" } = Astro.props as Props;
+---
+
+<span class="info-tip" data-tone={tone}>
+  <button type="button" class="info-tip-btn" aria-label={label}>i</button>
+  <span class="info-tip-pop" role="tooltip">{text}</span>
+</span>
+
+<style>
+  .info-tip { display: inline-flex; vertical-align: middle; margin-left: .35em; }
+  .info-tip-btn {
+    width: 1.15rem; height: 1.15rem; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: .7rem; line-height: 1; letter-spacing: 0; text-transform: none;
+    cursor: help; transition: background-color .15s ease, color .15s ease;
+  }
+  .info-tip[data-tone="light"] .info-tip-btn { color: #1B4229; border: 1.5px solid rgba(27,66,41,.45); background: transparent; }
+  .info-tip[data-tone="light"] .info-tip-btn:hover, .info-tip[data-tone="light"] .info-tip-btn:focus-visible { background: #1B4229; color: #FFFAEA; border-color: #1B4229; }
+  .info-tip[data-tone="dark"] .info-tip-btn { color: #FFFAEA; border: 1.5px solid rgba(255,250,234,.5); background: transparent; }
+  .info-tip[data-tone="dark"] .info-tip-btn:hover, .info-tip[data-tone="dark"] .info-tip-btn:focus-visible { background: #CDDB2D; color: #1B4229; border-color: #CDDB2D; }
+  .info-tip-pop {
+    position: fixed; z-index: 60; width: max-content; max-width: min(19rem, calc(100vw - 2rem));
+    padding: .75rem .9rem; border-radius: .6rem; background: #10221B; color: #FFFAEA;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: .86rem; line-height: 1.5; letter-spacing: 0; text-transform: none; text-align: left;
+    box-shadow: 0 10px 30px rgba(16,34,27,.28); pointer-events: none; opacity: 0; visibility: hidden; transition: opacity .12s ease;
+  }
+  .info-tip.is-open .info-tip-pop { opacity: 1; visibility: visible; }
+</style>
+
+<script>
+  const place = (tip: HTMLElement) => {
+    const btn = tip.querySelector<HTMLElement>(".info-tip-btn")!;
+    const pop = tip.querySelector<HTMLElement>(".info-tip-pop")!;
+    const r = btn.getBoundingClientRect();
+    const w = pop.offsetWidth, h = pop.offsetHeight, m = 12;
+    let left = r.left + r.width / 2 - w / 2;
+    left = Math.max(m, Math.min(left, window.innerWidth - w - m));
+    const above = r.top - h - 8;
+    pop.style.left = `${left}px`;
+    pop.style.top = `${above > m ? above : r.bottom + 8}px`;
+  };
+  const open = (tip: HTMLElement) => { document.querySelectorAll(".info-tip.is-open").forEach((t) => t !== tip && t.classList.remove("is-open")); tip.classList.add("is-open"); place(tip); };
+  const close = (tip: HTMLElement) => tip.classList.remove("is-open");
+  document.querySelectorAll<HTMLElement>(".info-tip").forEach((tip) => {
+    const btn = tip.querySelector<HTMLElement>(".info-tip-btn")!;
+    tip.addEventListener("mouseenter", () => open(tip));
+    tip.addEventListener("mouseleave", () => close(tip));
+    btn.addEventListener("focus", () => open(tip));
+    btn.addEventListener("blur", () => close(tip));
+    btn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); tip.classList.contains("is-open") ? close(tip) : open(tip); });
+  });
+  document.addEventListener("click", () => document.querySelectorAll(".info-tip.is-open").forEach((t) => t.classList.remove("is-open")));
+  window.addEventListener("scroll", () => document.querySelectorAll(".info-tip.is-open").forEach((t) => t.classList.remove("is-open")), { passive: true });
+</script>

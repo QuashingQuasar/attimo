@@ -6,10 +6,12 @@
 //   3. a few combined rows, label left and value right (each row answers one question)
 //   4. the note; secondary detail (plus/minus, sources) folds into a disclosure
 import { GREEN, CREAM, ACCENT, UDC, SG, stat, small, eyebrowSm } from "@/lib/certificates/ui";
+import InfoTip from "@astro/components/InfoTip.astro";
 
 export type OilCardPart = { text: string; href?: string; external?: boolean; strong?: boolean };
-export type OilCardRow = { label: string; parts: OilCardPart[]; sub?: string | null };
-export type OilCardStat = { label: string; value: string; lines: string[] };
+export type OilCardRow = { label: string; parts: OilCardPart[]; sub?: string | null; subTip?: string | null };
+export type OilCardStat = { label: string; value: string; lines: string[]; tip?: string | null };
+type Pill = { label: string; accent?: boolean; href?: string; tip?: string | null };
 
 interface Props {
   id?: string;
@@ -19,14 +21,17 @@ interface Props {
   sub: string;
   image?: string | null;
   imageAlt?: string;
-  pills: { label: string; accent?: boolean; href?: string }[];
+  pills: Pill[];
+  /** Accessible name for info buttons, "{x}" = the term explained. */
+  tipLabel?: string;
   stats: [OilCardStat, OilCardStat];
   rows: OilCardRow[];
   note?: string | null;
   /** Label of the disclosure that holds the slot content; no label, no disclosure. */
   detailsLabel?: string;
 }
-const { id, number, brand, oil, sub, image, imageAlt = "", pills, stats, rows, note, detailsLabel } = Astro.props as Props;
+const { id, number, brand, oil, sub, image, imageAlt = "", pills, stats, rows, note, detailsLabel, tipLabel = "{x}" } = Astro.props as Props;
+const tl = (x: string) => tipLabel.replace("{x}", x);
 const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
 const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const hasDetails = !!detailsLabel && Astro.slots.has("default");
@@ -47,9 +52,7 @@ const hasDetails = !!detailsLabel && Astro.slots.has("default");
       <div class="flex flex-wrap gap-2 mt-3">
         {pills.map((p) => {
           const st = `${eyebrowSm} font-size:.7rem; line-height:1; letter-spacing:.08em; background-color:${p.accent ? ACCENT : GREEN}; color:${p.accent ? GREEN : CREAM};`;
-          return p.href
-            ? <a href={p.href} class="rounded-full px-3 py-1.5 whitespace-nowrap hover:opacity-80 transition-opacity" style={st}>{p.label}</a>
-            : <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={st}>{p.label}</span>;
+          return <span class="inline-flex items-center rounded-full pl-3 pr-2 py-1.5 whitespace-nowrap" style={`${st} ${p.tip ? "" : "padding-right:.75rem;"}`}>{p.href ? <a href={p.href} class="hover:opacity-75 transition-opacity">{p.label}</a> : p.label}{p.tip && <InfoTip text={p.tip} label={tl(p.label)} tone={p.accent ? "light" : "dark"} />}</span>;
         })}
       </div>
     </div>
@@ -59,7 +62,7 @@ const hasDetails = !!detailsLabel && Astro.slots.has("default");
   <div class="rounded-xl grid grid-cols-2 mb-5" style={`background-color:${GREEN}; color:${CREAM};`}>
     {stats.map((s, i) => (
       <div class="min-w-0 p-4 md:p-5" style={i === 1 ? `border-left:1px solid ${onGreen(0.18)};` : ""}>
-        <p class="mb-3" style={`${eyebrowSm} font-size:.7rem; line-height:1.3; letter-spacing:.09em; color:${onGreen(0.62)};`}>{s.label}</p>
+        <p class="mb-3 flex items-start" style={`${eyebrowSm} font-size:.7rem; line-height:1.3; letter-spacing:.09em; color:${onGreen(0.62)};`}><span>{s.label}</span>{s.tip && <InfoTip text={s.tip} label={tl(s.label)} tone="dark" />}</p>
         <p class="flex items-baseline gap-1.5 flex-wrap"><span style={`${stat} font-size:clamp(1.9rem,3vw,2.5rem); color:${ACCENT};`}>{s.value}</span>{s.lines[0] && <span style={`font-family:${SG}; font-size:.85rem; color:${onGreen(0.75)};`}>{s.lines[0]}</span>}</p>
         {s.lines.slice(1).map((l) => <p class="mt-1.5" style={`font-family:${SG}; font-size:.82rem; line-height:1.4; color:${onGreen(0.7)};`}>{l}</p>)}
       </div>
@@ -82,7 +85,7 @@ const hasDetails = !!detailsLabel && Astro.slots.has("default");
               </>
             ))}
           </p>
-          {r.sub && <p class="mt-0.5" style={`font-size:.84rem; line-height:1.45; color:${onCream(0.62)};`}>{r.sub}</p>}
+          {r.sub && <p class="mt-0.5" style={`font-size:.84rem; line-height:1.45; color:${onCream(0.62)};`}>{r.sub}{r.subTip && <InfoTip text={r.subTip} label={tl(r.sub)} />}</p>}
         </dd>
       </div>
     ))}

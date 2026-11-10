@@ -29,7 +29,7 @@ export type MarketGuideContent = {
    * ships across the EU then counts in full, and ATTIMO's own shipping comes
    * from `attimoShipping`, because its rate differs per country. */
   regional?: boolean;
-  attimoShipping?: { cost: string; freeFrom: string; days: string; daysText: string };
+  attimoShipping?: { cost: string; freeFrom: string; days: string; daysText: string; short?: string };
   /** Plural unit after a day range, e.g. "werkdagen". */
   daysUnit: string;
   /** Other guides a reader of this page may want (neighbouring market or the same market in another language). */
@@ -47,12 +47,16 @@ export type MarketGuideContent = {
   criteria: {
     eyebrow: string; h2: string; intro: string;
     items: { key: CriterionKey; title: string; text: string; weight: number; icon: string }[];
+    /** Points label on each criterion card, e.g. "{n} points". Omitted: no badge. */
+    points?: string;
   };
   table: {
     eyebrow: string; h2: string; intro: string;
     cols: { oil: string; compounds: string; total: string; method: string; price: string; value: string; buy: string; days: string; score: string };
     buy: { webshop: string; webshopEu: string; webshopWorld: string; retailer: string; distributor: string; request: string };
     footnote: string;
+    /** Shown above the table when the columns can be sorted. */
+    sortHint?: string;
     links: { index: { title: string; text: string }; methods: { title: string; text: string } };
   };
   oils: {
@@ -62,7 +66,11 @@ export type MarketGuideContent = {
     cons: { nmr: string; shipping: string; shippingFree: string; noReport: string; noMethod: string; totalOnly: string; noDays: string; nlNotNamed: string; noOrigin: string };
     perOil: Record<string, { forWho?: string; standsOut?: string; cons?: string[] }>;
   };
-  number: { eyebrow: string; h2: string; intro: string; steps: { title: string; text: string }[]; cta: string };
+  number: {
+    eyebrow: string; h2: string; intro: string; steps: { title: string; text: string }[]; cta: string;
+    /** One oil tested with two methods, drawn as bars. Omitted: the steps show as cards only. */
+    visual?: { title: string; caption: string; compounds: string };
+  };
   avoid: { eyebrow: string; h2: string; items: { title: string; text: string }[] };
   attimo: { eyebrow: string; h2: string; intro: string };
   faq: { heading: string; items: { question: string; answer: string }[] };
