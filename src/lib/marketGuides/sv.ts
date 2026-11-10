@@ -46,11 +46,11 @@ export const sv: MarketGuideContent = {
     checkedLine: "Uppgifterna kommer från varje producents egen webbplats",
   },
   glance: {
-    eyebrow: "Vad du kan köpa",
-    h2: "Polyfenolrika olivoljor du kan köpa i Sverige",
-    introPre: "Varje olja här publicerar sitt polyfenolvärde. Ordningen följer ",
+    eyebrow: "",
+    h2: "{n} oljor med publicerat polyfenolvärde, de rikaste på oleocanthal och oleacein först",
+    introPre: "Samma ordning som i ",
     introLink: "Polyfenolindex",
-    introPost: ", som rankar oljorna på oleocanthal och oleacein, de två mest studerade polyfenolerna.",
+    introPost: ". Oleocanthal och oleacein är de två mest studerade polyfenolerna. Labb mäter dem på samma sätt, oavsett metod. Oljor som bara publicerar en total står sist.",
     labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgiskt märke · även Nocellara och Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Mätt med", methodLink: "vad betyder det?", compounds: "Oleocanthal + oleacein", total: "Totala polyfenoler", buy: "Köp", cost: "Frakt", days: "Leverans", source: "Källa", notStated: "ej angivet", attimoAlso: "Även {nocellara} och {picual}" },
   },
   criteria: {

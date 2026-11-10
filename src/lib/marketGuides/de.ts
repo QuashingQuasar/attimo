@@ -46,11 +46,11 @@ export const de: MarketGuideContent = {
     checkedLine: "Alle Angaben stammen von der Website des jeweiligen Herstellers",
   },
   glance: {
-    eyebrow: "Was du kaufen kannst",
-    h2: "Polyphenolreiche Olivenöle, die du in Deutschland kaufen kannst",
-    introPre: "Jedes Öl hier veröffentlicht seinen Polyphenolwert. Die Reihenfolge entspricht dem ",
+    eyebrow: "",
+    h2: "{n} Öle mit veröffentlichtem Polyphenolwert, die reichsten an Oleocanthal und Oleacein zuerst",
+    introPre: "Dieselbe Reihenfolge wie im ",
     introLink: "Polyphenol-Index",
-    introPost: ", der die Öle nach Oleocanthal und Oleacein ordnet, den zwei am besten erforschten Polyphenolen.",
+    introPost: ". Oleocanthal und Oleacein sind die zwei am besten erforschten Polyphenole. Labore messen sie auf dieselbe Weise, egal mit welcher Methode. Öle, die nur einen Gesamtwert veröffentlichen, stehen am Ende.",
     labels: { value: "€ je 100 mg Oleocanthal + Oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgische Marke · auch Nocellara und Picual", price: "Preis", priceNote: "Preis des Herstellers, {verified}", method: "Gemessen mit", methodLink: "was bedeutet das?", compounds: "Oleocanthal + Oleacein", total: "Polyphenole gesamt", buy: "Kaufen", cost: "Versand", days: "Lieferzeit", source: "Quelle", notStated: "nicht angegeben", attimoAlso: "Auch {nocellara} und {picual}" },
   },
   criteria: {

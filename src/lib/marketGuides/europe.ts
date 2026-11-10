@@ -49,10 +49,7 @@ export const europe: MarketGuideContent = {
     lead: "Every high-polyphenol olive oil you can order in Europe, compared on polyphenols, price and delivery.",
     checkedLine: "Facts taken from each seller's own website",
   },
-  glance: {
-    ...en.glance,
-    h2: "High-polyphenol olive oils you can buy in Europe",
-  },
+  glance: en.glance,
   criteria: {
     ...en.criteria,
     items: en.criteria.items,

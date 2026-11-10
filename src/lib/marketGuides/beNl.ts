@@ -48,11 +48,11 @@ export const beNl: MarketGuideContent = {
     checkedLine: "Gegevens van de eigen website van elke producent",
   },
   glance: {
-    eyebrow: "Wat je kunt kopen",
-    h2: "Polyfenolrijke olijfoliën die je in België kunt kopen",
-    introPre: "Elke olie in dit overzicht heeft een gepubliceerd polyfenolgetal. De volgorde is die van de ",
+    eyebrow: "",
+    h2: "{n} oliën met een gepubliceerd polyfenolgetal, de rijkste aan oleocanthal en oleaceïne eerst",
+    introPre: "Dezelfde volgorde als de ",
     introLink: "Polyfenolindex",
-    introPost: ", die oliën rangschikt op oleocanthal en oleaceïne, de twee best onderzochte polyfenolen.",
+    introPost: ". Oleocanthal en oleaceïne zijn de twee best onderzochte polyfenolen. Labs meten ze op dezelfde manier, met welke methode ook. Oliën die alleen een totaal publiceren, staan achteraan.",
     labels: { value: "€ per 100 mg oleocanthal + oleaceïne", attimoName: "ATTIMO Coratina", attimoSub: "Belgisch merk · ook Nocellara en Picual", price: "Prijs", priceNote: "prijs van de producent, {verified}", method: "Gemeten met", methodLink: "wat betekent dit?", compounds: "Oleocanthal + oleaceïne", total: "Totaal polyfenolen", buy: "Kopen", cost: "Verzendkosten", days: "Levertijd", source: "Bron", notStated: "niet vermeld", attimoAlso: "Ook {nocellara} en {picual}" },
   },
   criteria: {

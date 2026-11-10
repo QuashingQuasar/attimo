@@ -49,11 +49,11 @@ export const en: MarketGuideContent = {
     checkedLine: "Facts taken from each producer's own website",
   },
   glance: {
-    eyebrow: "What you can buy",
-    h2: "High-polyphenol olive oils you can buy in the Netherlands",
-    introPre: "Each oil here publishes its polyphenol figure. The order follows the ",
+    eyebrow: "",
+    h2: "{n} oils with a published polyphenol figure, richest in oleocanthal and oleacein first",
+    introPre: "The same order as the ",
     introLink: "Polyphenol Index",
-    introPost: ", which ranks oils on oleocanthal and oleacein, the two best-studied polyphenols.",
+    introPost: ". Oleocanthal and oleacein are the two best-studied polyphenols. Labs measure them the same way, whichever method they use. Oils that publish only a total come last.",
     labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
   },
   criteria: {

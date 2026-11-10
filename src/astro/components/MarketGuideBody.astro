@@ -219,8 +219,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
     <!-- THE OILS: one card per oil, the same card as the Polyphenol Index -->
     <section id="glance" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
       <div class="container mx-auto max-w-7xl">
-        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.glance.eyebrow}</p>
-        <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.glance.h2}</h2>
+        {c.glance.eyebrow && <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.glance.eyebrow}</p>}
+        <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.glance.h2.replace("{n}", String(glanceRows.length))}</h2>
         <p class="mb-12" style={`${lead} color:${onGreen(0.85)};`}>{c.glance.introPre}<a href={indexHref} class="underline underline-offset-4" style={`color:${ACCENT};`}>{c.glance.introLink}</a>{c.glance.introPost}</p>
         {/* items-start: opening one card's details must not stretch its neighbour. */}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">

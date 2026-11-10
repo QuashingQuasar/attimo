@@ -45,11 +45,11 @@ export const fr: MarketGuideContent = {
     checkedLine: "Informations tirées du site de chaque producteur",
   },
   glance: {
-    eyebrow: "Ce que vous pouvez acheter",
-    h2: "Les huiles d'olive riches en polyphénols que vous pouvez acheter en France",
-    introPre: "Chaque huile présentée ici publie son taux de polyphénols. L'ordre suit l'",
+    eyebrow: "",
+    h2: "{n} huiles au taux de polyphénols publié, les plus riches en oléocanthal et oléacéine en premier",
+    introPre: "Le même ordre que l'",
     introLink: "Index des polyphénols",
-    introPost: ", qui classe les huiles selon l'oléocanthal et l'oléacéine, les deux polyphénols les mieux étudiés.",
+    introPost: ". L'oléocanthal et l'oléacéine sont les deux polyphénols les mieux étudiés. Les laboratoires les mesurent de la même façon, quelle que soit leur méthode. Les huiles qui ne publient qu'un total figurent en fin de liste.",
     labels: { value: "€ pour 100 mg d'oléocanthal + oléacéine", attimoName: "ATTIMO Coratina", attimoSub: "Marque belge · aussi Nocellara et Picual", price: "Prix", priceNote: "prix du producteur, {verified}", method: "Mesuré par", methodLink: "qu'est-ce que cela veut dire ?", compounds: "Oléocanthal + oléacéine", total: "Polyphénols totaux", buy: "Acheter", cost: "Frais de port", days: "Livraison", source: "Source", notStated: "non indiqué", attimoAlso: "Aussi {nocellara} et {picual}" },
   },
   criteria: {

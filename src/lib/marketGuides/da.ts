@@ -45,11 +45,11 @@ export const da: MarketGuideContent = {
     checkedLine: "Oplysninger hentet fra hver producents egen hjemmeside",
   },
   glance: {
-    eyebrow: "Hvad du kan købe",
-    h2: "Polyfenolrige olivenolier, du kan købe i Danmark",
-    introPre: "Hver olie her offentliggør sit polyfenoltal. Rækkefølgen følger ",
+    eyebrow: "",
+    h2: "{n} olier med et offentliggjort polyfenoltal, de rigeste på oleocanthal og oleacein først",
+    introPre: "Samme rækkefølge som i ",
     introLink: "Polyfenolindekset",
-    introPost: ", som rangerer olier efter oleocanthal og oleacein, de to bedst undersøgte polyfenoler.",
+    introPost: ". Oleocanthal og oleacein er de to bedst undersøgte polyfenoler. Laboratorier måler dem på samme måde, uanset metode. Olier, der kun offentliggør en total, står til sidst.",
     labels: { value: "€ pr. 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgisk mærke · også Nocellara og Picual", price: "Pris", priceNote: "producentens pris, {verified}", method: "Målt med", methodLink: "hvad betyder det?", compounds: "Oleocanthal + oleacein", total: "Polyfenoler i alt", buy: "Køb", cost: "Forsendelse", days: "Levering", source: "Kilde", notStated: "ikke oplyst", attimoAlso: "Også {nocellara} og {picual}" },
   },
   criteria: {
