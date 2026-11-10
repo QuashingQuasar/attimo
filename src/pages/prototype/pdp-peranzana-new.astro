@@ -1,0 +1,39 @@
+---
+// Design prototype: a new Peranzana product page built from the 26/27 label.
+// Separate from /prototype/pdp-peranzana (the restyle of the current PDP).
+// Peranzana is not in Shopify yet, so Nocellara's record stands in for the
+// cart (renamed, in stock). Not indexed, not linked.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import PeranzanaStunning from "@astro/react-pages/PeranzanaStunning";
+import { fetchProducts, fetchSellingPlans } from "@/lib/shopify";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import peranzanaCutout from "@/assets/bottle-2627-peranzana.png?url";
+
+const locale = DEFAULT_LOCALE;
+const [allProducts, sellingPlans] = await Promise.all([
+  fetchProducts(50).catch(() => []),
+  fetchSellingPlans("nocellara").catch(() => []),
+]);
+const base = allProducts.find((p) => p.node.handle === "nocellara");
+const product = base ? {
+  node: {
+    ...base.node,
+    id: "prototype-peranzana",
+    handle: "peranzana",
+    title: "ATTIMO Extra Virgin Olive Oil Peranzana 500ml",
+    images: { edges: [{ node: { url: peranzanaCutout, altText: "ATTIMO Peranzana 26/27" } }] },
+    variants: { edges: base.node.variants.edges.map((v) => ({ node: { ...v.node, id: "prototype-peranzana-variant", availableForSale: true } })) },
+  },
+} : undefined;
+---
+
+<BaseLayout
+  title="Peranzana d'Italia (prototype) | ATTIMO"
+  description="Design prototype of a new Peranzana product page."
+  canonical="https://attimo-oil.com/prototype/pdp-peranzana-new"
+  bodyStyle="background-color: #DACAC0;"
+  htmlLang="en"
+  noIndex={true}
+>
+  <PeranzanaStunning product={product} sellingPlans={sellingPlans} locale={locale} client:load />
+</BaseLayout>
