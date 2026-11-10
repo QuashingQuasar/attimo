@@ -197,22 +197,29 @@ const pairMax = 1473;
                 </div>
               </div>
 
-              <div class="rounded-xl p-5 mb-6" style={`background-color:${GREEN}; color:${CREAM};`}>
-                <p class="mb-1" style={`${eyebrowSm} color:${onGreen(0.65)};`}>{c.index.compounds}</p>
-                <p style={`${stat} font-size:clamp(2.4rem,4vw,3rem); color:${ACCENT};`}>{num(e.compounds!)}<span style={`font-size:1rem; letter-spacing:0; color:${onGreen(0.8)};`}> mg/kg</span></p>
-                <p class="mt-2" style={`font-family:${SG}; font-size:.95rem; color:${onGreen(0.8)};`}>{num(e.oleocanthal!)} oleocanthal · {num(e.oleacein!)} oleacein</p>
+              {/* The two figures readers look for, side by side at the same weight. */}
+              <div class="rounded-xl p-5 mb-6 grid grid-cols-2" style={`background-color:${GREEN}; color:${CREAM};`}>
+                <div class="min-w-0 pr-4">
+                  <p class="mb-2 flex items-end" style={`${eyebrowSm} font-size:.76rem; line-height:1.25; min-height:2.5em; color:${onGreen(0.65)};`}>{c.index.compounds}</p>
+                  <p style={`${stat} font-size:clamp(2rem,3.2vw,2.7rem); color:${ACCENT};`}>{num(e.compounds!)}</p>
+                  <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; line-height:1.45; color:${onGreen(0.8)};`}>mg/kg<span style="display:block;">{num(e.oleocanthal!)} oleocanthal · {num(e.oleacein!)} oleacein</span></p>
+                </div>
+                <div class="min-w-0 pl-4" style={`border-left:1px solid ${onGreen(0.22)};`}>
+                  <p class="mb-2 flex items-end" style={`${eyebrowSm} font-size:.76rem; line-height:1.25; min-height:2.5em; color:${onGreen(0.65)};`}>{fill(c.index.total, { method: methodLabel(e) })}</p>
+                  <p style={`${stat} font-size:clamp(2rem,3.2vw,2.7rem); color:${ACCENT};`}>{e.total === null ? "—" : num(e.total)}</p>
+                  <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; line-height:1.45; color:${onGreen(0.8)};`}>mg/kg{e.total_secondary && <span style="display:block;">{fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method })}</span>}</p>
+                </div>
               </div>
 
               <dl class="grid grid-cols-2 gap-x-5 mb-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.45;`}>
                 {([
-                  [fill(c.index.total, { method: methodLabel(e) }), e.total === null ? "—" : `${num(e.total)} mg/kg`, e.total_secondary ? fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method }) : null, true],
                   [c.index.harvest, e.harvest, e.harvest_note, true],
+                  [c.index.labReport, null, e.report.label, false],
                   [c.index.price, e.price ?? c.index.notListed, e.availability, false],
                   [c.value.cardLabel, e.value_per_100mg === null ? "—" : eur(e.value_per_100mg), null, true],
                   [c.explorer.available, e.regions.length ? e.regions.map((r) => ({ EU: c.explorer.eu, UK: c.explorer.uk, US: c.explorer.us })[r]).join(", ") : c.explorer.notStated, null, false],
-                  [c.index.labReport, null, e.report.label, false],
-                ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc]) => (
-                  <div class="py-3" style="border-top:1px solid rgba(27,66,41,.15);">
+                ] as [string, string | null, string | null, boolean][]).map(([k, v, sub, udc], i) => (
+                  <div class={`py-3 ${i === 4 ? "col-span-2" : ""}`} style="border-top:1px solid rgba(27,66,41,.15);">
                     <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{k}</dt>
                     <dd>
                       {v !== null ? <span style={udc ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{v}</span> : <a href={reportHref(e)} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...ext(e)}>{e.report.status === "viewable" ? c.index.viewable : c.index.nonePublished}</a>}

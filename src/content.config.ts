@@ -150,6 +150,8 @@ const polyphenolIndex = defineCollection({
       label: z.string(),
     }),
     source_url: z.string(),
+    // Product photo under /public (e.g. "/images/index/laconiko-zoi.webp"), shown as a thumbnail.
+    image: z.string().nullable().default(null),
     price: z.string().nullable(),
     // Structured price for the value metric: amount, currency and the size it buys.
     price_amount: z.number().nullable().default(null),

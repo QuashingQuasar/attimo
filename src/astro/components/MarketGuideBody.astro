@@ -18,6 +18,8 @@ import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { certHrefFor } from "@/lib/certificatesContent";
 import { verifiedFor, type IndexEntry } from "@/lib/polyphenolIndex";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "@/lib/marketGuides";
+import { Image } from "astro:assets";
+import attimoBottle from "@/assets/bottle-2627-coratina.png";
 
 const { content: c, entries, shipping, locale, heroImage, labNumbers = [] } = Astro.props as {
   content: MarketGuideContent; entries: IndexEntry[]; shipping: Record<string, ShipEvidence>; locale: Locale; heroImage: string; labNumbers?: HomeLabOil[];
@@ -29,6 +31,7 @@ const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
 const indexHref = INDEX_SLUGS[c.lang as keyof typeof INDEX_SLUGS] ?? INDEX_SLUGS.en;
 const methodsHref = METHODS_SLUGS[c.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
 const notes = INDEX_CONTENT[c.lang]?.entryNotes ?? {};
+const ourOil = INDEX_CONTENT[c.lang]?.index.ourOil ?? "";
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 // Thousands separator: a comma in English, a point elsewhere.
 const SEP = c.lang === "en" ? "," : ".";
@@ -177,37 +180,72 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {glanceRows.map((e) => {
             const mine = isMine(e); const ev = evidenceFor(e)!; const src = sourceOf(e);
-            const fg = mine ? CREAM : GREEN; const mut = mine ? onGreen(0.6) : onCream(0.5); const txt = mine ? onGreen(0.88) : onCream(0.85);
-            const lbl = `${eyebrowSm} font-size:.66rem; color:${mut};`;
+            const lbl = `${eyebrowSm} font-size:.7rem; color:${onCream(0.55)};`;
+            const statLbl = `${eyebrowSm} font-size:.68rem; line-height:1.25; min-height:2.5em; color:${onGreen(0.65)};`;
+            const statNum = `${stat} font-size:clamp(1.9rem,2.6vw,2.3rem); color:${ACCENT};`;
+            const statSub = `font-family:${SG}; font-size:.85rem; line-height:1.4; color:${onGreen(0.8)};`;
+            const cell = "py-3"; const rule = `border-top:1px solid ${onCream(0.15)};`;
+            const strong = `font-family:${UDC}; font-weight:700; font-size:1.08rem; color:${GREEN};`;
+            const plain = `font-family:${SG}; font-weight:600; font-size:.98rem; color:${GREEN};`;
+            const sub = `display:block; font-size:.84rem; color:${onCream(0.65)};`;
             return (
-              <article class="p-6 flex flex-col gap-5" style={mine ? `background-color:${GREEN}; color:${CREAM}; border-radius:1rem;` : cardOnCream}>
-                <div>
-                  <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.3rem; letter-spacing:-0.01em; color:${fg};`}>{mine ? c.glance.labels.attimoName : e.brand}</h3>
-                  <p style={`${small} color:${mine ? onGreen(0.75) : onCream(0.65)};`}>{mine ? c.glance.labels.attimoSub : `${e.oil}${e.country ? ` · ${e.country}` : ""}`}</p>
-                </div>
-                <div class="grid grid-cols-2 gap-4" style={`border-top:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; border-bottom:1px solid ${mine ? onGreen(0.2) : onCream(0.12)}; padding:.9rem 0;`}>
-                  <div>
-                    <p class="mb-1" style={lbl}>{c.glance.labels.compounds}</p>
-                    <p style={`${stat} font-size:1.9rem; color:${mine ? ACCENT : GREEN};`}>{e.compounds !== null ? num(e.compounds) : "–"}</p>
+              <article id={`oil-${e.id}`} class="rounded-2xl p-6 flex flex-col min-w-0 scroll-mt-24" style={`background-color:#FFFFFF; border:${mine ? `2px solid ${GREEN}` : `1px solid ${onCream(0.18)}`}; color:${GREEN};`}>
+                <div class="flex items-start gap-3 mb-5">
+                  {mine
+                    ? <span class="flex-shrink-0 inline-flex items-center justify-center rounded-lg overflow-hidden" style={`width:52px; height:68px; background-color:${onCream(0.06)};`}><Image src={attimoBottle} alt="" height={180} style="height:60px; width:auto;" /></span>
+                    : e.image && <span class="flex-shrink-0 inline-flex items-center justify-center rounded-lg overflow-hidden" style={`width:52px; height:68px; background-color:${onCream(0.06)};`}><img src={e.image} alt={`${e.brand} ${e.oil}`} loading="lazy" style="max-height:60px; max-width:44px; object-fit:contain;" /></span>}
+                  <div class="min-w-0 flex-1">
+                    <h3 style={`font-family:${UDC}; font-weight:700; font-size:1.3rem; letter-spacing:-0.015em; line-height:1.1; color:${GREEN}; overflow-wrap:break-word;`}>{mine ? c.glance.labels.attimoName : <>{e.brand}{" "}<span style="font-weight:300;">{e.oil}</span></>}</h3>
+                    <p class="mt-1" style={`font-family:${SG}; font-size:.9rem; line-height:1.4; color:${onCream(0.65)};`}>{mine ? c.glance.labels.attimoSub : [e.variety, e.origin].filter(Boolean).join(" · ")}</p>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                      <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={`${eyebrowSm} font-size:.68rem; background-color:${GREEN}; color:${CREAM};`}>{methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e)}</span>
+                      {mine && ourOil && <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={`${eyebrowSm} font-size:.68rem; background-color:${ACCENT}; color:${GREEN};`}>{ourOil}</span>}
+                    </div>
                   </div>
-                  <div>
-                    <p class="mb-1" style={lbl}>{c.glance.labels.total}</p>
-                    <p style={`${stat} font-size:1.9rem; color:${fg};`}>{num(e.total)}</p>
-                  </div>
-                  <p class="col-span-2" style={`${small} font-size:.9rem; color:${txt};`}>
-                    <span style={lbl}>{c.glance.labels.method} </span>{methodOf(e)} <a href={methodsHref} class="underline" style={`color:${mut};`}>{c.glance.labels.methodLink}</a>
-                  </p>
-                  {mine && attimoAlso && <p class="col-span-2" style={`${small} font-size:.88rem; color:${onGreen(0.75)};`}>{attimoAlso}</p>}
                 </div>
-                <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-1.5" style={`${small} font-size:.92rem;`}>
-                  <dt style={lbl}>{c.glance.labels.price}</dt><dd style={`color:${txt};`}>{priceOf(e) ? <span><strong style={`font-family:${UDC}; font-weight:700;`}>{priceOf(e)}</strong>{!mine && <span style={`color:${mut};`}> · {c.glance.labels.priceNote.replace("{verified}", verifiedOf(e))}</span>}</span> : c.glance.labels.notStated}</dd>
-                  {valueOf(e) && <><dt style={lbl}>{c.glance.labels.value.split(":")[0]}</dt><dd style={`color:${txt};`}><strong style={`font-family:${UDC}; font-weight:700;`}>{valueOf(e)}</strong><span style={`color:${mut};`}> {c.glance.labels.value}</span></dd></>}
-                  <dt style={lbl}>{c.glance.labels.buy}</dt><dd style={`color:${txt};`}>{buyLabel(ev)}</dd>
-                  <dt style={lbl}>{c.glance.labels.cost}</dt><dd style={`color:${txt};`}>{costLine(ev)}</dd>
-                  <dt style={lbl}>{c.glance.labels.days}</dt><dd style={`color:${txt};`}>{ev.days === "not stated" ? c.glance.labels.notStated : ev.days}</dd>
-                  <dt style={lbl}>{c.glance.labels.source}</dt><dd><a href={src.href} class="underline" style={`color:${txt};`} rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"} title={src.quote}>{src.label}</a></dd>
+
+                {/* The two figures readers look for, side by side at the same weight. */}
+                <div class="rounded-xl p-4 mb-1 grid grid-cols-2" style={`background-color:${GREEN}; color:${CREAM};`}>
+                  <div class="min-w-0 pr-3">
+                    <p class="mb-2 flex items-end" style={statLbl}>{c.glance.labels.compounds}</p>
+                    <p style={statNum}>{e.compounds !== null ? num(e.compounds) : "–"}</p>
+                    <p class="mt-1.5" style={statSub}>{e.compounds !== null ? "mg/kg" : c.glance.labels.notStated}</p>
+                  </div>
+                  <div class="min-w-0 pl-3" style={`border-left:1px solid ${onGreen(0.22)};`}>
+                    <p class="mb-2 flex items-end" style={statLbl}>{c.glance.labels.total}</p>
+                    <p style={statNum}>{e.total !== null ? num(e.total) : "–"}</p>
+                    <p class="mt-1.5" style={statSub}>mg/kg</p>
+                  </div>
+                </div>
+                {mine && attimoAlso && <p class="mt-3" style={`font-family:${SG}; font-size:.86rem; line-height:1.45; color:${onCream(0.7)};`}>{attimoAlso}</p>}
+
+                <dl class="grid grid-cols-2 gap-x-4 mt-4 mb-4" style={`font-family:${SG}; line-height:1.4;`}>
+                  <div class={cell} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.glance.labels.price}</dt>
+                    <dd>{priceOf(e) ? <><span style={plain}>{priceOf(e)}</span>{!mine && <span style={sub}>{c.glance.labels.priceNote.replace("{verified}", verifiedOf(e))}</span>}</> : <span style={plain}>{c.glance.labels.notStated}</span>}</dd>
+                  </div>
+                  <div class={cell} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.table.cols.value}</dt>
+                    <dd>{valueOf(e) ? <><span style={strong}>{valueOf(e)}</span><span style={sub}>{c.glance.labels.value}</span></> : <span style={plain}>–</span>}</dd>
+                  </div>
+                  <div class={`${cell} col-span-2`} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.glance.labels.buy}</dt>
+                    <dd><span style={plain}>{buyLabel(ev)}</span></dd>
+                  </div>
+                  <div class={cell} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.glance.labels.cost}</dt>
+                    <dd><span style={plain}>{costLine(ev)}</span></dd>
+                  </div>
+                  <div class={cell} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.glance.labels.days}</dt>
+                    <dd><span style={plain}>{ev.days === "not stated" ? c.glance.labels.notStated : ev.days}</span></dd>
+                  </div>
+                  <div class={`${cell} col-span-2`} style={rule}>
+                    <dt class="mb-1" style={lbl}>{c.glance.labels.source}</dt>
+                    <dd><a href={src.href} class="underline underline-offset-4" style={plain} rel={mine ? undefined : "nofollow noopener"} target={mine ? undefined : "_blank"} title={src.quote}>{src.label}</a></dd>
+                  </div>
                 </dl>
-                {!mine && ev.notes && <p style={`${small} font-size:.85rem; color:${onCream(0.55)};`}>{ev.notes}</p>}
+                {!mine && ev.notes && <p class="mt-auto" style={`${small} font-size:.88rem; color:${onCream(0.7)};`}>{ev.notes}</p>}
               </article>
             );
           })}
