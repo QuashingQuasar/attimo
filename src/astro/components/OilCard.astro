@@ -34,22 +34,22 @@ const hasDetails = !!detailsLabel && Astro.slots.has("default");
 
 <article id={id} class="oil-card rounded-2xl p-6 md:p-7 flex flex-col min-w-0 scroll-mt-24" style={`background-color:${CREAM}; color:${GREEN};`}>
   <!-- 1. Identity -->
-  <header class="flex gap-4 md:gap-5 mb-6">
-    <figure class="relative flex-shrink-0 rounded-xl overflow-hidden" style={`width:clamp(76px,22vw,96px); aspect-ratio:3/4; background-color:#fff; border:1px solid ${onCream(0.12)};`}>
+  <header class="flex items-start gap-4 md:gap-5 mb-6">
+    <figure class="relative flex-shrink-0 rounded-xl overflow-hidden" style={`width:clamp(64px,18vw,78px); aspect-ratio:3/4; background-color:#fff; border:1px solid ${onCream(0.12)};`}>
       {image
         ? <img src={image} alt={imageAlt} width="300" height="400" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" />
         : <span aria-hidden="true" class="absolute inset-0 flex items-center justify-center" style={`background-color:${onCream(0.05)};`}><span style={`display:block; width:40%; aspect-ratio:1; background-color:${onCream(0.25)}; -webkit-mask:url(/icons/olive.svg) center/contain no-repeat; mask:url(/icons/olive.svg) center/contain no-repeat;`}></span></span>}
-      {number && <span class="absolute top-1.5 left-1.5 rounded-md px-1.5 py-0.5" style={`font-family:${UDC}; font-weight:700; font-size:.78rem; line-height:1.2; letter-spacing:.04em; background-color:${GREEN}; color:${CREAM};`}>{number}</span>}
+      {number && <span class="absolute top-1 left-1 rounded px-1 py-px" style={`font-family:${UDC}; font-weight:700; font-size:.68rem; line-height:1.2; letter-spacing:.04em; background-color:${GREEN}; color:${CREAM};`}>{number}</span>}
     </figure>
-    <div class="min-w-0 flex-1 flex flex-col">
+    <div class="min-w-0 flex-1">
       <h3 style={`font-family:${UDC}; font-weight:700; font-size:clamp(1.3rem,3.6vw,1.55rem); letter-spacing:-0.02em; line-height:1.08; color:${GREEN}; overflow-wrap:break-word;`}>{brand}{oil && <> <span style="font-weight:300;">{oil}</span></>}</h3>
       <p class="mt-1.5" style={`font-family:${SG}; font-size:.92rem; line-height:1.4; color:${onCream(0.65)};`}>{sub}</p>
-      <div class="flex flex-wrap gap-2 mt-auto pt-3">
+      <div class="flex flex-wrap gap-2 mt-3">
         {pills.map((p) => {
           const st = `${eyebrowSm} font-size:.7rem; line-height:1; letter-spacing:.08em; background-color:${p.accent ? ACCENT : GREEN}; color:${p.accent ? GREEN : CREAM};`;
           return p.href
-            ? <a href={p.href} class="rounded-full px-3 py-2 whitespace-nowrap hover:opacity-80 transition-opacity" style={st}>{p.label}</a>
-            : <span class="rounded-full px-3 py-2 whitespace-nowrap" style={st}>{p.label}</span>;
+            ? <a href={p.href} class="rounded-full px-3 py-1.5 whitespace-nowrap hover:opacity-80 transition-opacity" style={st}>{p.label}</a>
+            : <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={st}>{p.label}</span>;
         })}
       </div>
     </div>
