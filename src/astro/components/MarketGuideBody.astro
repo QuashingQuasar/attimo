@@ -191,8 +191,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
   <main style={`color:${GREEN};`}>
     <!-- HERO -->
     <section class="relative flex items-center overflow-hidden" style={`background-color:${DEEP}; min-height:max(80vh, 700px);`}>
-      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" poster="/images/guide-hero-poster.jpg" aria-hidden="true">
-        <source src="/videos/hero-video-2.mp4" type="video/mp4" />
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" poster="/images/olives-in-container-landscape-poster.jpg" aria-hidden="true">
+        <source src="/videos/olives-in-container-landscape.mp4" type="video/mp4" />
       </video>
       <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(13,30,20,.78) 0%, rgba(13,30,20,.6) 50%, rgba(13,30,20,.85) 100%);"></div>
       <div class="relative container mx-auto px-6 pt-36 md:pt-44 pb-20 text-center">
@@ -238,7 +238,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                 imageAlt={`${e.brand} ${e.oil}`}
                 tipLabel={tipLabel}
                 pills={[
-                  { label: methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e), tip: tips?.method[e.method] },
+                  { label: methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e), tip: tips?.method[e.method], accent: true },
                 ]}
                 stats={[
                   { label: c.glance.labels.total, value: e.total !== null ? num(e.total) : "–", lines: ["mg/kg", ...(e.total_secondary ? [`${num(e.total_secondary.value)} mg/kg ${e.total_secondary.method}`] : [])], tip: tips?.total },

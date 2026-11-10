@@ -17,6 +17,7 @@ import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { certHrefFor } from "@/lib/certificatesContent";
 import { marketGuidesFor } from "@/lib/marketGuides";
 import OilCard from "@astro/components/OilCard.astro";
+import { tipsFor } from "@/lib/oilTips";
 
 const { ranked, unranked, content: c, locale = DEFAULT_LOCALE } = Astro.props as {
   ranked: IndexEntry[];
@@ -37,6 +38,8 @@ const reportHref = (e: IndexEntry) => (isMine(e) && e.attimo_certificate ? certH
 const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
 const methodLabel = (e: IndexEntry) => (e.method === "not stated" ? c.methodNotStated : METHOD_LABEL[e.method] ?? e.method);
 const note = (e: IndexEntry) => c.entryNotes[e.id] ?? e.note;
+// Hover explanations on the cards, where this language has them.
+const tips = tipsFor(c.lang);
 const fill = (s: string, vars: Record<string, string | number>) =>
   Object.entries(vars).reduce((acc, [k, v]) => acc.split(`{${k}}`).join(String(v)), s);
 
@@ -191,10 +194,11 @@ const pairMax = 1473;
               sub={[e.variety, e.origin].filter(Boolean).join(" · ")}
               image={e.image}
               imageAlt={`${e.brand} ${e.oil}`}
-              pills={[{ label: methodLabel(e) }, ...(isMine(e) ? [{ label: c.index.ourOil, accent: true }] : [])]}
+              tipLabel={tips?.label}
+              pills={[{ label: methodLabel(e), tip: tips?.method[e.method] }, ...(isMine(e) ? [{ label: c.index.ourOil, accent: true }] : [])]}
               stats={[
-                { label: fill(c.index.total, { method: methodLabel(e) }), value: e.total === null ? "—" : num(e.total), lines: ["mg/kg", ...(e.total_secondary ? [fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method })] : [])] },
-                { label: c.index.compounds, value: num(e.compounds!), lines: ["mg/kg", `${num(e.oleocanthal!)} oleocanthal`, `${num(e.oleacein!)} oleacein`] },
+                { label: fill(c.index.total, { method: methodLabel(e) }), value: e.total === null ? "—" : num(e.total), lines: ["mg/kg", ...(e.total_secondary ? [fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method })] : [])], tip: tips?.total },
+                { label: c.index.compounds, value: num(e.compounds!), lines: ["mg/kg", `${num(e.oleocanthal!)} oleocanthal`, `${num(e.oleacein!)} oleacein`], tip: tips?.compounds },
               ]}
               rows={[
                 { label: c.index.harvest, parts: [{ text: e.harvest, strong: true }, e.report.status === "viewable" ? { text: c.index.labReport, href: reportHref(e), external: !isMine(e) } : { text: c.index.nonePublished }], sub: e.harvest_note },
