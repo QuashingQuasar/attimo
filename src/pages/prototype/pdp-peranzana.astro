@@ -1,0 +1,24 @@
+---
+// Design prototype: the Peranzana product page in the renewed harvest look.
+// Not indexed, not linked. English only until the design is approved.
+import BaseLayout from "@astro/layouts/BaseLayout.astro";
+import PeranzanaPdpPrototype from "@astro/react-pages/PeranzanaPdpPrototype";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { getDict } from "@/lib/i18n/dictionaries";
+
+const locale = DEFAULT_LOCALE;
+const t = getDict(locale);
+---
+
+<BaseLayout
+  title="Peranzana single-variety olive oil (prototype) | ATTIMO"
+  description="Design prototype of the Peranzana product page."
+  canonical="https://attimo-oil.com/prototype/pdp-peranzana"
+  bodyStyle="background-color: #FFFAEA;"
+  htmlLang="en"
+  noIndex={true}
+  announceTier2={t.announce.freeShipping2}
+  announceTier3={t.announce.freeShipping3}
+>
+  <PeranzanaPdpPrototype locale={locale} client:load />
+</BaseLayout>
