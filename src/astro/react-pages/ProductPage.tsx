@@ -31,6 +31,7 @@ import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShi
 import { UnsupportedCountryNotice } from "@/components/UnsupportedCountryNotice";
 import { DEFAULT_LOCALE, currentPrice, formatPrice, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
+import { HeroArt, LabelRibbon, Reveal, StickyBuyBar, FlourishStyles, Tween, PEACH } from "@/components/product/LabelFlourish";
 
 interface BlogPost {
   _id: string;
@@ -50,9 +51,11 @@ interface ProductPageProps {
   initialFormat?: ProductFormat;
   /** Prototype only: a stand-in product for an oil not yet in Shopify. */
   mockProduct?: ShopifyProduct;
+  /** Prototype only: label-art touches on top of the renewed look. */
+  flourish?: boolean;
 }
 
-const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat, mockProduct }: ProductPageProps = {}) => {
+const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat, mockProduct, flourish }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
   const t = getDict(locale).product;
@@ -185,6 +188,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const content = getProductContent(handle, locale);
   // Renewed look (prototype): the oil's soft colour field and ink.
   const look = content.look;
+  // Label-art touches (prototype): only on a renewed-look page that asks for them.
+  const fl = flourish && look ? look : undefined;
+  // Wraps a section so it fades up on first view (flourish only).
+  const reveal = (node: React.ReactNode) => (fl ? <Reveal>{node}</Reveal> : node);
   const mainVariantId = product?.node.variants.edges[0]?.node.id;
 
   // Fetch live stock for the "Last bottles" low-stock badge.
@@ -456,10 +463,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-0 lg:self-start">
               {look ? (
-              <div className="w-full h-[62vh] md:h-[75vh] lg:h-screen relative overflow-hidden flex items-center justify-center" style={{ backgroundColor: look.band }}>
-                <div className="relative" style={{ height: "clamp(340px, 66%, 660px)" }}>
-                  <img src={look.cutout} alt={content.heroTitle} className="h-full w-auto block" style={{ filter: "drop-shadow(0 28px 30px rgba(16,34,27,.26))" }} />
-                  <div aria-hidden="true" className="absolute pointer-events-none flex flex-col" style={{ left: "100%", top: "3%", marginLeft: 8, color: look.ink }}>
+              <div className={`w-full h-[62vh] md:h-[75vh] lg:h-screen relative overflow-hidden flex items-center justify-center${fl ? " fl-grain" : ""}`} style={fl ? { background: `radial-gradient(120% 90% at 40% 40%, #E8DCD3 0%, ${look.band} 55%, #CDB9AD 100%)` } : { backgroundColor: look.band }}>
+                {fl && <HeroArt ink={fl.ink} />}
+                <div className={`relative${fl ? " fl-bottle" : ""}`} style={{ height: "clamp(340px, 66%, 660px)" }}>
+                  {fl && <div aria-hidden="true" className="absolute left-1/2 -translate-x-1/2" style={{ bottom: -12, width: "160%", height: 34, background: "radial-gradient(50% 50% at 50% 50%, rgba(60,30,40,0.38) 0%, rgba(60,30,40,0.12) 55%, transparent 75%)", filter: "blur(2px)" }} />}
+                  <img src={look.cutout} alt={content.heroTitle} className="relative h-full w-auto block" style={{ filter: fl ? "drop-shadow(18px 10px 26px rgba(60,30,40,0.22))" : "drop-shadow(0 28px 30px rgba(16,34,27,.26))" }} />
+                  <div aria-hidden="true" className={`absolute pointer-events-none flex flex-col${fl ? " fl-note" : ""}`} style={{ left: "100%", top: "3%", marginLeft: 8, color: look.ink }}>
                     <span style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.1rem, 1.5vw, 1.5rem)", letterSpacing: ".12em", lineHeight: 1, whiteSpace: "nowrap", transform: "rotate(-8deg)", textTransform: "uppercase" }}>{look.note}</span>
                     <svg width="64" height="46" viewBox="0 0 64 46" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, marginLeft: -6 }}>
                       <path d="M40 4 C 34 22, 22 32, 6 36" /><path d="M13.4 29.3 L 6 36 L 15.7 38.4" />
@@ -624,11 +633,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     )}
 
                     <Button
+                      id="pdp-add-to-cart"
                       onClick={handleAddToCart}
-                      className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
+                      className={`w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight${fl ? " fl-cta" : ""}`}
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
-                        backgroundColor: content.buttonColor,
+                        backgroundColor: fl ? fl.ink : content.buttonColor,
+                        ...(fl ? { color: PEACH } : {}),
                         fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
                         borderRadius: "0.75rem"
                       }}>
@@ -666,7 +677,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                                   {formatPrice(originalOneTimeTotal, locale)}
                                 </span>
                               )}{" "}
-                              {formatPrice(finalTotal, locale, finalDecimals)}
+                              {fl ? <Tween value={finalTotal} format={(n) => formatPrice(n, locale, finalDecimals)} /> : formatPrice(finalTotal, locale, finalDecimals)}
                             </span>
                           );
                         })()}
@@ -759,7 +770,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     </p>
                     <p className="text-olive-dark font-bold md:flex md:items-baseline md:gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
                       <span>
-                        {tile.value}
+                        {fl && tile.value === '—' ? <span className="fl-pending" style={{ color: fl.ink }}>···</span> : tile.value}
                         {tile.value !== '—' && tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{tile.unit}</span>}
                       </span>
                       <span className="block md:inline text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.72rem, 0.82vw, 0.88rem)' }}>
@@ -826,10 +837,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
           </div>
       </section>
 
+      {fl && <LabelRibbon ink={fl.ink} words={["Early harvest", "Single variety", `100% ${content.tabs.details.olive}`, "Organic", look!.harvestBadge, "Pressed within hours", content.tabs.details.volume]} />}
+
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={look ? look.band : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} tileText={look?.ink} headlineColor={look?.ink} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
-      <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
-      <ProductOriginRegion
+      {reveal(<><ProductOriginStory content={content.originStory} tileBackground={look ? look.band : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} tileText={look?.ink} headlineColor={look?.ink} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} /></>)}
+      <Testimonials headingColor={fl ? PEACH : content.buttonColor || "#B3E58C"} overlay={fl ? `${fl.ink}b8` : undefined} locale={locale} />
+      {reveal(<><ProductOriginRegion
         backgroundColor={look ? look.band : content.tileBackground}
         headingColor={look ? look.ink : content.tileAccent}
         textColor={look ? look.ink : content.tileAccent}
@@ -842,16 +855,26 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
         centerLat={content.originRegion?.centerLat}
         mapZoom={content.originRegion?.mapZoom}
         markerStyle={content.originRegion?.markerStyle}
-        locale={locale} />
+        locale={locale} /></>)}
       
-      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
+      {reveal(<><ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} /></>)}
       {content.polyphenolValue > 0 && <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />}
-      <FAQ handle={handle} locale={locale} />
-      <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} />
+      {reveal(<><FAQ handle={handle} locale={locale} /></>)}
+      {reveal(<><YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} /></>)}
 
       <BlogSection initialPosts={initialBlogPosts} locale={locale} />
 
       <Footer locale={locale} />
+      {fl && <FlourishStyles ink={fl.ink} />}
+      {fl && selectionInStock && !isBox && (
+        <StickyBuyBar
+          targetId="pdp-add-to-cart"
+          ink={fl.ink}
+          name={content.tabs.details.olive}
+          line={`${selectedQuantity} × ${content.tabs.details.volume} · ${formatPrice(selectedQuantity * activePrice * (1 - (purchaseType === "subscribe" ? 0 : getVolumeDiscountPercent(selectedQuantity))), locale, 2)}`}
+          label={t.addToCart}
+          onAdd={handleAddToCart} />
+      )}
       {/* First-order 10% pop-up switched off (Oct 2026, end-of-season sale). */}
     </div>);
 

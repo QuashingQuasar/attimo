@@ -29,9 +29,11 @@ interface Props {
   initialFormat?: ProductFormat;
   /** Prototype only: stand-in product for an oil not yet in Shopify. */
   mockProduct?: ShopifyProduct;
+  /** Prototype only: label-art touches on top of the renewed look. */
+  flourish?: boolean;
 }
 
-export default function ProductPageWrapper({ handle, initialProducts, initialSellingPlans, initialBlogPosts, locale, initialFormat, mockProduct }: Props) {
+export default function ProductPageWrapper({ handle, initialProducts, initialSellingPlans, initialBlogPosts, locale, initialFormat, mockProduct, flourish }: Props) {
   if (typeof globalThis !== "undefined") {
     (globalThis as any).__ASTRO_PARAMS__ = { handle };
   }
@@ -45,6 +47,7 @@ export default function ProductPageWrapper({ handle, initialProducts, initialSel
         locale={locale}
         initialFormat={initialFormat}
         mockProduct={mockProduct}
+        flourish={flourish}
       />
       <Sonner />
     </QueryClientProvider>

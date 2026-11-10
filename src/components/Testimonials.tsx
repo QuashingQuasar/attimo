@@ -17,7 +17,7 @@ const testimonialMeta = [
   { name: "Nicoleta A. P.", location: "Bucharest, Romania", date: "28 Nov 2025", rating: 5 },
 ];
 
-export const Testimonials = ({ headingColor = "rgb(205, 219, 45)", locale = DEFAULT_LOCALE }: { headingColor?: string; locale?: Locale }) => {
+export const Testimonials = ({ headingColor = "rgb(205, 219, 45)", overlay, locale = DEFAULT_LOCALE }: { headingColor?: string; /** Tint over the video; defaults to black at 30%. */ overlay?: string; locale?: Locale }) => {
   const t = getDict(locale).testimonials;
   const testimonials = testimonialMeta.map((m, i) => ({ ...m, title: t.reviews[i].title, text: t.reviews[i].text }));
   const duplicatedTestimonials = [...testimonials, ...testimonials];
@@ -25,7 +25,7 @@ export const Testimonials = ({ headingColor = "rgb(205, 219, 45)", locale = DEFA
   return (
     <section className="py-14 md:py-20 lg:py-24 snap-start min-h-[50vh] flex items-center relative overflow-hidden" style={{ backgroundColor: "#1A431D" }}>
       <AutoplayVideo src="/videos/hero-video-3.mp4" className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden" />
-      <div className="absolute inset-0 bg-black/30" />
+      <div className={`absolute inset-0${overlay ? "" : " bg-black/30"}`} style={overlay ? { backgroundColor: overlay } : undefined} />
       <div className="mx-auto relative z-10 w-full">
         <h2 className="text-center mb-8 font-beverly px-6" style={{ fontSize: "clamp(2.5rem, 5vw, 5rem)", letterSpacing: "0.02em", maxWidth: "90vw", marginLeft: "auto", marginRight: "auto", color: headingColor }}>
           {t.heading}
