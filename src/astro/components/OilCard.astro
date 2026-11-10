@@ -1,0 +1,88 @@
+---
+// One oil profile card, shared by the Polyphenol Index and the buying guides
+// so both pages show an oil the same way: number, photo, name, method pill,
+// the two figures side by side at equal weight, ruled label/value cells, and a
+// note at the bottom. Page-specific content (plus/minus) goes in the slot.
+import { GREEN, CREAM, ACCENT, UDC, SG, stat, small, eyebrowSm } from "@/lib/certificates/ui";
+
+export type OilCardRow = {
+  label: string;
+  value?: string | null;
+  sub?: string | null;
+  href?: string;
+  linkText?: string;
+  external?: boolean;
+  /** Numbers and short facts in the display face; sentences in Space Grotesk. */
+  display?: boolean;
+  wide?: boolean;
+};
+export type OilCardStat = { label: string; value: string; lines: string[] };
+
+interface Props {
+  id?: string;
+  number?: string;
+  brand: string;
+  oil?: string;
+  sub: string;
+  image?: string | null;
+  imageAlt?: string;
+  pills: { label: string; accent?: boolean }[];
+  stats: [OilCardStat, OilCardStat];
+  rows: OilCardRow[];
+  note?: string | null;
+}
+const { id, number, brand, oil, sub, image, imageAlt = "", pills, stats, rows, note } = Astro.props as Props;
+const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
+const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
+---
+
+<article id={id} class="rounded-2xl p-7 md:p-8 flex flex-col min-w-0 scroll-mt-24" style={`background-color:${CREAM}; color:${GREEN};`}>
+  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
+      {number && <span style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.7rem,5vw,2.6rem); line-height:1; letter-spacing:-0.03em; color:${onCream(0.35)};`}>{number}</span>}
+      {image && (
+        <span class="flex-shrink-0 rounded-lg overflow-hidden" style={`width:clamp(44px,12vw,54px); aspect-ratio:3/4; background-color:#fff; border:1px solid ${onCream(0.12)};`}>
+          <img src={image} alt={imageAlt} width="300" height="400" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" />
+        </span>
+      )}
+      <div class="min-w-0">
+        <h3 style={`font-family:${UDC}; font-weight:700; font-size:clamp(1.25rem,4.2vw,1.5rem); letter-spacing:-0.02em; line-height:1.1; color:${GREEN}; overflow-wrap:break-word;`}>{brand}{oil && <> <span style="font-weight:300;">{oil}</span></>}</h3>
+        <p class="mt-1" style={`font-family:${SG}; font-size:.95rem; color:${onCream(0.65)};`}>{sub}</p>
+      </div>
+    </div>
+    <div class="flex sm:flex-col sm:items-end flex-wrap gap-2 flex-shrink-0">
+      {pills.map((p) => (
+        <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={`${eyebrowSm} font-size:.75rem; background-color:${p.accent ? ACCENT : GREEN}; color:${p.accent ? GREEN : CREAM};`}>{p.label}</span>
+      ))}
+    </div>
+  </div>
+
+  {/* The two figures readers look for, side by side at the same weight. */}
+  <div class="rounded-xl p-5 mb-6 grid grid-cols-2" style={`background-color:${GREEN}; color:${CREAM};`}>
+    {stats.map((s, i) => (
+      <div class={`min-w-0 ${i === 0 ? "pr-4" : "pl-4"}`} style={i === 1 ? `border-left:1px solid ${onGreen(0.22)};` : ""}>
+        <p class="mb-2 flex items-end" style={`${eyebrowSm} font-size:.76rem; line-height:1.25; min-height:2.5em; color:${onGreen(0.65)};`}>{s.label}</p>
+        <p style={`${stat} font-size:clamp(2rem,3.2vw,2.7rem); color:${ACCENT};`}>{s.value}</p>
+        <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; line-height:1.45; color:${onGreen(0.8)};`}>{s.lines.map((l, j) => <span style={j ? "display:block;" : ""}>{l}</span>)}</p>
+      </div>
+    ))}
+  </div>
+
+  <dl class="grid grid-cols-2 gap-x-5 mb-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.45;`}>
+    {rows.map((r) => (
+      <div class={`py-3 min-w-0 ${r.wide ? "col-span-2" : ""}`} style={`border-top:1px solid ${onCream(0.15)};`}>
+        <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{r.label}</dt>
+        <dd>
+          {r.href
+            ? <a href={r.href} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...(r.external ? { rel: "nofollow noopener", target: "_blank" } : {})}>{r.linkText}</a>
+            : <span style={r.display ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{r.value}</span>}
+          {r.sub && <span style={`display:block; font-size:.85rem; color:${onCream(0.7)};`}>{r.sub}</span>}
+        </dd>
+      </div>
+    ))}
+  </dl>
+
+  <slot />
+
+  {note && <p class="mt-auto" style={`${small} color:${onCream(0.8)};`}>{note}</p>}
+</article>

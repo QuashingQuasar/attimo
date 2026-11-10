@@ -19,6 +19,7 @@ report:
   url: /certificates/coratina-2526-hplc-2025-11
   label: Certificate page, ISO/IEC 17025 lab
 source_url: https://attimo-oil.com/product/coratina
+image: /images/index/attimo-coratina.jpg
 price: "€24 / 500ml"
 price_amount: 24
 price_currency: EUR
