@@ -50,10 +50,10 @@ export const en: MarketGuideContent = {
   },
   glance: {
     eyebrow: "",
-    h2: "{n} oils with a published polyphenol figure, richest in oleocanthal and oleacein first",
-    introPre: "The same order as the ",
+    h2: "{n} oils with a published polyphenol figure",
+    introPre: "Richest in oleocanthal and oleacein first, as in the ",
     introLink: "Polyphenol Index",
-    introPost: ". Oleocanthal and oleacein are the two best-studied polyphenols. Labs measure them the same way, whichever method they use. Oils that publish only a total come last.",
+    introPost: ". These are the two best-studied polyphenols. Labs measure them the same way, whichever method they use. Oils that publish only a total come last.",
     labels: { value: "€ per 100 mg oleocanthal + oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgian brand · also Nocellara and Picual", price: "Price", priceNote: "producer's price, {verified}", method: "Measured with", methodLink: "what does this mean?", compounds: "Oleocanthal + oleacein", total: "Total polyphenols", buy: "Buy", cost: "Shipping", days: "Delivery", source: "Source", notStated: "not stated", attimoAlso: "Also {nocellara} and {picual}" },
   },
   criteria: {

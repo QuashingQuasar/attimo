@@ -47,10 +47,10 @@ export const de: MarketGuideContent = {
   },
   glance: {
     eyebrow: "",
-    h2: "{n} Öle mit veröffentlichtem Polyphenolwert, die reichsten an Oleocanthal und Oleacein zuerst",
-    introPre: "Dieselbe Reihenfolge wie im ",
+    h2: "{n} Öle mit veröffentlichtem Polyphenolwert",
+    introPre: "Die reichsten an Oleocanthal und Oleacein zuerst, wie im ",
     introLink: "Polyphenol-Index",
-    introPost: ". Oleocanthal und Oleacein sind die zwei am besten erforschten Polyphenole. Labore messen sie auf dieselbe Weise, egal mit welcher Methode. Öle, die nur einen Gesamtwert veröffentlichen, stehen am Ende.",
+    introPost: ". Das sind die zwei am besten erforschten Polyphenole. Labore messen sie auf dieselbe Weise, egal mit welcher Methode. Öle, die nur einen Gesamtwert veröffentlichen, stehen am Ende.",
     labels: { value: "€ je 100 mg Oleocanthal + Oleacein", attimoName: "ATTIMO Coratina", attimoSub: "Belgische Marke · auch Nocellara und Picual", price: "Preis", priceNote: "Preis des Herstellers, {verified}", method: "Gemessen mit", methodLink: "was bedeutet das?", compounds: "Oleocanthal + Oleacein", total: "Polyphenole gesamt", buy: "Kaufen", cost: "Versand", days: "Lieferzeit", source: "Quelle", notStated: "nicht angegeben", attimoAlso: "Auch {nocellara} und {picual}" },
   },
   criteria: {
