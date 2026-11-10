@@ -89,7 +89,7 @@ export const sv: MarketGuideContent = {
     pros: { report: "Labbrapport online", hplc: "Oleocanthal och oleacein redovisade var för sig", method: "Metod angiven", origin: "Sort och skörd angivna", shipsNl: "Skickar till Sverige, {days}", shipsEu: "Skickar inom hela EU" },
     cons: { nmr: "Totalen mätt med NMR: räknar en lång lista fenoliska ämnen med full vikt, tunga derivatmolekyler inräknade, och landar 20 till 48 % högre än HPLC på samma olja. Jämför på oleocanthal + oleacein.", shipping: "Frakt {cost}", shippingFree: "Frakt {cost}, fri från {free}", noReport: "Ingen rapport att öppna", noMethod: "Metod ej angiven", totalOnly: "Bara en total, inga separata ämnen", noDays: "Leveranstid till Sverige ej angiven", nlNotNamed: "Sverige nämns inte separat", noOrigin: "Sort eller skörd ej angiven" },
     perOil: {
-      "attimo-coratina": { cons: ["Inga butiker i {market} ännu", "Picual mäts fortfarande med Folin-Ciocalteu, inte HPLC"], forWho: "För dig som tar olivolja som en daglig shot, eller vill ha en kraftig, bitter och pepprig olja att avsluta en rätt med.", standsOut: "Rapporten, metoden, sorten och skördedatumet finns alla online, och oljan är i {market} inom {daysText}." },
+      "attimo-coratina": { cons: ["Inga butiker i {market} ännu", "Picual mäts fortfarande med Folin-Ciocalteu, inte HPLC"], forWho: "För dig som tar olivolja som en daglig shot, eller vill ha en kraftig, bitter och pepprig olja att avsluta en rätt med.", standsOut: "Rapporten, metoden, sorten och skördedatumet finns alla online." },
       "olvlimits-green-machine": { forWho: "För dig som vill ha flaskan snabbt: nederländskt märke, skickar till EU på 2 till 6 arbetsdagar" },
       "pj-kabos-phenolic-shot": { forWho: "För dig som söker en grekisk olja med hög total och inte har något emot att leveranstiden inte är angiven." },
     },
@@ -118,7 +118,7 @@ export const sv: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO i Sverige",
-    h2: "Tre sortrena oljor, tidigt skördade, hemma hos dig inom {daysText}",
+    h2: "Tre sortrena oljor, tidigt skördade",
     intro: "Färsk från den senaste skörden, med labbrapporten online.",
   },
   faq: {

@@ -89,7 +89,7 @@ export const de: MarketGuideContent = {
     pros: { report: "Laborbericht online", hplc: "Oleocanthal und Oleacein getrennt ausgewiesen", method: "Methode benannt", origin: "Sorte und Ernte benannt", shipsNl: "Versendet nach Deutschland, {days}", shipsEu: "Versendet EU-weit" },
     cons: { nmr: "Gesamtwert mit NMR gemessen: zählt eine lange Liste phenolischer Verbindungen mit vollem Gewicht, schwere abgeleitete Moleküle eingeschlossen, und fällt für dasselbe Öl 20 bis 48 % höher aus als HPLC. Vergleiche über Oleocanthal + Oleacein.", shipping: "Versand {cost}", shippingFree: "Versand {cost}, kostenlos ab {free}", noReport: "Kein Bericht zum Öffnen", noMethod: "Methode nicht angegeben", totalOnly: "Nur ein Gesamtwert, keine einzelnen Stoffe", noDays: "Lieferzeit nach Deutschland nicht angegeben", nlNotNamed: "Deutschland nicht eigens genannt", noOrigin: "Sorte oder Ernte nicht benannt" },
     perOil: {
-      "attimo-coratina": { cons: ["Noch keine Läden in {market}", "Picual noch mit Folin-Ciocalteu gemessen, nicht mit HPLC"], forWho: "Wer Olivenöl als täglichen Shot nimmt oder ein kräftiges, bitteres, pfeffriges Öl zum Verfeinern eines Gerichts will.", standsOut: "Bericht, Methode, Sorte und Erntedatum stehen alle online, und das Öl ist innerhalb von {daysText} in {market}." },
+      "attimo-coratina": { cons: ["Noch keine Läden in {market}", "Picual noch mit Folin-Ciocalteu gemessen, nicht mit HPLC"], forWho: "Wer Olivenöl als täglichen Shot nimmt oder ein kräftiges, bitteres, pfeffriges Öl zum Verfeinern eines Gerichts will.", standsOut: "Bericht, Methode, Sorte und Erntedatum stehen alle online." },
       "olvlimits-green-machine": { forWho: "Wer die Flasche schnell will: niederländische Marke, Lieferung nach Deutschland in zwei Werktagen" },
       "pj-kabos-phenolic-shot": { forWho: "Wer ein griechisches Öl mit hohem Gesamtwert sucht und den eine nicht angegebene Lieferzeit nicht stört." },
     },
@@ -118,7 +118,7 @@ export const de: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO in Deutschland",
-    h2: "Drei sortenreine Öle, früh geerntet, innerhalb von {daysText} bei dir",
+    h2: "Drei sortenreine Öle, früh geerntet",
     intro: "Frisch aus der letzten Ernte, mit dem Laborbericht online.",
   },
   faq: {

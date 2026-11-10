@@ -88,7 +88,7 @@ export const da: MarketGuideContent = {
     pros: { report: "Laboratorierapport online", hplc: "Oleocanthal og oleacein rapporteret hver for sig", method: "Metode oplyst", origin: "Sort og høst oplyst", shipsNl: "Sender til Danmark, {days}", shipsEu: "Sender til hele EU" },
     cons: { nmr: "Total målt med NMR: tæller en lang liste af fenoliske stoffer med fuld vægt, også tunge afledte molekyler, og lander 20 til 48 % højere end HPLC på den samme olie. Sammenlign på oleocanthal + oleacein.", shipping: "Forsendelse {cost}", shippingFree: "Forsendelse {cost}, gratis fra {free}", noReport: "Ingen rapport at åbne", noMethod: "Metode ikke oplyst", totalOnly: "Kun en total, ingen enkeltstoffer", noDays: "Leveringstid til Danmark ikke oplyst", nlNotNamed: "Danmark ikke nævnt særskilt", noOrigin: "Sort eller høst ikke oplyst" },
     perOil: {
-      "attimo-coratina": { cons: ["Endnu ingen butikker i {market}", "Picual stadig målt med Folin-Ciocalteu, ikke HPLC"], forWho: "Til dig, der tager olivenolie som et dagligt shot, eller vil have en kraftig, bitter og pebret olie til at afslutte en ret med.", standsOut: "Rapporten, metoden, sorten og høstdatoen ligger alle online, og olien er i {market} inden for {daysText}." },
+      "attimo-coratina": { cons: ["Endnu ingen butikker i {market}", "Picual stadig målt med Folin-Ciocalteu, ikke HPLC"], forWho: "Til dig, der tager olivenolie som et dagligt shot, eller vil have en kraftig, bitter og pebret olie til at afslutte en ret med.", standsOut: "Rapporten, metoden, sorten og høstdatoen ligger alle online." },
       "olvlimits-green-machine": { forWho: "Til dig, der vil have flasken hurtigt: hollandsk mærke, sender til EU på 2 til 6 hverdage" },
       "pj-kabos-phenolic-shot": { forWho: "Til dig, der søger en græsk olie med en høj total og ikke har noget imod en uoplyst leveringstid." },
     },
@@ -117,7 +117,7 @@ export const da: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO i Danmark",
-    h2: "Tre monosort-olier, høstet tidligt, hjemme hos dig inden for {daysText}",
+    h2: "Tre monosort-olier, høstet tidligt",
     intro: "Frisk fra den seneste høst, med laboratorierapporten online.",
   },
   faq: {

@@ -91,7 +91,7 @@ export const beNl: MarketGuideContent = {
     pros: { report: "Labrapport online in te zien", hplc: "Oleocanthal en oleaceïne apart gerapporteerd", method: "Methode benoemd", origin: "Variëteit en oogst benoemd", shipsNl: "Verzendt naar België, {days}", shipsEu: "Verzendt EU-breed" },
     cons: { nmr: "Totaal gemeten met NMR: telt een lange lijst fenolische stoffen voor hun volle gewicht mee, ook zware afgeleide moleculen, en valt daardoor voor dezelfde olie 20 tot 48% hoger uit dan HPLC. Vergelijk op oleocanthal + oleaceïne.", shipping: "Verzending {cost}", shippingFree: "Verzending {cost}, gratis vanaf {free}", noReport: "Geen rapport te openen", noMethod: "Methode niet vermeld", totalOnly: "Alleen een totaal, geen afzonderlijke stoffen", noDays: "Levertijd naar België niet vermeld", nlNotNamed: "België niet apart genoemd", noOrigin: "Variëteit of oogst niet benoemd" },
     perOil: {
-      "attimo-coratina": { cons: ["Picual nog met Folin-Ciocalteu gemeten, niet met HPLC"], forWho: "Wie olijfolie als dagelijks shotje neemt, of een krachtige, bittere, peperige olie wil om af te werken.", standsOut: "Het rapport, de methode, de variëteit en de oogstdatum staan allemaal online, en de olie is binnen {daysText} in {market}." },
+      "attimo-coratina": { cons: ["Picual nog met Folin-Ciocalteu gemeten, niet met HPLC"], forWho: "Wie olijfolie als dagelijks shotje neemt, of een krachtige, bittere, peperige olie wil om af te werken.", standsOut: "Het rapport, de methode, de variëteit en de oogstdatum staan allemaal online." },
       "olvlimits-green-machine": { forWho: "Wie de fles snel wil: Nederlands merk, verzending naar België volgens hun verzendpagina." },
       "pj-kabos-phenolic-shot": { forWho: "Wie een Griekse olie met een hoog totaal zoekt en de levertijd niet belangrijk vindt." },
     },
@@ -120,7 +120,7 @@ export const beNl: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO in België",
-    h2: "Drie monocultivar-oliën, vroeg geoogst, binnen {daysText} in huis",
+    h2: "Drie monocultivar-oliën, vroeg geoogst",
     intro: "Vers van de laatste oogst, met het labrapport online.",
   },
   faq: {

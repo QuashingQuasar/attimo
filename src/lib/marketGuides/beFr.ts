@@ -90,7 +90,7 @@ export const beFr: MarketGuideContent = {
     pros: { report: "Rapport de laboratoire en ligne", hplc: "Oléocanthal et oléacéine rapportés séparément", method: "Méthode indiquée", origin: "Variété et récolte indiquées", shipsNl: "Livre en Belgique, {days}", shipsEu: "Livre dans toute l'UE" },
     cons: { nmr: "Total mesuré par NMR : compte une longue liste de composés phénoliques à leur poids entier, molécules dérivées lourdes comprises, et ressort 20 à 48 % plus haut que la HPLC pour la même huile. Comparez sur oléocanthal + oléacéine.", shipping: "Livraison {cost}", shippingFree: "Livraison {cost}, gratuite à partir de {free}", noReport: "Aucun rapport à ouvrir", noMethod: "Méthode non indiquée", totalOnly: "Seulement un total, sans composés séparés", noDays: "Délai de livraison en Belgique non indiqué", nlNotNamed: "La Belgique n'est pas nommée séparément", noOrigin: "Variété ou récolte non indiquée" },
     perOil: {
-      "attimo-coratina": { cons: ["Pas encore de magasins en {market}", "Picual encore mesuré par Folin-Ciocalteu, pas par HPLC"], forWho: "Pour qui prend l'huile d'olive en shot quotidien, ou veut une huile puissante, amère et poivrée pour finir un plat.", standsOut: "Le rapport, la méthode, la variété et la date de récolte sont tous en ligne, et l'huile est en {market} sous {daysText}." },
+      "attimo-coratina": { cons: ["Pas encore de magasins en {market}", "Picual encore mesuré par Folin-Ciocalteu, pas par HPLC"], forWho: "Pour qui prend l'huile d'olive en shot quotidien, ou veut une huile puissante, amère et poivrée pour finir un plat.", standsOut: "Le rapport, la méthode, la variété et la date de récolte sont tous en ligne." },
       "olvlimits-green-machine": { forWho: "Pour qui veut la bouteille vite : marque néerlandaise, livraison en Belgique en quelques jours ouvrables selon leur page d'expédition" },
       "pj-kabos-phenolic-shot": { forWho: "Pour qui cherche une huile grecque avec un total élevé et accepte un délai de livraison non indiqué." },
     },
@@ -119,7 +119,7 @@ export const beFr: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO en Belgique",
-    h2: "Trois huiles monovariétales, récoltées tôt, chez vous sous {daysText}",
+    h2: "Trois huiles monovariétales, récoltées tôt",
     intro: "Fraîche de la dernière récolte, avec le rapport de laboratoire en ligne.",
   },
   faq: {

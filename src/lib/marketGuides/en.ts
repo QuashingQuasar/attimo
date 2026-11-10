@@ -93,7 +93,7 @@ export const en: MarketGuideContent = {
     pros: { report: "Lab report online", hplc: "Oleocanthal and oleacein reported separately", method: "Method named", origin: "Variety and harvest named", shipsNl: "Ships to the Netherlands, {days}", shipsEu: "Ships EU-wide" },
     cons: { nmr: "Total measured with NMR: counts a long list of phenolic compounds at full weight, heavy derivative molecules included, and comes out 20 to 48% higher than HPLC on the same oil. Compare on oleocanthal + oleacein.", shipping: "Shipping {cost}", shippingFree: "Shipping {cost}, free from {free}", noReport: "No report to open", noMethod: "Method not stated", totalOnly: "Only a total, no separate compounds", noDays: "Delivery time to the Netherlands not stated", nlNotNamed: "The Netherlands not named separately", noOrigin: "Variety or harvest not named" },
     perOil: {
-      "attimo-coratina": { cons: ["No shops in {market} yet", "Picual still measured with Folin-Ciocalteu rather than HPLC"], forWho: "Anyone who takes olive oil as a daily shot, or wants a strong, bitter, peppery oil to finish a dish.", standsOut: "The report, the method, the variety and the harvest date are all online, and the oil is in {market} within {daysText}." },
+      "attimo-coratina": { cons: ["No shops in {market} yet", "Picual still measured with Folin-Ciocalteu rather than HPLC"], forWho: "Anyone who takes olive oil as a daily shot, or wants a strong, bitter, peppery oil to finish a dish.", standsOut: "The report, the method, the variety and the harvest date are all online." },
       "olvlimits-green-machine": { forWho: "Anyone who wants the bottle tomorrow: Dutch brand, ships within one business day." },
       "pj-kabos-phenolic-shot": { forWho: "Anyone looking for a Greek oil with a high total who does not mind an unstated delivery time." },
     },
@@ -122,7 +122,7 @@ export const en: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO in the Netherlands",
-    h2: "Three single-variety oils, picked early, at your door within {daysText}",
+    h2: "Three single-variety oils, picked early",
     intro: "Fresh from the latest harvest, with the lab report online.",
   },
   faq: {

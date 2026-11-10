@@ -68,7 +68,7 @@ export const europe: MarketGuideContent = {
       "attimo-coratina": {
         cons: ["Picual still measured with Folin-Ciocalteu rather than HPLC", "No free shipping to Liechtenstein, Malta, Norway and Switzerland"],
         forWho: "Anyone who takes olive oil as a daily shot, or wants a strong, bitter, peppery oil to finish a dish.",
-        standsOut: "The report, the method, the variety and the harvest date are all online, and the oil ships from Belgium to 31 European countries within {daysText}.",
+        standsOut: "The report, the method, the variety and the harvest date are all online.",
       },
       "olvlimits-green-machine": { forWho: "Anyone in or near the Netherlands who wants the bottle fast: Dutch brand, 1 business day there and 2 in Germany." },
       "pj-kabos-phenolic-shot": { forWho: "Anyone looking for a Greek oil with a high total who does not mind an unstated delivery time." },
@@ -77,7 +77,7 @@ export const europe: MarketGuideContent = {
   },
   attimo: {
     eyebrow: "ATTIMO in Europe",
-    h2: "Three single-variety oils, picked early, shipped to 31 European countries",
+    h2: "Three single-variety oils, picked early",
     intro: "Fresh from the latest harvest, with the lab report online.",
   },
   faq: {
