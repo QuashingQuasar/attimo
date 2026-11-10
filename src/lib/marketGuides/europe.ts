@@ -78,7 +78,7 @@ export const europe: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO in Europe",
     h2: "Three single-variety oils, picked early, shipped to 31 European countries",
-    intro: "Fresh from the latest harvest, with the lab report online. Shipping from Belgium costs {standard}, is free from {freeFrom}, and takes {days}.",
+    intro: "Fresh from the latest harvest, with the lab report online.",
   },
   faq: {
     heading: "Frequently asked questions",

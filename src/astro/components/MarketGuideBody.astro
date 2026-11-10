@@ -164,7 +164,7 @@ const COLS = [
   { key: "method", label: c.table.cols.method, num: false, w: "10%", tip: null, icon: false },
   { key: "price", label: c.table.cols.price, num: true, w: "10%", tip: null, icon: false },
   { key: "value", label: c.table.cols.value, num: true, w: "12%", tip: tips?.value, icon: false },
-  { key: "ship", label: c.glance.labels.cost, num: true, w: "17%", tip: null, icon: false },
+  { key: "ship", label: c.glance.labels.cost, num: true, w: "17%", tip: null, icon: false, left: true },
 ];
 const DEFAULT_SORT = "compounds";
 // One oil, two methods: the published pair from the Index.
@@ -323,8 +323,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             <thead>
               <tr>
                 {COLS.map((col) => (
-                  <th scope="col" class={`px-3 py-3 align-bottom ${col.num ? "text-right" : "text-left"} ${col.key === "oil" ? "guide-sticky" : ""}`} style={`border-bottom:2px dashed ${GREEN}; width:${col.w};`} aria-sort={col.key === DEFAULT_SORT ? "descending" : undefined}>
-                    <span class={`inline-flex items-end gap-1 ${col.num ? "justify-end" : ""}`}>
+                  <th scope="col" class={`px-3 py-3 align-bottom ${col.num && !col.left ? "text-right" : "text-left"} ${col.key === "oil" ? "guide-sticky" : ""}`} style={`border-bottom:2px dashed ${GREEN}; width:${col.w};`} aria-sort={col.key === DEFAULT_SORT ? "descending" : undefined}>
+                    <span class={`inline-flex items-end gap-1 ${col.num && !col.left ? "justify-end" : ""}`}>
                       <button type="button" class="guide-sort text-left" data-key={col.key} data-num={col.num ? "1" : "0"} data-tip={!col.icon && col.tip ? col.tip : undefined} style={`${eyebrowSm} font-size:.68rem; line-height:1.3; letter-spacing:.08em; color:${GREEN};`}>
                         <span class={!col.icon && col.tip ? "tip-text" : ""}>{col.label}</span><span class="guide-sort-arrow" aria-hidden="true">{col.key === DEFAULT_SORT ? " ↓" : ""}</span>
                       </button>
@@ -449,7 +449,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 
     <!-- ATTIMO cards close the page: the live product cards, shipping line from the tiers -->
     <div id="attimo" class="scroll-mt-24 pb-10">
-      <OilProductWidgets client:load locale={locale} heading={fill(c.attimo.h2)} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} sectionId="attimo-oils" showTagline={false} />
+      <OilProductWidgets client:load locale={locale} heading={fill(c.attimo.h2)} headingFontFamily={UDC} subtitle={fill(c.attimo.intro)} wideSubtitle sectionId="attimo-oils" showTagline={false} />
     </div>
     <Sonner client:load />
   </main>

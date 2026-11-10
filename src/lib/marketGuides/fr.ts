@@ -118,7 +118,7 @@ export const fr: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO en France",
     h2: "Trois huiles monovariétales, récoltées tôt, chez vous sous {daysText}",
-    intro: "Fraîche de la dernière récolte, avec le rapport de laboratoire en ligne. Livraison en France {standard}, gratuite à partir de {freeFrom}, sous {days}.",
+    intro: "Fraîche de la dernière récolte, avec le rapport de laboratoire en ligne.",
   },
   faq: {
     heading: "Questions fréquentes",

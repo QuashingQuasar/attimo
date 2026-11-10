@@ -120,7 +120,7 @@ export const nl: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO in Nederland",
     h2: "Drie monocultivar-oliën, vroeg geoogst, binnen {daysText} in huis",
-    intro: "Vers van de laatste oogst, met het labrapport online. Verzending naar Nederland {standard}, gratis vanaf {freeFrom}, in {days}.",
+    intro: "Vers van de laatste oogst, met het labrapport online.",
   },
   faq: {
     heading: "Veelgestelde vragen",

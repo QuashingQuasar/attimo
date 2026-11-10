@@ -119,7 +119,7 @@ export const de: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO in Deutschland",
     h2: "Drei sortenreine Öle, früh geerntet, innerhalb von {daysText} bei dir",
-    intro: "Frisch aus der letzten Ernte, mit dem Laborbericht online. Versand nach Deutschland {standard}, kostenlos ab {freeFrom}, in {days}.",
+    intro: "Frisch aus der letzten Ernte, mit dem Laborbericht online.",
   },
   faq: {
     heading: "Häufige Fragen",

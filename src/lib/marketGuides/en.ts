@@ -123,7 +123,7 @@ export const en: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO in the Netherlands",
     h2: "Three single-variety oils, picked early, at your door within {daysText}",
-    intro: "Fresh from the latest harvest, with the lab report online. Shipping to the Netherlands {standard}, free from {freeFrom}, in {days}.",
+    intro: "Fresh from the latest harvest, with the lab report online.",
   },
   faq: {
     heading: "Frequently asked questions",

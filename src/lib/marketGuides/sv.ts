@@ -119,7 +119,7 @@ export const sv: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO i Sverige",
     h2: "Tre sortrena oljor, tidigt skördade, hemma hos dig inom {daysText}",
-    intro: "Färsk från den senaste skörden, med labbrapporten online. Frakt till Sverige {standard}, fri från {freeFrom}, på {days}.",
+    intro: "Färsk från den senaste skörden, med labbrapporten online.",
   },
   faq: {
     heading: "Vanliga frågor",

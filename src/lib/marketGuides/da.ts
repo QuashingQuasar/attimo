@@ -118,7 +118,7 @@ export const da: MarketGuideContent = {
   attimo: {
     eyebrow: "ATTIMO i Danmark",
     h2: "Tre monosort-olier, høstet tidligt, hjemme hos dig inden for {daysText}",
-    intro: "Frisk fra den seneste høst, med laboratorierapporten online. Forsendelse til Danmark {standard}, gratis fra {freeFrom}, på {days}.",
+    intro: "Frisk fra den seneste høst, med laboratorierapporten online.",
   },
   faq: {
     heading: "Ofte stillede spørgsmål",
