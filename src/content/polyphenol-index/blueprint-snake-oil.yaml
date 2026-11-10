@@ -17,6 +17,7 @@ report:
   url: https://blueprint.bryanjohnson.com
   label: HPLC COA linked from the product page
 source_url: https://blueprint.bryanjohnson.com
+image: /images/index/blueprint-snake-oil.jpg
 price: "$39 / 750ml (≈ $26 per 500ml)"
 price_amount: 39
 price_currency: USD

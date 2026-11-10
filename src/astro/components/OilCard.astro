@@ -1,21 +1,14 @@
 ---
-// One oil profile card, shared by the Polyphenol Index and the buying guides
-// so both pages show an oil the same way: number, photo, name, method pill,
-// the two figures side by side at equal weight, ruled label/value cells, and a
-// note at the bottom. Page-specific content (plus/minus) goes in the slot.
+// One oil profile card, shared by the Polyphenol Index and the buying guides.
+// Hierarchy, top to bottom:
+//   1. identity: photo (rank on it), name, origin, pills
+//   2. the two figures, side by side at equal weight
+//   3. a few combined rows, label left and value right (each row answers one question)
+//   4. the note; secondary detail (plus/minus, sources) folds into a disclosure
 import { GREEN, CREAM, ACCENT, UDC, SG, stat, small, eyebrowSm } from "@/lib/certificates/ui";
 
-export type OilCardRow = {
-  label: string;
-  value?: string | null;
-  sub?: string | null;
-  href?: string;
-  linkText?: string;
-  external?: boolean;
-  /** Numbers and short facts in the display face; sentences in Space Grotesk. */
-  display?: boolean;
-  wide?: boolean;
-};
+export type OilCardPart = { text: string; href?: string; external?: boolean; strong?: boolean };
+export type OilCardRow = { label: string; parts: OilCardPart[]; sub?: string | null };
 export type OilCardStat = { label: string; value: string; lines: string[] };
 
 interface Props {
@@ -26,63 +19,92 @@ interface Props {
   sub: string;
   image?: string | null;
   imageAlt?: string;
-  pills: { label: string; accent?: boolean }[];
+  pills: { label: string; accent?: boolean; href?: string }[];
   stats: [OilCardStat, OilCardStat];
   rows: OilCardRow[];
   note?: string | null;
+  /** Label of the disclosure that holds the slot content; no label, no disclosure. */
+  detailsLabel?: string;
 }
-const { id, number, brand, oil, sub, image, imageAlt = "", pills, stats, rows, note } = Astro.props as Props;
+const { id, number, brand, oil, sub, image, imageAlt = "", pills, stats, rows, note, detailsLabel } = Astro.props as Props;
 const onCream = (a = 0.6) => `rgba(27,66,41,${a})`;
 const onGreen = (a = 0.6) => `rgba(255,250,234,${a})`;
+const hasDetails = !!detailsLabel && Astro.slots.has("default");
 ---
 
-<article id={id} class="rounded-2xl p-7 md:p-8 flex flex-col min-w-0 scroll-mt-24" style={`background-color:${CREAM}; color:${GREEN};`}>
-  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-    <div class="flex items-start gap-3 sm:gap-4 min-w-0">
-      {number && <span style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.7rem,5vw,2.6rem); line-height:1; letter-spacing:-0.03em; color:${onCream(0.35)};`}>{number}</span>}
-      {image && (
-        <span class="flex-shrink-0 rounded-lg overflow-hidden" style={`width:clamp(44px,12vw,54px); aspect-ratio:3/4; background-color:#fff; border:1px solid ${onCream(0.12)};`}>
-          <img src={image} alt={imageAlt} width="300" height="400" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" />
-        </span>
-      )}
-      <div class="min-w-0">
-        <h3 style={`font-family:${UDC}; font-weight:700; font-size:clamp(1.25rem,4.2vw,1.5rem); letter-spacing:-0.02em; line-height:1.1; color:${GREEN}; overflow-wrap:break-word;`}>{brand}{oil && <> <span style="font-weight:300;">{oil}</span></>}</h3>
-        <p class="mt-1" style={`font-family:${SG}; font-size:.95rem; color:${onCream(0.65)};`}>{sub}</p>
+<article id={id} class="oil-card rounded-2xl p-6 md:p-7 flex flex-col min-w-0 scroll-mt-24" style={`background-color:${CREAM}; color:${GREEN};`}>
+  <!-- 1. Identity -->
+  <header class="flex gap-4 md:gap-5 mb-6">
+    <figure class="relative flex-shrink-0 rounded-xl overflow-hidden" style={`width:clamp(76px,22vw,96px); aspect-ratio:3/4; background-color:#fff; border:1px solid ${onCream(0.12)};`}>
+      {image
+        ? <img src={image} alt={imageAlt} width="300" height="400" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" />
+        : <span aria-hidden="true" class="absolute inset-0 flex items-center justify-center" style={`background-color:${onCream(0.05)};`}><span style={`display:block; width:40%; aspect-ratio:1; background-color:${onCream(0.25)}; -webkit-mask:url(/icons/olive.svg) center/contain no-repeat; mask:url(/icons/olive.svg) center/contain no-repeat;`}></span></span>}
+      {number && <span class="absolute top-1.5 left-1.5 rounded-md px-1.5 py-0.5" style={`font-family:${UDC}; font-weight:700; font-size:.78rem; line-height:1.2; letter-spacing:.04em; background-color:${GREEN}; color:${CREAM};`}>{number}</span>}
+    </figure>
+    <div class="min-w-0 flex-1 flex flex-col">
+      <h3 style={`font-family:${UDC}; font-weight:700; font-size:clamp(1.3rem,3.6vw,1.55rem); letter-spacing:-0.02em; line-height:1.08; color:${GREEN}; overflow-wrap:break-word;`}>{brand}{oil && <> <span style="font-weight:300;">{oil}</span></>}</h3>
+      <p class="mt-1.5" style={`font-family:${SG}; font-size:.92rem; line-height:1.4; color:${onCream(0.65)};`}>{sub}</p>
+      <div class="flex flex-wrap gap-2 mt-auto pt-3">
+        {pills.map((p) => {
+          const st = `${eyebrowSm} font-size:.7rem; line-height:1; letter-spacing:.08em; background-color:${p.accent ? ACCENT : GREEN}; color:${p.accent ? GREEN : CREAM};`;
+          return p.href
+            ? <a href={p.href} class="rounded-full px-3 py-2 whitespace-nowrap hover:opacity-80 transition-opacity" style={st}>{p.label}</a>
+            : <span class="rounded-full px-3 py-2 whitespace-nowrap" style={st}>{p.label}</span>;
+        })}
       </div>
     </div>
-    <div class="flex sm:flex-col sm:items-end flex-wrap gap-2 flex-shrink-0">
-      {pills.map((p) => (
-        <span class="rounded-full px-3 py-1.5 whitespace-nowrap" style={`${eyebrowSm} font-size:.75rem; background-color:${p.accent ? ACCENT : GREEN}; color:${p.accent ? GREEN : CREAM};`}>{p.label}</span>
-      ))}
-    </div>
-  </div>
+  </header>
 
-  {/* The two figures readers look for, side by side at the same weight. */}
-  <div class="rounded-xl p-5 mb-6 grid grid-cols-2" style={`background-color:${GREEN}; color:${CREAM};`}>
+  <!-- 2. The two figures, equal weight -->
+  <div class="rounded-xl grid grid-cols-2 mb-5" style={`background-color:${GREEN}; color:${CREAM};`}>
     {stats.map((s, i) => (
-      <div class={`min-w-0 ${i === 0 ? "pr-4" : "pl-4"}`} style={i === 1 ? `border-left:1px solid ${onGreen(0.22)};` : ""}>
-        <p class="mb-2 flex items-end" style={`${eyebrowSm} font-size:.76rem; line-height:1.25; min-height:2.5em; color:${onGreen(0.65)};`}>{s.label}</p>
-        <p style={`${stat} font-size:clamp(2rem,3.2vw,2.7rem); color:${ACCENT};`}>{s.value}</p>
-        <p class="mt-2" style={`font-family:${SG}; font-size:.9rem; line-height:1.45; color:${onGreen(0.8)};`}>{s.lines.map((l, j) => <span style={j ? "display:block;" : ""}>{l}</span>)}</p>
+      <div class="min-w-0 p-4 md:p-5" style={i === 1 ? `border-left:1px solid ${onGreen(0.18)};` : ""}>
+        <p class="mb-3" style={`${eyebrowSm} font-size:.7rem; line-height:1.3; letter-spacing:.09em; color:${onGreen(0.62)};`}>{s.label}</p>
+        <p class="flex items-baseline gap-1.5 flex-wrap"><span style={`${stat} font-size:clamp(1.9rem,3vw,2.5rem); color:${ACCENT};`}>{s.value}</span>{s.lines[0] && <span style={`font-family:${SG}; font-size:.85rem; color:${onGreen(0.75)};`}>{s.lines[0]}</span>}</p>
+        {s.lines.slice(1).map((l) => <p class="mt-1.5" style={`font-family:${SG}; font-size:.82rem; line-height:1.4; color:${onGreen(0.7)};`}>{l}</p>)}
       </div>
     ))}
   </div>
 
-  <dl class="grid grid-cols-2 gap-x-5 mb-6" style={`font-family:${SG}; font-size:.95rem; line-height:1.45;`}>
+  <!-- 3. Facts: one question per row -->
+  <dl class="mb-5" style={`font-family:${SG};`}>
     {rows.map((r) => (
-      <div class={`py-3 min-w-0 ${r.wide ? "col-span-2" : ""}`} style={`border-top:1px solid ${onCream(0.15)};`}>
-        <dt class="mb-1" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{r.label}</dt>
-        <dd>
-          {r.href
-            ? <a href={r.href} class="underline underline-offset-4" style={`font-family:${SG}; font-weight:600; font-size:1rem;`} {...(r.external ? { rel: "nofollow noopener", target: "_blank" } : {})}>{r.linkText}</a>
-            : <span style={r.display ? `font-family:${UDC}; font-weight:700; font-size:1.15rem;` : `font-family:${SG}; font-weight:600; font-size:1rem;`}>{r.value}</span>}
-          {r.sub && <span style={`display:block; font-size:.85rem; color:${onCream(0.7)};`}>{r.sub}</span>}
+      <div class="grid grid-cols-1 sm:grid-cols-[7.5rem_1fr] gap-x-4 gap-y-1 py-3" style={`border-top:1px solid ${onCream(0.13)};`}>
+        <dt class="pt-0.5" style={`${eyebrowSm} font-size:.68rem; line-height:1.4; letter-spacing:.09em; color:${onCream(0.55)};`}>{r.label}</dt>
+        <dd class="min-w-0">
+          <p style={`font-size:.98rem; line-height:1.45; color:${GREEN};`}>
+            {r.parts.map((p, j) => (
+              <>
+                {j > 0 && <span style={`color:${onCream(0.35)};`}> · </span>}
+                {p.href
+                  ? <a href={p.href} class="underline underline-offset-4 whitespace-nowrap" style={`font-weight:600; text-decoration-color:${onCream(0.35)};`} {...(p.external ? { rel: "nofollow noopener", target: "_blank" } : {})}>{p.text}{p.external && <span aria-hidden="true"> ↗</span>}</a>
+                  : <span style={p.strong ? `font-family:${UDC}; font-weight:700; font-size:1.08rem; letter-spacing:.01em;` : "font-weight:500;"}>{p.text}</span>}
+              </>
+            ))}
+          </p>
+          {r.sub && <p class="mt-0.5" style={`font-size:.84rem; line-height:1.45; color:${onCream(0.62)};`}>{r.sub}</p>}
         </dd>
       </div>
     ))}
   </dl>
 
-  <slot />
+  {note && <p class="mb-1" style={`${small} font-size:.93rem; color:${onCream(0.8)};`}>{note}</p>}
 
-  {note && <p class="mt-auto" style={`${small} color:${onCream(0.8)};`}>{note}</p>}
+  {hasDetails
+    ? (
+      <details class="oil-card-details mt-auto pt-4" style={`border-top:1px solid ${onCream(0.13)};`}>
+        <summary class="flex items-center justify-between cursor-pointer select-none" style={`${eyebrowSm} font-size:.74rem; letter-spacing:.09em; color:${GREEN}; list-style:none;`}>
+          <span>{detailsLabel}</span>
+          <svg class="oil-card-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5 L7 9 L11 5" /></svg>
+        </summary>
+        <div class="pt-4"><slot /></div>
+      </details>
+    )
+    : <slot />}
 </article>
+
+<style>
+  .oil-card-details summary::-webkit-details-marker { display: none; }
+  .oil-card-chevron { transition: transform .2s ease; }
+  .oil-card-details[open] .oil-card-chevron { transform: rotate(180deg); }
+</style>

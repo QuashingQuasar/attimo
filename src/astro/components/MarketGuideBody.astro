@@ -31,6 +31,8 @@ const indexHref = INDEX_SLUGS[c.lang as keyof typeof INDEX_SLUGS] ?? INDEX_SLUGS
 const methodsHref = METHODS_SLUGS[c.lang as keyof typeof METHODS_SLUGS] ?? METHODS_SLUGS.en;
 const notes = INDEX_CONTENT[c.lang]?.entryNotes ?? {};
 const idx = (INDEX_CONTENT[c.lang] ?? INDEX_CONTENT.en).index;
+// Label of the per-card disclosure (plus/minus, notes, sources).
+const DETAILS: Record<string, string> = { en: "Details and sources", nl: "Details en bronnen", fr: "Détails et sources", de: "Details und Quellen", da: "Detaljer og kilder", sv: "Detaljer och källor" };
 const isMine = (e: IndexEntry) => e.attimo_certificate !== null;
 // Thousands separator: a comma in English, a point elsewhere.
 const SEP = c.lang === "en" ? "," : ".";
@@ -136,9 +138,9 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 <div class="relative min-h-screen">
   <Header client:load locale={locale} pageNavLayout="leading"
     pageNav={[
+      { label: c.nav.glance, href: "#glance" },
       { label: c.nav.criteria, href: "#criteria" },
       { label: c.nav.table, href: "#table" },
-      { label: c.nav.glance, href: "#glance" },
       { label: c.nav.number, href: "#number" },
       { label: c.nav.faq, href: "#faq" },
     ]} />
@@ -166,6 +168,70 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             {c.siblings.map((s) => <a href={s.href} class="underline" style={`font-family:${SG}; font-size:.95rem; color:rgba(255,250,234,.85); text-underline-offset:4px;`}>{s.label}</a>)}
           </p>
         )}
+      </div>
+    </section>
+
+    <!-- THE OILS: one card per oil, the same card as the Polyphenol Index -->
+    <section id="glance" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
+      <div class="container mx-auto max-w-6xl">
+        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.glance.eyebrow}</p>
+        <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.glance.h2}</h2>
+        <p class="mb-12" style={`${lead} color:${onGreen(0.85)};`}>{c.glance.introPre}<a href={indexHref} class="underline underline-offset-4" style={`color:${ACCENT};`}>{c.glance.introLink}</a>{c.glance.introPost}</p>
+        {/* items-start: opening one card's details must not stretch its neighbour. */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+          {glanceRows.map((e, i) => {
+            const mine = isMine(e); const ev = evidenceFor(e)!; const src = sourceOf(e); const per = c.oils.perOil[e.id] ?? {};
+            const pros = prosOf(e); const cons = consOf(e);
+            return (
+              <OilCard
+                id={`oil-${e.id}`}
+                number={String(i + 1).padStart(2, "0")}
+                brand={mine ? "ATTIMO" : e.brand}
+                oil={mine ? "Coratina" : e.oil}
+                sub={mine ? c.glance.labels.attimoSub : [e.variety, e.origin].filter(Boolean).join(" · ")}
+                image={e.image}
+                imageAlt={`${e.brand} ${e.oil}`}
+                pills={[
+                  { label: methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e) },
+                  { label: `${c.oils.labels.score} ${totalScore(e).toFixed(1)}`, accent: true, href: "#criteria" },
+                ]}
+                stats={[
+                  { label: c.glance.labels.total, value: e.total !== null ? num(e.total) : "–", lines: ["mg/kg", ...(e.total_secondary ? [`${num(e.total_secondary.value)} mg/kg ${e.total_secondary.method}`] : [])] },
+                  { label: c.glance.labels.compounds, value: e.compounds !== null ? num(e.compounds) : "–", lines: e.compounds !== null ? ["mg/kg", `${num(e.oleocanthal!)} oleocanthal`, `${num(e.oleacein!)} oleacein`] : ["", c.glance.labels.notStated] },
+                ]}
+                rows={[
+                  { label: c.glance.labels.price, parts: [{ text: priceOf(e) || c.glance.labels.notStated }], sub: [valueOf(e) ? c.glance.labels.value.replace("€", valueOf(e)) : "", !mine && priceOf(e) ? c.glance.labels.priceNote.replace("{verified}", verifiedOf(e)) : ""].filter(Boolean).join(" · ") || null },
+                  { label: c.glance.labels.cost, parts: [{ text: costLine(ev) }, ...(ev.days !== "not stated" ? [{ text: ev.days }] : [])] },
+                  { label: c.glance.labels.buy, parts: [{ text: buyLabel(ev) }, ...(src.href ? [{ text: src.label, href: src.href, external: !mine }] : [])] },
+                  { label: idx.harvest, parts: [{ text: e.harvest, strong: true }, e.report.status === "viewable" ? { text: idx.labReport, href: isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref, external: !mine } : { text: idx.nonePublished }] },
+                ]}
+                detailsLabel={DETAILS[c.lang] ?? DETAILS.en}
+              >
+                <div class="grid gap-5" style={`font-family:${SG};`}>
+                  <p style={`${small} font-size:.93rem; color:${onCream(0.85)};`}>{per.standsOut ? fill(per.standsOut) : notes[e.id] ?? e.note}</p>
+                  {per.forWho && <p style={`${small} font-size:.93rem; color:${onCream(0.85)};`}><span style={`${eyebrowSm} font-size:.68rem; color:${onCream(0.55)}; margin-right:.5rem;`}>{c.oils.labels.forWho}</span>{per.forWho}</p>}
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <p class="mb-2" style={`${eyebrowSm} font-size:.68rem; color:${onCream(0.55)};`}>{c.oils.labels.pros}</p>
+                      <ul class="grid gap-1.5">{pros.length ? pros.map((p) => <li style={`${small} font-size:.9rem; color:${GREEN};`}>+ {p}</li>) : <li style={`${small} color:${onCream(0.45)};`}>–</li>}</ul>
+                    </div>
+                    <div>
+                      <p class="mb-2" style={`${eyebrowSm} font-size:.68rem; color:${onCream(0.55)};`}>{c.oils.labels.cons}</p>
+                      <ul class="grid gap-1.5">{cons.length ? cons.map((p) => <li style={`${small} font-size:.9rem; color:${onCream(0.8)};`}>− {p}</li>) : <li style={`${small} color:${onCream(0.45)};`}>–</li>}</ul>
+                    </div>
+                  </div>
+                  {(!mine && (ev.notes || src.quote)) && (
+                    <div>
+                      <p class="mb-2" style={`${eyebrowSm} font-size:.68rem; color:${onCream(0.55)};`}>{c.oils.labels.source}</p>
+                      {ev.notes && <p style={`${small} font-size:.88rem; color:${onCream(0.75)};`}>{ev.notes}</p>}
+                      {src.quote && <p class="mt-1" style={`${small} font-size:.88rem; font-style:italic; color:${onCream(0.65)};`}>“{src.quote}”</p>}
+                    </div>
+                  )}
+                </div>
+              </OilCard>
+            );
+          })}
+        </div>
       </div>
     </section>
 
@@ -238,63 +304,6 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
               <p style={`${small} color:${onCream(0.78)};`}>{l.text}</p>
             </a>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- THE OILS: one card per oil, the same card as the Polyphenol Index -->
-    <section id="glance" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
-        <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.glance.eyebrow}</p>
-        <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.glance.h2}</h2>
-        <p class="mb-12" style={`${lead} color:${onGreen(0.85)};`}>{c.glance.introPre}<a href={indexHref} class="underline underline-offset-4" style={`color:${ACCENT};`}>{c.glance.introLink}</a>{c.glance.introPost}</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {glanceRows.map((e, i) => {
-            const mine = isMine(e); const ev = evidenceFor(e)!; const src = sourceOf(e); const per = c.oils.perOil[e.id] ?? {};
-            const pros = prosOf(e); const cons = consOf(e);
-            return (
-              <OilCard
-                id={`oil-${e.id}`}
-                number={String(i + 1).padStart(2, "0")}
-                brand={mine ? "ATTIMO" : e.brand}
-                oil={mine ? "Coratina" : e.oil}
-                sub={mine ? c.glance.labels.attimoSub : [e.variety, e.origin].filter(Boolean).join(" · ")}
-                image={e.image}
-                imageAlt={`${e.brand} ${e.oil}`}
-                pills={[
-                  { label: methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e) },
-                  { label: `${c.oils.labels.score} ${totalScore(e).toFixed(1)}`, accent: true },
-                ]}
-                stats={[
-                  { label: c.glance.labels.total, value: e.total !== null ? num(e.total) : "–", lines: ["mg/kg", ...(e.total_secondary ? [`${num(e.total_secondary.value)} ${e.total_secondary.method}`] : [])] },
-                  { label: c.glance.labels.compounds, value: e.compounds !== null ? num(e.compounds) : "–", lines: e.compounds !== null ? ["mg/kg", `${num(e.oleocanthal!)} oleocanthal · ${num(e.oleacein!)} oleacein`] : [c.glance.labels.notStated] },
-                ]}
-                rows={[
-                  { label: idx.harvest, value: e.harvest, sub: e.harvest_note, display: true },
-                  { label: idx.labReport, href: isMine(e) && e.attimo_certificate ? certHrefFor(c.lang, e.attimo_certificate) : e.reportHref, linkText: e.report.status === "viewable" ? idx.viewable : idx.nonePublished, external: !mine },
-                  { label: c.glance.labels.price, value: priceOf(e) || c.glance.labels.notStated, sub: !mine && priceOf(e) ? c.glance.labels.priceNote.replace("{verified}", verifiedOf(e)) : null },
-                  { label: c.table.cols.value, value: valueOf(e) || "–", sub: valueOf(e) ? c.glance.labels.value : null, display: true },
-                  { label: c.glance.labels.buy, value: buyLabel(ev), sub: mine ? null : ev.notes, wide: true },
-                  { label: c.glance.labels.cost, value: costLine(ev) },
-                  { label: c.glance.labels.days, value: ev.days === "not stated" ? c.glance.labels.notStated : ev.days },
-                  { label: c.glance.labels.source, href: src.href, linkText: src.label, sub: src.quote ? `“${src.quote}”` : null, external: !mine, wide: true },
-                  ...(per.forWho ? [{ label: c.oils.labels.forWho, value: per.forWho, wide: true }] : []),
-                ]}
-                note={per.standsOut ? fill(per.standsOut) : notes[e.id] ?? e.note}
-              >
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6 pt-4" style={`border-top:1px solid ${onCream(0.15)};`}>
-                  <div>
-                    <p class="mb-2" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{c.oils.labels.pros}</p>
-                    <ul class="grid gap-1.5">{pros.length ? pros.map((p) => <li style={`${small} font-size:.92rem; color:${GREEN};`}>+ {p}</li>) : <li style={`${small} color:${onCream(0.45)};`}>–</li>}</ul>
-                  </div>
-                  <div>
-                    <p class="mb-2" style={`${eyebrowSm} font-size:.72rem; color:${onCream(0.55)};`}>{c.oils.labels.cons}</p>
-                    <ul class="grid gap-1.5">{cons.length ? cons.map((p) => <li style={`${small} font-size:.92rem; color:${onCream(0.8)};`}>− {p}</li>) : <li style={`${small} color:${onCream(0.45)};`}>–</li>}</ul>
-                  </div>
-                </div>
-              </OilCard>
-            );
-          })}
         </div>
       </div>
     </section>

@@ -184,6 +184,7 @@ const pairMax = 1473;
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ranked.map((e) => (
             <OilCard
+              id={`oil-${e.id}`}
               number={String(e.rank).padStart(2, "0")}
               brand={e.brand}
               oil={e.oil}
@@ -193,18 +194,16 @@ const pairMax = 1473;
               pills={[{ label: methodLabel(e) }, ...(isMine(e) ? [{ label: c.index.ourOil, accent: true }] : [])]}
               stats={[
                 { label: fill(c.index.total, { method: methodLabel(e) }), value: e.total === null ? "—" : num(e.total), lines: ["mg/kg", ...(e.total_secondary ? [fill(c.index.byMethod, { v: num(e.total_secondary.value), m: e.total_secondary.method })] : [])] },
-                { label: c.index.compounds, value: num(e.compounds!), lines: ["mg/kg", `${num(e.oleocanthal!)} oleocanthal · ${num(e.oleacein!)} oleacein`] },
+                { label: c.index.compounds, value: num(e.compounds!), lines: ["mg/kg", `${num(e.oleocanthal!)} oleocanthal`, `${num(e.oleacein!)} oleacein`] },
               ]}
               rows={[
-                { label: c.index.harvest, value: e.harvest, sub: e.harvest_note, display: true },
-                { label: c.index.labReport, href: reportHref(e), linkText: e.report.status === "viewable" ? c.index.viewable : c.index.nonePublished, sub: e.report.label, external: !isMine(e) },
-                { label: c.index.price, value: e.price ?? c.index.notListed, sub: e.availability },
-                { label: c.value.cardLabel, value: e.value_per_100mg === null ? "—" : eur(e.value_per_100mg), display: true },
-                { label: c.explorer.available, value: e.regions.length ? e.regions.map((r) => ({ EU: c.explorer.eu, UK: c.explorer.uk, US: c.explorer.us })[r]).join(", ") : c.explorer.notStated, wide: true },
+                { label: c.index.harvest, parts: [{ text: e.harvest, strong: true }, e.report.status === "viewable" ? { text: c.index.labReport, href: reportHref(e), external: !isMine(e) } : { text: c.index.nonePublished }], sub: e.harvest_note },
+                { label: c.index.price, parts: [{ text: e.price ?? c.index.notListed }, ...(e.availability ? [{ text: e.availability }] : [])], sub: e.value_per_100mg === null ? null : c.value.cardLabel.replace("€", eur(e.value_per_100mg)) },
+                { label: c.explorer.available, parts: [{ text: e.regions.length ? e.regions.map((r) => ({ EU: c.explorer.eu, UK: c.explorer.uk, US: c.explorer.us })[r]).join(", ") : c.explorer.notStated }] },
               ]}
               note={note(e)}
             >
-              {e.also && <p class="mb-3" style={`${small} color:${onCream(0.8)};`}>{c.index.alsoInRange} · {e.also}</p>}
+              {e.also && <p class="mt-3" style={`${small} font-size:.9rem; color:${onCream(0.7)};`}>{c.index.alsoInRange} · {e.also}</p>}
             </OilCard>
           ))}
         </div>
