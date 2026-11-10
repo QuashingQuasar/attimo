@@ -8,10 +8,13 @@ interface ProductOriginStoryProps {
   };
   tileBackground?: string;
   tileAccent?: string;
+  /** Tile body text colour; defaults to cream for the dark tiles. */
+  tileText?: string;
+  headlineColor?: string;
   headlineMaxWidth?: string;
 }
 
-export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent, tileText, headlineColor, headlineMaxWidth }: ProductOriginStoryProps) => {
   const { headline, features } = content;
   const bg = tileBackground || "#1B4229";
   const accent = tileAccent || "#ECA948";
@@ -42,7 +45,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.85rem, 1vw, 1rem)",
             letterSpacing: "0.04em",
-            color: accent,
+            color: tileText ?? accent,
           }}
         >
           {features[index]?.description}
@@ -66,7 +69,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
         <div className="text-center mb-12 md:mb-16">
           <p
             className="font-beverly font-bold text-olive-dark tracking-tight mx-auto text-xl lg:text-2xl xl:text-3xl"
-            style={{ maxWidth: headlineMaxWidth || "67rem", lineHeight: 1.2 }}
+            style={{ maxWidth: headlineMaxWidth || "67rem", lineHeight: 1.2, ...(headlineColor ? { color: headlineColor } : {}) }}
           >
             {headline}
           </p>

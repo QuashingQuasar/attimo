@@ -27,9 +27,11 @@ interface Props {
   // Preselect a format on load (used by the dedicated 3L box landing page so
   // it renders box-first on both server and client — no hydration mismatch).
   initialFormat?: ProductFormat;
+  /** Prototype only: stand-in product for an oil not yet in Shopify. */
+  mockProduct?: ShopifyProduct;
 }
 
-export default function ProductPageWrapper({ handle, initialProducts, initialSellingPlans, initialBlogPosts, locale, initialFormat }: Props) {
+export default function ProductPageWrapper({ handle, initialProducts, initialSellingPlans, initialBlogPosts, locale, initialFormat, mockProduct }: Props) {
   if (typeof globalThis !== "undefined") {
     (globalThis as any).__ASTRO_PARAMS__ = { handle };
   }
@@ -42,6 +44,7 @@ export default function ProductPageWrapper({ handle, initialProducts, initialSel
         initialBlogPosts={initialBlogPosts}
         locale={locale}
         initialFormat={initialFormat}
+        mockProduct={mockProduct}
       />
       <Sonner />
     </QueryClientProvider>

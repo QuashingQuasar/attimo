@@ -48,9 +48,11 @@ interface ProductPageProps {
   initialBlogPosts?: BlogPost[];
   locale?: Locale;
   initialFormat?: ProductFormat;
+  /** Prototype only: a stand-in product for an oil not yet in Shopify. */
+  mockProduct?: ShopifyProduct;
 }
 
-const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat }: ProductPageProps = {}) => {
+const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat, mockProduct }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
   const t = getDict(locale).product;
@@ -179,8 +181,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     });
   }, [shopifyHandle, initialSellingPlans]);
 
-  const product = products.find((p) => p.node.handle === shopifyHandle);
+  const product = mockProduct ?? products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle, locale);
+  // Renewed look (prototype): the oil's soft colour field and ink.
+  const look = content.look;
   const mainVariantId = product?.node.variants.edges[0]?.node.id;
 
   // Fetch live stock for the "Last bottles" low-stock badge.
@@ -410,6 +414,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }> = {
     picual: newHarvestCopy("Picual"),
     coratina: newHarvestCopy("Coratina"),
+    peranzana: newHarvestCopy("Peranzana"),
   };
   const oosCopy = handle ? OOS_COPY[handle] : undefined;
 
@@ -430,7 +435,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   {
     icon: <Sprout size={20} className="text-olive-dark" />,
     label: t.attrHarvest,
-    value: t.harvestDate
+    value: look?.harvestDate ?? t.harvestDate
   },
   {
     icon: <Sparkles size={20} className="text-olive-dark" />,
@@ -449,6 +454,19 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-0 lg:self-start">
+              {look ? (
+              <div className="w-full h-[62vh] md:h-[75vh] lg:h-screen relative overflow-hidden flex items-center justify-center" style={{ backgroundColor: look.band }}>
+                <div className="relative" style={{ height: "clamp(340px, 66%, 660px)" }}>
+                  <img src={look.cutout} alt={content.heroTitle} className="h-full w-auto block" style={{ filter: "drop-shadow(0 28px 30px rgba(16,34,27,.26))" }} />
+                  <div aria-hidden="true" className="absolute pointer-events-none flex flex-col" style={{ left: "100%", top: "3%", marginLeft: 8, color: look.ink }}>
+                    <span style={{ fontFamily: "UDC Working Man Sans, sans-serif", fontWeight: 700, fontSize: "clamp(1.1rem, 1.5vw, 1.5rem)", letterSpacing: ".12em", lineHeight: 1, whiteSpace: "nowrap", transform: "rotate(-8deg)", textTransform: "uppercase" }}>{look.note}</span>
+                    <svg width="64" height="46" viewBox="0 0 64 46" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 2, marginLeft: -6 }}>
+                      <path d="M40 4 C 34 22, 22 32, 6 36" /><path d="M13.4 29.3 L 6 36 L 15.7 38.4" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              ) : (
               <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
                 <img
                 src={activeImages[selectedImageIndex]?.node?.url || activeImages[0]?.node?.url}
@@ -475,6 +493,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   </div>
               }
               </div>
+              )}
             </div>
 
             {/* Right: Product Info */}
@@ -483,8 +502,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
-                    {t.newHarvest}
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ ...(look ? { backgroundColor: look.ink } : {}), color: look ? look.band : content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                    {look?.harvestBadge ?? t.newHarvest}
                   </span>
                   {(() => {
                   // Mirrors the isInStock computation above.
@@ -499,7 +518,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   const lowStock = inStock && activeQty !== null && activeQty < 10;
                   const badgeText = inStock
                     ? (lowStock ? (isBox ? t.lastBoxes : t.lastBottles) : SALE_PRICE !== undefined ? t.onSale : t.inStock)
-                    : (oosCopy?.badge ?? t.soldOut);
+                    : (look?.status ?? oosCopy?.badge ?? t.soldOut);
                   const badgeColor = inStock
                     ? 'text-olive-dark'
                     : (oosCopy?.badgeClass ?? 'text-red-600');
@@ -512,7 +531,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ ...(look ? { color: look.ink } : {}), fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline tablet-volume-size" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(0.91rem, 1.72vw, 1.84rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {isBox ? "3L" : content.tabs.details.volume}
@@ -521,7 +540,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               </div>
 
               {/* Subtitle */}
-              <p className="text-olive-medium !-mt-0.5 md:!-mt-1 sm-only-subtitle-size tablet-subtitle-size underline-offset-[8px]" style={{ fontFamily: 'Beverly Drive, cursive', fontWeight: 'bold', fontSize: 'clamp(0.91rem, 2.11vw, 2.11rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
+              <p className="text-olive-medium !-mt-0.5 md:!-mt-1 sm-only-subtitle-size tablet-subtitle-size underline-offset-[8px]" style={{ ...(look ? { color: look.ink, opacity: 0.85 } : {}), fontFamily: 'Beverly Drive, cursive', fontWeight: 'bold', fontSize: 'clamp(0.91rem, 2.11vw, 2.11rem)', textDecoration: 'underline', textDecorationStyle: 'dashed', textDecorationColor: 'rgba(78, 91, 43, 0.4)', textUnderlineOffset: '8px' }}>
                 {content.heroSubtitle}
               </p>
 
@@ -684,6 +703,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     ) : (
                       <div id="notify" className="scroll-mt-32">
                       <NotifyMeForm
+                        tone={look ? { bg: look.band, text: look.ink, muted: `${look.ink}cc` } : undefined}
                         productName={content.heroTitle}
                         backgroundColor={content.tileBackground}
                         buttonBackgroundColor={content.buttonColor}
@@ -700,7 +720,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-2 gap-4">
                 {content.labTiles.map((tile) =>
-              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: look ? `${look.band}73` : 'rgba(27, 66, 41, 0.05)' }}>
                     <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
                       <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}</span>
                       {tile.key === 'polyphenols' && tile.label === 'BIOACTIVE POLYPHENOLS' && tile.value !== '—' && (
@@ -804,12 +824,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
+      <ProductOriginStory content={content.originStory} tileBackground={look ? look.band : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} tileText={look?.ink} headlineColor={look?.ink} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
       <ProductOriginRegion
-        backgroundColor={content.tileBackground}
-        headingColor={content.tileAccent}
-        textColor={content.tileAccent}
+        backgroundColor={look ? look.band : content.tileBackground}
+        headingColor={look ? look.ink : content.tileAccent}
+        textColor={look ? look.ink : content.tileAccent}
         heading={content.originRegion?.heading}
         body={content.originRegion?.body}
         markerLon={content.originRegion?.markerLon}
@@ -822,7 +842,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
         locale={locale} />
       
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />
+      {content.polyphenolValue > 0 && <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />}
       <FAQ handle={handle} locale={locale} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} />
 
