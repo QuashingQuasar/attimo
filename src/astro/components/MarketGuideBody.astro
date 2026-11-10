@@ -1,8 +1,8 @@
 ---
-// Body of a market buying guide (one country, one language). Rows come from
-// the Polyphenol Index filtered to oils a buyer in this market can get; every
-// score is derived from published facts (report, method, origin, delivery
-// evidence) with the weights printed on the page. Strings come from `content`.
+// Body of a market buying guide (one country or region, one language). Rows
+// come from the Polyphenol Index filtered to oils a buyer in this market can
+// get, in Index order (oleocanthal + oleacein). No composite score: Gilles
+// dropped it on 10 Nov 2026. Strings come from `content`.
 import { Header } from "@/components/Header";
 import { FAQ } from "@/components/FAQ";
 import { OilProductWidgets } from "@/components/OilProductWidgets";
@@ -57,27 +57,6 @@ const METHOD_LABEL: Record<string, string> = { COI: "HPLC (COI)" };
 const methodOf = (e: IndexEntry) => METHOD_LABEL[e.method] ?? e.method;
 const isPaid = (ev: ShipEvidence) => !!ev.cost && ev.cost !== "not stated" && !/^(gratis|free)$/i.test(ev.cost);
 
-// Scores per criterion, 0..1, each from a published fact.
-const scoreOf = (e: IndexEntry, key: CriterionKey): number => {
-  const ev = evidenceFor(e);
-  switch (key) {
-    case "report": return e.report?.status === "viewable" ? 1 : e.total ? 0.4 : 0;
-    case "method": return e.method === "not stated" ? 0 : e.compounds !== null ? (CHROMATOGRAPHY.has(e.method) ? 1 : 0.7) : 0.5;
-    case "origin": return (e.variety ? 0.5 : 0) + (e.harvest ? 0.5 : 0);
-    case "delivery":
-      if (!ev) return 0;
-      if (ev.route === "retailer" || ev.route === "distributor") return ev.basis === "lists country" || (regional && ev.basis === "EU-wide statement") ? (ev.days === "not stated" ? 0.8 : 0.9) : 0.6;
-      if (ev.route === "request") return 0.3;
-      if (regional && ev.basis === "EU-wide statement") return (ev.days === "not stated" ? 0.85 : 1) - (isPaid(ev) ? 0.1 : 0);
-      if (regional && ev.basis === "lists country") return 0.75 - (isPaid(ev) ? 0.1 : 0);
-      if (ev.basis === "lists country") return (ev.days === "not stated" ? 0.85 : 1) - (isPaid(ev) ? 0.1 : 0);
-      if (ev.basis === "EU-wide statement") return 0.75;
-      if (ev.basis === "worldwide statement") return 0.5;
-      return 0;
-  }
-};
-const totalScore = (e: IndexEntry) => Math.round(c.criteria.items.reduce((acc, it) => acc + (it.weight / 100) * scoreOf(e, it.key), 0) * 100) / 10;
-const rows = [...buyable].sort((a, b) => totalScore(b) - totalScore(a) || (b.compounds ?? -1) - (a.compounds ?? -1));
 const glanceRows = [...buyable].sort((a, b) => {
   if (a.compounds !== null && b.compounds === null) return -1;
   if (a.compounds === null && b.compounds !== null) return 1;
@@ -174,9 +153,6 @@ const shipEur = (ev: ShipEvidence): number | null => {
   const v = parseFloat(raw);
   return sym === "$" ? v * FX.USD : sym === "£" ? v * FX.GBP : sym === "kr" ? null : v;
 };
-const scoreTip = (e: IndexEntry) => tips
-  ? tips.score.replace("{breakdown}", c.criteria.items.map((it) => tips.scoreLine.replace("{name}", tips.checks[it.key].toLowerCase()).replace("{got}", dec(Math.round((it.weight / 10) * scoreOf(e, it.key) * 10) / 10).replace(/[.,]00$/, "").replace(/0$/, "")).replace("{max}", String(it.weight / 10))).join(", "))
-  : null;
 const chevron = '<svg class="oil-acc-chev" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5 L7 9 L11 5" /></svg>';
 const detailLabel = `font-family:${UDC}; font-weight:700; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:${GREEN};`;
 const checkedHuman = new Intl.DateTimeFormat(locale.lang === "en" ? "en-GB" : locale.hreflang, { day: "numeric", month: "long", year: "numeric" }).format(new Date(checked + "T12:00:00Z"));
@@ -188,8 +164,7 @@ const COLS = [
   { key: "method", label: c.table.cols.method, num: false, w: "10%", tip: null, icon: false },
   { key: "price", label: c.table.cols.price, num: true, w: "10%", tip: null, icon: false },
   { key: "value", label: c.table.cols.value, num: true, w: "12%", tip: tips?.value, icon: false },
-  { key: "ship", label: c.glance.labels.cost, num: true, w: "13%", tip: null, icon: false },
-  { key: "score", label: c.table.cols.score, num: true, w: "8%", tip: tips?.scoreHead ?? null, icon: false },
+  { key: "ship", label: c.glance.labels.cost, num: true, w: "17%", tip: null, icon: false },
 ];
 const DEFAULT_SORT = "compounds";
 // One oil, two methods: the published pair from the Index.
@@ -264,7 +239,6 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                 tipLabel={tipLabel}
                 pills={[
                   { label: methodOf(e) === "not stated" ? `${c.table.cols.method}: ${c.glance.labels.notStated}` : methodOf(e), tip: tips?.method[e.method] },
-                  { label: `${c.oils.labels.score} ${totalScore(e).toFixed(1)}`, accent: true, tip: scoreTip(e) },
                 ]}
                 stats={[
                   { label: c.glance.labels.total, value: e.total !== null ? num(e.total) : "–", lines: ["mg/kg", ...(e.total_secondary ? [`${num(e.total_secondary.value)} mg/kg ${e.total_secondary.method}`] : [])], tip: tips?.total },
@@ -333,20 +307,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             </div>
           ))}
         </div>
-        {c.table.scoreNote && (
-          <div class="mt-12 pt-10" style={`border-top:1px solid ${onCream(0.18)};`}>
-            <p class="mb-6" style={`${lead} color:${GREEN};`}>{c.table.scoreNote}</p>
-            {/* The 10 points, split by check: one segment per check, sized by its points. */}
-            <div class="grid grid-cols-2 md:flex w-full gap-px rounded-xl overflow-hidden" style={`background-color:${GREEN}; border:1px solid ${GREEN};`}>
-              {c.criteria.items.map((it, i) => (
-                <div class="score-seg min-w-0 px-4 py-4 md:px-5 md:py-5" style={`--w:${it.weight}; background-color:${i % 2 ? "#FFFFFF" : "#F0F3C4"};`}>
-                  <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.8rem,3vw,2.4rem); line-height:1; letter-spacing:-0.02em; color:${GREEN};`}>{it.weight / 10}</p>
-                  <p class="mt-2" style={`font-family:${SG}; font-weight:600; font-size:.9rem; line-height:1.3; color:${GREEN};`}>{tips?.checks[it.key] ?? it.title}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
       </div>
     </section>
 
@@ -377,7 +338,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
               {glanceRows.map((e, i) => {
                 const mine = isMine(e); const ev = evidenceFor(e)!; const p = priceInfo(e); const sh = shipEur(ev);
                 return (
-                  <tr data-order={i} data-oil={`${e.brand} ${e.oil}`} data-total={e.total ?? ""} data-compounds={e.compounds ?? ""} data-method={methodOf(e)} data-price={p.eur ?? ""} data-value={e.value_per_100mg ?? ""} data-ship={sh ?? ""} data-score={totalScore(e)} style={`border-bottom:1px dashed ${onCream(0.35)}; ${mine ? "background-color:rgba(179,229,140,.45);" : ""}`}>
+                  <tr data-order={i} data-oil={`${e.brand} ${e.oil}`} data-total={e.total ?? ""} data-compounds={e.compounds ?? ""} data-method={methodOf(e)} data-price={p.eur ?? ""} data-value={e.value_per_100mg ?? ""} data-ship={sh ?? ""} style={`border-bottom:1px dashed ${onCream(0.35)}; ${mine ? "background-color:rgba(179,229,140,.45);" : ""}`}>
                     <td class="px-3 py-3 guide-sticky" style={mine ? "background-color:#E3F3D0;" : "background-color:#FFFFFF;"}>
                       <a href={`#oil-${e.id}`} class="flex items-center gap-3 group">
                         {e.image ? <img src={e.image} alt="" width="30" height="40" loading="lazy" class="flex-shrink-0 rounded" style={`width:30px; height:40px; object-fit:cover; border:1px solid ${onCream(0.12)};`} /> : <span class="flex-shrink-0 rounded" style={`width:30px; height:40px; background-color:${onCream(0.06)};`}></span>}
@@ -393,7 +354,6 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-size:.92rem; color:${GREEN};`}>{p.eur !== null ? p.short : <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-3 py-3 text-right whitespace-nowrap" style={`font-size:.92rem; color:${GREEN};`}>{valueOf(e) || <span style={`color:${onCream(0.35)};`}>–</span>}</td>
                     <td class="px-3 py-3" style={`font-size:.86rem; line-height:1.35; color:${onCream(0.85)};`}>{mine && c.attimoShipping?.short ? c.attimoShipping.short : shipLine(ev)}</td>
-                    <td class="px-3 py-3 text-right whitespace-nowrap"><span class={scoreTip(e) ? "tip-text" : ""} data-tip={scoreTip(e) || undefined} tabindex={scoreTip(e) ? 0 : undefined} style={`font-family:${UDC}; font-weight:700; font-size:1.05rem; color:${GREEN};`}>{totalScore(e).toFixed(1)}</span></td>
                   </tr>
                 );
               })}
@@ -498,7 +458,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 </div>
 
 <style>
-  .guide-table { table-layout: fixed; min-width: 980px; --oil-w: 24%; }
+  .guide-table { table-layout: fixed; min-width: 920px; --oil-w: 28%; }
   .guide-table-wrap { overflow-x: auto; }
   .guide-sort { cursor: pointer; }
   @media (min-width: 768px) { .score-seg { flex: var(--w) 1 0; } }

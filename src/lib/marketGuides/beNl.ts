@@ -69,7 +69,7 @@ export const beNl: MarketGuideContent = {
   table: {
     eyebrow: "Vergelijking",
     h2: "Alle beschikbare oliën vergeleken",
-    intro: "Dezelfde oliën, met de score op de vier criteria hierboven. Twee kolommen voor het polyfenolgetal: de twee hoofdstoffen apart, en het totaal zoals de producent het publiceert.",
+    intro: "Twee kolommen voor het polyfenolgetal: de twee hoofdstoffen apart, en het totaal zoals de producent het publiceert.",
     cols: { oil: "Olie", compounds: "Oleocanthal + oleaceïne", total: "Totaal", method: "Methode", price: "Prijs", value: "Waarde", buy: "Kopen in België", days: "Levertijd", score: "Score" },
     buy: { webshop: "Webshop, verzendt naar België", webshopEu: "Webshop, verzendt EU-breed", webshopWorld: "Webshop, verzendt internationaal", retailer: "Via winkel", distributor: "Via distributeur", request: "Op aanvraag" },
     footnote: "mg/kg. Verzendinformatie gelezen op de website van elke verkoper op {checked}; de zin staat achter de bron. Polyfenolgetallen komen uit de Polyfenolindex, waar elk cijfer naar het rapport linkt. Prijzen zijn die van de producent, gelezen in {verified}.",
@@ -122,7 +122,7 @@ export const beNl: MarketGuideContent = {
     items: [
       { question: "Levert ATTIMO in België?", answer: "Ja. Verzending kost {standard} en is gratis vanaf {freeFrom}. Bestellingen zijn binnen {daysText} in huis." },
       { question: "Welke olie in België heeft het hoogste polyfenolgetal?", answer: "Dat hangt af van hoe er gemeten is. De tabel toont elk gepubliceerd getal met de methode erbij, en de twee hoofdstoffen in een eigen kolom. ATTIMO Coratina 25/26 meet 847 mg/kg (HPLC), waarvan 807 mg/kg oleocanthal plus oleaceïne." },
-      { question: "Hoe vergelijk ik verschillende merken?", answer: "Zoals deze gids het doet. Eerst een echte oogstdatum op de fles, zodat je weet hoe oud de olie is. Dan een polyfenolgetal met het labrapport erachter, en de methode waarmee dat is gemeten, want verschillende methodes geven verschillende getallen voor dezelfde olie. Verschillen de methodes, vergelijk dan op oleocanthal + oleaceïne, want elk lab rapporteert die apart. Dan of het merk naar {market} verzendt, in hoeveel dagen en tegen welke kosten, in eigen woorden. De tabel hierboven beoordeelt elke olie op die vier punten." },
+      { question: "Hoe vergelijk ik verschillende merken?", answer: "Zoals deze gids het doet. Eerst een echte oogstdatum op de fles, zodat je weet hoe oud de olie is. Dan een polyfenolgetal met het labrapport erachter, en de methode waarmee dat is gemeten, want verschillende methodes geven verschillende getallen voor dezelfde olie. Verschillen de methodes, vergelijk dan op oleocanthal + oleaceïne, want elk lab rapporteert die apart. Dan of het merk naar {market} verzendt, in hoeveel dagen en tegen welke kosten, in eigen woorden." },
       { question: "Kan ik ATTIMO in een winkel in België kopen?", answer: "Via de webshop, en bij een aantal winkels. De lijst met verkooppunten volgt hier." },
       { question: "Wanneer komt de nieuwe oogst?", answer: "De olijven worden in oktober groen geplukt en eind oktober geperst. Laat je e-mailadres achter op de homepage en je hoort het als eerste." },
       { question: "Hoe bewaar ik een polyfenolrijke olijfolie?", answer: "Donker, koel en dicht. Licht, zuurstof en warmte breken polyfenolen af. Gebruik een geopende fles binnen een paar maanden." },

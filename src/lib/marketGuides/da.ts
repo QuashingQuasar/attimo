@@ -66,7 +66,7 @@ export const da: MarketGuideContent = {
   table: {
     eyebrow: "Sammenligning",
     h2: "Alle tilgængelige olier sammenlignet",
-    intro: "De samme olier, scoret på de fire kriterier ovenfor. To kolonner til polyfenoltallet: de to hovedstoffer for sig, og totalen, som producenten offentliggør den.",
+    intro: "To kolonner til polyfenoltallet: de to hovedstoffer for sig, og totalen, som producenten offentliggør den.",
     cols: { oil: "Olie", compounds: "Oleocanthal + oleacein", total: "I alt", method: "Metode", price: "Pris", value: "Værdi", buy: "Sådan køber du i Danmark", days: "Levering", score: "Score" },
     buy: { webshop: "Webshop, sender til Danmark", webshopEu: "Webshop, sender til hele EU", webshopWorld: "Webshop, sender internationalt", retailer: "Via en butik", distributor: "Via en distributør", request: "På forespørgsel" },
     footnote: "mg/kg. Forsendelsesoplysninger læst på hver sælgers hjemmeside den {checked}; sætningen ligger bag kildelinket. Polyfenoltal kommer fra Polyfenolindekset, hvor hvert tal linker til sin rapport. Priser er producentens, læst i {verified}.",
@@ -119,7 +119,7 @@ export const da: MarketGuideContent = {
     items: [
       { question: "Sender ATTIMO til Danmark?", answer: "Ja. Forsendelse koster {standard} og er gratis fra {freeFrom}. Bestillinger er fremme inden for {daysText}." },
       { question: "Hvilken olie i Danmark har det højeste polyfenoltal?", answer: "Det afhænger af, hvordan der er målt. Tabellen viser hvert offentliggjort tal med sin metode, og de to hovedstoffer i deres egen kolonne. ATTIMO Coratina 25/26 måler 847 mg/kg (HPLC), heraf 807 mg/kg oleocanthal plus oleacein." },
-      { question: "Hvordan sammenligner jeg forskellige mærker?", answer: "På samme måde som denne guide gør det. Først en rigtig høstdato på flasken, så du ved, hvor gammel olien er. Så et polyfenoltal med laboratorierapporten bag og den metode, det er målt med, fordi forskellige metoder giver forskellige tal for den samme olie. Når metoderne er forskellige, så sammenlign på oleocanthal + oleacein, som alle laboratorier opgiver hver for sig. Så om mærket sender til {market}, på hvor mange dage og til hvilken pris, med mærkets egne ord. Tabellen ovenfor vurderer hver olie på de fire punkter." },
+      { question: "Hvordan sammenligner jeg forskellige mærker?", answer: "På samme måde som denne guide gør det. Først en rigtig høstdato på flasken, så du ved, hvor gammel olien er. Så et polyfenoltal med laboratorierapporten bag og den metode, det er målt med, fordi forskellige metoder giver forskellige tal for den samme olie. Når metoderne er forskellige, så sammenlign på oleocanthal + oleacein, som alle laboratorier opgiver hver for sig. Så om mærket sender til {market}, på hvor mange dage og til hvilken pris, med mærkets egne ord." },
       { question: "Kan jeg købe ATTIMO i en butik i Danmark?", answer: "Lige nu via webshoppen. Butikker i Danmark bliver nævnt her, så snart de findes." },
       { question: "Hvornår kommer den nye høst?", answer: "Olivenerne plukkes grønne i oktober og presses sidst i oktober. Skriv din e-mail på forsiden, så hører du det først." },
       { question: "Hvordan opbevarer jeg en polyfenolrig olivenolie?", answer: "Mørkt, køligt og lukket. Lys, ilt og varme nedbryder polyfenoler. Brug en åbnet flaske inden for et par måneder." },

@@ -67,7 +67,7 @@ export const sv: MarketGuideContent = {
   table: {
     eyebrow: "Jämförelse",
     h2: "Alla tillgängliga oljor jämförda",
-    intro: "Samma oljor, poängsatta på de fyra kriterierna ovan. Två kolumner för polyfenolvärdet: de två viktigaste ämnena för sig, och totalen så som producenten publicerar den.",
+    intro: "Två kolumner för polyfenolvärdet: de två viktigaste ämnena för sig, och totalen så som producenten publicerar den.",
     cols: { oil: "Olja", compounds: "Oleocanthal + oleacein", total: "Totalt", method: "Metod", price: "Pris", value: "Värde", buy: "Så köper du i Sverige", days: "Leverans", score: "Poäng" },
     buy: { webshop: "Webbshop, skickar till Sverige", webshopEu: "Webbshop, skickar inom hela EU", webshopWorld: "Webbshop, skickar internationellt", retailer: "Via en butik", distributor: "Via en distributör", request: "På förfrågan" },
     footnote: "mg/kg. Fraktuppgifter lästa på varje säljares webbplats {checked}; meningen finns bakom källänken. Polyfenolvärdena kommer från Polyfenolindex, där varje värde länkar till sin rapport. Priserna är producentens, lästa {verified}.",
@@ -120,7 +120,7 @@ export const sv: MarketGuideContent = {
     items: [
       { question: "Skickar ATTIMO till Sverige?", answer: "Ja. Frakten kostar {standard} och är fri från {freeFrom}. Beställningar kommer fram inom {daysText}." },
       { question: "Vilken olja i Sverige har det högsta polyfenolvärdet?", answer: "Det beror på hur det mättes. Tabellen visar varje publicerat värde med sin metod, och de två viktigaste ämnena i en egen kolumn. ATTIMO Coratina 25/26 mäter 847 mg/kg (HPLC), varav 807 mg/kg oleocanthal plus oleacein." },
-      { question: "Hur jämför jag olika märken?", answer: "På samma sätt som den här guiden gör. Först ett riktigt skördedatum på flaskan, så att du vet hur gammal oljan är. Sedan ett polyfenolvärde med labbrapporten bakom, och metoden det mättes med, eftersom olika metoder ger olika värden för samma olja. När metoderna skiljer sig åt, jämför på oleocanthal + oleacein, som varje labb redovisar separat. Sedan om märket skickar till {market}, på hur många dagar och till vilken kostnad, med märkets egna ord. Tabellen ovan betygsätter varje olja på de fyra punkterna." },
+      { question: "Hur jämför jag olika märken?", answer: "På samma sätt som den här guiden gör. Först ett riktigt skördedatum på flaskan, så att du vet hur gammal oljan är. Sedan ett polyfenolvärde med labbrapporten bakom, och metoden det mättes med, eftersom olika metoder ger olika värden för samma olja. När metoderna skiljer sig åt, jämför på oleocanthal + oleacein, som varje labb redovisar separat. Sedan om märket skickar till {market}, på hur många dagar och till vilken kostnad, med märkets egna ord." },
       { question: "Kan jag köpa ATTIMO i en butik i Sverige?", answer: "Just nu via webbshoppen. Butiker i Sverige listas här så snart de finns." },
       { question: "När kommer den nya skörden?", answer: "Oliverna plockas gröna i oktober och pressas i slutet av oktober. Lämna din e-post på startsidan så får du veta först." },
       { question: "Hur förvarar jag en polyfenolrik olivolja?", answer: "Mörkt, svalt och stängt. Ljus, syre och värme bryter ner polyfenoler. Använd en öppnad flaska inom några månader." },
