@@ -80,7 +80,7 @@ export interface ProductContent {
   shippingNotice?: string;
   /** The renewed look (prototype): the oil's soft colour field, its ink, and
    * the bottle cut-out shown on that field in place of the hero photo. */
-  look?: { band: string; ink: string; cutout: string; harvestBadge: string; harvestDate: string; status: string; note: string };
+  look?: { band: string; ink: string; cutout: string; harvestBadge: string; harvestDate: string; status: string; note: string; price?: number };
   originRegion?: {
     heading: string;
     body: string;
@@ -480,7 +480,7 @@ productContentMap["peranzana"] = {
   buttonColor: "#CDDB2D",
   tileBackground: "#5C2C3C",
   tileAccent: "#DACAC0",
-  look: { band: "#DACAC0", ink: "#5C2C3C", cutout: peranzanaCutout, harvestBadge: "Harvest 26/27", harvestDate: "October 2026", status: "Coming soon", note: "New" },
+  look: { band: "#DACAC0", ink: "#5C2C3C", cutout: peranzanaCutout, harvestBadge: "Harvest 26/27", harvestDate: "October 2026", status: "Coming soon", note: "New", price: 21 },
   originRegion: {
     heading: "From grove to bottle",
     body: "ATTIMO Peranzana comes from the same family producer in Puglia as our Coratina.\n\nPeranzana is native to the north of the region, around Foggia. It is the producer's second-best seller after Coratina.",

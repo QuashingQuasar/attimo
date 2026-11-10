@@ -277,7 +277,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
   // 25/26 end-of-season sale (Shopify price set to match): the sale price is
   // the price; the regular one shows struck through.
-  const REGULAR_PRICE = locale.prices[productSlug];
+  // A product in the renewed-look prototype carries its own price until it is in Shopify.
+  const REGULAR_PRICE = look?.price ?? locale.prices[productSlug];
   const SALE_PRICE = salePrice(locale, productSlug);
   const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
   // Subscription is a flat ~8% discount applied to the base price.
@@ -497,7 +498,9 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-6">
+            {/* Renewed look: selected states (quantity, purchase option) take the oil's ink. */}
+            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}`}</style>}
+            <div className={`${look ? "look-ink " : ""}px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-6`}>
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">

@@ -1,7 +1,7 @@
 ---
 // Design prototype: the real product page in the renewed look, for Peranzana.
 // Peranzana is not in Shopify yet, so a stand-in product (Nocellara's record,
-// renamed and marked out of stock) feeds the page; the copy comes from
+// renamed, in stock, price from the content's look) feeds the page; the copy comes from
 // productContent["peranzana"]. Not indexed, not linked.
 import BaseLayout from "@astro/layouts/BaseLayout.astro";
 import ProductPageWrapper from "@astro/react-pages/ProductPageWrapper";
@@ -23,7 +23,7 @@ const mockProduct = base ? {
     handle: "peranzana",
     title: "ATTIMO Extra Virgin Olive Oil Peranzana 500ml",
     images: { edges: [{ node: { url: peranzanaCutout, altText: "ATTIMO Peranzana 26/27" } }] },
-    variants: { edges: base.node.variants.edges.map((v) => ({ node: { ...v.node, id: "prototype-peranzana-variant", availableForSale: false } })) },
+    variants: { edges: base.node.variants.edges.map((v) => ({ node: { ...v.node, id: "prototype-peranzana-variant", availableForSale: true } })) },
   },
 } : undefined;
 ---
