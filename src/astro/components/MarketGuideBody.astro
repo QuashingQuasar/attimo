@@ -216,12 +216,14 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
   <main style={`color:${GREEN};`}>
     <!-- HERO -->
     <section class="relative flex items-center overflow-hidden" style={`background-color:${DEEP}; min-height:max(80vh, 700px);`}>
-      <img src={heroImage} alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover" />
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata" poster="/images/guide-hero-poster.jpg" aria-hidden="true">
+        <source src="/videos/hero-video-2.mp4" type="video/mp4" />
+      </video>
       <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(13,30,20,.78) 0%, rgba(13,30,20,.6) 50%, rgba(13,30,20,.85) 100%);"></div>
       <div class="relative container mx-auto px-6 pt-36 md:pt-44 pb-20 text-center">
         <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.hero.eyebrow}</p>
-        <h1 class="mx-auto mb-6 max-w-4xl" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.2vw,3.7rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; text-shadow:0 2px 24px rgba(16,34,27,.9);`}>{c.hero.h1}</h1>
-        <p class="mx-auto mb-9 max-w-3xl" style={`${lead} color:rgba(255,250,234,.92); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>{c.hero.lead}</p>
+        <h1 class="mx-auto mb-6" style={`font-family:${UDC}; font-weight:300; font-size:clamp(2.1rem,4.2vw,3.7rem); line-height:1.02; letter-spacing:-0.03em; color:${CREAM}; text-shadow:0 2px 24px rgba(16,34,27,.9);`}>{c.hero.h1}</h1>
+        <p class="mx-auto mb-9" style={`${lead} color:rgba(255,250,234,.92); text-shadow:0 1px 12px rgba(16,34,27,.9);`}>{c.hero.lead}</p>
         <div class="flex flex-wrap justify-center gap-3 mb-10">
           <a href="#glance" style={`${btn} background-color:${ACCENT}; color:${GREEN};`}>{c.hero.cta}</a>
           <a href="#criteria" style={`${btn} background-color:rgba(255,250,234,.1); color:${CREAM}; border:1px solid rgba(255,250,234,.45); backdrop-filter:blur(6px);`}>{c.hero.ctaSecondary}</a>
@@ -241,7 +243,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 
     <!-- THE OILS: one card per oil, the same card as the Polyphenol Index -->
     <section id="glance" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${GREEN}; color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.glance.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${CREAM};`}>{c.glance.h2}</h2>
         <p class="mb-12" style={`${lead} color:${onGreen(0.85)};`}>{c.glance.introPre}<a href={indexHref} class="underline underline-offset-4" style={`color:${ACCENT};`}>{c.glance.introLink}</a>{c.glance.introPost}</p>
@@ -303,16 +305,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
                       )) : <li style={`font-size:.9rem; color:${onCream(0.5)};`}>–</li>}</ul>
                     </div>
                   </details>
-                  {(!mine && (ev.notes || src.quote)) && (
-                    <details class="oil-acc-item">
-                      <summary><span>{c.oils.labels.source}</span><Fragment set:html={chevron} /></summary>
-                      <div class="oil-acc-body">
-                        {src.quote && <p class="mb-2 pl-3" style={`font-size:.92rem; line-height:1.5; font-style:italic; color:${GREEN}; border-left:3px solid ${ACCENT};`}>“{src.quote}”</p>}
-                        {ev.notes && <p class="mb-2" style={`font-size:.88rem; line-height:1.5; color:${onCream(0.75)};`}>{ev.notes}</p>}
-                        <a href={src.href} class="underline underline-offset-4" rel="nofollow noopener" target="_blank" style={`font-size:.88rem; font-weight:600; color:${GREEN};`}>{src.label} ↗</a>
-                      </div>
-                    </details>
-                  )}
+
                 </div>
               </OilCard>
             );
@@ -323,9 +316,9 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 
     <!-- CRITERIA: what a buyer should look for -->
     <section id="criteria" class="py-20 md:py-24 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.criteria.eyebrow}</p>
-        <h2 class={`max-w-4xl ${c.criteria.intro ? "mb-5" : "mb-12"}`} style={`${h2} color:${GREEN};`}>{c.criteria.h2}</h2>
+        <h2 class={c.criteria.intro ? "mb-5" : "mb-12"} style={`${h2} color:${GREEN};`}>{c.criteria.h2}</h2>
         {c.criteria.intro && <p class="mb-12" style={`${lead} color:${onCream(0.78)};`}>{c.criteria.intro}</p>}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {c.criteria.items.map((it) => (
@@ -340,25 +333,30 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
             </div>
           ))}
         </div>
+        {c.table.scoreNote && (
+          <div class="mt-12 pt-10" style={`border-top:1px solid ${onCream(0.18)};`}>
+            <p class="mb-6" style={`${lead} color:${GREEN};`}>{c.table.scoreNote}</p>
+            {/* The 10 points, split by check: one segment per check, sized by its points. */}
+            <div class="grid grid-cols-2 md:flex w-full gap-px rounded-xl overflow-hidden" style={`background-color:${GREEN}; border:1px solid ${GREEN};`}>
+              {c.criteria.items.map((it, i) => (
+                <div class="score-seg min-w-0 px-4 py-4 md:px-5 md:py-5" style={`--w:${it.weight}; background-color:${i % 2 ? "#FFFFFF" : "#F0F3C4"};`}>
+                  <p style={`font-family:${UDC}; font-weight:300; font-size:clamp(1.8rem,3vw,2.4rem); line-height:1; letter-spacing:-0.02em; color:${GREEN};`}>{it.weight / 10}</p>
+                  <p class="mt-2" style={`font-family:${SG}; font-weight:600; font-size:.9rem; line-height:1.3; color:${GREEN};`}>{tips?.checks[it.key] ?? it.title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
 
     <!-- TABLE: every oil on one screen, sortable -->
     <section id="table" class="py-20 md:py-24 px-6 scroll-mt-24" style="background-color:#F3EFD9;">
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.table.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.table.h2}</h2>
         <p class="mb-8" style={`${lead} color:${onCream(0.8)};`}>{c.table.intro}</p>
-        {c.table.scoreNote && (
-          <div class="mb-8 flex flex-wrap items-center gap-x-4 gap-y-3 rounded-2xl px-5 py-4" style={`background-color:${GREEN}; color:${CREAM};`}>
-            <p style={`font-family:${SG}; font-size:.95rem; line-height:1.45; color:${onGreen(0.9)};`}>{c.table.scoreNote}</p>
-            <ul class="flex flex-wrap gap-2">
-              {c.criteria.items.map((it) => (
-                <li class="rounded-full px-3 py-1.5" style={`${eyebrowSm} font-size:.7rem; line-height:1; background-color:rgba(255,250,234,.1); border:1px solid rgba(255,250,234,.25); color:${CREAM};`}>{(tips?.checks[it.key] ?? it.title)} <span style={`color:${ACCENT};`}>{it.weight / 10}</span></li>
-              ))}
-            </ul>
-          </div>
-        )}
+
         <div class="guide-table-wrap rounded-2xl" style={`background-color:#FFFFFF; border:1px solid ${onCream(0.2)};`}>
           <table class="guide-table w-full" data-sortable style={`font-family:${SG}; border-collapse:collapse;`}>
             <thead>
@@ -403,8 +401,8 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
           </table>
         </div>
         {c.table.footnotes
-          ? <ul class="mt-5 grid gap-1.5 max-w-4xl list-disc pl-5" style={`${small} font-size:.88rem; color:${onCream(0.68)};`}>{c.table.footnotes.map((f) => <li>{f.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</li>)}</ul>
-          : <p class="mt-5 max-w-4xl" style={`${small} font-size:.88rem; color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</p>}
+          ? <ul class="mt-5 grid gap-1.5 list-disc pl-5" style={`${small} font-size:.88rem; color:${onCream(0.68)};`}>{c.table.footnotes.map((f) => <li>{f.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</li>)}</ul>
+          : <p class="mt-5" style={`${small} font-size:.88rem; color:${onCream(0.65)};`}>{c.table.footnote.split("{checked}").join(checkedHuman).split("{verified}").join(verifiedFor(c.lang))}</p>}
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px rounded-2xl overflow-hidden" style={`background-color:rgba(255,250,234,.15);`}>
           {[{ href: indexHref, ...c.table.links.index }, { href: methodsHref, ...c.table.links.methods }].map((l) => (
@@ -422,10 +420,10 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 
     <!-- THE NUMBER: how to read a polyphenol figure, with one oil tested two ways -->
     <section id="number" class="py-20 md:py-28 px-6 scroll-mt-24" style={`background-color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <p class="mb-5" style={`${eyebrow} color:${onCream(0.55)};`}>{c.number.eyebrow}</p>
         <h2 class="mb-5" style={`${h2} color:${GREEN};`}>{c.number.h2}</h2>
-        <p class="mb-12 max-w-4xl" style={`${lead} color:${onCream(0.8)};`}>{c.number.intro}</p>
+        <p class="mb-12" style={`${lead} color:${onCream(0.8)};`}>{c.number.intro}</p>
         <div class={c.number.visual && pair ? "grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-16 items-start" : ""}>
           <ol class={c.number.visual && pair ? "" : "grid grid-cols-1 md:grid-cols-3 gap-8"}>
             {c.number.steps.map((st, i) => (
@@ -467,7 +465,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
 
     <!-- AVOID -->
     <section class="py-20 md:py-24 px-6" style={`background-color:${GREEN}; color:${CREAM};`}>
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-7xl">
         <p class="mb-5" style={`${eyebrow} color:${ACCENT};`}>{c.avoid.eyebrow}</p>
         <h2 class="mb-10" style={`${h2} color:${CREAM};`}>{c.avoid.h2}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -503,6 +501,7 @@ const bar = (v: number, dark: boolean) => `display:block; height:6px; border-rad
   .guide-table { table-layout: fixed; min-width: 980px; --oil-w: 24%; }
   .guide-table-wrap { overflow-x: auto; }
   .guide-sort { cursor: pointer; }
+  @media (min-width: 768px) { .score-seg { flex: var(--w) 1 0; } }
   .oil-acc-item { border-bottom: 1px solid rgba(27,66,41,.13); }
   .oil-acc-item > summary {
     display: flex; align-items: center; gap: .75rem; padding: .95rem 0; cursor: pointer; list-style: none; user-select: none;

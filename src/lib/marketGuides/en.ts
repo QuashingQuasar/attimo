@@ -72,7 +72,7 @@ export const en: MarketGuideContent = {
     h2: "Compare the oils on polyphenols, price and shipping",
     intro: "Click a column to sort by it. Click an oil to open its card.",
     sortHint: "Sorted by",
-    scoreNote: "Each oil's score is out of 10, from four checks on what its producer publishes. Points per check:",
+    scoreNote: "We scored each oil on this page against these four checks, out of 10:",
     footnotes: [
       "Polyphenols in mg/kg, from each producer's lab report.",
       "Prices are the producer's own, from {verified}. Dollar and pound prices are converted to euros at the European Central Bank rate.",
