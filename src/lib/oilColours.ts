@@ -9,11 +9,15 @@
 // white, which reads black-and-white on the darkest labels) and the fill of
 // the page's buttons.
 // The product pages show the bottles on sale on those pages: the 25/26
-// labels. The 26/27 cut-outs (src/assets/bottle-2627-*.png) take over when
-// the new harvest is listed.
-import coratinaCutout from "@/assets/bottle-2526-coratina-trim.png?url";
-import picualCutout from "@/assets/bottle-2526-picual-trim.png?url";
-import nocellaraCutout from "@/assets/bottle-2526-nocellara-trim.png?url";
+// labels. These three cut-outs are made from the website bottle images
+// Gilles supplied on 2026-11-11 (white background removed). Do not swap in
+// src/assets/bottle-*-cutout.png or -transparent.png: those were generated
+// for another creative purpose and are not the website bottles. The 26/27
+// cut-outs (src/assets/bottle-2627-*.png) take over when the new harvest is
+// listed.
+import coratinaCutout from "@/assets/bottle-2526-coratina-site.png?url";
+import picualCutout from "@/assets/bottle-2526-picual-site.png?url";
+import nocellaraCutout from "@/assets/bottle-2526-nocellara-site.png?url";
 
 export interface OilColours { field: string; ink: string }
 
