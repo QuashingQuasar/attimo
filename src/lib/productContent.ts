@@ -403,6 +403,90 @@ export const productContentMap: Record<string, ProductContent> = {
   },
 };
 
+// PROTOTYPE (season-2 look, Nov 2026): Peranzana, 26/27 harvest. Not in
+// Shopify yet; rendered only by /prototype/pdp-peranzana. Placeholder copy,
+// lab values pending. Colours and price: src/lib/oilColours.ts.
+productContentMap["peranzana"] = {
+  heroTitle: "PERANZANA D'ITALIA",
+  heroSubtitle: "Organic Specialty Extra Virgin Olive Oil",
+  benefits: [
+    "100% Peranzana olives harvested early and pressed within hours",
+    "Third-party lab tested for quality and purity",
+    "From the same family producer in Puglia as our Coratina",
+  ],
+  benefitTooltip:
+    "Polyphenols are natural compounds in olive oil that provide the health benefits you've heard about: anti-inflammatory properties, heart health support and antioxidant protection.",
+  labReportUrl: "/certificates",
+  sourceLine: "From the same family producer in Puglia as our Coratina",
+  labelDisclosure: "",
+  labTiles: [
+    { key: "polyphenols", label: "BIOACTIVE POLYPHENOLS", value: "—", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+    { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+    { key: "oleacin", label: "OLEACIN", value: "—", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+    { key: "acidity", label: "ACIDITY", value: "—", unit: "%", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
+  ],
+  tabs: {
+    details: {
+      origin: "Puglia, Italy",
+      olive: "Peranzana",
+      flavor: "Gentle & Fruity",
+      store: "keep away from light and heat",
+      volume: "500ml",
+    },
+    flavorProfile: [
+      { label: "FRUITY", rating: 5 },
+      { label: "HERBAL", rating: 3 },
+      { label: "PEPPERY", rating: 2 },
+      { label: "BITTER", rating: 2 },
+    ],
+    harvest:
+      "The olives are picked early in October, while still green, and pressed within hours. Green olives give less oil and more polyphenols.",
+    uses: "Gentle enough for every day: drizzle over salads, fish and vegetables, or cook with it.",
+  },
+  originStory: {
+    headline:
+      "Peranzana is an olive from the north of Puglia. It presses a light, very fruity oil, the gentle counterpart to our Coratina.",
+    quickRef: [
+      { label: "VARIETY", value: "100% Peranzana" },
+      { label: "ORIGIN", value: "Puglia, Italy" },
+      { label: "FLAVOR", value: "Gentle & Fruity" },
+      { label: "USE", value: "every day, raw or cooked" },
+      { label: "STORE", value: "away from light and heat" },
+    ],
+    features: [
+      { title: "Gentle & Fruity", description: "Light and very fruity. The mild oil of our three, for anyone who finds Coratina too bold.", icon: "/icons/mortar.svg" },
+      { title: "Early Harvest", description: "Harvested early when the olives are highest in polyphenols that boost flavour and health benefits.", icon: "/icons/basket-2.svg" },
+      { title: "100% Peranzana", description: "An olive variety native to the north of Puglia, around Foggia.", icon: "/icons/branch-2.svg" },
+      { title: "Cold Pressed", description: "Pressed within hours of harvest at low temperatures to preserve every drop of flavour and nutrition.", icon: "/icons/olive.svg" },
+      { title: "Organic", description: "Grown organically, by the same family producer as our Coratina.", icon: "/icons/bread-2.svg" },
+    ],
+  },
+  labTrust: {
+    heading: "lab-tested for quality and purity",
+    subheading:
+      "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
+    values: [
+      { label: "Polyphenols", value: "—", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+      { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+      { label: "Oleacin", value: "—", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+      { label: "Acidity", value: "—", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
+    ],
+  },
+  polyphenolValue: 0,
+  polyphenolLabel: "Peranzana",
+  buttonColor: "#CDDB2D",
+  tileBackground: "#5C2C3C",
+  tileAccent: "#DACAC0",
+  originRegion: {
+    heading: "From grove to bottle",
+    body: "ATTIMO Peranzana comes from the same family producer in Puglia as our Coratina.\n\nPeranzana is native to the north of the region, around Foggia. It is the producer's second-best seller after Coratina.",
+    markerLon: 15.55,
+    markerLat: 41.6,
+    markerLabel: "Puglia",
+    markerStyle: "pill-only" as const,
+  },
+};
+
 // Map URL slugs to Shopify handles (when they differ)
 export const handleToShopifyHandle: Record<string, string> = {
   nocellara: "nocellara",

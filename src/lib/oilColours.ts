@@ -9,6 +9,9 @@
 // white, which reads black-and-white on the darkest labels) and the fill of
 // the page's buttons.
 import coratinaCutout from "@/assets/bottle-2627-coratina.png?url";
+import peranzanaCutout from "@/assets/bottle-2627-peranzana.png?url";
+import picualCutout from "@/assets/bottle-2627-picual.png?url";
+import nocellaraCutout from "@/assets/bottle-2526-nocellara-trim.png?url";
 
 export interface OilColours { field: string; ink: string }
 
@@ -23,10 +26,24 @@ export interface ProductLook extends OilColours {
   accent: string;
   /** Bottle cut-out shown on the field in place of the hero photo. */
   cutout: string;
+  /** Prototype only, for an oil not in Shopify or the price list yet. */
+  price?: number;
+  harvestBadge?: string;
+  harvestDate?: string;
 }
 
 // Product pages in the season-2 look, by URL handle. A page not listed here
 // keeps the original look.
 export const PRODUCT_LOOKS: Record<string, ProductLook> = {
+  // Dark green label, bright green print.
   coratina: { ...OIL_COLOURS.coratina, accent: "#B3E58C", cutout: coratinaCutout },
+  // Plum label, peach print. Prototype page only (/prototype/pdp-peranzana).
+  peranzana: { ...OIL_COLOURS.peranzana, accent: "#EDC28F", cutout: peranzanaCutout, price: 21, harvestBadge: "Harvest 26/27", harvestDate: "October 2026" },
+  // Bright green label, dark green print: the accent is the label itself.
+  picual: { ...OIL_COLOURS.picual, accent: "#8CC45C", cutout: picualCutout },
+  // 25/26 only (does not return). Dark green label with amber print; the
+  // field is derived the way the three above were: the label's identifying
+  // colour (amber #ECA948, hue 36) washed out to about 80% lightness and 40%
+  // saturation. The ink is the label's dark green.
+  nocellara: { field: "#E1D2B7", ink: "#152E1F", accent: "#ECA948", cutout: nocellaraCutout },
 };

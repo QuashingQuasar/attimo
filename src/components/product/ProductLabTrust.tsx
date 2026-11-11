@@ -10,9 +10,11 @@ interface ProductLabTrustProps {
   };
   labReportUrl?: string;
   locale?: Locale;
+  /** Tile background; defaults to the neutral green-grey wash. */
+  tileColor?: string;
 }
 
-export const ProductLabTrust = ({ content, labReportUrl, locale = DEFAULT_LOCALE }: ProductLabTrustProps) => {
+export const ProductLabTrust = ({ content, labReportUrl, locale = DEFAULT_LOCALE, tileColor }: ProductLabTrustProps) => {
   const { heading, subheading, values: labValues } = content;
   const t = getDict(locale).product;
   return (
@@ -63,7 +65,7 @@ export const ProductLabTrust = ({ content, labReportUrl, locale = DEFAULT_LOCALE
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {labValues.map((item, index) => (
-              <div key={index} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+              <div key={index} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: tileColor ?? 'rgba(27, 66, 41, 0.05)' }}>
                {/* Phones: figure on the left, explanation on the right. */}
                <div className="w-[46%] flex-shrink-0 sm:w-auto">
                 <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1vw, 1rem)' }}>

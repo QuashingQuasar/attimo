@@ -50,9 +50,11 @@ interface ProductPageProps {
   initialBlogPosts?: BlogPost[];
   locale?: Locale;
   initialFormat?: ProductFormat;
+  /** Prototype only: a stand-in product for an oil not yet in Shopify. */
+  mockProduct?: ShopifyProduct;
 }
 
-const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat }: ProductPageProps = {}) => {
+const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat, mockProduct }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
   const t = getDict(locale).product;
@@ -189,7 +191,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     });
   }, [shopifyHandle, initialSellingPlans]);
 
-  const product = products.find((p) => p.node.handle === shopifyHandle);
+  const product = mockProduct ?? products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle, locale);
   // Season-2 look, for the pages that opt in (src/lib/oilColours.ts): the oil's
   // faded field and dark ink carry the page's coloured surfaces; its accent
@@ -289,7 +291,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
   // 25/26 end-of-season sale (Shopify price set to match): the sale price is
   // the price; the regular one shows struck through.
-  const REGULAR_PRICE = locale.prices[productSlug];
+  // A prototype oil that is not in the price list yet carries its own price.
+  const REGULAR_PRICE = PRODUCT_LOOKS[productSlug]?.price ?? locale.prices[productSlug];
   // Forced review states show the regular season price, except ?state=sale.
   const SALE_PRICE = forcedState && forcedState !== "sale" && forcedState !== "sold-out" && forcedState !== "all-out" ? undefined : salePrice(locale, productSlug);
   const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
@@ -451,7 +454,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   {
     icon: <Sprout size={20} className="text-olive-dark" />,
     label: t.attrHarvest,
-    value: t.harvestDate
+    value: look?.harvestDate ?? t.harvestDate
   },
   {
     icon: <Sparkles size={20} className="text-olive-dark" />,
@@ -538,14 +541,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}`}</style>}
+            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}.look-ink .bg-olive-dark .border-cream{border-color:${look.accent}!important}.look-ink .bg-olive-dark .bg-cream{background-color:${look.accent}!important}`}</style>}
             <div className={`${look ? "look-ink " : ""}px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5`}>
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: look ? look.accent : content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
-                    {t.newHarvest}
+                    {look?.harvestBadge ?? t.newHarvest}
                   </span>
                   {(() => {
                   // Mirrors the isInStock computation above.
@@ -878,8 +881,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
         markerStyle={content.originRegion?.markerStyle}
         locale={locale} />
       
-      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />
+      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} tileColor={look ? `${look.field}66` : undefined} />
+      {content.polyphenolValue > 0 && <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />}
       <FAQ handle={handle} locale={locale} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} products={products} forceAvailable={forcedState === "in-stock" || forcedState === "sale"} />
 
