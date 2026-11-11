@@ -26,6 +26,7 @@ import { FormatSelector, type ProductFormat } from "@/components/FormatSelector"
 import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORATINA_3L_IMAGES, CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { StickyBuyBar } from "@/components/product/StickyBuyBar";
+import { PRODUCT_LOOKS } from "@/lib/oilColours";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
@@ -49,9 +50,11 @@ interface ProductPageProps {
   initialBlogPosts?: BlogPost[];
   locale?: Locale;
   initialFormat?: ProductFormat;
+  /** Prototype only: a stand-in product for an oil not yet in Shopify. */
+  mockProduct?: ShopifyProduct;
 }
 
-const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat }: ProductPageProps = {}) => {
+const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans, initialBlogPosts, locale = DEFAULT_LOCALE, initialFormat, mockProduct }: ProductPageProps = {}) => {
   const params = useParams<{handle: string;}>();
   const handle = handleProp ?? params.handle;
   const t = getDict(locale).product;
@@ -188,8 +191,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     });
   }, [shopifyHandle, initialSellingPlans]);
 
-  const product = products.find((p) => p.node.handle === shopifyHandle);
+  const product = mockProduct ?? products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle, locale);
+  // Season-2 look, for the pages that opt in (src/lib/oilColours.ts): the oil's
+  // faded field and dark ink carry the page's coloured surfaces; its accent
+  // (the label's vivid print colour) is the text on ink and fills the buttons.
+  const look = handle ? PRODUCT_LOOKS[handle] : undefined;
+  const accent = look ? look.accent : content.buttonColor;
+  const formTone = look ? { bg: look.field, text: look.ink, muted: `${look.ink}cc`, buttonBg: look.ink, buttonText: look.accent } : undefined;
   const mainVariantId = product?.node.variants.edges[0]?.node.id;
 
   // Fetch live stock for the "Last bottles" low-stock badge.
@@ -282,7 +291,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const productSlug = (handle ?? "coratina") as "coratina" | "nocellara" | "picual";
   // 25/26 end-of-season sale (Shopify price set to match): the sale price is
   // the price; the regular one shows struck through.
-  const REGULAR_PRICE = locale.prices[productSlug];
+  // A prototype oil that is not in the price list yet carries its own price.
+  const REGULAR_PRICE = PRODUCT_LOOKS[productSlug]?.price ?? locale.prices[productSlug];
   // Forced review states show the regular season price, except ?state=sale.
   const SALE_PRICE = forcedState && forcedState !== "sale" && forcedState !== "sold-out" && forcedState !== "all-out" ? undefined : salePrice(locale, productSlug);
   const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
@@ -444,7 +454,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   {
     icon: <Sprout size={20} className="text-olive-dark" />,
     label: t.attrHarvest,
-    value: t.harvestDate
+    value: look?.harvestDate ?? t.harvestDate
   },
   {
     icon: <Sparkles size={20} className="text-olive-dark" />,
@@ -484,11 +494,23 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             
             {/* Left: Full-bleed sticky image */}
             <div className="lg:sticky lg:top-0 lg:self-start">
-              <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden">
+              <div className="w-full h-[50vh] md:h-auto md:max-h-[75vh] md:aspect-[3/4] lg:max-h-none lg:aspect-auto lg:h-screen relative overflow-hidden" style={look ? { backgroundColor: look.field } : undefined}>
+                {look && !isBox && selectedImageIndex === 0 ? (
+                  // Season-2 look: the bottle stands on its colour field, as in
+                  // the homepage harvest section.
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src={look.cutout}
+                      alt={product.node.title}
+                      className="block w-auto"
+                      style={{ height: "clamp(290px, 74%, 720px)", filter: "drop-shadow(0 20px 22px rgba(16,34,27,.24))" }} />
+                  </div>
+                ) : (
                 <img
                 src={activeImages[selectedImageIndex]?.node?.url || activeImages[0]?.node?.url}
                 alt={activeImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover object-center" />
+                )}
 
 
                 {/* Overlay Thumbnails — bottom-right inside image */}
@@ -504,7 +526,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   'border-white/40 opacity-60 hover:opacity-100'}`
                   }>
                   
-                        <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                        {look && !isBox && i === 0 ? (
+                          <span className="flex items-center justify-center w-full h-full" style={{ backgroundColor: look.field }}>
+                            <img src={look.cutout} alt="" className="h-[82%] w-auto" />
+                          </span>
+                        ) : (
+                          <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                        )}
                       </button>
                 )}
                   </div>
@@ -513,13 +541,17 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5">
+            {/* Season-2 look: selected states take the oil's ink, and what sits on
+                the ink takes its accent. Injected as raw HTML: React escapes
+                quotes in <style> text on the server, which breaks hydration. */}
+            {look && <style dangerouslySetInnerHTML={{ __html: `.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}.look-ink .bg-olive-dark .border-cream{border-color:${look.accent}!important}.look-ink .bg-olive-dark .bg-cream{background-color:${look.accent}!important}` }} />}
+            <div className={`${look ? "look-ink " : ""}px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5`}>
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
-                    {t.newHarvest}
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: look ? look.accent : content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
+                    {look?.harvestBadge ?? t.newHarvest}
                   </span>
                   {(() => {
                   // Mirrors the isInStock computation above.
@@ -585,7 +617,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     countryName={forcedState === "unsupported" ? "Japan" : countryName!}
                     countryCode={forcedState === "unsupported" ? "JP" : countryCode!}
                     productName={content.heroTitle}
-                    buttonColor={content.buttonColor}
+                    buttonColor={accent}
+                    tone={formTone}
                   />
                 ) : (
                   <>
@@ -631,7 +664,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       className="scroll-mb-6 w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
                       style={{
                         fontFamily: "UDC Working Man Sans, sans-serif",
-                        backgroundColor: content.buttonColor,
+                        backgroundColor: accent,
                         fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
                         borderRadius: "0.75rem"
                       }}>
@@ -709,9 +742,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     ) : (
                       <div id="notify" className="scroll-mt-32">
                       <NotifyMeForm
+                        tone={formTone}
                         productName={content.heroTitle}
                         backgroundColor={content.tileBackground}
-                        buttonBackgroundColor={content.buttonColor}
+                        buttonBackgroundColor={accent}
                         heading={oosCopy?.formHeading}
                         subtitle={oosCopy?.formSubtitle}
                         restockProductKey={content.polyphenolLabel}
@@ -726,7 +760,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {content.labTiles.map((tile) =>
-              <div key={tile.key} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+              <div key={tile.key} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: look ? `${look.field}66` : 'rgba(27, 66, 41, 0.05)' }}>
                   <div className="w-[46%] flex-shrink-0 sm:w-auto">
                     <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
                       <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}</span>
@@ -832,12 +866,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={content.tileBackground} tileAccent={content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
+      <ProductOriginStory content={content.originStory} tileBackground={look ? look.field : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} featureTile={look ? { index: 2, background: look.ink, accent: look.accent } : undefined} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
       <ProductOriginRegion
-        backgroundColor={content.tileBackground}
-        headingColor={content.tileAccent}
-        textColor={content.tileAccent}
+        backgroundColor={look ? look.field : content.tileBackground}
+        headingColor={look ? look.ink : content.tileAccent}
+        textColor={look ? look.ink : content.tileAccent}
+        pillTextColor={look?.accent}
         heading={content.originRegion?.heading}
         body={content.originRegion?.body}
         markerLon={content.originRegion?.markerLon}
@@ -849,8 +884,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
         markerStyle={content.originRegion?.markerStyle}
         locale={locale} />
       
-      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
-      <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />
+      <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} tileColor={look ? `${look.field}66` : undefined} />
+      {content.polyphenolValue > 0 && <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />}
       <FAQ handle={handle} locale={locale} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} products={products} forceAvailable={forcedState === "in-stock" || forcedState === "sale"} />
 
@@ -867,7 +902,9 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             image={isBox ? CORATINA_3L_IMAGE : productImages[0]?.node?.url}
             line={`${buyQty} × ${isBox ? "3L" : content.tabs.details.volume} · ${formatPrice(buyTotal, locale, buyDiscount > 0 ? 2 : undefined)}`}
             label={t.addToCart}
-            buttonColor={content.buttonColor}
+            buttonColor={accent}
+            barColor={look?.ink}
+            nameColor={look?.accent}
             onAdd={handleAddToCart} />
         </>
       )}

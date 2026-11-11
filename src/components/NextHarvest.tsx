@@ -2,6 +2,7 @@ import { useRef, useState, type CSSProperties } from "react";
 import { HarvestSignup } from "@/components/HarvestSignup";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { nhHrefFor } from "@/lib/newHarvestContent";
+import { OIL_COLOURS } from "@/lib/oilColours";
 import { useHarvestSection, FONTS, C, type HarvestOil } from "@/components/harvest/useHarvestSection";
 
 // Homepage section for the next harvest (lab look "D5b-4", chosen 2026-10-25).
@@ -24,9 +25,9 @@ const { CREAM, GREEN } = C;
 const gr = (a: number) => `rgba(27,66,41,${a})`;
 
 const BANDS: Record<HarvestOil["key"], { band: string; ink: string }> = {
-  coratina: { band: "#BBC3B0", ink: "#10221B" },
-  peranzana: { band: "#DACAC0", ink: "#5C2C3C" },
-  picual: { band: "#D1E4B1", ink: GREEN },
+  coratina: { band: OIL_COLOURS.coratina.field, ink: OIL_COLOURS.coratina.ink },
+  peranzana: { band: OIL_COLOURS.peranzana.field, ink: OIL_COLOURS.peranzana.ink },
+  picual: { band: OIL_COLOURS.picual.field, ink: OIL_COLOURS.picual.ink },
 };
 // Width/height of each bottle cut-out (src/assets/bottle-2627-*.png).
 const RATIO: Record<HarvestOil["key"], number> = { coratina: 0.3489, peranzana: 0.3611, picual: 0.3611 };

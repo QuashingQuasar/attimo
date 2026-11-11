@@ -14,10 +14,14 @@ interface StickyBuyBarProps {
   line: string;
   label: string;
   buttonColor?: string;
+  /** Bar background; defaults to the brand green. */
+  barColor?: string;
+  /** Product name colour; defaults to cream. */
+  nameColor?: string;
   onAdd: () => void;
 }
 
-export const StickyBuyBar = ({ targetId, name, image, line, label, buttonColor = "#CDDB2D", onAdd }: StickyBuyBarProps) => {
+export const StickyBuyBar = ({ targetId, name, image, line, label, buttonColor = "#CDDB2D", barColor = "#1B4229", nameColor = "#FFFAEA", onAdd }: StickyBuyBarProps) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     // Looks the button up on every check: the buy box re-renders it.
@@ -44,7 +48,7 @@ export const StickyBuyBar = ({ targetId, name, image, line, label, buttonColor =
     >
       <div
         className="flex items-center gap-2.5 sm:gap-3 px-4 pt-3"
-        style={{ backgroundColor: "#1B4229", boxShadow: "0 -8px 24px rgba(16,34,27,.22)", paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
+        style={{ backgroundColor: barColor, boxShadow: "0 -8px 24px rgba(16,34,27,.22)", paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
       >
         {/* Photo, name and price: tapping them brings the buy area (format,
             bottles, subscription) into view, ending on the page's own button. */}
@@ -65,7 +69,7 @@ export const StickyBuyBar = ({ targetId, name, image, line, label, buttonColor =
             </span>
           )}
           <span className="block flex-1 min-w-0">
-            <span className="block truncate font-bold uppercase" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#FFFAEA", fontSize: "1rem", letterSpacing: "0.04em", lineHeight: 1.15 }}>{name}</span>
+            <span className="block truncate font-bold uppercase" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: nameColor, fontSize: "1rem", letterSpacing: "0.04em", lineHeight: 1.15 }}>{name}</span>
             <span className="block truncate" style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(255,250,234,.78)", fontSize: "0.875rem" }}>{line}</span>
           </span>
         </button>
