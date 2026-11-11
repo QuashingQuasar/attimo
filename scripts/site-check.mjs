@@ -26,16 +26,19 @@ const BASE = (args.base || ORIGIN).replace(/\/$/, "");
 const isProduction = BASE === ORIGIN;
 const UA = "attimo-site-check";
 
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// One slow or failed answer is not a broken page: a server error or a dropped
+// connection is asked again, after 2 and then 6 seconds, before it is reported.
 async function get(url, tries = 3) {
   for (let i = 1; ; i++) {
     try {
       const r = await fetch(url, { redirect: "manual", headers: { "User-Agent": UA } });
-      // One slow or failed answer is not a broken page: ask again before reporting.
-      if (r.status >= 500 && i < tries) continue;
-      return { status: r.status, headers: r.headers, body: await r.text() };
+      if (r.status < 500 || i >= tries) return { status: r.status, headers: r.headers, body: await r.text() };
     } catch (e) {
       if (i >= tries) return { status: 0, headers: new Headers(), body: "", error: String(e) };
     }
+    await wait(i * i * 2000);
   }
 }
 
