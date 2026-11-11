@@ -864,6 +864,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
           <StickyBuyBar
             targetId="pdp-add-to-cart"
             name={content.tabs.details.olive}
+            image={isBox ? CORATINA_3L_IMAGE : productImages[0]?.node?.url}
             line={`${buyQty} × ${isBox ? "3L" : content.tabs.details.volume} · ${formatPrice(buyTotal, locale, buyDiscount > 0 ? 2 : undefined)}`}
             label={t.addToCart}
             buttonColor={content.buttonColor}
