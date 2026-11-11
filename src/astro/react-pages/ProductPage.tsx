@@ -866,7 +866,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={look ? look.field : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} featureTile={look ? { index: 2, background: look.ink, accent: look.accent } : undefined} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
+      <ProductOriginStory content={content.originStory} tileBackground={look ? look.field : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
       <ProductOriginRegion
         backgroundColor={look ? look.field : content.tileBackground}

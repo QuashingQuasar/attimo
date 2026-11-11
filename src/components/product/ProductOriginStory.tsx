@@ -9,22 +9,16 @@ interface ProductOriginStoryProps {
   tileBackground?: string;
   tileAccent?: string;
   headlineMaxWidth?: string;
-  /** One tile set in other colours than the rest (season-2 look: the centre
-   *  tile takes the label's dark ink and vivid print colour). */
-  featureTile?: { index: number; background: string; accent: string };
 }
 
-export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth, featureTile }: ProductOriginStoryProps) => {
+export const ProductOriginStory = ({ content, tileBackground, tileAccent, headlineMaxWidth }: ProductOriginStoryProps) => {
   const { headline, features } = content;
-  const baseBg = tileBackground || "#1B4229";
-  const baseAccent = tileAccent || "#ECA948";
+  const bg = tileBackground || "#1B4229";
+  const accent = tileAccent || "#ECA948";
 
   // Phones: compact rows (icon left, copy right). From md: centred cards.
-  const renderTile = (index: number) => {
-    const featured = featureTile?.index === index;
-    const bg = featured ? featureTile!.background : baseBg;
-    const accent = featured ? featureTile!.accent : baseAccent;
-    return (
+  // Every tile in the grid looks the same: one background, one text colour.
+  const renderTile = (index: number) => (
     <div className="rounded-2xl px-5 py-5 md:px-4 md:py-6 h-full md:min-h-[250px] lg:min-h-0" style={{ backgroundColor: bg }}>
       <div className="h-full flex flex-row md:flex-col md:justify-center items-center text-left md:text-center gap-4 md:gap-3">
         <div
@@ -58,8 +52,7 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
         </div>
       </div>
     </div>
-    );
-  };
+  );
 
   const renderVideo = (index: number, fallback: string) => (
     <div className="rounded-2xl relative overflow-hidden h-[170px] md:h-[250px] lg:h-full lg:min-h-[190px]">
