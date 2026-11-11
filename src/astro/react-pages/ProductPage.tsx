@@ -541,7 +541,10 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}.look-ink .bg-olive-dark .border-cream{border-color:${look.accent}!important}.look-ink .bg-olive-dark .bg-cream{background-color:${look.accent}!important}`}</style>}
+            {/* Season-2 look: selected states take the oil's ink, and what sits on
+                the ink takes its accent. Injected as raw HTML: React escapes
+                quotes in <style> text on the server, which breaks hydration. */}
+            {look && <style dangerouslySetInnerHTML={{ __html: `.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}.look-ink .bg-olive-dark .border-cream{border-color:${look.accent}!important}.look-ink .bg-olive-dark .bg-cream{background-color:${look.accent}!important}` }} />}
             <div className={`${look ? "look-ink " : ""}px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5`}>
               
               {/* Harvest Badge + Title Block */}

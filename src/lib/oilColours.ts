@@ -8,9 +8,11 @@
 // colour. It is the text on every ink surface (so dark never pairs with
 // white, which reads black-and-white on the darkest labels) and the fill of
 // the page's buttons.
-import coratinaCutout from "@/assets/bottle-2627-coratina.png?url";
-import peranzanaCutout from "@/assets/bottle-2627-peranzana.png?url";
-import picualCutout from "@/assets/bottle-2627-picual.png?url";
+// The product pages show the bottles on sale on those pages: the 25/26
+// labels. The 26/27 cut-outs (src/assets/bottle-2627-*.png) take over when
+// the new harvest is listed.
+import coratinaCutout from "@/assets/bottle-2526-coratina-trim.png?url";
+import picualCutout from "@/assets/bottle-2526-picual-trim.png?url";
 import nocellaraCutout from "@/assets/bottle-2526-nocellara-trim.png?url";
 
 export interface OilColours { field: string; ink: string }
@@ -37,8 +39,6 @@ export interface ProductLook extends OilColours {
 export const PRODUCT_LOOKS: Record<string, ProductLook> = {
   // Dark green label, bright green print.
   coratina: { ...OIL_COLOURS.coratina, accent: "#B3E58C", cutout: coratinaCutout },
-  // Plum label, peach print. Prototype page only (/prototype/pdp-peranzana).
-  peranzana: { ...OIL_COLOURS.peranzana, accent: "#EDC28F", cutout: peranzanaCutout, price: 21, harvestBadge: "Harvest 26/27", harvestDate: "October 2026" },
   // Bright green label, dark green print: the accent is the label itself.
   picual: { ...OIL_COLOURS.picual, accent: "#8CC45C", cutout: picualCutout },
   // 25/26 only (does not return). Dark green label with amber print; the
