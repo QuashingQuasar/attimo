@@ -8,6 +8,7 @@ import { sv, SV_SHIPPING } from "./sv";
 import { fr, FR_SHIPPING } from "./fr";
 import { europe, EUROPE_SHIPPING } from "./europe";
 import type { MarketGuideContent, ShipEvidence, CriterionKey } from "./types";
+import { GUIDE_FOOTER_LINKS } from "./footerLinks";
 
 export type { MarketGuideContent, ShipEvidence, CriterionKey };
 
@@ -54,5 +55,12 @@ export const MARKET_GUIDE_LINKS: Record<string, GuideLink[]> = {
   ],
 };
 export const marketGuidesFor = (lang: string): GuideLink[] => MARKET_GUIDE_LINKS[lang] ?? [];
+
+// The footer keeps its own short list (footerLinks.ts). Fail the build if it
+// ever points at a slug no guide has.
+const guideSlugs = new Set(Object.values(MARKET_GUIDES).map((g) => g.content.slug));
+for (const link of Object.values(GUIDE_FOOTER_LINKS).flat()) {
+  if (!guideSlugs.has(link.href)) throw new Error(`Footer guide link ${link.href} matches no market guide slug`);
+}
 /** Back-compat: the first guide of a language, or null. */
 export const marketGuideFor = (lang: string): GuideLink | null => marketGuidesFor(lang)[0] ?? null;

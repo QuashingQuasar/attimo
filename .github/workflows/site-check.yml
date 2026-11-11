@@ -1,0 +1,23 @@
+# After each successful production deploy, check that every page in the sitemap
+# still answers 200, is indexable and has a canonical pointing to itself, and
+# that robots.txt is the file we expect. A failed run means a page dropped out
+# of reach of search engines; see scripts/site-check.mjs.
+name: Site check
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  site-check:
+    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Give the domain a moment to point at the new deployment.
+      - if: github.event_name == 'deployment_status'
+        run: sleep 60
+      - run: node scripts/site-check.mjs
