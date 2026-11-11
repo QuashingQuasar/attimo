@@ -10,7 +10,8 @@ const STATIC_URLS: { loc: string; changefreq: string; priority: string }[] = [
   { loc: "/product/coratina", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/nocellara", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/picual", changefreq: "weekly", priority: "0.9" },
-  { loc: "/product/peranzana", changefreq: "weekly", priority: "0.9" },
+  // /product/peranzana goes back in when the product is listed in the shop;
+  // until then the page returns 404 in every language.
   { loc: "/product/trio", changefreq: "weekly", priority: "0.9" },
   { loc: "/product/duo", changefreq: "weekly", priority: "0.9" },
   { loc: "/high-polyphenol-olive-oil", changefreq: "weekly", priority: "0.9" },

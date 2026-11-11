@@ -3,6 +3,7 @@ import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { METHODS_SLUGS } from "@/lib/polyphenolMethodsContent";
 import { indexHrefFor } from "@/lib/polyphenolIndexContent";
+import { guideFooterLinksFor } from "@/lib/marketGuides/footerLinks";
 
 interface FooterProps {
   locale?: Locale;
@@ -83,7 +84,9 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
   const learnLinks = [
     { label: t.footer.blog, href: localizeHref("/blog", locale) },
     { label: t.footer.polyphenolMethods, href: methodsHref },
-        { label: t.footer.polyphenolIndex, href: indexHrefFor(locale.lang) },
+    { label: t.footer.polyphenolIndex, href: indexHrefFor(locale.lang) },
+    // The buying guides of the countries this language serves.
+    ...guideFooterLinksFor(locale.lang),
     { label: t.nav.quiz, href: localizeHref("/quiz", locale) },
     { label: t.footer.ambassadors, href: ambassadorsHref },
   ];
