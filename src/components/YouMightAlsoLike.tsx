@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, currentPrice, formatPrice, localizeHref, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, localizeHref, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
-import { fetchProducts } from "@/lib/shopify";
+import { fetchProducts, type ShopifyProduct } from "@/lib/shopify";
+import { useCartStore } from "@/stores/cartStore";
+import { OilCardCta, SOLD_OUT_IMAGE_STYLE, addBottleFromCard } from "@/components/OilCardCta";
 import { resolveShopifyHandle } from "@/lib/productContent";
 
 const oilDefs = [
@@ -46,6 +48,11 @@ interface YouMightAlsoLikeProps {
   currentHandle?: string;
   accentColor?: string;
   locale?: Locale;
+  /** Products the page already holds; seeds stock so the cards do not flash
+   *  a buy button before the live check returns. */
+  products?: ShopifyProduct[];
+  /** Review aid (the product page's ?state= switch): show every card in stock. */
+  forceAvailable?: boolean;
 }
 
 // Helper: determine if a hex color is "light" (needs dark text) or "dark" (needs light text)
@@ -57,13 +64,26 @@ const isLightColor = (hex: string): boolean => {
   return (r * 299 + g * 587 + b * 114) / 1000 > 150;
 };
 
-export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_LOCALE }: YouMightAlsoLikeProps) => {
+const indexProducts = (products: ShopifyProduct[]) => {
+  const stock: Record<string, boolean> = {};
+  const byHandle: Record<string, ShopifyProduct> = {};
+  for (const p of products) {
+    stock[p.node.handle] = p.node.variants.edges.some((v) => v.node.availableForSale);
+    byHandle[p.node.handle] = p;
+  }
+  return { stock, byHandle };
+};
+
+export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_LOCALE, products, forceAvailable = false }: YouMightAlsoLikeProps) => {
   const t = getDict(locale);
   // EN keeps the component's own copy verbatim (no regression); FR pulls the
   // shared flavour/tagline from the dictionary.
   const allOils = oilDefs.map((o) => ({
     ...o,
-    price: currentPrice(locale, o.handle),
+    // Regular price and, in a sale, the sale price; the card's button marks
+    // the sale the same way the homepage cards do.
+    price: locale.prices[o.handle],
+    salePrice: salePrice(locale, o.handle),
     flavor: locale.lang !== "en" ? t.products.flavour[o.handle] : o.flavor,
     tagline: locale.lang !== "en" ? t.products.tagline[o.handle] : o.tagline,
   }));
@@ -72,17 +92,19 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
   // Live availability per Shopify handle, same source as the homepage cards
   // (fetchProducts, so the FORCE_SOLD_OUT override is included). A sold-out oil
   // must NOT look purchasable here — it just links through to its own PDP.
-  const [availability, setAvailability] = useState<Record<string, boolean>>({});
+  const seed = indexProducts(products ?? []);
+  const [availability, setAvailability] = useState<Record<string, boolean>>(seed.stock);
+  // The product nodes, so ADD TO CART can hand the cart the real variant.
+  const [productsByHandle, setProductsByHandle] = useState<Record<string, ShopifyProduct>>(seed.byHandle);
+  const addItem = useCartStore((state) => state.addItem);
   useEffect(() => {
     let cancelled = false;
     fetchProducts(10, undefined, shopifyContextForLocale(locale))
-      .then((products) => {
+      .then((fetched) => {
         if (cancelled) return;
-        const map: Record<string, boolean> = {};
-        for (const p of products) {
-          map[p.node.handle] = p.node.variants.edges.some((v) => v.node.availableForSale);
-        }
-        setAvailability(map);
+        const { stock, byHandle } = indexProducts(fetched);
+        setAvailability(stock);
+        setProductsByHandle(byHandle);
       })
       .catch(() => {});
     return () => {
@@ -132,7 +154,8 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
           }>
           
           {otherOils.map((oil) => {
-          const soldOut = availability[resolveShopifyHandle(oil.handle)] === false;
+          const soldOut = !forceAvailable && availability[resolveShopifyHandle(oil.handle)] === false;
+          const onSale = oil.salePrice !== undefined && oil.salePrice < oil.price;
           return (
           <Link
             key={oil.handle}
@@ -178,7 +201,8 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
                 <img
                 src={oil.image}
                 alt={`${oil.name} olive oil bottle`}
-                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]" />
+                className="w-full h-full object-cover relative z-[2] transition-transform duration-700 scale-[1.25] group-hover:scale-[1.28]"
+                style={soldOut ? SOLD_OUT_IMAGE_STYLE : undefined} />
               
               </div>
 
@@ -208,17 +232,24 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
                   {oil.flavor}
                 </p>
 
-                <p
-                className="mb-3"
-                style={{
-                  fontFamily: "UDC Working Man Sans, sans-serif",
-                  color: textColor,
-                  fontSize: "clamp(1.35rem, 1.8vw, 1.8rem)",
-                  letterSpacing: "0.03em"
-                }}>
-                
-                  {formatPrice(oil.price, locale)}
-                </p>
+                {/* Same button and rules as the homepage cards: in stock it adds
+                    the bottle and marks a sale price; sold out it is a plain
+                    SOLD OUT and the card links to that oil's page. */}
+                <OilCardCta
+                  available={!soldOut}
+                  soldOutMode="soldOut"
+                  price={onSale ? oil.salePrice! : oil.price}
+                  regularPrice={onSale ? oil.price : undefined}
+                  locale={locale}
+                  onClick={(e: MouseEvent) => {
+                    if (soldOut) return;
+                    const product = productsByHandle[resolveShopifyHandle(oil.handle)];
+                    // Products not loaded yet: let the card link open the oil's page.
+                    if (!product) return;
+                    e.preventDefault();
+                    e.stopPropagation();
+                    addBottleFromCard({ product, price: onSale ? oil.salePrice! : oil.price, locale, addItem });
+                  }} />
 
                 <p
                 style={{
@@ -232,20 +263,6 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
                   {oil.tagline}
                 </p>
 
-                {soldOut && (
-                  <span
-                    className="oil-card-label whitespace-nowrap rounded-md px-3 py-1.5 mt-3"
-                    style={{
-                      fontFamily: "UDC Working Man Sans, sans-serif",
-                      letterSpacing: "0.1em",
-                      color: "#CDDB2D",
-                      backgroundColor: "#1B4229",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {t.oilCollection.soldOut}
-                  </span>
-                )}
               </div>
             </Link>
           );

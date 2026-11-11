@@ -852,7 +852,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <ProductLabTrust content={content.labTrust} labReportUrl={content.labReportUrl} locale={locale} />
       <OilComparison columnHeading={content.polyphenolLabel} polyphenolDisplay={`${content.polyphenolValue} mg/kg`} locale={locale} />
       <FAQ handle={handle} locale={locale} />
-      <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} />
+      <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} products={products} forceAvailable={forcedState === "in-stock" || forcedState === "sale"} />
 
       <BlogSection initialPosts={initialBlogPosts} locale={locale} mobileCarousel />
 
