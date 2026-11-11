@@ -133,7 +133,7 @@ export const productContentMap: Record<string, ProductContent> = {
     },
     originStory: {
       headline:
-        "Coratina is an uncomprimising olive, the queen of polyphenols. It presses an intense, bitter oil with real grip, the kind aficionados take by the spoon as a daily longevity shot.",
+        "Coratina is an uncompromising olive, the queen of polyphenols. It presses an intense, bitter oil with real grip, the kind aficionados take by the spoon as a daily longevity shot.",
       quickRef: [
         { label: "VARIETY", value: "100% Coratina" },
         { label: "ORIGIN", value: "Puglia, Italy" },
