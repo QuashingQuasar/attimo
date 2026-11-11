@@ -26,7 +26,7 @@ import { FormatSelector, type ProductFormat } from "@/components/FormatSelector"
 import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORATINA_3L_IMAGES, CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { StickyBuyBar } from "@/components/product/StickyBuyBar";
-import { PRODUCT_LOOKS, ACTION_COLOUR } from "@/lib/oilColours";
+import { PRODUCT_LOOKS } from "@/lib/oilColours";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
@@ -192,10 +192,11 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const product = products.find((p) => p.node.handle === shopifyHandle);
   const content = getProductContent(handle, locale);
   // Season-2 look, for the pages that opt in (src/lib/oilColours.ts): the oil's
-  // faded field and dark ink carry the page's coloured surfaces, and the
-  // buttons take the site's one action colour.
+  // faded field and dark ink carry the page's coloured surfaces; its accent
+  // (the label's vivid print colour) is the text on ink and fills the buttons.
   const look = handle ? PRODUCT_LOOKS[handle] : undefined;
-  const accent = look ? ACTION_COLOUR : content.buttonColor;
+  const accent = look ? look.accent : content.buttonColor;
+  const formTone = look ? { bg: look.field, text: look.ink, muted: `${look.ink}cc`, buttonBg: look.ink, buttonText: look.accent } : undefined;
   const mainVariantId = product?.node.variants.edges[0]?.node.id;
 
   // Fetch live stock for the "Last bottles" low-stock badge.
@@ -537,13 +538,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}`}</style>}
+            {look && <style>{`.look-ink .bg-olive-dark{background-color:${look.ink}!important}.look-ink .border-olive-dark{border-color:${look.ink}!important}.look-ink .bg-olive-dark.text-cream,.look-ink .bg-olive-dark .text-cream{color:${look.accent}!important}.look-ink .bg-olive-dark [class*="text-cream/"]{color:${look.accent}cc!important}`}</style>}
             <div className={`${look ? "look-ink " : ""}px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5`}>
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: look ? look.field : content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: look ? look.accent : content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
                     {t.newHarvest}
                   </span>
                   {(() => {
@@ -570,7 +571,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 </div>
 
                 {/* Title + Volume */}
-                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ ...(look ? { color: look.ink } : {}), fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
+                <h1 className="text-olive-dark leading-[1.1] tablet-title-size" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.67rem, 3.23vw, 3.23rem)', fontWeight: 400 }}>
                   {content.heroTitle}
                   <span className="text-olive-medium ml-3 whitespace-nowrap align-baseline tablet-volume-size" style={{ fontFamily: 'Beverly Drive, cursive', fontSize: 'clamp(0.91rem, 1.72vw, 1.84rem)', fontStyle: 'italic', fontWeight: 400 }}>
                     {isBox ? "3L" : content.tabs.details.volume}
@@ -611,7 +612,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     countryCode={forcedState === "unsupported" ? "JP" : countryCode!}
                     productName={content.heroTitle}
                     buttonColor={accent}
-                    tone={look ? { bg: look.field, text: look.ink, muted: `${look.ink}cc` } : undefined}
+                    tone={formTone}
                   />
                 ) : (
                   <>
@@ -735,7 +736,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     ) : (
                       <div id="notify" className="scroll-mt-32">
                       <NotifyMeForm
-                        tone={look ? { bg: look.field, text: look.ink, muted: `${look.ink}cc` } : undefined}
+                        tone={formTone}
                         productName={content.heroTitle}
                         backgroundColor={content.tileBackground}
                         buttonBackgroundColor={accent}
@@ -859,12 +860,13 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       </section>
 
       {/* Content sections below product hero */}
-      <ProductOriginStory content={content.originStory} tileBackground={look ? look.field : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
+      <ProductOriginStory content={content.originStory} tileBackground={look ? look.field : content.tileBackground} tileAccent={look ? look.ink : content.tileAccent} featureTile={look ? { index: 2, background: look.ink, accent: look.accent } : undefined} headlineMaxWidth={handle === 'nocellara' || handle === 'picual' ? '70.35rem' : undefined} />
       <Testimonials headingColor={content.buttonColor || "#B3E58C"} locale={locale} />
       <ProductOriginRegion
         backgroundColor={look ? look.field : content.tileBackground}
         headingColor={look ? look.ink : content.tileAccent}
         textColor={look ? look.ink : content.tileAccent}
+        pillTextColor={look?.accent}
         heading={content.originRegion?.heading}
         body={content.originRegion?.body}
         markerLon={content.originRegion?.markerLon}
@@ -896,6 +898,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             label={t.addToCart}
             buttonColor={accent}
             barColor={look?.ink}
+            nameColor={look?.accent}
             onAdd={handleAddToCart} />
         </>
       )}

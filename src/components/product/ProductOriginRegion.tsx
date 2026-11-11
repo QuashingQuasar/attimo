@@ -6,6 +6,8 @@ interface ProductOriginRegionProps {
   backgroundColor?: string;
   headingColor?: string;
   textColor?: string;
+  /** Text on the map's marker pill; defaults to the background colour. */
+  pillTextColor?: string;
   heading?: string;
   body?: string;
   markerLon?: number;
@@ -22,6 +24,7 @@ export const ProductOriginRegion = ({
   backgroundColor = '#1B4229',
   headingColor = '#ECA948',
   textColor = '#FFFAEA',
+  pillTextColor,
   heading: headingProp,
   body: bodyProp,
   markerLon,
@@ -49,6 +52,7 @@ export const ProductOriginRegion = ({
               bgColor={backgroundColor}
               strokeColor={headingColor}
               labelColor={textColor}
+              pillTextColor={pillTextColor}
               markerLon={markerLon}
               markerLat={markerLat}
               markerLabel={markerLabel}

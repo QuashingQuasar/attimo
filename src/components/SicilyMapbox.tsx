@@ -52,6 +52,8 @@ interface SicilyMapboxProps {
   bgColor?: string;
   strokeColor?: string;
   labelColor?: string;
+  /** Text on the marker pill; defaults to the background colour. */
+  pillTextColor?: string;
   markerLon?: number;
   markerLat?: number;
   markerLabel?: string;
@@ -61,7 +63,7 @@ interface SicilyMapboxProps {
   markerStyle?: "dot-line" | "pill-only";
 }
 
-export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom, markerStyle = "dot-line" }: SicilyMapboxProps) => {
+export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor = "#ECA948", labelColor = "#FFFAEA", pillTextColor, markerLon = 12.95, markerLat = 37.65, markerLabel = "Belice Valley", centerLon, centerLat, mapZoom, markerStyle = "dot-line" }: SicilyMapboxProps) => {
   const [paths, setPaths] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -131,7 +133,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
                 <text
                   x={bx}
                   y={by + 5}
-                  fill={bgColor}
+                  fill={pillTextColor ?? bgColor}
                   fontFamily="'UDC Working Man Sans', sans-serif"
                   fontSize={16}
                   fontWeight={700}
@@ -162,7 +164,7 @@ export const SicilyMapbox = ({ className = "", bgColor = "#1B4229", strokeColor 
               <text
                 x={pillCx}
                 y={pillCy + 5}
-                fill={bgColor}
+                fill={pillTextColor ?? bgColor}
                 fontFamily="'UDC Working Man Sans', sans-serif"
                 fontSize={16}
                 fontWeight={700}

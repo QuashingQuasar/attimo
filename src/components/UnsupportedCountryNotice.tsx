@@ -10,7 +10,7 @@ interface UnsupportedCountryNoticeProps {
   /** Button colour; the product page passes the oil's accent. */
   buttonColor?: string;
   /** Box colours; defaults to the dark forest green surface. */
-  tone?: { bg: string; text: string; muted: string };
+  tone?: { bg: string; text: string; muted: string; buttonBg?: string; buttonText?: string };
 }
 
 export const UnsupportedCountryNotice = ({
@@ -104,8 +104,8 @@ export const UnsupportedCountryNotice = ({
             disabled={loading}
             className="rounded-lg px-4 sm:px-5 py-2.5 font-bold whitespace-nowrap flex-shrink-0 transition-all disabled:opacity-50 hover:opacity-90"
             style={{
-              backgroundColor: buttonColor,
-              color: "#1B4229",
+              backgroundColor: tone?.buttonBg ?? buttonColor,
+              color: tone?.buttonText ?? "#1B4229",
               fontFamily: "UDC Working Man Sans, sans-serif",
               fontSize: "clamp(0.85rem, 1vw, 1rem)",
             }}

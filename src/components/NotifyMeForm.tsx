@@ -28,7 +28,7 @@ interface NotifyMeFormProps {
    */
   restockProductKey?: string;
   /** Box colours; defaults to the dark forest green surface. */
-  tone?: { bg: string; text: string; muted: string };
+  tone?: { bg: string; text: string; muted: string; buttonBg?: string; buttonText?: string };
 }
 
 // Brand surface for the OOS CTA — matches the dark forest green of the top
@@ -172,8 +172,8 @@ export const NotifyMeForm = ({
             disabled={submitting}
             className="rounded-lg px-4 sm:px-5 py-2.5 font-bold whitespace-nowrap flex-shrink-0 transition-all disabled:opacity-50 hover:opacity-90"
             style={{
-              backgroundColor: buttonBackgroundColor,
-              color: "#1B4229",
+              backgroundColor: tone?.buttonBg ?? buttonBackgroundColor,
+              color: tone?.buttonText ?? "#1B4229",
               fontFamily: "UDC Working Man Sans, sans-serif",
               fontSize: "clamp(0.85rem, 1vw, 1rem)",
             }}
