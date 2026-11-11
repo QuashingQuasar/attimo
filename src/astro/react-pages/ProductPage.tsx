@@ -563,6 +563,23 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 {content.originStory.headline.split('.').slice(0, 3).filter(Boolean).join('.') + '.'}
               </p>
 
+              {/* Attribute Grid — 2x2 like Arsenio */}
+              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
+                {attributes.map((attr) =>
+              <div key={attr.label} className="space-y-1.5">
+                    <div className="flex items-center gap-2.5">
+                      {attr.icon}
+                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
+                        {attr.label}
+                      </span>
+                    </div>
+                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
+                      {attr.value}
+                    </p>
+                  </div>
+              )}
+              </div>
+
               {unsupportedCountry ? (
                   <UnsupportedCountryNotice
                     countryName={forcedState === "unsupported" ? "Japan" : countryName!}
@@ -706,23 +723,6 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   </>
                 )}
 
-              {/* Attribute Grid — 2x2 like Arsenio */}
-              <div className="grid grid-cols-2 gap-x-12 gap-y-6 pt-2 pb-2">
-                {attributes.map((attr) =>
-              <div key={attr.label} className="space-y-1.5">
-                    <div className="flex items-center gap-2.5">
-                      {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
-                        {attr.label}
-                      </span>
-                    </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
-                      {attr.value}
-                    </p>
-                  </div>
-              )}
-              </div>
-
               {/* Lab Values — minimal cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {content.labTiles.map((tile) =>
@@ -781,7 +781,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               </div>
 
               {/* Lab Report Link */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+              <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 md:gap-x-6 md:gap-y-2 [&>a]:whitespace-nowrap">
                 <a
                 href={content.labReportUrl}
                 target="_blank"
