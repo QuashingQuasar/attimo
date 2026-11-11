@@ -27,6 +27,8 @@ interface NotifyMeFormProps {
    * Falls back to `productName` when not supplied.
    */
   restockProductKey?: string;
+  /** Box colours; defaults to the dark forest green surface. */
+  tone?: { bg: string; text: string; muted: string };
 }
 
 // Brand surface for the OOS CTA — matches the dark forest green of the top
@@ -44,7 +46,11 @@ export const NotifyMeForm = ({
   buttonBackgroundColor = "#CDDB2D",
   restockProductKey,
   locale = DEFAULT_LOCALE,
+  tone,
 }: NotifyMeFormProps) => {
+  const BG = tone?.bg ?? CONTAINER_BG;
+  const TEXT = tone?.text ?? CONTAINER_TEXT;
+  const MUTED = tone?.muted ?? CONTAINER_TEXT_MUTED;
   const t = getDict(locale).notify;
   const headingText = heading ?? t.comingSoon;
   const subtitleText = subtitle ?? t.subtitle.replace("{name}", productName);
@@ -96,12 +102,12 @@ export const NotifyMeForm = ({
     return (
       <div
         className="rounded-xl px-5 py-6 text-center"
-        style={{ backgroundColor: CONTAINER_BG }}
+        style={{ backgroundColor: BG }}
       >
         <p
           className="font-semibold"
           style={{
-            color: CONTAINER_TEXT,
+            color: TEXT,
             fontFamily: "UDC Working Man Sans, sans-serif",
             fontSize: "clamp(0.95rem, 1.1vw, 1.15rem)",
           }}
@@ -111,7 +117,7 @@ export const NotifyMeForm = ({
         <p
           className="mt-1"
           style={{
-            color: CONTAINER_TEXT_MUTED,
+            color: MUTED,
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
           }}
@@ -126,12 +132,12 @@ export const NotifyMeForm = ({
     <div className="space-y-3">
       <div
         className="rounded-xl px-5 py-5"
-        style={{ backgroundColor: CONTAINER_BG }}
+        style={{ backgroundColor: BG }}
       >
         <p
           className="font-semibold mb-1"
           style={{
-            color: CONTAINER_TEXT,
+            color: TEXT,
             fontFamily: "UDC Working Man Sans, sans-serif",
             fontSize: "clamp(0.95rem, 1.1vw, 1.15rem)",
           }}
@@ -141,7 +147,7 @@ export const NotifyMeForm = ({
         <p
           className="mb-4"
           style={{
-            color: CONTAINER_TEXT_MUTED,
+            color: MUTED,
             fontFamily: "Space Grotesk, sans-serif",
             fontSize: "clamp(0.9rem, 1vw, 1rem)",
           }}

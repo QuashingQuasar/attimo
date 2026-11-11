@@ -9,6 +9,8 @@ interface UnsupportedCountryNoticeProps {
   productName?: string;
   /** Button colour; the product page passes the oil's accent. */
   buttonColor?: string;
+  /** Box colours; defaults to the dark forest green surface. */
+  tone?: { bg: string; text: string; muted: string };
 }
 
 export const UnsupportedCountryNotice = ({
@@ -16,7 +18,11 @@ export const UnsupportedCountryNotice = ({
   countryCode,
   productName,
   buttonColor = "#CDDB2D",
+  tone,
 }: UnsupportedCountryNoticeProps) => {
+  const BG = tone?.bg ?? "#1B4229";
+  const TEXT = tone?.text ?? "#FFFAEA";
+  const MUTED = tone?.muted ?? "rgba(255, 250, 234, 0.75)";
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -48,19 +54,19 @@ export const UnsupportedCountryNotice = ({
   // Same surface as the sold-out form (NotifyMeForm): dark green box, cream
   // text, white field, the oil's accent on the button.
   return (
-    <div className="rounded-xl px-5 py-5 space-y-4" style={{ backgroundColor: "#1B4229" }}>
+    <div className="rounded-xl px-5 py-5 space-y-4" style={{ backgroundColor: BG }}>
       <div className="flex items-start gap-3">
         <MapPin
           size={20}
           strokeWidth={1.5}
           className="flex-shrink-0 mt-0.5"
-          style={{ color: "#FFFAEA" }}
+          style={{ color: TEXT }}
         />
         <p
           className="leading-relaxed"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
-            color: "#FFFAEA",
+            color: TEXT,
             fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
           }}
         >
@@ -73,7 +79,7 @@ export const UnsupportedCountryNotice = ({
         <p
           style={{
             fontFamily: "Space Grotesk, sans-serif",
-            color: "rgba(255, 250, 234, 0.75)",
+            color: MUTED,
             fontSize: "clamp(0.9rem, 1vw, 1rem)",
           }}
         >
