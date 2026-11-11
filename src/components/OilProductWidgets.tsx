@@ -3,7 +3,8 @@ import { Link } from "@/lib/router-stub";
 import coratinaImage from "@/assets/bottle-coratina.jpg?url";
 import picualImage from "@/assets/bottle-picual.jpg?url";
 import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
-import { DEFAULT_LOCALE, formatPrice, localizeHref, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE, localizeHref, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
+import { OilCardCta, SOLD_OUT_IMAGE_STYLE, addBottleFromCard } from "@/components/OilCardCta";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { fetchProducts, fetchProductAvailabilityByHandle } from "@/lib/shopify";
 import { resolveShopifyHandle, getProductContent } from "@/lib/productContent";
@@ -353,7 +354,7 @@ export const OilProductWidgets = ({
                       // Sold out: desaturate and fade the bottle so the card
                       // reads as unavailable before the pill does. Label stays
                       // legible; nothing else on the card changes.
-                      style={oil.effectiveAvailable ? undefined : { filter: "saturate(0.35) brightness(1.04)", opacity: 0.6 }}
+                      style={oil.effectiveAvailable ? undefined : SOLD_OUT_IMAGE_STYLE}
                     />
                   );
                 })()}
@@ -436,42 +437,16 @@ export const OilProductWidgets = ({
                       window.location.href = pdpHref;
                       return;
                     }
-                    const variant = product.node.variants.edges[0].node;
-                    addItem({
-                      product,
-                      variantId: variant.id,
-                      variantTitle: variant.title,
-                      price: { amount: String(price), currencyCode: locale.currency.code },
-                      quantity: 1,
-                      selectedOptions: variant.selectedOptions || [],
-                      isSubscription: false,
-                    });
-                    toast.success(t.product.toastAdded.replace("{n}", "1").replace(/\{plural\}/g, ""), { position: "top-center" });
+                    addBottleFromCard({ product, price, locale, addItem });
                   };
                   return (
-                    <button
-                      type="button"
-                      onClick={onClick}
-                      className="inline-flex items-center gap-3 mb-3 whitespace-nowrap transition-opacity hover:opacity-90"
-                      style={{
-                        fontFamily: "UDC Working Man Sans, sans-serif",
-                        fontSize: "clamp(1.1rem, 1.45vw, 1.45rem)",
-                        letterSpacing: "0.05em",
-                        borderRadius: "8px",
-                        padding: "0.55rem 1.4rem",
-                        border: "none",
-                        cursor: "pointer",
-                        backgroundColor: available ? "#CDDB2D" : "#1B4229",
-                        color: available ? "#1B4229" : "#FFFAEA",
-                      }}
-                    >
-                      <span style={{ fontWeight: 700 }}>{(available ? t.product.addToCart : plainSoldOut ? t.product.soldOut : t.notify.notifyMe).toUpperCase()}</span>
-                      {!plainSoldOut && (<>
-                        <span aria-hidden="true" style={{ opacity: 0.45 }}>·</span>
-                        {onSale && <s style={{ opacity: 0.55, textDecorationThickness: "2px" }}>{formatPrice(oil.price, locale)}</s>}
-                        <span>{formatPrice(price, locale)}</span>
-                      </>)}
-                    </button>
+                    <OilCardCta
+                      available={available}
+                      soldOutMode={soldOutButton}
+                      price={price}
+                      regularPrice={onSale ? oil.price : undefined}
+                      locale={locale}
+                      onClick={onClick} />
                   );
                 })()}
                 {showTagline && (

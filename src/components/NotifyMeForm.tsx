@@ -143,7 +143,7 @@ export const NotifyMeForm = ({
           style={{
             color: CONTAINER_TEXT_MUTED,
             fontFamily: "Space Grotesk, sans-serif",
-            fontSize: "clamp(0.8rem, 0.95vw, 1rem)",
+            fontSize: "clamp(0.9rem, 1vw, 1rem)",
           }}
         >
           {subtitleText}
@@ -155,7 +155,7 @@ export const NotifyMeForm = ({
             placeholder={t.placeholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-lg border-2 border-transparent bg-white px-4 py-2.5 text-olive-dark placeholder:text-olive-medium/60 focus:outline-none focus:border-white transition-colors"
+            className="flex-1 min-w-0 rounded-lg border-2 border-transparent bg-white px-4 py-2.5 text-olive-dark placeholder:text-olive-medium/60 focus:outline-none focus:border-white transition-colors"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
               fontSize: "clamp(0.85rem, 1vw, 1rem)",
@@ -164,7 +164,7 @@ export const NotifyMeForm = ({
           <button
             type="submit"
             disabled={submitting}
-            className="rounded-lg px-5 py-2.5 font-bold transition-all disabled:opacity-50 hover:opacity-90"
+            className="rounded-lg px-4 sm:px-5 py-2.5 font-bold whitespace-nowrap flex-shrink-0 transition-all disabled:opacity-50 hover:opacity-90"
             style={{
               backgroundColor: buttonBackgroundColor,
               color: "#1B4229",

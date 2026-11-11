@@ -85,7 +85,7 @@ export const QuantitySelector = ({
   return (
     <div className="space-y-3">
       {/* Preset buttons */}
-      <div className="grid grid-cols-6 gap-2">
+      <div className="grid grid-cols-3 sm:grid-cols-6 gap-x-2 gap-y-5 sm:gap-y-2">
         {presets.map((p) => {
           const disabled = available !== null && p.qty > available;
           const subClass = `block leading-tight mt-0.5 ${
@@ -97,7 +97,7 @@ export const QuantitySelector = ({
           }`;
           const subStyle = {
             fontFamily: "Space Grotesk, sans-serif",
-            fontSize: "clamp(0.55rem, 0.65vw, 0.7rem)",
+            fontSize: "0.75rem",
           };
           // Volume discount percent for this quantity (0 if none). Single
           // source: VOLUME_DISCOUNT_PERCENTS via getVolumeDiscountPercent.
@@ -129,14 +129,14 @@ export const QuantitySelector = ({
               {discountLabel && (
                 <span
                   aria-hidden="true"
-                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[65%] rounded-full px-3 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
+                  className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[65%] rounded-full px-2.5 py-1 font-bold uppercase whitespace-nowrap shadow-sm pointer-events-none ${
                     disabled ? "opacity-40" : ""
                   }`}
                   style={{
                     backgroundColor: "#CDDB2D",
                     color: "#1B4229",
                     fontFamily: "Space Grotesk, sans-serif",
-                    fontSize: "clamp(0.55rem, 0.7vw, 0.75rem)",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.04em",
                     lineHeight: 1,
                   }}
@@ -148,7 +148,7 @@ export const QuantitySelector = ({
                 className="block font-semibold leading-tight"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  fontSize: "clamp(0.75rem, 0.9vw, 0.95rem)",
+                  fontSize: "clamp(0.875rem, 0.95vw, 0.95rem)",
                 }}
               >
                 {p.label}

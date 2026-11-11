@@ -16,11 +16,12 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
   const bg = tileBackground || "#1B4229";
   const accent = tileAccent || "#ECA948";
 
+  // Phones: compact rows (icon left, copy right). From md: centred cards.
   const renderTile = (index: number) => (
-    <div className="rounded-2xl px-4 py-6 h-[250px] lg:h-auto" style={{ backgroundColor: bg }}>
-      <div className="h-full flex flex-col justify-center items-center text-center gap-3">
+    <div className="rounded-2xl px-5 py-5 md:px-4 md:py-6 h-full md:min-h-[250px] lg:min-h-0" style={{ backgroundColor: bg }}>
+      <div className="h-full flex flex-row md:flex-col md:justify-center items-center text-left md:text-center gap-4 md:gap-3">
         <div
-          className="w-[56px] h-[48px] flex-shrink-0"
+          className="w-[46px] h-[40px] md:w-[56px] md:h-[48px] flex-shrink-0"
           style={{
             backgroundColor: accent,
             WebkitMaskImage: `url(${features[index]?.icon})`,
@@ -33,29 +34,30 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
             maskPosition: "center",
           }}
         />
-        <h3 className="text-lg" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: accent }}>
-          {features[index]?.title}
-        </h3>
-        <p
-          className="tracking-wide leading-relaxed max-w-[280px] xl:max-w-[310px] whitespace-pre-line"
-          style={{
-            fontFamily: "Space Grotesk, sans-serif",
-            fontSize: "clamp(0.85rem, 1vw, 1rem)",
-            letterSpacing: "0.04em",
-            color: accent,
-          }}
-        >
-          {features[index]?.description}
-        </p>
+        <div className="flex flex-col gap-1 md:gap-3 md:items-center">
+          <h3 className="text-lg" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: accent }}>
+            {features[index]?.title}
+          </h3>
+          <p
+            className="leading-normal md:max-w-[300px] xl:max-w-[330px] md:whitespace-pre-line"
+            style={{
+              fontFamily: "Space Grotesk, sans-serif",
+              fontSize: "clamp(1rem, 1.1vw, 1.1rem)",
+              color: accent,
+            }}
+          >
+            {features[index]?.description}
+          </p>
+        </div>
       </div>
     </div>
   );
 
   const renderVideo = (index: number, fallback: string) => (
-    <div className="rounded-2xl relative overflow-hidden h-[250px] lg:h-auto">
+    <div className="rounded-2xl relative overflow-hidden h-[170px] md:h-[250px] lg:h-full lg:min-h-[190px]">
       <AutoplayVideo
         src={features[index]?.video || fallback}
-        className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+        className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
       />
     </div>
   );
@@ -72,17 +74,19 @@ export const ProductOriginStory = ({ content, tileBackground, tileAccent, headli
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:hidden lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 max-w-[90vw] mx-auto lg:h-[580px] xl:h-[640px] 3xl:h-[760px]">
+        {/* Rows take the height of their tallest tile, so longer copy and
+            translations fit. Phones show two of the four clips. */}
+        <div className="grid grid-cols-1 md:hidden lg:grid lg:grid-cols-3 lg:auto-rows-fr gap-3 lg:gap-4 max-w-[90vw] mx-auto">
           {renderTile(0)}
           {renderVideo(0, "/videos/content-video-1.mp4")}
           {renderTile(1)}
 
-          {renderVideo(1, "/videos/kleia-way-video-3.mp4")}
+          <div className="hidden lg:block">{renderVideo(1, "/videos/kleia-way-video-3.mp4")}</div>
           {renderTile(2)}
           {renderVideo(2, "/videos/kleia-way-video.mp4")}
 
           {renderTile(3)}
-          {renderVideo(3, "/videos/harvest-2024-1.mp4")}
+          <div className="hidden lg:block">{renderVideo(3, "/videos/harvest-2024-1.mp4")}</div>
           {renderTile(4)}
         </div>
 

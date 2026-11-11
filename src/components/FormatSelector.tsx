@@ -63,7 +63,7 @@ export const FormatSelector = ({
         backgroundColor: kind === "value" ? "#CDDB2D" : "#1B4229",
         color: kind === "value" ? "#1B4229" : "#FFFAEA",
         fontFamily: "Space Grotesk, sans-serif",
-        fontSize: "clamp(0.5rem, 0.62vw, 0.65rem)",
+        fontSize: "0.75rem",
         letterSpacing: "0.04em",
         lineHeight: 1,
       }}
@@ -78,14 +78,14 @@ export const FormatSelector = ({
         className="uppercase tracking-wider text-olive-medium"
         style={{
           fontFamily: "UDC Working Man Sans, sans-serif",
-          fontSize: "clamp(0.72rem, 0.82vw, 0.85rem)",
+          fontSize: "clamp(0.8rem, 0.9vw, 0.9rem)",
           opacity: 0.8,
         }}
       >
         {t.formatLabel}
       </p>
 
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-2">
         {/* 500ml bottle */}
         <button
           type="button"
@@ -108,7 +108,7 @@ export const FormatSelector = ({
               className="font-semibold text-olive-dark leading-tight"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
-                fontSize: "clamp(0.85rem, 1vw, 1rem)",
+                fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
               }}
             >
               {t.formatBottleName} {t.formatBottleVolume}
@@ -117,7 +117,7 @@ export const FormatSelector = ({
               className="text-olive-medium leading-tight"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+                fontSize: "clamp(0.875rem, 0.95vw, 0.95rem)",
               }}
             >
               {t.formatServings
@@ -128,7 +128,7 @@ export const FormatSelector = ({
               className="text-olive-dark font-bold leading-tight mt-0.5"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)",
+                fontSize: "clamp(0.9rem, 1vw, 1rem)",
               }}
             >
               {formatPrice(bottlePrice, locale)}
@@ -171,7 +171,7 @@ export const FormatSelector = ({
               className="font-semibold text-olive-dark leading-tight"
               style={{
                 fontFamily: "UDC Working Man Sans, sans-serif",
-                fontSize: "clamp(0.85rem, 1vw, 1rem)",
+                fontSize: "clamp(0.95rem, 1.05vw, 1.05rem)",
               }}
             >
               {t.formatBoxName} {t.formatBoxVolume}
@@ -180,7 +180,7 @@ export const FormatSelector = ({
               className="text-olive-medium leading-tight"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)",
+                fontSize: "clamp(0.875rem, 0.95vw, 0.95rem)",
               }}
             >
               {t.formatServings
@@ -191,7 +191,7 @@ export const FormatSelector = ({
               className="text-olive-dark font-bold leading-tight mt-0.5"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.8rem, 0.95vw, 0.95rem)",
+                fontSize: "clamp(0.9rem, 1vw, 1rem)",
               }}
             >
               {formatPrice(boxPrice, locale)}

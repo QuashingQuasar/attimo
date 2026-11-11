@@ -150,7 +150,7 @@ export const PurchaseOptions = ({
               className="block text-olive-medium mb-2"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontSize: "clamp(0.75rem, 0.85vw, 0.9rem)",
+                fontSize: "clamp(0.875rem, 0.95vw, 0.95rem)",
               }}
             >
               {t.deliveryFrequency}
