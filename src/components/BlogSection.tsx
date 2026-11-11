@@ -25,9 +25,11 @@ interface BlogSectionProps {
   /** Override the heading font-size (for long custom headings that would
    *  otherwise wrap the big cursive default to two lines). */
   headingFontSize?: string;
+  /** Phones: the posts sit in a swipeable row instead of a stack (homepage). */
+  mobileCarousel?: boolean;
 }
 
-export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, headingFontSize }: BlogSectionProps = {}) => {
+export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, headingFontSize, mobileCarousel = false }: BlogSectionProps = {}) => {
   const t = getDict(locale).blog;
   // Locale-prefixed blog base (e.g. "/de/blog"); default market stays "/blog".
   const blogBase = locale.slug ? `/${locale.slug}/blog` : "/blog";
@@ -90,7 +92,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
   return (
     <section className="py-14 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20" style={{ backgroundColor: "#B3E58C" }}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-14 gap-4 md:gap-6">
           <div>
             <h2
               className="tracking-tight leading-[0.95]"
@@ -123,7 +125,7 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
         }
 
         {!isLoading && articles.length > 0 &&
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8${mobileCarousel ? " swipe-row-md" : ""}`}>
             {articles.map((article) =>
           <Link
             key={article._id}
@@ -143,14 +145,14 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
                 </div>
 
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-xs font-working-man tracking-wide" style={{ color: "#1B422999" }}>
+                  <div className="flex items-center gap-3 text-sm font-working-man tracking-wide" style={{ color: "#1B422999" }}>
                     <span>{formatDate(article.publishedAt)}</span>
                   </div>
                   <h3 className="font-working-man text-lg md:text-xl leading-snug transition-colors duration-300" style={{ color: "#1B4229" }}>
                     {article.title}
                   </h3>
                   {article.excerpt &&
-              <p className="font-space-grotesk text-sm leading-relaxed line-clamp-2" style={{ color: "#1B4229CC" }}>
+              <p className="font-space-grotesk text-base leading-relaxed line-clamp-2" style={{ color: "#1B4229CC" }}>
                       {article.excerpt}
                     </p>
               }

@@ -82,6 +82,8 @@ interface OilProductWidgetsProps {
   /** Optional content rendered between the oil grid and the quiz CTA (homepage
    * uses this for the bundles row). */
   belowGrid?: ReactNode;
+  /** Phones: the cards sit in a swipeable row instead of a stack (homepage). */
+  mobileCarousel?: boolean;
 }
 
 export const OilProductWidgets = ({
@@ -97,6 +99,7 @@ export const OilProductWidgets = ({
   eyebrow,
   wideSubtitle = false,
   soldOutButton = "notify",
+  mobileCarousel = false,
 }: OilProductWidgetsProps = {}) => {
   const udcHeading = headingFontFamily.includes("UDC");
   const t = getDict(locale);
@@ -234,7 +237,8 @@ export const OilProductWidgets = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10">
+        {/* The section pads 1rem outside a .79 zoom, so the bleed is 1rem / .79. */}
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10${mobileCarousel ? " swipe-row-md" : ""}`} style={mobileCarousel ? ({ "--swipe-bleed": "1.27rem", "--swipe-gap": "1.5rem", "--swipe-card": "80%" } as React.CSSProperties) : undefined}>
           {oils.map((oil) =>
           <Link
             key={oil.handle}
@@ -246,7 +250,7 @@ export const OilProductWidgets = ({
             className="group flex flex-col">
 
               <div
-              className="relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-[3/4] mb-7 max-w-[85%] md:max-w-full mx-auto"
+              className={`relative rounded-2xl overflow-hidden aspect-[4/5] md:aspect-[3/4] mb-7 ${mobileCarousel ? "w-full" : "max-w-[85%]"} md:max-w-full mx-auto`}
               style={{ backgroundColor: "#1B4229" }}>
 
                 <div

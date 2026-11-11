@@ -65,6 +65,7 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
         subtitle={lastHarvestSubtitle}
         wideSubtitle
         soldOutButton="soldOut"
+        mobileCarousel
       />
       <IndustryProblem locale={locale} />
       <KleiaWay locale={locale} />
@@ -72,11 +73,12 @@ function HomePageInner({ initialPosts, labNumbers, locale = DEFAULT_LOCALE }: In
       <Testimonials locale={locale} />
       <PolyphenolComparison
         locale={locale}
+        wide
         relatedLink={{ href: "/high-polyphenol-olive-oil", label: "See the full high-polyphenol range, ranked" }}
       />
       {labNumbers && labNumbers.length > 0 && <HomeLabNumbers oils={labNumbers} locale={locale} />}
       <FAQ locale={locale} />
-      <BlogSection initialPosts={initialPosts} locale={locale} />
+      <BlogSection initialPosts={initialPosts} locale={locale} mobileCarousel />
       <Footer locale={locale} />
       <WaitlistForm isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
       <Sonner />
