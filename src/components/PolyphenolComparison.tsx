@@ -23,9 +23,12 @@ interface PolyphenolComparisonProps {
    * ranking link). Omitted everywhere else, including on the hub page itself.
    */
   relatedLink?: { href: string; label: string };
+  /** Run at the 1024px measure of the neighbouring homepage sections
+   *  (1164px before the .88 zoom) so their left edges line up. */
+  wide?: boolean;
 }
 
-export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL", locale = DEFAULT_LOCALE, heading, intro, cards, citation, relatedLink }: PolyphenolComparisonProps) => {
+export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIMO OLIVE OIL", locale = DEFAULT_LOCALE, heading, intro, cards, citation, relatedLink, wide = false }: PolyphenolComparisonProps) => {
   const t = getDict(locale).polyphenol;
   const [hoveredBar, setHoveredBar] = useState<number | null>(null);
   const cardCopy = cards ?? t.cards;
@@ -58,7 +61,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
     <section className="pt-14 md:pt-20 lg:pt-24 pb-[35px] md:pb-[51px] lg:pb-[62px] snap-start" style={{ backgroundColor: '#FFFAEA' }}>
       <div>
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto" style={{ zoom: 0.88 }}>
+          <div className={`${wide ? "" : "max-w-4xl "}mx-auto`} style={{ zoom: 0.88, ...(wide ? { maxWidth: 1164 } : {}) }}>
             <h2 className="font-bold leading-[0.92] text-olive-dark mb-6 tracking-tight" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(2.5rem, 4vw, 4.5rem)' }}>
               {heading ?? t.heading}
             </h2>
@@ -84,7 +87,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
                     onMouseLeave={() => setHoveredBar(null)}>
                     
                     <div
-                      className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out ${index === 3 ? 'justify-between' : ''} cursor-default`}
+                      className={`h-16 rounded-lg ${item.color} flex items-center px-4 md:px-6 text-cream font-medium transition-all duration-700 ease-out min-w-max ${index === 3 ? 'justify-between gap-4' : ''} cursor-default`}
                       style={{ width }}>
                       
                       <span

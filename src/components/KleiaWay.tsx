@@ -22,9 +22,12 @@ export const KleiaWay = ({ locale = DEFAULT_LOCALE, heading, intro }: KleiaWayPr
     "/videos/harvest-2024-1.mp4",
   ];
 
+  // Tiles: compact rows on phones (icon left, copy right), centred cards from md.
+  // Rows take the height of their tallest tile, so longer translations fit.
+  const TILE_H = "md:min-h-[215px] xl:min-h-[225px] 3xl:min-h-[248px]";
   const renderTile = (index: number) => (
-    <div className="rounded-xl p-5 h-[180px] lg:h-[165px] xl:h-[190px] 3xl:h-[248px]" style={{ backgroundColor: '#1B4229' }}>
-      <div className="h-full flex flex-col justify-center items-center text-center gap-2">
+    <div className={`rounded-xl p-5 h-full ${TILE_H}`} style={{ backgroundColor: '#1B4229' }}>
+      <div className="h-full flex flex-row md:flex-col md:justify-center items-center text-left md:text-center gap-4 md:gap-2">
         <div
           className="w-[46px] h-[40px] flex-shrink-0"
           style={{
@@ -39,25 +42,27 @@ export const KleiaWay = ({ locale = DEFAULT_LOCALE, heading, intro }: KleiaWayPr
             maskPosition: 'center',
           }}
         />
-        <h4 className="font-bold" style={{
-          fontFamily: 'UDC Working Man Sans, sans-serif',
-          color: '#B3E58C',
-          fontSize: 'clamp(1rem, 1.33vw, 1.41rem)'
-        }}>{tiles[index].title}</h4>
-        <p className="leading-relaxed max-w-[270px]" style={{
-          fontFamily: 'Space Grotesk, sans-serif',
-          color: '#B3E58C',
-          fontSize: 'clamp(0.81rem, 0.95vw, 0.96rem)'
-        }}>{tiles[index].text}</p>
+        <div className="flex flex-col gap-1 md:gap-2 md:items-center">
+          <h4 className="font-bold" style={{
+            fontFamily: 'UDC Working Man Sans, sans-serif',
+            color: '#B3E58C',
+            fontSize: 'clamp(1.1rem, 1.33vw, 1.41rem)'
+          }}>{tiles[index].title}</h4>
+          <p className="leading-normal" style={{
+            fontFamily: 'Space Grotesk, sans-serif',
+            color: '#B3E58C',
+            fontSize: 'clamp(1rem, 1.1vw, 1.1rem)'
+          }}>{tiles[index].text}</p>
+        </div>
       </div>
     </div>
   );
 
   const renderVideo = (index: number) => (
-    <div className="rounded-xl relative overflow-hidden h-[180px] lg:h-[165px] xl:h-[190px] 3xl:h-[248px]">
+    <div className={`rounded-xl relative overflow-hidden h-[170px] md:h-full ${TILE_H}`}>
       <AutoplayVideo
         src={videos[index]}
-        className="w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
+        className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
       />
     </div>
   );
@@ -80,15 +85,16 @@ export const KleiaWay = ({ locale = DEFAULT_LOCALE, heading, intro }: KleiaWayPr
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-3 max-w-[90vw] lg:max-w-[88vw] xl:max-w-[75vw] mx-auto">
+        {/* Phones show two of the four clips, so the five points stay close together. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[90vw] lg:max-w-[88vw] xl:max-w-[75vw] mx-auto">
           {renderTile(0)}
           {renderVideo(0)}
           {renderTile(1)}
-          {renderVideo(1)}
+          <div className="hidden md:block">{renderVideo(1)}</div>
           {renderTile(2)}
           {renderVideo(2)}
           <div className="md:hidden lg:block">{renderTile(3)}</div>
-          <div className="md:order-9 lg:order-none">{renderVideo(3)}</div>
+          <div className="hidden md:block md:order-9 lg:order-none">{renderVideo(3)}</div>
           <div className="md:order-8 lg:order-none">{renderTile(4)}</div>
         </div>
       </div>

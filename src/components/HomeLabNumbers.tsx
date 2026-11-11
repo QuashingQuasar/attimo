@@ -15,7 +15,7 @@ const UDC = "UDC Working Man Sans, sans-serif";
 
 const Tile = ({ label, value, unit, avg, note }: { label: string; value: string; unit?: string; avg?: string; note: string }) => (
   <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(27, 66, 41, 0.05)" }}>
-    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: SG, fontSize: "clamp(0.75rem, 0.9vw, 0.95rem)" }}>
+    <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: SG, fontSize: "clamp(0.875rem, 1vw, 1rem)" }}>
       {label}
     </p>
     <p className="text-olive-dark font-bold flex items-baseline gap-2 flex-wrap" style={{ fontFamily: UDC, fontSize: "clamp(1.6rem, 2.1vw, 2.3rem)", lineHeight: 1.1 }}>
@@ -24,12 +24,12 @@ const Tile = ({ label, value, unit, avg, note }: { label: string; value: string;
         {unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: "clamp(0.85rem, 1vw, 1.05rem)" }}>{unit}</span>}
       </span>
       {avg && (
-        <span className="text-olive-light font-normal" style={{ fontFamily: SG, fontSize: "clamp(0.72rem, 0.82vw, 0.88rem)" }}>
+        <span className="text-olive-light font-normal" style={{ fontFamily: SG, fontSize: "clamp(0.875rem, 0.95vw, 0.95rem)" }}>
           {avg}
         </span>
       )}
     </p>
-    <p className="text-olive-medium mt-1.5" style={{ fontFamily: SG, fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>{note}</p>
+    <p className="text-olive-medium mt-1.5" style={{ fontFamily: SG, fontSize: "clamp(1rem, 1.1vw, 1.1rem)" }}>{note}</p>
   </div>
 );
 
@@ -42,7 +42,7 @@ export const HomeLabNumbers = ({ oils, locale = DEFAULT_LOCALE }: HomeLabNumbers
         <div className="max-w-5xl mx-auto">
           <div className="flex items-start justify-between gap-6 md:gap-8 mb-10 md:mb-12">
             <div className="max-w-3xl">
-              <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: "clamp(1.75rem, 3vw, 3rem)" }}>
+              <h2 className="font-working-man font-bold text-olive-dark mb-4 tracking-tight" style={{ fontSize: "clamp(2.1rem, 3.5vw, 3.6rem)", lineHeight: 1.02 }}>
                 every oil, lab-tested
               </h2>
               <p className="text-olive-medium leading-relaxed" style={{ fontFamily: SG, fontSize: "clamp(1rem, 1.2vw, 1.25rem)" }}>
@@ -52,11 +52,12 @@ export const HomeLabNumbers = ({ oils, locale = DEFAULT_LOCALE }: HomeLabNumbers
             <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0 w-[100px] h-[100px] md:w-[230px] md:h-[230px]" />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-9 lg:gap-5">
+          {/* Below lg the three oils sit in a swipeable row. */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-9 lg:gap-5 swipe-row-lg">
             {oils.map((o) => {
               const hasCompounds = o.oleocanthal !== null && o.oleacein !== null;
               return (
-                <div key={o.key} className="flex flex-col gap-3.5">
+                <div key={o.key} className="flex flex-col gap-3.5 lab-col">
                   <p className="flex items-baseline gap-2.5 flex-wrap mb-1">
                     <span className="text-olive-dark font-bold uppercase" style={{ fontFamily: UDC, fontSize: "clamp(1.5rem, 2vw, 1.9rem)", letterSpacing: "0.01em" }}>{o.name}</span>
                     <span className="text-olive-medium" style={{ fontFamily: "Beverly Drive, cursive", fontStyle: "italic", fontSize: "clamp(1.1rem, 1.5vw, 1.45rem)" }}>{o.script}</span>
@@ -95,7 +96,7 @@ export const HomeLabNumbers = ({ oils, locale = DEFAULT_LOCALE }: HomeLabNumbers
             })}
           </div>
 
-          <p className="text-olive-medium mt-9" style={{ fontFamily: SG, fontSize: "clamp(0.875rem, 1.05vw, 1.063rem)" }}>
+          <p className="text-olive-medium mt-9" style={{ fontFamily: SG, fontSize: "clamp(1rem, 1.1vw, 1.1rem)" }}>
             Totals from different test methods cannot be compared with each other; oleocanthal and oleacein can.{" "}
             <a href="/polyphenol-methods" className="text-olive-dark underline underline-offset-4 decoration-olive-dark/40">How polyphenols are measured</a>
           </p>

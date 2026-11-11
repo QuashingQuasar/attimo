@@ -71,15 +71,20 @@ export const Timeline = ({ locale }: { locale: Locale }) => {
   return (
     <div>
       <ol className="relative md:grid" style={{ gridTemplateColumns: `repeat(${n}, minmax(0, 1fr))` }}>
-        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 7, left: `${50 / n}%`, right: `${50 / n}%`, height: 2, backgroundColor: gr(0.2) }} />
-        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 7, left: `${50 / n}%`, width: `${(100 - 100 / n) * (current / Math.max(n - 1, 1))}%`, height: 2, backgroundColor: GREEN }} />
-        <span aria-hidden="true" className="absolute md:hidden" style={{ left: 7, top: 8, bottom: 8, width: 2, backgroundColor: gr(0.2) }} />
+        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 10, left: `${50 / n}%`, right: `${50 / n}%`, height: 3, borderRadius: 2, backgroundColor: gr(0.18) }} />
+        <span aria-hidden="true" className="absolute hidden md:block" style={{ top: 10, left: `${50 / n}%`, width: `${(100 - 100 / n) * (current / Math.max(n - 1, 1))}%`, height: 3, borderRadius: 2, backgroundColor: GREEN }} />
+        <span aria-hidden="true" className="absolute md:hidden" style={{ left: 10, top: 10, bottom: 10, width: 3, borderRadius: 2, backgroundColor: gr(0.18) }} />
         {steps.map((s, i) => {
           const done = i < current, now = i === current;
           return (
-            <li key={s.label} className="relative flex md:flex-col md:items-center md:text-center gap-0.5 md:gap-3 pb-6 md:pb-0 pl-9 md:pl-0">
-              <span className="absolute md:relative left-0 md:left-auto inline-flex rounded-full" style={{ width: 16, height: 16, backgroundColor: now ? C.CHARTREUSE : done ? GREEN : CREAM, border: `2px solid ${now || done ? GREEN : gr(0.45)}` }}>
+            <li key={s.label} className="relative flex md:flex-col md:items-center md:text-center gap-0.5 md:gap-3 pb-6 md:pb-0 pl-10 md:pl-0">
+              <span className="absolute md:relative left-0 md:left-auto inline-flex items-center justify-center rounded-full" style={{ width: 23, height: 23, backgroundColor: now ? C.CHARTREUSE : done ? GREEN : CREAM, border: `2px solid ${now || done ? GREEN : gr(0.4)}` }}>
                 {now && <span className="absolute -inset-1 rounded-full opacity-50 animate-ping" style={{ backgroundColor: GREEN, animationDuration: "2.4s" }} />}
+                {done && (
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke={CREAM} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M2.5 6.4 L5 8.8 L9.6 3.6" />
+                  </svg>
+                )}
               </span>
               <span className="flex flex-col md:items-center">
                 <span style={{ fontFamily: UDC, fontWeight: 700, fontSize: "1.01rem", letterSpacing: ".08em", textTransform: "uppercase", color: now || done ? GREEN : gr(0.6) }}>{s.label}</span>
