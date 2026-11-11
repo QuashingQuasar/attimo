@@ -46,15 +46,35 @@ export const StickyBuyBar = ({ targetId, name, image, line, label, buttonColor =
         className="flex items-center gap-2.5 sm:gap-3 px-4 pt-3"
         style={{ backgroundColor: "#1B4229", boxShadow: "0 -8px 24px rgba(16,34,27,.22)", paddingBottom: "max(12px, env(safe-area-inset-bottom))" }}
       >
-        {image && (
-          <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: "#10221B" }}>
-            <img src={image} alt="" className="w-full h-full object-cover object-center" />
-          </div>
-        )}
-        <div className="flex-1 min-w-0">
-          <p className="truncate font-bold uppercase" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#FFFAEA", fontSize: "1rem", letterSpacing: "0.04em", lineHeight: 1.15 }}>{name}</p>
-          <p className="truncate" style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(255,250,234,.78)", fontSize: "0.875rem" }}>{line}</p>
-        </div>
+        {/* Photo, name and price: tapping them brings the buy area (format,
+            bottles, subscription) into view, ending on the page's own button.
+            The arrow by the price says so. */}
+        <button
+          type="button"
+          onClick={() => {
+            const el = document.getElementById(targetId);
+            if (!el) return;
+            const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            el.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "end" });
+          }}
+          tabIndex={show ? 0 : -1}
+          className="flex items-center gap-2.5 sm:gap-3 flex-1 min-w-0 text-left"
+        >
+          {image && (
+            <span className="block w-11 h-11 rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: "#10221B" }}>
+              <img src={image} alt="" className="w-full h-full object-cover object-center" />
+            </span>
+          )}
+          <span className="block flex-1 min-w-0">
+            <span className="block truncate font-bold uppercase" style={{ fontFamily: "UDC Working Man Sans, sans-serif", color: "#FFFAEA", fontSize: "1rem", letterSpacing: "0.04em", lineHeight: 1.15 }}>{name}</span>
+            <span className="flex items-center gap-1.5" style={{ fontFamily: "Space Grotesk, sans-serif", color: "rgba(255,250,234,.78)", fontSize: "0.875rem" }}>
+              <span className="truncate">{line}</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="flex-shrink-0">
+                <path d="M6 10 V2.2" /><path d="M2.6 5.6 L6 2.2 L9.4 5.6" />
+              </svg>
+            </span>
+          </span>
+        </button>
         <button
           type="button"
           onClick={onAdd}
