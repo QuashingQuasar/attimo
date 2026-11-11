@@ -7,12 +7,15 @@ interface UnsupportedCountryNoticeProps {
   countryName: string;
   countryCode: string;
   productName?: string;
+  /** Button colour; the product page passes the oil's accent. */
+  buttonColor?: string;
 }
 
 export const UnsupportedCountryNotice = ({
   countryName,
   countryCode,
   productName,
+  buttonColor = "#CDDB2D",
 }: UnsupportedCountryNoticeProps) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -42,24 +45,23 @@ export const UnsupportedCountryNotice = ({
     }
   };
 
+  // Same surface as the sold-out form (NotifyMeForm): dark green box, cream
+  // text, white field, the oil's accent on the button.
   return (
-    <div
-      className="rounded-2xl p-5 md:p-6 space-y-4"
-      style={{ backgroundColor: "rgba(27,66,41,0.06)" }}
-    >
+    <div className="rounded-xl px-5 py-5 space-y-4" style={{ backgroundColor: "#1B4229" }}>
       <div className="flex items-start gap-3">
         <MapPin
           size={20}
           strokeWidth={1.5}
           className="flex-shrink-0 mt-0.5"
-          style={{ color: "#1B4229" }}
+          style={{ color: "#FFFAEA" }}
         />
         <p
           className="leading-relaxed"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
-            color: "#1B4229",
-            fontSize: "clamp(0.9rem, 1.1vw, 1.1rem)",
+            color: "#FFFAEA",
+            fontSize: "clamp(0.95rem, 1.1vw, 1.1rem)",
           }}
         >
           We don't ship to <strong>{countryName}</strong> yet — but we're
@@ -69,39 +71,37 @@ export const UnsupportedCountryNotice = ({
 
       {submitted ? (
         <p
-          className="text-sm pl-8"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
-            color: "#1B4229",
-            opacity: 0.7,
+            color: "rgba(255, 250, 234, 0.75)",
+            fontSize: "clamp(0.9rem, 1vw, 1rem)",
           }}
         >
           We'll let you know as soon as we ship to {countryName}. ✓
         </p>
       ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2 pl-8">
+        <form onSubmit={handleSubmit} className="flex gap-2">
           <input
             type="email"
             required
             placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 rounded-xl border-2 px-4 py-2.5 text-sm outline-none transition-colors"
+            className="flex-1 min-w-0 rounded-lg border-2 border-transparent bg-white px-4 py-2.5 text-olive-dark placeholder:text-olive-medium/60 focus:outline-none focus:border-white transition-colors"
             style={{
               fontFamily: "Space Grotesk, sans-serif",
-              borderColor: "rgba(27,66,41,0.2)",
-              backgroundColor: "white",
-              color: "#1B4229",
+              fontSize: "clamp(0.85rem, 1vw, 1rem)",
             }}
           />
           <button
             type="submit"
             disabled={loading}
-            className="rounded-xl px-5 py-2.5 text-sm font-semibold transition-opacity hover:opacity-90 disabled:opacity-50"
+            className="rounded-lg px-4 sm:px-5 py-2.5 font-bold whitespace-nowrap flex-shrink-0 transition-all disabled:opacity-50 hover:opacity-90"
             style={{
-              fontFamily: "Space Grotesk, sans-serif",
-              backgroundColor: "#1B4229",
-              color: "#FFFAEA",
+              backgroundColor: buttonColor,
+              color: "#1B4229",
+              fontFamily: "UDC Working Man Sans, sans-serif",
+              fontSize: "clamp(0.85rem, 1vw, 1rem)",
             }}
           >
             {loading ? "..." : "Notify me"}

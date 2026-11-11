@@ -124,7 +124,8 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
         </div>
 
         <div
-          className={`grid grid-cols-1 gap-16 lg:gap-10 mx-auto ${
+          style={{ "--swipe-bleed": "1.15rem", "--swipe-gap": "1.5rem", "--swipe-card": "78%" } as React.CSSProperties}
+          className={`swipe-row-md grid grid-cols-1 gap-16 lg:gap-10 mx-auto ${
           otherOils.length === 2 ?
           "lg:grid-cols-2 max-w-[950px]" :
           "lg:grid-cols-3"}`
@@ -139,7 +140,7 @@ export const YouMightAlsoLike = ({ currentHandle, accentColor, locale = DEFAULT_
             className="group flex flex-col">
             
               <div
-              className="relative rounded-2xl overflow-hidden aspect-[4/5] mb-7 max-w-[85%] mx-auto"
+              className="relative rounded-2xl overflow-hidden aspect-[4/5] mb-7 w-full md:max-w-[85%] mx-auto"
               style={{ backgroundColor: "#1B4229" }}>
               
                 <div

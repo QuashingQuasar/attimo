@@ -61,23 +61,26 @@ export const ProductLabTrust = ({ content, labReportUrl, locale = DEFAULT_LOCALE
               <img src="/icons/flask.svg" alt="Lab flask" className="flex-shrink-0" style={{ width: '230px', height: '230px' }} />
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {labValues.map((item, index) => (
-              <div key={index} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
-                <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+              <div key={index} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+               {/* Phones: figure on the left, explanation on the right. */}
+               <div className="w-[46%] flex-shrink-0 sm:w-auto">
+                <p className="text-olive-medium uppercase tracking-widest mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1vw, 1rem)' }}>
                   {item.label}{item.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}
                 </p>
-                <p className="text-olive-dark font-bold flex items-baseline gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
+                <p className="text-olive-dark font-bold flex items-baseline gap-x-2 flex-wrap" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)', lineHeight: 1.15 }}>
                   <span>
                     {item.value}
                     {item.value !== '—' && item.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{item.unit}</span>}
                   </span>
-                  <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                  <span className="text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 0.95vw, 0.95rem)' }}>
                     {item.standard}
                   </span>
                 </p>
+               </div>
                 {item.description && (
-                  <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)' }}>
+                  <p className="text-olive-medium flex-1 sm:mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1rem, 1.1vw, 1.1rem)' }}>
                     {item.description}
                   </p>
                 )}

@@ -25,6 +25,7 @@ import { PurchaseOptions } from "@/components/PurchaseOptions";
 import { FormatSelector, type ProductFormat } from "@/components/FormatSelector";
 import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORATINA_3L_IMAGES, CORATINA_3L_HANDLE, CORATINA_3L_BOTTLE_EQUIVALENT } from "@/lib/coratina3L";
 import { NotifyMeForm } from "@/components/NotifyMeForm";
+import { StickyBuyBar } from "@/components/product/StickyBuyBar";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
@@ -92,6 +93,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
     [cartItems]
   );
   const isMobile = useIsMobile();
+  // Review aid, never on the production host: ?state=in-stock | low | sold-out |
+  // all-out | box-out | unsupported forces that stock state so every state of
+  // the page can be looked at on localhost and on Vercel previews.
+  const [forcedState, setForcedState] = useState<string | null>(null);
+  useEffect(() => {
+    if (/(^|\.)attimo-oil\.com$/.test(window.location.hostname)) return;
+    setForcedState(new URLSearchParams(window.location.search).get("state"));
+  }, []);
   const [countryCode, setCountryCode] = useState<string | null>(null);
   const [countryName, setCountryName] = useState<string | null>(null);
   // Prefer the tier set by middleware (read from cookie) — single source of
@@ -274,7 +283,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   // 25/26 end-of-season sale (Shopify price set to match): the sale price is
   // the price; the regular one shows struck through.
   const REGULAR_PRICE = locale.prices[productSlug];
-  const SALE_PRICE = salePrice(locale, productSlug);
+  // Forced review states show the regular season price, except ?state=sale.
+  const SALE_PRICE = forcedState && forcedState !== "sale" && forcedState !== "sold-out" && forcedState !== "all-out" ? undefined : salePrice(locale, productSlug);
   const ONE_TIME_PRICE = SALE_PRICE ?? REGULAR_PRICE;
   // Subscription is a flat ~8% discount applied to the base price.
   const SUBSCRIPTION_PRICE = Math.round(ONE_TIME_PRICE * (22 / 24) * 100) / 100;
@@ -384,10 +394,14 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   const activeImages = isBox ? boxImages : productImages;
   const currencyCode = product.node.priceRange.minVariantPrice.currencyCode;
 
-  const isInStock = product.node.variants.edges.some(v => v.node.availableForSale);
+  const isInStock = forcedState === "in-stock" || forcedState === "sale" || forcedState === "low" || forcedState === "box-out" || forcedState === "unsupported"
+    ? true
+    : forcedState === "sold-out" || forcedState === "all-out"
+      ? false
+      : product.node.variants.edges.some(v => v.node.availableForSale);
   // Box availability (Coratina only). boxQty is null when the storefront can't
   // read inventory — treat unknown as available so we never wrongly hide it.
-  const boxInStock = boxQty === null ? true : boxQty > 0;
+  const boxInStock = forcedState === "all-out" || forcedState === "box-out" ? false : forcedState ? true : boxQty === null ? true : boxQty > 0;
   // Whether the CURRENTLY selected format is buyable. Bottle out of stock but
   // box selected → box is buyable; box selected only exists for Coratina.
   const selectionInStock = isBox ? boxInStock : isInStock;
@@ -439,6 +453,27 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
   }];
 
 
+  // Nothing on this page can be bought: bottle sold out and no box to fall
+  // back on. The email form then leads the buy area.
+  const nothingBuyable = !isInStock && (!showFormatToggle || !boxInStock);
+  const unsupportedCountry = forcedState === "unsupported" || (countrySupported === false && !!countryName && !!countryCode);
+  const formatPicker = showFormatToggle ? (
+    <FormatSelector
+      format={format}
+      onFormatChange={(f) => { setFormat(f); setSelectedImageIndex(0); }}
+      bottlePrice={ONE_TIME_PRICE}
+      boxPrice={boxPrice}
+      bottleImage={productImages[0]?.node?.url}
+      boxImage={CORATINA_3L_IMAGE}
+      bottleInStock={isInStock}
+      boxInStock={boxInStock}
+      locale={locale} />
+  ) : null;
+  // Total shown on the add-to-cart button and the phone buy bar.
+  const buyQty = isBox ? 1 : selectedQuantity;
+  const buyDiscount = isBox || purchaseType === "subscribe" ? 0 : getVolumeDiscountPercent(selectedQuantity);
+  const buyTotal = buyQty * (isBox ? boxPrice : activePrice) * (1 - buyDiscount);
+
   return (
     <div className="relative min-h-screen flex flex-col" style={{ backgroundColor: "#FFFAEA" }}>
       <Header onWaitlistClick={() => {}} forceTransparent darkNav locale={locale} />
@@ -478,12 +513,12 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
             </div>
 
             {/* Right: Product Info */}
-            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-6">
+            <div className="px-6 md:px-10 lg:px-12 pt-8 md:pt-6 lg:pt-[4.55rem] pb-8 md:pb-12 space-y-4 lg:space-y-5">
               
               {/* Harvest Badge + Title Block */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                  <span className="px-5 py-2 rounded-full bg-olive-dark font-bold uppercase tracking-wider" style={{ color: content.buttonColor || '#CDDB2D', fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
                     {t.newHarvest}
                   </span>
                   {(() => {
@@ -491,10 +526,8 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   // The box is a separate product/variant; when selected the
                   // badge reflects box stock ("Last boxes") instead of the
                   // bottle's ("Last bottles").
-                  const inStock = isBox
-                    ? true
-                    : product.node.variants.edges.some((v) => v.node.availableForSale);
-                  const activeQty = isBox ? boxQty : availableQty;
+                  const inStock = selectionInStock;
+                  const activeQty = forcedState === "low" ? 6 : forcedState ? null : isBox ? boxQty : availableQty;
                   // Low-stock: live Shopify quantity under 10.
                   const lowStock = inStock && activeQty !== null && activeQty < 10;
                   const badgeText = inStock
@@ -504,7 +537,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     ? 'text-olive-dark'
                     : (oosCopy?.badgeClass ?? 'text-red-600');
                   return (
-                    <span className={`font-bold uppercase tracking-wider ${badgeColor}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.85vw, 0.85rem)' }}>
+                    <span className={`font-bold uppercase tracking-wider ${badgeColor}`} style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.9vw, 0.9rem)' }}>
                         {badgeText}
                       </span>);
 
@@ -530,45 +563,19 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                 {content.originStory.headline.split('.').slice(0, 3).filter(Boolean).join('.') + '.'}
               </p>
 
-              {/* Attribute Grid — 2x2 like Arsenio */}
-              <div className="grid grid-cols-2 gap-x-12 gap-y-8 pt-2 pb-2">
-                {attributes.map((attr) =>
-              <div key={attr.label} className="space-y-1.5">
-                    <div className="flex items-center gap-2.5">
-                      {attr.icon}
-                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
-                        {attr.label}
-                      </span>
-                    </div>
-                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
-                      {attr.value}
-                    </p>
-                  </div>
-              )}
-              </div>
-
-              {countrySupported === false && countryName && countryCode ? (
+              {unsupportedCountry ? (
                   <UnsupportedCountryNotice
-                    countryName={countryName}
-                    countryCode={countryCode}
+                    countryName={forcedState === "unsupported" ? "Japan" : countryName!}
+                    countryCode={forcedState === "unsupported" ? "JP" : countryCode!}
                     productName={content.heroTitle}
+                    buttonColor={content.buttonColor}
                   />
                 ) : (
                   <>
                     {/* Format toggle renders even when the bottle is sold out,
-                        so the in-stock 3L box stays reachable. */}
-                    {showFormatToggle && (
-                      <FormatSelector
-                        format={format}
-                        onFormatChange={(f) => { setFormat(f); setSelectedImageIndex(0); }}
-                        bottlePrice={ONE_TIME_PRICE}
-                        boxPrice={boxPrice}
-                        bottleImage={productImages[0]?.node?.url}
-                        boxImage={CORATINA_3L_IMAGE}
-                        bottleInStock={isInStock}
-                        boxInStock={boxInStock}
-                        locale={locale} />
-                    )}
+                        so the in-stock 3L box stays reachable. When nothing can
+                        be bought it moves below the email form. */}
+                    {!nothingBuyable && formatPicker}
 
                     {selectionInStock ? (
                       <>
@@ -581,7 +588,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                           onAddToCart={handleAddToCart}
                           buttonColor={content.buttonColor}
                           freeShippingThreshold={freeShippingThreshold}
-                          variantId={product.node.variants.edges[0]?.node.id}
+                          variantId={forcedState ? undefined : product.node.variants.edges[0]?.node.id}
                           locale={locale} />
 
                         {/* On sale (last stock of the season): one-time only, no
@@ -602,6 +609,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                     )}
 
                     <Button
+                      id="pdp-add-to-cart"
                       onClick={handleAddToCart}
                       className="w-full hover:bg-accent/90 text-olive-dark font-bold px-4 md:px-6 py-3 h-auto transition-all duration-300 hover:scale-[1.02] text-center whitespace-normal leading-tight"
                       style={{
@@ -694,14 +702,33 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                       />
                       </div>
                     )}
+                    {nothingBuyable && formatPicker}
                   </>
                 )}
 
+              {/* Attribute Grid — 2x2 like Arsenio */}
+              <div className="grid grid-cols-2 gap-x-12 gap-y-6 pt-2 pb-2">
+                {attributes.map((attr) =>
+              <div key={attr.label} className="space-y-1.5">
+                    <div className="flex items-center gap-2.5">
+                      {attr.icon}
+                      <span className="text-olive-dark font-semibold tracking-wide" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
+                        {attr.label}
+                      </span>
+                    </div>
+                    <p className="text-olive-medium" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
+                      {attr.value}
+                    </p>
+                  </div>
+              )}
+              </div>
+
               {/* Lab Values — minimal cards */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 {content.labTiles.map((tile) =>
-              <div key={tile.key} className="rounded-xl p-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
-                    <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.75rem, 0.9vw, 0.95rem)' }}>
+              <div key={tile.key} className="rounded-xl p-4 flex sm:block gap-4" style={{ backgroundColor: 'rgba(27, 66, 41, 0.05)' }}>
+                  <div className="w-[46%] flex-shrink-0 sm:w-auto">
+                    <p className="text-olive-medium uppercase tracking-widest mb-1 flex items-center gap-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.8rem, 0.95vw, 1rem)' }}>
                       <span>{tile.label}{tile.value === '—' && <span className="italic normal-case tracking-normal text-olive-medium/60 ml-2">{t.waitingResults}</span>}</span>
                       {tile.key === 'polyphenols' && tile.label === 'BIOACTIVE POLYPHENOLS' && tile.value !== '—' && (
                         <HoverCard openDelay={0} closeDelay={100}>
@@ -734,17 +761,18 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                         </HoverCard>
                       )}
                     </p>
-                    <p className="text-olive-dark font-bold md:flex md:items-baseline md:gap-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)' }}>
+                    <p className="text-olive-dark font-bold md:flex md:flex-wrap md:items-baseline md:gap-x-2" style={{ fontFamily: 'UDC Working Man Sans, sans-serif', fontSize: 'clamp(1.6rem, 2.1vw, 2.3rem)', lineHeight: 1.15 }}>
                       <span>
                         {tile.value}
                         {tile.value !== '—' && tile.unit && <span className="text-olive-medium font-normal ml-1" style={{ fontSize: 'clamp(0.85rem, 1vw, 1.05rem)' }}>{tile.unit}</span>}
                       </span>
-                      <span className="block md:inline text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.72rem, 0.82vw, 0.88rem)' }}>
+                      <span className="block md:inline text-olive-light font-normal" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 0.9vw, 0.9rem)' }}>
                         {tile.avg}
                       </span>
                     </p>
+                  </div>
                     {tile.description &&
-                <p className="text-olive-medium mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
+                <p className="text-olive-medium flex-1 sm:mt-1.5" style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(0.875rem, 1.05vw, 1.063rem)' }}>
                         {tile.description}
                       </p>
                 }
@@ -753,7 +781,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
               </div>
 
               {/* Lab Report Link */}
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                 <a
                 href={content.labReportUrl}
                 target="_blank"
@@ -826,9 +854,22 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       <FAQ handle={handle} locale={locale} />
       <YouMightAlsoLike currentHandle={handle} accentColor={content.buttonColor} locale={locale} />
 
-      <BlogSection initialPosts={initialBlogPosts} locale={locale} />
+      <BlogSection initialPosts={initialBlogPosts} locale={locale} mobileCarousel />
 
       <Footer locale={locale} />
+      {/* Phones and tablets: buy bar while the add-to-cart button is out of view. */}
+      {selectionInStock && !unsupportedCountry && (
+        <>
+          <div aria-hidden="true" className="lg:hidden h-[72px]" style={{ backgroundColor: "#1B4229" }} />
+          <StickyBuyBar
+            targetId="pdp-add-to-cart"
+            name={content.tabs.details.olive}
+            line={`${buyQty} × ${isBox ? "3L" : content.tabs.details.volume} · ${formatPrice(buyTotal, locale, buyDiscount > 0 ? 2 : undefined)}`}
+            label={t.addToCart}
+            buttonColor={content.buttonColor}
+            onAdd={handleAddToCart} />
+        </>
+      )}
       {/* First-order 10% pop-up switched off (Oct 2026, end-of-season sale). */}
     </div>);
 
