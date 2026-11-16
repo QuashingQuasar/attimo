@@ -298,6 +298,9 @@ const ShippingPage = ({ locale = DEFAULT_LOCALE }: ShippingPageProps = {}) => {
               <p>
                 {t.returnsP1}
               </p>
+              <p>
+                {t.returnsP2}
+              </p>
               <div
                 className="rounded-xl p-5 flex items-start gap-3"
                 style={{ backgroundColor: "rgba(27,66,41,0.06)" }}

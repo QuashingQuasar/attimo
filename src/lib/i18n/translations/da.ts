@@ -559,7 +559,9 @@ export const da: Dict = {
       "Leveringstider afhænger af, hvor du bor. De fleste kernelande (Belgien, Tyskland, Luxembourg, Holland) modtager deres ordre inden for 2–3 hverdage. For andre EU-destinationer, forvent 3–7 hverdage afhængigt af transportør og destination. Ordrer til Storbritannien ankommer typisk inden for 6–8 hverdage; olivenolie er fritaget for importtold og moms i Storbritannien, så der opkræves ikke ekstra gebyrer ved levering.",
     returnsHeading: "Returnering & skader",
     returnsP1:
-      "Da olivenolie er en fødevare, er den undtaget fra den almindelige 14-dages fortrydelsesret i henhold til EU's forbrugerrettighedsdirektiv. Vi tager ikke imod returneringer på åbnede eller ubeskadigede produkter.",
+      "Olivenolie er en fødevare, så EU's almindelige 14-dages fortrydelsesret gælder ikke for den.",
+    returnsP2:
+      "Vi tager ikke olivenolie retur. Hver flaske opbevares mørkt og temperaturkontrolleret, indtil den sendes; når den har forladt lageret, kan den ikke komme tilbage på lager.",
     damagedStrong: "Beskadiget under transport?",
     damagedPre: " Hvis din ordre ankommer beskadiget eller defekt, kontakt os inden for 14 dage på ",
     damagedPost: " med et foto af skaden. Vi arrangerer en erstatning eller fuld refundering – uden besvær.",

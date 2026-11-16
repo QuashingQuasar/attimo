@@ -614,7 +614,9 @@ export const en = {
       "Delivery times depend on your location. Most Core countries (Belgium, Germany, Luxembourg, Netherlands) receive their order within 2–3 business days. For other EU destinations, expect 3–7 business days depending on the carrier and destination. Orders to the United Kingdom typically arrive within 6–8 business days; olive oil enters the UK free of import duties and VAT, so nothing extra is charged on delivery.", // REVIEW
     returnsHeading: "Returns & damages",
     returnsP1:
-      "Because olive oil is a food product, it is exempt from the standard EU 14-day right of withdrawal under the Consumer Rights Directive. We do not accept returns on opened or undamaged products.", // REVIEW
+      "Olive oil is a food product, so the standard EU 14-day right of withdrawal does not apply to it.",
+    returnsP2:
+      "We do not accept returns on olive oil. Every bottle is kept in dark, temperature-controlled storage until it ships; once it has left that storage, it cannot be returned to stock.",
     damagedStrong: "Damaged in transit?",
     damagedPre: " If your order arrives damaged or defective, contact us within 14 days at ",
     damagedPost: " with a photo of the damage. We'll arrange a replacement or full refund — no hassle.", // REVIEW
