@@ -572,7 +572,9 @@ export const de: Dict = {
       "Die Lieferzeiten hängen von Ihrem Standort ab. Die meisten Kernländer (Belgien, Deutschland, Luxemburg, Niederlande) erhalten ihre Bestellung in 2 bis 3 Werktagen. Für andere EU-Ziele rechnen Sie mit 3 bis 7 Werktagen, je nach Versanddienst und Ziel. Bestellungen ins Vereinigte Königreich kommen in der Regel innerhalb von 6–8 Werktagen an; Olivenöl ist bei der Einfuhr ins Vereinigte Königreich von Zöllen und Mehrwertsteuer befreit, es fallen also keine zusätzlichen Kosten bei der Zustellung an.", // REVIEW
     returnsHeading: "Rückgabe & Schäden",
     returnsP1:
-      "Da Olivenöl ein Lebensmittel ist, ist es vom standardmäßigen 14-tägigen EU-Widerrufsrecht gemäß der Verbraucherrechte-Richtlinie ausgenommen. Wir nehmen keine geöffneten oder unbeschädigten Produkte zurück.", // REVIEW
+      "Olivenöl ist ein Lebensmittel, daher gilt das übliche 14-tägige EU-Widerrufsrecht dafür nicht.", // REVIEW
+    returnsP2:
+      "Wir nehmen Olivenöl nicht zurück. Jede Flasche wird bis zum Versand dunkel und temperaturkontrolliert gelagert; sobald sie dieses Lager verlassen hat, kann sie nicht wieder in den Bestand aufgenommen werden.", // REVIEW
     damagedStrong: "Beim Transport beschädigt?",
     damagedPre: " Wenn Ihre Bestellung beschädigt oder fehlerhaft ankommt, kontaktieren Sie uns innerhalb von 14 Tagen unter ",
     damagedPost: " mit einem Foto des Schadens. Wir veranlassen einen Ersatz oder eine vollständige Erstattung – unkompliziert.", // REVIEW

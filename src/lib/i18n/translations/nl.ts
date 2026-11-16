@@ -567,7 +567,9 @@ export const nl: Dict = {
       "Levertijden hangen af van je locatie. De meeste kernlanden (België, Duitsland, Luxemburg, Nederland) ontvangen hun bestelling binnen 2–3 werkdagen. Voor andere EU-bestemmingen reken je op 3–7 werkdagen, afhankelijk van vervoerder en bestemming. Bestellingen naar het Verenigd Koninkrijk komen doorgaans binnen 6–8 werkdagen aan; olijfolie is bij invoer in het VK vrijgesteld van invoerrechten en btw, dus je betaalt niets extra bij levering.", // REVIEW
     returnsHeading: "Retouren & schade",
     returnsP1:
-      "Omdat olijfolie een levensmiddel is, valt ze buiten het standaard Europese herroepingsrecht van 14 dagen uit de Richtlijn consumentenrechten. We accepteren geen retouren van geopende of onbeschadigde producten.", // REVIEW
+      "Olijfolie is een levensmiddel; het standaard Europese herroepingsrecht van 14 dagen geldt er dus niet voor.", // REVIEW
+    returnsP2:
+      "We nemen olijfolie niet retour. Elke fles wordt donker en op gecontroleerde temperatuur bewaard tot de verzending; een fles die deze opslag heeft verlaten, kan niet terug in de voorraad.", // REVIEW
     damagedStrong: "Beschadigd tijdens transport?",
     damagedPre: " Als je bestelling beschadigd of defect aankomt, neem dan binnen 14 dagen contact met ons op via ",
     damagedPost: " met een foto van de schade. We regelen een vervanging of volledige terugbetaling — zonder gedoe.", // REVIEW

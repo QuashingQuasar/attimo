@@ -563,7 +563,9 @@ export const fr: Dict = {
       "Les délais de livraison dépendent de votre localisation. La plupart des pays principaux (Belgique, Allemagne, Luxembourg, Pays-Bas) reçoivent leur commande sous 2 à 3 jours ouvrés. Pour les autres destinations de l'UE, comptez de 3 à 7 jours ouvrés selon le transporteur et la destination. Les commandes vers le Royaume-Uni arrivent généralement sous 6 à 8 jours ouvrés ; l'huile d'olive entre au Royaume-Uni sans droits de douane ni TVA, aucun frais supplémentaire n'est donc facturé à la livraison.", // REVIEW
     returnsHeading: "Retours & dommages",
     returnsP1:
-      "Comme l'huile d'olive est un produit alimentaire, elle est exemptée du droit de rétractation standard de 14 jours de l'UE prévu par la directive sur les droits des consommateurs. Nous n'acceptons pas les retours de produits ouverts ou non endommagés.", // REVIEW
+      "L'huile d'olive est un produit alimentaire ; le droit de rétractation standard de 14 jours de l'UE ne s'y applique donc pas.", // REVIEW
+    returnsP2:
+      "Nous n'acceptons pas les retours d'huile d'olive. Chaque bouteille est conservée à l'abri de la lumière, dans un entrepôt à température contrôlée, jusqu'à son expédition ; une fois sortie de cet entrepôt, elle ne peut plus être remise en stock.", // REVIEW
     damagedStrong: "Endommagé pendant le transport ?",
     damagedPre: " Si votre commande arrive endommagée ou défectueuse, contactez-nous sous 14 jours à ",
     damagedPost: " avec une photo des dommages. Nous organiserons un remplacement ou un remboursement intégral — sans tracas.", // REVIEW

@@ -560,7 +560,9 @@ export const sv: Dict = {
       "Leveranstider beror på var du bor. De flesta kärnländer (Belgien, Tyskland, Luxemburg, Nederländerna) får sin beställning inom 2–3 arbetsdagar. För andra EU-destinationer, räkna med 3–7 arbetsdagar beroende på transportör och destination. Beställningar till Storbritannien kommer vanligtvis fram inom 6–8 arbetsdagar; olivolja är befriad från importtullar och moms i Storbritannien, så inga extra avgifter tillkommer vid leverans.",
     returnsHeading: "Returer & skador",
     returnsP1:
-      "Eftersom olivolja är en livsmedelsprodukt är den undantagen från den vanliga 14-dagars ångerrätten enligt EU:s konsumenträttighetsdirektiv. Vi tar inte emot returer på öppnade eller oskadade produkter.",
+      "Olivolja är ett livsmedel, så EU:s vanliga 14-dagars ångerrätt gäller inte för den.",
+    returnsP2:
+      "Vi tar inte emot returer av olivolja. Varje flaska förvaras mörkt och temperaturkontrollerat tills den skickas; när den har lämnat lagret kan den inte läggas tillbaka i lager.",
     damagedStrong: "Skadad under transport?",
     damagedPre: " Om din beställning kommer skadad eller defekt, kontakta oss inom 14 dagar på ",
     damagedPost: " med ett foto på skadan. Vi ordnar en ersättning eller full återbetalning – utan krångel.",
