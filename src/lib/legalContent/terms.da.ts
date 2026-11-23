@@ -22,8 +22,9 @@ export const termsDa: LegalDoc = {
       { kind: "p", text: "Leveringstider er vejledende og kan variere afhængigt af din adresse og transportørens kapacitet. Eventuelle fragtomkostninger vises ved kassen, før du gennemfører dit køb. Risikoen for varen overgår til dig ved levering." },
     ]},
     { h2: "Returnering og refundering", blocks: [
-      { kind: "p", text: "Vores produkter er fødevarer. I henhold til EU's forbrugerrettighedsdirektiv (direktiv 2011/83/EU) er letfordærvelige varer og forseglede fødevarer, der er blevet åbnet efter levering, undtaget fra den 14-dages fortrydelsesret." },
-      { kind: "p", text: "**Vi tager ikke imod returneringer**, medmindre produktet ankommer beskadiget eller defekt. I så fald:" },
+      { kind: "p", text: "Olivenolie er en fødevare, så EU's almindelige 14-dages fortrydelsesret gælder ikke for den." },
+      { kind: "p", text: "**Vi tager ikke olivenolie retur.** Hver flaske opbevares mørkt og temperaturkontrolleret, indtil den sendes; når den har forladt lageret, kan den ikke komme tilbage på lager." },
+      { kind: "p", text: "Hvis din ordre ankommer beskadiget eller defekt:" },
       { kind: "ul", items: ["Kontakt os inden for 14 dage efter, at du har modtaget din ordre", "Send fotodokumentation af skaden til [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "Vi arrangerer en erstatning eller giver fuld refundering efter vores skøn"] },
     ]},
     { h2: "Betaling", blocks: [

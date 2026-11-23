@@ -22,8 +22,9 @@ export const termsSv: LegalDoc = {
       { kind: "p", text: "Leveranstiderna är uppskattningar och kan variera beroende på var du bor och transportörens tillgänglighet. Eventuella fraktkostnader visas i kassan innan du slutför ditt köp. Risken för varan övergår på dig vid leverans." },
     ]},
     { h2: "Returer och återbetalning", blocks: [
-      { kind: "p", text: "Våra produkter är livsmedel. Enligt EU:s konsumenträttighetsdirektiv (direktiv 2011/83/EU) är varor som snabbt kan försämras samt förseglade livsmedel som har öppnats efter leverans undantagna från den 14 dagar långa ångerrätten." },
-      { kind: "p", text: "**Vi tar inte emot returer** såvida inte produkten anländer skadad eller defekt. I så fall:" },
+      { kind: "p", text: "Olivolja är ett livsmedel, så EU:s vanliga 14-dagars ångerrätt gäller inte för den." },
+      { kind: "p", text: "**Vi tar inte emot returer av olivolja.** Varje flaska förvaras mörkt och temperaturkontrollerat tills den skickas; när den har lämnat lagret kan den inte läggas tillbaka i lager." },
+      { kind: "p", text: "Om din beställning kommer skadad eller defekt:" },
       { kind: "ul", items: ["Kontakta oss inom 14 dagar från det att du tog emot din beställning", "Skicka fotobevis på skadan till [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "Vi ordnar en ersättningsprodukt eller gör en full återbetalning, efter vår bedömning"] },
     ]},
     { h2: "Betalning", blocks: [

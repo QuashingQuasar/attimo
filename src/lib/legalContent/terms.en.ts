@@ -22,8 +22,9 @@ export const termsEn: LegalDoc = {
       { kind: "p", text: "Delivery times are estimates and may vary depending on your location and carrier availability. Shipping costs, if applicable, are shown at checkout before you complete your purchase. Risk of loss passes to you upon delivery." },
     ]},
     { h2: "Returns and refunds", blocks: [
-      { kind: "p", text: "Our products are food items. Under the EU Consumer Rights Directive (Directive 2011/83/EU), perishable goods and sealed food products that have been opened after delivery are exempt from the 14-day right of withdrawal." },
-      { kind: "p", text: "**We do not accept returns** unless the product arrives damaged or defective. In that case:" },
+      { kind: "p", text: "Olive oil is a food product, so the standard EU 14-day right of withdrawal does not apply to it." },
+      { kind: "p", text: "**We do not accept returns on olive oil.** Every bottle is kept in dark, temperature-controlled storage until it ships; once it has left that storage, it cannot be returned to stock." },
+      { kind: "p", text: "If your order arrives damaged or defective:" },
       { kind: "ul", items: ["Contact us within 14 days of receiving your order", "Send photo evidence of the damage to [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "We will arrange a replacement or issue a full refund at our discretion"] },
     ]},
     { h2: "Payment", blocks: [

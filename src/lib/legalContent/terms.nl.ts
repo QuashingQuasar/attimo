@@ -22,8 +22,9 @@ export const termsNl: LegalDoc = {
       { kind: "p", text: "Levertijden zijn schattingen en kunnen variëren afhankelijk van je locatie en de beschikbaarheid van vervoerders. Eventuele verzendkosten worden bij het afrekenen getoond voordat je je aankoop afrondt. Het risico van verlies gaat bij levering op jou over." },
     ]},
     { h2: "Retouren en terugbetalingen", blocks: [
-      { kind: "p", text: "Onze producten zijn levensmiddelen. Op grond van de Europese Richtlijn consumentenrechten (Richtlijn 2011/83/EU) zijn bederfelijke goederen en verzegelde levensmiddelen die na levering zijn geopend uitgesloten van het herroepingsrecht van 14 dagen." },
-      { kind: "p", text: "**We accepteren geen retouren**, tenzij het product beschadigd of defect aankomt. In dat geval:" },
+      { kind: "p", text: "Olijfolie is een levensmiddel; het standaard Europese herroepingsrecht van 14 dagen geldt er dus niet voor." },
+      { kind: "p", text: "**We nemen olijfolie niet retour.** Elke fles wordt donker en op gecontroleerde temperatuur bewaard tot de verzending; een fles die deze opslag heeft verlaten, kan niet terug in de voorraad." },
+      { kind: "p", text: "Als je bestelling beschadigd of defect aankomt:" },
       { kind: "ul", items: ["Neem binnen 14 dagen na ontvangst van je bestelling contact met ons op", "Stuur fotobewijs van de schade naar [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "We regelen naar onze keuze een vervanging of een volledige terugbetaling"] },
     ]},
     { h2: "Betaling", blocks: [
