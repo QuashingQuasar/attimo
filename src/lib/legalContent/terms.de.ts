@@ -5,7 +5,7 @@ export const termsDe: LegalDoc = {
   metaTitle: "Allgemeine Geschäftsbedingungen | ATTIMO Natives Olivenöl Extra",
   metaDescription: "Allgemeine Geschäftsbedingungen von ATTIMO: Bestellungen, Preise, Versand, Rückgabe, Zahlung und anwendbares Recht.",
   title: "Allgemeine Geschäftsbedingungen",
-  updated: "Zuletzt aktualisiert: März 2026",
+  updated: "Zuletzt aktualisiert: November 2026",
   sections: [
     { h2: "Über ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO ist ein Online-Shop für Olivenöl, der von Ablaze Growth Studio CV betrieben wird, einem in Belgien eingetragenen Unternehmen mit Sitz in Gelijkheidstraat 5, 2018 Antwerpen (USt-IdNr.: BE0732.647.334). Mit der Aufgabe einer Bestellung oder der Nutzung unserer Website erklären Sie sich mit diesen Bedingungen einverstanden." },
@@ -22,8 +22,9 @@ export const termsDe: LegalDoc = {
       { kind: "p", text: "Lieferzeiten sind Schätzungen und können je nach Ihrem Standort und der Verfügbarkeit des Versanddienstleisters variieren. Versandkosten werden, sofern sie anfallen, an der Kasse angezeigt, bevor Sie Ihren Kauf abschließen. Die Gefahr des Verlusts geht mit der Lieferung auf Sie über." },
     ]},
     { h2: "Rückgabe und Erstattung", blocks: [
-      { kind: "p", text: "Unsere Produkte sind Lebensmittel. Gemäß der EU-Verbraucherrechte-Richtlinie (Richtlinie 2011/83/EU) sind verderbliche Waren und versiegelte Lebensmittel, die nach der Lieferung geöffnet wurden, vom 14-tägigen Widerrufsrecht ausgenommen." },
-      { kind: "p", text: "**Wir nehmen keine Rücksendungen an**, es sei denn, das Produkt kommt beschädigt oder fehlerhaft an. In diesem Fall:" },
+      { kind: "p", text: "Olivenöl ist ein Lebensmittel, daher gilt das übliche 14-tägige EU-Widerrufsrecht dafür nicht." },
+      { kind: "p", text: "**Wir nehmen Olivenöl nicht zurück.** Jede Flasche wird bis zum Versand dunkel und temperaturkontrolliert gelagert; sobald sie dieses Lager verlassen hat, kann sie nicht wieder in den Bestand aufgenommen werden." },
+      { kind: "p", text: "Wenn Ihre Bestellung beschädigt oder fehlerhaft ankommt:" },
       { kind: "ul", items: ["Kontaktieren Sie uns innerhalb von 14 Tagen nach Erhalt Ihrer Bestellung", "Senden Sie Fotos des Schadens an [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "Wir veranlassen nach unserem Ermessen einen Ersatz oder eine vollständige Erstattung"] },
     ]},
     { h2: "Zahlung", blocks: [

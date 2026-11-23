@@ -5,7 +5,7 @@ export const termsFr: LegalDoc = {
   metaTitle: "Conditions générales de vente | ATTIMO Huile d'olive vierge extra",
   metaDescription: "Conditions générales de vente ATTIMO : commandes, prix, livraison, retours, paiement et droit applicable.",
   title: "Conditions générales de vente",
-  updated: "Dernière mise à jour : mars 2026",
+  updated: "Dernière mise à jour : novembre 2026",
   sections: [
     { h2: "À propos d'ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO est une boutique en ligne d'huile d'olive exploitée par Ablaze Growth Studio CV, société immatriculée en Belgique, Gelijkheidstraat 5, 2018 Anvers (TVA : BE0732.647.334). En passant une commande ou en utilisant notre site web, vous acceptez les présentes conditions." },
@@ -22,8 +22,9 @@ export const termsFr: LegalDoc = {
       { kind: "p", text: "Les délais de livraison sont donnés à titre indicatif et peuvent varier selon votre localisation et la disponibilité des transporteurs. Les frais de livraison, le cas échéant, sont affichés au moment du paiement, avant la finalisation de votre achat. Le risque de perte vous est transféré à la livraison." },
     ]},
     { h2: "Retours et remboursements", blocks: [
-      { kind: "p", text: "Nos produits sont des denrées alimentaires. En vertu de la directive européenne relative aux droits des consommateurs (directive 2011/83/UE), les biens périssables et les produits alimentaires scellés qui ont été ouverts après la livraison sont exclus du droit de rétractation de 14 jours." },
-      { kind: "p", text: "**Nous n'acceptons pas les retours**, sauf si le produit arrive endommagé ou défectueux. Dans ce cas :" },
+      { kind: "p", text: "L'huile d'olive est un produit alimentaire ; le droit de rétractation standard de 14 jours de l'UE ne s'y applique donc pas." },
+      { kind: "p", text: "**Nous n'acceptons pas les retours d'huile d'olive.** Chaque bouteille est conservée à l'abri de la lumière, dans un entrepôt à température contrôlée, jusqu'à son expédition ; une fois sortie de cet entrepôt, elle ne peut plus être remise en stock." },
+      { kind: "p", text: "Si votre commande arrive endommagée ou défectueuse :" },
       { kind: "ul", items: ["Contactez-nous dans les 14 jours suivant la réception de votre commande", "Envoyez des photos des dommages à [hello@attimo-oil.com](mailto:hello@attimo-oil.com)", "Nous organiserons un remplacement ou procéderons à un remboursement intégral, à notre discrétion"] },
     ]},
     { h2: "Paiement", blocks: [
