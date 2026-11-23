@@ -5,7 +5,7 @@ export const termsSv: LegalDoc = {
   metaTitle: "Allmänna villkor | ATTIMO sortren extra jungfruolja",
   metaDescription: "ATTIMO allmänna villkor: beställningar, priser, frakt, returer, betalning och tillämplig lag.",
   title: "Allmänna villkor",
-  updated: "Senast uppdaterad: mars 2026",
+  updated: "Senast uppdaterad: november 2026",
   sections: [
     { h2: "Om ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO är en webbutik för olivolja som drivs av Ablaze Growth Studio CV, ett bolag registrerat i Belgien med adress Gelijkheidstraat 5, 2018 Antwerpen (Momsnr: BE0732.647.334). Genom att lägga en beställning eller använda vår webbplats godkänner du dessa villkor." },

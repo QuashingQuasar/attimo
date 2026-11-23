@@ -5,7 +5,7 @@ export const termsDa: LegalDoc = {
   metaTitle: "Handelsbetingelser | ATTIMO Specialty Extra Virgin Olive Oil",
   metaDescription: "ATTIMO handelsbetingelser: ordrer, priser, levering, returnering, betaling og lovvalg.",
   title: "Handelsbetingelser",
-  updated: "Senest opdateret: marts 2026",
+  updated: "Senest opdateret: november 2026",
   sections: [
     { h2: "Om ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO er en online olivenoliebutik, der drives af Ablaze Growth Studio CV, et selskab registreret i Belgien på Gelijkheidstraat 5, 2018 Antwerpen (Moms: BE0732.647.334). Ved at afgive en ordre eller bruge vores hjemmeside accepterer du disse betingelser." },

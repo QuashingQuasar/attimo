@@ -5,7 +5,7 @@ export const termsDe: LegalDoc = {
   metaTitle: "Allgemeine Geschäftsbedingungen | ATTIMO Natives Olivenöl Extra",
   metaDescription: "Allgemeine Geschäftsbedingungen von ATTIMO: Bestellungen, Preise, Versand, Rückgabe, Zahlung und anwendbares Recht.",
   title: "Allgemeine Geschäftsbedingungen",
-  updated: "Zuletzt aktualisiert: März 2026",
+  updated: "Zuletzt aktualisiert: November 2026",
   sections: [
     { h2: "Über ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO ist ein Online-Shop für Olivenöl, der von Ablaze Growth Studio CV betrieben wird, einem in Belgien eingetragenen Unternehmen mit Sitz in Gelijkheidstraat 5, 2018 Antwerpen (USt-IdNr.: BE0732.647.334). Mit der Aufgabe einer Bestellung oder der Nutzung unserer Website erklären Sie sich mit diesen Bedingungen einverstanden." },

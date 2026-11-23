@@ -5,7 +5,7 @@ export const termsFr: LegalDoc = {
   metaTitle: "Conditions générales de vente | ATTIMO Huile d'olive vierge extra",
   metaDescription: "Conditions générales de vente ATTIMO : commandes, prix, livraison, retours, paiement et droit applicable.",
   title: "Conditions générales de vente",
-  updated: "Dernière mise à jour : mars 2026",
+  updated: "Dernière mise à jour : novembre 2026",
   sections: [
     { h2: "À propos d'ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO est une boutique en ligne d'huile d'olive exploitée par Ablaze Growth Studio CV, société immatriculée en Belgique, Gelijkheidstraat 5, 2018 Anvers (TVA : BE0732.647.334). En passant une commande ou en utilisant notre site web, vous acceptez les présentes conditions." },

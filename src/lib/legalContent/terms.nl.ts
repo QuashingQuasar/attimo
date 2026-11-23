@@ -5,7 +5,7 @@ export const termsNl: LegalDoc = {
   metaTitle: "Algemene voorwaarden | ATTIMO Specialty Extra Vierge Olijfolie",
   metaDescription: "Algemene voorwaarden van ATTIMO: bestellingen, prijzen, verzending, retouren, betaling en toepasselijk recht.",
   title: "Algemene voorwaarden",
-  updated: "Laatst bijgewerkt: maart 2026",
+  updated: "Laatst bijgewerkt: november 2026",
   sections: [
     { h2: "Over ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO is een online olijfoliewinkel die wordt geëxploiteerd door Ablaze Growth Studio CV, een in België geregistreerde vennootschap, gevestigd te Gelijkheidstraat 5, 2018 Antwerpen (btw: BE0732.647.334). Door een bestelling te plaatsen of onze website te gebruiken, ga je akkoord met deze voorwaarden." },

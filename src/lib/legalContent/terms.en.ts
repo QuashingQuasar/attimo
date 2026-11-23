@@ -5,7 +5,7 @@ export const termsEn: LegalDoc = {
   metaTitle: "Terms of Service | ATTIMO Specialty Extra Virgin Olive Oil",
   metaDescription: "ATTIMO terms of service: orders, pricing, shipping, returns, payment and governing law.",
   title: "Terms of Service",
-  updated: "Last updated: March 2026",
+  updated: "Last updated: November 2026",
   sections: [
     { h2: "About ATTIMO", blocks: [
       { kind: "p", text: "ATTIMO is an online olive oil shop operated by Ablaze Growth Studio CV, a company registered in Belgium at Gelijkheidstraat 5, 2018 Antwerp (VAT: BE0732.647.334). By placing an order or using our website, you agree to these terms." },
