@@ -49,7 +49,7 @@ export const PolyphenolComparison = ({ productValue = 904, productLabel = "ATTIM
   };
 
   const comparisonData = [
-  { name: t.barAvg, value: 180, color: "bg-[#A8B88F]" },
+  { name: t.barAvg, value: 150, color: "bg-[#A8B88F]" },
   { name: t.barEu, value: 250, color: "bg-[#8A9B6F]" },
   { name: t.barBlueprint, value: 400, color: "bg-[#5C6E45]" },
   { name: productLabel, value: productValue, color: "bg-[#1B4229]" }];

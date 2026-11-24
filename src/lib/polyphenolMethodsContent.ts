@@ -209,7 +209,7 @@ const en: MethodsContent = {
     glassesAlt:
       "Six cobalt blue olive oil tasting glasses with lids, filled with green oil, on a dark green table",
     doseH3:
-      "52 calories of ATTIMO Coratina 25/26 carry the same polyphenols as 245 calories of supermarket oil",
+      "52 calories of ATTIMO Coratina 25/26 carry the same polyphenols as 295 calories of supermarket oil",
     doseLead: "A higher-quality oil gets you more polyphenols for fewer calories.",
     doseAxis: "Olive oil calories needed for 5 mg of polyphenols",
     doseRows: {
@@ -277,7 +277,7 @@ const en: MethodsContent = {
       report: "Report",
     },
     footnote:
-      "All values mg/kg, 2025/26 harvest, HPLC by IOC Doc. 29 with oleocanthal and oleacein from a dedicated assay. Coratina sampled 18 November 2025, Nocellara 17 November 2025. Doc. 29 states a measuring range of 30–800 mg/kg, so our {{coratina.total}} sits just above it and should be read as approximate at that boundary.",
+      "All values mg/kg, 2025/26 harvest, HPLC by IOC Doc. 29 with oleocanthal and oleacein from a dedicated assay. Coratina sampled 18 November 2025, Nocellara 17 November 2025. Doc. 29 states a measuring range of 30–800 mg/kg, so our {{coratina.total}} sits just above it and should be read as approximate at that boundary. Supermarket average: about 150 mg/kg total polyphenols, 45 mg/kg oleocanthal and 20 mg/kg oleacein (Da Ros et al., Molecules, 2019: 25 extra virgin blends bought in Italian supermarkets, measured by HPLC).",
     indexPre: "Every brand that publishes its numbers, ranked by the same two compounds:",
     indexLink: "the Olive Oil Polyphenol Index",
   },
@@ -461,7 +461,7 @@ const de: MethodsContent = {
     glassesAlt:
       "Sechs kobaltblaue Olivenöl-Verkostungsgläser mit Deckel, gefüllt mit grünem Öl, auf einem dunkelgrünen Tisch",
     doseH3:
-      "52 Kalorien ATTIMO Coratina 25/26 enthalten so viele Polyphenole wie 245 Kalorien Supermarktöl",
+      "52 Kalorien ATTIMO Coratina 25/26 enthalten so viele Polyphenole wie 295 Kalorien Supermarktöl",
     doseLead: "Ein hochwertigeres Öl liefert dir mehr Polyphenole bei weniger Kalorien.",
     doseAxis: "Olivenöl-Kalorien für 5 mg Polyphenole",
     doseRows: {
@@ -529,7 +529,7 @@ const de: MethodsContent = {
       report: "Bericht",
     },
     footnote:
-      "Alle Werte in mg/kg, Ernte 2025/26, HPLC nach IOC Doc. 29, Oleocanthal und Oleacein aus einem eigenen Assay. Coratina beprobt am 18. November 2025, Nocellara am 17. November 2025. Doc. 29 gibt einen Messbereich von 30–800 mg/kg an, unsere {{coratina.total}} liegen also knapp darüber und sind an dieser Grenze als ungefährer Wert zu lesen.",
+      "Alle Werte in mg/kg, Ernte 2025/26, HPLC nach IOC Doc. 29, Oleocanthal und Oleacein aus einem eigenen Assay. Coratina beprobt am 18. November 2025, Nocellara am 17. November 2025. Doc. 29 gibt einen Messbereich von 30–800 mg/kg an, unsere {{coratina.total}} liegen also knapp darüber und sind an dieser Grenze als ungefährer Wert zu lesen. Supermarkt-Durchschnitt: etwa 150 mg/kg Gesamtpolyphenole, 45 mg/kg Oleocanthal und 20 mg/kg Oleacein (Da Ros et al., Molecules, 2019: 25 Verschnitte nativen Olivenöls extra aus italienischen Supermärkten, gemessen per HPLC).",
     indexPre: "Alle Marken, die ihre Werte veröffentlichen, nach denselben zwei Verbindungen geordnet:",
     indexLink: "der Olivenöl-Polyphenol-Index",
   },
@@ -713,7 +713,7 @@ const fr: MethodsContent = {
     glassesAlt:
       "Six verres de dégustation d'huile d'olive bleu cobalt avec couvercles, remplis d'huile verte, sur une table vert foncé",
     doseH3:
-      "52 calories d'ATTIMO Coratina 25/26 apportent autant de polyphénols que 245 calories d'huile de supermarché",
+      "52 calories d'ATTIMO Coratina 25/26 apportent autant de polyphénols que 295 calories d'huile de supermarché",
     doseLead: "Une huile de meilleure qualité vous apporte plus de polyphénols pour moins de calories.",
     doseAxis: "Calories d'huile d'olive nécessaires pour 5 mg de polyphénols",
     doseRows: {
@@ -781,7 +781,7 @@ const fr: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Toutes les valeurs en mg/kg, récolte 2025/26, HPLC selon IOC Doc. 29, avec l'oléocanthal et l'oléacéine issus d'un dosage dédié. Coratina prélevée le 18 novembre 2025, Nocellara le 17 novembre 2025. Le Doc. 29 indique une plage de mesure de 30–800 mg/kg : notre {{coratina.total}} se situe juste au-dessus et doit être lu comme approximatif à cette limite.",
+      "Toutes les valeurs en mg/kg, récolte 2025/26, HPLC selon IOC Doc. 29, avec l'oléocanthal et l'oléacéine issus d'un dosage dédié. Coratina prélevée le 18 novembre 2025, Nocellara le 17 novembre 2025. Le Doc. 29 indique une plage de mesure de 30–800 mg/kg : notre {{coratina.total}} se situe juste au-dessus et doit être lu comme approximatif à cette limite. Moyenne en supermarché : environ 150 mg/kg de polyphénols totaux, 45 mg/kg d'oléocanthal et 20 mg/kg d'oléacéine (Da Ros et al., Molecules, 2019 : 25 assemblages vierges extra achetés dans des supermarchés italiens, mesurés par HPLC).",
     indexPre: "Toutes les marques qui publient leurs chiffres, classées selon les deux mêmes composés :",
     indexLink: "l'index des polyphénols de l'huile d'olive",
   },
@@ -968,7 +968,7 @@ const sv: MethodsContent = {
     glassesAlt:
       "Sex koboltblå provsmakningsglas för olivolja med lock, fyllda med grön olja, på ett mörkgrönt bord",
     doseH3:
-      "52 kalorier ATTIMO Coratina 25/26 innehåller lika mycket polyfenoler som 245 kalorier snabbköpsolja",
+      "52 kalorier ATTIMO Coratina 25/26 innehåller lika mycket polyfenoler som 295 kalorier snabbköpsolja",
     doseLead: "En olja av högre kvalitet ger dig fler polyfenoler på färre kalorier.",
     doseAxis: "Olivoljekalorier som krävs för 5 mg polyfenoler",
     doseRows: {
@@ -1036,7 +1036,7 @@ const sv: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alla värden i mg/kg, skörd 2025/26, HPLC enligt IOC Doc. 29 med oleocanthal och oleacein från en särskild analys. Coratina provtagen 18 november 2025, Nocellara 17 november 2025. Doc. 29 anger ett mätområde på 30–800 mg/kg, så våra {{coratina.total}} ligger strax över det och bör läsas som ungefärligt vid den gränsen.",
+      "Alla värden i mg/kg, skörd 2025/26, HPLC enligt IOC Doc. 29 med oleocanthal och oleacein från en särskild analys. Coratina provtagen 18 november 2025, Nocellara 17 november 2025. Doc. 29 anger ett mätområde på 30–800 mg/kg, så våra {{coratina.total}} ligger strax över det och bör läsas som ungefärligt vid den gränsen. Snitt för snabbköpsolja: cirka 150 mg/kg totala polyfenoler, 45 mg/kg oleocanthal och 20 mg/kg oleacein (Da Ros et al., Molecules, 2019: 25 blandningar av extra jungfruolja köpta i italienska snabbköp, mätta med HPLC).",
     indexPre: "Alla varumärken som publicerar sina värden, rankade efter samma två föreningar:",
     indexLink: "polyfenolindexet för olivolja",
   },
@@ -1220,7 +1220,7 @@ const da: MethodsContent = {
     glassesAlt:
       "Seks koboltblå smageglas med låg til olivenolie, fyldt med grøn olie, på et mørkegrønt bord",
     doseH3:
-      "52 kalorier ATTIMO Coratina 25/26 indeholder lige så mange polyfenoler som 245 kalorier supermarkedsolie",
+      "52 kalorier ATTIMO Coratina 25/26 indeholder lige så mange polyfenoler som 295 kalorier supermarkedsolie",
     doseLead: "En olie af højere kvalitet giver dig flere polyfenoler for færre kalorier.",
     doseAxis: "Olivenoliekalorier der skal til for 5 mg polyfenoler",
     doseRows: {
@@ -1288,7 +1288,7 @@ const da: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alle værdier i mg/kg, høst 2025/26, HPLC efter IOC Doc. 29 med oleocanthal og oleacein fra en dedikeret analyse. Coratina udtaget 18. november 2025, Nocellara 17. november 2025. Doc. 29 angiver et måleområde på 30–800 mg/kg, så vores {{coratina.total}} ligger lige over det og bør læses som omtrentligt ved den grænse.",
+      "Alle værdier i mg/kg, høst 2025/26, HPLC efter IOC Doc. 29 med oleocanthal og oleacein fra en dedikeret analyse. Coratina udtaget 18. november 2025, Nocellara 17. november 2025. Doc. 29 angiver et måleområde på 30–800 mg/kg, så vores {{coratina.total}} ligger lige over det og bør læses som omtrentligt ved den grænse. Supermarkedsgennemsnit: omkring 150 mg/kg totale polyfenoler, 45 mg/kg oleocanthal og 20 mg/kg oleacein (Da Ros et al., Molecules, 2019: 25 blandinger af ekstra jomfruolie købt i italienske supermarkeder, målt med HPLC).",
     indexPre: "Alle mærker, der offentliggør deres tal, rangeret efter de samme to forbindelser:",
     indexLink: "polyfenolindekset for olivenolie",
   },
@@ -1472,7 +1472,7 @@ const nl: MethodsContent = {
     glassesAlt:
       "Zes kobaltblauwe olijfolie-proefglazen met deksel, gevuld met groene olie, op een donkergroene tafel",
     doseH3:
-      "52 calorieën ATTIMO Coratina 25/26 bevatten evenveel polyfenolen als 245 calorieën supermarktolie",
+      "52 calorieën ATTIMO Coratina 25/26 bevatten evenveel polyfenolen als 295 calorieën supermarktolie",
     doseLead: "Een olie van hogere kwaliteit levert je meer polyfenolen voor minder calorieën.",
     doseAxis: "Olijfoliecalorieën nodig voor 5 mg polyfenolen",
     doseRows: {
@@ -1540,7 +1540,7 @@ const nl: MethodsContent = {
       report: "Rapport",
     },
     footnote:
-      "Alle waarden in mg/kg, oogst 2025/26, HPLC volgens IOC Doc. 29 met oleocanthal en oleaceïne uit een aparte bepaling. Coratina bemonsterd op 18 november 2025, Nocellara op 17 november 2025. Doc. 29 geeft een meetbereik van 30–800 mg/kg op, dus onze {{coratina.total}} ligt daar net boven en moet op die grens als benaderend gelezen worden.",
+      "Alle waarden in mg/kg, oogst 2025/26, HPLC volgens IOC Doc. 29 met oleocanthal en oleaceïne uit een aparte bepaling. Coratina bemonsterd op 18 november 2025, Nocellara op 17 november 2025. Doc. 29 geeft een meetbereik van 30–800 mg/kg op, dus onze {{coratina.total}} ligt daar net boven en moet op die grens als benaderend gelezen worden. Supermarktgemiddelde: ongeveer 150 mg/kg totale polyfenolen, 45 mg/kg oleocanthal en 20 mg/kg oleaceïne (Da Ros et al., Molecules, 2019: 25 extra vierge blends gekocht in Italiaanse supermarkten, gemeten met HPLC).",
     indexPre: "Alle merken die hun cijfers publiceren, gerangschikt op dezelfde twee stoffen:",
     indexLink: "de olijfolie-polyfenolindex",
   },

@@ -212,7 +212,7 @@ export const de: Dict = {
     headingPre: "Die", // REVIEW
     headingLie: "„extra nativ“-Lüge", // REVIEW
     intro:
-      "Natives Olivenöl extra wird für seine gesundheitlichen Vorteile und Langlebigkeit gefeiert, doch 80 % der Supermarkt-Öle erfüllen nicht einmal die Grundnormen und sind in Wahrheit arm an Polyphenolen – genau jenen, die diese Vorteile und den Geschmack liefern.", // REVIEW
+      "Natives Olivenöl extra wird für seine gesundheitlichen Vorteile und Langlebigkeit gefeiert, doch die meisten Supermarkt-Öle sind arm an Polyphenolen – genau jenen, die diese Vorteile und den Geschmack liefern.", // REVIEW
     stat1Value: "~80%",
     stat1Text:
       "der als „extra nativ“ verkauften Supermarktöle erfüllen diese Normen nicht", // REVIEW
@@ -282,9 +282,9 @@ export const de: Dict = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Durchschnittliches natives Olivenöl extra", // REVIEW
-      avgSub: "~180 mg/kg Polyphenole",
+      avgSub: "~150 mg/kg Polyphenole",
       avgDesc:
-        "Die meisten Supermarkt-Öle (nativ extra) liegen zwischen 100 und 250 mg/kg. Verschnitt, Alter und industrielle Verarbeitung senken alle den Polyphenolgehalt.", // REVIEW
+        "Das durchschnittliche Supermarkt-Öl (nativ extra) liegt bei etwa 150 mg/kg. Verschnitt, Alter und industrielle Verarbeitung senken alle den Polyphenolgehalt.", // REVIEW
       euTitle: "EU-Gesundheitsangabe", // REVIEW
       euSub: "250 mg/kg Polyphenole",
       euDesc:

@@ -22,9 +22,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flaskan på bilden bär vår kommande ATTIMO-varumärkesetikett. Din olja från skörden 2024/25 levereras under den ursprungliga producentens etikett och innehåller samma högkvalitativa olja.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVA POLYFENOLER", value: "847", unit: "mg/kg", avg: "genomsn. ~180mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "genomsn. 10-30mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "genomsn. 10-30mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
+      { key: "polyphenols", label: "BIOAKTIVA POLYFENOLER", value: "847", unit: "mg/kg", avg: "genomsn. ~150mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "genomsn. ~45mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "genomsn. ~20mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
       { key: "acidity", label: "SYRA", value: "0.19", unit: "%", avg: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
     ],
     tabs: {
@@ -90,9 +90,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
       subheading:
         "Hälsopåståenden utan bevis är bara marknadsföring. Vi låter varje sats testas oberoende i labb på centrala kvalitetsmarkörer som du själv kan verifiera.", // REVIEW
       values: [
-        { label: "Polyfenoler", value: "847", unit: "mg/kg", standard: "genomsn. ~180 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "genomsn. <10 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "genomsn. <40 mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
+        { label: "Polyfenoler", value: "847", unit: "mg/kg", standard: "genomsn. ~150 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "genomsn. ~45 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "genomsn. ~20 mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
         { label: "Syra", value: "0.19", unit: "%", standard: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
         { label: "Peroxider", value: "7.2", unit: "meq/kg", standard: "genomsn. ~20 meq/kg", description: "Visar hur färsk oljan är. Låg peroxidhalt = mindre oxidation." }, // REVIEW
         { label: "K270", value: "0.15", unit: "", standard: "genomsn. ~0.22", description: "Mäter oxidation över tid. Lägre värden tyder på en färskare, bättre bevarad olja." }, // REVIEW
@@ -128,9 +128,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flaskan på bilden bär vår kommande ATTIMO-varumärkesetikett. Din olja från skörden 2024/25 levereras under den ursprungliga producentens etikett och innehåller samma högkvalitativa olja.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVA POLYFENOLER", value: "400", unit: "mg/kg", avg: "genomsn. ~180mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "genomsn. <10mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "genomsn. <40mg/kg", description: "en kraftfull antioxidant kopplad till hjärthälsa och lång livslängd" }, // REVIEW
+      { key: "polyphenols", label: "BIOAKTIVA POLYFENOLER", value: "400", unit: "mg/kg", avg: "genomsn. ~150mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "genomsn. ~45mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "genomsn. ~20mg/kg", description: "en kraftfull antioxidant kopplad till hjärthälsa och lång livslängd" }, // REVIEW
       { key: "acidity", label: "SYRA", value: "0.21%", unit: "", avg: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
     ],
     tabs: {
@@ -196,9 +196,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
       subheading:
         "Hälsopåståenden utan bevis är bara marknadsföring. Vi låter varje sats testas oberoende i labb på centrala kvalitetsmarkörer som du själv kan verifiera.", // REVIEW
       values: [
-        { label: "Polyfenoler", value: "400", unit: "mg/kg", standard: "genomsn. ~180 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "genomsn. <10 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "genomsn. <40 mg/kg", description: "En kraftfull antioxidant kopplad till hjärthälsa och lång livslängd." }, // REVIEW
+        { label: "Polyfenoler", value: "400", unit: "mg/kg", standard: "genomsn. ~150 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "genomsn. ~45 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "genomsn. ~20 mg/kg", description: "En kraftfull antioxidant kopplad till hjärthälsa och lång livslängd." }, // REVIEW
         { label: "Syra", value: "0.21", unit: "%", standard: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
         { label: "Peroxider", value: "7.8", unit: "meq/kg", standard: "genomsn. ~20 meq/kg", description: "Visar hur färsk oljan är. Låg peroxidhalt = mindre oxidation." }, // REVIEW
         { label: "K270", value: "0.11", unit: "", standard: "genomsn. ~0.22", description: "Mäter oxidation över tid. Lägre värden tyder på en färskare, bättre bevarad olja." }, // REVIEW
@@ -224,9 +224,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flaskan på bilden bär vår kommande ATTIMO-varumärkesetikett. Din olja från skörden 2024/25 levereras under den ursprungliga producentens etikett och innehåller samma högkvalitativa olja.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYFENOLER", value: "675", unit: "mg/kg", avg: "genomsn. ~180mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "genomsn. 10-30mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "genomsn. <40mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
+      { key: "polyphenols", label: "POLYFENOLER", value: "675", unit: "mg/kg", avg: "genomsn. ~150mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "genomsn. ~45mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "genomsn. ~20mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
       { key: "acidity", label: "SYRA", value: "0.13", unit: "%", avg: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
     ],
     tabs: {
@@ -292,9 +292,9 @@ export const productContentSvMap: Record<string, ProductContent> = {
       subheading:
         "Hälsopåståenden utan bevis är bara marknadsföring. Vi låter varje sats testas oberoende i labb på centrala kvalitetsmarkörer som du själv kan verifiera.", // REVIEW
       values: [
-        { label: "Polyfenoler", value: "675", unit: "mg/kg", standard: "genomsn. ~180 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
-        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "genomsn. <10 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
-        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "genomsn. <40 mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
+        { label: "Polyfenoler", value: "675", unit: "mg/kg", standard: "genomsn. ~150 mg/kg", description: "Naturliga antioxidanter som ger olivoljan dess hälsofördelar." }, // REVIEW
+        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "genomsn. ~45 mg/kg", description: "En kraftfull antiinflammatorisk förening som är unik för olivolja." }, // REVIEW
+        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "genomsn. ~20 mg/kg", description: "En kraftfull antioxidant kopplad till skydd av hjärt-kärlsystemet." }, // REVIEW
         { label: "Syra", value: "0.13", unit: "%", standard: "genomsn. ~0.8%", description: "Lägre syra betyder färskare oliver och högre kvalitet." }, // REVIEW
         { label: "Peroxider", value: "5.7", unit: "meq/kg", standard: "genomsn. ~20 meq/kg", description: "Visar hur färsk oljan är. Låg peroxidhalt = mindre oxidation." }, // REVIEW
         { label: "K270", value: "—", unit: "", standard: "genomsn. ~0.22", description: "Mäter oxidation över tid. Lägre värden tyder på en färskare, bättre bevarad olja." }, // REVIEW

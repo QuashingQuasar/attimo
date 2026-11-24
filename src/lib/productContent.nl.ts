@@ -24,9 +24,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
     labelDisclosure:
       "De afgebeelde fles draagt ons aankomende ATTIMO-merketiket. Jouw olie van de oogst 2024/25 wordt geleverd onder het etiket van de oorspronkelijke producent en bevat dezelfde superieure olie.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOACTIEVE POLYFENOLEN", value: "847", unit: "mg/kg", avg: "gem. ~180mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "gem. 10-30mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-      { key: "oleacin", label: "OLEACEÏNE", value: "336", unit: "mg/kg", avg: "gem. 10-30mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
+      { key: "polyphenols", label: "BIOACTIEVE POLYFENOLEN", value: "847", unit: "mg/kg", avg: "gem. ~150mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "gem. ~45mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+      { key: "oleacin", label: "OLEACEÏNE", value: "336", unit: "mg/kg", avg: "gem. ~20mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
       { key: "acidity", label: "ZUURGRAAD", value: "0.19", unit: "%", avg: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
     ],
     tabs: {
@@ -92,9 +92,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
       subheading:
         "Gezondheidsclaims zonder bewijs zijn gewoon marketing. We laten elke batch onafhankelijk in het lab testen op belangrijke kwaliteitsmarkers die je zelf kunt controleren.", // REVIEW
       values: [
-        { label: "Polyfenolen", value: "847", unit: "mg/kg", standard: "gem. ~180 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "gem. <10 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-        { label: "Oleaceïne", value: "336", unit: "mg/kg", standard: "gem. <40 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
+        { label: "Polyfenolen", value: "847", unit: "mg/kg", standard: "gem. ~150 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "gem. ~45 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+        { label: "Oleaceïne", value: "336", unit: "mg/kg", standard: "gem. ~20 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
         { label: "Zuurgraad", value: "0.19", unit: "%", standard: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
         { label: "Peroxiden", value: "7.2", unit: "meq/kg", standard: "gem. ~20 meq/kg", description: "Laat zien hoe vers de olie is. Lage peroxidewaarde = minder oxidatie." }, // REVIEW
         { label: "K270", value: "0.15", unit: "", standard: "gem. ~0.22", description: "Meet oxidatie in de tijd. Lagere waarden wijzen op een versere, beter bewaarde olie." }, // REVIEW
@@ -130,9 +130,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
     labelDisclosure:
       "De afgebeelde fles draagt ons aankomende ATTIMO-merketiket. Jouw olie van de oogst 2024/25 wordt geleverd onder het etiket van de oorspronkelijke producent en bevat dezelfde superieure olie.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOACTIEVE POLYFENOLEN", value: "400", unit: "mg/kg", avg: "gem. ~180mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "gem. <10mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-      { key: "oleacin", label: "OLEACEÏNE", value: "209", unit: "mg/kg", avg: "gem. <40mg/kg", description: "een krachtige antioxidant die in verband wordt gebracht met hartgezondheid en een lang leven" }, // REVIEW
+      { key: "polyphenols", label: "BIOACTIEVE POLYFENOLEN", value: "400", unit: "mg/kg", avg: "gem. ~150mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "gem. ~45mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+      { key: "oleacin", label: "OLEACEÏNE", value: "209", unit: "mg/kg", avg: "gem. ~20mg/kg", description: "een krachtige antioxidant die in verband wordt gebracht met hartgezondheid en een lang leven" }, // REVIEW
       { key: "acidity", label: "ZUURGRAAD", value: "0.21%", unit: "", avg: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
     ],
     tabs: {
@@ -198,9 +198,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
       subheading:
         "Gezondheidsclaims zonder bewijs zijn gewoon marketing. We laten elke batch onafhankelijk in het lab testen op belangrijke kwaliteitsmarkers die je zelf kunt controleren.", // REVIEW
       values: [
-        { label: "Polyfenolen", value: "400", unit: "mg/kg", standard: "gem. ~180 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "gem. <10 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-        { label: "Oleaceïne", value: "209", unit: "mg/kg", standard: "gem. <40 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met hartgezondheid en een lang leven." }, // REVIEW
+        { label: "Polyfenolen", value: "400", unit: "mg/kg", standard: "gem. ~150 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "gem. ~45 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+        { label: "Oleaceïne", value: "209", unit: "mg/kg", standard: "gem. ~20 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met hartgezondheid en een lang leven." }, // REVIEW
         { label: "Zuurgraad", value: "0.21", unit: "%", standard: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
         { label: "Peroxiden", value: "7.8", unit: "meq/kg", standard: "gem. ~20 meq/kg", description: "Laat zien hoe vers de olie is. Lage peroxidewaarde = minder oxidatie." }, // REVIEW
         { label: "K270", value: "0.11", unit: "", standard: "gem. ~0.22", description: "Meet oxidatie in de tijd. Lagere waarden wijzen op een versere, beter bewaarde olie." }, // REVIEW
@@ -226,9 +226,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
     labelDisclosure:
       "De afgebeelde fles draagt ons aankomende ATTIMO-merketiket. Jouw olie van de oogst 2024/25 wordt geleverd onder het etiket van de oorspronkelijke producent en bevat dezelfde superieure olie.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYFENOLEN", value: "675", unit: "mg/kg", avg: "gem. ~180mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "gem. 10-30mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-      { key: "oleacin", label: "OLEACEÏNE", value: "—", unit: "mg/kg", avg: "gem. <40mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
+      { key: "polyphenols", label: "POLYFENOLEN", value: "675", unit: "mg/kg", avg: "gem. ~150mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "gem. ~45mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+      { key: "oleacin", label: "OLEACEÏNE", value: "—", unit: "mg/kg", avg: "gem. ~20mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
       { key: "acidity", label: "ZUURGRAAD", value: "0.13", unit: "%", avg: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
     ],
     tabs: {
@@ -294,9 +294,9 @@ export const productContentNlMap: Record<string, ProductContent> = {
       subheading:
         "Gezondheidsclaims zonder bewijs zijn gewoon marketing. We laten elke batch onafhankelijk in het lab testen op belangrijke kwaliteitsmarkers die je zelf kunt controleren.", // REVIEW
       values: [
-        { label: "Polyfenolen", value: "675", unit: "mg/kg", standard: "gem. ~180 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
-        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "gem. <10 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
-        { label: "Oleaceïne", value: "—", unit: "mg/kg", standard: "gem. <40 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
+        { label: "Polyfenolen", value: "675", unit: "mg/kg", standard: "gem. ~150 mg/kg", description: "Natuurlijke antioxidanten die zorgen voor de gezondheidsvoordelen van olijfolie." }, // REVIEW
+        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "gem. ~45 mg/kg", description: "Een krachtige ontstekingsremmende verbinding die uniek is voor olijfolie." }, // REVIEW
+        { label: "Oleaceïne", value: "—", unit: "mg/kg", standard: "gem. ~20 mg/kg", description: "Een krachtige antioxidant die in verband wordt gebracht met bescherming van hart en bloedvaten." }, // REVIEW
         { label: "Zuurgraad", value: "0.13", unit: "%", standard: "gem. ~0.8%", description: "Een lagere zuurgraad betekent versere olijven en hogere kwaliteit." }, // REVIEW
         { label: "Peroxiden", value: "5.7", unit: "meq/kg", standard: "gem. ~20 meq/kg", description: "Laat zien hoe vers de olie is. Lage peroxidewaarde = minder oxidatie." }, // REVIEW
         { label: "K270", value: "—", unit: "", standard: "gem. ~0.22", description: "Meet oxidatie in de tijd. Lagere waarden wijzen op een versere, beter bewaarde olie." }, // REVIEW

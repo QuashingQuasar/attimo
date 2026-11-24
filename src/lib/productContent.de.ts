@@ -22,9 +22,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Die abgebildete Flasche trägt unser kommendes ATTIMO-Markenetikett. Ihr Öl der Ernte 2024/25 kommt unter dem Etikett des ursprünglichen Erzeugers an und enthält dasselbe hochwertige Öl.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVE POLYPHENOLE", value: "847", unit: "mg/kg", avg: "Durchschn. ~180mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "Durchschn. 10-30mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "Durchschn. 10-30mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
+      { key: "polyphenols", label: "BIOAKTIVE POLYPHENOLE", value: "847", unit: "mg/kg", avg: "Durchschn. ~150mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "Durchschn. ~45mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "Durchschn. ~20mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
       { key: "acidity", label: "SÄUREGRAD", value: "0.19", unit: "%", avg: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
     ],
     tabs: {
@@ -90,9 +90,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
       subheading:
         "Gesundheitsversprechen ohne Belege sind bloßes Marketing. Wir lassen jede Charge unabhängig im Labor auf zentrale Qualitätsmarker prüfen, die Sie selbst nachprüfen können.", // REVIEW
       values: [
-        { label: "Polyphenole", value: "847", unit: "mg/kg", standard: "Durchschn. ~180 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "Durchschn. <10 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "Durchschn. <40 mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
+        { label: "Polyphenole", value: "847", unit: "mg/kg", standard: "Durchschn. ~150 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "Durchschn. ~45 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "Durchschn. ~20 mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
         { label: "Säuregrad", value: "0.19", unit: "%", standard: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
         { label: "Peroxide", value: "7.2", unit: "meq/kg", standard: "Durchschn. ~20 meq/kg", description: "Zeigt, wie frisch das Öl ist. Niedriger Peroxidwert = weniger Oxidation." }, // REVIEW
         { label: "K270", value: "0.15", unit: "", standard: "Durchschn. ~0.22", description: "Misst die Oxidation im Laufe der Zeit. Niedrigere Werte deuten auf ein frischeres, besser konserviertes Öl hin." }, // REVIEW
@@ -128,9 +128,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Die abgebildete Flasche trägt unser kommendes ATTIMO-Markenetikett. Ihr Öl der Ernte 2024/25 kommt unter dem Etikett des ursprünglichen Erzeugers an und enthält dasselbe hochwertige Öl.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVE POLYPHENOLE", value: "400", unit: "mg/kg", avg: "Durchschn. ~180mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "Durchschn. <10mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "Durchschn. <40mg/kg", description: "ein starkes Antioxidans, das mit Herzgesundheit und Langlebigkeit in Verbindung gebracht wird" }, // REVIEW
+      { key: "polyphenols", label: "BIOAKTIVE POLYPHENOLE", value: "400", unit: "mg/kg", avg: "Durchschn. ~150mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "Durchschn. ~45mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "Durchschn. ~20mg/kg", description: "ein starkes Antioxidans, das mit Herzgesundheit und Langlebigkeit in Verbindung gebracht wird" }, // REVIEW
       { key: "acidity", label: "SÄUREGRAD", value: "0.21%", unit: "", avg: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
     ],
     tabs: {
@@ -196,9 +196,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
       subheading:
         "Gesundheitsversprechen ohne Belege sind bloßes Marketing. Wir lassen jede Charge unabhängig im Labor auf zentrale Qualitätsmarker prüfen, die Sie selbst nachprüfen können.", // REVIEW
       values: [
-        { label: "Polyphenole", value: "400", unit: "mg/kg", standard: "Durchschn. ~180 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "Durchschn. <10 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "Durchschn. <40 mg/kg", description: "Ein starkes Antioxidans, das mit Herzgesundheit und Langlebigkeit in Verbindung gebracht wird." }, // REVIEW
+        { label: "Polyphenole", value: "400", unit: "mg/kg", standard: "Durchschn. ~150 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "Durchschn. ~45 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "Durchschn. ~20 mg/kg", description: "Ein starkes Antioxidans, das mit Herzgesundheit und Langlebigkeit in Verbindung gebracht wird." }, // REVIEW
         { label: "Säuregrad", value: "0.21", unit: "%", standard: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
         { label: "Peroxide", value: "7.8", unit: "meq/kg", standard: "Durchschn. ~20 meq/kg", description: "Zeigt, wie frisch das Öl ist. Niedriger Peroxidwert = weniger Oxidation." }, // REVIEW
         { label: "K270", value: "0.11", unit: "", standard: "Durchschn. ~0.22", description: "Misst die Oxidation im Laufe der Zeit. Niedrigere Werte deuten auf ein frischeres, besser konserviertes Öl hin." }, // REVIEW
@@ -224,9 +224,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Die abgebildete Flasche trägt unser kommendes ATTIMO-Markenetikett. Ihr Öl der Ernte 2024/25 kommt unter dem Etikett des ursprünglichen Erzeugers an und enthält dasselbe hochwertige Öl.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYPHENOLE", value: "675", unit: "mg/kg", avg: "Durchschn. ~180mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "Durchschn. 10-30mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "Durchschn. <40mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
+      { key: "polyphenols", label: "POLYPHENOLE", value: "675", unit: "mg/kg", avg: "Durchschn. ~150mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "Durchschn. ~45mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "Durchschn. ~20mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
       { key: "acidity", label: "SÄUREGRAD", value: "0.13", unit: "%", avg: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
     ],
     tabs: {
@@ -292,9 +292,9 @@ export const productContentDeMap: Record<string, ProductContent> = {
       subheading:
         "Gesundheitsversprechen ohne Belege sind bloßes Marketing. Wir lassen jede Charge unabhängig im Labor auf zentrale Qualitätsmarker prüfen, die Sie selbst nachprüfen können.", // REVIEW
       values: [
-        { label: "Polyphenole", value: "675", unit: "mg/kg", standard: "Durchschn. ~180 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
-        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "Durchschn. <10 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
-        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "Durchschn. <40 mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
+        { label: "Polyphenole", value: "675", unit: "mg/kg", standard: "Durchschn. ~150 mg/kg", description: "Natürliche Antioxidantien, die dem Olivenöl seine gesundheitlichen Vorteile verleihen." }, // REVIEW
+        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "Durchschn. ~45 mg/kg", description: "Eine starke entzündungshemmende Verbindung, die nur in Olivenöl vorkommt." }, // REVIEW
+        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "Durchschn. ~20 mg/kg", description: "Ein starkes Antioxidans, das mit dem Schutz des Herz-Kreislauf-Systems in Verbindung gebracht wird." }, // REVIEW
         { label: "Säuregrad", value: "0.13", unit: "%", standard: "Durchschn. ~0.8%", description: "Ein niedrigerer Säuregrad bedeutet frischere Oliven und höhere Qualität." }, // REVIEW
         { label: "Peroxide", value: "5.7", unit: "meq/kg", standard: "Durchschn. ~20 meq/kg", description: "Zeigt, wie frisch das Öl ist. Niedriger Peroxidwert = weniger Oxidation." }, // REVIEW
         { label: "K270", value: "—", unit: "", standard: "Durchschn. ~0.22", description: "Misst die Oxidation im Laufe der Zeit. Niedrigere Werte deuten auf ein frischeres, besser konserviertes Öl hin." }, // REVIEW

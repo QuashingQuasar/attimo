@@ -121,8 +121,8 @@ const en: HubContent = {
       </>
     ),
     items: [
-      { name: "Oleocanthal", icon: ICON.mortar, does: "A natural anti-inflammatory whose effect has been compared to ibuprofen — and the source of the peppery catch at the back of your throat.", proof: "471 mg/kg", sub: "in our Coratina · typical EVOO <10" },
-      { name: "Oleacein", icon: ICON.olive, does: "A powerful antioxidant studied for blood-pressure regulation and cardiovascular protection.", proof: "336 mg/kg", sub: "in our Coratina · typical EVOO <40" },
+      { name: "Oleocanthal", icon: ICON.mortar, does: "A natural anti-inflammatory whose effect has been compared to ibuprofen — and the source of the peppery catch at the back of your throat.", proof: "471 mg/kg", sub: "in our Coratina · supermarket average ~45" },
+      { name: "Oleacein", icon: ICON.olive, does: "A powerful antioxidant studied for blood-pressure regulation and cardiovascular protection.", proof: "336 mg/kg", sub: "in our Coratina · supermarket average ~20" },
       { name: "Hydroxytyrosol", icon: ICON.flask, does: "One of the most-studied olive antioxidants — and the exact compound the EU writes its olive-oil health claim around.", proof: "EU health-claim basis", sub: "≥250 mg/kg of hydroxytyrosol & derivatives" },
     ],
   },
@@ -233,8 +233,8 @@ const de: HubContent = {
       </>
     ),
     items: [
-      { name: "Oleocanthal", icon: ICON.mortar, does: "Ein natürlicher Entzündungshemmer, dessen Wirkung mit Ibuprofen verglichen wurde — und die Quelle des pfeffrigen Kratzens im Hals.", proof: "471 mg/kg", sub: "in unserem Coratina · typ. EVOO <10" },
-      { name: "Oleacein", icon: ICON.olive, does: "Ein starkes Antioxidans, untersucht für Blutdruckregulierung und Herz-Kreislauf-Schutz.", proof: "336 mg/kg", sub: "in unserem Coratina · typ. EVOO <40" },
+      { name: "Oleocanthal", icon: ICON.mortar, does: "Ein natürlicher Entzündungshemmer, dessen Wirkung mit Ibuprofen verglichen wurde — und die Quelle des pfeffrigen Kratzens im Hals.", proof: "471 mg/kg", sub: "in unserem Coratina · Supermarkt-Schnitt ~45" },
+      { name: "Oleacein", icon: ICON.olive, does: "Ein starkes Antioxidans, untersucht für Blutdruckregulierung und Herz-Kreislauf-Schutz.", proof: "336 mg/kg", sub: "in unserem Coratina · Supermarkt-Schnitt ~20" },
       { name: "Hydroxytyrosol", icon: ICON.flask, does: "Eines der am besten untersuchten Oliven-Antioxidantien — und genau die Verbindung, um die die EU ihren Health Claim formuliert.", proof: "Basis des EU-Health-Claims", sub: "≥250 mg/kg Hydroxytyrosol & Derivate" },
     ],
   },
@@ -273,7 +273,7 @@ const de: HubContent = {
     heading: "FAQ zu polyphenolreichem Olivenöl",
     items: [
       { question: "Was ist polyphenolreiches Olivenöl?", answer: "Polyphenolreiches Olivenöl ist natives Olivenöl extra mit einer ungewöhnlich hohen Konzentration an Polyphenolen — den natürlichen Antioxidantien der Olive. Es gibt keine einheitliche gesetzliche Grenze, aber Öle über dem EU-Health-Claim-Wert von 250 mg/kg gelten allgemein als polyphenolreich. ATTIMOs Sorten liegen bei 400–900 mg/kg." },
-      { question: "Wie viele Polyphenole sollte Olivenöl haben?", answer: "Typisches Supermarkt-Olivenöl liegt bei etwa 100–300 mg/kg. Die EU erlaubt einen Health Claim ab 250 mg/kg. Als polyphenolreich gelten Öle ab etwa 400 mg/kg. ATTIMO-Öle sind je nach Sorte auf 400–900 mg/kg laborgeprüft." },
+      { question: "Wie viele Polyphenole sollte Olivenöl haben?", answer: "Durchschnittliches Supermarkt-Olivenöl liegt bei etwa 150 mg/kg. Die EU erlaubt einen Health Claim ab 250 mg/kg. Als polyphenolreich gelten Öle ab etwa 400 mg/kg. ATTIMO-Öle sind je nach Sorte auf 400–900 mg/kg laborgeprüft." },
       { question: "Welches Olivenöl hat die meisten Polyphenole?", answer: "In unserer Auswahl ist Coratina d'Italia mit 847 mg/kg am höchsten, gefolgt von Picual de España mit 675 mg/kg und Nocellara d'Italia mit 400 mg/kg. Coratina ist von Natur aus eine der polyphenolreichsten Olivensorten der Welt." },
       { question: "Beeinflussen Polyphenole den Geschmack?", answer: "Ja, direkt. Polyphenole verantworten Schärfe, Bitterkeit und die grüne Pikanz frischen Olivenöls — das pfeffrige Kratzen im Hals kommt großteils von Oleocanthal." },
       { question: "Wie bleiben hohe Polyphenole erhalten?", answer: "Frühe Ernte, sortenreine Pressung innerhalb weniger Stunden nach der Ernte und frische Abfüllung aus der letzten Ernte. Polyphenole zerfallen mit Hitze, Licht, Sauerstoff und Zeit — deshalb pressen wir kalt und versenden bald nach der Ernte." },
@@ -347,8 +347,8 @@ const fr: HubContent = {
       </>
     ),
     items: [
-      { name: "Oléocanthal", icon: ICON.mortar, does: "Un anti-inflammatoire naturel dont l'effet a été comparé à l'ibuprofène — et la source du picotement poivré au fond de la gorge.", proof: "471 mg/kg", sub: "dans notre Coratina · supermarché <10" },
-      { name: "Oléacéine", icon: ICON.olive, does: "Un puissant antioxydant étudié pour la régulation de la tension et la protection cardiovasculaire.", proof: "336 mg/kg", sub: "dans notre Coratina · supermarché <40" },
+      { name: "Oléocanthal", icon: ICON.mortar, does: "Un anti-inflammatoire naturel dont l'effet a été comparé à l'ibuprofène — et la source du picotement poivré au fond de la gorge.", proof: "471 mg/kg", sub: "dans notre Coratina · moyenne supermarché ~45" },
+      { name: "Oléacéine", icon: ICON.olive, does: "Un puissant antioxydant étudié pour la régulation de la tension et la protection cardiovasculaire.", proof: "336 mg/kg", sub: "dans notre Coratina · moyenne supermarché ~20" },
       { name: "Hydroxytyrosol", icon: ICON.flask, does: "L'un des antioxydants de l'olive les plus étudiés — et le composé exact autour duquel l'UE rédige son allégation de santé.", proof: "base de l'allégation UE", sub: "≥250 mg/kg d'hydroxytyrosol & dérivés" },
     ],
   },
@@ -387,7 +387,7 @@ const fr: HubContent = {
     heading: "FAQ sur l'huile d'olive riche en polyphénols",
     items: [
       { question: "Qu'est-ce qu'une huile d'olive riche en polyphénols ?", answer: "Une huile d'olive riche en polyphénols est une huile vierge extra à concentration inhabituellement élevée en polyphénols — les antioxydants naturels produits par l'olive. Il n'existe pas de seuil légal unique, mais les huiles au-dessus du niveau d'allégation de santé de l'UE (250 mg/kg) sont généralement considérées comme riches. La gamme ATTIMO titre 400–900 mg/kg." },
-      { question: "Combien de polyphénols une huile d'olive devrait-elle contenir ?", answer: "Une huile vierge extra de supermarché se situe autour de 100–300 mg/kg. L'UE autorise une allégation de santé à 250 mg/kg. Les huiles reconnues comme riches commencent vers 400 mg/kg. Les huiles ATTIMO sont testées en laboratoire à 400–900 mg/kg selon la variété." },
+      { question: "Combien de polyphénols une huile d'olive devrait-elle contenir ?", answer: "L'huile vierge extra de supermarché moyenne se situe autour de 150 mg/kg. L'UE autorise une allégation de santé à 250 mg/kg. Les huiles reconnues comme riches commencent vers 400 mg/kg. Les huiles ATTIMO sont testées en laboratoire à 400–900 mg/kg selon la variété." },
       { question: "Quelle huile d'olive contient le plus de polyphénols ?", answer: "Dans notre gamme, la Coratina d'Italia est la plus élevée à 847 mg/kg, suivie de la Picual de España à 675 mg/kg et de la Nocellara d'Italia à 400 mg/kg. La Coratina est naturellement l'une des variétés d'olive les plus riches en polyphénols au monde." },
       { question: "Les polyphénols influencent-ils le goût ?", answer: "Oui, directement. Les polyphénols sont responsables du piquant, de l'amertume et de l'ardence verte de l'huile d'olive fraîche — le picotement poivré au fond de la gorge vient en grande partie de l'oléocanthal." },
       { question: "Comment préserve-t-on des polyphénols élevés ?", answer: "Récolte précoce, pressage monovariétal dans les heures suivant la cueillette, et mise en bouteille fraîche de la dernière récolte. Les polyphénols se dégradent avec la chaleur, la lumière, l'oxygène et le temps ; nous pressons à froid et expédions peu après la récolte." },
@@ -459,8 +459,8 @@ const sv: HubContent = {
       </>
     ),
     items: [
-      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk förening vars effekt jämförts med ibuprofen — och källan till det peppriga kittlandet längst bak i halsen.", proof: "471 mg/kg", sub: "i vår Coratina · typisk EVOO <10" },
-      { name: "Oleacein", icon: ICON.olive, does: "En kraftfull antioxidant studerad för blodtrycksreglering och skydd av hjärt-kärlsystemet.", proof: "336 mg/kg", sub: "i vår Coratina · typisk EVOO <40" },
+      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk förening vars effekt jämförts med ibuprofen — och källan till det peppriga kittlandet längst bak i halsen.", proof: "471 mg/kg", sub: "i vår Coratina · snabbköpssnitt ~45" },
+      { name: "Oleacein", icon: ICON.olive, does: "En kraftfull antioxidant studerad för blodtrycksreglering och skydd av hjärt-kärlsystemet.", proof: "336 mg/kg", sub: "i vår Coratina · snabbköpssnitt ~20" },
       { name: "Hydroxityrosol", icon: ICON.flask, does: "En av de mest studerade antioxidanterna i oliv — och exakt den förening EU formulerar sitt hälsopåstående kring.", proof: "grund för EU:s hälsopåstående", sub: "≥250 mg/kg hydroxityrosol & derivat" },
     ],
   },
@@ -499,7 +499,7 @@ const sv: HubContent = {
     heading: "FAQ om polyfenolrik olivolja",
     items: [
       { question: "Vad är polyfenolrik olivolja?", answer: "Polyfenolrik olivolja är extra jungfruolja med en ovanligt hög koncentration av polyfenoler — olivens naturliga antioxidanter. Det finns ingen enhetlig laglig gräns, men oljor över EU:s hälsopåståendenivå (250 mg/kg) anses generellt polyfenolrika. ATTIMOs sortiment ligger på 400–900 mg/kg." },
-      { question: "Hur mycket polyfenoler bör olivolja innehålla?", answer: "En typisk snabbköpsolja ligger runt 100–300 mg/kg. EU tillåter ett hälsopåstående från 250 mg/kg. Oljor som räknas som polyfenolrika börjar runt 400 mg/kg. ATTIMO-oljor är labbtestade till 400–900 mg/kg beroende på sort." },
+      { question: "Hur mycket polyfenoler bör olivolja innehålla?", answer: "En genomsnittlig snabbköpsolja ligger runt 150 mg/kg. EU tillåter ett hälsopåstående från 250 mg/kg. Oljor som räknas som polyfenolrika börjar runt 400 mg/kg. ATTIMO-oljor är labbtestade till 400–900 mg/kg beroende på sort." },
       { question: "Vilken olivolja har mest polyfenoler?", answer: "I vårt sortiment är Coratina d'Italia högst med 847 mg/kg, följd av Picual de España med 675 mg/kg och Nocellara d'Italia med 400 mg/kg. Coratina är av naturen en av världens mest polyfenolrika olivsorter." },
       { question: "Påverkar polyfenoler smaken?", answer: "Ja, direkt. Polyfenoler står för skärpan, beskan och den gröna pikanten i färsk olivolja — det peppriga sticket i halsen kommer till stor del från oleocanthal." },
       { question: "Hur bevaras höga polyfenoler?", answer: "Tidig skörd, sortren pressning inom några timmar efter plockning, och färsk tappning av den senaste skörden. Polyfenoler bryts ner av värme, ljus, syre och tid — därför kallpressar vi och skickar strax efter skörd." },
@@ -571,8 +571,8 @@ const da: HubContent = {
       </>
     ),
     items: [
-      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk forbindelse, hvis effekt er sammenlignet med ibuprofen — og kilden til det peberagtige kildren bagest i halsen.", proof: "471 mg/kg", sub: "i vores Coratina · typisk EVOO <10" },
-      { name: "Oleacein", icon: ICON.olive, does: "En kraftfuld antioxidant undersøgt for blodtryksregulering og beskyttelse af hjerte-kar-systemet.", proof: "336 mg/kg", sub: "i vores Coratina · typisk EVOO <40" },
+      { name: "Oleocanthal", icon: ICON.mortar, does: "En naturlig antiinflammatorisk forbindelse, hvis effekt er sammenlignet med ibuprofen — og kilden til det peberagtige kildren bagest i halsen.", proof: "471 mg/kg", sub: "i vores Coratina · supermarkedsgennemsnit ~45" },
+      { name: "Oleacein", icon: ICON.olive, does: "En kraftfuld antioxidant undersøgt for blodtryksregulering og beskyttelse af hjerte-kar-systemet.", proof: "336 mg/kg", sub: "i vores Coratina · supermarkedsgennemsnit ~20" },
       { name: "Hydroxytyrosol", icon: ICON.flask, does: "En af de mest studerede antioxidanter i oliven — og præcis den forbindelse, EU formulerer sin sundhedsanprisning omkring.", proof: "grundlag for EU's anprisning", sub: "≥250 mg/kg hydroxytyrosol & derivater" },
     ],
   },
@@ -611,7 +611,7 @@ const da: HubContent = {
     heading: "FAQ om polyfenolrig olivenolie",
     items: [
       { question: "Hvad er polyfenolrig olivenolie?", answer: "Polyfenolrig olivenolie er ekstra jomfruolie med en usædvanlig høj koncentration af polyfenoler — olivens naturlige antioxidanter. Der findes ingen enkelt lovlig grænse, men olier over EU's sundhedsanprisningsniveau (250 mg/kg) betragtes generelt som polyfenolrige. ATTIMOs sortiment ligger på 400–900 mg/kg." },
-      { question: "Hvor meget polyfenol bør olivenolie indeholde?", answer: "En typisk supermarkedsolie ligger omkring 100–300 mg/kg. EU tillader en sundhedsanprisning fra 250 mg/kg. Olier, der regnes som polyfenolrige, starter omkring 400 mg/kg. ATTIMO-olier er labtestet til 400–900 mg/kg afhængigt af sorten." },
+      { question: "Hvor meget polyfenol bør olivenolie indeholde?", answer: "Den gennemsnitlige supermarkedsolie ligger omkring 150 mg/kg. EU tillader en sundhedsanprisning fra 250 mg/kg. Olier, der regnes som polyfenolrige, starter omkring 400 mg/kg. ATTIMO-olier er labtestet til 400–900 mg/kg afhængigt af sorten." },
       { question: "Hvilken olivenolie har flest polyfenoler?", answer: "I vores sortiment er Coratina d'Italia højest med 847 mg/kg, efterfulgt af Picual de España med 675 mg/kg og Nocellara d'Italia med 400 mg/kg. Coratina er af natur en af verdens mest polyfenolrige olivensorter." },
       { question: "Påvirker polyfenoler smagen?", answer: "Ja, direkte. Polyfenoler står for skarpheden, bitterheden og den grønne pikanthed i frisk olivenolie — det peberagtige stik i halsen kommer i høj grad fra oleocanthal." },
       { question: "Hvordan bevares høje polyfenoler?", answer: "Tidlig høst, enkeltsorts presning inden for få timer efter plukning, og frisk tapning af den seneste høst. Polyfenoler nedbrydes af varme, lys, ilt og tid — derfor koldpresser vi og sender kort efter høst." },
@@ -683,8 +683,8 @@ const nl: HubContent = {
       </>
     ),
     items: [
-      { name: "Oleocanthal", icon: ICON.mortar, does: "Een natuurlijke ontstekingsremmer waarvan het effect is vergeleken met ibuprofen — en de bron van de peperige prikkel achter in je keel.", proof: "471 mg/kg", sub: "in onze Coratina · typische EVOO <10" },
-      { name: "Oleaceïne", icon: ICON.olive, does: "Een krachtige antioxidant, onderzocht voor bloeddrukregulatie en bescherming van hart en vaten.", proof: "336 mg/kg", sub: "in onze Coratina · typische EVOO <40" },
+      { name: "Oleocanthal", icon: ICON.mortar, does: "Een natuurlijke ontstekingsremmer waarvan het effect is vergeleken met ibuprofen — en de bron van de peperige prikkel achter in je keel.", proof: "471 mg/kg", sub: "in onze Coratina · supermarktgemiddelde ~45" },
+      { name: "Oleaceïne", icon: ICON.olive, does: "Een krachtige antioxidant, onderzocht voor bloeddrukregulatie en bescherming van hart en vaten.", proof: "336 mg/kg", sub: "in onze Coratina · supermarktgemiddelde ~20" },
       { name: "Hydroxytyrosol", icon: ICON.flask, does: "Een van de best onderzochte antioxidanten uit de olijf — en precies de verbinding waar de EU haar gezondheidsclaim voor olijfolie omheen schrijft.", proof: "basis van de EU-claim", sub: "≥250 mg/kg hydroxytyrosol & derivaten" },
     ],
   },
@@ -723,7 +723,7 @@ const nl: HubContent = {
     heading: "FAQ over polyfenolrijke olijfolie",
     items: [
       { question: "Wat is polyfenolrijke olijfolie?", answer: "Polyfenolrijke olijfolie is extra vierge olijfolie met een ongewoon hoge concentratie polyfenolen — de natuurlijke antioxidanten van de olijf. Er bestaat geen uniforme wettelijke grens, maar oliën boven het EU-niveau voor de gezondheidsclaim (250 mg/kg) gelden doorgaans als polyfenolrijk. Het assortiment van ATTIMO zit op 400–900 mg/kg." },
-      { question: "Hoeveel polyfenolen hoort olijfolie te bevatten?", answer: "Een typische supermarktolie zit rond 100–300 mg/kg. De EU staat een gezondheidsclaim toe vanaf 250 mg/kg. Oliën die als polyfenolrijk gelden, beginnen rond 400 mg/kg. ATTIMO-oliën zijn labgetest op 400–900 mg/kg, afhankelijk van de variëteit." },
+      { question: "Hoeveel polyfenolen hoort olijfolie te bevatten?", answer: "De gemiddelde supermarktolie zit rond 150 mg/kg. De EU staat een gezondheidsclaim toe vanaf 250 mg/kg. Oliën die als polyfenolrijk gelden, beginnen rond 400 mg/kg. ATTIMO-oliën zijn labgetest op 400–900 mg/kg, afhankelijk van de variëteit." },
       { question: "Welke olijfolie bevat de meeste polyfenolen?", answer: "In ons assortiment is Coratina d'Italia de hoogste met 847 mg/kg, gevolgd door Picual de España met 675 mg/kg en Nocellara d'Italia met 400 mg/kg. Coratina is van nature een van de meest polyfenolrijke olijfvariëteiten ter wereld." },
       { question: "Beïnvloeden polyfenolen de smaak?", answer: "Ja, direct. Polyfenolen zijn verantwoordelijk voor de scherpte, de bitterheid en de groene pit van verse olijfolie — de peperige prikkel achter in de keel komt grotendeels van oleocanthal." },
       { question: "Hoe blijven hoge polyfenolen behouden?", answer: "Vroege oogst, persing van één variëteit binnen enkele uren na het plukken, en vers bottelen van de laatste oogst. Polyfenolen breken af door warmte, licht, zuurstof en tijd — daarom persen we koud en verzenden we kort na de oogst." },

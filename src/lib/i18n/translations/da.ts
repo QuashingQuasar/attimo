@@ -205,7 +205,7 @@ export const da: Dict = {
     headingPre: "Den store",
     headingLie: '"ekstra jomfru"-løgnen',
     intro:
-      "Ekstra jomfruolie roses for sine sundheds- og livslængdefordele, men 80 % af olierne i supermarkederne lever ikke engang op til de grundlæggende krav og er reelt fattige på de polyfenoler, der giver disse fordele – og smagen.",
+      "Ekstra jomfruolie roses for sine sundheds- og livslængdefordele, men de fleste olier i supermarkederne er fattige på de polyfenoler, der giver disse fordele – og smagen.",
     stat1Value: "~80%",
     stat1Text:
       'olivenolier solgt som "ekstra jomfru" i supermarkeder lever ikke op til kravene',
@@ -275,9 +275,9 @@ export const da: Dict = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Gennemsnitlig ekstra jomfru",
-      avgSub: "~180 mg/kg polyfenoler",
+      avgSub: "~150 mg/kg polyfenoler",
       avgDesc:
-        "De fleste supermarkeds-EVOO tester mellem 100–250 mg/kg. Blanding, alder og industriel forarbejdning reducerer alle polyfenolindholdet.",
+        "Den gennemsnitlige ekstra jomfruolie fra supermarkedet tester omkring 150 mg/kg. Blanding, alder og industriel forarbejdning reducerer alle polyfenolindholdet.",
       euTitle: "EU's sundhedsanprisning",
       euSub: "250 mg/kg polyfenoler",
       euDesc:

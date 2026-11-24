@@ -22,9 +22,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVE POLYFENOLER", value: "847", unit: "mg/kg", avg: "gns. ~180mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "gns. 10-30mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "gns. 10-30mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
+      { key: "polyphenols", label: "BIOAKTIVE POLYFENOLER", value: "847", unit: "mg/kg", avg: "gns. ~150mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "gns. ~45mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "gns. ~20mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
       { key: "acidity", label: "SYRE", value: "0.19", unit: "%", avg: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
     ],
     tabs: {
@@ -90,9 +90,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
       subheading:
         "Sundhedspåstande uden dokumentation er bare markedsføring. Vi får hver batch uafhængigt laboratorietestet på centrale kvalitetsmarkører, som du selv kan efterprøve.",
       values: [
-        { label: "Polyfenoler", value: "847", unit: "mg/kg", standard: "gns. ~180 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "gns. <10 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "gns. <40 mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
+        { label: "Polyfenoler", value: "847", unit: "mg/kg", standard: "gns. ~150 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "gns. ~45 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "gns. ~20 mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
         { label: "Syre", value: "0.19", unit: "%", standard: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
         { label: "Peroxider", value: "7.2", unit: "meq/kg", standard: "gns. ~20 meq/kg", description: "Viser, hvor frisk olien er. Lavt peroxidtal = mindre oxidation." },
         { label: "K270", value: "0.15", unit: "", standard: "gns. ~0.22", description: "Måler oxidation over tid. Lavere værdier tyder på en friskere, bedre konserveret olie." },
@@ -128,9 +128,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
-      { key: "polyphenols", label: "BIOAKTIVE POLYFENOLER", value: "400", unit: "mg/kg", avg: "gns. ~180mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "gns. <10mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "gns. <40mg/kg", description: "en stærk antioxidant, der forbindes med hjertesundhed og længere levetid" },
+      { key: "polyphenols", label: "BIOAKTIVE POLYFENOLER", value: "400", unit: "mg/kg", avg: "gns. ~150mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "gns. ~45mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "gns. ~20mg/kg", description: "en stærk antioxidant, der forbindes med hjertesundhed og længere levetid" },
       { key: "acidity", label: "SYRE", value: "0.21%", unit: "", avg: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
     ],
     tabs: {
@@ -196,9 +196,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
       subheading:
         "Sundhedspåstande uden dokumentation er bare markedsføring. Vi får hver batch uafhængigt laboratorietestet på centrale kvalitetsmarkører, som du selv kan efterprøve.",
       values: [
-        { label: "Polyfenoler", value: "400", unit: "mg/kg", standard: "gns. ~180 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "gns. <10 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "gns. <40 mg/kg", description: "En stærk antioxidant, der forbindes med hjertesundhed og længere levetid." },
+        { label: "Polyfenoler", value: "400", unit: "mg/kg", standard: "gns. ~150 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "gns. ~45 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "gns. ~20 mg/kg", description: "En stærk antioxidant, der forbindes med hjertesundhed og længere levetid." },
         { label: "Syre", value: "0.21", unit: "%", standard: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
         { label: "Peroxider", value: "7.8", unit: "meq/kg", standard: "gns. ~20 meq/kg", description: "Viser, hvor frisk olien er. Lavt peroxidtal = mindre oxidation." },
         { label: "K270", value: "0.11", unit: "", standard: "gns. ~0.22", description: "Måler oxidation over tid. Lavere værdier tyder på en friskere, bedre konserveret olie." },
@@ -224,9 +224,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
     labelDisclosure:
       "Flasken på billedet bærer vores kommende ATTIMO-mærkeetiket. Din olie fra høsten 2024/25 ankommer under den oprindelige producents etiket og indeholder den samme olie af høj kvalitet.",
     labTiles: [
-      { key: "polyphenols", label: "POLYFENOLER", value: "675", unit: "mg/kg", avg: "gns. ~180mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "gns. 10-30mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "gns. <40mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
+      { key: "polyphenols", label: "POLYFENOLER", value: "675", unit: "mg/kg", avg: "gns. ~150mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "gns. ~45mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "gns. ~20mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
       { key: "acidity", label: "SYRE", value: "0.13", unit: "%", avg: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
     ],
     tabs: {
@@ -292,9 +292,9 @@ export const productContentDaMap: Record<string, ProductContent> = {
       subheading:
         "Sundhedspåstande uden dokumentation er bare markedsføring. Vi får hver batch uafhængigt laboratorietestet på centrale kvalitetsmarkører, som du selv kan efterprøve.",
       values: [
-        { label: "Polyfenoler", value: "675", unit: "mg/kg", standard: "gns. ~180 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
-        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "gns. <10 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
-        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "gns. <40 mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
+        { label: "Polyfenoler", value: "675", unit: "mg/kg", standard: "gns. ~150 mg/kg", description: "Naturlige antioxidanter, der giver olivenolien dens sundhedsmæssige fordele." },
+        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "gns. ~45 mg/kg", description: "En stærk antiinflammatorisk forbindelse, der kun findes i olivenolie." },
+        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "gns. ~20 mg/kg", description: "En kraftfuld antioxidant, der forbindes med beskyttelse af hjerte-kar-systemet." },
         { label: "Syre", value: "0.13", unit: "%", standard: "gns. ~0.8%", description: "Lavere syre betyder friskere oliven og højere kvalitet." },
         { label: "Peroxider", value: "5.7", unit: "meq/kg", standard: "gns. ~20 meq/kg", description: "Viser, hvor frisk olien er. Lavt peroxidtal = mindre oxidation." },
         { label: "K270", value: "—", unit: "", standard: "gns. ~0.22", description: "Måler oxidation over tid. Lavere værdier tyder på en friskere, bedre konserveret olie." },

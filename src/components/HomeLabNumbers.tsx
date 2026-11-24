@@ -66,14 +66,14 @@ export const HomeLabNumbers = ({ oils, locale = DEFAULT_LOCALE }: HomeLabNumbers
                     label="Bioactive polyphenols"
                     value={o.total === null ? "—" : String(o.total)}
                     unit={o.total === null ? undefined : o.totalUnit}
-                    avg="avg. ~180 mg/kg"
+                    avg="avg. ~150 mg/kg"
                     note={o.methodLine}
                   />
                   <Tile
                     label="Oleocanthal + oleacein"
                     value={hasCompounds ? `${o.oleocanthal} + ${o.oleacein}` : "—"}
                     unit={hasCompounds ? "mg/kg" : undefined}
-                    avg={hasCompounds ? "avg. <50 mg/kg" : "not measured on this method"}
+                    avg={hasCompounds ? "avg. ~65 mg/kg" : "not measured on this method"}
                     note={
                       hasCompounds
                         ? o.key === "coratina"

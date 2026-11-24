@@ -206,7 +206,7 @@ export const fr: Dict = {
     headingPre: "Le", // REVIEW
     headingLie: "mensonge « extra vierge »", // REVIEW
     intro:
-      "L'huile d'olive vierge extra est saluée pour ses bienfaits sur la santé et la longevité, mais 80 % des huiles vierges extra des supermarchés ne respectent même pas les normes de base et sont en réalité pauvres en polyphénols, ceux-là mêmes qui apportent ces bienfaits et la saveur.", // REVIEW
+      "L'huile d'olive vierge extra est saluée pour ses bienfaits sur la santé et la longevité, mais la plupart des huiles vierges extra des supermarchés sont pauvres en polyphénols, ceux-là mêmes qui apportent ces bienfaits et la saveur.", // REVIEW
     stat1Value: "~80%",
     stat1Text:
       "des huiles vendues comme « extra vierges » en supermarché ne respectent pas ces normes", // REVIEW
@@ -276,9 +276,9 @@ export const fr: Dict = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Vierge extra moyenne", // REVIEW
-      avgSub: "~180 mg/kg de polyphénols",
+      avgSub: "~150 mg/kg de polyphénols",
       avgDesc:
-        "La plupart des huiles vierges extra de supermarché se situent entre 100 et 250 mg/kg. L'assemblage, l'âge et la transformation industrielle réduisent tous la teneur en polyphénols.", // REVIEW
+        "L'huile vierge extra de supermarché moyenne se situe à environ 150 mg/kg. L'assemblage, l'âge et la transformation industrielle réduisent tous la teneur en polyphénols.", // REVIEW
       euTitle: "Allégation santé UE", // REVIEW
       euSub: "250 mg/kg de polyphénols",
       euDesc:
