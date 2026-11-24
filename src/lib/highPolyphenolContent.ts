@@ -16,7 +16,7 @@ export const HIGH_POLYPHENOL_FAQS: QnA[] = [
   {
     question: "What is high-polyphenol olive oil?",
     answer:
-      "High-polyphenol olive oil is extra virgin olive oil with an unusually high concentration of polyphenols — the natural antioxidant compounds the olive produces. There is no single legal cut-off, but oils above the EU health-claim level of 250 mg/kg are generally considered high-polyphenol. ATTIMO's range runs 400–900 mg/kg, versus roughly 120–210 mg/kg for typical supermarket extra virgin oil.",
+      "High-polyphenol olive oil is extra virgin olive oil with an unusually high concentration of polyphenols — the natural antioxidant compounds the olive produces. There is no single legal cut-off, but oils above the EU health-claim level of 250 mg/kg are generally considered high-polyphenol. ATTIMO's range runs 400–900 mg/kg, versus about 150 mg/kg for the average supermarket extra virgin oil.",
   },
   {
     question: "How many polyphenols should olive oil have?",
