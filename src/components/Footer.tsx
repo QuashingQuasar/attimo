@@ -117,7 +117,7 @@ export const Footer = ({ locale = DEFAULT_LOCALE }: FooterProps = {}) => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-5">
-            <img src={attimoLogo} alt="ATTIMO" className="h-14 w-auto self-start" />
+            <img src={attimoLogo} alt="ATTIMO" width={2460} height={597} className="h-14 w-auto self-start" />
             <InstagramIcon />
           </div>
 

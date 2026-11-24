@@ -2,9 +2,9 @@ import { type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
 import { HARVEST_STATUS } from "@/lib/harvestStatus";
 import { IT, ES } from "country-flag-icons/react/3x2";
-import coratina from "@/assets/bottle-2627-coratina.png?url";
-import peranzana from "@/assets/bottle-2627-peranzana.png?url";
-import picual from "@/assets/bottle-2627-picual.png?url";
+import coratina from "@/assets/bottle-2627-coratina.webp?url";
+import peranzana from "@/assets/bottle-2627-peranzana.webp?url";
+import picual from "@/assets/bottle-2627-picual.webp?url";
 
 // Shared data for every look of the homepage next-harvest section: copy from
 // the dictionary, production status and polyphenols from harvestStatus.ts.

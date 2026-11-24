@@ -27,6 +27,7 @@ import { buildCoratina3LProduct, CORATINA_3L_VARIANT_ID, CORATINA_3L_IMAGE, CORA
 import { NotifyMeForm } from "@/components/NotifyMeForm";
 import { StickyBuyBar } from "@/components/product/StickyBuyBar";
 import { PRODUCT_LOOKS } from "@/lib/oilColours";
+import { sizedImage } from "@/lib/merchImages";
 import { YouMightAlsoLike } from "@/components/YouMightAlsoLike";
 import { BlogSection } from "@/components/BlogSection";
 import { detectCountry, getFreeShippingThreshold, freeShippingAvailable, readShippingTierCookie, isCountrySupported, GeoResult } from "@/lib/shipping";
@@ -473,7 +474,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
       onFormatChange={(f) => { setFormat(f); setSelectedImageIndex(0); }}
       bottlePrice={ONE_TIME_PRICE}
       boxPrice={boxPrice}
-      bottleImage={productImages[0]?.node?.url}
+      bottleImage={sizedImage(productImages[0]?.node?.url, 240)}
       boxImage={CORATINA_3L_IMAGE}
       bottleInStock={isInStock}
       boxInStock={boxInStock}
@@ -507,7 +508,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                   </div>
                 ) : (
                 <img
-                src={activeImages[selectedImageIndex]?.node?.url || activeImages[0]?.node?.url}
+                src={sizedImage(activeImages[selectedImageIndex]?.node?.url || activeImages[0]?.node?.url, 1600) || undefined}
                 alt={activeImages[selectedImageIndex]?.node?.altText || product.node.title}
                 className="w-full h-full object-cover object-center" />
                 )}
@@ -531,7 +532,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
                             <img src={look.cutout} alt="" className="h-[82%] w-auto" />
                           </span>
                         ) : (
-                          <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                          <img src={sizedImage(img.node.url, 160)} alt="" className="w-full h-full object-cover" />
                         )}
                       </button>
                 )}
@@ -899,7 +900,7 @@ const ProductPage = ({ handle: handleProp, initialProducts, initialSellingPlans,
           <StickyBuyBar
             targetId="pdp-add-to-cart"
             name={content.tabs.details.olive}
-            image={isBox ? CORATINA_3L_IMAGE : productImages[0]?.node?.url}
+            image={isBox ? CORATINA_3L_IMAGE : sizedImage(productImages[0]?.node?.url, 160) || undefined}
             line={`${buyQty} × ${isBox ? "3L" : content.tabs.details.volume} · ${formatPrice(buyTotal, locale, buyDiscount > 0 ? 2 : undefined)}`}
             label={t.addToCart}
             buttonColor={accent}

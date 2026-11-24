@@ -17,9 +17,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { EH_CONTENT, type EHContent } from "@/lib/earlyHarvestHubContent";
 import { HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
-import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
-import picualBottle from "@/assets/bottle-picual-transparent.png?url";
-import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
+import coratinaBottle from "@/assets/bottle-coratina-transparent.webp?url";
+import picualBottle from "@/assets/bottle-picual-transparent.webp?url";
+import nocellaraBottle from "@/assets/bottle-nocellara-transparent.webp?url";
 import { IT, ES } from "country-flag-icons/react/3x2";
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } } });

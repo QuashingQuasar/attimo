@@ -135,8 +135,9 @@ export const BlogSection = ({ initialPosts, locale = DEFAULT_LOCALE, heading, he
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-5" style={{ backgroundColor: "#1B4229" }}>
                   {article.coverImage ?
               <img
-                src={urlFor(article.coverImage).width(800).height(600).url()}
+                src={urlFor(article.coverImage).width(800).height(600).auto("format").url()}
                 alt={article.title}
+                width={800} height={600} loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" /> :
               <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#1B422920" }}>
                       <span className="font-working-man text-sm" style={{ color: "#1B422966" }}>{t.noImage}</span>
