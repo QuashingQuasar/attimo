@@ -98,8 +98,9 @@ function NewHarvestInner({ locale, labNumbers }: { locale: Locale; labNumbers?: 
       {/* ═══ HERO: harvest footage, header, lead, signup, status chip ═══ */}
       <section className="relative flex items-center overflow-hidden" style={{ backgroundColor: DEEP, minHeight: "100vh" }}>
         <AutoplayVideo
+          priority
           src="/videos/harvest-2024-1.mp4"
-          poster="/images/hero-poster.png"
+          poster="/images/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
         />
         <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,.7) 0%, rgba(13,30,20,.5) 45%, rgba(13,30,20,.78) 100%)" }} />

@@ -54,8 +54,9 @@ function Hero({ hero, flavours }: { hero: EHContent["hero"]; flavours: EHContent
   return (
     <section className="relative flex flex-col overflow-hidden" style={{ backgroundColor: GREEN }}>
       <AutoplayVideo
+        priority
         src="/videos/harvest-2024-1.mp4"
-        poster="/images/hero-poster.png"
+        poster="/images/hero-poster.webp"
         className="absolute inset-0 w-full h-full object-cover [&::-webkit-media-controls]:hidden [&::-webkit-media-controls-enclosure]:hidden"
       />
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(13,30,20,0.72), rgba(13,30,20,0.5) 38%, rgba(13,30,20,0.8))" }} />
