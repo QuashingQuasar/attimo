@@ -8,7 +8,7 @@ const getComparisonData = (polyphenolValue: string, oc: Dict["oilComparison"]) =
   { feature: oc.features.singleSource, attimo: { type: "check" }, them: { type: "text", value: oc.themBlended } },
   { feature: oc.features.traceable, attimo: { type: "check" }, them: { type: "cross" } },
   { feature: oc.features.labTested, attimo: { type: "check" }, them: { type: "cross" } },
-  { feature: oc.features.polyphenols, attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "120-210 mg/kg" } },
+  { feature: oc.features.polyphenols, attimo: { type: "text", value: polyphenolValue }, them: { type: "text", value: "~150 mg/kg" } },
 ];
 
 interface OilComparisonProps {
