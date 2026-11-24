@@ -205,7 +205,7 @@ export const nl: Dict = {
     headingPre: "De", // REVIEW
     headingLie: '"extra vierge"-leugen', // REVIEW
     intro:
-      "Extra vierge olijfolie wordt geprezen om haar voordelen voor gezondheid en een lang leven, maar 80% van de EVOO's in supermarkten voldoet niet eens aan de basisnormen en is in werkelijkheid arm aan de polyfenolen die juist die voordelen — en de smaak — leveren.", // REVIEW
+      "Extra vierge olijfolie wordt geprezen om haar voordelen voor gezondheid en een lang leven, maar de meeste EVOO's in supermarkten zijn arm aan de polyfenolen die juist die voordelen — en de smaak — leveren.", // REVIEW
     stat1Value: "~80%",
     stat1Text:
       'van de olijfoliën die in supermarkten als "extra vierge" worden verkocht, voldoet niet aan die normen', // REVIEW
@@ -275,9 +275,9 @@ export const nl: Dict = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Gemiddelde extra vierge", // REVIEW
-      avgSub: "~180 mg/kg polyfenolen",
+      avgSub: "~150 mg/kg polyfenolen",
       avgDesc:
-        "De meeste supermarkt-EVOO's testen tussen 100–250 mg/kg. Menging, veroudering en industriële verwerking verlagen allemaal het polyfenolgehalte.", // REVIEW
+        "De gemiddelde supermarkt-EVOO test op ongeveer 150 mg/kg. Menging, veroudering en industriële verwerking verlagen allemaal het polyfenolgehalte.", // REVIEW
       euTitle: "EU-gezondheidsclaim", // REVIEW
       euSub: "250 mg/kg polyfenolen",
       euDesc:

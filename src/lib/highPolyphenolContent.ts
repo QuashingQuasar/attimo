@@ -21,7 +21,7 @@ export const HIGH_POLYPHENOL_FAQS: QnA[] = [
   {
     question: "How many polyphenols should olive oil have?",
     answer:
-      "Typical supermarket extra virgin oil sits around 100–300 mg/kg. The EU permits a health claim at 250 mg/kg of hydroxytyrosol and its derivatives (5 mg per 20 g of oil). Recognised high-polyphenol oils start around 400 mg/kg. ATTIMO oils are lab-tested at 400–900 mg/kg depending on the variety.",
+      "The average supermarket extra virgin oil sits around 150 mg/kg. The EU permits a health claim at 250 mg/kg of hydroxytyrosol and its derivatives (5 mg per 20 g of oil). Recognised high-polyphenol oils start around 400 mg/kg. ATTIMO oils are lab-tested at 400–900 mg/kg depending on the variety.",
   },
   {
     question: "Which olive oil has the most polyphenols?",

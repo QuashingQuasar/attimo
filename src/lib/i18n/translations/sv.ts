@@ -205,7 +205,7 @@ export const sv: Dict = {
     headingPre: "Den stora",
     headingLie: '"extra jungfru"-lögnen',
     intro:
-      "Extra jungfruolja hyllas för sina hälso- och livslängdsfördelar, men 80 % av oljorna i mataffärerna uppfyller inte ens grundläggande krav och är i själva verket fattiga på de polyfenoler som ger dessa fördelar – och smaken.",
+      "Extra jungfruolja hyllas för sina hälso- och livslängdsfördelar, men de flesta oljor i mataffärerna är fattiga på de polyfenoler som ger dessa fördelar – och smaken.",
     stat1Value: "~80%",
     stat1Text:
       'olivoljor som säljs som "extra jungfru" i mataffärer uppfyller inte kraven',
@@ -275,9 +275,9 @@ export const sv: Dict = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Genomsnittlig extra jungfru",
-      avgSub: "~180 mg/kg polyfenoler",
+      avgSub: "~150 mg/kg polyfenoler",
       avgDesc:
-        "De flesta snabbköps-EVOO testar mellan 100–250 mg/kg. Blandning, ålder och industriell bearbetning minskar alla polyfenolhalten.",
+        "En genomsnittlig snabbköps-EVOO testar runt 150 mg/kg. Blandning, ålder och industriell bearbetning minskar alla polyfenolhalten.",
       euTitle: "EU:s hälsopåstående",
       euSub: "250 mg/kg polyfenoler",
       euDesc:

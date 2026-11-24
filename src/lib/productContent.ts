@@ -106,9 +106,9 @@ export const productContentMap: Record<string, ProductContent> = {
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "BIOACTIVE POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-      { key: "oleacin", label: "OLEACIN", value: "336", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+      { key: "polyphenols", label: "BIOACTIVE POLYPHENOLS", value: "847", unit: "mg/kg", avg: "avg. ~150mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "471", unit: "mg/kg", avg: "avg. ~45mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+      { key: "oleacin", label: "OLEACEIN", value: "336", unit: "mg/kg", avg: "avg. ~20mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
       { key: "acidity", label: "ACIDITY", value: "0.19", unit: "%", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
     ],
     tabs: {
@@ -174,9 +174,9 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
-        { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-        { label: "Oleacin", value: "336", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+        { label: "Polyphenols", value: "847", unit: "mg/kg", standard: "avg. ~150 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleocanthal", value: "471", unit: "mg/kg", standard: "avg. ~45 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+        { label: "Oleacein", value: "336", unit: "mg/kg", standard: "avg. ~20 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
         { label: "Acidity", value: "0.19", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
         { label: "Peroxides", value: "7.2", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
         { label: "K270", value: "0.15", unit: "", standard: "avg. ~0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
@@ -212,9 +212,9 @@ export const productContentMap: Record<string, ProductContent> = {
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "BIOACTIVE POLYPHENOLS", value: "400", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "avg. <10mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-      { key: "oleacin", label: "OLEACIN", value: "209", unit: "mg/kg", avg: "avg. <40mg/kg", description: "a potent antioxidant linked to heart health and longevity" },
+      { key: "polyphenols", label: "BIOACTIVE POLYPHENOLS", value: "400", unit: "mg/kg", avg: "avg. ~150mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "137", unit: "mg/kg", avg: "avg. ~45mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+      { key: "oleacin", label: "OLEACEIN", value: "209", unit: "mg/kg", avg: "avg. ~20mg/kg", description: "a potent antioxidant linked to heart health and longevity" },
       { key: "acidity", label: "ACIDITY", value: "0.21%", unit: "", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
     ],
     tabs: {
@@ -280,9 +280,9 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
-        { label: "Polyphenols", value: "400", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-        { label: "Oleacin", value: "209", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A potent antioxidant linked to heart health and longevity." },
+        { label: "Polyphenols", value: "400", unit: "mg/kg", standard: "avg. ~150 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleocanthal", value: "137", unit: "mg/kg", standard: "avg. ~45 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+        { label: "Oleacein", value: "209", unit: "mg/kg", standard: "avg. ~20 mg/kg", description: "A potent antioxidant linked to heart health and longevity." },
         { label: "Acidity", value: "0.21", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
         { label: "Peroxides", value: "7.8", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
         { label: "K270", value: "0.11", unit: "", standard: "avg. ~0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },
@@ -308,9 +308,9 @@ export const productContentMap: Record<string, ProductContent> = {
     labelDisclosure:
       "The bottle shown features our upcoming ATTIMO brand label. Your 2024/25 harvest oil will arrive under the original producer's label, containing the same superior quality oil.",
     labTiles: [
-      { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~180mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "avg. 10-30mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-      { key: "oleacin", label: "OLEACIN", value: "—", unit: "mg/kg", avg: "avg. <40mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+      { key: "polyphenols", label: "POLYPHENOLS", value: "675", unit: "mg/kg", avg: "avg. ~150mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+      { key: "oleocanthal", label: "OLEOCANTHAL", value: "—", unit: "mg/kg", avg: "avg. ~45mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+      { key: "oleacin", label: "OLEACEIN", value: "—", unit: "mg/kg", avg: "avg. ~20mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
       { key: "acidity", label: "ACIDITY", value: "0.13", unit: "%", avg: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
     ],
     tabs: {
@@ -376,9 +376,9 @@ export const productContentMap: Record<string, ProductContent> = {
       subheading:
         "Health claims without receipts are just marketing. We have every batch independently lab-tested on key quality markers you can verify for yourself.",
       values: [
-        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "avg. ~180 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
-        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "avg. <10 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
-        { label: "Oleacin", value: "—", unit: "mg/kg", standard: "avg. <40 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
+        { label: "Polyphenols", value: "675", unit: "mg/kg", standard: "avg. ~150 mg/kg", description: "Natural antioxidants that give olive oil its health benefits." },
+        { label: "Oleocanthal", value: "—", unit: "mg/kg", standard: "avg. ~45 mg/kg", description: "A potent anti-inflammatory compound unique to olive oil." },
+        { label: "Oleacein", value: "—", unit: "mg/kg", standard: "avg. ~20 mg/kg", description: "A powerful antioxidant linked to cardiovascular protection." },
         { label: "Acidity", value: "0.13", unit: "%", standard: "avg. ~0.8%", description: "Lower acidity means fresher olives and higher quality." },
         { label: "Peroxides", value: "5.7", unit: "meq/kg", standard: "avg. ~20 meq/kg", description: "Shows how fresh the oil is. Low peroxide = less oxidation." },
         { label: "K270", value: "—", unit: "", standard: "avg. ~0.22", description: "Measures oxidation over time. Lower values indicate fresher, better-preserved oil." },

@@ -22,9 +22,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
     labelDisclosure:
       "La bouteille présentée arbore notre futur label de marque ATTIMO. Votre huile de la récolte 2024/25 vous parviendra sous le label du producteur d'origine, contenant la même huile de qualité supérieure.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYPHÉNOLS BIOACTIFS", value: "847", unit: "mg/kg", avg: "moy. ~180mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "471", unit: "mg/kg", avg: "moy. 10-30mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-      { key: "oleacin", label: "OLÉACINE", value: "336", unit: "mg/kg", avg: "moy. 10-30mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
+      { key: "polyphenols", label: "POLYPHÉNOLS BIOACTIFS", value: "847", unit: "mg/kg", avg: "moy. ~150mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "471", unit: "mg/kg", avg: "moy. ~45mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+      { key: "oleacin", label: "OLÉACINE", value: "336", unit: "mg/kg", avg: "moy. ~20mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
       { key: "acidity", label: "ACIDITÉ", value: "0.19", unit: "%", avg: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
     ],
     tabs: {
@@ -90,9 +90,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
       subheading:
         "Les allégations santé sans preuves ne sont que du marketing. Nous faisons tester chaque lot de manière indépendante en laboratoire sur des marqueurs de qualité clés que vous pouvez vérifier par vous-même.", // REVIEW
       values: [
-        { label: "Polyphénols", value: "847", unit: "mg/kg", standard: "moy. ~180 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-        { label: "Oléocanthal", value: "471", unit: "mg/kg", standard: "moy. <10 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-        { label: "Oléacine", value: "336", unit: "mg/kg", standard: "moy. <40 mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
+        { label: "Polyphénols", value: "847", unit: "mg/kg", standard: "moy. ~150 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+        { label: "Oléocanthal", value: "471", unit: "mg/kg", standard: "moy. ~45 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+        { label: "Oléacine", value: "336", unit: "mg/kg", standard: "moy. ~20 mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
         { label: "Acidité", value: "0.19", unit: "%", standard: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
         { label: "Peroxydes", value: "7.2", unit: "meq/kg", standard: "moy. ~20 meq/kg", description: "Indique la fraîcheur de l'huile. Un faible taux de peroxyde = moins d'oxydation." }, // REVIEW
         { label: "K270", value: "0.15", unit: "", standard: "moy. ~0.22", description: "Mesure l'oxydation au fil du temps. Des valeurs plus faibles indiquent une huile plus fraîche et mieux préservée." }, // REVIEW
@@ -128,9 +128,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
     labelDisclosure:
       "La bouteille présentée arbore notre future étiquette de marque ATTIMO. Votre huile de la récolte 2024/25 arrivera sous l'étiquette du producteur d'origine, contenant la même huile de qualité supérieure.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYPHÉNOLS BIOACTIFS", value: "400", unit: "mg/kg", avg: "moy. ~180mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "137", unit: "mg/kg", avg: "moy. <10mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-      { key: "oleacin", label: "OLÉACINE", value: "209", unit: "mg/kg", avg: "moy. <40mg/kg", description: "un puissant antioxydant lié à la santé cardiaque et à la longévité" }, // REVIEW
+      { key: "polyphenols", label: "POLYPHÉNOLS BIOACTIFS", value: "400", unit: "mg/kg", avg: "moy. ~150mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "137", unit: "mg/kg", avg: "moy. ~45mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+      { key: "oleacin", label: "OLÉACINE", value: "209", unit: "mg/kg", avg: "moy. ~20mg/kg", description: "un puissant antioxydant lié à la santé cardiaque et à la longévité" }, // REVIEW
       { key: "acidity", label: "ACIDITÉ", value: "0.21%", unit: "", avg: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
     ],
     tabs: {
@@ -196,9 +196,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
       subheading:
         "Les allégations santé sans preuves ne sont que du marketing. Nous faisons tester chaque lot de manière indépendante en laboratoire sur des marqueurs de qualité clés que vous pouvez vérifier par vous-même.", // REVIEW
       values: [
-        { label: "Polyphénols", value: "400", unit: "mg/kg", standard: "moy. ~180 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-        { label: "Oléocanthal", value: "137", unit: "mg/kg", standard: "moy. <10 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-        { label: "Oléacine", value: "209", unit: "mg/kg", standard: "moy. <40 mg/kg", description: "Un puissant antioxydant lié à la santé cardiaque et à la longévité." }, // REVIEW
+        { label: "Polyphénols", value: "400", unit: "mg/kg", standard: "moy. ~150 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+        { label: "Oléocanthal", value: "137", unit: "mg/kg", standard: "moy. ~45 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+        { label: "Oléacine", value: "209", unit: "mg/kg", standard: "moy. ~20 mg/kg", description: "Un puissant antioxydant lié à la santé cardiaque et à la longévité." }, // REVIEW
         { label: "Acidité", value: "0.21", unit: "%", standard: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
         { label: "Peroxydes", value: "7.8", unit: "meq/kg", standard: "moy. ~20 meq/kg", description: "Indique la fraîcheur de l'huile. Peroxyde faible = moins d'oxydation." }, // REVIEW
         { label: "K270", value: "0.11", unit: "", standard: "moy. ~0.22", description: "Mesure l'oxydation dans le temps. Des valeurs plus faibles indiquent une huile plus fraîche et mieux conservée." }, // REVIEW
@@ -224,9 +224,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
     labelDisclosure:
       "La bouteille présentée arbore notre future étiquette de marque ATTIMO. Votre huile de la récolte 2024/25 vous parviendra sous l'étiquette du producteur d'origine, contenant la même huile de qualité supérieure.", // REVIEW
     labTiles: [
-      { key: "polyphenols", label: "POLYPHÉNOLS", value: "675", unit: "mg/kg", avg: "moy. ~180mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "—", unit: "mg/kg", avg: "moy. 10-30mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-      { key: "oleacin", label: "OLÉACINE", value: "—", unit: "mg/kg", avg: "moy. <40mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
+      { key: "polyphenols", label: "POLYPHÉNOLS", value: "675", unit: "mg/kg", avg: "moy. ~150mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+      { key: "oleocanthal", label: "OLÉOCANTHAL", value: "—", unit: "mg/kg", avg: "moy. ~45mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+      { key: "oleacin", label: "OLÉACINE", value: "—", unit: "mg/kg", avg: "moy. ~20mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
       { key: "acidity", label: "ACIDITÉ", value: "0.13", unit: "%", avg: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
     ],
     tabs: {
@@ -292,9 +292,9 @@ export const productContentFrMap: Record<string, ProductContent> = {
       subheading:
         "Les allégations santé sans preuves ne sont que du marketing. Nous faisons tester chaque lot de façon indépendante en laboratoire sur des marqueurs de qualité clés que vous pouvez vérifier vous-même.", // REVIEW
       values: [
-        { label: "Polyphénols", value: "675", unit: "mg/kg", standard: "moy. ~180 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
-        { label: "Oléocanthal", value: "—", unit: "mg/kg", standard: "moy. <10 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
-        { label: "Oléacine", value: "—", unit: "mg/kg", standard: "moy. <40 mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
+        { label: "Polyphénols", value: "675", unit: "mg/kg", standard: "moy. ~150 mg/kg", description: "Antioxydants naturels qui confèrent à l'huile d'olive ses bienfaits pour la santé." }, // REVIEW
+        { label: "Oléocanthal", value: "—", unit: "mg/kg", standard: "moy. ~45 mg/kg", description: "Un puissant composé anti-inflammatoire propre à l'huile d'olive." }, // REVIEW
+        { label: "Oléacine", value: "—", unit: "mg/kg", standard: "moy. ~20 mg/kg", description: "Un puissant antioxydant associé à la protection cardiovasculaire." }, // REVIEW
         { label: "Acidité", value: "0.13", unit: "%", standard: "moy. ~0.8%", description: "Une acidité plus faible signifie des olives plus fraîches et une qualité supérieure." }, // REVIEW
         { label: "Peroxydes", value: "5.7", unit: "meq/kg", standard: "moy. ~20 meq/kg", description: "Indique la fraîcheur de l'huile. Faible taux de peroxyde = moins d'oxydation." }, // REVIEW
         { label: "K270", value: "—", unit: "", standard: "moy. ~0.22", description: "Mesure l'oxydation au fil du temps. Des valeurs plus faibles indiquent une huile plus fraîche et mieux conservée." }, // REVIEW

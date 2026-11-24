@@ -223,7 +223,7 @@ export const en = {
     headingPre: "The", // REVIEW
     headingLie: '"extra virgin" lie', // REVIEW
     intro:
-      'Extra virgin olive oil is praised for health and longevity benefits, but 80% of EVOOs in supermarkets don\'t even meet basic standards and are actually low in the polyphenols that give it these benefits, plus flavour.', // REVIEW
+      'Extra virgin olive oil is praised for health and longevity benefits, but most supermarket EVOOs are low in the polyphenols that give it these benefits, plus flavour.', // REVIEW
     stat1Value: "~80%",
     stat1Text:
       'olive oils sold as "extra virgin" in supermarkets don\'t meet those standards', // REVIEW
@@ -297,9 +297,9 @@ export const en = {
     barBlueprint: "Blueprint Olive Oil",
     tooltips: {
       avgTitle: "Average Extra Virgin", // REVIEW
-      avgSub: "~180 mg/kg polyphenols",
+      avgSub: "~150 mg/kg polyphenols",
       avgDesc:
-        "Most supermarket EVOOs test between 100–250 mg/kg. Blending, age, and industrial processing all reduce polyphenol content.", // REVIEW
+        "The average supermarket extra virgin tests at about 150 mg/kg. Blending, age, and industrial processing all reduce polyphenol content.", // REVIEW
       euTitle: "EU Health Claim", // REVIEW
       euSub: "250 mg/kg polyphenols",
       euDesc:
