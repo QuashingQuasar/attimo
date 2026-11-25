@@ -149,9 +149,9 @@ export const nl: Dict = {
     steps: [
       { label: "Persen", when: "half oktober" },
       { label: "Labanalyse", when: "begin november" },
-      { label: "Bottelen", when: "half november" },
-      { label: "Voorverkoop open", when: "half november" },
-      { label: "Verzending", when: "eind november" },
+      { label: "Bottelen", when: "eind november" },
+      { label: "Voorverkoop open", when: "eind november" },
+      { label: "Verzending", when: "begin december" },
     ],
     note: "Schattingen worden bijgewerkt naarmate de olie vordert. Laatst bijgewerkt: {date}.",
     pageLink: "Volg de oogst 26/27 stap voor stap",
