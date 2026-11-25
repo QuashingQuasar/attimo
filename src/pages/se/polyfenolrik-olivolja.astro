@@ -5,6 +5,7 @@ import { sanityClient } from "@/lib/sanity";
 import { getHubIndexData } from "@/lib/polyphenolIndexHub";
 import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
+import { availabilityForUrl, oilSchemaAvailability } from "@/lib/oilAvailability";
 import { HUB_CONTENT, HUB_HREFLANGS, HUB_SLUGS } from "@/lib/highPolyphenolHubContent";
 import { SLUG_TO_LOCALE } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
@@ -20,6 +21,7 @@ const labNumbers = await getHomeLabNumbers();
 const canonical = `https://attimo-oil.com${HUB_SLUGS.sv}`;
 const description = content.meta.description;
 
+const oilAvailability = await oilSchemaAvailability();
 const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -44,7 +46,7 @@ const collectionJsonLd = {
           url: p.url,
           price: p.priceEUR.toFixed(2),
           priceCurrency: "EUR",
-          availability: "https://schema.org/InStock",
+          availability: availabilityForUrl(oilAvailability, p.url),
           itemCondition: "https://schema.org/NewCondition",
         },
         additionalProperty: {

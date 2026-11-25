@@ -5,6 +5,7 @@ import { sanityClient } from "@/lib/sanity";
 import { getHubIndexData } from "@/lib/polyphenolIndexHub";
 import { getHomeLabNumbers } from "@/lib/certificates/homeNumbers";
 import { HIGH_POLYPHENOL_FAQS, HIGH_POLYPHENOL_PRODUCTS } from "@/lib/highPolyphenolContent";
+import { availabilityForUrl, oilSchemaAvailability } from "@/lib/oilAvailability";
 import { HUB_HREFLANGS } from "@/lib/highPolyphenolHubContent";
 
 const indexData = await getHubIndexData();
@@ -12,6 +13,8 @@ const labNumbers = await getHomeLabNumbers();
 const canonical = "https://attimo-oil.com/high-polyphenol-olive-oil";
 const description =
   "Shop high-polyphenol olive oil, lab-tested at 400–900 mg/kg — three single-variety, polyphenol-rich extra virgin oils ranked by polyphenols. From €22.";
+
+const oilAvailability = await oilSchemaAvailability();
 
 // CollectionPage + ItemList: the three oils, ranked by polyphenol content.
 const collectionJsonLd = {
@@ -38,7 +41,7 @@ const collectionJsonLd = {
           url: p.url,
           price: p.priceEUR.toFixed(2),
           priceCurrency: "EUR",
-          availability: "https://schema.org/InStock",
+          availability: availabilityForUrl(oilAvailability, p.url),
           itemCondition: "https://schema.org/NewCondition",
         },
         additionalProperty: {
