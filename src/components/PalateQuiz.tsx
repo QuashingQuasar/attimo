@@ -9,9 +9,9 @@ import { getDict } from "@/lib/i18n/dictionaries";
 
 type QuizDict = ReturnType<typeof getDict>["quiz"];
 
-import bottleCoratina from "@/assets/bottle-coratina.jpg?url";
-import bottlePicual from "@/assets/bottle-picual.jpg?url";
-import bottleNocellara from "@/assets/bottle-nocellara.jpg?url";
+import bottleCoratina from "@/assets/bottle-coratina.webp?url";
+import bottlePicual from "@/assets/bottle-picual.webp?url";
+import bottleNocellara from "@/assets/bottle-nocellara.webp?url";
 
 const bottleImages: Record<string, string> = {
   coratina: bottleCoratina,

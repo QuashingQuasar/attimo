@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 import { Link } from "@/lib/router-stub";
-import coratinaImage from "@/assets/bottle-coratina.jpg?url";
-import picualImage from "@/assets/bottle-picual.jpg?url";
-import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
+import coratinaImage from "@/assets/bottle-coratina.webp?url";
+import picualImage from "@/assets/bottle-picual.webp?url";
+import nocellaraImage from "@/assets/bottle-nocellara.webp?url";
 import { DEFAULT_LOCALE, localizeHref, salePrice, shopifyContextForLocale, type Locale } from "@/lib/i18n/config";
 import { OilCardCta, SOLD_OUT_IMAGE_STYLE, addBottleFromCard } from "@/components/OilCardCta";
 import { getDict } from "@/lib/i18n/dictionaries";

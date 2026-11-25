@@ -3,9 +3,9 @@ import { useState, useRef } from "react";
 import { Link } from "@/lib/router-stub";
 import navbarLogo from "@/assets/navbar-logo-latest.svg?url";
 import emblemLogo from "@/assets/attimo-nav-logo.svg?url";
-import coratinaImage from "@/assets/bottle-coratina.jpg?url";
-import picualImage from "@/assets/bottle-picual.jpg?url";
-import nocellaraImage from "@/assets/bottle-nocellara.jpg?url";
+import coratinaImage from "@/assets/bottle-coratina.webp?url";
+import picualImage from "@/assets/bottle-picual.webp?url";
+import nocellaraImage from "@/assets/bottle-nocellara.webp?url";
 import { CartDrawer } from "./CartDrawer";
 import { CurrencySelector } from "./CurrencySelector";
 import { DEFAULT_LOCALE, localizeHref, type Locale } from "@/lib/i18n/config";
@@ -105,13 +105,13 @@ export const Header = ({
   // The pieces every layout is built from.
   const wordmark = (
     <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
-      <img src={navbarLogo} alt="ATTIMO" className="h-7 md:h-9 lg:h-11 w-auto max-w-none" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
+      <img src={navbarLogo} alt="ATTIMO" width={825} height={162} className="h-7 md:h-9 lg:h-11 w-auto max-w-none" style={darkNav && !solidBackground ? { filter: 'brightness(0) saturate(100%) invert(18%) sepia(30%) saturate(1200%) hue-rotate(100deg) brightness(0.7)' } : undefined} />
     </Link>
   );
   const emblem = (
     <Link to={localizeHref("/", locale)} aria-label="ATTIMO">
       <img src={emblemLogo} alt="ATTIMO" className="hidden md:block h-24 lg:h-28 xl:h-36 2xl:h-40 w-auto max-w-none -mb-4" />
-      <img src={navbarLogo} alt="ATTIMO" className="md:hidden h-7 w-auto max-w-none" />
+      <img src={navbarLogo} alt="ATTIMO" width={825} height={162} className="md:hidden h-7 w-auto max-w-none" />
     </Link>
   );
   const siteLinks = (

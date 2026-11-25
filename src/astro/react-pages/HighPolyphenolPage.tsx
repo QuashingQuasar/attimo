@@ -20,9 +20,9 @@ import { HUB_CONTENT, type HubContent } from "@/lib/highPolyphenolHubContent";
 import type { HubIndexData } from "@/lib/polyphenolIndexHub";
 import type { HomeLabOil } from "@/lib/certificates/homeNumbers";
 import { marketGuidesFor } from "@/lib/marketGuides";
-import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
-import picualBottle from "@/assets/bottle-picual-transparent.png?url";
-import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
+import coratinaBottle from "@/assets/bottle-coratina-transparent.webp?url";
+import picualBottle from "@/assets/bottle-picual-transparent.webp?url";
+import nocellaraBottle from "@/assets/bottle-nocellara-transparent.webp?url";
 import { IT, ES } from "country-flag-icons/react/3x2";
 
 const queryClient = new QueryClient({ defaultOptions: { queries: { staleTime: 60_000, refetchOnWindowFocus: false } } });

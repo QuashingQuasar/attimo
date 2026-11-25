@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n/dictionaries";
-import coratina from "@/assets/bottle-2627-coratina.png?url";
+import coratina from "@/assets/bottle-2627-coratina.webp?url";
 
 // "What is specialty olive oil" band, right after the hero. Brought over from
 // the June homepage redesign (lab sandbox _SpecialtyIntro): four value props,

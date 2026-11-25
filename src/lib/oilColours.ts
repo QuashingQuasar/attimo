@@ -15,9 +15,9 @@
 // for another creative purpose and are not the website bottles. The 26/27
 // cut-outs (src/assets/bottle-2627-*.png) take over when the new harvest is
 // listed.
-import coratinaCutout from "@/assets/bottle-2526-coratina-site.png?url";
-import picualCutout from "@/assets/bottle-2526-picual-site.png?url";
-import nocellaraCutout from "@/assets/bottle-2526-nocellara-site.png?url";
+import coratinaCutout from "@/assets/bottle-2526-coratina-site.webp?url";
+import picualCutout from "@/assets/bottle-2526-picual-site.webp?url";
+import nocellaraCutout from "@/assets/bottle-2526-nocellara-site.webp?url";
 
 export interface OilColours { field: string; ink: string }
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ShieldCheck, Truck, Sprout, UtensilsCrossed, PackageOpen } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import coratinaBottle from "@/assets/bottle-coratina-transparent.png?url";
-import picualBottle from "@/assets/bottle-picual-transparent.png?url";
-import nocellaraBottle from "@/assets/bottle-nocellara-transparent.png?url";
+import coratinaBottle from "@/assets/bottle-coratina-transparent.webp?url";
+import picualBottle from "@/assets/bottle-picual-transparent.webp?url";
+import nocellaraBottle from "@/assets/bottle-nocellara-transparent.webp?url";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
