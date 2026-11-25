@@ -166,9 +166,9 @@ export const en = {
     steps: [
       { label: "Pressing", when: "mid-October" },
       { label: "Lab analysis", when: "early November" },
-      { label: "Bottling", when: "mid-November" },
-      { label: "Pre-orders open", when: "mid-November" },
-      { label: "Shipping", when: "late November" },
+      { label: "Bottling", when: "late November" },
+      { label: "Pre-orders open", when: "late November" },
+      { label: "Shipping", when: "early December" },
     ],
     note: "Estimates are updated as the oil moves. Last updated {date}.",
     pageLink: "Follow the 26/27 harvest step by step",

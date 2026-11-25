@@ -149,9 +149,9 @@ export const da: Dict = {
     steps: [
       { label: "Presning", when: "midt i oktober" },
       { label: "Laboratorieanalyse", when: "start november" },
-      { label: "Aftapning", when: "midt i november" },
-      { label: "Forudbestilling åbner", when: "midt i november" },
-      { label: "Forsendelse", when: "sidst i november" },
+      { label: "Aftapning", when: "sidst i november" },
+      { label: "Forudbestilling åbner", when: "sidst i november" },
+      { label: "Forsendelse", when: "start december" },
     ],
     note: "Estimaterne opdateres, efterhånden som olien er på vej. Senest opdateret {date}.",
     pageLink: "Følg høsten 26/27 trin for trin",
