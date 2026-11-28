@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { clickAttributes } from "./adClick";
+import { orderAttributes, visitorConsentArg } from "./adClick";
 
 // Shopify Storefront localization context. When set, queries run under
 // @inContext(country, language) so Shopify returns market-appropriate data
@@ -12,6 +12,9 @@ export interface ShopifyContext {
 }
 
 const SHOPIFY_API_VERSION = '2025-07';
+// cartCreate alone runs on 2025-10: the first version whose @inContext accepts
+// visitorConsent (the banner answer handed to the checkout).
+const SHOPIFY_CART_API_VERSION = '2025-10';
 const SHOPIFY_STORE_PERMANENT_DOMAIN = '00xpv6-0j.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 const SHOPIFY_STOREFRONT_TOKEN = '79b950607019e5b5574dd3e5fe0fe15a';
@@ -87,7 +90,7 @@ export interface SellingPlan {
   }>;
 }
 
-export async function storefrontApiRequest(query: string, variables: any = {}) {
+export async function storefrontApiRequest(query: string, variables: any = {}, apiVersion?: string) {
   // Hard timeout so a stalled request (spotty mobile network, an ad-blocker
   // holding the connection to the Shopify subdomain, a Shopify edge hiccup)
   // rejects instead of hanging forever. Without this, a stalled cartCreate on
@@ -102,7 +105,10 @@ export async function storefrontApiRequest(query: string, variables: any = {}) {
     typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function"
       ? AbortSignal.timeout(12000)
       : undefined;
-  const response = await fetch(SHOPIFY_STOREFRONT_URL, {
+  const endpoint = apiVersion
+    ? `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${apiVersion}/graphql.json`
+    : SHOPIFY_STOREFRONT_URL;
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -414,8 +420,10 @@ export async function fetchSellingPlans(handle: string, context?: ShopifyContext
 // behaviour. Country is NOT on @inContext here — for cart operations Shopify
 // ignores the @inContext country/buyer args; country must come from
 // buyerIdentity.countryCode in the input (set in createStorefrontCheckout).
-const CART_CREATE_MUTATION = `
-  mutation cartCreate($input: CartInput!, $language: LanguageCode) @inContext(language: $language) {
+// `consentArg` is the banner answer from visitorConsentArg() (empty when the
+// visitor made no choice).
+const cartCreateMutation = (consentArg: string) => `
+  mutation cartCreate($input: CartInput!, $language: LanguageCode) @inContext(language: $language${consentArg}) {
     cartCreate(input: $input) {
       cart {
         id
@@ -525,8 +533,8 @@ export function buildCartPermalink(items: CartItem[]): string | null {
     })
     .filter(Boolean);
   if (parts.length === 0) return null;
-  // Carry the ad click attributes on the fallback too (see adClick.ts).
-  const query = clickAttributes()
+  // Carry the order attributes on the fallback too (see adClick.ts).
+  const query = orderAttributes()
     .map((a) => `attributes[${encodeURIComponent(a.key)}]=${encodeURIComponent(a.value)}`)
     .join('&');
   return `https://${SHOPIFY_CHECKOUT_DOMAIN}/cart/${parts.join(',')}${query ? `?${query}` : ''}`;
@@ -564,13 +572,14 @@ export async function createStorefrontCheckout(
     // checkoutUrl opens in that country's currency (e.g. FR → French/EUR
     // checkout). Only attached when a caller passes a country (France); the
     // default/dk/se markets pass nothing and keep their prior behaviour.
-    // Hidden ad-click attributes become order attributes, which the Google Ads
-    // purchase upload reads (see adClick.ts).
+    // Hidden attributes become order attributes: the ad click and consent for
+    // the Google Ads upload, the session's source, and the GA IDs after a yes
+    // on the banner (see adClick.ts).
     const input: {
       lines: typeof lines;
       attributes: { key: string; value: string }[];
       buyerIdentity?: { countryCode: string };
-    } = { lines, attributes: clickAttributes() };
+    } = { lines, attributes: orderAttributes() };
     if (context?.country) {
       input.buyerIdentity = { countryCode: context.country };
     }
@@ -581,10 +590,11 @@ export async function createStorefrontCheckout(
     // fresh on every "Checkout" click from the storefront's CURRENT locale, so
     // the checkout language always matches the active locale (no stale-language
     // edge case to carry over).
-    const cartData = await storefrontApiRequest(CART_CREATE_MUTATION, {
-      input,
-      language: context?.language ?? null,
-    });
+    const cartData = await storefrontApiRequest(
+      cartCreateMutation(visitorConsentArg()),
+      { input, language: context?.language ?? null },
+      SHOPIFY_CART_API_VERSION,
+    );
 
     // Echo the context Shopify actually applied, to confirm e.g. language=FR
     // was applied and not silently falling back to EN.
