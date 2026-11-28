@@ -100,17 +100,22 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
 <html lang={htmlLang}>
   <head>
     <script id="attimo-visit-source" is:inline>
-      // Where this visit came from (first external referrer or utm_source, plus
-      // the landing page), kept for the session so a waitlist signup can carry
-      // it to Brevo as hidden contact fields (see src/lib/signupContext.ts).
+      // Where this visit came from (first external referrer or utm_source, the
+      // utm_medium and the landing page), kept for the session so a waitlist
+      // signup carries it to Brevo (src/lib/signupContext.ts) and an order
+      // carries it to Shopify (src/lib/adClick.ts).
       (function () {
         try {
           if (sessionStorage.getItem('attimo_visit')) return;
           var ref = '';
           try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
           if (ref === location.hostname) ref = '';
-          var utm = new URLSearchParams(location.search).get('utm_source') || '';
-          sessionStorage.setItem('attimo_visit', JSON.stringify({ ref: utm || ref || '(direct)', landing: location.pathname }));
+          var params = new URLSearchParams(location.search);
+          var utm = params.get('utm_source') || '';
+          var visit = { ref: utm || ref || '(direct)', landing: location.pathname };
+          var medium = params.get('utm_medium') || '';
+          if (medium) visit.medium = medium;
+          sessionStorage.setItem('attimo_visit', JSON.stringify(visit));
         } catch (e) {}
       })();
     </script>
@@ -220,11 +225,16 @@ const allJsonLd = [organizationJsonLd, ...jsonLdArray];
 
     <!-- Google Tag Manager -->
     <script is:inline>
+      // Live site only, so localhost and preview deployments send nothing to
+      // GA4, Google Ads or Meta. Tag Assistant's preview mode (it adds
+      // gtm_debug to the URL) still loads the container anywhere.
+      if (location.hostname === 'attimo-oil.com' || /[?&]gtm_debug=/.test(location.search)) {
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-T5HD4T66');
+      }
     </script>
     <!-- End Google Tag Manager -->
   </head>

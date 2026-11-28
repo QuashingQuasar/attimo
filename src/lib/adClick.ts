@@ -87,3 +87,77 @@ export function clickAttributes(): { key: string; value: string }[] {
   }
   return attrs;
 }
+
+// ---------------------------------------------------------------------------
+// Order source and consent hand-off (tracking design, Nov 2026).
+// ---------------------------------------------------------------------------
+
+// GA4 web stream of attimo-oil.com; its session cookie is `_ga_<id>`.
+const GA_STREAM_COOKIE = '_ga_NM41BDLLJQ';
+
+/** "GA1.1.1234567890.1700000000" -> "1234567890.1700000000". */
+export function gaClientId(cookieHeader: string | null | undefined): string | null {
+  const raw = readCookie(cookieHeader, '_ga');
+  const m = raw ? raw.match(/^GA\d\.\d\.(\d+\.\d+)$/) : null;
+  return m ? m[1] : null;
+}
+
+/** Session ID from "GS1.1.<sid>.<n>..." or "GS2.1.s<sid>$o<n>$...". */
+export function gaSessionId(cookieHeader: string | null | undefined): string | null {
+  const raw = readCookie(cookieHeader, GA_STREAM_COOKIE);
+  if (!raw) return null;
+  const v1 = raw.match(/^GS1\.\d\.(\d+)\./);
+  if (v1) return v1[1];
+  const v2 = raw.match(/^GS2\.\d\.s(\d+)/);
+  return v2 ? v2[1] : null;
+}
+
+/**
+ * Where this session came from, as stored by BaseLayout's attimo-visit-source
+ * script: first external referrer or utm_source, utm_medium and the landing
+ * page. No ID and no cookie, so it goes on every order.
+ */
+function visitAttributes(): { key: string; value: string }[] {
+  let visit: { ref?: string; landing?: string; medium?: string } = {};
+  try {
+    visit = JSON.parse(sessionStorage.getItem('attimo_visit') || '{}');
+  } catch {
+    /* storage blocked: the order carries no source */
+  }
+  const attrs: { key: string; value: string }[] = [];
+  if (visit.ref) attrs.push({ key: '_source', value: String(visit.ref).slice(0, 200) });
+  if (visit.medium) attrs.push({ key: '_medium', value: String(visit.medium).slice(0, 100) });
+  if (visit.landing) attrs.push({ key: '_landing', value: String(visit.landing).slice(0, 200) });
+  return attrs;
+}
+
+/**
+ * Every hidden attribute an order carries: the ad click and consent state
+ * (clickAttributes), the session's source, and, only after a yes on the
+ * banner, the GA client and session IDs so the purchase can be reported to
+ * GA4 from the paid order under the visitor's own session.
+ */
+export function orderAttributes(): { key: string; value: string }[] {
+  if (typeof document === 'undefined') return [];
+  const attrs = [...clickAttributes(), ...visitAttributes()];
+  if (adConsent(document.cookie)) {
+    const cid = gaClientId(document.cookie);
+    const sid = gaSessionId(document.cookie);
+    if (cid) attrs.push({ key: '_ga_cid', value: cid });
+    if (sid) attrs.push({ key: '_ga_sid', value: sid });
+  }
+  return attrs;
+}
+
+/**
+ * The banner answer as an @inContext argument for cartCreate (Storefront API
+ * 2025-10+). Shopify encodes it in the checkoutUrl, so the pixels at checkout
+ * follow the decision made on the site. Empty when the visitor made no choice:
+ * Shopify then applies its own default.
+ */
+export function visitorConsentArg(): string {
+  if (typeof document === 'undefined') return '';
+  const consent = adConsent(document.cookie);
+  if (consent === null) return '';
+  return `, visitorConsent: {analytics: ${consent}, preferences: ${consent}, marketing: ${consent}, saleOfData: ${consent}}`;
+}
