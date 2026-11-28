@@ -85,6 +85,10 @@ var klaroConfig = {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('consent', 'update', { ad_storage: 'granted', ad_personalization: 'granted', ad_user_data: 'granted', analytics_storage: 'granted', functionality_storage: 'granted', personalization_storage: 'granted' });
+        // Tag Manager fires the Meta pixel on this event: on the click for a new
+        // visitor, on page load for one who said yes before (Klaro runs onAccept
+        // again at load).
+        window.dataLayer.push({ event: 'consent_granted' });
       },
       onDecline: function() {
         try {

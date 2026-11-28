@@ -233,6 +233,10 @@ export const CartDrawer = ({ darkIcon = false, locale = DEFAULT_LOCALE }: { dark
   };
 
   const handleCheckout = async () => {
+    // GA4 begin_checkout and Meta InitiateCheckout (Tag Manager, after consent).
+    const w = window as unknown as { dataLayer?: unknown[] };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: 'begin_checkout' });
     // Pass the active locale's full Shopify context: country pins the
     // checkout market/currency AND language sets the checkout language
     // (France → French/EUR). default/dk/se resolve to undefined → English

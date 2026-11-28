@@ -26,11 +26,10 @@ export function signupContext(): SignupContext {
   };
 }
 
-// GA4 `waitlist_signup` event, fired once a signup has reached Brevo. Sent as a
-// gtag event (picked up by the Google tag GTM loads) and as a dataLayer event
-// for any GTM trigger.
+// `waitlist_signup` dataLayer event, pushed once a signup has reached Brevo.
+// Tag Manager sends it to GA4 and, after consent, to Meta as a Lead.
 export function trackWaitlistSignup(list: string, ctx: SignupContext): void {
-  const w = window as unknown as { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
+  const w = window as unknown as { dataLayer?: unknown[] };
   const params = {
     list,
     signup_page: ctx.page,
@@ -40,5 +39,4 @@ export function trackWaitlistSignup(list: string, ctx: SignupContext): void {
   };
   w.dataLayer = w.dataLayer || [];
   w.dataLayer.push({ event: "waitlist_signup", ...params });
-  w.gtag?.("event", "waitlist_signup", params);
 }
